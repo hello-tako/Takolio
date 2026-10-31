@@ -263,3 +263,46 @@ approval results from this supplement. The existing six critical reviews stay
 pending. Next evidence remains exact raw-shrimp package/validated process and
 raw-crab package/species/coordinated thaw-and-grill directions, followed by an
 independent safety decision bound to each candidate fingerprint.
+
+## Product specification and household cooking endpoint - 2026-10-30 JST
+
+Nine primary/comparator sources retrieved at the UTC times below. This bounded
+supplement follows the owner's raw-shrimp research and raw-crab selections. It
+does not select a new ingredient, change a candidate or confer HUMAN_APPROVED.
+Locators address immutable normalized text; the GODAK one-page PDF was extracted,
+rendered and visually inspected. Raw files remain private.
+
+| Source / locator | Supported observation | Remaining limit |
+|---|---|---|
+| [GODAK product](https://www.godak-tokyo.com/angelprawn) and its [official specification](https://www.godak-tokyo.com/_files/ugd/880d39_d4adbbc1a1254eea8e70fe1b7d365d26.pdf), PDF text14-24,32,36,39-42,49 | Concrete product: GODAK, Tenshi No Ebi, farmed New Caledonian shrimp; printed scientific name `Lito Penaeus Stylirostris`; raw-use label `生食用`; NET1kg; frozen storage at or below minus18C. Quick running-water thaw, prompt preparation, refrigerated protected storage when necessary, early consumption. Manufacturer states approximately annual laboratory testing including viable counts, coliforms and Vibrio. | No inspected lot COA, numeric results/critical limits, validated kill step or current independent certificate. Labelled raw use does not validate the original lemon/freezer formulation. Species differs from original black tiger shrimp; substitution needs coordinated identity/formulation and independent safety review. |
+| [SOPAC products](https://sopac.nc/nos-produits/), text16; [species](https://sopac.nc/notre-crevette/), text9,12; [quality](https://sopac.nc/engagements/) | Producer identifies Tenshi No Ebi for Japan and `Litopenaeus Stylirostris`; describes monitored traceability/quality parameters. | Corroborates product/species context; generic quality and historical certification claims do not establish a current inspected certificate or pathogen-control protocol. |
+| [Marine Foods raw crab](https://www.marinefoods.co.jp/products/consumer/1916/), text81-84,89 | Frozen raw snow-crab half portions, heating required, grilling intended; rinse glaze and refrigerator half-thaw approximately30-60minutes. Actual package governs. | Website frozen category says minus5C; ambiguous, not adopted or silently corrected. Scientific species, purchased package and manufacturer grill endpoint remain unverified. Do not combine this half-thaw instruction with another product's full-thaw/raw-service directions. |
+| [MHLW household six points](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00006.html), text252,254 | Current publisher guidance gives cooked-food center75C for at least1minute as a household cooking guide. | General household endpoint, not validation of a specific crab, grill temperature or fixed timer. This does not establish the original800g/4servings/40minutes or edible yield/nutrition. |
+| [JF Tajima salt-grilled crab](https://www.jftajima.com/recipe/20151226220919/), text39-44 | Whole Matsuba crab technique: gills removed, legs opened, foil/hotplate, salt and lid. | Red shell/plump flesh is not temperature proof; whole fresh crab does not establish frozen half-portion identity or yield. |
+| [Itamaedamashii8201](https://www.1osechi.com/shop/g/gkn8201/), text57-60,73 | Secondary raw heating-only snow-crab listing, glaze rinse and refrigerator thaw around1hour. | Selected800g x1 versus content table800g x2 conflicts; scientific species and validated grill endpoint absent. Do not use inconsistent yield as evidence. |
+
+GODAK is now a concrete raw-use-labelled lead with manufacturer handling/QC
+instructions. Missing validated controls and the species/formulation difference
+remain explicit. Freshness/K-value, flash freezing, lemon and30-minute household
+freezing are not established pathogen controls. No fixed GODAK holding/service
+period was obtained; directions from another brand must not fill that gap.
+Both recipes remain FAIL_UNRESOLVED; six independent safety decisions remain
+pending and the unchanged candidate fingerprint still binds those decisions.
+
+### Retrieval bindings for this supplement
+
+All requests returned HTTP200 with final URL equal to the linked URL.
+
+| Snapshot / retrieved UTC | Raw SHA256 | Extracted text SHA256 |
+|---|---|---|
+| `godak-angelprawn` / `2026-10-29T21:47:16.577994+00:00` | `2bf10cbfede341e27e4a1fd7b9960f52f1d891a344bd270c0c8bed1023c9627b` | `ca8185304194487c574059020c64873673ec3a32d3bd9c5c15e9e0f1506c3998` |
+| `godak-product-spec` / `2026-10-29T21:47:16.853777+00:00` | `9504c8963aeaa3eaebeb1363a5432b8dd627f6ed1857aa19e259dcacdc2a7a8d` | `817bc1dff3883d7772d8c13f361b954a4537212db380ed27aac5bbaa19eba0be` |
+| `sopac-products` / `2026-10-29T21:47:16.932331+00:00` | `84b57711590a9ef61a76cbe3b6fdf3ad7d1f5918d39290c1237664db283631ee` | `9008f29e0ed02b0d6fba41c4057d51827ff0202e51cb7e311229fcc22276e7c9` |
+| `sopac-species` / `2026-10-29T21:47:16.944391+00:00` | `dc9a99e2f36537f1ae523a34b61bb91dd34c98d8f61e7a89a22dd6d9a38e5782` | `ee2d1c243a0f811493a5fc5cf1a42ec4bf0b156e58e9faf2db7107d7a8cf0b2c` |
+| `sopac-quality` / `2026-10-29T21:47:17.217416+00:00` | `e980331b4d564b7e8d6a303343a3789aaf7b3c491ff2258f7ae54ce1379e89d8` | `c831201ab6697db7b71ade63a0f34d55f18cc47c3c25520e81aae7963aa87db3` |
+| `mhlw-household-six-points` / `2026-10-29T21:47:17.087392+00:00` | `44d8ddb7a2d23059a313b6fa3dbb3d61d6964f5bab47a832c856082120ece6b4` | `eba9e740495cc0bef2d66f937219efd42d3ca705c26eefd0fb8a3bf735a2b536` |
+| `marinefoods-raw-crab` / `2026-10-29T21:47:17.655990+00:00` | `f64b805c8ef3a8b611bff4e7e3f67b84d5747cf4510c6fa65826e69fb98dc034` | `45d7db67a73acbf346a87d429b89f9b1432ff2b90e40c26bd8f6e25e1b69e75e` |
+| `jftajima-grilled-crab` / `2026-10-29T21:47:17.560130+00:00` | `eadfa6468c6d74f9b8b4423569acbc3ad9d295b107287e420995bea048b494bd` | `51bc7de9c8d359dbb69dc80d052f17e14300474a1a8f39748012f78af6affbed` |
+| `itamaedamashii-raw-crab-8201` / `2026-10-29T21:47:17.555982+00:00` | `88587c548b2a36e4a07a749754e0c061d5b41597dc27397213988047b1bfb305` | `4174199a851879d5f8f5599dd9c28d1feccbdb7f413924048e1952cd2d85e879` |
+
+Executed `python3 /private/tmp/takolio-v3-seafood-research-20261030/check_provenance.py`: PASS exit0;9sources,18SHA256 checks,15quote locators and official PDF link. This verifies recorded provenance, not food safety or regulatory compliance.

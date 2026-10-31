@@ -2,7 +2,9 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { recipesApi } from '../../src/web/services/recipes';
 import { useCookingStore } from '../../src/web/stores/useCookingStore';
-import type { Recipe } from '@frigo/recipes';
+import { ALL_RECIPES, type Recipe } from '@frigo/recipes';
+import { fingerprintRecipes } from '../../packages/recipes/src/catalog-fingerprint';
+import { queryKeys } from '../../src/web/lib/queryKeys';
 import { flush, getPendingOps } from '../../src/web/lib/sync';
 
 const stock = vi.hoisted(() => ({ read: vi.fn() }));
@@ -215,4 +217,39 @@ it('keeps serving count in the offline replay and rejects changing it for the sa
   expect(vi.mocked(fetch).mock.calls[0][1]?.body).toBe(queued[0].body);
   expect(new Headers(vi.mocked(fetch).mock.calls[0][1]?.headers).get('Idempotency-Key')).toBe('four-person-offline');
   expect(getPendingOps()).toEqual([]);
+});
+
+it('keeps selected content in the request and private query key; mismatched server metadata fails', async () => {
+  const pin = 'a'.repeat(64);
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ recipe, match: {}, contentFingerprint: pin }))));
+  expect((await recipesApi.getRecipeById(recipe.id, pin)).contentFingerprint).toBe(pin);
+  expect(String(vi.mocked(fetch).mock.calls[0][0])).toContain(`/recipes/pork?contentFingerprint=${pin}`);
+  expect(queryKeys.recipe(recipe.id)).toEqual(['recipe', 'user', 'household', recipe.id]);
+  expect(queryKeys.recipe(recipe.id, pin)).toEqual([...queryKeys.recipe(recipe.id), pin]);
+  expect(queryKeys.recipe(recipe.id, 'b'.repeat(64))).not.toEqual(queryKeys.recipe(recipe.id, pin));
+  vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ recipe, match: {}, contentFingerprint: 'b'.repeat(64) }))));
+  await expect(recipesApi.getRecipeById(recipe.id, pin)).rejects.toThrow('Không thể xác nhận');
+  vi.mocked(fetch).mockClear();
+  await expect(recipesApi.getRecipeById(recipe.id, 'invalid')).rejects.toThrow('không hợp lệ');
+  expect(fetch).not.toHaveBeenCalled();
+});
+
+it('offline fallback requires the exact selected static content hash', async () => {
+  const baseline = ALL_RECIPES[0];
+  const pin = await fingerprintRecipes([baseline]);
+  const fallback = await recipesApi.getRecipeById(baseline.id, pin);
+  expect(fallback.recipe).toBe(baseline);
+  expect(fallback.contentFingerprint).toBe(pin);
+  stock.read.mockClear();
+  await expect(recipesApi.getRecipeById(baseline.id, '0'.repeat(64))).rejects.toThrow('Cần kết nối');
+  expect(stock.read).not.toHaveBeenCalled();
+});
+
+it('drops an offline recipe read after household changes during the awaited inventory read', async () => {
+  const baseline = ALL_RECIPES[0];
+  stock.read.mockImplementationOnce(async () => {
+    localStorage.setItem('frigo_household_id', 'different-household');
+    return inventory;
+  });
+  await expect(recipesApi.getRecipeById(baseline.id)).rejects.toThrow();
 });

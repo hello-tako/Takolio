@@ -31,7 +31,7 @@ function baseline(db) {
 function historicalSchemaGateSql() {
   // This lifecycle predates 0046; the current-tip lifecycle is exercised separately.
   return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
-    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_/.test(line))
+    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_|trg_meal_components_content_/.test(line))
     .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
 }
 function fixture() {

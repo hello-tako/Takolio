@@ -1,32 +1,44 @@
 # Rollback plan
 
-ADR-075 cooking foundation keeps the V1 catalog unchanged. Apply migration0046
-before the new Worker; retain its archive, household grants and nullable receipt
-fields through rollback. Existing Workers can insert legacy NULL references.
-Never down-migrate, delete receipts, rewrite queued bodies or restore user data.
+ADR-075/076 retain V1 catalog authority. Apply0046 then0047 before this Worker.
+Keep the immutable content archive, household grants, cooking receipt references
+and saved composition pins. Never down-migrate, delete receipts, rewrite queued
+commands or restore historical user data over current writes.
 
-Before any changed recipe content is served, a rollback to the reviewed V1 Worker
-is compatible with this additive schema. Verify its exact SHA, schema gate,
-receipt replay, household isolation and stock state through the protected release
-workflow. The current local migration tests prove old inserts and history
-preservation; they are not hosted recovery certification.
+## Before saved pins or changed content
 
-After changed content has been served, an old V1 Worker is an invalid rollback
-target: it can ignore contentFingerprint and reinterpret an offline command
-against another catalog. First certify a version-aware recovery Worker using the
-same archive, immutable command references and household grants. Pin that recovery
-SHA in the release packet before promotion. Archive retention alone is insufficient.
+A prior reviewed Worker can use the additive0046/0047 schema only before any
+non-NULL saved composition pin exists and before changed content has been served.
+Existing Workers can insert legacy NULL references, but strict historical schema
+gates reject extra migrations. This is not an executable historical deployment
+path without separate reviewed certification.
 
-For a later approved content release:
+## After the first saved pin
+
+A Worker predating0047 can delete/reinsert composition rows without their pins.
+It is an invalid mutation-serving rollback even when catalog content is unchanged.
+Use a certified version-aware recovery Worker from the same reviewed source with
+both composition flags OFF. Preserve0046/0047, the archive, grants, pins and
+receipt-first replay. Prove hosted OFF/recovery behavior, including legacy route
+and queued-command handling, before issuing the first pin in production.
+
+After changed content has been served, the recovery Worker must also retain the
+exact content/request identity for pending and committed cooking commands. An
+old Worker can reinterpret them against another catalog. Archive retention alone
+does not make that safe.
+
+## Recovery sequence
 
 1. Stop promotion and new candidate issuance.
-2. Deploy the certified version-aware recovery Worker through normal gates.
-3. Restore the previous approved authority fingerprint for new selections.
-4. Keep IDs, slugs, saved plans, shopping rows, favorites and cooking history.
-5. Replay committed commands from receipts; resolve pending commands by their
-   original content and current household restrictions without a second debit.
-6. Verify catalog identity, saved consumer pins, queue recovery, schema and stock.
+2. Activate the certified version-aware recovery Worker through normal gates.
+3. Restore the previous approved authority for new selections; retain user pins.
+4. Preserve IDs, slugs, plans, shopping rows, favorites and cooking history.
+5. Replay committed commands from receipts without another debit. Resolve pending
+   commands against their original content and current household restrictions.
+6. Verify exact SHA/catalog, paired flags, schema, household isolation, saved pins,
+   queue recovery and inventory state. Record the actual deployment/recovery receipt.
 
-Version-pinned saved planner/shopping and hosted recovery rehearsal remain release
-prerequisites. Current candidate content is review-only; no promotion or rollback
-has been executed in production.
+Local migration and consumer checks are recorded in23_SAVED_CONTENT_VALIDATION.md.
+They do not certify hosted recovery. Approved content publication, V1 selection
+pins, saved shopping compatibility and exact-source staging/recovery remain open.
+No promotion or rollback has been executed in production.

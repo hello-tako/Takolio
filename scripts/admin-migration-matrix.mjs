@@ -254,7 +254,7 @@ try {
     JSON.stringify(candidateManifest.migrations.slice(0, mainManifest.count)) === JSON.stringify(mainManifest.migrations);
   const v2Identity = v2Manifest.count === 45 &&
     JSON.stringify(candidateManifest.migrations.slice(0, v2Manifest.count)) === JSON.stringify(v2Manifest.migrations);
-  const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 46 &&
+  const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 47 &&
     headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
     !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql');
   row('pinned 43-file customer ledger identity', 'all historical main migrations remain byte-identical in the candidate',
@@ -264,7 +264,7 @@ try {
   row('pinned V2 customer release identity', 'all 45 immutable V2 migrations remain byte-identical in the candidate',
     { baseline: V2_RELEASE_BASELINE, count: v2Manifest.count, v2: v2Manifest.sha256,
       candidatePrefix: candidateManifest.migrations.slice(0, v2Manifest.count) }, v2Identity);
-  row('pinned V3 customer release identity', 'HEAD and working migrations/schema match the immutable 46-file V3 checkpoint',
+  row('pinned V3 customer release identity', 'HEAD and working migrations/schema match the immutable 47-file V3 checkpoint',
     { baseline: customerBaseline, count: candidateManifest.count, candidate: candidateManifest.sha256,
       head: headManifest.sha256, working: workingManifest.sha256 }, candidateIdentity);
 
@@ -393,41 +393,37 @@ try {
   const v3Fresh = database('v3-fresh', candidateFiles);
   const v3Apply = apply(v3Fresh), v3Reapply = apply(v3Fresh), v3Ledger = ledger(v3Fresh);
   const v3Gate = schemaGate(v3Fresh, v3MigrationDirectory, v3Template);
-  row('V3 46-file fresh apply + re-apply + strict gates', 'all46 apply once; exact candidate ledger and schema gate pass',
+  row('V3 47-file fresh apply + re-apply + strict gates', 'all47 apply once; exact candidate ledger and schema gate pass',
     { apply: v3Apply.status, reapply: v3Reapply.status, ledger: releaseGate(customerBaseline, v3Ledger), schema: v3Gate },
     v3Apply.status === 0 && v3Reapply.status === 0 && releaseGate(customerBaseline, v3Ledger).pass && v3Gate.pass);
 
-  const v3Upgrade = database('v3-populated-45-to-46', v2Files);
+  const v3Upgrade = database('v3-populated-45-to-47', v2Files);
   const v3BaseApply = apply(v3Upgrade);
   const populatedContentSeed = sql(v3Upgrade, `
     INSERT INTO users(id) VALUES ('matrix-content-user');
     INSERT INTO households(id,name,created_by) VALUES ('matrix-content-house','Synthetic content','matrix-content-user');
     INSERT INTO household_members(id,household_id,user_id,role)
       VALUES ('matrix-content-member','matrix-content-house','matrix-content-user','owner');
+    INSERT INTO generated_meal_plans(id,household_id,creator_user_id,request_key,request_fingerprint,intent_json,result_json,source_json)
+      VALUES ('matrix-content-plan','matrix-content-house','matrix-content-user','matrix-request','matrix-hash',
+        '{"version":1,"data":{}}','{"version":1,"data":{}}','{"version":1,"data":{}}');
+    INSERT INTO generated_meal_plan_compositions(plan_id,household_id,creator_user_id,slot_id,mode,created_revision,updated_revision)
+      VALUES ('matrix-content-plan','matrix-content-house','matrix-content-user','matrix-slot','manual',1,1);
+    INSERT INTO generated_meal_plan_components(plan_id,id,slot_id,ordinal,kind,role,recipe_id,locked,provenance,created_revision,updated_revision)
+      VALUES ('matrix-content-plan','matrix-recipe','matrix-slot',0,'recipe','main','gl-03',1,'manual',1,1);
+    INSERT INTO generated_meal_plan_components(plan_id,id,slot_id,ordinal,kind,role,simple_food_id,locked,provenance,created_revision,updated_revision)
+      VALUES ('matrix-content-plan','matrix-food','matrix-slot',1,'simple_food','simple_food','sf-rice',1,'manual',1,1);
     INSERT INTO cooked_meals(id,household_id,user_id,recipe_id,servings_cooked,deductions_applied)
       VALUES ('matrix-legacy-cook','matrix-content-house','matrix-content-user','gl-03',2,'[]');`);
-  const legacyTables = ['users', 'households', 'household_members'];
-  const legacyRows = () => legacyTables.map(table => query(v3Upgrade, `SELECT * FROM ${table} ORDER BY id`));
+  const legacyTables = ['users', 'households', 'household_members', 'generated_meal_plans', 'generated_meal_plan_compositions'];
+  const legacyRows = () => legacyTables.map(table => query(v3Upgrade, `SELECT * FROM ${table} ORDER BY id`.replace(
+    'generated_meal_plan_compositions ORDER BY id', 'generated_meal_plan_compositions ORDER BY plan_id, slot_id')));
   const beforeLegacy = legacyRows();
+  const beforeComponents = query(v3Upgrade, 'SELECT * FROM generated_meal_plan_components ORDER BY id');
   const beforeCooking = query(v3Upgrade, 'SELECT * FROM cooked_meals ORDER BY id');
   const v3Additions = candidateFiles.slice(v2Files.length);
-  writeFiles(v3Upgrade.migrationDirectory, v3Additions);
-  const apply46 = apply(v3Upgrade), reapply46 = apply(v3Upgrade), upgrade46Ledger = ledger(v3Upgrade);
-  const upgrade46Gate = schemaGate(v3Upgrade, v3Upgrade.migrationDirectory, v3Template);
-  const legacyPreserved = JSON.stringify(legacyRows()) === JSON.stringify(beforeLegacy);
-  const cookingPreserved = JSON.stringify(query(v3Upgrade, 'SELECT * FROM cooked_meals ORDER BY id')) ===
-    JSON.stringify(beforeCooking.map(cook => ({ ...cook, recipe_content_fingerprint: null, request_fingerprint: null })));
-  const v3Integrity = query(v3Upgrade, 'PRAGMA quick_check'), v3ForeignKeys = query(v3Upgrade, 'PRAGMA foreign_key_check');
-  row('V3 populated0045 -> 0046 upgrade + re-apply',
-    'only46 applies once; existing households and cooking receipts survive with unknown content/request pins',
-    { baselineApply: v3BaseApply.status, seed: populatedContentSeed.status, additions: v3Additions.map(file => file.name),
-      apply46: apply46.status, reapply: reapply46.status, legacyPreserved, cookingPreserved,
-      ledger: releaseGate(customerBaseline, upgrade46Ledger), schema: upgrade46Gate, integrity: v3Integrity, foreignKeys: v3ForeignKeys },
-    v3BaseApply.status === 0 && populatedContentSeed.status === 0 && apply46.status === 0 && reapply46.status === 0 &&
-      JSON.stringify(v3Additions.map(file => file.name)) === JSON.stringify(['0046_recipe_content_versions.sql']) &&
-      legacyPreserved && cookingPreserved && releaseGate(customerBaseline, upgrade46Ledger).pass && upgrade46Gate.pass &&
-      Object.values(v3Integrity[0] ?? {})[0] === 'ok' && v3ForeignKeys.length === 0);
-
+  writeFiles(v3Upgrade.migrationDirectory, v3Additions.filter(file => file.name === '0046_recipe_content_versions.sql'));
+  const apply46 = apply(v3Upgrade), reapply46 = apply(v3Upgrade);
   const contentPin = 'a'.repeat(64);
   const archiveSeed = sql(v3Upgrade, `
     INSERT INTO recipe_content_versions(fingerprint,recipe_id,slug,content_json)
@@ -439,33 +435,67 @@ try {
   const histories46 = () => preserved46Tables.map(table => query(v3Upgrade,
     `SELECT * FROM ${table} ORDER BY ${table === 'recipe_content_versions' ? 'fingerprint' : table === 'recipe_content_access' ? 'household_id, fingerprint' : 'id'}`));
   const before46 = histories46();
-  const mismatchedRecipe = sql(v3Upgrade, `INSERT INTO cooked_meals
+  const before46Objects = schemaObjects(v3Upgrade);
+  writeFiles(v3Upgrade.migrationDirectory, v3Additions);
+  const apply47 = apply(v3Upgrade), reapply47 = apply(v3Upgrade), upgrade47Ledger = ledger(v3Upgrade);
+  const upgrade47Gate = schemaGate(v3Upgrade, v3Upgrade.migrationDirectory, v3Template);
+  const legacyPreserved = JSON.stringify(legacyRows()) === JSON.stringify(beforeLegacy);
+  const componentsPreserved = JSON.stringify(query(v3Upgrade, 'SELECT * FROM generated_meal_plan_components ORDER BY id')) ===
+    JSON.stringify(beforeComponents.map(component => ({ ...component, recipe_content_fingerprint: null })));
+  const cookingPreserved = JSON.stringify(query(v3Upgrade, "SELECT * FROM cooked_meals WHERE id = 'matrix-legacy-cook'")) ===
+    JSON.stringify(beforeCooking.map(cook => ({ ...cook, recipe_content_fingerprint: null, request_fingerprint: null })));
+  const historiesPreserved46 = JSON.stringify(histories46()) === JSON.stringify(before46);
+  const objects46Preserved = compareObjects(before46Objects.filter(object => object.tbl_name !== 'generated_meal_plan_components'), schemaObjects(v3Upgrade));
+  const v3Integrity = query(v3Upgrade, 'PRAGMA quick_check'), v3ForeignKeys = query(v3Upgrade, 'PRAGMA foreign_key_check');
+  row('V3 populated0045 -> 0046 -> 0047 upgrade + re-apply',
+    'only46/47 apply once; legacy data stays exact with unknown pins, existing0046 archive/grants/receipts and objects survive',
+    { baselineApply: v3BaseApply.status, seed: populatedContentSeed.status, additions: v3Additions.map(file => file.name),
+      apply46: apply46.status, reapply46: reapply46.status, archiveSeed: archiveSeed.status, apply47: apply47.status, reapply: reapply47.status,
+      legacyPreserved, componentsPreserved, cookingPreserved, historiesPreserved46, objects46Preserved,
+      ledger: releaseGate(customerBaseline, upgrade47Ledger), schema: upgrade47Gate, integrity: v3Integrity, foreignKeys: v3ForeignKeys },
+    v3BaseApply.status === 0 && populatedContentSeed.status === 0 && apply46.status === 0 && reapply46.status === 0 && archiveSeed.status === 0 &&
+      apply47.status === 0 && reapply47.status === 0 && JSON.stringify(v3Additions.map(file => file.name)) ===
+      JSON.stringify(['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']) &&
+      legacyPreserved && componentsPreserved && cookingPreserved && historiesPreserved46 && objects46Preserved.pass &&
+      releaseGate(customerBaseline, upgrade47Ledger).pass && upgrade47Gate.pass &&
+      Object.values(v3Integrity[0] ?? {})[0] === 'ok' && v3ForeignKeys.length === 0);
+
+  const matchingPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-recipe'`);
+  const matchingInsert = sql(v3Upgrade, `INSERT INTO generated_meal_plan_components
+      (plan_id,id,slot_id,ordinal,kind,role,recipe_id,locked,provenance,created_revision,updated_revision,recipe_content_fingerprint)
+    VALUES ('matrix-content-plan','matrix-new-recipe','matrix-slot',2,'recipe','side','gl-04',0,'manual',1,1,'${contentPin}')`);
+  const mismatchedRecipe = sql(v3Upgrade, "UPDATE generated_meal_plan_components SET recipe_id = 'gl-04' WHERE id = 'matrix-recipe'");
+  const missingPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${'b'.repeat(64)}' WHERE id = 'matrix-recipe'`);
+  const simpleFoodPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-food'`);
+  const mismatchedCookingPin = sql(v3Upgrade, `INSERT INTO cooked_meals
       (id,household_id,user_id,recipe_id,servings_cooked,deductions_applied,recipe_content_fingerprint)
     VALUES ('matrix-wrong-recipe','matrix-content-house','matrix-content-user','gl-04',2,'[]','${contentPin}')`);
-  const missingPin = sql(v3Upgrade, `INSERT INTO cooked_meals
+  const missingCookingPin = sql(v3Upgrade, `INSERT INTO cooked_meals
       (id,household_id,user_id,recipe_id,servings_cooked,deductions_applied,recipe_content_fingerprint)
     VALUES ('matrix-missing-pin','matrix-content-house','matrix-content-user','gl-03',2,'[]','${'b'.repeat(64)}')`);
+  const legacyCookingPin = sql(v3Upgrade, `UPDATE cooked_meals SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-legacy-cook'`);
   const archiveUpdate = sql(v3Upgrade, "UPDATE recipe_content_versions SET slug = 'changed'");
   const archiveDelete = sql(v3Upgrade, 'DELETE FROM recipe_content_versions');
   const archiveReplace = sql(v3Upgrade, `INSERT OR REPLACE INTO recipe_content_versions(fingerprint,recipe_id,slug,content_json)
     VALUES ('${contentPin}','gl-03','synthetic-archived-egg','{"id":"gl-03","slug":"synthetic-archived-egg"}')`);
   const receiptPin = sql(v3Upgrade, "UPDATE cooked_meals SET recipe_content_fingerprint = NULL WHERE id = 'matrix-pinned-cook'");
   const receiptRequest = sql(v3Upgrade, "UPDATE cooked_meals SET request_fingerprint = 'changed' WHERE id = 'matrix-pinned-cook'");
-  const legacyPin = sql(v3Upgrade, `UPDATE cooked_meals SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-legacy-cook'`);
   const finalContentIntegrity = query(v3Upgrade, 'PRAGMA quick_check');
   const finalContentForeignKeys = query(v3Upgrade, 'PRAGMA foreign_key_check');
   row('V3 content identity and retained0046 guards',
-    'matching cooking pins pass; missing/mismatched pins, archive replacement/deletion and receipt identity mutations fail',
-    { archiveSeed: archiveSeed.status, mismatchedRecipe: mismatchedRecipe.status, missingPin: missingPin.status,
-      archiveUpdate: archiveUpdate.status, archiveDelete: archiveDelete.status, archiveReplace: archiveReplace.status,
-      receiptPin: receiptPin.status, receiptRequest: receiptRequest.status, legacyPin: legacyPin.status,
-      integrity: finalContentIntegrity, foreignKeys: finalContentForeignKeys },
-    archiveSeed.status === 0 && [mismatchedRecipe, missingPin, archiveUpdate, archiveDelete, archiveReplace,
-      receiptPin, receiptRequest, legacyPin].every(result => result.status !== 0) &&
+    'matching saved/cooking pins pass; missing/mismatched/simple-food pins, legacy receipt pinning, archive and receipt mutations fail',
+    { matchingPin: matchingPin.status, mismatchedInsert: matchingInsert.status, mismatchedRecipe: mismatchedRecipe.status,
+      missingPin: missingPin.status, simpleFoodPin: simpleFoodPin.status,
+      mismatchedCookingPin: mismatchedCookingPin.status, missingCookingPin: missingCookingPin.status,
+      legacyCookingPin: legacyCookingPin.status, archiveUpdate: archiveUpdate.status,
+      archiveDelete: archiveDelete.status, archiveReplace: archiveReplace.status, receiptPin: receiptPin.status,
+      receiptRequest: receiptRequest.status, integrity: finalContentIntegrity, foreignKeys: finalContentForeignKeys },
+    matchingPin.status === 0 && [matchingInsert, mismatchedRecipe, missingPin, simpleFoodPin, archiveUpdate, archiveDelete,
+      archiveReplace, receiptPin, receiptRequest, mismatchedCookingPin, missingCookingPin, legacyCookingPin].every(result => result.status !== 0) &&
       JSON.stringify(histories46()) === JSON.stringify(before46) && Object.values(finalContentIntegrity[0] ?? {})[0] === 'ok' &&
       finalContentForeignKeys.length === 0);
 
-  for (const missingName of ['0046_recipe_content_versions.sql']) {
+  for (const missingName of ['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']) {
     const missingV3 = database('v3-missing-' + missingName.slice(0, 4), candidateFiles);
     const missingV3Apply = apply(missingV3);
     const missingV3Delete = sql(missingV3, `DELETE FROM d1_migrations WHERE name = '${missingName}'`);
@@ -476,18 +506,18 @@ try {
       missingV3Apply.status === 0 && missingV3Delete.status === 0 && !releaseGate(customerBaseline, missingV3Ledger).pass &&
         !missingV3Gate.pass && missingV3Gate.issues.some(issue => issue.issue === 'missing_migration' && issue.detail === missingName));
   }
-  const v3FutureName = '0047_unexpected_drift.sql';
-  const v3Unknown = database('v3-unknown-0047', [...candidateFiles, {
+  const v3FutureName = '0048_unexpected_drift.sql';
+  const v3Unknown = database('v3-unknown-0048', [...candidateFiles, {
     name: v3FutureName, content: 'CREATE TABLE unexpected_v3_drift (id TEXT PRIMARY KEY);\n',
   }]);
   const v3UnknownApply = apply(v3Unknown), v3UnknownLedger = ledger(v3Unknown);
   const v3UnknownGate = schemaGate(v3Unknown, v3MigrationDirectory, v3Template);
-  row('V3 unknown0047 drift', 'both V3 gates reject an unexpected future migration',
+  row('V3 unknown0048 drift', 'both V3 gates reject an unexpected future migration',
     { apply: v3UnknownApply.status, ledger: releaseGate(customerBaseline, v3UnknownLedger), schema: v3UnknownGate },
     v3UnknownApply.status === 0 && !releaseGate(customerBaseline, v3UnknownLedger).pass && !v3UnknownGate.pass &&
       v3UnknownGate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === v3FutureName));
   const rollback45Gate = schemaGate(v3Fresh, candidateMigrationDirectory, candidateTemplate);
-  row('strict45 release rejects V3 ledger on binary rollback', 'old V2 gates reject46; version-aware runtime recovery requires separate certification',
+  row('strict45 release rejects V3 ledger on binary rollback', 'old V2 gates reject46/47; version-aware runtime recovery requires separate certification',
     { ledger: releaseGate(V2_RELEASE_BASELINE, v3Ledger), schema: rollback45Gate },
     !releaseGate(V2_RELEASE_BASELINE, v3Ledger).pass && !rollback45Gate.pass && v3Additions.every(file =>
       rollback45Gate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === file.name)));

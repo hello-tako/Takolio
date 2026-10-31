@@ -3849,6 +3849,56 @@ version-aware recovery Worker and a constrained rollback target: old Workers str
 the new request field and cannot safely interpret changed-catalog offline commands.
 Keeping the archive alone does not establish backward compatibility after promotion.
 
+## ADR-076 - Retain selected recipe content in saved compositions (2026-10-30 JST)
+
+Status: accepted implementation scope; publication and release gates remain.
+Builds on ADR-075; no candidate promotion or evidence waiver.
+
+Stored composition components retain only recipe_id. DTO reads resolve current
+content, so an unchanged saved component can display/cook a different recipe
+following a catalog change. Add migration0047 with a nullable recipe content
+fingerprint referencing the immutable0046 archive. Non-NULL must name the same
+recipe and is forbidden for simple_food. Legacy NULL remains explicitly unknown;
+never backfill it from today's catalog. Pins are server-issued from the allowed
+unscaled authority snapshot, with household grants; clients still submit intent
+identities only. Every persistence writer, including direct family generation,
+retains pins; edits to role/order/lock and locked regeneration preserve existing
+pin/NULL. Explicit dish replacement can select current content only while the
+plan authority remains valid. After authority changes, remove incompatible locked
+components explicitly, then regenerate; picker/swap retain their authority guard.
+A pin does not certify versioned nutrition/classification/role evidence.
+
+Archive/pin issuance must retain existing authority-current and transaction CAS
+witnesses. Orphan public content/grants after a failed CAS do not change a saved
+plan. Reads may use household-authorized archived display content. New shopping,
+assessment,composition and regeneration mutations keep current catalog/evidence
+freshness fences; mismatched historical pins cannot borrow current facts. Locked
+legacy/historical components require explicit compatible revalidation rather than
+silent repinning. V1 result snapshots retain their existing authority fence; this
+slice alone does not complete V1 version pins or catalog publication.
+
+New clients opt into pinned composition DTO metadata with the safelisted
+`Accept: application/json; recipe-content=1` header on V1 composition and V2 family
+requests. Without that capability, every response explicitly omits the added
+contentFingerprint field so old strict schemas still parse; pinned recipes are
+not cookable through an unversioned old-client link. Mutations still complete
+with a compatible response. New clients pass known pins in detail/cook links and
+cache keys. A requested pinned version must match the active cooking
+run. Offline static fallback is valid only when its computed hash matches; never
+substitute current content for a requested archive. Missing legacy metadata stays
+unknown. All500 identities,tenancy,inventory commands and Week compatibility remain.
+
+Apply0047 before this Worker. Migration validation must preserve populated legacy
+rows,FK/integrity and existing0046 receipt/archive objects; no down-migration.
+A Worker predating saved pins can delete/reinsert rows without them. Once any
+non-NULL pins exist, such a Worker must not serve mutations, even before catalog
+promotion. Recovery uses a certified version-aware Worker with paired flags OFF,
+retains0046/0047 and separately proves actual hosted OFF/recovery behavior.
+Normal independent review,exact-main CI,same-source hosted certification and
+Environment approval remain mandatory. No external approval is fabricated.
+
+---
+
 ### ADR-075 addendum -0046 release-tool checkpoint (2026-10-31 JST)
 
 The Admin guard/matrix still selected45 after cooking added0046. Bind the frozen

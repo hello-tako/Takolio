@@ -12,10 +12,11 @@ on:
         description: Exact reviewed staging migration tip
         required: true
         type: choice
-        default: 0046_recipe_content_versions.sql
+        default: 0047_saved_recipe_content.sql
         options:
           - 0045_week_swap_receipts.sql
           - 0046_recipe_content_versions.sql
+          - 0047_saved_recipe_content.sql
       confirm_staging_migration:
         description: Confirm staging D1 identity and authorize the exact selected migration chain or certification
         default: false

@@ -100,6 +100,7 @@ it('loads V2 current with all composition dishes cached at the accepted revision
   expect(model.familyPlan).toEqual(envelope);
   expect(fetchMock).toHaveBeenCalledTimes(1);
   expect(fetchMock.mock.calls[0][0]).toBe('/api/v2/meal-planning/plans/current');
+  expect(new Headers(fetchMock.mock.calls[0][1].headers).get('Accept')).toBe('application/json; recipe-content=1');
   expect(client.getQueryData(queryKeys.mealPlanningCompositions(hookPlanId, 1))).toEqual(
     envelope.compositions,
   );

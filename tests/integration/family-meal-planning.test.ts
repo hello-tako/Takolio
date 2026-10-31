@@ -1,9 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { FamilyMealPlanDtoSchema } from '../../packages/domain/src/family-meal-planning-api';
+import { MealComponentDtoSchema, MealCompositionDtoSchema, PlanCompositionsDtoSchema } from '../../packages/domain/src/meal-composition-api';
 import { MealPlanDtoSchema } from '../../packages/domain/src/meal-planning-api';
 import { FamilyPreferencesSchema } from '../../packages/domain/src/family-preferences-api';
 import { saveFamilyPreferences } from '../../packages/db/src/family-preferences';
 import { resolveRecipeAuthority } from '../../src/worker/services/recipe-authority';
+import { captureRecipeContentVersion, grantRecipeContentAccess, readRecipeContentVersion } from '../../src/worker/services/recipe-content-versions';
 import { buildRoleIndex } from '../../packages/recipes/src/composition/roles';
 import { fetchWorker } from '../helpers/worker-fetch.mjs';
 import { quietLogs, T20Harness, T20_ORIGIN } from '../helpers/t20-composition-harness';
@@ -15,9 +17,9 @@ const intent = { startDate: '2030-01-02', horizonDays: 7, defaultServings: 2, mo
 let h: T20Harness;
 beforeEach(async () => { h = new T20Harness(); h.mode = 'static'; await h.seedHousehold(HOUSE); await h.seedHousehold(OTHER); quietLogs(); });
 afterEach(() => { h.close(); vi.restoreAllMocks(); });
-async function call(house: string, method: string, path: string, body?: unknown, key = crypto.randomUUID(), extra = {}) {
+async function call(house: string, method: string, path: string, body?: unknown, key = crypto.randomUUID(), extra = {}, content = true) {
   const response = await fetchWorker(new Request(`${T20_ORIGIN}/api/v2/meal-planning${path}`, { method,
-    headers: { Cookie: h.cookies[house], Origin: T20_ORIGIN, 'Content-Type': 'application/json', 'Idempotency-Key': key },
+    headers: { ...(content ? { Accept: 'application/json; recipe-content=1' } : {}), Cookie: h.cookies[house], Origin: T20_ORIGIN, 'Content-Type': 'application/json', 'Idempotency-Key': key },
     body: body === undefined ? undefined : JSON.stringify(body) }), h.env(extra));
   return { status: response.status, json: await response.json() as Record<string, unknown> };
 }
@@ -28,6 +30,30 @@ async function generate() {
 }
 
 describe('family meal V2 persistence and HTTP boundary', () => {
+  it('negotiates pinned content while preserving strict legacy family responses', async () => {
+    const legacyComponent = MealComponentDtoSchema.omit({ contentFingerprint: true }).strict();
+    const legacyComposition = MealCompositionDtoSchema.extend({ components: legacyComponent.array() });
+    const legacyFamily = FamilyMealPlanDtoSchema.safeExtend({ compositions: PlanCompositionsDtoSchema.extend({ compositions: legacyComposition.array() }) });
+    expect((await call(HOUSE, 'GET', '/plans/current', undefined, undefined, {}, false)).json).toEqual({ plan: null });
+    const created = await call(HOUSE, 'POST', '/plans', intent, undefined, {}, false);
+    expect(created.status, JSON.stringify(created.json)).toBe(200);
+    const saved = legacyFamily.parse(created.json);
+    const recipes = saved.compositions.compositions.flatMap(slot => slot.components.filter(component => component.kind === 'recipe'));
+    expect(recipes.length).toBeGreaterThan(0);
+    expect(recipes.every(component => !component.cookable)).toBe(true);
+    legacyFamily.parse((await call(HOUSE, 'GET', `/plans/${saved.plan.id}`, undefined, undefined, {}, false)).json);
+    legacyFamily.parse((await call(HOUSE, 'GET', '/plans/current', undefined, undefined, {}, false)).json.plan);
+    const modern = FamilyMealPlanDtoSchema.parse((await call(HOUSE, 'GET', `/plans/${saved.plan.id}`)).json);
+    expect(modern.compositions.compositions.flatMap(slot => slot.components.filter(component => component.kind === 'recipe'))
+      .every(component => component.cookable && /^[a-f0-9]{64}$/.test(component.contentFingerprint ?? ''))).toBe(true);
+    const regenerated = await call(HOUSE, 'POST', `/plans/${saved.plan.id}/regenerate`, { revision: saved.plan.revision }, undefined, {}, false);
+    expect(regenerated.status, JSON.stringify(regenerated.json)).toBe(200);
+    expect(legacyFamily.parse(regenerated.json).plan.revision).toBe(saved.plan.revision + 1);
+    const manual = await call(HOUSE, 'POST', '/drafts', intent, undefined, {}, false);
+    expect(manual.status, JSON.stringify(manual.json)).toBe(200);
+    legacyFamily.parse(manual.json);
+  }, 30000);
+
   it('creates full lunch/dinner compositions atomically, replays same key and preserves strict V1 readers', async () => {
     const initialEvents = h.db.query('SELECT id FROM inventory_events ORDER BY id');
     const initialStock = h.db.query('SELECT id, quantity, version FROM inventory_items ORDER BY id');
@@ -39,6 +65,7 @@ describe('family meal V2 persistence and HTTP boundary', () => {
     for (const composition of dto.compositions.compositions) {
       expect(composition.components.map((component) => component.role)).toEqual(['main', 'vegetable', 'soup', 'staple']);
       expect(composition.missingRoles).toEqual([]);
+      expect(composition.components.filter((component) => component.kind === 'recipe').every((component) => /^[a-f0-9]{64}$/.test(component.contentFingerprint ?? ''))).toBe(true);
     }
     expect(dto.diagnostics).toMatchObject({ completeMealCount: 2, partialMealCount: 0, unplannedMealCount: 0 });
     expect(dto.policy.internationalGeneratedMainCount).toBe(0);
@@ -60,10 +87,30 @@ describe('family meal V2 persistence and HTTP boundary', () => {
     expect(result.status, JSON.stringify(result.json)).toBe(200);
     const dto = FamilyMealPlanDtoSchema.parse(result.json);
     const current = dto.compositions.compositions[0].components.find((component) => component.id === main.id)!;
-    expect(current).toMatchObject({ id: main.id, recipeId: main.recipeId, role: 'main', locked: true, createdRevision: 1, updatedRevision: 2 });
+    expect(current).toMatchObject({ id: main.id, recipeId: main.recipeId, role: 'main', locked: true, createdRevision: 1, updatedRevision: 2, contentFingerprint: main.contentFingerprint });
     expect(dto.compositions.compositions.every((entry) => entry.components.length === 4)).toBe(true);
     const stale = await call(HOUSE, 'POST', `/plans/${created.plan.id}/regenerate`, { revision: 1 });
     expect(stale.status).toBe(409);
+  }, 30000);
+  it('rejects regeneration of locked historical content without changing the plan', async () => {
+    const created = await generate();
+    const composition = created.compositions.compositions[0];
+    const main = composition.components.find((component) => component.kind === 'recipe')!;
+    const path = `/meal-planning/plans/${created.plan.id}/slots/${encodeURIComponent(composition.slotId)}/components/${encodeURIComponent(main.id)}`;
+    expect((await h.call(HOUSE, 'PATCH', path, { revision: 1, locked: true })).status).toBe(200);
+    const recipe = await readRecipeContentVersion(h.db, main.contentFingerprint!);
+    const historical = await captureRecipeContentVersion(h.db, { ...recipe!, title: 'Historical version' });
+    await grantRecipeContentAccess(h.db, HOUSE, historical);
+    await h.db.prepare('UPDATE generated_meal_plan_components SET recipe_content_fingerprint = ? WHERE plan_id = ? AND id = ?')
+      .bind(historical, created.plan.id, main.id).run();
+    const result = await call(HOUSE, 'POST', `/plans/${created.plan.id}/regenerate`, { revision: 2 });
+    expect(result.status).toBe(409);
+    expect(result.json.code).toBe('COMPOSITION_REVALIDATION_REQUIRED');
+    const read = await call(HOUSE, 'GET', `/plans/${created.plan.id}`);
+    const dto = FamilyMealPlanDtoSchema.parse(read.json);
+    expect(dto.plan.revision).toBe(2);
+    expect(dto.diagnostics.partialMealCount).toBeGreaterThan(0);
+    expect(dto.compositions.compositions[0].warnings).toContain('SAVED_CONTENT_REQUIRES_REVALIDATION');
   }, 30000);
   it('reports profile changes after reload and recomputes completeness after a component removal', async () => {
     const created = await generate();
@@ -314,6 +361,37 @@ describe('family meal V2 persistence and HTTP boundary', () => {
     expect(reread.compositions.compositions[0].components[0]).toMatchObject({ recipeId: 'gl-06', locked: true });
     expect(reread.compositions.compositions[0].warnings).toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
     expect(reread.diagnostics.reasons).toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+  }, 30000);
+
+  it('does not infer the international cap from another slot with historical content', async () => {
+    const scope = { householdId: HOUSE, userId: h.users[HOUSE] };
+    await saveFamilyPreferences(h.db, scope, { expectedRevision: 0,
+      preferences: { internationalMealsPerWeek: 1, preferredCuisines: ['vietnamese', 'thai'] } });
+    const created = await generate();
+    const [first, second] = created.compositions.compositions;
+    const swapped = await h.call(HOUSE, 'POST', `/meal-planning/plans/${created.plan.id}/slots/${encodeURIComponent(first.slotId)}/components/${encodeURIComponent(first.components[0].id)}/swap`,
+      { revision: 1, target: { kind: 'recipe', recipeId: 'gl-06' }, locked: true }, {},
+      { Accept: 'application/json; recipe-content=1' });
+    expect(swapped.status, JSON.stringify(swapped.json)).toBe(200);
+    const foreign = swapped.json.composition.components.find((component: { role: string }) => component.role === 'main');
+    const recipe = await readRecipeContentVersion(h.db, foreign.contentFingerprint);
+    expect(recipe?.cuisine).not.toBe('vietnamese');
+    const historical = await captureRecipeContentVersion(h.db, { ...recipe!, cuisine: 'vietnamese' });
+    await grantRecipeContentAccess(h.db, HOUSE, historical);
+    const secondMain = second.components.find((component) => component.role === 'main')!;
+    await h.db.prepare('UPDATE generated_meal_plan_components SET recipe_id = ?, recipe_content_fingerprint = ? WHERE plan_id = ? AND id = ?')
+      .bind(foreign.recipeId, foreign.contentFingerprint, created.plan.id, secondMain.id).run();
+    const path = `/meal-planning/plans/${created.plan.id}/compositions`;
+    const compatible = await h.call(HOUSE, 'GET', path);
+    expect(compatible.status).toBe(200);
+    expect(compatible.json.compositions[0].warnings).toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+    await h.db.prepare('UPDATE generated_meal_plan_components SET recipe_content_fingerprint = ? WHERE plan_id = ? AND id = ?')
+      .bind(historical, created.plan.id, secondMain.id).run();
+    const read = await h.call(HOUSE, 'GET', path);
+    expect(read.status, JSON.stringify(read.json)).toBe(200);
+    expect(read.json.compositions[0].warnings).not.toContain('PRESERVED_INTERNATIONAL_CAP_EXCEEDED');
+    expect(read.json.compositions[0].warnings).toContain('MEAL_TIME_UNKNOWN');
+    expect(read.json.compositions[1].warnings).toContain('SAVED_CONTENT_REQUIRES_REVALIDATION');
   }, 30000);
 
   it('Auto returns distinct family meals, variants change selection, and a per-slot stock race rolls back the write', async () => {

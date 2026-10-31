@@ -1,20 +1,25 @@
 # Planner, shopping, and cooking impact
 
-ADR-075 closes the cooking version gap while keeping the V1 catalog unchanged.
+ADR-075/076 retain V1 catalog authority while preserving selected cooking and
+composition content. Candidate publication remains blocked.
 
-| Consumer | Current behavior | Remaining release requirement |
+| Consumer | Implemented behavior | Remaining release requirement |
 |---|---|---|
-| Detail/start | Capture trusted unscaled content; return separate fingerprint | Same-source hosted validation after0046 |
-| Cooking completion | Household-authorized archive; receipt-first replay; immutable references | Version-aware recovery before changed content |
-| Offline queue | Retain exact version, command, servings and deductions across reload/retry | Hosted/service-worker and real-device rehearsal |
-| Legacy receipt | NULL remains unknown; fixed V1/unambiguous units; ambiguity fails closed | Preserve these rules during later promotion |
-| Meal composition | Stores recipe identity; catalog changes require revalidation | Durable selected-content pin/read policy |
-| Shopping | Rejects catalog change rather than silently changing demand | Version-bound saved demand and explicit revalidation |
-| Existing planner | V1-compatible instructions/requirements retained | Version-bound selection and recovery compatibility |
+| Detail/start | Immutable unscaled content; separate fingerprint | Same-source hosted validation after0046/0047 |
+| Cooking completion | Authorized archive; receipt-first replay; immutable command references | Version-aware hosted recovery |
+| Offline queue | Exact version, command, servings and deductions survive reload/retry | Service-worker and real-device rehearsal |
+| Legacy receipt | NULL unknown; fixed V1/unambiguous units; ambiguity fails closed | Preserve during promotion |
+| Meal composition | New selection pins; authorized historical display; no current-fact borrowing; corrective removal | Hosted recovery with paired flags OFF; versioned evidence before historical computation |
+| Old composition client | Strict DTO retained; pinned unversioned cooking disabled | Mixed-client hosted verification |
+| Shopping | Historical mismatch rejects demand computation; no current-content substitution | Version-bound saved demand and explicit revalidation |
+| Existing V1 planner | Existing immutable result and authority fence retained | Version-bound selection and recovery compatibility |
 
-Current household restrictions are evaluated before a new cooking mutation.
-A replay returns the durable result without another debit. Historical content
+Current household restrictions precede new cooking mutations. Receipt replay
+returns the durable result without another inventory debit. Historical content
 cannot borrow mutable D1 time/nutrition evidence; unknown constraints fail closed.
+Known pins survive detail/cook navigation and cache identity. An offline fallback
+must match the requested content hash.
 
-Candidates remain review-only. Cooking foundation alone does not authorize
-publication or certify planner/shopping compatibility, food safety or nutrition.
+Local validation:22_COOKING_FOUNDATION_VALIDATION.md and
+23_SAVED_CONTENT_VALIDATION.md. No food-safety, nutrition, publication, GitHub
+review or hosted recovery approval is implied.

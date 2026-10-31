@@ -12,6 +12,7 @@ export const PRE_TIP = '0043_shopping_demand_review.sql';
 export const CHAIN = Object.freeze(['0044_inventory_display_category.sql', '0045_week_swap_receipts.sql']);
 export const TIP = CHAIN.at(-1);
 export const CONTENT_TIP = '0046_recipe_content_versions.sql';
+export const SAVED_CONTENT_TIP = '0047_saved_recipe_content.sql';
 function migration(tip = TIP) {
   if (tip === TIP) return { preTip: PRE_TIP, chain: CHAIN,
     tables: ['inventory_lots', 'inventory_commands', 'inventory_events', 'inventory_adoption_receipts', 'week_swap_receipts'],
@@ -19,7 +20,10 @@ function migration(tip = TIP) {
   if (tip === CONTENT_TIP) return { preTip: TIP, chain: [CONTENT_TIP],
     tables: ['recipe_content_versions', 'recipe_content_access', 'cooked_meals'],
     status: 'STAGING_0046_CONTENT_CERTIFIED' };
-  throw new Error('Only reviewed staging migration 0045 or 0046 is authorized');
+  if (tip === SAVED_CONTENT_TIP) return { preTip: CONTENT_TIP, chain: [SAVED_CONTENT_TIP],
+    tables: ['recipe_content_versions', 'recipe_content_access', 'cooked_meals', 'generated_meal_plan_components'],
+    status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED' };
+  throw new Error('Only reviewed staging migration 0045, 0046 or 0047 is authorized');
 }
 export const schemaQuery = (tip = TIP) => `SELECT type, name, sql FROM sqlite_master WHERE tbl_name IN (${migration(tip).tables.map(name => `'${name}'`).join(', ')}) ORDER BY name`;
 

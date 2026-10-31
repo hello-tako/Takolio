@@ -17,8 +17,14 @@ async function capture(page: Page, info: TestInfo, state: string, configs = comp
     await page.setViewportSize({ width, height });
     await page.evaluate(scale => { document.documentElement.style.fontSize = `${scale * 100}%`; }, scale);
     await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
     const metrics = await page.evaluate(() => ({
       innerWidth, scrollWidth: document.documentElement.scrollWidth,
+      overflow: [...document.querySelectorAll('main, section, article, div, ul, li, button, a, p, h1, h2, span')]
+        .map(element => ({ element, box: element.getBoundingClientRect() }))
+        .filter(({ box }) => box.width > 0 && (box.right > innerWidth + 1 || box.left < -1))
+        .map(({ element, box }) => ({ tag: element.tagName, class: element.className,
+          left: box.left, right: box.right, width: box.width })),
       brokenImages: [...document.images].filter(image => image.complete && image.naturalWidth === 0).map(image => new URL(image.src).pathname),
     }));
     const name = `${state}-${width}x${height}-text${scale}`;
@@ -212,5 +218,69 @@ test('manual calendar and keyboard picker stay reachable across viewport and tex
   await writeFile(info.outputPath('manual-summary.json'), JSON.stringify({
     manualSlots: initial.plan.intent.slots.length, initialRevision: initial.plan.revision, acceptedRevision: accepted.plan.revision,
     choice, mealPath, keyboardFocusAndEscape: true, reloadPreservedPlan: true, inventoryUnchanged: true, localSyntheticApi: true,
+  }, null, 2));
+});
+
+test('saved recipe warning remains readable without claiming current ingredient coverage', async ({ page }, info) => {
+  test.setTimeout(120_000);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await reset(page);
+  await setup(page, true);
+  await page.getByRole('button', { name: 'Tạo lịch trống để tự chọn món', exact: true }).click();
+  await expect(page).toHaveURL(/\/planner\/(?!new$)[^/]+$/);
+  await page.getByRole('link', { name: 'Chọn món cho bữa này', exact: true }).first().click();
+  await page.getByRole('button', { name: 'Thêm món', exact: true }).click();
+  const picker = page.getByRole('dialog', { name: 'Chọn món', exact: true });
+  await picker.getByRole('combobox', { name: 'Vai trò', exact: true }).selectOption('main');
+  await picker.getByRole('combobox', { name: 'Ẩm thực', exact: true }).selectOption('');
+  const choose = picker.getByRole('button', { name: /^Chọn:/ }).first();
+  await expect(choose).toBeEnabled();
+  const added = page.waitForResponse(res => new URL(res.url()).pathname.endsWith('/components') && res.request().method() === 'POST');
+  await choose.click();
+  const addedResponse = await added;
+  expect(addedResponse.status()).toBe(200);
+  expect(addedResponse.request().postDataJSON()).toMatchObject({ target: { kind: 'recipe' }, role: 'main' });
+  await expect(picker).toBeHidden();
+  const plan = await currentPlan(page);
+  const mealPath = new URL(page.url()).pathname;
+  const boardPath = `/planner/${plan.plan.id}`;
+  const inventory = await getJson(page, '/api/v1/inventory');
+  const writes: string[] = [];
+  page.on('request', request => {
+    if (new URL(request.url()).pathname.startsWith('/api/') && request.method() !== 'GET') writes.push(request.method());
+  });
+  // Synthetic historical DTO; API authorization and freshness are verified in integration tests.
+  await page.route(url => url.pathname.endsWith('/compositions'), async route => {
+    const response = await route.fetch();
+    const body = await response.json();
+    for (const composition of body.compositions) {
+      if (composition.components.length) {
+        composition.warnings.push('SAVED_CONTENT_REQUIRES_REVALIDATION');
+        composition.missingRoles = [];
+        composition.recommendedRoles = [];
+      }
+      for (const component of composition.components) {
+        component.projection = null;
+        delete component.assessment;
+      }
+    }
+    await route.fulfill({ response, json: body });
+  });
+  const notice = page.getByRole('status').filter({ hasText: 'Bữa này giữ công thức đã chọn trước đây.' });
+  await page.reload();
+  await expect(notice).toBeVisible();
+  await expect(page.locator('.planning-composer-state')).toHaveText('Cần kiểm tra lại bữa ăn: có món chưa đáp ứng điều kiện hiện tại.');
+  await expect(page.locator('.ingredient-coverage')).toHaveCount(0);
+  const observations = await capture(page, info, 'saved-recipe-meal');
+  await page.goto(boardPath);
+  await expect(notice).toBeVisible();
+  await expect(page.getByText('Cần kiểm tra lại bữa ăn', { exact: true })).toBeVisible();
+  observations.push(...await capture(page, info, 'saved-recipe-board'));
+  expect(writes).toEqual([]);
+  expect(await getJson(page, '/api/v1/inventory')).toEqual(inventory);
+  expectPersistedPlan(await currentPlan(page), plan);
+  await writeFile(info.outputPath('saved-warning-summary.json'), JSON.stringify({
+    localSyntheticApi: true, historicalDtoIsSynthetic: true, writes,
+    inventoryUnchanged: true, savedPlanUnchanged: true, mealPath, observations,
   }, null, 2));
 });

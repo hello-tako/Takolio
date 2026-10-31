@@ -1,3 +1,64 @@
+## Recipe V3 immutable release baseline - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner deployment authorization remains valid. Candidate implementation is frozen
+at a1e706c7c870881d2e472ef7a1b211ac61bdd38c on codex/recipe-v3-saved-content;
+parent680502cc7aa64a4d11abca1ae0625ee9f5166d66. Admin preflight now recognizes
+these exact customer bytes; protected-history/post-checkpoint guards remain.
+
+Actual checks:25baseline tests/lint/preflight PASS exit0. Real local D1 migration
+matrix PASS exit0,39/39,including populated45→46→47 and immutable archive/receipt
+checks. Initial27/28 failure was D1 SQLITE_AUTH for integrity_check; reproduced,
+replaced with supported quick_check while retaining FK checks. Full commands,
+hashes,logs,failure and earlier runtime/browser limits are in
+`docs/ai/recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md`.
+Read-only existing-production smoke PASS exit0 on mainb49f3e6c; this candidate
+has not been deployed. No remote mutation or approval is claimed.
+
+Next: commit/push the baseline and evidence; publish a stacked PR against
+codex/recipe-v3-cooking-content; observe Recipe/Admin CI on its exact final HEAD.
+Continue V1 saved selection pins/publication and ingredient/source/nutrition/
+safety evidence. Four catalog gates remain red,1395provisional IDs,six critical
+safety cases,0/500human approvals. Independent review,protected main/exact-main
+CI,same-source staging/continuity/recovery and Environment reviewer are required.
+Migration dispatch must target0047 from a0047tip,applying ordered46/47 before
+Worker. Recovery after saved pins requires version-aware same-source flags OFF.
+
+Earlier records are historical checkpoints.
+
+---
+
+## Recipe V3 saved content checkpoint - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner deployment authorization remains in force; do not ask again.
+Branch codex/recipe-v3-saved-content; parent680502cc7aa64a4d11abca1ae0625ee9f5166d66.
+ADR-076/migration0047retain saved composition versions, household archive access,
+legacy NULL and old strict DTO compatibility. Historical display/cooking retain
+content; current assessment/shopping keep authority fences. Picker now prepares
+catalog twice per request rather than per candidate. V1 standalone pins and
+approved-content publication remain open.
+
+Local full gate433files/9697tests reached PASS before the picker optimization;
+original exit receipt unavailable. Final focused4files/60tests and browser20tests
+PASS exit0;124layout/124axe reports,zero measured issues. Local D1 exact0047
+recheck PASS exit0,empty issues; audit0,public text scan,diff check PASS.
+Commands,logs,scope and limitations:
+`docs/ai/recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md`.
+
+Next: freeze immutable0047candidate; pin Admin baseline; execute preflight and real
+migration matrix; publish stacked PR and validate exact HEAD. Independent review,
+protected main,exact-main CI,same-source hosted staging/recovery and production
+Environment approval remain.0047dispatch can apply the ordered0046/0047chain
+from verified0045; do not dispatch0046from a0047tip SHA. After any saved pin,
+recovery requires a version-aware same-source flags-OFF Worker. Four catalog
+release failures,1395provisional IDs,six safety cases and0/500human culinary
+approvals remain unresolved. No production deployment claimed.
+
+Earlier records follow as historical checkpoints.
+
+---
+
 ## Recipe V3 cooking foundation - 2026-10-30 JST
 
 Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; release RECIPE_V3_BLOCKED.

@@ -84,6 +84,7 @@ required_tables(name) AS (
     ,('week_swap_receipts')
     ,('recipe_content_versions')
     ,('recipe_content_access')
+    ,('generated_meal_plan_components')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -292,11 +293,14 @@ required_columns(table_name, column_name) AS (
     ,('recipe_content_access', 'household_id')
     ,('recipe_content_access', 'fingerprint')
     ,('recipe_content_access', 'created_at')
+    ,('generated_meal_plan_components', 'recipe_content_fingerprint')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
+    ('trigger', 'trg_meal_components_content_insert'),
+    ('trigger', 'trg_meal_components_content_update'),
     ('index', 'idx_recipe_content_versions_recipe'),
     ('trigger', 'trg_recipe_content_versions_insert'),
     ('trigger', 'trg_recipe_content_versions_update'),

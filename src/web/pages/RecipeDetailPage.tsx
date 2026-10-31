@@ -71,6 +71,7 @@ export const RecipeDetailPage: React.FC = () => {
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
   const recipeKey = slug || id || '';
   const [params, setParams] = useSearchParams();
+  const requestedFingerprint = params.get('contentFingerprint') ?? undefined;
   const selectedServings = /^[1-9][0-9]?$/.test(params.get('servings') ?? '') && Number(params.get('servings')) <= 20
     ? Number(params.get('servings')) : undefined;
   const navigate = useNavigate();
@@ -97,8 +98,8 @@ export const RecipeDetailPage: React.FC = () => {
   });
 
   const recipeQuery = useQuery({
-    queryKey: queryKeys.recipe(recipeKey),
-    queryFn: () => api.getRecipeById(recipeKey),
+    queryKey: queryKeys.recipe(recipeKey, requestedFingerprint),
+    queryFn: () => api.getRecipeById(recipeKey, requestedFingerprint),
     enabled: Boolean(recipeKey),
   });
 
@@ -209,7 +210,9 @@ export const RecipeDetailPage: React.FC = () => {
       return;
     }
     startCooking(recipe, inventory, recipeQuery.data?.contentFingerprint);
-    navigate(`/cook/${recipe.slug}?servings=${recipe.servings}`);
+    const cookingParams = new URLSearchParams({ servings: String(recipe.servings) });
+    if (recipeQuery.data?.contentFingerprint) cookingParams.set('contentFingerprint', recipeQuery.data.contentFingerprint);
+    navigate(`/cook/${recipe.slug}?${cookingParams}`);
   };
 
   return (

@@ -18,6 +18,9 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
   const contentColumns = ['cooked_meals.recipe_content_fingerprint', 'cooked_meals.request_fingerprint', ...['created_at', 'fingerprint', 'household_id'].map(column => `recipe_content_access.${column}`), ...['content_json', 'created_at', 'fingerprint', 'recipe_id', 'slug'].map(column => `recipe_content_versions.${column}`)];
   const missingContentColumns = contentColumns.map(detail => ({ issue: 'missing_column', detail }));
   const contentTriggers = ['trg_cooked_meals_content_insert', 'trg_cooked_meals_content_update', 'trg_cooked_meals_request_update', 'trg_recipe_content_versions_delete', 'trg_recipe_content_versions_insert', 'trg_recipe_content_versions_update'];
+  const savedContentColumn = 'generated_meal_plan_components.recipe_content_fingerprint';
+  const savedContentTriggers = ['trg_meal_components_content_insert', 'trg_meal_components_content_update'];
+  const missingSavedContentColumn = { issue: 'missing_column', detail: savedContentColumn };
 
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
@@ -122,7 +125,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['recipe_content_access', 'recipe_content_versions', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'week_swap_receipts'].sort());
     expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_shopping_demand_reviews_item']);
     expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
-      ...contentTriggers, ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update', ...receiptTriggers,
+      ...contentTriggers, ...savedContentTriggers, ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update', ...receiptTriggers,
     ].sort());
   });
   it('rejects a 0043 database until authoritative category storage and guards exist', () => {
@@ -131,9 +134,9 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter(row => row.issue === 'missing_column')).toEqual([
-      ...missingContentColumns, { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns,
+      ...missingContentColumns, missingSavedContentColumn, { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns,
     ].sort((a, b) => a.detail.localeCompare(b.detail)));
-    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...categoryTriggers, ...receiptTriggers].sort());
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...categoryTriggers, ...receiptTriggers].sort());
   });
   it('rejects a 0044 database until immutable keyed swap receipts exist', () => {
     const tip = '0044_inventory_display_category.sql'; const names = listMigrations();
@@ -141,8 +144,8 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter(row => row.issue === 'missing_table')).toEqual(['recipe_content_access', 'recipe_content_versions', 'week_swap_receipts'].map(detail => ({ issue: 'missing_table', detail })));
-    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, ...missingReceiptColumns]);
-    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...receiptTriggers]);
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, missingSavedContentColumn, ...missingReceiptColumns].sort((a, b) => a.detail.localeCompare(b.detail)));
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...receiptTriggers].sort());
   });
   it('rejects a 0045 database until content archive and receipt references exist', () => {
     const tip = '0045_week_swap_receipts.sql';
@@ -150,14 +153,26 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
       { issue: 'missing_migration', detail: '0046_recipe_content_versions.sql' },
+      { issue: 'missing_migration', detail: '0047_saved_recipe_content.sql' },
       { issue: 'missing_table', detail: 'recipe_content_access' },
       { issue: 'missing_table', detail: 'recipe_content_versions' },
       ...missingContentColumns,
+      missingSavedContentColumn,
       { issue: 'missing_index', detail: 'idx_recipe_content_versions_recipe' },
-      ...contentTriggers.map(detail => ({ issue: 'missing_trigger', detail })),
+      ...[...contentTriggers, ...savedContentTriggers].map(detail => ({ issue: 'missing_trigger', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
-  it.each(contentColumns)('rejects a complete ledger with missing content column %s', (qualified) => {
+  it('rejects a 0046 database until saved composition content is applied', () => {
+    const tip = '0046_recipe_content_versions.sql';
+    const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    expect(db.query(gate)).toEqual([
+      missingSavedContentColumn,
+      { issue: 'missing_migration', detail: '0047_saved_recipe_content.sql' },
+      ...savedContentTriggers.map(detail => ({ issue: 'missing_trigger', detail })),
+    ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
+  });
+  it.each([...contentColumns, savedContentColumn])('rejects a complete ledger with missing content column %s', (qualified) => {
     const [table, column] = qualified.split('.');
     const db = withLedger(listMigrations());
     db.seed(`ALTER TABLE ${table} RENAME COLUMN ${column} TO missing_${column}`);
@@ -168,7 +183,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     db.seed(`ALTER TABLE week_swap_receipts RENAME COLUMN ${column} TO missing_${column}`);
     expect(db.query(gate)).toEqual([{ issue: 'missing_column', detail: `week_swap_receipts.${column}` }]);
   });
-  it.each([...contentTriggers, ...categoryTriggers, ...receiptTriggers])('rejects a complete ledger with missing category guard %s', (trigger) => {
+  it.each([...contentTriggers, ...savedContentTriggers, ...categoryTriggers, ...receiptTriggers])('rejects a complete ledger with missing guard %s', (trigger) => {
     const db = withLedger(listMigrations());
     db.seed(`DROP TRIGGER ${trigger}`);
     expect(db.query(gate)).toEqual([{ issue: 'missing_trigger', detail: trigger }]);

@@ -103,7 +103,7 @@ export function CookingReview() {
         {!locked && (
           <Link
             className="cooking-control"
-            to={`/cook/${recipe.slug}${recipe.servings ? `?servings=${recipe.servings}` : ''}`}
+            to={`/cook/${recipe.slug}?servings=${recipe.servings}${state.contentFingerprint ? `&contentFingerprint=${state.contentFingerprint}` : ''}`}
           >
             <ArrowLeft aria-hidden="true" size={18} /> Quay lại bước nấu
           </Link>

@@ -165,7 +165,8 @@ test('wall-clock timer pauses, resumes, expires, resets and clears on step navig
   await expect(start).toBeVisible();
   await exit(page).click();
   await leave.click();
-  await expect(page).toHaveURL(new RegExp(`/recipes/${timerSlug}\\?servings=4$`));
+  const selected = await getJson<{ contentFingerprint: string }>(page, `/api/v1/recipes/${timerSlug}`);
+  await expect(page).toHaveURL(new RegExp(`/recipes/${timerSlug}\\?servings=4&contentFingerprint=${selected.contentFingerprint}$`));
   expect(await getJson(page, '/api/v1/inventory')).toEqual(inventory);
   expect(writes).toEqual([]);
   await writeFile(info.outputPath('timer-summary.json'), JSON.stringify({
@@ -195,7 +196,8 @@ test('review return and reload retain four servings', async ({ page }, info) => 
     inventoryUnchanged: JSON.stringify(await getJson(page, '/api/v1/inventory')) === JSON.stringify(inventory),
     writes, localSyntheticApi: true,
   }, null, 2));
-  expect.soft(returnedQuery).toBe('?servings=4');
+  const selected = await getJson<{ contentFingerprint: string }>(page, `/api/v1/recipes/${slug}`);
+  expect.soft(returnedQuery).toBe(`?servings=4&contentFingerprint=${selected.contentFingerprint}`);
   await expect.soft(page.locator('.cooking-header-sub')).toContainText('4 người');
   await expect.soft(page.locator('.cooking-ingredients-mini-list')).toContainText('6 cái');
   expect(await getJson(page, '/api/v1/inventory')).toEqual(inventory);
@@ -382,5 +384,42 @@ test('offline cooking retains the content version across reload and replays a lo
     localSyntheticApi: true, shapedNavigatorAndEvents: true, actualApiAbort: true, reloadRetainsQueue: true,
     contentVersionRetained: true, servings: body.servings, sameBodyAndCommand: true, successfulReplay: true,
     zeroDeductionsInventoryUnchanged: true,
+  }, null, 2));
+});
+
+test('selected recipe version survives detail, cooking, exit and reload; another version never reuses the active run', async ({ page }, info) => {
+  await reset(page);
+  const selected = await getJson<{ contentFingerprint: string; recipe: { title: string } }>(page, `/api/v1/recipes/${slug}`);
+  const inventory = await getJson(page, '/api/v1/inventory');
+  const writes = recordWrites(page);
+  const query = `servings=4&contentFingerprint=${selected.contentFingerprint}`;
+  const requests: string[] = [];
+  page.on('request', request => {
+    const url = new URL(request.url());
+    if (url.pathname === `/api/v1/recipes/${slug}`) requests.push(url.search);
+  });
+  await page.goto(`/recipes/${slug}?${query}`);
+  await page.getByRole('button', { name: /^Bắt đầu nấu/ }).click();
+  await expect(page).toHaveURL(new RegExp(`/cook/${slug}\\?${query}$`));
+  await expect(page.locator('.cooking-header-sub')).toContainText('4 người');
+  await exit(page).click();
+  await page.getByRole('alertdialog').getByRole('button', { name: 'Thoát', exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`/recipes/${slug}\\?${query}$`));
+  await page.reload();
+  await page.getByRole('button', { name: /^Bắt đầu nấu/ }).click();
+  await expect(page.locator('.cooking-stage')).toBeVisible();
+  await page.evaluate(path => {
+    history.pushState({}, '', path);
+    dispatchEvent(new PopStateEvent('popstate'));
+  }, `/cook/${slug}?servings=4&contentFingerprint=${'0'.repeat(64)}`);
+  await expect(page.locator('.cooking-stage')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Thử lại', exact: true })).toBeVisible();
+  expect(await getJson(page, '/api/v1/inventory')).toEqual(inventory);
+  expect(requests.filter(query => query === `?contentFingerprint=${selected.contentFingerprint}`).length).toBeGreaterThanOrEqual(2);
+  expect(writes).toEqual([]);
+  await page.screenshot({ path: info.outputPath('missing-selected-version.png'), fullPage: true });
+  await writeFile(info.outputPath('selected-version-summary.json'), JSON.stringify({
+    selectedVersionRetained: true, mismatchedRunRejected: true, requests, writes,
+    localSyntheticApi: true, inventoryUnchanged: true,
   }, null, 2));
 });

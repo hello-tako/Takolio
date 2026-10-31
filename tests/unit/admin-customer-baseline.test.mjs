@@ -37,7 +37,7 @@ describe('immutable customer release baselines', () => {
     expect(CUSTOMER_BASELINE).toBe('526596a8cd857984ad2b69901a8c7b0e9d6bccc2');
     expect(REVIEWED_DOMAIN_BASELINE).toBe('352a4211afe7f70bf75115e0688ff9f4e1e232ee');
     expect(V2_RELEASE_BASELINE).toBe('9b031f05c34a3f27f7a5d9958c65eb8a4405d227');
-    expect(V3_RELEASE_BASELINE).toBe('680502cc7aa64a4d11abca1ae0625ee9f5166d66');
+    expect(V3_RELEASE_BASELINE).toBe('a1e706c7c870881d2e472ef7a1b211ac61bdd38c');
     const preflight = readFileSync('scripts/admin-release-preflight.mjs', 'utf8');
     expect(preflight).toContain('originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE');
     expect(preflight).toContain("git('diff', '--name-only', customerBaseline, '--', ...protectedPaths)");
@@ -260,19 +260,19 @@ describe('immutable V3 candidate checkpoint', () => {
     expect(() => f.selectV3()).toThrow();
   });
 
-  it('retains historical43/45 and explicit46 SQL-only migration boundaries', () => {
+  it('retains historical43/45 and explicit47 SQL-only migration boundaries', () => {
     const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
     for (const scenario of [
       'pinned 43-file customer ledger identity', 'pinned V2 customer release identity',
       'V2 45-file fresh apply + strict gates', 'V2 0043 -> 0045 upgrade + re-apply',
       'V2 missing0045 drift', 'V2 unknown0046 drift', 'strict43 release rejects V2 ledger on binary rollback',
-      'pinned V3 customer release identity', 'V3 46-file fresh apply + re-apply + strict gates',
-      'V3 populated0045 -> 0046 upgrade + re-apply', 'V3 content identity and retained0046 guards',
-      'V3 unknown0047 drift', 'strict45 release rejects V3 ledger on binary rollback',
+      'pinned V3 customer release identity', 'V3 47-file fresh apply + re-apply + strict gates',
+      'V3 populated0045 -> 0046 -> 0047 upgrade + re-apply', 'V3 content identity and retained0046 guards',
+      'V3 unknown0048 drift', 'strict45 release rejects V3 ledger on binary rollback',
     ]) expect(matrix).toContain(scenario);
-    expect(matrix).toContain("['0046_recipe_content_versions.sql']");
+    expect(matrix).toContain("['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']");
     expect(matrix).toContain("issue.issue === 'missing_migration' && issue.detail === missingName");
-    expect(matrix).toContain('candidateManifest.count === 46');
+    expect(matrix).toContain('candidateManifest.count === 47');
     expect(matrix).toContain('v2Manifest.count === 45');
     expect(matrix).toContain("applicationRuntime: 'not tested by this SQL-only matrix;");
   });
