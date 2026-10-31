@@ -3848,3 +3848,14 @@ before any changed content is served. Future content promotion requires a verifi
 version-aware recovery Worker and a constrained rollback target: old Workers strip
 the new request field and cannot safely interpret changed-catalog offline commands.
 Keeping the archive alone does not establish backward compatibility after promotion.
+
+### ADR-075 addendum -0046 release-tool checkpoint (2026-10-31 JST)
+
+The Admin guard/matrix still selected45 after cooking added0046. Bind the frozen
+680502cc7aa64a4d11abca1ae0625ee9f5166d66 candidate; retain all original/V2
+ancestry, parallel-main and later-change fences. Exercise45 independently, then46
+fresh/populated upgrades, immutable content/receipts and strict45 rollback refusal.
+This is SQL-only certification; runtime recovery requires separate evidence.
+No schema/runtime/workflow change. Local full check431files/9665tests and real
+D1 matrix38/38 PASS exit0; exact commands/limits in22_COOKING_FOUNDATION_VALIDATION.md.
+PR49 must retain this coverage alongside its immutable47 checkpoint.
