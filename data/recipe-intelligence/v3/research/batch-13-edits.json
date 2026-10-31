@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edits": [
+    {
+      "recipeId": "imp-f8fc539b7aa359ac",
+      "path": "/ingredients/0/note",
+      "oldValue": "Hot Thai Kitchen dùng 12 con tôm vừa-lớn cho 2 phần hào phóng → 18 con (~250 g bóc vỏ) cho 3 phần. Áp chảo riêng trước rồi để riêng, cho lại vào cuối.",
+      "newValue": "HTK dùng 12 con tôm vừa-lớn cho 2 phần hào phóng; nhân 1,5 thành 18 con cho 3 phần. Nguồn không có khối lượng tôm bóc vỏ để xác nhận 250 g. Giữ số con và cách áp chảo riêng rồi cho lại vào cuối; khối lượng chỉ được bổ sung khi có căn cứ đo rõ ràng.",
+      "reason": "Preserve supported count and method; remove unsupported mass.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-13-evidence.json#/recipes/4/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-8e2f2113f406a7d8",
+      "path": "/ingredients/0/note",
+      "oldValue": "NMK dùng 'boneless chicken legs' 750 g; dishnthekitchen dùng 8-12 đùi gà cho 4 phần — lấy 600 g cho 4 phần ăn theo tỉ lệ NMK.",
+      "newValue": "Dish n the Kitchen ghi 8-12 đùi gà bỏ da cho 4 phần, không nêu khối lượng. Chưa đọc được New Malaysian Kitchen trong lượt này. 600 g hiện là định lượng biên soạn cần duyệt; không suy khối lượng từ số đùi hoặc coi tỷ lệ nguồn NMK đã được xác nhận.",
+      "reason": "Keep thigh count distinct from selected chicken mass.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-13-evidence.json#/recipes/8/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-5e0a488541baee5e",
+      "path": "/ingredients/4/note",
+      "oldValue": "Thai Caliente: đổ dầu cao khoảng 1⁄4 inch (~0,6 cm) đáy nồi/chảo nhỏ, đun lửa vừa-cao; ndinsider: 'đủ tráng đáy một lớp dày', dầu phải thật nóng (gần bốc khói) thì trứng mới phồng xốp. Dầu chiên ngập nông — phần lớn được chắt/thấm bỏ sau khi chiên, KHÔNG có nguồn nào định lượng phần dầu thấm vào trứng nên con số 110 g là lượng dùng để chiên, không phải lượng ăn vào.",
+      "newValue": "Thai Caliente hướng dẫn dầu cao khoảng 1/4 inch ở đáy chảo hoặc nồi nhỏ, không định lượng ml hay lượng dầu hấp thu. NDInsider chưa đọc được. 120 ml là lượng biên soạn cần duyệt theo kích thước chảo; không coi lượng dầu dùng để chiên là lượng ăn vào.",
+      "reason": "Do not convert oil depth to fixed volume or absorbed mass.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-13-evidence.json#/recipes/11/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-34505f9722b38fc1",
+      "path": "/ingredients/8/note",
+      "oldValue": "GZ và Agrodolce: 50 g (cipolle dorate). Ricette della Nonna dùng 1 củ không định lượng. Lấy 50 g theo hai nguồn chuẩn.",
+      "newValue": "Ricette della Nonna có hành tây trong hướng dẫn soffritto nhưng thiếu hành trong danh sách nguyên liệu, không xác nhận 1 củ hoặc khối lượng. Agrodolce chưa đọc được trong lượt này. Giữ 50 g hành tây như lựa chọn biên soạn chờ duyệt; không gọi đó là định lượng đã được các nguồn cùng xác nhận.",
+      "reason": "Record actual source omission instead of inventing an onion count.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-13-evidence.json#/recipes/14/claims/3"
+      ]
+    }
+  ]
+}
