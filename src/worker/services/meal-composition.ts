@@ -1069,7 +1069,7 @@ export class MealCompositionService {
     this.assertCompatible(loaded);
     const compositions = this.allCompositions(loaded); const projection = this.projection(loaded, compositions);
     const rows: Array<{ ingredientId: string; name: string; quantity: number | null; unit: string; slotId: string; date: string;
-      mealType: MealType; componentId: string; recipeId: string | null; title: string; optional: boolean }> = [];
+      mealType: MealType; componentId: string; recipeId: string | null; title: string; optional: boolean; contentFingerprint: string | null }> = [];
     const flags = new Set<string>();
     const skipped = new Set(projection.skippedPastSlots);
     for (const slot of loaded.slots) {
@@ -1089,7 +1089,8 @@ export class MealCompositionService {
           const definition = component.recipeId ? loaded.snapshot.catalog.recipes.find((recipe) => recipe.id === component.recipeId) : undefined;
           const name = definition?.ingredients.find((line) => line.ingredientId === shortage.ingredientId)?.name ?? shortage.ingredientId;
           rows.push({ ingredientId: shortage.ingredientId, name, quantity: shortage.missingQuantity, unit: shortage.unit, slotId: slot.slotId,
-            date: slot.date, mealType: slot.mealType, componentId: component.id, recipeId: component.recipeId, title, optional: shortage.isOptional });
+            date: slot.date, mealType: slot.mealType, componentId: component.id, recipeId: component.recipeId, title, optional: shortage.isOptional,
+            contentFingerprint: 'contentFingerprint' in component ? component.contentFingerprint ?? null : null });
         }
       }
     }

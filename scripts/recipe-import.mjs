@@ -35,7 +35,7 @@ const CURRENT_MANIFEST = path.join('packages', 'recipes', 'src', 'import', 'cata
 // legacy + the batches before it, so the composed manifest is always derived from committed sources.
 const APPROVED_BATCHES = path.join('data', 'recipe-import', 'approved-batches.json');
 
-const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] } });
+const vite = await createServer({ cacheDir: 'node_modules/.vite/recipe-import', server: { middlewareMode: true }, appType: 'custom', logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] } });
 try {
   const { ALL_RECIPES } = await vite.ssrLoadModule('/packages/recipes/src/data.ts');
   const factory = await vite.ssrLoadModule('/packages/recipes/src/import/index.ts');

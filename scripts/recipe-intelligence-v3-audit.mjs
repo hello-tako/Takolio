@@ -74,7 +74,7 @@ const baselineFiles = beforeFiles.map((file) => {
     ...(!matchesBaseCommit ? { compatibilityException: 'ADR-074', baseSha256: sha(baseline) } : {}) };
 });
 execFileSync(process.execPath, ['scripts/recipe-intelligence-v3-source-scan.mjs', 'check'], { cwd: ROOT, stdio: 'pipe' });
-const vite = await createServer({ server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] } });
+const vite = await createServer({ cacheDir: 'node_modules/.vite/recipe-intelligence-v3', server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error', optimizeDeps: { noDiscovery: true, include: [] } });
 try {
   const { ALL_RECIPES } = await vite.ssrLoadModule('/packages/recipes/src/data.ts');
   const factory = await vite.ssrLoadModule('/packages/recipes/src/import/index.ts');

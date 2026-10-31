@@ -10,7 +10,7 @@ import { MealPlanningError } from './meal-planning-error';
 export interface ShoppingDemandRow {
   ingredientId: string; name: string; quantity: number | null; unit: string;
   slotId: string; date: string; mealType: string; componentId: string;
-  recipeId: string | null; title: string; optional: boolean;
+  recipeId: string | null; title: string; optional: boolean; contentFingerprint?: string | null;
 }
 export interface ShoppingDemandSnapshot {
   planRevision: number; rows: ShoppingDemandRow[];
@@ -54,7 +54,8 @@ export async function sharePlanShopping(db:D1DatabaseBinding, scope:{householdId
     if (row.quantity === null) demand.quantity=null;
     else if (demand.quantity !== null) demand.quantity=demand.quantity.add(normalizedQuantity!);
     demand.contributions.push({planId:input.planId,slotId:row.slotId,componentId:row.componentId,date:row.date,
-      mealType:row.mealType,recipeId:row.recipeId,title:row.title,quantity:row.quantity,unit:row.unit});
+      mealType:row.mealType,recipeId:row.recipeId,title:row.title,quantity:row.quantity,unit:row.unit,
+      contentFingerprint:row.contentFingerprint ?? null});
   }
   if (demands.size > 128) throw new MealPlanningError('SHOPPING_DEMAND_LIMIT',422,'Reduce the shopping horizon');
   for(const demand of demands.values()) {

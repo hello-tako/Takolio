@@ -10,6 +10,7 @@ export const ShoppingContributionSchema = z.object({
   planId: z.string(), slotId: z.string(), componentId: z.string(),
   date: z.string(), mealType: z.string(), recipeId: z.string().nullable(), title: z.string(),
   quantity: z.number().positive().nullable(), unit: z.string(),
+  contentFingerprint: z.string().regex(/^[a-f0-9]{64}$/).nullable().optional(),
 }).strict();
 export type ShoppingContribution = z.infer<typeof ShoppingContributionSchema>;
 export const SharePlanShoppingDtoSchema = z.object({

@@ -81,3 +81,23 @@ it('retains review binding in cache while device reads never invent a selected a
   expect(device).toMatchObject({ source: 'device', items: [], unresolvedItems: [unresolved] });
   expect(getPendingOps()).toEqual([]);
 });
+
+it('negotiates and retains exact content pins in generated and unresolved offline caches', async () => {
+  const contribution = { planId: 'plan-a', slotId: 'slot-a', componentId: 'component-a', date: '2030-01-02',
+    mealType: 'dinner', recipeId: 'recipe-a', title: 'Synthetic dish', quantity: null, unit: 'piece', contentFingerprint: 'c'.repeat(64) };
+  const unresolved = { ...binding, ingredientId: 'GARLIC', name: 'Garlic', unit: 'piece', contributions: [contribution],
+    reviewState: 'pending', purchaseItemId: null };
+  const item = { id: 'purchase-a', name: 'Garlic', quantity: 1, unit: 'bunch', isChecked: false,
+    generated: true, contributions: [contribution] };
+  fetchMock.mockResolvedValueOnce(respond({ items: [item], unresolvedItems: [unresolved] }));
+  const server = await shoppingApi.getShoppingListSnapshot();
+  expect(fetchMock.mock.calls[0][1].headers.Accept).toBe('application/json; recipe-content=1');
+  expect(server.items[0].contributions).toEqual([contribution]);
+  expect(server.unresolvedItems?.[0].contributions).toEqual([contribution]);
+  fetchMock.mockRejectedValueOnce(new TypeError('No connection'));
+  const device = await shoppingApi.getShoppingListSnapshot();
+  expect(device.source).toBe('device');
+  expect(device.items[0].contributions).toEqual([contribution]);
+  expect(device.unresolvedItems?.[0].contributions).toEqual([contribution]);
+  expect(getPendingOps()).toEqual([]);
+});
