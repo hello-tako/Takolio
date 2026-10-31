@@ -21,6 +21,7 @@ export interface MealComponent {
   provenance: ComponentProvenance;
   recipeId: string | null;
   simpleFoodId: string | null;
+  contentFingerprint?: string | null;
   createdRevision: number;
   updatedRevision: number;
 }
@@ -63,13 +64,14 @@ const targetOf = (component: MealComponent): ComponentTarget => component.kind =
  */
 export function projectV1Composition(input: {
   slotId: string;
-  meal: { source: { kind: 'recipe' | 'family'; id: string } } | null;
+  meal: { source: { kind: 'recipe' | 'family'; id: string }; contentFingerprint?: string | null } | null;
   locked: boolean;
   revision: number;
 }): MealComposition {
   const components: MealComponent[] = input.meal?.source.kind === 'recipe' ? [{
     id: legacyComponentId(input.slotId), kind: 'recipe', role: 'main', ordinal: 0, locked: input.locked,
     provenance: 'legacy_v1', recipeId: input.meal.source.id, simpleFoodId: null,
+    ...(input.meal.contentFingerprint === undefined ? {} : { contentFingerprint: input.meal.contentFingerprint }),
     createdRevision: input.revision, updatedRevision: input.revision,
   }] : [];
   return { slotId: input.slotId, source: 'v1_projection', mode: null, components };
@@ -131,6 +133,9 @@ export function swapComponent(composition: MealComposition, componentId: string,
   assertTarget(context, input.target, role);
   return normalizeComponents(composition.components.map((item) => item.id !== componentId ? item : component(input.target, {
     id: item.id, role, ordinal: item.ordinal, locked: input.locked ?? item.locked, provenance: 'manual',
+    contentFingerprint: targetKey(item) === targetKey({ kind: input.target.kind,
+      recipeId: input.target.kind === 'recipe' ? input.target.recipeId : null,
+      simpleFoodId: input.target.kind === 'simple_food' ? input.target.simpleFoodId : null }) ? item.contentFingerprint : undefined,
     createdRevision: item.createdRevision, updatedRevision: context.revision,
   })));
 }
@@ -162,7 +167,8 @@ export function replaceComponents(composition: MealComposition,
       simpleFoodId: entry.target.kind === 'simple_food' ? entry.target.simpleFoodId : null });
     const unchanged = sameDish && existing.role === entry.role && existing.locked === entry.locked && existing.ordinal === ordinal;
     return component(entry.target, { id: existing.id, role: entry.role, ordinal, locked: entry.locked,
-      provenance: sameDish ? existing.provenance : 'manual', createdRevision: existing.createdRevision,
+      provenance: sameDish ? existing.provenance : 'manual', contentFingerprint: sameDish ? existing.contentFingerprint : undefined,
+      createdRevision: existing.createdRevision,
       updatedRevision: unchanged ? existing.updatedRevision : context.revision });
   });
   return normalizeComponents(next);

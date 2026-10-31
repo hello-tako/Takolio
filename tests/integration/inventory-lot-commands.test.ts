@@ -84,6 +84,22 @@ async function expectCommitted(db: SqliteD1, execution: InventoryLotCommandExecu
 }
 
 describe('T09C atomic native single-lot effects', () => {
+  it('preserves colonless offsets through CREATE, reads, CORRECT and idempotent replay', async () => {
+    const db = database();
+    const openedAt = '2026-09-10T10:00:00+0900';
+    const created = await execute(db, 'legacy-offset-create', create({ openedAt }));
+    await expectCommitted(db, created, 'legacy-offset-create');
+    expect(created.result.effects[0].after.openedAt).toBe(openedAt);
+    const correctedAt = '2026-09-10T09:00:00-0430';
+    const corrected = await execute(db, 'legacy-offset-correct', correct({ openedAt: correctedAt }));
+    await expectCommitted(db, corrected, 'legacy-offset-correct');
+    expect(corrected.result.effects[0].after.openedAt).toBe(correctedAt);
+    const beforeReplay = facts(db);
+    const replay = await execute(db, 'legacy-offset-correct', correct({ openedAt: correctedAt }));
+    expect(replay).toEqual({ ...corrected, replayed: true });
+    expect(facts(db)).toEqual(beforeReplay);
+  });
+
   it.each([false, true])('rejects mixed unrepresented legacy stock before native activation (existing native=%s)', async (existing) => {
     const db = database();
     if (existing) await execute(db, 'native-first', create());

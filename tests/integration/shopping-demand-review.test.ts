@@ -298,3 +298,20 @@ describe('shopping review atomic races and immutable replay', () => {
     expect(h.db.query('SELECT * FROM shopping_items')).toEqual([]);
   });
 });
+
+it('changed recipe content alone invalidates review and stale snapshots while retaining selected purchase history', async () => {
+  const input = { ...trip, planId };
+  const withPin = (pin: string): ShoppingDemandSnapshot => ({ ...demand(),
+    rows: demand().rows.map(row => ({ ...row, recipeId: 'synthetic-recipe', contentFingerprint: pin })) });
+  await sharePlanShopping(h.db, scope, input, 'content-first-share', async () => withPin('a'.repeat(64)));
+  const selected = await review(purchase(await readUnknown(), 3));
+  const old = await readUnknown(); expect(old.reviewState).toBe('purchased');
+  await sharePlanShopping(h.db, scope, input, 'content-second-share', async () => withPin('b'.repeat(64)));
+  const current = await readUnknown();
+  expect(current).toMatchObject({ reviewState: 'pending', reviewRevision: 1, purchaseItemId: selected.purchaseItemId });
+  expect(current.snapshot).not.toBe(old.snapshot);
+  const before = facts();
+  await expect(review(purchase(old, 5), 'stale-content-review')).rejects.toMatchObject({ code: 'SHOPPING_REVIEW_CHANGED' });
+  expect(facts()).toEqual(before);
+  expect((await h.call(scope.householdId, 'GET', '/shopping-list')).json.items[0]).toMatchObject({ quantity: 3, unit: 'bunch', reviewState: 'pending' });
+});

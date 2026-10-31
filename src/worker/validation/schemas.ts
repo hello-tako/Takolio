@@ -133,6 +133,7 @@ export const ScanConfirmSchema = z.object({
 // Cooking is a state-changing command: reject malformed or negative
 // deductions before any inventory projection is touched.
 export const CookingCompleteSchema = z.object({
+  contentFingerprint: z.string().regex(/^[0-9a-f]{64}$/).optional(),
   commandId: z.string().trim().regex(/^[A-Za-z0-9:_-]{8,200}$/).optional(),
   servings: z.coerce.number().int().positive().max(100).default(2),
   deductions: z
@@ -174,7 +175,7 @@ export function validateBody<T>(schema: z.ZodSchema<T>) {
       const rawBody = await c.req.json().catch(() => ({}));
       const result = schema.safeParse(rawBody);
       if (!result.success) {
-        const errorMessages = result.error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
+        const errorMessages = result.error.issues.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
         return c.json({
           error: `Dữ liệu không hợp lệ: ${errorMessages}`,
           code: 'VALIDATION_ERROR',

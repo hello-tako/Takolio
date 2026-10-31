@@ -20,6 +20,66 @@
       "evidenceReferences": [
         "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/19/claims/3"
       ]
+    },
+    {
+      "recipeId": "imp-095cff5e61d32fd9",
+      "path": "/ingredients/0/canonicalIngredientId",
+      "oldValue": "BEEF_SIRLOIN",
+      "newValue": null,
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/7/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-095cff5e61d32fd9",
+      "path": "/ingredients/0/reconciliation",
+      "oldValue": "existing_canonical_id",
+      "newValue": "ambiguous",
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/7/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-095cff5e61d32fd9",
+      "path": "/ingredients/0/reconciliationReason",
+      "oldValue": "context-stripped exact_alias resolution against the reviewed catalog",
+      "newValue": "The inherited BEEF_SIRLOIN registry entry combines generic beef, sirloin and shank labels; this source cut requires explicit identity review. Original ID retained in immutable V2.",
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/7/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-2862e7aa0ae0d8fe",
+      "path": "/ingredients/0/canonicalIngredientId",
+      "oldValue": "BEEF_SIRLOIN",
+      "newValue": null,
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/14/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-2862e7aa0ae0d8fe",
+      "path": "/ingredients/0/reconciliation",
+      "oldValue": "existing_canonical_id",
+      "newValue": "ambiguous",
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/14/claims/2"
+      ]
+    },
+    {
+      "recipeId": "imp-2862e7aa0ae0d8fe",
+      "path": "/ingredients/0/reconciliationReason",
+      "oldValue": "exact exact_alias resolution against the reviewed catalog",
+      "newValue": "The inherited BEEF_SIRLOIN registry entry combines generic beef, sirloin and shank labels; this source cut requires explicit identity review. Original ID retained in immutable V2.",
+      "reason": "Quarantine a contradictory inherited cut identity without inventing a replacement; preserve source name, amount, role and nutrition.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-10-evidence.json#/recipes/14/claims/2"
+      ]
     }
   ]
 }

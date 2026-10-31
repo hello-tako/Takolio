@@ -6,6 +6,7 @@ import {
   type RecipeMatchResult,
   type RecipeScoringContext,
 } from '@frigo/recipes';
+import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import { getPendingOps } from '../lib/sync';
 import type { CookingDeduction } from '../lib/cooking-review';
 import type { StandardUnit } from '@frigo/domain';
@@ -65,23 +66,31 @@ export const recipesApi = {
     }
   },
 
-  getRecipeById: async (id: string) => {
+  getRecipeById: async (id: string, contentFingerprint?: string) => {
+    if (contentFingerprint !== undefined && !/^[a-f0-9]{64}$/.test(contentFingerprint))
+      throw new Error('Phiên bản công thức không hợp lệ.');
     const assertCurrent = guardPrivateSession();
     try {
-      const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult }>(
-        `/recipes/${encodeURIComponent(id)}`,
+      const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult; contentFingerprint?: string }>(
+        `/recipes/${encodeURIComponent(id)}${contentFingerprint === undefined ? '' : `?contentFingerprint=${contentFingerprint}`}`,
       );
       assertCurrent();
+      if (contentFingerprint !== undefined && result.contentFingerprint !== contentFingerprint)
+        throw new Error('Không thể xác nhận phiên bản công thức đã chọn.');
       return result;
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err;
       const recipe = ALL_RECIPES.find((r) => r.id === id || r.slug === id);
       if (!recipe) throw err;
+      const fingerprint = await fingerprintRecipes([recipe]);
+      assertCurrent();
+      if (contentFingerprint !== undefined && fingerprint !== contentFingerprint)
+        throw new Error('Cần kết nối để tải đúng phiên bản công thức đã chọn.');
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
       const match = evaluateRecipeMatch(recipe, { inventory });
-      return { recipe, match };
+      return { recipe, match, contentFingerprint: fingerprint };
     }
   },
 
@@ -91,6 +100,7 @@ export const recipesApi = {
     commandId = createClientItemId('cook'),
     stockBeforeAttempt?: RecipeScoringContext['inventory'],
     servings?: number,
+    contentFingerprint?: string,
   ) => {
     if (servings !== undefined && (!Number.isSafeInteger(servings) || servings < 1 || servings > 100)) {
       throw new RangeError('Cooking servings must be between 1 and 100');
@@ -102,7 +112,7 @@ export const recipesApi = {
     const path = `/recipes/${encodeURIComponent(recipeId)}/cook/complete`;
     const init = {
       method: 'POST',
-      body: JSON.stringify({ deductions, commandId, ...(servings === undefined ? {} : { servings }) }),
+      body: JSON.stringify({ deductions, commandId, ...(servings === undefined ? {} : { servings }), ...(contentFingerprint === undefined ? {} : { contentFingerprint }) }),
       headers: { 'Idempotency-Key': commandId },
     };
     const queued = () =>

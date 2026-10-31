@@ -40,6 +40,56 @@
       "evidenceReferences": [
         "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/2"
       ]
+    },
+    {
+      "recipeId": "imp-ac255bcc36d1324e",
+      "path": "/steps/5/instruction",
+      "oldValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp 3–5 phút cho đến khi nhiệt độ lõi cá đạt 52–54 °C (đo ở chỗ dày nhất bằng nhiệt kế). Gắp cá ra đĩa, để riêng.",
+      "newValue": "Rót 30 ml sake vào chảo, đậy nắp, hạ lửa nhỏ; hấp khoảng 3–5 phút rồi kiểm tra bằng nhiệt kế ở chỗ dày nhất. Tiếp tục nấu đến khi nhiệt độ lõi cá đạt ít nhất 63 °C (145 °F theo FDA), không lấy cá ra chỉ vì đã hết thời gian. Gắp cá đã chín ra đĩa sạch, để riêng.",
+      "reason": "Replace52-54 C removal advice with the independently read FDA145 F endpoint, conservatively rounded upward to63 C; time remains an estimate and cannot override measurement.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+      ]
+    },
+    {
+      "recipeId": "imp-ac255bcc36d1324e",
+      "path": "/steps/5/tip",
+      "oldValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Lấy cá ra ở 52–54 °C để tránh quá chín vì nhiệt dư còn nấu tiếp.",
+      "newValue": "Nếu sake đã cạn mà cá chưa chín thì thêm 1 muỗng canh sake và hấp tiếp. Kiểm tra nhiệt độ lõi trước khi gắp cá ra; nếu chưa đạt 63 °C thì nấu tiếp và đo lại. Không dựa vào nhiệt dư để lấy cá ra ở 52–54 °C. Dùng đĩa và dụng cụ sạch cho cá đã chín.",
+      "reason": "Remove the conflicting carryover instruction alongside the main instruction; preserve a paired endpoint correction and raw/cooked utensil separation.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/10/claims/4"
+      ]
+    },
+    {
+      "recipeId": "imp-f729957329cd75f5",
+      "path": "/steps/9/instruction",
+      "oldValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tắt bếp, đảo nhanh tay cho giá đỗ vừa chín tới, quyện đều.",
+      "newValue": "Cho tôm đã áp chảo trở lại chảo cùng nước tôm tiết ra, thêm một nửa đậu phộng, giá đỗ và hẹ. Tiếp tục xào khi bếp còn bật đến khi giá đỗ chín và bốc hơi nóng đều, rồi tắt bếp, đảo đều.",
+      "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+      ]
+    },
+    {
+      "recipeId": "imp-f729957329cd75f5",
+      "path": "/steps/9/tip",
+      "oldValue": "Tắt bếp trước khi cho giá đỗ để giá giữ được độ giòn, tươi.",
+      "newValue": "Nấu giá đỗ đến khi bốc hơi nóng; không chỉ đảo bằng nhiệt dư sau khi tắt bếp. Không dùng giá đỗ sống làm phần ăn kèm.",
+      "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+      ]
+    },
+    {
+      "recipeId": "imp-f729957329cd75f5",
+      "path": "/steps/10/instruction",
+      "oldValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, giá đỗ sống, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+      "newValue": "Dọn ngay ra đĩa, đặt tôm lên trên, rắc thêm đậu phộng. Ăn kèm múi chanh, hẹ tươi và ớt khô. Vắt chanh lên trước khi ăn.",
+      "reason": "Coordinate official safety guidance across actionable instruction and tip; no quantity, duration, servings or nutrition change.",
+      "evidenceReferences": [
+        "data/recipe-intelligence/v3/research/batch-05-evidence.json#/recipes/19/claims/4"
+      ]
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { OffsetDateTimeSchema } from './foundation';
 import {
   InventoryObservationSchema, MAX_OBSERVATIONS_PER_RECONCILIATION, MAX_OBSERVATION_SNAPSHOT_LOTS,
   ObservationError, type InventoryObservation,
@@ -29,7 +30,7 @@ const CorrectProposal = z.object({
     expiryAt: z.string().date().nullable().optional(),
     estimatedExpiryAt: z.string().date().nullable().optional(),
     expiryKind: z.enum(['KNOWN', 'BEST_BEFORE', 'USE_BY', 'ESTIMATED']).optional(),
-    openedAt: z.string().datetime({ offset: true }).nullable().optional(),
+    openedAt: OffsetDateTimeSchema.nullable().optional(),
   }).strict().refine((changes) => Object.values(changes).some((value) => value !== undefined), 'Empty correction'),
 }).strict();
 const MoveProposal = z.object({

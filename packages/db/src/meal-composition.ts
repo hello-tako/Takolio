@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
 import {
   ComponentIdSchema,
   ComponentProvenanceSchema,
@@ -31,7 +31,7 @@ import {
 const ScopeSchema = z.object({ householdId: CatalogIdSchema, userId: CatalogIdSchema }).strict();
 const RevisionSchema = z.number().int().safe().min(1).max(Number.MAX_SAFE_INTEGER - 1);
 const SlotIdSchema = z.string().min(1).max(64);
-const TimestampSchema = z.string().datetime({ offset: true });
+const TimestampSchema = OffsetDateTimeSchema;
 
 const CompositionRowSchema = z.object({
   plan_id: CatalogIdSchema,
@@ -50,6 +50,7 @@ const ComponentRowSchema = z.object({
   kind: z.enum(['recipe', 'simple_food']),
   role: MealRoleSchema,
   recipe_id: CatalogIdSchema.nullable(),
+  recipe_content_fingerprint: z.string().regex(/^[0-9a-f]{64}$/).nullable(),
   simple_food_id: SimpleFoodIdSchema.nullable(),
   locked: z.union([z.literal(0), z.literal(1)]),
   provenance: ComponentProvenanceSchema,
@@ -118,7 +119,7 @@ export async function readPlanCompositions(db: D1DatabaseBinding, rawScope: unkn
       WHERE composition.plan_id = ? AND EXISTS (${OWNED_PLAN})
       ORDER BY composition.slot_id`).bind(...bindings),
     db.prepare(`SELECT component.plan_id, component.id, component.slot_id, component.ordinal, component.kind, component.role,
-        component.recipe_id, component.simple_food_id, component.locked, component.provenance, component.created_revision,
+        component.recipe_id, component.recipe_content_fingerprint, component.simple_food_id, component.locked, component.provenance, component.created_revision,
         component.updated_revision, component.created_at, component.updated_at
       FROM generated_meal_plan_components component
       WHERE component.plan_id = ? AND EXISTS (${OWNED_PLAN})
@@ -136,7 +137,7 @@ export async function readPlanCompositions(db: D1DatabaseBinding, rawScope: unkn
     const composition = compositions.get(row.slot_id);
     if (!composition) throw new Error('Meal component has no composition');
     composition.components.push({ id: row.id, kind: row.kind, role: row.role, ordinal: row.ordinal, locked: row.locked === 1,
-      provenance: row.provenance, recipeId: row.recipe_id, simpleFoodId: row.simple_food_id,
+      provenance: row.provenance, recipeId: row.recipe_id, contentFingerprint: row.recipe_content_fingerprint, simpleFoodId: row.simple_food_id,
       createdRevision: row.created_revision, updatedRevision: row.updated_revision });
   }
   return compositions;
@@ -215,10 +216,10 @@ export async function writePlanCompositions(db: D1DatabaseBinding, rawScope: unk
     );
     for (const component of slot.components) {
       statements.push(db.prepare(`INSERT INTO generated_meal_plan_components
-          (plan_id, id, slot_id, ordinal, kind, role, recipe_id, simple_food_id, locked, provenance, created_revision, updated_revision)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).bind(
+          (plan_id, id, slot_id, ordinal, kind, role, recipe_id, recipe_content_fingerprint, simple_food_id, locked, provenance, created_revision, updated_revision)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).bind(
         planId, ComponentIdSchema.parse(component.id), slot.slotId, component.ordinal, component.kind,
-        MealRoleSchema.parse(component.role), component.recipeId, component.simpleFoodId, component.locked ? 1 : 0,
+        MealRoleSchema.parse(component.role), component.recipeId, component.contentFingerprint ?? null, component.simpleFoodId, component.locked ? 1 : 0,
         ComponentProvenanceSchema.parse(component.provenance), component.createdRevision, component.updatedRevision));
     }
   }

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { OffsetDateTimeSchema } from './foundation';
 import {
   InventoryLotSchema,
   StorageLocationSchema,
@@ -14,7 +15,7 @@ export class LotCommandError extends Error {
   }
 }
 
-const LotFields = InventoryLotSchema.innerType().shape;
+const LotFields = InventoryLotSchema.shape;
 const Unit = z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
 const RawName = z.string().refine((value) => !value.includes('\0'), 'Name cannot contain NUL');
 const Reason = z.string().refine((value) => value.trim().length > 0 && !value.includes('\0'), 'A nonblank reason is required');
@@ -29,7 +30,7 @@ function isCalendarDate(value: string): boolean {
 
 const CalendarDate = z.string().refine(isCalendarDate, 'Invalid calendar date');
 // Date.parse normalizes impossible dates; validate the calendar before accepting an instant.
-const Instant = z.string().datetime({ offset: true }).refine((value) =>
+const Instant = OffsetDateTimeSchema.refine((value) =>
   isCalendarDate(value.slice(0, 10))
   && /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):?[0-5]\d)$/.test(value)
   && Number.isFinite(Date.parse(value)), 'Invalid timestamp');

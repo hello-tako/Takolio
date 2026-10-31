@@ -1,12 +1,12 @@
 import { z } from 'zod';
 import { convertQuantity, Quantity, QuantityRangeError } from './quantity';
 import { isStandardUnit } from './units';
-import { CanonicalIngredientIdSchema } from './foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema } from './foundation';
 
 const Identity = z.string().min(1).refine((value) => value === value.trim() && !value.includes('\0'));
 const NonnegativeInteger = z.number().int().safe().nonnegative();
 const CalendarDate = z.string().date();
-const Instant = z.string().datetime({ offset: true }).refine((value) => Number.isFinite(Date.parse(value)));
+const Instant = OffsetDateTimeSchema.refine((value) => Number.isFinite(Date.parse(value)));
 const StorageType = z.enum(['FRIDGE', 'FREEZER', 'PANTRY']);
 const CanonicalUnit = z.enum(['g', 'ml', 'piece', 'pack', 'bunch', 'slice']);
 const SourceType = z.enum(['LEGACY_BACKFILL', 'MANUAL', 'SCAN', 'SHOPPING', 'RECEIPT']);

@@ -20,10 +20,13 @@ function Harness({ enabled = true, route = '/' }: { enabled?: boolean; route?: s
 }
 async function settle() {
   await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 40));
+    // MutationObserver schedules the measurement for the next animation frame.
+    await Promise.resolve();
+    vi.advanceTimersToNextFrame();
   });
 }
 beforeEach(() => {
+  vi.useFakeTimers({ toFake: ['requestAnimationFrame', 'cancelAnimationFrame'] });
   vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT', true);
   vi.stubGlobal(
     'ResizeObserver',
@@ -63,6 +66,7 @@ beforeEach(() => {
 afterEach(async () => {
   await act(async () => root.unmount());
   host.remove();
+  vi.useRealTimers();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
   document.documentElement.removeAttribute('style');

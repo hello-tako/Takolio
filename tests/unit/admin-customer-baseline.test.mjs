@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
 
 const directories = [];
 afterEach(() => {
@@ -37,12 +37,15 @@ describe('immutable customer release baselines', () => {
     expect(CUSTOMER_BASELINE).toBe('526596a8cd857984ad2b69901a8c7b0e9d6bccc2');
     expect(REVIEWED_DOMAIN_BASELINE).toBe('352a4211afe7f70bf75115e0688ff9f4e1e232ee');
     expect(V2_RELEASE_BASELINE).toBe('9b031f05c34a3f27f7a5d9958c65eb8a4405d227');
+    expect(V3_RELEASE_BASELINE).toBe('a1e706c7c870881d2e472ef7a1b211ac61bdd38c');
     const preflight = readFileSync('scripts/admin-release-preflight.mjs', 'utf8');
     expect(preflight).toContain('originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE');
     expect(preflight).toContain("git('diff', '--name-only', customerBaseline, '--', ...protectedPaths)");
     expect(preflight).toContain('releaseBaseline: V2_RELEASE_BASELINE');
+    expect(preflight).toContain('v3ReleaseBaseline: V3_RELEASE_BASELINE');
     const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
     expect(matrix).toContain('releaseBaseline: V2_RELEASE_BASELINE');
+    expect(matrix).toContain('v3ReleaseBaseline: V3_RELEASE_BASELINE');
     expect(matrix).toContain('headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256');
     expect(matrix).toContain("git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql')");
   });
@@ -178,5 +181,99 @@ describe('immutable V2 release checkpoint', () => {
     expect(f.select({ releaseBaseline }).baseline).toBe(f.reviewedBaseline);
     f.git('checkout', 'main');
     expect(f.select({ releaseBaseline }).baseline).toBe(f.originalBaseline);
+  });
+});
+
+describe('immutable V3 candidate checkpoint', () => {
+  function v3Fixture() {
+    const f = fixture();
+    const releaseBaseline = f.commit('worker.ts', 'frozen V2 candidate\n');
+    const v3ReleaseBaseline = f.commit('worker.ts', 'frozen V3 candidate\n');
+    const select = () => f.select({ releaseBaseline, v3ReleaseBaseline });
+    const changed = () => f.git('diff', '--name-only', select().baseline, '--', 'worker.ts');
+    return { ...f, releaseBaseline, v3ReleaseBaseline, selectV3: select, changedV3: changed };
+  }
+
+  it('selects the immutable V3 checkpoint across a parallel metadata-only main merge', () => {
+    const f = v3Fixture();
+    f.git('checkout', 'main');
+    const advancedMain = f.commit('admin.txt', 'disabled admin\n');
+    f.git('update-ref', 'refs/remotes/origin/main', advancedMain);
+    f.git('checkout', 'domain');
+    f.git('merge', '--no-edit', 'main');
+    expect(f.selectV3()).toEqual({ baseline: f.v3ReleaseBaseline, mainBase: advancedMain });
+    expect(f.changedV3()).toBe('');
+  });
+
+  it('retains the same V3 checkpoint after the normal merge onto main', () => {
+    const f = v3Fixture();
+    f.git('checkout', 'main');
+    f.git('merge', '--no-ff', '--no-edit', 'domain');
+    f.git('update-ref', 'refs/remotes/origin/main', 'HEAD');
+    expect(f.selectV3().baseline).toBe(f.v3ReleaseBaseline);
+    expect(f.changedV3()).toBe('');
+  });
+
+  it.each(['working', 'committed'])('reports post-V3 %s customer edits against the frozen checkpoint', (mode) => {
+    const f = v3Fixture();
+    if (mode === 'committed') f.commit('worker.ts', 'later customer change\n');
+    else writeFileSync(path.join(f.cwd, 'worker.ts'), 'later customer change\n');
+    expect(f.selectV3().baseline).toBe(f.v3ReleaseBaseline);
+    expect(f.changedV3()).toBe('worker.ts');
+  });
+
+  it('rejects parallel main drift even if a merge restores pinned V3 bytes', () => {
+    const f = v3Fixture();
+    f.git('checkout', 'main');
+    const changedMain = f.commit('worker.ts', 'other customer change\n');
+    f.git('update-ref', 'refs/remotes/origin/main', changedMain);
+    f.git('checkout', 'domain');
+    try { f.git('merge', '--no-commit', 'main'); } catch { /* Expected fixture conflict. */ }
+    f.commit('worker.ts', 'frozen V3 candidate\n');
+    expect(() => f.selectV3()).toThrow('Protected customer history changed on main: worker.ts');
+  });
+
+  it('rejects protected main changes after the V3 merge', () => {
+    const f = v3Fixture();
+    f.git('checkout', 'main');
+    f.git('merge', '--no-ff', '--no-edit', 'domain');
+    const changedMain = f.commit('worker.ts', 'future main change\n');
+    f.git('update-ref', 'refs/remotes/origin/main', changedMain);
+    expect(() => f.selectV3()).toThrow('Protected customer history changed on main');
+  });
+
+  it('falls back to V2, reviewed domain or original only when the newer checkpoint is absent from HEAD ancestry', () => {
+    const f = v3Fixture();
+    f.git('checkout', f.releaseBaseline);
+    expect(f.selectV3().baseline).toBe(f.releaseBaseline);
+    f.git('checkout', f.reviewedBaseline);
+    expect(f.selectV3().baseline).toBe(f.reviewedBaseline);
+    f.git('checkout', 'main');
+    expect(f.selectV3().baseline).toBe(f.originalBaseline);
+  });
+
+  it('fails closed for missing main or unrelated original ancestry with V3 selected', () => {
+    const f = v3Fixture();
+    expect(() => f.select({ originalBaseline: 'a'.repeat(40), releaseBaseline: f.releaseBaseline,
+      v3ReleaseBaseline: f.v3ReleaseBaseline })).toThrow();
+    f.git('update-ref', '-d', 'refs/remotes/origin/main');
+    expect(() => f.selectV3()).toThrow();
+  });
+
+  it('retains historical43/45 and explicit47 SQL-only migration boundaries', () => {
+    const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
+    for (const scenario of [
+      'pinned 43-file customer ledger identity', 'pinned V2 customer release identity',
+      'V2 45-file fresh apply + strict gates', 'V2 0043 -> 0045 upgrade + re-apply',
+      'V2 missing0045 drift', 'V2 unknown0046 drift', 'strict43 release rejects V2 ledger on binary rollback',
+      'pinned V3 customer release identity', 'V3 47-file fresh apply + re-apply + strict gates',
+      'V3 populated0045 -> 0046 -> 0047 upgrade + re-apply', 'V3 content identity and retained0046 guards',
+      'V3 unknown0048 drift', 'strict45 release rejects V3 ledger on binary rollback',
+    ]) expect(matrix).toContain(scenario);
+    expect(matrix).toContain("['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']");
+    expect(matrix).toContain("issue.issue === 'missing_migration' && issue.detail === missingName");
+    expect(matrix).toContain('candidateManifest.count === 47');
+    expect(matrix).toContain('v2Manifest.count === 45');
+    expect(matrix).toContain("applicationRuntime: 'not tested by this SQL-only matrix;");
   });
 });

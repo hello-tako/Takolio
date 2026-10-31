@@ -29,10 +29,11 @@ const componentPath = (id: string, slotId: string, componentId: string) =>
 
 async function request<T>(
   path: string,
-  schema: z.ZodType<T, z.ZodTypeDef, unknown>,
+  schema: z.ZodType<T, unknown>,
   options?: RequestInit,
 ): Promise<T> {
-  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, cache: 'no-store' }));
+  return schema.parse(await fetchPlannerJson<unknown>(path, { ...options, cache: 'no-store',
+    headers: { ...options?.headers, Accept: 'application/json; recipe-content=1' } }));
 }
 const send = (method: string, body: unknown): RequestInit => ({
   method,

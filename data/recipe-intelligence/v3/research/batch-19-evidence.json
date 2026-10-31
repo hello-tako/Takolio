@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "program": "TAKOLIO_RECIPE_INTELLIGENCE_V3",
   "dataset": "recipe-refresh-v2-bounded-batch-19",
-  "generatedAt": "2026-10-26T20:06:17.778010Z",
+  "generatedAt": "2026-10-27T13:50:08.291712+00:00",
   "status": "RECIPE_V3_RESEARCH_IN_PROGRESS",
   "pilotStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
   "scope": {
@@ -17,23 +17,23 @@
   "interpretation": "FACT_SUPPORTED labels reproducible internal V2 observations only. EXTERNAL_SOURCE_FACT supports only a linked source ingredient fact, not a V2 comparison. No whole-recipe verification, human approval, source/runtime promotion, nutrition certification or image reuse rights.",
   "summary": {
     "recipeCount": 20,
-    "sourceAttemptCount": 51,
+    "sourceAttemptCount": 53,
     "sourceStatusCounts": {
-      "SOURCE_CONTENT_READ": 25,
-      "SOURCE_RELEVANCE_VERIFIED": 25,
+      "SOURCE_CONTENT_READ": 27,
+      "SOURCE_RELEVANCE_VERIFIED": 27,
       "SOURCE_UNAVAILABLE": 13,
-      "URL_DISCOVERED": 51,
-      "URL_REACHABLE": 38
+      "URL_DISCOVERED": 53,
+      "URL_REACHABLE": 40
     },
-    "claimCount": 64,
+    "claimCount": 65,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 26,
+      "FACT_SUPPORTED": 27,
       "SOURCE_CONTENT_READ": 25,
       "SOURCE_UNAVAILABLE": 13
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_READ": 7,
-      "FOOD_SAFETY_REVIEW": 1,
+      "FOOD_SAFETY_REVIEW": 2,
       "FOOD_SAFETY_REVIEW_REQUIRED": 1,
       "INTERNAL_V2_OBSERVATION": 5,
       "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
@@ -1963,6 +1963,118 @@
         "reviewerSummary": "Official general household food-safety guidance; not a recipe source.",
         "supportLimits": "Bounded UK FSA household guidance; jurisdiction and scope retained. No recipe-specific endpoint validation, complete safety assessment, numerical transfer to a recipe, human approval, or promotion."
       }
+    },
+    {
+      "url": "https://www.fda.gov/food/buy-store-serve-safe-food/safe-food-handling",
+      "sourceId": "source-3372044d094ba4df",
+      "attempt": "curl-default-UA",
+      "retrievedAt": "2026-10-27T13:45:09.177924+00:00",
+      "completeResponse": true,
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "finalUrl": "https://www.fda.gov/food/buy-store-serve-safe-food/safe-food-handling",
+      "contentType": "text/html; charset=UTF-8",
+      "title": "Safe Food Handling | FDA",
+      "byteLength": 37921,
+      "contentSha256": "fb5b22a23d030a395a7bb83d8689e574e7d15df44bf804b092ed1ca56e80d083",
+      "visibleTextSha256": "ed2339356be4e6c57ffb0cb1283690eddde50846f2ea576828ee5d83357b7666",
+      "extraction": "stdlib HTMLParser; scripts/styles/noscript omitted; block-separated lines; UTF-8 replacement decode",
+      "recipeIds": [
+        "imp-0efe9204d9dbdb3e"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "runtimePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "reviewedFacts": [
+        {
+          "factId": "supp07-poultry-thermometer",
+          "locator": "visibleText lines 92-94",
+          "reviewerSummary": "FDA says color and texture do not reliably establish safety; a food thermometer is required for checking safe minimum internal temperatures.",
+          "supportLimits": "General food-safety advice. No validation of the recipe frying duration or the probe placement for its exact 2 cm pieces.",
+          "visibleTextLineStart": 92,
+          "visibleTextLineEnd": 94
+        },
+        {
+          "factId": "supp07-poultry-165",
+          "locator": "visibleText lines 105-116",
+          "reviewerSummary": "FDA Safe Food Handling lists poultry, including parts, at 165 degrees Fahrenheit as measured with a food thermometer.",
+          "supportLimits": "General poultry endpoint. Celsius in proposed text is an explicit rounded conversion: (165-32)*5/9 = 73.8888888889 Celsius, approximately 74 Celsius. No recipe-specific time/oil validation.",
+          "visibleTextLineStart": 105,
+          "visibleTextLineEnd": 116
+        },
+        {
+          "factId": "supp07-raw-marinade",
+          "locator": "visibleText lines 86-91",
+          "reviewerSummary": "FDA separates raw and cooked food contact and says raw-contact marinade must not be reused without first bringing it to a boil.",
+          "supportLimits": "The candidate preserves this recipe no-reuse choice rather than introducing a boiling protocol or claiming its marinade treatment is validated.",
+          "visibleTextLineStart": 86,
+          "visibleTextLineEnd": 91
+        }
+      ],
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Food and Drug Administration",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 92-94; visibleText lines 105-116; visibleText lines 86-91",
+        "reviewerSummary": "Selected official consumer food-safety facts; not a recipe source.",
+        "supportLimits": "General US household guidance only. No complete formulation, identity, time, quantity, nutrition, human approval or runtime promotion inferred."
+      }
+    },
+    {
+      "url": "https://www.cdc.gov/food-safety/prevention/index.html",
+      "sourceId": "source-cfe1ec20477c72ea",
+      "attempt": "curl-default-UA",
+      "retrievedAt": "2026-10-27T13:45:07.674244+00:00",
+      "completeResponse": true,
+      "curlExitCode": 0,
+      "httpStatus": 200,
+      "finalUrl": "https://www.cdc.gov/food-safety/prevention/index.html",
+      "contentType": "text/html",
+      "title": "Preventing Food Poisoning | Food Safety | CDC",
+      "byteLength": 65255,
+      "contentSha256": "e07fd838918f547a2c7e2ac02e0d4e00ea659c921ccb9d742192daefbd703d2b",
+      "visibleTextSha256": "7d0e6773bfa32a0decf7ddf122afbe82c134426ab8ed8cfd9b43cc7356d15673",
+      "extraction": "stdlib HTMLParser; scripts/styles/noscript omitted; block-separated lines; UTF-8 replacement decode",
+      "recipeIds": [
+        "imp-0efe9204d9dbdb3e"
+      ],
+      "humanReview": "PENDING",
+      "sourcePromotionAllowed": false,
+      "runtimePromotionAllowed": false,
+      "evidenceStatus": [
+        "URL_DISCOVERED",
+        "URL_REACHABLE",
+        "SOURCE_CONTENT_READ",
+        "SOURCE_RELEVANCE_VERIFIED"
+      ],
+      "reviewedFacts": [
+        {
+          "factId": "supp07-poultry-165",
+          "locator": "visibleText lines 117-129",
+          "reviewerSummary": "CDC requires a thermometer to check safe internal cooking and lists all poultry at 165 degrees Fahrenheit.",
+          "supportLimits": "General endpoint; exact frying duration, oil temperature and probe technique for the specific recipe remain unvalidated.",
+          "visibleTextLineStart": 117,
+          "visibleTextLineEnd": 129
+        }
+      ],
+      "author": null,
+      "publishedAt": null,
+      "publisher": "U.S. Centers for Disease Control and Prevention",
+      "metadataBasis": "Official publisher domain, page title and full HTTP response; no publication date inferred.",
+      "relevanceReview": {
+        "status": "AGENT_BOUNDED",
+        "scope": "visibleText lines 117-129",
+        "reviewerSummary": "Selected official consumer food-safety facts; not a recipe source.",
+        "supportLimits": "General US household guidance only. No complete formulation, identity, time, quantity, nutrition, human approval or runtime promotion inferred."
+      }
     }
   ],
   "recipes": [
@@ -2358,7 +2470,9 @@
         "source-56a2ac3a308221ad",
         "source-8e8a8230ad2daa37",
         "source-de2ee2f8378d520f",
-        "source-c76abb2b408a94a0"
+        "source-c76abb2b408a94a0",
+        "source-3372044d094ba4df",
+        "source-cfe1ec20477c72ea"
       ],
       "evidenceStatus": "BOUNDED_SOURCE_INVENTORY_REVIEW_PENDING",
       "humanReview": "PENDING",
@@ -2636,16 +2750,80 @@
           ],
           "reviewerSummary": "V2 fry guidance uses color/time cues without a validated internal endpoint. Official household guidance requires poultry cooked through; char outside is not proof inside is cooked, and raw-contact marinade must not be used on cooked food.",
           "supportLimits": "Independent safety review remains required. General official guidance is not recipe safety certification. No quantity, servings, endpoint or structural variant selected."
+        },
+        {
+          "id": "supp07-poultry-safety",
+          "status": "FACT_SUPPORTED",
+          "findingType": "FOOD_SAFETY_REVIEW",
+          "evidenceBasis": "EXTERNAL_SOURCE_FACT",
+          "severity": "critical",
+          "sourceIds": [
+            "source-3372044d094ba4df",
+            "source-cfe1ec20477c72ea"
+          ],
+          "sourceFactReferences": [
+            {
+              "sourceId": "source-3372044d094ba4df",
+              "factId": "supp07-poultry-thermometer"
+            },
+            {
+              "sourceId": "source-3372044d094ba4df",
+              "factId": "supp07-poultry-165"
+            },
+            {
+              "sourceId": "source-3372044d094ba4df",
+              "factId": "supp07-raw-marinade"
+            },
+            {
+              "sourceId": "source-cfe1ec20477c72ea",
+              "factId": "supp07-poultry-165"
+            }
+          ],
+          "ingredientPositions": [],
+          "stepNumbers": [
+            3
+          ],
+          "v2Pointers": [
+            "/steps/2/instruction",
+            "/steps/2/tip"
+          ],
+          "reviewerSummary": "V2 uses browning and a first-side timing cue without a measured internal endpoint. FDA/CDC support adding a food-thermometer check of at least 165 degrees Fahrenheit (approximately 74 Celsius) before removing chicken from the frying pan; tip and instruction must agree.",
+          "supportLimits": "General official endpoint, not validation of exact frying duration, oil temperature, piece size, serving yield or full formulation. Existing no-reuse marinade caution remains. Human safety review remains required."
         }
       ],
-      "nextAction": "Independent culinary and food-safety review of exact proposed warning; keep critical blocker until approved.",
+      "nextAction": "Review paired thermometer endpoint of at least 165 F (approximately 74 C), preserved no-reuse marinade caution and prior edit history. Exact frying duration, piece/probe technique, oil retention, formulation and human safety approval remain open.",
       "supplementalResearch": {
-        "dataset": "gap-research-06",
-        "reviewedAt": "2026-10-26T20:06:17.778010Z",
+        "dataset": "gap-research-07",
+        "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
         "humanReview": "PENDING",
         "fullRecipeVerification": "NOT_COMPLETE",
         "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
-      }
+      },
+      "previousSupplementalResearch": [
+        {
+          "dataset": "gap-research-06",
+          "reviewedAt": "2026-10-26T20:06:17.778010Z",
+          "humanReview": "PENDING",
+          "fullRecipeVerification": "NOT_COMPLETE",
+          "decision": "CRITICAL_SAFETY_REVIEW_REQUIRED"
+        }
+      ],
+      "previousCandidateEdits": [
+        {
+          "dataset": "gap-research-07",
+          "reviewedAt": "2026-10-27T13:50:08.291712+00:00",
+          "edit": {
+            "recipeId": "imp-0efe9204d9dbdb3e",
+            "path": "/steps/2/tip",
+            "oldValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại.",
+            "newValue": "CSF: chiên nông tiết kiệm dầu hơn chiên ngập; chiên từng mẻ để gà tiếp xúc đáy chảo, chín nhanh và giòn. Sau khi cho gà vào, để yên 40 giây-1 phút cho một mặt vàng rồi mới đảo mặt còn lại. Màu vàng giòn bên ngoài và thời gian chiên không tự bảo đảm thịt gà đã chín bên trong; dùng nhiệt kế thực phẩm sạch kiểm tra thịt đã chín kỹ. Không dùng phần nước ướp đã tiếp xúc gà sống để rưới lên món đã chín.",
+            "reason": "Add bounded poultry/marinade caution without choosing a recipe-specific temperature-time endpoint.",
+            "evidenceReferences": [
+              "data/recipe-intelligence/v3/research/batch-19-evidence.json#/recipes/3/claims/10"
+            ]
+          }
+        }
+      ]
     },
     {
       "recipeId": "imp-0a1f8e0bd042cbfd",

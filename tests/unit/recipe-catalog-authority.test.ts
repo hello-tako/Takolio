@@ -47,6 +47,7 @@ const APPROVED_DIRECT_STATIC_READERS = new Set([
   'packages/recipes/src/seed-render.ts',
   'packages/recipes/src/recipe-media.ts',
   'src/worker/services/recipe-catalog-shadow.ts',
+  'src/worker/services/recipe-content-versions.ts', // ADR-075: fixed V1 receipt interpretation only.
   // offline browser fallbacks: the client bundle has no D1; when the API is unreachable it degrades to the static bank.
   'src/web/services/recipes.ts',
   'src/web/services/recipe-discovery.ts', // ADR-046: labelled, session-fenced offline summary only.
@@ -76,7 +77,7 @@ describe('recipe catalog authority routing (T14D)', () => {
     expect(read('packages/domain/src/week/planner.ts')).not.toMatch(/availableRecipes: Recipe\[\] = /);
     // Only the authority provider/router may touch the hydrator/content reader on a response path.
     const d1Readers = walk(path.resolve(root, 'src')).map(rel).filter((file) =>
-      /runtime-hydration|D1RuntimeRecipeCatalog|hydrateRuntimeRecipes|readRecipeContent|D1RecipeAuthority/.test(read(file)));
+      /runtime-hydration|\b(?:D1RuntimeRecipeCatalog|hydrateRuntimeRecipes|readRecipeContent|D1RecipeAuthority)\b/.test(read(file)));
     expect(d1Readers.sort()).toEqual(['src/worker/services/recipe-authority.ts', 'src/worker/services/recipe-catalog-shadow.ts']);
     // No user-controlled authority selection anywhere in the worker.
     for (const file of walk(path.resolve(root, 'src/worker')).map(rel)) {

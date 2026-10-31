@@ -3,6 +3,8 @@ import { isDeepStrictEqual } from 'node:util';
 import { ACCOUNT, REPOSITORY, REPOSITORY_ID } from './audit-cloud.mjs';
 import { isDomainId } from './hosts.mjs';
 import { uploadedWorkerVersion } from './upload-output.mjs';
+import { configHash } from './release-config.mjs';
+import { validateRecipeCatalogTransition } from '../release-check.mjs';
 
 export const ACCEPTANCE_CHECKS = Object.freeze([
   'dns-tls', 'access', 'google-login', 'otp-delivery', 'session-lifecycle',
@@ -124,4 +126,28 @@ export function productionRecoveryIdentity(certification, snapshot) {
   }
   return { cloudflare: { accountAuthenticated: true, databaseName: identity.databaseName, databaseId: identity.databaseId },
     previousDeployment: { deploymentId: worker.deploymentId, versionId: worker.versionId } };
+}
+
+export function prepareRecipeCatalogStage({ manifest, plan, stage = 'preserve', rollbackConfirmed = false,
+  previous, release, previousVersion }, options = {}) {
+  if (manifest.environment !== 'production' ||
+      !['preserve', 'shadow', 'canary-1', 'canary-5', 'canary-25', 'd1'].includes(stage) ||
+      typeof rollbackConfirmed !== 'boolean') throw new Error('Explicit reviewed production catalog stage required');
+  const target = { ...manifest, recipeCatalogRollbackConfirmed: rollbackConfirmed };
+  if (stage !== 'preserve') {
+    const [mode, percent = '0'] = stage.split('-');
+    target.recipeCatalogMode = mode;
+    target.recipeCatalogCanaryPercent = Number(percent);
+    target.recipeCatalogCutoverEnabled = mode === 'canary' || mode === 'd1';
+  }
+  target.authorityTransition = validateRecipeCatalogTransition(target, previous, release, { ...options, previousVersion });
+  const prepared = structuredClone(plan);
+  Object.assign(prepared.config.vars, {
+    RECIPE_CATALOG_MODE: target.recipeCatalogMode,
+    RECIPE_CATALOG_D1_CANARY_PERCENT: String(target.recipeCatalogCanaryPercent),
+    RECIPE_CATALOG_CUTOVER_ENABLED: String(target.recipeCatalogCutoverEnabled),
+  });
+  prepared.bytes = `${JSON.stringify(prepared.config, null, 2)}\n`;
+  prepared.sha256 = configHash(prepared.bytes);
+  return { manifest: target, plan: prepared };
 }

@@ -1,3 +1,682 @@
+## Audited catalog rollout adapter - 2026-10-31 JST
+
+Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
+Branch codex/recipe-v3-domain-rollout; parent f8a5f8604ae0e767a31c3a7c625f8db1e2482d49.
+ADR-082 adds explicit preserve/shadow/canary-1/canary-5/canary-25/d1 inputs to
+Domain Production Release. The existing transition gate controls three catalog
+vars after audited config preparation; default continuity, ordered same-SHA
+promotions, current-main CI, acceptance, certification, Environment approval and
+same-source paired-OFF recovery remain mandatory. This can release the security/
+saved-content foundation with V1; it does not publish blocked V3 data.
+
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH, TMPDIR=/private/tmp, CI=1:
+- pnpm exec vitest run tests/unit/domain-production-release.test.mjs tests/unit/domain-release-config.test.mjs tests/unit/domain-compatible-recovery.test.mjs tests/unit/production-catalog-continuity.test.mjs tests/unit/release-check.test.mjs: PASS 5 files / 349 tests, 4.63s.
+- pnpm exec vitest run tests/unit/domain-production-build.test.mjs tests/unit/production-certify-workflow.test.mjs: PASS 2 files / 59 tests, 6.71s.
+- pnpm exec eslint scripts/domain/production-release.mjs scripts/domain/production-provider.mjs tests/unit/domain-production-release.test.mjs: PASS. git diff --check: PASS.
+- pnpm check remains RUNNING; types/lint passed, full tests/later gates pending.
+  Log /private/tmp/takolio-v3-domain-rollout-full-check.log; no full PASS claimed.
+PR57 exact f8a5f860 has disclosed AI technical approval 5722130857 by
+vn-taphoanhatung. Recipe CI 41187702542 SUCCESS; Admin 41187702537 running.
+Next: normal protected integration and exact-main CI, ordered0046/0047, actual
+same-source staging/recovery acceptance, fresh certification and production
+rollout. Four V3 data gates and six safety cases remain; no human culinary
+approval inferred. No remote migration, traffic change or production deploy yet.
+
+---
+
+## Aggregate integration checkpoint - 2026-10-31 JST
+
+Branch codex/recipe-v3-frame-check; verified implementation3326d7bd27acc714ded6bf7392b1c1ef2af08eea.
+Merged origin/codex/recipe-v3-artifacts normally; git diff3b3f30d..3326d7bd is empty.
+PR33-41 merged; main observed4f69b27d276e9258b4c2cf4c427c306543dbc474.
+PR42 exact85eb3e1bc9e0b62b80346ef8d70995b2d2a9d6a9 has disclosed Codex AI
+technical approval5722100055 by vn-taphoanhatung; hosted checks still running.
+Remaining stack will integrate through PR57 targeting main, with normal exact-head
+review, required CI and branch protection. Superseded PRs close only after merge.
+
+Executed in Takolio-recipe-v3, PATH=/opt/homebrew/opt/node@24/bin:$PATH:
+- pnpm install --frozen-lockfile PASS exit0.
+- TMPDIR=/private/tmp CI=1 pnpm check on3b3f30d PASS exit0:436files/9764tests;
+  types,lint,Main/Admin migration replay,Web/Admin/Worker builds PASS. Source tree
+  unchanged by3326d7bd. Receipt:/private/tmp/takolio-v3-frame-full-check.log/.exit=0.
+- TMPDIR=/private/tmp CI=1 pnpm exec vitest run tests/unit/recipe-intelligence-v3.test.mjs
+  tests/unit/recipe-intelligence-v3-artifacts.test.mjs tests/unit/recipe-intelligence-v3-review.test.mjs
+  tests/unit/zod-security-compatibility.test.ts tests/unit/recipe-v3-ci.test.mjs
+  on3326d7bd PASS5files/84tests/5.61s. Receipt:/private/tmp/takolio-v3-integration-focused.log/.exit=0.
+- PR57 hosted checks41166242292/41166242354 SUCCESS on3b3f30d, including Admin
+  Workerd,migrations,browser,keyboard and screenshot checks; new HEAD needs new CI.
+
+Production NOT_READY. Deployment/browser authorization persists. Four actual
+catalog gates remain: RUNTIME_PROJECTION_LOSS, INGREDIENT_RECONCILIATION_INCOMPLETE,
+SOURCE_CONTENT_VERIFICATION_INCOMPLETE,NUTRITION_EVIDENCE_INCOMPLETE. Candidate
+SHA2567c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df;
+runtime fingerprintf8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+No human culinary approval inferred from owner-authorized AI technical reviews.
+Six safety cases and approved V3 publication remain open. Next: finish aggregate
+review/integration, resolve real evidence/data gaps, then exact-main CI and
+same-source staging/catalog/recovery certification. Apply0046then0047 before Worker;
+retain version-aware same-source recovery with paired flags OFF. No remote
+migration,flag change or production deployment occurred in this checkpoint.
+
+---
+
+## Frame synchronization and protected integration - 2026-10-31 JST
+
+Branch codex/recipe-v3-frame-check; parent9c7322eb030284f419f7d79cbd94bcbe51485534.
+Production NOT_READY; existing release/browser authorization persists.
+PR33-39 merged; main14e1a678d8ed8671c6567b13b60381980a170ab2. PR40 exact
+9123af08358bb295f675ab17cf1828a1e50319e8 approved; required CI still running.
+Parent full pnpm check FAIL exit1:435/436files,9763/9764tests; shell action
+removal expected0px/received84px. Typecheck/lint passed; later gates not reached.
+Log /private/tmp/takolio-v3-recovery-full-check.log; .exit=1. Isolated3/3passed.
+The 40ms wall-clock wait did not guarantee the MutationObserver-scheduled frame.
+Test now flushes that microtask then advances a mocked animation frame; assertions
+and runtime unchanged. Node24/TMPDIR=/private/tmp/CI=1 focused Vitest3/3PASS,1.09s.
+Full new-source validation pending. No test retry/skip/assertion removal.
+Next: validate this narrow test correction; continue exact-HEAD protected PR
+integration, four data gates, actual safety/review evidence, approved publication
+and same-source hosted certification. No deployment or remote migration occurred.
+
+---
+
+## Protected integration and compatible recovery - 2026-10-31 JST
+
+Branch codex/recipe-v3-recovery-tips; parent00f9bc49022d081015b03d6ea365d3c8df99d4c4.
+Production NOT_READY. Existing owner release/browser authorization persists.
+PR33-38 merged normally; PR39 exact0a5bf4b9298a86d6617dd7e4fb5af7a00ba529ea
+has disclosed Codex AI technical approval5720843264 via vn-taphoanhatung.
+CI41163720781/Admin41163720792 still IN_PROGRESS at03:30UTC; no merge yet.
+Main readback72e7a709066cefe2cf69f130834e95d3f491ec8b. PR40-55 remain stacked.
+
+Release-tool correction propagated normally through PR53/54/55 to1486d73b,
+8e647758,00f9bc49. Only executable propagated delta is the independently verified
+0046 D1 matrix coverage; immutable0047 baseline and saved-pin checks retained.
+Aggregate clean preflight PASS exit0 on00f9bc49, source manifestSHA256
+1cb8549919217fce42b12129ef505bb4662544ba46d08a59f71bd69329dcd607,
+baselinea1e706c7c870881d2e472ef7a1b211ac61bdd38c; readyForDeployment=false,
+remoteExecuted=false. Node24/TMPDIR=/private/tmp/CI=1 baseline suite25tests PASS,
+12.06s; public scan and diff check PASS. Logs: /private/tmp/takolio-pr55-integrated-
+preflight.log/.exit and baseline.log/.exit. Prior full9754test result remains
+historical; no new full result inferred from this tooling-only propagation.
+
+ADR-081 fixes a confirmed retained Deploy path: family recovery was selected only
+at0043, omitting the same-source flags-OFF version at0044-0047. Extend the exact
+reviewed-tip allowlist; unknown tips still reject. Domain Release already prepares
+compatible recovery unconditionally. No workflow/config/SQL/auth/payment/catalog
+change. Existing exact-SHA/D1/flags/asset checks and OTP precedence remain.
+Executed Node24/TMPDIR=/private/tmp/CI=1: pnpm exec vitest run
+ tests/unit/family-meal-release.test.mjs tests/unit/domain-compatible-recovery.test.mjs
+ tests/unit/strict-otp-release.test.mjs tests/unit/recipe-intelligence-v3-review.test.mjs
+PASS4files/100tests/3.12s; pnpm exec eslint scripts/family-meal-release.mjs
+ tests/unit/family-meal-release.test.mjs PASS; git diff --check PASS.
+Full check and new exact-head hosted validation remain pending at this record.
+
+Next: finish normal protected small-PR integration on exact approved passing
+HEADs; validate this release correction. Preserve four real data gates, six safety
+cases and0/500structured human approvals. Approved publication, same-source hosted
+staging/catalog/recovery and Environment release remain required. Candidate hash
+7c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df unchanged.
+Apply0046then0047 before Worker; preserve pins/receipts/archive on recovery.
+No production deployment or remote migration occurred. Earlier records follow.
+
+---
+
+## Beef identity quarantine and protected integration - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment and browser
+review authorization persist. Branch codex/recipe-v3-beef-identity; base
+0b12afe9732a37eadca5386becee870d7d6627ed. Final checkpoint HEAD resolves from Git.
+ADR-080/compiler2 permits only coordinated demotion of an inherited existing
+identity to NULL/ambiguous with an evidence-bound reason. Twelve contradictory
+BEEF_SIRLOIN lines lose candidate projection authority; no replacement identity
+is invented. Labels, quantities, roles, nutrition, steps and immutable V2 remain.
+All500 metadata records recompile;12content records change/488remain identical.
+Candidate SHA2567c0b8b3840c4f72dd724737d2066946f04e07c8fe8631d5bc937d87c172466df.
+
+Executed in Takolio-recipe-v3 with PATH=/opt/homebrew/opt/node@24/bin:$PATH
+TMPDIR=/private/tmp CI=1:
+- pnpm check PASS exit0;436files/9754tests/1117.52s; typecheck,lint,Main/Admin
+  migration replay and Web/Admin/Worker builds PASS. Receipt:
+  /private/tmp/takolio-v3-beef-full-check.log and .exit=0. Remote schema/Week
+  gates skipped by default; existing Rollup annotations/Admin font warnings and
+  intentional error-boundary stderr retained.
+- node /private/tmp/takolio-v3-beef-integrity.mjs PASS exit0;500recompilations,
+  503source files/51evidence inputs/559frozen inputs verified;85exact reversals
+  across41recipes;6766ingredient lines/4938steps;0protected drift/0human approvals.
+  Receipts: /private/tmp/takolio-v3-beef-integrity.json,.log,.exit=0.
+- pnpm recipe:refresh:release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Receipt:
+  /private/tmp/takolio-v3-beef-release-check.log and .exit=1.
+An exploratory log search referenced a nonexistent focused-check log (rg exit2);
+no focused result is inferred. Complete suite evidence above is available.
+
+GitHub: PR33 merged normally to main a13dc22f2e63a680fd907d54b9a8d6351e009e16.
+PR34 exact e320a7476dce4dfac88ece58f404249f0b4db77c has a submitted APPROVED
+review by vn-taphoanhatung at2026-10-30T21:54:52Z; text explicitly discloses AI
+technical review. validate41132668628/validate-admin41132668632 IN_PROGRESS at
+this observation. Browser submission is verified by API and visible review5719094779;
+/private/tmp/takolio-pr34-approved.jpg. No human culinary approval inferred.
+Strict main/Environment protections retained. This checkpoint is candidate-only;
+no new remote migration,flag change or production deployment.
+
+Next: publish this bounded slice against codex/recipe-v3-crab-cooking; finish
+protected small-PR integration on passing exact HEADs. Resolve four data gates,
+six safety cases and actual review evidence; implement approved publication;
+then exact-main CI,same-source staging/catalog/recovery and Environment release.
+V2 retains1395provisional IDs/4233lines,2996exclusions/2860transformations,
+nutrition1inherited/288blocked/211NULL. Candidate quarantine adds12unresolved
+canonical lines. Runtime fingerprint remains
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+Apply0046then0047before Worker; after saved pins retain certified version-aware
+same-source Worker/client with paired flags OFF for recovery. Earlier records
+below describe their historical artifacts and observations.
+
+---
+
+## Raw-crab candidate checkpoint - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Branch
+codex/recipe-v3-crab-cooking; base50ecf0188c1c98ce065c58bd8aa56a44ce679bea.
+Seven coordinated crab edits replace two prior edits; general MHLW center75C
+for at least1minute, package-specific thawing and clean utensils. Existing5/4
+minute timers are inspection reminders. All499 other candidates, quantities,
+nutrition, immutable V2 and runtime authority remain unchanged.
+Candidate SHA25661729db2569a553a3551051161a6aa3cb0dc996d381050327b89108f56a473e2.
+
+Focused62tests, audit500/49/25, complete recompilation/preservation and source
+cache provenance PASS. Full local gate PASS exit0;436files/9750tests/1016.95s; typecheck,lint,Main/Admin migration replay and Web/Admin/Worker builds PASS.
+Exact commands/results/limits: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Both seafood cases FAIL_UNRESOLVED; six safety reviews pending. Owner reports
+review complete; actual structured decisions0/500. Deployment permission persists.
+Four data gates, approved publication, independent stack review, protected-main
+CI and same-source hosted certification remain open. No production mutation.
+Published [Draft PR54](https://github.com/hello-tako/Takolio/pull/54) against
+codex/recipe-v3-review-records, implementation b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6.
+Recipe41110848058/Admin41110848034 completed SUCCESS on implementation b6ff4ebd. Reviewer
+vn-taphoanhatung requested; only PR51 has a submitted GitHub approval.
+Nissui image/manual follow-up records three bounded visual observations;
+no full manual or validated product protocol obtained. No code/data change.
+Documentation verification PASS exit0: python3 /private/tmp/takolio-v3-pr54-doc-check.py
+(12 Markdown files, historical preservation, 3 image hashes, unchanged candidate/
+canonical/runtime/protected bytes, no untracked files); git diff --check and
+python3 scripts/admin-public-scan.py PASS exit0 (added-text scan only).
+Next: observe exact-head CI, reconcile actual review records and close
+data/publication, protected-main and hosted certification gates.
+PR51 approved HEAD unchanged. Earlier checkpoints follow unchanged.
+
+Hosted implementation CI completed SUCCESS on b6ff4ebdbfc62b28d3ee6b4d72ae126e99d4a1a6: Recipe41110848058,436files/9750tests/1025.09s; Admin41110848034,436files/9750tests/1294.70s. Admin Workerd10/10,migration matrix39/39,browser13tests,keyboard10repeats and screenshot guards PASS. Preflight readyForDeployment=false,remoteExecuted=false. Receipts: /private/tmp/takolio-v3-pr54-recipe-completed.json and /private/tmp/takolio-v3-pr54-admin-completed.json. Later documentation HEAD requires its own CI. No review or production mutation claimed.
+
+---
+
+## Recipe V3 review-record validation - 2026-10-31 JST
+
+Status: RECIPE_V3_BLOCKED / production NOT_READY. Owner deployment permission
+persists; reported professional approval awaits the actual reviewer/decision
+record. ADR-079 adds offline, version-bound review-record validation; no approval
+or safety disposition is generated. Full gate PASS436files/9749tests,exit0;
+focused32tests PASS;types,lint,migration replay and all builds PASS.
+Exact commands, results and limits: docs/ai/HANDOFF.md, latest checkpoint.
+
+Next: reconcile genuine decisions, then close ingredient/projection/source/
+nutrition and approved-publication gates. Independent GitHub review, exact-main
+CI and same-source hosted staging/catalog/recovery remain required. Existing
+production remains b49f3e6c, D1/500recipes, readiness degraded (email unverified).
+No merge, remote migration, flag change or deployment. Earlier records follow.
+
+---
+
+## Recipe V3 owner review follow-up - 2026-10-31 JST
+
+Production NOT_READY; owner deployment authorization remains valid. The user
+reported "đã duyệt" for professional review of 500 recipes / six safety cases.
+`docs/ai/recipe-intelligence-v3/19_INDEPENDENT_REVIEW_QUEUE.md` records the reply,
+unchanged candidate SHA256 and missing reviewer/decision/evidence details.
+Existing structured approval records remain 0/500 pending the actual review record.
+
+Executed with PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp CI=1:
+- `node scripts/recipe-intelligence-v3-audit.mjs --check`: PASS exit 0,
+  500 recipes / 44 edits / 25 packets; existing port 24678 warning retained.
+- `pnpm recipe:refresh:release-check`: FAIL exit 1, RUNTIME_PROJECTION_LOSS,
+  INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+  NUTRITION_EVIDENCE_INCOMPLETE. Exact logs/exit receipts:
+  /private/tmp/takolio-v3-owner-approval-audit.log and .exit;
+  /private/tmp/takolio-v3-owner-approval-release.log and .exit.
+
+GitHub refreshed 2026-10-30T17:37:16Z: PR52 exact 435c7f7e Recipe41093473613/
+Admin41093473560 SUCCESS; body updated. Only PR51 has a submitted approval,
+on ae68f7e5. PR33-50/52 remain open/Draft with reviewer requested. Fetched main
+remains b49f3e6c; strict CI,last-push/stale/independent review,admin enforcement
+and conversation resolution verified. No duplicate reviewer request.
+
+Next: reconcile the reported professional review with its evidence; finish
+ingredient,projection,source,nutrition and approved publication. 1395 provisional
+IDs / 4233 lines, 2996 exclusions / 2860 transformations, 288 blocked nutrition profiles
+remain. Protected main/exact-main CI,same-source hosted staging/catalog/recovery,
+ordered 0046/0047 and Environment-approved deployment are still required.
+Previous full local gate 435 files / 9717 tests and PWA/recovery checks are recorded
+in 26_PWA_RECOVERY_VALIDATION.md; not repeated for this docs-only follow-up.
+Implementation remains f5517236. No merge, remote migration, flag change or deploy.
+Documentation checks: `git diff --check` and
+`python3 scripts/admin-public-scan.py` PASS; preservation check
+`python3 /private/tmp/takolio-v3-owner-checkpoint-check.py` PASS (five historical
+tails, original review requirements and candidate unchanged; six Markdown files).
+Do not ask again for owner deployment authorization.
+
+Earlier records are historical checkpoints.
+
+---
+
+## Recipe V3 saved shopping content - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Branch codex/recipe-v3-shopping-content; parent5cf2d197. ADR-078 retains saved
+recipe pins in shopping attribution and private cache, negotiates legacy DTOs,
+reopens review on changed content and preserves purchases/replay. No new SQL.
+Four catalog CLIs and browser preview now isolate Vite caches after reproduced
+ENOENT/504 failures. Final local full gate PASS435files/9716tests,1156.63s;
+focused47/regression43/CLI30/browser4tests PASS; audit0. Browser88axe reports:
+0violations,39incomplete contrast findings. Exact commands, failures and limits:
+docs/ai/recipe-intelligence-v3/25_SAVED_SHOPPING_VALIDATION.md.
+
+Next: publish the validated slice against codex/recipe-v3-v1-content; observe
+exact-head Recipe/Admin CI. Four catalog gates remain red,1395provisional IDs,
+six critical safety cases,0/500human approvals; approved publication still blocked.
+Independent review,protected main/exact-main CI,same-source hosted staging/recovery/
+catalog certification and normal Environment approval remain. Production permission
+already granted; no repeat permission request. No remote mutation/deployment.
+
+Earlier records are historical checkpoints.
+
+---
+
+## Recipe V3 standalone saved content - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner production authorization remains valid. Branch codex/recipe-v3-v1-content;
+parent744b4e25b2d710e573dac7d82610c363acd6194b. ADR-077 pins new standalone V1
+selections to unscaled household-authorized content, retains unchanged legacy
+unknowns, and projects saved archives. Family/composed anchors inherit their
+component pin. Explicit regeneration revalidates stale same-version locks.
+Existing recipe-content=1 capability preserves strict legacy response shapes.
+No new migration;0046/0047 and same-source version-aware flags-OFF recovery remain
+required. No publication or data approval is implied.
+
+Executed full gate: PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp
+CI=1 pnpm check PASS exit0;434files/9710tests,1168.84s;typecheck,lint,migration
+replay,Main/Admin builds PASS. Log /private/tmp/takolio-v3-v1-complete-check.log;
+exit receipt /private/tmp/takolio-v3-v1-complete-check.exit. Final browser suites
+28+6tests PASS exit0,182axe reports/0violations,24+60layout observations.
+Focused62tests,cooking10tests,disabled-schema4tests PASS. Audit0;seed71/import500/
+V3 audit500 PASS. Earlier fixture failures and browser limitations remain recorded
+in docs/ai/recipe-intelligence-v3/24_V1_SAVED_CONTENT_VALIDATION.md.
+
+Four catalog release gates still FAIL: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE.1395provisional IDs/4233lines,six critical safety
+cases,0/500human approvals remain. No new remote migration or deployment.
+Next: publish this checkpoint as a stacked PR against codex/recipe-v3-saved-content;
+observe exact-head Recipe/Admin CI; finish shopping version binding and approved
+publication/evidence. Independent review,protected main/exact-main CI,same-source
+hosted staging/recovery/catalog certification and Environment approval remain.
+
+Earlier records are historical checkpoints.
+
+---
+
+## Recipe V3 PR49 integration verification - 2026-10-31 JST
+
+Status: protected integration in progress; production release NOT_READY.
+Integrated cooking-content 6fb484cf into saved-content744b4e25 by normal merge,
+preserving immutable47 baseline a1e706c7. Retained 0046 re-apply and cooking
+receipt rejection/legacy-NULL coverage in the actual D1 matrix. No runtime,
+migration, workflow or payment byte change in this merge.
+
+Executed Node24: baseline25tests, lint, typecheck and actual local D1 matrix39/39
+PASS exit0; audit --audit-level high PASS exit0 with2moderate vulnerabilities.
+Exact commands/logs/hashes: recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md.
+This local SQL/tooling evidence is not hosted recovery or deployment evidence.
+
+GitHub PR33-38 merged normally; PR39 exactHEAD0a5bf4b9 has authorized Codex AI
+technical approval through vn-taphoanhatung; required CI remains in progress.
+AI approval does not constitute human culinary or food-safety certification.
+Next: clean committed preflight, push49; propagate normally into50-55; finish
+protected reviews/CI/merges, exact-main staging/recovery and production gates.
+Four catalog data gates and0/500human culinary approvals remain unresolved.
+Owner deployment authorization retained. No production mutation claimed.
+
+Earlier checkpoints remain historical.
+
+---
+
+## Recipe V3 immutable release baseline - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner deployment authorization remains valid. Candidate implementation is frozen
+at a1e706c7c870881d2e472ef7a1b211ac61bdd38c on codex/recipe-v3-saved-content;
+parent680502cc7aa64a4d11abca1ae0625ee9f5166d66. Admin preflight now recognizes
+these exact customer bytes; protected-history/post-checkpoint guards remain.
+
+Actual checks:25baseline tests/lint/preflight PASS exit0. Real local D1 migration
+matrix PASS exit0,39/39,including populated45→46→47 and immutable archive/receipt
+checks. Initial27/28 failure was D1 SQLITE_AUTH for integrity_check; reproduced,
+replaced with supported quick_check while retaining FK checks. Full commands,
+hashes,logs,failure and earlier runtime/browser limits are in
+`docs/ai/recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md`.
+Read-only existing-production smoke PASS exit0 on mainb49f3e6c; this candidate
+has not been deployed. No remote mutation or approval is claimed.
+
+Next: commit/push the baseline and evidence; publish a stacked PR against
+codex/recipe-v3-cooking-content; observe Recipe/Admin CI on its exact final HEAD.
+Continue V1 saved selection pins/publication and ingredient/source/nutrition/
+safety evidence. Four catalog gates remain red,1395provisional IDs,six critical
+safety cases,0/500human approvals. Independent review,protected main/exact-main
+CI,same-source staging/continuity/recovery and Environment reviewer are required.
+Migration dispatch must target0047 from a0047tip,applying ordered46/47 before
+Worker. Recovery after saved pins requires version-aware same-source flags OFF.
+
+Earlier records are historical checkpoints.
+
+---
+
+## Recipe V3 saved content checkpoint - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; production NOT_READY.
+Owner deployment authorization remains in force; do not ask again.
+Branch codex/recipe-v3-saved-content; parent680502cc7aa64a4d11abca1ae0625ee9f5166d66.
+ADR-076/migration0047retain saved composition versions, household archive access,
+legacy NULL and old strict DTO compatibility. Historical display/cooking retain
+content; current assessment/shopping keep authority fences. Picker now prepares
+catalog twice per request rather than per candidate. V1 standalone pins and
+approved-content publication remain open.
+
+Local full gate433files/9697tests reached PASS before the picker optimization;
+original exit receipt unavailable. Final focused4files/60tests and browser20tests
+PASS exit0;124layout/124axe reports,zero measured issues. Local D1 exact0047
+recheck PASS exit0,empty issues; audit0,public text scan,diff check PASS.
+Commands,logs,scope and limitations:
+`docs/ai/recipe-intelligence-v3/23_SAVED_CONTENT_VALIDATION.md`.
+
+Next: freeze immutable0047candidate; pin Admin baseline; execute preflight and real
+migration matrix; publish stacked PR and validate exact HEAD. Independent review,
+protected main,exact-main CI,same-source hosted staging/recovery and production
+Environment approval remain.0047dispatch can apply the ordered0046/0047chain
+from verified0045; do not dispatch0046from a0047tip SHA. After any saved pin,
+recovery requires a version-aware same-source flags-OFF Worker. Four catalog
+release failures,1395provisional IDs,six safety cases and0/500human culinary
+approvals remain unresolved. No production deployment claimed.
+
+Earlier records follow as historical checkpoints.
+
+---
+
+## PR48 release-tool correction - 2026-10-31 JST
+
+ADR-075 addendum: Admin preflight/matrix now bind the immutable0046 checkpoint
+680502cc7aa64a4d11abca1ae0625ee9f5166d66, retaining original/V2 ancestry and
+parallel-main/post-checkpoint drift guards. Historical43/45 matrix cases remain;
+new46 cases cover fresh/populated upgrades, reapply, legacy NULL, immutable archive
+and receipt identity, missing/future ledger entries and strict45 rollback refusal.
+No runtime, migration, workflow or payment bytes changed by this correction.
+
+Executed in Takolio-recipe-v3-cooking-fix with Node24/pnpm10:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;431files/9665tests/1018.97s, lint/typecheck/migrations/builds PASS.
+Log/exit: /private/tmp/takolio-pr48-full-check.log and .exit.
+`pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs` PASS25tests;
+/private/tmp/takolio-pr48-baseline-tests.log. Real local D1 matrix
+`node scripts/admin-migration-matrix.mjs --out /private/tmp/takolio-pr48-migration-matrix.json`
+PASS38/38,exit0; matching .log/.exit. SQL-only; not Worker recovery proof.
+Preflight validate reported configuration PASS, baseline680502cc, dirty checkout,
+readyForDeployment=false, remoteExecuted=false; no production readiness inferred.
+
+Next: commit/push correction on PR48; reconcile its46 coverage with PR49's47
+baseline a1e706c7c870881d2e472ef7a1b211ac61bdd38c. PR38 exactb40a03dd has
+AI technical approval via vn-taphoanhatung; CI41161395140 SUCCESS, Admin41161395154
+pending at this observation. Continue normal protected merges. Deployment permission
+persists; four catalog data gates, source/food-safety evidence, approved publication
+and same-source hosted certification remain. No production mutation or deployment.
+
+---
+
+## Recipe V3 cooking foundation - 2026-10-30 JST
+
+Status: RECIPE_V3_IMPLEMENTATION_IN_PROGRESS; release RECIPE_V3_BLOCKED.
+Owner deployment authorization remains in force. Worktree
+/Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-cooking-content; base555ce63d87dc354664ede8fb998fbb9567e5c71a.
+Resolve this checkpoint's final HEAD and PR from Git; it cannot name itself.
+
+ADR-075/migration0046 add immutable validated recipe content, household access
+grants and nullable immutable cooking content/request references. Detail/start
+capture unscaled content; retries/offline freeze version, servings, deductions
+and command ID. Receipt-first replay survives catalog changes/failure without
+another debit. Legacy NULL remains unknown; omitted-unit ambiguity fails closed.
+Archived content uses current household restrictions without borrowing mutable
+D1 evidence. Existing inventory/Week authority retained. Migration workflows
+certify exact0046 through existing identity/main/CI/Environment gates; apply0046
+before Worker. Old Worker rollback is valid only before changed content is served.
+Vite6.4.5 fixes GHSA-8g5g-mxqh-grgj; other package versions unchanged.
+
+Actual checks: Node24.16.0/pnpm10.33.2;
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS completion marker;431files/9656tests/964.56s; lint/typecheck, Main/Admin
+migration replay and builds PASS. Original process exit receipt unavailable;
+set-e deploy-check log reaches ALL CHECKS PASSED SUCCESSFULLY.
+Final browser PASS exit0:12tests/59.0s,64layout captures/64axe reports,
+0overflow/broken images/clipped/split words/axe violations. Synthetic preview API,
+service workers blocked; not hosted/device proof. Frozen install/audit PASS
+438dependencies/0vulnerabilities; seed59+12/71 parity, import500/2batches,
+candidate500/44edits/25packets PASS. Fresh local D1 migrations0001-0046 and exact
+schema gate PASS. `git diff --check` and `python3 scripts/admin-public-scan.py`
+PASS; public scan checks added text only. Commands/logs/failures/limits:
+recipe-intelligence-v3/22_COOKING_FOUNDATION_VALIDATION.md.
+
+`pnpm recipe:refresh:release-check` FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE,SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE.1395provisional IDs/4233lines;2996exclusions/
+2860transformations pending review;nutrition1inherited/288blocked/211null;
+human culinary approvals0/500;six critical safety reviews. Publication and
+saved planner/composition/shopping pinning incomplete. Source review found no
+concrete cooking-foundation finding; it is not GitHub/human culinary approval.
+
+Fresh GitHub main b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a. PR47 HEAD555ce63d:
+Recipe40955325772/Admin40955325748 SUCCESS. No independent approvals in stack33-47.
+Strict validate/validate-admin,required independent approval,last-push/stale/admin
+protection and production reviewer vn-taphoanhatung/prevent_self_review remain.
+Existing production read-only smoke PASS; ready reports mainb49f3e6c,d1,
+500recipes,no fallback,database ok,status degraded,email delivery unverified.
+This is existing production, not a new deployment.
+
+Next: publish the coherent foundation PR against codex/recipe-v3-readiness-evidence;
+validate exact HEAD. Complete saved-consumer/publication and real evidence work;
+require independent review,protected main/exact-main CI,same-source hosted
+staging/browser/recovery and normal Environment approval. Changed Zod/foundation
+requires reviewed same-SHA shadow/canary1/canary5/canary25/d1 certification;
+continuity fence intact. No merge,remote D1 mutation,flag change or new deploy.
+
+Earlier records follow unchanged as historical checkpoints.
+
+---
+
+## Hosted Zod validation and research - 2026-10-29 JST
+
+TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;
+RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED / NOT_READY.
+Workspace /Users/tunbee27/Documents/New project/Takolio-recipe-v3;
+documentation branch codex/recipe-v3-readiness-evidence, base9049f346372dbc9ed515e572f3d66fbc75c2fc18.
+PR46 HEAD9049f346 stays stable: Recipe40860409614/Admin40860409658 SUCCESS;
+429files/9597tests each; Workerd/migration matrix/13browser tests/10keyboard
+repeats/screenshot guard PASS. Independent approval pending. Earlier implementation
+Admin40860038241 CANCELLED, never PASS. Local full gate429/9597 PASS; audit438/0.
+Hosted preflight cleanCheckout=false after build; separate clean committed local
+preflight PASS cleanCheckout=true; both readyForDeployment=false/remoteExecuted=false.
+
+Changes: documentation only;4CAA/Nissui retrievals,8hashes,5PDFpages,2HTMLlocatorranges.
+No validated shrimp product/process or crab grill endpoint; both FAIL_UNRESOLVED.
+Executed provenance/scope/public/diff checks PASS; full local suite not repeated.
+Exact commands/logs: docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md.
+Four data release blockers,1395provisional ingredient IDs,288blocked/211null
+nutrition,0/500human approvals,6critical safety decisions and versioned consumer
+integration remain open. V1authority/candidate bytes unchanged; database unchanged.
+Production continuity fence and main/Environment protections unchanged.
+No remote D1 mutation, flag change, merge or deployment.
+
+Next: independent PR46/stack review; documentation continuation's own HEAD/CI;
+close evidence/safety/human/consumer gates, protected main/exact-main CI and
+same-source staging/recovery before normal production approval. Resolve eventual
+PR/HEAD from Git and V3 handoff/PULL_REQUESTS.md; parent checks certify only parent.
+Earlier observations follow unchanged.
+
+---
+
+## Authorized Zod security migration - 2026-10-29 JST
+
+Task TAKOLIO_RECIPE_INTELLIGENCE_V3: RECIPE_V3_RESEARCH_IN_PROGRESS;
+review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED.
+Owner explicitly approved the Zod migration exception, including protected
+PayOS/billing schema/type compatibility, tests and local catalog recertification.
+ADR-074 supersedes the pending-exception/security statements below.
+
+Workspace /Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-zod-security; base904eb0872103524711e63d9fb74a1beeea6b9646.
+Zod3.25.76 ->4.6.7 fixes GHSA-mrhx-c7xc-m3w5. Explicit record keys, issues
+readers, types, prefault provenance and bounded native OpenAPI conversion retain
+existing contracts. Shared timestamp schemas preserve minute/colonless-offset
+legacy bytes; persisted inventory CREATE/read/CORRECT/replay covered. PayOS and
+billing each have only the exact record signature substitution; web billing
+only changes a generic type. No payment business or unrelated auth change.
+
+Executed locally with Node24.16.0/pnpm10.33.2:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;429files/9597tests/938.60s; typecheck/lint, Main/Admin migration
+replay and Client/Admin/Worker builds PASS. Focused6files/516tests and datetime
+callers5files/73tests PASS. `pnpm audit --json` PASS438dependencies/0vulnerabilities,
+no suppression. V3 audit --check PASS500recipes/44edits/25packets; seed byte
+parity and import500/2batches PASS. Scoped review/public scan/diff PASS; exact
+commands, logs, upstream build warnings and earlier failed13tests remain in
+recipe-intelligence-v3/14_TEST_STRATEGY.md. Technical review found no remaining
+concrete issue; it is not human culinary approval.
+
+V1release rel-bd00a4f53fcaeee4 remains authoritative; fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37.
+Candidate SHA2560f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4
+unchanged. Candidate audit permits only the exact refresh/release.ts record
+signature change and reports matchesBaseCommit=false/ADR-074. The production
+D1 continuity fence stays unchanged and rejects changed Zod/foundation blobs.
+Local parity does not confer hosted catalog certification. Require reviewed
+shadow/canary1/canary5/canary25/d1 progression using the same SHA and normal gates.
+
+Fresh V2 release-check FAIL exit1: RUNTIME_PROJECTION_LOSS,
+INGREDIENT_RECONCILIATION_INCOMPLETE, SOURCE_CONTENT_VERIFICATION_INCOMPLETE,
+NUTRITION_EVIDENCE_INCOMPLETE. 1,395provisional IDs/4,233lines;
+2,996excluded lines/2,860transformations need review; nutrition1inherited/
+288blocked/211null. Full culinary verification/human approval0/500;
+six critical safety reviews pending; raw-shrimp/crab FAIL_UNRESOLVED.
+Versioned publication and saved-plan/shopping/cooking/offline/rollback
+compatibility remain unimplemented. No production dispatch is eligible.
+
+Verified implementation 7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091;
+[Draft PR46](https://github.com/hello-tako/Takolio/pull/46) OPEN on
+codex/recipe-v3-release-patches. Clean committed Admin validate preflight PASS:
+sourceSha=7c4d8700c0e1d4bd78a51007f7fdb0d46ae82091, cleanCheckout=true;
+sourceManifestSha256=6d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+readyForDeployment=false, remoteExecuted=false. Exact-head implementation runs
+Recipe V3 CI40860038264/Admin40860038241 started; outcome not yet observed at this
+checkpoint. Resolve later documentation HEAD and its own checks from PR46/Git;
+implementation/parent checks do not certify a later SHA. Next: exact-head hosted
+validation and independent review. Close data/runtime/human gates, protected main review,
+exact-main CI and fresh same-source staging/recovery before production approval.
+No remote D1 mutation, feature flag change, merge or deployment occurred.
+
+Earlier checkpoints follow unchanged; their pending Zod exception, vulnerability,
+branch and test statements are historical observations.
+
+---
+
+## Recipe Intelligence V3 production preparation - 2026-10-29 JST
+
+Task `TAKOLIO_RECIPE_INTELLIGENCE_V3`: RECIPE_V3_RESEARCH_IN_PROGRESS;
+review RECIPE_V3_INDEPENDENT_REVIEW_REQUIRED; release RECIPE_V3_BLOCKED.
+User requested completion for production deployment. Preparation proceeds;
+failed data/security gates, independent review and normal Environment approval
+still prevent production release. Historical entries below retain their scope.
+
+Repository hello-tako/Takolio (1422954151); fetched origin/main
+b49f3e6c4fc2f1485b77623ed7257d0f8bd31f9a; worktree
+/Users/tunbee27/Documents/New project/Takolio-recipe-v3; branch
+codex/recipe-v3-release-patches. Parent checkpoint
+f637134b4a337443b375985021d0d3bfc42a9e87 remains Draft PR44 on
+codex/recipe-v3-safety-07. The twelve existing Draft review units stay separate.
+Verified patch implementation 7bdd574bc8ad401efd348e466093d13bf62c6ea3;
+[Draft PR45](https://github.com/hello-tako/Takolio/pull/45) OPEN on base
+codex/recipe-v3-safety-07. Subsequent documentation-only HEAD is resolved from
+Git/PR; this handoff cannot contain its own commit hash. Hosted results below
+bind the implementation SHA, not a later documentation checkpoint.
+
+Concrete patch: Hono4.13.7 ->4.13.13 (compatible major4), only miniflare's
+Undici7.29.1 ->7.30.1. New Recipe V3 CI validates codex/recipe-v3-** pushes;
+Admin CI adds that branch filter. Original customer ci.yml and Admin preflight
+remain byte-identical. Four regression tests preserve main/PR validation,
+complete checks, pinned actions and read-only permissions. ADR-073 defines scope.
+Wrangler/Miniflare/workerd, Zod version/integrity, runtime/payment/auth code,
+migrations and deployment workflows remain unchanged. Scoped review checks four
+exact dependency/CI transformations; unapproved protected drift0.
+
+Fresh audit: before5high/5moderate; patched1high/0moderate, exit1. Remaining
+Zod3.25.76 GHSA-mrhx-c7xc-m3w5 requires>=4.6.6. Bounded reproduction:
+max(2) still visits all1,000 invalid elements and produces1,001 issues. This is
+an unresolved finding, not an exception or suppression. A reviewed compatibility
+migration must preserve protected PayOS/error contracts and recertify catalog
+continuity. V2 release-check freshly exits1 with the same four data blockers.
+
+Current patch verification: complete local pnpm check PASS exit0;428files/9570tests;951.14s;
+typecheck/lint, Main/Admin local migration replay and Client/Admin/Worker builds
+PASS. Hosted validate40709482707/validate-admin40709482552 SUCCESS on implementation7bdd574b;
+Admin includes real Workerd boundary, migration matrix, browser suite and ten
+keyboard repeats. Clean committed Admin validate preflight PASS at7bdd574b:
+sourceManifestSha2566d042015488ced02508ace18add2ea80b1294d3602b01361b165f5b6989f68c4;
+readyForDeployment=false,remoteExecuted=false. Focused262tests/ESLint and scoped
+review131artifacts/public/historyPASS. Earlier2test failures and interrupted
+attempts remain recorded; no assertion, timeout, preflight or gate weakened.
+Exact commands/logs/run links:docs/ai/recipe-intelligence-v3/14_TEST_STRATEGY.md
+and21_PRODUCTION_PREPARATION.md. Branch validation grants no main/staging or
+production acceptance; subsequent documentation HEAD requires its own CI.
+
+Dataset unchanged:500 IDs/slugs;6,766ingredient lines;4,938steps;44reversible
+edits/29recipes;1,188source rows/1,150URLs/1,326claims. Candidate SHA256
+0f20c30bd52c821a17382e17b858dbfceffbc1a0bc4711f6eefcab4c3ad8bef4;
+data implementation a578b5696389cdb6afeca7530e33b1f4e384690e.
+Full culinary verification0/500; human approval0/500;6P0/494P1. There are
+1,395provisional IDs/4,233lines;2,996runtime-excluded lines/2,860reviewed
+transformations needed; nutrition1inherited publishable/288blocked/211null.
+No candidate/source/runtime promotion or human approval is inferred from tests.
+
+User chose raw-shrimp product/protocol and raw-crab-to-cook research. Six public
+product/context pages are recorded in research/RAW_SEAFOOD_DECISIONS.md; exact
+package/process validation, supported crab grill endpoint and coordinated
+half-thaw/full-thaw review remain missing. Both cases stay FAIL_UNRESOLVED;
+all six safety reviews remain pending. No request for user URLs is outstanding.
+
+Database/release: local migration smoke only; remote D1 mutations, production
+credential use, flag changes and deployments0. V1rel-bd00a4f53fcaeee4/fingerprint
+f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37 remains
+authoritative. Household/inventory authority and Week compatibility unchanged.
+Production protections observed: strict validate/validate-admin, approving
+reviewer, stale/last-push review enforcement; production Environment requires
+vn-taphoanhatung with self-review prevented and protected branches. No policy
+changed. Branch CI cannot substitute for exact-main CI or staging certification.
+
+Next: independent review of focused Draft PR45 and existing review stack;
+resolve its subsequent documentation HEAD/checks from Git/PR. Complete reviewed
+Zod migration/catalog proof, ingredient/source/nutrition
+and six safety decisions; implement approved content-version pinning and saved
+plan/shopping/cooking/offline/rollback compatibility. Human approvals, normal
+main merge/exact-main CI and same-source staging/recovery precede protected
+production approval. Release packet NOT_READY; no production dispatch.
+
+---
+
 ## Reviewed static-cache baseline correction - 2026-10-26 JST
 
 PR32 head860a5554 was approved by the authorized Chrome reviewer, but CI40242026406 failed solely because the Admin customer-file guard still pinned the older service worker (424 files/9536 tests passed; one assertion failed). The exact reviewed baseline now pins860a5554811791f88cad8191e570b0e7035f69a3. All eight guarded paths remain byte-for-byte assertions with the existing ancestry and parallel-history fences. The other seven guarded paths are unchanged from352a4211; no production/application change in this correction.

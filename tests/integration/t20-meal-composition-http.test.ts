@@ -41,9 +41,13 @@ afterEach(() => {
 });
 
 describe('T20 V1 compatibility', () => {
-  it('a V1 one-recipe plan reads as a valid one-component composition without changing the V1 contract', async () => {
+  it('a V1 one-recipe plan projects pinned content for capable clients and retains the legacy V1 contract', async () => {
     const plan = await generate();
-    const response = await h.call(HOUSE, 'GET', `/meal-planning/plans/${plan.id}/compositions`);
+    const path = `/meal-planning/plans/${plan.id}/compositions`;
+    const legacy = await h.call(HOUSE, 'GET', path);
+    expect(legacy.status, JSON.stringify(legacy.json)).toBe(200);
+    const legacyDto = PlanCompositionsDtoSchema.parse(legacy.json);
+    const response = await h.call(HOUSE, 'GET', path, undefined, {}, { Accept: 'application/json; recipe-content=1' });
     expect(response.status, JSON.stringify(response.json)).toBe(200);
     const dto = PlanCompositionsDtoSchema.parse(response.json);
     expect(dto.planRevision).toBe(plan.revision);
@@ -53,6 +57,10 @@ describe('T20 V1 compatibility', () => {
       expect(composition.components).toHaveLength(1);
       expect(composition.components[0]).toMatchObject({ kind: 'recipe', role: 'main', provenance: 'legacy_v1',
         recipeId: meal.source.id, id: `v1.${meal.slotId}`, cookable: true, resolvable: true });
+      expect(composition.components[0].contentFingerprint).toMatch(/^[a-f0-9]{64}$/);
+      const oldComponent = legacyDto.compositions.find((entry) => entry.slotId === meal.slotId)!.components[0];
+      expect(oldComponent).not.toHaveProperty('contentFingerprint');
+      expect(oldComponent).toMatchObject({ recipeId: meal.source.id, cookable: false, resolvable: true });
     }
     // Reading compositions never mutates the V1 plan.
     const reread = MealPlanDtoSchema.parse((await h.call(HOUSE, 'GET', `/meal-planning/plans/${plan.id}`)).json);

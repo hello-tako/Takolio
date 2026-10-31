@@ -340,6 +340,82 @@ describe('T19 cooking hard-restriction bypass — regression', () => {
   }, CASE_TIMEOUT_MS);
 });
 
+describe('Versioned cooking restrictions and canary access', () => {
+  const deductions = [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2, unit: 'piece' }];
+
+  it.each(['legacy', 'native'] as const)(
+    '%s authority checks current household restrictions against archived content',
+    async (authority) => {
+      const householdId = authority === 'native' ? `t19hr-version-native-${counter}` : INSIDE;
+      if (authority === 'native') await seedNativeHousehold(householdId);
+      const detail = await call('d1', householdId, 'GET', `/recipes/${RECIPE}`);
+      expect(detail.status).toBe(200);
+      expect(detail.json.contentFingerprint).toMatch(/^[a-f0-9]{64}$/);
+      setPreferences(householdId, { forbiddenIngredientIds: ['CHICKEN_EGG'] });
+      const before = nativeStateSnapshot(householdId);
+      const complete = await call('d1', householdId, 'POST', `/recipes/${RECIPE}/cook/complete`,
+        { contentFingerprint: detail.json.contentFingerprint, servings: 2, deductions },
+        { 'Idempotency-Key': `version-restricted-${authority}-${counter}` });
+      expect(complete).toMatchObject({ status: 422, json: { code: 'HARD_CONSTRAINT_CONFLICT' } });
+      expect(nativeStateSnapshot(householdId)).toEqual(before);
+    }, CASE_TIMEOUT_MS,
+  );
+
+  it.each(['legacy', 'native'] as const)(
+    '%s authority replays a committed version after restrictions change without another deduction',
+    async (authority) => {
+      const householdId = authority === 'native' ? `t19hr-replay-native-${counter}` : INSIDE;
+      if (authority === 'native') await seedNativeHousehold(householdId);
+      const detail = await call('d1', householdId, 'GET', `/recipes/${RECIPE}`);
+      expect(detail.status).toBe(200);
+      const body = { contentFingerprint: detail.json.contentFingerprint, servings: 2, deductions };
+      const headers = { 'Idempotency-Key': `version-replay-${authority}-${counter}` };
+      const first = await call('d1', householdId, 'POST', `/recipes/${RECIPE}/cook/complete`, body, headers);
+      expect(first.status, JSON.stringify(first.json)).toBe(200);
+      const afterFirst = nativeStateSnapshot(householdId);
+      setPreferences(householdId, { forbiddenIngredientIds: ['CHICKEN_EGG'] });
+      const replay = await call('d1', householdId, 'POST', `/recipes/${RECIPE}/cook/complete`, body, headers);
+      expect(replay).toMatchObject({ status: 200, json: { success: true, idempotentReplay: true, cookId: first.json.cookId } });
+      expect(nativeStateSnapshot(householdId)).toEqual(afterFirst);
+    }, CASE_TIMEOUT_MS,
+  );
+
+  it('does not use mutable D1 preparation time as evidence for an archived recipe', async () => {
+    const detail = await call('d1', INSIDE, 'GET', `/recipes/${RECIPE}`);
+    expect(detail.status).toBe(200);
+    db.seed(`UPDATE recipes SET prep_time_minutes = 0 WHERE id = '${RECIPE}'`);
+    setPreferences(INSIDE, { hardMaxTimeMinutes: 1000 });
+    const current = await call('d1', INSIDE, 'POST', `/recipes/${RECIPE}/cook/start`);
+    expect(current.status, JSON.stringify(current.json)).toBe(200);
+    const before = nativeStateSnapshot(INSIDE);
+    const complete = await call('d1', INSIDE, 'POST', `/recipes/${RECIPE}/cook/complete`,
+      { contentFingerprint: detail.json.contentFingerprint, servings: 2, deductions },
+      { 'Idempotency-Key': `archived-time-${counter}` });
+    expect(complete).toMatchObject({ status: 422, json: { code: 'HARD_CONSTRAINT_CONFLICT' } });
+    expect(nativeStateSnapshot(INSIDE)).toEqual(before);
+  }, CASE_TIMEOUT_MS);
+
+  it('limits historical canary content to the household that received it', async () => {
+    const detail = await call('canary', INSIDE, 'GET', `/recipes/${D1_ONLY}`);
+    expect(detail.status, JSON.stringify(detail.json)).toBe(200);
+    const fingerprint = detail.json.contentFingerprint;
+    expect(fingerprint).toMatch(/^[a-f0-9]{64}$/);
+    const path = `/recipes/${D1_ONLY}?contentFingerprint=${fingerprint}`;
+    expect((await call('canary', OUTSIDE, 'GET', path)).status).toBe(404);
+    const body = { contentFingerprint: fingerprint, servings: 2,
+      deductions: [{ ingredientId: 'SHRIMP', quantityDeducted: 100, unit: 'g' }] };
+    const before = nativeStateSnapshot(OUTSIDE);
+    const denied = await call('canary', OUTSIDE, 'POST', `/recipes/${D1_ONLY}/cook/complete`, body,
+      { 'Idempotency-Key': `canary-outside-${counter}` });
+    expect(denied).toMatchObject({ status: 409, json: { code: 'RECIPE_VERSION_UNAVAILABLE' } });
+    expect(nativeStateSnapshot(OUTSIDE)).toEqual(before);
+    expect((await call('static', INSIDE, 'GET', path)).status).toBe(200);
+    const complete = await call('static', INSIDE, 'POST', `/recipes/${D1_ONLY}/cook/complete`, body,
+      { 'Idempotency-Key': `canary-inside-${counter}` });
+    expect(complete).toMatchObject({ status: 200, json: { success: true, recipeId: D1_ONLY } });
+  }, CASE_TIMEOUT_MS);
+});
+
 describe('T19 cooking hard restrictions — native/adopted inventory authority', () => {
   const NATIVE_BODY = {
     servings: 2,

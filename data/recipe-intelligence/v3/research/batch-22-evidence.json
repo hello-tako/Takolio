@@ -25,14 +25,15 @@
       "URL_DISCOVERED": 43,
       "URL_REACHABLE": 34
     },
-    "claimCount": 59,
+    "claimCount": 61,
     "claimStatusCounts": {
-      "FACT_SUPPORTED": 25,
+      "FACT_SUPPORTED": 27,
       "SOURCE_CONTENT_READ": 22,
       "SOURCE_UNAVAILABLE": 12
     },
     "findingTypeCounts": {
       "BOUNDED_SOURCE_READ": 7,
+      "INTERNAL_CANONICAL_IDENTITY_CONFLICT": 2,
       "INTERNAL_V2_OBSERVATION": 5,
       "INTERNAL_V2_UNIT_BASIS_UNRESOLVED": 20,
       "SOURCE_ACCESS_LIMIT": 12,
@@ -1750,6 +1751,27 @@
           "reviewerSummary": "Declared source retrieval did not provide readable recipe content during this session; no culinary fact was inferred from the failed attempt.",
           "supportLimits": "Availability only. Retrieval failure does not establish correctness, irrelevance or verification of any V2 field.",
           "sourceFactReferences": []
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/0/canonicalIngredientId",
+            "/ingredients/0/reconciliation",
+            "/ingredients/0/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Thịt bò (nạc vai/cổ bò, thái khối)', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
+          "sourceFactReferences": []
         }
       ],
       "nextAction": "Compare each source ingredient/method with V1 and V2; resolve identity, quantity, retention and source-authority gaps; obtain independent culinary review before any promotion."
@@ -2118,6 +2140,27 @@
           "sourceFactReferences": [],
           "reviewerSummary": "These source attempts provided failed retrievals, access blocks, video shells or title-only content rather than an inspected culinary section. Per-source evidenceStatus distinguishes HTTP failure from reachability.",
           "supportLimits": "Access/content limit only; no culinary facts or V2 corrections inferred from unavailable or unread content."
+        },
+        {
+          "id": "internal-beef-identity-ambiguity",
+          "status": "FACT_SUPPORTED",
+          "findingType": "INTERNAL_CANONICAL_IDENTITY_CONFLICT",
+          "evidenceBasis": "INTERNAL_V2_OBSERVATION",
+          "severity": "high",
+          "sourceIds": [],
+          "ingredientPositions": [
+            0
+          ],
+          "stepNumbers": [],
+          "v2Pointers": [
+            "/ingredients/0/sourceName",
+            "/ingredients/0/canonicalIngredientId",
+            "/ingredients/0/reconciliation",
+            "/ingredients/0/reconciliationReason"
+          ],
+          "reviewerSummary": "The source name is 'Thịt bò', assigned BEEF_SIRLOIN. The shared registry names that ID Thịt bò in Vietnamese and Beef sirloin in English, with bắp bò among its aliases. These describe different or unspecified cuts. Existing-canonical status cannot establish this line identity.",
+          "supportLimits": "Internal V2 and repository registry comparison only; see packages/domain/src/index.ts and docs/ai/recipe-intelligence-v3/research/BEEF_IDENTITY_REVIEW.md. No replacement identity, cut equivalence, migration, culinary approval, nutrition certification or runtime promotion is established.",
+          "sourceFactReferences": []
         }
       ],
       "nextAction": "Complete independent culinary, quantity, allergen, nutrition and safety review before promotion.",

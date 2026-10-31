@@ -583,7 +583,7 @@ inventoryRoutes.post('/inventory', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu nguyên liệu không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu nguyên liệu không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400
@@ -763,7 +763,7 @@ inventoryRoutes.patch('/inventory/:id', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu cập nhật không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu cập nhật không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400
@@ -1158,7 +1158,7 @@ inventoryRoutes.post('/inventory/adopt', async (c) => {
   const rawBody = await c.req.json().catch(() => ({}));
   const parseResult = AdoptionRequestSchema.safeParse(rawBody);
   if (!parseResult.success) {
-    return c.json({ error: parseResult.error.errors[0]?.message || 'Dữ liệu nhận nạp không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
+    return c.json({ error: parseResult.error.issues[0]?.message || 'Dữ liệu nhận nạp không hợp lệ', code: 'VALIDATION_ERROR' }, 400);
   }
   try {
     const execution = await executeInventoryAdoption(db,

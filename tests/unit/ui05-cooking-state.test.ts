@@ -174,7 +174,7 @@ it('reports queued versus server success and invalidates dependents once per sin
   expect(state().attempt?.status).toBe('saved');
 });
 it('retries an unknown response using precisely the same command and frozen serving count', async () => {
-  state().startCooking({ ...recipe, servings: 4 }, inventory);
+  state().startCooking({ ...recipe, servings: 4 }, inventory, 'a'.repeat(64));
   mocks.complete
     .mockRejectedValueOnce(new TypeError('lost body'))
     .mockResolvedValueOnce({ success: true });
@@ -182,8 +182,9 @@ it('retries an unknown response using precisely the same command and frozen serv
   expect(state().attempt?.status).toBe('uncertain');
   expect(state().attempt?.servings).toBe(4);
   expect(mocks.complete.mock.calls[0][4]).toBe(4);
+  expect(mocks.complete.mock.calls[0][5]).toBe('a'.repeat(64));
   state().editDeduction(0, '0.1');
-  useCookingStore.setState({ activeRecipe: { ...recipe, servings: 1 } });
+  useCookingStore.setState({ activeRecipe: { ...recipe, servings: 1 }, contentFingerprint: 'b'.repeat(64) });
   await submitCookingCompletion();
   expect(mocks.complete.mock.calls[0]).toEqual(mocks.complete.mock.calls[1]);
   expect(state().attempt?.status).toBe('saved');
@@ -200,7 +201,7 @@ it('surfaces a known insufficient-inventory rejection and keeps the submitted am
   expect(state().beginCompletion()).toBeNull();
 });
 it('blocks safety/idempotency conflicts without permitting a new command', async () => {
-  for (const code of ['HARD_CONSTRAINT_CONFLICT', 'IDEMPOTENCY_CONFLICT']) {
+  for (const code of ['HARD_CONSTRAINT_CONFLICT', 'IDEMPOTENCY_CONFLICT', 'RECIPE_VERSION_UNAVAILABLE', 'RECIPE_VERSION_REQUIRED']) {
     state().resetCooking();
     state().startCooking(recipe, inventory);
     mocks.complete.mockRejectedValue(new ApiError('http', `HTTP 422: {"code":"${code}"}`, 422));

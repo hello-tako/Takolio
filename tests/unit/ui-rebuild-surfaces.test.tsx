@@ -318,3 +318,38 @@ describe('Inventory search recovery', () => {
     expect(container.textContent).not.toContain('Không tìm thấy nguyên liệu phù hợp');
   });
 });
+
+describe('Saved content links', () => {
+  const selectedPin = 'b'.repeat(64);
+  it('passes the selected pin from detail into cooking', async () => {
+    mocks.recipe.mockResolvedValue({ recipe, match: {}, contentFingerprint: selectedPin });
+    await mount(<RecipeDetailPage />, `/recipes/eggs?servings=1&contentFingerprint=${selectedPin}`);
+    await until(() => expect(button('Bắt đầu nấu (10 phút)').disabled).toBe(false));
+    expect(mocks.recipe).toHaveBeenCalledWith('eggs', selectedPin);
+    await act(async () => button('Bắt đầu nấu (10 phút)').click());
+    expect(container.querySelector('[data-cooking-location]')?.textContent)
+      .toBe(`/cook/eggs?servings=1&contentFingerprint=${selectedPin}`);
+    expect(useCookingStore.getState().contentFingerprint).toBe(selectedPin);
+  });
+  it('loads a different selected version instead of reusing the same recipe run', async () => {
+    useCookingStore.getState().startCooking(recipe, stock, 'a'.repeat(64));
+    const selected = { ...recipe, title: 'Phiên bản đã chọn' };
+    mocks.recipe.mockResolvedValue({ recipe: selected, match: {}, contentFingerprint: selectedPin });
+    await mount(<CookingModePage />, `/cooking/eggs?contentFingerprint=${selectedPin}`);
+    await until(() => expect(useCookingStore.getState().contentFingerprint).toBe(selectedPin));
+    expect(mocks.recipe).toHaveBeenCalledWith('eggs', selectedPin);
+    expect(useCookingStore.getState().activeRecipe?.title).toBe(selected.title);
+  });
+  it('retains an uncertain command when the same recipe requests another version', async () => {
+    useCookingStore.getState().startCooking(recipe, stock, 'a'.repeat(64));
+    useCookingStore.setState({
+      attempt: { commandId: 'pending-version', servings: 2, deductions: [], contentFingerprint: 'a'.repeat(64), status: 'uncertain', error: null },
+    });
+    await mount(<CookingModePage />, `/cooking/eggs?contentFingerprint=${selectedPin}`);
+    await until(() => expect(container.textContent).toContain('Cần kiểm tra lần nấu trước'));
+    expect(useCookingStore.getState().contentFingerprint).toBe('a'.repeat(64));
+    expect(useCookingStore.getState().attempt?.commandId).toBe('pending-version');
+    expect(mocks.recipe).not.toHaveBeenCalled();
+    expect(mocks.inventory).not.toHaveBeenCalled();
+  });
+});

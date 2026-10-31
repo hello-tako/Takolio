@@ -13,12 +13,12 @@ import { unchangedAudit, verifyUploadedVersion } from './staging-release.mjs';
 import { compatibleRecoveryPlan, compatibleRecoveryVersionId, verifyCompatibleRecoveryVersion, compatibleRecoveryAction } from './compatible-recovery.mjs';
 import { captureRecoveryBuild, verifyServedRecoveryAssets } from '../family-meal-release.mjs';
 import { verifyEvidenceRun, verifyStagingAcceptance, verifyProductionCertification,
-  isProductionMutation, validateProductionRecovery, observeProduction, productionUploadVersion, productionRecoveryIdentity } from './production-release.mjs';
+  isProductionMutation, validateProductionRecovery, observeProduction, productionUploadVersion, productionRecoveryIdentity, prepareRecipeCatalogStage } from './production-release.mjs';
 import { capturedCommand } from '../cloudflare-deploy-retry.mjs';
 import { verifyCompositionRelease, verifyPlannerPrerequisite } from '../composition-flags.mjs';
 import { validateReleaseSource, migrationManifest, hostedCi, requireCurrentHostedMain,
   fetchRecipeAuthorityEvidence, verifyPreviousRecipeAuthority, verifyRecipeAuthorityEvidence,
-  verifyD1CatalogContinuity, CATALOG_RELEASE_MANIFEST_PATH, verifyStableWorkerDeployment } from '../release-check.mjs';
+  CATALOG_RELEASE_MANIFEST_PATH, verifyStableWorkerDeployment } from '../release-check.mjs';
 import { waitForDeployedRelease } from '../wait-for-deployed-release.mjs';
 import { waitForServiceWorkerRelease } from '../wait-for-service-worker-release.mjs';
 import profiles from '../../config/domain-profiles.json' with { type: 'json' };
@@ -159,18 +159,20 @@ export const productionProvider = {
     const snapshot = await capture(schema);
     if (snapshot.worker.versionId !== certified.versionId || snapshot.worker.vars.GIT_COMMIT !== certified.deployedSha) throw new Error('Production moved since read-only certification');
     const vars = snapshot.worker.vars;
-    const manifest = { ...productionRecoveryIdentity(certification.receipt, snapshot),
+    let manifest = { ...productionRecoveryIdentity(certification.receipt, snapshot),
       repository: REPOSITORY, sha, environment: 'production', hardenedSha: env.HARDENED_SHA, schema,
       mealCompositionV2Enabled: vars.MEAL_COMPOSITION_V2_ENABLED === 'true', recipeCatalogMode: vars.RECIPE_CATALOG_MODE,
       recipeCatalogCanaryPercent: Number(vars.RECIPE_CATALOG_D1_CANARY_PERCENT), recipeCatalogCutoverEnabled: vars.RECIPE_CATALOG_CUTOVER_ENABLED === 'true' };
-    const plan = prepareReleaseConfig({ manifest, receipt: { repository: REPOSITORY, repositoryId: REPOSITORY_ID, sha, ...checks, ...snapshot }, baseline: baseline() });
+    let plan = prepareReleaseConfig({ manifest, receipt: { repository: REPOSITORY, repositoryId: REPOSITORY_ID, sha, ...checks, ...snapshot }, baseline: baseline() });
     planHosts({ environment: 'production', sha, versionId: snapshot.worker.versionId, domains: await domainList(), ...await inventory() });
     const previous = await authority(profiles.production.legacy);
     manifest.previousRecipeAuthorityProof = verifyPreviousRecipeAuthority(manifest, previous, { cwd: process.cwd() });
     manifest.previousRecipeAuthority = previous;
-    if (manifest.recipeCatalogMode === 'd1') {
-      manifest.authorityContinuity = verifyD1CatalogContinuity(manifest, previous, readJson(CATALOG_RELEASE_MANIFEST_PATH), await read(`${script}/versions/${snapshot.worker.versionId}`));
-    }
+    ({ manifest, plan } = prepareRecipeCatalogStage({ manifest, plan,
+      stage: env.RECIPE_CATALOG_STAGE ?? 'preserve',
+      rollbackConfirmed: env.CONFIRM_CATALOG_ROLLBACK === 'true', previous,
+      release: readJson(CATALOG_RELEASE_MANIFEST_PATH),
+      previousVersion: await read(`${script}/versions/${snapshot.worker.versionId}`) }));
     const context = { manifest, audit: snapshot, checks, plan, acceptance, stagingEvidence: staging.proof,
       certificationEvidence: certification.proof, state: 'prepared', mutationAttempted: false };
     writeFileSync(resolve(output, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);

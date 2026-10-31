@@ -15,6 +15,7 @@ import { backfillLegacyInventory } from '../../packages/db/src/inventory-truth';
 import { aggregateShoppingRequirements, type AggregatedShoppingItem, type InventoryItem, type MealPlan } from '../../packages/domain/src';
 import { authMiddleware } from '../../src/worker/middleware/auth';
 import { inventoryRoutes } from '../../src/worker/routes/inventory';
+import { captureRecipeContentVersion, readRecipeContentVersion } from '../../src/worker/services/recipe-content-versions';
 import { recipeRoutes } from '../../src/worker/routes/recipes';
 import { weekRoutes } from '../../src/worker/routes/week';
 import { serializeMealPlanSnapshot } from '../../src/worker/services/week-read';
@@ -430,6 +431,120 @@ describe.each(MATRIX)('B06 shopping/cooking: Week $week, inventory $inventory', 
       expect(inventory().reduce((sum, row) => sum + row.quantity, 0)).toBe(12);
     });
   }
+
+  it('pins detail content through catalog failure, historical reads and receipt replay', async () => {
+    const detail = await request('/recipes/gl-03');
+    expect(detail.status).toBe(200);
+    const contentFingerprint = detail.json.contentFingerprint as string;
+    const original = ALL_RECIPES.find(item => item.id === 'gl-03')!;
+    expect(contentFingerprint).toBe(await fingerprintRecipes([original]));
+    expect(await readRecipeContentVersion(db, contentFingerprint)).toEqual(original);
+    // Synthetic next-version content changes units under the same stable identity.
+    const changed = { ...original, title: 'Synthetic future version', ingredients: original.ingredients.map(line =>
+      line.ingredientId === 'CHICKEN_EGG' ? { ...line, unit: 'g' as const } : line) };
+    const nextFingerprint = await captureRecipeContentVersion(db, changed);
+    expect(nextFingerprint).not.toBe(contentFingerprint);
+    env.RECIPE_CATALOG_MODE = 'unavailable-for-this-test';
+    expect(await request(`/recipes/gl-03?contentFingerprint=${contentFingerprint}`))
+      .toMatchObject({ status: 200, json: { contentFingerprint, recipe: { title: original.title } } });
+    const body = { contentFingerprint, servings: 4,
+      deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2 }] };
+    const cooked = await request('/recipes/gl-03/cook/complete', 'POST', body, 'versioned-cook-command');
+    expect(cooked).toMatchObject({ status: 200, json: { success: true,
+      deductionsApplied: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2, unit: 'piece' }] } });
+    expect(db.query('SELECT recipe_content_fingerprint, servings_cooked FROM cooked_meals WHERE household_id = ?', HOUSE))
+      .toEqual([{ recipe_content_fingerprint: contentFingerprint, servings_cooked: 4 }]);
+    const committed = facts();
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', body, 'versioned-cook-command'))
+      .toMatchObject({ status: 200, json: { idempotentReplay: true } });
+    for (const patch of [{ contentFingerprint: nextFingerprint }, { contentFingerprint: undefined }, { servings: 2 }]) {
+      expect(await request('/recipes/gl-03/cook/complete', 'POST', { ...body, ...patch }, 'versioned-cook-command'))
+        .toMatchObject({ status: 409, json: { code: 'IDEMPOTENCY_CONFLICT' } });
+    }
+    expect(facts()).toEqual(committed);
+    expect(foreignFacts()[0].quantity).toBe(500);
+  });
+
+  it('rejects unknown, malformed and wrong-recipe content without changing stock', async () => {
+    const wrong = await captureRecipeContentVersion(db, ALL_RECIPES.find(item => item.id === 'gl-04')!);
+    const before = facts();
+    for (const contentFingerprint of ['a'.repeat(64), wrong]) {
+      expect(await request('/recipes/gl-03/cook/complete', 'POST', { contentFingerprint, deductions: [] }, 'missing-version-key'))
+        .toMatchObject({ status: 409, json: { code: 'RECIPE_VERSION_UNAVAILABLE' } });
+    }
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', { contentFingerprint: '../bad', deductions: [] }))
+      .toMatchObject({ status: 400, json: { code: 'VALIDATION_ERROR' } });
+    expect((await request('/recipes/gl-03?contentFingerprint=invalid')).status).toBe(400);
+    expect((await request(`/recipes/gl-03?contentFingerprint=${wrong}`)).status).toBe(404);
+    expect(facts()).toEqual(before);
+  });
+
+  it('replays reordered mixed units and omitted units without consulting the current catalog', async () => {
+    const detail = await request('/recipes/gl-03');
+    const body = { contentFingerprint: detail.json.contentFingerprint, servings: 2, deductions: [
+      { ingredientId: 'CHICKEN_EGG', quantityDeducted: 0, unit: 'g' },
+      { ingredientId: 'CHICKEN_EGG', quantityDeducted: 2 },
+      { ingredientId: 'COOKING_OIL', quantityDeducted: 0 },
+    ] };
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', body, 'mixed-unit-replay-key'))
+      .toMatchObject({ status: 200, json: { deductionsApplied: [
+        { ingredientId: 'CHICKEN_EGG', quantityDeducted: 0, unit: 'g' },
+        { ingredientId: 'CHICKEN_EGG', quantityDeducted: 2, unit: 'piece' },
+        { ingredientId: 'COOKING_OIL', quantityDeducted: 0, unit: 'ml' },
+      ] } });
+    const committed = facts();
+    env.RECIPE_CATALOG_MODE = 'unavailable-for-this-test';
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', { ...body,
+      deductions: [...body.deductions].reverse() }, 'mixed-unit-replay-key'))
+      .toMatchObject({ status: 200, json: { idempotentReplay: true } });
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', { ...body,
+      deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 3 }] }, 'mixed-unit-replay-key'))
+      .toMatchObject({ status: 409, json: { code: 'IDEMPOTENCY_CONFLICT' } });
+    expect(facts()).toEqual(committed);
+  });
+
+  it('replays legacy receipts before unavailable catalog resolution and keeps their version unknown', async () => {
+    const body = { servings: 2, deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2 }] };
+    expect((await request('/recipes/gl-03/cook/complete', 'POST', body, 'legacy-version-command')).status).toBe(200);
+    expect(db.query('SELECT recipe_content_fingerprint FROM cooked_meals WHERE household_id = ?', HOUSE))
+      .toEqual([{ recipe_content_fingerprint: null }]);
+    const committed = facts();
+    env.RECIPE_CATALOG_MODE = 'unavailable-for-this-test';
+    expect(await request('/recipes/gl-03/cook/complete', 'POST', body, 'legacy-version-command'))
+      .toMatchObject({ status: 200, json: { idempotentReplay: true } });
+    expect(facts()).toEqual(committed);
+  });
+
+  it('replays pre-0046 receipts with unknown content and request references; ambiguous units fail closed', async () => {
+    db.execute(`INSERT INTO recipes(id,slug,title,cuisine,cook_time_minutes,servings,difficulty)
+      VALUES ('legacy-imported','legacy-imported','Legacy fixture','vietnamese',10,2,'easy')`);
+    const key = 'pre-content-receipt-command';
+    const cookId = `cook_${(await sha256Hex(`${HOUSE}:${key}`)).slice(0, 48)}`;
+    const deductions = [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2, unit: 'piece' }];
+    db.execute(`INSERT INTO cooked_meals(id,household_id,user_id,recipe_id,servings_cooked,deductions_applied)
+      VALUES (?,?,?,'legacy-imported',2,?)`, [cookId, HOUSE, USER, JSON.stringify(deductions)]);
+    expect(db.query('SELECT recipe_content_fingerprint,request_fingerprint FROM cooked_meals WHERE id = ?', cookId))
+      .toEqual([{ recipe_content_fingerprint: null, request_fingerprint: null }]);
+    const committed = facts();
+    env.RECIPE_CATALOG_MODE = 'unavailable-for-this-test';
+    expect(await request('/recipes/legacy-imported/cook/complete', 'POST', {
+      servings: 2, deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2 }],
+    }, key)).toMatchObject({ status: 200, json: { idempotentReplay: true } });
+    expect(facts()).toEqual(committed);
+
+    const ambiguousKey = 'pre-content-ambiguous-command';
+    const ambiguousId = `cook_${(await sha256Hex(`${HOUSE}:${ambiguousKey}`)).slice(0, 48)}`;
+    db.execute(`INSERT INTO cooked_meals(id,household_id,user_id,recipe_id,servings_cooked,deductions_applied)
+      VALUES (?,?,?,'legacy-imported',2,?)`, [ambiguousId, HOUSE, USER, JSON.stringify([
+        ...deductions, { ingredientId: 'CHICKEN_EGG', quantityDeducted: 0, unit: 'g' },
+      ])]);
+    const ambiguous = facts();
+    expect(await request('/recipes/legacy-imported/cook/complete', 'POST', {
+      servings: 2, deductions: [{ ingredientId: 'CHICKEN_EGG', quantityDeducted: 2 },
+        { ingredientId: 'CHICKEN_EGG', quantityDeducted: 0, unit: 'g' }],
+    }, ambiguousKey)).toMatchObject({ status: 409, json: { code: 'IDEMPOTENCY_CONFLICT' } });
+    expect(facts()).toEqual(ambiguous);
+  });
 
   it('refuses insufficient cooking stock without consuming or creating a cooked receipt', async () => {
     const before = facts();

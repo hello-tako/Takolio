@@ -13,7 +13,7 @@ type PaymentResponse<T> = { success: true; payment: T };
 import { BillingPaymentSchema, BillingCreatedResponseSchema, BillingPlansResponseSchema,
   OpenCheckoutsResponseSchema, CheckoutUncertainSchema, BillingAccountResponseSchema } from '../../shared/billing';
 
-function parseBillingResponse<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, value: unknown, label: string): T {
+function parseBillingResponse<T>(schema: z.ZodType<T, unknown>, value: unknown, label: string): T {
   const parsed = schema.safeParse(value);
   if (!parsed.success) throw new Error(`Invalid ${label} response`);
   return parsed.data;

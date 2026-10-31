@@ -1,13 +1,14 @@
 import { z } from 'zod';
+import { UtcDateTimeSchema } from '../../../packages/domain/src/foundation';
 const EventSchema = z.object({
   requestId: z.string().uuid(), routeTemplate: z.string().min(1).max(160),
   status: z.number().int().min(100).max(599), durationMs: z.number().finite().nonnegative().max(86_400_000),
-  observedAt: z.string().datetime(), internalError: z.boolean(),
+  observedAt: UtcDateTimeSchema, internalError: z.boolean(),
 }).strict();
 export const SloInputSchema = z.object({
   classification: z.enum(['SYNTHETIC', 'UNVERIFIED_IMPORT']),
   deploymentSha: z.string().regex(/^[a-f0-9]{40}$/),
-  windowStart: z.string().datetime(), windowEnd: z.string().datetime(),
+  windowStart: UtcDateTimeSchema, windowEnd: UtcDateTimeSchema,
   samplingRatio: z.number().finite().positive().max(1),
   allowedRouteTemplates: z.array(z.string().min(1).max(160)).min(1),
   minimumSamples: z.number().int().positive().safe(),

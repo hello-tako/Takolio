@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { compareIds } from '../../domain/src/availability';
-import { CatalogIdSchema } from '../../domain/src/foundation';
+import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
 import { createRecipeCatalog, type RecipeCatalogSnapshot } from './catalog';
 import { type RecipeCandidate } from './candidates';
 import { RankingContextSchema, resolveRankingPreferences } from './personalization';
@@ -16,7 +16,7 @@ export interface PlanningReference {
 }
 
 export function planningReference(instant: string): PlanningReference {
-  z.string().datetime({ offset: true }).parse(instant);
+  OffsetDateTimeSchema.parse(instant);
   const suffix = instant.match(/(Z|([+-])(\d{2}):(\d{2}))$/);
   if (!suffix) throw new Error('Planning reference requires Z or an explicit HH:MM offset');
   const hours = Number(suffix[3] ?? 0);

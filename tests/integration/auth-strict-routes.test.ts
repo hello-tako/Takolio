@@ -63,6 +63,20 @@ beforeEach(() => {
 afterEach(async () => { await Promise.all(scheduled); vi.restoreAllMocks(); vi.unstubAllGlobals(); db.close(); });
 
 describe('strict OTP HTTP authority', () => {
+  it.each([
+    ['/auth/register', { name: 'X', email: EMAIL, password: PASSWORD }, 'Tên phải có ít nhất 2 ký tự'],
+    ['/auth/login', { email: 'invalid', password: PASSWORD }, 'Địa chỉ email không hợp lệ'],
+    ['/auth/verify-otp', { email: EMAIL, code: 'bad', purpose: 'login' }, 'Mã OTP phải gồm đúng 6 chữ số'],
+    ['/auth/resend-otp', { email: 'invalid', purpose: 'login' }, 'Địa chỉ email không hợp lệ'],
+    ['/auth/reset-password', { email: EMAIL, code: 'bad', newPassword: PASSWORD }, 'Mã OTP phải gồm đúng 6 chữ số'],
+  ])('retains invalid-input HTTP 400 and custom message for %s', async (path, body, message) => {
+    const result = await request(path as string, body as object);
+    expect(result.status).toBe(400);
+    expect(result.json.error).toBe(message);
+    expect(sendEmail).not.toHaveBeenCalled();
+    expect(db.query('SELECT * FROM auth_accounts')).toEqual([]);
+    expect(db.query('SELECT * FROM auth_otp_issuances')).toEqual([]);
+  });
   it('persists only contextual digests and derives client time/expiry from D1', async () => {
     const result = await register();
     expect(result.json).toMatchObject({ otpDelivered: true, deliveryState: 'accepted', expiresInMinutes: 10 });

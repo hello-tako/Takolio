@@ -5,6 +5,8 @@ import type { AuthContext, Env } from '../types';
 import { tenancyGuard } from '../middleware/tenancy';
 import { rateLimiter } from '../middleware/rate-limit';
 import { MealPlanningIntentSchema, PlanIdSchema, PlanningRequestKeySchema, RegenerateMealPlanSchema } from '../../../packages/domain/src/meal-planning-api';
+import type { FamilyMealPlanDto } from '../../../packages/domain/src/family-meal-planning-api';
+import { legacyMealPlan, legacyPlanCompositions, supportsRecipeContent } from '../services/meal-composition-response';
 import { FamilyPlanningInputChanged } from '../../../packages/db/src/family-planning-fence';
 import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal-planning';
 import { MealPlanningSnapshotAuthorizationError } from '../../../packages/db/src/meal-planning-snapshot';
@@ -22,8 +24,13 @@ async function body<T extends z.ZodTypeAny>(c: Ctx, schema: T): Promise<z.output
   if (!parsed.success) throw new MealPlanningError('INVALID_REQUEST', 422, 'Request does not match the family meal planning contract');
   return parsed.data;
 }
-async function respond(c: Ctx, operation: () => Promise<unknown>) {
-  try { return c.json(await operation()); } catch (error) {
+async function respond(c: Ctx, operation: () => Promise<FamilyMealPlanDto | { plan: FamilyMealPlanDto | null }>) {
+  try {
+    const result = await operation();
+    if (supportsRecipeContent(c.req.header('Accept'))) return c.json(result);
+    const legacy = (plan: FamilyMealPlanDto) => ({ ...plan, plan: legacyMealPlan(plan.plan), compositions: legacyPlanCompositions(plan.compositions) });
+    return c.json('schemaVersion' in result ? legacy(result) : { plan: result.plan ? legacy(result.plan) : null });
+  } catch (error) {
     if (error instanceof FamilyPlanningInputChanged) return c.json({ code: 'PLAN_REVALIDATION_REQUIRED', error: 'Planning inputs changed; retry with current data' }, 409);
     if (error instanceof MealPlanningError) return c.json({ code: error.code, error: error.message }, error.status);
     if (error instanceof MealPlanningSnapshotAuthorizationError) return c.json({ code: 'TENANCY_VIOLATION', error: 'Household access denied' }, 403);

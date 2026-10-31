@@ -168,7 +168,7 @@ authRoutes.post('/auth/register', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu đăng ký không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu đăng ký không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400
@@ -199,7 +199,7 @@ authRoutes.post('/auth/verify-otp', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu OTP không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu OTP không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400
@@ -230,7 +230,7 @@ authRoutes.post('/auth/resend-otp', async (c) => {
   const parsed = ResendOtpSchema.safeParse(rawBody);
   if (!parsed.success) {
     return c.json(
-      { error: parsed.error.errors[0]?.message || 'Email hoặc mục đích OTP không hợp lệ' },
+      { error: parsed.error.issues[0]?.message || 'Email hoặc mục đích OTP không hợp lệ' },
       400
     );
   }
@@ -260,7 +260,7 @@ authRoutes.post('/auth/login', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Email hoặc mật khẩu không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Email hoặc mật khẩu không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400
@@ -385,7 +385,7 @@ authRoutes.post('/auth/reset-password', async (c) => {
   if (!parseResult.success) {
     return c.json(
       {
-        error: parseResult.error.errors[0]?.message || 'Dữ liệu đặt lại mật khẩu không hợp lệ',
+        error: parseResult.error.issues[0]?.message || 'Dữ liệu đặt lại mật khẩu không hợp lệ',
         code: 'VALIDATION_ERROR',
       },
       400

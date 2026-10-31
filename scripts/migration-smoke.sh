@@ -623,5 +623,15 @@ INSERT INTO assert_one SELECT COUNT(*) FROM week_swap_receipts;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_list('week_swap_receipts') WHERE "table" IN ('meal_plans','meal_plan_slots');
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+-- Additive archive retains old receipts with an explicitly unknown version.
+CREATE TEMP TABLE smoke_pre_content_meals AS SELECT * FROM cooked_meals;
+.read migrations/0046_recipe_content_versions.sql
+INSERT INTO assert_zero SELECT COUNT(*) FROM recipe_content_versions;
+INSERT INTO assert_zero SELECT COUNT(*) FROM cooked_meals WHERE recipe_content_fingerprint IS NOT NULL;
+INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT id, household_id, user_id, recipe_id,
+ servings_cooked, deductions_applied, completed_at FROM smoke_pre_content_meals EXCEPT SELECT id,
+ household_id, user_id, recipe_id, servings_cooked, deductions_applied, completed_at FROM cooked_meals);
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

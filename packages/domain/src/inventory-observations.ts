@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CanonicalIngredientIdSchema } from './foundation';
+import { OffsetDateTimeSchema, CanonicalIngredientIdSchema } from './foundation';
 
 // T10 observation evidence contract. Observations are durable evidence about
 // stock, never stock itself: persistence must not mutate inventory_items or
@@ -31,7 +31,7 @@ const Identity = z.string().min(1).refine((value) => value === value.trim() && !
 const BoundedText = (max: number) => z.string().max(max).refine((value) => value === value.trim() && !value.includes('\0'));
 const RawName = BoundedText(MAX_OBSERVATION_RAW_NAME);
 const CalendarDate = z.string().date();
-const Instant = z.string().datetime({ offset: true }).refine((value) => Number.isFinite(Date.parse(value)));
+const Instant = OffsetDateTimeSchema.refine((value) => Number.isFinite(Date.parse(value)));
 const StorageBucket = z.enum(['fridge', 'freezer', 'pantry']);
 const ObservedUnit = z.enum(['g', 'kg', 'ml', 'l', 'piece', 'pack', 'bunch', 'slice']);
 const CanonicalUnit = z.enum(['g', 'ml', 'piece', 'pack', 'bunch', 'slice']);

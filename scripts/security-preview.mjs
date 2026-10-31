@@ -15,6 +15,7 @@ const compositionV2 = process.env.PREVIEW_MEAL_COMPOSITION_V2 === 'true' ? 'true
 // Preview-only mismatch drill (UI on, server off); defaults to the UI value.
 const compositionV2Server = process.env.PREVIEW_MEAL_COMPOSITION_V2_SERVER === 'false' ? 'false' : compositionV2;
 const vite = await createViteServer({
+  cacheDir: `node_modules/.vite/security-preview-${port}`,
   define: {
     'import.meta.env.VITE_MEAL_PLANNER_ENABLED': JSON.stringify(mealPlanner),
     'import.meta.env.VITE_MEAL_COMPOSITION_V2_ENABLED': JSON.stringify(compositionV2),
