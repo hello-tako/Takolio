@@ -134,3 +134,43 @@ NUTRITION_EVIDENCE_INCOMPLETE.1395provisional ingredient IDs/4233lines;
 Raw shrimp/crab manufacturer research is bounded evidence, not validated safety
 or approval. No candidate promotion, remote D1 mutation, flag change or deployment
 is established by this checkpoint.
+
+## PR48 correction integrated into PR49 - 2026-10-31 JST
+
+Normal merge of cooking-content 6fb484cf9404738f554d6f4ca186fab848b6ca8b
+into saved-content 744b4e25b2d710e573dac7d82610c363acd6194b. Retain immutable
+47-file baseline a1e706c7c870881d2e472ef7a1b211ac61bdd38c and both histories.
+The matrix additionally retains the parent correction's 0046 re-apply, rejected
+missing/mismatched cooking receipt pins and immutable legacy NULL receipt test.
+Runtime, migration, workflow and payment bytes are unchanged by this merge.
+
+Actual commands, Node24; prefix
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp`:
+
+- `pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs`: PASS exit0,
+  25 tests,11.96s. `pnpm lint` and `pnpm typecheck`: PASS exit0. Logs and exit
+  receipts `/private/tmp/takolio-pr49-integrated-{baseline,lint,typecheck}.{log,exit}`.
+- `node scripts/admin-migration-matrix.mjs --out /private/tmp/takolio-pr49-integrated-migration-matrix.json`:
+  PASS exit0,39/39, generated 2026-10-31T03:19:25.259Z. Actual local D1 only;
+  working tree during merge explicitly dirty, sourceHEAD744b4e25. Matrix SHA256
+  db88cbabf1977fe8d9ffdeb7f08cc4eecea7174853abceda1d6d3457014475d8; baseline guard
+  3008696dff178cbbac0cd97296d2d53a6a60a77514d781d620dd9283902579d2.
+  Log/exit `/private/tmp/takolio-pr49-integrated-migration-matrix.{log,exit}`.
+- `pnpm audit --audit-level high`: PASS exit0, **2 moderate vulnerabilities**;
+  not audit-zero. `/private/tmp/takolio-pr49-integrated-audit.{log,exit}`.
+- `git diff --check`: PASS; exact conflict-marker scan of resolved files: no
+  markers. Public scan and clean committed preflight are recorded separately
+  after execution; neither is implied here.
+
+The inherited runtime/full-suite receipts above are not reruns of this tooling
+merge. Hosted CI must validate the final commit. No culinary approval, catalog
+promotion, remote D1 operation or production deployment follows from local PASS.
+
+Clean committed preflight: `CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp node scripts/admin-release-preflight.mjs --operation validate`
+PASS exit0 for7b7b7b2cfd162de9b9e6874755272607ee9f8ac9; cleanCheckout=true,
+configurationValidation=PASS, baselinea1e706c7, sourceManifestSha256
+1cb8549919217fce42b12129ef505bb4662544ba46d08a59f71bd69329dcd607;
+readyForDeployment=false,remoteExecuted=false. Log/exit
+`/private/tmp/takolio-pr49-integrated-preflight.{log,exit}`. Public added-text
+scan and diff check also PASS. This records the immutable implementation commit;
+the following documentation checkpoint is separately validated by hosted CI.
