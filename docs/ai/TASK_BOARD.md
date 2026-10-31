@@ -8792,4 +8792,3 @@ bundle/font warnings. Hosted full-suite checks and human review remain required.
   so ST01-ST20 and production use the complete final immutable source.
 - PENDING_EXTERNAL_EVIDENCE: live HMAC provider behavior and authenticated facade
   smoke; no local fixture is counted as live acceptance.
-

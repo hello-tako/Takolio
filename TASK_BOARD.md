@@ -5317,4 +5317,3 @@ evidence or create a staging certificate.
 - [x] Restrict only InventoryPage's available view; 54/54 UI checks and static/build/migration gates PASS.
 - [ ] Hosted checks, protected merge, staging deployment and real browser recheck.
 - [ ] Exact-source Admin staging evidence and signed report before production.
-

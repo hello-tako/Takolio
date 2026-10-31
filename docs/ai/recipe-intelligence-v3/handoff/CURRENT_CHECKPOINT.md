@@ -638,4 +638,3 @@ NEXT_ACTION: Use the six located product/context pages in research/RAW_SEAFOOD_D
 
 Draft stack33-44 remains open. Supplement07 Draft #44 uses codex/recipe-v3-safety-07, based on #43 (d7ed5cf8900212915246d151d8095602a40a225e); its Draft PR status and remote-head lookup are recorded in docs/ai/recipe-intelligence-v3/handoff/PULL_REQUESTS.md. PR33 historical hosted validate40385562918 and validate-admin40385562692 SUCCESS apply only to its audit/spec head. Later bases are not main; absent hosted checks grant no acceptance. No merge or deployment.
 V1fingerprint f8cf8c7ff59df9fe29e246b9e3c9aad0fd155fa8df35bf671ac4d03fa2b5ab37. Supplement07 preserves all previous claims/sources/edits/history; no raw-cache publication. Exact commands/failures:14_TEST_STRATEGY.md. No V3runtime/staging/production certification.
-

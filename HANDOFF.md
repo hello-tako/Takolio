@@ -2375,4 +2375,3 @@ only the fridge page's available view to positive quantity. Two baseline-failing
 regressions now pass; four focused UI suites 54/54, lint, typecheck, build and
 migration smoke PASS. Hosted checks and deployed UI verification remain pending.
 Admin staging remains old source 0322a919 and production Admin NOT_DEPLOYED.
-
