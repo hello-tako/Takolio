@@ -1,3 +1,32 @@
+## PR48 release-tool correction - 2026-10-31 JST
+
+ADR-075 addendum: Admin preflight/matrix now bind the immutable0046 checkpoint
+680502cc7aa64a4d11abca1ae0625ee9f5166d66, retaining original/V2 ancestry and
+parallel-main/post-checkpoint drift guards. Historical43/45 matrix cases remain;
+new46 cases cover fresh/populated upgrades, reapply, legacy NULL, immutable archive
+and receipt identity, missing/future ledger entries and strict45 rollback refusal.
+No runtime, migration, workflow or payment bytes changed by this correction.
+
+Executed in Takolio-recipe-v3-cooking-fix with Node24/pnpm10:
+`CI=1 PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp pnpm check`
+PASS exit0;431files/9665tests/1018.97s, lint/typecheck/migrations/builds PASS.
+Log/exit: /private/tmp/takolio-pr48-full-check.log and .exit.
+`pnpm exec vitest run tests/unit/admin-customer-baseline.test.mjs` PASS25tests;
+/private/tmp/takolio-pr48-baseline-tests.log. Real local D1 matrix
+`node scripts/admin-migration-matrix.mjs --out /private/tmp/takolio-pr48-migration-matrix.json`
+PASS38/38,exit0; matching .log/.exit. SQL-only; not Worker recovery proof.
+Preflight validate reported configuration PASS, baseline680502cc, dirty checkout,
+readyForDeployment=false, remoteExecuted=false; no production readiness inferred.
+
+Next: commit/push correction on PR48; reconcile its46 coverage with PR49's47
+baseline a1e706c7c870881d2e472ef7a1b211ac61bdd38c. PR38 exactb40a03dd has
+AI technical approval via vn-taphoanhatung; CI41161395140 SUCCESS, Admin41161395154
+pending at this observation. Continue normal protected merges. Deployment permission
+persists; four catalog data gates, source/food-safety evidence, approved publication
+and same-source hosted certification remain. No production mutation or deployment.
+
+---
+
 # Cooking content foundation validation - 2026-10-30 JST
 
 Status: LOCAL_VALIDATED; V3 release remains NOT_READY.
