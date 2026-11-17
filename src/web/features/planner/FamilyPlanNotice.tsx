@@ -21,8 +21,11 @@ export function FamilyPlanNotice({
   if (!warnings.includes(capCode) && !(current && familyPlan.diagnostics.reasons.includes(capCode)))
     return null;
   return (
-    <p className="planning-notice planning-family-policy-note" role="status">
-      <Info size={16} aria-hidden="true" />
+    <p
+      className="planning-notice planning-family-policy-note flex items-start gap-2 rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft px-4 py-3 text-xs font-semibold text-tk-turmeric-deep"
+      role="status"
+    >
+      <Info size={16} aria-hidden="true" className="mt-0.5 shrink-0" />
       <span>{reasonLabel(capCode, locale)}</span>
     </p>
   );

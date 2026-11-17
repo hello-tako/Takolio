@@ -190,6 +190,10 @@ export function validateEnvironment(env: Env): ConfigValidationResult {
     fatalIssues.push(
       fatal('CONFIG_JWT_SECRET_MISSING', 'Required auth secret JWT_SECRET is absent; every authenticated request fails closed.')
     );
+  } else if (env.JWT_SECRET.trim().length < 32) {
+    fatalIssues.push(
+      fatal('CONFIG_JWT_SECRET_TOO_SHORT', 'JWT_SECRET must be at least 32 characters in production.')
+    );
   }
   if (!env.OTP_HASH_SECRET?.trim()) {
     fatalIssues.push(

@@ -51,7 +51,9 @@ export function isNonRetryable(err: unknown): boolean {
     typeof err.status === 'number' &&
     err.status >= 400 &&
     err.status < 500 &&
-    err.status !== 409
+    err.status !== 408 &&
+    err.status !== 409 &&
+    err.status !== 429
   );
 }
 

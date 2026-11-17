@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { skipToken, useQuery, useQueryClient } from '@tanstack/react-query';
-import { CalendarDays, CheckCircle2, ShoppingBag } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import type {
   MealPlanDto,
   PlanShoppingDtoSchema,
 } from '../../../../packages/domain/src/meal-planning-api';
 import type { MoneyDto } from '../../../../packages/domain/src/meal-shopping-api';
 import type { z } from 'zod';
-import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
+import { BentoCard } from '../../design-system/v4/AtelierPrimitives';
+import {
+  BudgetCoinJarIcon,
+  CalendarMealCheckIcon,
+  NavShoppingIcon,
+} from '../../design-system/icons';
 import { mealPlanningApi } from '../../services/meal-planning';
 import { queryKeys } from '../../lib/queryKeys';
 import { plannerCopy, type PlannerLocale } from './copy';
@@ -29,7 +34,6 @@ import { useFamilyPreferences } from '../family/useFamilyPreferences';
 import { ApiError } from '../../services/http';
 import { capturePrivateSession } from '../../lib/private-session';
 import { shoppingApi } from '../../services/shopping';
-
 import {
   compositionCopy,
   compositionUnavailable,
@@ -46,6 +50,7 @@ import {
 } from './schedule';
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
+
 function tripDateLabel(value: string, locale: PlannerLocale) {
   const date = new Date(`${value}T12:00:00Z`);
   return Number.isFinite(date.getTime())
@@ -54,6 +59,7 @@ function tripDateLabel(value: string, locale: PlannerLocale) {
       )
     : '—';
 }
+
 export function PlannerShopping({
   plan,
   model,
@@ -89,12 +95,14 @@ export function PlannerShopping({
   const [mode, setMode] = useState<'hard' | 'soft'>('hard');
   const [invalid, setInvalid] = useState(false);
   const errorRef = useRef<HTMLParagraphElement>(null);
+
   useEffect(() => {
     if (invalid) {
       errorRef.current?.focus();
       errorRef.current?.scrollIntoView({ block: 'nearest' });
     }
   }, [invalid]);
+
   const key = [...queryKeys.mealPlanningShopping(plan.id), plan.revision, currency, budget, mode];
   const shopping = useQuery<Shopping>({
     queryKey: key,
@@ -110,8 +118,9 @@ export function PlannerShopping({
       : (calendarToday ?? ''),
   );
   const [tripDays, setTripDays] = useState(3);
+
   useEffect(() => {
-    if (familyPreferences.data)
+    if (familyPreferences.data) {
       setTripDays(
         familyPreferences.data.preferences.shoppingCadence === 'daily'
           ? 1
@@ -119,7 +128,9 @@ export function PlannerShopping({
             ? 7
             : 3,
       );
+    }
   }, [familyPreferences.data]);
+
   const tripEnd = new Date(`${tripStart}T12:00:00Z`);
   tripEnd.setUTCDate(tripEnd.getUTCDate() + tripDays - 1);
   const endDate = Number.isFinite(tripEnd.getTime())
@@ -135,6 +146,7 @@ export function PlannerShopping({
   const [shareMessage, setShareMessage] = useState('');
   const [shareRecovery, setShareRecovery] = useState(false);
   const needsRefresh = shareRecovery || compositionRevisionChanged;
+
   async function reloadPlan() {
     const isCurrent = capturePrivateSession();
     const result = await model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan);
@@ -143,6 +155,7 @@ export function PlannerShopping({
       setShareMessage('');
     }
   }
+
   async function shareShopping() {
     if (
       shareBusy ||
@@ -199,6 +212,7 @@ export function PlannerShopping({
       if (isCurrent()) setShareBusy(false);
     }
   }
+
   const fresh = plan.freshness.status === 'fresh';
   const canShare = canSharePlannerShopping(plan, model.familyPlan);
   const hasFutureMeals = hasFuturePlannerSlot(plan);
@@ -206,6 +220,7 @@ export function PlannerShopping({
     fresh && !model.busy && !model.error && shopping.data?.planRevision === plan.revision
       ? shopping.data
       : null;
+
   async function submit(event: React.FormEvent) {
     event.preventDefault();
     setInvalid(false);
@@ -225,25 +240,27 @@ export function PlannerShopping({
       (result) => client.setQueryData(key, result),
     );
   }
+
   return (
     <>
       {composing && !compositionUnavailable(compositions.error) && (
         <CompositionLoadState query={compositions} locale={locale} />
       )}
+
       {untracked.length > 0 && (
         <section
           aria-labelledby="untracked-shopping"
-          className="rounded-xl bg-semantic-warning-soft p-4 space-y-2"
+          className="space-y-2 rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft p-4 text-tk-ink"
         >
-          <h2 id="untracked-shopping" className="font-semibold text-sm">
+          <h2 id="untracked-shopping" className="text-sm font-extrabold text-tk-turmeric-deep">
             {c.notTracked}
           </h2>
-          <p className="text-sm">{c.untrackedShopping}</p>
-          <ul className="text-sm">
+          <p className="text-sm text-tk-secondary">{c.untrackedShopping}</p>
+          <ul className="space-y-1 text-sm">
             {untracked.map(({ meal, item }) => (
               <li key={`${meal.slotId}:${item.id}`}>
                 <Link
-                  className="inline-flex min-h-11 items-center underline"
+                  className="inline-flex min-h-11 items-center font-bold text-tk-jade-deep underline"
                   to={`/planner/${plan.id}/meal/${encodeURIComponent(meal.slotId)}`}
                 >
                   {componentTitle(item, locale)} · {meal.date} · {t[meal.mealType]}
@@ -253,34 +270,42 @@ export function PlannerShopping({
           </ul>
         </section>
       )}
+
       {composing && (
-        <Card className="planning-share-shopping">
-          <div className="planning-share-heading">
-            <CalendarDays size={20} aria-hidden="true" />
+        <BentoCard tone="jade" padding="md" className="planning-share-shopping space-y-4">
+          <div className="planning-share-heading flex items-start gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-tk-jade-deep shadow-xs">
+              <CalendarMealCheckIcon size={22} tone="jade" active />
+            </span>
             <div>
-              <h2>{locale === 'vi' ? 'Chuẩn bị lượt đi chợ' : 'Prepare your shopping trip'}</h2>
-              <p>
+              <h2 className="font-heading text-lg font-extrabold text-tk-ink">
+                {locale === 'vi' ? 'Chuẩn bị lượt đi chợ' : 'Prepare your shopping trip'}
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed text-tk-secondary">
                 {locale === 'vi'
                   ? 'Chọn khoảng ngày cần mua. Takolio gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.'
                   : 'Choose the days to shop for. Takolio combines what upcoming meals still need from your current fridge.'}
               </p>
             </div>
           </div>
-          <div className="family-field-pair">
-            <label>
+
+          <div className="family-field-pair grid gap-3 sm:grid-cols-2">
+            <label className="block text-sm font-bold text-tk-ink">
               {locale === 'vi' ? 'Mua cho các bữa từ ngày' : 'Meals from'}
               <input
                 type="date"
                 min={calendarToday}
                 value={tripStart}
                 onChange={(event) => setTripStart(event.target.value)}
+                className={plannerInputClass}
               />
             </label>
-            <label>
+            <label className="block text-sm font-bold text-tk-ink">
               {locale === 'vi' ? 'Khoảng đi chợ' : 'Shopping period'}
               <select
                 value={tripDays}
                 onChange={(event) => setTripDays(Number(event.target.value))}
+                className={plannerInputClass}
               >
                 <option value={1}>{locale === 'vi' ? '1 ngày' : '1 day'}</option>
                 <option value={3}>{locale === 'vi' ? '3 ngày' : '3 days'}</option>
@@ -288,10 +313,12 @@ export function PlannerShopping({
               </select>
             </label>
           </div>
-          <p className="planning-note">
+
+          <p className="planning-note text-xs font-bold text-tk-jade-deep">
             {locale === 'vi' ? 'Cho các bữa từ' : 'For meals from'}{' '}
             {tripDateLabel(tripStart, locale)} → {tripDateLabel(endDate, locale)}
           </p>
+
           <Button
             fullWidth
             disabled={
@@ -303,8 +330,9 @@ export function PlannerShopping({
             <CheckCircle2 size={16} className="mr-2" />
             {locale === 'vi' ? 'Tạo danh sách dùng chung' : 'Create shared list'}
           </Button>
+
           {!canShare && !needsRefresh && (
-            <p className="text-sm text-semantic-text-secondary mt-3" role="status">
+            <p className="mt-2 text-sm text-tk-secondary" role="status">
               {!hasFutureMeals
                 ? locale === 'vi'
                   ? 'Các bữa trong thực đơn này đã qua giờ dự kiến. Lên thực đơn mới để chuẩn bị lượt đi chợ tiếp theo.'
@@ -314,15 +342,23 @@ export function PlannerShopping({
                   : 'The plan or food preferences need revalidation. Load the latest revision and update the plan before creating a shared list.'}
             </p>
           )}
+
           {shareMessage && (
-            <p role="status" className="planning-notice">
+            <p
+              role="status"
+              className="planning-notice rounded-2xl border border-tk-jade/25 bg-white px-4 py-3 text-sm font-bold text-tk-jade-deep"
+            >
               {shareMessage}
             </p>
           )}
+
           {needsRefresh && (
-            <div role="status" className="planning-notice">
+            <div
+              role="status"
+              className="planning-notice space-y-2 rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft p-4 text-sm text-tk-turmeric-deep"
+            >
               {!shareMessage && (
-                <p>
+                <p className="font-semibold">
                   {locale === 'vi'
                     ? 'Thực đơn đã có phiên bản mới. Tải lại trước khi cập nhật danh sách đi chợ.'
                     : 'A newer plan is available. Load it before updating shopping.'}
@@ -337,29 +373,32 @@ export function PlannerShopping({
               </Button>
             </div>
           )}
-          <Link className="planning-text-link" to="/shopping">
+
+          <Link
+            className="planning-text-link inline-flex min-h-11 items-center text-sm font-extrabold text-tk-jade-deep underline"
+            to="/shopping"
+          >
             {locale === 'vi' ? 'Mở danh sách và chỉnh lượng' : 'Open and edit the list'}
           </Link>
-        </Card>
+        </BentoCard>
       )}
-      <details className="planning-diagnostics planning-price-options">
-        <summary>
+
+      <details className="planning-diagnostics planning-price-options rounded-2xl border border-tk-stone bg-tk-sunken/70 p-4">
+        <summary className="cursor-pointer text-sm font-extrabold text-tk-ink">
           {locale === 'vi'
             ? 'Ước tính giá & ngân sách (tuỳ chọn)'
             : 'Price estimates and budget (optional)'}
         </summary>
-        <Card className="planning-shopping-form">
-          <h2 className="font-heading font-bold text-xl flex items-center gap-2">
-            <ShoppingBag className="text-takosan-green-deep" />
+        <BentoCard tone="ceramic" padding="md" className="planning-shopping-form mt-4">
+          <h2 className="flex items-center gap-2 font-heading text-xl font-extrabold text-tk-ink">
+            <NavShoppingIcon size={22} tone="jade" active />
             {t.shopping}
           </h2>
-          <p className="text-sm text-semantic-text-secondary mt-2 leading-relaxed">
-            {t.shoppingIntro}
-          </p>
-          <form onSubmit={submit} className="space-y-4 mt-5">
+          <p className="mt-2 text-sm leading-relaxed text-tk-secondary">{t.shoppingIntro}</p>
+          <form onSubmit={submit} className="mt-5 space-y-4">
             <fieldset disabled={!!model.busy || !fresh} className="space-y-4 disabled:opacity-60">
-              <div className="planning-pair">
-                <label className="text-sm font-semibold">
+              <div className="planning-pair grid gap-3 sm:grid-cols-2">
+                <label className="text-sm font-semibold text-tk-ink">
                   {t.currency}
                   <select
                     value={currency}
@@ -371,7 +410,7 @@ export function PlannerShopping({
                     ))}
                   </select>
                 </label>
-                <label className="text-sm font-semibold">
+                <label className="text-sm font-semibold text-tk-ink">
                   {t.budget}
                   <input
                     name="budget"
@@ -387,7 +426,7 @@ export function PlannerShopping({
                   />
                 </label>
               </div>
-              <label className="block text-sm font-semibold">
+              <label className="block text-sm font-semibold text-tk-ink">
                 {t.budgetMode}
                 <select
                   value={mode}
@@ -405,7 +444,7 @@ export function PlannerShopping({
                 ref={errorRef}
                 tabIndex={-1}
                 role="alert"
-                className="planning-error"
+                className="planning-error rounded-2xl border border-tk-berry/30 bg-tk-berry-soft p-3.5 text-sm font-semibold text-tk-berry-deep"
               >
                 {t.budgetInvalid}
               </p>
@@ -415,16 +454,18 @@ export function PlannerShopping({
             </Button>
           </form>
           {model.busy === 'shopping' && (
-            <p role="status" className="text-sm mt-3 text-takosan-green-deep">
+            <p role="status" className="mt-3 text-sm font-bold text-tk-jade-deep">
               {t.optimizing}
             </p>
           )}
-        </Card>
+        </BentoCard>
       </details>
+
       {response && <ShoppingResult key={response.result.id} response={response} locale={locale} />}
+
       {!fresh && (
         <Link
-          className="inline-flex min-h-11 items-center underline text-sm text-takosan-green-deep"
+          className="inline-flex min-h-11 items-center text-sm font-extrabold text-tk-jade-deep underline"
           to={`/planner/${plan.id}`}
         >
           {t.back}
@@ -447,97 +488,118 @@ export function ShoppingResult({
     result.cost.status === 'known' &&
     result.cost.totalCost !== null &&
     result.shoppingCompleteness === 'complete';
+
   return (
-    <div className="planning-shopping-result" data-testid="shopping-result">
-      <section className="planning-cost-summary" aria-label={t.knownTotal}>
-        <h2 className="text-sm text-white">{complete ? t.completeTotal : t.knownTotal}</h2>
+    <div className="planning-shopping-result space-y-4" data-testid="shopping-result">
+      <section
+        className="planning-cost-summary space-y-2.5 rounded-[26px] border border-white/10 bg-tk-sanctuary-card p-6 text-white shadow-elevated"
+        aria-label={t.knownTotal}
+      >
+        <div className="flex items-center gap-2">
+          <BudgetCoinJarIcon size={20} tone="turmeric" active />
+          <h2 className="text-sm font-bold text-white/85">
+            {complete ? t.completeTotal : t.knownTotal}
+          </h2>
+        </div>
         {result.cost.status === 'unknown' ? (
-          <p className="font-semibold text-lg leading-snug">{t.priceUnavailable}</p>
+          <p className="text-lg font-extrabold leading-snug">{t.priceUnavailable}</p>
         ) : (
-          <p className="text-3xl font-heading font-bold break-all">
+          <p className="break-all font-heading text-3xl font-extrabold tk-tabular">
             {formatMoney(complete ? result.cost.totalCost : result.cost.knownCost, locale)}
           </p>
         )}
         {result.cost.unknownCostItemCount > 0 && (
-          <p className="text-sm text-white">
+          <p className="text-sm text-white/80">
             {result.cost.unknownCostItemCount} {t.unknownPrices}
           </p>
         )}
         <p
-          className="text-sm font-semibold border-t border-white/20 pt-3"
+          className="border-t border-white/15 pt-3 text-sm font-bold"
           data-testid="budget-status"
         >
           {budgetStatusLabel(result.budget.status, locale)}
         </p>
-        <p className="text-sm" data-testid="shopping-status">
+        <p className="text-sm text-white/85" data-testid="shopping-status">
           {shoppingStatusLabel(result.shoppingStatus, locale)}
         </p>
         {result.budget.status === 'over_budget' && (
-          <p className="text-sm">
+          <p className="text-sm font-bold text-tk-turmeric">
             {t.gap}: {formatMoney(result.budget.selectedKnownGap, locale)}
           </p>
         )}
-        {!result.optimization.exhaustive && <p className="text-xs text-white">{t.bestKnown}</p>}
+        {!result.optimization.exhaustive && (
+          <p className="text-xs text-white/75">{t.bestKnown}</p>
+        )}
       </section>
+
       {response.catalogStatus === 'reviewed_catalog_unavailable' && (
-        <p className="text-sm bg-semantic-warning-soft rounded-xl p-4 text-semantic-warning-strong">
+        <p className="rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft p-4 text-sm font-semibold text-tk-turmeric-deep">
           {t.noPrices}
         </p>
       )}
       {result.shoppingCompleteness !== 'complete' && (
-        <p className="text-sm bg-semantic-warning-soft rounded-xl p-4 text-semantic-warning-strong">
+        <p className="rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft p-4 text-sm font-semibold text-tk-turmeric-deep">
           {t.shoppingPartial}
         </p>
       )}
-      <section className="planning-requirements">
-        <h2 className="font-heading text-lg font-bold">{t.list}</h2>
-        <p className="text-xs text-semantic-text-muted">
-          {locale === 'vi'
-            ? 'Xem lượng và giá tham khảo tại đây; đánh dấu đã mua trong danh sách dùng chung.'
-            : 'Review quantities and prices here; mark purchases in the shared list.'}
-        </p>
+
+      <section className="planning-requirements space-y-3">
+        <div>
+          <h2 className="font-heading text-lg font-extrabold text-tk-ink">{t.list}</h2>
+          <p className="mt-0.5 text-xs text-tk-muted">
+            {locale === 'vi'
+              ? 'Xem lượng và giá tham khảo tại đây; đánh dấu đã mua trong danh sách dùng chung.'
+              : 'Review quantities and prices here; mark purchases in the shared list.'}
+          </p>
+        </div>
         {[...result.requirements, ...result.optionalRequirements].map((requirement) => {
           const line = result.purchaseLines.find((item) => item.requirementId === requirement.id);
           const unresolved = result.unresolvedRequirements.find(
             (item) => item.requirementId === requirement.id,
           );
           return (
-            <Card key={requirement.id} className="planning-purchase-row">
-              <div className="flex gap-3 items-start min-h-11">
+            <BentoCard
+              key={requirement.id}
+              tone="ceramic"
+              padding="sm"
+              className="planning-purchase-row"
+            >
+              <div className="flex min-h-11 items-start gap-3">
                 <span className="min-w-0">
-                  <span className="font-semibold text-sm">
+                  <span className="text-sm font-extrabold text-tk-ink">
                     {ingredientLabel(requirement.ingredientId, locale)}
                   </span>
                   {requirement.optional && (
-                    <span className="block text-xs text-semantic-text-muted">{t.optional}</span>
+                    <span className="block text-xs text-tk-muted">{t.optional}</span>
                   )}
-                  <span className="block text-sm mt-1">
+                  <span className="mt-1 block text-sm font-semibold text-tk-secondary">
                     {t.required}: {formatQuantity(requirement.required, locale)}
                   </span>
                 </span>
               </div>
               {requirement.status === 'unresolved' && (
-                <p className="text-sm text-semantic-warning-strong mt-2">{t.unresolved}</p>
+                <p className="mt-2 text-sm font-semibold text-tk-turmeric-deep">{t.unresolved}</p>
               )}
               {line && line.selectedPackages.length > 0 ? (
-                <div className="mt-3 border-t border-semantic-border/70 pt-3 text-sm space-y-2">
-                  <p className="text-xs font-semibold text-semantic-text-muted">
-                    {t.selectedPackages}
-                  </p>
+                <div className="mt-3 space-y-2 border-t border-tk-stone/70 pt-3 text-sm">
+                  <p className="text-xs font-bold text-tk-muted">{t.selectedPackages}</p>
                   {line.selectedPackages.map((pack) => (
-                    <p key={pack.purchaseOptionId} className="flex flex-wrap justify-between gap-2">
+                    <p
+                      key={pack.purchaseOptionId}
+                      className="flex flex-wrap justify-between gap-2 font-semibold text-tk-ink"
+                    >
                       <span>
                         {pack.packageCount} × {formatQuantity(pack.packageContent, locale)}
                       </span>
-                      <span>{formatMoney(pack.lineCost, locale)}</span>
+                      <span className="tk-tabular">{formatMoney(pack.lineCost, locale)}</span>
                     </p>
                   ))}
-                  <p className="text-xs text-semantic-text-secondary">
+                  <p className="text-xs text-tk-secondary">
                     {t.surplus}: {formatQuantity(line.surplus, locale)}
                   </p>
                 </div>
               ) : (
-                <p className="text-xs text-semantic-warning-strong mt-2">
+                <p className="mt-2 text-xs font-semibold text-tk-turmeric-deep">
                   {requirement.optional
                     ? t.optionalNotPurchased
                     : unresolved
@@ -545,34 +607,40 @@ export function ShoppingResult({
                       : t.priceUnavailable}
                 </p>
               )}
-              <p className="mt-3 text-xs text-semantic-text-muted">
+              <p className="mt-3 text-xs text-tk-muted">
                 {[...new Set(requirement.sourceMealSlots.map((slot) => slot.date))].join(' · ')}
               </p>
-            </Card>
+            </BentoCard>
           );
         })}
         {!result.requirements.length && !result.optionalRequirements.length && (
-          <Card>
-            <p className="text-sm">{t.noShopping}</p>
-          </Card>
+          <BentoCard tone="sunken" padding="sm">
+            <p className="text-sm text-tk-secondary">{t.noShopping}</p>
+          </BentoCard>
         )}
       </section>
+
       {result.budget.largestKnownCostDrivers.length > 0 && (
-        <Card>
-          <h2 className="font-heading font-bold">{t.largestCosts}</h2>
-          <ul className="space-y-3 mt-3 text-sm">
+        <BentoCard tone="ceramic" padding="md">
+          <h2 className="font-heading text-base font-extrabold text-tk-ink">{t.largestCosts}</h2>
+          <ul className="mt-3 space-y-2.5 text-sm">
             {result.budget.largestKnownCostDrivers.map((item) => (
               <li key={item.ingredientId} className="flex justify-between gap-3">
-                <span>{ingredientLabel(item.ingredientId, locale)}</span>
-                <span className="break-all">{formatMoney(item.knownCost, locale)}</span>
+                <span className="font-semibold text-tk-ink">
+                  {ingredientLabel(item.ingredientId, locale)}
+                </span>
+                <span className="break-all font-bold text-tk-ink tk-tabular">
+                  {formatMoney(item.knownCost, locale)}
+                </span>
               </li>
             ))}
           </ul>
-        </Card>
+        </BentoCard>
       )}
-      <Card>
-        <h2 className="font-heading font-bold">{t.waste}</h2>
-        <div className="text-sm text-semantic-text-secondary mt-3 space-y-2">
+
+      <BentoCard tone="sunken" padding="md">
+        <h2 className="font-heading text-base font-extrabold text-tk-ink">{t.waste}</h2>
+        <div className="mt-3 space-y-2 text-sm text-tk-secondary">
           {result.wasteSummary.existingAtRiskLotCount > 0 ||
           result.wasteSummary.purchaseAtRiskSurplusCount > 0 ? (
             <p>{t.wasteAtRisk}</p>
@@ -589,12 +657,13 @@ export function ShoppingResult({
             </p>
           ))}
         </div>
-      </Card>
+      </BentoCard>
+
       {(result.optimization.truncated || result.optimization.incompleteReasons.length > 0) && (
-        <details className="text-sm border border-semantic-border p-4 rounded-xl">
-          <summary className="font-semibold cursor-pointer">{t.diagnostics}</summary>
+        <details className="rounded-2xl border border-tk-stone bg-tk-sunken/70 p-4 text-sm text-tk-secondary">
+          <summary className="cursor-pointer font-bold text-tk-ink">{t.diagnostics}</summary>
           <p className="mt-2">{t.bestKnown}</p>
-          <ul className="mt-2 text-xs space-y-1">
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-xs">
             {[
               ...new Set([
                 ...result.optimization.limitReasons,
@@ -606,7 +675,8 @@ export function ShoppingResult({
           </ul>
         </details>
       )}
-      <p className="text-xs text-semantic-text-muted">
+
+      <p className="text-xs text-tk-muted">
         {t.priceAsOf}{' '}
         {new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(
           new Date(response.priceAsOf),

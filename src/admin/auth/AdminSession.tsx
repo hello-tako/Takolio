@@ -5,6 +5,7 @@ import { AdminApiError, isSessionFailure, onAdminSessionFailure, setMemoryCsrfTo
 import { useMe } from '../api/hooks';
 import { AdminShell } from '../components/AdminShell';
 import { AdminErrorBoundary } from '../components/ErrorBoundary';
+import { TakolioEmblem } from '../components/TakolioEmblem';
 import { ErrorState, LoadingState, NotConfigured, PermissionDenied } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { hasPermission } from '../lib/nav';
@@ -46,9 +47,14 @@ function StandaloneFrame({ children }: { children: ReactNode }) {
   return (
     <div className="standalone">
       <main id="admin-main" className="standalone-main" tabIndex={-1}>
-        <h1 className="standalone-title" data-testid="admin-page-title">
-          {vi.appName}
-        </h1>
+        <div className="standalone-brand">
+          <span className="brand-mark" aria-hidden="true">
+            <TakolioEmblem size={20} />
+          </span>
+          <h1 className="standalone-title" data-testid="admin-page-title">
+            {vi.appName}
+          </h1>
+        </div>
         {children}
       </main>
     </div>

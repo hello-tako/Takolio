@@ -61,9 +61,9 @@ function facts() {
   return Object.fromEntries(TABLES.map((table) => [table, db.query(`SELECT * FROM ${table} ORDER BY rowid`)]));
 }
 
-function afterCookieLookup(mutate: () => void) {
+function beforeCookieLookup(mutate: () => void) {
   const state = { ran: false, expectedFacts: undefined as ReturnType<typeof facts> | undefined };
-  db.hooks.afterStatement = ({ sql }) => {
+  db.hooks.beforeStatement = ({ sql }) => {
     if (!state.ran && sql.includes('FROM sessions_v2 s')) {
       state.ran = true;
       mutate();
@@ -194,9 +194,9 @@ describe('B01c membership revocation and default-household repro', () => {
   });
 });
 
-describe('B01c route guard freshness after cookie lookup', () => {
-  it.each(PRIVATE_READS)('checks registered-member revocation again on %s', async (path) => {
-    const race = afterCookieLookup(() => {
+describe('B01c single-pass session + tenancy guard verification', () => {
+  it.each(PRIVATE_READS)('checks registered-member revocation in single-pass lookup on %s', async (path) => {
+    const race = beforeCookieLookup(() => {
       db.execute('DELETE FROM household_members WHERE household_id=? AND user_id=?', [HOUSE_A, USER_B]);
     });
     const result = await request(path, cookieMember);
@@ -206,8 +206,8 @@ describe('B01c route guard freshness after cookie lookup', () => {
     expect(JSON.stringify(result.json)).not.toContain('PRIVATE-B01c');
     expect(facts()).toEqual(race.expectedFacts);
   });
-  it.each(PRIVATE_READS)('checks guest-member revocation again on %s', async (path) => {
-    const race = afterCookieLookup(() => {
+  it.each(PRIVATE_READS)('checks guest-member revocation in single-pass lookup on %s', async (path) => {
+    const race = beforeCookieLookup(() => {
       db.execute('DELETE FROM household_members WHERE household_id=? AND user_id=?', [HOUSE_G, GUEST]);
     });
     const result = await request(path, cookieGuest);
@@ -217,8 +217,8 @@ describe('B01c route guard freshness after cookie lookup', () => {
     expect(JSON.stringify(result.json)).not.toContain('PRIVATE-B01c');
     expect(facts()).toEqual(race.expectedFacts);
   });
-  it.each(PRIVATE_READS)('checks guest-household creator changes again on %s', async (path) => {
-    const race = afterCookieLookup(() => {
+  it.each(PRIVATE_READS)('checks guest-household creator changes in single-pass lookup on %s', async (path) => {
+    const race = beforeCookieLookup(() => {
       db.execute('UPDATE households SET created_by=? WHERE id=?', [USER_A, HOUSE_G]);
     });
     const result = await request(path, cookieGuest);
@@ -256,9 +256,15 @@ describe('B01c authoritative cookie failures and public recipe browsing', () => 
     };
     await expectDenied(`/recipes/${RECIPE.id}`, cookieA, 'GET', undefined, {}, {}, 503, 'AUTH_UNAVAILABLE');
   });
-  describe.each(['registered', 'guest'] as const)('%s second tenancy query', (identity) => {
-    it.each(PRIVATE_READS)('fails closed when the tenancy query errors on %s', async (path) => {
+  describe.each(['registered', 'guest'] as const)('%s fallback tenancy query', (identity) => {
+    it.each(PRIVATE_READS)('fails closed when the unverified tenancy query errors on %s', async (path) => {
       const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+      if (identity === 'guest') {
+        db.execute('DELETE FROM household_members WHERE household_id=? AND user_id=?', [HOUSE_G, GUEST]);
+      } else {
+        db.execute('DELETE FROM household_members WHERE household_id=? AND user_id=?', [HOUSE_A, USER_B]);
+      }
+      makeLastSeenStale();
       db.hooks.beforeStatement = ({ sql }) => {
         if (!sql.includes('FROM sessions_v2 s') && sql.includes('FROM household_members')) {
           throw new Error('PRIVATE-B01c tenancy failure');

@@ -1,12 +1,19 @@
 import { AccountPage } from '../../components/common/AccountPage';
 import React, { useEffect, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Check, Wallet, ShoppingBag, CalendarDays, Sparkles } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { weekApi } from '../../services/week';
 import { queryKeys } from '../../lib/queryKeys';
 import { InlineError, InlineLoading } from '../../components/common/AsyncState';
 import { Button } from '../../components/common/Button';
-import { StickyActions, Surface, Switch, UnavailableState } from '../../design-system/primitives';
+import { StickyActions, Switch, UnavailableState } from '../../design-system/primitives';
+import { BentoCard } from '../../design-system/v4/AtelierPrimitives';
+import {
+  BudgetCoinJarIcon,
+  NavPlannerIcon,
+  NavShoppingIcon,
+  AiSousChefSparkIcon,
+} from '../../design-system/icons';
 
 const MEAL_SLOT_PRESETS = [
   { id: 'dinner_only', label: 'Chỉ bữa tối', desc: 'Bữa tối mỗi ngày' },
@@ -27,11 +34,6 @@ const PRIORITIES = [
   { id: 'variety', label: 'Đa dạng món', desc: 'Tránh lặp lại món gần nhau' },
 ] as const;
 
-/**
- * T17 screen 22 — planning defaults for future plans over the real
- * GET/PATCH /week/preferences contract. Distinct from the new-plan flow
- * (WeekSetup): saving here never generates a plan.
- */
 export const LegacyPlanningSettingsPage: React.FC = () => {
   const queryClient = useQueryClient();
   const [draft, setDraft] = useState<{
@@ -78,7 +80,6 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
     try {
       const result = await weekApi.updateWeekPreferences(draft);
       await queryClient.invalidateQueries({ queryKey: queryKeys.planningPreferences() });
-      // Offline replay queued: say so rather than implying the server has it.
       if ((result as { pendingSync?: boolean })?.pendingSync) {
         setSavedAt(null);
         setError('Chưa có mạng: cài đặt sẽ được đồng bộ lên máy chủ khi kết nối lại.');
@@ -108,16 +109,14 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
       title="Cài đặt lập thực đơn"
       description="Giá trị mặc định cho các thực đơn kế tiếp"
     >
-      <p className="text-xs text-semantic-text-muted mb-3">
+      <p className="text-xs text-tk-muted">
         Đây là cài đặt mặc định, không tạo thực đơn mới. Để tạo, mở mục Thực đơn.
       </p>
 
       {prefsQuery.isPending && !draft && <InlineLoading label="Đang tải cài đặt…" />}
       {prefsQuery.isError && (
-        <InlineError error={prefsQuery.error} onRetry={() => prefsQuery.refetch()} />
+        <InlineError error={prefsQuery.error} onRetry={() => void prefsQuery.refetch()} />
       )}
-      {/* getWeekPreferences returns null when offline: say so instead of
-          showing an endless loading state or fabricating defaults. */}
       {prefsQuery.isSuccess && prefsQuery.data === null && !draft && (
         <UnavailableState title="Không tải được cài đặt khi ngoại tuyến">
           Cần kết nối mạng để đọc cài đặt lập thực đơn hiện tại từ máy chủ. Thử lại khi có mạng.
@@ -127,10 +126,11 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
       {draft && (
         <fieldset disabled={saving} className="account-editor space-y-4 pb-8">
           <legend className="sr-only">Chọn cài đặt</legend>
-          <Surface className="p-4 space-y-3">
-            <h2 className="text-type-label text-semantic-text-primary flex items-center gap-2">
-              <Wallet className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Ngân
-              sách mục tiêu mỗi tuần
+
+          <BentoCard tone="ceramic" padding="md" className="space-y-3">
+            <h2 className="font-heading font-extrabold text-sm text-tk-ink flex items-center gap-2">
+              <BudgetCoinJarIcon size={18} tone="turmeric" active />
+              <span>Ngân sách mục tiêu mỗi tuần</span>
             </h2>
             <div className="grid grid-cols-2 gap-2">
               {[500000, 750000, 1000000, 1500000].map((b) => (
@@ -139,25 +139,23 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                   type="button"
                   aria-pressed={draft.budgetTargetVnd === b}
                   onClick={() => setDraft({ ...draft, budgetTargetVnd: b })}
-                  className={`h-11 rounded-card text-sm font-semibold border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+                  className={`min-h-11 rounded-2xl text-sm font-extrabold border transition-colors cursor-pointer tk-tabular focus-visible:outline-none focus-visible:shadow-t17-focus ${
                     draft.budgetTargetVnd === b
-                      ? 'bg-semantic-action-primary text-semantic-text-inverse border-transparent'
-                      : 'bg-semantic-surface text-semantic-text-secondary border-semantic-border'
+                      ? 'bg-tk-flame text-white border-tk-flame shadow-xs'
+                      : 'bg-white text-tk-secondary border-tk-stone hover:border-tk-ink/25'
                   }`}
                 >
                   {b >= 1000000 ? `${b / 1000000}tr` : `${Math.round(b / 1000)}k`} VND
                 </button>
               ))}
             </div>
-            <p className="text-xs text-semantic-text-muted">
-              Chi phí thực tế luôn hiển thị dạng ước tính.
-            </p>
-          </Surface>
+            <p className="text-xs text-tk-muted">Chi phí thực tế luôn hiển thị dạng ước tính.</p>
+          </BentoCard>
 
-          <Surface className="p-4 space-y-3">
-            <h2 className="text-type-label text-semantic-text-primary flex items-center gap-2">
-              <CalendarDays className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" />{' '}
-              Khung bữa mặc định
+          <BentoCard tone="ceramic" padding="md" className="space-y-3">
+            <h2 className="font-heading font-extrabold text-sm text-tk-ink flex items-center gap-2">
+              <NavPlannerIcon size={18} tone="jade" active />
+              <span>Khung bữa mặc định</span>
             </h2>
             <div className="space-y-2">
               {MEAL_SLOT_PRESETS.map((preset) => (
@@ -166,30 +164,28 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                   type="button"
                   aria-pressed={draft.mealSlotsPreset === preset.id}
                   onClick={() => setDraft({ ...draft, mealSlotsPreset: preset.id })}
-                  className={`w-full flex items-center justify-between gap-3 rounded-card border px-4 py-3 text-left transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+                  className={`w-full flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left transition-colors cursor-pointer focus-visible:outline-none focus-visible:shadow-t17-focus ${
                     draft.mealSlotsPreset === preset.id
-                      ? 'border-semantic-action-primary bg-semantic-success-soft/40'
-                      : 'border-semantic-border bg-semantic-surface hover:border-semantic-border-strong'
+                      ? 'border-tk-jade bg-tk-jade-soft/50'
+                      : 'border-tk-stone bg-white hover:border-tk-ink/25'
                   }`}
                 >
                   <span>
-                    <span className="text-sm font-semibold text-semantic-text-primary block">
-                      {preset.label}
-                    </span>
-                    <span className="text-xs text-semantic-text-muted">{preset.desc}</span>
+                    <span className="text-sm font-bold text-tk-ink block">{preset.label}</span>
+                    <span className="text-xs text-tk-muted">{preset.desc}</span>
                   </span>
                   {draft.mealSlotsPreset === preset.id && (
-                    <Check className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" />
+                    <Check className="w-4 h-4 text-tk-jade" aria-hidden="true" />
                   )}
                 </button>
               ))}
             </div>
-          </Surface>
+          </BentoCard>
 
-          <Surface className="p-4 space-y-3">
-            <h2 className="text-type-label text-semantic-text-primary flex items-center gap-2">
-              <ShoppingBag className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" />{' '}
-              Tần suất đi chợ
+          <BentoCard tone="ceramic" padding="md" className="space-y-3">
+            <h2 className="font-heading font-extrabold text-sm text-tk-ink flex items-center gap-2">
+              <NavShoppingIcon size={18} tone="flame" active />
+              <span>Tần suất đi chợ</span>
             </h2>
             <div className="flex flex-wrap gap-2">
               {FREQUENCIES.map((f) => (
@@ -198,22 +194,22 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                   type="button"
                   aria-pressed={draft.shoppingFrequency === f.id}
                   onClick={() => setDraft({ ...draft, shoppingFrequency: f.id })}
-                  className={`h-11 px-4 rounded-pill text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+                  className={`min-h-11 px-4 rounded-pill text-sm font-bold border transition-colors cursor-pointer focus-visible:outline-none focus-visible:shadow-t17-focus ${
                     draft.shoppingFrequency === f.id
-                      ? 'bg-semantic-action-primary text-semantic-text-inverse border-transparent'
-                      : 'bg-semantic-surface text-semantic-text-secondary border-semantic-border'
+                      ? 'bg-tk-flame text-white border-tk-flame'
+                      : 'bg-white text-tk-secondary border-tk-stone'
                   }`}
                 >
                   {f.label}
                 </button>
               ))}
             </div>
-          </Surface>
+          </BentoCard>
 
-          <Surface className="p-4 space-y-2">
-            <h2 className="text-type-label text-semantic-text-primary flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Ưu
-              tiên khi chọn món
+          <BentoCard tone="ceramic" padding="md" className="space-y-2">
+            <h2 className="font-heading font-extrabold text-sm text-tk-ink flex items-center gap-2">
+              <AiSousChefSparkIcon size={18} tone="jade" active />
+              <span>Ưu tiên khi chọn món</span>
             </h2>
             {PRIORITIES.map((p) => (
               <button
@@ -222,29 +218,27 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                 role="checkbox"
                 aria-checked={draft.priorities.includes(p.id)}
                 onClick={() => togglePriority(p.id)}
-                className="w-full flex items-center justify-between gap-3 rounded-card px-4 py-3 text-left hover:bg-semantic-background-subtle focus-visible:outline-none focus-visible:shadow-t17-focus"
+                className="w-full flex items-center justify-between gap-3 rounded-2xl px-4 py-3 text-left hover:bg-tk-sunken/60 cursor-pointer focus-visible:outline-none focus-visible:shadow-t17-focus"
               >
                 <span>
-                  <span className="text-sm font-semibold text-semantic-text-primary block">
-                    {p.label}
-                  </span>
-                  <span className="text-xs text-semantic-text-muted">{p.desc}</span>
+                  <span className="text-sm font-bold text-tk-ink block">{p.label}</span>
+                  <span className="text-xs text-tk-muted">{p.desc}</span>
                 </span>
                 <span
                   aria-hidden="true"
-                  className={`w-6 h-6 rounded-md border flex items-center justify-center ${
+                  className={`w-6 h-6 rounded-lg border flex items-center justify-center ${
                     draft.priorities.includes(p.id)
-                      ? 'bg-semantic-action-primary border-transparent text-white'
-                      : 'border-semantic-border-strong bg-semantic-surface'
+                      ? 'bg-tk-jade border-transparent text-white'
+                      : 'border-tk-stone bg-white'
                   }`}
                 >
                   {draft.priorities.includes(p.id) && <Check className="w-4 h-4" />}
                 </span>
               </button>
             ))}
-          </Surface>
+          </BentoCard>
 
-          <div className="px-4">
+          <BentoCard tone="ceramic" padding="sm">
             <Switch
               disabled={saving}
               checked={draft.autoWeeklyPlanEnabled}
@@ -252,20 +246,23 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
               label="Gợi ý thực đơn tuần mới"
               description="Lưu lựa chọn cho tuần kế tiếp; hiện chưa tự gửi nhắc nhở"
             />
-          </div>
+          </BentoCard>
 
           {error && (
             <p
               ref={errorRef}
               tabIndex={-1}
               role="alert"
-              className="text-sm text-semantic-danger px-4"
+              className="rounded-2xl border border-tk-berry/25 bg-tk-berry-soft px-4 py-3 text-sm font-semibold text-tk-berry-deep"
             >
               {error}
             </p>
           )}
           {savedAt && !error && (
-            <p role="status" className="text-sm text-semantic-success px-4">
+            <p
+              role="status"
+              className="rounded-2xl border border-tk-jade/30 bg-tk-jade-soft px-4 py-3 text-sm font-bold text-tk-jade-deep"
+            >
               Đã lưu cài đặt lập thực đơn.
             </p>
           )}

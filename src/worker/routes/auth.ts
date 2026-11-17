@@ -1,7 +1,7 @@
 import { Hono, type Context } from 'hono';
 import type { D1DatabaseBinding } from '@frigo/db';
 import { Env, AuthContext } from '../types';
-import { SQL } from '@frigo/db';
+import { SQL, resolvePrimaryHousehold, ensureHouseholdAdopted } from '@frigo/db';
 import { hashPassword, generateSalt, verifyPassword } from '../utils/password';
 import { generateSessionToken, sha256Hex, SESSION_COOKIE } from '../utils/session';
 import { SCAN_QUOTA_POLICY } from '../config/scan-quota-policy';
@@ -39,10 +39,11 @@ interface GoogleAccountRow {
 }
 export const authRoutes = new Hono<AuthRouteEnv>();
 
-// Session bootstrap also needs CSRF protection before a cookie exists.
+// Session bootstrap also needs CSRF protection before a cookie exists (enforced in production and staging).
 for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password', 'google', 'guest', 'logout']) {
   authRoutes.use(`/auth/${path}`, async (c, next) => {
-    if (c.req.method === 'POST' && c.env.ENVIRONMENT === 'production' && !hasTrustedOrigin(c)) {
+    const enforceCsrf = c.env.ENVIRONMENT === 'production' || c.env.ENVIRONMENT === 'staging';
+    if (c.req.method === 'POST' && enforceCsrf && !hasTrustedOrigin(c)) {
       return c.json({ error: 'Cross-site request blocked', code: 'CSRF_ORIGIN_DENIED' }, 403);
     }
     return next();
@@ -324,14 +325,15 @@ authRoutes.post('/auth/login', async (c) => {
       }, issued.status === 200 ? 403 : issued.status as 202 | 400 | 409 | 410 | 429 | 503);
     }
 
-    const householdId = `hh_${account.user_id}`;
+    const primary = await resolvePrimaryHousehold(db, account.user_id);
+    const householdId = primary.householdId;
 
-    // SEC-04 FIX: Return signed cryptographic JWT
+    // SEC-04 FIX: Return signed cryptographic session cookie
     const token = await createSessionAndToken(db, c.env, {
       id: account.user_id,
       email: normalizedEmail,
       householdId,
-      role: 'owner',
+      role: primary.role,
     });
     setSessionCookie(c, token);
 
@@ -494,7 +496,9 @@ authRoutes.post('/auth/google', async (c) => {
       .map((byte) => byte.toString(16).padStart(2, '0'))
       .join('');
     const userId = existing ? existing.user_id : `usr_g_${googleHash.slice(0, 32)}`;
-    const householdId = `hh_${userId}`;
+    const personalHouseholdId = `hh_${userId}`;
+    const primary = existing ? await resolvePrimaryHousehold(db, userId) : { householdId: personalHouseholdId, role: 'owner' as const, existed: false };
+    const householdId = primary.householdId;
 
     await db.batch([
       // Preserve existing child rows when a returning Google user signs in.
@@ -513,13 +517,13 @@ authRoutes.post('/auth/google', async (c) => {
         avatarUrl
       ),
       db.prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)').bind(
-        householdId,
+        personalHouseholdId,
         `Tủ lạnh của ${name}`,
         userId
       ),
       db.prepare(
         'INSERT OR IGNORE INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)'
-      ).bind(`hm_${userId}`, householdId, userId, 'owner'),
+      ).bind(`hm_${userId}`, personalHouseholdId, userId, 'owner'),
       db.prepare(
         `INSERT INTO auth_accounts (id, user_id, email, google_id, is_verified)
          VALUES (?, ?, ?, ?, 1)
@@ -542,15 +546,18 @@ authRoutes.post('/auth/google', async (c) => {
       ).bind(`sub_${userId}`, userId, SCAN_QUOTA_POLICY.free),
       db.prepare(
         'INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)'
-      ).bind(`list_hh_${userId}`, householdId, 'Danh sách mua sắm'),
+      ).bind(`list_${personalHouseholdId}`, personalHouseholdId, 'Danh sách mua sắm'),
     ]);
 
-    // SEC-04 FIX: Return signed cryptographic JWT
+    if (!primary.existed) {
+      await ensureHouseholdAdopted(db, { householdId, actorId: userId });
+    }
+
     const token = await createSessionAndToken(db, c.env, {
       id: userId,
       email,
       householdId,
-      role: 'owner',
+      role: primary.role,
     });
     setSessionCookie(c, token);
 
@@ -619,6 +626,7 @@ authRoutes.post('/auth/guest', async (c) => {
           .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)')
           .bind(`list_${householdId}`, householdId, 'Danh sách mua sắm'),
     ]);
+    await ensureHouseholdAdopted(c.env.DB, { householdId, actorId: newGuestId });
   } catch {
     console.error(JSON.stringify({ event: 'guest_initialization_failed' }));
     return c.json(

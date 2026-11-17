@@ -17,16 +17,20 @@ export function WeekWorkspace({
   children: ReactNode;
 }) {
   return (
-    <div className="week-workspace">
+    <div className="week-workspace min-h-screen bg-tk-canvas text-tk-ink">
       <KitchenHeader backTo={backTo} backLabel="Quay lại thực đơn tuần" />
-      <div className={`week-body${narrow ? ' week-body-narrow' : ''}`}>
+      <div
+        className={`week-body mx-auto px-4 pb-24 pt-4 sm:px-6 ${
+          narrow ? 'week-body-narrow max-w-2xl' : 'max-w-6xl'
+        }`}
+      >
         <KitchenPageHeading
           eyebrow="BẾP NHÀ / THỰC ĐƠN TUẦN"
           title={title}
           description={description}
           action={action}
         />
-        {children}
+        <div className="mt-5 space-y-5">{children}</div>
       </div>
     </div>
   );
@@ -38,8 +42,10 @@ export const weekCurrency = (value: number) =>
     currency: 'VND',
     maximumFractionDigits: 0,
   }).format(value);
+
 export const weekDate = (value: string) =>
   new Intl.DateTimeFormat('vi-VN', { day: 'numeric', month: 'numeric' }).format(
     new Date(`${value.slice(0, 10)}T12:00:00`),
   );
+
 export const mealLabels = { breakfast: 'Bữa sáng', lunch: 'Bữa trưa', dinner: 'Bữa tối' };

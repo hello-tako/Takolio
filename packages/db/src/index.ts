@@ -36,3 +36,5 @@ export * from './personalization';
 export * from './ranking-nutrition';
 export * from './meal-planning';
 export * from './family-preferences';
+export * from './households';
+export { executeInventoryAdoption, ensureHouseholdAdopted } from './inventory-adoption-executor';

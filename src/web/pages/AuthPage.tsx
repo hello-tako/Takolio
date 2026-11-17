@@ -23,14 +23,81 @@ import {
 export const AUTH_VERIFY_PATH = '/auth/verify';
 const EMPTY_OTP = ['', '', '', '', '', ''];
 
+function captureGuestSnapshotBeforeAuth() {
+  const state = useAuthStore.getState();
+  if (!state.isGuest || !state.userId || !state.householdId) return null;
+  const previousGuestScope = { userId: state.userId, householdId: state.householdId };
+  let items: Array<Record<string, unknown>> = [];
+  let shoppingItems: Array<Record<string, unknown>> = [];
+  let guestSessionToken: string | undefined;
+
+  try {
+    const rawInv = localStorage.getItem(
+      `frigo_cache_v2:${state.userId}:${state.householdId}:inventory`,
+    );
+    if (rawInv) {
+      const parsed = JSON.parse(rawInv);
+      if (Array.isArray(parsed)) items = parsed;
+    }
+    const rawShop = localStorage.getItem(
+      `frigo_cache_v2:${state.userId}:${state.householdId}:shopping_list`,
+    );
+    if (rawShop) {
+      const parsed = JSON.parse(rawShop);
+      if (Array.isArray(parsed)) shoppingItems = parsed;
+    }
+  } catch {
+    // Malformed local cache is ignored safely.
+  }
+
+  try {
+    guestSessionToken = sessionStorage.getItem('frigo_guest_token') || undefined;
+  } catch {
+    guestSessionToken = undefined;
+  }
+
+  const normalizedItems = items
+    .filter((i) => i && typeof i.name === 'string' && Number(i.quantity) > 0)
+    .map((i) => ({
+      id: typeof i.id === 'string' ? i.id : undefined,
+      name: String(i.name),
+      quantity: Number(i.quantity) || 1,
+      unit: typeof i.unit === 'string' ? i.unit : 'piece',
+      category: typeof i.category === 'string' ? i.category : 'other',
+      storage: (['fridge', 'freezer', 'pantry'].includes(String(i.storage))
+        ? String(i.storage)
+        : 'fridge') as 'fridge' | 'freezer' | 'pantry',
+      expiryDate: typeof i.expiryDate === 'string' ? i.expiryDate : null,
+      expiryEstimated: Boolean(i.expiryEstimated || i.expiryKind === 'ESTIMATED'),
+    }));
+
+  const normalizedShopping = shoppingItems
+    .filter((s) => s && typeof s.name === 'string')
+    .map((s) => ({
+      id: typeof s.id === 'string' ? s.id : undefined,
+      name: String(s.name),
+      quantity: Number(s.quantity) || 1,
+      unit: typeof s.unit === 'string' ? s.unit : 'piece',
+      isChecked: Boolean(s.isChecked),
+      ingredientId: typeof s.ingredientId === 'string' ? s.ingredientId : undefined,
+    }));
+
+  if (normalizedItems.length === 0 && normalizedShopping.length === 0 && !guestSessionToken) {
+    return null;
+  }
+
+  return {
+    items: normalizedItems,
+    shoppingItems: normalizedShopping,
+    guestSessionToken,
+    previousGuestScope,
+  };
+}
+
 /**
  * Auth state machine (screen 02). Presentation lives in `features/auth/*`;
- * security semantics (Turnstile, GSI, DEC-012 guest transfer, private-session
- * capture) stay here, byte-compatible with the previous monolith.
- *
- * Screen 03 lives at `/auth/verify`: the OTP state is the route, not a hidden
- * mode. A tab-scoped verification context (email, delivery, resend cooldown —
- * never the code) lets refresh/back recover; without it the route says so.
+ * security semantics (Turnstile, GSI on both Login & Register, DEC-012 guest
+ * transfer, seamless guest-to-account merge, private-session capture) stay here.
  */
 export const AuthPage: React.FC = () => {
   const navigate = useNavigate();
@@ -45,6 +112,9 @@ export const AuthPage: React.FC = () => {
       ? requestedReturnTo
       : '/';
   const setAuthSession = useAuthStore((state) => state.setAuthSession);
+  const hasGuestKitchen = useAuthStore((state) =>
+    Boolean(state.isGuest && state.userId && state.householdId),
+  );
   const identity = useAuthStore((state) => `${state.userId}:${state.householdId}`);
 
   // Non-route modes; `otp_verify` is derived from the route below.
@@ -65,6 +135,7 @@ export const AuthPage: React.FC = () => {
   const [email, setEmail] = useState(() => verifyContext?.email ?? '');
   const [password, setPassword] = useState('');
   const [activationPassword, setActivationPassword] = useState('');
+  const [hasPresetPassword, setHasPresetPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   // Forgot password new password
@@ -74,15 +145,11 @@ export const AuthPage: React.FC = () => {
   const [otpDigits, setOtpDigits] = useState(EMPTY_OTP);
   const [otpPurpose, setOtpPurpose] = useState<'register' | 'forgot_password'>('register');
   const [devOtp, setDevOtp] = useState<string | null>(null);
-  // Production responses intentionally omit devOtp; this flag tracks that a
-  // reset code was requested so the user can still enter it and set a password.
   const [forgotOtpRequested, setForgotOtpRequested] = useState(false);
   const [resendCountdown, setResendCountdown] = useState(() =>
     resendSecondsRemaining(verifyContext),
   );
   const [isResending, setIsResending] = useState(false);
-  // DEC-012: guest data transfer was refused by the server; the guest session
-  // stays intact until the user explicitly continues without a transfer.
   const [transferDeferred, setTransferDeferred] = useState(false);
   const verifyRouteActiveRef = useRef(isVerifyRoute);
   const verificationCompletedRef = useRef(false);
@@ -139,9 +206,6 @@ export const AuthPage: React.FC = () => {
     if (requestedMode === 'register') setBaseMode('register');
   }, [requestedMode]);
 
-  // Arriving at /auth/verify (direct load, refresh, back/forward) restores the
-  // tab-scoped context. A verification whose email was never delivered must
-  // say so rather than claim a code is on its way.
   useEffect(() => {
     if (!isVerifyRoute) {
       verificationCompletedRef.current = false;
@@ -173,11 +237,28 @@ export const AuthPage: React.FC = () => {
   const otpInputsRef = useRef<(HTMLInputElement | null)[]>([]);
   const googleBtnRef = useRef<HTMLDivElement>(null);
 
-  // Initialize Google Identity Services after its async script is ready. The
-  // browser button is the only production Google auth entry point: it always
-  // supplies a signed credential to the server.
+  const mergeGuestKitchenIfPresent = useCallback(
+    async (snapshot: ReturnType<typeof captureGuestSnapshotBeforeAuth>) => {
+      if (!snapshot || typeof api.importGuestHousehold !== 'function') return null;
+      try {
+        const res = await api.importGuestHousehold(snapshot);
+        if (
+          res?.success &&
+          ((res.importedItemsCount ?? 0) > 0 || (res.importedShoppingCount ?? 0) > 0)
+        ) {
+          return res;
+        }
+      } catch {
+        // Guest merge is best-effort and must never block a valid authenticated session.
+      }
+      return null;
+    },
+    [],
+  );
+
+  // Initialize Google Identity Services on BOTH Login and Register modes.
   useEffect(() => {
-    if (mode !== 'login') {
+    if (mode !== 'login' && mode !== 'register') {
       setGoogleStatus('idle');
       return;
     }
@@ -203,6 +284,7 @@ export const AuthPage: React.FC = () => {
         return;
       }
       const isCurrent = capturePrivateSession();
+      const guestSnapshot = captureGuestSnapshotBeforeAuth();
       setIsLoading(true);
       setErrorMessage(null);
       try {
@@ -215,7 +297,14 @@ export const AuthPage: React.FC = () => {
             displayName: res.user.displayName,
             avatarUrl: res.user.avatarUrl,
             householdId: res.user.householdId,
+            onboardingCompleted: res.user.onboardingCompleted,
           });
+          const merged = await mergeGuestKitchenIfPresent(guestSnapshot);
+          if (merged) {
+            setSuccessMessage(
+              `Đã đồng bộ ${merged.importedItemsCount} nguyên liệu từ tủ lạnh phiên khách!`,
+            );
+          }
           navigate(res.user.onboardingCompleted ? returnTo : '/onboarding', { replace: true });
         } else {
           setErrorMessage('Không thể xác thực tài khoản Google.');
@@ -262,7 +351,6 @@ export const AuthPage: React.FC = () => {
               theme: 'outline',
               size: 'large',
               width: buttonWidth,
-              // The longer Vietnamese continue label forces a 330px iframe at 320px.
               text: 'signin_with',
               shape: 'pill',
               locale: 'vi',
@@ -270,7 +358,6 @@ export const AuthPage: React.FC = () => {
             renderedWidth = buttonWidth;
           };
           renderGoogleButton();
-          // GIS fixes its width at render time; update it when the host changes size.
           if (typeof ResizeObserver !== 'undefined') {
             resizeObserver = new ResizeObserver(renderGoogleButton);
             resizeObserver.observe(googleHost);
@@ -294,7 +381,16 @@ export const AuthPage: React.FC = () => {
       resizeObserver?.disconnect();
       if (renderGoogleButton) window.removeEventListener('resize', renderGoogleButton);
     };
-  }, [mode, googleRetry, googleClientId, navigate, requestedProvider, setAuthSession]);
+  }, [
+    mode,
+    googleRetry,
+    googleClientId,
+    navigate,
+    requestedProvider,
+    returnTo,
+    setAuthSession,
+    mergeGuestKitchenIfPresent,
+  ]);
 
   // Resend OTP countdown timer
   useEffect(() => {
@@ -304,10 +400,15 @@ export const AuthPage: React.FC = () => {
     }
   }, [resendCountdown]);
 
-  /** Enter screen 03 for `email` (registration purpose). Delivery stays
-   *  unknown unless the response can prove whether email was sent. */
-  const enterVerification = (verificationEmail: string, metadata: unknown, verifierPassword?: string) => {
-    if (verifierPassword !== undefined) setActivationPassword(verifierPassword);
+  const enterVerification = (
+    verificationEmail: string,
+    metadata: unknown,
+    verifierPassword?: string,
+  ) => {
+    if (verifierPassword !== undefined) {
+      setActivationPassword(verifierPassword);
+      setHasPresetPassword(verifierPassword.length >= 6);
+    }
     const presentation = otpPresentation(metadata);
     const context = writeVerifyContext({
       email: verificationEmail,
@@ -331,6 +432,7 @@ export const AuthPage: React.FC = () => {
     setForgotOtpRequested(false);
     setNewPassword('');
     setActivationPassword('');
+    setHasPresetPassword(false);
     setBaseMode('login');
     setSuccessMessage('Thao tác đã hoàn tất. Hãy đăng nhập để xác nhận phiên tài khoản.');
     navigate('/auth', { replace: true });
@@ -345,9 +447,7 @@ export const AuthPage: React.FC = () => {
     return {
       isLatest,
       canApply: () =>
-        isLatest() &&
-        isCurrentSession() &&
-        routeGenerationRef.current === routeGeneration,
+        isLatest() && isCurrentSession() && routeGenerationRef.current === routeGeneration,
     };
   };
 
@@ -368,6 +468,7 @@ export const AuthPage: React.FC = () => {
     }
     const submittedEmail = email;
     const submittedPassword = password;
+    const guestSnapshot = captureGuestSnapshotBeforeAuth();
     const request = beginAuthRequest();
     setIsLoading(true);
     setErrorMessage(null);
@@ -380,7 +481,9 @@ export const AuthPage: React.FC = () => {
       if (res.requireOtp) {
         if (typeof res.devOtp === 'string') setDevOtp(res.devOtp);
         enterVerification(submittedEmail, res, '');
-        setSuccessMessage('Yêu cầu xác thực email đang được xử lý. Hãy chọn mật khẩu để hoàn tất tài khoản.');
+        setSuccessMessage(
+          'Yêu cầu xác thực email đang được xử lý. Hãy chọn mật khẩu để hoàn tất tài khoản.',
+        );
         return;
       }
       if (res.success && res.user) {
@@ -390,7 +493,14 @@ export const AuthPage: React.FC = () => {
           displayName: res.user.displayName,
           avatarUrl: res.user.avatarUrl,
           householdId: res.user.householdId,
+          onboardingCompleted: res.user.onboardingCompleted,
         });
+        const merged = await mergeGuestKitchenIfPresent(guestSnapshot);
+        if (merged) {
+          setSuccessMessage(
+            `Đã đồng bộ ${merged.importedItemsCount} nguyên liệu từ tủ lạnh phiên khách!`,
+          );
+        }
         navigate(res.user.onboardingCompleted ? returnTo : '/onboarding', { replace: true });
       }
     } catch (err: any) {
@@ -401,8 +511,16 @@ export const AuthPage: React.FC = () => {
         enterVerification(submittedEmail, err.payload, '');
         if (delivered) {
           setSuccessMessage('Mã OTP mới đã được gửi đến email của bạn.');
-        } else if (err.payload.deliveryState === 'pending' || err.payload.deliveryState === 'delivery_unknown') {
-          setErrorMessage(apiErrorMessage(err, 'Máy chủ chưa xác nhận trạng thái gửi email. Hãy chờ rồi thử lại.'));
+        } else if (
+          err.payload.deliveryState === 'pending' ||
+          err.payload.deliveryState === 'delivery_unknown'
+        ) {
+          setErrorMessage(
+            apiErrorMessage(
+              err,
+              'Máy chủ chưa xác nhận trạng thái gửi email. Hãy chờ rồi thử lại.',
+            ),
+          );
         } else {
           setErrorMessage(
             'Tài khoản chưa xác thực và email OTP chưa gửi được. Hãy bấm gửi lại mã.',
@@ -456,11 +574,17 @@ export const AuthPage: React.FC = () => {
     } catch (err: any) {
       if (!request.canApply()) return;
       if (err?.code === 'OTP_DELIVERY_UNAVAILABLE' || err?.code === 'OTP_DELIVERY_UNKNOWN') {
-        enterVerification(submittedEmail, { ...err.payload, otpDelivered: false }, submittedPassword);
+        enterVerification(
+          submittedEmail,
+          { ...err.payload, otpDelivered: false },
+          submittedPassword,
+        );
         setSuccessMessage(null);
-        setErrorMessage(err?.code === 'OTP_DELIVERY_UNKNOWN'
-          ? 'Tài khoản đã được lưu. Máy chủ chưa xác nhận trạng thái gửi email; hãy chờ trước khi yêu cầu mã mới.'
-          : 'Tài khoản đã được lưu nhưng email OTP chưa gửi được. Hãy bấm gửi lại mã.');
+        setErrorMessage(
+          err?.code === 'OTP_DELIVERY_UNKNOWN'
+            ? 'Tài khoản đã được lưu. Máy chủ chưa xác nhận trạng thái gửi email; hãy chờ trước khi yêu cầu mã mới.'
+            : 'Tài khoản đã được lưu nhưng email OTP chưa gửi được. Hãy bấm gửi lại mã.',
+        );
       } else {
         setErrorMessage(apiErrorMessage(err, 'Đăng ký thất bại. Email có thể đã tồn tại.'));
       }
@@ -482,7 +606,6 @@ export const AuthPage: React.FC = () => {
     newDigits[index] = clean.slice(-1);
     setOtpDigits(newDigits);
 
-    // Auto move focus to next input
     if (clean && index < 5) {
       otpInputsRef.current[index + 1]?.focus();
     }
@@ -508,10 +631,6 @@ export const AuthPage: React.FC = () => {
     }
   };
 
-  // Verify the entered OTP. `transferGuestData` asks the server to move the
-  // current guest household into the new account; the server may refuse that
-  // (DEC-012) without consuming the OTP, in which case the guest session is left
-  // untouched and the user decides whether to continue without a transfer.
   const submitOtpVerification = async (transferGuestData: boolean) => {
     const isCurrent = capturePrivateSession();
     const code = otpDigits.join('');
@@ -519,7 +638,10 @@ export const AuthPage: React.FC = () => {
       setErrorMessage('Vui lòng nhập đủ 6 chữ số mã OTP');
       return;
     }
-    if (otpPurpose === 'register' && (activationPassword.length < 6 || activationPassword.length > 100)) {
+    if (
+      otpPurpose === 'register' &&
+      (activationPassword.length < 6 || activationPassword.length > 100)
+    ) {
       setErrorMessage('Hãy chọn mật khẩu từ 6 đến 100 ký tự để hoàn tất xác thực tài khoản.');
       return;
     }
@@ -531,8 +653,6 @@ export const AuthPage: React.FC = () => {
     setErrorMessage(null);
 
     try {
-      // Guest data migration: only pass the current household when the visitor
-      // is actually in a guest session (server validates the hh_guest_ prefix).
       const authState = useAuthStore.getState();
       const guestHouseholdId =
         transferGuestData &&
@@ -541,8 +661,13 @@ export const AuthPage: React.FC = () => {
         authState.householdId.startsWith('hh_guest_')
           ? authState.householdId
           : null;
-      const res = await api.verifyOtp(email, code, otpPurpose, guestHouseholdId,
-        otpPurpose === 'register' ? activationPassword : undefined);
+      const res = await api.verifyOtp(
+        email,
+        code,
+        otpPurpose,
+        guestHouseholdId,
+        otpPurpose === 'register' ? activationPassword : undefined,
+      );
       if (!canApply()) return;
       if (!res.success) {
         setErrorMessage(res.error || 'Yêu cầu đang được xử lý. Hãy thử lại với cùng mã OTP.');
@@ -557,6 +682,8 @@ export const AuthPage: React.FC = () => {
         if (otpPurpose === 'register') {
           verificationCompletedRef.current = true;
           clearVerifyContext();
+          setActivationPassword('');
+          setHasPresetPassword(false);
           setIsLoading(false);
           if (res.user) {
             setAuthSession({
@@ -567,19 +694,21 @@ export const AuthPage: React.FC = () => {
               householdId: res.user.householdId,
             });
           }
-          setSuccessMessage('Xác thực tài khoản thành công!');
+          setSuccessMessage(
+            res.migratedFromHouseholdId
+              ? 'Xác thực tài khoản thành công! Đã đồng bộ dữ liệu tủ lạnh khách vào tài khoản của bạn.'
+              : 'Xác thực tài khoản thành công!',
+          );
           const isNewSession = capturePrivateSession();
           setTimeout(() => {
             if (isNewSession()) navigate('/onboarding', { replace: true });
           }, 500);
         } else if (otpPurpose === 'forgot_password') {
           setSuccessMessage('Mã OTP chính xác. Hãy nhập mật khẩu mới.');
-          // proceed to new password form
         }
       }
     } catch (err: any) {
       if (transferGuestData && isInventoryTransferDeferred(err)) {
-        // Not an OTP failure: the code is still valid and nothing was changed.
         if (canApply()) setTransferDeferred(true);
         return;
       }
@@ -606,19 +735,15 @@ export const AuthPage: React.FC = () => {
     }
   };
 
-  // Handle OTP Submit
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     await submitOtpVerification(true);
   };
 
-  // Explicit user choice after a deferred transfer: keep the guest data where it
-  // is and finish creating the separate account with the same OTP.
   const handleContinueWithoutTransfer = async () => {
     await submitOtpVerification(false);
   };
 
-  // Resend OTP
   const handleResendOtp = async () => {
     if (resendCountdown > 0 || isResending) return;
     const request = beginAuthRequest();
@@ -643,17 +768,26 @@ export const AuthPage: React.FC = () => {
         if (typeof retry === 'number' && Number.isFinite(retry) && retry >= 0 && retry <= 86_400) {
           setResendCountdown(Math.ceil(retry));
         }
-        if (otpPurpose === 'register' && (isOffline(err) || err?.status >= 500 || err?.status === 429)) {
-          const terminalDelivery = err?.code === 'OTP_DELIVERY_UNAVAILABLE' || err?.code === 'OTP_DELIVERY_UNKNOWN';
+        if (
+          otpPurpose === 'register' &&
+          (isOffline(err) || err?.status >= 500 || err?.status === 429)
+        ) {
+          const terminalDelivery =
+            err?.code === 'OTP_DELIVERY_UNAVAILABLE' || err?.code === 'OTP_DELIVERY_UNKNOWN';
           const cooldown = err?.payload?.retryAfterSeconds;
           const preserveChallenge = err?.status === 429;
           const context = writeVerifyContext({
             email,
-            resendAvailableAt: typeof cooldown === 'number' && Number.isFinite(cooldown) && cooldown > 0
-              ? Date.now() + cooldown * 1000 : 0,
-            expiresAt: preserveChallenge ? verifyContext?.expiresAt ?? null : null,
-            delivered: preserveChallenge ? verifyContext?.delivered ?? null
-              : terminalDelivery ? otpPresentation({ ...err.payload, otpDelivered: false }).delivered : null,
+            resendAvailableAt:
+              typeof cooldown === 'number' && Number.isFinite(cooldown) && cooldown > 0
+                ? Date.now() + cooldown * 1000
+                : 0,
+            expiresAt: preserveChallenge ? (verifyContext?.expiresAt ?? null) : null,
+            delivered: preserveChallenge
+              ? (verifyContext?.delivered ?? null)
+              : terminalDelivery
+                ? otpPresentation({ ...err.payload, otpDelivered: false }).delivered
+                : null,
           });
           setVerifyContext(context);
           setResendCountdown(resendSecondsRemaining(context));
@@ -675,7 +809,6 @@ export const AuthPage: React.FC = () => {
     }
   };
 
-  // Handle Request Forgot Password OTP
   const handleRequestForgotOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
@@ -708,7 +841,6 @@ export const AuthPage: React.FC = () => {
     }
   };
 
-  // The final endpoint admits and consumes once; no preliminary request is needed.
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     const code = otpDigits.join('');
@@ -729,7 +861,9 @@ export const AuthPage: React.FC = () => {
       const res = await api.resetPassword(submittedEmail, code, submittedPassword);
       if (!request.canApply()) return;
       if (!res.success) {
-        setErrorMessage(res.error || 'Yêu cầu đang được xử lý. Hãy thử lại với cùng mã OTP và mật khẩu mới.');
+        setErrorMessage(
+          res.error || 'Yêu cầu đang được xử lý. Hãy thử lại với cùng mã OTP và mật khẩu mới.',
+        );
         return;
       }
       if (res.success) {
@@ -785,8 +919,6 @@ export const AuthPage: React.FC = () => {
   const backOutOfVerification = () => {
     invalidateAuthRequests();
     if (mode === 'otp_verify') {
-      // Abandoning verification: the tab-scoped context goes with it so the
-      // route cannot later imply a code is pending.
       clearVerifyContext();
       verificationCompletedRef.current = false;
       setVerifyContext(null);
@@ -798,6 +930,7 @@ export const AuthPage: React.FC = () => {
       setTransferDeferred(false);
       setOtpDigits(EMPTY_OTP);
       setActivationPassword('');
+      setHasPresetPassword(false);
       navigate('/auth', { replace: true });
     } else if (mode === 'forgot_password') {
       setBaseMode('login');
@@ -828,12 +961,12 @@ export const AuthPage: React.FC = () => {
     setOtpDigits(EMPTY_OTP);
     setNewPassword('');
     setActivationPassword('');
+    setHasPresetPassword(false);
     setBaseMode('login');
     setErrorMessage(null);
     setSuccessMessage(null);
   };
 
-  // /auth/verify without any verification in progress on this device.
   const verifyContextMissing = isVerifyRoute && verifyContext === null;
 
   return (
@@ -844,12 +977,11 @@ export const AuthPage: React.FC = () => {
       successMessage={successMessage}
       otpDelivered={verifyContext?.delivered}
       devOtp={devOtp}
+      hasGuestKitchen={hasGuestKitchen}
       onFillDevOtp={() => setOtpDigits(devOtp ? devOtp.split('') : otpDigits)}
       onBack={backOutOfVerification}
       onModeChange={switchMode}
     >
-      {/* Auth-state transition (screen 02): fade + horizontal slide on mode
-          change; controlled values live above, so input is never cleared. */}
       <Slide key={mode} direction={mode === 'register' || mode === 'forgot_password' ? 1 : -1}>
         {mode === 'login' && (
           <LoginMode
@@ -870,6 +1002,10 @@ export const AuthPage: React.FC = () => {
         )}
         {mode === 'register' && (
           <RegisterMode
+            googleButtonRef={googleBtnRef}
+            googleStatus={googleStatus}
+            googleClientId={googleClientId ?? null}
+            onRetryGoogle={retryGoogle}
             turnstileSiteKey={turnstileSiteKey}
             turnstileGeneration={turnstileGeneration}
             onTurnstileToken={handleTurnstileToken}
@@ -901,6 +1037,7 @@ export const AuthPage: React.FC = () => {
             transferDeferred={transferDeferred}
             otpPurpose={otpPurpose}
             activationPassword={activationPassword}
+            hasPresetPassword={hasPresetPassword}
             onActivationPasswordChange={setActivationPassword}
             showPassword={showPassword}
             onToggleShowPassword={() => setShowPassword(!showPassword)}

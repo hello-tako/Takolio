@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
+  cleanupAbandonedGuests,
   cleanupExpiredOtps,
+  cleanupExpiredScans,
   cleanupExpiredSessions,
   cleanupTerminalScanJobs,
   runScheduledCleanup,
@@ -117,7 +119,71 @@ describe('scheduled cleanup', () => {
       'stale-scan-reservations',
       'terminal-ready-jobs',
       'terminal-failed-jobs',
+      'expired-scans',
+      'abandoned-guests',
     ]);
+  });
+
+  it('deletes R2 scan objects via IMAGES.delete before pruning >90d terminal scans', async () => {
+    const deletedKeys: Array<string | string[]> = [];
+    const statements: RecordedStatement[] = [];
+    const db: D1DatabaseBinding = {
+      prepare(sql: string) {
+        let bound: unknown[] = [];
+        return {
+          bind(...params: unknown[]) {
+            bound = params;
+            statements.push({ sql, params });
+            return this;
+          },
+          async run() {
+            void bound;
+            return { success: true, meta: { changes: 2 } };
+          },
+          async first() {
+            return null;
+          },
+          async all<T>() {
+            return {
+              results: [
+                { id: 'scan-old-1', image_key: 'scans/hh_1/scan-old-1.jpg' },
+                { id: 'scan-old-2', image_key: 'scans/hh_1/scan-old-2.jpg' },
+              ] as unknown as T[],
+              success: true,
+              meta: {},
+            };
+          },
+        };
+      },
+      async batch() {
+        return [];
+      },
+      async exec() {
+        return { count: 0, duration: 0 };
+      },
+    };
+    const images = {
+      async delete(keys: string | string[]) {
+        deletedKeys.push(keys);
+      },
+    } as unknown as Env['IMAGES'];
+
+    const deleted = await cleanupExpiredScans(db, images, 90);
+    expect(deleted).toBe(2);
+    expect(deletedKeys).toEqual([['scans/hh_1/scan-old-1.jpg', 'scans/hh_1/scan-old-2.jpg']]);
+    expect(statements[0].params).toEqual(['-90 days']);
+    expect(statements[1].sql).toContain('DELETE FROM scans');
+    expect(statements[1].params).toEqual(['scan-old-1', 'scan-old-2']);
+  });
+
+  it('prunes abandoned expired guests (>30d, no active sessions_v2)', async () => {
+    const db = new FakeCleanupDb();
+    db.changes = 1;
+    const deleted = await cleanupAbandonedGuests(db, 30);
+    expect(deleted).toBe(1);
+    expect(db.statements).toHaveLength(3);
+    expect(db.statements[2].sql).toContain('DELETE FROM users');
+    expect(db.statements[2].params).toEqual(['-30 days']);
   });
 
   it('fails closed: skips cleanup in production when configuration is fatal', async () => {
@@ -135,6 +201,8 @@ describe('scheduled cleanup', () => {
     { task: 'expired-sessions', sql: 'DELETE FROM sessions_v2' },
     { task: 'stale-scan-reservations', sql: 'UPDATE scan_quota_ledger AS q SET status' },
     { task: 'terminal-scan-jobs', sql: 'DELETE FROM scan_queue_jobs' },
+    { task: 'expired-scans', sql: 'SELECT id, image_key FROM scans' },
+    { task: 'abandoned-guests', sql: 'DELETE FROM users' },
   ];
   const hostileFailures = [
     {
@@ -212,9 +280,11 @@ describe('scheduled cleanup', () => {
       { task: 'stale-scan-reservations', status: 'ok', deleted: 2 },
       { task: 'terminal-ready-jobs', status: 'ok', deleted: 2 },
       { task: 'terminal-failed-jobs', status: 'ok', deleted: 2 },
+      { task: 'expired-scans', status: 'ok', deleted: 0 },
+      { task: 'abandoned-guests', status: 'ok', deleted: 2 },
     ];
     expect(report.tasks).toEqual(task === 'terminal-scan-jobs'
-      ? [...successful.slice(0, 4), failed]
+      ? [...successful.slice(0, 4), failed, ...successful.slice(6)]
       : successful.map((result) => result.task === task ? failed : result));
     expect(failure.inspections).toEqual([]);
     expect(JSON.stringify(report)).not.toContain('fixture-private-detail');

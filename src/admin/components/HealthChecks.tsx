@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import type { AdminHealthCheck } from '@shared/admin';
 import { vi } from '../i18n/vi';
 import { Badge, type Tone } from './ui';
@@ -16,12 +17,24 @@ export function HealthCheckList({ checks, itemTestId }: { checks: AdminHealthChe
       {checks.map((check) => (
         <li key={check.key} className="check-item" data-testid={itemTestId}>
           <div className="check-head">
-            <strong>{check.label}</strong>
+            <span className="check-title">
+              <span
+                className={clsx(
+                  'status-dot',
+                  check.status === 'ok' && 'is-ok',
+                  check.status === 'degraded' && 'is-degraded',
+                  check.status === 'error' && 'is-error',
+                )}
+                aria-hidden="true"
+              />
+              <strong>{check.label}</strong>
+            </span>
             <Badge tone={HEALTH_TONE[check.status]}>{vi.labels.healthStatus[check.status]}</Badge>
           </div>
           <div className="check-meta">
             <Badge tone={check.observedBy === 'local' ? 'info' : 'warning'}>{vi.labels.observedBy[check.observedBy]}</Badge>
-            {check.detail ? <span className="muted">{check.detail}</span> : null}
+            <span className="mono muted">{check.key}</span>
+            {check.detail ? <span className="muted">· {check.detail}</span> : null}
           </div>
         </li>
       ))}

@@ -1,7 +1,13 @@
 import { AccountPage } from '../../components/common/AccountPage';
 import React, { useState } from 'react';
-import { Bell, Bot } from 'lucide-react';
-import { Section, Surface, UnavailableState } from '../../design-system/primitives';
+import { Link } from 'react-router-dom';
+import { BentoCard, AtelierBadge } from '../../design-system/v4/AtelierPrimitives';
+import {
+  FreshnessShieldIcon,
+  AiSousChefSparkIcon,
+  ExpiryRescueBellIcon,
+  AllergenShieldIcon,
+} from '../../design-system/icons';
 
 const PERMISSION_LABELS: Record<string, string> = {
   granted: 'đã cho phép',
@@ -10,67 +16,75 @@ const PERMISSION_LABELS: Record<string, string> = {
   unsupported: 'trình duyệt không hỗ trợ',
 };
 
-/**
- * T17 screen 26 — privacy & data. Every action maps to a real capability or
- * an honest unavailable state; no fake export file or deletion success.
- */
 export const PrivacyDataPage: React.FC = () => {
   const [browserPermission] = useState(() =>
-    typeof Notification !== 'undefined' ? Notification.permission : 'unsupported'
+    typeof Notification !== 'undefined' ? Notification.permission : 'unsupported',
   );
 
   return (
-    <AccountPage title="Quyền riêng tư & dữ liệu" description="Dữ liệu của bạn ở trong tủ lạnh của bạn">
-
+    <AccountPage
+      title="Quyền riêng tư & dữ liệu"
+      description="Minh bạch cách Takolio bảo vệ dữ liệu tủ lạnh, AI Vision và quyền riêng tư của gia đình bạn."
+    >
       <div className="space-y-4 pb-8">
-        <Section title="Dữ liệu Takolio lưu">
-          <Surface className="p-4 space-y-2">
-            <p className="text-sm text-semantic-text-secondary leading-relaxed">
-              Takolio lưu hồ sơ tài khoản, sở thích ăn uống, nguyên liệu trong tủ, lịch sử quét
-              và thực đơn thuộc hộ gia đình của bạn. Dữ liệu được phân tách theo hộ; các hộ khác
-              không nhìn thấy tủ hoặc thực đơn của bạn.
-            </p>
-          </Surface>
-        </Section>
-
-        <Section title="Cách AI được dùng">
-          <Surface className="p-4 space-y-2">
-            <p className="text-sm text-semantic-text-secondary leading-relaxed flex gap-2">
-              <Bot className="w-4 h-4 text-semantic-action-primary shrink-0 mt-0.5" aria-hidden="true" />
-              Khi bạn gửi ảnh để quét, ảnh và nội dung trên ảnh được xử lý để nhận diện nguyên
-              liệu. Ảnh có thể chứa thông tin cá nhân; hãy che thông tin không cần thiết trước
-              khi gửi. Kết quả nhận diện cần được bạn kiểm tra trước khi thêm vào tủ.
-            </p>
-          </Surface>
-        </Section>
-
-        <Section title="Quyền trên trình duyệt">
-          <Surface className="p-4 space-y-2">
-            <p className="text-sm text-semantic-text-secondary flex gap-2">
-              <Bell className="w-4 h-4 text-semantic-action-primary shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="min-w-0 leading-relaxed">
-                Quyền thông báo hiện tại:{' '}
-                <strong>{PERMISSION_LABELS[browserPermission] ?? 'không xác định'}</strong>. Bạn đổi
-                quyền này trong cài đặt trình duyệt; Takolio không thể tự bật.
-              </span>
-            </p>
-          </Surface>
-        </Section>
-
-        <Section title="Dữ liệu cá nhân">
-          <div className="space-y-3">
-            <UnavailableState title="Xuất dữ liệu — chưa hỗ trợ">
-              Bạn hiện chưa thể tải bản xuất dữ liệu cá nhân từ ứng dụng.
-            </UnavailableState>
-            <UnavailableState title="Xóa tài khoản — chưa hỗ trợ">
-              Bạn hiện chưa thể xóa tài khoản và dữ liệu vĩnh viễn từ ứng dụng.
-              Đăng xuất chỉ kết thúc phiên trên thiết bị, không xóa tài khoản.
-            </UnavailableState>
+        <BentoCard tone="ceramic" padding="md" className="space-y-2.5">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="font-heading font-extrabold text-base text-tk-ink flex items-center gap-2">
+              <FreshnessShieldIcon size={20} tone="jade" active />
+              <span>Phân tách dữ liệu theo Hộ gia đình</span>
+            </h2>
+            <AtelierBadge tone="jade">Cô lập dữ liệu</AtelierBadge>
           </div>
-          <p className="text-xs text-semantic-text-muted mt-2">
-            Đăng xuất khỏi thiết bị vẫn hoạt động từ trang Hồ sơ của bạn.
+          <p className="text-sm text-tk-secondary leading-relaxed">
+            Takolio lưu hồ sơ tài khoản, sở thích khẩu vị, nguyên liệu trong tủ lạnh FEFO, lịch sử
+            quét và thực đơn thuộc hộ gia đình của bạn. Dữ liệu được phân tách nghiêm ngặt theo mã
+            hộ; chỉ các thành viên bạn mời bằng mã <strong>TAKO-XXXX</strong> mới có quyền truy cập
+            bếp chung.
           </p>
-        </Section>
+        </BentoCard>
+
+        <BentoCard tone="ceramic" padding="md" className="space-y-2.5">
+          <h2 className="font-heading font-extrabold text-base text-tk-ink flex items-center gap-2">
+            <AiSousChefSparkIcon size={20} tone="jade" active />
+            <span>Cách AI Vision &amp; Bếp Phó hoạt động</span>
+          </h2>
+          <p className="text-sm text-tk-secondary leading-relaxed">
+            Khi bạn chụp ảnh tủ lạnh hoặc hóa đơn siêu thị, hình ảnh chỉ được xử lý để trích xuất
+            danh sách nguyên liệu và hạn dùng. Hãy che các thông tin cá nhân trên hóa đơn trước khi
+            quét. Mọi kết quả AI luôn qua bước xác nhận của bạn trước khi nhập vào tồn kho thật.
+          </p>
+        </BentoCard>
+
+        <BentoCard tone="ceramic" padding="md" className="space-y-2.5">
+          <h2 className="font-heading font-extrabold text-base text-tk-ink flex items-center gap-2">
+            <ExpiryRescueBellIcon size={20} tone="turmeric" active />
+            <span>Quyền trên trình duyệt</span>
+          </h2>
+          <p className="text-sm text-tk-secondary leading-relaxed">
+            Quyền thông báo hiện tại:{' '}
+            <strong>{PERMISSION_LABELS[browserPermission] ?? 'không xác định'}</strong>. Quyền máy
+            ảnh và micro chỉ được bật khi bạn chủ động mở Quét AI hoặc Bếp Phó Giọng Nói. Bạn luôn
+            có thể thu hồi trong cài đặt trình duyệt.
+          </p>
+        </BentoCard>
+
+        <BentoCard tone="sunken" padding="md" className="space-y-2.5">
+          <h2 className="font-heading font-extrabold text-base text-tk-ink flex items-center gap-2">
+            <AllergenShieldIcon size={20} tone="flame" active />
+            <span>Quản lý phiên &amp; tài khoản</span>
+          </h2>
+          <p className="text-sm text-tk-secondary leading-relaxed">
+            Khi đăng xuất trên thiết bị này, toàn bộ bộ nhớ đệm riêng tư của phiên trước sẽ được xóa
+            sạch ngay lập tức. Tính năng tự xuất tệp lưu trữ JSON và xóa vĩnh viễn tài khoản tự phục
+            vụ đang được phát triển cho các bản cập nhật tiếp theo.
+          </p>
+          <Link
+            to="/me"
+            className="inline-flex text-xs font-extrabold text-tk-flame hover:underline pt-1"
+          >
+            Về trang Hồ sơ để quản lý phiên đăng nhập →
+          </Link>
+        </BentoCard>
       </div>
     </AccountPage>
   );

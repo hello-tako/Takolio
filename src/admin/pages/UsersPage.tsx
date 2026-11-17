@@ -1,13 +1,18 @@
 import { useState, type ChangeEvent } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useHouseholds, useMe, useUsers, type HouseholdListParams, type UserListParams } from '../api/hooks';
-import { Badge, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, type Tone } from '../components/ui';
+import { Badge, Button, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, type Tone } from '../components/ui';
 import { useDebouncedValue } from '../lib/hooks';
-import { formatDate, formatDateTime } from '../lib/format';
+import { formatDate, formatDateTime, formatNumber } from '../lib/format';
 import { hasPermission } from '../lib/nav';
 import { vi } from '../i18n/vi';
 
 const PAGE_SIZE = 25;
+
+function monogram(label: string | null | undefined, fallback = 'U'): string {
+  const trimmed = (label ?? '').trim();
+  return trimmed ? trimmed.slice(0, 1).toUpperCase() : fallback;
+}
 
 export function DirectoryTabs({ active }: { active: 'users' | 'households' }) {
   const me = useMe();
@@ -56,6 +61,15 @@ export function UsersPage() {
   const users = useUsers(params);
 
   const resetPage = () => setPage(1);
+  const hasActiveFilters = searchInput !== '' || type !== 'registered' || plan !== '' || admin !== '';
+  const clearAll = () => {
+    setSearchInput('');
+    setType('registered');
+    setPlan('');
+    setAdmin('');
+    setPage(1);
+  };
+
   const onSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value.slice(0, 100));
     resetPage();
@@ -63,7 +77,16 @@ export function UsersPage() {
 
   return (
     <>
-      <PageHeader title={vi.users.title} description={vi.users.description} />
+      <PageHeader
+        eyebrow={vi.users.eyebrow}
+        title={vi.users.title}
+        description={vi.users.description}
+        actions={
+          users.data ? (
+            <Badge tone="neutral">{formatNumber(users.data.total)} tài khoản</Badge>
+          ) : undefined
+        }
+      />
       <DirectoryTabs active="users" />
       <section className="card">
         <div className="toolbar">
@@ -125,13 +148,26 @@ export function UsersPage() {
               <option value="false">{vi.users.adminNo}</option>
             </select>
           </Field>
+          {hasActiveFilters ? (
+            <div className="toolbar-actions">
+              <Button variant="ghost" onClick={clearAll}>
+                {vi.common.clearFilters}
+              </Button>
+            </div>
+          ) : null}
         </div>
 
         {users.isPending ? <LoadingState rows={5} /> : null}
         {users.isError ? <ErrorState error={users.error} onRetry={() => void users.refetch()} /> : null}
         {users.data && users.data.items.length === 0 ? <EmptyState /> : null}
         {users.data && users.data.items.length > 0 ? (
-          <div className={users.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={users.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.users.caption}>
+          <div
+            className={users.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={users.isPlaceholderData || undefined}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.users.caption}
+          >
             <table className="data-table">
               <caption className="sr-only">{vi.users.caption}</caption>
               <thead>
@@ -150,21 +186,33 @@ export function UsersPage() {
                 {users.data.items.map((user) => (
                   <tr key={user.id} data-testid="admin-user-row">
                     <td>
-                      <Link to={`/users/${encodeURIComponent(user.id)}`} className="row-link">
-                        {user.displayName ?? vi.users.anonymous}
-                      </Link>
+                      <div className="cell-primary">
+                        <span className="cell-avatar" aria-hidden="true">
+                          {monogram(user.displayName)}
+                        </span>
+                        <div>
+                          <Link to={`/users/${encodeURIComponent(user.id)}`} className="row-link">
+                            {user.displayName ?? vi.users.anonymous}
+                          </Link>
+                          <div className="cell-sub mono">{user.id}</div>
+                        </div>
+                      </div>
                     </td>
                     <td>
                       <span className="mono">{user.emailMasked ?? vi.common.dash}</span>
                     </td>
-                    <td>{user.isGuest ? vi.users.guest : vi.users.registered}</td>
+                    <td>
+                      <Badge tone={user.isGuest ? 'warning' : user.isVerified ? 'success' : 'neutral'}>
+                        {user.isGuest ? vi.users.guest : user.isVerified ? vi.users.verified : vi.users.registered}
+                      </Badge>
+                    </td>
                     <td>
                       <PlanBadge plan={user.plan} />
                     </td>
-                    <td>{user.householdCount}</td>
+                    <td>{formatNumber(user.householdCount)}</td>
                     <td>{formatDate(user.createdAt)}</td>
                     <td>{formatDateTime(user.lastSeenAt)}</td>
-                    <td>{user.isPlatformAdmin ? <Badge tone="brand">{vi.users.platformAdmin}</Badge> : vi.common.dash}</td>
+                    <td>{user.isPlatformAdmin ? <Badge tone="terracotta">{vi.users.platformAdmin}</Badge> : vi.common.dash}</td>
                   </tr>
                 ))}
               </tbody>
@@ -180,6 +228,8 @@ export function UsersPage() {
 }
 
 export function HouseholdsPage() {
+  const me = useMe();
+  const canUsers = hasPermission(me.data?.permissions ?? [], 'users.read');
   const [searchInput, setSearchInput] = useState('');
   const search = useDebouncedValue(searchInput.trim(), 300);
   const [page, setPage] = useState(1);
@@ -188,7 +238,16 @@ export function HouseholdsPage() {
 
   return (
     <>
-      <PageHeader title={vi.users.title} description={vi.users.description} />
+      <PageHeader
+        eyebrow={vi.users.eyebrow}
+        title={vi.users.title}
+        description={vi.users.description}
+        actions={
+          households.data ? (
+            <Badge tone="neutral">{formatNumber(households.data.total)} hộ gia đình</Badge>
+          ) : undefined
+        }
+      />
       <DirectoryTabs active="households" />
       <section className="card">
         <div className="toolbar">
@@ -205,12 +264,32 @@ export function HouseholdsPage() {
               }}
             />
           </Field>
+          {searchInput ? (
+            <div className="toolbar-actions">
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setSearchInput('');
+                  setPage(1);
+                }}
+              >
+                {vi.common.clearFilters}
+              </Button>
+            </div>
+          ) : null}
         </div>
+
         {households.isPending ? <LoadingState rows={5} /> : null}
         {households.isError ? <ErrorState error={households.error} onRetry={() => void households.refetch()} /> : null}
         {households.data && households.data.items.length === 0 ? <EmptyState /> : null}
         {households.data && households.data.items.length > 0 ? (
-          <div className={households.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={households.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.users.householdCaption}>
+          <div
+            className={households.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={households.isPlaceholderData || undefined}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.users.householdCaption}
+          >
             <table className="data-table">
               <caption className="sr-only">{vi.users.householdCaption}</caption>
               <thead>
@@ -225,10 +304,31 @@ export function HouseholdsPage() {
               <tbody>
                 {households.data.items.map((household) => (
                   <tr key={household.id} data-testid="admin-household-row">
-                    <td>{household.name}</td>
-                    <td>{household.ownerDisplayName ?? vi.users.anonymous}</td>
-                    <td>{household.memberCount}</td>
-                    <td>{household.inventoryItemCount}</td>
+                    <td>
+                      <div className="cell-primary">
+                        <span className="cell-avatar" aria-hidden="true">
+                          {monogram(household.name, 'H')}
+                        </span>
+                        <div>
+                          <strong>{household.name}</strong>
+                          <div className="cell-sub mono">{household.id}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      {canUsers ? (
+                        <Link to={`/users/${encodeURIComponent(household.ownerUserId)}`} className="row-link">
+                          {household.ownerDisplayName ?? vi.users.anonymous}
+                        </Link>
+                      ) : (
+                        <span>{household.ownerDisplayName ?? vi.users.anonymous}</span>
+                      )}
+                      <div className="cell-sub mono">{household.ownerUserId}</div>
+                    </td>
+                    <td>
+                      <Badge tone="brand">{formatNumber(household.memberCount)}</Badge>
+                    </td>
+                    <td>{formatNumber(household.inventoryItemCount)}</td>
                     <td>{formatDate(household.createdAt)}</td>
                   </tr>
                 ))}

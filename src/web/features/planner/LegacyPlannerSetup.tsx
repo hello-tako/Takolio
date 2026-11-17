@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CalendarDays } from 'lucide-react';
-import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
+import { OnboardingMamCom3D } from '../../components/3d/OnboardingMamCom3D';
+import { AtelierBadge, BentoCard } from '../../design-system/v4/AtelierPrimitives';
+import { CalendarMealCheckIcon, HouseholdTrayIcon } from '../../design-system/icons';
 import { mealPlanningApi } from '../../services/meal-planning';
 import { plannerCopy, type PlannerLocale } from './copy';
 import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 
 export const plannerInputClass =
-  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-takosan-green focus:outline-none';
+  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-tk-stone bg-white p-3 text-sm text-tk-ink focus:ring-2 focus:ring-tk-jade focus:outline-none';
 
 export function LegacyPlannerSetup({
   model,
@@ -32,12 +33,14 @@ export function LegacyPlannerSetup({
   const [maxTime, setMaxTime] = useState('');
   const [invalid, setInvalid] = useState(false);
   const errorRef = useRef<HTMLParagraphElement>(null);
+
   useEffect(() => {
     if (invalid) {
       errorRef.current?.focus();
       errorRef.current?.scrollIntoView({ block: 'nearest' });
     }
   }, [invalid]);
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setInvalid(false);
@@ -66,18 +69,20 @@ export function LegacyPlannerSetup({
     );
     if (plan) navigate(`/planner/${plan.id}`, { replace: true });
   }
+
   return (
-    <div className="planning-setup-layout">
-      <Card className="planning-setup-form">
-        <div className="flex items-center gap-3 mb-5">
-          <span className="p-3 rounded-2xl bg-takosan-mint text-takosan-green-deep">
-            <CalendarDays />
+    <div className="planning-setup-layout grid gap-6 lg:grid-cols-12 lg:items-start">
+      <BentoCard tone="ceramic" padding="lg" className="planning-setup-form lg:col-span-7">
+        <div className="mb-5 flex items-center gap-3">
+          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-tk-jade-soft text-tk-jade-deep">
+            <CalendarMealCheckIcon size={24} tone="jade" active />
           </span>
-          <h2 className="text-xl font-heading font-bold text-semantic-text-primary">{t.newPlan}</h2>
+          <h2 className="font-heading text-xl font-extrabold text-tk-ink">{t.newPlan}</h2>
         </div>
+
         <form onSubmit={submit} className="space-y-5">
           <fieldset disabled={!!model.busy} className="space-y-5 disabled:opacity-70">
-            <label className="block text-sm font-semibold">
+            <label className="block text-sm font-bold text-tk-ink">
               {t.date}
               <input
                 type="date"
@@ -89,8 +94,8 @@ export function LegacyPlannerSetup({
                 className={plannerInputClass}
               />
             </label>
-            <div className="planning-pair">
-              <label className="text-sm font-semibold">
+            <div className="planning-pair grid gap-3 sm:grid-cols-2">
+              <label className="text-sm font-bold text-tk-ink">
                 {t.days}
                 <input
                   type="number"
@@ -103,7 +108,7 @@ export function LegacyPlannerSetup({
                   className={plannerInputClass}
                 />
               </label>
-              <label className="text-sm font-semibold">
+              <label className="text-sm font-bold text-tk-ink">
                 {t.servings}
                 <input
                   type="number"
@@ -118,12 +123,16 @@ export function LegacyPlannerSetup({
               </label>
             </div>
             <fieldset>
-              <legend className="text-sm font-semibold mb-2">{t.slots}</legend>
-              <div className="planning-meal-choices">
+              <legend className="mb-2 text-sm font-bold text-tk-ink">{t.slots}</legend>
+              <div className="planning-meal-choices grid grid-cols-3 gap-2.5">
                 {(['breakfast', 'lunch', 'dinner'] as const).map((type) => (
                   <label
                     key={type}
-                    className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-xl border text-sm cursor-pointer ${meals.includes(type) ? 'bg-takosan-mint border-takosan-green text-takosan-green-deep' : 'border-semantic-border'}`}
+                    className={`flex cursor-pointer flex-col items-center gap-2 rounded-xl border p-3 text-sm font-semibold transition-colors sm:flex-row ${
+                      meals.includes(type)
+                        ? 'border-tk-jade bg-tk-jade-soft text-tk-jade-deep'
+                        : 'border-tk-stone bg-white text-tk-secondary hover:bg-tk-sunken'
+                    }`}
                   >
                     <input
                       type="checkbox"
@@ -135,14 +144,14 @@ export function LegacyPlannerSetup({
                             : meals.filter((item) => item !== type),
                         )
                       }
-                      className="accent-takosan-green w-4 h-4"
+                      className="h-4 w-4 accent-tk-jade"
                     />
                     {t[type]}
                   </label>
                 ))}
               </div>
             </fieldset>
-            <label className="block text-sm font-semibold">
+            <label className="block text-sm font-bold text-tk-ink">
               {t.mode}
               <select
                 value={mode}
@@ -153,7 +162,7 @@ export function LegacyPlannerSetup({
                 <option value="cook_now">{t.cookNow}</option>
               </select>
             </label>
-            <label className="block text-sm font-semibold">
+            <label className="block text-sm font-bold text-tk-ink">
               {t.maxTime}
               <input
                 type="number"
@@ -166,55 +175,75 @@ export function LegacyPlannerSetup({
               />
             </label>
           </fieldset>
-          <details className="planning-setup-details">
-            <summary>{locale === 'vi' ? 'Điều cần biết về kế hoạch' : 'About your plan'}</summary>
-            <p>{t.future}</p>
+
+          <details className="planning-setup-details rounded-2xl border border-tk-stone bg-tk-sunken/70 p-4 text-xs leading-relaxed text-tk-secondary space-y-2">
+            <summary className="cursor-pointer text-sm font-bold text-tk-ink">
+              {locale === 'vi' ? 'Điều cần biết về kế hoạch' : 'About your plan'}
+            </summary>
+            <p className="mt-2">{t.future}</p>
             <p>{t.policy}</p>
             <p>{t.timezone}</p>
           </details>
+
           {invalid && (
-            <p ref={errorRef} tabIndex={-1} role="alert" className="planning-error">
+            <p
+              ref={errorRef}
+              tabIndex={-1}
+              role="alert"
+              className="planning-error rounded-2xl border border-tk-berry/30 bg-tk-berry-soft p-3.5 text-sm font-semibold text-tk-berry-deep"
+            >
               {t.invalidForm}
             </p>
           )}
+
           <Button type="submit" fullWidth size="lg" isLoading={!!model.busy}>
             {t.generate}
           </Button>
           {model.busy && (
-            <p role="status" className="text-sm text-center text-takosan-green-deep">
+            <p role="status" className="text-center text-sm font-bold text-tk-jade-deep">
               {t.generating}
             </p>
           )}
         </form>
-      </Card>
-      <aside className="planning-setup-context">
-        <p className="planning-eyebrow">{locale === 'vi' ? 'TUẦN CỦA BẠN' : 'YOUR WEEK'}</p>
-        <h2>
-          {locale === 'vi' ? 'Chọn bữa trước. Đi chợ sau.' : 'Choose meals first. Shop next.'}
-        </h2>
-        <p>
-          {locale === 'vi'
-            ? 'Chế độ hiện tại gợi ý một món chính cho mỗi bữa. Bạn có thể điều chỉnh món trước khi đi chợ.'
-            : 'The current mode suggests one main dish for each meal. Adjust your dishes before shopping.'}
-        </p>
-        <dl>
-          <div>
-            <dt>{t.days}</dt>
-            <dd>{days}</dd>
-          </div>
-          <div>
-            <dt>{locale === 'vi' ? 'Tổng số bữa' : 'Total meals'}</dt>
-            <dd>{meals.length * days}</dd>
-          </div>
-          <div>
-            <dt>{t.servings}</dt>
-            <dd>{servings}</dd>
-          </div>
-        </dl>
-        <p className="planning-context-choice">
-          {mode === 'cook_now' ? t.cookNow : t.allowShopping}
-        </p>
-        <p className="planning-note">{t.planNote}</p>
+      </BentoCard>
+
+      <aside className="planning-setup-context space-y-4 lg:col-span-5">
+        <OnboardingMamCom3D householdSize={servings} step={1} />
+        <BentoCard tone="sunken" padding="md" className="space-y-3">
+          <AtelierBadge tone="jade" icon={<HouseholdTrayIcon size={14} tone="jade" active />}>
+            <span className="planning-eyebrow">{locale === 'vi' ? 'TUẦN CỦA BẠN' : 'YOUR WEEK'}</span>
+          </AtelierBadge>
+          <h2 className="font-heading text-xl font-extrabold text-tk-ink">
+            {locale === 'vi' ? 'Chọn bữa trước. Đi chợ sau.' : 'Choose meals first. Shop next.'}
+          </h2>
+          <p className="text-sm leading-relaxed text-tk-secondary">
+            {locale === 'vi'
+              ? 'Chế độ hiện tại gợi ý một món chính cho mỗi bữa. Bạn có thể điều chỉnh món trước khi đi chợ.'
+              : 'The current mode suggests one main dish for each meal. Adjust your dishes before shopping.'}
+          </p>
+          <dl className="grid grid-cols-3 gap-2 rounded-2xl border border-tk-stone bg-white p-3 text-center">
+            <div>
+              <dt className="text-[11px] font-bold text-tk-muted">{t.days}</dt>
+              <dd className="mt-0.5 text-base font-extrabold text-tk-ink tk-tabular">{days}</dd>
+            </div>
+            <div>
+              <dt className="text-[11px] font-bold text-tk-muted">
+                {locale === 'vi' ? 'Tổng số bữa' : 'Total meals'}
+              </dt>
+              <dd className="mt-0.5 text-base font-extrabold text-tk-ink tk-tabular">
+                {meals.length * days}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[11px] font-bold text-tk-muted">{t.servings}</dt>
+              <dd className="mt-0.5 text-base font-extrabold text-tk-ink tk-tabular">{servings}</dd>
+            </div>
+          </dl>
+          <p className="planning-context-choice text-xs font-extrabold text-tk-jade-deep">
+            {mode === 'cook_now' ? t.cookNow : t.allowShopping}
+          </p>
+          <p className="planning-note text-xs leading-relaxed text-tk-muted">{t.planNote}</p>
+        </BentoCard>
       </aside>
     </div>
   );

@@ -23,7 +23,11 @@
       "@frigo/domain": ["packages/domain/src/index.ts"],
       "@frigo/recipes": ["packages/recipes/src/index.ts"],
       "@frigo/ai": ["packages/ai/src/index.ts"],
-      "@frigo/db": ["packages/db/src/index.ts"]
+      "@frigo/db": ["packages/db/src/index.ts"],
+      "@takolio/domain": ["packages/domain/src/index.ts"],
+      "@takolio/recipes": ["packages/recipes/src/index.ts"],
+      "@takolio/ai": ["packages/ai/src/index.ts"],
+      "@takolio/db": ["packages/db/src/index.ts"]
     }
   },
   "include": [
@@ -32,6 +36,7 @@
     "src/shared",
     "packages",
     "tests",
-    "vite.config.ts"
+    "vite.config.ts",
+    "vite.admin.config.ts"
   ]
 }

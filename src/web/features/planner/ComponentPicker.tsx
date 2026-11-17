@@ -14,6 +14,7 @@ import { compositionCopy, componentTitle, cuisineLabel, roleLabel } from './comp
 import type { PlannerLocale } from './copy';
 import { PlannerError } from './PlannerShell';
 import { IngredientCoverage } from './IngredientCoverage';
+import { DishThumbV4, rolePillClasses } from './roleVisual';
 
 export type PickerMealContext = {
   date: string;
@@ -105,6 +106,7 @@ export function ComponentPicker({
   const pending = !currentError && (loading || !current);
   const planChanged =
     currentError instanceof ApiError && currentError.code === 'PLAN_REVISION_CONFLICT';
+
   useModalFocus(
     true,
     panel,
@@ -169,6 +171,7 @@ export function ComponentPicker({
       if (id === requestId.current) setLoading(false);
     }
   }
+
   useEffect(() => {
     const timer = window.setTimeout(() => void load(true, null), 200);
     return () => {
@@ -176,6 +179,7 @@ export function ComponentPicker({
       requestId.current++;
     };
   }, [filterKey]);
+
   const filtered = !!(role || cuisine || query.trim() || handoffId || stockOnly);
   function selectRole(value: MealRole | '') {
     setRole(value);
@@ -189,22 +193,23 @@ export function ComponentPicker({
     setStockOnly(false);
     searchRef.current?.focus();
   }
+
   return (
-    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+    <div className="planning-picker fixed inset-0 z-50 flex items-end justify-center bg-black/45 backdrop-blur-xs sm:items-center">
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="planning-picker-panel w-full sm:max-w-lg max-h-[88dvh] flex flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-xl"
+        className="planning-picker-panel flex max-h-[90dvh] w-full flex-col rounded-t-[28px] border border-tk-stone bg-tk-canvas text-tk-ink shadow-elevated sm:max-w-xl sm:rounded-[28px]"
       >
-        <div className="p-4 sm:p-5 border-b border-semantic-border/70 space-y-3">
+        <div className="space-y-3 border-b border-tk-stone/80 bg-white/90 p-4 backdrop-blur sm:p-5">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h2 id={titleId} className="font-heading font-bold text-lg">
+              <h2 id={titleId} className="font-heading text-lg font-extrabold text-tk-ink">
                 {c.pickerTitle}
               </h2>
-              <p className="text-xs text-semantic-text-secondary mt-1">
+              <p className="mt-0.5 text-xs text-tk-secondary">
                 {intent === 'swap'
                   ? locale === 'vi'
                     ? 'Đổi món trong bữa này'
@@ -214,16 +219,20 @@ export function ComponentPicker({
                     : 'Add a dish to this meal'}
               </p>
               {context && (
-                <p className="planning-picker-context">{mealContextLabel(context, locale)}</p>
+                <p className="planning-picker-context mt-1 inline-flex rounded-full bg-tk-jade-soft px-2.5 py-0.5 text-[11px] font-bold text-tk-jade-deep">
+                  {mealContextLabel(context, locale)}
+                </p>
               )}
             </div>
             <Button variant="ghost" aria-label={c.close} disabled={busy} onClick={onClose}>
               <X size={18} />
             </Button>
           </div>
+
           {!!mutationError && <PlannerError error={mutationError} locale={locale} focus />}
+
           <div
-            className="planning-picker-tabs"
+            className="planning-picker-tabs grid grid-cols-2 gap-1.5 rounded-2xl border border-tk-stone/80 bg-tk-sunken p-1"
             aria-label={locale === 'vi' ? 'Nguồn chọn món' : 'Dish source'}
           >
             <button
@@ -231,6 +240,11 @@ export function ComponentPicker({
               aria-pressed={source === 'catalog'}
               disabled={busy}
               onClick={() => setSource('catalog')}
+              className={`min-h-10 rounded-xl px-3 py-1.5 text-xs font-extrabold transition-colors ${
+                source === 'catalog'
+                  ? 'bg-white text-tk-ink shadow-xs'
+                  : 'text-tk-secondary hover:text-tk-ink'
+              }`}
             >
               {locale === 'vi' ? 'Khám phá món' : 'Explore dishes'}
             </button>
@@ -239,17 +253,23 @@ export function ComponentPicker({
               aria-pressed={source === 'saved'}
               disabled={busy}
               onClick={() => setSource('saved')}
+              className={`inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-extrabold transition-colors ${
+                source === 'saved'
+                  ? 'bg-white text-tk-ink shadow-xs'
+                  : 'text-tk-secondary hover:text-tk-ink'
+              }`}
             >
-              <Heart size={15} aria-hidden="true" />
+              <Heart size={14} aria-hidden="true" />
               {locale === 'vi' ? 'Món đã lưu' : 'Saved dishes'}
             </button>
           </div>
+
           <div className="space-y-2">
             <label className="relative block">
               <span className="sr-only">{c.search}</span>
               <Search
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-semantic-text-muted"
+                className=" absolute left-3 top-1/2 -translate-y-1/2 text-tk-muted"
                 aria-hidden="true"
               />
               <input
@@ -265,7 +285,7 @@ export function ComponentPicker({
                   setQuery(event.target.value);
                 }}
                 placeholder={c.search}
-                className="w-full min-h-11 rounded-xl border border-semantic-border pl-9 pr-3 text-sm"
+                className="min-h-11 w-full rounded-xl border border-tk-stone bg-white pl-9 pr-3 text-sm text-tk-ink focus:outline-none focus:ring-2 focus:ring-tk-jade"
               />
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -275,7 +295,7 @@ export function ComponentPicker({
                   value={role}
                   disabled={busy || !!initialRole}
                   onChange={(event) => selectRole(event.target.value as MealRole | '')}
-                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-sm bg-white"
+                  className="min-h-11 w-full rounded-xl border border-tk-stone bg-white px-3 text-sm font-semibold text-tk-ink"
                 >
                   <option value="">{c.allRoles}</option>
                   {MEAL_ROLES.map((value) => (
@@ -291,7 +311,7 @@ export function ComponentPicker({
                   value={cuisine}
                   disabled={busy}
                   onChange={(event) => setCuisine(event.target.value as PickerCuisine | '')}
-                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-sm bg-white"
+                  className="min-h-11 w-full rounded-xl border border-tk-stone bg-white px-3 text-sm font-semibold text-tk-ink"
                 >
                   <option value="">{c.allCuisines}</option>
                   {PICKER_CUISINES.map((value) => (
@@ -303,12 +323,13 @@ export function ComponentPicker({
               </label>
             </div>
             {scope && (
-              <label className="planning-picker-stock">
+              <label className="planning-picker-stock flex cursor-pointer items-center gap-2 rounded-xl border border-tk-stone/70 bg-tk-sunken/70 px-3 py-2 text-xs font-bold text-tk-ink">
                 <input
                   type="checkbox"
                   checked={stockOnly}
                   disabled={busy}
                   onChange={(event) => setStockOnly(event.target.checked)}
+                  className="h-4 w-4 accent-tk-jade"
                 />
                 {locale === 'vi'
                   ? 'Chỉ hiện món đủ lượng từ tủ lạnh'
@@ -317,10 +338,11 @@ export function ComponentPicker({
             )}
           </div>
         </div>
-        <div className="planning-picker-results overflow-y-auto p-4 sm:p-5 flex-1">
+
+        <div className="planning-picker-results flex-1 overflow-y-auto p-4 sm:p-5">
           {!!currentError && (
             <>
-              <p className="text-sm text-semantic-warning-strong mb-2">
+              <p className="mb-2 text-sm font-semibold text-tk-turmeric-deep">
                 {locale === 'vi'
                   ? 'Chưa xác nhận được lượng cho bữa này. Tải lại trước khi chọn món.'
                   : 'Meal quantities are unconfirmed. Reload before choosing a dish.'}
@@ -331,15 +353,16 @@ export function ComponentPicker({
                 onRetry={planChanged && onReloadPlan ? undefined : () => void load(true, null)}
               />
               {planChanged && onReloadPlan && (
-                <Button variant="outline" disabled={busy} onClick={onReloadPlan}>
+                <Button className="mt-2" variant="outline" disabled={busy} onClick={onReloadPlan}>
                   {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
                 </Button>
               )}
             </>
           )}
+
           {handoffId && (
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <p className="text-sm text-semantic-text-secondary">
+            <div className="mb-2 flex items-center justify-between gap-2 rounded-xl bg-tk-turmeric-soft px-3 py-2">
+              <p className="text-xs font-bold text-tk-turmeric-deep">
                 {locale === 'vi' ? 'Món bạn vừa chọn' : 'Your selected dish'}
               </p>
               <Button size="sm" variant="ghost" disabled={busy} onClick={clearFilters}>
@@ -347,7 +370,8 @@ export function ComponentPicker({
               </Button>
             </div>
           )}
-          <p role="status" className="planning-picker-count">
+
+          <p role="status" className="planning-picker-count mb-3 text-xs font-bold text-tk-muted">
             {currentError
               ? c.loadFailed
               : pending
@@ -358,20 +382,22 @@ export function ComponentPicker({
                   ? `${current ? results.total : 0} món phù hợp`
                   : `${current ? results.total : 0} dishes found`}
           </p>
+
           {!pending &&
             !currentError &&
             results.items.length === 0 &&
             (filtered ? (
-              <div className="space-y-2">
-                <p className="text-sm text-semantic-text-secondary">{c.noFilteredResults}</p>
+              <div className="space-y-2 rounded-2xl border border-dashed border-tk-stone bg-white p-4 text-center">
+                <p className="text-sm text-tk-secondary">{c.noFilteredResults}</p>
                 <Button size="sm" variant="outline" onClick={clearFilters}>
                   {c.clearFilters}
                 </Button>
               </div>
             ) : (
-              <p className="text-sm text-semantic-text-secondary">{c.noResults}</p>
+              <p className="text-sm text-tk-secondary">{c.noResults}</p>
             ))}
-          <ul className="space-y-2">
+
+          <ul className="space-y-2.5">
             {(current && !currentError ? results.items : []).map((item) => {
               const title = componentTitle(item, locale);
               const itemKey = `${item.kind}:${item.id}`;
@@ -381,54 +407,85 @@ export function ComponentPicker({
                   : (itemRoles[itemKey] ?? (item.roles.length === 1 ? item.roles[0] : undefined));
               const selectable =
                 (!scope || !!item.assessment) && item.assessment?.selectable !== false;
+
               return (
-                <li key={itemKey} className="planning-picker-item">
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold">{title}</p>
-                    <p className="text-xs text-semantic-text-muted mt-0.5">
-                      {item.roles.map((value) => roleLabel(value, locale)).join(' · ')}
-                      {item.cookTimeMinutes !== null && ` · ${item.cookTimeMinutes}′`}
-                    </p>
-                    {item.roles.length > 1 && !role && (
-                      <label className="planning-picker-item-role">
-                        {c.role}: {title}
-                        <select
-                          value={chosenRole ?? ''}
-                          disabled={busy}
-                          onChange={(event) => {
-                            const selected = event.target.value as MealRole;
-                            if (scope) selectRole(selected);
-                            else setItemRoles((prior) => ({ ...prior, [itemKey]: selected }));
-                          }}
-                        >
-                          <option value="" disabled>
-                            {locale === 'vi' ? 'Chọn vai trò' : 'Choose role'}
-                          </option>
-                          {item.roles.map((value) => (
-                            <option key={value} value={value}>
-                              {roleLabel(value, locale)}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                    )}
-                    {item.assessment && (
-                      <IngredientCoverage
-                        assessment={item.assessment}
-                        locale={locale}
-                        servings={context?.servings}
-                      />
-                    )}
-                    {scope && !item.assessment && (
-                      <p className="text-xs text-semantic-warning-strong mt-2">
-                        {locale === 'vi'
-                          ? 'Chưa xác nhận nguyên liệu của món.'
-                          : 'Ingredients are unconfirmed.'}
+                <li
+                  key={itemKey}
+                  className="planning-picker-item flex items-start justify-between gap-3 rounded-2xl border border-tk-stone bg-white p-3.5 shadow-xs"
+                >
+                  <div className="flex min-w-0 items-start gap-3">
+                    <DishThumbV4
+                      item={{
+                        id: item.id,
+                        recipeId: item.kind === 'recipe' ? item.id : null,
+                        simpleFoodId: item.kind === 'simple_food' ? item.id : null,
+                        title,
+                        role: chosenRole ?? item.roles[0],
+                        cuisine: item.cuisine,
+                      }}
+                      sizeClassName="h-12 w-12 rounded-xl"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-sm font-extrabold text-tk-ink">{title}</p>
+                      <p className="mt-1 flex flex-wrap items-center gap-1 text-[11px] text-tk-muted">
+                        {item.roles.map((value) => (
+                          <span
+                            key={value}
+                            className={`rounded-full border px-2 py-0.5 font-bold ${rolePillClasses(value)}`}
+                          >
+                            {roleLabel(value, locale)}
+                          </span>
+                        ))}
+                        {item.cookTimeMinutes !== null && (
+                          <span className="font-semibold text-tk-secondary">
+                            · {item.cookTimeMinutes}′
+                          </span>
+                        )}
                       </p>
-                    )}
-                    {item.constraintState === 'unknown' && (
-                      <p className="text-xs text-semantic-warning-strong mt-1">{c.safetyUnknown}</p>
-                    )}
+                      {item.roles.length > 1 && !role && (
+                        <label className="planning-picker-item-role mt-2 flex flex-wrap items-center gap-2 text-xs font-semibold text-tk-ink">
+                          {c.role}: {title}
+                          <select
+                            value={chosenRole ?? ''}
+                            disabled={busy}
+                            onChange={(event) => {
+                              const selected = event.target.value as MealRole;
+                              if (scope) selectRole(selected);
+                              else setItemRoles((prior) => ({ ...prior, [itemKey]: selected }));
+                            }}
+                            className="min-h-9 rounded-lg border border-tk-stone bg-tk-canvas px-2 text-xs font-bold text-tk-ink"
+                          >
+                            <option value="" disabled>
+                              {locale === 'vi' ? 'Chọn vai trò' : 'Choose role'}
+                            </option>
+                            {item.roles.map((value) => (
+                              <option key={value} value={value}>
+                                {roleLabel(value, locale)}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      )}
+                      {item.assessment && (
+                        <IngredientCoverage
+                          assessment={item.assessment}
+                          locale={locale}
+                          servings={context?.servings}
+                        />
+                      )}
+                      {scope && !item.assessment && (
+                        <p className="mt-2 text-xs font-semibold text-tk-turmeric-deep">
+                          {locale === 'vi'
+                            ? 'Chưa xác nhận nguyên liệu của món.'
+                            : 'Ingredients are unconfirmed.'}
+                        </p>
+                      )}
+                      {item.constraintState === 'unknown' && (
+                        <p className="mt-1 text-xs font-semibold text-tk-turmeric-deep">
+                          {c.safetyUnknown}
+                        </p>
+                      )}
+                    </div>
                   </div>
                   <Button
                     size="sm"
@@ -443,6 +500,7 @@ export function ComponentPicker({
               );
             })}
           </ul>
+
           {current && !currentError && results.cursor && (
             <Button
               variant="outline"

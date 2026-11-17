@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { clsx } from 'clsx';
 import { TAKOLIO_BRAND, type TakolioMascotPose } from '../../lib/takolio-brand';
 
-/** Decorative illustration; adjacent task copy supplies its accessible meaning. */
+/** Decorative V4 Terra-Botanical mascot illustration; adjacent task copy supplies accessible meaning. */
 export function TakoMascot({
   pose = 'wave',
   size = 128,
@@ -14,7 +15,13 @@ export function TakoMascot({
   const [failedPose, setFailedPose] = useState<TakolioMascotPose | null>(null);
   const render = TAKOLIO_BRAND.mascotRenders[pose];
   return (
-    <picture className={`tako-mascot ${className}`} data-takolio-mascot={pose}>
+    <picture
+      className={clsx(
+        'tako-mascot inline-flex items-center justify-center select-none shrink-0',
+        className,
+      )}
+      data-takolio-mascot={pose}
+    >
       {size >= 96 && failedPose !== pose && (
         <source
           type="image/webp"
@@ -29,6 +36,7 @@ export function TakoMascot({
         width={size}
         height={size}
         decoding="async"
+        className="object-contain drop-shadow-xs"
         onError={() => setFailedPose(pose)}
       />
     </picture>

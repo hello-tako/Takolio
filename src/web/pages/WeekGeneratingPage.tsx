@@ -2,12 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { MealPlan } from '@frigo/domain';
 import { useWeekStore } from '../stores/useWeekStore';
-import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
+import { TakoChef3D } from '../components/3d/TakoChef3D';
 import { WeekWorkspace } from '../features/week/WeekWorkspace';
 import { capturePrivateSession, currentPrivateScope } from '../lib/private-session';
 import { todayLocalIso } from '../lib/format';
 import { InlineError, InlineLoading } from '../components/common/AsyncState';
 import { Button } from '../components/common/Button';
+import { BentoCard } from '../design-system/v4/AtelierPrimitives';
 
 export const WeekGeneratingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,6 @@ export const WeekGeneratingPage: React.FC = () => {
       setError(new Error('Vui lòng xác minh phiên trước khi tạo thực đơn.'));
       return;
     }
-    // Reuse the command during StrictMode's effect replay.
     request.current ??= generatePlan({
       householdId,
       startDate: todayLocalIso(),
@@ -52,22 +52,27 @@ export const WeekGeneratingPage: React.FC = () => {
       narrow
       description="Thực đơn là kế hoạch dự kiến. Nguyên liệu trong tủ chỉ thay đổi khi bạn xác nhận mua thêm hoặc nấu."
     >
-      <div className="week-paper week-generating" aria-busy={!error}>
-        <img src={TAKOSAN_KITCHEN.symbol} alt="" width={80} height={80} />
+      <BentoCard
+        tone="ceramic"
+        padding="lg"
+        className="week-paper week-generating flex flex-col items-center text-center space-y-4"
+        aria-busy={!error}
+      >
+        <TakoChef3D pose={error ? 'wave' : 'think'} size={156} />
         {error ? (
-          <>
+          <div className="w-full space-y-3">
             <InlineError error={error} />
-            <Button className="mt-4" onClick={() => navigate('/week/setup', { replace: true })}>
+            <Button className="mt-2" onClick={() => navigate('/week/setup', { replace: true })}>
               Quay lại thiết lập
             </Button>
-          </>
+          </div>
         ) : (
           <InlineLoading label="Đang chờ kết quả tạo thực đơn…" />
         )}
-        <p className="week-muted">
+        <p className="week-muted max-w-md text-xs leading-relaxed text-tk-secondary">
           Bạn có thể quay lại thực đơn tuần. Yêu cầu đang gửi có thể vẫn hoàn tất.
         </p>
-      </div>
+      </BentoCard>
     </WeekWorkspace>
   );
 };

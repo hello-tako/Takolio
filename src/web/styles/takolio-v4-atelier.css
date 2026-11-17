@@ -1,0 +1,755 @@
+/* ============================================================================
+ * TAKOLIO V5 — "NOIR & HEARTH" EDITORIAL CULINARY CINEMA SYSTEM
+ * High-contrast architectural surfaces, Obsidian Hearth cinema frames, zero plastic
+ * ============================================================================ */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url('/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2') format('woff2');
+}
+
+:root {
+  --tk-font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --takosan-font-ui: var(--tk-font-sans);
+
+  --tk-bg-canvas: #EFE8DC;
+  --tk-bg-surface: #FFFEFA;
+  --tk-bg-sunken: #E3DACB;
+  --tk-bg-stone: #CCC0AC;
+
+  --tk-bg-sanctuary: #0B120F;
+  --tk-bg-sanctuary-card: #131E19;
+  --tk-bg-sanctuary-elevated: #1C2B24;
+
+  --tk-ink-primary: #0F1A15;
+  --tk-ink-secondary: #3A4B42;
+  --tk-ink-muted: #65766D;
+
+  --tk-flame: #DE472E;
+  --tk-flame-hover: #C43922;
+  --tk-flame-soft: #FDECE8;
+
+  --tk-jade: #155C40;
+  --tk-jade-hover: #0F4731;
+  --tk-jade-soft: #E2F2EA;
+
+  --tk-turmeric: #C67C14;
+  --tk-turmeric-soft: #FCF1DC;
+
+  --tk-berry: #BE3248;
+  --tk-berry-soft: #FCE9EC;
+
+  --tk-border-subtle: rgba(15, 26, 21, 0.12);
+  --tk-border-strong: rgba(15, 26, 21, 0.22);
+
+  --tk-shadow-ceramic: 0 1px 3px rgba(11, 18, 15, 0.06), 0 12px 32px -10px rgba(11, 18, 15, 0.11);
+  --tk-shadow-elevated: 0 22px 52px -12px rgba(11, 18, 15, 0.22), 0 4px 14px -4px rgba(11, 18, 15, 0.08);
+  --tk-shadow-cinema: 0 28px 70px -16px rgba(6, 10, 8, 0.56), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  /* Layout & Semantic Bridge Tokens */
+  --content-compact: 48rem;
+  --content-default: 68rem;
+  --content-wide: 86.25rem;
+  --nav-mobile: 4.75rem;
+  --rail-tablet: 6.5rem;
+  --sidebar-desktop: 16.25rem;
+  --touch-target: 2.75rem;
+
+  --kitchen-canvas: var(--tk-bg-canvas);
+  --kitchen-pine: var(--tk-jade);
+  --kitchen-coral: var(--tk-flame);
+  --semantic-background: var(--tk-bg-canvas);
+  --semantic-background-subtle: #F7F2E8;
+  --semantic-surface: var(--tk-bg-surface);
+  --semantic-surface-raised: #FFFFFF;
+  --semantic-text-primary: var(--tk-ink-primary);
+  --semantic-text-secondary: var(--tk-ink-secondary);
+  --semantic-text-muted: var(--tk-ink-muted);
+  --semantic-action-primary: var(--tk-jade);
+  --semantic-action-primary-hover: var(--tk-jade-hover);
+  --semantic-on-action-primary: #FFFFFF;
+  --semantic-accent: var(--tk-flame);
+  --semantic-accent-soft: var(--tk-flame-soft);
+  --semantic-success: var(--tk-jade);
+  --semantic-success-soft: var(--tk-jade-soft);
+  --semantic-warning: var(--tk-turmeric);
+  --semantic-warning-soft: var(--tk-turmeric-soft);
+  --semantic-warning-strong: #8F5307;
+  --semantic-danger: var(--tk-berry);
+  --semantic-danger-soft: var(--tk-berry-soft);
+  --semantic-danger-strong: #9B2336;
+  --semantic-info: #225E8A;
+  --semantic-info-soft: #E6F2FA;
+  --semantic-border: #D8CEBE;
+  --semantic-border-strong: #BFB29E;
+  --semantic-focus: var(--tk-flame);
+  --semantic-focus-rgb: 222 71 46;
+}
+
+html {
+  font-family: var(--tk-font-sans);
+  background-color: var(--tk-bg-canvas);
+  color: var(--tk-ink-primary);
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.tk-root {
+  min-height: 100dvh;
+  background-color: var(--tk-bg-canvas);
+  background-image:
+    radial-gradient(ellipse 85% 45% at 15% -5%, rgba(222, 71, 46, 0.09), transparent 58%),
+    radial-gradient(ellipse 75% 45% at 90% 5%, rgba(21, 92, 64, 0.08), transparent 55%),
+    linear-gradient(180deg, #EDE5D7 0%, #EFE8DC 38%, #EAE1D2 100%);
+  color: var(--tk-ink-primary);
+  font-family: var(--tk-font-sans);
+  overflow-x: clip;
+}
+
+.tk-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Architectural Stoneware & Obsidian Cinema Surfaces */
+.tk-card {
+  background: var(--tk-bg-surface);
+  border: 1px solid var(--tk-border-subtle);
+  border-radius: 22px;
+  box-shadow: var(--tk-shadow-ceramic);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.tk-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--tk-shadow-elevated);
+  border-color: var(--tk-border-strong);
+}
+
+/* Signature Obsidian Cinema Stage Frame */
+.tk-cinema-stage {
+  background: #0B120F;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: var(--tk-shadow-cinema);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.tk-cinema-vignette {
+  background:
+    linear-gradient(180deg, rgba(8, 13, 11, 0.42) 0%, rgba(8, 13, 11, 0.06) 36%, rgba(8, 13, 11, 0.18) 65%, rgba(8, 13, 11, 0.82) 100%),
+    radial-gradient(circle at 50% 45%, transparent 52%, rgba(6, 10, 8, 0.48) 100%);
+}
+
+.tk-glass {
+  background: rgba(255, 254, 250, 0.86);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(15, 26, 21, 0.12);
+  box-shadow: var(--tk-shadow-ceramic);
+}
+
+.tk-glass-dark {
+  background: rgba(15, 23, 19, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 44px -10px rgba(0, 0, 0, 0.55);
+}
+
+/* Active Cooking Sanctuary Obsidian Hearth Theme */
+.tk-sanctuary-theme {
+  background-color: var(--tk-bg-sanctuary);
+  background-image:
+    radial-gradient(circle at 50% -5%, rgba(222, 71, 46, 0.20), transparent 52%),
+    radial-gradient(circle at 88% 92%, rgba(21, 92, 64, 0.16), transparent 48%);
+  color: #F7F4EE;
+}
+
+.tap-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@keyframes tk-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.t17-skeleton,
+.tk-skeleton {
+  background: linear-gradient(90deg, #E3DACB 25%, #F4EFE6 50%, #E3DACB 75%);
+  background-size: 200% 100%;
+  animation: tk-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes tk-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tk-slide-up {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes tk-pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.75; }
+  70% { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: tk-fade-in 180ms ease-out both;
+}
+
+.animate-slide-up {
+  animation: tk-slide-up 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tk-pulse-ring {
+  animation: tk-pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t17-skeleton,
+  .tk-skeleton,
+  .animate-fade-in,
+  .animate-slide-up,
+  .tk-pulse-ring {
+    animation: none !important;
+  }
+  .tk-card-interactive:hover {
+    transform: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 26, 21, 0.22);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 26, 21, 0.38);
+}
+
+/* ============================================================================
+ * ACCESSIBILITY & SKIP-LINK CONTRACT
+ * ============================================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.kitchen-skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  background: var(--tk-bg-sanctuary);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--tk-shadow-elevated);
+  transform: translateY(-240%);
+  transition: transform 160ms ease;
+}
+
+.kitchen-skip-link:focus,
+.kitchen-skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--tk-flame);
+  outline-offset: 2px;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-top {
+  padding-top: max(env(safe-area-inset-top, 0px), 8px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================================
+ * PERSISTENT UNIFIED APPSHELL CONTRACT (MOBILE DOCK · TABLET RAIL · DESKTOP ATELIER)
+ * ============================================================================ */
+[data-kitchen-navigation='persistent'] {
+  --kitchen-nav-height: calc(78px + env(safe-area-inset-bottom, 0px));
+  --kitchen-header-height: 68px;
+  --kitchen-banner-height: 0px;
+  --kitchen-action-reserve: 0px;
+  --kitchen-action-gap: 0px;
+  --kitchen-rail-width: 0px;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-shell-content {
+  padding-left: var(--kitchen-rail-width);
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-shell-main {
+  padding-bottom: calc(var(--kitchen-nav-height) + var(--kitchen-action-reserve) + 16px);
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-banner-slot {
+  display: contents;
+}
+
+/* Kitchen Header (Sticky Top Bar across migrated screens) */
+.kitchen-header {
+  position: sticky;
+  top: var(--kitchen-banner-height, 0px);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 64px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--tk-border-subtle);
+}
+
+.kitchen-brand-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.kitchen-brand-motto {
+  display: none;
+}
+
+.kitchen-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--tk-border-subtle);
+  border-radius: 14px;
+  background: var(--tk-bg-surface);
+}
+
+.kitchen-header-scan {
+  display: none;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-scan-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 16px;
+  background: var(--tk-flame);
+  color: #FFFFFF;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-nav-icon {
+  flex: none;
+}
+
+/* Mobile (<640px): Compact scan button in header + Floating Frosted Bottom Dock */
+@media (max-width: 639px) {
+  [data-kitchen-navigation='persistent'] .kitchen-header .kitchen-account-link {
+    display: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-header-scan {
+    display: inline-flex;
+    flex: 0 0 42px;
+    width: 42px;
+    min-height: 42px;
+    padding: 0;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-header-scan > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-sidebar {
+  display: none;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-bottom-nav {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 30;
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-bottom-nav > * {
+  pointer-events: auto;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-nav-items {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-nav-items li {
+  min-width: 0;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-nav-items a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 60px;
+  height: 100%;
+  padding: 6px 2px;
+  text-decoration: none;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-nav-label {
+  max-width: 100%;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-stock-action,
+[data-kitchen-navigation='persistent'] .kitchen-recipe-action,
+[data-kitchen-navigation='persistent'] .kitchen-bottom-cta {
+  left: var(--kitchen-rail-width);
+  bottom: var(--kitchen-nav-height);
+}
+
+[data-kitchen-navigation='persistent'] .kitchen-sticky-actions,
+[data-kitchen-navigation='persistent'] .review-actions {
+  bottom: var(--kitchen-nav-height);
+}
+
+/* Tablet Rail (640px..1023px) */
+@media (min-width: 640px) {
+  [data-kitchen-navigation='persistent'] {
+    --kitchen-nav-height: 0px;
+    --kitchen-rail-width: 104px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-bottom-nav,
+  [data-kitchen-navigation='persistent'] .kitchen-header-scan {
+    display: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: var(--kitchen-rail-width);
+    padding: 16px 8px calc(16px + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    border-right: 1px solid var(--tk-border-subtle);
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar > * {
+    flex-shrink: 0;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar-logo {
+    display: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-scan-link {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 4px;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-nav-items {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-nav-items a {
+    min-height: 56px;
+    padding: 8px 4px;
+  }
+}
+
+/* Desktop Sculpted Atelier Sidebar (>=1024px) */
+@media (min-width: 1024px) {
+  [data-kitchen-navigation='persistent'] {
+    --kitchen-rail-width: 260px;
+  }
+
+  .kitchen-header {
+    padding-inline: 28px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-brand-link {
+    display: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-brand-motto {
+    display: block;
+    color: var(--tk-ink-secondary);
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar {
+    padding: 20px 14px;
+    gap: 18px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar-brand {
+    justify-content: flex-start;
+    padding-inline: 8px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar-symbol {
+    display: none;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar-logo {
+    display: inline-flex;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-scan-link {
+    flex-direction: row;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-nav-items a {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    min-height: 46px;
+    padding: 10px 14px;
+  }
+
+  [data-kitchen-navigation='persistent'] .kitchen-sidebar .kitchen-nav-label {
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================================
+ * ZERO-SPECIFICITY PAGE WORKSPACE DEFAULTS (OVERRIDABLE BY ANY TAILWIND CLASS)
+ * ============================================================================ */
+:where(.kitchen-page-body) {
+  padding: 20px 16px 36px;
+  max-width: 1320px;
+  margin-inline: auto;
+}
+
+:where(.kitchen-page-heading) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+:where(.kitchen-page-heading h1) {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+:where(.kitchen-eyebrow) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+:where(.kitchen-section-heading) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+:where(.kitchen-section-heading h2) {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+:where(.kitchen-primary-link) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border-radius: 16px;
+  background: var(--tk-jade);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+:where(.kitchen-text-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tk-jade);
+  text-decoration: none;
+}
+
+:where(.kitchen-discovery-link) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 54px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+:where(.kitchen-neutral-panel) {
+  padding: 20px;
+  background: var(--tk-bg-surface);
+  border: 1px solid var(--tk-border-subtle);
+  border-radius: 18px;
+}
+
+:where(.home-workspace) {
+  display: grid;
+  gap: 24px;
+}
+
+:where(.home-plan-card) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  overflow: hidden;
+}
+
+:where(.home-plan-copy) {
+  padding: 22px;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+:where(.home-meal-title) {
+  font-size: clamp(1.375rem, 1.15rem + 0.8vw, 1.85rem);
+  line-height: 1.22;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+:where(.home-plan-summary) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+:where(.home-stock-list) {
+  display: grid;
+  gap: 10px;
+}
+
+:where(.home-stock-item) {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--tk-border-subtle);
+  border-radius: 16px;
+  background: var(--tk-bg-surface);
+  text-decoration: none;
+}
+
+@media (min-width: 960px) {
+  :where(.kitchen-page-body) {
+    padding: 24px 28px 44px;
+  }
+
+  :where(.home-workspace) {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}

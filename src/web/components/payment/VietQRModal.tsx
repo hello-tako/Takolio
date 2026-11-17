@@ -5,7 +5,8 @@ import { capturePrivateSession, onPrivateSessionReset } from '../../lib/private-
 import type { CreatedPaymentIntent, PaymentIntent, PaymentStatus } from '../../../shared/payment';
 import { Button } from '../common/Button';
 import { useModalFocus } from '../../design-system/use-modal-focus';
-import { X, Copy, Check, CheckCircle2, ShieldCheck, Clock, QrCode, Sparkles, AlertCircle } from 'lucide-react';
+import { CrownPlusIcon, VietQRBadgeIcon } from '../../design-system/icons';
+import { X, Copy, Check, CheckCircle2, ShieldCheck, Clock, AlertCircle } from 'lucide-react';
 
 interface VietQRModalProps {
   isOpen: boolean;
@@ -14,6 +15,29 @@ interface VietQRModalProps {
   intent: CreatedPaymentIntent;
   returnFocus?: React.RefObject<HTMLElement>;
   recoverable?: boolean;
+}
+
+const NAPAS_BANK_NAMES: Record<string, string> = {
+  '970422': 'MB Bank',
+  '970436': 'Vietcombank',
+  '970415': 'VietinBank',
+  '970418': 'BIDV',
+  '970407': 'Techcombank',
+  '970416': 'ACB',
+  '970432': 'VPBank',
+  '970423': 'TPBank',
+  '970403': 'Sacombank',
+  '970405': 'Agribank',
+  '970448': 'OCB',
+  '970437': 'HDBank',
+  '970441': 'VIB',
+  '970426': 'MSB',
+};
+
+export function formatBankByBin(bankBin: string): string {
+  const clean = bankBin.trim();
+  const bankName = NAPAS_BANK_NAMES[clean];
+  return bankName ? `${bankName} · BIN ${clean}` : `Ngân hàng (${clean})`;
 }
 
 function statusLabel(status: PaymentStatus): string {
@@ -36,14 +60,23 @@ function formatTimeLeft(expiresAt: string, now: number): string {
 type EntitlementState = 'idle' | 'checking' | 'confirmed' | 'unavailable';
 
 function matchesIntent(payment: PaymentIntent, intent: CreatedPaymentIntent): boolean {
-  return payment.id === intent.id &&
+  return (
+    payment.id === intent.id &&
     payment.orderCode === intent.orderCode &&
     payment.plan === intent.plan &&
     payment.amountVnd === intent.amountVnd &&
-    payment.currency === intent.currency;
+    payment.currency === intent.currency
+  );
 }
 
-export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuccess, intent, returnFocus, recoverable = false }) => {
+export const VietQRModal: React.FC<VietQRModalProps> = ({
+  isOpen,
+  onClose,
+  onSuccess,
+  intent,
+  returnFocus,
+  recoverable = false,
+}) => {
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
   const setPlusFromServer = useAuthStore((s) => s.setPlusFromServer);
@@ -88,7 +121,9 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
     if (!isOpen) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = previousOverflow; };
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -97,7 +132,11 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
     const ownerHouseholdId = householdId;
     const isCurrent = capturePrivateSession();
     let active = true;
-    const valid = () => active && isCurrent() && useAuthStore.getState().userId === ownerUserId && useAuthStore.getState().householdId === ownerHouseholdId;
+    const valid = () =>
+      active &&
+      isCurrent() &&
+      useAuthStore.getState().userId === ownerUserId &&
+      useAuthStore.getState().householdId === ownerHouseholdId;
     const unsubscribe = onPrivateSessionReset(() => {
       active = false;
       setSessionInvalid(true);
@@ -140,7 +179,9 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
           } catch {
             if (valid()) {
               setEntitlementState('unavailable');
-              setNetworkError('Đã nhận thanh toán; chưa thể tải lại quyền lợi Plus. Vui lòng thử lại sau.');
+              setNetworkError(
+                'Đã nhận thanh toán; chưa thể tải lại quyền lợi Plus. Vui lòng thử lại sau.',
+              );
             }
           }
         }
@@ -154,7 +195,9 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
 
     checkRef.current = checkStatus;
     void checkStatus();
-    const poll = window.setInterval(() => { void checkStatus(); }, 5_000);
+    const poll = window.setInterval(() => {
+      void checkStatus();
+    }, 5_000);
     const clock = window.setInterval(() => setNow(Date.now()), 1_000);
     return () => {
       active = false;
@@ -178,7 +221,8 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
   const isTerminal = visibleStatus !== 'pending';
   const ownerMismatch = intentOwnerKeyRef.current !== `${userId}:${householdId}`;
   const renderSessionInvalid = sessionInvalid || ownerMismatch;
-  const canCheckStatus = visibleStatus === 'pending' || (visibleStatus === 'paid' && entitlementState !== 'confirmed');
+  const canCheckStatus =
+    visibleStatus === 'pending' || (visibleStatus === 'paid' && entitlementState !== 'confirmed');
   const titleId = `payment-dialog-title-${payment.id}`;
   const instructions = intent.instructions;
 
@@ -189,66 +233,216 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="bg-white w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 flex flex-col max-h-[92vh] animate-fade-in"
+        className="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 flex flex-col max-h-[92vh] animate-fade-in"
       >
-        <div className="p-4 bg-semantic-action-primary-pressed text-white flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-semantic-action-primary flex items-center justify-center text-white"><QrCode className="w-4 h-4" /></div>
+        <div className="p-4 bg-tk-sanctuary text-white flex items-center justify-between border-b border-white/10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-tk-flame flex items-center justify-center text-white shadow-xs">
+              <VietQRBadgeIcon size={20} tone="cream" active />
+            </div>
             <div>
-              <h2 id={titleId} className="font-heading font-bold text-sm leading-tight text-white">Thanh toán VietQR</h2>
-              <p role="status" aria-live="polite" aria-atomic="true" className="text-[11px] text-slate-200">{statusLabel(visibleStatus)}</p>
+              <h2 id={titleId} className="font-heading font-extrabold text-sm leading-tight text-white">
+                Thanh toán VietQR · Napas 24/7
+              </h2>
+              <p
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+                className="text-[11px] text-slate-200 mt-0.5"
+              >
+                {statusLabel(visibleStatus)}
+              </p>
             </div>
           </div>
-          <button ref={closeRef} type="button" onClick={onClose} className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center tap-target transition-colors" aria-label="Đóng">
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center tap-target transition-colors cursor-pointer"
+            aria-label="Đóng"
+          >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         <div className="p-4 overflow-y-auto space-y-3.5 text-slate-900 bg-slate-50/50">
           {renderSessionInvalid ? (
-            <div role="alert" className="py-8 text-center space-y-3"><AlertCircle className="w-10 h-10 mx-auto text-rose-600" /><p className="font-semibold">Phiên tài khoản đã thay đổi. Lệnh này đã được ẩn.</p></div>
+            <div role="alert" className="py-8 text-center space-y-3">
+              <AlertCircle className="w-10 h-10 mx-auto text-rose-600" />
+              <p className="font-semibold">Phiên tài khoản đã thay đổi. Lệnh này đã được ẩn.</p>
+            </div>
           ) : visibleStatus === 'paid' && entitlementState === 'confirmed' ? (
             <div role="status" className="py-8 text-center space-y-3 animate-fade-in">
-              <div className="w-16 h-16 rounded-full bg-semantic-success-soft text-semantic-success border border-semantic-action-primary/30 flex items-center justify-center mx-auto shadow-xs"><CheckCircle2 className="w-10 h-10" /></div>
-              <div><h3 className="font-heading font-bold text-lg text-slate-900">Thanh toán thành công</h3><p className="text-xs text-slate-600 mt-1">Máy chủ đã xác nhận khoản thanh toán và quyền lợi Plus của tài khoản này.</p></div>
+              <div className="w-16 h-16 rounded-full bg-tk-jade-soft text-tk-jade border border-tk-jade/30 flex items-center justify-center mx-auto shadow-xs">
+                <CheckCircle2 className="w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-lg text-slate-900">
+                  Thanh toán thành công
+                </h3>
+                <p className="text-xs text-slate-600 mt-1">
+                  Máy chủ đã xác nhận khoản thanh toán và quyền lợi Takolio Plus của tài khoản này.
+                </p>
+              </div>
             </div>
           ) : visibleStatus === 'paid' && entitlementState === 'checking' ? (
-            <div role="status" className="py-8 text-center space-y-3"><Clock className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán; đang kiểm tra quyền lợi</h3><p className="text-xs text-slate-600">Chưa thể xác nhận kích hoạt Plus cho đến khi máy chủ tải lại quyền lợi tài khoản.</p></div>
+            <div role="status" className="py-8 text-center space-y-3">
+              <Clock className="w-10 h-10 mx-auto text-amber-600" />
+              <h3 className="font-heading font-bold text-lg">
+                Đã nhận thanh toán; đang kiểm tra quyền lợi
+              </h3>
+              <p className="text-xs text-slate-600">
+                Chưa thể xác nhận kích hoạt Takolio Plus cho đến khi máy chủ tải lại quyền lợi tài
+                khoản.
+              </p>
+            </div>
           ) : visibleStatus === 'paid' ? (
-            <div role="status" className="py-8 text-center space-y-3"><AlertCircle className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán</h3><p className="text-xs text-slate-600">Máy chủ chưa xác nhận quyền lợi Plus cho tài khoản này. Vui lòng kiểm tra lại sau.</p></div>
+            <div role="status" className="py-8 text-center space-y-3">
+              <AlertCircle className="w-10 h-10 mx-auto text-amber-600" />
+              <h3 className="font-heading font-bold text-lg">Đã nhận thanh toán</h3>
+              <p className="text-xs text-slate-600">
+                Máy chủ chưa xác nhận quyền lợi Takolio Plus cho tài khoản này. Vui lòng kiểm tra lại
+                sau.
+              </p>
+            </div>
           ) : visibleStatus === 'pending' ? (
             <>
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
-                <div className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-amber-500" /><span className="font-heading font-semibold text-xs text-slate-900">{payment.plan === 'annual' ? 'Gói 1 Năm Takosan Plus' : 'Gói 1 Tháng Takosan Plus'}</span></div>
-                <div className="flex items-center gap-1 text-xs font-mono font-bold text-amber-700"><Clock className="w-3.5 h-3.5" /><span>{formatTimeLeft(payment.expiresAt, now)}</span></div>
+              <div className="flex items-center justify-between bg-white p-3 rounded-2xl border border-slate-200/80 shadow-xs">
+                <div className="flex items-center gap-2">
+                  <CrownPlusIcon size={18} tone="turmeric" active />
+                  <span className="font-heading font-bold text-xs text-slate-900">
+                    {payment.plan === 'annual' ? 'Gói 1 Năm Takolio Plus' : 'Gói 1 Tháng Takolio Plus'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs font-mono font-bold text-amber-700 tk-tabular">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>{formatTimeLeft(payment.expiresAt, now)}</span>
+                </div>
               </div>
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs flex flex-col items-center justify-center">
-                <img src={instructions.qrImageUrl} alt="Mã VietQR" className="w-52 h-52 object-contain rounded-lg" />
-                <p className="text-[11px] text-slate-500 mt-1 font-medium">Mở app ngân hàng để quét mã QR Napas 24/7</p>
-                {recoverable && <p className="mt-2 text-xs text-center text-slate-600">Có thể đóng màn hình. Mở lại QR còn hạn từ lịch sử giao dịch trên trang Plus.</p>}
+
+              <div className="bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs flex flex-col items-center justify-center">
+                <img
+                  src={instructions.qrImageUrl}
+                  alt="Mã VietQR"
+                  className="w-52 h-52 object-contain rounded-xl"
+                />
+                <p className="text-[11px] text-slate-500 mt-1.5 font-medium">
+                  Mở ứng dụng Ngân hàng bất kỳ để quét mã VietQR Napas 24/7
+                </p>
+                {recoverable && (
+                  <p className="mt-2 text-xs text-center text-slate-600">
+                    Có thể đóng màn hình. Mở lại QR còn hạn từ lịch sử giao dịch trên trang Takolio
+                    Plus.
+                  </p>
+                )}
               </div>
-              <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs text-xs">
-                <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Ngân hàng:</span><span className="font-semibold text-slate-900">{instructions.bankBin}</span></div>
-                <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Số tài khoản:</span><button type="button" onClick={() => copyToClipboard(instructions.accountNumber, 'account')} className="font-mono font-bold text-slate-900">{instructions.accountNumber} {copiedField === 'account' ? <Check className="inline w-3.5 h-3.5" /> : <Copy className="inline w-3.5 h-3.5" />}</button></div>
-                <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Số tiền:</span><button type="button" onClick={() => copyToClipboard(String(payment.amountVnd), 'amount')} className="font-heading font-bold text-sm text-semantic-action-primary">{payment.amountVnd.toLocaleString('vi-VN')} {payment.currency} {copiedField === 'amount' ? <Check className="inline w-3.5 h-3.5" /> : <Copy className="inline w-3.5 h-3.5" />}</button></div>
-                <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Nội dung CK:</span><button type="button" onClick={() => copyToClipboard(instructions.transferContent, 'content')} className="font-mono font-bold text-slate-900 truncate max-w-[190px]">{instructions.transferContent} {copiedField === 'content' ? <Check className="inline w-3.5 h-3.5" /> : <Copy className="inline w-3.5 h-3.5" />}</button></div>
-                <div className="flex items-center justify-between py-1"><span className="text-slate-500">Mã đơn:</span><span className="font-mono font-bold text-slate-900">{payment.orderCode}</span></div>
+
+              <div className="space-y-2 bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs text-xs">
+                <div className="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+                  <span className="text-slate-500">Ngân hàng thụ hưởng:</span>
+                  <span className="font-bold text-slate-900 text-right">
+                    {formatBankByBin(instructions.bankBin)}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+                  <span className="text-slate-500">Chủ tài khoản:</span>
+                  <span className="font-semibold text-slate-900 text-right truncate max-w-[200px]">
+                    {instructions.accountName}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+                  <span className="text-slate-500">Số tài khoản:</span>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(instructions.accountNumber, 'account')}
+                    className="font-mono font-bold text-slate-900 inline-flex items-center gap-1 cursor-pointer hover:text-tk-flame"
+                  >
+                    <span>{instructions.accountNumber}</span>
+                    {copiedField === 'account' ? (
+                      <Check className="inline w-3.5 h-3.5 text-tk-jade" />
+                    ) : (
+                      <Copy className="inline w-3.5 h-3.5" />
+                    )}
+                  </button>
+                </div>
+                <div className="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+                  <span className="text-slate-500">Số tiền chính xác:</span>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(String(payment.amountVnd), 'amount')}
+                    className="font-heading font-extrabold text-sm text-semantic-action-primary inline-flex items-center gap-1 cursor-pointer tk-tabular"
+                  >
+                    <span>
+                      {payment.amountVnd.toLocaleString('vi-VN')} {payment.currency}
+                    </span>
+                    {copiedField === 'amount' ? (
+                      <Check className="inline w-3.5 h-3.5 text-tk-jade" />
+                    ) : (
+                      <Copy className="inline w-3.5 h-3.5" />
+                    )}
+                  </button>
+                </div>
+                <div className="flex items-center justify-between gap-2 py-1 border-b border-slate-100">
+                  <span className="text-slate-500">Nội dung CK:</span>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(instructions.transferContent, 'content')}
+                    className="font-mono font-bold text-slate-900 truncate max-w-[200px] inline-flex items-center gap-1 cursor-pointer hover:text-tk-flame"
+                  >
+                    <span className="truncate">{instructions.transferContent}</span>
+                    {copiedField === 'content' ? (
+                      <Check className="inline w-3.5 h-3.5 text-tk-jade shrink-0" />
+                    ) : (
+                      <Copy className="inline w-3.5 h-3.5 shrink-0" />
+                    )}
+                  </button>
+                </div>
+                <div className="flex items-center justify-between gap-2 py-1">
+                  <span className="text-slate-500">Mã đơn:</span>
+                  <span className="font-mono font-bold text-slate-900 tk-tabular">
+                    {payment.orderCode}
+                  </span>
+                </div>
               </div>
             </>
           ) : (
-            <div className="py-8 text-center space-y-3"><AlertCircle className="w-10 h-10 mx-auto text-rose-600" /><h3 className="font-heading font-bold text-lg">{statusLabel(visibleStatus)}</h3><p className="text-xs text-slate-600">Không có khoản thanh toán mới nào được xác nhận trong trạng thái này.</p></div>
+            <div className="py-8 text-center space-y-3">
+              <AlertCircle className="w-10 h-10 mx-auto text-rose-600" />
+              <h3 className="font-heading font-bold text-lg">{statusLabel(visibleStatus)}</h3>
+              <p className="text-xs text-slate-600">
+                Không có khoản thanh toán mới nào được xác nhận trong trạng thái này.
+              </p>
+            </div>
           )}
         </div>
 
-        {networkError && <p role="alert" className="mx-4 mb-2 rounded-lg bg-rose-50 border border-rose-200/70 px-3 py-2 text-xs text-rose-700">{networkError}</p>}
+        {networkError && (
+          <p
+            role="alert"
+            className="mx-4 mb-2 rounded-xl bg-rose-50 border border-rose-200/70 px-3 py-2 text-xs text-rose-700"
+          >
+            {networkError}
+          </p>
+        )}
         {!renderSessionInvalid && canCheckStatus && (
           <div className="p-4 bg-white border-t border-slate-100 space-y-2">
-            <Button fullWidth size="lg" disabled={isChecking} onClick={() => void checkRef.current?.()} className="flex items-center justify-center gap-2">
+            <Button
+              fullWidth
+              size="lg"
+              disabled={isChecking}
+              onClick={() => void checkRef.current?.()}
+              className="flex items-center justify-center gap-2"
+            >
               {isChecking ? 'Đang kiểm tra với máy chủ…' : 'Kiểm tra trạng thái thanh toán'}
             </Button>
           </div>
         )}
-        {isTerminal && !renderSessionInvalid && <div className="px-4 pb-4 flex items-center justify-center gap-1.5 text-xs text-slate-500"><ShieldCheck className="w-4 h-4 text-semantic-action-primary" /><span>Trạng thái do máy chủ xác nhận</span></div>}
+        {isTerminal && !renderSessionInvalid && (
+          <div className="px-4 pb-4 flex items-center justify-center gap-1.5 text-xs text-slate-500">
+            <ShieldCheck className="w-4 h-4 text-semantic-action-primary" />
+            <span>Trạng thái do máy chủ xác nhận</span>
+          </div>
+        )}
       </div>
     </div>
   );

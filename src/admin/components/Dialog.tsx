@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef, type ReactNode } from 'react';
+import { useEffect, useId, useRef, type MouseEvent, type ReactNode } from 'react';
 
-const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export function Dialog({
   open,
@@ -60,9 +61,24 @@ export function Dialog({
   }, [open]);
 
   if (!open) return null;
+
+  const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onCloseRef.current();
+    }
+  };
+
   return (
-    <div className="dialog-overlay">
-      <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} className="dialog" data-testid={testId}>
+    <div className="dialog-overlay" onClick={onOverlayClick}>
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="dialog"
+        data-testid={testId}
+      >
         <h2 id={titleId}>{title}</h2>
         <div className="dialog-body">{children}</div>
         <div className="dialog-footer">{footer}</div>

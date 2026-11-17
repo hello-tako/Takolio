@@ -12,6 +12,8 @@
     "build:admin": "vite build -c vite.admin.config.ts",
     "build:worker": "tsc -p tsconfig.worker.json",
     "preview": "vite preview",
+    "preview:v5": "node scripts/v5-live-preview.mjs",
+    "cinema:encode": "node scripts/cinema/encode-v5-videos.mjs",
     "test": "vitest run",
     "test:browser": "playwright test",
     "admin:preview": "node scripts/admin-preview.mjs",

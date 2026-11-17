@@ -2,6 +2,7 @@ import {
   finishOtpVerification, readOtpDatabaseTime, recordOtpDelivery, reserveOtpRequest, otpTicketCanCompare,
   type OtpReservation, type OtpReservationInput, type OtpSuccessEffects, type OtpRegistrationEffects,
 } from '../../../packages/db/src/auth-otp';
+import { resolvePrimaryHousehold } from '../../../packages/db/src/households';
 import type { D1DatabaseBinding } from '../../../packages/db/src';
 import { createOtpRequestKey, parseOtpRequestKey, type OtpOperation, type OtpPurpose } from '../config/otp-policy';
 import { SCAN_QUOTA_POLICY } from '../config/scan-quota-policy';
@@ -168,10 +169,11 @@ export class StrictOtpCoordinator {
       const effects: OtpSuccessEffects = {};
       let sessionToken: string | undefined;
       if (valid && sessionOperation) {
+        const primary = await resolvePrimaryHousehold(this.db, row.userId!);
         sessionToken = generateSessionToken();
         effects.sessionId = crypto.randomUUID();
         effects.sessionHash = await sha256Hex(sessionToken);
-        effects.householdId = `hh_${row.userId}`;
+        effects.householdId = primary.householdId;
         effects.sessionExpiresAt = Math.floor(row.serverEpochMillis / 1000) + 7 * 86400;
       }
       if (valid && (input.operation === 'reset_final' || input.operation === 'register_verify')) {

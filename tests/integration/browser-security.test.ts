@@ -224,7 +224,7 @@ describe('browser client against real cookie-authenticated SQLite routes', () =>
     expect((await client.api.getInventory()).map((entry: { id: string }) => entry.id)).toEqual(['online-a']);
     expect(browser.requests.map(({ path, method, status }) => [path, method, status])).toEqual([
       ['/api/v1/auth/login', 'POST', 200], ['/api/v1/me', 'GET', 200],
-      ['/api/v1/inventory', 'POST', 201], ['/api/v1/inventory', 'GET', 200], ['/api/v1/inventory', 'GET', 200],
+      ['/api/v1/inventory', 'POST', 201], ['/api/v1/inventory', 'GET', 200],
     ]);
     for (const request of browser.requests) {
       expect(request.credentials).toBe('include');

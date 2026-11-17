@@ -12,6 +12,8 @@ export const DEFAULT_RETENTION_DAYS = {
   sessions: 30,
   readyJobs: 30,
   failedJobs: 90,
+  scans: 90,
+  abandonedGuests: 30,
 } as const;
 
 export const DEFAULT_RESERVED_SCAN_RETENTION_MINUTES = 60;
@@ -22,6 +24,11 @@ export interface RetentionConfig {
   readyJobDays: number;
   failedJobDays: number;
   reservedScanMinutes: number;
+}
+
+export interface ExtendedRetentionConfig extends RetentionConfig {
+  scanDays: number;
+  abandonedGuestDays: number;
 }
 
 function readDays(value: string | undefined, fallback: number): number {
@@ -48,6 +55,17 @@ export function getRetentionConfig(env: Env): RetentionConfig {
     reservedScanMinutes: readMinutes(
       env.CLEANUP_RESERVED_SCAN_RETENTION_MINUTES,
       DEFAULT_RESERVED_SCAN_RETENTION_MINUTES,
+    ),
+  };
+}
+
+export function getExtendedRetentionConfig(env: Env): ExtendedRetentionConfig {
+  return {
+    ...getRetentionConfig(env),
+    scanDays: readDays(env.CLEANUP_SCAN_RETENTION_DAYS, DEFAULT_RETENTION_DAYS.scans),
+    abandonedGuestDays: readDays(
+      env.CLEANUP_ABANDONED_GUEST_RETENTION_DAYS,
+      DEFAULT_RETENTION_DAYS.abandonedGuests,
     ),
   };
 }

@@ -18,9 +18,12 @@ export function getJwtSecret(env: Env): string {
   return secret;
 }
 
-// Paths that do not require authentication
-const PUBLIC_PATHS = [
+// Exact public API subpaths (mounted either at /api/v1/* or root /* in test harnesses).
+// Replaces suffix matching (.endsWith) so arbitrary routes ending in /config or /health never bypass auth.
+const PUBLIC_SUBPATHS = new Set([
   '/health',
+  '/health/ready',
+  '/health/recipe-authority',
   '/config',
   '/auth/login',
   '/auth/register',
@@ -32,10 +35,31 @@ const PUBLIC_PATHS = [
   '/auth/guest',
   '/auth/logout',
   '/billing/payos/webhook',
-];
+]);
+
+export function isPublicApiPath(rawPath: string): boolean {
+  const normalized = rawPath.length > 1 && rawPath.endsWith('/') ? rawPath.slice(0, -1) : rawPath;
+  const subpath = normalized.startsWith('/api/v1/')
+    ? normalized.slice('/api/v1'.length)
+    : normalized;
+  return PUBLIC_SUBPATHS.has(subpath);
+}
+
+function isPublicRecipeReadPath(rawPath: string): boolean {
+  const normalized = rawPath.length > 1 && rawPath.endsWith('/') ? rawPath.slice(0, -1) : rawPath;
+  const subpath = normalized.startsWith('/api/v1/')
+    ? normalized.slice('/api/v1'.length)
+    : normalized;
+  if (subpath === '/recipes') return true;
+  if (!subpath.startsWith('/recipes/')) return false;
+  if (subpath.startsWith('/recipes/cooking-sessions')) return false;
+  return true;
+}
+
+type AuthVariables = { auth: AuthContext; householdRole?: string };
 
 function hasExpectedOwner(
-  c: Context<{ Bindings: Env; Variables: { auth: AuthContext } }>,
+  c: Context<{ Bindings: Env; Variables: AuthVariables }>,
   auth: Pick<AuthContext, 'userId' | 'householdId'>,
 ): boolean {
   const userId = c.req.header('X-Frigo-Expected-User-Id');
@@ -46,7 +70,7 @@ function hasExpectedOwner(
 }
 
 export async function authMiddleware(
-  c: Context<{ Bindings: Env; Variables: { auth: AuthContext } }>,
+  c: Context<{ Bindings: Env; Variables: AuthVariables }>,
   next: Next
 ) {
   const path = c.req.path;
@@ -56,8 +80,9 @@ export async function authMiddleware(
   const authHeader = c.req.header('authorization');
   const hasSessionCookie = cookieToken !== undefined;
 
-  const isPublic = PUBLIC_PATHS.some((p) => path.endsWith(p));
-  if (hasSessionCookie && (!isPublic || path.includes('/auth/')) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
+  const isPublic = isPublicApiPath(path);
+  const isAuthRoute = path.startsWith('/auth/') || path.startsWith('/api/v1/auth/');
+  if (hasSessionCookie && (!isPublic || isAuthRoute) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
     if (!hasTrustedOrigin(c)) {
       return c.json({ error: 'Cross-site request blocked', code: 'CSRF_ORIGIN_DENIED' }, 403);
     }
@@ -75,29 +100,50 @@ export async function authMiddleware(
       try { tokenValue = decodeURIComponent(cookieToken ?? ''); } catch { tokenValue = ''; }
       if (!tokenValue) return c.json({ error: 'Unauthorized: Missing or invalid authorization token', code: 'UNAUTHORIZED' }, 401);
       const tokenHash = await sha256Hex(tokenValue);
+      // Single-pass session + household tenancy lookup: joins household_members and households
+      // directly while preserving 403 TENANCY_VIOLATION (via LEFT JOIN) when membership is absent.
       const row = await c.env.DB.prepare(
-        `SELECT s.id, s.user_id, s.household_id, COALESCE(s.last_seen_at, s.created_at) AS last_seen_at, u.email, u.is_guest, p.display_name,
-                EXISTS (SELECT 1 FROM household_members hm JOIN households h ON h.id = hm.household_id
-                         WHERE hm.household_id = s.household_id AND hm.user_id = s.user_id
-                           AND (u.is_guest = 0 OR h.created_by = s.user_id)) AS household_authorized
-           FROM sessions_v2 s JOIN users u ON u.id = s.user_id
+        `SELECT s.id, s.user_id, s.household_id, COALESCE(s.last_seen_at, s.created_at) AS last_seen_at,
+                u.email, u.is_guest, p.display_name,
+                CASE WHEN h.id IS NOT NULL THEN hm.role ELSE NULL END AS role
+           FROM sessions_v2 s
+           JOIN users u ON u.id = s.user_id
            LEFT JOIN profiles p ON p.user_id = s.user_id
+           LEFT JOIN household_members hm ON hm.user_id = s.user_id AND hm.household_id = s.household_id
+           LEFT JOIN households h ON h.id = hm.household_id AND (u.is_guest = 0 OR h.created_by = s.user_id)
           WHERE s.token_hash = ? AND s.revoked_at IS NULL AND datetime(s.expires_at) > datetime('now') LIMIT 1`
-      ).bind(tokenHash).first<{ id: string; user_id: string; household_id: string; last_seen_at: string | null;
-        email: string | undefined; is_guest: number; household_authorized: number }>();
+      ).bind(tokenHash).first<{
+        id: string;
+        user_id: string;
+        household_id: string;
+        last_seen_at: string | null;
+        email: string | undefined;
+        is_guest: number;
+        role: string | null;
+      }>();
       if (row) {
         if (!hasExpectedOwner(c, { userId: row.user_id, householdId: row.household_id })) {
           return c.json({ error: 'Request owner does not match authenticated session', code: 'SESSION_OWNER_MISMATCH' }, 403);
         }
-        if (row.household_authorized !== 1) {
-          return c.json({ error: 'Forbidden: You do not have permission to access this household data', code: 'TENANCY_VIOLATION' }, 403);
+        if (row.role) {
+          c.set('householdRole', row.role);
         }
-        c.set('auth', { userId: row.user_id, householdId: row.household_id, email: row.email, isGuest: Boolean(row.is_guest), sessionId: row.id });
-        const lastSeen = Date.parse(row.last_seen_at?.replace(' ', 'T') + (row.last_seen_at?.endsWith('Z') ? '' : 'Z'));
-        if (!Number.isFinite(lastSeen) || lastSeen <= Date.now() - SESSION_LAST_SEEN_INTERVAL_MINUTES * 60_000) {
-          await c.env.DB.prepare(`UPDATE sessions_v2 SET last_seen_at = datetime('now') WHERE id = ?
-            AND (last_seen_at IS NULL OR datetime(last_seen_at) <= datetime('now', ?))`)
-            .bind(row.id, `-${SESSION_LAST_SEEN_INTERVAL_MINUTES} minutes`).run().catch(() => {});
+        c.set('auth', {
+          userId: row.user_id,
+          householdId: row.household_id,
+          email: row.email,
+          role: row.role ?? 'member',
+          ...(row.role ? { householdRole: row.role } : {}),
+          isGuest: Boolean(row.is_guest),
+          sessionId: row.id,
+        });
+        if (row.role) {
+          const lastSeen = Date.parse(row.last_seen_at?.replace(' ', 'T') + (row.last_seen_at?.endsWith('Z') ? '' : 'Z'));
+          if (!Number.isFinite(lastSeen) || lastSeen <= Date.now() - SESSION_LAST_SEEN_INTERVAL_MINUTES * 60_000) {
+            await c.env.DB.prepare(`UPDATE sessions_v2 SET last_seen_at = datetime('now') WHERE id = ?
+              AND (last_seen_at IS NULL OR datetime(last_seen_at) <= datetime('now', ?))`)
+              .bind(row.id, `-${SESSION_LAST_SEEN_INTERVAL_MINUTES} minutes`).run().catch(() => {});
+          }
         }
         return await next();
       }
@@ -111,7 +157,7 @@ export async function authMiddleware(
   // public compatibility; authenticated users must use the opaque cookie.
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     // If public recipe reading, allow guest browsing
-    if (c.req.method === 'GET' && path.includes('/recipes')) {
+    if (c.req.method === 'GET' && isPublicRecipeReadPath(path)) {
       if (!hasExpectedOwner(c, { userId: 'guest_anonymous', householdId: 'hh_guest_anonymous' })) {
         return c.json({ error: 'Request owner does not match authenticated session', code: 'SESSION_OWNER_MISMATCH' }, 403);
       }
@@ -165,11 +211,6 @@ export async function authMiddleware(
     return await next();
   }
 
-  // SEC-5: No raw-token fallbacks. Previously a bearer token of `guest_*` was
-  // accepted unconditionally and `usr_*` was accepted if the id existed in D1 —
-  // letting anyone impersonate any user by guessing their id. Only signed JWTs
-  // issued by /auth/* endpoints are accepted; guests get theirs from /auth/guest.
-  // Token is invalid or expired
   return c.json(
     {
       error: `Unauthorized: ${verification.error || 'Token không hợp lệ hoặc đã hết hạn'}`,

@@ -4,7 +4,7 @@
 
 const STORAGE_KEY = 'frigo_sync_outbox_v1';
 
-import { onPrivateSessionReset, privateSessionBlocked } from './private-session';
+import { currentPrivateScope, onPrivateSessionReset, privateSessionBlocked } from './private-session';
 
 export interface PendingOp {
   id: string;
@@ -77,6 +77,15 @@ function load(): PendingOp[] {
   }
 }
 
+function activeScope(): PendingScope | undefined {
+  try {
+    const scope = currentPrivateScope();
+    return scope.userId && scope.householdId ? scope : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function notify(count: number | null): void {
   listeners.forEach((fn) => {
     try {
@@ -88,7 +97,7 @@ function notify(count: number | null): void {
 }
 
 function emit(): void {
-  notify(pendingCount());
+  notify(pendingCount(activeScope()));
 }
 
 function save(ops: PendingOp[]): void {
@@ -204,9 +213,9 @@ export function pendingCount(scope?: PendingScope): number | null {
 
 export function subscribe(fn: Listener): () => void {
   listeners.add(fn);
-  // fire immediately with current count
+  // fire immediately with current active-scope count
   try {
-    fn(pendingCount());
+    fn(pendingCount(activeScope()));
   } catch {
     /* ignore */
   }
@@ -215,9 +224,56 @@ export function subscribe(fn: Listener): () => void {
   };
 }
 
+function isRetryableStatus(err: unknown): boolean {
+  if (!err || typeof err !== 'object' || !('status' in err)) return false;
+  const status = (err as { status?: unknown }).status;
+  return status === 408 || status === 429;
+}
+
+function isConflictStatus(err: unknown): boolean {
+  if (!err || typeof err !== 'object' || !('status' in err)) return false;
+  return (err as { status?: unknown }).status === 409;
+}
+
+function opResourceKey(op: PendingOp): string {
+  const pathname = op.path.split('?')[0];
+  const invItemMatch = /^\/inventory\/([^/]+)$/.exec(pathname);
+  if (invItemMatch) return `inventory:${decodeURIComponent(invItemMatch[1])}`;
+  if (pathname === '/inventory' && op.body) {
+    try {
+      const parsed = JSON.parse(op.body) as { id?: unknown };
+      if (typeof parsed?.id === 'string' && parsed.id.length > 0) {
+        return `inventory:${parsed.id}`;
+      }
+    } catch {
+      // fall through
+    }
+  }
+  const shopItemMatch = /^\/shopping-list\/items\/([^/]+)$/.exec(pathname);
+  if (shopItemMatch) return `shopping:${decodeURIComponent(shopItemMatch[1])}`;
+  if (pathname === '/shopping-list/items' && op.body) {
+    try {
+      const parsed = JSON.parse(op.body) as { id?: unknown };
+      if (typeof parsed?.id === 'string' && parsed.id.length > 0) {
+        return `shopping:${parsed.id}`;
+      }
+    } catch {
+      // fall through
+    }
+  }
+  const weekMatch = /^\/week\/plans\/([^/]+)/.exec(pathname);
+  if (weekMatch) return `week:${decodeURIComponent(weekMatch[1])}`;
+  const cookMatch = /^\/recipes\/([^/]+)\/cook\//.exec(pathname);
+  if (cookMatch) return `cook:${decodeURIComponent(cookMatch[1])}`;
+  const scanMatch = /^\/scans\/([^/]+)/.exec(pathname);
+  if (scanMatch) return `scan:${decodeURIComponent(scanMatch[1])}`;
+  return `path:${pathname}`;
+}
+
 /**
- * Replay all queued writes. A rejected replay stops the flush unless the HTTP
- * classifier permits dropping it. Persistence errors reject and retain the op.
+ * Replay all queued writes. Transient failures (offline, 408, 429, 5xx) pause
+ * the flush for retry; 409 conflicts retain the conflicted op and block only
+ * subsequent ops targeting that same resource so unrelated mutations continue.
  */
 async function flushOnce(
   replay: (op: PendingOp) => Promise<void>,
@@ -226,6 +282,9 @@ async function flushOnce(
 ): Promise<{ attempted: number; remaining: number }> {
   const ops = load();
   let attempted = 0;
+  let hasRetainedFailure = false;
+  const blockedResources = new Set<string>();
+
   for (const op of ops) {
     if (privateSessionBlocked() || options?.canReplay?.() === false) break;
     // Operations from a different account/household stay queued for that
@@ -238,22 +297,34 @@ async function flushOnce(
       continue;
     }
 
+    const resourceKey = opResourceKey(op);
+    if (blockedResources.has(resourceKey)) {
+      continue;
+    }
+
     try {
       await replay(op);
     } catch (err) {
-      if (isNonRetryable && isNonRetryable(err)) {
+      if (!isRetryableStatus(err) && isNonRetryable && isNonRetryable(err)) {
         // Server definitively rejected this op; removal failures must escape.
         removeOp(op.id);
         continue;
       }
-      // Retained failures also notify the existing banner (including automatic replay).
+      if (isConflictStatus(err)) {
+        // Isolate 409 conflicts per resource instead of head-of-line blocking unrelated mutations.
+        blockedResources.add(resourceKey);
+        hasRetainedFailure = true;
+        continue;
+      }
+      // Retained transient failures (offline, 408, 429, 5xx) notify the banner and pause flush.
       emit();
-      break;
+      return { attempted, remaining: load().length };
     }
     attempted++;
     // Storage failure after replay must not enter the HTTP classifier.
     removeOp(op.id);
   }
+  if (hasRetainedFailure) emit();
   return { attempted, remaining: load().length };
 }
 

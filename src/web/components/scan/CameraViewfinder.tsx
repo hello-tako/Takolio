@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Camera, RefreshCw, Zap, ZapOff, Image as ImageIcon } from 'lucide-react';
 import { clsx } from 'clsx';
 import { PRIVATE_IMAGE_JPEG_QUALITY, PRIVATE_IMAGE_MAX_DIMENSION } from '../../lib/private-image';
+import {
+  NavScanApertureIcon,
+  ReceiptScanIcon,
+} from '../../design-system/icons';
 
 interface CameraViewfinderProps {
   onCapture: (base64: string) => void;
@@ -22,7 +26,6 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
   const [hasCameraError, setHasCameraError] = useState(false);
   const [isStartingCamera, setIsStartingCamera] = useState(true);
 
-  // Initialize camera stream
   useEffect(() => {
     let active = true;
     let ownedStream: MediaStream | null = null;
@@ -57,14 +60,9 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
           videoRef.current.srcObject = mediaStream;
         }
 
-        // Check torch support
         const track = mediaStream.getVideoTracks()[0];
-        const capabilities: any = track.getCapabilities ? track.getCapabilities() : {};
-        if (capabilities.torch) {
-          setHasTorchSupport(true);
-        } else {
-          setHasTorchSupport(false);
-        }
+        const capabilities: any = track?.getCapabilities ? track.getCapabilities() : {};
+        setHasTorchSupport(Boolean(capabilities.torch));
       } catch (err) {
         console.warn('Camera access could not be established:', err);
         if (active) {
@@ -77,7 +75,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
       }
     }
 
-    startCamera();
+    void startCamera();
 
     return () => {
       active = false;
@@ -85,7 +83,6 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
     };
   }, [facingMode]);
 
-  // Handle capture
   const handleCapture = () => {
     if (videoRef.current && videoRef.current.videoWidth > 0) {
       const canvas = document.createElement('canvas');
@@ -102,7 +99,6 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
         return;
       }
     }
-    // If camera not ready, trigger gallery fallback
     onSelectFromGallery();
   };
 
@@ -115,7 +111,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
       });
       setIsTorchOn(!isTorchOn);
     } catch {
-      // Ignore
+      // Ignore constraint failure on unsupported devices
     }
   };
 
@@ -123,9 +119,11 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
     setFacingMode((prev) => (prev === 'environment' ? 'user' : 'environment'));
   };
 
+  const ModeHudIcon = scanType === 'receipt' ? ReceiptScanIcon : NavScanApertureIcon;
+
   return (
-    <div className="relative w-full h-[clamp(300px,48dvh,520px)] rounded-2xl overflow-hidden bg-semantic-overlay flex items-center justify-center border border-white/15 shadow-2xl">
-      {/* Video stream */}
+    <div className="relative w-full h-[clamp(320px,52dvh,540px)] rounded-[28px] overflow-hidden bg-tk-sanctuary flex items-center justify-center border border-white/15 shadow-elevated">
+      {/* Live Camera Video */}
       {!hasCameraError && (
         <video
           ref={videoRef}
@@ -139,26 +137,27 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
         />
       )}
 
-      {/* Fallback Viewfinder if camera blocked/unavailable */}
+      {/* Sanctuary Fallback Viewfinder when Camera Blocked/Unavailable */}
       {(hasCameraError || isStartingCamera) && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-3 bg-semantic-overlay/90 backdrop-blur-sm">
-          <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white/80">
-            <Camera className="w-7 h-7 text-takosan-mint" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-3.5 bg-tk-sanctuary/95 backdrop-blur-md">
+          <div className="w-16 h-16 rounded-2xl bg-tk-sanctuary-elevated border border-white/15 flex items-center justify-center text-white shadow-card">
+            <NavScanApertureIcon size={30} tone="flame" active />
           </div>
           <div>
-            <p className="font-heading font-bold text-sm text-white">
-              {hasCameraError ? 'Camera không sẵn sàng' : 'Đang bật camera...'}
+            <p className="font-heading font-extrabold text-base text-white">
+              {hasCameraError ? 'Camera không sẵn sàng' : 'Đang khởi động ống kính AI…'}
             </p>
-            <p className="text-sm text-white mt-1 max-w-xs leading-relaxed">
+            <p className="text-xs sm:text-sm text-white/75 mt-1 max-w-xs leading-relaxed">
               {hasCameraError
-                ? 'Bạn có thể chọn ảnh từ thư viện để tiếp tục'
-                : 'Vui lòng cấp quyền truy cập camera nếu được hỏi'}
+                ? 'Bạn vẫn có thể tải ảnh trực tiếp từ thư viện thiết bị để AI phân tích.'
+                : 'Vui lòng cho phép quyền truy cập máy ảnh nếu trình duyệt hiển thị lời nhắc.'}
             </p>
           </div>
           {hasCameraError && (
             <button
+              type="button"
               onClick={onSelectFromGallery}
-              className="px-4 py-2 rounded-xl bg-takosan-green hover:bg-takosan-green-hover text-white font-semibold text-sm flex items-center gap-1.5 shadow-sm tap-target transition-tap active:scale-[0.98]"
+              className="px-4.5 py-2.5 rounded-2xl bg-tk-flame hover:bg-tk-flame-hover text-white font-extrabold text-sm flex items-center gap-2 shadow-float tap-target transition-tap active:scale-[0.98] cursor-pointer"
             >
               <ImageIcon className="w-4 h-4" />
               <span>Tải ảnh từ thư viện</span>
@@ -167,18 +166,19 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
         </div>
       )}
 
-      {/* Viewfinder Guide Overlay */}
-      <div className="absolute inset-3.5 pointer-events-none flex flex-col justify-between">
-        {/* Top Controls */}
-        <div className="flex items-center justify-between pointer-events-auto">
+      {/* Pro AI Vision HUD & Precision Corner Reticle Overlay */}
+      <div className="absolute inset-4 pointer-events-none flex flex-col justify-between">
+        {/* Top Controls Bar */}
+        <div className="flex items-center justify-between gap-2 pointer-events-auto">
           {hasTorchSupport ? (
             <button
-              onClick={toggleTorch}
+              type="button"
+              onClick={() => void toggleTorch()}
               className={clsx(
-                'w-10 h-10 rounded-xl flex items-center justify-center backdrop-blur-md transition-tap tap-target border border-white/10',
+                'w-11 h-11 rounded-2xl flex items-center justify-center backdrop-blur-md transition-tap tap-target border cursor-pointer',
                 isTorchOn
-                  ? 'bg-takosan-yellow text-takosan-navy'
-                  : 'bg-semantic-overlay/60 text-white',
+                  ? 'bg-tk-turmeric text-tk-ink border-tk-turmeric'
+                  : 'bg-tk-sanctuary-card/75 text-white border-white/15 hover:bg-tk-sanctuary-elevated',
               )}
               aria-label="Đèn pin"
             >
@@ -189,65 +189,80 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
               )}
             </button>
           ) : (
-            <div className="w-10" />
+            <div className="w-11" />
           )}
 
-          <div className="min-w-0 max-w-[60%] px-2 py-1.5 rounded-lg bg-semantic-overlay/75 backdrop-blur-md text-sm font-heading font-semibold text-white border border-white/15 shadow-md">
-            {scanType === 'receipt'
-              ? 'Căn chỉnh toàn bộ hóa đơn vào khung'
-              : scanType === 'fridge'
-                ? 'Hướng vào tủ lạnh để nhận diện thực phẩm'
-                : 'Đặt nguyên liệu vào giữa khung hình'}
+          <div className="min-w-0 max-w-[68%] px-3 py-1.5 rounded-full bg-tk-sanctuary-card/85 backdrop-blur-md text-xs sm:text-sm font-heading font-bold text-white border border-white/15 shadow-card flex items-center gap-1.5">
+            <ModeHudIcon size={15} tone="cream" active />
+            <span className="truncate">
+              {scanType === 'receipt'
+                ? 'Căn chỉnh toàn bộ hóa đơn vào khung'
+                : scanType === 'fridge'
+                  ? 'Hướng vào ngăn tủ để nhận diện thực phẩm'
+                  : 'Đặt nguyên liệu vào tâm khung ngắm'}
+            </span>
           </div>
 
           <button
+            type="button"
             onClick={switchCamera}
-            className="w-10 h-10 rounded-xl bg-semantic-overlay/60 backdrop-blur-md text-white border border-white/10 flex items-center justify-center tap-target hover:bg-semantic-overlay/80 transition-tap"
+            className="w-11 h-11 rounded-2xl bg-tk-sanctuary-card/75 backdrop-blur-md text-white border border-white/15 flex items-center justify-center tap-target hover:bg-tk-sanctuary-elevated transition-tap cursor-pointer"
             aria-label="Đổi camera"
           >
             <RefreshCw className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Viewfinder Target Frame */}
+        {/* Precision Sculpted Corner Reticle Brackets */}
         <div className="relative flex-1 my-3 flex items-center justify-center">
           <div
             className={clsx(
-              'border border-white/30 transition-tap duration-300 relative overflow-hidden',
-              scanType === 'receipt' ? 'w-4/5 h-[90%] rounded-xl' : 'w-[85%] h-[85%] rounded-2xl',
+              'border border-white/20 transition-tap duration-300 relative overflow-hidden',
+              scanType === 'receipt'
+                ? 'w-[80%] h-[90%] rounded-2xl'
+                : 'w-[86%] h-[84%] rounded-[24px]',
             )}
           >
-            {/* 4 Corner Markers */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-takosan-green rounded-tl-sm" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-takosan-green rounded-tr-sm" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-takosan-green rounded-bl-sm" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-takosan-green rounded-br-sm" />
+            {/* 4 Precision Corner Reticle Brackets */}
+            <div className="absolute top-0 left-0 w-7 h-7 border-t-[3px] border-l-[3px] border-tk-flame rounded-tl-xl" />
+            <div className="absolute top-0 right-0 w-7 h-7 border-t-[3px] border-r-[3px] border-tk-flame rounded-tr-xl" />
+            <div className="absolute bottom-0 left-0 w-7 h-7 border-b-[3px] border-l-[3px] border-tk-flame rounded-bl-xl" />
+            <div className="absolute bottom-0 right-0 w-7 h-7 border-b-[3px] border-r-[3px] border-tk-flame rounded-br-xl" />
 
-            {/* Scanning Laser Line */}
-            <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-takosan-coral to-transparent shadow-[0_0_8px_rgba(255,123,107,0.85)] motion-safe:animate-[scanLaser_2.5s_ease-in-out_infinite]" />
+            {/* Subtle Center Alignment Guides */}
+            {scanType === 'receipt' ? (
+              <div className="absolute inset-x-4 top-1/4 bottom-1/4 border-y border-dashed border-white/20" />
+            ) : (
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border border-white/25" />
+            )}
+
+            {/* Terracotta AI Vision Laser Sweep */}
+            <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-tk-flame to-transparent shadow-glow motion-safe:animate-[scanLaser_2.5s_ease-in-out_infinite]" />
           </div>
         </div>
 
-        {/* Bottom Shutter Trigger Bar */}
+        {/* Bottom Shutter & Gallery Trigger Dock */}
         <div className="flex items-center justify-around pointer-events-auto pb-1">
           <button
+            type="button"
             onClick={onSelectFromGallery}
-            className="px-4 py-2.5 rounded-xl bg-semantic-overlay/60 border border-white/15 backdrop-blur-md text-white flex items-center gap-2 tap-target hover:bg-semantic-overlay/85 active:scale-95 transition-tap"
+            className="px-4 py-2.5 rounded-2xl bg-tk-sanctuary-card/80 border border-white/15 backdrop-blur-md text-white flex items-center gap-2 tap-target hover:bg-tk-sanctuary-elevated active:scale-95 transition-tap cursor-pointer"
             title="Thư viện"
             aria-label="Thư viện"
           >
-            <ImageIcon className="w-5 h-5" />
-            <span className="text-sm font-heading font-bold">Thư viện</span>
+            <ImageIcon className="w-5 h-5 text-tk-jade-mint" />
+            <span className="text-sm font-heading font-extrabold">Thư viện</span>
           </button>
 
-          {/* Big Shutter Button */}
+          {/* Concentric Atelier Shutter Button */}
           <button
+            type="button"
             onClick={handleCapture}
-            className="w-20 h-20 rounded-full border-[3px] border-white/90 flex items-center justify-center bg-transparent active:scale-95 transition-transform p-1.5 tap-target shadow-[0_0_24px_rgba(46,125,91,0.45)]"
+            className="w-20 h-20 rounded-full border-[3px] border-white/90 flex items-center justify-center bg-white/10 active:scale-95 transition-transform p-1.5 tap-target shadow-float cursor-pointer"
             aria-label="Chụp ảnh"
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-white to-takosan-mint flex items-center justify-center shadow-md">
-              <Camera className="w-8 h-8 text-semantic-text-primary stroke-[2.2]" />
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-white to-tk-sunken flex items-center justify-center shadow-md">
+              <Camera className="w-8 h-8 text-tk-flame stroke-[2.2]" />
             </div>
           </button>
 

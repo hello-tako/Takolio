@@ -1,6 +1,7 @@
+import clsx from 'clsx';
 import { useState } from 'react';
 import { useAuditEvents } from '../api/hooks';
-import { Badge, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
+import { Badge, Button, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { formatDateTime } from '../lib/format';
 import { useDebouncedValue } from '../lib/hooks';
@@ -9,6 +10,8 @@ import { ADMIN_ROLE_LABELS_VI, type AdminAuditEvent } from '@shared/admin';
 const PAGE_SIZE = 25;
 const OUTCOME_TONE: Record<string, Tone> = { success: 'success', denied: 'warning', failure: 'danger' };
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+
+const ACTION_PRESETS = ['admin.login', 'users.pii.reveal', 'role.grant.super_admin'] as const;
 
 function startOfDay(value: string): string | undefined {
   return DATE_PATTERN.test(value) ? `${value}T00:00:00.000Z` : undefined;
@@ -40,6 +43,16 @@ export function AuditPage() {
   });
 
   const resetPage = () => setPage(1);
+  const hasFilters = actionInput !== '' || actorInput !== '' || outcome !== '' || from !== '' || to !== '';
+  const clearFilters = () => {
+    setActionInput('');
+    setActorInput('');
+    setOutcome('');
+    setFrom('');
+    setTo('');
+    setPage(1);
+  };
+
   const toggleExpanded = (id: string) => {
     setExpanded((current) => {
       const next = new Set(current);
@@ -51,15 +64,49 @@ export function AuditPage() {
 
   return (
     <>
-      <PageHeader title={vi.audit.title} description={vi.audit.description} />
+      <PageHeader
+        eyebrow={vi.audit.eyebrow}
+        title={vi.audit.title}
+        description={vi.audit.description}
+        actions={<Badge tone="brand">{vi.audit.ledgerBadge}</Badge>}
+      />
+
       <Section title={vi.audit.caption}>
-        <div className="toolbar toolbar-wrap">
+        <div className="preset-strip">
+          <span className="muted small">{vi.audit.quickFiltersLabel}</span>
+          {ACTION_PRESETS.map((preset) => (
+            <button
+              key={preset}
+              type="button"
+              className={clsx('preset-chip mono', actionInput === preset && 'is-active')}
+              onClick={() => {
+                setActionInput(actionInput === preset ? '' : preset);
+                resetPage();
+              }}
+            >
+              {preset}
+            </button>
+          ))}
+          <button
+            type="button"
+            className={clsx('preset-chip', outcome === 'denied' && 'is-active')}
+            onClick={() => {
+              setOutcome(outcome === 'denied' ? '' : 'denied');
+              resetPage();
+            }}
+          >
+            {vi.labels.outcome.denied}
+          </button>
+        </div>
+
+        <div className="toolbar">
           <Field label={vi.audit.action} htmlFor="admin-audit-action">
             <input
               id="admin-audit-action"
               data-testid="admin-audit-action-filter"
               type="search"
-              maxLength={100}
+              placeholder={vi.audit.actionPlaceholder}
+              maxLength={64}
               value={actionInput}
               onChange={(event) => {
                 setActionInput(event.target.value);
@@ -90,6 +137,7 @@ export function AuditPage() {
               id="admin-audit-actor"
               data-testid="admin-audit-actor-filter"
               type="search"
+              placeholder={vi.audit.actorPlaceholder}
               maxLength={100}
               value={actorInput}
               onChange={(event) => {
@@ -122,13 +170,26 @@ export function AuditPage() {
               }}
             />
           </Field>
+          {hasFilters ? (
+            <div className="toolbar-actions">
+              <Button variant="ghost" onClick={clearFilters}>
+                {vi.common.clearFilters}
+              </Button>
+            </div>
+          ) : null}
         </div>
 
         {events.isPending ? <LoadingState rows={5} /> : null}
         {events.isError ? <ErrorState error={events.error} onRetry={() => void events.refetch()} /> : null}
         {events.data && events.data.items.length === 0 ? <EmptyState body={vi.audit.empty} /> : null}
         {events.data && events.data.items.length > 0 ? (
-          <div className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={events.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.audit.caption}>
+          <div
+            className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={events.isPlaceholderData || undefined}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.audit.caption}
+          >
             <table className="data-table audit-table">
               <caption className="sr-only">{vi.audit.caption}</caption>
               <thead>
@@ -170,7 +231,17 @@ export function AuditPage() {
   );
 }
 
-function AuditRowGroup({ event, isOpen, metadataId, onToggle }: { event: AdminAuditEvent; isOpen: boolean; metadataId: string; onToggle: () => void }) {
+function AuditRowGroup({
+  event,
+  isOpen,
+  metadataId,
+  onToggle,
+}: {
+  event: AdminAuditEvent;
+  isOpen: boolean;
+  metadataId: string;
+  onToggle: () => void;
+}) {
   const metadataEntries = event.metadata ? Object.entries(event.metadata) : [];
   return (
     <>
@@ -178,7 +249,11 @@ function AuditRowGroup({ event, isOpen, metadataId, onToggle }: { event: AdminAu
         <td>{formatDateTime(event.occurredAt)}</td>
         <td className="mono">{event.actorUserId ?? vi.common.dash}</td>
         <td>{event.actorRoles.map((role) => ADMIN_ROLE_LABELS_VI[role]).join(', ') || vi.common.dash}</td>
-        <td className="mono">{event.action}</td>
+        <td>
+          <Badge tone="neutral">
+            <span className="mono">{event.action}</span>
+          </Badge>
+        </td>
         <td className="mono">{event.targetType ? `${event.targetType}${event.targetId ? `:${event.targetId}` : ''}` : vi.common.dash}</td>
         <td>
           <Badge tone={OUTCOME_TONE[event.outcome] ?? 'neutral'}>{vi.labels.outcome[event.outcome] ?? event.outcome}</Badge>
@@ -186,7 +261,13 @@ function AuditRowGroup({ event, isOpen, metadataId, onToggle }: { event: AdminAu
         <td className="mono">{event.reasonCode ?? vi.common.dash}</td>
         <td className="mono">{event.requestId ?? vi.common.dash}</td>
         <td>
-          <button type="button" className="btn btn-ghost btn-small" aria-expanded={isOpen} aria-controls={metadataId} onClick={onToggle}>
+          <button
+            type="button"
+            className="btn btn-ghost btn-small"
+            aria-expanded={isOpen}
+            aria-controls={metadataId}
+            onClick={onToggle}
+          >
             {isOpen ? vi.audit.hideMetadata : vi.audit.showMetadata}
           </button>
         </td>

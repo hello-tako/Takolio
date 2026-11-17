@@ -14,7 +14,7 @@ interface AuthFieldProps {
   reveal?: { show: boolean; onToggle: () => void };
 }
 
-/** Shared auth input field (screen 02: real labels, 44px targets, focus ring). */
+/** Shared V4 Atelier auth input field (real labels, >=44px targets, crisp focus ring). */
 export const AuthField: React.FC<AuthFieldProps> = ({
   label,
   icon: Icon,
@@ -29,9 +29,17 @@ export const AuthField: React.FC<AuthFieldProps> = ({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-xs font-semibold text-semantic-text-secondary mb-1">{label}</label>
+      <label
+        htmlFor={id}
+        className="block text-xs font-bold text-tk-secondary mb-1.5"
+      >
+        {label}
+      </label>
       <div className="relative">
-        <Icon className="w-4 h-4 absolute left-3.5 top-3.5 text-semantic-text-muted" aria-hidden="true" />
+        <Icon
+          className="w-4.5 h-4.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-tk-muted pointer-events-none"
+          aria-hidden="true"
+        />
         <input
           id={id}
           name={type === 'email' ? 'email' : type === 'password' ? 'password' : 'displayName'}
@@ -41,8 +49,13 @@ export const AuthField: React.FC<AuthFieldProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          autoComplete={autoComplete ?? (type === 'email' ? 'email' : type === 'password' ? 'current-password' : 'name')}
-          className={`w-full h-11 pl-10 bg-white border border-semantic-border focus:border-takosan-green rounded-xl focus:outline-none focus:ring-2 focus:ring-takosan-green/20 text-sm font-medium text-semantic-text-primary shadow-xs ${reveal ? 'pr-10' : 'pr-4'}`}
+          autoComplete={
+            autoComplete ??
+            (type === 'email' ? 'email' : type === 'password' ? 'current-password' : 'name')
+          }
+          className={`w-full h-12 pl-10.5 bg-tk-canvas/60 border border-tk-stone focus:bg-white focus:border-tk-jade rounded-2xl focus:outline-none focus:ring-3 focus:ring-tk-jade/20 text-sm font-semibold text-tk-ink shadow-xs transition-colors ${
+            reveal ? 'pr-11' : 'pr-4'
+          }`}
         />
         {reveal && (
           <button
@@ -50,9 +63,13 @@ export const AuthField: React.FC<AuthFieldProps> = ({
             onClick={reveal.onToggle}
             aria-label={reveal.show ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
             aria-pressed={reveal.show}
-            className="absolute right-3 top-3 text-semantic-text-muted hover:text-semantic-text-secondary p-1 tap-target"
+            className="absolute right-1.5 top-1/2 -translate-y-1/2 text-tk-muted hover:text-tk-ink rounded-xl p-2 tap-target inline-flex items-center justify-center cursor-pointer transition-colors"
           >
-            {reveal.show ? <EyeOff className="w-4 h-4" aria-hidden="true" /> : <Eye className="w-4 h-4" aria-hidden="true" />}
+            {reveal.show ? (
+              <EyeOff className="w-4 h-4" aria-hidden="true" />
+            ) : (
+              <Eye className="w-4 h-4" aria-hidden="true" />
+            )}
           </button>
         )}
       </div>

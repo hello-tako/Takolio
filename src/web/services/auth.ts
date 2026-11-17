@@ -275,4 +275,47 @@ export const authApi = {
       throw err;
     }
   },
+
+  importGuestHousehold: async (payload: {
+    items?: Array<{
+      id?: string;
+      name: string;
+      quantity: number;
+      unit?: string;
+      category?: string;
+      storage?: 'fridge' | 'freezer' | 'pantry';
+      expiryDate?: string | null;
+      expiryEstimated?: boolean;
+    }>;
+    shoppingItems?: Array<{
+      id?: string;
+      name: string;
+      quantity?: number;
+      unit?: string;
+      isChecked?: boolean;
+      ingredientId?: string;
+    }>;
+    guestSessionToken?: string;
+    previousGuestScope?: { userId: string; householdId: string };
+  }) => {
+    const assertCurrent = guardPrivateSession();
+    const { previousGuestScope, ...requestBody } = payload;
+    const result = await fetchJson<{
+      success: boolean;
+      importedItemsCount: number;
+      importedShoppingCount: number;
+      inventory?: unknown[];
+    }>('/households/import-guest', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+    });
+    assertCurrent();
+    if (result.success && previousGuestScope?.userId && previousGuestScope?.householdId) {
+      const targetScope = getCurrentScope();
+      if (targetScope.userId && targetScope.householdId) {
+        rebindPendingOps(previousGuestScope, targetScope);
+      }
+    }
+    return result;
+  },
 };

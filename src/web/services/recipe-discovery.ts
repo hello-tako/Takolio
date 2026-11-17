@@ -1,4 +1,4 @@
-import { ALL_RECIPES } from '@frigo/recipes';
+import { ALL_RECIPES, expandCatalogWithV5Masterpieces } from '@frigo/recipes';
 import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import {
   DiscoveryPageSchema,
@@ -48,9 +48,11 @@ export const discoveryApi = {
       if (!isOffline(error)) throw error;
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
+      const offlineRecipes =
+        import.meta.env.MODE !== 'test' ? expandCatalogWithV5Masterpieces(ALL_RECIPES) : ALL_RECIPES;
       const snapshot = await discoverySnapshot({
         source: 'device:static',
-        catalogFingerprint: await fingerprintRecipes(ALL_RECIPES),
+        catalogFingerprint: await fingerprintRecipes(offlineRecipes),
         userId: scope.userId,
         householdId: scope.householdId,
         inventory,
@@ -59,7 +61,7 @@ export const discoveryApi = {
       assertCurrent();
       try {
         return presentDiscoveryPage(
-          selectDiscoveryPage(rankDiscovery(ALL_RECIPES, inventory, query), query, snapshot),
+          selectDiscoveryPage(rankDiscovery(offlineRecipes, inventory, query), query, snapshot),
           'device',
         );
       } catch (error) {

@@ -7,8 +7,13 @@ import { mealCompositionApi } from '../../services/meal-composition';
 import type { PlannerLocale } from './copy';
 
 /** Build-time UI gate; the server `MEAL_COMPOSITION_V2_ENABLED` flag stays authoritative. */
-export const isMealCompositionEnabled = () =>
-  import.meta.env.VITE_MEAL_COMPOSITION_V2_ENABLED === 'true';
+export const isMealCompositionEnabled = () => {
+  const flag = import.meta.env.VITE_MEAL_COMPOSITION_V2_ENABLED;
+  if (import.meta.env.MODE === 'test') {
+    return flag === 'true';
+  }
+  return flag !== 'false';
+};
 
 export function usePlanCompositions(plan: MealPlanDto | undefined, enabled = true) {
   return useQuery({

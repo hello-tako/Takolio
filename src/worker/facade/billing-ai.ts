@@ -67,12 +67,26 @@ export async function listTransactions(db: D1DatabaseBinding, query: { status?: 
   };
 }
 
+export const AI_WIRED_NOTE = 'AI Gateway V4 đang ghi trực tiếp telemetry runtime vào bảng ai_requests.';
+
 export async function aiSummary(db: D1DatabaseBinding, range: AdminRange): Promise<AdminAiSummary> {
   const start = rangeStartDay(range);
   const [totals, byTask, byModel, scans, jobsRange, jobsAll, retries] = await Promise.all([
-    db.prepare(`SELECT COUNT(*) AS requests, COUNT(CASE WHEN status <> 'success' THEN 1 END) AS errors, AVG(latency_ms) AS latency,
-        COALESCE(SUM(input_tokens + output_tokens), 0) AS tokens, COALESCE(SUM(estimated_cost), 0) AS cost
-      FROM ai_requests WHERE date(created_at) >= ?`).bind(start).first<{ requests: number; errors: number; latency: number | null; tokens: number; cost: number }>(),
+    db.prepare(`SELECT
+        COUNT(CASE WHEN date(created_at) >= ?1 THEN 1 END) AS requests,
+        COUNT(CASE WHEN date(created_at) >= ?1 AND status <> 'success' THEN 1 END) AS errors,
+        AVG(CASE WHEN date(created_at) >= ?1 THEN latency_ms END) AS latency,
+        COALESCE(SUM(CASE WHEN date(created_at) >= ?1 THEN input_tokens + output_tokens END), 0) AS tokens,
+        COALESCE(SUM(CASE WHEN date(created_at) >= ?1 THEN estimated_cost END), 0) AS cost,
+        COUNT(CASE WHEN id NOT LIKE 'fx_ai_%' THEN 1 END) AS live_requests
+      FROM ai_requests`).bind(start).first<{
+      requests: number;
+      errors: number;
+      latency: number | null;
+      tokens: number;
+      cost: number;
+      live_requests: number;
+    }>(),
     db.prepare(`SELECT task, COUNT(*) AS requests, COUNT(CASE WHEN status <> 'success' THEN 1 END) AS errors, AVG(latency_ms) AS latency, COALESCE(SUM(estimated_cost), 0) AS cost
       FROM ai_requests WHERE date(created_at) >= ? GROUP BY task ORDER BY requests DESC, task LIMIT 50`).bind(start)
       .all<{ task: string; requests: number; errors: number; latency: number | null; cost: number }>(),
@@ -86,18 +100,21 @@ export async function aiSummary(db: D1DatabaseBinding, range: AdminRange): Promi
       FROM scan_queue_jobs WHERE date(created_at) >= ?`).bind(start).first<{ retried: number; exhausted: number }>(),
   ]);
   const requests = Number(totals?.requests ?? 0);
-  const partial = { status: 'partial' as const, source: 'D1:ai_requests', note: AI_NOT_WIRED_NOTE };
+  const isWired = Number(totals?.live_requests ?? 0) > 0;
+  const aiMetricSource = isWired
+    ? { status: 'ok' as const, source: 'D1:ai_requests' }
+    : { status: 'partial' as const, source: 'D1:ai_requests', note: AI_NOT_WIRED_NOTE };
   return {
     range,
     metrics: [
-      { key: 'ai_requests', label: 'Yêu cầu AI', value: requests, unit: 'count', definition: 'Số dòng ai_requests trong khoảng thời gian.', ...partial },
+      { key: 'ai_requests', label: 'Yêu cầu AI', value: requests, unit: 'count', definition: 'Số dòng ai_requests trong khoảng thời gian.', ...aiMetricSource },
       { key: 'ai_error_rate', label: 'Tỷ lệ lỗi', value: requests ? Math.round((Number(totals?.errors ?? 0) / requests) * 1000) / 10 : null, unit: 'percent',
-        definition: "Tỷ lệ yêu cầu có status khác 'success'.", ...partial },
+        definition: "Tỷ lệ yêu cầu có status khác 'success'.", ...aiMetricSource },
       { key: 'ai_avg_latency', label: 'Độ trễ trung bình', value: totals?.latency == null ? null : Math.round(totals.latency), unit: 'ms',
-        definition: 'Trung bình latency_ms.', ...partial },
-      { key: 'ai_tokens', label: 'Token', value: Number(totals?.tokens ?? 0), unit: 'tokens', definition: 'Tổng input_tokens + output_tokens.', ...partial },
+        definition: 'Trung bình latency_ms.', ...aiMetricSource },
+      { key: 'ai_tokens', label: 'Token', value: Number(totals?.tokens ?? 0), unit: 'tokens', definition: 'Tổng input_tokens + output_tokens.', ...aiMetricSource },
       { key: 'ai_estimated_cost', label: 'Chi phí ước tính', value: Math.round(Number(totals?.cost ?? 0) * 10000) / 10000, unit: 'usd',
-        definition: 'Tổng estimated_cost (ước tính theo đơn giá token, không phải hoá đơn nhà cung cấp).', ...partial },
+        definition: 'Tổng estimated_cost (ước tính theo đơn giá token, không phải hoá đơn nhà cung cấp).', ...aiMetricSource },
       { key: 'ai_retries', label: 'Số lần thử lại AI', value: null, unit: 'count', status: 'unavailable', source: 'none',
         definition: 'Số lần thử lại gọi nhà cung cấp AI.', note: 'Không có nguồn dữ liệu bền vững cho số lần thử lại AI.' },
       { key: 'scan_job_retries', label: 'Tác vụ quét phải thử lại', value: Number(retries?.retried ?? 0), unit: 'count', status: 'ok', source: 'D1:scan_queue_jobs',
@@ -117,7 +134,9 @@ export async function aiSummary(db: D1DatabaseBinding, range: AdminRange): Promi
       localJobStatus: jobsAll.results.map((row) => ({ status: row.status, count: Number(row.count) })),
       remoteBacklog: { status: 'unavailable', note: 'Độ trễ/backlog của Cloudflare Queue cần adapter từ xa; không truy cập trong V1.' },
     },
-    instrumentation: { aiRequestsWriter: 'not_wired', note: AI_NOT_WIRED_NOTE },
+    instrumentation: isWired
+      ? { aiRequestsWriter: 'wired', note: AI_WIRED_NOTE }
+      : { aiRequestsWriter: 'not_wired', note: AI_NOT_WIRED_NOTE },
     series: [{ key: 'ai_requests', label: 'Yêu cầu AI theo ngày', unit: 'count', source: 'D1:ai_requests',
       points: await daily(db, `SELECT date(created_at) AS day, COUNT(*) AS value FROM ai_requests WHERE date(created_at) >= ? GROUP BY 1`, start, range) }],
   };

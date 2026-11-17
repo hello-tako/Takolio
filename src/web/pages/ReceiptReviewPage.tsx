@@ -1,16 +1,5 @@
-import { KitchenHeader } from '../components/common/KitchenHeader';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ReviewHeading, ReviewSummary } from '../components/scan/ReviewHeading';
-import {
-  ReviewFields,
-  validReviewQuantity as validQuantity,
-  validReviewExpiry as validExpiry,
-} from '../components/scan/ReviewFields';
-import { Button } from '../components/common/Button';
-import { api } from '../services/api';
-import { useWeekStore } from '../stores/useWeekStore';
-import { getIngredientImage } from '../lib/ingredient-images';
 import {
   CheckCircle2,
   ShoppingBag,
@@ -19,9 +8,26 @@ import {
   Calendar,
   CalendarCheck,
   AlertCircle,
+  Plus,
 } from 'lucide-react';
 import type { StandardUnit } from '@frigo/domain';
 import { clsx } from 'clsx';
+import { KitchenHeader } from '../components/common/KitchenHeader';
+import { ReviewHeading, ReviewSummary } from '../components/scan/ReviewHeading';
+import {
+  REVIEW_UNITS,
+  ReviewFields,
+  validReviewQuantity as validQuantity,
+  validReviewExpiry as validExpiry,
+} from '../components/scan/ReviewFields';
+import { Button } from '../components/common/Button';
+import { BottomSheet } from '../design-system/primitives';
+import { AtelierBadge } from '../design-system/v4/AtelierPrimitives';
+import { ReceiptScanIcon } from '../design-system/icons';
+import { api } from '../services/api';
+import { useWeekStore } from '../stores/useWeekStore';
+import { isMealPlannerEnabled } from '../features/planner/feature';
+import { getIngredientImage } from '../lib/ingredient-images';
 import { capturePrivateSession } from '../lib/private-session';
 import { invalidateInventoryDependents } from '../lib/query-invalidation';
 import {
@@ -47,20 +53,16 @@ interface ReceiptItemState {
   totalPriceVnd?: number;
   category?: string;
   storage: 'fridge' | 'freezer' | 'pantry';
-  /** Provider-reported confidence; undefined means the model reported none. */
   confidence?: number | null;
-  /** Raw OCR extraction, retained separately from the confirmed value. */
   rawEvidence?: {
     rawName?: string | null;
     estimatedQuantity?: number | null;
     unit?: StandardUnit | null;
   };
-  /** Explicit reviewer rejection, recorded durably by the server. */
   rejected?: boolean;
   reviewState?: 'PENDING' | 'CONFIRMED' | 'REJECTED';
   expiryDate?: string;
   expiryEstimated?: boolean;
-  /** Server-recorded accepted expiry kind for a CONFIRMED line (T13R-A P2-B). */
   expiryKind?: 'KNOWN' | 'ESTIMATED' | 'UNKNOWN';
 }
 
@@ -108,6 +110,9 @@ export const ReceiptReviewPage: React.FC = () => {
 const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScanId }) => {
   const navigate = useNavigate();
   const currentPlan = useWeekStore((s) => s.currentPlan);
+  const plannerEnabled = isMealPlannerEnabled();
+  const isOfflineReceipt = Boolean(receiptScanId?.startsWith('receipt_offline_'));
+
   const mounted = useRef(false);
   useEffect(() => {
     mounted.current = true;
@@ -116,10 +121,9 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
     };
   }, []);
 
-  // History survives logout. Only the authorized scan endpoint may supply receipt data.
   const [liveReceipt, setLiveReceipt] = useState<ReceiptState>({
     id: receiptScanId || '',
-    status: receiptScanId ? 'pending' : 'failed',
+    status: !receiptScanId ? 'failed' : isOfflineReceipt ? 'ready' : 'pending',
     items: [],
   });
   const [pollError, setPollError] = useState<string | null>(
@@ -127,14 +131,21 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
   );
   const [retryIndex, setRetryIndex] = useState(0);
   const [items, setItems] = useState<ReceiptItemState[]>([]);
+
+  // Manual item sheet state (fixes dead-end offline / empty OCR receipt bug!)
+  const [isManualAddOpen, setIsManualAddOpen] = useState(false);
+  const [manualName, setManualName] = useState('');
+  const [manualQty, setManualQty] = useState(1);
+  const [manualUnit, setManualUnit] = useState<StandardUnit>('piece');
+  const [manualStorage, setManualStorage] = useState<'fridge' | 'freezer' | 'pantry'>('fridge');
+
   const isPending = liveReceipt.status === 'pending' || liveReceipt.status === 'processing';
   const isReady = liveReceipt.status === 'ready';
   const isConfirmed = liveReceipt.status === 'confirmed';
 
-  // Async receipt scans arrive as a pending DTO. Poll the tenant-scoped scan
-  // endpoint until the queue processor publishes ready/failed state.
   useEffect(() => {
-    if (!receiptScanId) return;
+    // Offline receipt drafts have no server scan row to poll; they start ready for manual entry.
+    if (!receiptScanId || isOfflineReceipt) return;
     let cancelled = false;
     let attempts = 0;
     let timer: number | undefined;
@@ -145,8 +156,6 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
       try {
         const next: ReceiptState = await api.getScan(receiptScanId);
         if (cancelled || !isCurrent()) return;
-        // T13R-A P1-4: the route's scanId is the only identity. A DTO for any
-        // other scan — however it arrived — is never rendered or reviewable.
         if (!ownsReceipt(receiptScanId, next)) {
           setLiveReceipt({ id: receiptScanId, status: 'failed', items: [] });
           setItems([]);
@@ -159,10 +168,11 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
         if (next.status === 'pending' || next.status === 'processing') {
           attempts += 1;
           if (attempts < 90) timer = window.setTimeout(poll, 1000);
-          else
+          else {
             setPollError(
               'Hóa đơn đang xử lý lâu hơn dự kiến. Bạn có thể kiểm tra lại hoặc chọn ảnh mới.',
             );
+          }
         } else if (next.status === 'failed') {
           setPollError(scanErrorMessage(next.errorCode, 'receipt', { requestId: next.supportId }));
         }
@@ -184,32 +194,63 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
       cancelled = true;
       if (timer !== undefined) window.clearTimeout(timer);
     };
-  }, [receiptScanId, retryIndex]);
-  // Rejected lines stay in the request (the server records the rejection)
-  // but they are not part of what will enter the fridge.
+  }, [receiptScanId, isOfflineReceipt, retryIndex]);
+
   const acceptedItems = items.filter((it) => !it.rejected);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successToast, setSuccessToast] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
   const invalidItems = acceptedItems.some(
     (item) =>
       !item.rawName.trim() ||
       !validQuantity(item.estimatedQuantity) ||
       !validExpiry(item.expiryDate),
   );
+  const canEdit = isReady && !isSubmitting && !isConfirmed;
   const canSubmit = isReady && items.length > 0 && !invalidItems && !isSubmitting;
 
   const updateItem = (id: string, changes: Partial<ReceiptItemState>) => {
     setItems((prev) => prev.map((item) => (item.id === id ? { ...item, ...changes } : item)));
   };
 
-  const handleConfirm = async (openWeek = false) => {
+  const removeManualItem = (id: string) => {
+    setItems((prev) => prev.filter((item) => item.id !== id || !item.isManual));
+  };
+
+  const handleAddManualItem = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!manualName.trim() || !validQuantity(manualQty) || !canEdit) return;
+    const newItem: ReceiptItemState = {
+      id: `draft_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+      isManual: true,
+      rawName: manualName.trim(),
+      estimatedQuantity: Number(manualQty),
+      unit: manualUnit,
+      storage: manualStorage,
+      rejected: false,
+    };
+    setItems((prev) => [...prev, newItem]);
+    setManualName('');
+    setManualQty(1);
+    setManualUnit('piece');
+    setManualStorage('fridge');
+    setIsManualAddOpen(false);
+  };
+
+  const resolveSecondaryDestination = () => {
+    if (plannerEnabled) {
+      return '/planner';
+    }
+    return currentPlan ? `/week/${currentPlan.id}/shopping` : '/fridge';
+  };
+
+  const handleConfirm = async (openPlannerShortcut = false) => {
     if (!canSubmit) return;
     const isCurrent = capturePrivateSession();
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      // Purchase facts and raw evidence remain server-owned, never recomputed from edits.
       const confirmation = items.map((item) =>
         item.rejected
           ? { id: item.id, rejected: true }
@@ -226,7 +267,6 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
               rejected: false,
             },
       );
-      // Mutation target is the authoritative route id, never the DTO's.
       if (!receiptScanId || !ownsReceipt(receiptScanId, liveReceipt)) {
         throw new ReceiptOwnershipError();
       }
@@ -242,7 +282,7 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
       );
       setTimeout(() => {
         if (mounted.current && isCurrent()) {
-          navigate(openWeek && currentPlan ? `/week/${currentPlan.id}/shopping` : '/fridge');
+          navigate(openPlannerShortcut ? resolveSecondaryDestination() : '/fridge');
         }
       }, 1200);
     } catch (err) {
@@ -252,10 +292,9 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
         setIsSubmitting(false);
         return;
       }
-      // Recoverable domain states get specific guidance, never raw JSON.
       const code = err instanceof ApiError ? err.code : null;
       const presentation = presentDomainError(code, 'Chưa lưu được hóa đơn. Vui lòng thử lại.');
-      if (presentation.refetch) {
+      if (presentation.refetch && !isOfflineReceipt) {
         try {
           const next: ReceiptState = await api.getScan(receiptScanId as string);
           if (!mounted.current || !isCurrent()) return;
@@ -286,352 +325,541 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
 
   return (
     <>
-    <KitchenHeader />
-    <div className="review-workspace">
-      <ReviewHeading receipt confirmed={isConfirmed} />
+      <KitchenHeader />
+      <div className="review-workspace bg-tk-canvas">
+        <ReviewHeading receipt confirmed={isConfirmed} />
 
-      {/* Success Toast */}
-      {successToast && (
-        <div className="fixed top-16 left-4 right-4 z-50 bg-semantic-text-primary text-semantic-text-inverse px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-fade-in max-w-md mx-auto border border-white/10">
-          <CheckCircle2 className="w-5 h-5 text-takosan-mint shrink-0" />
-          <p role="status" className="text-sm font-semibold leading-relaxed">
-            {successToast}
-          </p>
-        </div>
-      )}
-
-      <div className="review-layout">
-        <aside className="review-sidebar">
-          <ReviewSummary
-            total={items.length}
-            accepted={acceptedItems.length}
-            confirmed={isConfirmed}
-          />
-          <ReviewSource scanId={receiptScanId ?? ''} verified={isReady || isConfirmed} />
-        </aside>
-        <div className="review-main">
-          {isPending && (
-            <ScanProcessingState
-              stage={liveReceipt.status === 'processing' ? 'analyzing' : 'queued'}
-              kind="receipt"
-              compact
-            />
-          )}
-          {isPending && !pollError && (
-            <div className="rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-xs text-semantic-warning-strong">
-              Hóa đơn đang được AI xử lý nền. Trang sẽ tự cập nhật khi hoàn tất...
-            </div>
-          )}
-          {pollError && (
-            <div
-              role="alert"
-              className="rounded-xl border border-semantic-danger/30 bg-semantic-danger-soft px-3 py-2 text-xs text-semantic-danger-strong flex items-center justify-between gap-3"
-            >
-              <div className="flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{pollError}</span>
-              </div>
-              <div className="flex items-center gap-2 shrink-0">
-                {isPending && (
-                  <button
-                    className="underline font-semibold"
-                    onClick={() => {
-                      setPollError(null);
-                      setRetryIndex((value) => value + 1);
-                    }}
-                  >
-                    Thử tải lại
-                  </button>
-                )}
-                {!isPending && !isReady && pollError === MISMATCH_MESSAGE && (
-                  <button
-                    className="underline font-semibold"
-                    onClick={() => setRetryIndex((value) => value + 1)}
-                  >
-                    Thử tải lại
-                  </button>
-                )}
-                {!isPending && !isReady && (
-                  <button className="underline font-semibold" onClick={() => navigate('/scan')}>
-                    Quét ảnh mới
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
-          {isConfirmed && (
-            <p
-              role="status"
-              className="rounded-xl bg-takosan-mint p-3 text-xs text-takosan-green-deep"
-            >
-              Hóa đơn đã được xác nhận. Thông tin dưới đây đã lưu; sửa lô trong tủ lạnh nếu cần.
+        {/* Success Toast */}
+        {successToast && (
+          <div className="fixed top-16 left-4 right-4 z-50 bg-tk-sanctuary text-white px-4 py-3.5 rounded-2xl shadow-elevated flex items-center gap-3 animate-fade-in max-w-md mx-auto border border-white/15">
+            <CheckCircle2 className="w-5 h-5 text-tk-jade-mint shrink-0" />
+            <p role="status" className="text-sm font-bold leading-relaxed">
+              {successToast}
             </p>
-          )}
-          {/* Receipt Header Card */}
-          <div className="bg-white rounded-xl p-4 border border-semantic-border shadow-xs space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-takosan-mint border border-takosan-mint-deep flex items-center justify-center text-takosan-green-deep shrink-0">
-                  <Store className="w-5 h-5" />
+          </div>
+        )}
+
+        <div className="review-layout">
+          <aside className="review-sidebar">
+            <ReviewSummary
+              total={items.length}
+              accepted={acceptedItems.length}
+              confirmed={isConfirmed}
+            />
+            <ReviewSource scanId={receiptScanId ?? ''} verified={isReady || isConfirmed} />
+          </aside>
+
+          <div className="review-main">
+            {isPending && (
+              <ScanProcessingState
+                stage={liveReceipt.status === 'processing' ? 'analyzing' : 'queued'}
+                kind="receipt"
+                compact
+              />
+            )}
+
+            {isPending && !pollError && (
+              <div className="rounded-2xl border border-tk-turmeric/30 bg-tk-turmeric-soft px-4 py-3 text-xs font-semibold text-tk-turmeric-deep">
+                Hóa đơn đang được AI xử lý nền. Trang sẽ tự cập nhật khi hoàn tất...
+              </div>
+            )}
+
+            {isOfflineReceipt && isReady && (
+              <div className="rounded-2xl border border-tk-turmeric/35 bg-tk-turmeric-soft px-4 py-3 text-xs font-semibold text-tk-turmeric-deep">
+                Đang ở chế độ bản nháp hóa đơn ngoại tuyến. Hãy bấm “+ Thêm mặt hàng thủ công” bên
+                dưới để ghi nhận thực phẩm và lưu vào tủ lạnh.
+              </div>
+            )}
+
+            {pollError && (
+              <div
+                role="alert"
+                className="rounded-2xl border border-tk-berry/30 bg-tk-berry-soft px-4 py-3 text-xs font-semibold text-tk-berry-deep flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{pollError}</span>
                 </div>
-                <div>
-                  <h3 className="font-heading font-bold text-sm text-semantic-text-primary">
-                    {liveReceipt.merchantName || 'Không rõ cửa hàng'}
-                  </h3>
-                  <p className="text-xs text-semantic-text-muted flex items-center gap-1 mt-0.5">
-                    <Calendar className="w-3 h-3 text-semantic-text-muted" />
-                    <span>{presentPurchaseDate(liveReceipt.purchaseDate)}</span>
-                    {liveReceipt.invoiceNumber && <span>• {liveReceipt.invoiceNumber}</span>}
-                  </p>
+                <div className="flex items-center gap-2 shrink-0">
+                  {isPending && (
+                    <button
+                      type="button"
+                      className="underline font-extrabold cursor-pointer"
+                      onClick={() => {
+                        setPollError(null);
+                        setRetryIndex((value) => value + 1);
+                      }}
+                    >
+                      Thử tải lại
+                    </button>
+                  )}
+                  {!isPending && !isReady && pollError === MISMATCH_MESSAGE && (
+                    <button
+                      type="button"
+                      className="underline font-extrabold cursor-pointer"
+                      onClick={() => setRetryIndex((value) => value + 1)}
+                    >
+                      Thử tải lại
+                    </button>
+                  )}
+                  {!isPending && !isReady && (
+                    <button
+                      type="button"
+                      className="underline font-extrabold cursor-pointer"
+                      onClick={() => navigate('/scan')}
+                    >
+                      Quét ảnh mới
+                    </button>
+                  )}
                 </div>
               </div>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep/60">
-                AI OCR
-              </span>
-            </div>
+            )}
 
-            <div className="flex items-center justify-between pt-2 border-t border-semantic-border/70">
-              <span className="text-xs text-semantic-text-muted">Tổng hóa đơn (OCR):</span>
-              <span
-                data-testid="receipt-total"
-                className="font-heading font-bold text-lg text-semantic-text-primary"
+            {isConfirmed && (
+              <p
+                role="status"
+                className="rounded-2xl border border-tk-jade/25 bg-tk-jade-soft p-3.5 text-xs font-semibold text-tk-jade-deep"
               >
-                {presentPrice(liveReceipt.totalAmountVnd)}
-              </span>
-            </div>
-          </div>
+                Hóa đơn đã được xác nhận. Thông tin dưới đây đã lưu; sửa lô trong tủ lạnh nếu cần.
+              </p>
+            )}
 
-          {/* Extracted Items Count */}
-          <div className="flex items-center justify-between px-1">
-            <h4 className="font-heading font-semibold text-sm text-semantic-text-primary">
-              Các dòng nguyên liệu ({items.length} món)
-            </h4>
-            <span className="text-xs text-semantic-text-muted">Kiểm tra từng dòng</span>
-          </div>
-
-          {/* Items List */}
-          <div className="space-y-2.5">
-            {items.map((item) => {
-              const manual = item.isManual === true;
-              const confidence = presentConfidence(item.confidence);
-              const raw = item.rawEvidence;
-              const corrected =
-                (raw?.rawName != null && raw.rawName !== item.rawName) ||
-                (raw?.estimatedQuantity != null &&
-                  raw.estimatedQuantity !== item.estimatedQuantity) ||
-                (raw?.unit != null && raw.unit !== item.unit);
-              const disabled = item.rejected || !isReady || isSubmitting;
-              return (
-                <div
-                  key={item.id}
-                  data-testid="receipt-line"
-                  data-rejected={Boolean(item.rejected)}
-                  className="review-card"
+            {/* Receipt Header Card */}
+            <div className="rounded-[24px] p-5 bg-white border border-tk-stone/85 shadow-card space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-11 h-11 rounded-2xl bg-tk-jade-soft border border-tk-jade/20 flex items-center justify-center text-tk-jade shrink-0">
+                    <Store className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-heading font-extrabold text-sm text-tk-ink truncate">
+                      {liveReceipt.merchantName || 'Không rõ cửa hàng'}
+                    </h3>
+                    <p className="text-xs text-tk-muted flex items-center gap-1 mt-0.5 tk-tabular">
+                      <Calendar className="w-3 h-3 text-tk-muted shrink-0" />
+                      <span>{presentPurchaseDate(liveReceipt.purchaseDate)}</span>
+                      {liveReceipt.invoiceNumber && <span>• {liveReceipt.invoiceNumber}</span>}
+                    </p>
+                  </div>
+                </div>
+                <AtelierBadge
+                  tone="jade"
+                  icon={<ReceiptScanIcon size={13} tone="jade" active />}
+                  className="shrink-0"
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex flex-1 items-center gap-3 min-w-0">
-                      <div className="w-12 h-12 rounded-lg bg-semantic-background-subtle border border-semantic-border/70 p-1.5 shrink-0 flex items-center justify-center">
-                        <img
-                          src={getIngredientImage(item.canonicalId ?? undefined, item.rawName)}
-                          alt=""
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h2 className="break-words">{item.rawName || 'Chưa có tên'}</h2>
-                        <div className="flex items-center gap-2 mt-1 flex-wrap">
-                          {manual ? (
-                            <span className="text-xs text-semantic-text-secondary">Nhập thủ công</span>
-                          ) : (
-                            <>
-                              <span
-                                className="text-xs font-semibold text-takosan-green"
-                                data-testid="receipt-price"
-                              >
-                                Thành tiền OCR: {presentPrice(item.totalPriceVnd)}
+                  AI OCR
+                </AtelierBadge>
+              </div>
+
+              <div className="flex items-center justify-between pt-2.5 border-t border-tk-stone/75">
+                <span className="text-xs font-semibold text-tk-muted">Tổng hóa đơn (OCR):</span>
+                <span
+                  data-testid="receipt-total"
+                  className="font-heading font-extrabold text-lg text-tk-ink tk-tabular"
+                >
+                  {presentPrice(liveReceipt.totalAmountVnd)}
+                </span>
+              </div>
+            </div>
+
+            {/* Extracted Items Count */}
+            <div className="flex items-center justify-between px-1">
+              <h4 className="font-heading font-extrabold text-sm text-tk-ink">
+                Các dòng nguyên liệu ({items.length} món)
+              </h4>
+              <span className="text-xs font-semibold text-tk-muted">Kiểm tra từng dòng</span>
+            </div>
+
+            {/* Items List */}
+            <div className="space-y-3">
+              {items.map((item) => {
+                const manual = item.isManual === true;
+                const confidence = presentConfidence(item.confidence);
+                const raw = item.rawEvidence;
+                const corrected =
+                  (raw?.rawName != null && raw.rawName !== item.rawName) ||
+                  (raw?.estimatedQuantity != null &&
+                    raw.estimatedQuantity !== item.estimatedQuantity) ||
+                  (raw?.unit != null && raw.unit !== item.unit);
+                const disabled = item.rejected || !isReady || isSubmitting;
+
+                return (
+                  <div
+                    key={item.id}
+                    data-testid="receipt-line"
+                    data-rejected={Boolean(item.rejected)}
+                    className="review-card !rounded-[22px] !border-tk-stone/85 shadow-card"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex flex-1 items-center gap-3 min-w-0">
+                        <div className="w-12 h-12 rounded-xl bg-tk-sunken border border-tk-stone/75 p-1.5 shrink-0 flex items-center justify-center">
+                          <img
+                            src={getIngredientImage(item.canonicalId ?? undefined, item.rawName)}
+                            alt=""
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <h2 className="font-heading font-extrabold text-tk-ink break-words">
+                            {item.rawName || 'Chưa có tên'}
+                          </h2>
+                          <div className="flex items-center gap-2 mt-1 flex-wrap">
+                            {manual ? (
+                              <span className="text-xs font-bold text-tk-jade bg-tk-jade-soft px-2 py-0.5 rounded-full">
+                                Nhập thủ công
                               </span>
-                              <span
-                                data-testid="receipt-confidence"
-                                className={clsx(
-                                  'text-xs px-1.5 py-0.5 rounded font-semibold border',
-                                  confidence.tone === 'unknown'
-                                    ? 'bg-semantic-border/60 text-semantic-text-secondary border-semantic-border'
-                                    : confidence.tone === 'low'
-                                      ? 'bg-semantic-danger-soft text-semantic-danger-strong border-semantic-danger/30'
-                                      : confidence.tone === 'medium'
-                                        ? 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/30'
-                                        : 'bg-takosan-mint text-takosan-green-deep border-takosan-mint-deep/60',
-                                )}
-                              >
-                                {confidence.label}
-                              </span>
-                            </>
+                            ) : (
+                              <>
+                                <span
+                                  className="text-xs font-extrabold text-tk-jade tk-tabular"
+                                  data-testid="receipt-price"
+                                >
+                                  Thành tiền OCR: {presentPrice(item.totalPriceVnd)}
+                                </span>
+                                <span
+                                  data-testid="receipt-confidence"
+                                  className={clsx(
+                                    'text-xs px-2 py-0.5 rounded-full font-bold border',
+                                    confidence.tone === 'unknown'
+                                      ? 'bg-tk-sunken text-tk-secondary border-tk-stone'
+                                      : confidence.tone === 'low'
+                                        ? 'bg-tk-berry-soft text-tk-berry-deep border-tk-berry/30'
+                                        : confidence.tone === 'medium'
+                                          ? 'bg-tk-turmeric-soft text-tk-turmeric-deep border-tk-turmeric/30'
+                                          : 'bg-tk-jade-soft text-tk-jade-deep border-tk-jade/25',
+                                  )}
+                                >
+                                  {confidence.label}
+                                </span>
+                              </>
+                            )}
+                          </div>
+                          {!item.canonicalId && (
+                            <p className="text-xs font-semibold text-tk-turmeric-deep mt-1">
+                              {manual
+                                ? 'Chưa liên kết nguyên liệu chuẩn'
+                                : 'Chưa nhận diện nguyên liệu chuẩn'}
+                            </p>
                           )}
                         </div>
-                        {!item.canonicalId && (
-                          <p className="text-sm text-semantic-warning-strong mt-1">
-                            {manual ? 'Chưa liên kết nguyên liệu chuẩn' : 'Chưa nhận diện nguyên liệu chuẩn'}
-                          </p>
+                      </div>
+
+                      <div className="shrink-0">
+                        {manual ? (
+                          <button
+                            type="button"
+                            onClick={() => removeManualItem(item.id)}
+                            disabled={!canEdit}
+                            aria-label={`Xóa ${item.rawName}`}
+                            className="p-2 text-tk-berry-deep hover:bg-tk-berry-soft rounded-xl transition-colors tap-target flex items-center gap-1 text-xs font-extrabold cursor-pointer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                            <span>Xóa</span>
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => updateItem(item.id, { rejected: !item.rejected })}
+                            disabled={!isReady || isSubmitting}
+                            aria-label={
+                              item.rejected ? `Khôi phục ${item.rawName}` : `Bỏ qua ${item.rawName}`
+                            }
+                            aria-pressed={Boolean(item.rejected)}
+                            className="p-2 text-tk-muted hover:text-tk-berry-deep hover:bg-tk-berry-soft rounded-xl transition-colors tap-target flex items-center gap-1 cursor-pointer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                            <span className="text-xs font-bold">
+                              {item.rejected ? 'Khôi phục' : 'Bỏ qua'}
+                            </span>
+                          </button>
                         )}
                       </div>
                     </div>
 
-                    <div className="shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => updateItem(item.id, { rejected: !item.rejected })}
-                        disabled={!isReady || isSubmitting}
-                        aria-label={
-                          item.rejected ? `Khôi phục ${item.rawName}` : `Bỏ qua ${item.rawName}`
-                        }
-                        aria-pressed={Boolean(item.rejected)}
-                        className="p-1.5 text-semantic-text-muted hover:text-semantic-danger hover:bg-semantic-danger-soft rounded-lg transition-colors tap-target"
+                    <ReviewFields
+                      prefix={`receipt-${item.id}`}
+                      item={item}
+                      disabled={Boolean(disabled)}
+                      receipt
+                      onChange={(changes) => updateItem(item.id, changes)}
+                    />
+
+                    {!isConfirmed ? (
+                      <div className="review-expiry !border-tk-stone/75 text-tk-secondary space-y-1">
+                        <p data-testid="receipt-expiry-status">
+                          {item.expiryDate
+                            ? item.expiryEstimated
+                              ? 'Hạn dùng ước tính'
+                              : 'Hạn dùng do bạn cung cấp'
+                            : 'Chưa cung cấp hạn dùng. Hệ thống có thể gợi ý hạn dùng ước tính.'}
+                        </p>
+                        {item.expiryDate && (
+                          <button
+                            type="button"
+                            disabled={disabled}
+                            onClick={() =>
+                              updateItem(item.id, { expiryDate: undefined, expiryEstimated: false })
+                            }
+                            className="underline font-bold tap-target cursor-pointer"
+                          >
+                            Không rõ hạn dùng
+                          </button>
+                        )}
+                      </div>
+                    ) : (
+                      <p
+                        className="review-expiry !border-tk-stone/75 text-tk-secondary"
+                        data-testid="receipt-expiry-status"
                       >
-                        <Trash2 className="w-4 h-4" />
-                        <span className="ml-1 text-xs">
-                          {item.rejected ? 'Khôi phục' : 'Bỏ qua'}
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <ReviewFields
-                    prefix={`receipt-${item.id}`}
-                    item={item}
-                    disabled={Boolean(disabled)}
-                    receipt
-                    onChange={(changes) => updateItem(item.id, changes)}
-                  />
-                  {!isConfirmed ? (
-                    <div className="review-expiry text-semantic-text-secondary space-y-1">
-                      <p data-testid="receipt-expiry-status">
-                        {item.expiryDate
-                          ? item.expiryEstimated
-                            ? 'Hạn dùng ước tính'
-                            : 'Hạn dùng do bạn cung cấp'
-                          : 'Chưa cung cấp hạn dùng. Hệ thống có thể gợi ý hạn dùng ước tính.'}
+                        {item.rejected
+                          ? 'Đã bỏ qua: không có hạn dùng.'
+                          : item.expiryDate
+                            ? item.expiryEstimated
+                              ? 'Hạn dùng ước tính đã xác nhận.'
+                              : 'Hạn dùng do bạn cung cấp.'
+                            : item.reviewState === 'CONFIRMED' && item.expiryKind === 'UNKNOWN'
+                              ? 'Đã xác nhận không rõ hạn dùng.'
+                              : 'Hạn dùng đã lưu: xem chi tiết lô trong tủ lạnh.'}
                       </p>
-                      {item.expiryDate && (
-                        <button
-                          disabled={disabled}
-                          onClick={() =>
-                            updateItem(item.id, { expiryDate: undefined, expiryEstimated: false })
-                          }
-                          className="underline tap-target"
-                        >
-                          Không rõ hạn dùng
-                        </button>
+                    )}
+
+                    {!manual && item.unitPriceVnd != null && (
+                      <p className="text-sm text-tk-muted mt-1 tk-tabular">
+                        Đơn giá OCR: {presentPrice(item.unitPriceVnd)}
+                      </p>
+                    )}
+
+                    <details className="text-xs text-tk-secondary break-words mt-1">
+                      <summary className="cursor-pointer py-1 font-bold text-tk-ink">
+                        {manual
+                          ? 'Xem giá trị nhập thủ công đã xác nhận'
+                          : `Xem OCR gốc và giá trị xác nhận${corrected ? ' · Đã chỉnh sửa' : ''}`}
+                      </summary>
+                      {!manual && (
+                        <p data-testid="receipt-raw-evidence" className="mt-1">
+                          OCR gốc: {raw?.rawName ?? 'Chưa rõ tên'} ·{' '}
+                          {raw?.estimatedQuantity ?? 'Chưa rõ số lượng'} ·{' '}
+                          {raw?.unit ?? 'Chưa rõ đơn vị'}
+                        </p>
                       )}
-                    </div>
-                  ) : (
-                    <p
-                      className="review-expiry text-semantic-text-secondary"
-                      data-testid="receipt-expiry-status"
-                    >
-                      {/* T13R-A P2-B: a confirmed line reports the accepted expiry the server recorded, never a re-derived guess. */}
-                      {item.rejected
-                        ? 'Đã bỏ qua: không có hạn dùng.'
-                        : item.expiryDate
-                          ? item.expiryEstimated
-                            ? 'Hạn dùng ước tính đã xác nhận.'
-                            : 'Hạn dùng do bạn cung cấp.'
-                          : item.reviewState === 'CONFIRMED' && item.expiryKind === 'UNKNOWN'
-                            ? 'Đã xác nhận không rõ hạn dùng.'
-                            : 'Hạn dùng đã lưu: xem chi tiết lô trong tủ lạnh.'}
-                    </p>
-                  )}
-                  {!manual && item.unitPriceVnd != null && (
-                    <p className="text-sm text-semantic-text-muted">
-                      Đơn giá OCR: {presentPrice(item.unitPriceVnd)}
-                    </p>
-                  )}
-                  <details className="text-xs text-semantic-text-secondary break-words">
-                    <summary className="cursor-pointer py-1 font-medium">
-                      {manual
-                        ? 'Xem giá trị nhập thủ công đã xác nhận'
-                        : `Xem OCR gốc và giá trị xác nhận${corrected ? ' · Đã chỉnh sửa' : ''}`}
-                    </summary>
-                    {!manual && (
-                      <p data-testid="receipt-raw-evidence" className="mt-1">
-                        OCR gốc: {raw?.rawName ?? 'Chưa rõ tên'} ·{' '}
-                        {raw?.estimatedQuantity ?? 'Chưa rõ số lượng'} ·{' '}
-                        {raw?.unit ?? 'Chưa rõ đơn vị'}
+                      <p data-testid="receipt-confirmed-evidence" className="mt-1">
+                        {item.rejected ? 'Đã bỏ qua' : isConfirmed ? 'Đã xác nhận' : 'Bạn xác nhận'}
+                        : {item.rawName || 'Chưa có tên'} · {item.estimatedQuantity} · {item.unit}
                       </p>
-                    )}
-                    <p data-testid="receipt-confirmed-evidence" className="mt-1">
-                      {item.rejected ? 'Đã bỏ qua' : isConfirmed ? 'Đã xác nhận' : 'Bạn xác nhận'}:{' '}
-                      {item.rawName || 'Chưa có tên'} · {item.estimatedQuantity} · {item.unit}
-                    </p>
-                  </details>
-                  <div className="text-sm">
+                    </details>
+
                     {item.rejected && (
-                      <span className="text-xs font-semibold text-semantic-danger-strong">
-                        Đã bỏ qua khỏi tủ lạnh
-                      </span>
+                      <div className="text-sm mt-1">
+                        <span className="text-xs font-extrabold text-tk-berry-deep">
+                          Đã bỏ qua khỏi tủ lạnh
+                        </span>
+                      </div>
                     )}
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
 
-            {items.length === 0 && !isPending && !pollError && (
-              <div className="text-center py-10 bg-white rounded-xl p-6 border border-semantic-border">
-                <p className="text-xs text-semantic-text-muted">Không còn món nào trong hóa đơn</p>
-              </div>
+              {items.length === 0 && !isPending && !pollError && (
+                <div className="text-center py-8 bg-white rounded-[22px] p-6 border border-tk-stone/85 shadow-xs">
+                  <p className="text-sm font-semibold text-tk-secondary">
+                    Không còn món nào trong hóa đơn
+                  </p>
+                  <p className="text-xs text-tk-muted mt-1">
+                    Bạn có thể thêm mặt hàng thủ công bên dưới để tiếp tục lưu vào tủ lạnh.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* + Thêm mặt hàng thủ công Button (fixes offline / empty OCR dead-end!) */}
+            {!isConfirmed && (
+              <Button
+                variant="outline"
+                fullWidth
+                size="md"
+                disabled={!canEdit}
+                data-testid="receipt-add-manual-btn"
+                onClick={() => setIsManualAddOpen(true)}
+                className="flex items-center justify-center gap-1.5 text-xs font-extrabold"
+              >
+                <Plus className="w-4 h-4 text-tk-jade" aria-hidden="true" />
+                <span>+ Thêm mặt hàng thủ công</span>
+              </Button>
             )}
           </div>
         </div>
-      </div>
 
-      {/* Explicit confirmation; existing Week shortcut is retained. */}
-      <div className="review-actions">
-        <div className="review-actions-inner">
-          {submitError && (
-            <p role="alert" className="text-xs text-semantic-danger-strong">
-              {submitError}
-            </p>
-          )}
-          {isConfirmed ? (
-            <Button fullWidth onClick={() => navigate('/fridge')}>
-              Xem tủ lạnh
-            </Button>
-          ) : (
-            <>
-              <Button
-                fullWidth
-                size="lg"
-                disabled={!canSubmit}
-                onClick={() => void handleConfirm()}
-                className="flex items-center justify-center gap-2"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>
-                  {isSubmitting
-                    ? 'Đang lưu…'
-                    : acceptedItems.length === 0 && items.length > 0
-                      ? `Lưu ${items.length} dòng bỏ qua`
-                      : `Nhập ${acceptedItems.length} món vào Tủ lạnh`}
-                </span>
-              </Button>
-
-              {currentPlan && (
+        {/* Sticky Confirmation & Post-Import Navigation Bar */}
+        <div className="review-actions !bg-white/95 backdrop-blur-md !border-tk-stone/85">
+          <div className="review-actions-inner">
+            {submitError && (
+              <p role="alert" className="text-xs font-semibold text-tk-berry-deep">
+                {submitError}
+              </p>
+            )}
+            {isConfirmed ? (
+              <div className="grid gap-2 sm:grid-cols-2">
+                <Button fullWidth onClick={() => navigate('/fridge')}>
+                  Xem tủ lạnh
+                </Button>
+                {plannerEnabled && (
+                  <Button
+                    fullWidth
+                    variant="outline"
+                    onClick={() => navigate('/planner')}
+                  >
+                    Mở Thực đơn
+                  </Button>
+                )}
+              </div>
+            ) : (
+              <>
                 <Button
                   fullWidth
-                  variant="outline"
-                  size="md"
+                  size="lg"
                   disabled={!canSubmit}
-                  onClick={() => void handleConfirm(true)}
-                  className="flex items-center justify-center gap-2 text-semantic-text-primary"
+                  onClick={() => void handleConfirm(false)}
+                  className="flex items-center justify-center gap-2"
                 >
-                  <CalendarCheck className="w-4 h-4 text-takosan-green" />
-                  <span>Lưu hóa đơn & mở danh sách tuần</span>
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>
+                    {isSubmitting
+                      ? 'Đang lưu…'
+                      : acceptedItems.length === 0 && items.length > 0
+                        ? `Lưu ${items.length} dòng bỏ qua`
+                        : `Nhập ${acceptedItems.length} món vào Tủ lạnh`}
+                  </span>
                 </Button>
-              )}
-            </>
-          )}
+
+                {plannerEnabled ? (
+                  <Button
+                    fullWidth
+                    variant="outline"
+                    size="md"
+                    disabled={!canSubmit}
+                    onClick={() => void handleConfirm(true)}
+                    className="flex items-center justify-center gap-2 text-tk-ink"
+                  >
+                    <CalendarCheck className="w-4 h-4 text-tk-jade" />
+                    <span>Lưu hóa đơn &amp; mở Thực đơn</span>
+                  </Button>
+                ) : (
+                  currentPlan && (
+                    <Button
+                      fullWidth
+                      variant="outline"
+                      size="md"
+                      disabled={!canSubmit}
+                      onClick={() => void handleConfirm(true)}
+                      className="flex items-center justify-center gap-2 text-tk-ink"
+                    >
+                      <CalendarCheck className="w-4 h-4 text-tk-jade" />
+                      <span>Lưu hóa đơn &amp; mở danh sách tuần</span>
+                    </Button>
+                  )
+                )}
+              </>
+            )}
+          </div>
         </div>
+
+        {/* Manual Receipt Line Item BottomSheet */}
+        <BottomSheet
+          open={isManualAddOpen && canEdit}
+          title="Thêm mặt hàng thủ công vào hóa đơn"
+          onClose={() => setIsManualAddOpen(false)}
+        >
+          <form onSubmit={handleAddManualItem} className="space-y-3.5">
+            <div>
+              <label
+                htmlFor="receipt-add-name"
+                className="block text-xs font-bold text-tk-secondary mb-1.5"
+              >
+                Tên mặt hàng
+              </label>
+              <input
+                id="receipt-add-name"
+                type="text"
+                required
+                value={manualName}
+                onChange={(e) => setManualName(e.target.value)}
+                placeholder="Ví dụ: Sữa tươi không đường, Trứng gà, Cải thìa…"
+                className="review-input !rounded-xl !border-tk-stone"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label
+                  htmlFor="receipt-add-quantity"
+                  className="block text-xs font-bold text-tk-secondary mb-1.5"
+                >
+                  Số lượng
+                </label>
+                <input
+                  id="receipt-add-quantity"
+                  type="number"
+                  min="0.001"
+                  max="10000"
+                  step="any"
+                  required
+                  value={manualQty}
+                  onChange={(e) => setManualQty(Number(e.target.value))}
+                  className="review-input !rounded-xl !border-tk-stone tk-tabular"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="receipt-add-unit"
+                  className="block text-xs font-bold text-tk-secondary mb-1.5"
+                >
+                  Đơn vị
+                </label>
+                <select
+                  id="receipt-add-unit"
+                  value={manualUnit}
+                  onChange={(e) => setManualUnit(e.target.value as StandardUnit)}
+                  className="review-input !rounded-xl !border-tk-stone"
+                >
+                  {REVIEW_UNITS.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="receipt-add-storage"
+                className="block text-xs font-bold text-tk-secondary mb-1.5"
+              >
+                Nơi bảo quản
+              </label>
+              <select
+                id="receipt-add-storage"
+                value={manualStorage}
+                onChange={(e) =>
+                  setManualStorage(e.target.value as 'fridge' | 'freezer' | 'pantry')
+                }
+                className="review-input !rounded-xl !border-tk-stone"
+              >
+                <option value="fridge">Ngăn mát</option>
+                <option value="freezer">Ngăn đông</option>
+                <option value="pantry">Kệ bếp</option>
+              </select>
+            </div>
+
+            <div className="pt-2">
+              <Button fullWidth size="md" type="submit">
+                Thêm vào hóa đơn
+              </Button>
+            </div>
+          </form>
+        </BottomSheet>
       </div>
-    </div>
     </>
   );
 };

@@ -6,12 +6,28 @@ import { AdminApiError } from '../api/client';
 import { errorMessage } from '../lib/errors';
 import { vi } from '../i18n/vi';
 
-export type Tone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'info';
+export type Tone = 'neutral' | 'brand' | 'terracotta' | 'success' | 'warning' | 'danger' | 'info';
 
-export function PageHeader({ title, description, actions }: { title: string; description?: string; actions?: ReactNode }) {
+export function PageHeader({
+  eyebrow,
+  title,
+  description,
+  actions,
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  actions?: ReactNode;
+}) {
   return (
     <header className="page-header">
-      <div>
+      <div className="page-header-copy">
+        {eyebrow ? (
+          <div className="eyebrow">
+            <span className="eyebrow-dot" aria-hidden="true" />
+            <span>{eyebrow}</span>
+          </div>
+        ) : null}
         <h1 data-testid="admin-page-title">{title}</h1>
         {description ? <p className="page-description">{description}</p> : null}
       </div>
@@ -77,7 +93,11 @@ export function Notice({
   testId?: string;
 }) {
   return (
-    <div className={clsx('notice', `notice-${tone}`)} role={tone === 'danger' || tone === 'warning' ? 'alert' : 'status'} data-testid={testId}>
+    <div
+      className={clsx('notice', `notice-${tone}`)}
+      role={tone === 'danger' || tone === 'warning' || tone === 'terracotta' ? 'alert' : 'status'}
+      data-testid={testId}
+    >
       {title ? <strong>{title}</strong> : null}
       {children ? <div>{children}</div> : null}
     </div>
@@ -202,15 +222,17 @@ export function Pagination({
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
   return (
     <nav className="pagination" aria-label={vi.pagination.label}>
-      <Button onClick={() => onPageChange(page - 1)} disabled={page <= 1}>
-        {vi.common.previous}
-      </Button>
-      <span className="muted" aria-live="polite">
+      <span className="muted small tabular" aria-live="polite">
         {vi.common.pageInfo(page, totalPages, total)}
       </span>
-      <Button onClick={() => onPageChange(page + 1)} disabled={page >= totalPages}>
-        {vi.common.next}
-      </Button>
+      <div className="pagination-buttons">
+        <Button onClick={() => onPageChange(page - 1)} disabled={page <= 1}>
+          {vi.common.previous}
+        </Button>
+        <Button onClick={() => onPageChange(page + 1)} disabled={page >= totalPages}>
+          {vi.common.next}
+        </Button>
+      </div>
     </nav>
   );
 }
@@ -235,6 +257,16 @@ export function DefinitionList({ items }: { items: Array<{ label: string; value:
         </div>
       ))}
     </dl>
+  );
+}
+
+export function StatTile({ label, value, sub }: { label: string; value: ReactNode; sub?: ReactNode }) {
+  return (
+    <div className="stat-tile">
+      <span className="stat-tile-label">{label}</span>
+      <div className="stat-tile-value">{value}</div>
+      {sub ? <div className="cell-sub">{sub}</div> : null}
+    </div>
   );
 }
 

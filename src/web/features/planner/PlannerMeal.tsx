@@ -1,14 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, RefreshCw, Sparkles, Users, X } from 'lucide-react';
+import { ArrowLeft, Clock, RefreshCw, Users, X } from 'lucide-react';
 import type {
   MealPlanDto,
   PlanFeedbackSchema,
 } from '../../../../packages/domain/src/meal-planning-api';
 import type { z } from 'zod';
-import { Card } from '../../components/common/Card';
 import { Button } from '../../components/common/Button';
+import { AtelierBadge, BentoCard } from '../../design-system/v4/AtelierPrimitives';
+import {
+  AiSousChefSparkIcon,
+  AllergenShieldIcon,
+  FreshnessShieldIcon,
+  HouseholdTrayIcon,
+  WokFlameIcon,
+} from '../../design-system/icons';
 import { mealPlanningApi } from '../../services/meal-planning';
 import { ApiError } from '../../services/http';
 import { queryKeys } from '../../lib/queryKeys';
@@ -22,7 +29,6 @@ import {
   isMealCompositionEnabled,
   usePlanCompositions,
 } from './composition';
-
 import { CompositionLoadState } from './CompositionLoadState';
 
 export function PlannerMeal({
@@ -53,6 +59,7 @@ export function PlannerMeal({
     retry: false,
   });
   const dialog = useRef<HTMLDialogElement>(null);
+
   useEffect(() => {
     if (!swapOpen) return;
     const trigger = document.activeElement;
@@ -67,26 +74,24 @@ export function PlannerMeal({
   const composing = isMealCompositionEnabled();
   const compositions = usePlanCompositions(plan, composing);
   const slotComposition = compositions.data?.compositions.find((entry) => entry.slotId === slotId);
-  // V1 family-variant meals are not composable server-side, so they keep the V1 swap. If the
-  // composition API explicitly returns 404 (server flag off), the V1 controls stay too.
   const legacyFamily = meal?.source.kind === 'family' && slotComposition?.source !== 'v2';
   const editor = composing && compositions.isSuccess && !legacyFamily;
   const v1Controls = !composing || compositionUnavailable(compositions.error) || legacyFamily;
-  // Once a slot is composed, the V1 generation record (title, ingredients, method) no longer describes the meal.
   const composed = editor && slotComposition?.source === 'v2';
   const slotExists = plan.intent.slots.some(
     (slot) => `${slot.date}:${slot.mealType}:${slot.sequence ?? 0}` === slotId,
   );
+
   if (
     slotExists &&
     composing &&
     !compositionUnavailable(compositions.error) &&
     (!compositions.isSuccess || !slotComposition)
-  )
+  ) {
     return (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex min-h-11 items-center gap-2 text-sm font-extrabold text-tk-jade-deep"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
@@ -95,28 +100,30 @@ export function PlannerMeal({
         <CompositionLoadState query={compositions} locale={locale} missing={!slotComposition} />
       </>
     );
-  if (!meal)
+  }
+
+  if (!meal) {
     return composing && !compositions.isError && slotExists ? (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex min-h-11 items-center gap-2 text-sm font-extrabold text-tk-jade-deep"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
           {t.back}
         </Link>
-        <Card className="planning-meal-overview !p-5 sm:!p-6">
-          <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+        <BentoCard tone="jade" padding="md" className="planning-meal-overview">
+          <AtelierBadge tone="jade" icon={<HouseholdTrayIcon size={13} tone="jade" active />}>
             {slotComposition?.date} · {slotComposition ? t[slotComposition.mealType] : ''}
-          </p>
-          <h2 className="text-2xl font-heading font-bold mt-2">
+          </AtelierBadge>
+          <h2 className="mt-2 font-heading text-2xl font-extrabold text-tk-ink">
             {locale === 'vi' ? 'Chọn món cho bữa này' : 'Choose dishes for this meal'}
           </h2>
-          <p className="inline-flex items-center gap-1 text-sm text-semantic-text-secondary mt-3">
-            <Users size={16} aria-hidden="true" />
+          <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-sm font-bold text-tk-secondary">
+            <Users size={15} aria-hidden="true" />
             {slotComposition?.servings ?? plan.intent.defaultServings} {t.people}
           </p>
-        </Card>
+        </BentoCard>
         <MealComposer
           query={compositions}
           plan={plan}
@@ -126,15 +133,21 @@ export function PlannerMeal({
         />
       </>
     ) : (
-      <Card>
-        <p>{t.mealUnavailable}</p>
-        <Link to={`/planner/${plan.id}`} className="underline min-h-11 inline-flex items-center">
+      <BentoCard tone="sunken" padding="md" className="space-y-2">
+        <p className="text-sm font-semibold text-tk-ink">{t.mealUnavailable}</p>
+        <Link
+          to={`/planner/${plan.id}`}
+          className="inline-flex min-h-11 items-center text-sm font-extrabold text-tk-jade-deep underline"
+        >
           {t.back}
         </Link>
-      </Card>
+      </BentoCard>
     );
+  }
+
   const swappedHere =
     location.state?.swappedRevision === plan.revision && location.state?.swappedSlot === slotId;
+
   async function feedback(type: z.infer<typeof PlanFeedbackSchema>['type']) {
     const input = { revision: plan.revision, slotId, type };
     const result = await model.perform(type, () =>
@@ -145,50 +158,76 @@ export function PlannerMeal({
       await model.query.refetch();
     }
   }
+
   const codes = explanation?.reasonCodes ?? meal.reasons;
+  const elapsed = plan.freshness.reasons.includes('planning_time_elapsed');
+
   return (
     <>
       <Link
-        className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+        className="inline-flex min-h-11 items-center gap-2 text-sm font-extrabold text-tk-jade-deep"
         to={`/planner/${plan.id}`}
       >
         <ArrowLeft size={16} />
         {t.back}
       </Link>
-      <Card className="planning-meal-overview !p-5 sm:!p-6">
-        <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
-          {t[meal.mealType]} · {meal.date}
-        </p>
-        <h2 className="text-2xl font-heading font-bold text-semantic-text-primary mt-2 leading-tight">
+
+      <BentoCard tone="jade" padding="md" className="planning-meal-overview">
+        <div className="flex flex-wrap items-center gap-2">
+          <AtelierBadge tone="jade" icon={<HouseholdTrayIcon size={13} tone="jade" active />}>
+            {t[meal.mealType]} · {meal.date}
+          </AtelierBadge>
+        </div>
+
+        <h2 className="mt-2.5 font-heading text-2xl font-extrabold leading-tight text-tk-ink sm:text-3xl">
           {composed ? t[meal.mealType] : meal.title}
         </h2>
-        <div className="flex flex-wrap gap-5 text-sm text-semantic-text-secondary mt-4">
-          <span className="inline-flex items-center gap-1">
-            <Users size={16} />
+
+        <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-tk-secondary">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/85 px-3 py-1">
+            <Users size={15} />
             {meal.servings} {t.people}
           </span>
           {!composed && (
-            <span className="inline-flex items-center gap-1">
-              <Clock size={16} />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/85 px-3 py-1">
+              <Clock size={15} />
               {meal.cookTimeMinutes === null
                 ? t.unknownTime
                 : `${meal.cookTimeMinutes} ${t.minutes}`}
             </span>
           )}
         </div>
-        {v1Controls && (
-          <Button
-            className="mt-5"
-            fullWidth
-            variant="secondary"
-            disabled={!!model.busy || plan.freshness.reasons.includes('planning_time_elapsed')}
-            onClick={() => setSwapOpen(true)}
-          >
-            <RefreshCw size={16} className="mr-2" />
-            {t.swap}
-          </Button>
+
+        {(!composed || v1Controls) && (
+          <div className="mt-5 flex flex-wrap gap-3">
+            {!composed && meal.source.kind === 'recipe' && !elapsed && (
+              <Link
+                to={`/cooking/${encodeURIComponent(meal.source.id)}?servings=${meal.servings}`}
+                className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-2xl bg-tk-flame px-5 py-2.5 text-sm font-extrabold text-white shadow-float transition-tap hover:bg-tk-flame-hover"
+              >
+                <WokFlameIcon size={16} tone="flame" active />
+                <span>
+                  {locale === 'vi'
+                    ? 'Vào bếp đạo diễn bữa này'
+                    : 'Direct this meal in Cooking Studio'}
+                </span>
+              </Link>
+            )}
+            {v1Controls && (
+              <Button
+                className="flex-1"
+                variant="secondary"
+                disabled={!!model.busy || elapsed}
+                onClick={() => setSwapOpen(true)}
+              >
+                <RefreshCw size={16} className="mr-2" />
+                {t.swap}
+              </Button>
+            )}
+          </div>
         )}
-      </Card>
+      </BentoCard>
+
       {editor && (
         <MealComposer
           query={compositions}
@@ -198,35 +237,39 @@ export function PlannerMeal({
           locale={locale}
         />
       )}
+
       {!composed && (
         <>
-          <Card>
-            <h3 className="font-heading font-bold text-lg">{t.ingredients}</h3>
-            <ul className="divide-y divide-semantic-border/70 mt-2">
+          <BentoCard tone="ceramic" padding="md">
+            <div className="flex items-center gap-2">
+              <FreshnessShieldIcon size={18} tone="jade" />
+              <h3 className="font-heading text-lg font-extrabold text-tk-ink">{t.ingredients}</h3>
+            </div>
+            <ul className="mt-3 divide-y divide-tk-stone/70">
               {meal.requirements.map((item, index) => (
-                <li key={`${item.ingredientId}:${index}`} className="py-4">
+                <li key={`${item.ingredientId}:${index}`} className="py-3.5">
                   <div className="flex flex-wrap justify-between gap-2">
-                    <span className="font-semibold text-sm">
+                    <span className="text-sm font-bold text-tk-ink">
                       {ingredientLabel(item.ingredientId, locale)}
                       {item.optional && (
-                        <span className="block text-xs text-semantic-text-muted font-normal">
-                          {t.optional}
-                        </span>
+                        <span className="block text-xs font-normal text-tk-muted">{t.optional}</span>
                       )}
                     </span>
-                    <span className="text-sm font-semibold">
+                    <span className="text-sm font-extrabold text-tk-ink tk-tabular">
                       {formatQuantity(item.required, locale)}
                     </span>
                   </div>
-                  <p className="text-xs text-semantic-text-secondary mt-2">
+                  <p className="mt-1.5 text-xs text-tk-secondary">
                     {t.covered}: {formatQuantity(item.covered, locale)}
                   </p>
                   {item.status === 'unresolved' || item.missing === null ? (
-                    <p className="mt-2 text-sm text-semantic-warning-strong">{t.unresolved}</p>
+                    <p className="mt-1.5 text-xs font-bold text-tk-turmeric-deep">{t.unresolved}</p>
                   ) : (
                     item.status !== 'satisfied' && (
                       <p
-                        className={`text-xs mt-2 ${item.optional ? 'text-semantic-text-muted' : 'text-semantic-warning-strong'}`}
+                        className={`mt-1.5 text-xs font-semibold ${
+                          item.optional ? 'text-tk-muted' : 'text-tk-flame-deep'
+                        }`}
                       >
                         {t.missing}: {formatQuantity(item.missing, locale)}
                       </p>
@@ -235,12 +278,16 @@ export function PlannerMeal({
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-semantic-text-muted border-t pt-3">{t.safety}</p>
-          </Card>
-          <Card>
-            <h3 className="font-heading font-bold text-lg">{t.instructions}</h3>
+            <p className="mt-3 flex items-start gap-2 border-t border-tk-stone/70 pt-3 text-xs text-tk-muted">
+              <AllergenShieldIcon size={14} tone="ink" className="mt-0.5 shrink-0" />
+              <span>{t.safety}</span>
+            </p>
+          </BentoCard>
+
+          <BentoCard tone="ceramic" padding="md">
+            <h3 className="font-heading text-lg font-extrabold text-tk-ink">{t.instructions}</h3>
             {meal.instructions.length ? (
-              <ol className="mt-4 space-y-4 list-decimal pl-5 text-sm leading-relaxed text-semantic-text-secondary">
+              <ol className="mt-4 list-decimal space-y-3.5 pl-5 text-sm leading-relaxed text-tk-secondary">
                 {meal.instructions.map((step, index) => (
                   <li key={index} className="pl-1">
                     {step}
@@ -248,15 +295,23 @@ export function PlannerMeal({
                 ))}
               </ol>
             ) : (
-              <p className="mt-3 text-sm text-semantic-text-muted">{t.noInstructions}</p>
+              <p className="mt-3 text-sm text-tk-muted">{t.noInstructions}</p>
             )}
-            <p className="mt-5 text-xs text-semantic-text-muted">{t.nutrition}</p>
-          </Card>
-          <Card>
-            <h3 className="font-heading font-bold text-lg">{t.reasons}</h3>
-            <ul className="space-y-2 mt-3 text-sm text-semantic-text-secondary">
+            <p className="mt-5 border-t border-tk-stone/70 pt-3 text-xs text-tk-muted">
+              {t.nutrition}
+            </p>
+          </BentoCard>
+
+          <BentoCard tone="sunken" padding="md">
+            <h3 className="font-heading text-lg font-extrabold text-tk-ink">{t.reasons}</h3>
+            <ul className="mt-3 flex flex-wrap gap-2 text-xs font-bold">
               {codes.map((code, index) => (
-                <li key={`${code}:${index}`}>{reasonLabel(code, locale)}</li>
+                <li
+                  key={`${code}:${index}`}
+                  className="rounded-full border border-tk-jade/25 bg-tk-jade-soft px-3 py-1.5 text-tk-jade-deep"
+                >
+                  {reasonLabel(code, locale)}
+                </li>
               ))}
             </ul>
             <Button
@@ -272,26 +327,27 @@ export function PlannerMeal({
                 else setAiFailed(true);
               }}
             >
-              <Sparkles size={16} className="mr-2" />
+              <AiSousChefSparkIcon size={16} tone="flame" className="mr-2" />
               {t.explain}
             </Button>
             {model.busy === 'explain' && (
-              <p role="status" className="text-sm mt-2">
+              <p role="status" className="mt-2 text-sm font-semibold text-tk-jade-deep">
                 {t.explaining}
               </p>
             )}
             {(explanation || aiFailed) && (
-              <p role="status" className="text-xs text-takosan-green-deep mt-3">
+              <p role="status" className="mt-3 text-xs font-bold text-tk-jade-deep">
                 {explanation?.source === 'ai' ? t.aiUsed : t.fallback}
               </p>
             )}
-            <p className="text-xs text-semantic-text-muted mt-3">{t.aiNote}</p>
-          </Card>
+            <p className="mt-3 text-xs text-tk-muted">{t.aiNote}</p>
+          </BentoCard>
         </>
       )}
-      <Card>
-        <h3 className="font-heading font-bold text-lg">{t.feedback}</h3>
-        <div className="grid grid-cols-2 gap-2 mt-4">
+
+      <BentoCard tone="ceramic" padding="md">
+        <h3 className="font-heading text-lg font-extrabold text-tk-ink">{t.feedback}</h3>
+        <div className="mt-4 grid grid-cols-2 gap-2.5">
           {(
             [
               'liked',
@@ -312,8 +368,9 @@ export function PlannerMeal({
             </Button>
           ))}
         </div>
-        <p className="text-xs text-semantic-text-muted mt-3">{t.cookedNote}</p>
-      </Card>
+        <p className="mt-3 text-xs text-tk-muted">{t.cookedNote}</p>
+      </BentoCard>
+
       {swapOpen && (
         <dialog
           ref={dialog}
@@ -337,11 +394,11 @@ export function PlannerMeal({
             }
           }}
           aria-labelledby="swap-title"
-          className="planning-swap-dialog w-[calc(100%-2rem)] max-w-lg max-h-[85dvh] rounded-2xl p-0 shadow-xl backdrop:bg-semantic-overlay/50"
+          className="planning-swap-dialog max-h-[85dvh] w-[calc(100%-2rem)] max-w-lg rounded-[24px] border border-tk-stone bg-white p-0 text-tk-ink shadow-elevated backdrop:bg-black/45"
         >
           <div className="p-5">
             <div className="flex items-start justify-between gap-2">
-              <h2 id="swap-title" className="font-heading font-bold text-xl">
+              <h2 id="swap-title" className="font-heading text-xl font-extrabold text-tk-ink">
                 {t.chooseAlternative}
               </h2>
               <Button
@@ -353,14 +410,18 @@ export function PlannerMeal({
                 <X size={18} />
               </Button>
             </div>
-            <p className="text-xs text-semantic-text-secondary mt-2 mb-4 leading-relaxed">
+            <p className="mb-4 mt-2 text-xs leading-relaxed text-tk-secondary">
               {t.alternativeNote}
             </p>
             {alternatives.data?.truncated && (
-              <p className="text-xs text-semantic-warning-strong mb-3">{t.alternativesLimited}</p>
+              <p className="mb-3 text-xs font-semibold text-tk-turmeric-deep">
+                {t.alternativesLimited}
+              </p>
             )}
             {alternatives.isPending ? (
-              <p role="status">{t.loading}</p>
+              <p role="status" className="text-sm font-semibold text-tk-secondary">
+                {t.loading}
+              </p>
             ) : alternatives.isError ? (
               <PlannerError
                 error={alternatives.error}
@@ -382,9 +443,9 @@ export function PlannerMeal({
                   .map((item) => (
                     <li
                       key={item.id}
-                      className="border border-semantic-border rounded-xl p-3 flex items-center gap-3 justify-between"
+                      className="flex items-center justify-between gap-3 rounded-2xl border border-tk-stone bg-tk-canvas/70 p-3"
                     >
-                      <span className="text-sm font-semibold">{item.title}</span>
+                      <span className="text-sm font-bold text-tk-ink">{item.title}</span>
                       <Button
                         disabled={!!model.busy}
                         variant="secondary"
@@ -414,12 +475,12 @@ export function PlannerMeal({
                     </li>
                   ))}
                 {!alternatives.data?.alternatives.some((item) => item.id !== meal.source.id) && (
-                  <li className="text-sm">{t.noAlternatives}</li>
+                  <li className="text-sm text-tk-secondary">{t.noAlternatives}</li>
                 )}
               </ul>
             )}
             {model.busy === 'swap' && (
-              <p role="status" className="text-sm mt-3">
+              <p role="status" className="mt-3 text-sm font-semibold text-tk-jade-deep">
                 {t.swapping}
               </p>
             )}

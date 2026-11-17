@@ -18,6 +18,18 @@ const PlannerPage = lazy(() =>
 const LandingPage = lazy(() =>
   import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })),
 );
+const FeaturesPage = lazy(() =>
+  import('./pages/public/FeaturesPage').then((m) => ({ default: m.FeaturesPage })),
+);
+const PricingPage = lazy(() =>
+  import('./pages/public/PricingPage').then((m) => ({ default: m.PricingPage })),
+);
+const AboutPage = lazy(() =>
+  import('./pages/public/AboutPage').then((m) => ({ default: m.AboutPage })),
+);
+const LegalPage = lazy(() =>
+  import('./pages/public/LegalPage').then((m) => ({ default: m.LegalPage })),
+);
 const AuthPage = lazy(() => import('./pages/AuthPage').then((m) => ({ default: m.AuthPage })));
 const OnboardingPage = lazy(() =>
   import('./pages/OnboardingPage').then((m) => ({ default: m.OnboardingPage })),
@@ -69,6 +81,12 @@ const SettingsPage = lazy(() =>
 const PlusPaywallPage = lazy(() =>
   import('./pages/PlusPaywallPage').then((m) => ({ default: m.PlusPaywallPage })),
 );
+const KitchenInsightsPage = lazy(() =>
+  import('./pages/KitchenInsightsPage').then((m) => ({ default: m.KitchenInsightsPage })),
+);
+const CulinaryStudioPage = lazy(() =>
+  import('./pages/CulinaryStudioPage').then((m) => ({ default: m.CulinaryStudioPage })),
+);
 const FoodPreferencesPage = lazy(() =>
   import('./pages/settings/FoodPreferencesPage').then((m) => ({ default: m.FoodPreferencesPage })),
 );
@@ -117,7 +135,8 @@ class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { 
         <SystemStatusPage title="Không thể mở trang này">
           <p role="alert">Vui lòng tải lại ứng dụng để thử lại.</p>
           <button
-            className="rounded-xl bg-takosan-green px-4 py-3 text-white"
+            type="button"
+            className="tap-target rounded-2xl bg-tk-flame px-5 py-3 text-sm font-extrabold text-white shadow-float hover:bg-tk-flame-hover transition-tap cursor-pointer"
             onClick={() => window.location.reload()}
           >
             Tải lại
@@ -157,7 +176,7 @@ export const App: React.FC = () => {
               <VerifyRouteLifecycle />
               <Suspense fallback={<RouteFallback />}>
                 <Routes key={`${userId}:${householdId}`}>
-                  {/* Public / Intro Routes */}
+                  {/* Public / Marketing Ecosystem Routes */}
                   <Route
                     path="/landing"
                     element={
@@ -168,6 +187,11 @@ export const App: React.FC = () => {
                       )
                     }
                   />
+                  <Route path="/features" element={<FeaturesPage />} />
+                  <Route path="/pricing" element={<PricingPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/privacy" element={<LegalPage doc="privacy" />} />
+                  <Route path="/terms" element={<LegalPage doc="terms" />} />
                   <Route
                     path="/auth"
                     element={
@@ -230,10 +254,12 @@ export const App: React.FC = () => {
                     <Route path="/scan/receipt-review" element={<ReceiptReviewPage />} />
                     <Route path="/scan/result" element={<ScanResultPage />} />
 
-                    {/* Recipes & Cooking */}
+                    {/* Recipes, Culinary Studio & Cooking */}
                     <Route path="/recipes" element={<RecipesPage />} />
                     <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
                     <Route path="/recipes/id/:id" element={<RecipeDetailPage />} />
+                    <Route path="/studio" element={<CulinaryStudioPage />} />
+                    <Route path="/insights" element={<KitchenInsightsPage />} />
                     <Route path="/cook/:slug" element={<CookingModePage />} />
                     <Route path="/cooking/:id" element={<CookingModePage />} />
                     <Route path="/cooking/complete" element={<CookingCompletePage />} />

@@ -64,6 +64,10 @@ export default defineConfig({
       '@frigo/recipes': path.resolve(__dirname, './packages/recipes/src/index.ts'),
       '@frigo/ai': path.resolve(__dirname, './packages/ai/src/index.ts'),
       '@frigo/db': path.resolve(__dirname, './packages/db/src/index.ts'),
+      '@takolio/domain': path.resolve(__dirname, './packages/domain/src/index.ts'),
+      '@takolio/recipes': path.resolve(__dirname, './packages/recipes/src/index.ts'),
+      '@takolio/ai': path.resolve(__dirname, './packages/ai/src/index.ts'),
+      '@takolio/db': path.resolve(__dirname, './packages/db/src/index.ts'),
     },
   },
   server: {
@@ -77,13 +81,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist/client',
-    sourcemap: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-query': ['@tanstack/react-query', 'zustand'],
           'vendor-icons': ['lucide-react'],
+          'vendor-motion': ['motion'],
+          'vendor-zod': ['zod'],
         },
       },
     },

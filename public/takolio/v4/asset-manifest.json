@@ -1,0 +1,52 @@
+{
+  "version": "4.0.0",
+  "theme": "Terra-Botanical Atelier",
+  "models3D": [
+    "/takolio/v4/3d/tako-chef-v4.glb",
+    "/takolio/v4/3d/kitchen-island-hero.glb",
+    "/takolio/v4/3d/onboarding-mam-com.glb",
+    "/takolio/v4/3d/smart-fridge-3zone.glb",
+    "/takolio/v4/3d/culinary-cookware-stage.glb"
+  ],
+  "dishes": [
+    "/takolio/v4/dishes/vn-braised-claypot.webp",
+    "/takolio/v4/dishes/vn-sour-soup.webp",
+    "/takolio/v4/dishes/vn-stirfry-greens.webp",
+    "/takolio/v4/dishes/vn-pho-noodle.webp",
+    "/takolio/v4/dishes/vn-steamed-rice-tray.webp",
+    "/takolio/v4/dishes/vn-grilled-lemongrass.webp",
+    "/takolio/v4/dishes/vn-tofu-vegetarian.webp",
+    "/takolio/v4/dishes/vn-crispy-fried.webp",
+    "/takolio/v4/dishes/vn-porridge-congee.webp",
+    "/takolio/v4/dishes/vn-fresh-rolls.webp",
+    "/takolio/v4/dishes/gl-japanese-donburi.webp",
+    "/takolio/v4/dishes/gl-korean-bibimbap.webp",
+    "/takolio/v4/dishes/gl-italian-pasta.webp",
+    "/takolio/v4/dishes/gl-thai-curry.webp",
+    "/takolio/v4/dishes/gl-chinese-wok.webp",
+    "/takolio/v4/dishes/culinary-signature-default.webp"
+  ],
+  "brand": [
+    "/takolio/v4/brand/logo-mark.svg",
+    "/takolio/v4/brand/logo-lockup.svg",
+    "/takolio/v4/brand/logo-lockup-dark.svg",
+    "/takolio/v4/brand/favicon.svg",
+    "/takolio/v4/brand/icon-16.png",
+    "/takolio/v4/brand/icon-24.png",
+    "/takolio/v4/brand/icon-32.png",
+    "/takolio/v4/brand/icon-48.png",
+    "/takolio/v4/brand/icon-64.png",
+    "/takolio/v4/brand/icon-128.png",
+    "/takolio/v4/brand/icon-180.png",
+    "/takolio/v4/brand/icon-192.png",
+    "/takolio/v4/brand/icon-256.png",
+    "/takolio/v4/brand/icon-512.png",
+    "/takolio/v4/brand/apple-touch-icon.png",
+    "/takolio/v4/brand/icon-maskable-512.png",
+    "/takolio/v4/brand/tako-chef-poster.webp",
+    "/takolio/v4/brand/kitchen-island-poster.webp",
+    "/takolio/v4/brand/mam-com-poster.webp",
+    "/takolio/v4/brand/smart-fridge-poster.webp",
+    "/takolio/v4/brand/cookware-stage-poster.webp"
+  ]
+}

@@ -21,6 +21,39 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
   const savedContentColumn = 'generated_meal_plan_components.recipe_content_fingerprint';
   const savedContentTriggers = ['trg_meal_components_content_insert', 'trg_meal_components_content_update'];
   const missingSavedContentColumn = { issue: 'missing_column', detail: savedContentColumn };
+  const v4Tables = ['cooking_sessions', 'household_invites', 'user_notifications'];
+  const v4Indexes = [
+    'idx_ai_requests_created_at',
+    'idx_cooked_meals_hh_completed',
+    'idx_cooking_sessions_hh_status_updated',
+    'idx_household_invites_household_id',
+    'idx_household_invites_invite_code',
+    'idx_household_members_user_id',
+    'idx_inventory_obs_hh_status',
+    'idx_scans_household_created_at',
+    'idx_scans_status_created_at',
+    'idx_shopping_lists_household_id',
+    'idx_user_notifications_hh_read_created',
+  ];
+  const v6Tables = [
+    'custom_household_recipes',
+    'd1_idempotency_keys',
+    'household_activity_events',
+    'household_budget_entries',
+    'household_waste_events',
+    'pantry_staple_thresholds',
+  ];
+  const v6Indexes = [
+    'idx_activity_events_hh_created',
+    'idx_budget_entries_hh_spent',
+    'idx_custom_hh_recipes_hh_updated',
+    'idx_d1_idempotency_expires',
+    'idx_pantry_thresholds_hh',
+    'idx_waste_events_hh_occurred',
+  ];
+  const asciiSort = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+  const issueSort = (a: { issue: string; detail: string }, b: { issue: string; detail: string }) =>
+    asciiSort(a.issue, b.issue) || asciiSort(a.detail, b.detail);
 
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
@@ -90,8 +123,8 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
       'auth_otp_assertions', 'auth_otp_claims', 'auth_otp_issuances',
       'auth_otp_requests', 'auth_otp_scopes', 'auth_otp_tickets',
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts',
-    ].sort());
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', ...v4Tables, ...v6Tables, 'week_swap_receipts',
+    ].sort(asciiSort));
     expect(issues.some((row) => row.issue === 'unexpected_migration')).toBe(false);
   });
 
@@ -102,11 +135,11 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter((row) => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts',
-    ].sort());
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', ...v4Tables, ...v6Tables, 'week_swap_receipts',
+    ].sort(asciiSort));
     expect(issues.filter((row) => row.issue === 'missing_index').map((row) => row.detail)).toEqual([
-      'idx_checkout_admissions_user_state', 'idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item',
-    ]);
+      'idx_checkout_admissions_user_state', 'idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...v4Indexes, ...v6Indexes,
+    ].sort(asciiSort));
   });
 
   it('rejects a 0041 database until family meal, saved dish and shopping persistence exists', () => {
@@ -114,19 +147,19 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual([...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts'].sort());
-    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item']);
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual([...familyTables, 'recipe_content_access', 'recipe_content_versions', ...v4Tables, ...v6Tables, 'week_swap_receipts'].sort(asciiSort));
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...v4Indexes, ...v6Indexes].sort(asciiSort));
   });
   it('rejects a 0042 database until unknown shopping demand review persistence exists', () => {
     const tip = '0042_family_meals_preferences_saved_shopping.sql'; const names = listMigrations();
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['recipe_content_access', 'recipe_content_versions', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'week_swap_receipts'].sort());
-    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_shopping_demand_reviews_item']);
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['recipe_content_access', 'recipe_content_versions', 'shopping_demand_review_commands', 'shopping_demand_reviews', ...v4Tables, ...v6Tables, 'week_swap_receipts'].sort(asciiSort));
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_shopping_demand_reviews_item', ...v4Indexes, ...v6Indexes].sort(asciiSort));
     expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
       ...contentTriggers, ...savedContentTriggers, ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update', ...receiptTriggers,
-    ].sort());
+    ].sort(asciiSort));
   });
   it('rejects a 0043 database until authoritative category storage and guards exist', () => {
     const tip = '0043_shopping_demand_review.sql'; const names = listMigrations();
@@ -135,32 +168,30 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter(row => row.issue === 'missing_column')).toEqual([
       ...missingContentColumns, missingSavedContentColumn, { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns,
-    ].sort((a, b) => a.detail.localeCompare(b.detail)));
-    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...categoryTriggers, ...receiptTriggers].sort());
+    ].sort(issueSort));
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...categoryTriggers, ...receiptTriggers].sort(asciiSort));
   });
   it('rejects a 0044 database until immutable keyed swap receipts exist', () => {
     const tip = '0044_inventory_display_category.sql'; const names = listMigrations();
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row => row.issue === 'missing_table')).toEqual(['recipe_content_access', 'recipe_content_versions', 'week_swap_receipts'].map(detail => ({ issue: 'missing_table', detail })));
-    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, missingSavedContentColumn, ...missingReceiptColumns].sort((a, b) => a.detail.localeCompare(b.detail)));
-    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...receiptTriggers].sort());
+    expect(issues.filter(row => row.issue === 'missing_table')).toEqual(['recipe_content_access', 'recipe_content_versions', ...v4Tables, ...v6Tables, 'week_swap_receipts'].sort(asciiSort).map(detail => ({ issue: 'missing_table', detail })));
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, missingSavedContentColumn, ...missingReceiptColumns].sort(issueSort));
+    expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...receiptTriggers].sort(asciiSort));
   });
   it('rejects a 0045 database until content archive and receipt references exist', () => {
     const tip = '0045_week_swap_receipts.sql';
     const names = listMigrations();
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
-      { issue: 'missing_migration', detail: '0046_recipe_content_versions.sql' },
-      { issue: 'missing_migration', detail: '0047_saved_recipe_content.sql' },
-      { issue: 'missing_table', detail: 'recipe_content_access' },
-      { issue: 'missing_table', detail: 'recipe_content_versions' },
+      ...missingMigrationsAfter(tip),
+      ...['recipe_content_access', 'recipe_content_versions', ...v4Tables, ...v6Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...missingContentColumns,
       missingSavedContentColumn,
-      { issue: 'missing_index', detail: 'idx_recipe_content_versions_recipe' },
+      ...['idx_recipe_content_versions_recipe', ...v4Indexes, ...v6Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...[...contentTriggers, ...savedContentTriggers].map(detail => ({ issue: 'missing_trigger', detail })),
-    ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
+    ].sort(issueSort));
   });
   it('rejects a 0046 database until saved composition content is applied', () => {
     const tip = '0046_recipe_content_versions.sql';
@@ -168,9 +199,31 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
       missingSavedContentColumn,
-      { issue: 'missing_migration', detail: '0047_saved_recipe_content.sql' },
+      ...missingMigrationsAfter(tip),
+      ...[...v4Tables, ...v6Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...v4Indexes, ...v6Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...savedContentTriggers.map(detail => ({ issue: 'missing_trigger', detail })),
-    ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
+    ].sort(issueSort));
+  });
+  it('rejects a 0047 database until Takolio V4 unified platform tables and indexes exist', () => {
+    const tip = '0047_saved_recipe_content.sql';
+    const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    expect(db.query(gate)).toEqual([
+      ...missingMigrationsAfter(tip),
+      ...[...v4Tables, ...v6Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...v4Indexes, ...v6Indexes].map(detail => ({ issue: 'missing_index', detail })),
+    ].sort(issueSort));
+  });
+  it('rejects a 0048 database until Takolio V6 culinary OS and backend power tables and indexes exist', () => {
+    const tip = '0048_takolio_v4_unified_platform.sql';
+    const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    expect(db.query(gate)).toEqual([
+      ...missingMigrationsAfter(tip),
+      ...v6Tables.map(detail => ({ issue: 'missing_table', detail })),
+      ...v6Indexes.map(detail => ({ issue: 'missing_index', detail })),
+    ].sort(issueSort));
   });
   it.each([...contentColumns, savedContentColumn])('rejects a complete ledger with missing content column %s', (qualified) => {
     const [table, column] = qualified.split('.');

@@ -51,7 +51,7 @@ describe('guest account gates', () => {
   it('keeps the authenticated Plus shell free of client-owned prices', () => {
     authState.isGuest = false;
     const html = render(<PlusPaywallPage />, '/plus');
-    expect(html).toContain('Nâng cấp Takosan Plus');
+    expect(html).toContain('Nâng cấp Takolio Plus');
     expect(html).not.toContain('599.000đ');
     expect(html).not.toContain('79.000đ');
     expect(html).not.toContain('Đăng nhập trước khi chọn gói Plus');

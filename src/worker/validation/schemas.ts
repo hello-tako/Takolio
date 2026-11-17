@@ -132,10 +132,29 @@ export const ScanConfirmSchema = z.object({
 
 // Cooking is a state-changing command: reject malformed or negative
 // deductions before any inventory projection is touched.
+export const CookingSessionStartSchema = z.object({
+  mode: z.enum(['single', 'mam_com']).default('single'),
+  recipeIds: z.array(z.string().trim().min(1).max(160)).min(1).max(10).optional(),
+  targetServings: z.coerce.number().int().positive().max(100).optional(),
+});
+
+export const CookingSessionUpdateSchema = z
+  .object({
+    currentStepIndex: z.coerce.number().int().nonnegative().max(500).optional(),
+    targetServings: z.coerce.number().int().positive().max(100).optional(),
+    timers: z.record(z.string(), z.unknown()).optional(),
+    completedSteps: z.array(z.union([z.number().int().nonnegative(), z.string()])).max(500).optional(),
+    status: z.enum(['active', 'completed', 'abandoned']).optional(),
+  })
+  .refine((body) => Object.values(body).some((v) => v !== undefined), 'Cần ít nhất một trường để cập nhật phiên nấu');
+
 export const CookingCompleteSchema = z.object({
   contentFingerprint: z.string().regex(/^[0-9a-f]{64}$/).optional(),
   commandId: z.string().trim().regex(/^[A-Za-z0-9:_-]{8,200}$/).optional(),
+  cookingSessionId: z.string().trim().min(1).max(160).optional(),
   servings: z.coerce.number().int().positive().max(100).default(2),
+  leftoverServings: z.coerce.number().int().nonnegative().max(100).optional(),
+  saveLeftoverPortions: z.union([z.boolean(), z.coerce.number().int().nonnegative().max(100)]).optional(),
   deductions: z
     .array(
       z.object({
@@ -151,6 +170,9 @@ export const CookingCompleteSchema = z.object({
 });
 
 // 4. Shopping Schemas
+export const ShoppingImportPurchasedSchema = z.object({
+  itemIds: z.array(z.string().trim().min(1).max(160)).min(1).max(100).optional(),
+});
 export const ShoppingItemCreateSchema = z.object({
   id: z.string().trim().min(8).max(160).optional(),
   name: z.string().trim().min(1, 'Tên mặt hàng không được để trống').max(100),

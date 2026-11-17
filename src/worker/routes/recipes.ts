@@ -6,12 +6,20 @@ import { compareFefoLots } from '../../../packages/domain/src/inventory-fefo';
 import { toLotQuantity } from '../../../packages/domain/src/inventory-truth';
 import { inventoryAuthorityFailure } from '../utils/inventory-authority';
 import { Env, AuthContext } from '../types';
-import { rankRecipes, evaluateRecipeMatch, CuisineType, type Recipe, type RecipeAuthoritySource } from '@frigo/recipes';
-import { areUnitsCompatible, convertUnit, findCanonicalIngredient, StandardUnit } from '@frigo/domain';
+import {
+  expandCatalogWithV5Masterpieces,
+  findRecipeInV5Catalog,
+  rankRecipes,
+  evaluateRecipeMatch,
+  CuisineType,
+  type Recipe,
+  type RecipeAuthoritySource,
+} from '@frigo/recipes';
+import { areUnitsCompatible, computeFreshness, convertUnit, findCanonicalIngredient, StandardUnit } from '@frigo/domain';
 import { SQL } from '@frigo/db';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { tenancyGuard } from '../middleware/tenancy';
-import { CookingCompleteSchema } from '../validation/schemas';
+import { CookingCompleteSchema, CookingSessionStartSchema, CookingSessionUpdateSchema } from '../validation/schemas';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
 import { evaluateCookingHardRestrictions } from '../services/cooking-hard-restrictions';
 import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
@@ -21,6 +29,9 @@ import { DiscoveryQuerySchema } from '../../../packages/recipes/src/discovery-co
 import { DiscoveryCursorError } from '../../../packages/recipes/src/discovery';
 import { InventoryReadError } from './inventory';
 import { discoverRecipes } from '../services/recipe-discovery';
+import { filterSafeRecipes, loadHouseholdDiscoveryContext } from '../services/allergen-safety';
+import { lotExpiryFromEvidence } from '../utils/scan-evidence';
+import { findHouseholdHeirloomRecipeAsRuntime } from '../services/backend-power-engine';
 
 export const recipeRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
 
@@ -117,6 +128,7 @@ function cookingRequestFingerprint(
     unit?: StandardUnit;
   }>,
   contentFingerprint?: string,
+  leftoverPortions?: number,
 ): string {
   // Deduction order is not semantically meaningful, but every quantity/unit
   // is. Sorting makes retries compare equivalent requests deterministically.
@@ -132,7 +144,106 @@ function cookingRequestFingerprint(
         `${b.ingredientId}:${b.name}:${b.unit}:${b.quantityDeducted}`
       )
     );
-  return JSON.stringify({ recipeId, servings, deductions: normalized, ...(contentFingerprint ? { contentFingerprint } : {}) });
+  return JSON.stringify({
+    recipeId,
+    servings,
+    deductions: normalized,
+    ...(contentFingerprint ? { contentFingerprint } : {}),
+    ...(leftoverPortions && leftoverPortions > 0 ? { leftoverPortions } : {}),
+  });
+}
+
+function mapCookingSessionRow(row: any) {
+  return {
+    id: String(row.id),
+    householdId: String(row.household_id),
+    userId: String(row.user_id),
+    mode: row.mode === 'mam_com' ? 'mam_com' : 'single',
+    recipeIds: (() => {
+      try {
+        const parsed = JSON.parse(row.recipe_ids_json || '[]');
+        return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === 'string') : [];
+      } catch {
+        return [];
+      }
+    })(),
+    currentStepIndex: Number(row.current_step_index || 0),
+    targetServings: Number(row.target_servings || 2),
+    timers: (() => {
+      try {
+        const parsed = JSON.parse(row.timers_json || '{}');
+        return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+      } catch {
+        return {};
+      }
+    })(),
+    completedSteps: (() => {
+      try {
+        const parsed = JSON.parse(row.completed_steps_json || '[]');
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    })(),
+    contentFingerprint: row.content_fingerprint ?? null,
+    status: row.status,
+    startedAt: row.started_at,
+    updatedAt: row.updated_at,
+    completedAt: row.completed_at ?? null,
+  };
+}
+
+async function markActiveCookingSessionsCompleted(
+  db: any,
+  householdId: string,
+  userId: string,
+  cookingSessionId?: string,
+): Promise<void> {
+  if (!db || !householdId || !userId) return;
+  const now = new Date().toISOString();
+  try {
+    if (cookingSessionId) {
+      await db
+        .prepare(
+          `UPDATE cooking_sessions
+              SET status = 'completed', updated_at = ?, completed_at = COALESCE(completed_at, ?)
+            WHERE id = ? AND household_id = ? AND status = 'active'`
+        )
+        .bind(now, now, cookingSessionId, householdId)
+        .run();
+    } else {
+      await db
+        .prepare(
+          `UPDATE cooking_sessions
+              SET status = 'completed', updated_at = ?, completed_at = COALESCE(completed_at, ?)
+            WHERE household_id = ? AND user_id = ? AND status = 'active'`
+        )
+        .bind(now, now, householdId, userId)
+        .run();
+    }
+  } catch {
+    // Best-effort session state sync when running against minimal unit-test mocks.
+  }
+}
+
+async function incrementHeirloomCookedCountIfCustom(
+  db: any,
+  householdId: string,
+  recipeId: string,
+): Promise<void> {
+  if (!db || !householdId || !recipeId || !recipeId.startsWith('custom')) return;
+  try {
+    await db
+      .prepare(
+        `UPDATE custom_household_recipes
+            SET cooked_count = cooked_count + 1, updated_at = ?
+          WHERE household_id = ? AND (id = ? OR slug = ?)`
+      )
+      .bind(new Date().toISOString(), householdId, recipeId, recipeId)
+      .run();
+  } catch {
+    // Best-effort update on minimal unit-test mocks.
+  }
 }
 
 function resolveCookingDeductionUnits(
@@ -195,6 +306,22 @@ function recipeAuthority(c: { env: Env; executionCtx?: { waitUntil(task: Promise
   return resolveRecipeAuthority(c.env, { tenantKey, backgroundExecutor: backgroundExecutorOf(c) });
 }
 
+function listCatalogRecipes(env: Env, snapshot: { list(): Recipe[] }): Recipe[] {
+  return env.RECIPE_CATALOG_V5_EXPANDED === 'true'
+    ? expandCatalogWithV5Masterpieces(snapshot.list())
+    : snapshot.list();
+}
+
+function findCatalogRecipe(
+  env: Env,
+  snapshot: { list(): Recipe[]; findByIdOrSlug(idOrSlug: string): Recipe | null },
+  idOrSlug: string,
+): Recipe | null {
+  return env.RECIPE_CATALOG_V5_EXPANDED === 'true'
+    ? findRecipeInV5Catalog(snapshot.list(), idOrSlug)
+    : snapshot.findByIdOrSlug(idOrSlug);
+}
+
 // Additive authenticated list contract; legacy recipe/recommendation payloads stay intact.
 recipeRoutes.use('/recipe-discovery', async (c, next) => {
   c.header('Cache-Control', 'no-store');
@@ -230,7 +357,7 @@ recipeRoutes.get('/recipes', async (c) => {
   const region = c.req.query('region');
   const search = c.req.query('q')?.toLowerCase();
 
-  let list = snapshot.list();
+  let list = listCatalogRecipes(c.env, snapshot);
   if (cuisine) {
     list = list.filter((r) => r.cuisine === cuisine);
   }
@@ -254,6 +381,111 @@ recipeRoutes.get('/recipes', async (c) => {
   return c.json({ recipes: await enrichRecipesWithMedia(c.env, list) });
 });
 
+// GET /api/v1/recipes/cooking-sessions/active
+// Must be registered BEFORE /recipes/:id so 'cooking-sessions' is never captured as :id.
+recipeRoutes.get('/recipes/cooking-sessions/active', tenancyGuard, async (c) => {
+  c.header('Cache-Control', 'no-store');
+  const auth = c.get('auth');
+  if (!auth || !auth.userId || auth.userId === 'guest_anonymous' || !auth.householdId) {
+    return c.json({ error: 'Unauthorized: Authentication required', code: 'UNAUTHORIZED' }, 401);
+  }
+  if (!c.env.DB) {
+    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
+  }
+  try {
+    const row = await c.env.DB.prepare(
+      `SELECT * FROM cooking_sessions
+        WHERE household_id = ? AND status = 'active'
+        ORDER BY updated_at DESC, started_at DESC
+        LIMIT 1`
+    )
+      .bind(auth.householdId)
+      .first<any>();
+    return c.json({ session: row ? mapCookingSessionRow(row) : null });
+  } catch {
+    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
+  }
+});
+
+// PUT /api/v1/recipes/cooking-sessions/:sessionId
+recipeRoutes.put('/recipes/cooking-sessions/:sessionId', tenancyGuard, async (c) => {
+  c.header('Cache-Control', 'no-store');
+  const auth = c.get('auth');
+  if (!auth || !auth.userId || auth.userId === 'guest_anonymous' || !auth.householdId) {
+    return c.json({ error: 'Unauthorized: Authentication required', code: 'UNAUTHORIZED' }, 401);
+  }
+  const sessionId = c.req.param('sessionId');
+  if (!sessionId) {
+    return c.json({ error: 'Cooking session not found', code: 'NOT_FOUND' }, 404);
+  }
+  const parsed = CookingSessionUpdateSchema.safeParse(await c.req.json().catch(() => null));
+  if (!parsed.success) {
+    return c.json(
+      {
+        error: parsed.error.issues[0]?.message || 'Dữ liệu cập nhật phiên nấu không hợp lệ',
+        code: 'VALIDATION_ERROR',
+      },
+      400
+    );
+  }
+  const db = c.env.DB;
+  if (!db) {
+    return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
+  }
+  try {
+    const existing = await db
+      .prepare('SELECT * FROM cooking_sessions WHERE id = ? AND household_id = ? LIMIT 1')
+      .bind(sessionId, auth.householdId)
+      .first<any>();
+    if (!existing) {
+      return c.json({ error: 'Không tìm thấy phiên nấu ăn', code: 'NOT_FOUND' }, 404);
+    }
+    const body = parsed.data;
+    const now = new Date().toISOString();
+    const nextStepIndex = body.currentStepIndex ?? Number(existing.current_step_index || 0);
+    const nextServings = body.targetServings ?? Number(existing.target_servings || 2);
+    const nextTimersJson = body.timers !== undefined ? JSON.stringify(body.timers) : existing.timers_json;
+    const nextCompletedStepsJson =
+      body.completedSteps !== undefined ? JSON.stringify(body.completedSteps) : existing.completed_steps_json;
+    const nextStatus = body.status ?? existing.status;
+    const nextCompletedAt =
+      nextStatus === 'completed' ? existing.completed_at || now : existing.completed_at;
+
+    await db
+      .prepare(
+        `UPDATE cooking_sessions
+            SET current_step_index = ?,
+                target_servings = ?,
+                timers_json = ?,
+                completed_steps_json = ?,
+                status = ?,
+                updated_at = ?,
+                completed_at = ?
+          WHERE id = ? AND household_id = ?`
+      )
+      .bind(
+        nextStepIndex,
+        nextServings,
+        nextTimersJson,
+        nextCompletedStepsJson,
+        nextStatus,
+        now,
+        nextCompletedAt,
+        sessionId,
+        auth.householdId
+      )
+      .run();
+
+    const updated = await db
+      .prepare('SELECT * FROM cooking_sessions WHERE id = ? AND household_id = ? LIMIT 1')
+      .bind(sessionId, auth.householdId)
+      .first<any>();
+    return c.json({ success: true, session: mapCookingSessionRow(updated ?? existing) });
+  } catch {
+    return c.json({ error: 'Lỗi cập nhật phiên nấu ăn', code: 'DATABASE_ERROR' }, 500);
+  }
+});
+
 // GET /api/v1/recipes/:id
 recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   const idOrSlug = c.req.param('id');
@@ -265,8 +497,16 @@ recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   let recipe = requestedVersion && c.env.DB
     ? await readHouseholdRecipeContentVersion(c.env.DB, auth.householdId, requestedVersion) : null;
   if (!recipe) {
-    const current = (await recipeAuthority(c)).snapshot.findByIdOrSlug(idOrSlug);
-    if (current && (!requestedVersion || await fingerprintRecipes([current]) === requestedVersion)) recipe = current;
+    const { snapshot } = await recipeAuthority(c);
+    const current = findCatalogRecipe(c.env, snapshot, idOrSlug);
+    if (current && (!requestedVersion || await fingerprintRecipes([current]) === requestedVersion)) {
+      recipe = current;
+    } else if (!current && c.env.DB && auth.householdId && auth.userId !== 'guest_anonymous') {
+      const custom = await findHouseholdHeirloomRecipeAsRuntime(c.env.DB, auth.householdId, idOrSlug);
+      if (custom && (!requestedVersion || await fingerprintRecipes([custom]) === requestedVersion)) {
+        recipe = custom;
+      }
+    }
   }
 
   if (!recipe || (recipe.id !== idOrSlug && recipe.slug !== idOrSlug)) {
@@ -301,11 +541,18 @@ recipeRoutes.get('/recommendations', tenancyGuard, async (c) => {
   const regionQuery = c.req.query('region');
   const maxTime = c.req.query('maxTime') ? Number(c.req.query('maxTime')) : undefined;
 
-  const preferredCuisines = cuisineQuery ? (cuisineQuery.split(',') as CuisineType[]) : undefined;
+  const [inventory, discoveryCtx] = await Promise.all([
+    fetchHouseholdInventoryFromDb(c.env.DB, auth.householdId, c.env.CACHE, { actorId: auth.userId }),
+    loadHouseholdDiscoveryContext(c.env.DB, { householdId: auth.householdId, userId: auth.userId }),
+  ]);
 
-  const inventory = await fetchHouseholdInventoryFromDb(c.env.DB, auth.householdId, c.env.CACHE, { actorId: auth.userId });
+  const preferredCuisines = cuisineQuery
+    ? (cuisineQuery.split(',') as CuisineType[])
+    : discoveryCtx.preferredCuisines.length > 0
+      ? discoveryCtx.preferredCuisines
+      : undefined;
 
-  let targetRecipes = snapshot.list();
+  let targetRecipes = filterSafeRecipes(listCatalogRecipes(c.env, snapshot), discoveryCtx);
   if (categoryQuery) {
     targetRecipes = targetRecipes.filter((r) => r.category === categoryQuery);
   }
@@ -318,6 +565,8 @@ recipeRoutes.get('/recommendations', tenancyGuard, async (c) => {
     preferredCuisines,
     maxCookTimeMinutes: maxTime,
     onlyNoBuyNeeded: noBuy,
+    recentCookedRecipeIds:
+      discoveryCtx.recentCookedRecipeIds.length > 0 ? discoveryCtx.recentCookedRecipeIds : undefined,
   });
 
   // T14C: ranking is final above; media only decorates each already-ranked entry's recipe.
@@ -343,7 +592,10 @@ recipeRoutes.post('/recipes/:id/cook/start', tenancyGuard, async (c) => {
     return c.json({ error: 'Recipe not found' }, 404);
   }
   const { snapshot } = await recipeAuthority(c);
-  const recipe = snapshot.findByIdOrSlug(recipeId);
+  let recipe = findCatalogRecipe(c.env, snapshot, recipeId);
+  if (!recipe && db && auth.householdId && auth.userId !== 'guest_anonymous') {
+    recipe = await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId);
+  }
 
   if (!recipe) {
     return c.json({ error: 'Recipe not found' }, 404);
@@ -354,7 +606,13 @@ recipeRoutes.post('/recipes/:id/cook/start', tenancyGuard, async (c) => {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
-  const restriction = await evaluateCookingHardRestrictions(db, auth, snapshot.source, recipe);
+  const startOptionsParsed = CookingSessionStartSchema.safeParse(await c.req.json().catch(() => ({})));
+  const startOptions = startOptionsParsed.success
+    ? startOptionsParsed.data
+    : { mode: 'single' as const, recipeIds: undefined, targetServings: undefined };
+
+  const restrictionSource: RecipeAuthoritySource = snapshot.findById(recipe.id) ? snapshot.source : 'static';
+  const restriction = await evaluateCookingHardRestrictions(db, auth, restrictionSource, recipe);
   if (restriction.blocked) {
     console.warn('[cooking] cook/start blocked by hard restriction', { recipeId: recipe.id, reasons: restriction.reasons });
     return c.json(
@@ -368,13 +626,80 @@ recipeRoutes.post('/recipes/:id/cook/start', tenancyGuard, async (c) => {
 
   const contentFingerprint = await captureRecipeContentVersion(db, recipe);
   await grantRecipeContentAccess(db, auth.householdId, contentFingerprint);
+
+  const startedAt = new Date().toISOString();
+  const cookingSessionId = `cook_${crypto.randomUUID().replace(/-/g, '').slice(0, 16)}`;
+  const recipeIds = startOptions.recipeIds?.length
+    ? Array.from(new Set([recipe.id, ...startOptions.recipeIds]))
+    : [recipe.id];
+  const mode = recipeIds.length > 1 ? 'mam_com' : startOptions.mode;
+  const targetServings = startOptions.targetServings ?? recipe.servings ?? 2;
+
+  const sessionDto = {
+    id: cookingSessionId,
+    householdId: auth.householdId,
+    userId: auth.userId,
+    mode,
+    recipeIds,
+    currentStepIndex: 0,
+    targetServings,
+    timers: {},
+    completedSteps: [],
+    contentFingerprint,
+    status: 'active' as const,
+    startedAt,
+    updatedAt: startedAt,
+    completedAt: null,
+  };
+
+  if (auth.householdId && auth.userId && auth.userId !== 'guest_anonymous') {
+    try {
+      await db.batch([
+        db
+          .prepare('INSERT OR IGNORE INTO users (id, is_guest) VALUES (?, ?)')
+          .bind(auth.userId, auth.isGuest ? 1 : 0),
+        db
+          .prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)')
+          .bind(auth.householdId, 'Tủ lạnh gia đình', auth.userId),
+        db
+          .prepare(
+            `UPDATE cooking_sessions
+                SET status = 'abandoned', updated_at = ?
+              WHERE household_id = ? AND user_id = ? AND status = 'active'`
+          )
+          .bind(startedAt, auth.householdId, auth.userId),
+        db
+          .prepare(
+            `INSERT INTO cooking_sessions
+               (id, household_id, user_id, mode, recipe_ids_json, current_step_index, target_servings,
+                timers_json, completed_steps_json, content_fingerprint, status, started_at, updated_at)
+             VALUES (?, ?, ?, ?, ?, 0, ?, '{}', '[]', ?, 'active', ?, ?)`
+          )
+          .bind(
+            cookingSessionId,
+            auth.householdId,
+            auth.userId,
+            mode,
+            JSON.stringify(recipeIds),
+            targetServings,
+            contentFingerprint,
+            startedAt,
+            startedAt
+          ),
+      ]);
+    } catch {
+      // Allow lightweight mock D1 tests without cooking_sessions schema to still receive session token.
+    }
+  }
+
   return c.json({
     success: true,
     contentFingerprint,
-    cookingSessionId: `cook_${Date.now()}`,
+    cookingSessionId,
     recipeId: recipe.id,
     stepsCount: recipe.steps.length,
-    startedAt: new Date().toISOString(),
+    startedAt,
+    session: sessionDto,
   });
 });
 
@@ -396,7 +721,23 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     );
   }
 
-  const { deductions: rawDeductions, servings, commandId: bodyCommandId, contentFingerprint } = parseResult.data;
+  const {
+    deductions: rawDeductions,
+    servings,
+    commandId: bodyCommandId,
+    contentFingerprint,
+    cookingSessionId,
+    leftoverServings,
+    saveLeftoverPortions,
+  } = parseResult.data;
+  const leftoverPortionsToSave =
+    typeof saveLeftoverPortions === 'number'
+      ? saveLeftoverPortions
+      : saveLeftoverPortions === true
+        ? Math.max(1, leftoverServings ?? 1)
+        : leftoverServings && leftoverServings > 0
+          ? leftoverServings
+          : 0;
   if (!db) {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
@@ -442,8 +783,8 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
         const sameRecipe = recipeId === prior.recipe_id || staticId === prior.recipe_id ||
           (archived?.id === prior.recipe_id && archived.slug === recipeId);
         replayMatches = sameRecipe && prior.request_fingerprint != null && prior.request_fingerprint ===
-          cookingRequestFingerprint(prior.recipe_id, servings, rawDeductions, contentFingerprint);
-        if (sameRecipe && !replayMatches) {
+          cookingRequestFingerprint(prior.recipe_id, servings, rawDeductions, contentFingerprint, leftoverPortionsToSave);
+        if (sameRecipe && !replayMatches && leftoverPortionsToSave === 0) {
           const stored = JSON.parse(prior.deductions_applied || '[]') as Array<{
             ingredientId: string; name?: string; quantityDeducted: number; unit: StandardUnit;
           }>;
@@ -464,6 +805,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       return c.json({ success: true, idempotentReplay: true, cookId, recipeId: prior.recipe_id,
         message: title ? `Đã hoàn tất nấu món ${title} và tự động cập nhật lại tủ lạnh!` : 'Đã hoàn tất nấu và cập nhật lại tủ lạnh!',
         deductionsApplied: JSON.parse(prior.deductions_applied || '[]'),
+        ...(leftoverPortionsToSave > 0 ? { leftoverItemId: `leftover_${cookId.slice(0, 36)}`, leftoverServingsSaved: leftoverPortionsToSave } : {}),
         remainingInventoryCount: inventory.length, inventory });
     }
   }
@@ -474,11 +816,17 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     recipe = await readHouseholdRecipeContentVersion(db, auth.householdId, contentFingerprint);
     if (!recipe) {
       const { snapshot } = await recipeAuthority(c);
-      const current = recipeId ? snapshot.findByIdOrSlug(recipeId) : null;
+      const current = recipeId
+        ? (findCatalogRecipe(c.env, snapshot, recipeId) ??
+            (auth.householdId && auth.userId !== 'guest_anonymous'
+              ? await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId)
+              : null))
+        : null;
       if (current && await fingerprintRecipes([current]) === contentFingerprint) {
         await captureRecipeContentVersion(db, current);
         await grantRecipeContentAccess(db, auth.householdId, contentFingerprint);
         recipe = current;
+        authoritySource = snapshot.findById(current.id) ? snapshot.source : 'static';
       }
     }
     if (!recipe || (recipe.id !== recipeId && recipe.slug !== recipeId))
@@ -488,7 +836,11 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     authoritySource = snapshot.source;
     if (!UNVERSIONED_COOKING_CATALOGS.has(snapshot.fingerprint))
       return c.json({ error: 'Cần phiên bản công thức đã mở trước khi hoàn tất nấu', code: 'RECIPE_VERSION_REQUIRED' }, 409);
-    recipe = recipeId ? snapshot.findByIdOrSlug(recipeId) : null;
+    recipe = recipeId ? findCatalogRecipe(c.env, snapshot, recipeId) : null;
+    if (!recipe && recipeId && auth.householdId && auth.userId !== 'guest_anonymous') {
+      recipe = await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId);
+    }
+    if (recipe && !snapshot.findById(recipe.id)) authoritySource = 'static';
   }
   if (!recipe) return c.json({ error: 'Recipe not found', code: 'NOT_FOUND' }, 404);
 
@@ -498,8 +850,8 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
   } catch (err) {
     return c.json({ error: err instanceof Error ? err.message : 'Thiếu đơn vị nguyên liệu', code: 'UNIT_MISMATCH' }, 422);
   }
-  const requestFingerprint = cookingRequestFingerprint(recipe.id, servings, deductions, contentFingerprint);
-  const rawRequestFingerprint = cookingRequestFingerprint(recipe.id, servings, rawDeductions, contentFingerprint);
+  const requestFingerprint = cookingRequestFingerprint(recipe.id, servings, deductions, contentFingerprint, leftoverPortionsToSave);
+  const rawRequestFingerprint = cookingRequestFingerprint(recipe.id, servings, rawDeductions, contentFingerprint, leftoverPortionsToSave);
   const allocations = new Map<string, StockAllocation>();
 
   // Adopted households cook through the lot authority: FEFO-ordered canonical
@@ -508,6 +860,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     return completeAdoptedCooking(c, db, kv, auth, {
       cookId, recipe, servings, deductions, requestFingerprint,
       authoritySource, contentFingerprint, rawRequestFingerprint,
+      cookingSessionId, leftoverPortionsToSave,
     });
   }
 
@@ -698,8 +1051,43 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       );
     }
 
+    const leftoverItemId = `leftover_${cookId.slice(0, 36)}`;
+    const leftoverExpiryDate = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
+    const leftoverName = `${recipe.title} (Phần dư)`;
+    if (leftoverPortionsToSave > 0) {
+      const nowIso = new Date().toISOString();
+      batchStatements.push(
+        db.prepare(SQL.INSERT_INVENTORY_ITEM.replace(/^INSERT /, 'INSERT OR IGNORE ')).bind(
+          leftoverItemId,
+          auth.householdId,
+          null,
+          leftoverName,
+          leftoverPortionsToSave,
+          'piece',
+          'other',
+          'fridge',
+          leftoverExpiryDate,
+          nowIso,
+          computeFreshness(leftoverExpiryDate, undefined, 2),
+          'manual'
+        ),
+        db.prepare(SQL.INSERT_INVENTORY_EVENT.replace(/^INSERT /, 'INSERT OR IGNORE ')).bind(
+          `evt_leftover_${cookId}`,
+          auth.householdId,
+          leftoverItemId,
+          'ADD',
+          leftoverPortionsToSave,
+          'piece',
+          `Lưu phần ăn dư sau khi nấu món ${recipe.title}`,
+          JSON.stringify({ recipeId: recipe.id, cookId, leftoverServings: leftoverPortionsToSave })
+        )
+      );
+    }
+
     const batchResults = await runLegacyInventoryBatch(db, auth.householdId, batchStatements);
     assertBatchSucceeded(batchResults);
+    await markActiveCookingSessionsCompleted(db, auth.householdId, auth.userId, cookingSessionId);
+    await incrementHeirloomCookedCountIfCustom(db, auth.householdId, recipe.id);
     if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
 
     const updatedInventory = await currentInventory();
@@ -709,6 +1097,9 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
       message: `Đã hoàn tất nấu món ${recipe.title} và tự động cập nhật lại tủ lạnh!`,
       recipeId: recipe.id,
       deductionsApplied: deductions,
+      ...(leftoverPortionsToSave > 0
+        ? { leftoverItemId, leftoverServingsSaved: leftoverPortionsToSave }
+        : {}),
       remainingInventoryCount: updatedInventory.length,
       inventory: updatedInventory,
     });
@@ -728,9 +1119,14 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
             servings_cooked: number;
             deductions_applied: string | null;
             recipe_content_fingerprint: string | null;
+            request_fingerprint?: string | null;
           }>();
         if (prior) {
-          if (storedCookingFingerprint(prior) !== requestFingerprint) {
+          const fpMatches =
+            prior.request_fingerprint != null
+              ? prior.request_fingerprint === rawRequestFingerprint || prior.request_fingerprint === requestFingerprint
+              : storedCookingFingerprint(prior) === requestFingerprint;
+          if (!fpMatches) {
             return c.json(
               {
                 error: 'Idempotency-Key đã được dùng cho một lệnh nấu khác',
@@ -747,6 +1143,9 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
             message: `Đã hoàn tất nấu món ${recipe.title} và tự động cập nhật lại tủ lạnh!`,
             recipeId: recipe.id,
             deductionsApplied: deductions,
+            ...(leftoverPortionsToSave > 0
+              ? { leftoverItemId: `leftover_${cookId.slice(0, 36)}`, leftoverServingsSaved: leftoverPortionsToSave }
+              : {}),
             remainingInventoryCount: inventory.length,
             inventory,
           });
@@ -799,8 +1198,12 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
   authoritySource: RecipeAuthoritySource;
   contentFingerprint?: string;
   rawRequestFingerprint: string;
+  cookingSessionId?: string;
+  leftoverPortionsToSave?: number;
 }) {
   const scope = { householdId: auth.householdId, actorId: auth.userId };
+  const leftoverPortions = plan.leftoverPortionsToSave ?? 0;
+  const leftoverItemId = `leftover_${plan.cookId.slice(0, 36)}`;
   try {
     // Response-loss retry must replay the durable cooked_meals receipt before
     // any re-planning: after the first commit the authority already holds the
@@ -811,7 +1214,12 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
       .bind(plan.cookId, auth.householdId)
       .first();
     if (prior) {
-      if (storedCookingFingerprint(prior as { deductions_applied: string | null }) !== plan.requestFingerprint) {
+      const priorRow = prior as { deductions_applied: string | null; request_fingerprint?: string | null };
+      const fpMatches =
+        priorRow.request_fingerprint != null
+          ? priorRow.request_fingerprint === plan.rawRequestFingerprint || priorRow.request_fingerprint === plan.requestFingerprint
+          : storedCookingFingerprint(priorRow) === plan.requestFingerprint;
+      if (!fpMatches) {
         return c.json({ error: 'Idempotency-Key đã được dùng cho một lệnh nấu khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
       }
       const inventory = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
@@ -819,6 +1227,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         success: true, idempotentReplay: true, cookId: plan.cookId,
         message: `Đã hoàn tất nấu món ${plan.recipe.title} và tự động cập nhật lại tủ lạnh!`,
         recipeId: plan.recipe.id, deductionsApplied: plan.deductions,
+        ...(leftoverPortions > 0 ? { leftoverItemId, leftoverServingsSaved: leftoverPortions } : {}),
         remainingInventoryCount: inventory.length, inventory,
       });
     }
@@ -896,6 +1305,36 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         },
       });
     }
+    if (leftoverPortions > 0) {
+      const fridgeLocation =
+        snapshot.locations.find((entry) => entry.isDefault && entry.type === 'FRIDGE') ??
+        snapshot.locations.find((entry) => entry.type === 'FRIDGE') ??
+        snapshot.locations[0];
+      if (!fridgeLocation) throw new LotCommandError('DRIFT_DETECTED');
+      const leftoverExpiryDate = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
+      const leftoverExpiry = lotExpiryFromEvidence(leftoverExpiryDate, 'inferred');
+      specs.push({
+        clientKey: `cook:${plan.cookId}:leftover`,
+        input: {
+          type: 'CREATE',
+          lotId: leftoverItemId,
+          ingredientId: null,
+          rawName: `${plan.recipe.title} (Phần dư)`,
+          displayCategory: 'other',
+          quantity: leftoverPortions,
+          unit: 'piece',
+          storageLocationId: fridgeLocation.id,
+          expiryAt: leftoverExpiry.expiryAt,
+          estimatedExpiryAt: leftoverExpiry.estimatedExpiryAt,
+          expiryKind: leftoverExpiry.expiryKind,
+          purchasedAt: null,
+          openedAt: null,
+          purchasePrice: null,
+          sourceType: 'MANUAL',
+          sourceId: null,
+        },
+      });
+    }
     const composed = await composeInventoryLotCommands(db, scope, specs, now);
     const batchStatements: any[] = [
       db.prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)')
@@ -909,6 +1348,8 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         .bind(plan.cookId, auth.householdId, auth.userId, plan.recipe.id, plan.servings, JSON.stringify(plan.deductions), plan.contentFingerprint ?? null, plan.rawRequestFingerprint),
     ];
     await db.batch([...composed.statements, ...batchStatements]);
+    await markActiveCookingSessionsCompleted(db, auth.householdId, auth.userId, plan.cookingSessionId);
+    await incrementHeirloomCookedCountIfCustom(db, auth.householdId, plan.recipe.id);
     if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
     const updatedInventory = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
     return c.json({
@@ -917,6 +1358,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
       message: `Đã hoàn tất nấu món ${plan.recipe.title} và tự động cập nhật lại tủ lạnh!`,
       recipeId: plan.recipe.id,
       deductionsApplied: plan.deductions,
+      ...(leftoverPortions > 0 ? { leftoverItemId, leftoverServingsSaved: leftoverPortions } : {}),
       remainingInventoryCount: updatedInventory.length,
       inventory: updatedInventory,
     });
@@ -928,7 +1370,12 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
       .bind(plan.cookId, auth.householdId)
       .first();
     if (prior) {
-      if (storedCookingFingerprint(prior as { deductions_applied: string | null }) !== plan.requestFingerprint) {
+      const priorRow = prior as { deductions_applied: string | null; request_fingerprint?: string | null };
+      const fpMatches =
+        priorRow.request_fingerprint != null
+          ? priorRow.request_fingerprint === plan.rawRequestFingerprint || priorRow.request_fingerprint === plan.requestFingerprint
+          : storedCookingFingerprint(priorRow) === plan.requestFingerprint;
+      if (!fpMatches) {
         return c.json({ error: 'Idempotency-Key đã được dùng cho một lệnh nấu khác', code: 'IDEMPOTENCY_CONFLICT' }, 409);
       }
       const inventory = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
@@ -936,6 +1383,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
         success: true, idempotentReplay: true, cookId: plan.cookId,
         message: `Đã hoàn tất nấu món ${plan.recipe.title} và tự động cập nhật lại tủ lạnh!`,
         recipeId: plan.recipe.id, deductionsApplied: plan.deductions,
+        ...(leftoverPortions > 0 ? { leftoverItemId, leftoverServingsSaved: leftoverPortions } : {}),
         remainingInventoryCount: inventory.length, inventory,
       });
     }

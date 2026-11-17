@@ -307,3 +307,20 @@ export async function executeInventoryAdoption(db: D1DatabaseBinding, inputScope
     throw new LotCommandError('PERSISTENCE_FAILED');
   }
 }
+
+/**
+ * Seamlessly activates FEFO Lot Authority (default storage_locations + immutable adoption receipt)
+ * on a new or compatible household using the certified adoption executor.
+ */
+export async function ensureHouseholdAdopted(
+  db: D1DatabaseBinding,
+  scope: InventoryLotCommandScope,
+  now = new Date().toISOString(),
+): Promise<boolean> {
+  try {
+    await executeInventoryAdoption(db, scope, {}, now);
+    return true;
+  } catch {
+    return false;
+  }
+}

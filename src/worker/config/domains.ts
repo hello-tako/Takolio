@@ -12,3 +12,17 @@ export function domainProfile(env: Pick<Env, 'ENVIRONMENT' | 'APP_URL' | 'PUBLIC
   }
   return profile;
 }
+
+/**
+ * Domain cutover must not extend HSTS includeSubDomains/preload to unaudited subdomains.
+ * Only legacy hosts with an audited HSTS preload posture retain the 2-year preload header.
+ */
+export function hstsHeaderValue(urlOrOrigin: string): string {
+  try {
+    const origin = urlOrOrigin.includes('://') ? new URL(urlOrOrigin).origin : `https://${urlOrOrigin}`;
+    const legacy = Object.values(DOMAIN_PROFILES).some((profile) => profile.legacy === origin);
+    return legacy ? 'max-age=63072000; includeSubDomains; preload' : 'max-age=31536000';
+  } catch {
+    return 'max-age=31536000';
+  }
+}

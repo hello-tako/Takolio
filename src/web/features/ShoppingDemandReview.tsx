@@ -7,6 +7,8 @@ import type {
 } from '../../../packages/domain/src/shopping-plan-api';
 import { Button } from '../components/common/Button';
 import { InlineError } from '../components/common/AsyncState';
+import { BentoCard, AtelierBadge } from '../design-system/v4/AtelierPrimitives';
+import { PortionScaleIcon, FreshnessShieldIcon } from '../design-system/icons';
 import { useModalFocus } from '../design-system/use-modal-focus';
 import {
   shoppingApi,
@@ -38,6 +40,7 @@ function reviewable(item: ShoppingUnresolvedItem): item is ShoppingUnknownDemand
     typeof item.purchaseItemId !== 'undefined'
   );
 }
+
 function actionLabel(action: ReviewAction) {
   return action === 'purchase'
     ? 'lượng vừa gửi'
@@ -45,9 +48,11 @@ function actionLabel(action: ReviewAction) {
       ? 'bỏ qua vừa gửi'
       : 'mở lại vừa gửi';
 }
+
 function mealLabel(mealType: string) {
   return mealType === 'breakfast' ? 'Sáng' : mealType === 'lunch' ? 'Trưa' : 'Tối';
 }
+
 function reviewErrorMessage(failure: unknown) {
   if (failure instanceof ApiError && failure.code === 'SHOPPING_PENDING_SYNC')
     return 'Danh sách đang chờ đồng bộ. Chờ đồng bộ xong rồi tải lại để chọn lượng.';
@@ -151,11 +156,16 @@ export function ShoppingDemandReview({
       .size;
     if (!demand.contributions.length) return null;
     return (
-      <details className="shopping-source-details shopping-demand-sources">
-        <summary>Xem {count} bữa liên quan</summary>
-        <ul>
+      <details className="shopping-source-details shopping-demand-sources mt-2 rounded-xl bg-tk-sunken/70 px-3 py-2 text-xs text-tk-secondary">
+        <summary className="cursor-pointer font-bold text-tk-ink">
+          Xem {count} bữa liên quan
+        </summary>
+        <ul className="mt-2 space-y-1.5 divide-y divide-tk-stone/60">
           {demand.contributions.map((source, index) => (
-            <li key={`${source.slotId}:${source.componentId}:${index}`}>
+            <li
+              key={`${source.slotId}:${source.componentId}:${index}`}
+              className="flex flex-wrap items-center justify-between gap-2 pt-1.5 first:pt-0"
+            >
               <span>
                 {source.date} · {mealLabel(source.mealType)} ·{' '}
                 {source.recipeId && sourceLinksEnabled ? (
@@ -163,14 +173,15 @@ export function ShoppingDemandReview({
                     to={`/recipes/id/${encodeURIComponent(source.recipeId)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="font-bold text-tk-jade hover:underline"
                   >
                     {source.title}
                   </Link>
                 ) : (
-                  source.title
+                  <span className="font-semibold text-tk-ink">{source.title}</span>
                 )}
               </span>
-              <span>
+              <span className="font-semibold text-tk-muted tk-tabular">
                 {source.quantity === null
                   ? 'Lượng món này chưa rõ'
                   : shoppingQuantity(source.quantity, source.unit)}
@@ -236,7 +247,6 @@ export function ShoppingDemandReview({
       } else if (failure instanceof ApiError && failure.status === 400) {
         setAttempt(null);
       }
-      // Uncertain delivery retains this exact payload/key until its receipt is confirmed.
       return;
     }
     if (!alive.current || !isCurrent()) return;
@@ -273,6 +283,7 @@ export function ShoppingDemandReview({
     setError(null);
     setReceipt('');
   }
+
   function reviewAction(demand: ShoppingUnknownDemand, action: 'skip' | 'reopen') {
     if (controlsDisabled) return;
     void send(
@@ -286,6 +297,7 @@ export function ShoppingDemandReview({
       demand,
     );
   }
+
   function submitPurchase(event: React.FormEvent) {
     event.preventDefault();
     if (!purchaseDemand || !serverReady || busy || requiresReload) return;
@@ -326,10 +338,11 @@ export function ShoppingDemandReview({
         ? 'Thao tác đã được lưu, nhưng chưa tải lại được danh sách. Tải lại trước khi chọn tiếp.'
         : 'Chưa tải lại được danh sách. Kết nối lại rồi thử tải lại.'
       : reviewErrorMessage(error);
+
   function recovery() {
     if (!error) return null;
     return (
-      <div ref={errorFocus} tabIndex={-1} className="shopping-demand-error">
+      <div ref={errorFocus} tabIndex={-1} className="shopping-demand-error space-y-2">
         <InlineError message={errorMessage} />
         {requiresReload ? (
           <Button
@@ -358,56 +371,94 @@ export function ShoppingDemandReview({
   }
 
   if (!demands.length && !attempt && !receipt && !error) return null;
+
   return (
-    <div className="shopping-demand-review">
+    <div className="shopping-demand-review space-y-3.5">
       {disabledReason && (
-        <div className="shopping-demand-review-notice">
-          <p role="status">{disabledReason}</p>
+        <BentoCard tone="sunken" padding="sm" className="shopping-demand-review-notice space-y-2.5">
+          <p role="status" className="text-xs font-semibold text-tk-secondary">
+            {disabledReason}
+          </p>
           <Button
             variant="outline"
+            size="sm"
             type="button"
             disabled={busy}
             onClick={() => void reloadAfterReview()}
           >
             Tải lại danh sách
           </Button>
-        </div>
+        </BentoCard>
       )}
+
       {pending.length > 0 && (
-        <section className="shopping-unresolved" aria-labelledby="shopping-demand-pending-title">
-          <p className="planning-eyebrow">CẦN QUYẾT ĐỊNH</p>
-          <h3 id="shopping-demand-pending-title">Chưa rõ lượng mua · {pending.length}</h3>
-          <p>
-            Chọn lượng bạn định mua hoặc tạm bỏ qua lần này. Gói, bó hay cái là đơn vị mua bạn chọn;
-            tổng lượng theo thực đơn vẫn chưa xác định.
+        <BentoCard
+          tone="turmeric"
+          padding="md"
+          role="region"
+          aria-labelledby="shopping-demand-pending-title"
+          className="shopping-unresolved space-y-3.5"
+        >
+          <div className="flex flex-wrap items-start justify-between gap-2">
+            <div className="flex items-start gap-2.5">
+              <span className="w-10 h-10 rounded-2xl bg-white border border-tk-turmeric/30 flex items-center justify-center shrink-0 shadow-xs">
+                <PortionScaleIcon size={20} tone="turmeric" active />
+              </span>
+              <div>
+                <p className="text-[11px] font-extrabold uppercase tracking-wider text-tk-turmeric-deep">
+                  RÀ LƯỢNG NGUYÊN LIỆU TỪ THỰC ĐƠN
+                </p>
+                <h3
+                  id="shopping-demand-pending-title"
+                  className="font-heading font-extrabold text-base text-tk-ink mt-0.5"
+                >
+                  Chưa rõ lượng mua · {pending.length}
+                </h3>
+              </div>
+            </div>
+            <AtelierBadge tone="turmeric">Mua thêm hay đã sẵn ở bếp?</AtelierBadge>
+          </div>
+
+          <p className="text-xs text-tk-secondary leading-relaxed">
+            Một số gia vị/nguyên liệu trong món ăn dùng theo khẩu vị nhà mình. Nhấn{' '}
+            <strong>Chọn lượng mua</strong> nếu cần mua thêm ở siêu thị, hoặc{' '}
+            <strong>Tạm bỏ qua</strong> nếu đã có sẵn ở bếp.
           </p>
-          <ul className="shopping-demand-list">
+
+          <ul className="shopping-demand-list space-y-2.5">
             {pending.map((demand, index) => {
               const bound = reviewable(demand);
               const prior = demand.purchaseItemId ? itemById.get(demand.purchaseItemId) : undefined;
               return (
                 <li
                   key={`${demand.sourceId ?? index}:${demand.demandKey ?? demand.ingredientId}`}
-                  className="shopping-demand-card"
+                  className="shopping-demand-card rounded-2xl border border-tk-stone bg-white p-3.5 sm:p-4 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
-                  <div className="shopping-demand-card-copy">
-                    <strong>{demand.name}</strong>
-                    <span className="shopping-row-quantity">Tổng lượng chưa xác định</span>
+                  <div className="shopping-demand-card-copy min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <strong className="font-heading font-bold text-sm text-tk-ink">
+                        {demand.name}
+                      </strong>
+                      <span className="shopping-row-quantity text-xs font-semibold text-tk-turmeric-deep bg-tk-turmeric-soft px-2 py-0.5 rounded-full">
+                        Tổng lượng chưa xác định
+                      </span>
+                    </div>
                     {prior && (
-                      <p className="shopping-demand-prior">
+                      <p className="shopping-demand-prior text-xs text-tk-secondary mt-1.5">
                         Đang giữ dòng {shoppingQuantity(prior.quantity, prior.unit)}
                         {prior.isChecked ? ' đã mua' : ' bạn đã chọn'}. Tạm bỏ qua chỉ xóa dòng chưa
                         mua; lịch sử đã mua được giữ.
                       </p>
                     )}
                     {!bound && (
-                      <p className="shopping-demand-prior">
+                      <p className="shopping-demand-prior text-xs text-tk-secondary mt-1.5">
                         Tải lại để có bản dữ liệu mới trước khi chọn lượng.
                       </p>
                     )}
                     {sourceList(demand)}
                   </div>
-                  <div className="shopping-demand-actions">
+
+                  <div className="shopping-demand-actions flex flex-wrap items-center gap-2 shrink-0">
                     <Button
                       type="button"
                       size="sm"
@@ -420,7 +471,8 @@ export function ShoppingDemandReview({
                     </Button>
                     <button
                       type="button"
-                      className="shopping-demand-skip"
+                      className="shopping-demand-skip min-h-[36px] px-3 py-1.5 rounded-xl border border-tk-stone bg-tk-canvas hover:bg-tk-sunken text-xs font-bold text-tk-secondary cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      title="Đã có sẵn ở bếp / chưa cần mua đợt này"
                       disabled={controlsDisabled || !bound}
                       onClick={() => {
                         if (bound) reviewAction(demand, 'skip');
@@ -433,26 +485,29 @@ export function ShoppingDemandReview({
               );
             })}
           </ul>
-        </section>
+        </BentoCard>
       )}
+
       {purchased.length > 0 && (
-        <details className="shopping-demand-chosen">
-          <summary>Đã chọn lượng mua · {purchased.length} nguyên liệu</summary>
-          <p>
+        <details className="shopping-demand-chosen rounded-2xl border border-tk-stone bg-white p-4 shadow-xs">
+          <summary className="cursor-pointer font-heading font-bold text-sm text-tk-ink">
+            Đã chọn lượng mua · {purchased.length} nguyên liệu
+          </summary>
+          <p className="text-xs text-tk-secondary mt-2">
             Lượng bạn chọn nằm trong danh sách mua. Tổng lượng theo thực đơn vẫn chưa xác định; bạn
             có thể mở lại để rà khi cần.
           </p>
-          <ul className="shopping-demand-list">
+          <ul className="shopping-demand-list mt-3 space-y-2">
             {purchased.map((demand) => {
               const item = demand.purchaseItemId ? itemById.get(demand.purchaseItemId) : undefined;
               return (
                 <li
                   key={`${demand.sourceId}:${demand.demandKey}`}
-                  className="shopping-demand-card is-reviewed"
+                  className="shopping-demand-card is-reviewed rounded-2xl border border-tk-stone/80 bg-tk-canvas p-3 flex items-center justify-between gap-3"
                 >
-                  <div className="shopping-demand-card-copy">
-                    <strong>{demand.name}</strong>
-                    <span className="shopping-row-quantity">
+                  <div className="shopping-demand-card-copy min-w-0">
+                    <strong className="font-bold text-sm text-tk-ink block">{demand.name}</strong>
+                    <span className="shopping-row-quantity text-xs text-tk-jade-deep font-semibold">
                       {item
                         ? `Lượng bạn chọn: ${shoppingQuantity(item.quantity, item.unit)}`
                         : 'Đã ghi lượng bạn chọn'}
@@ -461,11 +516,11 @@ export function ShoppingDemandReview({
                   </div>
                   <button
                     type="button"
-                    className="shopping-demand-reopen"
+                    className="shopping-demand-reopen shrink-0 min-h-[36px] px-3 py-1.5 rounded-xl border border-tk-stone bg-white hover:bg-tk-sunken text-xs font-bold text-tk-ink inline-flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                     disabled={controlsDisabled}
                     onClick={() => reviewAction(demand, 'reopen')}
                   >
-                    <RotateCcw size={15} aria-hidden="true" /> Xem lại
+                    <RotateCcw size={14} aria-hidden="true" /> Xem lại
                   </button>
                 </li>
               );
@@ -473,53 +528,76 @@ export function ShoppingDemandReview({
           </ul>
         </details>
       )}
+
       {skipped.length > 0 && (
-        <details className="shopping-skipped">
-          <summary>Đã bỏ qua · {skipped.length} nguyên liệu</summary>
-          <p>
+        <details className="shopping-skipped rounded-2xl border border-tk-stone bg-white p-4 shadow-xs">
+          <summary className="cursor-pointer font-heading font-bold text-sm text-tk-secondary">
+            Đã bỏ qua (sẵn ở bếp) · {skipped.length} nguyên liệu
+          </summary>
+          <p className="text-xs text-tk-muted mt-2">
             Chỉ bỏ qua việc chọn lượng cho lượt đi chợ này. Thực đơn và thực phẩm trong tủ không
             thay đổi.
           </p>
-          <ul className="shopping-demand-list">
+          <ul className="shopping-demand-list mt-3 space-y-2">
             {skipped.map((demand) => (
               <li
                 key={`${demand.sourceId}:${demand.demandKey}`}
-                className="shopping-demand-card is-skipped"
+                className="shopping-demand-card is-skipped rounded-2xl border border-tk-stone/80 bg-tk-canvas p-3 flex items-center justify-between gap-3"
               >
-                <div className="shopping-demand-card-copy">
-                  <strong>{demand.name}</strong>
+                <div className="shopping-demand-card-copy min-w-0">
+                  <strong className="font-bold text-sm text-tk-ink">{demand.name}</strong>
                   {sourceList(demand)}
                 </div>
                 <button
                   type="button"
-                  className="shopping-demand-reopen"
+                  className="shopping-demand-reopen shrink-0 min-h-[36px] px-3 py-1.5 rounded-xl border border-tk-stone bg-white hover:bg-tk-sunken text-xs font-bold text-tk-ink inline-flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                   disabled={controlsDisabled}
                   onClick={() => reviewAction(demand, 'reopen')}
                 >
-                  <RotateCcw size={15} aria-hidden="true" /> Xem lại
+                  <RotateCcw size={14} aria-hidden="true" /> Xem lại
                 </button>
               </li>
             ))}
           </ul>
         </details>
       )}
-      <p ref={receiptFocus} tabIndex={-1} role="status" className="shopping-demand-receipt">
-        {receipt}
+
+      <p
+        ref={receiptFocus}
+        tabIndex={-1}
+        role="status"
+        className={
+          receipt
+            ? 'shopping-demand-receipt rounded-2xl border border-tk-jade/25 bg-tk-jade-soft px-4 py-2.5 text-xs font-bold text-tk-jade-deep flex items-center gap-2'
+            : 'shopping-demand-receipt sr-only'
+        }
+      >
+        {receipt && <FreshnessShieldIcon size={16} tone="jade" active />}
+        <span>{receipt}</span>
       </p>
+
       {!purchaseDemand && recovery()}
+
       {purchaseDemand && (
-        <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+        <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-tk-sanctuary/55 backdrop-blur-xs p-0 sm:p-4">
           <div
             ref={dialog}
             role="dialog"
             aria-modal="true"
             aria-labelledby="shopping-demand-purchase-title"
-            className="family-dialog shopping-demand-dialog"
+            className="family-dialog shopping-demand-dialog w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl bg-white border border-tk-stone shadow-elevated p-5 space-y-4"
           >
-            <div className="family-dialog-heading">
+            <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="planning-eyebrow">LƯỢNG CHO LẦN ĐI CHỢ NÀY</p>
-                <h2 ref={dialogHeading} tabIndex={-1} id="shopping-demand-purchase-title">
+                <p className="text-[11px] font-extrabold uppercase tracking-wider text-tk-jade">
+                  LƯỢNG CHO LẦN ĐI CHỢ NÀY
+                </p>
+                <h2
+                  ref={dialogHeading}
+                  tabIndex={-1}
+                  id="shopping-demand-purchase-title"
+                  className="font-heading font-extrabold text-lg text-tk-ink mt-0.5"
+                >
                   Chọn lượng mua: {purchaseDemand.name}
                 </h2>
               </div>
@@ -532,21 +610,23 @@ export function ShoppingDemandReview({
                 <X size={20} aria-hidden="true" />
               </Button>
             </div>
-            <p className="shopping-demand-dialog-help">
+
+            <p className="shopping-demand-dialog-help text-xs text-tk-secondary leading-relaxed">
               Ghi lượng bạn muốn mua ở chợ. Đây là lựa chọn của bạn; tổng lượng theo thực đơn vẫn
               chưa xác định.
             </p>
             {purchaseDemand.purchaseItemId &&
               itemById.get(purchaseDemand.purchaseItemId)?.isChecked && (
-                <p className="shopping-demand-prior">
+                <p className="shopping-demand-prior text-xs font-semibold text-tk-jade-deep bg-tk-jade-soft rounded-xl px-3 py-2">
                   Dòng này đang được đánh dấu đã mua. Ghi lượng mới giữ nguyên dấu đã mua.
                 </p>
               )}
             {sourceList(purchaseDemand)}
-            <form className="family-settings-form" onSubmit={submitPurchase}>
+
+            <form className="family-settings-form space-y-3" onSubmit={submitPurchase}>
               <fieldset disabled={busy || !serverReady || !!attempt || requiresReload}>
-                <div className="family-field-pair">
-                  <label htmlFor="shopping-review-quantity">
+                <div className="family-field-pair grid grid-cols-2 gap-3">
+                  <label htmlFor="shopping-review-quantity" className="text-xs font-bold text-tk-ink">
                     Lượng muốn mua
                     <input
                       ref={amountInput}
@@ -561,6 +641,7 @@ export function ShoppingDemandReview({
                       id="shopping-review-quantity"
                       name="shopping-review-quantity"
                       autoComplete="off"
+                      className="mt-1 w-full min-h-11 rounded-xl border border-tk-stone bg-tk-canvas px-3 text-sm font-bold text-tk-ink focus:outline-none focus:ring-2 focus:ring-tk-flame"
                       aria-describedby={
                         invalid
                           ? 'shopping-demand-quantity-error shopping-demand-unit-note'
@@ -568,7 +649,7 @@ export function ShoppingDemandReview({
                       }
                     />
                   </label>
-                  <label htmlFor="shopping-review-unit">
+                  <label htmlFor="shopping-review-unit" className="text-xs font-bold text-tk-ink">
                     Đơn vị mua
                     <select
                       id="shopping-review-unit"
@@ -576,6 +657,7 @@ export function ShoppingDemandReview({
                       autoComplete="off"
                       value={unit}
                       onChange={(event) => setUnit(event.target.value as PurchaseUnit)}
+                      className="mt-1 w-full min-h-11 rounded-xl border border-tk-stone bg-white px-3 text-sm font-semibold text-tk-ink focus:outline-none focus:ring-2 focus:ring-tk-flame"
                     >
                       {SHOPPING_UNITS.map((entry) => (
                         <option key={entry.value} value={entry.value}>
@@ -586,18 +668,28 @@ export function ShoppingDemandReview({
                   </label>
                 </div>
               </fieldset>
-              <p id="shopping-demand-unit-note" className="planning-note">
+              <p id="shopping-demand-unit-note" className="planning-note text-xs text-tk-muted">
                 Chọn bó hoặc gói chỉ ghi cách bạn mua, không đổi sang khối lượng của công thức.
               </p>
               {invalid && (
-                <p id="shopping-demand-quantity-error" role="alert">
+                <p
+                  id="shopping-demand-quantity-error"
+                  role="alert"
+                  className="text-xs font-bold text-tk-berry-deep"
+                >
                   Nhập lượng lớn hơn 0, không quá 100.000 và chọn đơn vị mua.
                 </p>
               )}
               {!!attempt && !busy && (
-                <p role="status">Giữ nguyên lượng vừa gửi để thử lại an toàn.</p>
+                <p role="status" className="text-xs font-semibold text-tk-turmeric-deep">
+                  Giữ nguyên lượng vừa gửi để thử lại an toàn.
+                </p>
               )}
-              {!serverReady && <p role="status">Kết nối và đồng bộ lại để xác nhận lượng mua.</p>}
+              {!serverReady && (
+                <p role="status" className="text-xs text-tk-secondary">
+                  Kết nối và đồng bộ lại để xác nhận lượng mua.
+                </p>
+              )}
               {recovery()}
               {!requiresReload && (
                 <Button type="submit" fullWidth isLoading={busy} disabled={!serverReady || busy}>

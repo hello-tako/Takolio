@@ -3,7 +3,7 @@ import { Env, AuthContext } from '../types';
 
 /** Verifies current household membership before a household handler runs. */
 export async function tenancyGuard(
-  c: Context<{ Bindings: Env; Variables: { auth: AuthContext } }>,
+  c: Context<{ Bindings: Env; Variables: { auth: AuthContext; householdRole?: string } }>,
   next: Next
 ) {
   const auth = c.get('auth');
@@ -20,6 +20,14 @@ export async function tenancyGuard(
 
   if (!auth.householdId) {
     return c.json({ error: 'Unauthorized: Household context is missing', code: 'UNAUTHORIZED' }, 401);
+  }
+
+  // Single-pass optimization: if authMiddleware already verified hm.role + household ownership
+  // for this exact session householdId in the sessions_v2 query, skip the duplicate D1 roundtrip.
+  const verifiedRole = c.get('householdRole');
+  if (verifiedRole && auth.householdRole === verifiedRole) {
+    await next();
+    return;
   }
 
   if (!db) {
@@ -45,6 +53,7 @@ export async function tenancyGuard(
         403
       );
     }
+    c.set('householdRole', membership.role);
   } catch {
     console.error(JSON.stringify({ event: 'tenancy_check_failed' }));
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);

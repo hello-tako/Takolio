@@ -295,4 +295,42 @@ export const shoppingApi = {
     assertCurrent();
     return { pendingSync: Boolean(receipt) };
   },
+
+  importPurchasedToFridge: async (itemIds?: string[]): Promise<{
+    success: boolean;
+    importedCount: number;
+    importedItemIds: string[];
+    inventory: unknown[];
+  }> => {
+    const assertCurrent = guardPrivateSession();
+    const householdId = getHouseholdId();
+    const shoppingCache = privateCacheKey('shopping_list', householdId);
+    const inventoryCache = privateCacheKey('inventory', householdId);
+    const payload = itemIds && itemIds.length > 0 ? { itemIds } : {};
+    const res = await fetchJson<{
+      success: boolean;
+      importedCount: number;
+      importedItemIds: string[];
+      inventory: unknown[];
+    }>('/shopping-list/import-purchased', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+    assertCurrent();
+    try {
+      const prior = itemsSchema.parse(JSON.parse(localStorage.getItem(shoppingCache) || '[]'));
+      const remaining =
+        itemIds && itemIds.length > 0
+          ? prior.filter((entry) => !itemIds.includes(entry.id))
+          : prior.filter((entry) => !entry.isChecked);
+      localStorage.setItem(shoppingCache, JSON.stringify(projectShoppingList(remaining, ownedOps())));
+      if (Array.isArray(res.inventory)) {
+        localStorage.setItem(inventoryCache, JSON.stringify(res.inventory));
+      }
+    } catch {
+      // Cache reconciliation is optional after server commit.
+    }
+    assertCurrent();
+    return res;
+  },
 };

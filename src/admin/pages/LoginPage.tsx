@@ -1,8 +1,10 @@
+import { ShieldCheck } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AdminApiError } from '../api/client';
 import { useAuthConfig, useLogin } from '../api/hooks';
-import { Button, ErrorState, Field, LoadingState, Notice } from '../components/ui';
+import { BrandLockup } from '../components/TakolioEmblem';
+import { Badge, Button, ErrorState, Field, LoadingState, Notice, type Tone } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { loginErrorMessage } from '../lib/errors';
 
@@ -31,6 +33,7 @@ function PasswordLogin() {
           data-testid="admin-login-email"
           type="email"
           name="email"
+          placeholder={vi.auth.emailPlaceholder}
           autoComplete="username"
           required
           maxLength={254}
@@ -87,6 +90,12 @@ function CloudflareLogin() {
   );
 }
 
+const MODE_TONE: Record<string, Tone> = {
+  cloudflare_access: 'brand',
+  password: 'info',
+  unavailable: 'warning',
+};
+
 export function LoginPage() {
   const [params] = useSearchParams();
   const reasonKey = params.get('reason') ?? '';
@@ -122,24 +131,51 @@ export function LoginPage() {
     );
   }
 
+  const mode = config.data?.mode;
+
   return (
     <div className="login-page">
-      <main id="admin-main" className="login-card" tabIndex={-1}>
-        <div className="brand brand-login">
-          <span className="brand-mark" aria-hidden="true">
-            T
-          </span>
-          <span className="brand-name">{vi.appName}</span>
-        </div>
-        <h1 data-testid="admin-page-title">{vi.auth.loginTitle}</h1>
-        <p className="muted">{vi.auth.loginLead}</p>
-        {reason ? (
-          <Notice tone="warning" testId="admin-login-reason">
-            {reason}
-          </Notice>
-        ) : null}
-        {body}
-      </main>
+      <div className="login-shell">
+        <aside className="login-sanctuary" aria-label={vi.auth.postureTitle}>
+          <div>
+            <div className="login-sanctuary-eyebrow">
+              <ShieldCheck size={14} aria-hidden="true" />
+              <span>{vi.auth.securityEyebrow}</span>
+            </div>
+            <BrandLockup className="brand" />
+            <div style={{ marginTop: '20px' }}>
+              <h2>{vi.auth.postureTitle}</h2>
+              <ul className="login-posture-list">
+                {vi.auth.postureItems.map((item) => (
+                  <li key={item}>
+                    <span className="login-posture-bullet" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="small" style={{ color: '#B6C3BD', margin: 0 }}>
+            Takolio Control Tower V4 · Cloudflare Workers Edge Isolation
+          </p>
+        </aside>
+
+        <main id="admin-main" className="login-card" tabIndex={-1}>
+          {mode ? (
+            <div className="login-mode-row">
+              <Badge tone={MODE_TONE[mode] ?? 'neutral'}>{vi.auth.modeBadges[mode] ?? mode}</Badge>
+            </div>
+          ) : null}
+          <h1 data-testid="admin-page-title">{vi.auth.loginTitle}</h1>
+          <p className="muted">{vi.auth.loginLead}</p>
+          {reason ? (
+            <Notice tone="warning" testId="admin-login-reason">
+              {reason}
+            </Notice>
+          ) : null}
+          {body}
+        </main>
+      </div>
     </div>
   );
 }

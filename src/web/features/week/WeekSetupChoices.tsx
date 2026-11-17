@@ -16,25 +16,33 @@ export function WeekBudgetChoices({
   onChange: (value: number | null) => void;
 }) {
   return (
-    <fieldset className="week-choices">
-      <legend>Hạn mức mua thêm cho tuần</legend>
-      <div className="week-choice-grid">
-        {[500000, 750000, 1000000, 1500000, null].map((budget) => (
-          <label
-            key={budget ?? 'unlimited'}
-            className="week-choice"
-            data-selected={value === budget}
-          >
-            <input
-              type="radio"
-              name="week-budget"
-              value={budget ?? 'unlimited'}
-              checked={value === budget}
-              onChange={() => onChange(budget)}
-            />
-            <span>{budget === null ? 'Không giới hạn ngân sách' : weekCurrency(budget)}</span>
-          </label>
-        ))}
+    <fieldset className="week-choices space-y-2.5">
+      <legend className="text-sm font-extrabold text-tk-ink">Hạn mức mua thêm cho tuần</legend>
+      <div className="week-choice-grid grid gap-2.5 sm:grid-cols-2">
+        {[500000, 750000, 1000000, 1500000, null].map((budget) => {
+          const selected = value === budget;
+          return (
+            <label
+              key={budget ?? 'unlimited'}
+              className={`week-choice flex cursor-pointer items-center gap-3 rounded-2xl border p-3.5 text-sm font-bold transition-colors ${
+                selected
+                  ? 'border-tk-jade bg-tk-jade-soft text-tk-jade-deep shadow-xs'
+                  : 'border-tk-stone bg-white text-tk-ink hover:bg-tk-sunken'
+              }`}
+              data-selected={selected}
+            >
+              <input
+                type="radio"
+                name="week-budget"
+                value={budget ?? 'unlimited'}
+                checked={selected}
+                onChange={() => onChange(budget)}
+                className="h-4 w-4 accent-tk-jade"
+              />
+              <span>{budget === null ? 'Không giới hạn ngân sách' : weekCurrency(budget)}</span>
+            </label>
+          );
+        })}
       </div>
     </fieldset>
   );
@@ -48,23 +56,37 @@ export function WeekFrequencyChoices({
   onChange: (value: ShoppingFrequency) => void;
 }) {
   return (
-    <fieldset className="week-choices">
-      <legend>Tần suất đi chợ</legend>
-      {frequencyOptions.map((option) => (
-        <label key={option.id} className="week-choice" data-selected={value === option.id}>
-          <input
-            type="radio"
-            name="week-frequency"
-            value={option.id}
-            checked={value === option.id}
-            onChange={() => onChange(option.id)}
-          />
-          <span>
-            <strong>{option.label}</strong>
-            <span className="week-muted week-choice-description">{option.description}</span>
-          </span>
-        </label>
-      ))}
+    <fieldset className="week-choices space-y-2.5">
+      <legend className="text-sm font-extrabold text-tk-ink">Tần suất đi chợ</legend>
+      {frequencyOptions.map((option) => {
+        const selected = value === option.id;
+        return (
+          <label
+            key={option.id}
+            className={`week-choice flex cursor-pointer items-start gap-3 rounded-2xl border p-3.5 transition-colors ${
+              selected
+                ? 'border-tk-jade bg-tk-jade-soft/75 text-tk-ink shadow-xs'
+                : 'border-tk-stone bg-white text-tk-ink hover:bg-tk-sunken'
+            }`}
+            data-selected={selected}
+          >
+            <input
+              type="radio"
+              name="week-frequency"
+              value={option.id}
+              checked={selected}
+              onChange={() => onChange(option.id)}
+              className="mt-1 h-4 w-4 accent-tk-jade"
+            />
+            <span className="space-y-0.5">
+              <strong className="block text-sm font-extrabold">{option.label}</strong>
+              <span className="week-muted week-choice-description block text-xs text-tk-secondary">
+                {option.description}
+              </span>
+            </span>
+          </label>
+        );
+      })}
     </fieldset>
   );
 }

@@ -1,6 +1,8 @@
-import { KitchenHeader } from '../components/common/KitchenHeader';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Plus, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { StandardUnit } from '@frigo/domain';
+import { KitchenHeader } from '../components/common/KitchenHeader';
 import { useScanStore } from '../stores/useScanStore';
 import { api } from '../services/api';
 import { ReviewHeading, ReviewSummary } from '../components/scan/ReviewHeading';
@@ -13,8 +15,6 @@ import {
 import { Button } from '../components/common/Button';
 import { BottomSheet } from '../design-system/primitives';
 import { getIngredientImage } from '../lib/ingredient-images';
-import { Plus, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { StandardUnit } from '@frigo/domain';
 import { capturePrivateSession } from '../lib/private-session';
 import { invalidateInventoryDependents } from '../lib/query-invalidation';
 import {
@@ -28,10 +28,10 @@ import { ReviewSource } from '../components/scan/ReviewSource';
 import { ScanProcessingState } from '../components/scan/ScanProcessingState';
 
 const confidenceClass = {
-  unknown: 'text-semantic-text-secondary bg-semantic-border/60',
-  low: 'text-semantic-warning-strong bg-semantic-warning-soft',
-  medium: 'text-semantic-warning-strong bg-semantic-warning-soft',
-  high: 'text-takosan-green-deep bg-takosan-mint',
+  unknown: 'text-tk-secondary bg-tk-sunken border-tk-stone',
+  low: 'text-tk-turmeric-deep bg-tk-turmeric-soft border-tk-turmeric/30',
+  medium: 'text-tk-turmeric-deep bg-tk-turmeric-soft border-tk-turmeric/30',
+  high: 'text-tk-jade-deep bg-tk-jade-soft border-tk-jade/25',
 };
 
 export const ScanResultPage: React.FC = () => {
@@ -52,10 +52,11 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
     removeItem,
     reset,
   } = useScanStore();
-  // A route change must hide the previous scan before hydration's first effect.
+
   const matchesScan = scanId === effectiveScanId;
   const items = matchesScan ? storedItems : [];
   const mounted = useRef(false);
+
   useEffect(() => {
     mounted.current = true;
     return () => {
@@ -97,23 +98,21 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
   useEffect(() => {
     const isCurrent = capturePrivateSession();
     return () => {
-      // A queued confirmation must not become an editable ready draft after leaving review.
-      if (pendingNotice && isCurrent() && useScanStore.getState().scanId === effectiveScanId)
+      if (pendingNotice && isCurrent() && useScanStore.getState().scanId === effectiveScanId) {
         reset();
+      }
     };
   }, [pendingNotice, effectiveScanId, reset]);
 
   useEffect(() => {
     if (isConfirming || !restoreConfirmFocus.current) return;
     restoreConfirmFocus.current = false;
-    // Native disabled buttons can drop focus during confirmation; never override a new focus target.
     if (document.activeElement === document.body) {
       confirmBarRef.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus();
     }
   }, [isConfirming, isConfirmed]);
 
   useEffect(() => {
-    // Snapshot counts at transitions, not on every edit to the review list.
     if (announcedStatus.current === scanStatus) return;
     announcedStatus.current = scanStatus;
     setLifecycleAnnouncement(
@@ -190,8 +189,9 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
       invalidItems ||
       !canEdit ||
       useScanStore.getState().scanId !== effectiveScanId
-    )
+    ) {
       return;
+    }
     const isCurrent = capturePrivateSession();
     const active = () =>
       mounted.current && isCurrent() && useScanStore.getState().scanId === effectiveScanId;
@@ -227,7 +227,6 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
           const scan = await api.getScan(effectiveScanId);
           if (!active()) return;
           if (scan.id !== effectiveScanId) throw new Error('Mismatched scan response');
-          // Conflicts invalidate local edits; review authoritative evidence again.
           setScanStatus(
             scan.status === 'ready' || scan.status === 'confirmed' ? scan.status : 'failed',
           );
@@ -278,410 +277,421 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
 
   return (
     <>
-    <KitchenHeader />
-    <div className="review-workspace">
-      <ReviewHeading confirmed={isConfirmed} />
-      <div className="review-layout">
-        <aside className="review-sidebar">
-          <ReviewSummary total={items.length} accepted={acceptedCount} confirmed={isConfirmed} />
-          <ReviewSource
-            scanId={effectiveScanId}
-            verified={matchesScan && (scanStatus === 'ready' || isConfirmed)}
-          />
-        </aside>
-        <div className="review-main">
-          {scanStatus === 'pending' && (
-            <ScanProcessingState stage={pendingStage} kind="fridge" compact />
-          )}
-          <p
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-            className="sr-only"
-            data-testid="scan-lifecycle-status"
-          >
-            {lifecycleAnnouncement}
-          </p>
-          {confirmError && (
+      <KitchenHeader />
+      <div className="review-workspace bg-tk-canvas">
+        <ReviewHeading confirmed={isConfirmed} />
+        <div className="review-layout">
+          <aside className="review-sidebar">
+            <ReviewSummary total={items.length} accepted={acceptedCount} confirmed={isConfirmed} />
+            <ReviewSource
+              scanId={effectiveScanId}
+              verified={matchesScan && (scanStatus === 'ready' || isConfirmed)}
+            />
+          </aside>
+
+          <div className="review-main">
+            {scanStatus === 'pending' && (
+              <ScanProcessingState stage={pendingStage} kind="fridge" compact />
+            )}
+
             <p
-              role={isConfirmed ? undefined : 'alert'}
-              className="text-sm text-semantic-danger-strong"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              className="sr-only"
+              data-testid="scan-lifecycle-status"
             >
-              {confirmError}
+              {lifecycleAnnouncement}
             </p>
-          )}
-          {loadError && (
-            <p
-              role={scanStatus === 'failed' ? undefined : 'alert'}
-              className="text-sm text-semantic-danger-strong"
-            >
-              {loadError}
-              {effectiveScanId && (
-                <button
-                  className="ml-2 underline tap-target"
-                  onClick={() => {
-                    setLoadError(null);
-                    setScanStatus('pending');
-                    setRetryIndex((value) => value + 1);
-                  }}
-                >
-                  Thử tải lại
-                </button>
-              )}
-            </p>
-          )}
-          {/* Banner Alert */}
-          {(scanStatus !== 'ready' || items.length === 0) && (
-            <div
-              className={
-                scanStatus === 'failed'
-                  ? 'bg-semantic-danger-soft border border-semantic-danger/30 rounded-xl p-3.5 flex items-start gap-3'
-                  : 'bg-takosan-mint/80 border border-takosan-mint-deep/70 rounded-xl p-3.5 flex items-start gap-3'
-              }
-            >
-              {scanStatus === 'failed' ? (
-                <AlertCircle className="w-5 h-5 text-semantic-danger shrink-0 mt-0.5" />
-              ) : (
-                <CheckCircle2 className="w-5 h-5 text-takosan-green shrink-0 mt-0.5" />
-              )}
-              <div className="text-xs">
-                <p className="font-heading font-bold text-sm text-semantic-text-primary">
-                  {isConfirmed
-                    ? `Đã xác nhận ${acceptedCount} nguyên liệu`
-                    : items.length > 0
-                      ? `${items.length} nguyên liệu cần kiểm tra`
-                      : scanStatus === 'failed'
-                        ? 'Bản quét không thể xử lý'
-                        : scanStatus === 'ready'
-                          ? 'Chưa có nguyên liệu trong danh sách'
-                          : 'Đang chờ AI hoàn tất bản quét'}
-                </p>
-                <p className="text-semantic-text-secondary mt-0.5">
-                  {isConfirmed
-                    ? 'Thông tin bản quét đã được lưu. Bạn có thể xem hoặc chỉnh sửa lô từ trang tủ lạnh.'
-                    : items.length > 0
-                      ? 'Sửa tên, số lượng, đơn vị, nơi bảo quản, hạn dùng hoặc từ chối từng dòng trước khi lưu.'
-                      : scanStatus === 'failed'
-                        ? 'Vui lòng quay lại và thử lại với ảnh khác.'
-                        : scanStatus === 'ready'
-                          ? 'Bạn có thể thêm nguyên liệu thủ công trước khi xác nhận.'
-                          : 'Kết quả sẽ tự động xuất hiện khi xử lý xong.'}
-                </p>
-              </div>
-            </div>
-          )}
-          {pollError && (
-            <div
-              role={scanStatus === 'pending' ? 'alert' : undefined}
-              className="rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-xs text-semantic-warning-strong flex items-center justify-between gap-3"
-            >
-              <span>{pollError}</span>
-              <div className="flex items-center gap-2 shrink-0">
-                {scanStatus === 'pending' && (
+
+            {confirmError && (
+              <p
+                role={isConfirmed ? undefined : 'alert'}
+                className="rounded-2xl border border-tk-berry/30 bg-tk-berry-soft px-4 py-3 text-sm font-semibold text-tk-berry-deep"
+              >
+                {confirmError}
+              </p>
+            )}
+
+            {loadError && (
+              <p
+                role={scanStatus === 'failed' ? undefined : 'alert'}
+                className="rounded-2xl border border-tk-berry/30 bg-tk-berry-soft px-4 py-3 text-sm font-semibold text-tk-berry-deep"
+              >
+                {loadError}
+                {effectiveScanId && (
                   <button
-                    className="underline font-semibold"
+                    type="button"
+                    className="ml-2 underline font-extrabold tap-target cursor-pointer"
                     onClick={() => {
-                      setPollError(null);
+                      setLoadError(null);
+                      setScanStatus('pending');
                       setRetryIndex((value) => value + 1);
                     }}
                   >
-                    Kiểm tra lại
+                    Thử tải lại
                   </button>
                 )}
-                {scanStatus === 'failed' && (
-                  <button
-                    className="underline font-semibold"
-                    onClick={() => {
-                      reset();
-                      navigate('/scan');
-                    }}
-                  >
-                    Quét ảnh mới
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
+              </p>
+            )}
 
-          {/* Detected Items List */}
-          <p className="text-xs text-semantic-text-secondary">
-            Bản quét tủ lạnh bổ sung số lượng vào nguyên liệu phù hợp đã có; không đổi nơi bảo quản
-            hay hạn dùng của lô cũ.
-          </p>
-          <form
-            id="scan-review"
-            className="space-y-3"
-            onSubmit={(event) => {
-              event.preventDefault();
-              void handleConfirm();
-            }}
-          >
-            {items.map((item, index) => {
-              const confidence = presentConfidence(item.confidence);
-              const persisted = item.sourceItemId !== undefined;
-              const manual = item.isManual === true || !persisted;
-              const raw = item.rawEvidence;
-              const corrected =
-                raw &&
-                ((raw.rawName != null && raw.rawName !== item.rawName) ||
-                  (raw.estimatedQuantity != null &&
-                    raw.estimatedQuantity !== item.estimatedQuantity) ||
-                  (raw.unit != null && raw.unit !== item.unit));
-              return (
-                <article
-                  key={item.id}
-                  data-scan-item-id={item.id}
-                  aria-label={`Nguyên liệu ${index + 1}`}
-                  data-rejected={Boolean(item.rejected)}
-                  className="review-card"
-                >
-                  <div className="flex items-start gap-3">
-                    <img
-                      src={getIngredientImage(item.canonicalId ?? undefined, item.rawName)}
-                      alt=""
-                      className="w-10 h-10 object-contain shrink-0"
-                    />
-                    <div className="min-w-0 flex-1">
-                      <h2 className="font-heading font-semibold text-sm text-semantic-text-primary break-words">
-                        {item.rawName}
-                      </h2>
-                      {manual ? (
-                        <span className="text-xs text-semantic-text-secondary">Nhập thủ công</span>
-                      ) : (
-                        <span
-                          className={`inline-block text-xs px-1.5 py-0.5 rounded font-semibold ${confidenceClass[confidence.tone]}`}
-                        >
-                          {confidence.label}
-                        </span>
-                      )}
-                      {!manual && (
-                        <p
-                          className="text-xs text-semantic-text-secondary mt-1 break-words"
-                          data-raw-evidence
-                        >
-                          AI đọc:{' '}
-                          {raw
-                            ? `${raw.rawName ?? 'Không rõ tên'} · ${raw.estimatedQuantity ?? 'Không rõ số lượng'} ${raw.unit ?? 'Không rõ đơn vị'}`
-                            : 'Không có dữ liệu gốc'}
-                        </p>
-                      )}
-                      {corrected && (
-                        <p className="text-xs text-semantic-warning-strong mt-1">
-                          Đã chỉnh sửa so với dữ liệu gốc
-                        </p>
-                      )}
-                      {item.rejected && (
-                        <p className="text-xs font-semibold text-semantic-danger-strong mt-1">
-                          Đã từ chối · Không thêm vào tủ lạnh
-                        </p>
-                      )}
-                    </div>
+            {(scanStatus !== 'ready' || items.length === 0) && (
+              <div
+                className={
+                  scanStatus === 'failed'
+                    ? 'rounded-2xl border border-tk-berry/30 bg-tk-berry-soft p-4 flex items-start gap-3'
+                    : 'rounded-2xl border border-tk-jade/25 bg-tk-jade-soft p-4 flex items-start gap-3'
+                }
+              >
+                {scanStatus === 'failed' ? (
+                  <AlertCircle className="w-5 h-5 text-tk-berry shrink-0 mt-0.5" />
+                ) : (
+                  <CheckCircle2 className="w-5 h-5 text-tk-jade shrink-0 mt-0.5" />
+                )}
+                <div className="text-xs">
+                  <p className="font-heading font-extrabold text-sm text-tk-ink">
+                    {isConfirmed
+                      ? `Đã xác nhận ${acceptedCount} nguyên liệu`
+                      : items.length > 0
+                        ? `${items.length} nguyên liệu cần kiểm tra`
+                        : scanStatus === 'failed'
+                          ? 'Bản quét không thể xử lý'
+                          : scanStatus === 'ready'
+                            ? 'Chưa có nguyên liệu trong danh sách'
+                            : 'Đang chờ AI hoàn tất bản quét'}
+                  </p>
+                  <p className="text-tk-secondary mt-0.5">
+                    {isConfirmed
+                      ? 'Thông tin bản quét đã được lưu. Bạn có thể xem hoặc chỉnh sửa lô từ trang tủ lạnh.'
+                      : items.length > 0
+                        ? 'Sửa tên, số lượng, đơn vị, nơi bảo quản, hạn dùng hoặc từ chối từng dòng trước khi lưu.'
+                        : scanStatus === 'failed'
+                          ? 'Vui lòng quay lại và thử lại với ảnh khác.'
+                          : scanStatus === 'ready'
+                            ? 'Bạn có thể thêm nguyên liệu thủ công trước khi xác nhận.'
+                            : 'Kết quả sẽ tự động xuất hiện khi xử lý xong.'}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {pollError && (
+              <div
+                role={scanStatus === 'pending' ? 'alert' : undefined}
+                className="rounded-2xl border border-tk-turmeric/35 bg-tk-turmeric-soft px-4 py-3 text-xs text-tk-turmeric-deep flex items-center justify-between gap-3"
+              >
+                <span className="font-semibold">{pollError}</span>
+                <div className="flex items-center gap-2 shrink-0">
+                  {scanStatus === 'pending' && (
                     <button
                       type="button"
-                      disabled={!canEdit}
-                      onClick={() =>
-                        persisted
-                          ? updateItem(item.id, { rejected: !item.rejected })
-                          : removeItem(item.id)
-                      }
-                      aria-pressed={persisted ? Boolean(item.rejected) : undefined}
-                      className="p-2 rounded-lg text-semantic-danger-strong hover:bg-semantic-danger-soft tap-target shrink-0 text-xs font-semibold"
-                      aria-label={
-                        persisted
-                          ? item.rejected
-                            ? 'Khôi phục dòng này'
-                            : 'Từ chối dòng này'
-                          : 'Xóa dòng thủ công'
-                      }
+                      className="underline font-extrabold cursor-pointer"
+                      onClick={() => {
+                        setPollError(null);
+                        setRetryIndex((value) => value + 1);
+                      }}
                     >
-                      {persisted ? (
-                        item.rejected ? (
-                          'Khôi phục'
-                        ) : (
-                          'Từ chối'
-                        )
-                      ) : (
-                        <Trash2 className="w-4 h-4" />
-                      )}
+                      Kiểm tra lại
                     </button>
-                  </div>
-                  <ReviewFields
-                    prefix={`scan-${item.id}`}
-                    item={item}
-                    disabled={!canEdit || Boolean(item.rejected)}
-                    onChange={(changes) => updateItem(item.id, changes)}
-                  />
-                  <fieldset
-                    aria-label="Thông tin hạn dùng"
-                    disabled={!canEdit || Boolean(item.rejected)}
-                    className="review-expiry"
+                  )}
+                  {scanStatus === 'failed' && (
+                    <button
+                      type="button"
+                      className="underline font-extrabold cursor-pointer"
+                      onClick={() => {
+                        reset();
+                        navigate('/scan');
+                      }}
+                    >
+                      Quét ảnh mới
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <p className="text-xs text-tk-secondary">
+              Bản quét tủ lạnh bổ sung số lượng vào nguyên liệu phù hợp đã có; không đổi nơi bảo
+              quản hay hạn dùng của lô cũ.
+            </p>
+
+            <form
+              id="scan-review"
+              className="space-y-3"
+              onSubmit={(event) => {
+                event.preventDefault();
+                void handleConfirm();
+              }}
+            >
+              {items.map((item, index) => {
+                const confidence = presentConfidence(item.confidence);
+                const persisted = item.sourceItemId !== undefined;
+                const manual = item.isManual === true || !persisted;
+                const raw = item.rawEvidence;
+                const corrected =
+                  raw &&
+                  ((raw.rawName != null && raw.rawName !== item.rawName) ||
+                    (raw.estimatedQuantity != null &&
+                      raw.estimatedQuantity !== item.estimatedQuantity) ||
+                    (raw.unit != null && raw.unit !== item.unit));
+
+                return (
+                  <article
+                    key={item.id}
+                    data-scan-item-id={item.id}
+                    aria-label={`Nguyên liệu ${index + 1}`}
+                    data-rejected={Boolean(item.rejected)}
+                    className="review-card !rounded-[22px] !border-tk-stone/85 shadow-card"
                   >
-                    <div className="col-span-2">
-                      <p className="text-sm text-semantic-text-secondary" data-expiry-state>
-                        {isConfirmed
-                          ? // A confirmed line reports the review the server recorded
-                            // (T13R-A P2-B): the accepted date, its estimate basis, or
-                            // an explicit "no expiry accepted" — never a fresh guess.
-                            item.rejected
-                            ? 'Đã bỏ qua: không có hạn dùng'
-                            : !item.expiryDate
-                              ? 'Đã xác nhận không rõ hạn dùng'
-                              : item.expiryEstimated
-                                ? 'Hạn dùng ước tính đã xác nhận'
-                                : 'Ngày do bạn xác nhận'
-                          : !item.expiryDate
-                            ? 'Chưa rõ hạn dùng'
-                            : item.expiryEstimated
-                              ? 'Hạn dùng ước tính'
-                              : 'Ngày do bạn xác nhận'}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {[3, 7].map((days) => (
-                          <button
-                            key={days}
-                            type="button"
-                            className="text-xs px-2 py-1.5 rounded-lg border border-semantic-border tap-target"
-                            onClick={() => handleEstimateExpiry(item.id, days)}
+                    <div className="flex items-start gap-3">
+                      <img
+                        src={getIngredientImage(item.canonicalId ?? undefined, item.rawName)}
+                        alt=""
+                        className="w-11 h-11 rounded-xl bg-tk-sunken p-1.5 object-contain shrink-0"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <h2 className="font-heading font-extrabold text-sm text-tk-ink break-words">
+                          {item.rawName}
+                        </h2>
+                        {/* IMPORTANT: keep confidence <span> as the first <span> inside <article> */}
+                        {manual ? (
+                          <span className="text-xs font-semibold text-tk-secondary">
+                            Nhập thủ công
+                          </span>
+                        ) : (
+                          <span
+                            className={`inline-block text-xs px-2 py-0.5 rounded-full border font-bold ${confidenceClass[confidence.tone]}`}
                           >
-                            Ước tính {days} ngày
-                          </button>
-                        ))}
-                        <button
-                          type="button"
-                          className="text-xs px-2 py-1.5 rounded-lg border border-semantic-border tap-target"
-                          onClick={() =>
-                            updateItem(item.id, { expiryDate: undefined, expiryEstimated: false })
-                          }
-                        >
-                          Không rõ hạn dùng
-                        </button>
+                            {confidence.label}
+                          </span>
+                        )}
+                        {!manual && (
+                          <p
+                            className="text-xs text-tk-secondary mt-1 break-words"
+                            data-raw-evidence
+                          >
+                            AI đọc:{' '}
+                            {raw
+                              ? `${raw.rawName ?? 'Không rõ tên'} · ${raw.estimatedQuantity ?? 'Không rõ số lượng'} ${raw.unit ?? 'Không rõ đơn vị'}`
+                              : 'Không có dữ liệu gốc'}
+                          </p>
+                        )}
+                        {corrected && (
+                          <p className="text-xs font-semibold text-tk-turmeric-deep mt-1">
+                            Đã chỉnh sửa so với dữ liệu gốc
+                          </p>
+                        )}
+                        {item.rejected && (
+                          <p className="text-xs font-extrabold text-tk-berry-deep mt-1">
+                            Đã từ chối · Không thêm vào tủ lạnh
+                          </p>
+                        )}
                       </div>
+                      <button
+                        type="button"
+                        disabled={!canEdit}
+                        onClick={() =>
+                          persisted
+                            ? updateItem(item.id, { rejected: !item.rejected })
+                            : removeItem(item.id)
+                        }
+                        aria-pressed={persisted ? Boolean(item.rejected) : undefined}
+                        className="p-2 rounded-xl text-tk-berry-deep hover:bg-tk-berry-soft tap-target shrink-0 text-xs font-extrabold cursor-pointer"
+                        aria-label={
+                          persisted
+                            ? item.rejected
+                              ? 'Khôi phục dòng này'
+                              : 'Từ chối dòng này'
+                            : 'Xóa dòng thủ công'
+                        }
+                      >
+                        {persisted ? (
+                          item.rejected ? (
+                            'Khôi phục'
+                          ) : (
+                            'Từ chối'
+                          )
+                        ) : (
+                          <Trash2 className="w-4 h-4" />
+                        )}
+                      </button>
                     </div>
-                  </fieldset>
-                </article>
-              );
-            })}
-          </form>
 
-          {/* Add Missing Item Button */}
-          {!isConfirmed && (
-            <Button
-              variant="outline"
-              fullWidth
-              size="md"
-              disabled={!canEdit}
-              onClick={() => setIsManualAddOpen(true)}
-              className="flex items-center justify-center gap-1.5 text-xs"
-            >
-              <Plus className="w-4 h-4 text-takosan-green" aria-hidden="true" />
-              <span>Thêm nguyên liệu AI còn thiếu</span>
-            </Button>
-          )}
-        </div>
-      </div>
+                    <ReviewFields
+                      prefix={`scan-${item.id}`}
+                      item={item}
+                      disabled={!canEdit || Boolean(item.rejected)}
+                      onChange={(changes) => updateItem(item.id, changes)}
+                    />
 
-      {/* Confirmation remains in document flow; short viewports do not pin it over fields. */}
-      <div className="review-actions">
-        <div ref={confirmBarRef} className="review-actions-inner">
-          {pendingNotice && <p role="status">{pendingNotice}</p>}
-          {isConfirmed || pendingNotice ? (
-            <Button fullWidth size="lg" onClick={() => navigate('/fridge')}>
-              Xem tủ lạnh
-            </Button>
-          ) : (
-            <Button
-              fullWidth
-              size="lg"
-              type="submit"
-              form="scan-review"
-              isLoading={isConfirming}
-              disabled={items.length === 0 || invalidItems || !canEdit}
-              className="flex items-center justify-center gap-2"
-            >
-              <CheckCircle2 className="w-5 h-5" />
-              <span>Xác nhận nguyên liệu ({acceptedCount} món)</span>
-            </Button>
-          )}
-        </div>
-      </div>
+                    <fieldset
+                      aria-label="Thông tin hạn dùng"
+                      disabled={!canEdit || Boolean(item.rejected)}
+                      className="review-expiry !border-tk-stone/75"
+                    >
+                      <div className="col-span-2">
+                        <p className="text-sm font-medium text-tk-secondary" data-expiry-state>
+                          {isConfirmed
+                            ? item.rejected
+                              ? 'Đã bỏ qua: không có hạn dùng'
+                              : !item.expiryDate
+                                ? 'Đã xác nhận không rõ hạn dùng'
+                                : item.expiryEstimated
+                                  ? 'Hạn dùng ước tính đã xác nhận'
+                                  : 'Ngày do bạn xác nhận'
+                            : !item.expiryDate
+                              ? 'Chưa rõ hạn dùng'
+                              : item.expiryEstimated
+                                ? 'Hạn dùng ước tính'
+                                : 'Ngày do bạn xác nhận'}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {[3, 7].map((days) => (
+                            <button
+                              key={days}
+                              type="button"
+                              className="text-xs font-bold px-2.5 py-1.5 rounded-xl border border-tk-stone bg-tk-canvas hover:bg-tk-sunken tap-target cursor-pointer"
+                              onClick={() => handleEstimateExpiry(item.id, days)}
+                            >
+                              Ước tính {days} ngày
+                            </button>
+                          ))}
+                          <button
+                            type="button"
+                            className="text-xs font-bold px-2.5 py-1.5 rounded-xl border border-tk-stone bg-tk-canvas hover:bg-tk-sunken tap-target cursor-pointer"
+                            onClick={() =>
+                              updateItem(item.id, { expiryDate: undefined, expiryEstimated: false })
+                            }
+                          >
+                            Không rõ hạn dùng
+                          </button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </article>
+                );
+              })}
+            </form>
 
-      {/* Manual add sheet (components/BOTTOM_SHEET.md): labelled modal with
-          focus trap, Escape and focus return. */}
-      <BottomSheet
-        open={isManualAddOpen && canEdit}
-        title="Thêm nguyên liệu thủ công"
-        onClose={() => setIsManualAddOpen(false)}
-      >
-        <form onSubmit={handleAddManualItem} className="space-y-3.5">
-          <div>
-            <label
-              htmlFor="scan-add-name"
-              className="block text-xs font-semibold text-semantic-text-secondary mb-1.5"
-            >
-              Tên nguyên liệu
-            </label>
-            <input
-              id="scan-add-name"
-              type="text"
-              required
-              value={addName}
-              onChange={(e) => setAddName(e.target.value)}
-              placeholder="Ví dụ: Nấm hương, Hành lá..."
-              className="review-input"
-            />
+            {!isConfirmed && (
+              <Button
+                variant="outline"
+                fullWidth
+                size="md"
+                disabled={!canEdit}
+                onClick={() => setIsManualAddOpen(true)}
+                className="flex items-center justify-center gap-1.5 text-xs font-extrabold"
+              >
+                <Plus className="w-4 h-4 text-tk-jade" aria-hidden="true" />
+                <span>Thêm nguyên liệu AI còn thiếu</span>
+              </Button>
+            )}
           </div>
+        </div>
 
-          <div className="grid grid-cols-2 gap-3">
+        <div className="review-actions !bg-white/95 backdrop-blur-md !border-tk-stone/85">
+          <div ref={confirmBarRef} className="review-actions-inner">
+            {pendingNotice && (
+              <p role="status" className="font-semibold text-tk-secondary">
+                {pendingNotice}
+              </p>
+            )}
+            {isConfirmed || pendingNotice ? (
+              <Button fullWidth size="lg" onClick={() => navigate('/fridge')}>
+                Xem tủ lạnh
+              </Button>
+            ) : (
+              <Button
+                fullWidth
+                size="lg"
+                type="submit"
+                form="scan-review"
+                isLoading={isConfirming}
+                disabled={items.length === 0 || invalidItems || !canEdit}
+                className="flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-5 h-5" />
+                <span>Xác nhận nguyên liệu ({acceptedCount} món)</span>
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <BottomSheet
+          open={isManualAddOpen && canEdit}
+          title="Thêm nguyên liệu thủ công"
+          onClose={() => setIsManualAddOpen(false)}
+        >
+          <form onSubmit={handleAddManualItem} className="space-y-3.5">
             <div>
               <label
-                htmlFor="scan-add-quantity"
-                className="block text-xs font-semibold text-semantic-text-secondary mb-1.5"
+                htmlFor="scan-add-name"
+                className="block text-xs font-bold text-tk-secondary mb-1.5"
               >
-                Số lượng
+                Tên nguyên liệu
               </label>
               <input
-                id="scan-add-quantity"
-                type="number"
-                min="0.001"
-                max="10000"
-                step="any"
+                id="scan-add-name"
+                type="text"
                 required
-                value={addQty}
-                onChange={(e) => setAddQty(Number(e.target.value))}
-                className="review-input"
+                value={addName}
+                onChange={(e) => setAddName(e.target.value)}
+                placeholder="Ví dụ: Nấm hương, Hành lá..."
+                className="review-input !rounded-xl !border-tk-stone"
               />
             </div>
 
-            <div>
-              <label
-                htmlFor="scan-add-unit"
-                className="block text-xs font-semibold text-semantic-text-secondary mb-1.5"
-              >
-                Đơn vị
-              </label>
-              <select
-                id="scan-add-unit"
-                value={addUnit}
-                onChange={(e) => setAddUnit(e.target.value as StandardUnit)}
-                className="review-input"
-              >
-                {REVIEW_UNITS.map(({ value, label }) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label
+                  htmlFor="scan-add-quantity"
+                  className="block text-xs font-bold text-tk-secondary mb-1.5"
+                >
+                  Số lượng
+                </label>
+                <input
+                  id="scan-add-quantity"
+                  type="number"
+                  min="0.001"
+                  max="10000"
+                  step="any"
+                  required
+                  value={addQty}
+                  onChange={(e) => setAddQty(Number(e.target.value))}
+                  className="review-input !rounded-xl !border-tk-stone tk-tabular"
+                />
+              </div>
 
-          <div className="pt-2">
-            <Button fullWidth size="md" type="submit">
-              Thêm vào danh sách
-            </Button>
-          </div>
-        </form>
-      </BottomSheet>
-    </div>
+              <div>
+                <label
+                  htmlFor="scan-add-unit"
+                  className="block text-xs font-bold text-tk-secondary mb-1.5"
+                >
+                  Đơn vị
+                </label>
+                <select
+                  id="scan-add-unit"
+                  value={addUnit}
+                  onChange={(e) => setAddUnit(e.target.value as StandardUnit)}
+                  className="review-input !rounded-xl !border-tk-stone"
+                >
+                  {REVIEW_UNITS.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <Button fullWidth size="md" type="submit">
+                Thêm vào danh sách
+              </Button>
+            </div>
+          </form>
+        </BottomSheet>
+      </div>
     </>
   );
 };
