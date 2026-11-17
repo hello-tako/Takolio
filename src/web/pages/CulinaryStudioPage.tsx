@@ -519,7 +519,7 @@ export const CulinaryStudioPage: React.FC = () => {
                 className="min-h-[235px] sm:min-h-[275px]"
               >
                 <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3">
-                  <span className="tk-glass-dark rounded-full px-3 py-1 text-[11px] font-extrabold text-amber-300 tk-tabular">
+                  <span className="tk-glass-dark rounded-full px-3 py-1 text-[11px] font-extrabold text-tk-turmeric-glow tk-tabular">
                     {savedHeirlooms.length} Công Thức Gia Truyền Đã Lưu
                   </span>
                   <span className="tk-glass-dark rounded-full px-3 py-1 text-[11px] font-extrabold text-tk-jade-mint tk-tabular">
@@ -534,7 +534,7 @@ export const CulinaryStudioPage: React.FC = () => {
                 <AtelierBadge tone="dark" icon={<MortarPestleIcon size={14} tone="cream" active />}>
                   CULINARY HERITAGE & PREP STUDIO
                 </AtelierBadge>
-                <span className="rounded-full border border-tk-turmeric/40 bg-tk-turmeric/20 px-2.5 py-1 text-[11px] font-extrabold text-amber-300">
+                <span className="rounded-full border border-tk-turmeric/40 bg-tk-turmeric/20 px-2.5 py-1 text-[11px] font-extrabold text-tk-turmeric-glow">
                   35mm Noir & Hearth Edition
                 </span>
               </div>
@@ -1069,7 +1069,7 @@ export const CulinaryStudioPage: React.FC = () => {
               {/* Horizontal Progress Bar */}
               <div className="mt-4 h-2.5 w-full overflow-hidden rounded-full bg-tk-sunken">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-tk-flame to-tk-jade transition-all duration-500"
+                  className="h-full rounded-full bg-gradient-to-r from-tk-flame to-tk-jade transition-[width] duration-500"
                   style={{ width: `${Math.max(3, completionPercent)}%` }}
                 />
               </div>
@@ -1112,7 +1112,7 @@ export const CulinaryStudioPage: React.FC = () => {
                       aria-pressed={selected}
                       onClick={() => toggleDishSelection(dish.slug)}
                       className={clsx(
-                        'flex items-center gap-3 rounded-2xl border p-2.5 text-left transition-all cursor-pointer',
+                        'flex items-center gap-3 rounded-2xl border p-2.5 text-left transition-tap cursor-pointer',
                         selected
                           ? 'border-tk-flame bg-tk-flame-soft/55 shadow-xs ring-1 ring-tk-flame/35'
                           : 'border-tk-stone/75 bg-tk-canvas/45 hover:bg-white',
@@ -1211,7 +1211,7 @@ export const CulinaryStudioPage: React.FC = () => {
                             <label
                               key={task.id}
                               className={clsx(
-                                'flex items-start gap-3 rounded-2xl border p-3 transition-all cursor-pointer select-none',
+                                'flex items-start gap-3 rounded-2xl border p-3 transition-tap cursor-pointer select-none',
                                 checked
                                   ? 'border-tk-jade/35 bg-tk-jade-soft/45'
                                   : 'border-tk-stone/70 bg-tk-canvas/45 hover:bg-white',

@@ -456,7 +456,7 @@ export const KitchenInsightsPage: React.FC = () => {
               {/* KPI 2: Food Rescued VND + CO2e */}
               <div className="tk-glass-dark rounded-[24px] p-4 sm:p-5 flex flex-col justify-between">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-tk-turmeric-glow">
                     Thực Phẩm Đã Cứu · 30 Ngày
                   </span>
                   <CaloriesLeafIcon size={20} tone="cream" active />
@@ -715,7 +715,7 @@ export const KitchenInsightsPage: React.FC = () => {
                           <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-tk-sunken">
                             <div
                               className={clsx(
-                                'h-full rounded-full transition-all duration-300',
+                                'h-full rounded-full transition-[width] duration-300',
                                 item.isLow ? 'bg-tk-flame' : 'bg-tk-jade',
                               )}
                               style={{ width: `${Math.max(8, stockRatio)}%` }}
@@ -819,7 +819,7 @@ export const KitchenInsightsPage: React.FC = () => {
                   <div className="h-4 w-full overflow-hidden rounded-full bg-tk-sunken p-0.5 border border-tk-stone/70">
                     <div
                       className={clsx(
-                        'h-full rounded-full transition-all duration-500',
+                        'h-full rounded-full transition-[width] duration-500',
                         budget.burnRatePercent > 100
                           ? 'bg-tk-flame'
                           : budget.burnRatePercent >= 80
@@ -1149,7 +1149,7 @@ export const KitchenInsightsPage: React.FC = () => {
                       disabled={logWasteMutation.isPending}
                       onClick={() => logWasteMutation.mutate(opt.eventType)}
                       className={clsx(
-                        'flex flex-col items-start rounded-2xl border p-3.5 text-left transition-all cursor-pointer active:scale-[0.985]',
+                        'flex flex-col items-start rounded-2xl border p-3.5 text-left transition-tap cursor-pointer active:scale-[0.985]',
                         opt.tone === 'jade'
                           ? 'border-tk-jade/30 bg-tk-jade-soft/55 hover:bg-tk-jade-soft'
                           : opt.tone === 'turmeric'

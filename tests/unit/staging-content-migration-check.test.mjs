@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { afterEach, describe, expect, it } from 'vitest';
-import { listMigrations, renderSchemaGateSql, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
+import { listMigrations, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1 } from '../../scripts/staging-family-migration-check.mjs';
 import {
   baselineQuery, CONTENT_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
@@ -38,11 +38,17 @@ function fixture() {
   return { receipt, write, read: () => JSON.parse(readFileSync(receipt, 'utf8')) };
 }
 
+const POST_0047_OBJECTS = /household_invites|cooking_sessions|user_notifications|d1_idempotency_keys|custom_household_recipes|pantry_staple_thresholds|household_waste_events|household_budget_entries|household_activity_events|idx_d1_idempotency_expires|idx_custom_hh_recipes_hh_updated|idx_pantry_thresholds_hh|idx_waste_events_hh_occurred|idx_budget_entries_hh_spent|idx_activity_events_hh_created|idx_household_invites_|idx_cooking_sessions_hh_status_updated|idx_user_notifications_hh_read_created|idx_household_members_user_id|idx_shopping_lists_household_id|idx_scans_household_created_at|idx_scans_status_created_at|idx_inventory_obs_hh_status|idx_cooked_meals_hh_completed|idx_ai_requests_created_at/;
 function historicalContentSchemaGateSql() {
-  // Exercise 0046's contract; the current 0047 gate is checked separately below.
+  // Exercise 0046's contract; the current gate is checked separately in d1-schema-gate.test.ts.
   return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
-    .filter(line => !/trg_meal_components_content_|generated_meal_plan_components.*recipe_content_fingerprint/.test(line))
+    .filter(line => !/trg_meal_components_content_|generated_meal_plan_components.*recipe_content_fingerprint/.test(line) && !POST_0047_OBJECTS.test(line))
     .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
+}
+function historicalSavedContentSchemaGateSql(migrations) {
+  return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
+    .filter(line => !POST_0047_OBJECTS.test(line))
+    .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, migrations.map(name => `    ('${name}')`).join(',\n'));
 }
 
 describe('bounded canonical staging 0045->0046 content archive certification', () => {
@@ -241,7 +247,7 @@ describe('0045->0046->0047 saved content certification', () => {
       for (const name of migrations) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
       const post = [write('post-ledger.json', result(migrations.map(name => ({ name })))), fk, quick,
         write('after.json', capture()), write('schema.json', result(rows)),
-        write('gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+        write('gate.json', result(db.prepare(historicalSavedContentSchemaGateSql(migrations)).all()))];
       expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED',
         aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 47, tip }, schemaCheck: { constraints: 'PASS' } });
     } finally { db.close(); }

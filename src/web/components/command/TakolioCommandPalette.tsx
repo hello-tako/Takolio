@@ -292,7 +292,7 @@ export const TakolioCommandPalette: React.FC<TakolioCommandPaletteProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-[#0B120F]/75 px-3 pt-[7vh] pb-6 backdrop-blur-md animate-fade-in sm:px-6 sm:pt-[11vh]"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-tk-sanctuary/75 px-3 pt-[7vh] pb-6 backdrop-blur-md animate-fade-in sm:px-6 sm:pt-[11vh]"
       onClick={onClose}
       role="presentation"
       data-testid="takolio-command-palette-backdrop"
@@ -379,7 +379,7 @@ export const TakolioCommandPalette: React.FC<TakolioCommandPaletteProps> = ({
                       onMouseEnter={() => setSelectedIndex(idx)}
                       onClick={() => executeNavigation(action.href)}
                       className={clsx(
-                        'group flex items-center justify-between gap-3 rounded-2xl border px-3.5 py-2.5 transition-all cursor-pointer',
+                        'group flex items-center justify-between gap-3 rounded-2xl border px-3.5 py-2.5 transition-tap cursor-pointer',
                         isSelected
                           ? 'border-tk-flame/55 bg-white/[0.11] shadow-sm'
                           : 'border-transparent bg-white/[0.03] hover:bg-white/[0.07]',
@@ -413,7 +413,7 @@ export const TakolioCommandPalette: React.FC<TakolioCommandPaletteProps> = ({
                             action.tone === 'flame'
                               ? 'border-tk-flame/40 bg-tk-flame/20 text-tk-flame-glow'
                               : action.tone === 'turmeric'
-                                ? 'border-tk-turmeric/40 bg-tk-turmeric/20 text-amber-300'
+                                ? 'border-tk-turmeric/40 bg-tk-turmeric/20 text-tk-turmeric-glow'
                                 : 'border-tk-jade-mint/35 bg-tk-jade/35 text-tk-jade-mint',
                           )}
                         >
@@ -463,7 +463,7 @@ export const TakolioCommandPalette: React.FC<TakolioCommandPaletteProps> = ({
                       onMouseEnter={() => setSelectedIndex(globalIdx)}
                       onClick={() => executeNavigation(recipe.href)}
                       className={clsx(
-                        'group flex items-center justify-between gap-3 rounded-2xl border p-2.5 transition-all cursor-pointer',
+                        'group flex items-center justify-between gap-3 rounded-2xl border p-2.5 transition-tap cursor-pointer',
                         isSelected
                           ? 'border-tk-flame/60 bg-white/[0.12] shadow-sm'
                           : 'border-white/8 bg-white/[0.03] hover:bg-white/[0.07]',

@@ -559,7 +559,7 @@ export const RecipeDetailPage: React.FC = () => {
       <div key={rowKey} className="space-y-2">
         <div
           className={clsx(
-            'ingredient-availability-row rounded-2xl border p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all',
+            'ingredient-availability-row rounded-2xl border p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-tap',
             hasIngredient
               ? 'border-tk-jade/25 bg-tk-jade-soft/45'
               : 'border-tk-stone bg-white shadow-2xs',
@@ -1031,7 +1031,7 @@ export const RecipeDetailPage: React.FC = () => {
                   <div className="mt-3 space-y-1" aria-hidden="true">
                     <div className="h-2 w-full overflow-hidden rounded-full bg-white/80">
                       <span
-                        className="block h-full rounded-full bg-tk-jade transition-all duration-500"
+                        className="block h-full rounded-full bg-tk-jade transition-[width] duration-500"
                         style={{ width: `${readinessPercent}%` }}
                       />
                     </div>
@@ -1201,7 +1201,7 @@ export const RecipeDetailPage: React.FC = () => {
                   className="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                 >
                   <div className="space-y-1">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-tk-turmeric-glow">
                       Lộ trình 4 Pha Chuẩn Đầu Bếp · Takolio V4
                     </span>
                     <h3 className="text-lg font-extrabold text-white">
@@ -1402,15 +1402,15 @@ export const RecipeDetailPage: React.FC = () => {
                     </div>
                     <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-tk-sunken" aria-hidden="true">
                       <span
-                        className="bg-tk-jade transition-all"
+                        className="bg-tk-jade transition-[width]"
                         style={{ width: `${nutritionV6.macroSplitPct.proteinPct}%` }}
                       />
                       <span
-                        className="bg-tk-turmeric transition-all"
+                        className="bg-tk-turmeric transition-[width]"
                         style={{ width: `${nutritionV6.macroSplitPct.carbsPct}%` }}
                       />
                       <span
-                        className="bg-tk-flame transition-all"
+                        className="bg-tk-flame transition-[width]"
                         style={{ width: `${nutritionV6.macroSplitPct.fatPct}%` }}
                       />
                     </div>

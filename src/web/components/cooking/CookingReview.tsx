@@ -454,8 +454,8 @@ export function CookingReview() {
                     className={clsx(
                       'flex h-11 w-11 items-center justify-center rounded-2xl border transition-tap cursor-pointer',
                       active
-                        ? 'border-amber-400 bg-tk-turmeric-soft text-amber-500 shadow-2xs'
-                        : 'border-tk-stone bg-tk-canvas text-tk-muted hover:text-amber-400',
+                        ? 'border-tk-turmeric bg-tk-turmeric-soft text-tk-turmeric shadow-2xs'
+                        : 'border-tk-stone bg-tk-canvas text-tk-muted hover:text-tk-turmeric',
                     )}
                   >
                     <Star size={22} fill={active ? 'currentColor' : 'none'} aria-hidden="true" />

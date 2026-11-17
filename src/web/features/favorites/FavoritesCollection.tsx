@@ -157,7 +157,7 @@ export function FavoritesCollection({ servings }: { servings: number }) {
             return (
               <article
                 key={entry.recipeId}
-                className="family-favorite-card group relative flex flex-col overflow-hidden rounded-[24px] border border-tk-stone/85 bg-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-elevated"
+                className="family-favorite-card group relative flex flex-col overflow-hidden rounded-[24px] border border-tk-stone/85 bg-white shadow-card transition-tap duration-200 hover:-translate-y-0.5 hover:shadow-elevated"
               >
                 <div className="relative">
                   <RecipeMedia

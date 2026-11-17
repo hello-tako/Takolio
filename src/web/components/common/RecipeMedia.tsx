@@ -55,7 +55,7 @@ function MediaView({
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           className={clsx(
-            'h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.035]',
+            'h-full w-full object-cover transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.035]',
             loaded ? 'opacity-100' : 'opacity-90',
           )}
           onLoad={() => setLoaded(true)}

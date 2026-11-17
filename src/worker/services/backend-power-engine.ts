@@ -1724,15 +1724,20 @@ export async function findHouseholdHeirloomRecipeAsRuntime(
   householdId: string,
   idOrSlug: string,
 ): Promise<Recipe | null> {
-  const row = await db
-    .prepare(
-      `SELECT * FROM custom_household_recipes
-        WHERE household_id = ? AND (id = ? OR slug = ?)
-        LIMIT 1`,
-    )
-    .bind(householdId, idOrSlug, idOrSlug)
-    .first<HeirloomRecipeRow>();
-  return row ? mapHeirloomRowToRuntimeRecipe(row) : null;
+  if (!/^custom[-_]/.test(idOrSlug)) return null;
+  try {
+    const row = await db
+      .prepare(
+        `SELECT * FROM custom_household_recipes
+          WHERE household_id = ? AND (id = ? OR slug = ?)
+          LIMIT 1`,
+      )
+      .bind(householdId, idOrSlug, idOrSlug)
+      .first<HeirloomRecipeRow>();
+    return row ? mapHeirloomRowToRuntimeRecipe(row) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function listHeirloomRecipes(db: D1DatabaseBinding, householdId: string) {

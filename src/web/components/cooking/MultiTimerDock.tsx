@@ -69,9 +69,9 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
     <aside
       aria-label="Khay quản lý đa hẹn giờ bếp"
       className={clsx(
-        'fixed bottom-[92px] left-3 right-3 sm:left-6 sm:right-auto sm:w-[396px] z-30 rounded-[24px] p-3.5 transition-all animate-slide-up',
+        'fixed bottom-[92px] left-3 right-3 sm:left-6 sm:right-auto sm:w-[396px] z-30 rounded-[24px] p-3.5 transition-tap animate-slide-up',
         dark ? 'tk-glass-dark text-white' : 'tk-glass text-tk-ink border-tk-stone',
-        completedCount > 0 && 'ring-2 ring-amber-400 shadow-glow',
+        completedCount > 0 && 'ring-2 ring-tk-turmeric-glow shadow-glow',
       )}
     >
       {/* Dock Header */}
@@ -85,7 +85,7 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
             className={clsx(
               'flex h-8 w-8 shrink-0 items-center justify-center rounded-xl',
               completedCount > 0
-                ? 'bg-amber-400 text-tk-ink animate-pulse'
+                ? 'bg-tk-turmeric-glow text-tk-ink animate-pulse'
                 : 'bg-tk-flame text-white',
             )}
           >
@@ -103,7 +103,7 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
               className={clsx(
                 'text-[11px] truncate',
                 completedCount > 0
-                  ? 'font-bold text-amber-300'
+                  ? 'font-bold text-tk-turmeric-glow'
                   : dark
                     ? 'text-white/65'
                     : 'text-tk-muted',
@@ -193,10 +193,10 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
               <div
                 key={timer.id}
                 className={clsx(
-                  'flex items-center justify-between gap-2.5 rounded-2xl border px-3 py-2 transition-all',
+                  'flex items-center justify-between gap-2.5 rounded-2xl border px-3 py-2 transition-tap',
                   timer.completed
                     ? dark
-                      ? 'border-amber-400/70 bg-amber-500/20 text-amber-100'
+                      ? 'border-tk-turmeric-glow/70 bg-tk-turmeric/20 text-tk-turmeric-soft'
                       : 'border-tk-turmeric bg-tk-turmeric-soft text-tk-ink'
                     : dark
                       ? 'border-white/10 bg-white/6'
@@ -221,7 +221,7 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
                       className={clsx(
                         'text-sm sm:text-base font-extrabold tk-tabular leading-tight',
                         timer.completed
-                          ? 'text-amber-400'
+                          ? 'text-tk-turmeric-glow'
                           : timer.running
                             ? 'text-tk-flame-glow'
                             : 'opacity-75',
@@ -278,7 +278,7 @@ export const MultiTimerDock: React.FC<{ dark?: boolean }> = ({ dark = true }) =>
                     className={clsx(
                       'flex h-9 w-9 items-center justify-center rounded-xl cursor-pointer transition-colors',
                       timer.completed
-                        ? 'bg-amber-400 text-tk-ink font-bold hover:bg-amber-300'
+                        ? 'bg-tk-turmeric-glow text-tk-ink font-bold hover:bg-tk-turmeric'
                         : dark
                           ? 'text-white/65 hover:bg-white/10 hover:text-white'
                           : 'text-tk-muted hover:bg-tk-sunken hover:text-tk-ink',

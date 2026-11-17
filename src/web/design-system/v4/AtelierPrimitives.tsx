@@ -117,9 +117,9 @@ export const BentoCard: React.FC<
   const toneClasses = {
     ceramic: 'bg-white border border-tk-stone/80 shadow-card text-tk-ink',
     sunken: 'bg-tk-sunken/85 border border-tk-stone/70 text-tk-ink',
-    flame: 'bg-gradient-to-br from-tk-flame-soft via-white to-amber-50/40 border border-tk-flame/20 shadow-card text-tk-ink',
-    jade: 'bg-gradient-to-br from-tk-jade-soft via-white to-emerald-50/30 border border-tk-jade/20 shadow-card text-tk-ink',
-    turmeric: 'bg-gradient-to-br from-tk-turmeric-soft via-white to-orange-50/30 border border-tk-turmeric/25 shadow-card text-tk-ink',
+    flame: 'bg-gradient-to-br from-tk-flame-soft via-white to-tk-turmeric-soft/50 border border-tk-flame/20 shadow-card text-tk-ink',
+    jade: 'bg-gradient-to-br from-tk-jade-soft via-white to-tk-jade-mint/25 border border-tk-jade/20 shadow-card text-tk-ink',
+    turmeric: 'bg-gradient-to-br from-tk-turmeric-soft via-white to-tk-flame-soft/40 border border-tk-turmeric/25 shadow-card text-tk-ink',
     sanctuary: 'bg-tk-sanctuary-card border border-white/10 shadow-elevated text-white',
     glass: 'tk-glass text-tk-ink',
   }[tone];

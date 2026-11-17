@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { Recipe } from '../../types';
-import { GLOBAL_RECIPES, VIETNAMESE_RECIPES } from '../../data';
+import type { Recipe } from '@frigo/recipes';
+import { GLOBAL_RECIPES, VIETNAMESE_RECIPES } from '../../packages/recipes/src/data';
 import {
   NUTRITION_DICTIONARY_V6,
   VIETNAMESE_RDI_BENCHMARKS_V6,
@@ -9,7 +9,7 @@ import {
   computeRecipeNutritionV6,
   convertIngredientToGramsV6,
   resolveIngredientNutritionV6,
-} from '../../index';
+} from '@frigo/recipes';
 
 const BRAISED_PORK_BELLY_RECIPE: Recipe = {
   id: 'v6-test-thit-kho-tau',

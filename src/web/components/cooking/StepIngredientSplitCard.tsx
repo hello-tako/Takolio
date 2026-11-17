@@ -121,7 +121,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
           <span
             className={clsx(
               'inline-flex h-6 w-6 items-center justify-center rounded-lg text-xs font-extrabold tk-tabular',
-              dark ? 'bg-tk-jade/30 text-emerald-300' : 'bg-tk-jade-soft text-tk-jade-deep',
+              dark ? 'bg-tk-jade/30 text-tk-jade-mint' : 'bg-tk-jade-soft text-tk-jade-deep',
             )}
           >
             {items.length}
@@ -151,10 +151,10 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
             <li key={checkKey} className="space-y-2">
               <div
                 className={clsx(
-                  'flex items-center justify-between gap-2.5 rounded-2xl border p-2.5 sm:p-3 transition-all',
+                  'flex items-center justify-between gap-2.5 rounded-2xl border p-2.5 sm:p-3 transition-tap',
                   isChecked
                     ? dark
-                      ? 'border-emerald-500/30 bg-emerald-950/30 opacity-75'
+                      ? 'border-tk-jade/35 bg-tk-jade-deep/35 opacity-75'
                       : 'border-tk-jade/30 bg-tk-jade-soft/50 opacity-75'
                     : dark
                       ? 'border-white/10 bg-tk-sanctuary-elevated/80 hover:border-white/20'
@@ -201,7 +201,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                         {item.name}
                       </span>
                       {wasSwapped && (
-                        <span className="rounded-full bg-tk-turmeric/20 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-tk-turmeric/30">
+                        <span className="rounded-full bg-tk-turmeric/20 px-2 py-0.5 text-[10px] font-bold text-tk-turmeric-glow border border-tk-turmeric/30">
                           Đã đổi thông minh
                         </span>
                       )}
@@ -210,7 +210,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                           className={clsx(
                             'rounded-full px-2 py-0.5 text-[10px] font-extrabold',
                             dark
-                              ? 'bg-tk-flame/25 text-orange-200 border border-tk-flame/35'
+                              ? 'bg-tk-flame/25 text-tk-flame-soft border border-tk-flame/35'
                               : 'bg-tk-flame-soft text-tk-flame-deep border border-tk-flame/20',
                           )}
                         >
@@ -222,7 +222,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                     <p
                       className={clsx(
                         'mt-0.5 text-xs sm:text-sm font-bold tk-tabular',
-                        dark ? 'text-amber-200' : 'text-tk-jade-deep',
+                        dark ? 'text-tk-turmeric-glow' : 'text-tk-jade-deep',
                       )}
                     >
                       {item.formattedAmountVi}
@@ -296,7 +296,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                   ) : swapResult ? (
                     <div className="space-y-2.5">
                       {swapResult.safetyAlertVi && (
-                        <p className="rounded-xl bg-tk-berry/20 border border-tk-berry/35 px-3 py-2 text-xs font-semibold text-rose-200">
+                        <p className="rounded-xl bg-tk-berry/20 border border-tk-berry/35 px-3 py-2 text-xs font-semibold text-tk-berry-glow">
                           {swapResult.safetyAlertVi}
                         </p>
                       )}
@@ -326,7 +326,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                               <p
                                 className={clsx(
                                   'text-xs font-semibold',
-                                  dark ? 'text-amber-200' : 'text-tk-jade-deep',
+                                  dark ? 'text-tk-turmeric-glow' : 'text-tk-jade-deep',
                                 )}
                               >
                                 {cand.conversionRatioVi}
@@ -341,7 +341,7 @@ export const StepIngredientSplitCard: React.FC<StepIngredientSplitCardProps> = (
                                 {cand.flavorImpactVi}
                               </p>
                               {cand.fridgeStockNoteVi && (
-                                <p className="text-[11px] font-semibold text-emerald-400">
+                                <p className="text-[11px] font-semibold text-tk-jade-mint">
                                   {cand.fridgeStockNoteVi}
                                 </p>
                               )}

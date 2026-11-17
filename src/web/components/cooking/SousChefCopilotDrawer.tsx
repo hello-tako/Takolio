@@ -240,7 +240,7 @@ export const SousChefCopilotDrawer: React.FC<SousChefCopilotDrawerProps> = ({
             className={clsx(
               'rounded-2xl border p-4 text-sm font-semibold animate-pulse',
               dark
-                ? 'border-tk-flame/35 bg-tk-flame/15 text-orange-100'
+                ? 'border-tk-flame/35 bg-tk-flame/15 text-tk-flame-soft'
                 : 'border-tk-flame/25 bg-tk-flame-soft text-tk-flame-deep',
             )}
           >
@@ -269,7 +269,7 @@ export const SousChefCopilotDrawer: React.FC<SousChefCopilotDrawerProps> = ({
                     <p
                       className={clsx(
                         'text-xs font-bold',
-                        dark ? 'text-amber-200' : 'text-tk-flame-deep',
+                        dark ? 'text-tk-turmeric-glow' : 'text-tk-flame-deep',
                       )}
                     >
                       Hỏi: “{turn.question}”
@@ -291,7 +291,7 @@ export const SousChefCopilotDrawer: React.FC<SousChefCopilotDrawerProps> = ({
                       className={clsx(
                         'rounded-2xl border p-3 text-xs leading-relaxed',
                         dark
-                          ? 'border-amber-400/30 bg-amber-500/12 text-amber-100'
+                          ? 'border-tk-turmeric-glow/30 bg-tk-turmeric/15 text-tk-turmeric-soft'
                           : 'border-tk-turmeric/30 bg-tk-turmeric-soft text-tk-turmeric-deep',
                       )}
                     >

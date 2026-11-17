@@ -155,7 +155,7 @@ export const MamComConductorModal: React.FC<MamComConductorModalProps> = ({
           className={clsx(
             'rounded-3xl border p-4 space-y-3',
             dark
-              ? 'border-tk-jade/40 bg-gradient-to-br from-tk-sanctuary-elevated to-emerald-950/40 text-white'
+              ? 'border-tk-jade/40 bg-gradient-to-br from-tk-sanctuary-elevated to-tk-jade-deep/55 text-white'
               : 'border-tk-jade/25 bg-gradient-to-br from-tk-jade-soft/75 to-white text-tk-ink',
           )}
         >
@@ -301,7 +301,7 @@ export const MamComConductorModal: React.FC<MamComConductorModalProps> = ({
                         <span>·</span>
                         <span>{cand.cookTimeMinutes} phút</span>
                         <span>·</span>
-                        <span className="font-bold text-emerald-400">
+                        <span className="font-bold text-tk-jade-mint">
                           Khớp tủ {match.matchPercentage}%
                         </span>
                       </div>

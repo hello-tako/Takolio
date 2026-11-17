@@ -28,10 +28,11 @@ function databaseAt(tip) {
 function baseline(db) {
   return baselineQuery().split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
 }
+const POST_0047_OBJECTS = /household_invites|cooking_sessions|user_notifications|d1_idempotency_keys|custom_household_recipes|pantry_staple_thresholds|household_waste_events|household_budget_entries|household_activity_events|idx_d1_idempotency_expires|idx_custom_hh_recipes_hh_updated|idx_pantry_thresholds_hh|idx_waste_events_hh_occurred|idx_budget_entries_hh_spent|idx_activity_events_hh_created|idx_household_invites_|idx_cooking_sessions_hh_status_updated|idx_user_notifications_hh_read_created|idx_household_members_user_id|idx_shopping_lists_household_id|idx_scans_household_created_at|idx_scans_status_created_at|idx_inventory_obs_hh_status|idx_cooked_meals_hh_completed|idx_ai_requests_created_at/;
 function historicalSchemaGateSql() {
   // This lifecycle predates 0046; the current-tip lifecycle is exercised separately.
   return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
-    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_|trg_meal_components_content_/.test(line))
+    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_|trg_meal_components_content_/.test(line) && !POST_0047_OBJECTS.test(line))
     .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
 }
 function fixture() {

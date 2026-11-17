@@ -7,7 +7,8 @@ const require = createRequire(import.meta.url);
 const { load } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
 const policy = load(workflow);
 const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
-  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql'];
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql',
+  '0048_takolio_v4_unified_platform.sql', '0049_takolio_v6_culinary_os_and_backend_power.sql'];
 
 describe('production D1 migration runtime proof', () => {
   it('keeps production approval and actual 0041 constraint certification', () => {

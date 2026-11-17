@@ -92,7 +92,7 @@ export function RecipeCard(props: RecipeCardProps) {
   return (
     <article
       className={clsx(
-        'family-recipe-card kitchen-recipe-card group relative flex overflow-hidden rounded-[24px] border border-tk-stone/85 bg-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-tk-ink/20 hover:shadow-elevated',
+        'family-recipe-card kitchen-recipe-card group relative flex overflow-hidden rounded-[24px] border border-tk-stone/85 bg-white shadow-card transition-tap duration-200 hover:-translate-y-0.5 hover:border-tk-ink/20 hover:shadow-elevated',
         isHorizontalRow ? 'flex-col sm:flex-row' : 'flex-col',
       )}
       data-variant={compact ? 'compact' : variant}
@@ -242,7 +242,7 @@ export function RecipeCard(props: RecipeCardProps) {
                 >
                   <span
                     className={clsx(
-                      'block h-full rounded-full transition-all duration-500',
+                      'block h-full rounded-full transition-[width] duration-500',
                       canCookWithoutBuying ? 'bg-tk-jade' : 'bg-tk-turmeric',
                     )}
                     style={{ width: `${Math.min(100, Math.max(0, matchPercentage))}%` }}
