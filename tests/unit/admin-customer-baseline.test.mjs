@@ -272,7 +272,8 @@ describe('immutable V3 candidate checkpoint', () => {
     ]) expect(matrix).toContain(scenario);
     expect(matrix).toContain("['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']");
     expect(matrix).toContain("issue.issue === 'missing_migration' && issue.detail === missingName");
-    expect(matrix).toContain('candidateManifest.count === 47');
+    expect(matrix).toContain('v3Manifest.count === 47');
+    expect(matrix).toContain('candidateManifest.count === 49');
     expect(matrix).toContain('v2Manifest.count === 45');
     expect(matrix).toContain("applicationRuntime: 'not tested by this SQL-only matrix;");
   });
