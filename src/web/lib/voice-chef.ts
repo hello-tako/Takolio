@@ -1,22 +1,148 @@
 /**
- * AI Voice Sous Chef
- * Web Speech API for Vietnamese speech synthesis and hands-free voice commands
+ * AI Voice Sous Chef (Takolio V4)
+ * Web Speech API for Vietnamese speech synthesis and hands-free voice commands,
+ * featuring optional `"Tako ..."` wake-word & anchored-phrase filtering so casual
+ * kitchen conversation never misfires step navigation.
  */
 
+export type VoiceChefAction =
+  | 'next'
+  | 'prev'
+  | 'repeat'
+  | 'start_timer'
+  | 'pause_timer'
+  | 'extend_timer';
+
+export interface VoiceListeningOptions {
+  requireWakeWord?: boolean;
+}
+
 export interface VoiceCommandCallbacks {
+  requireWakeWord?: boolean;
   onNext?: () => void;
   onPrev?: () => void;
   onRepeat?: () => void;
   onStartTimer?: () => void;
   onPauseTimer?: () => void;
+  onExtendTimer?: () => void;
   onHeardCommand?: (text: string) => void;
+  onMatchedAction?: (action: VoiceChefAction, text: string) => void;
   onError?: (err: any) => void;
+}
+
+const WAKE_WORD_PREFIX_REGEX =
+  /^(?:hey\s+|ơi\s+|này\s+|ê\s+)?(?:tako\s+ơi|takolio\s+ơi|bếp\s+trưởng\s+ơi|bep\s+truong\s+oi|tako|ta\s+ko|takolio|bếp\s+trưởng|bep\s+truong)(?:[\s,.:;!-]+(.+))?$/i;
+
+const ANCHORED_EXACT_COMMANDS: ReadonlyArray<readonly [VoiceChefAction, RegExp]> = [
+  ['next', /^(?:bước tiếp theo|bước kế tiếp|chuyển bước tiếp|qua bước tiếp|next step)$/i],
+  ['prev', /^(?:quay lại bước trước|lùi lại bước trước|quay về bước trước|previous step)$/i],
+  ['repeat', /^(?:đọc lại bước này|nhắc lại bước này|đọc lại hướng dẫn|repeat step)$/i],
+  ['start_timer', /^(?:bắt đầu hẹn giờ|bật hẹn giờ|bắt đầu bấm giờ|start timer)$/i],
+  ['pause_timer', /^(?:tạm dừng hẹn giờ|dừng hẹn giờ|tạm dừng bấm giờ|pause timer)$/i],
+  ['extend_timer', /^(?:thêm một phút|thêm 1 phút|gia hạn hẹn giờ)$/i],
+];
+
+function matchCommandPayload(text: string): VoiceChefAction | null {
+  if (
+    text.includes('thêm 1 phút') ||
+    text.includes('thêm một phút') ||
+    text.includes('thêm giờ') ||
+    text.includes('gia hạn')
+  ) {
+    return 'extend_timer';
+  }
+  if (
+    text.includes('tiếp') ||
+    text.includes('kế tiếp') ||
+    text.includes('xong') ||
+    text.includes('next')
+  ) {
+    return 'next';
+  }
+  if (
+    text.includes('lùi') ||
+    text.includes('quay lại') ||
+    text.includes('trước') ||
+    text.includes('back')
+  ) {
+    return 'prev';
+  }
+  if (
+    text.includes('đọc lại') ||
+    text.includes('nói lại') ||
+    text.includes('nhắc lại') ||
+    text.includes('repeat')
+  ) {
+    return 'repeat';
+  }
+  if (
+    text.includes('bấm giờ') ||
+    text.includes('hẹn giờ') ||
+    text.includes('bắt đầu') ||
+    text.includes('timer')
+  ) {
+    return 'start_timer';
+  }
+  if (
+    text.includes('dừng') ||
+    text.includes('ngừng') ||
+    text.includes('tạm dừng') ||
+    text.includes('pause')
+  ) {
+    return 'pause_timer';
+  }
+  return null;
+}
+
+/**
+ * Pure deterministic command matcher for Vietnamese hands-free cooking.
+ * When `requireWakeWord` is enabled, casual kitchen chatter like `"cho tiếp nước vào"`
+ * returns `null` unless prefixed with `"tako ..."` or spoken as an anchored exact phrase.
+ */
+export function matchVoiceChefCommand(
+  rawTranscript: string,
+  options?: VoiceListeningOptions,
+): VoiceChefAction | null {
+  const clean = rawTranscript
+    .trim()
+    .toLowerCase()
+    .replace(/^[,.!?;:\s]+|[,.!?;:\s]+$/g, '')
+    .replace(/\s+/g, ' ');
+
+  if (!clean) return null;
+
+  const wakeMatch = WAKE_WORD_PREFIX_REGEX.exec(clean);
+  if (wakeMatch) {
+    const payload = (wakeMatch[1] ?? '').trim();
+    return payload ? matchCommandPayload(payload) : null;
+  }
+
+  for (const [action, pattern] of ANCHORED_EXACT_COMMANDS) {
+    if (pattern.test(clean)) {
+      return action;
+    }
+  }
+
+  if (options?.requireWakeWord) {
+    return null;
+  }
+
+  return matchCommandPayload(clean);
 }
 
 class VoiceSousChef {
   private isSpeaking = false;
   private recognition: any = null;
   private isListening = false;
+  private defaultWakeWordMode = false;
+
+  setWakeWordMode(enabled: boolean) {
+    this.defaultWakeWordMode = Boolean(enabled);
+  }
+
+  getWakeWordMode(): boolean {
+    return this.defaultWakeWordMode;
+  }
 
   /**
    * Speak cooking step instruction in Vietnamese
@@ -76,7 +202,10 @@ class VoiceSousChef {
   /**
    * Start listening for voice commands in Vietnamese
    */
-  startListening(callbacks: VoiceCommandCallbacks): () => void {
+  startListening(
+    callbacks: VoiceCommandCallbacks,
+    options?: VoiceListeningOptions,
+  ): () => void {
     if (typeof window === 'undefined') return () => {};
 
     const SpeechRecognition =
@@ -99,6 +228,9 @@ class VoiceSousChef {
       recognition.continuous = true;
       recognition.interimResults = false;
 
+      const requireWakeWord =
+        options?.requireWakeWord ?? callbacks.requireWakeWord ?? this.defaultWakeWordMode;
+
       recognition.onresult = (event: any) => {
         if (this.recognition !== recognition || !this.isListening) return;
         const lastResult = event.results[event.results.length - 1];
@@ -109,42 +241,30 @@ class VoiceSousChef {
           callbacks.onHeardCommand(transcript);
         }
 
-        // Match commands
-        if (
-          transcript.includes('tiếp') ||
-          transcript.includes('kế tiếp') ||
-          transcript.includes('xong') ||
-          transcript.includes('next')
-        ) {
-          if (callbacks.onNext) callbacks.onNext();
-        } else if (
-          transcript.includes('lùi') ||
-          transcript.includes('quay lại') ||
-          transcript.includes('trước') ||
-          transcript.includes('back')
-        ) {
-          if (callbacks.onPrev) callbacks.onPrev();
-        } else if (
-          transcript.includes('đọc lại') ||
-          transcript.includes('nói lại') ||
-          transcript.includes('nhắc lại') ||
-          transcript.includes('repeat')
-        ) {
-          if (callbacks.onRepeat) callbacks.onRepeat();
-        } else if (
-          transcript.includes('bấm giờ') ||
-          transcript.includes('hẹn giờ') ||
-          transcript.includes('bắt đầu') ||
-          transcript.includes('timer')
-        ) {
-          if (callbacks.onStartTimer) callbacks.onStartTimer();
-        } else if (
-          transcript.includes('dừng') ||
-          transcript.includes('ngừng') ||
-          transcript.includes('tạm dừng') ||
-          transcript.includes('pause')
-        ) {
-          if (callbacks.onPauseTimer) callbacks.onPauseTimer();
+        const action = matchVoiceChefCommand(transcript, { requireWakeWord });
+        if (!action) return;
+
+        callbacks.onMatchedAction?.(action, transcript);
+
+        switch (action) {
+          case 'next':
+            callbacks.onNext?.();
+            break;
+          case 'prev':
+            callbacks.onPrev?.();
+            break;
+          case 'repeat':
+            callbacks.onRepeat?.();
+            break;
+          case 'start_timer':
+            callbacks.onStartTimer?.();
+            break;
+          case 'pause_timer':
+            callbacks.onPauseTimer?.();
+            break;
+          case 'extend_timer':
+            callbacks.onExtendTimer?.();
+            break;
         }
       };
 

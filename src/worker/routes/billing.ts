@@ -232,10 +232,75 @@ billingRoutes.post('/billing/payos/webhook', bodyLimit({
   }
   const status = payment.code === '00' ? 'paid' : 'failed';
   if (intent.status === status && intent.provider_reference === payment.reference) return c.json({ success: true });
-  if (intent.status !== 'pending' || Date.parse(intent.expires_at) <= Date.parse(receivedAt)) {
+  const days = intent.plan === 'annual' ? 366 : 31;
+
+  const admission = status === 'paid'
+    ? await c.env.DB.prepare('SELECT state FROM checkout_admissions WHERE intent_id = ? LIMIT 1')
+        .bind(intent.id)
+        .first<{ state: string }>()
+    : null;
+
+  const isExpiredWindow = Date.parse(intent.expires_at) <= Date.parse(receivedAt);
+  const isLateOrUncertainPaid =
+    status === 'paid' &&
+    intent.status !== 'paid' &&
+    intent.status !== 'refunded' &&
+    (intent.provider_reference === null || intent.provider_reference === payment.reference) &&
+    (admission !== null || c.env.CHECKOUT_ADMISSION_ENABLED !== 'false') &&
+    (intent.status === 'expired' ||
+      intent.status === 'failed' ||
+      isExpiredWindow ||
+      admission?.state === 'remote_uncertain');
+
+  if (isLateOrUncertainPaid) {
+    try {
+      const results = await c.env.DB.batch([
+        c.env.DB.prepare(
+          `INSERT INTO payment_reconciliation_records (intent_id, reason, first_observed_at, last_observed_at)
+           VALUES (?, 'provider_outcome_unknown', ?, ?)
+           ON CONFLICT(intent_id) DO UPDATE SET last_observed_at = excluded.last_observed_at`
+        ).bind(intent.id, receivedAt, receivedAt),
+        c.env.DB.prepare(
+          `INSERT INTO subscriptions (id, user_id, plan, status, expires_at)
+           SELECT ?, user_id, 'plus', 'active', strftime('%Y-%m-%dT%H:%M:%fZ', 'now', ?)
+             FROM payment_intents
+            WHERE id = ?
+              AND status IN ('pending', 'expired', 'failed')
+              AND (provider_reference IS NULL OR provider_reference = ?)
+           ON CONFLICT(user_id) DO UPDATE SET
+             plan = 'plus',
+             status = 'active',
+             expires_at = strftime('%Y-%m-%dT%H:%M:%fZ',
+               CASE WHEN subscriptions.plan = 'plus' AND subscriptions.status = 'active'
+                 AND datetime(subscriptions.expires_at) > datetime('now')
+                 THEN subscriptions.expires_at ELSE datetime('now') END, ?),
+             updated_at = datetime('now')`
+        ).bind(`sub_${intent.user_id}`, `+${days} days`, intent.id, payment.reference, `+${days} days`),
+        c.env.DB.prepare(
+          `UPDATE payment_intents
+              SET status = 'paid', provider_reference = ?, updated_at = datetime('now')
+            WHERE id = ?
+              AND status IN ('pending', 'expired', 'failed')
+              AND (provider_reference IS NULL OR provider_reference = ?)`
+        ).bind(payment.reference, intent.id, payment.reference),
+      ]);
+      if (results.at(-1)?.meta?.changes === 0) {
+        const current = await c.env.DB.prepare('SELECT * FROM payment_intents WHERE id = ?')
+          .bind(intent.id)
+          .first<PaymentRow>();
+        if (current?.status !== 'paid' || current.provider_reference !== payment.reference) {
+          return c.json({ error: 'Payment transition rejected' }, 409);
+        }
+      }
+      return c.json({ success: true, reconciled: true });
+    } catch {
+      return c.json({ error: 'Payment reconciliation failed' }, 409);
+    }
+  }
+
+  if (intent.status !== 'pending' || isExpiredWindow) {
     return c.json({ error: 'Payment is no longer pending' }, 409);
   }
-  const days = intent.plan === 'annual' ? 366 : 31;
   try {
     // D1 batch is transactional: only the still-pending order may grant, then it is consumed.
     const results = await c.env.DB.batch([

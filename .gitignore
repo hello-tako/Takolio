@@ -6,8 +6,7 @@ dist/
 *.local
 *.zip
 .artifacts/
-.hoplite/attachments/
-.hoplite/artifacts/
+.hoplite/
 test-results/
 playwright-report/
 # Private OCR certification inputs and outputs

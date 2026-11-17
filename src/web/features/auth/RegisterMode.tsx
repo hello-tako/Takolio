@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { type RefObject } from 'react';
 import { Mail, User, Lock } from 'lucide-react';
-import { Button } from '../../components/common/Button';
+import { ActionButton } from '../../design-system/v4/AtelierPrimitives';
 import { TurnstileWidget } from '../../components/common/TurnstileWidget';
 import { AuthField } from './AuthField';
+import { GoogleAuthSection } from './GoogleAuthSection';
 
 interface RegisterModeProps {
+  googleButtonRef: RefObject<HTMLDivElement>;
+  googleStatus: 'idle' | 'loading' | 'ready' | 'unavailable';
+  googleClientId: string | null;
+  onRetryGoogle: () => void;
   turnstileSiteKey: string | null;
   turnstileGeneration: number;
   onTurnstileToken: (token: string | null) => void;
@@ -21,6 +26,10 @@ interface RegisterModeProps {
 }
 
 export const RegisterMode: React.FC<RegisterModeProps> = ({
+  googleButtonRef,
+  googleStatus,
+  googleClientId,
+  onRetryGoogle,
   turnstileSiteKey,
   turnstileGeneration,
   onTurnstileToken,
@@ -36,9 +45,28 @@ export const RegisterMode: React.FC<RegisterModeProps> = ({
   isLoading,
 }) => (
   <div className="mt-5 space-y-4">
-    <form onSubmit={onSubmit} className="space-y-3">
+    <GoogleAuthSection
+      buttonRef={googleButtonRef}
+      status={googleStatus}
+      clientId={googleClientId}
+      onRetry={onRetryGoogle}
+    />
+
+    <div className="flex items-center my-2">
+      <div className="flex-1 border-t border-tk-stone" />
+      <span className="px-3 text-[11px] text-tk-muted uppercase font-extrabold tracking-wider">
+        Hoặc đăng ký bằng Email
+      </span>
+      <div className="flex-1 border-t border-tk-stone" />
+    </div>
+
+    <form onSubmit={onSubmit} className="space-y-3.5">
       {turnstileSiteKey && (
-        <TurnstileWidget key={turnstileGeneration} siteKey={turnstileSiteKey} onToken={onTurnstileToken} />
+        <TurnstileWidget
+          key={turnstileGeneration}
+          siteKey={turnstileSiteKey}
+          onToken={onTurnstileToken}
+        />
       )}
       <AuthField
         label="Họ và tên"
@@ -67,9 +95,16 @@ export const RegisterMode: React.FC<RegisterModeProps> = ({
         reveal={{ show: showPassword, onToggle: onToggleShowPassword }}
       />
 
-      <Button fullWidth size="lg" type="submit" isLoading={isLoading} className="mt-2">
-        Tạo tài khoản & Nhận mã OTP
-      </Button>
+      <ActionButton
+        variant="flame"
+        size="lg"
+        fullWidth
+        type="submit"
+        loading={isLoading}
+        className="mt-2"
+      >
+        Tạo tài khoản &amp; Nhận mã OTP
+      </ActionButton>
     </form>
   </div>
 );

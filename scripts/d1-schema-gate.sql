@@ -85,6 +85,9 @@ required_tables(name) AS (
     ,('recipe_content_versions')
     ,('recipe_content_access')
     ,('generated_meal_plan_components')
+    ,('household_invites')
+    ,('cooking_sessions')
+    ,('user_notifications')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -299,6 +302,17 @@ required_columns(table_name, column_name) AS (
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
+    ('index', 'idx_household_invites_household_id'),
+    ('index', 'idx_household_invites_invite_code'),
+    ('index', 'idx_cooking_sessions_hh_status_updated'),
+    ('index', 'idx_user_notifications_hh_read_created'),
+    ('index', 'idx_household_members_user_id'),
+    ('index', 'idx_shopping_lists_household_id'),
+    ('index', 'idx_scans_household_created_at'),
+    ('index', 'idx_scans_status_created_at'),
+    ('index', 'idx_inventory_obs_hh_status'),
+    ('index', 'idx_cooked_meals_hh_completed'),
+    ('index', 'idx_ai_requests_created_at'),
     ('trigger', 'trg_meal_components_content_insert'),
     ('trigger', 'trg_meal_components_content_update'),
     ('index', 'idx_recipe_content_versions_recipe'),

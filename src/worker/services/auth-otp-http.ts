@@ -149,20 +149,23 @@ export async function verifyStrictOtp(c: OtpContext,
     message: 'Yêu cầu đã hoàn tất. Vui lòng đăng nhập để lấy phiên mới.' });
   if (input.purpose === 'login') return c.json({ ...meta, success: true, replayed: result.replayed });
   if (!result.sessionToken || !result.accountId || !result.userId) return failure(c, { kind: 'unavailable' });
-  const profile = await c.env.DB.prepare(`SELECT a.user_id, a.email, p.display_name, p.avatar_url, p.onboarding_completed_at
-    FROM auth_accounts a JOIN users u ON u.id = a.user_id LEFT JOIN profiles p ON p.user_id = a.user_id
+  const profile = await c.env.DB.prepare(`SELECT a.user_id, a.email, p.display_name, p.avatar_url, p.onboarding_completed_at, s.household_id
+    FROM auth_accounts a
+    JOIN users u ON u.id = a.user_id
+    LEFT JOIN profiles p ON p.user_id = a.user_id
+    JOIN sessions_v2 s ON s.user_id = a.user_id
+      AND s.token_hash = ? AND s.revoked_at IS NULL AND datetime(s.expires_at) > datetime('now')
     WHERE a.id = ? AND a.user_id = ? AND lower(trim(a.email)) = ? AND a.is_verified = 1
-      AND EXISTS (SELECT 1 FROM household_members m WHERE m.user_id = a.user_id AND m.household_id = ?)
-      AND EXISTS (SELECT 1 FROM sessions_v2 s WHERE s.user_id = a.user_id AND s.household_id = ?
-        AND s.token_hash = ? AND s.revoked_at IS NULL AND datetime(s.expires_at) > datetime('now'))`)
-    .bind(result.accountId, result.userId, input.email, `hh_${result.userId}`, `hh_${result.userId}`, await sha256Hex(result.sessionToken))
-    .first<{ user_id: string; email: string; display_name?: string; avatar_url?: string; onboarding_completed_at?: string }>();
+      AND EXISTS (SELECT 1 FROM household_members m WHERE m.user_id = a.user_id AND m.household_id = s.household_id)
+    LIMIT 1`)
+    .bind(await sha256Hex(result.sessionToken), result.accountId, result.userId, input.email)
+    .first<{ user_id: string; email: string; display_name?: string; avatar_url?: string; onboarding_completed_at?: string; household_id: string }>();
   if (!profile) return failure(c, { kind: 'unavailable' });
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(result.sessionToken)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
   return c.json({ ...meta, success: true, replayed: false, sessionRequired: false,
     message: input.purpose === 'register' ? 'Xác thực tài khoản thành công!' : 'Đặt lại mật khẩu thành công!',
-    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || 'Người dùng Frigo',
-      avatarUrl: profile.avatar_url || '/icons/favicon.svg', householdId: `hh_${profile.user_id}`,
+    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || 'Người dùng Takolio',
+      avatarUrl: profile.avatar_url || '/icons/favicon.svg', householdId: profile.household_id,
       isGuest: false, onboardingCompleted: Boolean(profile.onboarding_completed_at) },
   });
 }

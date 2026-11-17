@@ -39,6 +39,8 @@ export interface Env {
   RECIPE_CATALOG_TEST_EXCLUDE?: string;
   // Shadow cost bound: minimum milliseconds between two catalog comparisons per isolate (default 60000).
   RECIPE_CATALOG_SHADOW_INTERVAL_MS?: string;
+  // Takolio V5 culinary expansion gate: when 'true', standardizes titles/photos and appends 85 3-region masterpieces.
+  RECIPE_CATALOG_V5_EXPANDED?: string;
   // T19C: Worker secret (>= 32 chars) authorizing GET /health/recipe-authority release evidence for
   // deploy automation. Absent ⇒ the endpoint is 404; it never grants any user-data access.
   RELEASE_VERIFY_TOKEN?: string;
@@ -65,6 +67,8 @@ export interface Env {
   CLEANUP_READY_JOB_RETENTION_DAYS?: string;
   CLEANUP_FAILED_JOB_RETENTION_DAYS?: string;
   CLEANUP_RESERVED_SCAN_RETENTION_MINUTES?: string;
+  CLEANUP_SCAN_RETENTION_DAYS?: string;
+  CLEANUP_ABANDONED_GUEST_RETENTION_DAYS?: string;
 
   QWEN_API_KEY?: string;
   QWEN_BASE_URL?: string;
@@ -129,5 +133,6 @@ export interface AuthContext {
   isGuest: boolean;
   email?: string;
   role?: string;
+  householdRole?: string;
   sessionId?: string;
 }

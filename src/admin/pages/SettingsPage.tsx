@@ -1,15 +1,39 @@
 import { useState, type FormEvent } from 'react';
-import { ADMIN_ROLE_LABELS_VI, ADMIN_ROLES, ADMIN_SUPER_ADMIN_MINIMUM, type AdminApproval, type AdminPreferences, type AdminRoleAssignment, type AdminRole } from '@shared/admin';
-import { type AdminSessionRow, useAdminSessions, useDecideApproval, useGrantRole, useMe, useRevokeRole, useRevokeSession, useSavePreferences, useSettings } from '../api/hooks';
+import {
+  ADMIN_ROLE_LABELS_VI,
+  ADMIN_ROLES,
+  ADMIN_SUPER_ADMIN_MINIMUM,
+  type AdminApproval,
+  type AdminPreferences,
+  type AdminRoleAssignment,
+  type AdminRole,
+} from '@shared/admin';
+import {
+  type AdminSessionRow,
+  useAdminSessions,
+  useDecideApproval,
+  useGrantRole,
+  useMe,
+  useRevokeRole,
+  useRevokeSession,
+  useSavePreferences,
+  useSettings,
+} from '../api/hooks';
 import { Dialog } from '../components/Dialog';
 import { Badge, Button, DefinitionList, ErrorState, Field, InlineError, LoadingState, Notice, PageHeader, Section, type Tone } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { formatDate, formatDateTime } from '../lib/format';
 import { hasPermission } from '../lib/nav';
-import { storeSidebarPreference } from '../lib/hooks';
+import { storeDensityPreference, storeSidebarPreference } from '../lib/hooks';
 
 const ASSIGNMENT_TONE: Record<string, Tone> = { active: 'success', revoked: 'neutral' };
-const APPROVAL_TONE: Record<string, Tone> = { pending: 'warning', approved: 'success', rejected: 'danger', expired: 'neutral', cancelled: 'neutral' };
+const APPROVAL_TONE: Record<string, Tone> = {
+  pending: 'warning',
+  approved: 'success',
+  rejected: 'danger',
+  expired: 'neutral',
+  cancelled: 'neutral',
+};
 
 function ProfileSection() {
   const me = useMe();
@@ -19,13 +43,26 @@ function ProfileSection() {
     <Section title={vi.settings.profile}>
       <DefinitionList
         items={[
-          { label: vi.settings.displayName, value: user.displayName },
+          { label: vi.settings.displayName, value: <strong>{user.displayName}</strong> },
           { label: vi.users.email, value: <span className="mono">{user.email}</span> },
           {
             label: vi.settings.roles,
-            value: user.roles.length ? user.roles.map((role) => ADMIN_ROLE_LABELS_VI[role]).join(', ') : vi.settings.noRoles,
+            value: user.roles.length ? (
+              <ul className="chip-list">
+                {user.roles.map((role) => (
+                  <li key={role}>
+                    <Badge tone="brand">{ADMIN_ROLE_LABELS_VI[role]}</Badge>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              vi.settings.noRoles
+            ),
           },
-          { label: vi.settings.sessionMethod, value: vi.labels.authMethod[user.session.authMethod] ?? user.session.authMethod },
+          {
+            label: vi.settings.sessionMethod,
+            value: <Badge tone="info">{vi.labels.authMethod[user.session.authMethod] ?? user.session.authMethod}</Badge>,
+          },
           { label: vi.settings.sessionCreated, value: formatDateTime(user.session.createdAt) },
           { label: vi.settings.sessionExpires, value: formatDateTime(user.session.expiresAt) },
           { label: vi.settings.sessionIdle, value: formatDateTime(user.session.idleExpiresAt) },
@@ -38,53 +75,83 @@ function ProfileSection() {
 
 function PreferencesForm({ initial }: { initial: AdminPreferences }) {
   const save = useSavePreferences();
-  const [draft, setDraft] = useState<AdminPreferences>(initial);
+  const [draft, setDraft] = useState<AdminPreferences>({ ...initial, locale: 'vi' });
   const [saved, setSaved] = useState(false);
+
+  const onDensityChange = (nextDensity: AdminPreferences['density']) => {
+    setSaved(false);
+    setDraft((prev) => ({ ...prev, density: nextDensity }));
+    storeDensityPreference(nextDensity);
+  };
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSaved(false);
-    save.mutate(draft, {
+    const payload: AdminPreferences = {
+      locale: 'vi',
+      density: draft.density,
+      sidebarCollapsed: draft.sidebarCollapsed,
+    };
+    save.mutate(payload, {
       onSuccess: () => {
-        storeSidebarPreference(draft.sidebarCollapsed);
+        storeDensityPreference(payload.density);
+        storeSidebarPreference(payload.sidebarCollapsed);
         setSaved(true);
       },
     });
   };
 
   return (
-    <Section title={vi.settings.preferences}>
+    <Section title={vi.settings.preferences} description={vi.settings.preferencesDesc}>
       <form className="settings-form" onSubmit={onSubmit} data-testid="admin-preferences-form">
-        <Field label={vi.settings.locale} htmlFor="admin-pref-locale" hint={vi.settings.localeHint}>
-          <select id="admin-pref-locale" value={draft.locale} onChange={(event) => setDraft({ ...draft, locale: event.target.value as AdminPreferences['locale'] })}>
-            <option value="vi">Tiếng Việt</option>
-            <option value="en">English</option>
-          </select>
-        </Field>
-        <Field label={vi.settings.density} htmlFor="admin-pref-density">
-          <select id="admin-pref-density" value={draft.density} onChange={(event) => setDraft({ ...draft, density: event.target.value as AdminPreferences['density'] })}>
+        <div className="field">
+          <span style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--admin-ink-secondary)' }}>
+            {vi.settings.locale}
+          </span>
+          <div className="static-pref-box">
+            <span>{vi.settings.localeFixedValue}</span>
+            <Badge tone="brand">Mặc định hệ thống</Badge>
+          </div>
+          <p className="field-hint">{vi.settings.localeHint}</p>
+        </div>
+
+        <Field label={vi.settings.density} htmlFor="admin-pref-density" hint={vi.settings.densityHint}>
+          <select
+            id="admin-pref-density"
+            data-testid="admin-pref-density"
+            value={draft.density}
+            onChange={(event) => onDensityChange(event.target.value as AdminPreferences['density'])}
+          >
             <option value="comfortable">{vi.settings.densityComfortable}</option>
             <option value="compact">{vi.settings.densityCompact}</option>
           </select>
         </Field>
+
         <div className="field checkbox-field">
           <input
             id="admin-pref-sidebar"
             type="checkbox"
             checked={draft.sidebarCollapsed}
-            onChange={(event) => setDraft({ ...draft, sidebarCollapsed: event.target.checked })}
+            onChange={(event) => {
+              setSaved(false);
+              setDraft({ ...draft, sidebarCollapsed: event.target.checked });
+            }}
           />
           <label htmlFor="admin-pref-sidebar">{vi.settings.sidebarCollapsed}</label>
         </div>
+
         <InlineError error={save.error} />
         {saved ? (
           <p className="form-success" role="status" data-testid="admin-preferences-saved">
             {vi.settings.preferencesSaved}
           </p>
         ) : null}
-        <Button type="submit" variant="primary" disabled={save.isPending}>
-          {save.isPending ? vi.common.loading : vi.common.save}
-        </Button>
+
+        <div>
+          <Button type="submit" variant="primary" disabled={save.isPending}>
+            {save.isPending ? vi.common.loading : vi.common.save}
+          </Button>
+        </div>
       </form>
     </Section>
   );
@@ -109,12 +176,17 @@ function MatrixSection({ matrix }: { matrix: Array<{ permission: string; label: 
           <tbody>
             {matrix.map((row) => (
               <tr key={row.permission}>
-                <th scope="row">{row.label}</th>
+                <th scope="row">
+                  <div>{row.label}</div>
+                  <div className="cell-sub mono">{row.permission}</div>
+                </th>
                 {ADMIN_ROLES.map((role) => {
                   const granted = row.roles.includes(role);
                   return (
                     <td key={role} className="matrix-cell">
-                      <span aria-hidden="true">{granted ? '✓' : '—'}</span>
+                      <span className={granted ? 'matrix-yes' : 'matrix-no'} aria-hidden="true">
+                        {granted ? '✓' : '—'}
+                      </span>
                       <span className="sr-only">{granted ? vi.settings.matrixMark : vi.settings.matrixNone}</span>
                     </td>
                   );
@@ -186,12 +258,18 @@ function RolesSection({
                   return (
                     <tr key={assignment.id} data-testid="admin-role-assignment-row">
                       <td>
-                        {assignment.userDisplayName ?? vi.users.anonymous}
-                        <div className="mono muted">{assignment.userEmailMasked ?? vi.common.dash}</div>
+                        <strong>{assignment.userDisplayName ?? vi.users.anonymous}</strong>
+                        <div className="cell-sub mono">{assignment.userEmailMasked ?? assignment.userId}</div>
                       </td>
-                      <td>{ADMIN_ROLE_LABELS_VI[assignment.role]}</td>
                       <td>
-                        <Badge tone={ASSIGNMENT_TONE[assignment.status] ?? 'neutral'}>{vi.labels.assignmentStatus[assignment.status]}</Badge>
+                        <Badge tone={assignment.role === 'SUPER_ADMIN' ? 'terracotta' : 'brand'}>
+                          {ADMIN_ROLE_LABELS_VI[assignment.role]}
+                        </Badge>
+                      </td>
+                      <td>
+                        <Badge tone={ASSIGNMENT_TONE[assignment.status] ?? 'neutral'}>
+                          {vi.labels.assignmentStatus[assignment.status]}
+                        </Badge>
                       </td>
                       <td>{vi.labels.grantSource[assignment.grantSource] ?? assignment.grantSource}</td>
                       <td className="mono">{assignment.grantedBy ?? vi.common.dash}</td>
@@ -200,14 +278,22 @@ function RolesSection({
                         {canManage && assignment.status === 'active' ? (
                           isSelf ? (
                             <span className="muted small">{vi.settings.revokeSelf}</span>
+                          ) : assignment.role === 'SUPER_ADMIN' && activeSupers <= ADMIN_SUPER_ADMIN_MINIMUM ? (
+                            <span className="muted small" data-testid="admin-role-revoke-blocked">
+                              {vi.settings.revokeSuperMinimum}
+                            </span>
                           ) : (
-                            assignment.role === 'SUPER_ADMIN' && activeSupers <= ADMIN_SUPER_ADMIN_MINIMUM ? (
-                              <span className="muted small" data-testid="admin-role-revoke-blocked">{vi.settings.revokeSuperMinimum}</span>
-                            ) : (
-                              <Button variant="danger" className="btn-small" data-testid="admin-role-revoke" onClick={() => { setRevokeMessage(null); setTarget(assignment); }}>
-                                {vi.settings.revoke}
-                              </Button>
-                            )
+                            <Button
+                              variant="danger"
+                              className="btn-small"
+                              data-testid="admin-role-revoke"
+                              onClick={() => {
+                                setRevokeMessage(null);
+                                setTarget(assignment);
+                              }}
+                            >
+                              {vi.settings.revoke}
+                            </Button>
                           )
                         ) : (
                           vi.common.dash
@@ -228,13 +314,14 @@ function RolesSection({
       </Section>
 
       {canManage ? (
-        <Section title={vi.settings.grantTitle}>
+        <Section title={vi.settings.grantTitle} description={vi.settings.grantDesc}>
           <form className="settings-form" onSubmit={onGrant} data-testid="admin-grant-form">
             <Field label={vi.settings.grantUserId} htmlFor="admin-grant-user-id">
               <input
                 id="admin-grant-user-id"
                 data-testid="admin-grant-user"
                 type="text"
+                placeholder={vi.settings.grantUserPlaceholder}
                 maxLength={100}
                 required
                 value={grantUserId}
@@ -242,7 +329,12 @@ function RolesSection({
               />
             </Field>
             <Field label={vi.settings.grantRole} htmlFor="admin-grant-role">
-              <select id="admin-grant-role" data-testid="admin-grant-role" value={grantRole} onChange={(event) => setGrantRole(event.target.value as AdminRole)}>
+              <select
+                id="admin-grant-role"
+                data-testid="admin-grant-role"
+                value={grantRole}
+                onChange={(event) => setGrantRole(event.target.value as AdminRole)}
+              >
                 {ADMIN_ROLES.map((role) => (
                   <option key={role} value={role}>
                     {ADMIN_ROLE_LABELS_VI[role]}
@@ -256,9 +348,16 @@ function RolesSection({
                 {grantMessage}
               </p>
             ) : null}
-            <Button type="submit" variant="primary" data-testid="admin-grant-submit" disabled={grant.isPending || grantUserId.trim() === ''}>
-              {grant.isPending ? vi.settings.grantSubmitting : vi.settings.grantSubmit}
-            </Button>
+            <div>
+              <Button
+                type="submit"
+                variant="primary"
+                data-testid="admin-grant-submit"
+                disabled={grant.isPending || grantUserId.trim() === ''}
+              >
+                {grant.isPending ? vi.settings.grantSubmitting : vi.settings.grantSubmit}
+              </Button>
+            </div>
           </form>
         </Section>
       ) : null}
@@ -294,7 +393,10 @@ function RolesSection({
           <p>
             {target.role === 'SUPER_ADMIN'
               ? vi.settings.revokeSuperBody(target.userDisplayName ?? target.userEmailMasked ?? target.userId)
-              : vi.settings.revokeBody(ADMIN_ROLE_LABELS_VI[target.role], target.userDisplayName ?? target.userEmailMasked ?? target.userId)}
+              : vi.settings.revokeBody(
+                  ADMIN_ROLE_LABELS_VI[target.role],
+                  target.userDisplayName ?? target.userEmailMasked ?? target.userId,
+                )}
           </p>
         ) : null}
         <InlineError error={revoke.error} />
@@ -303,7 +405,15 @@ function RolesSection({
   );
 }
 
-function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: AdminApproval[]; canDecide: boolean; currentUserId: string }) {
+function ApprovalsSection({
+  approvals,
+  canDecide,
+  currentUserId,
+}: {
+  approvals: AdminApproval[];
+  canDecide: boolean;
+  currentUserId: string;
+}) {
   const decide = useDecideApproval();
   const [message, setMessage] = useState<string | null>(null);
   return (
@@ -333,12 +443,16 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
                 const canAct = canDecide && approval.status === 'pending' && !involved;
                 return (
                   <tr key={approval.id} data-testid="admin-approval-row">
-                    <td>{vi.settings.approvalActions[approval.action] ?? approval.action}</td>
+                    <td>
+                      <strong>{vi.settings.approvalActions[approval.action] ?? approval.action}</strong>
+                    </td>
                     <td className="mono">{approval.targetUserId}</td>
                     <td className="mono">{approval.requestedBy}</td>
                     <td>{formatDateTime(approval.requestedAt)}</td>
                     <td>
-                      <Badge tone={APPROVAL_TONE[approval.status] ?? 'neutral'}>{vi.labels.approvalStatus[approval.status] ?? approval.status}</Badge>
+                      <Badge tone={APPROVAL_TONE[approval.status] ?? 'neutral'}>
+                        {vi.labels.approvalStatus[approval.status] ?? approval.status}
+                      </Badge>
                     </td>
                     <td>{formatDateTime(approval.expiresAt)}</td>
                     <td className="mono">{approval.decidedBy ?? vi.common.dash}</td>
@@ -400,7 +514,7 @@ function ApprovalsSection({ approvals, canDecide, currentUserId }: { approvals: 
 function SessionsSection({ sessions, currentSessionId }: { sessions: AdminSessionRow[]; currentSessionId: string }) {
   const revoke = useRevokeSession();
   return (
-    <Section title={vi.settings.sessions}>
+    <Section title={vi.settings.sessions} description={vi.settings.sessionsDesc}>
       {sessions.length === 0 ? (
         <p className="muted">{vi.settings.sessionsEmpty}</p>
       ) : (
@@ -421,15 +535,22 @@ function SessionsSection({ sessions, currentSessionId }: { sessions: AdminSessio
               {sessions.map((session) => (
                 <tr key={session.id} data-testid="admin-session-row">
                   <td className="mono">{session.userId}</td>
-                  <td>{vi.labels.authMethod[session.authMethod] ?? session.authMethod}</td>
+                  <td>
+                    <Badge tone="info">{vi.labels.authMethod[session.authMethod] ?? session.authMethod}</Badge>
+                  </td>
                   <td>{formatDateTime(session.createdAt)}</td>
                   <td>{formatDateTime(session.lastSeenAt)}</td>
                   <td>{formatDateTime(session.expiresAt)}</td>
                   <td>
                     {session.id === currentSessionId ? (
-                      vi.settings.self
+                      <Badge tone="brand">{vi.settings.self}</Badge>
                     ) : (
-                      <Button variant="danger" className="btn-small" disabled={revoke.isPending} onClick={() => revoke.mutate(session.id)}>
+                      <Button
+                        variant="danger"
+                        className="btn-small"
+                        disabled={revoke.isPending}
+                        onClick={() => revoke.mutate(session.id)}
+                      >
                         {vi.settings.revokeSession}
                       </Button>
                     )}
@@ -459,7 +580,7 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader title={vi.settings.title} description={vi.settings.description} />
+      <PageHeader eyebrow={vi.settings.eyebrow} title={vi.settings.title} description={vi.settings.description} />
       <ProfileSection />
 
       {settings.isPending ? <LoadingState rows={4} /> : null}

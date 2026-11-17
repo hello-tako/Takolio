@@ -31,6 +31,9 @@ export async function saveFamilyPreferences(db: D1DatabaseBinding, scope: Family
     preferredTimeMinutes: preferences.preferredTimeMinutes };
   const initialRanking = JSON.stringify({ version: 1, values: RankingPreferencesSchema.parse({...soft,forbiddenIngredientIds:preferences.forbiddenIngredientIds,allergens:preferences.allergens}) });
   try {
+    const syncedDietary = preferences.allergens !== undefined
+      ? JSON.stringify(preferences.allergens)
+      : null;
     const results = await db.batch([
       db.prepare(`INSERT INTO family_meal_preferences(household_id,user_id,revision,preferences_json,updated_at)
         SELECT ?, ?, ? + 1, ?, ?
@@ -52,6 +55,29 @@ export async function saveFamilyPreferences(db: D1DatabaseBinding, scope: Family
           JSON.stringify(soft.preferredCuisines), JSON.stringify(soft.dislikedIngredientIds), soft.preferredTimeMinutes,
           preferences.forbiddenIngredientIds===undefined?null:JSON.stringify(preferences.forbiddenIngredientIds),preferences.forbiddenIngredientIds===undefined?null:JSON.stringify(preferences.forbiddenIngredientIds),
           preferences.allergens===undefined?null:JSON.stringify(preferences.allergens),preferences.allergens===undefined?null:JSON.stringify(preferences.allergens)),
+      db.prepare(`INSERT INTO user_preferences(id,user_id,household_size,spicy_level,favorite_cuisines,dietary_restrictions,updated_at)
+        SELECT ?, ?, ?, 'medium', ?, COALESCE(?, '[]'), datetime('now')
+        WHERE EXISTS(SELECT 1 FROM family_meal_preferences WHERE household_id = ? AND user_id = ? AND revision = ? AND preferences_json = ?)
+          AND EXISTS(SELECT 1 FROM users WHERE id = ?)
+        ON CONFLICT(user_id) DO UPDATE SET
+          household_size = excluded.household_size,
+          favorite_cuisines = excluded.favorite_cuisines,
+          dietary_restrictions = CASE WHEN ? IS NULL THEN user_preferences.dietary_restrictions ELSE ? END,
+          updated_at = datetime('now')`)
+        .bind(
+          `pref_${scope.userId}`,
+          scope.userId,
+          preferences.householdSize,
+          JSON.stringify(soft.preferredCuisines),
+          syncedDietary,
+          scope.householdId,
+          scope.userId,
+          expectedRevision + 1,
+          json,
+          scope.userId,
+          syncedDietary,
+          syncedDietary
+        ),
     ]);
     if (results.some((result) => !result.success)) throw new Error('Preference batch failed');
     if (results[0].meta.changes !== 1) {

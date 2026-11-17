@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes, useRecipesSummary } from '../api/hooks';
 import { KeyCountList } from '../components/KeyCountList';
-import { Badge, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
+import { Badge, Button, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
 import { vi } from '../i18n/vi';
+import { formatNumber } from '../lib/format';
 import { useDebouncedValue } from '../lib/hooks';
 
 const PAGE_SIZE = 25;
 const VERIFICATION_TONE: Record<string, Tone> = { unverified: 'neutral', reviewed: 'success', rejected: 'danger' };
+const EDITORIAL_TONE: Record<string, Tone> = { draft: 'neutral', in_review: 'warning', approved: 'success', rejected: 'danger' };
 const VERIFICATION_STATES = ['unverified', 'reviewed', 'rejected'] as const;
 
 export function RecipesPage() {
@@ -26,12 +28,28 @@ export function RecipesPage() {
     page,
     pageSize: PAGE_SIZE,
   });
+
   const resetPage = () => setPage(1);
+  const hasFilters = searchInput !== '' || cuisine !== '' || verification !== '' || source !== '';
+  const clearFilters = () => {
+    setSearchInput('');
+    setCuisine('');
+    setVerification('');
+    setSource('');
+    setPage(1);
+  };
+
   const data = summary.data;
+  const mediaPct = data && data.total > 0 ? ((data.withReadyMedia / data.total) * 100).toFixed(1) : '0.0';
 
   return (
     <>
-      <PageHeader title={vi.recipes.title} description={vi.recipes.description} />
+      <PageHeader
+        eyebrow={vi.recipes.eyebrow}
+        title={vi.recipes.title}
+        description={vi.recipes.description}
+        actions={data ? <Badge tone="brand">{formatNumber(data.total)} món</Badge> : undefined}
+      />
 
       {summary.isPending ? <LoadingState rows={3} /> : null}
       {summary.isError ? <ErrorState error={summary.error} onRetry={() => void summary.refetch()} /> : null}
@@ -39,29 +57,41 @@ export function RecipesPage() {
         <Section title={vi.recipes.summary} testId="admin-recipes-summary">
           <div className="metric-grid">
             <div className="card metric-card">
-              <h3>{vi.recipes.total}</h3>
+              <div className="metric-head">
+                <h3>{vi.recipes.total}</h3>
+              </div>
               <p className="metric-value">{data.total.toLocaleString('vi-VN')}</p>
             </div>
             <div className="card metric-card">
-              <h3>{vi.recipes.withMedia}</h3>
+              <div className="metric-head">
+                <h3>{vi.recipes.withMedia}</h3>
+                <Badge tone="success">{mediaPct}%</Badge>
+              </div>
               <p className="metric-value">{data.withReadyMedia.toLocaleString('vi-VN')}</p>
+              <p className="metric-note">{vi.recipes.mediaCoverage(mediaPct)}</p>
             </div>
             <div className="card metric-card">
-              <h3>{vi.recipes.catalogMode}</h3>
-              <p className="metric-value metric-value-small">{data.catalogMode}</p>
+              <div className="metric-head">
+                <h3>{vi.recipes.catalogMode}</h3>
+              </div>
+              <p className="metric-value metric-value-small mono">{data.catalogMode}</p>
             </div>
           </div>
+
           <div className="three-col">
             <div>
-              <h3>{vi.recipes.byVerification}</h3>
-              <KeyCountList items={data.byVerification.map((row) => ({ key: row.state, count: row.count }))} labelOf={(key) => vi.labels.verification[key] ?? key} />
+              <h3 className="subsection-title">{vi.recipes.byVerification}</h3>
+              <KeyCountList
+                items={data.byVerification.map((row) => ({ key: row.state, count: row.count }))}
+                labelOf={(key) => vi.labels.verification[key] ?? key}
+              />
             </div>
             <div>
-              <h3>{vi.recipes.bySource}</h3>
+              <h3 className="subsection-title">{vi.recipes.bySource}</h3>
               <KeyCountList items={data.bySource.map((row) => ({ key: row.sourceType, count: row.count }))} />
             </div>
             <div>
-              <h3>{vi.recipes.editorialQueue}</h3>
+              <h3 className="subsection-title">{vi.recipes.editorialQueue}</h3>
               <KeyCountList
                 items={data.editorialQueue.map((row) => ({ key: row.state, count: row.count }))}
                 labelOf={(key) => (vi.labels.editorialState as Record<string, string>)[key] ?? key}
@@ -78,6 +108,7 @@ export function RecipesPage() {
               id="admin-recipes-search-input"
               data-testid="admin-recipes-search"
               type="search"
+              placeholder={vi.recipes.searchPlaceholder}
               maxLength={100}
               value={searchInput}
               onChange={(event) => {
@@ -140,13 +171,26 @@ export function RecipesPage() {
               ))}
             </select>
           </Field>
+          {hasFilters ? (
+            <div className="toolbar-actions">
+              <Button variant="ghost" onClick={clearFilters}>
+                {vi.common.clearFilters}
+              </Button>
+            </div>
+          ) : null}
         </div>
 
         {recipes.isPending ? <LoadingState rows={5} /> : null}
         {recipes.isError ? <ErrorState error={recipes.error} onRetry={() => void recipes.refetch()} /> : null}
         {recipes.data && recipes.data.items.length === 0 ? <EmptyState /> : null}
         {recipes.data && recipes.data.items.length > 0 ? (
-          <div className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={recipes.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.recipes.listCaption}>
+          <div
+            className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={recipes.isPlaceholderData || undefined}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.recipes.listCaption}
+          >
             <table className="data-table">
               <caption className="sr-only">{vi.recipes.listCaption}</caption>
               <thead>
@@ -168,7 +212,9 @@ export function RecipesPage() {
                       <Link to={`/recipes/${encodeURIComponent(recipe.id)}`} className="row-link">
                         {recipe.title}
                       </Link>
-                      <div className="mono muted">{recipe.slug}</div>
+                      <div className="cell-sub mono">
+                        {recipe.slug} · {formatNumber(recipe.cookTimeMinutes)} {vi.recipes.minutes}
+                      </div>
                     </td>
                     <td>{recipe.cuisine}</td>
                     <td>{recipe.difficulty}</td>
@@ -177,13 +223,23 @@ export function RecipesPage() {
                         {vi.labels.verification[recipe.verificationState] ?? recipe.verificationState}
                       </Badge>
                     </td>
-                    <td>{recipe.sourceType}</td>
-                    <td>{recipe.version}</td>
-                    <td>{recipe.hasReadyMedia ? vi.recipes.mediaReady : vi.recipes.mediaMissing}</td>
                     <td>
-                      {recipe.latestEditorialState
-                        ? (vi.labels.editorialState as Record<string, string>)[recipe.latestEditorialState] ?? recipe.latestEditorialState
-                        : vi.common.dash}
+                      <Badge tone="neutral">{recipe.sourceType}</Badge>
+                    </td>
+                    <td className="mono">v{recipe.version}</td>
+                    <td>
+                      <Badge tone={recipe.hasReadyMedia ? 'success' : 'warning'}>
+                        {recipe.hasReadyMedia ? vi.recipes.mediaReady : vi.recipes.mediaMissing}
+                      </Badge>
+                    </td>
+                    <td>
+                      {recipe.latestEditorialState ? (
+                        <Badge tone={EDITORIAL_TONE[recipe.latestEditorialState] ?? 'neutral'}>
+                          {(vi.labels.editorialState as Record<string, string>)[recipe.latestEditorialState] ?? recipe.latestEditorialState}
+                        </Badge>
+                      ) : (
+                        vi.common.dash
+                      )}
                     </td>
                   </tr>
                 ))}

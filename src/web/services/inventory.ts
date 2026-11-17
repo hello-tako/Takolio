@@ -1,6 +1,14 @@
 import { findCanonicalIngredient, computeFreshness } from '@frigo/domain';
 import { privateCacheKey } from '../lib/private-session';
-import { fetchJson, isOffline, queueWrite, getHouseholdId, createClientItemId, guardPrivateSession } from './http';
+import {
+  fetchJson,
+  isOffline,
+  queueWrite,
+  getHouseholdId,
+  createClientItemId,
+  guardPrivateSession,
+  readCachedInventory,
+} from './http';
 
 function inventoryVersion(value: unknown): number {
   const version = Number(value);
@@ -41,10 +49,14 @@ export const inventoryApi = {
       const res = await fetchJson<{ item: any }>(path, init);
       assertCurrent();
       if (res && res.item) {
-        const existing = await inventoryApi.getInventory();
+        try {
+          const existing = readCachedInventory(hhId);
+          const updated = [res.item, ...existing.filter((i: any) => i.id !== res.item.id)];
+          localStorage.setItem(cacheKey, JSON.stringify(updated));
+        } catch {
+          // Optional local cache projection must not reject a committed server mutation.
+        }
         assertCurrent();
-        const updated = [res.item, ...existing.filter((i: any) => i.id !== res.item.id)];
-        localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
         return res.item;
       }
       return res as any;
@@ -97,10 +109,16 @@ export const inventoryApi = {
       const res = await fetchJson<{ item: any }>(path, init);
       assertCurrent();
       if (res && res.item) {
-        const existing = await inventoryApi.getInventory();
+        try {
+          const existing = readCachedInventory(hhId);
+          const updated = existing.some((i: any) => i.id === id)
+            ? existing.map((i: any) => (i.id === id ? res.item : i))
+            : [res.item, ...existing];
+          localStorage.setItem(cacheKey, JSON.stringify(updated));
+        } catch {
+          // Optional local cache projection must not reject a committed server mutation.
+        }
         assertCurrent();
-        const updated = existing.map((i: any) => (i.id === id ? res.item : i));
-        localStorage.setItem(privateCacheKey('inventory', hhId), JSON.stringify(updated));
         return res.item;
       }
       return res as any;
@@ -118,7 +136,7 @@ export const inventoryApi = {
       let item = { id, ...updates, version: expectedVersion + 1, pendingSync: true };
       try {
         const existing = JSON.parse(localStorage.getItem(cacheKey) || '[]');
-        const updated = existing.map((entry: any) => entry.id === id ? { ...entry, ...item } : entry);
+        const updated = existing.map((entry: any) => (entry.id === id ? { ...entry, ...item } : entry));
         item = updated.find((entry: any) => entry.id === id) ?? item;
         localStorage.setItem(cacheKey, JSON.stringify(updated));
       } catch {
@@ -139,7 +157,6 @@ export const inventoryApi = {
       'Idempotency-Key': commandId,
       'If-Match': String(inventoryVersion(currentVersion)),
     };
-    let pendingSync = false;
     try {
       await fetchJson(path, { method: 'DELETE', headers });
     } catch (err) {
@@ -153,20 +170,13 @@ export const inventoryApi = {
         `inventory-delete:${id}:${commandId}`,
         headers
       );
-      pendingSync = true;
     }
     assertCurrent();
-    if (pendingSync) {
-      try {
-        const existing = JSON.parse(localStorage.getItem(cacheKey) || '[]');
-        localStorage.setItem(cacheKey, JSON.stringify(existing.filter((item: any) => item.id !== id)));
-      } catch {
-        // A durable delete does not depend on its optional cache projection.
-      }
-    } else {
-      const existing = await inventoryApi.getInventory();
-      assertCurrent();
+    try {
+      const existing = readCachedInventory(hhId);
       localStorage.setItem(cacheKey, JSON.stringify(existing.filter((item: any) => item.id !== id)));
+    } catch {
+      // A durable delete does not depend on its optional cache projection.
     }
     assertCurrent();
   },

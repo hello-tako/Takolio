@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { clsx } from 'clsx';
 import { RECIPE_IMAGE_PLACEHOLDER, type ResolvedRecipeImage } from '../../lib/recipe-media';
 import { RecipeDishIllustration } from '../cooking/CookingTechniqueVisual';
 
-type RecipeMediaProps = {
+export type RecipeMediaProps = {
   image: ResolvedRecipeImage;
   title: string;
   className?: string;
   priority?: boolean;
+  overlay?: React.ReactNode;
+  aspectClass?: string;
 };
 
 export function RecipeMedia(props: RecipeMediaProps) {
@@ -19,13 +22,26 @@ export function RecipeMedia(props: RecipeMediaProps) {
   );
 }
 
-function MediaView({ image, title, className = '', priority = false }: RecipeMediaProps) {
+function MediaView({
+  image,
+  title,
+  className = '',
+  priority = false,
+  overlay,
+  aspectClass = 'aspect-[4/3]',
+}: RecipeMediaProps) {
   const [src, setSrc] = useState(image.source === 'placeholder' ? null : image.src);
   const [loaded, setLoaded] = useState(false);
   const state = src ? (loaded ? 'photo' : 'loading') : 'missing';
+
   return (
     <div
-      className={`recipe-media ${className}`}
+      className={clsx(
+        'recipe-media relative overflow-hidden bg-tk-sunken',
+        aspectClass,
+        state === 'loading' && 'tk-skeleton',
+        className,
+      )}
       data-recipe-media={state}
       aria-busy={state === 'loading'}
     >
@@ -34,10 +50,14 @@ function MediaView({ image, title, className = '', priority = false }: RecipeMed
           key={src}
           src={src}
           alt={title}
-          width={image.width ?? 600}
-          height={image.height ?? 450}
+          width={image.width ?? 800}
+          height={image.height ?? 600}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          className={clsx(
+            'h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.035]',
+            loaded ? 'opacity-100' : 'opacity-90',
+          )}
           onLoad={() => setLoaded(true)}
           onError={() => {
             setLoaded(false);
@@ -49,10 +69,24 @@ function MediaView({ image, title, className = '', priority = false }: RecipeMed
           }}
         />
       ) : (
-        <div className="recipe-media-missing" role="img" aria-label="Chưa có ảnh món ăn">
+        <div
+          className="recipe-media-missing flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-b from-tk-canvas to-tk-sunken p-4 text-center text-xs font-semibold text-tk-muted"
+          role="img"
+          aria-label="Chưa có ảnh món ăn"
+        >
           <RecipeDishIllustration title={title} />
           <span>Chưa có ảnh món ăn</span>
         </div>
+      )}
+
+      {overlay && (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-black/15"
+          />
+          {overlay}
+        </>
       )}
     </div>
   );

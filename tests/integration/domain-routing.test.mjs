@@ -5,7 +5,7 @@ import { DOMAIN_PROFILES, domainProfile } from '../../src/worker/config/domains'
 const base = {
   ENVIRONMENT: 'production', APP_URL: DOMAIN_PROFILES.production.app, PUBLIC_DOMAIN_ROUTING: 'true',
   DB: {}, CACHE: {}, AI: {}, SCAN_QUEUE: {}, QWEN_API_KEY: 'fixture-only',
-  JWT_SECRET: 'fixture-only', OTP_HASH_SECRET: 'fixture-only', TURNSTILE_SITE_KEY: 'fixture', TURNSTILE_SECRET_KEY: 'fixture',
+  JWT_SECRET: 'fixture-only-jwt-secret-at-least-32-bytes', OTP_HASH_SECRET: 'fixture-only-otp-secret-at-least-32-bytes', TURNSTILE_SITE_KEY: 'fixture', TURNSTILE_SECRET_KEY: 'fixture',
   ASSETS: { fetch: async () => new Response('<html><head><meta property="og:url" content="https://frigo.tungjpstore.net"></head><body>Takolio</body></html>', { headers: { 'Content-Type': 'text/html', ETag: 'old-etag' } }) },
 };
 const probe = (path = '/', options = {}, env = base) => worker.fetch(new Request(path.startsWith('https:') ? path : `${env.APP_URL || 'https://takolio.app'}${path}`, options), env);

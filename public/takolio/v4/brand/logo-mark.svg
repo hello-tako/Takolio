@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+    <defs>
+      <radialGradient id="takoCoral" cx="0.38" cy="0.32" r="0.68">
+        <stop offset="0%" stop-color="#FF7863"/>
+        <stop offset="62%" stop-color="#E5533D"/>
+        <stop offset="100%" stop-color="#B83522"/>
+      </radialGradient>
+      <linearGradient id="toqueIvory" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="100%" stop-color="#EFE7DA"/>
+      </linearGradient>
+      <linearGradient id="herbApron" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#25845B"/>
+        <stop offset="100%" stop-color="#155338"/>
+      </linearGradient>
+    </defs>
+    
+    <g transform="translate(0, 0) scale(1)">
+      <!-- Ground Soft Contact Shadow -->
+      <ellipse cx="256" cy="442" rx="154" ry="26" fill="#1B2A24" fill-opacity="0.14"/>
+      <!-- Puffed Chef Toque -->
+      <path d="M168 164 C142 124 172 74 216 82 C232 54 280 54 296 82 C340 74 370 124 344 164 Z" fill="url(#toqueIvory)" stroke="#D9CFC0" stroke-width="6"/>
+      <rect x="172" y="150" width="168" height="36" rx="14" fill="#FBF8F3" stroke="#D9CFC0" stroke-width="5"/>
+      <!-- Botanical Leaf Emblem on Toque -->
+      <path d="M256 112 C282 102 302 120 292 146 C268 154 250 136 256 112 Z" fill="#1B6B4A"/>
+      <path d="M252 124 C234 118 222 130 228 148 C244 152 254 140 252 124 Z" fill="#2E9468"/>
+      <!-- Curled Tentacles -->
+      <path d="M148 338 C98 352 72 396 102 422 C126 442 162 424 176 394" fill="none" stroke="url(#takoCoral)" stroke-width="38" stroke-linecap="round"/>
+      <path d="M364 338 C414 352 440 396 410 422 C386 442 350 424 336 394" fill="none" stroke="url(#takoCoral)" stroke-width="38" stroke-linecap="round"/>
+      <path d="M204 358 C192 398 176 428 206 436" fill="none" stroke="url(#takoCoral)" stroke-width="34" stroke-linecap="round"/>
+      <path d="M308 358 C320 398 336 428 306 436" fill="none" stroke="url(#takoCoral)" stroke-width="34" stroke-linecap="round"/>
+      <!-- Sculpted Head Dome -->
+      <ellipse cx="256" cy="272" rx="126" ry="114" fill="url(#takoCoral)"/>
+      <!-- Cheek Blush -->
+      <ellipse cx="178" cy="288" rx="22" ry="13" fill="#FFB3A7" fill-opacity="0.55"/>
+      <ellipse cx="334" cy="288" rx="22" ry="13" fill="#FFB3A7" fill-opacity="0.55"/>
+      <!-- Glossy Eyes + Catchlights -->
+      <ellipse cx="208" cy="264" rx="20" ry="25" fill="#101B24"/>
+      <circle cx="201" cy="254" r="7" fill="#FFFDF9"/>
+      <ellipse cx="304" cy="264" rx="20" ry="25" fill="#101B24"/>
+      <circle cx="297" cy="254" r="7" fill="#FFFDF9"/>
+      <!-- Joyful Smile -->
+      <path d="M232 302 Q256 324 280 302" fill="none" stroke="#651F2A" stroke-width="10" stroke-linecap="round"/>
+      <!-- Fitted Botanical Herb Apron -->
+      <path d="M182 344 Q256 362 330 344 L318 408 Q256 424 194 408 Z" fill="url(#herbApron)" stroke="#FBF8F3" stroke-width="5"/>
+      <!-- Wooden Cooking Ladle -->
+      <line x1="392" y1="382" x2="432" y2="236" stroke="#C88A52" stroke-width="16" stroke-linecap="round"/>
+      <ellipse cx="436" cy="222" rx="24" ry="30" transform="rotate(14 436 222)" fill="#D99B62" stroke="#A66D38" stroke-width="4"/>
+    </g>
+  </svg>

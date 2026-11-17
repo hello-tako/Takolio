@@ -13,6 +13,7 @@ const allergens: Record<string, string> = {
   shellfish: 'giáp xác / nhuyễn thể',
   fish: 'cá',
 };
+
 const ingredientNames = (ids: string[]) =>
   ids.map((id) => CANONICAL_INGREDIENTS.find((item) => item.id === id)?.nameVi ?? id).join(', ');
 
@@ -20,31 +21,34 @@ export function FamilyPreferenceSummary({ value }: { value: FamilyPreferences })
   const hardAvoid = value.forbiddenIngredientIds ?? [];
   const allergy = value.allergens ?? [];
   return (
-    <dl className="family-preference-summary" data-testid="family-preference-review">
-      <div>
-        <dt>Khẩu vị & kiểu bữa</dt>
-        <dd>
+    <dl
+      className="divide-y divide-tk-stone/60 text-xs sm:text-sm"
+      data-testid="family-preference-review"
+    >
+      <div className="py-2.5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+        <dt className="font-bold text-tk-muted">Khẩu vị &amp; kiểu bữa</dt>
+        <dd className="font-semibold text-tk-ink sm:text-right">
           {value.preferredRegions.map((region) => regions[region]).join(', ') ||
             'Món Việt mọi vùng'}{' '}
           ·{' '}
           {value.mealStyle === 'family'
-            ? 'chính, rau/phụ, canh, cơm'
+            ? 'mâm cơm gia đình 3–4 món'
             : value.mealStyle === 'quick'
               ? 'bữa nhanh gọn'
               : 'một món trọn bữa'}{' '}
-          · {value.preferredTimeMinutes} phút mong muốn
+          · {value.preferredTimeMinutes} phút
         </dd>
       </div>
-      <div>
-        <dt>Lịch tự nấu</dt>
-        <dd>
+      <div className="py-2.5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+        <dt className="font-bold text-tk-muted">Lịch tự nấu</dt>
+        <dd className="font-semibold text-tk-ink sm:text-right">
           {value.cookingMealTypes.map((meal) => meals[meal]).join(', ')} ·{' '}
           {value.cookingDays.map((day) => days[day]).join(', ')}
         </dd>
       </div>
-      <div>
-        <dt>Nhịp đi chợ & đổi vị</dt>
-        <dd>
+      <div className="py-2.5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+        <dt className="font-bold text-tk-muted">Nhịp đi chợ &amp; đổi vị</dt>
+        <dd className="font-semibold text-tk-ink sm:text-right">
           {value.shoppingCadence === 'daily'
             ? 'mỗi ngày'
             : value.shoppingCadence === 'weekly'
@@ -53,9 +57,9 @@ export function FamilyPreferenceSummary({ value }: { value: FamilyPreferences })
           · tối đa {value.internationalMealsPerWeek} bữa quốc tế / tuần
         </dd>
       </div>
-      <div>
-        <dt>Dị ứng & bắt buộc tránh</dt>
-        <dd>
+      <div className="py-2.5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+        <dt className="font-bold text-tk-muted">Dị ứng &amp; bắt buộc tránh</dt>
+        <dd className="font-semibold text-tk-ink sm:text-right">
           {allergy.length
             ? `Dị ứng: ${allergy.map((id) => allergens[id] ?? id).join(', ')}`
             : 'Chưa chọn dị ứng'}
@@ -63,9 +67,11 @@ export function FamilyPreferenceSummary({ value }: { value: FamilyPreferences })
         </dd>
       </div>
       {value.dislikedIngredientIds.length > 0 && (
-        <div>
-          <dt>Khẩu vị không thích</dt>
-          <dd>{ingredientNames(value.dislikedIngredientIds)} · ưu tiên mềm</dd>
+        <div className="py-2.5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+          <dt className="font-bold text-tk-muted">Khẩu vị không thích</dt>
+          <dd className="font-semibold text-tk-ink sm:text-right">
+            {ingredientNames(value.dislikedIngredientIds)} · ưu tiên mềm
+          </dd>
         </div>
       )}
     </dl>

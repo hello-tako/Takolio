@@ -633,5 +633,29 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT id, household_id, user_id, 
  household_id, user_id, recipe_id, servings_cooked, deductions_applied, completed_at FROM cooked_meals);
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+.read migrations/0047_saved_recipe_content.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('generated_meal_plan_components') WHERE name = 'recipe_content_fingerprint';
+-- Takolio V4 (0048): additive multi-member invites, durable cooking sessions, persistent notifications, and operational indexes.
+.read migrations/0048_takolio_v4_unified_platform.sql
+.read migrations/0048_takolio_v4_unified_platform.sql
+INSERT INTO assert_one SELECT COUNT(*) = 3 FROM sqlite_master WHERE type = 'table' AND name IN ('household_invites', 'cooking_sessions', 'user_notifications');
+INSERT INTO assert_one SELECT COUNT(*) = 11 FROM sqlite_master WHERE type = 'index' AND name IN (
+  'idx_household_invites_household_id',
+  'idx_household_invites_invite_code',
+  'idx_cooking_sessions_hh_status_updated',
+  'idx_user_notifications_hh_read_created',
+  'idx_household_members_user_id',
+  'idx_shopping_lists_household_id',
+  'idx_scans_household_created_at',
+  'idx_scans_status_created_at',
+  'idx_inventory_obs_hh_status',
+  'idx_cooked_meals_hh_completed',
+  'idx_ai_requests_created_at'
+);
+INSERT INTO assert_zero SELECT COUNT(*) FROM household_invites;
+INSERT INTO assert_zero SELECT COUNT(*) FROM cooking_sessions;
+INSERT INTO assert_zero SELECT COUNT(*) FROM user_notifications;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

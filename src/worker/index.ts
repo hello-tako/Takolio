@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { isTrustedOrigin } from './config/origins';
 import { publicDomainRouting } from './middleware/domains';
-import { DOMAIN_PROFILES } from './config/domains';
+import { hstsHeaderValue } from './config/domains';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { HTTPException } from 'hono/http-exception';
@@ -22,6 +22,8 @@ import { preferencesRoutes } from './routes/preferences';
 import { familyPreferencesRoutes } from './routes/family-preferences';
 import { recipeFavoritesRoutes } from './routes/recipe-favorites';
 import { notificationRoutes } from './routes/notifications';
+import { householdRoutes } from './routes/households';
+import { aiCopilotRoutes } from './routes/ai-copilot';
 import { weekRoutes } from './routes/week';
 import { mealPlanningRoutes } from './routes/meal-planning';
 import { createFamilyMealPlanningRoutes } from './routes/family-meal-planning';
@@ -31,7 +33,7 @@ import { buildRequestTelemetry, createRequestCorrelation, emitRequestTelemetry }
 
 const SCAN_RETRY_DELAY_SECONDS = 5;
 
-type WorkerVariables = { auth: AuthContext; requestId: string; internalRequestError?: boolean };
+type WorkerVariables = { auth: AuthContext; householdRole?: string; requestId: string; internalRequestError?: boolean };
 type WorkerApp = { Bindings: Env; Variables: WorkerVariables };
 
 const app = new Hono<WorkerApp>();
@@ -58,29 +60,25 @@ app.use('*', async (c, next) => {
   }
 });
 
-// Domain cutover must not extend HSTS to unaudited subdomains.
-app.use('*', async (c, next) => {
-  await next();
-  const legacy = Object.values(DOMAIN_PROFILES).some((profile) => profile.legacy === new URL(c.req.url).origin);
-  if (c.env.PUBLIC_DOMAIN_ROUTING === 'true') c.header('Strict-Transport-Security',
-    legacy ? 'max-age=63072000; includeSubDomains; preload' : 'max-age=31536000');
-});
-
 // 2. Global Security Middlewares
 app.use('*', secureHeaders({
   xFrameOptions: 'DENY',
   xContentTypeOptions: 'nosniff',
   referrerPolicy: 'strict-origin-when-cross-origin',
+  // Disable Hono's default 180-day includeSubDomains HSTS so it cannot overwrite
+  // host-specific hstsHeaderValue(c.req.url) when the middleware onion unwinds.
+  strictTransportSecurity: false,
   // COOP is path-sensitive: the SPA must keep its opener for Google GIS,
   // while the middleware below restores strict isolation for API responses.
   crossOriginOpenerPolicy: false,
 }));
 
-// SEC-7: additional security headers hono's secureHeaders doesn't cover
+// SEC-7: additional security headers hono's secureHeaders doesn't cover.
+// Domain cutover must not extend HSTS includeSubDomains/preload to unaudited subdomains.
 app.use('*', async (c, next) => {
   await next();
-  c.header('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
-  c.header('Permissions-Policy', 'camera=(self), microphone=(), geolocation=(), payment=()');
+  c.header('Strict-Transport-Security', hstsHeaderValue(c.req.url));
+  c.header('Permissions-Policy', 'camera=(self), microphone=(self), geolocation=(), payment=()');
   // Google Identity Services uses a popup and needs to retain its opener
   // relationship while exchanging the signed credential. Keep API responses
   // isolated, but allow the SPA document to communicate with OAuth popups.
@@ -160,6 +158,8 @@ api.route('/', preferencesRoutes);
 api.route('/', familyPreferencesRoutes);
 api.route('/', recipeFavoritesRoutes);
 api.route('/', notificationRoutes);
+api.route('/', householdRoutes);
+api.route('/', aiCopilotRoutes);
 api.route('/', weekRoutes);
 api.route('/', mealPlanningRoutes);
 

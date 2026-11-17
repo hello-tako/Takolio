@@ -33,7 +33,7 @@ beforeAll(async () => {
       assets: { directory, binding: 'ASSETS', run_worker_first: true, routerConfig: { has_user_worker: true },
         assetConfig: { html_handling: 'auto-trailing-slash', not_found_handling: 'single-page-application' } },
       bindings: { ENVIRONMENT: environment, APP_URL: environment === 'production' ? 'https://takolio.app' : 'https://staging.takolio.app',
-        PUBLIC_DOMAIN_ROUTING: 'true', QWEN_API_KEY: 'fixture-only', JWT_SECRET: 'fixture-only', OTP_HASH_SECRET: 'fixture-only',
+        PUBLIC_DOMAIN_ROUTING: 'true', QWEN_API_KEY: 'fixture-only', JWT_SECRET: 'fixture-only-jwt-secret-at-least-32-bytes', OTP_HASH_SECRET: 'fixture-only-otp-secret-at-least-32-bytes',
         TURNSTILE_SITE_KEY: 'fixture', TURNSTILE_SECRET_KEY: 'fixture' },
       outboundService: () => { throw new Error('External provider calls forbidden'); },
     }));

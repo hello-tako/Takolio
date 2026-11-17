@@ -14,6 +14,7 @@ import {
 } from '../../../packages/domain/src/inventory-observations';
 import { LotCommandError } from '../../../packages/domain/src/inventory-lot-commands';
 import { readInventoryAuthorityMode } from '../../../packages/db/src/inventory-writer-fence';
+import { ensureHouseholdAdopted } from '../../../packages/db/src/inventory-adoption-executor';
 import { inventoryAuthorityFailure } from '../utils/inventory-authority';
 import { provenanceDataSource } from '../utils/scan-evidence';
 import type { InventoryReadItem } from '../../../packages/domain/src/inventory-read-authority';
@@ -158,6 +159,17 @@ inventoryTruthRoutes.get('/inventory/summary', async (c) => {
     // recoverable code instead of an empty list that would look like
     // "your fridge is empty".
     if (await readInventoryAuthorityMode(db, auth.householdId) !== 'native') {
+      if (c.req.query('autoAdopt') === 'true') {
+        const legacyCount = await db
+          .prepare('SELECT COUNT(*) AS cnt FROM inventory_items WHERE household_id = ?')
+          .bind(auth.householdId)
+          .first<{ cnt: number }>();
+        if (Number(legacyCount?.cnt ?? 0) === 0) {
+          await ensureHouseholdAdopted(db, { householdId: auth.householdId, actorId: auth.userId });
+        }
+      }
+    }
+    if (await readInventoryAuthorityMode(db, auth.householdId) !== 'native') {
       return c.json({
         error: 'Tủ lạnh này chưa bật lớp quản lý theo lô',
         code: 'INVENTORY_AUTHORITY_REQUIRED',
@@ -182,6 +194,17 @@ inventoryTruthRoutes.get('/inventory/lots/:lotId', async (c) => {
   if (!db) return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   try {
     const scope = { householdId: auth.householdId, actorId: auth.userId };
+    if (await readInventoryAuthorityMode(db, auth.householdId) !== 'native') {
+      if (c.req.query('autoAdopt') === 'true') {
+        const legacyCount = await db
+          .prepare('SELECT COUNT(*) AS cnt FROM inventory_items WHERE household_id = ?')
+          .bind(auth.householdId)
+          .first<{ cnt: number }>();
+        if (Number(legacyCount?.cnt ?? 0) === 0) {
+          await ensureHouseholdAdopted(db, { householdId: auth.householdId, actorId: auth.userId });
+        }
+      }
+    }
     if (await readInventoryAuthorityMode(db, auth.householdId) !== 'native') {
       return c.json({
         error: 'Tủ lạnh này chưa bật lớp quản lý theo lô',

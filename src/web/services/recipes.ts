@@ -1,5 +1,6 @@
 import {
   ALL_RECIPES,
+  expandCatalogWithV5Masterpieces,
   rankRecipes,
   evaluateRecipeMatch,
   type Recipe,
@@ -22,6 +23,9 @@ import {
   guardPrivateSession,
 } from './http';
 import { inventoryApi } from './inventory';
+
+const offlineRecipesBank = (): Recipe[] =>
+  import.meta.env.MODE !== 'test' ? expandCatalogWithV5Masterpieces(ALL_RECIPES) : ALL_RECIPES;
 
 export const recipesApi = {
   getRecommendations: async (params?: {
@@ -50,7 +54,7 @@ export const recipesApi = {
       if (!isOffline(err)) throw err;
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
-      let target = ALL_RECIPES;
+      let target = offlineRecipesBank();
       if (params?.category) {
         target = target.filter((r) => r.category === params.category);
       }
@@ -81,7 +85,7 @@ export const recipesApi = {
     } catch (err) {
       assertCurrent();
       if (!isOffline(err)) throw err;
-      const recipe = ALL_RECIPES.find((r) => r.id === id || r.slug === id);
+      const recipe = offlineRecipesBank().find((r) => r.id === id || r.slug === id);
       if (!recipe) throw err;
       const fingerprint = await fingerprintRecipes([recipe]);
       assertCurrent();

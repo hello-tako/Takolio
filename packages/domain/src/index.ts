@@ -602,3 +602,5 @@ export * from './meal-planning-api';
 export * from './meal-shopping-api';
 // T11 canonical inventory read model
 export * from './inventory-read-authority';
+// Takolio V4 Dual Culinary <-> Storage Unit Bridge & Expanded Taxonomy
+export * from './culinary-units-v4';

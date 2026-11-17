@@ -9,6 +9,7 @@ interface WeekExportModalProps {
   plan: MealPlan;
   shoppingItems?: AggregatedShoppingItem[];
 }
+
 export function WeekExportModal({
   isOpen,
   onClose,
@@ -24,6 +25,7 @@ export function WeekExportModal({
   const busy = useRef(false);
   const titleId = useId();
   useModalFocus(isOpen, panelRef, onClose, closeRef);
+
   useEffect(() => {
     epoch.current += 1;
     busy.current = false;
@@ -33,13 +35,14 @@ export function WeekExportModal({
       epoch.current += 1;
     };
   }, [isOpen, plan.id]);
+
   useEffect(() => {
     if (feedback?.error) feedbackRef.current?.focus();
   }, [feedback]);
+
   if (!isOpen) return null;
   const totalMeals = plan.days.reduce((count, day) => count + day.slots.length, 0);
 
-  // Generate Menu text
   const generateMenuText = () => {
     const lines = [
       `🥗 THỰC ĐƠN TUẦN NÀY (${totalMeals} bữa)`,
@@ -69,7 +72,6 @@ export function WeekExportModal({
     return lines.join('\n');
   };
 
-  // Generate Shopping list text
   const generateShoppingText = () => {
     const lines = [
       `🛒 DANH SÁCH ĐI CHỢ TUẦN (${shoppingItems.length} món)`,
@@ -136,6 +138,7 @@ export function WeekExportModal({
       }
     }
   }
+
   async function share() {
     if (busy.current) return;
     if (!navigator.share) {
@@ -172,46 +175,57 @@ export function WeekExportModal({
       }
     }
   }
+
   return (
-    <div className="week-modal-backdrop" onClick={onClose} role="presentation">
+    <div
+      className="week-modal-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/45 backdrop-blur-xs sm:items-center"
+      onClick={onClose}
+      role="presentation"
+    >
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         onClick={(event) => event.stopPropagation()}
-        className="week-dialog"
+        className="week-dialog flex max-h-[88dvh] w-full flex-col rounded-t-[28px] border border-tk-stone bg-tk-canvas text-tk-ink shadow-elevated sm:max-w-lg sm:rounded-[28px]"
       >
-        <div className="week-dialog-heading">
+        <div className="week-dialog-heading flex items-start justify-between gap-3 border-b border-tk-stone/80 bg-white/90 p-5">
           <div>
-            <p className="week-eyebrow">CÙNG XEM, CÙNG CHUẨN BỊ</p>
-            <h2 id={titleId}>Chia sẻ thực đơn tuần</h2>
+            <p className="week-eyebrow text-xs font-extrabold uppercase tracking-wider text-tk-jade-deep">
+              CÙNG XEM, CÙNG CHUẨN BỊ
+            </p>
+            <h2 id={titleId} className="mt-1 font-heading text-lg font-extrabold text-tk-ink">
+              Chia sẻ thực đơn tuần
+            </h2>
           </div>
           <button
             ref={closeRef}
             type="button"
-            className="week-icon-button"
+            className="week-icon-button inline-flex h-10 w-10 items-center justify-center rounded-xl text-tk-muted transition-colors hover:bg-tk-sunken hover:text-tk-ink"
             onClick={onClose}
             aria-label="Đóng chia sẻ"
           >
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <div className="week-dialog-body">
-          <p className="week-muted">
+
+        <div className="week-dialog-body flex-1 space-y-4 overflow-y-auto p-5">
+          <p className="week-muted text-xs leading-relaxed text-tk-secondary">
             Sao chép nội dung rồi gửi qua ứng dụng bạn chọn. Giá và mức tận dụng tủ trong bản chia
             sẻ là dự kiến.
           </p>
-          <div className="week-export-preview">
-            <h3>
+
+          <div className="week-export-preview space-y-2 rounded-2xl border border-tk-stone bg-white p-4">
+            <h3 className="font-heading text-sm font-extrabold text-tk-ink">
               {totalMeals} bữa · {shoppingItems.length} nguyên liệu cần mua
             </h3>
-            <p>{plan.budget.displayText}</p>
-            <ul>
+            <p className="text-xs font-bold text-tk-jade-deep">{plan.budget.displayText}</p>
+            <ul className="divide-y divide-tk-stone/60 text-xs">
               {plan.days.map((day) => (
-                <li key={day.id}>
-                  <strong>{day.dayNameVi}</strong>
-                  <span>
+                <li key={day.id} className="flex justify-between gap-3 py-1.5">
+                  <strong className="shrink-0 font-bold text-tk-ink">{day.dayNameVi}</strong>
+                  <span className="truncate text-right text-tk-secondary">
                     {day.slots.map((slot) => slot.recipe?.title || 'Tự chọn').join(' · ') ||
                       'Tự do'}
                   </span>
@@ -219,34 +233,41 @@ export function WeekExportModal({
               ))}
             </ul>
           </div>
-          <div className="week-actions week-export-actions">
+
+          <div className="week-actions week-export-actions grid gap-2">
             <button
               type="button"
-              className="week-button week-button-secondary"
+              className="week-button week-button-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-tk-stone bg-white px-4 py-2.5 text-sm font-bold text-tk-ink transition-colors hover:bg-tk-sunken disabled:opacity-50"
               disabled={pending}
               onClick={() => copy('shopping')}
             >
-              <Copy size={18} aria-hidden="true" />
+              <Copy size={17} aria-hidden="true" />
               Sao chép danh sách đi chợ
             </button>
             <button
               type="button"
-              className="week-button week-button-secondary"
+              className="week-button week-button-secondary inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-tk-stone bg-white px-4 py-2.5 text-sm font-bold text-tk-ink transition-colors hover:bg-tk-sunken disabled:opacity-50"
               disabled={pending}
               onClick={() => copy('menu')}
             >
-              <Copy size={18} aria-hidden="true" />
+              <Copy size={17} aria-hidden="true" />
               Sao chép thực đơn
             </button>
-            <button type="button" className="week-button" disabled={pending} onClick={share}>
-              <Share2 size={18} aria-hidden="true" />
+            <button
+              type="button"
+              className="week-button inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl bg-tk-flame px-4 py-2.5 text-sm font-extrabold text-white shadow-float transition-tap hover:bg-tk-flame-hover disabled:opacity-50"
+              disabled={pending}
+              onClick={share}
+            >
+              <Share2 size={17} aria-hidden="true" />
               {typeof navigator.share === 'function'
                 ? 'Chia sẻ trên thiết bị'
                 : 'Sao chép danh sách để gửi'}
             </button>
           </div>
+
           {pending && (
-            <p role="status" className="week-muted">
+            <p role="status" className="week-muted text-xs font-semibold text-tk-secondary">
               Đang chờ kết quả từ thiết bị…
             </p>
           )}
@@ -255,7 +276,11 @@ export function WeekExportModal({
               ref={feedbackRef}
               tabIndex={feedback.error ? -1 : undefined}
               role={feedback.error ? 'alert' : 'status'}
-              className={feedback.error ? 'week-error' : 'week-note'}
+              className={
+                feedback.error
+                  ? 'week-error rounded-2xl border border-tk-berry/30 bg-tk-berry-soft p-3 text-xs font-semibold text-tk-berry-deep'
+                  : 'week-note rounded-2xl border border-tk-jade/25 bg-tk-jade-soft p-3 text-xs font-bold text-tk-jade-deep'
+              }
             >
               {feedback.message}
             </p>

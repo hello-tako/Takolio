@@ -55,15 +55,16 @@ export function ReviewFields({
 }) {
   const fieldId = (field: string) =>
     receipt ? `receipt-${field}-${prefix.slice(8)}` : `${prefix}-${field}`;
+
   return (
     <fieldset disabled={disabled} className="review-fields">
       <legend className="sr-only">Thông tin bạn xác nhận</legend>
-      <label className="review-field-wide" htmlFor={`${fieldId('name')}`}>
+      <label className="review-field-wide font-semibold text-tk-secondary" htmlFor={fieldId('name')}>
         {receipt ? 'Tên sản phẩm' : 'Tên nguyên liệu'}
         <input
-          id={`${fieldId('name')}`}
+          id={fieldId('name')}
           aria-label={receipt ? 'Tên sản phẩm' : 'Tên nguyên liệu'}
-          className="review-input"
+          className="review-input !rounded-xl !border-tk-stone focus:!border-tk-jade focus:outline-none"
           value={item.rawName}
           required
           pattern=".*\S.*"
@@ -72,12 +73,12 @@ export function ReviewFields({
           onChange={(event) => onChange({ rawName: event.target.value })}
         />
       </label>
-      <label htmlFor={`${fieldId('quantity')}`}>
+      <label className="font-semibold text-tk-secondary" htmlFor={fieldId('quantity')}>
         Số lượng
         <input
-          id={`${fieldId('quantity')}`}
-          aria-label={'Số lượng'}
-          className="review-input"
+          id={fieldId('quantity')}
+          aria-label="Số lượng"
+          className="review-input !rounded-xl !border-tk-stone focus:!border-tk-jade focus:outline-none tk-tabular"
           type="number"
           inputMode="decimal"
           min={Number.MIN_VALUE}
@@ -94,12 +95,12 @@ export function ReviewFields({
           }
         />
       </label>
-      <label htmlFor={`${fieldId('unit')}`}>
+      <label className="font-semibold text-tk-secondary" htmlFor={fieldId('unit')}>
         Đơn vị
         <select
-          id={`${fieldId('unit')}`}
-          aria-label={'Đơn vị'}
-          className="review-input"
+          id={fieldId('unit')}
+          aria-label="Đơn vị"
+          className="review-input !rounded-xl !border-tk-stone focus:!border-tk-jade focus:outline-none"
           value={item.unit}
           disabled={disabled}
           onChange={(event) => onChange({ unit: event.target.value as StandardUnit })}
@@ -111,12 +112,12 @@ export function ReviewFields({
           ))}
         </select>
       </label>
-      <label htmlFor={`${fieldId('storage')}`}>
+      <label className="font-semibold text-tk-secondary" htmlFor={fieldId('storage')}>
         {receipt ? 'Nơi bảo quản' : 'Bảo quản'}
         <select
-          id={`${fieldId('storage')}`}
+          id={fieldId('storage')}
           aria-label={receipt ? 'Nơi bảo quản' : 'Bảo quản'}
-          className="review-input"
+          className="review-input !rounded-xl !border-tk-stone focus:!border-tk-jade focus:outline-none"
           value={item.storage}
           disabled={disabled}
           onChange={(event) => onChange({ storage: event.target.value as ReviewValues['storage'] })}
@@ -126,12 +127,12 @@ export function ReviewFields({
           <option value="pantry">Kệ bếp</option>
         </select>
       </label>
-      <label htmlFor={`${fieldId('expiry')}`}>
+      <label className="font-semibold text-tk-secondary" htmlFor={fieldId('expiry')}>
         {receipt ? 'Hạn dùng trên nhãn' : 'Hạn dùng'}
         <input
-          id={`${fieldId('expiry')}`}
+          id={fieldId('expiry')}
           aria-label={receipt ? 'Hạn dùng trên nhãn' : 'Hạn dùng'}
-          className="review-input"
+          className="review-input !rounded-xl !border-tk-stone focus:!border-tk-jade focus:outline-none"
           type="date"
           value={item.expiryDate ?? ''}
           disabled={disabled}
@@ -142,7 +143,7 @@ export function ReviewFields({
         />
       </label>
       {!disabled && !validReviewValues(item) && (
-        <p className="review-field-wide review-field-error" role="alert">
+        <p className="review-field-wide review-field-error font-semibold" role="alert">
           Cần có tên, số lượng lớn hơn 0 (tối đa 10.000) và ngày hợp lệ.
         </p>
       )}

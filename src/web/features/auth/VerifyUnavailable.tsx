@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../../components/common/Button';
+import { ActionButton } from '../../design-system/v4/AtelierPrimitives';
 
 interface VerifyUnavailableProps {
   onRegister: () => void;
@@ -13,19 +13,19 @@ export const VerifyUnavailable: React.FC<VerifyUnavailableProps> = ({ onRegister
   <div className="mt-6 space-y-4" data-testid="verify-context-missing">
     <div
       role="note"
-      className="rounded-card border border-dashed border-semantic-border-strong bg-semantic-background-subtle px-4 py-3.5"
+      className="rounded-2xl border border-dashed border-tk-stone bg-tk-sunken/75 px-4 py-4"
     >
-      <p className="text-sm font-semibold text-semantic-text-secondary">Không có yêu cầu xác thực đang chờ</p>
-      <p className="mt-1 text-xs leading-relaxed text-semantic-text-muted">
+      <p className="text-sm font-extrabold text-tk-ink">Không có yêu cầu xác thực đang chờ</p>
+      <p className="mt-1.5 text-xs leading-relaxed text-tk-secondary">
         Trang này chỉ dùng ngay sau khi đăng ký hoặc đăng nhập bằng tài khoản chưa xác thực trên
         cùng thiết bị. Takolio không thể gửi mã OTP khi chưa biết email của bạn.
       </p>
     </div>
-    <Button fullWidth size="lg" type="button" onClick={onRegister}>
+    <ActionButton variant="flame" size="lg" fullWidth type="button" onClick={onRegister}>
       Tạo tài khoản mới
-    </Button>
-    <Button fullWidth size="lg" type="button" variant="outline" onClick={onLogin}>
+    </ActionButton>
+    <ActionButton variant="ceramic" size="lg" fullWidth type="button" onClick={onLogin}>
       Đăng nhập bằng tài khoản đã có
-    </Button>
+    </ActionButton>
   </div>
 );

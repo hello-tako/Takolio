@@ -1,11 +1,12 @@
 import { Env } from '../types';
-import { getRetentionConfig } from '../config/retention';
+import { getExtendedRetentionConfig } from '../config/retention';
 import { validateEnvironment } from '../config/validation';
 import { reconcileStaleScanReservations } from './scan-quota';
 
 /**
- * Scheduled cleanup for expired OTPs, expired sessions, and terminal scan
- * queue ledger rows. All statements DELETE rows whose natural expiry or
+ * Scheduled cleanup for expired OTPs, expired sessions, terminal scan queue
+ * ledger rows, expired R2 scan objects + rows (>90d), and abandoned expired
+ * guest accounts (>30d). All statements DELETE rows whose natural expiry or
  * terminal timestamp is older than the retention window, so re-running the
  * cron is always safe (replay-safe/idempotent) and active rows are retained.
  *
@@ -125,6 +126,124 @@ export async function cleanupStaleScanReservations(
   return reconcileStaleScanReservations(db, staleMinutes);
 }
 
+/**
+ * Delete R2 scan objects (`image_key`) before pruning terminal `scans` rows
+ * older than `scanDays` (default 90 days). Never deletes active (`pending` /
+ * `processing`) scans, scans with retained `scan_queue_jobs`, or scans with
+ * reserved quota ledger entries.
+ */
+export async function cleanupExpiredScans(
+  db: NonNullable<Env['DB']>,
+  imagesBucket: Env['IMAGES'] | undefined,
+  scanDays: number,
+): Promise<number> {
+  const candidates = await db
+    .prepare(
+      `SELECT id, image_key FROM scans
+        WHERE status IN ('ready', 'confirmed', 'failed')
+          AND datetime(created_at) IS NOT NULL
+          AND datetime(created_at) < datetime('now', ?)
+          AND NOT EXISTS (SELECT 1 FROM scan_queue_jobs j WHERE j.scan_id = scans.id)
+          AND NOT EXISTS (SELECT 1 FROM scan_quota_ledger q WHERE q.scan_id = scans.id AND q.status = 'reserved')
+        ORDER BY datetime(created_at) ASC
+        LIMIT 200`
+    )
+    .bind(`-${scanDays} days`)
+    .all<{ id: string; image_key: string | null }>();
+
+  const rows = candidates.results ?? [];
+  if (rows.length === 0) return 0;
+
+  const imageKeys = Array.from(
+    new Set(
+      rows
+        .map((row) => row.image_key)
+        .filter((key): key is string => typeof key === 'string' && key.trim().length > 0)
+    )
+  );
+  if (imagesBucket && imageKeys.length > 0) {
+    await imagesBucket.delete(imageKeys.length === 1 ? imageKeys[0] : imageKeys);
+  }
+
+  const placeholders = rows.map(() => '?').join(',');
+  const del = await db
+    .prepare(
+      `DELETE FROM scans
+        WHERE id IN (${placeholders})
+          AND status IN ('ready', 'confirmed', 'failed')
+          AND NOT EXISTS (SELECT 1 FROM scan_queue_jobs j WHERE j.scan_id = scans.id)
+          AND NOT EXISTS (SELECT 1 FROM scan_quota_ledger q WHERE q.scan_id = scans.id AND q.status = 'reserved')`
+    )
+    .bind(...rows.map((row) => row.id))
+    .run();
+
+  return changesOf(del);
+}
+
+/**
+ * Prune abandoned expired guest users (`is_guest = 1`, older than `guestDays`
+ * default 30 days, with zero active `sessions_v2` and zero immutable ledger
+ * or retained operational history).
+ */
+export async function cleanupAbandonedGuests(
+  db: NonNullable<Env['DB']>,
+  guestDays: number,
+): Promise<number> {
+  const eligibleUsersSubquery = `
+    SELECT u.id FROM users u
+     WHERE u.is_guest = 1
+       AND datetime(u.created_at) IS NOT NULL
+       AND datetime(u.created_at) < datetime('now', ?)
+       AND NOT EXISTS (
+         SELECT 1 FROM sessions_v2 s
+          WHERE s.user_id = u.id
+            AND s.revoked_at IS NULL
+            AND datetime(s.expires_at) >= datetime('now')
+       )
+       AND NOT EXISTS (SELECT 1 FROM scans sc WHERE sc.user_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM cooked_meals cm WHERE cm.user_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM inventory_adoption_receipts iar WHERE iar.actor_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM inventory_commands ic WHERE ic.actor_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM inventory_reconciliation_decisions ird WHERE ird.actor_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM week_swap_receipts wsr WHERE wsr.actor_id = u.id)
+       AND NOT EXISTS (SELECT 1 FROM shopping_plan_sources sps WHERE sps.creator_user_id = u.id)
+  `;
+
+  const windowParam = `-${guestDays} days`;
+  const results = await db.batch([
+    db
+      .prepare(`UPDATE ai_requests SET user_id = NULL WHERE user_id IN (${eligibleUsersSubquery})`)
+      .bind(windowParam),
+    db
+      .prepare(
+        `DELETE FROM households
+          WHERE created_by IN (${eligibleUsersSubquery})
+            AND NOT EXISTS (
+              SELECT 1 FROM household_members hm
+               WHERE hm.household_id = households.id AND hm.user_id <> households.created_by
+            )
+            AND NOT EXISTS (SELECT 1 FROM scans sc WHERE sc.household_id = households.id)
+            AND NOT EXISTS (SELECT 1 FROM inventory_adoption_receipts iar WHERE iar.household_id = households.id)
+            AND NOT EXISTS (SELECT 1 FROM inventory_lots il WHERE il.household_id = households.id)
+            AND NOT EXISTS (SELECT 1 FROM inventory_events ie WHERE ie.household_id = households.id)
+            AND NOT EXISTS (SELECT 1 FROM inventory_observations io WHERE io.household_id = households.id)`
+      )
+      .bind(windowParam),
+    db
+      .prepare(
+        `DELETE FROM users
+          WHERE id IN (${eligibleUsersSubquery})
+            AND NOT EXISTS (SELECT 1 FROM households h WHERE h.created_by = users.id)`
+      )
+      .bind(windowParam),
+  ]);
+
+  if (results.length !== 3 || results.some((r) => !r.success)) {
+    throw new Error('GUEST_CLEANUP_UNAVAILABLE');
+  }
+  return changesOf(results[2]);
+}
+
 export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   const environment = env.ENVIRONMENT || 'development';
   const tasks: CleanupTaskResult[] = [];
@@ -155,7 +274,7 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
     }
   }
 
-  const retention = getRetentionConfig(env);
+  const retention = getExtendedRetentionConfig(env);
   const db = env.DB;
 
   try {
@@ -196,6 +315,20 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
     tasks.push({ task: 'terminal-failed-jobs', status: 'ok', deleted: failedDeleted });
   } catch {
     tasks.push({ task: 'terminal-scan-jobs', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
+  }
+
+  try {
+    const deleted = await cleanupExpiredScans(db, env.IMAGES, retention.scanDays);
+    tasks.push({ task: 'expired-scans', status: 'ok', deleted });
+  } catch {
+    tasks.push({ task: 'expired-scans', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
+  }
+
+  try {
+    const deleted = await cleanupAbandonedGuests(db, retention.abandonedGuestDays);
+    tasks.push({ task: 'abandoned-guests', status: 'ok', deleted });
+  } catch {
+    tasks.push({ task: 'abandoned-guests', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }
 
   return { ranAt: new Date().toISOString(), environment, tasks };

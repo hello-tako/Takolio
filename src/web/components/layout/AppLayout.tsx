@@ -1,6 +1,10 @@
 import React, { useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { BottomNavigationBar, RailSidebar } from '../../design-system/navigation';
+import {
+  ActiveCookingResumeBanner,
+  BottomNavigationBar,
+  RailSidebar,
+} from '../../design-system/navigation';
 import { OfflineBanner } from '../common/OfflineBanner';
 import { useKitchenShell } from './use-kitchen-shell';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
@@ -27,7 +31,9 @@ export function isKitchenSurface(pathname: string) {
     /^\/recipes(?:\/|$)/.test(pathname) ||
     /^\/(cook|cooking)(?:\/|$)/.test(pathname) ||
     /^\/(planner|shopping)(?:\/|$)/.test(pathname) ||
-    /^\/week(?:\/(?:setup|generating|[^/]+(?:\/(?:shopping|settings|meal\/[^/]+))?))?\/?$/.test(pathname) ||
+    /^\/week(?:\/(?:setup|generating|[^/]+(?:\/(?:shopping|settings|meal\/[^/]+))?))?\/?$/.test(
+      pathname,
+    ) ||
     /^\/(me|profile|notifications)\/?$/.test(pathname) ||
     /^\/me\/(preferences|household)\/?$/.test(pathname) ||
     /^\/settings\/(app|planning|notifications|privacy)\/?$/.test(pathname)
@@ -40,12 +46,13 @@ export const AppLayout: React.FC = () => {
   const kitchen = isKitchenSurface(pathname);
   const shellRef = useRef<HTMLDivElement>(null);
   useKitchenShell(shellRef, kitchen && !immersive, pathname);
+
   return (
     <div
       ref={shellRef}
       data-kitchen-navigation={kitchen && !immersive ? 'persistent' : undefined}
       data-kitchen-density={kitchen && !/^\/plus\/?$/i.test(pathname) ? 'compact' : undefined}
-      className={`${kitchen ? 'takosan-rebuild ' : ''}min-h-dvh bg-semantic-background text-semantic-text-primary antialiased selection:bg-takosan-mint`}
+      className={`${kitchen ? 'takosan-rebuild bg-tk-canvas text-tk-ink ' : 'bg-semantic-background text-semantic-text-primary '}min-h-dvh antialiased selection:bg-tk-jade-soft`}
     >
       {kitchen && (
         <a href="#kitchen-main" className="kitchen-skip-link">
@@ -62,18 +69,28 @@ export const AppLayout: React.FC = () => {
       )}
       {/* The shell owns rail/sidebar offsets and the maximum content width. */}
       <div className={immersive ? '' : kitchen ? 'kitchen-shell-content' : 'sm:pl-20 lg:pl-64'}>
-        {!immersive && (kitchen ? <div className="kitchen-banner-slot"><OfflineBanner /></div> : <OfflineBanner />)}
+        {!immersive &&
+          (kitchen ? (
+            <div className="kitchen-banner-slot">
+              <OfflineBanner />
+            </div>
+          ) : (
+            <OfflineBanner />
+          ))}
         <main
           id={kitchen ? 'kitchen-main' : undefined}
           tabIndex={kitchen ? -1 : undefined}
           className={
             immersive
               ? ''
-              : kitchen ? 'kitchen-shell-main min-h-dvh mx-auto w-full max-w-[var(--content-wide)]' : 'min-h-dvh pb-[calc(68px+env(safe-area-inset-bottom,0px))] sm:pb-0 mx-auto w-full max-w-[var(--content-wide)]'
+              : kitchen
+                ? 'kitchen-shell-main min-h-dvh mx-auto w-full max-w-[var(--content-wide)]'
+                : 'min-h-dvh pb-[calc(68px+env(safe-area-inset-bottom,0px))] sm:pb-0 mx-auto w-full max-w-[var(--content-wide)]'
           }
         >
           <Outlet />
         </main>
+        {!immersive && kitchen && <ActiveCookingResumeBanner compact />}
         {!immersive && <BottomNavigationBar kitchen={kitchen} />}
       </div>
     </div>

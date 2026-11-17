@@ -2,135 +2,117 @@
 export default {
   content: [
     "./index.html",
+    "./admin/index.html",
     "./src/web/**/*.{js,ts,jsx,tsx}",
+    "./src/admin/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        // T17 semantic layer — single naming authority for new UI
-        // (Takosan Redesign OS v2.0.0 design-tokens.json). rgb channels keep
-        // alpha modifiers (bg-semantic-action-primary/10) working.
+        // Takolio V5 — "Noir & Hearth" Architectural Culinary Cinema Palette
+        tk: {
+          canvas: "#EFE8DC",
+          surface: "#FFFEFA",
+          sunken: "#E3DACB",
+          stone: "#CCC0AC",
+          sanctuary: "#0B120F",
+          "sanctuary-card": "#131E19",
+          "sanctuary-elevated": "#1C2B24",
+          ink: "#0F1A15",
+          secondary: "#3A4B42",
+          muted: "#65766D",
+          flame: {
+            DEFAULT: "#DE472E",
+            hover: "#C43922",
+            deep: "#A32C18",
+            soft: "#FDECE8",
+            glow: "#FF6E52",
+          },
+          jade: {
+            DEFAULT: "#155C40",
+            hover: "#0F4731",
+            deep: "#0A3625",
+            soft: "#E2F2EA",
+            mint: "#BCE2CF",
+          },
+          turmeric: {
+            DEFAULT: "#C67C14",
+            deep: "#965C0A",
+            soft: "#FCF1DC",
+          },
+          berry: {
+            DEFAULT: "#BE3248",
+            deep: "#942033",
+            soft: "#FCE9EC",
+          },
+          ocean: {
+            DEFAULT: "#1E587D",
+            soft: "#E5F0F7",
+          },
+        },
         semantic: {
-          "background": "rgb(var(--semantic-background-rgb, 255 248 243) / <alpha-value>)",
-          "background-subtle": "rgb(var(--semantic-background-subtle-rgb, 252 251 248) / <alpha-value>)",
-          "surface": "rgb(255 255 255 / <alpha-value>)",
+          "background": "rgb(239 232 220 / <alpha-value>)",
+          "background-subtle": "rgb(227 218 203 / <alpha-value>)",
+          "surface": "rgb(255 254 250 / <alpha-value>)",
           "surface-raised": "rgb(255 255 255 / <alpha-value>)",
-          "text-primary": "rgb(var(--semantic-text-primary-rgb, 31 41 55) / <alpha-value>)",
-          "text-secondary": "rgb(var(--semantic-text-secondary-rgb, 74 71 65) / <alpha-value>)",
-          // Kit value #7B776F measures 4.24:1 on --semantic-background (fails
-          // WCAG AA body text); darkened to #6F6B64 (5.04:1) — see T17 report.
-          "text-muted": "rgb(var(--semantic-text-muted-rgb, 111 107 100) / <alpha-value>)",
+          "text-primary": "rgb(15 26 21 / <alpha-value>)",
+          "text-secondary": "rgb(58 75 66 / <alpha-value>)",
+          "text-muted": "rgb(101 118 109 / <alpha-value>)",
           "text-inverse": "rgb(255 255 255 / <alpha-value>)",
-          "action-primary": "rgb(var(--semantic-action-primary-rgb, 46 125 91) / <alpha-value>)",
-          "action-primary-hover": "rgb(var(--semantic-action-primary-hover-rgb, 36 102 72) / <alpha-value>)",
-          "action-primary-pressed": "rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / <alpha-value>)",
+          "action-primary": "rgb(222 71 46 / <alpha-value>)",
+          "action-primary-hover": "rgb(196 57 34 / <alpha-value>)",
+          "action-primary-pressed": "rgb(163 44 24 / <alpha-value>)",
           "on-action-primary": "rgb(255 255 255 / <alpha-value>)",
-          "accent": "rgb(var(--semantic-accent-rgb, 255 123 107) / <alpha-value>)",
-          "accent-soft": "rgb(var(--semantic-accent-soft-rgb, 255 240 237) / <alpha-value>)",
-          "success": "rgb(var(--semantic-success-rgb, 46 125 91) / <alpha-value>)",
-          "success-soft": "rgb(var(--semantic-success-soft-rgb, 231 245 236) / <alpha-value>)",
-          "warning": "rgb(182 106 9 / <alpha-value>)",
-          "warning-soft": "rgb(255 243 214 / <alpha-value>)",
-          // Derived text shades for use on the *-soft fills where the base
-          // hue falls under 4.5:1 (warning 3.77, danger 4.498). Not kit values.
-          "warning-strong": "rgb(143 83 7 / <alpha-value>)",
-          "danger": "rgb(201 61 61 / <alpha-value>)",
-          "danger-soft": "rgb(255 240 240 / <alpha-value>)",
-          "danger-strong": "rgb(181 52 52 / <alpha-value>)",
-          "info": "rgb(47 111 159 / <alpha-value>)",
-          "info-soft": "rgb(234 244 251 / <alpha-value>)",
-          "border": "rgb(var(--semantic-border-rgb, 231 227 218) / <alpha-value>)",
-          "border-strong": "rgb(201 194 182 / <alpha-value>)",
-          "focus": "rgb(var(--semantic-focus-rgb, 46 125 91) / <alpha-value>)",
-          // Scrim colour from design-tokens.json (--semantic-overlay); alpha
-          // is supplied per use (bg-semantic-overlay/50).
-          "overlay": "rgb(18 25 23 / <alpha-value>)",
+          "accent": "rgb(21 92 64 / <alpha-value>)",
+          "accent-soft": "rgb(226 242 234 / <alpha-value>)",
+          "success": "rgb(21 92 64 / <alpha-value>)",
+          "success-soft": "rgb(226 242 234 / <alpha-value>)",
+          "warning": "rgb(198 124 20 / <alpha-value>)",
+          "warning-soft": "rgb(252 241 220 / <alpha-value>)",
+          "warning-strong": "rgb(150 92 10 / <alpha-value>)",
+          "danger": "rgb(190 50 72 / <alpha-value>)",
+          "danger-soft": "rgb(252 233 236 / <alpha-value>)",
+          "danger-strong": "rgb(148 32 51 / <alpha-value>)",
+          "info": "rgb(30 88 125 / <alpha-value>)",
+          "info-soft": "rgb(229 240 247 / <alpha-value>)",
+          "border": "rgb(204 192 172 / <alpha-value>)",
+          "border-strong": "rgb(176 162 140 / <alpha-value>)",
+          "focus": "rgb(222 71 46 / <alpha-value>)",
+          "overlay": "rgb(11 18 15 / <alpha-value>)",
         },
-        // Takosan locked palette (design-tokens/brand-tokens.json v1.1.0) plus a few
-        // derived shades for hover/depth/borders so runtime UI never falls back to emerald.
         takosan: {
-          coral: { DEFAULT: "rgb(var(--takosan-coral-color-rgb, 255 123 107) / <alpha-value>)", deep: "rgb(var(--takosan-coral-deep-color-rgb, 232 98 79) / <alpha-value>)", soft: "rgb(var(--takosan-coral-soft-color-rgb, 255 230 225) / <alpha-value>)" },
-          green: { DEFAULT: "rgb(var(--takosan-green-color-rgb, 46 125 91) / <alpha-value>)", hover: "rgb(var(--takosan-green-hover-color-rgb, 38 105 76) / <alpha-value>)", deep: "rgb(var(--takosan-green-deep-color-rgb, 31 86 62) / <alpha-value>)" },
-          navy: "rgb(var(--takosan-navy-color-rgb, 31 41 55) / <alpha-value>)",
-          cream: { DEFAULT: "rgb(var(--takosan-cream-color-rgb, 255 248 243) / <alpha-value>)", deep: "#FFF1E8", line: "rgb(var(--takosan-cream-line-color-rgb, 243 228 218) / <alpha-value>)", shade: "#F6EEE8" },
-          mint: { DEFAULT: "rgb(var(--takosan-mint-color-rgb, 223 244 230) / <alpha-value>)", hover: "#CFEDDA", deep: "rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / <alpha-value>)" },
-          yellow: "rgb(var(--takosan-yellow-color-rgb, 255 200 87) / <alpha-value>)",
-        },
-        // Legacy Frigo palette names kept as aliases onto Takosan values (no runtime
-        // utility uses them today; retained so stray legacy classes cannot re-introduce emerald).
-        frigo: {
-          green: {
-            DEFAULT: "#2E7D5B",
-            50: "#DFF4E6",
-            100: "#CFEDDA",
-            200: "#BFE3CC",
-            300: "#8FCBA8",
-            400: "#5FA985",
-            500: "#3E8F6B",
-            600: "#2E7D5B",
-            700: "#26694C",
-            800: "#1F563E",
-            900: "#17422F",
-          },
-          deep: {
-            DEFAULT: "#1F563E",
-            light: "#26694C",
-            dark: "#17422F",
-          },
-          forest: {
-            DEFAULT: "#1F563E",
-            light: "#26694C",
-            dark: "#17422F",
-          },
-          mint: {
-            DEFAULT: "#DFF4E6",
-            light: "#EEF9F2",
-            dark: "#BFE3CC",
-          },
-          cream: {
-            DEFAULT: "#FFF8F3",
-            warm: "#FFF1E8",
-          },
-          surface: "#FFFFFF",
-          border: "#E2E8F0",
-          tomato: {
-            DEFAULT: "#E11D48",
-            light: "#FFE4E6",
-          },
-          yellow: {
-            DEFAULT: "#D97706",
-            light: "#FEF3C7",
-          },
+          coral: { DEFAULT: "#DE472E", deep: "#C43922", soft: "#FDECE8" },
+          green: { DEFAULT: "#155C40", hover: "#0F4731", deep: "#0A3625" },
+          navy: "#0F1A15",
+          cream: { DEFAULT: "#EFE8DC", deep: "#E3DACB", line: "#CCC0AC", shade: "#DBD0BE" },
+          mint: { DEFAULT: "#E2F2EA", hover: "#CBE8DA", deep: "#BCE2CF" },
+          yellow: "#C67C14",
         },
       },
       fontFamily: {
-        heading: ["var(--takosan-font-ui)", "sans-serif"],
-        body: ["var(--takosan-font-ui)", "sans-serif"],
-        sans: ["var(--takosan-font-ui)", "sans-serif"],
+        heading: ["'Plus Jakarta Sans'", "system-ui", "-apple-system", "sans-serif"],
+        body: ["'Plus Jakarta Sans'", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
-      // T17 type scale (design-system/typography.json) — size/line-height/weight triples.
       fontSize: {
-        "type-display": ["36px", { lineHeight: "43px", fontWeight: "800", letterSpacing: "-0.02em" }],
-        "type-title": ["24px", { lineHeight: "31px", fontWeight: "700", letterSpacing: "-0.01em" }],
-        "type-heading": ["20px", { lineHeight: "27px", fontWeight: "700" }],
-        "type-body-lg": ["16px", { lineHeight: "24px" }],
-        "type-label": ["13px", { lineHeight: "18px", fontWeight: "700" }],
-        "type-caption": ["12px", { lineHeight: "18px", fontWeight: "500" }],
+        "type-display": ["2.625rem", { lineHeight: "1.08", fontWeight: "800", letterSpacing: "-0.032em" }],
+        "type-title": ["1.6875rem", { lineHeight: "1.2", fontWeight: "800", letterSpacing: "-0.022em" }],
+        "type-heading": ["1.25rem", { lineHeight: "1.28", fontWeight: "700", letterSpacing: "-0.015em" }],
+        "type-body-lg": ["1rem", { lineHeight: "1.55" }],
+        "type-label": ["0.8125rem", { lineHeight: "1.35", fontWeight: "700" }],
+        "type-caption": ["0.75rem", { lineHeight: "1.4", fontWeight: "600" }],
       },
       borderRadius: {
-        "lg": "10px",
-        "xl": "12px",
-        "2xl": "16px",
-        "3xl": "20px",
-        // T17 radius scale (design-system/radius.json) — additive keys;
-        // legacy rounded-* values above stay untouched.
-        "card": "16px",
-        "feature": "24px",
-        "hero": "32px",
-        "pill": "9999px",
+        lg: "12px",
+        xl: "16px",
+        "2xl": "20px",
+        "3xl": "28px",
+        card: "20px",
+        feature: "28px",
+        hero: "36px",
+        pill: "9999px",
       },
-      // Fractional spacing used across the UI (w-4.5, w-12.5...) — without these
-      // Tailwind silently drops the class and icons render at default size.
       spacing: {
         "4.5": "1.125rem",
         "5.5": "1.375rem",
@@ -141,26 +123,23 @@ export default {
         "18": "4.5rem",
       },
       boxShadow: {
-        "xs": "0 1px 2px 0 rgba(15, 23, 42, 0.04)",
-        "soft": "0 2px 10px -1px rgba(15, 23, 42, 0.05)",
-        "card": "0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.05)",
-        "elevated": "0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -4px rgba(15, 23, 42, 0.04)",
-        // Brand-tinted shadows derive from Takosan green rgb(46, 125, 91).
-        "float": "0 8px 20px -3px rgba(46, 125, 91, 0.22), 0 3px 6px -2px rgba(46, 125, 91, 0.12)",
-        "glow": "0 0 0 4px rgba(46, 125, 91, 0.15), 0 8px 20px -3px rgba(46, 125, 91, 0.30)",
-        // T17 elevation + focus ring (design-system/elevation.json) — additive keys.
-        "t17-sm": "0 1px 2px rgba(31, 41, 55, 0.06)",
-        "t17-md": "0 8px 24px rgba(31, 41, 55, 0.10)",
-        "t17-lg": "0 18px 48px rgba(31, 41, 55, 0.14)",
-        "t17-focus": "0 0 0 3px rgba(46, 125, 91, 0.28)",
+        xs: "0 1px 2px 0 rgba(11, 18, 15, 0.06)",
+        soft: "0 4px 16px -3px rgba(11, 18, 15, 0.08)",
+        card: "0 1px 3px rgba(11, 18, 15, 0.06), 0 12px 32px -10px rgba(11, 18, 15, 0.10)",
+        elevated: "0 20px 48px -12px rgba(11, 18, 15, 0.20), 0 4px 14px -4px rgba(11, 18, 15, 0.08)",
+        float: "0 14px 30px -6px rgba(222, 71, 46, 0.38), 0 4px 10px -2px rgba(222, 71, 46, 0.20)",
+        jade: "0 14px 30px -6px rgba(21, 92, 64, 0.30), 0 4px 10px -2px rgba(21, 92, 64, 0.15)",
+        glow: "0 0 0 4px rgba(222, 71, 46, 0.22), 0 12px 26px -4px rgba(222, 71, 46, 0.36)",
+        cinema: "0 28px 70px -16px rgba(6, 10, 8, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14)",
+        "t17-sm": "0 1px 2px rgba(11, 18, 15, 0.07)",
+        "t17-md": "0 12px 30px -6px rgba(11, 18, 15, 0.12)",
+        "t17-lg": "0 24px 56px -12px rgba(11, 18, 15, 0.20)",
+        "t17-focus": "0 0 0 3px rgba(222, 71, 46, 0.32)",
       },
-      // T17 scoped interactive transition (motion/micro-interactions.md):
-      // explicitly enumerated properties — layout (width/height/padding) is
-      // never transitioned, unlike indiscriminate `transition-all`.
       transitionProperty: {
         tap: "transform, background-color, border-color, color, box-shadow, opacity",
       },
     },
   },
   plugins: [],
-}
+};

@@ -1,4 +1,11 @@
-import type { Recipe, RecipeIngredient } from '@frigo/recipes';
+import {
+  enrichRecipeToV4,
+  type CulinaryPhaseV4,
+  type Recipe,
+  type RecipeIngredient,
+  type RecipeStepV4,
+  type StepHeatLevelV4,
+} from '@frigo/recipes';
 
 export type CulinaryTechniqueId =
   | 'prep'
@@ -19,6 +26,20 @@ export interface CulinaryTechniqueMeta {
   heatLabel: string;
   toolLabel: string;
   accentTone: 'green' | 'coral' | 'gold' | 'navy';
+}
+
+export interface CulinaryPhaseVisualMeta {
+  phase: CulinaryPhaseV4;
+  labelVi: string;
+  badgeTone: 'jade' | 'amber' | 'terracotta' | 'cobalt';
+  stepNumberLabel: string;
+}
+
+export interface HeatBadgeVisualMeta {
+  heatLevel: StepHeatLevelV4;
+  labelVi: string;
+  flameBars: 0 | 1 | 2 | 3 | 4;
+  accentTone: 'neutral' | 'amber' | 'terracotta';
 }
 
 const TECHNIQUE_META: Record<CulinaryTechniqueId, CulinaryTechniqueMeta> = {
@@ -236,9 +257,6 @@ export function matchStepIngredients(
   const accentedInst = normalizeAccentedTokens(instruction);
   if (!normInst) return [];
 
-  // Collect multi-word ingredient phrases present in this recipe so single-word
-  // ingredients/heads (e.g. "Hành", "Cá") do not falsely match inside a compound
-  // ingredient phrase (e.g. "hành lá", "cá lóc") unless mentioned separately.
   const multiWordFoldedPhrases = ingredients
     .flatMap((ing) =>
       ing.name
@@ -351,4 +369,42 @@ export function summarizeRecipeTechniques(recipe: Pick<Recipe, 'steps'>): Culina
     }
   });
   return list.slice(0, 4);
+}
+
+// ======================== TAKOLIO V4 CULINARY VISUAL BRIDGES ========================
+
+export function resolveStepPhaseMetaV4(step: Pick<RecipeStepV4, 'phase' | 'phaseLabelVi' | 'stepNumber'>): CulinaryPhaseVisualMeta {
+  const badgeTone: Record<CulinaryPhaseV4, CulinaryPhaseVisualMeta['badgeTone']> = {
+    mise_en_place: 'jade',
+    marinate: 'amber',
+    active_cook: 'terracotta',
+    plate: 'cobalt',
+  };
+  return {
+    phase: step.phase,
+    labelVi: step.phaseLabelVi,
+    badgeTone: badgeTone[step.phase],
+    stepNumberLabel: `Bước ${String(step.stepNumber).padStart(2, '0')}`,
+  };
+}
+
+export function resolveHeatBadgeMetaV4(step: Pick<RecipeStepV4, 'heatLevel' | 'heatLabelVi'>): HeatBadgeVisualMeta {
+  switch (step.heatLevel) {
+    case 'off':
+      return { heatLevel: 'off', labelVi: step.heatLabelVi, flameBars: 0, accentTone: 'neutral' };
+    case 'low':
+      return { heatLevel: 'low', labelVi: step.heatLabelVi, flameBars: 1, accentTone: 'amber' };
+    case 'medium_low':
+      return { heatLevel: 'medium_low', labelVi: step.heatLabelVi, flameBars: 2, accentTone: 'amber' };
+    case 'medium':
+      return { heatLevel: 'medium', labelVi: step.heatLabelVi, flameBars: 2, accentTone: 'amber' };
+    case 'medium_high':
+      return { heatLevel: 'medium_high', labelVi: step.heatLabelVi, flameBars: 3, accentTone: 'terracotta' };
+    case 'high':
+      return { heatLevel: 'high', labelVi: step.heatLabelVi, flameBars: 4, accentTone: 'terracotta' };
+  }
+}
+
+export function getEnrichedStepsForVisualsV4(recipe: Recipe): RecipeStepV4[] {
+  return enrichRecipeToV4(recipe).steps;
 }

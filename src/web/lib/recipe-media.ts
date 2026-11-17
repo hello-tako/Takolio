@@ -1,15 +1,30 @@
 /**
- * T14C — single frontend resolution point for recipe display media (ADR-025).
+ * T14C + Takolio V4 — frontend resolution point for recipe display media (ADR-025).
  *
- *   canonical hero (same-origin versioned URL from the API `media` presentation)
- *     → legacy `recipe.imageUrl` compatibility
- *       → static placeholder
- *
- * Public recipe media is a different trust domain from private scan images (`private-image.ts`);
- * nothing here attaches credentials. Media never changes which recipe is shown, only its picture.
+ * - `resolveRecipeImage`: preserves exact T14C / UI12 contract for legacy tests & surfaces.
+ * - `resolveRecipeArtworkV4` & `resolveRecipeImageV4`: guarantees every recipe resolves to a rich
+ *   curated WebP artwork under `/takolio/v4/dishes/*.webp` (never a blank grey box!).
  */
-import type { Recipe, RecipeMediaPresentationSet } from '@frigo/recipes';
+import {
+  DISH_ARTWORK_CATALOG_V4,
+  DISH_ARTWORK_V4_BASE_PATH,
+  resolveRecipeArtworkV4,
+  type DishArtworkIdV4,
+  type Recipe,
+  type RecipeArtworkInputV4,
+  type RecipeArtworkV4,
+  type RecipeMediaPresentationSet,
+} from '@frigo/recipes';
 import { legacyRecipeImageIssue } from '../../../packages/recipes/src/legacy-media-policy';
+
+export {
+  DISH_ARTWORK_CATALOG_V4,
+  DISH_ARTWORK_V4_BASE_PATH,
+  resolveRecipeArtworkV4,
+  type DishArtworkIdV4,
+  type RecipeArtworkInputV4,
+  type RecipeArtworkV4,
+};
 
 export const RECIPE_IMAGE_PLACEHOLDER = '/takosan/recipe-placeholder.svg';
 
@@ -25,6 +40,12 @@ export interface ResolvedRecipeImage {
   width: number | null;
   height: number | null;
   aspectRatio: string | undefined;
+}
+
+export interface ResolvedRecipeImageV4 extends ResolvedRecipeImage {
+  artworkId: DishArtworkIdV4;
+  categoryLabelVi: string;
+  accentTone: RecipeArtworkV4['accentTone'];
 }
 
 function isRenderableLegacyUrl(value: unknown): value is string {
@@ -78,6 +99,69 @@ export function resolveRecipeImage(
     width: null,
     height: null,
     aspectRatio: undefined,
+  };
+}
+
+/**
+ * Takolio V4 artwork-backed image resolver: prioritizes canonical R2 hero -> reviewed static ->
+ * deterministic V4 category/cuisine/technique WebP dish artwork so zero cards show a broken box.
+ */
+export function resolveRecipeImageV4(
+  recipe: (Omit<Partial<RecipeWithOptionalMedia>, 'id'> & RecipeArtworkInputV4) | null | undefined,
+): ResolvedRecipeImageV4 {
+  const artwork = resolveRecipeArtworkV4(recipe);
+  const hero = recipe?.media?.hero;
+
+  if (
+    hero &&
+    hero.source === 'canonical_r2' &&
+    typeof hero.url === 'string' &&
+    hero.url.startsWith('/api/v1/recipe-media/')
+  ) {
+    const width = hero.width ?? artwork.width;
+    const height = hero.height ?? artwork.height;
+    return {
+      src: hero.url,
+      fallbackSrc: artwork.url,
+      source: 'canonical_r2',
+      width,
+      height,
+      aspectRatio: `${width} / ${height}`,
+      artworkId: artwork.artworkId,
+      categoryLabelVi: artwork.categoryLabelVi,
+      accentTone: artwork.accentTone,
+    };
+  }
+
+  if (
+    recipe?.imageUrl &&
+    isRenderableLegacyUrl(recipe.imageUrl) &&
+    !legacyRecipeImageIssue({ id: recipe.id ?? undefined, imageUrl: recipe.imageUrl })
+  ) {
+    const cleanUrl = recipe.imageUrl.trim();
+    return {
+      src: cleanUrl,
+      fallbackSrc: artwork.url,
+      source: cleanUrl.startsWith('/') ? 'legacy_static' : 'legacy_external',
+      width: artwork.width,
+      height: artwork.height,
+      aspectRatio: artwork.aspectRatio,
+      artworkId: artwork.artworkId,
+      categoryLabelVi: artwork.categoryLabelVi,
+      accentTone: artwork.accentTone,
+    };
+  }
+
+  return {
+    src: artwork.url,
+    fallbackSrc: artwork.fallbackUrl,
+    source: 'legacy_static',
+    width: artwork.width,
+    height: artwork.height,
+    aspectRatio: artwork.aspectRatio,
+    artworkId: artwork.artworkId,
+    categoryLabelVi: artwork.categoryLabelVi,
+    accentTone: artwork.accentTone,
   };
 }
 

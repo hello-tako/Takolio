@@ -41,3 +41,5 @@ export { aggregateShoppingDemand, type PurchaseRequirement, type PurchaseRequire
 export { optimizeShopping, type OptimizedShoppingPlan, type ShoppingPurchaseLine, type SelectedPurchasePackage } from './shopping-optimizer';
 export * from './legacy-availability';
 export * from './servings';
+export * from './v4';
+export * from './v5-catalog';
