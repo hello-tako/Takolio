@@ -450,6 +450,13 @@ export const HomePage = () => {
                   <NavRecipesIcon size={17} tone="flame" active />
                   <span>Khám phá món</span>
                 </Link>
+                <Link
+                  to="/studio"
+                  className="tk-glass-dark tap-target inline-flex items-center gap-2 rounded-full border border-tk-turmeric/45 px-4 py-2.5 text-xs sm:text-sm font-bold text-white transition-colors hover:bg-white/16"
+                >
+                  <AiSousChefSparkIcon size={17} tone="cream" active />
+                  <span>Sổ tay Gia truyền &amp; Sơ chế</span>
+                </Link>
               </div>
             </div>
 
@@ -826,6 +833,54 @@ export const HomePage = () => {
                 </div>
               )}
             </BentoCard>
+            {/* 3B. SPECIALIZED KITCHEN STUDIOS & ZERO-WASTE OS LAUNCHPAD */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                to="/studio"
+                className="tk-card tk-card-interactive group flex flex-col justify-between gap-3 p-5 no-underline"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <AtelierBadge tone="turmeric" icon={<AiSousChefSparkIcon size={13} tone="turmeric" active />}>
+                      ATELIER V6 · MỚI
+                    </AtelierBadge>
+                    <ArrowRight size={17} className="text-tk-muted group-hover:translate-x-0.5 group-hover:text-tk-flame transition-transform" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading text-base font-extrabold text-tk-ink group-hover:text-tk-flame transition-colors">
+                    Sổ Tay Gia Truyền &amp; Sơ Chế 90 Phút
+                  </h3>
+                  <p className="text-xs leading-relaxed text-tk-secondary">
+                    AI chuẩn hóa bí quyết nấu ăn của mẹ thành công thức 4 pha &amp; kịch bản sơ chế Chủ Nhật cho cả tuần bận rộn.
+                  </p>
+                </div>
+                <span className="text-xs font-extrabold text-tk-flame">
+                  Mở Xưởng Sáng Tạo Món →
+                </span>
+              </Link>
+
+              <Link
+                to="/insights"
+                className="tk-card tk-card-interactive group flex flex-col justify-between gap-3 p-5 no-underline"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <AtelierBadge tone="jade" icon={<FreshnessShieldIcon size={13} tone="jade" active />}>
+                      KITCHEN OS · PULSE
+                    </AtelierBadge>
+                    <ArrowRight size={17} className="text-tk-muted group-hover:translate-x-0.5 group-hover:text-tk-jade transition-transform" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading text-base font-extrabold text-tk-ink group-hover:text-tk-jade transition-colors">
+                    Tủ Gia Vị Nền &amp; Chỉ Số Zero-Waste
+                  </h3>
+                  <p className="text-xs leading-relaxed text-tk-secondary">
+                    Tự động cảnh báo bù 8 gia vị thiết yếu khi chạm ngưỡng cạn, theo dõi thực phẩm đã cứu và nhật ký bếp chung.
+                  </p>
+                </div>
+                <span className="text-xs font-extrabold text-tk-jade">
+                  Mở Trung Tâm Phân Tích →
+                </span>
+              </Link>
+            </div>
           </div>
 
           {/* 4. CURATED DISH RECOMMENDATIONS GRID */}

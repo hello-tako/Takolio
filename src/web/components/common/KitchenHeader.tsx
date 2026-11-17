@@ -7,6 +7,8 @@ import { useAuthStore } from '../../stores/useAuthStore';
 import { KitchenScanLink } from '../../design-system/navigation';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
 import {
+  FreshnessShieldIcon,
+  MortarPestleIcon,
   NavShoppingIcon,
   TakolioWordmarkLockup,
 } from '../../design-system/icons';
@@ -63,6 +65,10 @@ export function KitchenHeader({
   );
   const isShoppingActive =
     pathname.toLowerCase() === '/shopping' || pathname.toLowerCase().startsWith('/shopping/');
+  const isStudioActive =
+    pathname.toLowerCase() === '/studio' || pathname.toLowerCase().startsWith('/studio/');
+  const isInsightsActive =
+    pathname.toLowerCase() === '/insights' || pathname.toLowerCase().startsWith('/insights/');
 
   return (
     <header
@@ -106,6 +112,44 @@ export function KitchenHeader({
       </div>
 
       <div className="flex shrink-0 items-center gap-2">
+        {/* Quick 1-tap Heirloom & Batch-Prep Studio Pill */}
+        <Link
+          to="/studio"
+          aria-current={isStudioActive ? 'page' : undefined}
+          className={clsx(
+            'hidden md:inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-extrabold transition-colors tap-target',
+            isStudioActive
+              ? 'border-tk-turmeric/40 bg-tk-turmeric-soft text-tk-turmeric-deep shadow-xs'
+              : 'border-tk-stone/85 bg-white text-tk-ink hover:bg-tk-sunken',
+          )}
+        >
+          <MortarPestleIcon
+            size={16}
+            tone={isStudioActive ? 'turmeric' : 'flame'}
+            active={isStudioActive}
+          />
+          <span>Sổ tay AI</span>
+        </Link>
+
+        {/* Quick 1-tap Kitchen OS Insights Pill */}
+        <Link
+          to="/insights"
+          aria-current={isInsightsActive ? 'page' : undefined}
+          className={clsx(
+            'hidden md:inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-extrabold transition-colors tap-target',
+            isInsightsActive
+              ? 'border-tk-jade/30 bg-tk-jade-soft text-tk-jade-deep shadow-xs'
+              : 'border-tk-stone/85 bg-white text-tk-ink hover:bg-tk-sunken',
+          )}
+        >
+          <FreshnessShieldIcon
+            size={16}
+            tone={isInsightsActive ? 'jade' : 'ink'}
+            active={isInsightsActive}
+          />
+          <span>Phân tích</span>
+        </Link>
+
         {/* Quick 1-tap Shopping Bag Pill */}
         <Link
           to="/shopping"

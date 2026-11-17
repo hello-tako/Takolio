@@ -23,6 +23,7 @@ import { familyPreferencesRoutes } from './routes/family-preferences';
 import { recipeFavoritesRoutes } from './routes/recipe-favorites';
 import { notificationRoutes } from './routes/notifications';
 import { householdRoutes } from './routes/households';
+import { kitchenOsRoutes } from './routes/kitchen-os';
 import { aiCopilotRoutes } from './routes/ai-copilot';
 import { weekRoutes } from './routes/week';
 import { mealPlanningRoutes } from './routes/meal-planning';
@@ -159,6 +160,7 @@ api.route('/', familyPreferencesRoutes);
 api.route('/', recipeFavoritesRoutes);
 api.route('/', notificationRoutes);
 api.route('/', householdRoutes);
+api.route('/', kitchenOsRoutes);
 api.route('/', aiCopilotRoutes);
 api.route('/', weekRoutes);
 api.route('/', mealPlanningRoutes);
@@ -207,7 +209,7 @@ export default {
     }
   },
   async scheduled(_event: ScheduledEvent, env: Env): Promise<void> {
-    const report = await runScheduledCleanup(env);
+    const report = await runScheduledCleanup(env, { includeKitchenOs: true });
     console.log(`[Cleanup] ${JSON.stringify(report)}`);
   },
 };

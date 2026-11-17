@@ -81,6 +81,12 @@ const SettingsPage = lazy(() =>
 const PlusPaywallPage = lazy(() =>
   import('./pages/PlusPaywallPage').then((m) => ({ default: m.PlusPaywallPage })),
 );
+const KitchenInsightsPage = lazy(() =>
+  import('./pages/KitchenInsightsPage').then((m) => ({ default: m.KitchenInsightsPage })),
+);
+const CulinaryStudioPage = lazy(() =>
+  import('./pages/CulinaryStudioPage').then((m) => ({ default: m.CulinaryStudioPage })),
+);
 const FoodPreferencesPage = lazy(() =>
   import('./pages/settings/FoodPreferencesPage').then((m) => ({ default: m.FoodPreferencesPage })),
 );
@@ -248,10 +254,12 @@ export const App: React.FC = () => {
                     <Route path="/scan/receipt-review" element={<ReceiptReviewPage />} />
                     <Route path="/scan/result" element={<ScanResultPage />} />
 
-                    {/* Recipes & Cooking */}
+                    {/* Recipes, Culinary Studio & Cooking */}
                     <Route path="/recipes" element={<RecipesPage />} />
                     <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
                     <Route path="/recipes/id/:id" element={<RecipeDetailPage />} />
+                    <Route path="/studio" element={<CulinaryStudioPage />} />
+                    <Route path="/insights" element={<KitchenInsightsPage />} />
                     <Route path="/cook/:slug" element={<CookingModePage />} />
                     <Route path="/cooking/:id" element={<CookingModePage />} />
                     <Route path="/cooking/complete" element={<CookingCompletePage />} />

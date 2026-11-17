@@ -16,6 +16,7 @@ import { tenancyGuard } from '../middleware/tenancy';
 import {
   getAiCopilotGatewayStatus,
   runFridgeRescueCopilot,
+  runHeirloomRecipeArchitect,
   runSmartSubstitutions,
   runSousChefCopilot,
 } from '../services/ai-copilot';
@@ -63,6 +64,22 @@ export const FridgeRescueRouteRequestSchema = z
     servings: z.number().int().min(1).max(20).optional(),
   })
   .strict();
+
+export const CraftRecipeRouteRequestSchema = z
+  .object({
+    prompt: z.string().trim().min(3).max(1_200).optional(),
+    promptVi: z.string().trim().min(3).max(1_200).optional(),
+    familyStory: z.string().trim().max(1_200).optional(),
+    familyStoryVi: z.string().trim().max(1_200).optional(),
+    region: z.enum(['bac', 'trung', 'nam', 'all']).optional(),
+    regionHint: z.enum(['bac', 'trung', 'nam', 'all']).optional(),
+    servings: z.number().int().min(1).max(24).optional(),
+    maxCookTimeMinutes: z.number().int().min(8).max(360).optional(),
+    householdAllergens: z.array(z.string().trim().min(1).max(80)).max(50).optional(),
+  })
+  .refine((v) => Boolean(v.prompt || v.promptVi), {
+    message: 'Vui lòng mô tả món ăn gia truyền bạn muốn AI chuẩn hóa.',
+  });
 
 function safeWaitUntil(c: CopilotRouteContext): ((promise: Promise<unknown>) => void) | undefined {
   try {
@@ -271,6 +288,35 @@ const handleFridgeRescue = async (c: CopilotRouteContext) => {
   }
 };
 
+const handleCraftRecipe = async (c: CopilotRouteContext) => {
+  const parsed = await parseJsonBody(c, CraftRecipeRouteRequestSchema);
+  if (!parsed.ok) return parsed.response;
+
+  const auth = c.get('auth');
+  const waitUntil = safeWaitUntil(c);
+  const rawPrompt = (parsed.data.promptVi ?? parsed.data.prompt ?? '').trim();
+  const rawStory = (parsed.data.familyStoryVi ?? parsed.data.familyStory)?.trim();
+
+  try {
+    const result = await runHeirloomRecipeArchitect(
+      c.env,
+      auth,
+      {
+        promptVi: rawPrompt,
+        familyStoryVi: rawStory,
+        regionHint: parsed.data.regionHint ?? parsed.data.region,
+        servings: parsed.data.servings,
+        maxCookTimeMinutes: parsed.data.maxCookTimeMinutes,
+        householdAllergens: parsed.data.householdAllergens,
+      },
+      waitUntil,
+    );
+    return c.json(result, 200);
+  } catch (error) {
+    return handleCopilotError(c, error);
+  }
+};
+
 const handleStatus = async (c: CopilotRouteContext) => {
   const auth = c.get('auth');
   if (!auth?.userId) {
@@ -307,5 +353,6 @@ for (const prefix of ['', '/ai-copilot', '/ai'] as const) {
   aiCopilotRoutes.post(`${prefix}/sous-chef`, tenancyGuard, copilotBodyLimit, copilotRateLimit, handleSousChef);
   aiCopilotRoutes.post(`${prefix}/substitutions`, tenancyGuard, copilotBodyLimit, copilotRateLimit, handleSubstitutions);
   aiCopilotRoutes.post(`${prefix}/fridge-rescue`, tenancyGuard, copilotBodyLimit, copilotRateLimit, handleFridgeRescue);
+  aiCopilotRoutes.post(`${prefix}/craft-recipe`, tenancyGuard, copilotBodyLimit, copilotRateLimit, handleCraftRecipe);
   aiCopilotRoutes.get(`${prefix}/status`, copilotRateLimit, handleStatus);
 }

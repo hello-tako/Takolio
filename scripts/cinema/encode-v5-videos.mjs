@@ -12,6 +12,8 @@ mkdirSync(OUT_VIDEOS, { recursive: true });
 mkdirSync(OUT_POSTERS, { recursive: true });
 mkdirSync(TMP_FRAMES, { recursive: true });
 
+const FORCE = process.argv.includes('--force');
+
 const SOURCES = {
   wok: path.join(BRAIN_DIR, 'cinema_wok_fire_1794940327636.jpg'),
   claypot: path.join(BRAIN_DIR, 'cinema_claypot_simmer_1794940338854.jpg'),
@@ -19,6 +21,8 @@ const SOURCES = {
   soup: path.join(BRAIN_DIR, 'cinema_soup_broth_1794940373777.jpg'),
   fridge: path.join(BRAIN_DIR, 'cinema_fridge_vault_1794940437582.jpg'),
   mamcom: path.join(BRAIN_DIR, 'cinema_mam_com_hearth_1794940446488.jpg'),
+  heirloom: path.join(BRAIN_DIR, 'cinema_heirloom_atelier_1794947722874.jpg'),
+  'batch-prep': path.join(BRAIN_DIR, 'cinema_batch_prep_vault_1794947731617.jpg'),
 };
 
 for (const [key, src] of Object.entries(SOURCES)) {
@@ -133,8 +137,11 @@ function encodeHeroReel(outMp4) {
 
 await prepareMasters();
 
-console.log('Encoding hero-hearth-reel.mp4...');
-encodeHeroReel(path.join(OUT_VIDEOS, 'hero-hearth-reel.mp4'));
+const heroOut = path.join(OUT_VIDEOS, 'hero-hearth-reel.mp4');
+if (FORCE || !existsSync(heroOut)) {
+  console.log('Encoding hero-hearth-reel.mp4...');
+  encodeHeroReel(heroOut);
+}
 
 const scenes = [
   {
@@ -193,13 +200,31 @@ const scenes = [
     panYExpr: 'ih/2-(ih/zoom/2)-10*sin(2*PI*on/150)',
     warmPulse: false,
   },
+  {
+    name: 'heirloom-atelier-loop.mp4',
+    src: 'heirloom',
+    zoomExpr: '1.03+0.055*sin(PI*on/150)',
+    panXExpr: 'iw/2-(iw/zoom/2)+14*sin(2*PI*on/150)',
+    panYExpr: 'ih/2-(ih/zoom/2)-8*cos(2*PI*on/150)',
+    warmPulse: true,
+  },
+  {
+    name: 'batch-prep-loop.mp4',
+    src: 'batch-prep',
+    zoomExpr: '1.03+0.05*sin(PI*on/150)',
+    panXExpr: 'iw/2-(iw/zoom/2)-14*cos(2*PI*on/150)',
+    panYExpr: 'ih/2-(ih/zoom/2)',
+    warmPulse: false,
+  },
 ];
 
 for (const s of scenes) {
+  const outMp4 = path.join(OUT_VIDEOS, s.name);
+  if (!FORCE && existsSync(outMp4)) continue;
   console.log(`Encoding ${s.name}...`);
   encodeSingleSceneLoop({
     inputPng: path.join(TMP_FRAMES, `${s.src}.png`),
-    outMp4: path.join(OUT_VIDEOS, s.name),
+    outMp4,
     zoomExpr: s.zoomExpr,
     panXExpr: s.panXExpr,
     panYExpr: s.panYExpr,

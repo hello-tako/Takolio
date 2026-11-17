@@ -43,3 +43,4 @@ export * from './legacy-availability';
 export * from './servings';
 export * from './v4';
 export * from './v5-catalog';
+export * from './v6';

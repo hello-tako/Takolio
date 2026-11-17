@@ -31,6 +31,7 @@ import { InventoryReadError } from './inventory';
 import { discoverRecipes } from '../services/recipe-discovery';
 import { filterSafeRecipes, loadHouseholdDiscoveryContext } from '../services/allergen-safety';
 import { lotExpiryFromEvidence } from '../utils/scan-evidence';
+import { findHouseholdHeirloomRecipeAsRuntime } from '../services/backend-power-engine';
 
 export const recipeRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
 
@@ -222,6 +223,26 @@ async function markActiveCookingSessionsCompleted(
     }
   } catch {
     // Best-effort session state sync when running against minimal unit-test mocks.
+  }
+}
+
+async function incrementHeirloomCookedCountIfCustom(
+  db: any,
+  householdId: string,
+  recipeId: string,
+): Promise<void> {
+  if (!db || !householdId || !recipeId || !recipeId.startsWith('custom')) return;
+  try {
+    await db
+      .prepare(
+        `UPDATE custom_household_recipes
+            SET cooked_count = cooked_count + 1, updated_at = ?
+          WHERE household_id = ? AND (id = ? OR slug = ?)`
+      )
+      .bind(new Date().toISOString(), householdId, recipeId, recipeId)
+      .run();
+  } catch {
+    // Best-effort update on minimal unit-test mocks.
   }
 }
 
@@ -478,7 +499,14 @@ recipeRoutes.get('/recipes/:id', tenancyGuard, async (c) => {
   if (!recipe) {
     const { snapshot } = await recipeAuthority(c);
     const current = findCatalogRecipe(c.env, snapshot, idOrSlug);
-    if (current && (!requestedVersion || await fingerprintRecipes([current]) === requestedVersion)) recipe = current;
+    if (current && (!requestedVersion || await fingerprintRecipes([current]) === requestedVersion)) {
+      recipe = current;
+    } else if (!current && c.env.DB && auth.householdId && auth.userId !== 'guest_anonymous') {
+      const custom = await findHouseholdHeirloomRecipeAsRuntime(c.env.DB, auth.householdId, idOrSlug);
+      if (custom && (!requestedVersion || await fingerprintRecipes([custom]) === requestedVersion)) {
+        recipe = custom;
+      }
+    }
   }
 
   if (!recipe || (recipe.id !== idOrSlug && recipe.slug !== idOrSlug)) {
@@ -564,7 +592,10 @@ recipeRoutes.post('/recipes/:id/cook/start', tenancyGuard, async (c) => {
     return c.json({ error: 'Recipe not found' }, 404);
   }
   const { snapshot } = await recipeAuthority(c);
-  const recipe = findCatalogRecipe(c.env, snapshot, recipeId);
+  let recipe = findCatalogRecipe(c.env, snapshot, recipeId);
+  if (!recipe && db && auth.householdId && auth.userId !== 'guest_anonymous') {
+    recipe = await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId);
+  }
 
   if (!recipe) {
     return c.json({ error: 'Recipe not found' }, 404);
@@ -785,7 +816,12 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     recipe = await readHouseholdRecipeContentVersion(db, auth.householdId, contentFingerprint);
     if (!recipe) {
       const { snapshot } = await recipeAuthority(c);
-      const current = recipeId ? findCatalogRecipe(c.env, snapshot, recipeId) : null;
+      const current = recipeId
+        ? (findCatalogRecipe(c.env, snapshot, recipeId) ??
+            (auth.householdId && auth.userId !== 'guest_anonymous'
+              ? await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId)
+              : null))
+        : null;
       if (current && await fingerprintRecipes([current]) === contentFingerprint) {
         await captureRecipeContentVersion(db, current);
         await grantRecipeContentAccess(db, auth.householdId, contentFingerprint);
@@ -801,6 +837,9 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     if (!UNVERSIONED_COOKING_CATALOGS.has(snapshot.fingerprint))
       return c.json({ error: 'Cần phiên bản công thức đã mở trước khi hoàn tất nấu', code: 'RECIPE_VERSION_REQUIRED' }, 409);
     recipe = recipeId ? findCatalogRecipe(c.env, snapshot, recipeId) : null;
+    if (!recipe && recipeId && auth.householdId && auth.userId !== 'guest_anonymous') {
+      recipe = await findHouseholdHeirloomRecipeAsRuntime(db, auth.householdId, recipeId);
+    }
     if (recipe && !snapshot.findById(recipe.id)) authoritySource = 'static';
   }
   if (!recipe) return c.json({ error: 'Recipe not found', code: 'NOT_FOUND' }, 404);
@@ -1048,6 +1087,7 @@ recipeRoutes.post('/recipes/:id/cook/complete', tenancyGuard, async (c) => {
     const batchResults = await runLegacyInventoryBatch(db, auth.householdId, batchStatements);
     assertBatchSucceeded(batchResults);
     await markActiveCookingSessionsCompleted(db, auth.householdId, auth.userId, cookingSessionId);
+    await incrementHeirloomCookedCountIfCustom(db, auth.householdId, recipe.id);
     if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
 
     const updatedInventory = await currentInventory();
@@ -1309,6 +1349,7 @@ async function completeAdoptedCooking(c: any, db: any, kv: any, auth: AuthContex
     ];
     await db.batch([...composed.statements, ...batchStatements]);
     await markActiveCookingSessionsCompleted(db, auth.householdId, auth.userId, plan.cookingSessionId);
+    await incrementHeirloomCookedCountIfCustom(db, auth.householdId, plan.recipe.id);
     if (kv) await kv.delete(`inv_${auth.householdId}`).catch(() => {});
     const updatedInventory = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
     return c.json({

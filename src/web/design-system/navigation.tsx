@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Search } from 'lucide-react';
 import { clsx } from 'clsx';
 import { DeferredNavIndicator } from './deferred-nav-indicator';
 import { isMealPlannerEnabled } from '../features/planner/feature';
 import { TakosanIcon, type TakosanIconName } from '../components/common/TakosanIcon';
 import { TAKOSAN_BRAND } from '../lib/takosan-brand';
 import {
+  FreshnessShieldIcon,
+  MortarPestleIcon,
   NavFridgeIcon,
   NavHomeIcon,
   NavPlannerIcon,
@@ -71,8 +74,9 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 interface AtelierPillarItem {
-  id: 'home' | 'fridge' | 'recipe' | 'mealPlan' | 'shopping' | 'profile';
+  id: 'home' | 'fridge' | 'recipe' | 'studio' | 'mealPlan' | 'shopping' | 'insights' | 'profile';
   label: string;
+  badge?: string;
   path: string;
   IconComponent: React.FC<TakolioIconProps>;
   isActive: (pathname: string) => boolean;
@@ -131,6 +135,14 @@ function getAtelierPillars(): AtelierPillarItem[] {
       isActive: (p) => ['/recipes', '/cook', '/cooking'].some((r) => inFamily(p, r)),
     },
     {
+      id: 'studio',
+      label: 'Sổ tay & Sơ chế',
+      badge: 'AI',
+      path: '/studio',
+      IconComponent: MortarPestleIcon,
+      isActive: (p) => inFamily(p, '/studio'),
+    },
+    {
       id: 'mealPlan',
       label: 'Thực đơn',
       path: plannerPath,
@@ -143,6 +155,14 @@ function getAtelierPillars(): AtelierPillarItem[] {
       path: '/shopping',
       IconComponent: NavShoppingIcon,
       isActive: (p) => inFamily(p, '/shopping'),
+    },
+    {
+      id: 'insights',
+      label: 'Phân tích Bếp',
+      badge: 'OS',
+      path: '/insights',
+      IconComponent: FreshnessShieldIcon,
+      isActive: (p) => inFamily(p, '/insights'),
     },
     {
       id: 'profile',
@@ -425,9 +445,21 @@ function KitchenDesktopSixPillarItems() {
                 active={active}
                 className="kitchen-nav-icon shrink-0"
               />
-              <span className={clsx('kitchen-nav-label', active && 'font-extrabold text-tk-jade-deep')}>
+              <span className={clsx('kitchen-nav-label flex-1', active && 'font-extrabold text-tk-jade-deep')}>
                 {pillar.label}
               </span>
+              {pillar.badge && (
+                <span
+                  className={clsx(
+                    'hidden lg:inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider',
+                    active
+                      ? 'bg-tk-jade text-white'
+                      : 'bg-tk-sunken text-tk-secondary border border-tk-stone/70',
+                  )}
+                >
+                  {pillar.badge}
+                </span>
+              )}
             </Link>
           </li>
         );
@@ -534,9 +566,12 @@ export function BottomNavigationBar({ kitchen = false }: { kitchen?: boolean }) 
   );
 }
 
-type SidebarProps = React.ComponentProps<typeof LegacyRailSidebar> & { kitchen?: boolean };
+type SidebarProps = React.ComponentProps<typeof LegacyRailSidebar> & {
+  kitchen?: boolean;
+  onOpenCommandPalette?: () => void;
+};
 
-export function RailSidebar({ kitchen = false, ...brand }: SidebarProps) {
+export function RailSidebar({ kitchen = false, onOpenCommandPalette, ...brand }: SidebarProps) {
   if (!kitchen) return <LegacyRailSidebar {...brand} />;
   return (
     <nav
@@ -564,9 +599,25 @@ export function RailSidebar({ kitchen = false, ...brand }: SidebarProps) {
         </span>
       </Link>
 
-      {/* Prominent Terracotta AI Vision Scan CTA */}
-      <div className="w-full px-0.5">
+      {/* Prominent Terracotta AI Vision Scan CTA + Global ⌘K Spotlight Trigger */}
+      <div className="w-full px-0.5 space-y-2">
         <KitchenScanLink className="w-full" />
+        {onOpenCommandPalette && (
+          <button
+            type="button"
+            onClick={onOpenCommandPalette}
+            aria-label="Mở bảng lệnh tìm kiếm nhanh (⌘K)"
+            className="w-full flex items-center justify-between gap-2 rounded-2xl border border-tk-stone/85 bg-white/90 px-3 py-2.5 text-xs font-bold text-tk-secondary shadow-xs transition-colors hover:border-tk-flame/40 hover:bg-white hover:text-tk-ink cursor-pointer"
+          >
+            <span className="inline-flex items-center gap-2 min-w-0">
+              <Search size={15} className="shrink-0 text-tk-flame" aria-hidden="true" />
+              <span className="hidden lg:inline truncate">Tìm nhanh &amp; Lệnh Bếp</span>
+            </span>
+            <kbd className="hidden lg:inline-flex items-center rounded-lg border border-tk-stone bg-tk-canvas px-1.5 py-0.5 text-[10px] font-extrabold text-tk-ink tk-tabular">
+              ⌘K
+            </kbd>
+          </button>
+        )}
       </div>
 
       {/* 6-Pillar Terra-Botanical Atelier Navigation */}

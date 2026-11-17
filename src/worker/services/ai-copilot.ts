@@ -1,13 +1,17 @@
 import type { D1DatabaseBinding } from '@frigo/db';
+import { computeRecipeNutritionV6, type Recipe } from '@frigo/recipes';
 import {
   TakolioAiGateway,
   askSousChef,
   composeFridgeRescueBrief,
+  craftHeirloomRecipeWithAi,
   recommendSmartSubstitutions,
   type CulinaryFridgeItem,
   type FridgeRescueBrief,
   type FridgeRescueInput,
   type GatewayStatusReport,
+  type HeirloomRecipeBlueprint,
+  type HeirloomRecipePromptInput,
   type SmartSubstitutionInput,
   type SmartSubstitutionResponse,
   type SousChefContextInput,
@@ -296,4 +300,122 @@ export function getAiCopilotGatewayStatus(env: Env): GatewayStatusReport {
     db: env.DB ?? null,
   });
   return gateway.getStatus();
+}
+
+const HEAT_LEVEL_LABELS_VI: Record<string, string> = {
+  off: 'Sơ chế nguội',
+  low: 'Lửa liu riu',
+  medium_low: 'Lửa liu riu',
+  medium: 'Lửa vừa',
+  medium_high: 'Lửa lớn',
+  high: 'Lửa lớn',
+};
+
+const COOKWARE_LABELS_VI: Record<string, string> = {
+  prep_board: 'Thớt gỗ & Âu sơ chế',
+  wok: 'Chảo sâu lòng (Wok)',
+  claypot: 'Nồi đất Bát Tràng',
+  stockpot: 'Nồi canh đáy dày',
+  steamer: 'Xửng hấp tre',
+  pan: 'Chảo gang đáy phẳng',
+};
+
+export async function runHeirloomRecipeArchitect(
+  env: Env,
+  auth: AuthContext,
+  input: HeirloomRecipePromptInput,
+  waitUntil?: (promise: Promise<unknown>) => void,
+): Promise<{
+  blueprint: HeirloomRecipeBlueprint;
+  recipe: Record<string, unknown>;
+}> {
+  const safetyProfile = await loadHouseholdCulinarySafetyProfile(env.DB, auth);
+  const config = aiConfigFromEnv(env);
+  const gateway = new TakolioAiGateway({
+    config,
+    db: env.DB ?? null,
+    waitUntil,
+  });
+
+  const blueprint = await craftHeirloomRecipeWithAi(gateway, {
+    ...input,
+    servings: input.servings ?? safetyProfile.householdSize,
+    householdAllergens: mergeAllergens(input.householdAllergens, safetyProfile.householdAllergens),
+    userId: auth.userId,
+    householdId: auth.householdId,
+  });
+
+  const syntheticRecipe: Recipe = {
+    id: blueprint.slug,
+    slug: blueprint.slug,
+    title: blueprint.titleVi,
+    description: blueprint.descriptionVi,
+    imageUrl: '/takolio/v5/posters/heirloom-poster.webp',
+    cuisine: 'vietnamese',
+    cookTimeMinutes: blueprint.cookTimeMinutes,
+    servings: blueprint.servings,
+    difficulty: blueprint.difficulty,
+    tags: blueprint.tags,
+    ingredients: blueprint.ingredients.map((ing) => ({
+      ingredientId: ing.ingredientId,
+      name: ing.nameVi || ing.name,
+      requiredQuantity: ing.requiredQuantity,
+      unit: ing.unit,
+      isOptional: Boolean(ing.isOptional),
+    })),
+    steps: blueprint.steps.map((st) => ({
+      stepNumber: st.stepNumber,
+      instruction: st.instruction,
+      timerMinutes: st.timerMinutes,
+      tip: st.tip,
+    })),
+  };
+
+  const nutritionReport = computeRecipeNutritionV6(syntheticRecipe, blueprint.servings);
+  const normalizedRegion = blueprint.region === 'toan_quoc' ? 'all' : blueprint.region;
+
+  return {
+    blueprint,
+    recipe: {
+      title: blueprint.titleVi,
+      titleVi: blueprint.titleVi,
+      slug: blueprint.slug.startsWith('custom-') ? blueprint.slug : `custom-${blueprint.slug}`,
+      description: blueprint.descriptionVi,
+      descriptionVi: blueprint.descriptionVi,
+      familyStory: blueprint.familyStoryVi ?? input.familyStoryVi ?? '',
+      region: normalizedRegion,
+      category: blueprint.category,
+      prepTimeMinutes: blueprint.prepTimeMinutes,
+      cookTimeMinutes: blueprint.cookTimeMinutes,
+      servings: blueprint.servings,
+      difficulty: blueprint.difficulty,
+      caloriesPerServing: nutritionReport.perServing.caloriesKcal,
+      proteinGrams: nutritionReport.perServing.proteinG,
+      nutritionV6: nutritionReport,
+      chefSecret: blueprint.chefSecretVi,
+      chefSecretVi: blueprint.chefSecretVi,
+      allergenWarningsVi: blueprint.allergenWarningsVi,
+      tags: blueprint.tags,
+      ingredients: blueprint.ingredients.map((ing) => ({
+        ingredientId: ing.ingredientId,
+        name: ing.nameVi || ing.name,
+        quantity: ing.requiredQuantity,
+        requiredQuantity: ing.requiredQuantity,
+        unit: ing.unit,
+        note: `${ing.formattedAmountVi} · ${ing.prepNoteVi}`,
+      })),
+      steps: blueprint.steps.map((st) => ({
+        stepNumber: st.stepNumber,
+        phase: st.phase,
+        phaseTitleVi: st.titleVi,
+        instruction: st.instruction,
+        cookware: COOKWARE_LABELS_VI[st.cookware] ?? st.cookware,
+        heatLevel: HEAT_LEVEL_LABELS_VI[st.heatLevel] ?? 'Lửa vừa',
+        durationMinutes: st.timerMinutes,
+        timerSeconds: st.timerMinutes * 60,
+        sensoryCue: st.sensoryCue,
+        tip: st.tip,
+      })),
+    },
+  };
 }

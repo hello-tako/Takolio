@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
+  computeRecipeNutritionV6,
   enrichRecipeToV4,
   evaluateRecipeAvailability,
   evaluateRecipeDietarySafetyV4,
@@ -413,7 +414,13 @@ export const RecipeDetailPage: React.FC = () => {
     forbiddenIngredientIds: familyPrefsQuery.data?.preferences.forbiddenIngredientIds,
   });
 
-  const nutrition = recipe.nutrition ?? v4Data.estimatedNutrition;
+  const nutritionV6 = computeRecipeNutritionV6(recipe, recipe.servings);
+  const nutrition = recipe.nutrition ?? {
+    calories: nutritionV6.perServing.caloriesKcal,
+    proteinG: nutritionV6.perServing.proteinG,
+    fatG: nutritionV6.perServing.fatG,
+    carbG: nutritionV6.perServing.carbsG,
+  };
   const nutritionIsEstimated = !recipe.nutrition;
 
   const updateServingsParam = (nextServings: number) => {
@@ -1349,39 +1356,101 @@ export const RecipeDetailPage: React.FC = () => {
             {activeTab === 'nutrition' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <BentoCard tone="ceramic" padding="md" className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-extrabold text-tk-ink">
-                      Dinh dưỡng mỗi khẩu phần
-                    </h3>
-                    <AtelierBadge tone={nutritionIsEstimated ? 'neutral' : 'jade'}>
-                      {nutritionIsEstimated ? 'Ước tính từ định lượng V4' : 'Công bố chuẩn'}
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <CaloriesLeafIcon size={18} tone="jade" active />
+                      <h3 className="text-base font-extrabold text-tk-ink">
+                        Dinh dưỡng chuyên sâu mỗi khẩu phần
+                      </h3>
+                    </div>
+                    <AtelierBadge tone={nutritionIsEstimated ? 'turmeric' : 'jade'}>
+                      {nutritionIsEstimated
+                        ? `Định lượng V6 (${nutritionV6.confidence === 'high' ? 'Chuẩn xác cao' : 'Ước tính'})`
+                        : 'Công bố chuẩn'}
                     </AtelierBadge>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-2.5 text-center">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-center">
                     {[
                       { label: 'Năng lượng', value: nutrition.calories, unit: 'kcal' },
                       { label: 'Chất đạm', value: nutrition.proteinG, unit: 'g' },
-                      { label: 'Chất béo', value: nutrition.fatG, unit: 'g' },
                       { label: 'Tinh bột', value: nutrition.carbG, unit: 'g' },
+                      { label: 'Chất béo', value: nutrition.fatG, unit: 'g' },
+                      { label: 'Chất xơ', value: nutritionV6.perServing.fiberG, unit: 'g' },
+                      { label: 'Natri / Muối', value: nutritionV6.perServing.sodiumMg, unit: 'mg' },
                     ].map((cell) => (
                       <div
                         key={cell.label}
-                        className="rounded-2xl border border-tk-stone/80 bg-tk-canvas p-3"
+                        className="rounded-2xl border border-tk-stone/80 bg-tk-canvas p-2.5"
                       >
-                        <p className="text-[11px] font-bold uppercase text-tk-muted">{cell.label}</p>
-                        <p className="mt-1 text-lg font-extrabold text-tk-ink tk-tabular">
+                        <p className="text-[11px] font-bold uppercase text-tk-muted">
+                          {cell.label}
+                        </p>
+                        <p className="mt-1 text-base sm:text-lg font-extrabold text-tk-ink tk-tabular">
                           {cell.value}
                         </p>
-                        <p className="text-[11px] font-semibold text-tk-secondary">{cell.unit}</p>
+                        <p className="text-[10px] font-semibold text-tk-secondary">{cell.unit}</p>
                       </div>
                     ))}
                   </div>
+
+                  {/* Macro Split Visual Bar */}
+                  <div className="space-y-1.5 rounded-2xl border border-tk-stone/75 bg-tk-canvas/70 p-3">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-tk-secondary tk-tabular">
+                      <span>Tỷ lệ năng lượng đa lượng</span>
+                      <span>Tải đường huyết: {nutritionV6.glycemicLoadLabelVi}</span>
+                    </div>
+                    <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-tk-sunken" aria-hidden="true">
+                      <span
+                        className="bg-tk-jade transition-all"
+                        style={{ width: `${nutritionV6.macroSplitPct.proteinPct}%` }}
+                      />
+                      <span
+                        className="bg-tk-turmeric transition-all"
+                        style={{ width: `${nutritionV6.macroSplitPct.carbsPct}%` }}
+                      />
+                      <span
+                        className="bg-tk-flame transition-all"
+                        style={{ width: `${nutritionV6.macroSplitPct.fatPct}%` }}
+                      />
+                    </div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-semibold text-tk-secondary tk-tabular">
+                      <span className="inline-flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-tk-jade" />
+                        Đạm {nutritionV6.macroSplitPct.proteinPct}%
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-tk-turmeric" />
+                        Tinh bột {nutritionV6.macroSplitPct.carbsPct}%
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <span className="h-2 w-2 rounded-full bg-tk-flame" />
+                        Chất béo {nutritionV6.macroSplitPct.fatPct}%
+                      </span>
+                    </div>
+                  </div>
+
+                  {nutritionV6.healthBadgesVi.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {nutritionV6.healthBadgesVi.map((badge) => (
+                        <AtelierBadge key={badge} tone="jade">
+                          {badge}
+                        </AtelierBadge>
+                      ))}
+                    </div>
+                  )}
+
+                  {nutritionV6.sodiumAdvisoryVi && (
+                    <div className="rounded-2xl border border-tk-turmeric/35 bg-tk-turmeric-soft/80 px-3.5 py-2.5 text-xs font-semibold text-tk-turmeric-deep">
+                      <FishSauceCruetIcon size={14} tone="turmeric" className="inline mr-1.5 -mt-0.5" />
+                      {nutritionV6.sodiumAdvisoryVi}
+                    </div>
+                  )}
                 </BentoCard>
 
                 <BentoCard tone="ceramic" padding="md" className="space-y-4">
                   <h3 className="text-base font-extrabold text-tk-ink">
-                    Dụng cụ bếp &amp; Hồ sơ ăn uống
+                    Dụng cụ bếp, Hồ sơ ăn uống &amp; Sơ chế trước
                   </h3>
 
                   {v4Data.equipmentList.length > 0 && (
@@ -1413,6 +1482,20 @@ export const RecipeDetailPage: React.FC = () => {
                       </div>
                     </div>
                   )}
+
+                  <div className="pt-2 border-t border-tk-stone/70 space-y-2">
+                    <p className="text-xs text-tk-secondary leading-relaxed">
+                      Muốn sơ chế sẵn món <strong>{recipe.title}</strong> từ Chủ Nhật để tối đi làm về chỉ mất 10 phút lên mâm?
+                    </p>
+                    <ActionButton
+                      variant="ceramic"
+                      size="sm"
+                      to="/studio?tab=prep"
+                      icon={<CalendarMealCheckIcon size={15} tone="jade" active />}
+                    >
+                      Mở Xưởng Sơ Chế Đầu Tuần 90 Phút
+                    </ActionButton>
+                  </div>
                 </BentoCard>
               </div>
             )}

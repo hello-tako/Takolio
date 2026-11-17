@@ -2,6 +2,7 @@ import { Env } from '../types';
 import { getExtendedRetentionConfig } from '../config/retention';
 import { validateEnvironment } from '../config/validation';
 import { reconcileStaleScanReservations } from './scan-quota';
+import { sha256Hex } from '../utils/session';
 
 /**
  * Scheduled cleanup for expired OTPs, expired sessions, terminal scan queue
@@ -244,7 +245,159 @@ export async function cleanupAbandonedGuests(
   return changesOf(results[2]);
 }
 
-export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
+/**
+ * Prune expired durable HTTP idempotency receipts (`d1_idempotency_keys`).
+ */
+export async function cleanupExpiredIdempotencyKeys(
+  db: NonNullable<Env['DB']>,
+): Promise<number> {
+  const result = await db
+    .prepare(
+      `DELETE FROM d1_idempotency_keys
+        WHERE datetime(expires_at) IS NOT NULL
+          AND datetime(expires_at) < datetime('now')`
+    )
+    .run();
+  return changesOf(result);
+}
+
+/**
+ * Proactively generate zero-spam FEFO 48-hour expiry alerts into `user_notifications`
+ * across active `inventory_lots` and non-adopted `inventory_items`.
+ * Deduplicated per lot/item per UTC calendar day via `dedupe_key = 'fefo-48h:' || lot_id || ':' || date('now')`.
+ */
+export async function generateProactiveExpiryNotifications(
+  db: NonNullable<Env['DB']>,
+): Promise<number> {
+  const [clockRes, lotsRes, legacyItemsRes] = await db.batch([
+    db.prepare(`SELECT date('now') AS today_utc, datetime('now') AS now_utc`),
+    db.prepare(
+      `SELECT il.id AS source_id,
+              il.household_id,
+              il.raw_name AS item_name,
+              il.quantity_milli,
+              il.canonical_unit AS unit,
+              COALESCE(il.expiry_at, il.estimated_expiry_at) AS expiry_date,
+              'fefo-48h:' || il.id || ':' || date('now') AS dedupe_key
+         FROM inventory_lots il
+        WHERE il.state = 'ACTIVE'
+          AND il.quantity_milli > 0
+          AND COALESCE(il.expiry_at, il.estimated_expiry_at) IS NOT NULL
+          AND datetime(COALESCE(il.expiry_at, il.estimated_expiry_at)) IS NOT NULL
+          AND date(COALESCE(il.expiry_at, il.estimated_expiry_at)) >= date('now', '-1 day')
+          AND datetime(COALESCE(il.expiry_at, il.estimated_expiry_at)) <= datetime('now', '+48 hours')
+        ORDER BY COALESCE(il.expiry_at, il.estimated_expiry_at) ASC
+        LIMIT 250`
+    ),
+    db.prepare(
+      `SELECT ii.id AS source_id,
+              ii.household_id,
+              ii.name AS item_name,
+              ii.quantity,
+              ii.unit,
+              ii.expiry_date,
+              'fefo-48h:' || ii.id || ':' || date('now') AS dedupe_key
+         FROM inventory_items ii
+        WHERE ii.quantity > 0
+          AND ii.expiry_date IS NOT NULL
+          AND datetime(ii.expiry_date) IS NOT NULL
+          AND date(ii.expiry_date) >= date('now', '-1 day')
+          AND datetime(ii.expiry_date) <= datetime('now', '+48 hours')
+          AND NOT EXISTS (
+            SELECT 1 FROM inventory_lots il
+             WHERE il.household_id = ii.household_id AND il.legacy_item_id IS NOT NULL
+          )
+          AND NOT EXISTS (
+            SELECT 1 FROM inventory_adoption_receipts iar
+             WHERE iar.household_id = ii.household_id
+          )
+        ORDER BY ii.expiry_date ASC
+        LIMIT 250`
+    ),
+  ]);
+
+  const clockRow = (clockRes?.results?.[0] ?? null) as { today_utc?: string; now_utc?: string } | null;
+  const createdAt = clockRow?.now_utc
+    ? `${clockRow.now_utc.replace(' ', 'T')}Z`
+    : new Date().toISOString();
+
+  type AlertCandidate = {
+    householdId: string;
+    itemName: string;
+    quantityLabel: string;
+    unit: string;
+    expiryDate: string;
+    dedupeKey: string;
+  };
+
+  const candidates: AlertCandidate[] = [];
+
+  for (const lot of (lotsRes?.results ?? []) as Array<{
+    source_id: string;
+    household_id: string;
+    item_name: string;
+    quantity_milli: number;
+    unit: string;
+    expiry_date: string;
+    dedupe_key: string;
+  }>) {
+    const qty = Number((Number(lot.quantity_milli) / 1000).toFixed(2));
+    candidates.push({
+      householdId: lot.household_id,
+      itemName: lot.item_name,
+      quantityLabel: String(qty),
+      unit: lot.unit,
+      expiryDate: lot.expiry_date,
+      dedupeKey: lot.dedupe_key,
+    });
+  }
+
+  for (const item of (legacyItemsRes?.results ?? []) as Array<{
+    source_id: string;
+    household_id: string;
+    item_name: string;
+    quantity: number;
+    unit: string;
+    expiry_date: string;
+    dedupe_key: string;
+  }>) {
+    const qty = Number(Number(item.quantity).toFixed(2));
+    candidates.push({
+      householdId: item.household_id,
+      itemName: item.item_name,
+      quantityLabel: String(qty),
+      unit: item.unit,
+      expiryDate: item.expiry_date,
+      dedupeKey: item.dedupe_key,
+    });
+  }
+
+  if (candidates.length === 0) return 0;
+
+  const insertStatements = await Promise.all(
+    candidates.map(async (alert) => {
+      const digest = await sha256Hex(`${alert.householdId}:${alert.dedupeKey}`);
+      const notifId = `notif_fefo_${digest.slice(0, 24)}`;
+      const title = `Ưu tiên FEFO 48h: ${alert.itemName} sắp hết hạn`;
+      const message = `Còn ${alert.quantityLabel} ${alert.unit} ${alert.itemName} cần dùng trước hạn ${alert.expiryDate}. Chế biến ngay để giữ trọn vị tươi ngon!`;
+      return db
+        .prepare(
+          `INSERT OR IGNORE INTO user_notifications
+             (id, household_id, user_id, category, title, message, action_url, dedupe_key, is_read, created_at)
+           VALUES (?, ?, NULL, 'expiry', ?, ?, '/fridge', ?, 0, ?)`
+        )
+        .bind(notifId, alert.householdId, title, message, alert.dedupeKey, createdAt);
+    }),
+  );
+
+  const insertResults = await db.batch(insertStatements);
+  return insertResults.reduce((count, res) => count + changesOf(res), 0);
+}
+
+export async function runScheduledCleanup(
+  env: Env,
+  options?: { includeKitchenOs?: boolean },
+): Promise<CleanupReport> {
   const environment = env.ENVIRONMENT || 'development';
   const tasks: CleanupTaskResult[] = [];
 
@@ -329,6 +482,32 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
     tasks.push({ task: 'abandoned-guests', status: 'ok', deleted });
   } catch {
     tasks.push({ task: 'abandoned-guests', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
+  }
+
+  if (options?.includeKitchenOs) {
+    try {
+      const deleted = await cleanupExpiredIdempotencyKeys(db);
+      tasks.push({ task: 'expired-idempotency-keys', status: 'ok', deleted });
+    } catch {
+      tasks.push({
+        task: 'expired-idempotency-keys',
+        status: 'error',
+        deleted: 0,
+        error: CLEANUP_TASK_FAILURE,
+      });
+    }
+
+    try {
+      const generated = await generateProactiveExpiryNotifications(db);
+      tasks.push({ task: 'proactive-expiry-notifications', status: 'ok', deleted: generated });
+    } catch {
+      tasks.push({
+        task: 'proactive-expiry-notifications',
+        status: 'error',
+        deleted: 0,
+        error: CLEANUP_TASK_FAILURE,
+      });
+    }
   }
 
   return { ranAt: new Date().toISOString(), environment, tasks };

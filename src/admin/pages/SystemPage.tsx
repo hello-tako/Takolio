@@ -155,6 +155,31 @@ export function SystemPage() {
             </Section>
           </div>
 
+          <Section title="Chế Độ Backend Power Engine V6" description="Cơ chế vận hành chịu tải cao, gom lô truy vấn D1 và chống trùng lặp bền vững trên Edge.">
+            <div className="stat-strip">
+              <StatTile
+                label="Single-RTT D1 Batch"
+                value={<Badge tone="success">ĐANG BẬT</Badge>}
+                sub="Gom 8 truy vấn Kitchen OS Pulse trong 1 vòng D1 + Server-Timing"
+              />
+              <StatTile
+                label="Idempotency Ledger"
+                value={<Badge tone="success">SHA-256 D1</Badge>}
+                sub="Chống double-tap & phát hiện lệch tải trọng 409 (TTL 24h)"
+              />
+              <StatTile
+                label="Edge ETag SWR"
+                value={<Badge tone="brand">304 REVALIDATE</Badge>}
+                sub="Đối chiếu If-None-Match tiết kiệm băng thông di động"
+              />
+              <StatTile
+                label="Proactive FEFO Cron"
+                value={<Badge tone="success">48H DEDUPED</Badge>}
+                sub="Tự động quét lô sắp hết hạn & dọn khóa idempotency"
+              />
+            </div>
+          </Section>
+
           <Section title={vi.system.remote} description={vi.system.remoteNote}>
             <ul className="check-list">
               {data.remoteAdapters.map((adapter) => (

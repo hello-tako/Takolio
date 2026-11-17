@@ -21,3 +21,4 @@ export * from './circuit-breaker';
 export * from './d1-telemetry';
 export * from './gateway-v4';
 export * from './sous-chef';
+export * from './recipe-architect';

@@ -657,5 +657,32 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM cooking_sessions;
 INSERT INTO assert_zero SELECT COUNT(*) FROM user_notifications;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+-- Takolio V6 (0049): additive durable idempotency ledger, heirloom recipes, pantry thresholds, zero-waste & budget ledgers, and household activity feed.
+.read migrations/0049_takolio_v6_culinary_os_and_backend_power.sql
+.read migrations/0049_takolio_v6_culinary_os_and_backend_power.sql
+INSERT INTO assert_one SELECT COUNT(*) = 6 FROM sqlite_master WHERE type = 'table' AND name IN (
+  'd1_idempotency_keys',
+  'custom_household_recipes',
+  'pantry_staple_thresholds',
+  'household_waste_events',
+  'household_budget_entries',
+  'household_activity_events'
+);
+INSERT INTO assert_one SELECT COUNT(*) = 6 FROM sqlite_master WHERE type = 'index' AND name IN (
+  'idx_d1_idempotency_expires',
+  'idx_custom_hh_recipes_hh_updated',
+  'idx_pantry_thresholds_hh',
+  'idx_waste_events_hh_occurred',
+  'idx_budget_entries_hh_spent',
+  'idx_activity_events_hh_created'
+);
+INSERT INTO assert_zero SELECT COUNT(*) FROM d1_idempotency_keys;
+INSERT INTO assert_zero SELECT COUNT(*) FROM custom_household_recipes;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pantry_staple_thresholds;
+INSERT INTO assert_zero SELECT COUNT(*) FROM household_waste_events;
+INSERT INTO assert_zero SELECT COUNT(*) FROM household_budget_entries;
+INSERT INTO assert_zero SELECT COUNT(*) FROM household_activity_events;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL
