@@ -105,7 +105,7 @@ export const C23PlannerPilot: React.FC = () => {
             primaryAction={
               <Link
                 data-testid="planner-login-cta"
-                to={`/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}&vnext=1`}
+                to={`/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`}
                 className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] text-white font-bold text-sm inline-flex items-center gap-2"
               >
                 <span>Đăng nhập để tiếp tục</span>

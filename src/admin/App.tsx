@@ -8,9 +8,7 @@ import { AuditPage } from './pages/AuditPage';
 import { BillingPage } from './pages/BillingPage';
 import { HouseholdsPage, UsersPage } from './pages/UsersPage';
 import { LoginPage } from './pages/LoginPage';
-import { OverviewPage } from './pages/OverviewPage';
 import { AdminOverviewVNext } from './vnext/AdminOverviewVNext';
-import { useAdminVNext } from './vnext/feature';
 import './vnext/admin-vnext.css';
 import { RecipeDetailPage } from './pages/RecipeDetailPage';
 import { RecipesPage } from './pages/RecipesPage';
@@ -28,11 +26,6 @@ export function createAdminQueryClient(): QueryClient {
   });
 }
 
-function OverviewEntry() {
-  const vnext = useAdminVNext();
-  return vnext ? <AdminOverviewVNext /> : <OverviewPage />;
-}
-
 export function AdminApp({ queryClient }: { queryClient: QueryClient }) {
   return (
     <QueryClientProvider client={queryClient}>
@@ -45,7 +38,7 @@ export function AdminApp({ queryClient }: { queryClient: QueryClient }) {
               index
               element={
                 <RequirePermission permission="overview.read">
-                  <OverviewEntry />
+                  <AdminOverviewVNext />
                 </RequirePermission>
               }
             />

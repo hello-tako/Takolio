@@ -1,52 +1,4 @@
 export const FRIGO_ASSETS = {
-  "base": "/frigo",
-  "brand": {
-    "logoPrimary": "/frigo/brand/logo-primary.png",
-    "wordmark": "/frigo/brand/wordmark.png",
-    "logoCompact": "/frigo/brand/logo-compact.png",
-    "mark": "/frigo/brand/mark.png"
-  },
-  "appIcons": {
-    "icon512": "/frigo/app-icons/icon-512.png",
-    "icon192": "/frigo/app-icons/icon-192.png",
-    "maskable512": "/frigo/app-icons/icon-maskable-512.png"
-  },
-  "uiIcons": {
-    "home": "/frigo/ui-icons/home.png",
-    "fridge": "/frigo/ui-icons/fridge.png",
-    "camera": "/frigo/ui-icons/camera.png",
-    "chef": "/frigo/ui-icons/chef.png",
-    "profile": "/frigo/ui-icons/profile.png",
-    "search": "/frigo/ui-icons/search.png",
-    "filter": "/frigo/ui-icons/filter.png",
-    "list": "/frigo/ui-icons/list.png",
-    "plus": "/frigo/ui-icons/plus.png",
-    "minus": "/frigo/ui-icons/minus.png",
-    "edit": "/frigo/ui-icons/edit.png",
-    "delete": "/frigo/ui-icons/delete.png",
-    "favorite": "/frigo/ui-icons/favorite.png",
-    "notification": "/frigo/ui-icons/notification.png",
-    "clock": "/frigo/ui-icons/clock.png",
-    "sparkles": "/frigo/ui-icons/sparkles.png",
-    "cart": "/frigo/ui-icons/cart.png",
-    "gallery": "/frigo/ui-icons/gallery.png",
-    "refresh": "/frigo/ui-icons/refresh.png",
-    "settings": "/frigo/ui-icons/settings.png",
-    "calendar": "/frigo/ui-icons/calendar.png",
-    "hot": "/frigo/ui-icons/hot.png",
-    "globe": "/frigo/ui-icons/globe.png",
-    "check": "/frigo/ui-icons/check.png"
-  },
-  "illustrations": {
-    "scan-fridge": "/frigo/illustrations/scan-fridge.png",
-    "empty-fridge": "/frigo/illustrations/empty-fridge.png",
-    "no-recipes": "/frigo/illustrations/no-recipes.png",
-    "shopping-ready": "/frigo/illustrations/shopping-ready.png",
-    "delicious-meal": "/frigo/illustrations/delicious-meal.png",
-    "use-soon": "/frigo/illustrations/use-soon.png",
-    "world-cuisines": "/frigo/illustrations/world-cuisines.png",
-    "frigo-plus": "/frigo/illustrations/frigo-plus.png"
-  },
   "ingredients": {
     "vegetables": {
       "tomato": "/frigo/ingredients/vegetables/tomato.png",
@@ -159,11 +111,5 @@ export const FRIGO_ASSETS = {
       "pasta-pomodoro": "/frigo/recipes/global/pasta-pomodoro.webp",
       "mapo-tofu": "/frigo/recipes/global/mapo-tofu.webp"
     }
-  },
-  "references": {
-    "brand": "/frigo/reference/brand_board.png",
-    "screens": "/frigo/reference/screen_reference.png",
-    "components": "/frigo/reference/ui_components_board.png",
-    "assets": "/frigo/reference/frontend_assets_board.png"
   }
 } as const;

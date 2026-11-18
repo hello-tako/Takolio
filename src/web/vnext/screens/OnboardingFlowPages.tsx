@@ -14,7 +14,7 @@ import {
 } from '../../services/family-preferences';
 import { familyPreferencesKey, useFamilyPreferences } from '../../features/family/useFamilyPreferences';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
-import { useBrandDirection, vnextHref } from '../feature';
+import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
 import { BrandLockup, MascotIllustration } from '../components/VNextMedia';
 import { TkvButton, TkvIconButton, TkvSurface } from '../components/Primitives';
@@ -108,8 +108,8 @@ const STARTER_PATHS: Array<{
  */
 export const VNextOnboardingFlow: React.FC = () => {
   const navigate = useNavigate();
-  const { pathname, search } = useLocation();
-  const [direction] = useBrandDirection(search);
+  const { pathname } = useLocation();
+
   const auth = useAuthStore();
   const queryClient = useQueryClient();
   const familyQuery = useFamilyPreferences();
@@ -269,7 +269,7 @@ export const VNextOnboardingFlow: React.FC = () => {
   };
 
   return (
-    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction={direction} data-tkv-screen={screenId}>
+    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction="a" data-tkv-screen={screenId}>
       <a href="#tkv-onb-main" className="tkv-skip-link">
         Đến bước thiết lập căn bếp
       </a>
@@ -284,7 +284,7 @@ export const VNextOnboardingFlow: React.FC = () => {
             {/* Top Bar + Skip */}
             <div className="flex items-center justify-between gap-3">
               <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1">
-                <BrandLockup direction={direction} />
+                <BrandLockup />
               </Link>
               {step !== 'ready' && (
                 <button

@@ -1,27 +1,25 @@
-# HANDOFF_CURRENT.md — Gate G12 Checkpoint (`PR_OPEN_AND_STAGING_PREVIEW_LIVE`)
+# HANDOFF_CURRENT.md — Gate G12 Pure-vNext Cutover (`LEGACY_PURGED_READY_FOR_MAIN_MERGE_AND_PROD`)
 
-- **Generated at JST:** `2026-11-18T16:22:00+09:00`
+- **Generated at JST:** `2026-11-18T20:12:00+09:00`
 - **Repo:** `hello-tako/Takolio` (`/Users/tunbee27/.gemini/antigravity/scratch/Takolio-vnext`)
-- **Source main SHA at start:** `87f279a055e028336ea334cc51c7ab4224f30ef4`; **kit baseline:** `87f279a055e028336ea334cc51c7ab4224f30ef4` (100% exact match)
-- **Worktree branch:** `feat/takolio-vnext-ui-architecture` (`origin/main` untouched; **PR #61 OPEN, NOT MERGED**)
-- **Pull Request (`OPEN — DO NOT MERGE WITHOUT OWNER COMMAND`):**
-  - **PR #61:** `https://github.com/hello-tako/Takolio/pull/61` (`feat/takolio-vnext-ui-architecture` → `main`)
-- **Live Cloudflare Staging Preview (`frigo-staging` — Cloudflare Access Protected):**
-  - **Staging Preview Alias URL:** `https://vnext-g12-frigo-staging.tungbipdz.workers.dev` (e.g. `/landing`, `/how-it-works`, `/pricing`, `/auth?mode=login`, `/`, `/fridge`, `/recipes`, `/cook/thit-kho-trung`, `/planner`, `/shopping`, `/me`)
-  - **Immutable Version Preview URL:** `https://50d4df9a-frigo-staging.tungbipdz.workers.dev`
-  - **Cloudflare Worker Version ID:** `50d4df9a-6283-46de-96ea-b2924a4cd189` (uploaded from commit `55d35c74` with `RECIPE_CATALOG_MODE=d1`, `MEAL_PLANNER_ENABLED=true`, `MEAL_COMPOSITION_V2_ENABLED=true`, leaving canonical `main` deployment on `frigo-staging` intact so `deploy.yml` `previous-authority` remains 100% preserved).
-- **Production Status:** **`NOT DEPLOYED`** (strictly untouched).
-- **Active gate:** **`G12 — STAGING_PREVIEW_READY_FOR_OWNER_REVIEW`** (`G00 → G12` completed; paused per Owner order awaiting post-Staging merge/production decision).
-- **Owner Signoffs Recorded:**
-  - **Gate `G02` (`2026-11-18T14:36:13+09:00`):** Direction A (Kitchen Studio Leaf & Coral) + Mascot Bé Mầm Bếp + 53 pure-vector SVG icons + 8 Golden Pilot Screens + `DDR-001` Option A routing + Honest `U06/U10` `UnavailableState` + untouched Red Zone.
-  - **Gate `G12` (`2026-11-18T16:11:00+09:00`):** (1) Authorized opening PR #61 to `main` without merging; (2) Authorized deploying Staging Preview (`vnext-g12`); (3) Approved `M09 / M11 / M12` copy as drafted.
+- **Source main SHA at start:** `87f279a055e028336ea334cc51c7ab4224f30ef4`
+- **Pull Request:** **PR #61** — `https://github.com/hello-tako/Takolio/pull/61` (`feat/takolio-vnext-ui-architecture` → `main`)
+- **Legacy Frontend Purge Status:** **`COMPLETE`** — **`164` obsolete legacy Frontend pages, components, stylesheets, G02 preview toggles, Frigo brand/UI assets, and legacy-DOM unit tests deleted**; `0 / 341` Red-Zone files modified (`341/341` SHA-256 verified).
+- **Pre-Cutover Production Baseline & Rollback Target (`frigo` Worker):**
+  - **Current Live Production Deployment ID:** `c57e9d9e-cb9e-4ca5-a121-a233c63e9b85`
+  - **Rollback Worker Version ID (Version #161):** **`904851f4-e3b6-4881-8c9a-78cdf88d5740`** (`GIT_COMMIT=cedeec779db51bf24a25543d72c6ca00f1026aea`, `RECIPE_CATALOG_MODE=d1`, `MEAL_PLANNER_ENABLED=true`, `MEAL_COMPOSITION_V2_ENABLED=true`).
+  - **Instant Production Rollback Command:**
+    `pnpm exec wrangler rollback 904851f4-e3b6-4881-8c9a-78cdf88d5740 --name frigo --message "Rollback to pre-vNext Worker version #161"`
+    (or `node scripts/cloudflare-worker-rollback.mjs 904851f4-e3b6-4881-8c9a-78cdf88d5740`)
+- **Staging Preview (`frigo-staging`):**
+  - `https://vnext-g12-frigo-staging.tungbipdz.workers.dev` (Worker Version `50d4df9a-6283-46de-96ea-b2924a4cd189`)
 - **Protected files changed?** **`NO`** (`341/341` protected files verified byte-for-byte identical via SHA-256 in `PROTECTED_FILE_HASHES.json`).
-- **Screen IDs (`85/85` verified in `SCREEN_COVERAGE.csv` — `0` `PLAN` rows remaining):**
-  - `TESTED_LOCAL` (`81` screens, including `M09, M11, M12` approved at `G12`): `M01–M12, A01–A08, O01–O06, C01–C30, U01–U05, U07, U09, S01–S08, AD01–AD05, AD07–AD11`
-  - `BLOCKED_BACKEND` (`2` screens — honest `UnavailableState` tested locally + `RFC-001/002`): `U06, U10`
-  - `PROTECTED_READONLY` (`2` screens — read-only shell alignment tested locally; PayOS/billing untouched): `U08, AD06`
-- **Asset registry status:** **`87` original assets** registered in `docs/handoff/vnext/ASSET_REGISTRY.csv`, all `APPROVED_G02_OWNER`.
-- **Verification Summary (`G11`):**
-  - `pnpm typecheck` (`exit 0`), `pnpm lint` (`exit 0`), `pnpm build` (`exit 0`), `pnpm check:migrations` (`exit 0`).
-  - `pnpm test` (`Node 24 + TMPDIR=/private/tmp CI=1`): `100%` of Frontend/Brand/Shell/Compiler/Integration/Auth/Billing/Admin/Domain suites PASS (`435/437` repo files, `9,779/9,783` tests PASS).
-  - Live Browser `85 × 2` Sweep: `170` PNGs captured, **`0 / 25` Axe WCAG 2.2 AA violations**, `0` HTTP 500s, `0` broken images, `0px` horizontal overflow (`320..1440px`), and `?vnext=0` instant rollback verified.
+- **Verification Gates (`CI` + `Admin CI` Parity):**
+  - `python3 scripts/admin-public-scan.py` → `PASS`
+  - `pnpm lint` → `exit 0`
+  - `pnpm typecheck` → `exit 0`
+  - `pnpm build` → `exit 0` (`index.css` reduced from `250.23 kB` → `162.37 kB`)
+  - `pnpm check:migrations` → `exit 0`
+  - `node scripts/admin-release-preflight.mjs` → `PASS`
+  - `node scripts/admin-workerd-check.mjs` + `node scripts/admin-migration-matrix.mjs` → `PASS`
+  - `pnpm exec playwright test -c playwright.admin.config.ts` → **`13 / 13` PASS (`0` Axe violations, `0px` overflow at `320/390/820/1440px`)**

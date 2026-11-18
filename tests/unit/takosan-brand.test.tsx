@@ -11,15 +11,12 @@ vi.mock('../../src/web/stores/useAuthStore', () => ({
   },
 }));
 
-import { TAKOSAN_KITCHEN } from '../../src/web/lib/takosan-kitchen';
 import { TAKOSAN_BRAND } from '../../src/web/lib/takosan-brand';
 import { TAKOLIO_BRAND } from '../../src/web/lib/takolio-brand';
-import { TakosanIcon } from '../../src/web/components/common/TakosanIcon';
-import { LandingPage } from '../../src/web/pages/LandingPage';
-import { Header } from '../../src/web/components/common/Header';
-import { TopBar } from '../../src/web/components/common/TopBar';
-import { BottomNavigationBar } from '../../src/web/design-system/navigation';
-import { EmptyState } from '../../src/web/components/common/EmptyState';
+import { M01LandingPilot } from '../../src/web/vnext/screens/M01LandingPilot';
+import { ConsumerStudioShell, PublicMarketingShell } from '../../src/web/vnext/components/Shells';
+import { TkvEmptyState } from '../../src/web/vnext/components/Primitives';
+import { ALL_VNEXT_ICON_NAMES, VNextIcon } from '../../src/web/vnext/components/VNextIcons';
 // @ts-expect-error Tailwind's JavaScript config intentionally has no declaration file.
 import tailwindConfig from '../../tailwind.config.js';
 
@@ -173,47 +170,36 @@ describe('PWA metadata', () => {
   });
 });
 
-describe('Primary shell renders Takolio, not Frigo', () => {
+describe('Primary vNext shell renders Takolio Kitchen Studio, not Frigo', () => {
   const render = (ui: React.ReactElement, path = '/') =>
     renderToStaticMarkup(<StaticRouter location={path}>{ui}</StaticRouter>);
 
-  it('LandingPage shows the scoped identity and honest review flow with no Frigo copy', () => {
-    const html = render(<LandingPage />, '/landing');
-    expect(html).toContain(`src="${TAKOSAN_KITCHEN.logo}"`);
-    expect(html).toContain('width="300" height="72"');
-    expect(html).toContain('Kiểm tra trước khi thêm');
-    expect(html).toContain('Kết quả có thể cần sửa');
-    expect(html).not.toContain('Takolio sẽ phân loại');
+  it('M01LandingPilot shows the Kitchen Studio Direction A identity with zero Frigo copy', () => {
+    const html = render(<M01LandingPilot />, '/landing');
+    expect(html).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
+    expect(html).toContain('Hôm nay ăn gì?');
     expect(html).not.toContain('Frigo');
     expect(html).not.toContain('/frigo/brand/');
   });
 
-  it('Header, TopBar and bottom navigation use the Takolio logo and icon grammar', () => {
-    const header = render(<Header />);
-    expect(header).toContain(`src="${TAKOSAN_BRAND.compactLogo}"`);
-    expect(header).toContain('alt="Takolio"');
-    expect(header).not.toContain('frigo-logo');
+  it('PublicMarketingShell and ConsumerStudioShell use the vNext lockup and 5-root navigation grammar', () => {
+    const pub = render(<PublicMarketingShell screenId="M01"><div>Nội dung</div></PublicMarketingShell>, '/landing');
+    expect(pub).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
+    expect(pub).toContain('alt="Takolio"');
+    expect(pub).not.toContain('frigo-logo');
 
-    const top = render(<TopBar />);
-    expect(top).toContain(`src="${TAKOSAN_BRAND.compactLogo}"`);
-    expect(top).toContain('alt="Takolio"');
-    expect(top).not.toContain('/frigo/brand/');
-
-    const nav = render(<BottomNavigationBar />);
-    for (const name of ['home', 'fridge', 'scan', 'mealPlan', 'profile']) {
-      expect(nav).toContain(`data-takosan-icon="${name}"`);
+    const studio = render(<ConsumerStudioShell screenId="C01"><div>Bếp</div></ConsumerStudioShell>, '/');
+    expect(studio).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
+    for (const label of ['Hôm nay', 'Tủ lạnh', 'Món ăn', 'Thực đơn', 'Tôi']) {
+      expect(studio).toContain(label);
     }
-    expect(nav).toContain('aria-label="Quét AI"');
-    expect(nav).toContain('aria-current="page"');
+    expect(studio).toContain('aria-current="page"');
   });
 
-  it('EmptyState maps legacy illustration types onto mascot poses', () => {
-    expect(render(<EmptyState type="empty-fridge" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.fridge);
-    expect(render(<EmptyState type="no-recipes" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.recipe);
-    expect(render(<EmptyState type="shopping-ready" title="Trống" description="x" />)).toContain(TAKOSAN_BRAND.mascot.shopping);
-    const error = render(<EmptyState type="error" title="Lỗi" description="x" />);
-    expect(error).not.toContain('/mascot/');
-    expect(error).toContain('aria-hidden="true"');
+  it('TkvEmptyState renders Bé Mầm Bếp mascot poses cleanly without legacy octopus or Frigo art', () => {
+    const empty = render(<TkvEmptyState pose="empty-fridge" title="Trống" description="x" />);
+    expect(empty).toContain('/takolio/vnext/mascot/pose-04-empty-fridge');
+    expect(empty).not.toContain('/frigo/');
   });
 });
 
@@ -316,98 +302,11 @@ describe('Brand generator (P2-BRAND-2)', () => {
   });
 });
 
-it('keeps legacy imports identical and renders detailed kit icons without alpha masks', () => {
+it('keeps brand constants identical and renders pure-vector vNext 24x24 SVG icons cleanly', () => {
   expect(TAKOSAN_BRAND).toBe(TAKOLIO_BRAND);
-  const fridge = renderToStaticMarkup(<TakosanIcon name="fridge" title="Tủ lạnh" />);
-  expect(fridge).toContain(`src="${TAKOLIO_BRAND.uiIcons.fridge}"`);
-  expect(fridge).toContain('alt="Tủ lạnh"');
-  expect(fridge).not.toContain('mask');
-  expect(renderToStaticMarkup(<TakosanIcon name="scan" onDark />)).toContain(TAKOLIO_BRAND.scanIconOnDark);
-});
-
-describe('Takolio V2 original navigation icon contract (A01)', () => {
-  const navNames = ['home', 'fridge', 'recipe', 'mealPlan', 'profile', 'scan'] as const;
-  const extractInnerPrimitives = (svgMarkup: string) =>
-    [...svgMarkup.matchAll(/<(path|rect|circle)\b[^>]*>/g)].map((m) => m[0]).join('');
-
-  it('renders variant="v2" as inline 24x24 SVG with pairwise-distinct inner vector geometry, strokeWidth, onDark, and accessible title semantics', () => {
-    const innerGeometryById = new Map<string, string>();
-    for (const name of navNames) {
-      const inactive = renderToStaticMarkup(<TakosanIcon name={name} variant="v2" />);
-      const expectedId = TAKOLIO_BRAND.v2NavIcons[name].id;
-      expect(inactive).toContain('<svg');
-      expect(inactive).toContain('viewBox="0 0 24 24"');
-      expect(inactive).toContain(`data-takosan-icon="${name}"`);
-      expect(inactive).toContain(`data-icon-id="${expectedId}"`);
-      expect(inactive).toContain('stroke="currentColor"');
-      expect(inactive).toContain('stroke-width="1.8"');
-      expect(inactive).toContain('aria-hidden="true"');
-      const inner = extractInnerPrimitives(inactive);
-      expect(inner.length).toBeGreaterThan(10);
-      innerGeometryById.set(expectedId, inner);
-    }
-    expect(innerGeometryById.size).toBe(6);
-    expect(new Set(innerGeometryById.values()).size).toBe(6);
-    expect(innerGeometryById.get('icon-home')).not.toBe(innerGeometryById.get('icon-meal-plan'));
-
-    const activeHome = renderToStaticMarkup(
-      <TakosanIcon name="home" variant="v2" strokeWidth={2.2} title="Trang chủ" />,
-    );
-    expect(activeHome).toContain('stroke-width="2.2"');
-    expect(activeHome).toContain('role="img"');
-    expect(activeHome).toContain('aria-label="Trang chủ"');
-    expect(activeHome).toContain('<title>Trang chủ</title>');
-    expect(activeHome).not.toContain('aria-hidden="true"');
-
-    const scanDark = renderToStaticMarkup(<TakosanIcon name="scan" variant="v2" onDark />);
-    expect(scanDark).toContain('stroke="#FFFFFF"');
-  });
-
-  it('forwards width, height, id, data-*, aria-*, and event handler props onto the variant="v2" SVG element', () => {
-    const onClick = vi.fn();
-    const custom = renderToStaticMarkup(
-      <TakosanIcon
-        name="home"
-        variant="v2"
-        width={32}
-        height={32}
-        id="nav-home-svg"
-        data-testid="custom-v2-home"
-        aria-describedby="home-hint"
-        onClick={onClick}
-      />,
-    );
-    expect(custom).toContain('width="32"');
-    expect(custom).toContain('height="32"');
-    expect(custom).toContain('id="nav-home-svg"');
-    expect(custom).toContain('data-testid="custom-v2-home"');
-    expect(custom).toContain('aria-describedby="home-hint"');
-
-    const el = TakosanIcon({ name: 'home', variant: 'v2', onClick }) as React.ReactElement<{
-      onClick?: () => void;
-    }>;
-    expect(el.props.onClick).toBe(onClick);
-  });
-
-  it('keeps TAKOLIO_BRAND.v2NavIcons elements in exact 1:1 parity with the authored SVG master and export files on disk', () => {
-    const parsePrimitives = (svgText: string) =>
-      [...svgText.matchAll(/<(path|rect|circle)\s+([^/>]+?)\s*\/>/g)].map(([, tag, attrText]) => {
-        const attrs: Record<string, string> = {};
-        for (const [, k, v] of attrText.matchAll(/([a-zA-Z-]+)="([^"]*)"/g)) {
-          attrs[k] = v;
-        }
-        return { tag, attrs };
-      });
-
-    const canonicalGeometries = new Set<string>();
-    for (const name of navNames) {
-      const entry = TAKOLIO_BRAND.v2NavIcons[name];
-      const masterSvg = readFileSync(resolve(root, entry.sourceMaster), 'utf8');
-      const exportSvg = readFileSync(resolve(root, entry.exportAsset), 'utf8');
-      expect(parsePrimitives(masterSvg)).toEqual(entry.elements);
-      expect(parsePrimitives(exportSvg)).toEqual(entry.elements);
-      canonicalGeometries.add(JSON.stringify(entry.elements));
-    }
-    expect(canonicalGeometries.size).toBe(6);
-  });
+  expect(ALL_VNEXT_ICON_NAMES.length).toBe(53);
+  const fridge = renderToStaticMarkup(<VNextIcon name="fridge" label="Tủ lạnh" />);
+  expect(fridge).toContain('viewBox="0 0 24 24"');
+  expect(fridge).toContain('aria-label="Tủ lạnh"');
+  expect(fridge).not.toContain('<image');
 });

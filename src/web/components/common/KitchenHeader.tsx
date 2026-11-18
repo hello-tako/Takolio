@@ -1,10 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Bell, User } from 'lucide-react';
-import { useAuthStore } from '../../stores/useAuthStore';
-import { KitchenScanLink } from '../../design-system/navigation';
-import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
 
+/** Minimal accessible back-link anchor for standalone domain detail views (hidden inside ConsumerStudioShell). */
 export function KitchenHeader({
   backTo,
   backLabel = 'Quay lại',
@@ -12,44 +9,16 @@ export function KitchenHeader({
   backTo?: string;
   backLabel?: string;
 }) {
-  const { avatarUrl } = useAuthStore();
   return (
-    <header className={`kitchen-header${backTo ? ' kitchen-header-with-back' : ''}`}>
-      <div className="flex min-w-0 items-center gap-2">
-        {backTo && (
-          <Link to={backTo} aria-label={backLabel} className="kitchen-icon-link">
-            <ArrowLeft aria-hidden="true" size={20} />
-          </Link>
-        )}
-        <Link to="/" aria-label="Takolio — Trang chủ" translate="no" className="kitchen-brand-link">
-          <picture>
-            {backTo && (
-              <source media="(max-width: 374px)" srcSet={TAKOSAN_KITCHEN.wordmark} width={466} height={262} />
-            )}
-            <img src={TAKOSAN_KITCHEN.logo} alt="" width={1050} height={414} />
-          </picture>
+    <header className="kitchen-header">
+      {backTo && (
+        <Link to={backTo} aria-label={backLabel} className="kitchen-icon-link">
+          {backLabel}
         </Link>
-        <span className="kitchen-brand-motto" aria-hidden="true">{TAKOSAN_KITCHEN.motto}</span>
-      </div>
-      <div className="flex shrink-0 items-center gap-2">
-        <Link to="/notifications" aria-label="Thông báo" className="kitchen-icon-link">
-          <Bell aria-hidden="true" size={20} />
-        </Link>
-        <Link to="/me" aria-label="Tài khoản cá nhân" className="kitchen-icon-link kitchen-account-link">
-          {avatarUrl ? (
-            <img
-              src={avatarUrl}
-              alt=""
-              width={36}
-              height={36}
-              className="rounded-full object-cover"
-            />
-          ) : (
-            <User aria-hidden="true" size={20} />
-          )}
-        </Link>
-      </div>
-      <KitchenScanLink className="kitchen-header-scan" />
+      )}
+      <Link to="/scan" className="kitchen-header-scan">
+        Quét nguyên liệu
+      </Link>
     </header>
   );
 }

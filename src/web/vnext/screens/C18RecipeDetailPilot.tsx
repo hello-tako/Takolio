@@ -63,7 +63,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
     typeof state?.discoveryReturn === 'string' &&
     (state.discoveryReturn === '/' || state.discoveryReturn.startsWith('/recipes'))
       ? state.discoveryReturn
-      : '/recipes?vnext=1';
+      : '/recipes';
 
   const queryClient = useQueryClient();
   const startCooking = useCookingStore((s) => s.startCooking);
@@ -149,7 +149,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
           title="Công thức này không tồn tại hoặc đã thay đổi đường dẫn"
           description="Bạn có thể quay lại kho công thức để tìm món ăn khác phù hợp với tủ lạnh."
           primaryAction={
-            <TkvButton onClick={() => navigate('/recipes?vnext=1')}>Xem kho công thức</TkvButton>
+            <TkvButton onClick={() => navigate('/recipes')}>Xem kho công thức</TkvButton>
           }
         />
       </ConsumerStudioShell>

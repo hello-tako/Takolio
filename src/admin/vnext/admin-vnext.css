@@ -93,7 +93,7 @@
 
 .tkv-admin-status-trio {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 14px;
 }
 
@@ -161,7 +161,7 @@
 
 .tkv-admin-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
   gap: 12px;
 }
 
@@ -173,12 +173,13 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .tkv-kpi-label {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #48615b;
+  color: #3f5852;
 }
 
 .tkv-kpi-number {
@@ -189,12 +190,12 @@
 
 .tkv-kpi-note {
   font-size: 0.75rem;
-  color: #56706a;
+  color: #445d57;
 }
 
 .tkv-admin-two-col {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 16px;
 }
 
@@ -207,6 +208,7 @@
 
 .tkv-admin-ops-list li {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;

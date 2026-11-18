@@ -57,7 +57,7 @@ export function AdminOverviewVNext() {
           aria-busy={overview.isPlaceholderData}
         >
           {/* Top 3 Operational Status Tiles matching AD02.png ("Trạng thái | Cần kiểm tra | Tác vụ / Chỉ số") */}
-          <section aria-label=" Tóm tắt trạng thái vận hành" className="tkv-admin-status-trio">
+          <section aria-label="Tóm tắt trạng thái vận hành" className="tkv-admin-status-trio">
             <div className="tkv-status-tile is-mint">
               <span className="tkv-tile-label">Trạng thái hệ thống</span>
               <strong className="tkv-tile-value">
@@ -93,7 +93,7 @@ export function AdminOverviewVNext() {
             </div>
             <div className="tkv-admin-kpi-grid">
               {overview.data.metrics.map((metric) => (
-                <div key={metric.key} className="tkv-admin-kpi-item">
+                <div key={metric.key} className="tkv-admin-kpi-item" data-testid={`admin-metric-${metric.key}`}>
                   <span className="tkv-kpi-label">{metric.label}</span>
                   <strong className="tkv-kpi-number">
                     {metric.value === null || metric.value === undefined
@@ -118,7 +118,7 @@ export function AdminOverviewVNext() {
                     <strong>{vi.overview.health}</strong>
                     <p className="muted small">Kiểm tra cơ sở dữ liệu D1, hàng đợi và cấu hình môi trường</p>
                   </div>
-                  <Link to="/system?vnext=1" className="tkv-ops-link">
+                  <Link to="/system" className="tkv-ops-link">
                     Chi tiết ›
                   </Link>
                 </li>
@@ -127,7 +127,7 @@ export function AdminOverviewVNext() {
                     <strong>Nhật ký kiểm toán bất biến (AD10)</strong>
                     <p className="muted small">Đối chiếu tác nhân quản trị và lịch sử thay đổi quyền</p>
                   </div>
-                  <Link to="/audit?vnext=1" className="tkv-ops-link">
+                  <Link to="/audit" className="tkv-ops-link">
                     Chi tiết ›
                   </Link>
                 </li>
@@ -136,7 +136,7 @@ export function AdminOverviewVNext() {
                     <strong>Vận hành AI & Quét ảnh (AD07)</strong>
                     <p className="muted small">Theo dõi trạng thái hàng đợi nhận diện không lộ PII</p>
                   </div>
-                  <Link to="/ai?vnext=1" className="tkv-ops-link">
+                  <Link to="/ai" className="tkv-ops-link">
                     Chi tiết ›
                   </Link>
                 </li>

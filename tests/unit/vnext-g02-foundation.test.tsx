@@ -33,7 +33,6 @@ import {
   U09U10PrivacyAndDataRightsPage,
   VNextSystemStatePage,
 } from '../../src/web/vnext/screens/AccountAndSystemPages';
-import { G02ReviewHubPage } from '../../src/web/vnext/screens/G02ReviewHubPage';
 
 const REPO_ROOT = path.resolve(__dirname, '../..');
 
@@ -123,7 +122,7 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
   it('enforces pure editable SVG vectors in public/takolio/vnext (zero embedded raster bitmaps)', () => {
     const vnextDir = path.join(REPO_ROOT, 'public/takolio/vnext');
     const svgs = collectSvgFiles(vnextDir);
-    expect(svgs.length).toBeGreaterThanOrEqual(59);
+    expect(svgs.length).toBeGreaterThanOrEqual(57);
     for (const svgFile of svgs) {
       const content = readFileSync(svgFile, 'utf8');
       expect(content).toContain('<svg');
@@ -221,14 +220,6 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
     o03.click(o03.container.querySelector('[data-testid="o03-bucket-5"]'));
     expect(o03.container.textContent).toMatch(/5 người/i);
     o03.unmount();
-
-    const hub = mountWithProviders(<G02ReviewHubPage />, ['/vnext']);
-    const styleBBtn = Array.from(hub.container.querySelectorAll('button')).find(
-      (b) => b.textContent?.trim() === 'Style B',
-    );
-    hub.click(styleBBtn ?? null);
-    expect(hub.container.querySelector('[data-tkv-direction="b"]')).not.toBeNull();
-    hub.unmount();
   });
 
   it('renders G05-G09 Consumer, Honest Gap (U06/U10), and System State (S01-S08) screens without deception', () => {

@@ -8,7 +8,6 @@ import { useSidebarCollapsed } from '../lib/hooks';
 import { isNavItemActive, visibleNavItems } from '../lib/nav';
 import { vi } from '../i18n/vi';
 import { Button, FixtureBanner } from './ui';
-import { useAdminVNext } from '../vnext/feature';
 
 function useDataContext() {
   return useSyncExternalStore(subscribeAdminDataContext, getAdminDataContext, getAdminDataContext);
@@ -23,7 +22,6 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const items = visibleNavItems(me.permissions);
-  const vnextAdmin = useAdminVNext();
 
   useEffect(() => {
     setDrawerOpen(false);
@@ -45,7 +43,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
   };
 
   return (
-    <div className={clsx('admin-app', collapsed && 'is-collapsed', drawerOpen && 'drawer-open', vnextAdmin && 'is-vnext-admin')}>
+    <div className={clsx('admin-app is-vnext-admin', collapsed && 'is-collapsed', drawerOpen && 'drawer-open')}>
       <a className="skip-link" href="#admin-main">
         {vi.layout.skip}
       </a>

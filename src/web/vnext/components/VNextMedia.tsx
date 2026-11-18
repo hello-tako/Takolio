@@ -153,9 +153,8 @@ const MASCOT_POSE_MAP: Record<Exclude<MascotPose, 'vector'>, { base: string; alt
 export const BrandLockup: React.FC<{
   direction?: BrandDirection;
   compact?: boolean;
-  showCandidateBadge?: boolean;
   className?: string;
-}> = ({ direction = 'a', compact = false, showCandidateBadge = false, className = '' }) => (
+}> = ({ compact = false, className = '' }) => (
   <span className={`inline-flex items-center gap-2.5 ${className}`} translate="no">
     {compact ? (
       <img
@@ -167,17 +166,12 @@ export const BrandLockup: React.FC<{
       />
     ) : (
       <img
-        src={`/takolio/vnext/brand/lockup-direction-${direction}.svg`}
+        src="/takolio/vnext/brand/lockup-direction-a.svg"
         alt="Takolio"
         width={154}
         height={34}
         className="h-[34px] w-auto shrink-0"
       />
-    )}
-    {showCandidateBadge && (
-      <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning)] border border-[var(--tkv-border)]">
-        Bản thử {direction.toUpperCase()}
-      </span>
     )}
   </span>
 );

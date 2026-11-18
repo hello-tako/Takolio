@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
 import { OfflineBanner } from '../../components/common/OfflineBanner';
-import { useBrandDirection, vnextHref, type BrandDirection } from '../feature';
+import { vnextHref } from '../feature';
 import { BrandLockup } from './VNextMedia';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { TkvButton, TkvIconButton, TkvSearchField } from './Primitives';
@@ -17,45 +17,44 @@ export interface ConsumerRootItem {
   match: (pathname: string) => boolean;
 }
 
-export function getConsumerRoots(vnextQuery = '?vnext=1'): ConsumerRootItem[] {
+export function getConsumerRoots(): ConsumerRootItem[] {
   const plannerPath = isMealPlannerEnabled() ? '/planner' : '/week';
   return [
     {
       id: 'home',
       label: 'Hôm nay',
-      to: `/${vnextQuery}`,
+      to: '/',
       icon: 'home',
-      match: (p) => p === '/' || p === '/vnext/c01',
+      match: (p) => p === '/',
     },
     {
       id: 'fridge',
       label: 'Tủ lạnh',
-      to: `/fridge${vnextQuery}`,
+      to: '/fridge',
       icon: 'fridge',
       match: (p) =>
         p.startsWith('/fridge') ||
         p.startsWith('/inventory') ||
-        p.startsWith('/ingredients') ||
-        p === '/vnext/c03',
+        p.startsWith('/ingredients'),
     },
     {
       id: 'recipes',
       label: 'Món ăn',
-      to: `/recipes${vnextQuery}`,
+      to: '/recipes',
       icon: 'recipes',
-      match: (p) => p.startsWith('/recipes') || p.startsWith('/cook') || p.startsWith('/vnext/c18'),
+      match: (p) => p.startsWith('/recipes') || p.startsWith('/cook'),
     },
     {
       id: 'planner',
       label: 'Thực đơn',
-      to: `${plannerPath}${vnextQuery}`,
+      to: plannerPath,
       icon: 'calendar',
-      match: (p) => p.startsWith('/planner') || p.startsWith('/week') || p === '/vnext/c23',
+      match: (p) => p.startsWith('/planner') || p.startsWith('/week'),
     },
     {
       id: 'me',
       label: 'Tôi',
-      to: `/me${vnextQuery}`,
+      to: '/me',
       icon: 'profile',
       match: (p) =>
         p.startsWith('/me') ||
@@ -66,51 +65,6 @@ export function getConsumerRoots(vnextQuery = '?vnext=1'): ConsumerRootItem[] {
     },
   ];
 }
-
-export const G02DirectionPreviewBar: React.FC<{
-  direction: BrandDirection;
-  onDirectionChange: (next: BrandDirection) => void;
-  screenId: string;
-}> = ({ direction, onDirectionChange, screenId }) => (
-  <div
-    role="region"
-    aria-label="Thanh xem thử hướng thiết kế G02"
-    className="bg-[var(--tkv-surface)] border-b border-[var(--tkv-border)] px-3 sm:px-6 py-1.5 text-xs flex items-center justify-between gap-2 flex-wrap"
-  >
-    <div className="flex items-center gap-2 min-w-0">
-      <span className="px-2 py-0.5 rounded-md font-extrabold bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)]">
-        {screenId}
-      </span>
-      <span className="text-[var(--tkv-ink-secondary)] truncate">
-        Bản thử vNext (G02 · Chờ chủ dự án duyệt khóa brand)
-      </span>
-    </div>
-    <div className="flex items-center gap-1.5">
-      {(['a', 'b', 'c'] as const).map((d) => (
-        <button
-          key={d}
-          type="button"
-          aria-pressed={direction === d}
-          onClick={() => onDirectionChange(d)}
-          className={clsx(
-            'tkv-focusable min-h-[32px] px-2.5 py-1 rounded-lg font-bold transition-colors',
-            direction === d
-              ? 'bg-[var(--tkv-primary)] text-white'
-              : 'bg-[var(--tkv-bg)] text-[var(--tkv-ink-secondary)] border border-[var(--tkv-border)]',
-          )}
-        >
-          Style {d.toUpperCase()}
-        </button>
-      ))}
-      <Link
-        to="/vnext"
-        className="tkv-focusable min-h-[32px] inline-flex items-center px-2.5 py-1 rounded-lg font-bold text-[var(--tkv-primary)] hover:underline"
-      >
-        Bảng duyệt G02
-      </Link>
-    </div>
-  </div>
-);
 
 /**
  * Public Marketing Shell (M01–M12). Matches M01.png navigation anatomy cleanly
@@ -123,8 +77,8 @@ export const PublicMarketingShell: React.FC<{
   children: React.ReactNode;
 }> = ({ screenId, onStartFree, isStartingFree = false, children }) => {
   const navigate = useNavigate();
-  const { pathname, search } = useLocation();
-  const [direction] = useBrandDirection(search);
+  const { pathname } = useLocation();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -136,14 +90,14 @@ export const PublicMarketingShell: React.FC<{
   ];
 
   return (
-    <div className="tkv-root flex flex-col min-h-dvh" data-tkv-direction={direction} data-tkv-screen={screenId}>
+    <div className="tkv-root flex flex-col min-h-dvh" data-tkv-direction="a" data-tkv-screen={screenId}>
       <a href="#tkv-public-main" className="tkv-skip-link">
         Đến nội dung chính
       </a>
       <header className="sticky top-0 z-30 bg-[var(--tkv-surface)]/95 backdrop-blur-md border-b border-[var(--tkv-border)]">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
           <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Trang chủ giới thiệu">
-            <BrandLockup direction={direction} />
+            <BrandLockup />
           </Link>
 
           <nav aria-label="Điều hướng giới thiệu sản phẩm" className="hidden md:flex items-center gap-6 text-sm font-semibold text-[var(--tkv-ink-secondary)]">
@@ -227,7 +181,7 @@ export const PublicMarketingShell: React.FC<{
       <footer className="border-t border-[var(--tkv-border)] bg-[var(--tkv-surface)] py-10 px-4 sm:px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-[var(--tkv-ink-secondary)]">
           <div className="space-y-2.5">
-            <BrandLockup direction={direction} />
+            <BrandLockup />
             <p className="text-xs leading-relaxed text-[var(--tkv-ink-muted)]">
               Trợ lý căn bếp thông minh cho gia đình hiện đại — quản lý tủ lạnh theo lô, gợi ý món khớp định lượng, lập thực đơn tuần và đi chợ gọn nhẹ.
             </p>
@@ -293,12 +247,12 @@ export const ConsumerStudioShell: React.FC<{
   headerRight,
   children,
 }) => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [direction] = useBrandDirection(search);
+
   const [quickFindOpen, setQuickFindOpen] = useState(false);
   const [quickQuery, setQuickQuery] = useState('');
-  const roots = getConsumerRoots(import.meta.env.PROD ? '' : '?vnext=1');
+  const roots = getConsumerRoots();
 
   const quickShortcuts = [
     { label: 'Tìm món ăn theo nguyên liệu sẵn có', to: vnextHref('/recipes'), icon: 'recipes' as const },
@@ -309,7 +263,7 @@ export const ConsumerStudioShell: React.FC<{
   ].filter((item) => item.label.toLowerCase().includes(quickQuery.trim().toLowerCase()));
 
   return (
-    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction={direction} data-tkv-screen={screenId}>
+    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction="a" data-tkv-screen={screenId}>
       <a href="#tkv-consumer-main" className="tkv-skip-link">
         Đến nội dung chính
       </a>
@@ -321,8 +275,8 @@ export const ConsumerStudioShell: React.FC<{
           className="hidden lg:flex w-[248px] shrink-0 flex-col justify-between border-r border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-4 sticky top-0 h-dvh"
         >
           <div className="space-y-5">
-            <Link to="/?vnext=1" className="tkv-focusable block px-2 py-1 rounded-xl">
-              <BrandLockup direction={direction} />
+            <Link to="/" className="tkv-focusable block px-2 py-1 rounded-xl">
+              <BrandLockup />
             </Link>
 
             <button
@@ -398,8 +352,8 @@ export const ConsumerStudioShell: React.FC<{
                   onClick={() => navigate(backTo)}
                 />
               ) : (
-                <Link to="/?vnext=1" className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Hôm nay">
-                  <BrandLockup direction={direction} compact />
+                <Link to="/" className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Hôm nay">
+                  <BrandLockup compact />
                 </Link>
               )}
               {title ? (
@@ -508,7 +462,7 @@ export const ConsumerStudioShell: React.FC<{
                   iconLeft="recipes"
                   onClick={() => {
                     setQuickFindOpen(false);
-                    navigate(`/recipes?q=${encodeURIComponent(quickQuery.trim())}&vnext=1`);
+                    navigate(`/recipes?q=${encodeURIComponent(quickQuery.trim())}`);
                   }}
                 >
                   Tìm món “{quickQuery.trim()}”
@@ -519,7 +473,7 @@ export const ConsumerStudioShell: React.FC<{
                   iconLeft="fridge"
                   onClick={() => {
                     setQuickFindOpen(false);
-                    navigate(`/fridge?q=${encodeURIComponent(quickQuery.trim())}&vnext=1`);
+                    navigate(`/fridge?q=${encodeURIComponent(quickQuery.trim())}`);
                   }}
                 >
                   Lọc trong tủ lạnh

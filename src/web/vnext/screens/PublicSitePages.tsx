@@ -1143,7 +1143,7 @@ export const M12CompanyLegalPage: React.FC = () => {
                     setSenderEmail(e.target.value);
                     setDraftPrepared(false);
                   }}
-                  placeholder="ban@gia-dinh.vn"
+                  placeholder="email@example.com"
                   required
                 />
                 <div className="space-y-2">

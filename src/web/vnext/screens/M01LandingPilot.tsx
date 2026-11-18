@@ -298,7 +298,7 @@ export const M01LandingPilot: React.FC = () => {
               Dùng thử miễn phí
             </TkvButton>
             <Link
-              to="/auth?mode=login&returnTo=%2Fplus&vnext=1"
+              to="/auth?mode=login&returnTo=%2Fplus"
               className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border)] text-sm font-bold text-[var(--tkv-ink)] inline-flex items-center"
             >
               Đăng nhập xem gói Plus

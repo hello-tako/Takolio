@@ -14,7 +14,7 @@ import {
   writeVerifyContext,
 } from '../../features/auth/verify-context';
 import { TurnstileWidget } from '../../components/common/TurnstileWidget';
-import { useBrandDirection, vnextHref } from '../feature';
+import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
 import { BrandLockup, MascotIllustration } from '../components/VNextMedia';
 import { TkvBadge, TkvButton, TkvSurface, TkvTextField } from '../components/Primitives';
@@ -148,9 +148,9 @@ const SixDigitOtpInput: React.FC<{
  */
 export const VNextAuthFlow: React.FC = () => {
   const navigate = useNavigate();
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
-  const [direction] = useBrandDirection(search);
+
 
   const urlMode = resolveAuthMode(pathname, searchParams);
   const [transferDeferred, setTransferDeferred] = useState(false);
@@ -493,7 +493,7 @@ export const VNextAuthFlow: React.FC = () => {
   };
 
   return (
-    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction={direction} data-tkv-screen={screenId}>
+    <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction="a" data-tkv-screen={screenId}>
       <a href="#tkv-auth-main" className="tkv-skip-link">
         Đến biểu mẫu xác thực
       </a>
@@ -519,7 +519,7 @@ export const VNextAuthFlow: React.FC = () => {
 
               <div className="relative flex items-center justify-between">
                 <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1">
-                  <BrandLockup direction={direction} />
+                  <BrandLockup />
                 </Link>
               </div>
 

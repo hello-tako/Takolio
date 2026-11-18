@@ -95,7 +95,7 @@ export const C01HomePilot: React.FC = () => {
             <TkvChip active icon="scan" onClick={() => navigate('/scan')}>
               Quét AI
             </TkvChip>
-            <TkvChip icon="plus" onClick={() => navigate('/fridge?vnext=1')}>
+            <TkvChip icon="plus" onClick={() => navigate('/fridge')}>
               Thêm nguyên liệu
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>
@@ -152,10 +152,10 @@ export const C01HomePilot: React.FC = () => {
                       <Link
                         to={
                           meal?.href
-                            ? `${meal.href}${meal.href.includes('?') ? '&' : '?'}vnext=1`
+                            ? `${meal.href}`
                             : topRecommendation
-                              ? `/recipes/${topRecommendation.recipe.slug || topRecommendation.recipe.id}?vnext=1`
-                              : `/recipes?vnext=1`
+                              ? `/recipes/${topRecommendation.recipe.slug || topRecommendation.recipe.id}`
+                              : `/recipes`
                         }
                         className="tkv-focusable min-h-[46px] px-4.5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white text-[var(--tkv-primary)] font-extrabold text-sm inline-flex items-center gap-2 shadow-xs"
                       >
@@ -164,7 +164,7 @@ export const C01HomePilot: React.FC = () => {
                       </Link>
                       {home.requiresAccount && (
                         <Link
-                          to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}&vnext=1`}
+                          to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
                           className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] border border-white/40 text-white font-bold text-sm inline-flex items-center"
                         >
                           Đăng nhập lập tuần
@@ -200,7 +200,7 @@ export const C01HomePilot: React.FC = () => {
                   Dành cho bạn hôm nay
                 </h2>
                 <Link
-                  to="/recipes?vnext=1"
+                  to="/recipes"
                   className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-bold text-[var(--tkv-primary)] hover:underline"
                 >
                   Xem tất cả món
@@ -209,7 +209,7 @@ export const C01HomePilot: React.FC = () => {
 
               <div className="space-y-3">
                 <Link
-                  to="/fridge?vnext=1"
+                  to="/fridge"
                   className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-4 hover:border-[var(--tkv-primary)] transition-colors shadow-[var(--tkv-shadow-card)]"
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -239,7 +239,7 @@ export const C01HomePilot: React.FC = () => {
                 </Link>
 
                 <Link
-                  to="/recipes?vnext=1"
+                  to="/recipes"
                   className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-4 hover:border-[var(--tkv-primary)] transition-colors shadow-[var(--tkv-shadow-card)]"
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -265,7 +265,7 @@ export const C01HomePilot: React.FC = () => {
                 </Link>
 
                 <Link
-                  to={`${plannerBase}?vnext=1`}
+                  to={`${plannerBase}`}
                   className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-4 hover:border-[var(--tkv-primary)] transition-colors shadow-[var(--tkv-shadow-card)]"
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -301,7 +301,7 @@ export const C01HomePilot: React.FC = () => {
                   Chi tiết nguyên liệu ưu tiên
                 </h2>
                 <Link
-                  to="/fridge?vnext=1"
+                  to="/fridge"
                   className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-bold text-[var(--tkv-primary)] hover:underline"
                 >
                   Mở tủ lạnh
@@ -322,7 +322,7 @@ export const C01HomePilot: React.FC = () => {
                       ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
                       : 'Chưa có nguyên liệu nào ở ngưỡng sắp hết hạn.'}
                   </span>
-                  <TkvButton size="sm" variant="secondary" onClick={() => navigate('/fridge?vnext=1')}>
+                  <TkvButton size="sm" variant="secondary" onClick={() => navigate('/fridge')}>
                     {activeItems.length === 0 ? 'Thêm ngay' : 'Xem tủ'}
                   </TkvButton>
                 </TkvSurface>
@@ -377,7 +377,7 @@ export const C01HomePilot: React.FC = () => {
                   {recommendations.map(({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => (
                     <Link
                       key={recipe.id}
-                      to={`/recipes/${recipe.slug || recipe.id}?vnext=1`}
+                      to={`/recipes/${recipe.slug || recipe.id}`}
                       className="tkv-focusable rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-3 flex items-center gap-3.5 hover:border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-card)]"
                     >
                       <VerifiedDishImage

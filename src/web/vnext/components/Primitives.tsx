@@ -329,7 +329,7 @@ export const TkvErrorState: React.FC<{
     </div>
     {onRetry && (
       <TkvButton variant="quiet" size="sm" iconLeft="refresh" onClick={onRetry}>
-        Thử tải lại
+        Thử lại
       </TkvButton>
     )}
   </TkvSurface>

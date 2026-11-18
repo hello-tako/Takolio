@@ -1,21 +1,7 @@
-import React, { useRef } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { BottomNavigationBar, RailSidebar } from '../../design-system/navigation';
-import { OfflineBanner } from '../common/OfflineBanner';
-import { useKitchenShell } from './use-kitchen-shell';
-import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
-import { isVNextConsumerPilotActive } from '../../vnext/pilot-router';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-// Review routes keep navigation; only the scan camera and full-screen workflows hide it.
-const IMMERSIVE_PATTERNS = [
-  /^\/scan\/?$/,
-  /^\/cook(\/.*)?$/,
-  /^\/cooking(\/.*)?$/,
-  /^\/auth(\/.*)?$/,
-  /^\/onboarding(\/.*)?$/,
-];
-
-/** Scope the kitchen shell to migrated screens; other routes retain the current kit. */
+/** Canonical consumer kitchen route predicate (retained for route-scope invariants). */
 export function isKitchenSurface(pathname: string) {
   pathname = pathname.toLowerCase();
   return (
@@ -36,52 +22,5 @@ export function isKitchenSurface(pathname: string) {
   );
 }
 
-export const AppLayout: React.FC = () => {
-  const { pathname, search } = useLocation();
-  const vnextPilot = isVNextConsumerPilotActive(pathname, search);
-  const immersive = IMMERSIVE_PATTERNS.some((re) => re.test(pathname.toLowerCase()));
-  const kitchen = isKitchenSurface(pathname);
-  const shellRef = useRef<HTMLDivElement>(null);
-  useKitchenShell(shellRef, !vnextPilot && kitchen && !immersive, pathname);
-  if (vnextPilot) {
-    return <Outlet />;
-  }
-  return (
-    <div
-      ref={shellRef}
-      data-kitchen-navigation={kitchen && !immersive ? 'persistent' : undefined}
-      data-kitchen-density={kitchen && !/^\/plus\/?$/i.test(pathname) ? 'compact' : undefined}
-      className={`${kitchen ? 'takosan-rebuild ' : ''}min-h-dvh bg-semantic-background text-semantic-text-primary antialiased selection:bg-takosan-mint`}
-    >
-      {kitchen && (
-        <a href="#kitchen-main" className="kitchen-skip-link">
-          Đến nội dung chính
-        </a>
-      )}
-      {!immersive && (
-        <RailSidebar
-          kitchen={kitchen}
-          brandLogo={kitchen ? TAKOSAN_KITCHEN.wordmark : undefined}
-          brandSymbol={kitchen ? TAKOSAN_KITCHEN.symbolMicro : undefined}
-          brandDimensions={kitchen ? { width: 466, height: 262 } : undefined}
-        />
-      )}
-      {/* The shell owns rail/sidebar offsets and the maximum content width. */}
-      <div className={immersive ? '' : kitchen ? 'kitchen-shell-content' : 'sm:pl-20 lg:pl-64'}>
-        {!immersive && (kitchen ? <div className="kitchen-banner-slot"><OfflineBanner /></div> : <OfflineBanner />)}
-        <main
-          id={kitchen ? 'kitchen-main' : undefined}
-          tabIndex={kitchen ? -1 : undefined}
-          className={
-            immersive
-              ? ''
-              : kitchen ? 'kitchen-shell-main min-h-dvh mx-auto w-full max-w-[var(--content-wide)]' : 'min-h-dvh pb-[calc(68px+env(safe-area-inset-bottom,0px))] sm:pb-0 mx-auto w-full max-w-[var(--content-wide)]'
-          }
-        >
-          <Outlet />
-        </main>
-        {!immersive && <BottomNavigationBar kitchen={kitchen} />}
-      </div>
-    </div>
-  );
-};
+/** Pure vNext Kitchen Studio Route Outlet — legacy dual-shell removed at Gate G12. */
+export const AppLayout: React.FC = () => <Outlet />;

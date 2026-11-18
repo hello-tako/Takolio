@@ -52,8 +52,10 @@ describe('T14C — frontend recipe image resolution (single fallback point)', ()
 
   it('all recipe image surfaces use the central resolver instead of raw imageUrl', () => {
     const surfaces = [
-      'src/web/components/common/RecipeCard.tsx', 'src/web/pages/MealDetailPage.tsx', 'src/web/pages/IngredientDetailPage.tsx', 'src/web/pages/HomePage.tsx',
-      'src/web/pages/RecipeDetailPage.tsx', 'src/web/features/week/MealSwapSheet.tsx', 'src/web/features/week/MealCard.tsx',
+      'src/web/pages/IngredientDetailPage.tsx',
+      'src/web/vnext/screens/C01HomePilot.tsx',
+      'src/web/vnext/screens/C18RecipeDetailPilot.tsx',
+      'src/web/vnext/screens/RecipesAndCookPages.tsx',
     ];
     for (const file of surfaces) {
       const source = readFileSync(file, 'utf8');
