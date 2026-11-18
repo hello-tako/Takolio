@@ -1,19 +1,21 @@
 # OPEN_DECISIONS.md — Gate G12 Release Signoff Ledger
 
-- **Updated at (JST):** `2026-11-18T15:32:00+09:00`
+- **Updated at (JST):** `2026-11-18T16:22:00+09:00`
 - **Resolved Gate G02 Decisions (`APPROVED BY OWNER 2026-11-18T14:36:13+09:00`):**
   1. [x] **Brand Lock (`DDR-002` / `DDR-003`):** Direction A (Kitchen Studio Leaf & Coral) + Mascot "Bé Mầm Bếp" + 53 pure-vector SVG icons — **LOCKED**.
   2. [x] **Golden Candidates (`G02`):** `M01, A02, O03, C01, C03, C18, C23, AD02` — **APPROVED**.
   3. [x] **Public/App Routing (`DDR-001`):** Option A same-origin routes — **APPROVED & IMPLEMENTED**.
-  4. [x] **Honest Gaps & Red Zone (`DDR-004`):** `M09/M11/M12/U06/U10` transparent templates/unavailable states + `341` Red-Zone files untouched — **APPROVED & ENFORCED**.
+  4. [x] **Honest Gaps & Red Zone (`DDR-004`):** `U06/U10` transparent `UnavailableState` (`RFC-001/002`) + `341` Red-Zone files untouched — **APPROVED & ENFORCED**.
+- **Resolved Gate G12 Decisions (`APPROVED BY OWNER 2026-11-18T16:11:00+09:00`):**
+  1. [x] **Open PR to `main` (Without Merging):** Opened **PR #61** (`https://github.com/hello-tako/Takolio/pull/61`) from `feat/takolio-vnext-ui-architecture` → `main` (**OPEN · NOT MERGED**).
+  2. [x] **Deploy Staging Preview:** Uploaded `frigo-staging` Worker Version **`50d4df9a-6283-46de-96ea-b2924a4cd189`** (`55d35c74`) behind Cloudflare Access:
+     - **Alias URL:** `https://vnext-g12-frigo-staging.tungbipdz.workers.dev`
+     - **Immutable Version URL:** `https://50d4df9a-frigo-staging.tungbipdz.workers.dev`
+  3. [x] **Approve `M09 / M11 / M12` Legal & Commercial Copy:** Approved as drafted (`APPROVED_G12_OWNER_COPY` in `SCREEN_COVERAGE.csv`).
 
 ---
 
-## Remaining Gate `G12` Owner Release & Merge Decisions (`RELEASE_CANDIDATE_READY`)
+## Remaining Post-Staging Owner Signoff (`HARD STOP — DO NOT EXECUTE WITHOUT EXPLICIT COMMAND`)
 
-1. **PR / Merge / Staging Promotion Authorization:**
-   - All `G00–G12` engineering deliverables are complete locally on branch `feat/takolio-vnext-ui-architecture`. Per strict safety rules, **no push, merge to `main`, staging deploy, or production deploy** has been executed.
-   - **Question:** Do you authorize pushing `feat/takolio-vnext-ui-architecture` and opening a Pull Request / deploying to **Staging** first for live review before any Production promotion?
-2. **Optional Post-Frontend Tracks (Non-Blocking for vNext UI):**
-   - Supply final legal/commercial text for `M09` (public pricing), `M11` (CMS stories), and `M12` (`/privacy`, `/terms`, support email).
-   - Authorize separate backend track if you wish to implement `RFC-001` (`U06` Household Invites) or `RFC-002` (`U10` Self-Service Data Export/Deletion).
+1. [ ] **Merge Authorization (`PR #61` → `main`):** Awaiting Project Owner Staging acceptance before merging `https://github.com/hello-tako/Takolio/pull/61`.
+2. [ ] **Canonical Staging / Production Release Authorization:** Do **NOT** promote to `staging.takolio.app` canonical main release or **Production** (`takolio.app` / `frigo.tungjpstore.net`) until separate explicit Project Owner command is given.

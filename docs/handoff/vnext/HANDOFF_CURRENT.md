@@ -1,32 +1,27 @@
-# HANDOFF_CURRENT.md — Gate G12 Checkpoint (`RELEASE_CANDIDATE_READY`)
+# HANDOFF_CURRENT.md — Gate G12 Checkpoint (`PR_OPEN_AND_STAGING_PREVIEW_LIVE`)
 
-- **Generated at JST:** `2026-11-18T16:10:30+09:00`
+- **Generated at JST:** `2026-11-18T16:22:00+09:00`
 - **Repo:** `hello-tako/Takolio` (`/Users/tunbee27/.gemini/antigravity/scratch/Takolio-vnext`)
 - **Source main SHA at start:** `87f279a055e028336ea334cc51c7ab4224f30ef4`; **kit baseline:** `87f279a055e028336ea334cc51c7ab4224f30ef4` (100% exact match)
-- **Worktree branch:** `feat/takolio-vnext-ui-architecture` (`origin/main` untouched; **NOT merged, NOT pushed, NOT deployed**)
-- **Active gate:** **`G12 — RELEASE_CANDIDATE_READY`** (`G00 → G12` sequentially completed; awaiting explicit Project Owner command before any staging/PR/release action)
-- **Owner Gate G02 Signoff (`2026-11-18T14:36:13+09:00`):**
-  1. Locked **Brand Direction A (Kitchen Studio Leaf & Coral)** + **Mascot Bé Mầm Bếp** + **53 pure-vector `24×24` SVG icons**.
-  2. Approved **8 Golden Pilot Screens** (`M01, A02, O03, C01, C03, C18, C23, AD02`).
-  3. Locked **`DDR-001` Option A** (keep authenticated app routes `/`, `/fridge`, `/scan`, `/recipes`, `/planner`, `/shopping`, `/me`, `/settings/*`, `/plus` intact; serve Public Website `M01–M12` at `/landing`, `/how-it-works`, `/features/*`, `/pricing`, `/faq`, `/stories`, `/about`, `/contact`, `/privacy`, `/terms`).
-  4. Approved honest templates / `UnavailableState` for **`M09 / M11 / M12 / U06 / U10`** + **strictly untouched Red Zone**.
-- **Protected files changed?** **`NO`** (`341/341` protected files in `src/worker/**`, `packages/**`, `migrations/**`, `migrations-admin/**`, `.github/workflows/**`, `wrangler*.jsonc`, `public/takolio/v1/**`, `src/web/components/payment/**`, `PlusPaywallPage.tsx`, `billing.ts`, `src/admin/pages/BillingPage.tsx` verified byte-for-byte identical via SHA-256).
+- **Worktree branch:** `feat/takolio-vnext-ui-architecture` (`origin/main` untouched; **PR #61 OPEN, NOT MERGED**)
+- **Pull Request (`OPEN — DO NOT MERGE WITHOUT OWNER COMMAND`):**
+  - **PR #61:** `https://github.com/hello-tako/Takolio/pull/61` (`feat/takolio-vnext-ui-architecture` → `main`)
+- **Live Cloudflare Staging Preview (`frigo-staging` — Cloudflare Access Protected):**
+  - **Staging Preview Alias URL:** `https://vnext-g12-frigo-staging.tungbipdz.workers.dev` (e.g. `/landing`, `/how-it-works`, `/pricing`, `/auth?mode=login`, `/`, `/fridge`, `/recipes`, `/cook/thit-kho-trung`, `/planner`, `/shopping`, `/me`)
+  - **Immutable Version Preview URL:** `https://50d4df9a-frigo-staging.tungbipdz.workers.dev`
+  - **Cloudflare Worker Version ID:** `50d4df9a-6283-46de-96ea-b2924a4cd189` (uploaded from commit `55d35c74` with `RECIPE_CATALOG_MODE=d1`, `MEAL_PLANNER_ENABLED=true`, `MEAL_COMPOSITION_V2_ENABLED=true`, leaving canonical `main` deployment on `frigo-staging` intact so `deploy.yml` `previous-authority` remains 100% preserved).
+- **Production Status:** **`NOT DEPLOYED`** (strictly untouched).
+- **Active gate:** **`G12 — STAGING_PREVIEW_READY_FOR_OWNER_REVIEW`** (`G00 → G12` completed; paused per Owner order awaiting post-Staging merge/production decision).
+- **Owner Signoffs Recorded:**
+  - **Gate `G02` (`2026-11-18T14:36:13+09:00`):** Direction A (Kitchen Studio Leaf & Coral) + Mascot Bé Mầm Bếp + 53 pure-vector SVG icons + 8 Golden Pilot Screens + `DDR-001` Option A routing + Honest `U06/U10` `UnavailableState` + untouched Red Zone.
+  - **Gate `G12` (`2026-11-18T16:11:00+09:00`):** (1) Authorized opening PR #61 to `main` without merging; (2) Authorized deploying Staging Preview (`vnext-g12`); (3) Approved `M09 / M11 / M12` copy as drafted.
+- **Protected files changed?** **`NO`** (`341/341` protected files verified byte-for-byte identical via SHA-256 in `PROTECTED_FILE_HASHES.json`).
 - **Screen IDs (`85/85` verified in `SCREEN_COVERAGE.csv` — `0` `PLAN` rows remaining):**
-  - `TESTED_LOCAL` (`78` screens): `M01–M08, M10, A01–A08, O01–O06, C01–C30, U01–U05, U07, U09, S01–S08, AD01–AD05, AD07–AD11`
-  - `BLOCKED_CONTENT` (`3` screens — UI implemented & browser-tested locally; commercial/editorial/legal copy pending): `M09, M11, M12`
+  - `TESTED_LOCAL` (`81` screens, including `M09, M11, M12` approved at `G12`): `M01–M12, A01–A08, O01–O06, C01–C30, U01–U05, U07, U09, S01–S08, AD01–AD05, AD07–AD11`
   - `BLOCKED_BACKEND` (`2` screens — honest `UnavailableState` tested locally + `RFC-001/002`): `U06, U10`
-  - `PROTECTED_READONLY` (`2` screens — read-only shell alignment tested locally; PayOS/billing code untouched): `U08, AD06`
-- **Asset registry status:** **`87` original assets** registered in `docs/handoff/vnext/ASSET_REGISTRY.csv` (`53` pure-vector `24×24` SVGs, `6` brand/mascot/PWA SVGs + `2` PNGs, `28` EXIF-stripped `.webp` + `-640w.webp` sets across `12` verified canonical recipe slugs + `8` mascot poses + `6` marketing/social scenes), all `owner_approval="APPROVED_G02_OWNER"`.
-- **Real tested commands (`G11`):**
-  - `pnpm typecheck` → `exit 0`
-  - `pnpm lint` → `exit 0`
-  - `pnpm build` → `exit 0` (`dist/client` + `dist/admin` + Worker `tsc`)
-  - `pnpm check:migrations` → `exit 0` (`migration-smoke=ok`, `admin-migration-smoke=ok`)
-  - `pnpm test` (under `Node 24 + TMPDIR=/private/tmp CI=1`) → `100% PASS` across all Frontend/Brand/Shell/Compiler/Integration/Worker/Domain suites (`435/437` repo files, `9,779/9,783` tests PASS; 2 untouched `origin/main` CLI script checks documented in `TEST_REPORT.md`)
-  - `node verify_g11_full_85.mjs` → `exit 0` (`85/85` unique Screen IDs, `170` PNG captures, `0/25` Axe WCAG 2.2 AA violations, `0` HTTP 500s, `0` broken images, `0px` overflow at `320..1440px`, `?vnext=0` rollback verified)
-- **Browser evidence:** `/Users/tunbee27/.gemini/antigravity/brain/2469a1d2-5662-4ba1-a9a0-ae7b8f2c42f9/vnext_g11_85x2/` (`170` PNGs + `g11_85x2_qa_report.json`).
-- **Rollback readiness (`RELEASE_CHECKLIST_G12.md`):**
-  1. Instant tab rollback via `?vnext=0`.
-  2. Global build switch via `VITE_VNEXT_UI_PREVIEW=false`.
-  3. Isolated Git branch `feat/takolio-vnext-ui-architecture` (`0` DB/Worker changes).
-- **Staging/production status:** **`NOT MERGED · NOT DEPLOYED`** — awaiting explicit Project Owner authorization at Gate `G12`.
+  - `PROTECTED_READONLY` (`2` screens — read-only shell alignment tested locally; PayOS/billing untouched): `U08, AD06`
+- **Asset registry status:** **`87` original assets** registered in `docs/handoff/vnext/ASSET_REGISTRY.csv`, all `APPROVED_G02_OWNER`.
+- **Verification Summary (`G11`):**
+  - `pnpm typecheck` (`exit 0`), `pnpm lint` (`exit 0`), `pnpm build` (`exit 0`), `pnpm check:migrations` (`exit 0`).
+  - `pnpm test` (`Node 24 + TMPDIR=/private/tmp CI=1`): `100%` of Frontend/Brand/Shell/Compiler/Integration/Auth/Billing/Admin/Domain suites PASS (`435/437` repo files, `9,779/9,783` tests PASS).
+  - Live Browser `85 × 2` Sweep: `170` PNGs captured, **`0 / 25` Axe WCAG 2.2 AA violations**, `0` HTTP 500s, `0` broken images, `0px` horizontal overflow (`320..1440px`), and `?vnext=0` instant rollback verified.

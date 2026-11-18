@@ -1,11 +1,13 @@
 # RELEASE_CHECKLIST_G12.md — Takolio Frontend vNext Release Candidate & Rollback Plan
 
-- **Gate:** `G12` — Release Readiness & Handoff Package
-- **Status:** **`RELEASE_CANDIDATE_READY` (`NOT MERGED` · `NOT DEPLOYED TO STAGING OR PRODUCTION`)**
-- **Prepared at (JST):** `2026-11-18T15:32:00+09:00`
+- **Gate:** `G12` — Release Readiness, PR #61 & Staging Preview
+- **Status:** **`PR_OPEN_AND_STAGING_PREVIEW_LIVE` (`PR #61 OPEN / NOT MERGED` · `PRODUCTION NOT DEPLOYED`)**
+- **Updated at (JST):** `2026-11-18T16:22:00+09:00`
 - **Repository:** `hello-tako/Takolio` (`/Users/tunbee27/.gemini/antigravity/scratch/Takolio-vnext`)
-- **Feature Branch:** `feat/takolio-vnext-ui-architecture` (based on `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4`)
-- **Owner Gate G02 Signoff:** Approved `2026-11-18T14:36:13+09:00` (Direction A Kitchen Studio Leaf & Coral + Mascot Bé Mầm Bếp + 53 pure-vector SVG icons + 8 Golden Pilot Screens + `DDR-001` Option A routing + Red Zone untouched).
+- **Feature Branch & PR:** `feat/takolio-vnext-ui-architecture` → **PR #61** (`https://github.com/hello-tako/Takolio/pull/61`, base `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4`)
+- **Staging Preview URL (`frigo-staging` Worker Version `50d4df9a-6283-46de-96ea-b2924a4cd189`):**
+  - `https://vnext-g12-frigo-staging.tungbipdz.workers.dev` (immutable: `https://50d4df9a-frigo-staging.tungbipdz.workers.dev`)
+- **Owner Signoffs:** Gate `G02` approved `2026-11-18T14:36:13+09:00`; Gate `G12` (`PR #61` + Staging Preview + `M09/M11/M12` copy) approved `2026-11-18T16:11:00+09:00`.
 
 ---
 
@@ -46,7 +48,10 @@ Because **0 database migrations**, **0 Worker endpoints**, **0 domain schemas**,
 - [x] **Asset Provenance:** `87` original SVG/WebP/PNG exports in `public/takolio/vnext/**` verified (`0` raster-in-SVG, EXIF stripped, 12 canonical dish slugs verified).
 - [x] **85/85 Screen Coverage:** All `85` Screen IDs mapped, implemented/guarded honestly, and captured at `390×844` & `1440×900` (`170` PNGs).
 - [x] **Automated Gates:** `pnpm typecheck`, `pnpm lint`, `pnpm test`, `pnpm build`, `pnpm check:migrations`, and Playwright + Axe WCAG 2.2 AA verified locally.
-- [ ] **Owner Gate G12 Signoff Required Before Any External Action:**
-  1. Open PR from `feat/takolio-vnext-ui-architecture` → `main`?
-  2. Deploy candidate preview to **Staging** (read-only smoke, zero real PayOS transactions)?
-  3. Approve final legal/commercial copy for `M09 / M11 / M12` or schedule backend track for `RFC-001 (U06)` & `RFC-002 (U10)`?
+- [x] **Owner Gate G12 Executed Actions (`2026-11-18T16:18–16:21+09:00`):**
+  1. [x] Opened **PR #61** (`https://github.com/hello-tako/Takolio/pull/61`) from `feat/takolio-vnext-ui-architecture` → `main` (**NOT merged**).
+  2. [x] Uploaded Cloudflare Staging Preview `https://vnext-g12-frigo-staging.tungbipdz.workers.dev` (Worker Version `50d4df9a-6283-46de-96ea-b2924a4cd189`, Cloudflare Access protected, preserving `main` `previous-authority`).
+  3. [x] Locked owner-approved `M09 / M11 / M12` copy (`APPROVED_G12_OWNER_COPY`).
+- [ ] **Hard Stop — Requires Separate Explicit Owner Command:**
+  1. Merge **PR #61** into `main`?
+  2. Deploy merged `main` SHA to canonical Staging (`staging.takolio.app`) / Production (`takolio.app`)?
