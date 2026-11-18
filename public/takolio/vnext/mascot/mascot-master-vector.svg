@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="tkv-mascot-title">
+  <title id="tkv-mascot-title">Bé Mầm Bếp — Takolio Kitchen Studio Mascot Candidate</title>
+  <!-- Sprout leaves -->
+  <path d="M64 26C64 16 53 10 44 13C44 22 53 27 64 26Z" fill="#196149"/>
+  <path d="M64 26C64 16 75 10 84 13C84 22 75 27 64 26Z" fill="#237A5C"/>
+  <path d="M64 28V20" stroke="#152E2C" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Chef toque -->
+  <path d="M48 44C42 43 39 37 42 32C45 27 51 27 54 29C57 24 71 24 74 29C77 27 83 27 86 32C89 37 86 43 80 44V51H48V44Z" fill="#FFFFFF" stroke="#152E2C" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Ceramic pot handles -->
+  <path d="M31 64C23 64 21 74 29 76" stroke="#152E2C" stroke-width="3" stroke-linecap="round"/>
+  <path d="M97 64C105 64 107 74 99 76" stroke="#152E2C" stroke-width="3" stroke-linecap="round"/>
+  <!-- Ceramic pot body -->
+  <rect x="30" y="49" width="68" height="56" rx="28" fill="#FFF9F1" stroke="#152E2C" stroke-width="2.75"/>
+  <ellipse cx="64" cy="50" rx="24" ry="5" fill="#196149"/>
+  <!-- Expressive eyes & smile -->
+  <circle cx="51" cy="71" r="5" fill="#152E2C"/>
+  <circle cx="49.5" cy="69.5" r="1.7" fill="#FFFFFF"/>
+  <circle cx="77" cy="71" r="5" fill="#152E2C"/>
+  <circle cx="75.5" cy="69.5" r="1.7" fill="#FFFFFF"/>
+  <ellipse cx="43" cy="78" rx="5" ry="3" fill="#F46B52" opacity="0.65"/>
+  <ellipse cx="85" cy="78" rx="5" ry="3" fill="#F46B52" opacity="0.65"/>
+  <path d="M58 76C60 79.5 68 79.5 70 76" stroke="#152E2C" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Tomato coral neckerchief -->
+  <path d="M34 86C46 93 82 93 94 86" stroke="#F46B52" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="64" cy="91" r="4.5" fill="#C8432B"/>
+  <path d="M61 94L56 102M67 94L72 102" stroke="#F46B52" stroke-width="4" stroke-linecap="round"/>
+  <!-- Little feet -->
+  <path d="M50 105V112C50 114 54 114 56 112V105" fill="#FFF0C5" stroke="#152E2C" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M72 105V112C72 114 76 114 78 112V105" fill="#FFF0C5" stroke="#152E2C" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

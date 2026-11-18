@@ -1,3 +1,12 @@
+## Takolio Frontend vNext G00-G02 Foundation & Pilot Checkpoint - 2026-11-18 JST
+
+- [x] G00 Read-Only Baseline Audit on `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4` (`CURRENT_BASELINE.md`, `ROUTE_STATE_API_MATRIX.csv` 85/85 IDs, `PROTECTED_FILE_HASHES.json` 341 files, `BASELINE_TESTS.md`).
+- [x] G01 UX Architecture & Journey Mapping (`UX_ARCHITECTURE_G01.md`, `DDR_LOG.md`, `BACKEND_GAP_RFCS.md`).
+- [x] G02 Visual & Asset Foundation + 8 Live Pilot Screens (`M01, A02, O03, C01, C03, C18, C23, AD02`) + 77 candidate assets in `public/takolio/vnext/**` (`approval=PENDING`).
+- [ ] **BLOCKED ON OWNER GATE G02**: Signoff on `docs/handoff/vnext/OPEN_DECISIONS.md` before locking brand assets and executing `G03–G12`.
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

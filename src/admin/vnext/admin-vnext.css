@@ -1,0 +1,235 @@
+/* Scoped Admin vNext Kitchen Studio Tokens (AD02 Pilot) — matches AD02.png dark forest sidebar & clean warm ivory workspace */
+
+.admin-app.is-vnext-admin {
+  --admin-bg: #fff9f1;
+  --admin-surface: #ffffff;
+  --admin-ink: #152e2c;
+  --admin-muted: #48615b;
+  --admin-line: #dce4db;
+  --admin-green: #196149;
+  --admin-green-deep: #12352a;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar {
+  background: #12352a;
+  color: #ffffff;
+  border-right-color: #1e4d3e;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .brand-name {
+  color: #ffffff;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .brand-mark {
+  background: #196149;
+  color: #f6c453;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.84);
+  min-height: 44px;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .nav-link.is-active {
+  background: #237a5c;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.admin-app.is-vnext-admin .admin-sidebar .sidebar-toggle {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  min-height: 44px;
+}
+
+.tkv-admin-pilot {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tkv-admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tkv-admin-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #196149;
+  margin-bottom: 4px;
+}
+
+.tkv-admin-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #152e2c;
+  margin: 0;
+}
+
+.tkv-admin-subtitle {
+  font-size: 0.92rem;
+  color: #48615b;
+  margin: 4px 0 0;
+}
+
+.tkv-admin-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tkv-admin-status-trio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.tkv-status-tile {
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #dce4db;
+}
+
+.tkv-status-tile.is-mint {
+  background: #e7f4ec;
+}
+
+.tkv-status-tile.is-saffron {
+  background: #fff0c5;
+}
+
+.tkv-status-tile.is-sky {
+  background: #e6f2f5;
+}
+
+.tkv-tile-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #152e2c;
+}
+
+.tkv-tile-value {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #196149;
+}
+
+.tkv-tile-meta {
+  font-size: 0.78rem;
+  color: #48615b;
+}
+
+.tkv-admin-card {
+  background: #ffffff;
+  border: 1px solid #dce4db;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(21, 46, 44, 0.04);
+}
+
+.tkv-admin-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.tkv-admin-card-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #152e2c;
+}
+
+.tkv-admin-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.tkv-admin-kpi-item {
+  background: #fff9f1;
+  border: 1px solid #dce4db;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tkv-kpi-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #48615b;
+}
+
+.tkv-kpi-number {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #152e2c;
+}
+
+.tkv-kpi-note {
+  font-size: 0.75rem;
+  color: #56706a;
+}
+
+.tkv-admin-two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.tkv-admin-ops-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  border-top: 1px solid #dce4db;
+}
+
+.tkv-admin-ops-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #dce4db;
+}
+
+.tkv-ops-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #196149;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tkv-ops-link:hover {
+  text-decoration: underline;
+}
+
+.tkv-admin-health-wrap {
+  margin-top: 8px;
+}

@@ -1,0 +1,356 @@
+[
+  {
+    "id": "vn-canh-01",
+    "slug": "canh-chua-ca-loc-nam-bo",
+    "title": "Canh chua cá lóc Nam Bộ",
+    "description": "Bát canh chua cá lóc đậm đà vị chua thanh của me, ngọt mát từ dứa, cà chua, đậu bắp và giá đỗ chuẩn vị miền Tây."
+  },
+  {
+    "id": "vn-canh-02",
+    "slug": "canh-cua-dong-rau-day-mong-toi",
+    "title": "Canh cua đồng mồng tơi mướp hương",
+    "description": "Món canh giải nhiệt trứ danh mùa hè miền Bắc với tảng riêu cua đồng béo ngậy nấu cùng mồng tơi và mướp hương thanh mát."
+  },
+  {
+    "id": "vn-canh-03",
+    "slug": "canh-kho-qua-nhoi-thit",
+    "title": "Canh khổ qua nhồi thịt thanh mát",
+    "description": "Trái khổ qua dồn thịt heo xay ngọt đậm vị, nước dùng ngọt thanh giúp thanh nhiệt giải độc cơ thể."
+  },
+  {
+    "id": "vn-canh-04",
+    "slug": "canh-suon-bi-dao",
+    "title": "Canh sườn hầm bí đao ngọt thanh",
+    "description": "Sườn heo ninh mềm róc xương kết hợp vị ngọt thanh của bí đao xanh tạo nên món canh dễ ăn cho cả gia đình."
+  },
+  {
+    "id": "vn-canh-05",
+    "slug": "canh-bi-do-thit-bam",
+    "title": "Canh bí đỏ thịt bằm hạt sen",
+    "description": "Bí đỏ bùi bùi sánh mịn cùng thịt băm ngọt đậm đà, bổ sung nhiều vitamin A và dưỡng chất quý giá."
+  },
+  {
+    "id": "vn-canh-06",
+    "slug": "canh-ngao-nau-chua-thi-la",
+    "title": "Canh ngao nấu chua thì là",
+    "description": "Vị ngọt thanh khiết của ngao hòa cùng vị chua dịu của dứa, cà chua và hương thơm đặc trưng của rau thì là."
+  },
+  {
+    "id": "vn-kho-01",
+    "slug": "thit-kho-trung",
+    "title": "Thịt kho tàu nước dừa trứng béo ngậy",
+    "description": "Thịt ba chỉ vuông vức óng ả màu cánh gián, ninh nhừ mềm tan trong nước dừa xiêm cùng trứng gà bùi bùi chuẩn Tết miền Nam."
+  },
+  {
+    "id": "vn-kho-02",
+    "slug": "ca-loc-kho-to-tieu-den",
+    "title": "Cá lóc kho tộ tiêu đen cay nồng",
+    "description": "Thịt cá lóc đồng săn chắc ngấm đậm vị mắm đường, thơm nức tiêu đen xay và tóp mỡ giòn rụm trong niêu đất."
+  },
+  {
+    "id": "vn-kho-03",
+    "slug": "ga-ta-kho-gung-sa",
+    "title": "Gà ta kho gừng sả đậm đà",
+    "description": "Thịt gà ta da giòn thịt dai ngọt quyện trong lớp sốt kho vàng óng, thơm ấm nồng gừng tươi thái sợi và sả giã dập."
+  },
+  {
+    "id": "vn-kho-04",
+    "slug": "suon-heo-xao-chua-ngot",
+    "title": "Sườn heo xào chua ngọt chuẩn vị",
+    "description": "Từng dẻ sườn non áo lớp sốt đỏ au chua thanh ngọt dịu từ giấm táo và cà chua, thịt mềm róc xương đậm vị cơm nhà."
+  },
+  {
+    "id": "vn-kho-05",
+    "slug": "tom-rim-man-ngot",
+    "title": "Tôm rim mặn ngọt mắm đường tỏi ớt",
+    "description": "Tôm đồng hoặc tôm thẻ tươi vỏ giòn giòn, thịt dai ngọt rim kẹo mặn mặn ngọt ngọt, ăn với cơm nóng cực kỳ đưa miệng."
+  },
+  {
+    "id": "vn-kho-06",
+    "slug": "thit-ba-chi-kho-cu-cai",
+    "title": "Thịt ba chỉ kho củ cải trắng",
+    "description": "Thịt ba chỉ ngậy béo kho cùng từng khúc củ cải trắng hút trọn vị ngọt mặn tinh túy, mềm tan trong miệng."
+  },
+  {
+    "id": "vn-xao-01",
+    "slug": "rau-muong-xao-toi",
+    "title": "Rau muống xào tỏi xanh giòn",
+    "description": "Rau muống ngọn non xanh mướt giòn sần sật dậy mùi thơm lừng của tỏi ta phi vàng xém cạnh, linh hồn bữa cơm gia đình."
+  },
+  {
+    "id": "vn-xao-02",
+    "slug": "bo-xao-can-toi-hanh-tay",
+    "title": "Bò xào cần tỏi hành tây mềm ngọt",
+    "description": "Thịt bò thăn thái mỏng xào lửa lớn giữ trọn độ mềm mọng nước, kết hợp mùi thơm nồng đặc trưng của cần tây và tỏi tây."
+  },
+  {
+    "id": "vn-xao-03",
+    "slug": "muc-xao-can-toi-dua",
+    "title": "Mực ống xào cần tỏi dứa chua ngọt",
+    "description": "Mực ống tươi dày mình giòn sần sật xào cùng dứa thơm chua dịu, cần tây và ớt chuông đậm đà thanh vị biển."
+  },
+  {
+    "id": "vn-xao-04",
+    "slug": "thit-bo-xao-bong-cai",
+    "title": "Thịt bò xào bông cải xanh cà rốt",
+    "description": "Súp lơ xanh giòn mát xào cùng thịt bò mềm và cà rốt tỉa hoa, món xào đầy đặn sắc màu và giàu chất xơ."
+  },
+  {
+    "id": "vn-xao-05",
+    "slug": "su-su-xao-trung-ga",
+    "title": "Su su xào trứng gà thanh ngọt",
+    "description": "Su su bào sợi giòn ngọt tự nhiên ôm lấy từng mảng trứng gà vàng ươm béo ngậy, món ăn thanh đạm dễ làm."
+  },
+  {
+    "id": "vn-xao-06",
+    "slug": "dau-cove-xao-thit-bo",
+    "title": "Đậu cô ve xào thịt bò giòn ngọt",
+    "description": "Đậu cô ve tước xơ bẻ khúc xào vừa chín tới giữ trọn màu xanh non mướt, kết hợp thịt bò mềm thơm ngất ngây."
+  },
+  {
+    "id": "vn-chien-01",
+    "slug": "dau-phu-sot-ca-chua",
+    "title": "Đậu phụ lướt ván sốt cà chua",
+    "description": "Miếng đậu phụ vàng mềm núng nính phủ lớp sốt cà chua đỏ au sánh mịn quyện cùng hành hoa thơm nức mũi."
+  },
+  {
+    "id": "vn-chien-02",
+    "slug": "trung-chien-thit-bam-nam-rom",
+    "title": "Trứng chiên thịt bằm nấm rơm",
+    "description": "Món trứng chiên phồng xốp vàng rực, bên trong đầy đặn thịt heo băm đậm đà và nấm ngọt giòn sần sật."
+  },
+  {
+    "id": "vn-chien-03",
+    "slug": "canh-ga-chien-nuoc-mam",
+    "title": "Cánh gà chiên nước mắm tỏi ớt",
+    "description": "Cánh gà chiên vàng giòn rụm bên ngoài mọng nước bên trong, lắc đều cùng sốt mắm tỏi ớt ngọt mặn dính tay hấp dẫn."
+  },
+  {
+    "id": "vn-chien-04",
+    "slug": "cha-ca-hai-phong",
+    "title": "Chả cá chiên thì là hạt tiêu",
+    "description": "Chả cá thác lác hoặc cá điêu hồng quết dẻo quánh, trộn nhiều thì là và hạt tiêu đập dập rán vàng phồng thơm phức."
+  },
+  {
+    "id": "vn-chien-05",
+    "slug": "nem-ran-truyen-thong-ha-noi",
+    "title": "Nem rán truyền thống Hà Nội giòn rụm",
+    "description": "Vỏ nem vàng rộm giòn tan rụm, nhân thịt băm mộc nhĩ nấm hương miến dong và trứng gà thơm phức chấm mắm chua ngọt."
+  },
+  {
+    "id": "vn-chien-06",
+    "slug": "ca-ro-phi-chien-gion-mam-gung",
+    "title": "Cá rô phi chiên giòn chấm mắm gừng",
+    "description": "Cá rô phi làm sạch khía vảy chiên giòn tan từ vây đến da, thịt cá trắng ngọt chấm nước mắm gừng ớt ấm nồng."
+  },
+  {
+    "id": "vn-hap-01",
+    "slug": "ga-ta-hap-la-chanh",
+    "title": "Gà ta hấp lá chanh da giòn thịt ngọt",
+    "description": "Gà thả vườn hấp cách thủy giữ nguyên 100% vị ngọt thanh tinh khiết, da gà vàng óng giòn sần sật thơm nức lá chanh thái chỉ."
+  },
+  {
+    "id": "vn-hap-02",
+    "slug": "thit-ba-chi-luoc-mam-tom",
+    "title": "Thịt ba chỉ luộc chấm mắm tôm cà pháo",
+    "description": "Thịt ba chỉ luộc trắng ngần, nạc mỡ đan xen đều tăm tắp thái mỏng tang, chấm mắm tôm đánh sủi bọt bông và cà pháo muối giòn."
+  },
+  {
+    "id": "vn-hap-03",
+    "slug": "ca-dieu-hong-hap-hanh-gung",
+    "title": "Cá điêu hồng hấp hành gừng xì dầu",
+    "description": "Cá điêu hồng tươi hấp nguyên con giữ trọn vị ngọt tự nhiên, quyện trong sốt xì dầu thơm nồng gừng sợi và hành hoa chần dầu sôi."
+  },
+  {
+    "id": "vn-hap-04",
+    "slug": "rau-cu-luoc-kho-quet",
+    "title": "Rau củ luộc thập cẩm kho quẹt tóp mỡ",
+    "description": "Mẹt rau củ vườn nhà tươi non giòn ngọt chấm ngập trong niêu kho quẹt tóp mỡ tôm khô thơm nức mũi chuẩn vị Nam Bộ."
+  },
+  {
+    "id": "vn-hap-05",
+    "slug": "muc-hap-gung-sa",
+    "title": "Mực ống hấp gừng sả giòn ngọt",
+    "description": "Mực ống tươi dày mình hấp cùng sả cây đập dập và gừng non, từng miếng mực giòn ngọt sần sật mọng nước."
+  },
+  {
+    "id": "vn-hap-06",
+    "slug": "tom-hap-nuoc-dua-tuoi",
+    "title": "Tôm hấp nước dừa tươi ngọt lịm",
+    "description": "Tôm sú tươi roi rói hấp cùng nước dừa xiêm ngọt lịm, vỏ tôm đỏ au thịt tôm săn chắc ngọt ngào hương dừa thanh tao."
+  },
+  {
+    "id": "vn-cuon-01",
+    "slug": "goi-cuon-tom-thit-nam-bo",
+    "title": "Gỏi cuốn tôm thịt chấm tương phộng",
+    "description": "Cuốn bánh tráng trong veo lộ rõ tôm đỏ au, thịt ba chỉ, bún tươi và rau húng quế mát lành, chấm tương đen đậu phộng béo bùi."
+  },
+  {
+    "id": "vn-cuon-02",
+    "slug": "pho-cuon-bo-ha-noi",
+    "title": "Phở cuốn bò xào rau thơm Hà Nội",
+    "description": "Bánh phở vuông mềm mượt cuốn gọn thịt bò xào tỏi thơm nức mũi và rau xà lách kinh giới, chấm nước mắm chua ngọt thanh tao."
+  },
+  {
+    "id": "vn-cuon-03",
+    "slug": "nom-hoa-chuoi-tai-heo",
+    "title": "Nộm hoa chuối tai heo giòn sần sật",
+    "description": "Hoa chuối bào mỏng ngâm trắng tinh quyện cùng tai heo luộc giòn sần sật, vị chua ngọt thanh tao cùng lạc rang bùi bùi."
+  },
+  {
+    "id": "vn-cuon-04",
+    "slug": "goi-ga-xe-phay-bap-cai",
+    "title": "Gỏi gà xé phay bắp cải hành tây",
+    "description": "Thịt gà ta luộc xé sợi dai ngọt trộn cùng bắp cải bào mỏng giòn rụm, hành tây chua ngọt dịu và rau răm thơm the the."
+  },
+  {
+    "id": "vn-cuon-05",
+    "slug": "nom-du-du-bo-kho",
+    "title": "Nộm đu đủ bò khô phố cổ Hà Nội",
+    "description": "Sợi đu đủ xanh nạo giòn sần sật hòa quyện nước mắm giấm chua ngọt cay cay, điểm xuyết từng sợi bò khô nâu óng thơm phức."
+  },
+  {
+    "id": "vn-cuon-06",
+    "slug": "nem-lui-hue-nuong-sa",
+    "title": "Nem lụi nướng sả cuốn bánh tráng",
+    "description": "Thịt heo xay quết mịn bọc quanh thân cây sả tươi nướng xém cạnh thơm lừng, cuốn bánh tráng rau sống chấm nước lèo bùi ngậy."
+  },
+  {
+    "id": "vn-bun-01",
+    "slug": "pho-bo-tai-lan-ha-noi",
+    "title": "Phở bò tái lăn Hà Nội nước dùng trong vắt",
+    "description": "Thịt bò thăn đảo tái lăn trên chảo lửa ngùn ngụt cùng tỏi gừng, chan nước dùng ninh xương ống thơm hồi quế thảo quả."
+  },
+  {
+    "id": "vn-bun-02",
+    "slug": "bun-cha-ha-noi-than-hoa",
+    "title": "Bún chả nướng than hoa Hà Nội",
+    "description": "Chả miếng ba chỉ nướng xém vàng ươm và chả băm viên đậm vị, thả trong bát nước mắm ấm chua ngọt dưa góp đu đủ."
+  },
+  {
+    "id": "vn-bun-03",
+    "slug": "bun-bo-hue-chuan-vi",
+    "title": "Bún bò xứ Huế giò heo chả cua sả ớt",
+    "description": "Tô bún bò cay nồng thơm lừng mùi sả phi mắm ruốc, nước dùng ngọt đậm đà từ xương ống cùng bắp bò giòn sần sật."
+  },
+  {
+    "id": "vn-bun-04",
+    "slug": "bun-rieu-cua-dong",
+    "title": "Bún riêu cua đồng bắp bò giấm bỗng",
+    "description": "Bát bún riêu đỏ cam óng ả với tảng riêu cua đồng béo ngậy, đậu phụ rán giòn, thịt bò tái chần và nước dùng chua dịu giấm bỗng."
+  },
+  {
+    "id": "vn-bun-05",
+    "slug": "bun-thit-nuong-nam-bo",
+    "title": "Bún thịt nướng Nam Bộ chả giò mỡ hành",
+    "description": "Thịt nướng vỉ thơm lừng mè rang và sả ớt, ăn kèm bún tươi, mỡ hành xanh mướt, đậu phộng rang giòn và nước mắm chua ngọt."
+  },
+  {
+    "id": "vn-bun-06",
+    "slug": "mien-ga-nam-huong",
+    "title": "Miến gà nấm hương mộc nhĩ thanh tao",
+    "description": "Sợi miến dong dai trong vắt nấu trong nước luộc gà ngọt thanh tao, thơm ngát nấm hương rừng và thịt gà xé phay mềm ngọt."
+  },
+  {
+    "id": "vn-chay-01",
+    "slug": "dau-phu-kho-nam-dong-co",
+    "title": "Đậu phụ kho nấm đông cô tiêu đen",
+    "description": "Đậu phụ rán vàng óng kho ngấm đượm sốt tương đen cùng nấm đông cô ngọt bùi, thơm nức tiêu sọ xay cay the ấm nồng."
+  },
+  {
+    "id": "vn-chay-02",
+    "slug": "canh-nam-hat-sen-tao-do",
+    "title": "Canh nấm hạt sen táo đỏ thanh lọc",
+    "description": "Nước canh trong veo ngọt ngào từ củ quả ninh tự nhiên, hạt sen bở tơi bùi béo cùng các loại nấm tươi bổ dưỡng an thần."
+  },
+  {
+    "id": "vn-chay-03",
+    "slug": "mi-xao-chay-rau-nam",
+    "title": "Mì xào giòn chay nấm rau củ",
+    "description": "Sợi mì xào vàng thơm tơi sợi không bết dính, đảo cùng nấm đùi gà dai giòn, cải ngọt và cà rốt ngập tràn sốt dầu hào chay."
+  },
+  {
+    "id": "vn-chay-04",
+    "slug": "ca-tim-nuong-mo-hanh",
+    "title": "Cà tím nướng mỡ hành nước tương tỏi ớt",
+    "description": "Cà tím nướng than thơm lừng mùi khói, thịt cà mềm mọng ngọt ngào phủ ngập mỡ hành béo ngậy và nước tương tỏi ớt."
+  },
+  {
+    "id": "vn-chay-05",
+    "slug": "dau-hu-non-sot-nam-rom",
+    "title": "Đậu hũ non sốt nấm rơm dầu hào",
+    "description": "Từng lát đậu hũ non mềm mịn như lụa tan ngay đầu lưỡi, ngập trong lớp sốt nấm rơm bóng bẩy đậm đà sánh ngậy."
+  },
+  {
+    "id": "vn-chay-06",
+    "slug": "canh-cai-nau-dau-phu-non",
+    "title": "Canh cải xanh gừng đậu phụ thanh mát",
+    "description": "Bát canh cải bẹ xanh tươi non nấu cùng gừng tươi đập dập cay nồng và đậu phụ béo mềm, xua tan hàn khí ấm bụng."
+  },
+  {
+    "id": "vn-sang-01",
+    "slug": "com-chien-trung-toi-hanh-hoa",
+    "title": "Cơm chiên trứng vàng giòn tỏi phi",
+    "description": "Hạt cơm nguội vàng óng bọc đều lớp trứng gà bóng bẩy, chiên giòn tơi xốp dậy mùi thơm nức của tỏi phi và hành hoa."
+  },
+  {
+    "id": "vn-sang-02",
+    "slug": "banh-mi-op-la-pate",
+    "title": "Bánh mì ốp la pate dưa leo",
+    "description": "Ổ bánh mì giòn tan kẹp quả trứng ốp la lòng đào béo ngậy, quét đẫm lớp pate Hải Phòng thơm lừng và dưa leo mát rượi."
+  },
+  {
+    "id": "vn-sang-03",
+    "slug": "chao-thit-bam-gung-tia-to",
+    "title": "Cháo thịt bằm gừng tía tô giải cảm",
+    "description": "Bát cháo hoa sánh mịn nấu từ hạt gạo rang thơm, thịt nạc heo băm ngọt lịm cùng lá tía tô và gừng già giải cảm hiệu quả."
+  },
+  {
+    "id": "vn-sang-04",
+    "slug": "mi-tom-xao-bo-trung-long-dao",
+    "title": "Mì gói xào bò trứng lòng đào",
+    "description": "Sợi mì tôm chần xào giòn dai không nát, hòa cùng thịt bò xào mềm ngọt, rau cải giòn mát và quả trứng ốp lòng đào béo ngậy."
+  },
+  {
+    "id": "vn-sang-05",
+    "slug": "trung-cuon-rau-cu-han-quoc",
+    "title": "Trứng cuộn rau củ mềm mịn",
+    "description": "Trứng gà đánh mịn cuộn tròn nhiều lớp xen kẽ cà rốt và hành hoa thái hạt lựu xinh xắn, món ăn sáng giàu protein cho cả nhà."
+  },
+  {
+    "id": "vn-sang-06",
+    "slug": "sup-ga-ngo-non-nam-huong",
+    "title": "Súp gà ngô non nấm hương trứng hoa",
+    "description": "Bát súp nóng hổi sánh óng ánh với những vân trứng hoa bay lượn, thịt gà xé ngọt mềm cùng hạt ngô ngọt giòn bùi."
+  },
+  {
+    "id": "vn-lau-01",
+    "slug": "lau-rieu-cua-dong-bap-bo-suon-sun",
+    "title": "Lẩu riêu cua đồng sườn sụn bắp bò",
+    "description": "Nồi lẩu riêu cua bốc khói nghi ngút thơm nồng giấm bỗng, tảng riêu cua vàng ngậy nhúng bắp bò hoa giòn và sườn non sần sật."
+  },
+  {
+    "id": "vn-lau-02",
+    "slug": "lau-ga-la-giang-chua-cay",
+    "title": "Lẩu gà ta lá giang chua cay Nam Bộ",
+    "description": "Thịt gà ta da giòn thịt săn chắc nấu cùng lá giang vò dập chua thanh thanh the mát, làm ấm lòng những ngày mưa."
+  },
+  {
+    "id": "vn-lau-03",
+    "slug": "lau-hai-san-thap-cam-chua-cay",
+    "title": "Lẩu hải sản tôm mực chua cay",
+    "description": "Nồi lẩu hải sản ngập tràn tôm sú tươi roi rói, mực ống giòn sần sật, nước dùng Tom Yum chua cay ngọt đậm vị biển."
+  },
+  {
+    "id": "vn-lau-04",
+    "slug": "lau-nam-thap-cam-thanh-dam",
+    "title": "Lẩu nấm thập cẩm gà ta thanh đạm bổ dưỡng",
+    "description": "Nước lẩu hầm từ gà ta và các vị thảo mộc thiên nhiên ngọt lịm, nhúng cùng 6 loại nấm tươi giòn dai thanh lọc cơ thể."
+  },
+  {
+    "id": "vn-lau-05",
+    "slug": "lau-ca-thac-lac-kho-qua",
+    "title": "Lẩu cá thác lác khổ qua thanh mát",
+    "description": "Chả cá thác lác quết dai dẻo vo viên thả vào nồi nước dùng thanh ngọt, nhúng cùng khổ qua bào mỏng giòn không đắng."
+  }
+]

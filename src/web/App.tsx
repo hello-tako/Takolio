@@ -10,6 +10,20 @@ import { AppLayout } from './components/layout/AppLayout';
 import { isMealPlannerEnabled } from './features/planner/feature';
 import { MotionProvider } from './design-system/motion-provider';
 import { VerifyRouteLifecycle } from './features/auth/VerifyRouteLifecycle';
+import {
+  A02LoginPilot,
+  C01HomePilot,
+  C03InventoryPilot,
+  C18RecipeDetailPilot,
+  C23PlannerPilot,
+  M01LandingPilot,
+  O03HouseholdPilot,
+  withVNextPilot,
+} from './vnext/pilot-router';
+
+const G02ReviewHubPage = lazy(() =>
+  import('./vnext/screens/G02ReviewHubPage').then((m) => ({ default: m.G02ReviewHubPage })),
+);
 
 const PlannerPage = lazy(() =>
   import('./pages/PlannerPage').then((m) => ({ default: m.PlannerPage })),
@@ -104,6 +118,32 @@ const WeekSettingsPage = lazy(() =>
   import('./pages/WeekSettingsPage').then((m) => ({ default: m.WeekSettingsPage })),
 );
 
+const LandingEntry = withVNextPilot(M01LandingPilot, LandingPage);
+const AuthEntry = withVNextPilot(
+  A02LoginPilot,
+  AuthPage,
+  (pathname, search) => {
+    if (pathname !== '/auth') return false;
+    const mode = new URLSearchParams(search).get('mode');
+    return !mode || mode === 'login';
+  },
+);
+const OnboardingEntry = withVNextPilot(
+  O03HouseholdPilot,
+  OnboardingPage,
+  (pathname) => pathname === '/onboarding' || pathname === '/onboarding/household',
+);
+const HomeEntry = withVNextPilot(C01HomePilot, HomePage);
+const InventoryEntry = withVNextPilot(C03InventoryPilot, InventoryPage);
+const RecipeDetailEntry = withVNextPilot(C18RecipeDetailPilot, RecipeDetailPage);
+const PlannerEntry = withVNextPilot(
+  C23PlannerPilot,
+  PlannerPage,
+  (pathname) =>
+    pathname === '/planner' ||
+    (/^\/planner\/[^/]+\/?$/.test(pathname) && pathname !== '/planner/new'),
+);
+
 class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { failed: boolean }> {
   state = { failed: false };
 
@@ -157,6 +197,12 @@ export const App: React.FC = () => {
               <VerifyRouteLifecycle />
               <Suspense fallback={<RouteFallback />}>
                 <Routes key={`${userId}:${householdId}`}>
+                  {/* Non-destructive G02 Brand & Pilot Preview Routes */}
+                  <Route path="/vnext" element={<G02ReviewHubPage />} />
+                  <Route path="/vnext/m01" element={<M01LandingPilot />} />
+                  <Route path="/vnext/a02" element={<A02LoginPilot />} />
+                  <Route path="/vnext/o03" element={<O03HouseholdPilot />} />
+
                   {/* Public / Intro Routes */}
                   <Route
                     path="/landing"
@@ -164,7 +210,7 @@ export const App: React.FC = () => {
                       userId && householdId ? (
                         <Navigate to={isOnboarded ? '/' : '/onboarding'} replace />
                       ) : (
-                        <LandingPage />
+                        <LandingEntry />
                       )
                     }
                   />
@@ -174,7 +220,7 @@ export const App: React.FC = () => {
                       userId && householdId && !isGuest ? (
                         <Navigate to={isOnboarded ? '/' : '/onboarding'} replace />
                       ) : (
-                        <AuthPage />
+                        <AuthEntry />
                       )
                     }
                   />
@@ -197,7 +243,7 @@ export const App: React.FC = () => {
                         isOnboarded ? (
                           <Navigate to={primaryGoal === 'week' ? '/week/setup' : '/'} replace />
                         ) : (
-                          <OnboardingPage />
+                          <OnboardingEntry />
                         )
                       ) : (
                         <Navigate to="/landing" replace />
@@ -213,11 +259,11 @@ export const App: React.FC = () => {
                   >
                     <Route
                       path="/"
-                      element={isOnboarded ? <HomePage /> : <Navigate to="/onboarding" replace />}
+                      element={isOnboarded ? <HomeEntry /> : <Navigate to="/onboarding" replace />}
                     />
 
                     {/* Fridge / Inventory */}
-                    <Route path="/fridge" element={<InventoryPage />} />
+                    <Route path="/fridge" element={<InventoryEntry />} />
                     <Route path="/inventory" element={<Navigate to="/fridge" replace />} />
                     <Route path="/fridge/:id" element={<IngredientDetailPage />} />
                     <Route path="/ingredients/:id" element={<IngredientDetailPage />} />
@@ -232,8 +278,8 @@ export const App: React.FC = () => {
 
                     {/* Recipes & Cooking */}
                     <Route path="/recipes" element={<RecipesPage />} />
-                    <Route path="/recipes/:slug" element={<RecipeDetailPage />} />
-                    <Route path="/recipes/id/:id" element={<RecipeDetailPage />} />
+                    <Route path="/recipes/:slug" element={<RecipeDetailEntry />} />
+                    <Route path="/recipes/id/:id" element={<RecipeDetailEntry />} />
                     <Route path="/cook/:slug" element={<CookingModePage />} />
                     <Route path="/cooking/:id" element={<CookingModePage />} />
                     <Route path="/cooking/complete" element={<CookingCompletePage />} />
@@ -290,7 +336,7 @@ export const App: React.FC = () => {
                     <Route
                       path="/planner"
                       element={
-                        isMealPlannerEnabled() ? <PlannerPage /> : <Navigate to="/week" replace />
+                        isMealPlannerEnabled() ? <PlannerEntry /> : <Navigate to="/week" replace />
                       }
                     />
                     <Route
@@ -302,7 +348,7 @@ export const App: React.FC = () => {
                     <Route
                       path="/planner/:planId"
                       element={
-                        isMealPlannerEnabled() ? <PlannerPage /> : <Navigate to="/week" replace />
+                        isMealPlannerEnabled() ? <PlannerEntry /> : <Navigate to="/week" replace />
                       }
                     />
                     <Route

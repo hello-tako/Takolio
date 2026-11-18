@@ -1,3 +1,18 @@
+## Takolio Frontend vNext G00-G02 Foundation & Pilot Checkpoint - 2026-11-18 JST
+
+Status: G00_G01_DONE; G02_READY_FOR_OWNER_SIGNOFF (approval=PENDING). No remote migration or deployment.
+Branch feat/takolio-vnext-ui-architecture; base origin/main 87f279a055e028336ea334cc51c7ab4224f30ef4.
+Completed read-only baseline audit (G00), 85-screen UX architecture & DDR/RFC ledgers (G01), and Brand/Asset/Pilot foundation (G02) behind reversible `?vnext=1` / `/vnext` opt-in preview.
+All 341 protected Red-Zone files (`src/worker/**`, `packages/**`, `migrations/**`, `public/takolio/v1/**`, PayOS billing) verified byte-for-byte unchanged via SHA-256 (`docs/handoff/vnext/PROTECTED_FILE_HASHES.json`).
+
+Executed local verification:
+- `pnpm typecheck && pnpm lint && pnpm build && pnpm check:migrations`: PASS (exit 0; client + admin + worker builds, main + admin migration smoke).
+- `pnpm exec vitest run` across 13 UI/Brand/Auth/Admin/Billing/Integration/G02 suites: PASS (`13/13` files, `173/173` tests).
+- `node verify_g02_pilots.mjs` against isolated `security-preview.mjs` + `admin-preview.mjs`: PASS (`21` captures across `M01, A02, O03, C01, C03, C18, C23, AD02` at `390x844` & `1440x900`; `0` console errors, `0` HTTP 500s, `0px` overflow at `320..1440px`, `0` Axe WCAG 2.2 AA violations).
+Next: Owner signoff on `docs/handoff/vnext/OPEN_DECISIONS.md` (Brand Direction A/B/C, 8 Pilot Goldens, DDR-001 public routing), then proceed to `G03` (`M01-M12`) and `G04` (`A01-O06`).
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

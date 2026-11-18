@@ -4,6 +4,7 @@ import { BottomNavigationBar, RailSidebar } from '../../design-system/navigation
 import { OfflineBanner } from '../common/OfflineBanner';
 import { useKitchenShell } from './use-kitchen-shell';
 import { TAKOSAN_KITCHEN } from '../../lib/takosan-kitchen';
+import { isVNextConsumerPilotActive } from '../../vnext/pilot-router';
 
 // Review routes keep navigation; only the scan camera and full-screen workflows hide it.
 const IMMERSIVE_PATTERNS = [
@@ -35,11 +36,15 @@ export function isKitchenSurface(pathname: string) {
 }
 
 export const AppLayout: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+  const vnextPilot = isVNextConsumerPilotActive(pathname, search);
   const immersive = IMMERSIVE_PATTERNS.some((re) => re.test(pathname.toLowerCase()));
   const kitchen = isKitchenSurface(pathname);
   const shellRef = useRef<HTMLDivElement>(null);
-  useKitchenShell(shellRef, kitchen && !immersive, pathname);
+  useKitchenShell(shellRef, !vnextPilot && kitchen && !immersive, pathname);
+  if (vnextPilot) {
+    return <Outlet />;
+  }
   return (
     <div
       ref={shellRef}

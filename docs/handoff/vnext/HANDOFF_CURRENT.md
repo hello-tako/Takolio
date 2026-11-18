@@ -1,0 +1,36 @@
+# HANDOFF_CURRENT.md — Gate G02 Checkpoint (`G00 + G01 + G02 Complete`)
+
+- **Generated at JST:** `2026-11-18T13:46:00+09:00`
+- **Repo:** `hello-tako/Takolio` (`/Users/tunbee27/.gemini/antigravity/scratch/Takolio-vnext`)
+- **Source main SHA at start:** `87f279a055e028336ea334cc51c7ab4224f30ef4`; **kit baseline:** `87f279a055e028336ea334cc51c7ab4224f30ef4` (100% exact match)
+- **Worktree branch / HEAD:** `feat/takolio-vnext-ui-architecture` (local feature branch; `origin/main` untouched)
+- **Active gate:** `G02` (G00 Read-Only Audit `DONE` → G01 UX Architecture `DONE` → G02 Visual/Asset Foundation & 8 Live Pilots `READY_FOR_OWNER_SIGNOFF`)
+- **Decision status:** `pending` — awaiting Project Owner signoff on Gate `G02` (`OPEN_DECISIONS.md`) before locking brand assets and scaling `G03–G12`
+- **Changed files:**
+  - New `src/web/vnext/**` (`tokens.css`, `feature.ts`, `VNextIcons.tsx`, `VNextMedia.tsx`, `Primitives.tsx`, `Shells.tsx`, `pilot-router.tsx`, and 8 pilot/review screens)
+  - New `src/admin/vnext/**` (`feature.ts`, `AdminOverviewVNext.tsx`, `admin-vnext.css`)
+  - Reversible opt-in preview hooks (`?vnext=1`) in `src/web/App.tsx`, `src/web/components/layout/AppLayout.tsx`, `src/admin/App.tsx`, `src/admin/components/AdminShell.tsx`
+  - New candidate assets in `public/takolio/vnext/**` (`77` exported SVG/WebP/PNG files; `public/takolio/v1/**` untouched)
+  - New test suite `tests/unit/vnext-g02-foundation.test.tsx` + handoff artifacts in `docs/handoff/vnext/**` & checkpoint prepends in `docs/ai/{CURRENT_STATE,TASK_BOARD,HANDOFF}.md`
+- **Protected files changed?** **`NO`** (`341/341` protected files verified byte-for-byte identical to `87f279a055e028336ea334cc51c7ab4224f30ef4` via SHA-256 in `PROTECTED_FILE_HASHES.json`)
+- **Screen IDs (`85/85` accounted in `SCREEN_COVERAGE.csv`):**
+  - `TESTED_LOCAL` (`8` G02 Pilots, `approval=PENDING`): `M01, A02, O03, C01, C03, C18, C23, AD02`
+  - `PLAN` (`70` screens queued for `G03–G10`): `M02–M08, M10, A01, A03–A08, O01–O02, O04–O06, C02, C04–C17, C19–C22, C24–C30, U01–U05, U07, U09, S01–S08, AD01, AD03–AD05, AD07–AD11`
+  - `BLOCKED_CONTENT` (`3` screens — template ready in `G03`, commercial/legal/CMS copy pending): `M09, M11, M12`
+  - `BLOCKED_BACKEND` (`2` screens — honest `UnavailableState` + `RFC-001/002`): `U06, U10`
+  - `PROTECTED_READONLY` (`2` screens — PayOS/billing Red Zone untouched): `U08, AD06`
+- **Asset registry status:** `77` candidate assets registered in `docs/handoff/vnext/ASSET_REGISTRY.csv` (`53` pure-vector `24×24` SVGs, `6` pure-vector brand/mascot/PWA SVGs + `2` PNG icons, `18` EXIF-stripped multi-res `.webp` sets generated via `image-generator` + `sharp`), all marked `owner_approval="PENDING"`.
+- **Real tested commands (`2026-11-18 JST`):**
+  - `pnpm typecheck` → `exit 0`
+  - `pnpm lint` → `exit 0`
+  - `pnpm exec vitest run` (13 UI/Brand/Auth/Admin/Billing/Integration/G02 suites) → `exit 0` (`13/13` files, `173/173` tests PASS)
+  - `pnpm build` → `exit 0` (`dist/client` + `dist/admin` + Worker `tsc`)
+  - `pnpm check:migrations` → `exit 0` (`migration-smoke=ok`, `admin-migration-smoke=ok`)
+  - `node scratch/verify_g02_pilots.mjs` → `exit 0` (`21` screenshots, `0` console errors, `0` HTTP 500s, `0px` overflow at `320/390/768/1024/1440`, `0` Axe WCAG 2.2 AA violations)
+- **Browser evidence:** `/Users/tunbee27/.gemini/antigravity/brain/2469a1d2-5662-4ba1-a9a0-ae7b8f2c42f9/vnext_g02_evidence/` (`g02_{M01,A02,O03,C01,C03,C18,C23,AD02}_{390x844,1440x900}.png`, `g02_C23_empty_390x844.png`, `g02_M01_dir{B,C}_1440x900.png`, `g02_HUB_dirA_{390x844,1440x900}.png`, `g02_qa_metrics.json`).
+- **Data truth / tenancy / payment:** Verified household session guards (`SessionBoundary`, `capturePrivateSession`), `DEC-012` guest transfer refusal (`A02/A08`), `1..20` server-truth household size (`O03`), estimated expiry qualification (`C01/C03`), `If-Match` versioned inventory updates (`C03`), quantity+unit recipe shortfall (`C18/C19`), canonical planner slots (`C23`), RBAC-verified admin metrics (`AD02`), and **zero** changes to PayOS/billing/Worker/D1. Full 436-file backend regression suite scheduled at `G11`.
+- **Open defects and risks:** `0` `P0/P1/P2` defects on G02 pilots. `P3`: Remaining catalog recipes outside the initial 6 G02 dishes display the honest pure-SVG bowl placeholder until the G07 culinary batch generates verified photos for additional slugs.
+- **Visual differences from reference:** Documented per screen in `docs/handoff/vnext/VISUAL_COMPARE.md` (notably WCAG AA Coral CTA hardening `#F46B52 → #C8432B` and honest media/metric states where reference wireframes used illustrative placeholders).
+- **Next safe task:** `NEXT_TASK_PACKET.md` — Gate `G03` (`M01–M12` Public Website) followed immediately by Gate `G04` (`A01–A08, O01–O06` Auth & Onboarding) once G02 owner signoff is granted.
+- **Blocked decisions for owner:** Listed in `docs/handoff/vnext/OPEN_DECISIONS.md` (1. Lock Brand Direction A/B/C + Mascot; 2. Approve 8 Pilot Goldens; 3. Confirm DDR-001 Option A Public Routing; 4. Confirm Red-Zone/Template handling for `M09/M11/M12/U06/U10`).
+- **Staging/production status:** **`NOT DEPLOYED`** (`origin/main`, staging, and production completely untouched).

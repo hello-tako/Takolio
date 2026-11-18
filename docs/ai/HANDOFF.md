@@ -1,3 +1,10 @@
+## Takolio Frontend vNext G00-G02 Foundation & Pilot Checkpoint - 2026-11-18 JST
+
+Canonical vNext checkpoint ledger: `docs/handoff/vnext/HANDOFF_CURRENT.md` (plus `SCREEN_COVERAGE.csv`, `ASSET_REGISTRY.csv`, `VISUAL_COMPARE.md`, `TEST_REPORT.md`, `OPEN_DECISIONS.md`, `NEXT_TASK_PACKET.md`).
+Branch `feat/takolio-vnext-ui-architecture` from `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4`. Zero protected files modified (`341/341` SHA-256 verified). Zero remote migrations or deployments. Awaiting Gate G02 owner signoff to launch `G03` (`M01-M12`) and `G04` (`A01-O06`).
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
