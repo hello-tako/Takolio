@@ -190,7 +190,7 @@ export const TkvTextField: React.FC<
   const fieldId = id ?? autoId;
   const errId = `${fieldId}-err`;
   return (
-    <div className={clsx('space-y-1.5', className)}>
+    <div className={clsx('space-y-2', className)}>
       <div className="flex items-center justify-between gap-2">
         <label htmlFor={fieldId} className="text-sm font-bold text-[var(--tkv-ink)]">
           {label}

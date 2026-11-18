@@ -20,6 +20,7 @@ export function isKitchenSurface(pathname: string) {
   pathname = pathname.toLowerCase();
   return (
     pathname === '/' ||
+    /^\/search\/?$/.test(pathname) ||
     /^\/plus\/?$/.test(pathname) ||
     /^\/(fridge|inventory)\/?$/.test(pathname) ||
     /^\/(fridge|inventory|ingredients)\/[^/]+\/?$/.test(pathname) ||

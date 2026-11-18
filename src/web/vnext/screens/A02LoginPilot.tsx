@@ -145,7 +145,7 @@ export const A02LoginPilot: React.FC = () => {
                 </Link>
               </div>
 
-              <div className="relative space-y-1.5 pt-1">
+              <div className="relative space-y-2 pt-1">
                 <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
                   Đăng nhập tài khoản
                 </h1>
@@ -212,7 +212,7 @@ export const A02LoginPilot: React.FC = () => {
                   iconLeft="mail"
                 />
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <TkvTextField
                     label="Mật khẩu"
                     type={showPassword ? 'text' : 'password'}

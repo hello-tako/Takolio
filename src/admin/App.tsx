@@ -11,6 +11,7 @@ import { LoginPage } from './pages/LoginPage';
 import { OverviewPage } from './pages/OverviewPage';
 import { AdminOverviewVNext } from './vnext/AdminOverviewVNext';
 import { useAdminVNext } from './vnext/feature';
+import './vnext/admin-vnext.css';
 import { RecipeDetailPage } from './pages/RecipeDetailPage';
 import { RecipesPage } from './pages/RecipesPage';
 import { SettingsPage } from './pages/SettingsPage';

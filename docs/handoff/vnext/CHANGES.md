@@ -1,36 +1,37 @@
-# CHANGES.md — Cumulative vNext Changes (`G00 → G02`)
+# CHANGES.md — Takolio Frontend vNext (`G00–G12`) Change Inventory
 
 - **Base Commit (`origin/main`):** `87f279a055e028336ea334cc51c7ab4224f30ef4`
-- **Feature Branch:** `feat/takolio-vnext-ui-architecture` (`/Users/tunbee27/.gemini/antigravity/scratch/Takolio-vnext`)
-- **Protected Red-Zone Files Modified:** **`0 / 341`** (verified byte-for-byte via SHA-256 in `tests/unit/vnext-g02-foundation.test.tsx`)
+- **Feature Branch:** `feat/takolio-vnext-ui-architecture`
+- **Protected Red-Zone Files Modified:** **`0 / 341`** (verified via SHA-256 in `tests/unit/vnext-g02-foundation.test.tsx`)
 
-## 1. New vNext Design System, Primitives & 8 Pilot Screens (`src/web/vnext/**` & `src/admin/vnext/**`)
-- `src/web/vnext/styles/tokens.css` — Tokenized CSS custom properties for Brand Directions `A` (Kitchen Studio Leaf & Coral — default), `B` (Botanical Market Herb & Linen), and `C` (Warm Terracotta Hearth & Slate), self-hosted Vietnamese variable fonts (`Nunito` + `Plus Jakarta Sans`), `prefers-reduced-motion` guard, and WCAG 2.2 AA hardened Coral CTA (`#C8432B`, `5.38:1`).
-- `src/web/vnext/feature.ts` — Non-destructive opt-in preview flag (`?vnext=1` / `sessionStorage`) and `?dir=a|b|c` direction switcher.
-- `src/web/vnext/components/VNextIcons.tsx` — `53` pure editable `24×24` SVG vector icons (`strokeWidth=1.85`, round caps/joins, `aria-hidden` vs labeled semantics).
-- `src/web/vnext/components/VNextMedia.tsx` — `BrandLockup`, `MascotIllustration` (8 poses + pure SVG fallback), and `VerifiedDishImage` (strictly maps canonical Vietnamese recipe slugs; renders honest pure-SVG fallback when unverified — never substitutes unrelated dish photos).
-- `src/web/vnext/components/Primitives.tsx` — `TkvButton`, `TkvIconButton`, `TkvSurface`, `TkvBadge`, `TkvChip`, `TkvTextField`, `TkvSkeleton`, `TkvEmptyState`, `TkvErrorState` (`44×44px` minimum touch targets, visible `:focus-visible` ring).
-- `src/web/vnext/components/Shells.tsx` — `G02DirectionPreviewBar`, `PublicMarketingShell`, and `ConsumerStudioShell` (mobile 5-root bottom tab bar + contextual top scan CTA; desktop 264px left sidebar workbench).
-- `src/web/vnext/screens/M01LandingPilot.tsx` — Pilot `M01` (`Landing — Hôm nay ăn gì?`).
-- `src/web/vnext/screens/A02LoginPilot.tsx` — Pilot `A02` (`Đăng nhập tài khoản`, preserving `POST /api/v1/auth/login`, `GoogleAuthSection`, `capturePrivateSession`, and `DEC-012` guest transfer refusal).
-- `src/web/vnext/screens/O03HouseholdPilot.tsx` — Pilot `O03` (`Gia đình và khẩu phần`, `1..20` server-truth household size with `familyPreferencesApi` revision concurrency).
-- `src/web/vnext/screens/C01HomePilot.tsx` — Pilot `C01` (`Hôm nay ăn gì?`, wired to `useHomePlan`, `api.getInventory`, `api.getRecipeDiscovery`, `presentExpiry`).
-- `src/web/vnext/screens/C03InventoryPilot.tsx` — Pilot `C03` (`Tủ lạnh của tôi`, URL-synced filters, distinct empty-fridge vs empty-filter states, `If-Match` versioned quantity updates, estimated expiry qualification).
-- `src/web/vnext/screens/C18RecipeDetailPilot.tsx` — Pilot `C18` (`Chi tiết món ăn`, dynamic serving scaling, `evaluateRecipeAvailability` quantity+unit shortfall check, shopping list shortfall add, sourced nutrition truth).
-- `src/web/vnext/screens/C23PlannerPilot.tsx` — Pilot `C23` (`Thực đơn tuần`, empty/guest/populated 7-day workbench states over `usePlanner`).
-- `src/web/vnext/screens/G02ReviewHubPage.tsx` & `src/web/vnext/pilot-router.tsx` — Owner review board (`/vnext`) and reversible route wrapper (`withVNextPilot`).
-- `src/admin/vnext/{feature.ts,AdminOverviewVNext.tsx,admin-vnext.css}` — Pilot `AD02` (`Tổng quan hệ thống` at `/admin/?vnext=1` in separate `dist/admin` bundle).
+## 1. Consumer Web vNext Architecture (`src/web/vnext/**`)
+- `src/web/vnext/feature.ts`: Dual-mode rollback-safe activation (`PROD` default `true`, `?vnext=1` opt-in, `?vnext=0` / `VITE_VNEXT_UI_PREVIEW=false` instant rollback, `MODE==='test'` safe compatibility) + locked Direction A.
+- `src/web/vnext/pilot-router.tsx`: Reversible `withVNextPilot` route dispatcher.
+- `src/web/vnext/lib/seo.ts`: Dynamic document title, description, canonical link, OpenGraph metadata, `lang="vi"`, and consent-gated local conversion tracker (`M01–M12`).
+- `src/web/vnext/styles/tokens.css` & `vnext-adapted.css`: Kitchen Studio Leaf & Coral tokens (`#FFF9F1`, `#196149`, `#C8432B` AA CTA) and scoped inner-surface adaptation.
+- `src/web/vnext/components/{VNextIcons.tsx,VNextMedia.tsx,Primitives.tsx,Shells.tsx}`: 53 pure-vector `24×24` SVG icons, `BrandLockup`, `MascotIllustration` (8 Bé Mầm Bếp poses + SVG fallback), `VerifiedDishImage` (12 verified recipe slugs + honest bowl placeholder), `PublicMarketingShell`, `AuthFlowShell`, `OnboardingStepShell`, `ConsumerStudioShell`.
+- `src/web/vnext/screens/`:
+  - `M01LandingPilot.tsx` + `PublicSitePages.tsx` (`M01–M12` Public Website)
+  - `A02LoginPilot.tsx` + `AuthFlowPages.tsx` (`A01–A08` Auth Funnel)
+  - `O03HouseholdPilot.tsx` + `OnboardingFlowPages.tsx` (`O01–O06` 6-Step Onboarding)
+  - `C01HomePilot.tsx`, `C03InventoryPilot.tsx`, `FridgeAndScanWrappers.tsx` (`C01–C14` Home, Search, Fridge, Reconciliation, AI Scan & Receipt OCR)
+  - `C18RecipeDetailPilot.tsx`, `RecipesAndCookPages.tsx` (`C15–C22` Recipes Discovery, Saved, Detail & Native Guided Cooking Sanctuary `C20/C21/C22`)
+  - `C23PlannerPilot.tsx`, `PlannerAndShoppingPages.tsx` (`C23–C29` Weekly Planner, Meal Swap, Shopping & Inventory Import)
+  - `AccountAndSystemPages.tsx` (`C30`, `U01–U10` including honest `U06` `RFC-001` & `U10` `RFC-002`, read-only `U07/U08` wrapper, and `S01–S08` System States & `404`)
+  - `G02ReviewHubPage.tsx` (`/vnext` Design System & Asset Inspection Board)
 
-## 2. Reversible Preview Wiring in Existing Frontend Entrypoints (`4` files)
-- `src/web/App.tsx` — Lazy-loaded `/vnext` review hub + `withVNextPilot` wrappers on `/landing`, `/auth`, `/onboarding/*`, `/`, `/fridge`, `/recipes/:slug`, `/planner` (default runtime behavior without `?vnext=1` remains 100% identical to `origin/main`).
-- `src/web/components/layout/AppLayout.tsx` — Renders pilot screen's own `ConsumerStudioShell` when `?vnext=1` is active on a pilot route; preserves `KitchenHeader`/`BottomNav` unchanged otherwise.
-- `src/admin/App.tsx` & `src/admin/components/AdminShell.tsx` — Reversible `?vnext=1` preview switch for `AD02` (`AdminOverviewVNext` + evergreen ops theme).
+## 2. Admin Console vNext Alignment (`src/admin/vnext/**`)
+- `src/admin/vnext/{feature.ts,AdminOverviewVNext.tsx,admin-vnext.css}`: Separate Admin Console visual alignment (`AD01–AD11`) preserving Admin cookie/CSRF/RBAC isolation and keeping `BillingPage.tsx` (`AD06`) 100% untouched.
 
-## 3. Original Candidate Brand, Mascot, Culinary & Icon Assets (`public/takolio/vnext/**`)
-- `53` pure-vector `24×24` SVG icons (`public/takolio/vnext/icons/*.svg`).
-- `6` pure-vector SVG brand/mascot/PWA masters (`public/takolio/vnext/brand/*.svg`, `mascot/mascot-master-vector.svg`, `pwa/pwa-icon-maskable.svg` + `192/512` PNGs).
-- `18` EXIF-stripped `.webp` + `-640w/-256w.webp` exports (`mascot-concept-sheet-abc`, `pose-01..08`, 6 verified Vietnamese dishes, `hero-m01-kitchen-studio-table`, `m03-fresh-produce-scan`, `og-1200x630`, `og-1080x1080`) — all tracked in `docs/handoff/vnext/ASSET_REGISTRY.csv` with `owner_approval="PENDING"`.
+## 3. Minimal Reversible Shell Hooks (`4` Existing Files)
+- `src/web/App.tsx`: Lazy route registrations (`DDR-001` Option A public paths + `withVNextPilot` wrappers + `S02` 404 fallback).
+- `src/web/components/layout/AppLayout.tsx`: Delegates to vNext shell when `isVNextConsumerPilotActive` is true; adds `/search` to `isKitchenSurface`.
+- `src/admin/App.tsx` & `src/admin/components/AdminShell.tsx`: Reversible vNext overview & theme hook.
 
-## 4. Tests & Handoff Governance (`tests/unit/vnext-g02-foundation.test.tsx` & `docs/handoff/vnext/**`)
-- `tests/unit/vnext-g02-foundation.test.tsx` — Automated enforcement of 341 protected file SHA-256 hashes, 85/85 screen matrix coverage, pure-vector SVG purity (`0` embedded bitmaps), canonical recipe slug verification, `ASSET_REGISTRY.csv` integrity, 53 icon renders, and live pilot component mounts.
-- Full `G00`, `G01`, and `G02` handoff ledgers in `docs/handoff/vnext/`.
+## 4. Original Brand, Mascot, Culinary & SEO Assets (`public/**`)
+- `public/takolio/vnext/**`: `87` registered SVG/WebP/PNG assets (`public/takolio/v1/**` untouched).
+- `public/sitemap.xml` & `public/robots.txt`: Public Website SEO discovery (`DDR-001` Option A).
+
+## 5. Tests & Handoff Ledger (`tests/**`, `docs/**`)
+- `tests/unit/vnext-g02-foundation.test.tsx`: 9 comprehensive automated checks (341 protected-file SHA-256 hashes, 85-screen matrices, pure-SVG audit, canonical recipe slug check, 53 icons, and `G03–G09` component mounts).
+- `docs/handoff/vnext/**` & prepended checkpoints in `docs/ai/{CURRENT_STATE,TASK_BOARD,HANDOFF}.md`.

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../stores/useAuthStore';
+import { vnextHref } from '../feature';
+import { trackPublicConversion, useVNextSeo } from '../lib/seo';
 import { PublicMarketingShell } from '../components/Shells';
 import { TkvBadge, TkvButton, TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
@@ -56,12 +58,20 @@ export const M01LandingPilot: React.FC = () => {
   const [isStarting, setIsStarting] = useState(false);
   const [guestError, setGuestError] = useState<string | null>(null);
 
+  useVNextSeo({
+    title: 'Hôm nay ăn gì? Để Takolio giúp bạn',
+    description:
+      'Quản lý thực phẩm trong tủ lạnh, chọn món ngon khớp định lượng, lên thực đơn tuần và đi chợ thông minh cho gia đình hiện đại.',
+    canonicalPath: '/landing',
+  });
+
   const handleStartFree = async () => {
+    trackPublicConversion('m01_start_free');
     setGuestError(null);
     setIsStarting(true);
     try {
       await setGuestSession();
-      navigate('/onboarding/household?vnext=1');
+      navigate(vnextHref('/onboarding/household'));
     } catch (err) {
       setGuestError(
         err instanceof Error
@@ -120,17 +130,17 @@ export const M01LandingPilot: React.FC = () => {
               >
                 Bắt đầu miễn phí
               </TkvButton>
-              <a
-                href="#tkv-how-it-works"
+              <Link
+                to="/how-it-works"
                 className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-primary)] text-[var(--tkv-primary)] font-bold text-base inline-flex items-center justify-center gap-2 hover:bg-[var(--tkv-surface-mint)] transition-colors"
               >
                 <span>Khám phá cách hoạt động</span>
-              </a>
+              </Link>
             </div>
 
             <p className="text-xs text-[var(--tkv-ink-muted)]">
               Dùng thử ngay không cần thẻ thanh toán · Hoặc{' '}
-              <Link to="/auth?mode=login&vnext=1" className="font-bold text-[var(--tkv-primary)] underline">
+              <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--tkv-primary)] underline">
                 đăng nhập tài khoản đã có
               </Link>
               .
@@ -189,7 +199,7 @@ export const M01LandingPilot: React.FC = () => {
         aria-labelledby="m01-workflow-heading"
         className="border-y border-[var(--tkv-border)] bg-[var(--tkv-surface)] py-12 sm:py-16 px-4 sm:px-6"
       >
-        <div className="max-w-[1200px] mx-auto space-y-8">
+        <div className="max-w-[1200px] mx-auto space-y-7">
           <div className="max-w-2xl space-y-2">
             <span className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
               Cách Takolio hoạt động
@@ -230,7 +240,7 @@ export const M01LandingPilot: React.FC = () => {
       {/* M06 Preview Section — Verified Vietnamese Dish Showcase */}
       <section id="tkv-dishes" aria-labelledby="m01-dishes-heading" className="max-w-[1200px] mx-auto py-12 sm:py-16 px-4 sm:px-6 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <span className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
               Kho công thức Việt chuẩn định lượng
             </span>

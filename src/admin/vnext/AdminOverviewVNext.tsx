@@ -37,8 +37,8 @@ export function AdminOverviewVNext() {
     <div className="tkv-admin-pilot" data-testid="ad02-vnext-overview">
       <div className="tkv-admin-header">
         <div>
-          <span className="tkv-admin-eyebrow">AD02 · Bảng điều hành hệ thống (vNext Pilot)</span>
-          <h1 className="tkv-admin-title">{vi.overview.title}</h1>
+          <span className="tkv-admin-eyebrow">AD02 · Bảng điều hành hệ thống</span>
+          <h1 className="tkv-admin-title" data-testid="admin-page-title">{vi.overview.title}</h1>
           <p className="tkv-admin-subtitle">{vi.overview.description}</p>
         </div>
         <div className="tkv-admin-actions">

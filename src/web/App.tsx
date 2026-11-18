@@ -13,16 +13,76 @@ import { VerifyRouteLifecycle } from './features/auth/VerifyRouteLifecycle';
 import {
   A02LoginPilot,
   C01HomePilot,
+  C02QuickSearchVNext,
   C03InventoryPilot,
+  C06LotDetailVNext,
+  C08ReconciliationVNext,
+  C09ScanStudioVNext,
+  C12ScanReviewVNext,
+  C14ReceiptReviewVNext,
+  C15RecipesDiscoveryVNext,
   C18RecipeDetailPilot,
+  C20C21CookingStudioVNext,
+  C22CookingCompleteVNext,
   C23PlannerPilot,
+  C24PlannerSetupVNext,
+  C25C26PlannerMealVNext,
+  C27C28ShoppingVNext,
+  C29ShoppingImportVNext,
+  C30NotificationsVNext,
   M01LandingPilot,
+  NotFoundEntry,
   O03HouseholdPilot,
+  U01ProfileHubVNext,
+  U02FoodPrefsVNext,
+  U03PlanningSettingsVNext,
+  U04AppSettingsVNext,
+  U05NotificationPrefsVNext,
+  U06HouseholdHonestPage,
+  U07U08PlusReadOnlyWrapper,
+  U09U10PrivacyAndDataRightsPage,
   withVNextPilot,
 } from './vnext/pilot-router';
 
+const VNextSystemStatePage = lazy(() =>
+  import('./vnext/screens/AccountAndSystemPages').then((m) => ({ default: m.VNextSystemStatePage })),
+);
+
 const G02ReviewHubPage = lazy(() =>
   import('./vnext/screens/G02ReviewHubPage').then((m) => ({ default: m.G02ReviewHubPage })),
+);
+const M02HowItWorksPage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M02HowItWorksPage })),
+);
+const M03AiScanFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M03AiScanFeaturePage })),
+);
+const M04FridgeFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M04FridgeFeaturePage })),
+);
+const M05MealPlanningFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M05MealPlanningFeaturePage })),
+);
+const M06RecipesFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M06RecipesFeaturePage })),
+);
+const M07CookingFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M07CookingFeaturePage })),
+);
+const M08ShoppingFeaturePage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M08ShoppingFeaturePage })),
+);
+const M09PricingPage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M09PricingPage })),
+);
+const M10FaqPage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M10FaqPage })),
+);
+const M11StoriesPage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M11StoriesPage })),
+);
+const M12CompanyLegalPage = lazy(() =>
+  import('./vnext/screens/PublicSitePages').then((m) => ({ default: m.M12CompanyLegalPage })),
 );
 
 const PlannerPage = lazy(() =>
@@ -119,23 +179,19 @@ const WeekSettingsPage = lazy(() =>
 );
 
 const LandingEntry = withVNextPilot(M01LandingPilot, LandingPage);
-const AuthEntry = withVNextPilot(
-  A02LoginPilot,
-  AuthPage,
-  (pathname, search) => {
-    if (pathname !== '/auth') return false;
-    const mode = new URLSearchParams(search).get('mode');
-    return !mode || mode === 'login';
-  },
-);
-const OnboardingEntry = withVNextPilot(
-  O03HouseholdPilot,
-  OnboardingPage,
-  (pathname) => pathname === '/onboarding' || pathname === '/onboarding/household',
-);
+const AuthEntry = withVNextPilot(A02LoginPilot, AuthPage);
+const OnboardingEntry = withVNextPilot(O03HouseholdPilot, OnboardingPage);
 const HomeEntry = withVNextPilot(C01HomePilot, HomePage);
 const InventoryEntry = withVNextPilot(C03InventoryPilot, InventoryPage);
+const LotDetailEntry = withVNextPilot(C06LotDetailVNext, IngredientDetailPage);
+const ReconciliationEntry = withVNextPilot(C08ReconciliationVNext, ReconciliationPage);
+const ScanEntry = withVNextPilot(C09ScanStudioVNext, ScanPage);
+const ScanReviewEntry = withVNextPilot(C12ScanReviewVNext, ScanResultPage);
+const ReceiptReviewEntry = withVNextPilot(C14ReceiptReviewVNext, ReceiptReviewPage);
+const RecipesEntry = withVNextPilot(C15RecipesDiscoveryVNext, RecipesPage);
 const RecipeDetailEntry = withVNextPilot(C18RecipeDetailPilot, RecipeDetailPage);
+const CookModeEntry = withVNextPilot(C20C21CookingStudioVNext, CookingModePage);
+const CookCompleteEntry = withVNextPilot(C22CookingCompleteVNext, CookingCompletePage);
 const PlannerEntry = withVNextPilot(
   C23PlannerPilot,
   PlannerPage,
@@ -143,6 +199,19 @@ const PlannerEntry = withVNextPilot(
     pathname === '/planner' ||
     (/^\/planner\/[^/]+\/?$/.test(pathname) && pathname !== '/planner/new'),
 );
+const PlannerSetupEntry = withVNextPilot(C24PlannerSetupVNext, PlannerPage);
+const PlannerMealEntry = withVNextPilot(C25C26PlannerMealVNext, PlannerPage);
+const PlannerShoppingEntry = withVNextPilot(C29ShoppingImportVNext, PlannerPage);
+const ShoppingEntry = withVNextPilot(C27C28ShoppingVNext, ShoppingPage);
+const NotificationsEntry = withVNextPilot(C30NotificationsVNext, NotificationsPage);
+const ProfileEntry = withVNextPilot(U01ProfileHubVNext, ProfilePage);
+const FoodPrefsEntry = withVNextPilot(U02FoodPrefsVNext, FoodPreferencesPage);
+const HouseholdEntry = withVNextPilot(U06HouseholdHonestPage, FamilySharingPage);
+const AppSettingsEntry = withVNextPilot(U04AppSettingsVNext, SettingsPage);
+const NotificationPrefsEntry = withVNextPilot(U05NotificationPrefsVNext, NotificationPreferencesPage);
+const PlanningSettingsEntry = withVNextPilot(U03PlanningSettingsVNext, PlanningSettingsPage);
+const PrivacyEntry = withVNextPilot(U09U10PrivacyAndDataRightsPage, PrivacyDataPage);
+const PlusEntry = withVNextPilot(U07U08PlusReadOnlyWrapper, PlusPaywallPage);
 
 class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -202,6 +271,23 @@ export const App: React.FC = () => {
                   <Route path="/vnext/m01" element={<M01LandingPilot />} />
                   <Route path="/vnext/a02" element={<A02LoginPilot />} />
                   <Route path="/vnext/o03" element={<O03HouseholdPilot />} />
+                  <Route path="/vnext/states/:stateId" element={<VNextSystemStatePage />} />
+
+                  {/* G03 Public Marketing Website Routes (DDR-001 Option A) */}
+                  <Route path="/how-it-works" element={<M02HowItWorksPage />} />
+                  <Route path="/features/ai-scan" element={<M03AiScanFeaturePage />} />
+                  <Route path="/features/fridge" element={<M04FridgeFeaturePage />} />
+                  <Route path="/features/meal-planning" element={<M05MealPlanningFeaturePage />} />
+                  <Route path="/features/recipes" element={<M06RecipesFeaturePage />} />
+                  <Route path="/features/cooking" element={<M07CookingFeaturePage />} />
+                  <Route path="/features/shopping" element={<M08ShoppingFeaturePage />} />
+                  <Route path="/pricing" element={<M09PricingPage />} />
+                  <Route path="/faq" element={<M10FaqPage />} />
+                  <Route path="/stories" element={<M11StoriesPage />} />
+                  <Route path="/about" element={<M12CompanyLegalPage />} />
+                  <Route path="/contact" element={<M12CompanyLegalPage />} />
+                  <Route path="/privacy" element={<M12CompanyLegalPage />} />
+                  <Route path="/terms" element={<M12CompanyLegalPage />} />
 
                   {/* Public / Intro Routes */}
                   <Route
@@ -231,7 +317,7 @@ export const App: React.FC = () => {
                       userId && householdId && !isGuest ? (
                         <Navigate to={isOnboarded ? '/' : '/onboarding'} replace />
                       ) : (
-                        <AuthPage />
+                        <AuthEntry />
                       )
                     }
                   />
@@ -261,28 +347,29 @@ export const App: React.FC = () => {
                       path="/"
                       element={isOnboarded ? <HomeEntry /> : <Navigate to="/onboarding" replace />}
                     />
+                    <Route path="/search" element={<C02QuickSearchVNext />} />
 
                     {/* Fridge / Inventory */}
                     <Route path="/fridge" element={<InventoryEntry />} />
                     <Route path="/inventory" element={<Navigate to="/fridge" replace />} />
-                    <Route path="/fridge/:id" element={<IngredientDetailPage />} />
-                    <Route path="/ingredients/:id" element={<IngredientDetailPage />} />
-                    <Route path="/inventory/:id" element={<IngredientDetailPage />} />
-                    <Route path="/inventory-reconciliation" element={<ReconciliationPage />} />
+                    <Route path="/fridge/:id" element={<LotDetailEntry />} />
+                    <Route path="/ingredients/:id" element={<LotDetailEntry />} />
+                    <Route path="/inventory/:id" element={<LotDetailEntry />} />
+                    <Route path="/inventory-reconciliation" element={<ReconciliationEntry />} />
 
                     {/* AI Scan & Review */}
-                    <Route path="/scan" element={<ScanPage />} />
-                    <Route path="/scan/:id/review" element={<ScanResultPage />} />
-                    <Route path="/scan/receipt-review" element={<ReceiptReviewPage />} />
-                    <Route path="/scan/result" element={<ScanResultPage />} />
+                    <Route path="/scan" element={<ScanEntry />} />
+                    <Route path="/scan/:id/review" element={<ScanReviewEntry />} />
+                    <Route path="/scan/receipt-review" element={<ReceiptReviewEntry />} />
+                    <Route path="/scan/result" element={<ScanReviewEntry />} />
 
                     {/* Recipes & Cooking */}
-                    <Route path="/recipes" element={<RecipesPage />} />
+                    <Route path="/recipes" element={<RecipesEntry />} />
                     <Route path="/recipes/:slug" element={<RecipeDetailEntry />} />
                     <Route path="/recipes/id/:id" element={<RecipeDetailEntry />} />
-                    <Route path="/cook/:slug" element={<CookingModePage />} />
-                    <Route path="/cooking/:id" element={<CookingModePage />} />
-                    <Route path="/cooking/complete" element={<CookingCompletePage />} />
+                    <Route path="/cook/:slug" element={<CookModeEntry />} />
+                    <Route path="/cooking/:id" element={<CookModeEntry />} />
+                    <Route path="/cooking/complete" element={<CookCompleteEntry />} />
 
                     {/* Planner is canonical when enabled; Week stays the visible
                       compatibility surface while the flag is off. Params are
@@ -342,7 +429,7 @@ export const App: React.FC = () => {
                     <Route
                       path="/planner/new"
                       element={
-                        isMealPlannerEnabled() ? <PlannerPage /> : <Navigate to="/week" replace />
+                        isMealPlannerEnabled() ? <PlannerSetupEntry /> : <Navigate to="/week" replace />
                       }
                     />
                     <Route
@@ -354,37 +441,37 @@ export const App: React.FC = () => {
                     <Route
                       path="/planner/:planId/meal/:slotId"
                       element={
-                        isMealPlannerEnabled() ? <PlannerPage /> : <Navigate to="/week" replace />
+                        isMealPlannerEnabled() ? <PlannerMealEntry /> : <Navigate to="/week" replace />
                       }
                     />
                     <Route
                       path="/planner/:planId/shopping"
                       element={
-                        isMealPlannerEnabled() ? <PlannerPage /> : <Navigate to="/week" replace />
+                        isMealPlannerEnabled() ? <PlannerShoppingEntry /> : <Navigate to="/week" replace />
                       }
                     />
 
                     {/* Shopping, Profile/Me, Settings, Notifications, Plus, Household */}
-                    <Route path="/shopping" element={<ShoppingPage />} />
-                    <Route path="/notifications" element={<NotificationsPage />} />
-                    <Route path="/me" element={<ProfilePage />} />
+                    <Route path="/shopping" element={<ShoppingEntry />} />
+                    <Route path="/notifications" element={<NotificationsEntry />} />
+                    <Route path="/me" element={<ProfileEntry />} />
                     <Route path="/profile" element={<Navigate to="/me" replace />} />
-                    <Route path="/me/preferences" element={<FoodPreferencesPage />} />
+                    <Route path="/me/preferences" element={<FoodPrefsEntry />} />
                     <Route path="/family" element={<Navigate to="/me/household" replace />} />
-                    <Route path="/me/household" element={<FamilySharingPage />} />
+                    <Route path="/me/household" element={<HouseholdEntry />} />
                     <Route path="/settings" element={<Navigate to="/settings/app" replace />} />
-                    <Route path="/settings/app" element={<SettingsPage />} />
+                    <Route path="/settings/app" element={<AppSettingsEntry />} />
                     <Route
                       path="/settings/notifications"
-                      element={<NotificationPreferencesPage />}
+                      element={<NotificationPrefsEntry />}
                     />
-                    <Route path="/settings/planning" element={<PlanningSettingsPage />} />
-                    <Route path="/settings/privacy" element={<PrivacyDataPage />} />
-                    <Route path="/plus" element={<PlusPaywallPage />} />
+                    <Route path="/settings/planning" element={<PlanningSettingsEntry />} />
+                    <Route path="/settings/privacy" element={<PrivacyEntry />} />
+                    <Route path="/plus" element={<PlusEntry />} />
                   </Route>
 
                   {/* Catch-all fallback */}
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route path="*" element={<NotFoundEntry />} />
                 </Routes>
               </Suspense>
             </SessionBoundary>

@@ -58,7 +58,7 @@ export const C03InventoryPilot: React.FC = () => {
   const query = searchParams.get('q') ?? '';
   const activeFilter = searchParams.get('filter') ?? 'all';
 
-  const [addOpen, setAddOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(() => searchParams.get('action') === 'add');
   const [mutationBanner, setMutationBanner] = useState<{
     message: string;
     refetchFailed: boolean;
@@ -280,7 +280,7 @@ export const C03InventoryPilot: React.FC = () => {
                 onChange={(e) => setQuantity(Number(e.target.value))}
                 required
               />
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <label htmlFor="tkv-c05-unit" className="text-sm font-bold text-[var(--tkv-ink)] block">
                   Đơn vị & Vị trí
                 </label>
@@ -310,7 +310,7 @@ export const C03InventoryPilot: React.FC = () => {
                   </select>
                 </div>
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <label htmlFor="tkv-c05-expiry" className="text-sm font-bold text-[var(--tkv-ink)] block">
                   Hạn dùng ước tính
                 </label>
@@ -436,7 +436,7 @@ export const C03InventoryPilot: React.FC = () => {
               const isExpiring = item.freshness === 'expiring' || item.freshness === 'use_soon';
 
               return (
-                <li key={item.id}>
+                <li key={item.id} data-testid="inventory-row" data-item-id={item.id}>
                   <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3">
                     <Link
                       to={`/fridge/${item.id}`}

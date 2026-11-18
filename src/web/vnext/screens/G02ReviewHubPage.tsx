@@ -91,7 +91,7 @@ export const G02ReviewHubPage: React.FC = () => {
     <div className="tkv-root min-h-dvh pb-16" data-tkv-direction={direction} data-tkv-screen="G02_HUB">
       <G02DirectionPreviewBar direction={direction} onDirectionChange={setDirection} screenId="G02" />
 
-      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 space-y-10">
+      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 space-y-7">
         {/* Header */}
         <section className="space-y-3">
           <TkvBadge tone="warning" icon="sparkles">
@@ -117,7 +117,7 @@ export const G02ReviewHubPage: React.FC = () => {
                 to={pilot.to}
                 className="tkv-focusable rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-4 space-y-2 hover:border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-card)] flex flex-col justify-between"
               >
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="px-2.5 py-0.5 rounded-lg bg-[var(--tkv-primary)] text-white text-xs font-extrabold">
                       {pilot.id}
@@ -236,7 +236,7 @@ export const G02ReviewHubPage: React.FC = () => {
             {Object.entries(VERIFIED_VNEXT_RECIPE_MEDIA).map(([slug, media]) => (
               <TkvSurface key={slug} padded={false} className="overflow-hidden flex flex-col">
                 <VerifiedDishImage slug={slug} title={slug} />
-                <div className="p-4 space-y-1.5">
+                <div className="p-4 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <code className="font-bold text-[var(--tkv-primary)]">{slug}</code>
                     <TkvBadge tone="warning" icon="info">

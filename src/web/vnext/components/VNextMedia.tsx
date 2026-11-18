@@ -60,6 +60,48 @@ export const VERIFIED_VNEXT_RECIPE_MEDIA: Record<
     altVi: 'Bát phở bò tái lăn Hà Nội nước dùng trong với hành tây, hành hoa và chanh tươi',
     verifiedIngredientsSummary: 'Thịt bò thăn 400g · Bánh phở tươi 500g · Gừng nướng & hồi quế',
   },
+  'sup-ga-ngo-non-nam-huong': {
+    assetId: 'FOOD-07',
+    src: '/takolio/vnext/food/sup-ga-ngo-non-nam-huong.webp',
+    src640: '/takolio/vnext/food/sup-ga-ngo-non-nam-huong-640w.webp',
+    altVi: 'Tô súp gà ngô non nấm hương trứng hoa rắc hành ngò',
+    verifiedIngredientsSummary: 'Ức gà xé sợi · Ngô non · Nấm hương · Trứng gà ta đánh vân',
+  },
+  chawanmushi: {
+    assetId: 'FOOD-08',
+    src: '/takolio/vnext/food/chawanmushi.webp',
+    src640: '/takolio/vnext/food/chawanmushi-640w.webp',
+    altVi: 'Chén sứ trứng hấp Chawanmushi Nhật Bản kèm tôm và nấm hương',
+    verifiedIngredientsSummary: 'Trứng gà mịn · Nước dùng thanh · Tôm tươi · Nấm hương',
+  },
+  'goi-ga-xe-phay-bap-cai': {
+    assetId: 'FOOD-09',
+    src: '/takolio/vnext/food/goi-ga-xe-phay-bap-cai.webp',
+    src640: '/takolio/vnext/food/goi-ga-xe-phay-bap-cai-640w.webp',
+    altVi: 'Đĩa gỏi gà xé phay trộn bắp cải hành tây rau răm hành phi',
+    verifiedIngredientsSummary: 'Thịt gà luộc xé phay · Bắp cải bào · Hành tây · Rau răm & chanh ớt',
+  },
+  'dau-phu-sot-ca-chua': {
+    assetId: 'FOOD-10',
+    src: '/takolio/vnext/food/dau-phu-sot-ca-chua.webp',
+    src640: '/takolio/vnext/food/dau-phu-sot-ca-chua-640w.webp',
+    altVi: 'Đĩa đậu phụ lướt ván sốt cà chua rắc hành lá tươi',
+    verifiedIngredientsSummary: 'Đậu phụ trắng chiên vàng · Cà chua chín · Hành hoa · Nước mắm',
+  },
+  'canh-bi-do-thit-bam': {
+    assetId: 'FOOD-11',
+    src: '/takolio/vnext/food/canh-bi-do-thit-bam.webp',
+    src640: '/takolio/vnext/food/canh-bi-do-thit-bam-640w.webp',
+    altVi: 'Tô canh bí đỏ thịt bằm hạt sen điểm ngò gai',
+    verifiedIngredientsSummary: 'Bí đỏ dẻo · Thịt heo bằm · Hạt sen · Ngò gai & hành lá',
+  },
+  'bun-cha-ha-noi-than-hoa': {
+    assetId: 'FOOD-12',
+    src: '/takolio/vnext/food/bun-cha-ha-noi-than-hoa.webp',
+    src640: '/takolio/vnext/food/bun-cha-ha-noi-than-hoa-640w.webp',
+    altVi: 'Mẹt bún chả nướng than hoa Hà Nội kèm nước chấm đu đủ và rau sống',
+    verifiedIngredientsSummary: 'Chả viên & thịt ba chỉ nướng · Bún rối · Đu đủ xanh · Rau thơm',
+  },
 };
 
 export type MascotPose =

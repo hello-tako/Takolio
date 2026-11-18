@@ -1,0 +1,38 @@
+/* Scoped Kitchen Studio Direction A surface adaptation for authoritative inner domain views
+   (C06/C07 LotDetail, C08 Reconciliation, C09-C14 Scan/Receipt, C24-C29 Planner/Shopping, U02-U05 Settings, U07/U08 Plus).
+   Suppresses duplicate legacy top headers when already hosted inside ConsumerStudioShell while preserving
+   100% of interactive controls, aria-labels, form inputs, and anti-race data-testids. */
+
+.tkv-adapted-surface {
+  color: var(--tkv-ink);
+  font-family: var(--tkv-font-body);
+}
+
+/* Hide duplicate legacy shell headers inside ConsumerStudioShell while keeping main content & alerts visible */
+.tkv-adapted-surface .kitchen-header,
+.tkv-adapted-surface [data-kitchen-header],
+.tkv-adapted-surface .scan-workspace-header,
+.tkv-adapted-surface > div > header:first-child {
+  display: none;
+}
+
+.tkv-adapted-surface main,
+.tkv-adapted-surface .kitchen-detail-page,
+.tkv-adapted-surface .scan-workspace,
+.tkv-adapted-surface.takosan-rebuild {
+  background-color: transparent;
+  min-height: 0;
+  padding-top: 0;
+}
+
+/* Preserve white headings on dark hero banners (e.g. U07 PlusPaywallPage) */
+:where(.tkv-adapted-surface h1, .tkv-adapted-surface h2, .tkv-adapted-surface h3) {
+  font-family: var(--tkv-font-heading);
+}
+
+.tkv-immersive-cook-frame {
+  min-height: 100dvh;
+  background-color: var(--tkv-bg);
+  color: var(--tkv-ink);
+  font-family: var(--tkv-font-body);
+}
