@@ -1,0 +1,173 @@
+/* Takolio Frontend vNext — Kitchen Studio Semantic Tokens & Self-Hosted Vietnamese Fonts
+ * Status: PROPOSED / PENDING_OWNER_APPROVAL (G02)
+ * Isolated under .tkv-root so legacy Frigo/Takosan/Takolio v1 routes remain 100% unaffected.
+ */
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 800;
+  src: url('/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 800;
+  src: url('/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 800;
+  src: url('/takosan/v3/fonts/nunito-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC;
+}
+
+@font-face {
+  font-family: 'Takolio Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url('/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2') format('woff2');
+}
+
+/* Direction A (Recommended): Kitchen Studio Leaf & Coral — matches DESIGN_TOKENS_CANDIDATE.json */
+.tkv-root,
+.tkv-root[data-tkv-direction='a'] {
+  --tkv-bg: #fff9f1;
+  --tkv-surface: #ffffff;
+  --tkv-surface-mint: #e7f4ec;
+  --tkv-surface-saffron: #fff0c5;
+  --tkv-surface-coral: #fff0e9;
+  --tkv-primary: #196149; /* 7.38:1 vs #FFFFFF (WCAG AAA) */
+  --tkv-primary-hover: #134c39;
+  --tkv-primary-deep: #0e3b2c;
+  --tkv-coral: #f46b52; /* Brand coral highlight (pair with #152E2C ink = 5.12:1 AA) */
+  --tkv-coral-cta: #c8432b; /* Hardened white-text coral CTA = 5.38:1 (WCAG AA) */
+  --tkv-coral-cta-hover: #ad3620;
+  --tkv-saffron: #f6c453;
+  --tkv-ink: #152e2c; /* 13.9:1 vs #FFF9F1 (WCAG AAA) */
+  --tkv-ink-secondary: #48615b; /* 6.42:1 vs #FFFFFF (WCAG AA+) */
+  --tkv-ink-muted: #56706a; /* 5.31:1 vs #FFFFFF (WCAG AA) */
+  --tkv-border: #dce4db;
+  --tkv-border-strong: #b9c8b8;
+  --tkv-success: #196149;
+  --tkv-warning: #8a5205; /* 5.74:1 vs #FFF0C5 (WCAG AA) */
+  --tkv-danger: #ba2f38; /* 5.91:1 vs #FFFFFF (WCAG AA) */
+  --tkv-focus: #165eae;
+  --tkv-radius-card: 20px;
+  --tkv-radius-btn: 14px;
+  --tkv-radius-pill: 999px;
+  --tkv-shadow-card: 0 2px 8px rgba(21, 46, 44, 0.05), 0 10px 28px rgba(21, 46, 44, 0.04);
+  --tkv-shadow-float: 0 12px 32px rgba(25, 97, 73, 0.14);
+  --tkv-font-heading: 'Takolio Nunito', 'Nunito', system-ui, -apple-system, sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Direction B: Botanical Market Herb & Linen */
+.tkv-root[data-tkv-direction='b'] {
+  --tkv-bg: #f4f8f4;
+  --tkv-surface: #ffffff;
+  --tkv-surface-mint: #e1f0e7;
+  --tkv-surface-saffron: #fef3c7;
+  --tkv-surface-coral: #ffedd5;
+  --tkv-primary: #14533d;
+  --tkv-primary-hover: #0e3f2e;
+  --tkv-primary-deep: #0b2e22;
+  --tkv-coral: #f59e0b;
+  --tkv-coral-cta: #b45309; /* 5.02:1 vs #FFFFFF (WCAG AA) */
+  --tkv-coral-cta-hover: #92400e;
+  --tkv-saffron: #eab308;
+  --tkv-ink: #132a23;
+  --tkv-ink-secondary: #3f5950;
+  --tkv-ink-muted: #506b61;
+  --tkv-border: #d3e2d8;
+  --tkv-border-strong: #aec6b6;
+}
+
+/* Direction C: Warm Terracotta Hearth & Bistro Slate */
+.tkv-root[data-tkv-direction='c'] {
+  --tkv-bg: #fdf6ee;
+  --tkv-surface: #ffffff;
+  --tkv-surface-mint: #e8f1ee;
+  --tkv-surface-saffron: #fdecc8;
+  --tkv-surface-coral: #fce8e2;
+  --tkv-primary: #1e3a34;
+  --tkv-primary-hover: #152a25;
+  --tkv-primary-deep: #0f1f1b;
+  --tkv-coral: #e76f51;
+  --tkv-coral-cta: #b83b28; /* 5.65:1 vs #FFFFFF (WCAG AA) */
+  --tkv-coral-cta-hover: #992f1f;
+  --tkv-saffron: #e9c46a;
+  --tkv-ink: #1b2422;
+  --tkv-ink-secondary: #4a5753;
+  --tkv-ink-muted: #5c6b66;
+  --tkv-border: #e5dcd0;
+  --tkv-border-strong: #cbbca9;
+}
+
+.tkv-root {
+  min-height: 100dvh;
+  background-color: var(--tkv-bg);
+  color: var(--tkv-ink);
+  font-family: var(--tkv-font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tkv-heading {
+  font-family: var(--tkv-font-heading);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.tkv-skip-link {
+  position: fixed;
+  left: 12px;
+  top: -120px;
+  z-index: 100;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: var(--tkv-radius-btn);
+  background: var(--tkv-primary);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--tkv-shadow-float);
+}
+
+.tkv-skip-link:focus {
+  top: 12px;
+  outline: 3px solid var(--tkv-focus);
+  outline-offset: 2px;
+}
+
+.tkv-focusable:focus-visible {
+  outline: 3px solid var(--tkv-focus);
+  outline-offset: 2px;
+}
+
+.tkv-tap {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tkv-root *,
+  .tkv-root *::before,
+  .tkv-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,3 +1,4 @@
+import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -5,16 +6,21 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const authState = {
   userId: 'account-user',
   householdId: 'account-household',
+  householdSize: 2,
   displayName: 'Khách ghé thăm',
   email: '',
   isGuest: true,
   isPlus: false,
+  logoutStatus: 'idle' as const,
+  logoutError: null,
+  logout: vi.fn(async () => true),
   avatarUrl: undefined,
   syncPlusFromServer: vi.fn(async () => {}),
 };
 
 vi.mock('../../src/web/stores/useAuthStore', () => ({
-  useAuthStore: (selector?: (state: typeof authState) => unknown) => selector ? selector(authState) : authState,
+  useAuthStore: (selector?: (state: typeof authState) => unknown) =>
+    selector ? selector(authState) : authState,
 }));
 
 vi.mock('../../src/web/components/payment/VietQRModal', () => ({
@@ -22,12 +28,12 @@ vi.mock('../../src/web/components/payment/VietQRModal', () => ({
 }));
 
 import { PlusPaywallPage } from '../../src/web/pages/PlusPaywallPage';
-import { ProfilePage } from '../../src/web/pages/ProfilePage';
+import { U01ProfileHubVNext } from '../../src/web/vnext/screens/AccountAndSystemPages';
 
 const render = (ui: React.ReactElement, path: string) =>
   renderToStaticMarkup(<StaticRouter location={path}>{ui}</StaticRouter>);
 
-describe('guest account gates', () => {
+describe('guest account gates (vNext + Red-Zone PlusPaywall)', () => {
   beforeEach(() => {
     authState.isGuest = true;
     authState.isPlus = false;
@@ -42,10 +48,10 @@ describe('guest account gates', () => {
     expect(html).not.toContain('data-testid="payment-modal"');
   });
 
-  it('points the guest profile upgrade CTA directly to authentication', () => {
-    const html = render(<ProfilePage />, '/profile');
-    expect(html).toContain('Đăng nhập để nâng cấp');
-    expect(html).toContain('href="/auth?mode=login&amp;returnTo=%2Fplus"');
+  it('surfaces the guest registration upgrade CTA on U01ProfileHubVNext', () => {
+    const html = render(<U01ProfileHubVNext />, '/me');
+    expect(html).toContain('Phiên dùng thử khách');
+    expect(html).toContain('Tạo tài khoản');
   });
 
   it('keeps the authenticated Plus shell free of client-owned prices', () => {

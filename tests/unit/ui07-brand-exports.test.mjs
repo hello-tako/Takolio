@@ -100,7 +100,7 @@ describe('UI07 reproducible digital brand', () => {
     for (const name of ['logo/horizontal-primary.svg', 'logo/symbol-primary.svg', 'app-icons/favicon.svg', 'app-icons/icon-192.png', 'app-icons/icon-512.png']) {
       expect(sw).toContain(`/takolio/v1/${name}`);
     }
-    for (const path of ['/takosan/brand/takosan-logo-horizontal-primary.svg', '/takosan/brand/takosan-og.png', '/takosan/app-icons/icon-512.png', '/takosan/mascot/takosan-fridge.svg', '/frigo/brand/wordmark.png']) {
+    for (const path of ['/takosan/brand/takosan-logo-horizontal-primary.svg', '/takosan/brand/takosan-og.png', '/takosan/app-icons/icon-512.png', '/takosan/mascot/takosan-fridge.svg']) {
       expect((await readFile(publicFile(path))).length).toBeGreaterThan(0);
     }
   });

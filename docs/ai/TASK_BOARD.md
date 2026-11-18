@@ -1,3 +1,22 @@
+## Takolio Frontend vNext G00-G12 Complete (PR #61 & Staging Preview Live) - 2026-11-18 JST
+
+- [x] G00–G02 Audit, UX Architecture, Brand Direction A ("Bé Mầm Bếp" + 53 SVGs) & 8 Golden Pilots — Owner approved `2026-11-18 JST`.
+- [x] G03–G10 Full 85-Screen Implementation (`M01–M12`, `A01–O06`, `C01–C30`, `U01–U10`, `S01–S08`, `AD01–AD11`) + 87 original assets + `341/341` Red-Zone files untouched.
+- [x] G11 Full QA (`170` browser captures, `0/25` Axe WCAG 2.2 AA violations, `0` HTTP 500s, `0px` overflow `320..1440px`, `?vnext=0` rollback drill).
+- [x] G12 PR #61 opened (`https://github.com/hello-tako/Takolio/pull/61`, NOT merged), `M09/M11/M12` copy locked, and Cloudflare Staging Preview uploaded (`https://vnext-g12-frigo-staging.tungbipdz.workers.dev`, Version `50d4df9a-6283-46de-96ea-b2924a4cd189`).
+- [ ] **HARD STOP**: Awaiting separate Project Owner command after Staging inspection before merging PR #61 or deploying Production.
+
+---
+
+## Takolio Frontend vNext G00-G02 Foundation & Pilot Checkpoint - 2026-11-18 JST
+
+- [x] G00 Read-Only Baseline Audit on `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4` (`CURRENT_BASELINE.md`, `ROUTE_STATE_API_MATRIX.csv` 85/85 IDs, `PROTECTED_FILE_HASHES.json` 341 files, `BASELINE_TESTS.md`).
+- [x] G01 UX Architecture & Journey Mapping (`UX_ARCHITECTURE_G01.md`, `DDR_LOG.md`, `BACKEND_GAP_RFCS.md`).
+- [x] G02 Visual & Asset Foundation + 8 Live Pilot Screens (`M01, A02, O03, C01, C03, C18, C23, AD02`) + 77 candidate assets in `public/takolio/vnext/**` (`approval=PENDING`).
+- [ ] **BLOCKED ON OWNER GATE G02**: Signoff on `docs/handoff/vnext/OPEN_DECISIONS.md` before locking brand assets and executing `G03–G12`.
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

@@ -8,7 +8,8 @@ import { AuditPage } from './pages/AuditPage';
 import { BillingPage } from './pages/BillingPage';
 import { HouseholdsPage, UsersPage } from './pages/UsersPage';
 import { LoginPage } from './pages/LoginPage';
-import { OverviewPage } from './pages/OverviewPage';
+import { AdminOverviewVNext } from './vnext/AdminOverviewVNext';
+import './vnext/admin-vnext.css';
 import { RecipeDetailPage } from './pages/RecipeDetailPage';
 import { RecipesPage } from './pages/RecipesPage';
 import { SettingsPage } from './pages/SettingsPage';
@@ -37,7 +38,7 @@ export function AdminApp({ queryClient }: { queryClient: QueryClient }) {
               index
               element={
                 <RequirePermission permission="overview.read">
-                  <OverviewPage />
+                  <AdminOverviewVNext />
                 </RequirePermission>
               }
             />

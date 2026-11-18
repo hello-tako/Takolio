@@ -1,56 +1,42 @@
-import type { ReactElement } from 'react';
-import { readFileSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { matchPath, StaticRouter } from 'react-router-dom';
-import { describe, expect, it, vi } from 'vitest';
+import { StaticRouter } from 'react-router-dom';
+import { describe, expect, it } from 'vitest';
+import { ConsumerStudioShell, getConsumerRoots } from '../../src/web/vnext/components/Shells';
 
-vi.mock('../../src/web/stores/useAuthStore', () => ({ useAuthStore: () => ({ avatarUrl: null }) }));
-import { AppLayout, isKitchenSurface } from '../../src/web/components/layout/AppLayout';
-import { KitchenScanLink, NAV_ITEMS } from '../../src/web/design-system/navigation';
+const render = (route: string) =>
+  renderToStaticMarkup(
+    <StaticRouter location={route}>
+      <ConsumerStudioShell screenId="C01">
+        <div>Nội dung kiểm thử</div>
+      </ConsumerStudioShell>
+    </StaticRouter>,
+  );
 
-const render = (node: ReactElement, route: string) => renderToStaticMarkup(<StaticRouter location={route}>{node}</StaticRouter>);
-const router = readFileSync('src/web/App.tsx', 'utf8');
-const shell = router.slice(router.indexOf('{/* Core App Shell */}'), router.indexOf('{/* Catch-all fallback */}'));
-// Redirect-only aliases do not display a page; every rendered destination shares the shell.
-const aliases = new Set(['/inventory', '/profile', '/family', '/settings']);
-const routes = [...shell.matchAll(/path="([^"]+)"/g)].map((match) => match[1])
-  .filter((route) => !aliases.has(route))
-  .map((route) => route.replace(/:[^/]+/g, 'fixture'));
-const immersive = (route: string) => /^\/scan\/?$/.test(route) || /^\/(cook|cooking)(?:\/|$)/.test(route);
-const cases = routes.flatMap((canonical) => [...new Set([
-  canonical, canonical.toUpperCase(), canonical === '/' ? '/' : `${canonical}/`,
-  `${canonical}?payment=success&orderCode=123`,
-])].map((route) => ({ canonical, route, pathname: new URL(route, 'https://test.local').pathname })));
+describe('vNext ConsumerStudioShell 5-destination navigation consistency', () => {
+  it.each([
+    ['/', 'Hôm nay'],
+    ['/fridge', 'Tủ lạnh'],
+    ['/fridge/lot-1', 'Tủ lạnh'],
+    ['/recipes', 'Món ăn'],
+    ['/recipes/thit-kho-trung', 'Món ăn'],
+    ['/planner', 'Thực đơn'],
+    ['/planner/new', 'Thực đơn'],
+    ['/me', 'Tôi'],
+    ['/settings/privacy', 'Tôi'],
+    ['/plus', 'Tôi'],
+    ['/notifications', 'Tôi'],
+  ])('highlights %s under its canonical 5-root destination (%s)', (route, expectedActiveLabel) => {
+    const roots = getConsumerRoots();
+    expect(roots).toHaveLength(5);
+    expect(roots.map((r) => r.label)).toEqual(['Hôm nay', 'Tủ lạnh', 'Món ăn', 'Thực đơn', 'Tôi']);
 
-describe('all rendered app routes share the current navigation', () => {
-  it.each(cases.filter(({ canonical }) => !immersive(canonical)))('$route retains five destinations and the current shell', ({ canonical, route, pathname }) => {
-    expect(matchPath(canonical, pathname)).not.toBeNull();
-    expect(isKitchenSurface(pathname)).toBe(true);
-    const html = render(<AppLayout />, route);
-    expect(html).toContain('data-kitchen-navigation="persistent"');
-    expect(html).toContain('id="kitchen-main"');
-    const bottom = /<nav[^>]*class="kitchen-bottom-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(html)?.[1];
-    expect(bottom).toBeDefined();
-    expect(bottom?.match(/<a /g)).toHaveLength(5);
-    for (const item of NAV_ITEMS) expect(bottom).toContain(item.label);
-    expect(bottom).not.toContain('href="/scan"');
-    expect(html).not.toContain('aria-label="Quét AI"');
-  });
-
-  it.each(cases.filter(({ canonical }) => immersive(canonical)))('$route retains the full-screen workflow', ({ canonical, route, pathname }) => {
-    expect(matchPath(canonical, pathname)).not.toBeNull();
-    const html = render(<AppLayout />, route);
-    expect(html).not.toContain('<nav');
-    expect(html).not.toContain('data-kitchen-navigation="persistent"');
-  });
-
-  it.each(['/plus', '/Plus', '/PLUS/', '/plus?payment=success&orderCode=123'])('recognizes %s as part of the account destination', (route) => {
-    const html = render(<AppLayout />, route);
-    const bottom = /<nav[^>]*class="kitchen-bottom-nav"[^>]*>([\s\S]*?)<\/nav>/.exec(html)?.[1];
-    expect(bottom).toMatch(/<a(?=[^>]*href="\/me")(?=[^>]*aria-current="page")[^>]*>/);
-  });
-
-  it.each(['/scan/item/review', '/SCAN/ITEM/REVIEW/', '/scan/result?scanId=fixture'])('recognizes %s as the active Scan action', (route) => {
-    expect(render(<KitchenScanLink />, route)).toContain('aria-current="page"');
+    const html = render(route);
+    for (const r of roots) {
+      expect(html).toContain(r.label);
+    }
+    const activeMatches = roots.filter((r) => r.match(route));
+    expect(activeMatches).toHaveLength(1);
+    expect(activeMatches[0].label).toBe(expectedActiveLabel);
+    expect(html).toContain('aria-current="page"');
   });
 });

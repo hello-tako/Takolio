@@ -43,7 +43,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
   };
 
   return (
-    <div className={clsx('admin-app', collapsed && 'is-collapsed', drawerOpen && 'drawer-open')}>
+    <div className={clsx('admin-app is-vnext-admin', collapsed && 'is-collapsed', drawerOpen && 'drawer-open')}>
       <a className="skip-link" href="#admin-main">
         {vi.layout.skip}
       </a>

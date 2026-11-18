@@ -1,3 +1,19 @@
+## Takolio Frontend vNext G12 PR #61 & Staging Preview Live - 2026-11-18 JST
+
+Canonical vNext G12 ledger: `docs/handoff/vnext/HANDOFF_CURRENT.md` (`RELEASE_CHECKLIST_G12.md`, `G12_RECEIPT.md`, `SCREEN_COVERAGE.csv` 85/85, `ASSET_REGISTRY.csv` 87 assets, `VISUAL_COMPARE.md`, `TEST_REPORT.md`).
+PR #61 (`OPEN`, **NOT MERGED**): `https://github.com/hello-tako/Takolio/pull/61` (`feat/takolio-vnext-ui-architecture` → `main`).
+Live Staging Preview (`frigo-staging` Version `50d4df9a-6283-46de-96ea-b2924a4cd189`, Cloudflare Access protected): `https://vnext-g12-frigo-staging.tungbipdz.workers.dev`.
+Zero protected Red-Zone files modified (`341/341` SHA-256 verified). Production completely untouched. Paused awaiting explicit Project Owner post-Staging approval.
+
+---
+
+## Takolio Frontend vNext G00-G02 Foundation & Pilot Checkpoint - 2026-11-18 JST
+
+Canonical vNext checkpoint ledger: `docs/handoff/vnext/HANDOFF_CURRENT.md` (plus `SCREEN_COVERAGE.csv`, `ASSET_REGISTRY.csv`, `VISUAL_COMPARE.md`, `TEST_REPORT.md`, `OPEN_DECISIONS.md`, `NEXT_TASK_PACKET.md`).
+Branch `feat/takolio-vnext-ui-architecture` from `origin/main` `87f279a055e028336ea334cc51c7ab4224f30ef4`. Zero protected files modified (`341/341` SHA-256 verified). Zero remote migrations or deployments. Awaiting Gate G02 owner signoff to launch `G03` (`M01-M12`) and `G04` (`A01-O06`).
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
