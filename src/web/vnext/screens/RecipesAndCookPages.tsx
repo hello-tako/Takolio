@@ -149,7 +149,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                   : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
               )}
             >
-              Đã lưu (C17)
+              Đã lưu
             </button>
           </div>
         </div>
@@ -981,7 +981,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
           />
           <div className="space-y-2 min-w-0">
             <TkvBadge tone={done ? 'success' : 'warning'} icon={done ? 'check' : 'recipes'}>
-              {done ? 'Đã ghi nhận bữa nấu' : 'C22 · Kiểm tra lượng thực dùng'}
+              {done ? 'Đã ghi nhận bữa nấu' : 'Kiểm tra lượng thực dùng'}
             </TkvBadge>
             <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
               {done

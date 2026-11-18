@@ -62,7 +62,7 @@ export const C30NotificationsVNext: React.FC = () => {
         <div className="flex items-end justify-between gap-3 flex-wrap">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
-              C30 · Nhắc nhở từ trạng thái thực tế
+              Nhắc nhở từ trạng thái thực tế
             </p>
             <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)] mt-0.5">
               Thông báo căn bếp
@@ -73,7 +73,7 @@ export const C30NotificationsVNext: React.FC = () => {
             className="tkv-focusable min-h-[42px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border)] bg-white text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5"
           >
             <VNextIcon name="settings" size={15} />
-            <span>Cài đặt thông báo (U05)</span>
+            <span>Cài đặt thông báo</span>
           </Link>
         </div>
 
@@ -193,7 +193,7 @@ export const U01ProfileHubVNext: React.FC = () => {
       id: 'u06',
       icon: 'users',
       title: 'Hộ gia đình',
-      subtitle: 'Mã hộ hiện tại & trạng thái chia sẻ thành viên (U06)',
+      subtitle: 'Mã hộ hiện tại & trạng thái chia sẻ thành viên',
       to: vnextHref('/me/household'),
     },
     {
@@ -229,7 +229,7 @@ export const U01ProfileHubVNext: React.FC = () => {
       id: 'u09',
       icon: 'privacy',
       title: 'Quyền riêng tư & Xuất/xóa dữ liệu',
-      subtitle: 'Phân tách dữ liệu hộ gia đình, sự đồng ý và quyền dữ liệu (U09 · U10)',
+      subtitle: 'Phân tách dữ liệu hộ gia đình, sự đồng ý và quyền dữ liệu',
       to: vnextHref('/settings/privacy'),
     },
   ];

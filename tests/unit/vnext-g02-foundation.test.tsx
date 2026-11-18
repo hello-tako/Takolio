@@ -284,4 +284,61 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
       expect(row).toMatch(/vnext_g11_85x2\/[A-Z0-9]+_1440x900\.png/);
     }
   });
+
+  it('keeps Login and Register in one unified 2-tab card with live Google GSI mount and direct /landing exit', async () => {
+    const renderedButtons: Array<Record<string, unknown>> = [];
+    (window as unknown as { google?: unknown }).google = {
+      accounts: {
+        id: {
+          initialize: () => {},
+          renderButton: (el: HTMLElement, opts: Record<string, unknown>) => {
+            renderedButtons.push(opts);
+            const fakeIframe = document.createElement('div');
+            fakeIframe.setAttribute('data-testid', 'mock-google-gsi-btn');
+            el.appendChild(fakeIframe);
+          },
+        },
+      },
+    };
+    const origFetch = globalThis.fetch;
+    globalThis.fetch = (async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes('/config')) {
+        return new Response(
+          JSON.stringify({ turnstileSiteKey: null, googleClientId: 'test-google-client-id.apps.googleusercontent.com' }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } },
+        );
+      }
+      return new Response('{}', { status: 200 });
+    }) as typeof fetch;
+
+    try {
+      const authMount = mountWithProviders(<VNextAuthFlow />, ['/auth?mode=login']);
+      await new Promise((r) => setTimeout(r, 50));
+
+      // Unified 2-tab switcher + Google button + Email form all present together
+      expect(authMount.container.querySelector('[data-testid="auth-tab-login"]')?.getAttribute('aria-selected')).toBe('true');
+      expect(authMount.container.querySelector('[data-testid="auth-tab-register"]')?.getAttribute('aria-selected')).toBe('false');
+      expect(authMount.container.querySelector('[data-testid="google-auth-section"]')).not.toBeNull();
+      expect(authMount.container.querySelector('[data-testid="mock-google-gsi-btn"]')).not.toBeNull();
+      expect(renderedButtons.some((b) => b.text === 'signin_with')).toBe(true);
+
+      // Exit link goes straight to /landing, NEVER traps in ?mode=choose
+      const links = Array.from(authMount.container.querySelectorAll('a')).map((a) => a.getAttribute('href'));
+      expect(links).toContain('/landing');
+      expect(links.some((h) => h?.includes('mode=choose'))).toBe(false);
+
+      // Switch to Register tab -> Google button re-renders with signup_with + Register form visible
+      authMount.click(authMount.container.querySelector('[data-testid="auth-tab-register"]'));
+      await new Promise((r) => setTimeout(r, 50));
+      expect(authMount.container.querySelector('h1')?.textContent).toMatch(/Tạo tài khoản mới/i);
+      expect(authMount.container.querySelector('[data-testid="a04-submit-btn"]')).not.toBeNull();
+      expect(renderedButtons.some((b) => b.text === 'signup_with')).toBe(true);
+
+      authMount.unmount();
+    } finally {
+      globalThis.fetch = origFetch;
+      delete (window as unknown as { google?: unknown }).google;
+    }
+  });
 });

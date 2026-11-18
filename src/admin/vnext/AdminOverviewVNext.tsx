@@ -37,7 +37,7 @@ export function AdminOverviewVNext() {
     <div className="tkv-admin-pilot" data-testid="ad02-vnext-overview">
       <div className="tkv-admin-header">
         <div>
-          <span className="tkv-admin-eyebrow">AD02 · Bảng điều hành hệ thống</span>
+          <span className="tkv-admin-eyebrow">Bảng điều hành hệ thống</span>
           <h1 className="tkv-admin-title" data-testid="admin-page-title">{vi.overview.title}</h1>
           <p className="tkv-admin-subtitle">{vi.overview.description}</p>
         </div>
@@ -124,7 +124,7 @@ export function AdminOverviewVNext() {
                 </li>
                 <li>
                   <div>
-                    <strong>Nhật ký kiểm toán bất biến (AD10)</strong>
+                    <strong>Nhật ký kiểm toán bất biến</strong>
                     <p className="muted small">Đối chiếu tác nhân quản trị và lịch sử thay đổi quyền</p>
                   </div>
                   <Link to="/audit" className="tkv-ops-link">
@@ -133,7 +133,7 @@ export function AdminOverviewVNext() {
                 </li>
                 <li>
                   <div>
-                    <strong>Vận hành AI & Quét ảnh (AD07)</strong>
+                    <strong>Vận hành AI & Quét ảnh</strong>
                     <p className="muted small">Theo dõi trạng thái hàng đợi nhận diện không lộ PII</p>
                   </div>
                   <Link to="/ai" className="tkv-ops-link">

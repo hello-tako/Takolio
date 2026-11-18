@@ -80,7 +80,7 @@ export const C23PlannerPilot: React.FC = () => {
                 iconLeft="plus"
                 onClick={() => navigate('/planner/new')}
               >
-                Lập thực đơn mới (C24)
+                Lập thực đơn mới
               </TkvButton>
               {plan && (
                 <Link
@@ -88,7 +88,7 @@ export const C23PlannerPilot: React.FC = () => {
                   className="tkv-focusable min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-primary)] text-[var(--tkv-primary)] text-sm font-bold inline-flex items-center gap-1.5 hover:bg-[var(--tkv-surface-mint)]"
                 >
                   <VNextIcon name="shopping" size={16} />
-                  <span>Đi chợ theo tuần (C29)</span>
+                  <span>Đi chợ theo tuần</span>
                 </Link>
               )}
             </div>
@@ -163,7 +163,7 @@ export const C23PlannerPilot: React.FC = () => {
               description="Chọn số ngày, số bữa và khẩu phần tại màn hình thiết lập kế hoạch — toàn bộ tính toán định lượng do miền nghiệp vụ máy chủ đảm nhiệm."
               primaryAction={
                 <TkvButton onClick={() => navigate('/planner/new')} iconRight="arrow-right">
-                  Mở thiết lập thực đơn (C24)
+                  Mở thiết lập thực đơn
                 </TkvButton>
               }
             />

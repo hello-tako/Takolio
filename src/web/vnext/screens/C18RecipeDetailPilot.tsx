@@ -59,11 +59,16 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
   const navigate = useNavigate();
   const { state } = useLocation();
+  const queryReturnTo = params.get('returnTo');
   const returnTo =
-    typeof state?.discoveryReturn === 'string' &&
-    (state.discoveryReturn === '/' || state.discoveryReturn.startsWith('/recipes'))
-      ? state.discoveryReturn
-      : '/recipes';
+    queryReturnTo &&
+    (queryReturnTo === '/' || queryReturnTo.startsWith('/recipes')) &&
+    !queryReturnTo.startsWith('//')
+      ? queryReturnTo
+      : typeof state?.discoveryReturn === 'string' &&
+          (state.discoveryReturn === '/' || state.discoveryReturn.startsWith('/recipes'))
+        ? state.discoveryReturn
+        : '/recipes';
 
   const queryClient = useQueryClient();
   const startCooking = useCookingStore((s) => s.startCooking);
@@ -145,7 +150,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
       <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
         <TkvEmptyState
           pose="error"
-          eyebrow="Không tìm thấy món ăn (S02)"
+          eyebrow="Không tìm thấy món ăn"
           title="Công thức này không tồn tại hoặc đã thay đổi đường dẫn"
           description="Bạn có thể quay lại kho công thức để tìm món ăn khác phù hợp với tủ lạnh."
           primaryAction={

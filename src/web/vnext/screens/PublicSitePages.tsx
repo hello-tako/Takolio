@@ -615,7 +615,7 @@ export const M09PricingPage: React.FC = () => {
       : vnextHref('/auth?mode=login&returnTo=%2Fplus');
 
   return (
-    <PublicMarketingShell screenId="M09" onStartFree={handleStartFree} isStartingFree={isStarting}>
+    <PublicMarketingShell screenId="M09">
       <section aria-labelledby="tkv-m09-h1" className="max-w-[1060px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-3 max-w-2xl">
           <TkvBadge tone="warning" icon="info">
@@ -981,6 +981,7 @@ export const M12CompanyLegalPage: React.FC = () => {
   const [senderEmail, setSenderEmail] = useState('');
   const [messageBody, setMessageBody] = useState('');
   const [draftPrepared, setDraftPrepared] = useState(false);
+  const [copiedDraft, setCopiedDraft] = useState(false);
 
   const titles: Record<typeof section, { title: string; canonical: string; desc: string }> = {
     about: {
@@ -1169,10 +1170,25 @@ export const M12CompanyLegalPage: React.FC = () => {
               </form>
 
               {draftPrepared && (
-                <div role="status" className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-4 text-xs text-[var(--tkv-ink)] space-y-2">
-                  <p className="font-extrabold text-[var(--tkv-primary)]">
-                    Đã tạo bản nháp liên hệ (chưa gửi lên máy chủ — cổng liên hệ đang chờ cấu hình địa chỉ nhận chính thức):
-                  </p>
+                <div role="status" className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-4 text-xs text-[var(--tkv-ink)] space-y-2.5">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <p className="font-extrabold text-[var(--tkv-primary)]">
+                      Đã chuẩn bị nội dung liên hệ sẵn sàng sao chép:
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const text = `Từ: ${senderName} <${senderEmail}>\nNội dung: ${messageBody}`;
+                        void navigator.clipboard?.writeText(text).then(() => {
+                          setCopiedDraft(true);
+                          window.setTimeout(() => setCopiedDraft(false), 2500);
+                        });
+                      }}
+                      className="tkv-focusable min-h-[34px] px-3 rounded-lg bg-white border border-[var(--tkv-border-strong)] font-extrabold text-[var(--tkv-primary)] hover:bg-[var(--tkv-bg)]"
+                    >
+                      {copiedDraft ? 'Đã sao chép!' : 'Sao chép nội dung'}
+                    </button>
+                  </div>
                   <pre className="whitespace-pre-wrap font-sans bg-white/80 p-2.5 rounded-xl border border-[var(--tkv-border)]">
                     {`Từ: ${senderName} <${senderEmail}>\nNội dung: ${messageBody}`}
                   </pre>

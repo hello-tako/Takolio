@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
 import { isInventoryTransferDeferred } from '../../services/auth';
+import { isOffline } from '../../services/http';
 import { capturePrivateSession } from '../../lib/private-session';
-import { apiErrorMessage } from '../../features/auth/auth-shared';
+import { apiErrorMessage, otpPresentation } from '../../features/auth/auth-shared';
 import { GoogleAuthSection } from '../../features/auth/GoogleAuthSection';
 import {
   clearVerifyContext,
@@ -21,23 +23,17 @@ import { TkvBadge, TkvButton, TkvSurface, TkvTextField } from '../components/Pri
 import { VNextIcon } from '../components/VNextIcons';
 
 export type VNextAuthMode =
-  | 'choose' // A01
-  | 'login' // A02
-  | 'google' // A03
-  | 'register' // A04
-  | 'verify' // A05
-  | 'forgot' // A06
-  | 'reset' // A07
-  | 'transfer-deferred'; // A08
+  | 'login'
+  | 'register'
+  | 'verify'
+  | 'forgot'
+  | 'reset'
+  | 'transfer-deferred';
 
 function resolveAuthMode(pathname: string, params: URLSearchParams): VNextAuthMode {
   if (pathname === '/auth/verify') return 'verify';
-  if (params.get('provider') === 'google') return 'google';
   const mode = params.get('mode');
   if (
-    mode === 'choose' ||
-    mode === 'login' ||
-    mode === 'google' ||
     mode === 'register' ||
     mode === 'forgot' ||
     mode === 'reset' ||
@@ -45,13 +41,12 @@ function resolveAuthMode(pathname: string, params: URLSearchParams): VNextAuthMo
   ) {
     return mode;
   }
+  // Unified entry: /auth, ?mode=login, ?mode=choose, ?mode=google all land cleanly on the unified Login/Register card.
   return 'login';
 }
 
 const SCREEN_IDS: Record<VNextAuthMode, string> = {
-  choose: 'A01',
   login: 'A02',
-  google: 'A03',
   register: 'A04',
   verify: 'A05',
   forgot: 'A06',
@@ -113,7 +108,7 @@ const SixDigitOtpInput: React.FC<{
 
   return (
     <div className="space-y-2">
-      <p className="text-sm font-extrabold text-[var(--tkv-ink)]">Mã xác thực 6 số</p>
+      <p className="text-sm font-extrabold text-[var(--tkv-ink)]">Mã xác thực 6 chữ số</p>
       <div className="grid grid-cols-6 gap-2 sm:gap-2.5" role="group" aria-label="Nhập mã OTP 6 chữ số">
         {Array.from({ length: OTP_LEN }, (_, idx) => (
           <input
@@ -131,7 +126,7 @@ const SixDigitOtpInput: React.FC<{
             onChange={(e) => handleDigitChange(idx, e.target.value)}
             onKeyDown={(e) => handleKeyDown(idx, e)}
             onPaste={handlePaste}
-            className="tkv-focusable h-14 w-full rounded-2xl border border-[var(--tkv-border-strong)] bg-white text-center tkv-heading text-2xl font-extrabold text-[var(--tkv-ink)]"
+            className="tkv-focusable h-13 sm:h-14 w-full rounded-2xl border border-[var(--tkv-border-strong)] bg-white text-center tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]"
           />
         ))}
       </div>
@@ -140,21 +135,22 @@ const SixDigitOtpInput: React.FC<{
 };
 
 /**
- * Unified Gate G04 Authentication Flow (`A01–A08`).
- * Preserves 100% of verified auth contracts:
- * - Guest entry (`setGuestSession`), Email Login (`api.login`), Register (`api.register` + Turnstile),
- *   Google Identity Services (`GoogleAuthSection`), 6-digit OTP (`/auth/verify` + paste + cooldown),
- *   Forgot/Reset Password (`api.forgotPassword` / `api.resetPassword`), and `DEC-012` transfer refusal (`A08`).
+ * Unified Kitchen Studio Authentication Flow.
+ * Single coherent card with:
+ * - Instant 2-tab switcher (`Đăng nhập` | `Tạo tài khoản`) using `{ replace: true }` so Back always exits cleanly
+ * - Live Google Identity Services (`window.google.accounts.id`) + `api.loginWithGoogle` right at the top of both tabs
+ * - Email Login (including unverified-account `requireOtp` continuation), Registration + Turnstile,
+ *   6-digit OTP (`/auth/verify` + refresh recovery + `DEC-012` transfer refusal), and Forgot/Reset Password.
  */
 export const VNextAuthFlow: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
 
-
   const urlMode = resolveAuthMode(pathname, searchParams);
   const [transferDeferred, setTransferDeferred] = useState(false);
   const activeMode: VNextAuthMode = transferDeferred ? 'transfer-deferred' : urlMode;
+  const isPrimaryAuthTab = activeMode === 'login' || activeMode === 'register';
   const screenId = SCREEN_IDS[activeMode];
 
   const requestedReturnTo = searchParams.get('returnTo');
@@ -165,19 +161,20 @@ export const VNextAuthFlow: React.FC = () => {
 
   const setAuthSession = useAuthStore((s) => s.setAuthSession);
   const setGuestSession = useAuthStore((s) => s.setGuestSession);
-  const isGuest = useAuthStore((s) => s.isGuest);
-  const guestHouseholdId = useAuthStore((s) => (s.isGuest && s.householdId ? s.householdId : null));
+  const hasActiveGuestSession = useAuthStore((s) => Boolean(s.isGuest && s.userId && s.householdId));
 
   const initialVerify = pathname === '/auth/verify' ? readVerifyContext() : null;
   const [name, setName] = useState('');
   const [email, setEmail] = useState(() => initialVerify?.email ?? searchParams.get('email') ?? '');
   const [password, setPassword] = useState('');
+  const [activationPassword, setActivationPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [otpDigits, setOtpDigits] = useState<string[]>(['', '', '', '', '', '']);
   const [devOtpHint, setDevOtpHint] = useState<string | null>(null);
   const [resendSeconds, setResendSeconds] = useState(() => resendSecondsRemaining(initialVerify));
   const [isLoading, setIsLoading] = useState(false);
+  const [isStartingGuest, setIsStartingGuest] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [infoMessage, setInfoMessage] = useState<string | null>(null);
 
@@ -185,32 +182,29 @@ export const VNextAuthFlow: React.FC = () => {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [turnstileGen, setTurnstileGen] = useState(0);
 
-  const [googleClientId, setGoogleClientId] = useState<string | null>(null);
-  const [googleStatus, setGoogleStatus] = useState<'idle' | 'loading' | 'ready' | 'unavailable'>('idle');
+  const [googleClientId, setGoogleClientId] = useState<string | null | undefined>(undefined);
+  const [googleStatus, setGoogleStatus] = useState<'idle' | 'loading' | 'ready' | 'unavailable'>('loading');
   const [googleRetry, setGoogleRetry] = useState(0);
   const googleBtnRef = useRef<HTMLDivElement>(null);
 
   useVNextSeo({
     title:
-      activeMode === 'choose'
-        ? 'Bắt đầu với Takolio'
-        : activeMode === 'register'
-          ? 'Tạo tài khoản mới'
-          : activeMode === 'verify'
-            ? 'Xác minh OTP'
-            : activeMode === 'forgot'
-              ? 'Quên mật khẩu'
-              : activeMode === 'reset'
-                ? 'Đặt lại mật khẩu'
-                : activeMode === 'google'
-                  ? 'Đăng nhập bằng Google'
-                  : activeMode === 'transfer-deferred'
-                    ? 'Chuyển dữ liệu khách'
-                    : 'Đăng nhập tài khoản',
-    description: 'Xác thực tài khoản an toàn và bảo vệ dữ liệu riêng tư theo từng hộ gia đình trên Takolio.',
+      activeMode === 'register'
+        ? 'Tạo tài khoản mới'
+        : activeMode === 'verify'
+          ? 'Xác minh OTP'
+          : activeMode === 'forgot'
+            ? 'Quên mật khẩu'
+            : activeMode === 'reset'
+              ? 'Đặt lại mật khẩu'
+              : activeMode === 'transfer-deferred'
+                ? 'Chuyển dữ liệu khách'
+                : 'Đăng nhập tài khoản',
+    description: 'Đăng nhập hoặc tạo tài khoản Takolio nhanh chóng bằng Google hoặc email.',
     canonicalPath: pathname === '/auth/verify' ? '/auth/verify' : '/auth',
   });
 
+  // Fetch public Turnstile + Google Client ID configuration once (or on explicit retry).
   useEffect(() => {
     let active = true;
     api
@@ -218,20 +212,141 @@ export const VNextAuthFlow: React.FC = () => {
       .then((cfg) => {
         if (!active) return;
         setTurnstileSiteKey(cfg.turnstileSiteKey || null);
-        const cid = cfg.googleClientId || null;
-        setGoogleClientId(cid);
-        setGoogleStatus(cid ? 'ready' : 'unavailable');
+        setGoogleClientId(cfg.googleClientId || null);
       })
       .catch(() => {
         if (!active) return;
         setTurnstileSiteKey(null);
         setGoogleClientId(null);
-        setGoogleStatus('unavailable');
       });
     return () => {
       active = false;
     };
   }, [googleRetry]);
+
+  // Mount & render real Google Identity Services button on both Login and Register tabs.
+  useEffect(() => {
+    if (!isPrimaryAuthTab) {
+      setGoogleStatus('idle');
+      return;
+    }
+    if (googleClientId === undefined) {
+      setGoogleStatus('loading');
+      return;
+    }
+    if (!googleClientId) {
+      setGoogleStatus('unavailable');
+      return;
+    }
+
+    let active = true;
+    let timer: number | undefined;
+    let resizeObserver: ResizeObserver | undefined;
+    let renderGoogleButton: (() => void) | undefined;
+    let attempts = 0;
+
+    const handleGoogleResponse = async (response: { credential?: string }) => {
+      if (!active) return;
+      if (typeof response?.credential !== 'string' || response.credential.length === 0) {
+        setErrorMessage('Google không trả về thông tin xác thực hợp lệ. Vui lòng thử lại hoặc dùng email.');
+        return;
+      }
+      const isCurrent = capturePrivateSession();
+      setIsLoading(true);
+      setErrorMessage(null);
+      try {
+        const res = await api.loginWithGoogle(response.credential);
+        if (!active || !isCurrent()) return;
+        if (res.success && res.user) {
+          setAuthSession({
+            id: res.user.id,
+            email: res.user.email,
+            displayName: res.user.displayName,
+            avatarUrl: res.user.avatarUrl,
+            householdId: res.user.householdId,
+            onboardingCompleted: res.user.onboardingCompleted,
+          });
+          navigate(res.user.onboardingCompleted ? returnTo : vnextHref('/onboarding'), {
+            replace: true,
+          });
+        } else {
+          setErrorMessage('Không thể xác thực tài khoản Google lúc này.');
+        }
+      } catch (err) {
+        if (!active || !isCurrent()) return;
+        setErrorMessage(apiErrorMessage(err, 'Đăng nhập Google chưa thành công. Vui lòng thử lại hoặc dùng email.'));
+      } finally {
+        if (active) setIsLoading(false);
+      }
+    };
+
+    const initializeGoogle = () => {
+      if (!active) return;
+      const googleId = window.google?.accounts?.id;
+      if (!googleId) {
+        attempts += 1;
+        if (attempts < 40) {
+          timer = window.setTimeout(initializeGoogle, 200);
+          return;
+        }
+        setGoogleStatus('unavailable');
+        return;
+      }
+      try {
+        googleId.initialize({
+          client_id: googleClientId,
+          callback: handleGoogleResponse,
+          auto_select: false,
+        });
+
+        const googleHost = googleBtnRef.current;
+        if (googleHost && active) {
+          let renderedKey = '';
+          const buttonText = activeMode === 'register' ? 'signup_with' : 'signin_with';
+          renderGoogleButton = () => {
+            if (!active) return;
+            const parentWidth = Math.floor(
+              googleHost.parentElement?.getBoundingClientRect().width ||
+                googleHost.getBoundingClientRect().width ||
+                340,
+            );
+            const buttonWidth = Math.min(400, Math.max(220, parentWidth));
+            const nextKey = `${buttonText}:${buttonWidth}`;
+            if (nextKey === renderedKey) return;
+            googleHost.replaceChildren();
+            googleId.renderButton(googleHost, {
+              theme: 'outline',
+              size: 'large',
+              width: buttonWidth,
+              text: buttonText,
+              shape: 'pill',
+              locale: 'vi',
+            });
+            renderedKey = nextKey;
+          };
+          setGoogleStatus('ready');
+          renderGoogleButton();
+          if (typeof ResizeObserver !== 'undefined' && googleHost.parentElement) {
+            resizeObserver = new ResizeObserver(renderGoogleButton);
+            resizeObserver.observe(googleHost.parentElement);
+          }
+          window.addEventListener('resize', renderGoogleButton);
+        }
+      } catch {
+        setGoogleStatus('unavailable');
+      }
+    };
+
+    setGoogleStatus('loading');
+    initializeGoogle();
+
+    return () => {
+      active = false;
+      if (timer !== undefined) window.clearTimeout(timer);
+      resizeObserver?.disconnect();
+      if (renderGoogleButton) window.removeEventListener('resize', renderGoogleButton);
+    };
+  }, [activeMode, isPrimaryAuthTab, googleClientId, googleRetry, navigate, returnTo, setAuthSession]);
 
   useEffect(() => {
     if (pathname === '/auth/verify') {
@@ -239,6 +354,9 @@ export const VNextAuthFlow: React.FC = () => {
       if (ctx) {
         setEmail(ctx.email);
         setResendSeconds(resendSecondsRemaining(ctx));
+        if (ctx.delivered === false && resendSecondsRemaining(ctx) === 0) {
+          setErrorMessage((cur) => cur ?? 'Email OTP chưa gửi được. Hãy bấm Gửi lại mã xác thực.');
+        }
       }
     }
   }, [pathname]);
@@ -251,19 +369,51 @@ export const VNextAuthFlow: React.FC = () => {
     return () => window.clearInterval(t);
   }, [resendSeconds]);
 
-  const switchMode = (nextMode: VNextAuthMode, extraQuery = '') => {
+  const switchMode = (
+    nextMode: VNextAuthMode,
+    options?: { extraQuery?: string; replace?: boolean },
+  ) => {
     setErrorMessage(null);
     setInfoMessage(null);
     setTransferDeferred(false);
     const rt = requestedReturnTo ? `&returnTo=${encodeURIComponent(requestedReturnTo)}` : '';
+    const extra = options?.extraQuery ?? '';
     if (nextMode === 'verify') {
-      navigate(vnextHref(`/auth/verify${rt ? `?${rt.slice(1)}` : ''}`));
+      navigate(vnextHref(`/auth/verify${rt ? `?${rt.slice(1)}` : ''}`), {
+        replace: options?.replace ?? false,
+      });
       return;
     }
-    navigate(vnextHref(`/auth?mode=${nextMode}${rt}${extraQuery}`));
+    // Tab switches replace history so Browser Back always exits /auth cleanly in 1 click.
+    navigate(vnextHref(`/auth?mode=${nextMode}${rt}${extra}`), {
+      replace: options?.replace ?? true,
+    });
+  };
+
+  const enterRegisterVerification = (
+    targetEmail: string,
+    metadata: unknown,
+    verifierPassword?: string,
+  ) => {
+    if (verifierPassword !== undefined) {
+      setActivationPassword(verifierPassword);
+    }
+    const presentation = otpPresentation(metadata);
+    const ctx = writeVerifyContext({
+      email: targetEmail,
+      resendAvailableAt: presentation.cooldown ? Date.now() + presentation.cooldown * 1000 : 0,
+      expiresAt: presentation.expiresAt,
+      delivered: presentation.delivered,
+    });
+    setResendSeconds(resendSecondsRemaining(ctx));
+    setOtpDigits(['', '', '', '', '', '']);
+    setTransferDeferred(false);
+    const rt = requestedReturnTo ? `?returnTo=${encodeURIComponent(requestedReturnTo)}` : '';
+    navigate(vnextHref(`/auth/verify${rt}`));
   };
 
   const handleRetryGoogle = useCallback(() => {
+    setGoogleClientId(undefined);
     setGoogleStatus('loading');
     setGoogleRetry((n) => n + 1);
   }, []);
@@ -279,21 +429,23 @@ export const VNextAuthFlow: React.FC = () => {
   const handleGuestStart = async () => {
     setErrorMessage(null);
     if (!ensureOnline()) return;
-    setIsLoading(true);
+    setIsStartingGuest(true);
     try {
       await setGuestSession();
       navigate(vnextHref('/onboarding/welcome'));
     } catch (err) {
       setErrorMessage(apiErrorMessage(err, 'Không thể khởi tạo phiên dùng thử ngay lúc này.'));
     } finally {
-      setIsLoading(false);
+      setIsStartingGuest(false);
     }
   };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
-    if (!email.trim() || !password) {
+    setInfoMessage(null);
+    const cleanEmail = email.trim();
+    if (!cleanEmail || !password) {
       setErrorMessage('Vui lòng nhập đầy đủ địa chỉ email và mật khẩu.');
       return;
     }
@@ -301,8 +453,14 @@ export const VNextAuthFlow: React.FC = () => {
     const isCurrent = capturePrivateSession();
     setIsLoading(true);
     try {
-      const response = await api.login(email.trim(), password);
+      const response = await api.login(cleanEmail, password);
       if (!isCurrent()) return;
+      if (response.requireOtp) {
+        if (typeof response.devOtp === 'string') setDevOtpHint(response.devOtp);
+        enterRegisterVerification(cleanEmail, response, password);
+        setInfoMessage('Tài khoản đang chờ xác minh email. Vui lòng nhập mã OTP 6 chữ số để hoàn tất.');
+        return;
+      }
       setAuthSession({
         id: response.user.id,
         email: response.user.email,
@@ -311,14 +469,27 @@ export const VNextAuthFlow: React.FC = () => {
         householdId: response.user.householdId,
         onboardingCompleted: response.user.onboardingCompleted,
       });
-      navigate(returnTo, { replace: true });
-    } catch (err) {
+      navigate(response.user.onboardingCompleted ? returnTo : vnextHref('/onboarding'), {
+        replace: true,
+      });
+    } catch (err: unknown) {
       if (!isCurrent()) return;
       if (isInventoryTransferDeferred(err)) {
         setTransferDeferred(true);
         return;
       }
-      setErrorMessage(apiErrorMessage(err, 'Đăng nhập chưa thành công. Vui lòng kiểm tra lại thông tin.'));
+      const errObj = err as { payload?: Record<string, unknown> };
+      if (errObj?.payload?.requireOtp === true) {
+        if (typeof errObj.payload.devOtp === 'string') setDevOtpHint(errObj.payload.devOtp);
+        enterRegisterVerification(cleanEmail, errObj.payload, password);
+        if (errObj.payload.otpDelivered === true) {
+          setInfoMessage('Mã OTP mới đã được gửi tới hộp thư của bạn.');
+        } else {
+          setErrorMessage('Tài khoản chưa xác minh email. Hãy kiểm tra hộp thư hoặc bấm Gửi lại mã.');
+        }
+        return;
+      }
+      setErrorMessage(apiErrorMessage(err, 'Email hoặc mật khẩu chưa chính xác. Vui lòng kiểm tra lại.'));
     } finally {
       if (isCurrent()) setIsLoading(false);
     }
@@ -327,66 +498,91 @@ export const VNextAuthFlow: React.FC = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
-    if (!email.trim() || password.length < 8) {
-      setErrorMessage('Vui lòng nhập email hợp lệ và mật khẩu tối thiểu 8 ký tự.');
+    setInfoMessage(null);
+    const cleanEmail = email.trim();
+    if (!cleanEmail || password.length < 6) {
+      setErrorMessage('Vui lòng nhập địa chỉ email hợp lệ và mật khẩu tối thiểu 6 ký tự.');
       return;
     }
     if (turnstileSiteKey && !turnstileToken) {
-      setErrorMessage('Vui lòng hoàn tất xác minh bảo mật trước khi tạo tài khoản.');
+      setErrorMessage('Vui lòng hoàn tất bước xác minh bảo mật ngay bên dưới trước khi tiếp tục.');
       return;
     }
     if (!ensureOnline()) return;
     const isCurrent = capturePrivateSession();
+    const display = name.trim() || cleanEmail.split('@')[0] || 'Thành viên Takolio';
+    const submittedPassword = password;
     setIsLoading(true);
     try {
-      const display = name.trim() || email.trim().split('@')[0] || 'Thành viên Takolio';
-      const res = await api.register(display, email.trim(), password, turnstileToken);
+      const res = await api.register(display, cleanEmail, submittedPassword, turnstileToken);
       if (!isCurrent()) return;
-      const now = Date.now();
-      const ctx = writeVerifyContext({
-        email: email.trim(),
-        resendAvailableAt: now + 60_000,
-        expiresAt: res.expiresInMinutes ? now + res.expiresInMinutes * 60_000 : null,
-        delivered: true,
-      });
-      setResendSeconds(resendSecondsRemaining(ctx));
       setDevOtpHint(res.devOtp ?? null);
-      setOtpDigits(['', '', '', '', '', '']);
-      switchMode('verify');
-    } catch (err) {
+      enterRegisterVerification(cleanEmail, res, submittedPassword);
+      setInfoMessage(res.message || `Đã gửi mã xác thực 6 số tới ${cleanEmail}.`);
+    } catch (err: unknown) {
       if (!isCurrent()) return;
-      setTurnstileGen((g) => g + 1);
-      setTurnstileToken(null);
-      setErrorMessage(apiErrorMessage(err, 'Chưa thể tạo tài khoản mới. Vui lòng kiểm tra lại thông tin.'));
+      const errCode = (err as { code?: string; payload?: Record<string, unknown> })?.code;
+      const errPayload = (err as { payload?: Record<string, unknown> })?.payload;
+      if (errCode === 'OTP_DELIVERY_UNAVAILABLE' || errCode === 'OTP_DELIVERY_UNKNOWN') {
+        enterRegisterVerification(cleanEmail, { ...errPayload, otpDelivered: false }, submittedPassword);
+        setErrorMessage(
+          errCode === 'OTP_DELIVERY_UNKNOWN'
+            ? 'Tài khoản đã tạo nhưng máy chủ chưa xác nhận gửi email. Vui lòng kiểm tra hộp thư trước khi gửi lại mã.'
+            : 'Tài khoản đã lưu nhưng email OTP chưa gửi được. Hãy bấm Gửi lại mã xác thực.',
+        );
+        return;
+      }
+      setErrorMessage(apiErrorMessage(err, 'Không thể tạo tài khoản. Email này có thể đã được đăng ký.'));
     } finally {
-      if (isCurrent()) setIsLoading(false);
+      if (isCurrent()) {
+        setTurnstileGen((g) => g + 1);
+        setTurnstileToken(null);
+        setIsLoading(false);
+      }
     }
   };
 
   const handleVerifyOtp = async (e: React.FormEvent, allowMigrate = true) => {
     e.preventDefault();
     setErrorMessage(null);
+    const cleanEmail = email.trim();
     const code = otpDigits.join('');
-    if (!email.trim() || code.length !== 6) {
+    const effectivePassword = activationPassword || password;
+    if (!cleanEmail || code.length !== 6) {
       setErrorMessage('Vui lòng nhập đủ mã OTP 6 chữ số được gửi tới email của bạn.');
+      return;
+    }
+    if (effectivePassword.length < 6 || effectivePassword.length > 100) {
+      setErrorMessage('Vui lòng nhập mật khẩu (tối thiểu 6 ký tự) để hoàn tất kích hoạt tài khoản.');
       return;
     }
     if (!ensureOnline()) return;
     const isCurrent = capturePrivateSession();
     setIsLoading(true);
     try {
+      const authState = useAuthStore.getState();
+      const guestHouseholdToMigrate =
+        allowMigrate && authState.isGuest && authState.householdId.startsWith('hh_guest_')
+          ? authState.householdId
+          : null;
       const res = await api.verifyOtp(
-        email.trim(),
+        cleanEmail,
         code,
         'register',
-        allowMigrate ? guestHouseholdId : null,
-        password || undefined,
+        guestHouseholdToMigrate,
+        effectivePassword,
       );
       if (!isCurrent()) return;
-      if (!res.user?.id || !res.user?.householdId) {
-        throw new Error('Máy chủ chưa xác nhận thông tin tài khoản.');
+      if (!res.success) {
+        setErrorMessage('Yêu cầu đang được xử lý. Vui lòng thử lại với cùng mã OTP.');
+        return;
       }
       clearVerifyContext();
+      if (!res.user?.id || !res.user?.householdId) {
+        setInfoMessage('Xác thực thành công! Mời bạn đăng nhập vào tài khoản.');
+        switchMode('login', { replace: true });
+        return;
+      }
       setAuthSession({
         id: res.user.id,
         email: res.user.email,
@@ -401,33 +597,43 @@ export const VNextAuthFlow: React.FC = () => {
       );
     } catch (err) {
       if (!isCurrent()) return;
-      if (isInventoryTransferDeferred(err)) {
+      if (allowMigrate && isInventoryTransferDeferred(err)) {
         setTransferDeferred(true);
         return;
       }
-      setErrorMessage(apiErrorMessage(err, 'Mã xác thực không hợp lệ hoặc đã hết hạn.'));
+      setErrorMessage(
+        isOffline(err)
+          ? 'Mất kết nối mạng. Mã OTP chưa được tiêu thụ — hãy kiểm tra mạng và thử lại.'
+          : apiErrorMessage(err, 'Mã xác thực không đúng hoặc đã hết hạn.'),
+      );
     } finally {
       if (isCurrent()) setIsLoading(false);
     }
   };
 
-  const handleResendOtp = async () => {
-    if (resendSeconds > 0 || !email.trim()) return;
+  const handleResendOtp = async (purpose: 'register' | 'forgot_password' = 'register') => {
+    const cleanEmail = email.trim();
+    if (resendSeconds > 0 || isLoading || !cleanEmail) return;
     setErrorMessage(null);
+    setInfoMessage(null);
     if (!ensureOnline()) return;
     setIsLoading(true);
     try {
-      const res = await api.resendOtp(email.trim(), 'register');
-      const now = Date.now();
-      const ctx = writeVerifyContext({
-        email: email.trim(),
-        resendAvailableAt: now + 60_000,
-        expiresAt: res.expiresInMinutes ? now + res.expiresInMinutes * 60_000 : null,
-        delivered: true,
-      });
-      setResendSeconds(resendSecondsRemaining(ctx));
+      const res = await api.resendOtp(cleanEmail, purpose);
+      const presentation = otpPresentation(res);
+      if (purpose === 'register') {
+        const ctx = writeVerifyContext({
+          email: cleanEmail,
+          resendAvailableAt: presentation.cooldown ? Date.now() + presentation.cooldown * 1000 : 0,
+          expiresAt: presentation.expiresAt,
+          delivered: presentation.delivered,
+        });
+        setResendSeconds(resendSecondsRemaining(ctx));
+      } else {
+        setResendSeconds(presentation.cooldown || 60);
+      }
       if (res.devOtp) setDevOtpHint(res.devOtp);
-      setInfoMessage('Đã gửi lại mã xác thực mới tới hộp thư của bạn.');
+      setInfoMessage(res.message || 'Đã gửi lại mã xác thực mới tới hộp thư của bạn.');
     } catch (err) {
       setErrorMessage(apiErrorMessage(err, 'Chưa thể gửi lại mã OTP lúc này.'));
     } finally {
@@ -438,17 +644,24 @@ export const VNextAuthFlow: React.FC = () => {
   const handleForgotSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
-    if (!email.trim()) {
-      setErrorMessage('Vui lòng nhập địa chỉ email tài khoản.');
+    setInfoMessage(null);
+    const cleanEmail = email.trim();
+    if (!cleanEmail) {
+      setErrorMessage('Vui lòng nhập địa chỉ email tài khoản cần khôi phục.');
       return;
     }
     if (!ensureOnline()) return;
     setIsLoading(true);
     try {
-      const res = await api.forgotPassword(email.trim());
+      const res = await api.forgotPassword(cleanEmail);
       if (res.devOtp) setDevOtpHint(res.devOtp);
       setOtpDigits(['', '', '', '', '', '']);
-      switchMode('reset', `&email=${encodeURIComponent(email.trim())}`);
+      setResendSeconds(otpPresentation(res).cooldown || 60);
+      switchMode('reset', {
+        extraQuery: `&email=${encodeURIComponent(cleanEmail)}`,
+        replace: true,
+      });
+      setInfoMessage(res.message || `Đã gửi mã khôi phục 6 số tới ${cleanEmail}.`);
     } catch (err) {
       setErrorMessage(apiErrorMessage(err, 'Không thể gửi mã khôi phục lúc này. Vui lòng thử lại.'));
     } finally {
@@ -459,16 +672,17 @@ export const VNextAuthFlow: React.FC = () => {
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
+    const cleanEmail = email.trim();
     const code = otpDigits.join('');
-    if (!email.trim() || code.length !== 6 || newPassword.length < 8) {
-      setErrorMessage('Vui lòng nhập email, mã OTP 6 chữ số và mật khẩu mới tối thiểu 8 ký tự.');
+    if (!cleanEmail || code.length !== 6 || newPassword.length < 6) {
+      setErrorMessage('Vui lòng nhập email, đủ 6 chữ số OTP và mật khẩu mới tối thiểu 6 ký tự.');
       return;
     }
     if (!ensureOnline()) return;
     const isCurrent = capturePrivateSession();
     setIsLoading(true);
     try {
-      const res = await api.resetPassword(email.trim(), code, newPassword);
+      const res = await api.resetPassword(cleanEmail, code, newPassword);
       if (!isCurrent()) return;
       if (res.user?.id && res.user?.householdId) {
         setAuthSession({
@@ -479,18 +693,27 @@ export const VNextAuthFlow: React.FC = () => {
           householdId: res.user.householdId,
           onboardingCompleted: res.user.onboardingCompleted,
         });
-        navigate(returnTo, { replace: true });
+        navigate(res.user.onboardingCompleted ? returnTo : vnextHref('/onboarding'), {
+          replace: true,
+        });
         return;
       }
+      setPassword(newPassword);
+      setNewPassword('');
+      setOtpDigits(['', '', '', '', '', '']);
+      switchMode('login', { replace: true });
       setInfoMessage('Đã đặt lại mật khẩu thành công. Mời bạn đăng nhập bằng mật khẩu mới.');
-      switchMode('login');
     } catch (err) {
       if (!isCurrent()) return;
-      setErrorMessage(apiErrorMessage(err, 'Không thể đặt lại mật khẩu. Vui lòng kiểm tra mã xác thực.'));
+      setErrorMessage(apiErrorMessage(err, 'Không thể đặt lại mật khẩu. Vui lòng kiểm tra lại mã OTP.'));
     } finally {
       if (isCurrent()) setIsLoading(false);
     }
   };
+
+  const exitHref = hasActiveGuestSession ? vnextHref('/') : vnextHref('/landing');
+  const exitLabel = hasActiveGuestSession ? 'Về căn bếp' : 'Trang giới thiệu';
+  const needVerifyPasswordField = !activationPassword && !password;
 
   return (
     <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction="a" data-tkv-screen={screenId}>
@@ -501,27 +724,79 @@ export const VNextAuthFlow: React.FC = () => {
       <main
         id="tkv-auth-main"
         tabIndex={-1}
-        className="flex-1 max-w-[1040px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-12 flex items-center justify-center"
+        className="flex-1 max-w-[1040px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-10 flex items-center justify-center"
       >
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Mobile-First Auth Card matching A01..A08 wireframes */}
-          <div className="lg:col-span-6 w-full max-w-md mx-auto">
+          {/* Unified Auth Card */}
+          <div className="lg:col-span-6 w-full max-w-[440px] mx-auto">
             <TkvSurface className="p-6 sm:p-8 relative overflow-hidden space-y-5">
-              {/* Warm Kitchen Studio corner motif echoing A01..A08 wireframes */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-6 -top-6 w-24 h-24 rounded-full bg-[var(--tkv-surface-mint)]"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute right-10 top-3 w-7 h-7 rounded-full bg-[var(--tkv-saffron)] opacity-80"
-              />
-
-              <div className="relative flex items-center justify-between">
-                <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1">
+              {/* Top Header: Brand Lockup + Deterministic 1-Click Exit */}
+              <div className="relative flex items-center justify-between gap-3">
+                <Link to={exitHref} className="tkv-focusable rounded-xl py-1">
                   <BrandLockup />
                 </Link>
+
+                {isPrimaryAuthTab ? (
+                  <Link
+                    to={exitHref}
+                    className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)] transition-colors"
+                  >
+                    <VNextIcon name="arrow-left" size={15} />
+                    <span>{exitLabel}</span>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      switchMode(activeMode === 'verify' ? 'register' : 'login', { replace: true })
+                    }
+                    className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-primary)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
+                  >
+                    <VNextIcon name="arrow-left" size={15} />
+                    <span>{activeMode === 'verify' ? 'Quay lại đăng ký' : 'Quay lại đăng nhập'}</span>
+                  </button>
+                )}
               </div>
+
+              {/* 2-Tab Segmented Switcher (`Đăng nhập` | `Tạo tài khoản`) */}
+              {isPrimaryAuthTab && (
+                <div
+                  role="tablist"
+                  aria-label="Chuyển đổi Đăng nhập và Tạo tài khoản"
+                  className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)]"
+                >
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={activeMode === 'login'}
+                    data-testid="auth-tab-login"
+                    onClick={() => switchMode('login', { replace: true })}
+                    className={clsx(
+                      'tkv-focusable min-h-[42px] rounded-xl text-sm font-extrabold transition-colors',
+                      activeMode === 'login'
+                        ? 'bg-white text-[var(--tkv-primary)] shadow-xs border border-[var(--tkv-border)]'
+                        : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+                    )}
+                  >
+                    Đăng nhập
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={activeMode === 'register'}
+                    data-testid="auth-tab-register"
+                    onClick={() => switchMode('register', { replace: true })}
+                    className={clsx(
+                      'tkv-focusable min-h-[42px] rounded-xl text-sm font-extrabold transition-colors',
+                      activeMode === 'register'
+                        ? 'bg-white text-[var(--tkv-primary)] shadow-xs border border-[var(--tkv-border)]'
+                        : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+                    )}
+                  >
+                    Tạo tài khoản
+                  </button>
+                </div>
+              )}
 
               {errorMessage && (
                 <div
@@ -543,87 +818,71 @@ export const VNextAuthFlow: React.FC = () => {
                 </div>
               )}
 
-              {/* A01 — Bắt đầu với Takolio (Choose Entry) */}
-              {activeMode === 'choose' && (
-                <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
-                      Bắt đầu với Takolio
+              {/* Unified Login & Register Body: Google 1-Click on top + Email Form below */}
+              {isPrimaryAuthTab && (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <h1 className="tkv-heading text-2xl sm:text-[1.65rem] font-extrabold text-[var(--tkv-ink)]">
+                      {activeMode === 'login' ? 'Đăng nhập tài khoản' : 'Tạo tài khoản mới'}
                     </h1>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Chọn cách vào ứng dụng phù hợp với bạn.
+                      {activeMode === 'login'
+                        ? 'Vào nhanh bằng tài khoản Google hoặc địa chỉ email của bạn.'
+                        : 'Đồng bộ tủ lạnh, thực đơn tuần và danh sách đi chợ cho gia đình.'}
                     </p>
                   </div>
 
-                  <div className="space-y-3">
-                    <TkvButton
-                      variant="primary"
-                      size="lg"
-                      fullWidth
-                      iconLeft="mail"
-                      onClick={() => switchMode('login')}
-                    >
-                      Tiếp tục bằng email
-                    </TkvButton>
-                    <TkvButton
-                      variant="secondary"
-                      size="lg"
-                      fullWidth
-                      onClick={() => switchMode('google')}
-                    >
-                      Đăng nhập bằng Google
-                    </TkvButton>
-                    <TkvButton
-                      variant="quiet"
-                      size="md"
-                      fullWidth
-                      isLoading={isLoading}
-                      onClick={handleGuestStart}
-                    >
-                      Dùng thử ngay với phiên khách
-                    </TkvButton>
-                  </div>
-                </div>
-              )}
-
-              {/* A02 — Đăng nhập tài khoản */}
-              {activeMode === 'login' && (
-                <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
-                      Đăng nhập tài khoản
-                    </h1>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Tiếp tục quản lý căn bếp, tủ lạnh và thực đơn của hộ gia đình bạn.
-                    </p>
-                  </div>
-
-                  {isGuest && (
+                  {hasActiveGuestSession && (
                     <TkvBadge tone="neutral" icon="info">
-                      Đang dùng phiên khách · Đăng nhập để đồng bộ tài khoản
+                      Đang dùng phiên khách · Xác thực để lưu dữ liệu lâu dài
                     </TkvBadge>
                   )}
 
-                  <form onSubmit={handleLogin} className="space-y-4" noValidate>
-                    <TkvTextField
-                      label="Địa chỉ email"
-                      type="email"
-                      autoComplete="email"
-                      iconLeft="mail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="email@example.com"
-                      required
-                    />
-                    <div className="space-y-2">
+                  {/* Real Google Identity Services Button */}
+                  <GoogleAuthSection
+                    clientId={googleClientId}
+                    status={googleStatus}
+                    buttonRef={googleBtnRef}
+                    onRetry={handleRetryGoogle}
+                  />
+
+                  <div className="relative flex items-center py-0.5" aria-hidden="true">
+                    <div className="flex-grow border-t border-[var(--tkv-border)]" />
+                    <span className="shrink-0 mx-3 text-xs font-bold uppercase tracking-wider text-[var(--tkv-ink-muted)]">
+                      hoặc bằng email
+                    </span>
+                    <div className="flex-grow border-t border-[var(--tkv-border)]" />
+                  </div>
+
+                  {activeMode === 'login' ? (
+                    <form onSubmit={handleLogin} className="space-y-4" noValidate>
+                      <TkvTextField
+                        label="Địa chỉ email"
+                        type="email"
+                        autoComplete="email"
+                        iconLeft="mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="email@example.com"
+                        required
+                      />
                       <TkvTextField
                         label="Mật khẩu"
+                        labelAction={
+                          <button
+                            type="button"
+                            onClick={() => switchMode('forgot')}
+                            className="tkv-focusable text-xs font-bold text-[var(--tkv-primary)] hover:underline py-0.5"
+                          >
+                            Quên mật khẩu?
+                          </button>
+                        }
                         type={showPassword ? 'text' : 'password'}
                         autoComplete="current-password"
                         iconLeft="lock"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="••••••••••"
+                        placeholder="Nhập mật khẩu của bạn"
                         required
                         rightSlot={
                           <button
@@ -636,147 +895,108 @@ export const VNextAuthFlow: React.FC = () => {
                           </button>
                         }
                       />
-                      <div className="flex justify-end">
-                        <button
-                          type="button"
-                          onClick={() => switchMode('forgot')}
-                          className="tkv-focusable text-xs font-bold text-[var(--tkv-primary)] hover:underline py-1"
-                        >
-                          Quên mật khẩu?
-                        </button>
-                      </div>
+
+                      <TkvButton
+                        type="submit"
+                        variant="primary"
+                        size="lg"
+                        fullWidth
+                        isLoading={isLoading}
+                        data-testid="a02-submit-btn"
+                      >
+                        Đăng nhập
+                      </TkvButton>
+                    </form>
+                  ) : (
+                    <form onSubmit={handleRegister} className="space-y-4" noValidate>
+                      <TkvTextField
+                        label="Tên hiển thị"
+                        type="text"
+                        autoComplete="name"
+                        iconLeft="profile"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Ví dụ: Bếp nhà Minh"
+                      />
+                      <TkvTextField
+                        label="Địa chỉ email"
+                        type="email"
+                        autoComplete="email"
+                        iconLeft="mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="email@example.com"
+                        required
+                      />
+                      <TkvTextField
+                        label="Mật khẩu"
+                        type={showPassword ? 'text' : 'password'}
+                        autoComplete="new-password"
+                        iconLeft="lock"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Tối thiểu 6 ký tự"
+                        required
+                        rightSlot={
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword((v) => !v)}
+                            aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                            className="tkv-focusable w-9 h-9 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted)]"
+                          >
+                            <VNextIcon name={showPassword ? 'eye-off' : 'eye'} size={18} />
+                          </button>
+                        }
+                      />
+
+                      {turnstileSiteKey && (
+                        <div className="pt-0.5 flex justify-center">
+                          <TurnstileWidget
+                            key={turnstileGen}
+                            siteKey={turnstileSiteKey}
+                            onToken={setTurnstileToken}
+                          />
+                        </div>
+                      )}
+
+                      <TkvButton
+                        type="submit"
+                        variant="primary"
+                        size="lg"
+                        fullWidth
+                        isLoading={isLoading}
+                        data-testid="a04-submit-btn"
+                      >
+                        Tiếp tục & nhận mã xác thực
+                      </TkvButton>
+                    </form>
+                  )}
+
+                  {!hasActiveGuestSession && (
+                    <div className="pt-2 border-t border-[var(--tkv-border)] text-center">
+                      <button
+                        type="button"
+                        disabled={isStartingGuest || isLoading}
+                        onClick={() => void handleGuestStart()}
+                        className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)] hover:underline"
+                      >
+                        <span>{isStartingGuest ? 'Đang mở phiên dùng thử…' : 'Chưa cần tài khoản? Dùng thử ngay không cần đăng ký →'}</span>
+                      </button>
                     </div>
-
-                    <TkvButton
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      fullWidth
-                      isLoading={isLoading}
-                      data-testid="a02-submit-btn"
-                    >
-                      Đăng nhập
-                    </TkvButton>
-                  </form>
-
-                  <GoogleAuthSection
-                    clientId={googleClientId}
-                    status={googleStatus}
-                    buttonRef={googleBtnRef}
-                    onRetry={handleRetryGoogle}
-                  />
+                  )}
                 </div>
               )}
 
-              {/* A03 — Đăng nhập bằng Google */}
-              {activeMode === 'google' && (
-                <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
-                      Đăng nhập bằng Google
-                    </h1>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Xác thực nhanh, có phương án dự phòng khi dịch vụ không sẵn sàng.
-                    </p>
-                  </div>
-
-                  <GoogleAuthSection
-                    clientId={googleClientId}
-                    status={googleStatus}
-                    buttonRef={googleBtnRef}
-                    onRetry={handleRetryGoogle}
-                  />
-
-                  <TkvButton variant="primary" size="lg" fullWidth onClick={handleRetryGoogle}>
-                    Thử lại
-                  </TkvButton>
-                  <TkvButton variant="secondary" size="md" fullWidth onClick={() => switchMode('login')}>
-                    Dùng email và mật khẩu
-                  </TkvButton>
-                </div>
-              )}
-
-              {/* A04 — Tạo tài khoản mới */}
-              {activeMode === 'register' && (
-                <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
-                      Tạo tài khoản mới
-                    </h1>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Lưu lại dữ liệu và trải nghiệm cá nhân của bạn.
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleRegister} className="space-y-4" noValidate>
-                    <TkvTextField
-                      label="Tên hiển thị"
-                      type="text"
-                      autoComplete="name"
-                      iconLeft="profile"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Bếp nhà Minh"
-                    />
-                    <TkvTextField
-                      label="Địa chỉ email"
-                      type="email"
-                      autoComplete="email"
-                      iconLeft="mail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="email@example.com"
-                      required
-                    />
-                    <TkvTextField
-                      label="Mật khẩu"
-                      type={showPassword ? 'text' : 'password'}
-                      autoComplete="new-password"
-                      iconLeft="lock"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••••"
-                      hint="Tối thiểu 8 ký tự · Có thể hiện/ẩn mật khẩu"
-                      required
-                      rightSlot={
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword((v) => !v)}
-                          aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
-                          className="tkv-focusable w-9 h-9 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted)]"
-                        >
-                          <VNextIcon name={showPassword ? 'eye-off' : 'eye'} size={18} />
-                        </button>
-                      }
-                    />
-
-                    {turnstileSiteKey && (
-                      <div className="pt-1">
-                        <TurnstileWidget
-                          key={turnstileGen}
-                          siteKey={turnstileSiteKey}
-                          onToken={setTurnstileToken}
-                        />
-                      </div>
-                    )}
-
-                    <TkvButton type="submit" variant="primary" size="lg" fullWidth isLoading={isLoading}>
-                      Tạo tài khoản
-                    </TkvButton>
-                  </form>
-                </div>
-              )}
-
-              {/* A05 — Xác minh OTP */}
+              {/* A05 — Xác minh OTP (`/auth/verify`) */}
               {activeMode === 'verify' && (
                 <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
+                  <div className="space-y-1">
+                    <h1 className="tkv-heading text-2xl sm:text-[1.65rem] font-extrabold text-[var(--tkv-ink)]">
                       Xác minh OTP
                     </h1>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
                       {email
-                        ? `Mã sáu chữ số được gửi đến địa chỉ ${email}.`
+                        ? `Nhập mã 6 chữ số đã gửi tới ${email} để kích hoạt tài khoản.`
                         : 'Nhập địa chỉ email và mã xác thực 6 chữ số của bạn.'}
                     </p>
                   </div>
@@ -797,14 +1017,28 @@ export const VNextAuthFlow: React.FC = () => {
                     </TkvBadge>
                   )}
 
-                  <form onSubmit={(e) => void handleVerifyOtp(e, true)} className="space-y-5">
+                  <form onSubmit={(e) => void handleVerifyOtp(e, true)} className="space-y-4">
                     <SixDigitOtpInput digits={otpDigits} onChange={setOtpDigits} disabled={isLoading} />
+
+                    {needVerifyPasswordField && (
+                      <TkvTextField
+                        label="Mật khẩu tài khoản"
+                        type={showPassword ? 'text' : 'password'}
+                        autoComplete="new-password"
+                        iconLeft="lock"
+                        value={activationPassword}
+                        onChange={(e) => setActivationPassword(e.target.value)}
+                        placeholder="Nhập mật khẩu tối thiểu 6 ký tự"
+                        hint="Trang vừa được tải lại — vui lòng nhập lại mật khẩu để hoàn tất."
+                        required
+                      />
+                    )}
 
                     <div className="flex items-center justify-between text-xs font-bold">
                       <button
                         type="button"
                         disabled={resendSeconds > 0 || isLoading || !email.trim()}
-                        onClick={() => void handleResendOtp()}
+                        onClick={() => void handleResendOtp('register')}
                         className="tkv-focusable text-[var(--tkv-primary)] disabled:text-[var(--tkv-ink-muted)] hover:underline py-1"
                       >
                         {resendSeconds > 0
@@ -814,7 +1048,7 @@ export const VNextAuthFlow: React.FC = () => {
                     </div>
 
                     <TkvButton type="submit" variant="primary" size="lg" fullWidth isLoading={isLoading}>
-                      Xác nhận mã
+                      Xác nhận & hoàn tất
                     </TkvButton>
                   </form>
                 </div>
@@ -823,12 +1057,12 @@ export const VNextAuthFlow: React.FC = () => {
               {/* A06 — Quên mật khẩu */}
               {activeMode === 'forgot' && (
                 <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
+                  <div className="space-y-1">
+                    <h1 className="tkv-heading text-2xl sm:text-[1.65rem] font-extrabold text-[var(--tkv-ink)]">
                       Quên mật khẩu
                     </h1>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Nhập email để nhận mã khôi phục tài khoản.
+                      Nhập email đã đăng ký để nhận mã khôi phục 6 chữ số.
                     </p>
                   </div>
 
@@ -844,7 +1078,7 @@ export const VNextAuthFlow: React.FC = () => {
                       required
                     />
                     <TkvButton type="submit" variant="primary" size="lg" fullWidth isLoading={isLoading}>
-                      Gửi mã xác thực
+                      Gửi mã khôi phục
                     </TkvButton>
                   </form>
                 </div>
@@ -853,12 +1087,12 @@ export const VNextAuthFlow: React.FC = () => {
               {/* A07 — Đặt lại mật khẩu */}
               {activeMode === 'reset' && (
                 <div className="relative space-y-5">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
+                  <div className="space-y-1">
+                    <h1 className="tkv-heading text-2xl sm:text-[1.65rem] font-extrabold text-[var(--tkv-ink)]">
                       Đặt lại mật khẩu
                     </h1>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Chọn mật khẩu mới để tiếp tục sử dụng.
+                      Nhập mã 6 chữ số trong hộp thư và chọn mật khẩu mới.
                     </p>
                   </div>
 
@@ -879,6 +1113,18 @@ export const VNextAuthFlow: React.FC = () => {
                       required
                     />
                     <SixDigitOtpInput digits={otpDigits} onChange={setOtpDigits} disabled={isLoading} />
+                    <div className="flex justify-end text-xs font-bold">
+                      <button
+                        type="button"
+                        disabled={resendSeconds > 0 || isLoading || !email.trim()}
+                        onClick={() => void handleResendOtp('forgot_password')}
+                        className="tkv-focusable text-[var(--tkv-primary)] disabled:text-[var(--tkv-ink-muted)] hover:underline py-0.5"
+                      >
+                        {resendSeconds > 0
+                          ? `Gửi lại mã · 00:${String(resendSeconds).padStart(2, '0')}`
+                          : 'Gửi lại mã khôi phục'}
+                      </button>
+                    </div>
                     <TkvTextField
                       label="Mật khẩu mới"
                       type={showPassword ? 'text' : 'password'}
@@ -886,8 +1132,7 @@ export const VNextAuthFlow: React.FC = () => {
                       iconLeft="lock"
                       value={newPassword}
                       onChange={(e) => setNewPassword(e.target.value)}
-                      placeholder="••••••••••"
-                      hint="Tối thiểu 8 ký tự · Có thể hiện/ẩn mật khẩu"
+                      placeholder="Tối thiểu 6 ký tự"
                       required
                       rightSlot={
                         <button
@@ -901,7 +1146,7 @@ export const VNextAuthFlow: React.FC = () => {
                       }
                     />
                     <TkvButton type="submit" variant="primary" size="lg" fullWidth isLoading={isLoading}>
-                      Đặt lại mật khẩu
+                      Lưu mật khẩu mới
                     </TkvButton>
                   </form>
                 </div>
@@ -910,8 +1155,8 @@ export const VNextAuthFlow: React.FC = () => {
               {/* A08 — Chuyển dữ liệu khách (DEC-012 Honest Refusal) */}
               {activeMode === 'transfer-deferred' && (
                 <div className="relative space-y-5" role="alert">
-                  <div className="space-y-2">
-                    <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-extrabold text-[var(--tkv-ink)]">
+                  <div className="space-y-1">
+                    <h1 className="tkv-heading text-2xl sm:text-[1.65rem] font-extrabold text-[var(--tkv-ink)]">
                       Chuyển dữ liệu khách
                     </h1>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
@@ -920,7 +1165,7 @@ export const VNextAuthFlow: React.FC = () => {
                   </div>
 
                   <div className="p-4 rounded-2xl bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-warning)]/35 text-sm text-[var(--tkv-ink)] leading-relaxed">
-                    Không thể tiếp tục tự động gộp dữ liệu do phiên khách cần được xác nhận hoặc tài khoản đích đã có hộ gia đình riêng. <strong>Dữ liệu khách chưa được chuyển.</strong>
+                    Không thể tự động gộp dữ liệu do phiên khách cần được xác nhận hoặc tài khoản đích đã có hộ gia đình riêng. <strong>Dữ liệu khách hiện tại vẫn giữ nguyên.</strong>
                   </div>
 
                   <div className="space-y-2.5">
@@ -939,9 +1184,9 @@ export const VNextAuthFlow: React.FC = () => {
                         variant="primary"
                         size="lg"
                         fullWidth
-                        onClick={() => switchMode('login')}
+                        onClick={() => switchMode('login', { replace: true })}
                       >
-                        Xem các lựa chọn đăng nhập
+                        Quay lại đăng nhập
                       </TkvButton>
                     )}
                     <TkvButton
@@ -950,48 +1195,11 @@ export const VNextAuthFlow: React.FC = () => {
                       fullWidth
                       onClick={() => navigate(vnextHref('/'))}
                     >
-                      Quay về tài khoản khách hiện tại
+                      Quay về phiên khách hiện tại
                     </TkvButton>
                   </div>
                 </div>
               )}
-
-              {/* Bottom Navigation Links matching A01..A08 wireframes */}
-              <div className="pt-2 border-t border-[var(--tkv-border)] flex items-center justify-between gap-2 text-xs sm:text-sm">
-                <Link
-                  to={activeMode === 'login' ? vnextHref('/auth?mode=choose') : vnextHref('/landing')}
-                  className="tkv-focusable min-h-[40px] inline-flex items-center gap-1 font-semibold text-[var(--tkv-primary)] hover:underline"
-                >
-                  <VNextIcon name="arrow-left" size={15} />
-                  <span>Quay lại</span>
-                </Link>
-
-                <div className="flex items-center gap-3">
-                  {activeMode === 'login' ? (
-                    <button
-                      type="button"
-                      onClick={() => switchMode('register')}
-                      className="tkv-focusable min-h-[40px] font-extrabold text-[var(--tkv-primary)] hover:underline"
-                    >
-                      Tạo tài khoản mới
-                    </button>
-                  ) : activeMode !== 'choose' ? (
-                    <button
-                      type="button"
-                      onClick={() => switchMode('login')}
-                      className="tkv-focusable min-h-[40px] font-extrabold text-[var(--tkv-primary)] hover:underline"
-                    >
-                      Đăng nhập
-                    </button>
-                  ) : null}
-                  <Link
-                    to="/faq"
-                    className="tkv-focusable min-h-[40px] inline-flex items-center font-semibold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)]"
-                  >
-                    Trợ giúp
-                  </Link>
-                </div>
-              </div>
             </TkvSurface>
           </div>
 
@@ -999,7 +1207,7 @@ export const VNextAuthFlow: React.FC = () => {
           <div className="hidden lg:block lg:col-span-6">
             <TkvSurface tone="mint" className="p-8 space-y-5">
               <div className="flex items-center gap-4">
-                <MascotIllustration pose="guide" size={96} className="border-4 border-white shadow-sm shrink-0" />
+                <MascotIllustration pose="guide" size={88} className="border-4 border-white shadow-sm shrink-0" />
                 <div className="space-y-1">
                   <span className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
                     Takolio Kitchen Studio
@@ -1016,7 +1224,7 @@ export const VNextAuthFlow: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <VNextIcon name="check" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
-                  <span>Phiên xác thực sử dụng cookie bảo mật và tự động làm sạch bộ nhớ đệm khi chuyển tài khoản.</span>
+                  <span>Đăng nhập 1 chạm bằng Google hoặc email — tự động dọn sạch bộ nhớ đệm khi chuyển tài khoản.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <VNextIcon name="sparkles" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />

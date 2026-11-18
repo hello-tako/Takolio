@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
 import '../styles/tokens.css';
@@ -72,10 +72,8 @@ export function getConsumerRoots(): ConsumerRootItem[] {
  */
 export const PublicMarketingShell: React.FC<{
   screenId: string;
-  onStartFree?: () => void;
-  isStartingFree?: boolean;
   children: React.ReactNode;
-}> = ({ screenId, onStartFree, isStartingFree = false, children }) => {
+}> = ({ screenId, children }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -126,8 +124,7 @@ export const PublicMarketingShell: React.FC<{
             <TkvButton
               variant="coral"
               size="sm"
-              isLoading={isStartingFree}
-              onClick={() => (onStartFree ? onStartFree() : navigate(vnextHref('/auth?mode=register')))}
+              onClick={() => navigate(vnextHref('/auth?mode=register'))}
             >
               Đăng ký
             </TkvButton>
@@ -163,13 +160,22 @@ export const PublicMarketingShell: React.FC<{
             >
               Câu hỏi thường gặp
             </Link>
-            <Link
-              to={vnextHref('/auth?mode=login')}
-              onClick={() => setMobileMenuOpen(false)}
-              className="tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl font-bold text-sm text-[var(--tkv-primary)] hover:bg-[var(--tkv-surface-mint)]"
-            >
-              Đăng nhập tài khoản
-            </Link>
+            <div className="pt-2 mt-1 border-t border-[var(--tkv-border)] grid grid-cols-2 gap-2">
+              <Link
+                to={vnextHref('/auth?mode=login')}
+                onClick={() => setMobileMenuOpen(false)}
+                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl border border-[var(--tkv-border-strong)] font-bold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]"
+              >
+                Đăng nhập
+              </Link>
+              <Link
+                to={vnextHref('/auth?mode=register')}
+                onClick={() => setMobileMenuOpen(false)}
+                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl bg-[var(--tkv-coral)] font-bold text-sm text-white"
+              >
+                Đăng ký
+              </Link>
+            </div>
           </nav>
         )}
       </header>
@@ -190,22 +196,22 @@ export const PublicMarketingShell: React.FC<{
           <div className="space-y-2">
             <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Tính năng</p>
             <ul className="space-y-1 text-xs font-semibold">
-              <li><Link to="/how-it-works" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Cách hoạt động (M02)</Link></li>
-              <li><Link to="/features/ai-scan" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">AI Scan nguyên liệu (M03)</Link></li>
-              <li><Link to="/features/fridge" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Tủ lạnh thông minh (M04)</Link></li>
-              <li><Link to="/features/meal-planning" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Lên thực đơn tuần (M05)</Link></li>
-              <li><Link to="/features/recipes" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Kho công thức (M06)</Link></li>
-              <li><Link to="/features/cooking" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Nấu ăn từng bước (M07)</Link></li>
-              <li><Link to="/features/shopping" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Danh sách đi chợ (M08)</Link></li>
+              <li><Link to="/how-it-works" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Cách hoạt động</Link></li>
+              <li><Link to="/features/ai-scan" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">AI Scan nguyên liệu</Link></li>
+              <li><Link to="/features/fridge" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Tủ lạnh thông minh</Link></li>
+              <li><Link to="/features/meal-planning" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Lên thực đơn tuần</Link></li>
+              <li><Link to="/features/recipes" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Kho công thức</Link></li>
+              <li><Link to="/features/cooking" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Nấu ăn từng bước</Link></li>
+              <li><Link to="/features/shopping" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Danh sách đi chợ</Link></li>
             </ul>
           </div>
 
           <div className="space-y-2">
             <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Sản phẩm & Cảm hứng</p>
             <ul className="space-y-1 text-xs font-semibold">
-              <li><Link to="/pricing" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Các gói Takolio (M09)</Link></li>
-              <li><Link to="/faq" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Câu hỏi thường gặp (M10)</Link></li>
-              <li><Link to="/stories" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Takolio Stories (M11)</Link></li>
+              <li><Link to="/pricing" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Các gói Takolio</Link></li>
+              <li><Link to="/faq" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Câu hỏi thường gặp</Link></li>
+              <li><Link to="/stories" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Takolio Stories</Link></li>
               <li><Link to={vnextHref('/auth?mode=login')} className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Đăng nhập ứng dụng</Link></li>
             </ul>
           </div>
@@ -254,6 +260,19 @@ export const ConsumerStudioShell: React.FC<{
   const [quickQuery, setQuickQuery] = useState('');
   const roots = getConsumerRoots();
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setQuickFindOpen((prev) => !prev);
+      } else if (e.key === 'Escape') {
+        setQuickFindOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
   const quickShortcuts = [
     { label: 'Tìm món ăn theo nguyên liệu sẵn có', to: vnextHref('/recipes'), icon: 'recipes' as const },
     { label: 'Kiểm tra tủ lạnh của tôi', to: vnextHref('/fridge'), icon: 'fridge' as const },
@@ -286,7 +305,7 @@ export const ConsumerStudioShell: React.FC<{
             >
               <span className="inline-flex items-center gap-2 font-semibold">
                 <VNextIcon name="search" size={16} />
-                Tìm nhanh (C02)…
+                Tìm nhanh…
               </span>
               <kbd className="text-[11px] font-bold px-1.5 py-0.5 rounded bg-white border border-[var(--tkv-border)]">
                 ⌘K
@@ -438,14 +457,14 @@ export const ConsumerStudioShell: React.FC<{
           aria-modal="true"
           aria-labelledby="tkv-c02-title"
           className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start justify-center p-4 pt-14"
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') setQuickFindOpen(false);
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setQuickFindOpen(false);
           }}
         >
           <div className="w-full max-w-lg rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-xl p-5 space-y-4">
             <div className="flex items-center justify-between gap-2">
               <h2 id="tkv-c02-title" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                Tìm nhanh trong căn bếp (C02)
+                Tìm nhanh trong căn bếp
               </h2>
               <TkvIconButton icon="close" label="Đóng hộp thoại tìm nhanh" onClick={() => setQuickFindOpen(false)} />
             </div>

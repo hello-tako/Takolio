@@ -95,7 +95,7 @@ export const C01HomePilot: React.FC = () => {
             <TkvChip active icon="scan" onClick={() => navigate('/scan')}>
               Quét AI
             </TkvChip>
-            <TkvChip icon="plus" onClick={() => navigate('/fridge')}>
+            <TkvChip icon="plus" onClick={() => navigate('/fridge?action=add')}>
               Thêm nguyên liệu
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>

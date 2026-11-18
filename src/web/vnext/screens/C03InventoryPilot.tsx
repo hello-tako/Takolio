@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import type { StandardUnit } from '@frigo/domain';
@@ -59,6 +59,11 @@ export const C03InventoryPilot: React.FC = () => {
   const activeFilter = searchParams.get('filter') ?? 'all';
 
   const [addOpen, setAddOpen] = useState(() => searchParams.get('action') === 'add');
+  useEffect(() => {
+    if (searchParams.get('action') === 'add') {
+      setAddOpen(true);
+    }
+  }, [searchParams]);
   const [mutationBanner, setMutationBanner] = useState<{
     message: string;
     refetchFailed: boolean;
@@ -234,7 +239,7 @@ export const C03InventoryPilot: React.FC = () => {
               className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-sm font-bold text-[var(--tkv-ink)] inline-flex items-center gap-1.5 hover:bg-[var(--tkv-surface-mint)]"
             >
               <VNextIcon name="history" size={16} />
-              <span>Đối soát (C08)</span>
+              <span>Đối soát tồn kho</span>
             </Link>
           </div>
         </div>
@@ -259,7 +264,7 @@ export const C03InventoryPilot: React.FC = () => {
           <TkvSurface tone="mint" className="p-5 space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                Thêm nguyên liệu thủ công (C05)
+                Thêm nguyên liệu thủ công
               </h2>
               <TkvIconButton icon="close" label="Đóng biểu mẫu thêm nguyên liệu" onClick={() => setAddOpen(false)} />
             </div>

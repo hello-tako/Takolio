@@ -181,22 +181,27 @@ export const TkvTextField: React.FC<
   Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> & {
     label: string;
     hint?: string;
+    labelAction?: React.ReactNode;
     error?: string | null;
     iconLeft?: VNextIconName;
     rightSlot?: React.ReactNode;
   }
-> = ({ label, hint, error, iconLeft, rightSlot, id, className, ...rest }) => {
+> = ({ label, hint, labelAction, error, iconLeft, rightSlot, id, className, ...rest }) => {
   const autoId = useId();
   const fieldId = id ?? autoId;
   const errId = `${fieldId}-err`;
   return (
     <div className={clsx('space-y-2', className)}>
-      <div className="flex items-center justify-between gap-2">
-        <label htmlFor={fieldId} className="text-sm font-bold text-[var(--tkv-ink)]">
-          {label}
-        </label>
-        {hint && <span className="text-xs text-[var(--tkv-ink-muted)]">{hint}</span>}
-      </div>
+      {(label || hint || labelAction) && (
+        <div className="flex items-center justify-between gap-2">
+          {label && (
+            <label htmlFor={fieldId} className="text-sm font-bold text-[var(--tkv-ink)]">
+              {label}
+            </label>
+          )}
+          {labelAction ?? (hint ? <span className="text-xs text-[var(--tkv-ink-muted)]">{hint}</span> : null)}
+        </div>
+      )}
       <div className="relative flex items-center">
         {iconLeft && (
           <span className="absolute left-3.5 text-[var(--tkv-ink-muted)] pointer-events-none">

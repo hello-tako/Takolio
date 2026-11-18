@@ -507,7 +507,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                   </TkvButton>
                 </div>
                 <p className="text-center text-xs text-[var(--tkv-ink-muted)]">
-                  Chỉ dùng để tính khẩu phần món ăn — không tự tạo tài khoản thành viên giả định (U06).
+                  Chỉ dùng để tính khẩu phần món ăn — có thể thay đổi bất cứ lúc nào trong phần Cài đặt.
                 </p>
               </div>
             )}

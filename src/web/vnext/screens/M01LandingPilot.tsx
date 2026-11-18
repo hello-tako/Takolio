@@ -84,11 +84,7 @@ export const M01LandingPilot: React.FC = () => {
   };
 
   return (
-    <PublicMarketingShell
-      screenId="M01"
-      onStartFree={handleStartFree}
-      isStartingFree={isStarting}
-    >
+    <PublicMarketingShell screenId="M01">
       {/* Hero Section — faithful to M01.png (Headline + Coral Primary CTA + Secondary Outline CTA + Framed Dish Visual) */}
       <section aria-labelledby="m01-hero-heading" className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-10 sm:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -124,8 +120,10 @@ export const M01LandingPilot: React.FC = () => {
                 variant="coral"
                 size="lg"
                 iconRight="arrow-right"
-                isLoading={isStarting}
-                onClick={handleStartFree}
+                onClick={() => {
+                  trackPublicConversion('m01_start_free');
+                  navigate(vnextHref('/auth?mode=register'));
+                }}
                 data-testid="m01-start-free-cta"
               >
                 Bắt đầu miễn phí
@@ -138,13 +136,23 @@ export const M01LandingPilot: React.FC = () => {
               </Link>
             </div>
 
-            <p className="text-xs text-[var(--tkv-ink-muted)]">
-              Dùng thử ngay không cần thẻ thanh toán · Hoặc{' '}
-              <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--tkv-primary)] underline">
-                đăng nhập tài khoản đã có
-              </Link>
-              .
-            </p>
+            <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--tkv-ink-muted)]">
+              <button
+                type="button"
+                disabled={isStarting}
+                onClick={() => void handleStartFree()}
+                className="tkv-focusable font-bold text-[var(--tkv-primary)] underline hover:text-[var(--tkv-primary-hover)]"
+              >
+                {isStarting ? 'Đang mở phiên dùng thử…' : 'Dùng thử ngay không cần tạo tài khoản'}
+              </button>
+              <span aria-hidden="true">·</span>
+              <span>
+                Đã có tài khoản?{' '}
+                <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--tkv-primary)] underline">
+                  Đăng nhập
+                </Link>
+              </span>
+            </div>
           </div>
 
           <div className="lg:col-span-6">
@@ -284,7 +292,7 @@ export const M01LandingPilot: React.FC = () => {
         <TkvSurface tone="saffron" className="p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <TkvBadge tone="warning" icon="crown">
-              Các gói sử dụng Takolio (M09)
+              Các gói sử dụng Takolio
             </TkvBadge>
             <h2 id="m01-plus-heading" className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
               Bắt đầu miễn phí với tủ lạnh, kho công thức và thực đơn cơ bản

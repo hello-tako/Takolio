@@ -20,7 +20,7 @@ export const C24PlannerSetupVNext: React.FC = () => (
       <TkvSurface tone="hero" className="p-5 sm:p-6">
         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 text-xs font-bold text-white">
           <VNextIcon name="calendar" size={14} />
-          <span>C24 · Kế hoạch tuần mới</span>
+          <span>Kế hoạch tuần mới</span>
         </span>
         <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-white mt-2">
           Lập thực đơn mới
