@@ -1,3 +1,15 @@
+## Owner Decisions Executed — Frigo Images Regenerated, "Takolio Pro" Rename - 2026-11-19 JST
+
+Status: DONE_ON_BRANCH `fix/takolio-css-audit` (commits `2c0fe50` assets, `92d6401` brand copy); NOT pushed, NO PR. Full addendum: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md` (Addendum section); captures: `css-audit-captures/after-pro/`.
+
+The Project Owner ruled on the three open items from the CSS audit: (1) **Frigo images regenerated** — all 99 paths in `src/web/lib/frigo-assets.ts` now exist under `public/frigo/` (39 vegetables, 40 pantry, 8 generic, 12 recipes), generated in one soft 3D-clay art direction on warm cream, 512×512, 8.8 MB total; `tests/unit/ingredient-images.test.ts` now passes 7/7 (was failing on main). (2) **Semantic tokens** — owner followed the recommendation: NO full `takosan-tokens.css` import; the scoped activation from the CSS fix stands, U07 hero keeps production green (verified unchanged). (3) **"Takosan Plus" erased → "Takolio Pro"** — display strings only across 12 files (PlusPaywallPage, BillingAccountPanel, VietQRModal, PublicSitePages, M01LandingPilot, AccountAndSystemPages, VNextIcons, NotificationPreferencesPage, worker auth message + verification email templates); plan keys/prices/logic/payment flow untouched. Legacy mascot art swapped to Bé Mầm Bếp poses (U07 hero → pose-06-achievement, C08 empty state → pose-04-empty-fridge, RouteFallback → pose-01-welcome). Internal identifiers (file names, `takosan-*` classes, `TAKOSAN_BRAND`, `public/takosan/`) intentionally unchanged — pinned by brand tests.
+
+Checks executed on final code: `pnpm build` PASS, `pnpm lint` PASS, `pnpm check:migrations` PASS, brand tests 25/25 PASS, ingredient-images 7/7 PASS, after-pro re-captures (U07/C06/C08/M09) axe 0. KNOWN CONFLICT (tests not edited): e2e `tests/e2e/t17-ui/payment-authority.e2e.ts` + `screen-registry.ts` pin the old "Takosan Plus" headings/labels and will fail until the owner approves updating those e2e contracts.
+
+Next: Project Owner decides the delivery route for `fix/takolio-css-audit` (push/PR/deploy) and whether to update the e2e contracts to "Takolio Pro".
+
+---
+
 ## CSS Audit Fix — Legacy Surface Base Styles Restored - 2026-11-19 JST
 
 Status: FIXED_ON_BRANCH `fix/takolio-css-audit` (base main `4ebf4097`); NOT pushed, NO PR — delivery route awaits Project Owner decision. Full report: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md` (captures in `~/workspace/takolio-recolor/css-audit-captures/`).

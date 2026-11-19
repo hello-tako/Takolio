@@ -1,3 +1,13 @@
+## Owner Decisions Executed Handoff - 2026-11-19 JST
+
+Branch `fix/takolio-css-audit` now also carries the owner's three rulings on the CSS audit's open items (commits `2c0fe50`, `92d6401` + docs). NOT pushed, no PR. Evidence: report addendum in `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; captures `~/workspace/takolio-recolor/css-audit-captures/after-pro/`; generation checklist `~/workspace/takolio-recolor/css-audit/frigo-generation-checklist.md`.
+
+What changed: (1) `public/frigo/**` — 99 brand-new generated ingredient/recipe images (soft 3D-clay on warm cream, 512×512, 8.8 MB) at the exact paths from `src/web/lib/frigo-assets.ts`; the previously failing `ingredient-images` unit test passes 7/7 and C06 renders its ingredient photo again. (2) No token change — owner accepted the recommendation against a full `takosan-tokens.css` import. (3) Every user-visible "Takosan Plus" string is now "Takolio Pro" (paywall, billing panel, VietQR modal, pricing/FAQ/landing copy, /me menu + shell titles, notification settings, worker payment-pending message, verification email templates) — strings only, plan key `'plus'`, prices and payment flow untouched; legacy octopus art replaced by Bé Mầm Bếp poses on U07 (pose-06-achievement), C08 (pose-04-empty-fridge) and RouteFallback (pose-01-welcome). Gates on final code: build/lint/check:migrations PASS, brand 25/25, ingredient-images 7/7, re-captures axe 0.
+
+Watch-outs for the next agent: internal identifiers still say "takosan" everywhere (files, CSS classes, `TAKOSAN_BRAND`, `public/takosan/`) — deliberate, brand-test-pinned; do not rename without an owner-ordered refactor. The e2e suite (`tests/e2e/t17-ui/payment-authority.e2e.ts`, `screen-registry.ts`) still expects the old "Takosan Plus" copy and will fail on those assertions until updated with owner approval. Branch delivery (push/PR/deploy) still awaits the owner's route decision.
+
+---
+
 ## CSS Audit Fix Handoff - 2026-11-19 JST
 
 Branch `fix/takolio-css-audit` (from main `4ebf4097`) carries the complete fix for the owner-reported production display bugs; NOT pushed, no PR opened — delivery route is the owner's call. Full evidence: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; before/after captures: `~/workspace/takolio-recolor/css-audit-captures/{before,before-v2,before-v2b,before-flow,before-admin,after,after-v2,after-v2-u03,after-flow}/`.

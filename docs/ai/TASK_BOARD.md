@@ -1,3 +1,13 @@
+## Owner Decisions on CSS Audit — Executed - 2026-11-19 JST
+
+- [x] **Decision 1**: Regenerate the `/frigo/**` image set — 99/99 images generated (3D-clay, cream background, 512×512) at the exact `frigo-assets.ts` paths; `ingredient-images` test 7/7 PASS; C06 image verified rendering.
+- [x] **Decision 2**: Semantic tokens per recommendation — NO full `takosan-tokens.css` import; scoped activation stands; U07 hero colors verified unchanged.
+- [x] **Decision 3**: Erase visible "Takosan Plus" → "Takolio Pro" (12 files, display strings only) + legacy mascot swaps (U07 pose-06, C08 pose-04, RouteFallback pose-01). Grep proof: zero visible "Takosan Plus"/"Takolio Plus" remaining; brand tests 25/25 PASS.
+- [ ] **Owner decision**: delivery route for `fix/takolio-css-audit` (not pushed, no PR).
+- [ ] **Owner decision**: update e2e contracts (`payment-authority.e2e.ts`, `screen-registry.ts`) that pin the old "Takosan Plus" copy — left untouched per no-test-edit rule.
+
+---
+
 ## CSS Audit & Fix (85 screens) - 2026-11-19 JST
 
 - [x] Full CSS/display audit of all routes (mobile + desktop, Composition V1 + V2, flows, admin) with probes + screenshots — report `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`.
