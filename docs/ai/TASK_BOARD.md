@@ -1,3 +1,13 @@
+## CSS Audit & Fix (85 screens) - 2026-11-19 JST
+
+- [x] Full CSS/display audit of all routes (mobile + desktop, Composition V1 + V2, flows, admin) with probes + screenshots — report `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`.
+- [x] Root-cause fixes on `fix/takolio-css-audit`: family-form base styles, composition + shopping-demand styles, scan viewfinder height cap, scoped semantic-token completion, cook progressbar `aria-label`. Gates: build/lint/migrations PASS, brand tests 25/25, after-captures 0 regressions.
+- [ ] **Owner decision**: delivery route for `fix/takolio-css-audit` (not pushed, no PR).
+- [ ] **Owner decision**: restore the missing `/frigo/**` ingredient-image tree (~100 PNGs absent from `public/`; breaks C06 images and the `ingredient-images` unit test on main).
+- [ ] **Owner decision**: fully import `takosan-tokens.css` in the web bundle or keep the scoped activation (full import repaints legacy primary actions + U07 Plus hero green→navy per the `.takosan-rebuild` remap).
+
+---
+
 ## Takolio Frontend vNext G00-G12 Complete (PR #61 & Staging Preview Live) - 2026-11-18 JST
 
 - [x] G00–G02 Audit, UX Architecture, Brand Direction A ("Bé Mầm Bếp" + 53 SVGs) & 8 Golden Pilots — Owner approved `2026-11-18 JST`.

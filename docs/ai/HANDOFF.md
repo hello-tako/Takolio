@@ -1,3 +1,13 @@
+## CSS Audit Fix Handoff - 2026-11-19 JST
+
+Branch `fix/takolio-css-audit` (from main `4ebf4097`) carries the complete fix for the owner-reported production display bugs; NOT pushed, no PR opened — delivery route is the owner's call. Full evidence: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; before/after captures: `~/workspace/takolio-recolor/css-audit-captures/{before,before-v2,before-v2b,before-flow,before-admin,after,after-v2,after-v2-u03,after-flow}/`.
+
+What changed (3 files): `src/web/vnext/styles/vnext-adapted.css` (family-form/composition/shopping-demand base styles scoped to adapted surfaces, scan viewfinder height cap, scoped token completion, icon-link tap targets), `src/web/styles/takosan-tokens.css` (added the never-defined `--semantic-border-rgb`, `--semantic-background-subtle-rgb`, `--frigo-cream`, `--frigo-text-main`, `--frigo-tap-target`; no existing values changed), `src/web/vnext/screens/RecipesAndCookPages.tsx` (one `aria-label` on the cook progressbar). Verified: build/lint/check:migrations PASS, brand tests 25/25 PASS, 110-capture probe diff 0 regressions, scan shutter clearance −14px → +38px at 360×740, U07 Plus screenshot byte-identical (red zone respected).
+
+Open items for the owner: (1) push/PR/deploy route for this branch; (2) `/frigo/**` ingredient images are missing from `public/` (pre-existing on main; also fails `tests/unit/ingredient-images.test.ts`) — restore, regenerate, or approve a component fallback; (3) the web bundle still does not import `takosan-tokens.css` — full import activates the `.takosan-rebuild` color remap (Plus hero green→navy) and was deliberately left as an owner decision; the scoped activation in this branch fixes the measured border/accent defects without any palette change.
+
+---
+
 ## Takolio Frontend vNext G12 PR #61 & Staging Preview Live - 2026-11-18 JST
 
 Canonical vNext G12 ledger: `docs/handoff/vnext/HANDOFF_CURRENT.md` (`RELEASE_CHECKLIST_G12.md`, `G12_RECEIPT.md`, `SCREEN_COVERAGE.csv` 85/85, `ASSET_REGISTRY.csv` 87 assets, `VISUAL_COMPARE.md`, `TEST_REPORT.md`).
