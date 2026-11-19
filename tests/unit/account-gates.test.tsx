@@ -41,7 +41,7 @@ describe('guest account gates (vNext + Red-Zone PlusPaywall)', () => {
 
   it('replaces Plus pricing and payment UI with an explicit sign-in link for guests', () => {
     const html = render(<PlusPaywallPage />, '/plus');
-    expect(html).toContain('Đăng nhập trước khi chọn gói Plus');
+    expect(html).toContain('Đăng nhập trước khi chọn gói Pro');
     expect(html).toContain('href="/auth?mode=login&amp;returnTo=%2Fplus"');
     expect(html).not.toContain('Gói 1 Năm');
     expect(html).not.toContain('599.000đ');
@@ -57,9 +57,9 @@ describe('guest account gates (vNext + Red-Zone PlusPaywall)', () => {
   it('keeps the authenticated Plus shell free of client-owned prices', () => {
     authState.isGuest = false;
     const html = render(<PlusPaywallPage />, '/plus');
-    expect(html).toContain('Nâng cấp Takosan Plus');
+    expect(html).toContain('Nâng cấp Takolio Pro');
     expect(html).not.toContain('599.000đ');
     expect(html).not.toContain('79.000đ');
-    expect(html).not.toContain('Đăng nhập trước khi chọn gói Plus');
+    expect(html).not.toContain('Đăng nhập trước khi chọn gói Pro');
   });
 });

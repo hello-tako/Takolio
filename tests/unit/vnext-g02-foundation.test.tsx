@@ -181,7 +181,7 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
     const m09 = mountWithProviders(<M09PricingPage />, ['/pricing']);
     expect(m09.container.querySelector('h1')?.textContent).toMatch(/Các gói Takolio/i);
     expect(m09.container.textContent).toMatch(/Miễn phí/);
-    expect(m09.container.textContent).toMatch(/Takolio Plus/);
+    expect(m09.container.textContent).toMatch(/Takolio Pro/);
     m09.unmount();
 
     const m10 = mountWithProviders(<M10FaqPage />, ['/faq']);
