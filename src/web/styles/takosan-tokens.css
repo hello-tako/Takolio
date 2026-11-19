@@ -38,8 +38,22 @@
   /* ── T17 semantic layer (Takosan Redesign OS v2.0.0 design-tokens.json) ──
      Single semantic source. New UI reads these names (or the matching
      tailwind `semantic-*` utilities); brand hexes never appear in JSX. */
+  /* Legacy Frigo base vars referenced by index.css's base layer (body
+     background/color, .tap-target sizing). They were never defined, so the
+     body paint and the shared tap-target floor silently did not apply.
+     Values mirror the tokens they predate: cream canvas + T17 ink + the
+     kit's 44px minimum tap target. */
+  --frigo-cream: #FFF8ED;
+  --frigo-text-main: #1F2937;
+  --frigo-tap-target: 44px;
   --semantic-background: #FFF8F3;
   --semantic-background-subtle: #FCFBF8;
+  /* RGB twins (space-separated channels for rgb(var() / alpha) usage).
+     These two were referenced by kitchen-*.css and index.css but never
+     defined, which silently invalidated every border/background declaration
+     written as rgb(var(--semantic-border-rgb)) without a fallback. Values
+     match the hex tokens above and the Tailwind utility fallbacks. */
+  --semantic-background-subtle-rgb: 252 251 248;
   --semantic-surface: #FFFFFF;
   --semantic-surface-raised: #FFFFFF;
   --semantic-text-primary: #1F2937;
@@ -64,6 +78,7 @@
   --semantic-info: #2F6F9F;
   --semantic-info-soft: #EAF4FB;
   --semantic-border: #E7E3DA;
+  --semantic-border-rgb: 231 227 218;
   --semantic-border-strong: #C9C2B6;
   --semantic-focus: #2E7D5B;
   --semantic-overlay: rgba(18, 25, 23, 0.52);
