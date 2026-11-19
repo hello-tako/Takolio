@@ -11423,3 +11423,21 @@ follow-up needs its own final-source CI/review and normal merge. Do not initiali
 staging until the complete final source passes exact-main CI. Then use the fixed
 sequence in production-readiness/27; actual Access identity/recovery and ST01-ST20
 still remain external evidence. Customer/payment code and settings are unchanged.
+
+## G02 protected-baseline refresh — owner-approved brand rename (2026-11-20, PR #62)
+
+On the owner's explicit decision (2026-11-20), the G02 protected-file baseline in
+`docs/handoff/vnext/PROTECTED_FILE_HASHES.json` was refreshed for exactly 4 of 341
+files, and `baseline_commit` moved from `87f279a055e028336ea334cc51c7ab4224f30ef4`
+to `673dcd680a4d48d0439948ec92c149d462336182`. The only changes inside these files
+are display strings from the owner-ordered rename "Takosan Plus" → "Takolio Pro"
+(and sender brand "Takosan" → "Takolio" in OTP email). No logic, prices, plan keys,
+payment flow, or identifiers changed. The other 337 protected hashes are untouched.
+
+- `src/web/components/payment/BillingAccountPanel.tsx`: `3a59fc81…` → `c2eb2078…`
+- `src/web/components/payment/VietQRModal.tsx`: `73b8b67a…` → `255a5546…`
+- `src/worker/routes/auth.ts`: `4d909f4b…` → `b4ab8aeb…`
+- `src/worker/services/email.ts`: `7721143d…` → `a2d2c217…`
+
+Two unit-test copy pins missed by the rename were updated in the same PR
+(`tests/unit/payment-checkout.test.tsx`, `tests/unit/email-privacy.test.ts`).

@@ -92,7 +92,7 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
       ),
     );
   });
-  it('keeps all 341 protected files byte-for-byte identical to origin/main (87f279a0)', () => {
+  it('keeps all 341 protected files byte-for-byte identical to origin/main (673dcd6)', () => {
     const manifestPath = path.join(REPO_ROOT, 'docs/handoff/vnext/PROTECTED_FILE_HASHES.json');
     expect(existsSync(manifestPath)).toBe(true);
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
