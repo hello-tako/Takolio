@@ -67,12 +67,12 @@ export function BillingAccountPanel({ refreshVersion, isBusy, onResume, onLoaded
           : error ? <p role="alert" className="mt-3 text-sm text-semantic-danger-strong">Chưa tải được thông tin gói. Bấm cập nhật để thử lại.</p>
             : account && (
               <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-                <div><dt className="text-semantic-text-secondary">Gói hiện tại</dt><dd className="mt-1 font-semibold">{account.subscription.plan === 'plus' ? 'Takosan Plus' : 'Takosan miễn phí'}</dd></div>
-                <div><dt className="text-semantic-text-secondary">Trạng thái</dt><dd className="mt-1 font-semibold">{account.subscription.status === 'active' ? 'Đang hoạt động' : account.subscription.status === 'expired' ? 'Plus đã hết hạn' : 'Chưa có gói Plus hoạt động'}</dd></div>
-                <div className="sm:col-span-2"><dt className="text-semantic-text-secondary">Hạn sử dụng Plus</dt><dd className="mt-1">{account.subscription.expiresAt ? <time dateTime={account.subscription.expiresAt}>{dateLabel(account.subscription.expiresAt)}</time> : 'Chưa có hạn sử dụng Plus'}</dd></div>
+                <div><dt className="text-semantic-text-secondary">Gói hiện tại</dt><dd className="mt-1 font-semibold">{account.subscription.plan === 'plus' ? 'Takolio Pro' : 'Takolio miễn phí'}</dd></div>
+                <div><dt className="text-semantic-text-secondary">Trạng thái</dt><dd className="mt-1 font-semibold">{account.subscription.status === 'active' ? 'Đang hoạt động' : account.subscription.status === 'expired' ? 'Pro đã hết hạn' : 'Chưa có gói Pro hoạt động'}</dd></div>
+                <div className="sm:col-span-2"><dt className="text-semantic-text-secondary">Hạn sử dụng Pro</dt><dd className="mt-1">{account.subscription.expiresAt ? <time dateTime={account.subscription.expiresAt}>{dateLabel(account.subscription.expiresAt)}</time> : 'Chưa có hạn sử dụng Pro'}</dd></div>
               </dl>
             )}
-        <p className="mt-4 text-xs leading-relaxed text-semantic-text-secondary">Gia hạn bằng cách chọn gói bên dưới. Plus còn hạn sẽ được cộng thêm thời gian sau khi nhận tiền; không tự động trừ tiền.</p>
+        <p className="mt-4 text-xs leading-relaxed text-semantic-text-secondary">Gia hạn bằng cách chọn gói bên dưới. Pro còn hạn sẽ được cộng thêm thời gian sau khi nhận tiền; không tự động trừ tiền.</p>
       </section>
       {account && !pending && !error && (
         <section aria-labelledby="billing-history-heading" className="rounded-xl border border-semantic-border bg-white p-5 shadow-xs">

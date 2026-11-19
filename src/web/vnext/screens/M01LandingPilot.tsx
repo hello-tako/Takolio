@@ -298,7 +298,7 @@ export const M01LandingPilot: React.FC = () => {
               Bắt đầu miễn phí với tủ lạnh, kho công thức và thực đơn cơ bản
             </h2>
             <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-              Mức phí và hạn mức gói <strong>Takolio Plus</strong> luôn được đọc trực tiếp từ máy chủ thanh toán chính thức sau khi bạn đăng nhập — không hiển thị giá ước đoán hay khuyến mại giả định trên trang giới thiệu.
+              Mức phí và hạn mức gói <strong>Takolio Pro</strong> luôn được đọc trực tiếp từ máy chủ thanh toán chính thức sau khi bạn đăng nhập — không hiển thị giá ước đoán hay khuyến mại giả định trên trang giới thiệu.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
@@ -309,7 +309,7 @@ export const M01LandingPilot: React.FC = () => {
               to="/auth?mode=login&returnTo=%2Fplus"
               className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border)] text-sm font-bold text-[var(--tkv-ink)] inline-flex items-center"
             >
-              Đăng nhập xem gói Plus
+              Đăng nhập xem gói Pro
             </Link>
           </div>
         </TkvSurface>

@@ -588,7 +588,7 @@ export const M09PricingPage: React.FC = () => {
 
   useVNextSeo({
     title: 'Các gói Takolio',
-    description: 'Lựa chọn gói Miễn phí hoặc Takolio Plus phù hợp nhu cầu căn bếp gia đình.',
+    description: 'Lựa chọn gói Miễn phí hoặc Takolio Pro phù hợp nhu cầu căn bếp gia đình.',
     canonicalPath: '/pricing',
   });
 
@@ -677,7 +677,7 @@ export const M09PricingPage: React.FC = () => {
                 <span>Nâng cao cho căn bếp bận rộn</span>
               </span>
               <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-primary)]">
-                Takolio Plus
+                Takolio Pro
               </h2>
               <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
                 Giá và quyền lợi hiển thị theo hệ thống chính thức tại trang tài khoản /plus sau khi đăng nhập.
@@ -716,7 +716,7 @@ export const M09PricingPage: React.FC = () => {
         <TkvSurface tone="saffron" className="p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink)] flex items-start gap-3">
           <VNextIcon name="info" size={18} className="text-[var(--tkv-warning)] shrink-0 mt-0.5" />
           <p>
-            <strong>Ghi chú minh bạch thương mại (M09):</strong> Trang giới thiệu công khai không niêm yết cứng số tiền khi chưa kết nối API bảng giá công khai. Mọi mức phí và chu kỳ thanh toán luôn được lấy trực tiếp từ máy chủ tại mục <strong>Takolio Plus (/plus)</strong> sau khi bạn đăng nhập.
+            <strong>Ghi chú minh bạch thương mại (M09):</strong> Trang giới thiệu công khai không niêm yết cứng số tiền khi chưa kết nối API bảng giá công khai. Mọi mức phí và chu kỳ thanh toán luôn được lấy trực tiếp từ máy chủ tại mục <strong>Takolio Pro (/plus)</strong> sau khi bạn đăng nhập.
           </p>
         </TkvSurface>
       </section>
@@ -728,7 +728,7 @@ const FAQ_ITEMS = [
   {
     id: 'faq-free',
     q: 'Takolio có miễn phí không?',
-    a: 'Có. Bạn có thể sử dụng miễn phí các tính năng cốt lõi gồm quản lý tủ lạnh theo lô, tra cứu kho công thức món ăn gia đình, chế độ nấu từng bước có hẹn giờ và danh sách đi chợ. Gói Takolio Plus là tùy chọn mở rộng hạn mức AI Scan và tiện ích lập kế hoạch nâng cao.',
+    a: 'Có. Bạn có thể sử dụng miễn phí các tính năng cốt lõi gồm quản lý tủ lạnh theo lô, tra cứu kho công thức món ăn gia đình, chế độ nấu từng bước có hẹn giờ và danh sách đi chợ. Gói Takolio Pro là tùy chọn mở rộng hạn mức AI Scan và tiện ích lập kế hoạch nâng cao.',
   },
   {
     id: 'faq-ai',
@@ -748,7 +748,7 @@ const FAQ_ITEMS = [
   {
     id: 'faq-plus',
     q: 'Tính năng nào có trong Plus?',
-    a: 'Chi tiết quyền lợi và biểu phí hiện hành của Takolio Plus được hiển thị trực tiếp từ máy chủ tại trang /plus sau khi bạn đăng nhập tài khoản đã xác thực.',
+    a: 'Chi tiết quyền lợi và biểu phí hiện hành của Takolio Pro được hiển thị trực tiếp từ máy chủ tại trang /plus sau khi bạn đăng nhập tài khoản đã xác thực.',
   },
 ] as const;
 
@@ -761,7 +761,7 @@ export const M10FaqPage: React.FC = () => {
 
   useVNextSeo({
     title: 'Câu hỏi thường gặp',
-    description: 'Giải đáp minh bạch về cách hoạt động, AI Scan, quyền riêng tư hộ gia đình và gói Takolio Plus.',
+    description: 'Giải đáp minh bạch về cách hoạt động, AI Scan, quyền riêng tư hộ gia đình và gói Takolio Pro.',
     canonicalPath: '/faq',
   });
 
@@ -1102,7 +1102,7 @@ export const M12CompanyLegalPage: React.FC = () => {
                 <ul className="space-y-2.5 list-disc pl-5">
                   <li><strong>Kiểm tra an toàn thực phẩm:</strong> Nhãn hạn dùng ước tính và gợi ý AI chỉ mang tính hỗ trợ quản lý; người dùng luôn kiểm tra thực tế tình trạng thực phẩm và dị ứng của gia đình trước khi chế biến.</li>
                   <li><strong>Định lượng & dinh dưỡng:</strong> Chỉ các công thức có nguồn dinh dưỡng xác minh mới hiển thị chỉ số macro; ứng dụng không thay thế tư vấn y khoa.</li>
-                  <li><strong>Gói Takolio Plus:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
+                  <li><strong>Gói Takolio Pro:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
                 </ul>
               </TkvSurface>
             )}

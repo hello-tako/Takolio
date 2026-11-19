@@ -92,7 +92,7 @@ export const NotificationPreferencesPage: React.FC = () => {
               { key: 'remindExpiring', label: 'Nhắc nguyên liệu sắp hết', desc: 'Ưu tiên đồ ăn cần dùng sớm', icon: Clock },
               { key: 'remindShopping', label: 'Nhắc đi chợ', desc: 'Theo dõi nguyên liệu cần mua', icon: ShoppingBag },
               { key: 'remindTodayMeal', label: 'Nhắc bữa ăn hôm nay', desc: 'Theo dõi bữa ăn trong ngày', icon: Bell },
-              { key: 'promoUpdates', label: 'Khuyến mãi & cập nhật', desc: 'Tính năng mới và ưu đãi Takolio Plus', icon: Sparkles },
+              { key: 'promoUpdates', label: 'Khuyến mãi & cập nhật', desc: 'Tính năng mới và ưu đãi Takolio Pro', icon: Sparkles },
             ] as const
           ).map((item) => {
             const Icon = item.icon;
