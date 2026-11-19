@@ -25,7 +25,7 @@ export type EmailResult = {
   | { sent: false; state: 'rejected' | 'delivery_unknown' | 'not_configured'; evidence: EmailEvidence; error: EmailError }
 );
 
-const FROM_NAME = 'Takolio';
+const FROM_NAME = 'Takosan';
 // Cloudflare onboards the apex sending domain; subdomains need separate onboarding.
 const FROM_EMAIL = 'no-reply@tungjpstore.net';
 const PROVIDER_TIMEOUT_MS = 8000;

@@ -11441,3 +11441,18 @@ payment flow, or identifiers changed. The other 337 protected hashes are untouch
 
 Two unit-test copy pins missed by the rename were updated in the same PR
 (`tests/unit/payment-checkout.test.tsx`, `tests/unit/email-privacy.test.ts`).
+
+## Sender display name kept as 'Takosan' — admin public-scan gate (2026-11-20, PR #62)
+
+Admin CI's `scripts/admin-public-scan.py` step rejects any ADDED line that
+contains a non-synthetic email address. The rename's edit to
+`tests/unit/email-privacy.test.ts` touched the one line that also carries the
+sender address `no-reply@tungjpstore.net` (unchanged since before the scan
+base), which tripped the gate on the refreshed branch tip.
+
+Owner decision (2026-11-20): keep the scan untouched and revert only the
+sender display name. `FROM_NAME` in `src/worker/services/email.ts` is back to
+'Takosan' and the test pin line is byte-identical to main again; the email
+subject/body brand strings stay 'Takolio'. Protected-baseline hash for
+`src/worker/services/email.ts` updated accordingly:
+`a2d2c217…` → `18450fd1…`.
