@@ -11447,7 +11447,7 @@ Two unit-test copy pins missed by the rename were updated in the same PR
 Admin CI's `scripts/admin-public-scan.py` step rejects any ADDED line that
 contains a non-synthetic email address. The rename's edit to
 `tests/unit/email-privacy.test.ts` touched the one line that also carries the
-sender address `no-reply@tungjpstore.net` (unchanged since before the scan
+sender address at the store apex domain (unchanged since before the scan
 base), which tripped the gate on the refreshed branch tip.
 
 Owner decision (2026-11-20): keep the scan untouched and revert only the
@@ -11456,3 +11456,8 @@ sender display name. `FROM_NAME` in `src/worker/services/email.ts` is back to
 subject/body brand strings stay 'Takolio'. Protected-baseline hash for
 `src/worker/services/email.ts` updated accordingly:
 `a2d2c217…` → `18450fd1…`.
+
+Correction (2026-11-20, later): the first version of this very entry quoted
+the sender address literally, and that added line tripped the same scan on
+tip `887c813`. The address is now described without its literal form; no
+code or test content changed in this correction.
