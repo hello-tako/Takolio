@@ -6,7 +6,6 @@ import { Button } from '../components/common/Button';
 import { BillingAccountPanel } from '../components/payment/BillingAccountPanel';
 import type { BillingAccount, BillingHistoryPayment } from '../../shared/billing';
 import { VietQRModal } from '../components/payment/VietQRModal';
-import { TAKOSAN_BRAND } from '../lib/takosan-brand';
 import { capturePrivateSession, onPrivateSessionReset } from '../lib/private-session';
 import { billingApi } from '../services/billing';
 import { ApiError } from '../services/http';
@@ -230,16 +229,16 @@ export const PlusPaywallPage: React.FC = () => {
       <div className="plus-page">
         <KitchenHeader backTo="/me" />
         <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]">
-          <KitchenPageHeading title="Takosan Plus" />
+          <KitchenPageHeading title="Takolio Pro" />
           <section className="overflow-hidden rounded-feature border border-semantic-border bg-semantic-surface shadow-card">
             <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
                 <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">Tài khoản bắt buộc</p>
-              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Plus</h2>
+              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Pro</h2>
               <p className="mt-3 text-sm leading-relaxed text-white">
-                Gói Plus được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
+                Gói Pro được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
               </p>
             </div>
             <div className="space-y-3 p-5">
@@ -270,22 +269,22 @@ export const PlusPaywallPage: React.FC = () => {
     <div className="plus-page">
       <KitchenHeader backTo="/me" />
       <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)] space-y-5">
-        <KitchenPageHeading title={isPlus ? "Quản lý Takosan Plus" : "Nâng cấp Takosan Plus"} />
+        <KitchenPageHeading title={isPlus ? "Quản lý Takolio Pro" : "Nâng cấp Takolio Pro"} />
         <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
           <div className="space-y-1 max-w-[200px]">
             <div className="flex items-center gap-1.5 mb-1">
               <Sparkles className="w-4 h-4 text-takosan-yellow" />
-              <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takosan Plus</span>
+              <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takolio Pro</span>
             </div>
             <h2 className="font-heading font-bold text-xl leading-tight text-white">
-              {isPlus ? 'Bạn là hội viên Plus' : 'Nấu ăn thông minh hơn'}
+              {isPlus ? 'Bạn là hội viên Pro' : 'Nấu ăn thông minh hơn'}
             </h2>
             <p className="text-xs text-white">
               {isPlus ? 'Gói hội viên đang hoạt động với đầy đủ đặc quyền' : 'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef'}
             </p>
           </div>
           <div className="w-24 h-24 shrink-0 overflow-hidden flex items-center justify-center">
-            <img src={TAKOSAN_BRAND.mascot.celebrate} alt="" aria-hidden="true" className="w-full h-full object-contain" />
+            <img src="/takolio/vnext/mascot/pose-06-achievement.webp" alt="" aria-hidden="true" className="w-full h-full object-contain" />
           </div>
         </div>
 
@@ -295,7 +294,7 @@ export const PlusPaywallPage: React.FC = () => {
         {priceNotice && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">{priceNotice}</p>}
         {errorMsg && <div className="space-y-2"><p role="alert" className="rounded-xl border border-semantic-danger/20 bg-semantic-danger-soft px-3 py-2 text-sm text-semantic-danger-strong">{errorMsg}</p>{checkoutRecoveryPending && <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>Tải lại bảng giá</Button>}</div>}
 
-        <div className="grid grid-cols-2 gap-3" role="group" aria-label="Gói Takosan Plus">
+        <div className="grid grid-cols-2 gap-3" role="group" aria-label="Gói Takolio Pro">
           {plans.map((price) => {
             const isSelected = selectedPlan === price.plan;
             return (
@@ -322,7 +321,7 @@ export const PlusPaywallPage: React.FC = () => {
           {[
             'Không giới hạn số lượng nguyên liệu trong tủ lạnh',
             'Không giới hạn lượt quét AI tủ lạnh & hóa đơn siêu thị OCR',
-            'Trọn bộ Takosan Planner lập thực đơn tuần tự động',
+            'Trọn bộ Takolio Planner lập thực đơn tuần tự động',
             'AI Voice Sous Chef trợ lý nấu ăn rảnh tay thông minh',
             'Đầy đủ 6 nền ẩm thực (Việt, Hàn, Nhật, Trung, Thái, Ý)',
             'Gợi ý công thức nâng cao bởi DeepSeek AI Chef',

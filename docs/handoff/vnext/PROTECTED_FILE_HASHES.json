@@ -1,5 +1,5 @@
 {
-  "baseline_commit": "87f279a055e028336ea334cc51c7ab4224f30ef4",
+  "baseline_commit": "673dcd680a4d48d0439948ec92c149d462336182",
   "repository": "hello-tako/Takolio",
   "protected_globs": [
     "src/worker/**/*",
@@ -69,7 +69,7 @@
     "src/worker/routes/admin/schemas.ts": "3af83607a343eb824ca5be583f97c5f1499d1a7ea4875799e266b91d2e236103",
     "src/worker/routes/admin/settings.ts": "5a5306b7ac8665b6e9fab421228d7a7a3c4d5ddbd6328af55daa921b8c380d8f",
     "src/worker/routes/admin/system.ts": "8874a42aac5c66e3abb56c40be28fd2b2f9a6ef10832750285d8814339c8ba44",
-    "src/worker/routes/auth.ts": "4d909f4bf18a059d754b6291c2597423a99a0d346670878a845888e708d4015e",
+    "src/worker/routes/auth.ts": "b4ab8aeb0257acf7facc41ac5cb77b0b0dd4823137067d42e978bc453ed2a341",
     "src/worker/routes/billing.ts": "775819abc2c66f08593fe35c34640736999e698f7981d27fa97202ee351ba5cd",
     "src/worker/routes/family-meal-planning.ts": "5170bc9954a639a7b94350024b4dfcf17c8ca5522b79d4ea08153df9d10ba140",
     "src/worker/routes/family-preferences.ts": "ec6ec3c8c30247115ff35372efd86c7a631013c44acebd8e50eff89c1612519a",
@@ -89,7 +89,7 @@
     "src/worker/services/auth-otp.ts": "151bd253d8d4b1e2ef482943d834d8750f00ac069a43f8c93642bbcbdb871178",
     "src/worker/services/cleanup.ts": "d162c106168284d3484e949cc76313ff6aea5ca62cca3a2bff8a4c51184eab71",
     "src/worker/services/cooking-hard-restrictions.ts": "5341394c9983423a92e87f34d728908706e9b40504e6b43375efcceaa2d57f73",
-    "src/worker/services/email.ts": "7721143d005fc039dc6d3c2206ddd194bf9bd42791681249894d5c850bdddc2a",
+    "src/worker/services/email.ts": "18450fd13d8ffb4013b20c26700b693a766478126b5b8e20b95560b7d4e52d06",
     "src/worker/services/meal-composition-response.ts": "2a76d79c9849c49f72ccf2b068c0d7375e5ffd111c4365c63d995ae9fcf57c18",
     "src/worker/services/meal-composition.ts": "b6c017bb9cd2bf648b368c9132365b9e31cb9a2a460657b08e900b97024695d8",
     "src/worker/services/meal-planning-dto.ts": "2c823ac3cd43c141c98ff644d66dacc3063d9c258d72af1d436cbcc48cb0c9dd",
@@ -353,8 +353,8 @@
     "public/takolio/v1/ui-icons/search.svg": "fe7bbaf9621c59a1b7ba7e58331456968f7f37111b2c990fd4d724d08a43418f",
     "public/takolio/v1/ui-icons/settings.svg": "cfa9e5c46772d9b4db3001e5201c8d764258bf88c90a8ca0fc96639bc131172b",
     "public/takolio/v1/ui-icons/shopping.svg": "c0283b8a5386c1a6b01e56f7468a36abb23aba430b6d929f68ced07b69cbb411",
-    "src/web/components/payment/BillingAccountPanel.tsx": "3a59fc815436f574a7053cfd7fa7af4ee9fbeecf6f24b0138dbba1f4934552a2",
-    "src/web/components/payment/VietQRModal.tsx": "73b8b67a1fd036772a3ba80ec0848c1b33ccdba74502aa0ec29b8c51194ca989",
+    "src/web/components/payment/BillingAccountPanel.tsx": "c2eb2078049156b2c78cb6821cd42ca8fde42a9e4eb518c239cec4b93a02109c",
+    "src/web/components/payment/VietQRModal.tsx": "255a55463caa9c4574e5eab9c4b964edc16b09b2323aad58cd49cfe29832e408",
     "src/web/services/billing.ts": "7c0e86a4c4593534f135c013826644d5efe505cb6f7b8fb4cd2dd50a07438436"
   }
 }

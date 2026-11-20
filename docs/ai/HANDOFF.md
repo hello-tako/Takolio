@@ -1,3 +1,23 @@
+## Owner Decisions Executed Handoff - 2026-11-19 JST
+
+Branch `fix/takolio-css-audit` now also carries the owner's three rulings on the CSS audit's open items (commits `2c0fe50`, `92d6401` + docs). NOT pushed, no PR. Evidence: report addendum in `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; captures `~/workspace/takolio-recolor/css-audit-captures/after-pro/`; generation checklist `~/workspace/takolio-recolor/css-audit/frigo-generation-checklist.md`.
+
+What changed: (1) `public/frigo/**` — 99 brand-new generated ingredient/recipe images (soft 3D-clay on warm cream, 512×512, 8.8 MB) at the exact paths from `src/web/lib/frigo-assets.ts`; the previously failing `ingredient-images` unit test passes 7/7 and C06 renders its ingredient photo again. (2) No token change — owner accepted the recommendation against a full `takosan-tokens.css` import. (3) Every user-visible "Takosan Plus" string is now "Takolio Pro" (paywall, billing panel, VietQR modal, pricing/FAQ/landing copy, /me menu + shell titles, notification settings, worker payment-pending message, verification email templates) — strings only, plan key `'plus'`, prices and payment flow untouched; legacy octopus art replaced by Bé Mầm Bếp poses on U07 (pose-06-achievement), C08 (pose-04-empty-fridge) and RouteFallback (pose-01-welcome). Gates on final code: build/lint/check:migrations PASS, brand 25/25, ingredient-images 7/7, re-captures axe 0.
+
+Watch-outs for the next agent: internal identifiers still say "takosan" everywhere (files, CSS classes, `TAKOSAN_BRAND`, `public/takosan/`) — deliberate, brand-test-pinned; do not rename without an owner-ordered refactor. The e2e suite (`tests/e2e/t17-ui/payment-authority.e2e.ts`, `screen-registry.ts`) still expects the old "Takosan Plus" copy and will fail on those assertions until updated with owner approval. Branch delivery (push/PR/deploy) still awaits the owner's route decision.
+
+---
+
+## CSS Audit Fix Handoff - 2026-11-19 JST
+
+Branch `fix/takolio-css-audit` (from main `4ebf4097`) carries the complete fix for the owner-reported production display bugs; NOT pushed, no PR opened — delivery route is the owner's call. Full evidence: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; before/after captures: `~/workspace/takolio-recolor/css-audit-captures/{before,before-v2,before-v2b,before-flow,before-admin,after,after-v2,after-v2-u03,after-flow}/`.
+
+What changed (3 files): `src/web/vnext/styles/vnext-adapted.css` (family-form/composition/shopping-demand base styles scoped to adapted surfaces, scan viewfinder height cap, scoped token completion, icon-link tap targets), `src/web/styles/takosan-tokens.css` (added the never-defined `--semantic-border-rgb`, `--semantic-background-subtle-rgb`, `--frigo-cream`, `--frigo-text-main`, `--frigo-tap-target`; no existing values changed), `src/web/vnext/screens/RecipesAndCookPages.tsx` (one `aria-label` on the cook progressbar). Verified: build/lint/check:migrations PASS, brand tests 25/25 PASS, 110-capture probe diff 0 regressions, scan shutter clearance −14px → +38px at 360×740, U07 Plus screenshot byte-identical (red zone respected).
+
+Open items for the owner: (1) push/PR/deploy route for this branch; (2) `/frigo/**` ingredient images are missing from `public/` (pre-existing on main; also fails `tests/unit/ingredient-images.test.ts`) — restore, regenerate, or approve a component fallback; (3) the web bundle still does not import `takosan-tokens.css` — full import activates the `.takosan-rebuild` color remap (Plus hero green→navy) and was deliberately left as an owner decision; the scoped activation in this branch fixes the measured border/accent defects without any palette change.
+
+---
+
 ## Takolio Frontend vNext G12 PR #61 & Staging Preview Live - 2026-11-18 JST
 
 Canonical vNext G12 ledger: `docs/handoff/vnext/HANDOFF_CURRENT.md` (`RELEASE_CHECKLIST_G12.md`, `G12_RECEIPT.md`, `SCREEN_COVERAGE.csv` 85/85, `ASSET_REGISTRY.csv` 87 assets, `VISUAL_COMPARE.md`, `TEST_REPORT.md`).
@@ -11403,3 +11423,41 @@ follow-up needs its own final-source CI/review and normal merge. Do not initiali
 staging until the complete final source passes exact-main CI. Then use the fixed
 sequence in production-readiness/27; actual Access identity/recovery and ST01-ST20
 still remain external evidence. Customer/payment code and settings are unchanged.
+
+## G02 protected-baseline refresh — owner-approved brand rename (2026-11-20, PR #62)
+
+On the owner's explicit decision (2026-11-20), the G02 protected-file baseline in
+`docs/handoff/vnext/PROTECTED_FILE_HASHES.json` was refreshed for exactly 4 of 341
+files, and `baseline_commit` moved from `87f279a055e028336ea334cc51c7ab4224f30ef4`
+to `673dcd680a4d48d0439948ec92c149d462336182`. The only changes inside these files
+are display strings from the owner-ordered rename "Takosan Plus" → "Takolio Pro"
+(and sender brand "Takosan" → "Takolio" in OTP email). No logic, prices, plan keys,
+payment flow, or identifiers changed. The other 337 protected hashes are untouched.
+
+- `src/web/components/payment/BillingAccountPanel.tsx`: `3a59fc81…` → `c2eb2078…`
+- `src/web/components/payment/VietQRModal.tsx`: `73b8b67a…` → `255a5546…`
+- `src/worker/routes/auth.ts`: `4d909f4b…` → `b4ab8aeb…`
+- `src/worker/services/email.ts`: `7721143d…` → `a2d2c217…`
+
+Two unit-test copy pins missed by the rename were updated in the same PR
+(`tests/unit/payment-checkout.test.tsx`, `tests/unit/email-privacy.test.ts`).
+
+## Sender display name kept as 'Takosan' — admin public-scan gate (2026-11-20, PR #62)
+
+Admin CI's `scripts/admin-public-scan.py` step rejects any ADDED line that
+contains a non-synthetic email address. The rename's edit to
+`tests/unit/email-privacy.test.ts` touched the one line that also carries the
+sender address at the store apex domain (unchanged since before the scan
+base), which tripped the gate on the refreshed branch tip.
+
+Owner decision (2026-11-20): keep the scan untouched and revert only the
+sender display name. `FROM_NAME` in `src/worker/services/email.ts` is back to
+'Takosan' and the test pin line is byte-identical to main again; the email
+subject/body brand strings stay 'Takolio'. Protected-baseline hash for
+`src/worker/services/email.ts` updated accordingly:
+`a2d2c217…` → `18450fd1…`.
+
+Correction (2026-11-20, later): the first version of this very entry quoted
+the sender address literally, and that added line tripped the same scan on
+tip `887c813`. The address is now described without its literal form; no
+code or test content changed in this correction.

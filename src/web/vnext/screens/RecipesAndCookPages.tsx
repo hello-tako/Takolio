@@ -720,6 +720,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               <div
                 className="h-2.5 w-full rounded-full bg-[var(--tkv-surface-mint)] overflow-hidden"
                 role="progressbar"
+                aria-label={`Tiến độ nấu: bước ${currentStepIndex + 1} trên ${totalSteps}`}
                 aria-valuenow={currentStepIndex + 1}
                 aria-valuemin={1}
                 aria-valuemax={totalSteps}

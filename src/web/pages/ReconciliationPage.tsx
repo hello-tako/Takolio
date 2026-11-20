@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { KitchenDetailPage } from '../components/common/KitchenDetailPage';
-import { TAKOSAN_KITCHEN } from '../lib/takosan-kitchen';
 import { Button } from '../components/common/Button';
 import { InlineLoading, InlineError } from '../components/common/AsyncState';
 import { api, ApiError } from '../services/api';
@@ -139,7 +138,7 @@ export const ReconciliationPage: React.FC = () => {
         />
       ) : observations.length === 0 ? (
         <section className="bg-white rounded-xl border border-semantic-border p-6 space-y-4">
-          <img src={TAKOSAN_KITCHEN.symbol} alt="" width={64} height={64} />
+          <img src="/takolio/vnext/mascot/pose-04-empty-fridge.webp" alt="" width={64} height={64} />
           <h2>Không có mục nào cần đối chiếu</h2>
           <p>Khi bạn quét hóa đơn hoặc ảnh tủ lạnh, các khác biệt sẽ xuất hiện ở đây.</p>
           <Button variant="outline" onClick={() => navigate('/fridge')}>

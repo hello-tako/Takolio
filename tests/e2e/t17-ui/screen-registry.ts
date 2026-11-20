@@ -276,7 +276,7 @@ export const SCREEN_REGISTRY: RegisteredScreen[] = [
     name: 'plus',
     path: '/plus',
     auth: 'session',
-    contract: { heading: /Takosan Plus/ },
+    contract: { heading: /Takolio Pro/ },
     nav: 'visible',
     source: 'reviewer-verified-kit',
   },

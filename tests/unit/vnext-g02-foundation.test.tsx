@@ -92,7 +92,7 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
       ),
     );
   });
-  it('keeps all 341 protected files byte-for-byte identical to origin/main (87f279a0)', () => {
+  it('keeps all 341 protected files byte-for-byte identical to origin/main (673dcd6)', () => {
     const manifestPath = path.join(REPO_ROOT, 'docs/handoff/vnext/PROTECTED_FILE_HASHES.json');
     expect(existsSync(manifestPath)).toBe(true);
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
@@ -181,7 +181,7 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
     const m09 = mountWithProviders(<M09PricingPage />, ['/pricing']);
     expect(m09.container.querySelector('h1')?.textContent).toMatch(/Các gói Takolio/i);
     expect(m09.container.textContent).toMatch(/Miễn phí/);
-    expect(m09.container.textContent).toMatch(/Takolio Plus/);
+    expect(m09.container.textContent).toMatch(/Takolio Pro/);
     m09.unmount();
 
     const m10 = mountWithProviders(<M10FaqPage />, ['/faq']);

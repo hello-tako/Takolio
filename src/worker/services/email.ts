@@ -258,9 +258,9 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
         ? 'đặt lại mật khẩu'
         : 'đăng nhập';
 
-  const subject = `Mã xác thực Takosan: ${code}`;
+  const subject = `Mã xác thực Takolio: ${code}`;
 
-  const text = `Mã ${action} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takosan: Ăn đủ. Mua đủ. Dùng hết.`;
+  const text = `Mã ${action} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takolio: Ăn đủ. Mua đủ. Dùng hết.`;
 
   const html = `<!DOCTYPE html>
 <html>
@@ -270,7 +270,7 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.08);">
         <tr><td style="background:#059669;padding:24px 32px;text-align:center;">
-          <span style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;">Takosan</span>
+          <span style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;">Takolio</span>
         </td></tr>
         <tr><td style="padding:32px;">
           <h1 style="margin:0 0 8px;font-size:18px;color:#0F172A;">Mã ${action}</h1>
@@ -282,7 +282,7 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
           <p style="margin:0;font-size:13px;color:#94A3B8;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
         </td></tr>
         <tr><td style="background:#F8FAF9;padding:16px 32px;text-align:center;">
-          <span style="font-size:12px;color:#94A3B8;">Takosan — Ăn đủ. Mua đủ. Dùng hết.</span>
+          <span style="font-size:12px;color:#94A3B8;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
         </td></tr>
       </table>
     </td></tr>

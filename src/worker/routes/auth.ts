@@ -693,6 +693,6 @@ authRoutes.post('/auth/plus/activate', async (c) => {
     success: true,
     granted: false,
     status: 'pending_verification',
-    message: 'Chưa xác nhận thanh toán. Vui lòng kiểm tra lệnh thanh toán trong Takosan Plus.',
+    message: 'Chưa xác nhận thanh toán. Vui lòng kiểm tra lệnh thanh toán trong Takolio Pro.',
   });
 });

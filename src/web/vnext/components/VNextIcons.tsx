@@ -88,7 +88,7 @@ export const VNEXT_ICON_LABELS_VI: Record<VNextIconName, string> = {
   'eye-off': 'Ẩn mật khẩu',
   shield: 'Bảo mật hộ gia đình',
   users: 'Thành viên hộ',
-  crown: 'Takolio Plus',
+  crown: 'Takolio Pro',
   settings: 'Cài đặt',
   privacy: 'Quyền riêng tư',
   help: 'Trợ giúp',

@@ -163,7 +163,7 @@ export const U01ProfileHubVNext: React.FC = () => {
 
   useVNextSeo({
     title: 'Hồ sơ cá nhân',
-    description: 'Quản lý tài khoản, hộ gia đình, thông báo, gói Plus và cài đặt quyền riêng tư trên Takolio.',
+    description: 'Quản lý tài khoản, hộ gia đình, thông báo, gói Pro và cài đặt quyền riêng tư trên Takolio.',
     canonicalPath: '/me',
   });
 
@@ -206,7 +206,7 @@ export const U01ProfileHubVNext: React.FC = () => {
     {
       id: 'u07',
       icon: 'crown',
-      title: 'Takolio Plus',
+      title: 'Takolio Pro',
       subtitle: 'Xem quyền lợi và trạng thái gói dịch vụ chính thức từ máy chủ',
       to: vnextHref('/plus'),
       badge: isPlus ? 'Đang hoạt động' : undefined,
@@ -464,7 +464,7 @@ export const U06HouseholdHonestPage: React.FC = () => {
  * without altering a single byte of PayOS/VietQR/billing logic!
  */
 export const U07U08PlusReadOnlyWrapper: React.FC = () => (
-  <ConsumerStudioShell screenId="U07" title="Takolio Plus" backTo={vnextHref('/me')}>
+  <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
       <PlusPaywallPage />
     </div>
@@ -600,7 +600,7 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                   Xóa tài khoản · Cần API máy chủ (RFC-002)
                 </p>
                 <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
-                  Ứng dụng không hiển thị nút xóa giả. Quy trình xóa vĩnh viễn yêu cầu xác thực lại và xử lý đối soát gói Plus trên tầng máy chủ.
+                  Ứng dụng không hiển thị nút xóa giả. Quy trình xóa vĩnh viễn yêu cầu xác thực lại và xử lý đối soát gói Pro trên tầng máy chủ.
                 </p>
               </div>
             </TkvSurface>

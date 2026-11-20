@@ -154,7 +154,7 @@ async function openPlus(page: Page, options?: Parameters<typeof installPaymentMo
   await reset(page);
   const state = await installPaymentMocks(page, options);
   await page.goto('/plus');
-  await expect(page.getByRole('heading', { name: 'Nâng cấp Takosan Plus' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Nâng cấp Takolio Pro' })).toBeVisible();
   await expect(page.getByRole('button', { name: /Gói 1 Tháng/ })).toBeVisible();
   await expect(page.getByRole('button', { name: /Gói 1 Năm/ })).toBeVisible();
   return state;
@@ -179,7 +179,7 @@ test('server intent amount and selected plan drive the VietQR payment surface', 
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
     await expect(dialog).toContainText(
-      `${plan === 'annual' ? 'Gói 1 Năm' : 'Gói 1 Tháng'} Takosan Plus`,
+      `${plan === 'annual' ? 'Gói 1 Năm' : 'Gói 1 Tháng'} Takolio Pro`,
     );
     await expect(dialog.getByText(`${intentAmount} VND`, { exact: true })).toBeVisible();
     await expect(dialog.getByText(`${displayAmount} VND`, { exact: true })).toHaveCount(0);

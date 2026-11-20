@@ -1,3 +1,29 @@
+## Owner Decisions Executed — Frigo Images Regenerated, "Takolio Pro" Rename - 2026-11-19 JST
+
+Status: DONE_ON_BRANCH `fix/takolio-css-audit` (commits `2c0fe50` assets, `92d6401` brand copy); NOT pushed, NO PR. Full addendum: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md` (Addendum section); captures: `css-audit-captures/after-pro/`.
+
+The Project Owner ruled on the three open items from the CSS audit: (1) **Frigo images regenerated** — all 99 paths in `src/web/lib/frigo-assets.ts` now exist under `public/frigo/` (39 vegetables, 40 pantry, 8 generic, 12 recipes), generated in one soft 3D-clay art direction on warm cream, 512×512, 8.8 MB total; `tests/unit/ingredient-images.test.ts` now passes 7/7 (was failing on main). (2) **Semantic tokens** — owner followed the recommendation: NO full `takosan-tokens.css` import; the scoped activation from the CSS fix stands, U07 hero keeps production green (verified unchanged). (3) **"Takosan Plus" erased → "Takolio Pro"** — display strings only across 12 files (PlusPaywallPage, BillingAccountPanel, VietQRModal, PublicSitePages, M01LandingPilot, AccountAndSystemPages, VNextIcons, NotificationPreferencesPage, worker auth message + verification email templates); plan keys/prices/logic/payment flow untouched. Legacy mascot art swapped to Bé Mầm Bếp poses (U07 hero → pose-06-achievement, C08 empty state → pose-04-empty-fridge, RouteFallback → pose-01-welcome). Internal identifiers (file names, `takosan-*` classes, `TAKOSAN_BRAND`, `public/takosan/`) intentionally unchanged — pinned by brand tests.
+
+Checks executed on final code: `pnpm build` PASS, `pnpm lint` PASS, `pnpm check:migrations` PASS, brand tests 25/25 PASS, ingredient-images 7/7 PASS, after-pro re-captures (U07/C06/C08/M09) axe 0. KNOWN CONFLICT (tests not edited): e2e `tests/e2e/t17-ui/payment-authority.e2e.ts` + `screen-registry.ts` pin the old "Takosan Plus" headings/labels and will fail until the owner approves updating those e2e contracts.
+
+Next: Project Owner decides the delivery route for `fix/takolio-css-audit` (push/PR/deploy) and whether to update the e2e contracts to "Takolio Pro".
+
+---
+
+## CSS Audit Fix — Legacy Surface Base Styles Restored - 2026-11-19 JST
+
+Status: FIXED_ON_BRANCH `fix/takolio-css-audit` (base main `4ebf4097`); NOT pushed, NO PR — delivery route awaits Project Owner decision. Full report: `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md` (captures in `~/workspace/takolio-recolor/css-audit-captures/`).
+
+Owner reported production display bugs (scan shutter cut by bottom nav; U03 planning settings rendering as bare native controls) and ordered an 85-screen audit. Root causes: (1) the `.family-*` form system's base styles never shipped — only dead density tweaks in `kitchen-density.css` scoped to `[data-kitchen-density='compact']`/`.onboarding-page`, which nothing ever sets; (2) meal-composition (`planning-ingredient-coverage`, `recipe-save-control`, …) and shopping-demand (`shopping-demand-*`) class families had no styles at all; (3) the scan viewfinder's fixed 48dvh height overflows the bottom-nav budget on short screens (measured shutter bottom 689px vs nav top 675px at 360×740); (4) the web entry never imports `takosan-tokens.css`, so fallback-less `var(--semantic-*)` declarations silently drop, and `--semantic-border-rgb`/`--semantic-background-subtle-rgb` were defined nowhere.
+
+Fixes (visual layer only; palette unchanged): `src/web/vnext/styles/vnext-adapted.css` gained scoped token completion (`--semantic-border-rgb`, `--semantic-background-subtle-rgb`, `--kitchen-pine` on `.tkv-adapted-surface` only — the `.takosan-rebuild` action-color remap was deliberately NOT activated because it repaints the U07 Plus hero green→navy; flagged for owner decision), family-form base styles, composition/shopping-demand styles, scan viewfinder height cap (`min(48dvh, 100dvh - 440px)`, shutter clearance now +38px at 360×740), and `kitchen-icon-link` tap targets. `src/web/styles/takosan-tokens.css` gained the previously-undefined variables (no existing value changed). One non-CSS touch: `aria-label` on the cook-mode progressbar in `RecipesAndCookPages.tsx` (axe serious `aria-progressbar-name`, now resolved). U07 Plus after-capture is byte-identical to before (payment surface untouched).
+
+Checks executed: `pnpm build` PASS, `pnpm lint` PASS, `pnpm check:migrations` PASS, brand tests 25/25 PASS, 110-capture before/after probe diff = 0 regressions / 26 improved rows, V2-mode + flow + scan-geometry re-captures PASS. Pre-existing on main (verified identical with changes stashed): 6 failing tests in 4 data/identity files, incl. `ingredient-images` which fails because the whole `/frigo/**` asset tree is missing from `public/` — NOT fixed here (needs owner decision: restore assets, regenerate, or approve a component-level fallback).
+
+Next: Project Owner reviews the report and decides (a) delivery route for this branch, (b) `/frigo/**` image restoration route, (c) whether to fully import `takosan-tokens.css` into the web bundle (activates rebuild color remap incl. Plus hero).
+
+---
+
 ## Takolio Frontend vNext G12 PR #61 & Staging Preview Live - 2026-11-18 JST
 
 Status: G00_G12_COMPLETE; PR_61_OPEN_NOT_MERGED; STAGING_PREVIEW_LIVE (`vnext-g12`); PRODUCTION_UNTOUCHED.

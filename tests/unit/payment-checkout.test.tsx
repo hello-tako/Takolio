@@ -378,7 +378,7 @@ describe('server-authoritative payment checkout', () => {
     await mount(<VietQRModal isOpen onClose={vi.fn()} onSuccess={onSuccess} intent={createdIntent()} />);
 
     await vi.waitFor(() => expect(mocks.getMe).toHaveBeenCalled());
-    expect(host.textContent).toContain('Đã nhận thanh toán; chưa thể tải lại quyền lợi Plus');
+    expect(host.textContent).toContain('Đã nhận thanh toán; chưa thể tải lại quyền lợi Pro');
     expect(host.textContent).not.toContain('Thanh toán thành công');
     expect(onSuccess).not.toHaveBeenCalled();
   });

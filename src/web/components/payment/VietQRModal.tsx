@@ -140,7 +140,7 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
           } catch {
             if (valid()) {
               setEntitlementState('unavailable');
-              setNetworkError('Đã nhận thanh toán; chưa thể tải lại quyền lợi Plus. Vui lòng thử lại sau.');
+              setNetworkError('Đã nhận thanh toán; chưa thể tải lại quyền lợi Pro. Vui lòng thử lại sau.');
             }
           }
         }
@@ -210,22 +210,22 @@ export const VietQRModal: React.FC<VietQRModalProps> = ({ isOpen, onClose, onSuc
           ) : visibleStatus === 'paid' && entitlementState === 'confirmed' ? (
             <div role="status" className="py-8 text-center space-y-3 animate-fade-in">
               <div className="w-16 h-16 rounded-full bg-semantic-success-soft text-semantic-success border border-semantic-action-primary/30 flex items-center justify-center mx-auto shadow-xs"><CheckCircle2 className="w-10 h-10" /></div>
-              <div><h3 className="font-heading font-bold text-lg text-slate-900">Thanh toán thành công</h3><p className="text-xs text-slate-600 mt-1">Máy chủ đã xác nhận khoản thanh toán và quyền lợi Plus của tài khoản này.</p></div>
+              <div><h3 className="font-heading font-bold text-lg text-slate-900">Thanh toán thành công</h3><p className="text-xs text-slate-600 mt-1">Máy chủ đã xác nhận khoản thanh toán và quyền lợi Pro của tài khoản này.</p></div>
             </div>
           ) : visibleStatus === 'paid' && entitlementState === 'checking' ? (
-            <div role="status" className="py-8 text-center space-y-3"><Clock className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán; đang kiểm tra quyền lợi</h3><p className="text-xs text-slate-600">Chưa thể xác nhận kích hoạt Plus cho đến khi máy chủ tải lại quyền lợi tài khoản.</p></div>
+            <div role="status" className="py-8 text-center space-y-3"><Clock className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán; đang kiểm tra quyền lợi</h3><p className="text-xs text-slate-600">Chưa thể xác nhận kích hoạt Pro cho đến khi máy chủ tải lại quyền lợi tài khoản.</p></div>
           ) : visibleStatus === 'paid' ? (
-            <div role="status" className="py-8 text-center space-y-3"><AlertCircle className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán</h3><p className="text-xs text-slate-600">Máy chủ chưa xác nhận quyền lợi Plus cho tài khoản này. Vui lòng kiểm tra lại sau.</p></div>
+            <div role="status" className="py-8 text-center space-y-3"><AlertCircle className="w-10 h-10 mx-auto text-amber-600" /><h3 className="font-heading font-bold text-lg">Đã nhận thanh toán</h3><p className="text-xs text-slate-600">Máy chủ chưa xác nhận quyền lợi Pro cho tài khoản này. Vui lòng kiểm tra lại sau.</p></div>
           ) : visibleStatus === 'pending' ? (
             <>
               <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-xs">
-                <div className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-amber-500" /><span className="font-heading font-semibold text-xs text-slate-900">{payment.plan === 'annual' ? 'Gói 1 Năm Takosan Plus' : 'Gói 1 Tháng Takosan Plus'}</span></div>
+                <div className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-amber-500" /><span className="font-heading font-semibold text-xs text-slate-900">{payment.plan === 'annual' ? 'Gói 1 Năm Takolio Pro' : 'Gói 1 Tháng Takolio Pro'}</span></div>
                 <div className="flex items-center gap-1 text-xs font-mono font-bold text-amber-700"><Clock className="w-3.5 h-3.5" /><span>{formatTimeLeft(payment.expiresAt, now)}</span></div>
               </div>
               <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-xs flex flex-col items-center justify-center">
                 <img src={instructions.qrImageUrl} alt="Mã VietQR" className="w-52 h-52 object-contain rounded-lg" />
                 <p className="text-[11px] text-slate-500 mt-1 font-medium">Mở app ngân hàng để quét mã QR Napas 24/7</p>
-                {recoverable && <p className="mt-2 text-xs text-center text-slate-600">Có thể đóng màn hình. Mở lại QR còn hạn từ lịch sử giao dịch trên trang Plus.</p>}
+                {recoverable && <p className="mt-2 text-xs text-center text-slate-600">Có thể đóng màn hình. Mở lại QR còn hạn từ lịch sử giao dịch trên trang Takolio Pro.</p>}
               </div>
               <div className="space-y-2 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs text-xs">
                 <div className="flex items-center justify-between py-1 border-b border-slate-100"><span className="text-slate-500">Ngân hàng:</span><span className="font-semibold text-slate-900">{instructions.bankBin}</span></div>

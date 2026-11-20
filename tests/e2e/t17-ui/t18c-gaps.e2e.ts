@@ -132,11 +132,11 @@ test('fresh onboarding household choices are native radios with their spoken nam
   await page.screenshot({ path: info.outputPath('onboarding-household-radios.png'), fullPage: true });
 });
 
-test('Plus plan choices expose the Takosan Plus group without changing payment behavior', async ({ page }, info) => {
+test('Plus plan choices expose the Takolio Pro group without changing payment behavior', async ({ page }, info) => {
   await reset(page);
   await page.goto('/plus');
 
-  const planGroup = page.getByRole('group', { name: 'Gói Takosan Plus', exact: true });
+  const planGroup = page.getByRole('group', { name: 'Gói Takolio Pro', exact: true });
   await expect(planGroup).toBeVisible();
   expect(await planGroup.getByRole('button').count()).toBeGreaterThan(0);
   await page.screenshot({ path: info.outputPath('plus-plan-group.png'), fullPage: true });
