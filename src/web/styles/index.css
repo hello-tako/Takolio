@@ -4,6 +4,7 @@
 @import "./kitchen-fonts.css";
 @import "./brand-v3-fonts.css";
 @import "./brand-takolio-fonts.css";
+@import "../vnext/styles/tokens.css";
 @import "./kitchen-foundation.css";
 @import "./kitchen-scan.css";
 @import "./kitchen-planning.css";
@@ -15,11 +16,109 @@
 @source "../";
 @source "../../../index.html";
 /* Keep v3 geometry for existing utilities; v4 remains the compiler. */
-@source not inline("space-y-{0.5,1,2,2.5,3,3.5,4,5,6,7}");
+@source not inline("space-y-{0,0.5,1,1.5,2,2.5,3,3.5,4,5,6,7}");
 @source not inline("text-{xs,sm} rounded-full");
+
+/* Unified Root Cascade — Takolio Sumi Edition (Architectural Monochrome 92 / 6 / 2) */
+:root {
+  --frigo-tap-target: 44px;
+  --frigo-cream: #F7F7F5;
+  --frigo-text-main: #111315;
+  --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takolio-font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takolio-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --content-compact: 45rem;
+  --content-default: 60rem;
+  --content-wide: 75rem;
+  --nav-mobile: 4.25rem;
+  --rail-tablet: 5rem;
+  --sidebar-desktop: 16rem;
+  --touch-target: 2.75rem;
+
+  --motion-instant: 80ms;
+  --motion-fast: 150ms;
+  --motion-normal: 220ms;
+  --motion-slow: 320ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --kitchen-coral: #111315;
+  --kitchen-pine: #111315;
+  --kitchen-canvas: #F7F7F5;
+
+  --semantic-background: #F7F7F5;
+  --semantic-background-rgb: 247 247 245;
+  --semantic-background-subtle: #EFECE6;
+  --semantic-background-subtle-rgb: 247 247 245;
+  --semantic-surface: #FFFFFF;
+  --semantic-surface-raised: #FFFFFF;
+  --semantic-text-primary: #111315;
+  --semantic-text-primary-rgb: 17 19 21;
+  --semantic-text-secondary: #383B40;
+  --semantic-text-secondary-rgb: 56 59 64;
+  --semantic-text-muted: #5E636A;
+  --semantic-text-muted-rgb: 94 99 106;
+  --semantic-text-inverse: #FFFFFF;
+  --semantic-text-on-soft: #111315;
+
+  --semantic-action-primary: #111315;
+  --semantic-action-primary-rgb: 17 19 21;
+  --semantic-action-primary-hover: #23262A;
+  --semantic-action-primary-hover-rgb: 35 38 42;
+  --semantic-action-primary-pressed: #111315;
+  --semantic-action-primary-pressed-rgb: 17 19 21;
+  --semantic-on-action-primary: #FFFFFF;
+
+  --semantic-accent: #C84B31;
+  --semantic-accent-rgb: 200 75 49;
+  --semantic-accent-soft: #EFECE6;
+  --semantic-accent-soft-rgb: 239 236 230;
+
+  --semantic-success: #2D6A4F;
+  --semantic-success-rgb: 45 106 79;
+  --semantic-success-soft: #F7F7F5;
+  --semantic-success-soft-rgb: 247 247 245;
+  --semantic-warning: #B45309;
+  --semantic-warning-soft: #F7F7F5;
+  --semantic-warning-strong: #92400E;
+  --semantic-danger: #B91C1C;
+  --semantic-danger-soft: #FEF2F2;
+  --semantic-danger-strong: #B91C1C;
+  --semantic-info: #383B40;
+  --semantic-info-soft: #F7F7F5;
+
+  --semantic-border: #E4E4E0;
+  --semantic-border-rgb: 228 228 224;
+  --semantic-border-strong: #C9C8C3;
+  --semantic-focus: #111315;
+  --semantic-focus-rgb: 17 19 21;
+  --semantic-overlay: rgba(17, 19, 21, 0.48);
+
+  --takosan-cream: #F7F7F5;
+  --takosan-cream-color-rgb: 247 247 245;
+  --takosan-mint: #EFECE6;
+  --takosan-mint-color-rgb: 239 236 230;
+  --takosan-mint-deep-color-rgb: 201 200 195;
+  --takosan-green: #111315;
+  --takosan-green-color-rgb: 17 19 21;
+  --takosan-green-hover-color-rgb: 35 38 42;
+  --takosan-green-deep-color-rgb: 17 19 21;
+  --takosan-navy: #111315;
+  --takosan-navy-color-rgb: 17 19 21;
+  --takosan-coral: #C84B31;
+  --takosan-coral-color-rgb: 200 75 49;
+}
+
 .rounded-full { border-radius: 9999px; }
 .text-xs { font-size: 0.75rem; line-height: 1rem; }
 .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0rem * (1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0rem * var(--tw-space-y-reverse));
+}
 .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.125rem * (1 - var(--tw-space-y-reverse)));
@@ -29,6 +128,11 @@
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * (1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * (1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
 }
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -71,46 +175,46 @@
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
-
 @tailwind utilities;
 
-/* Preserve RGB alpha composition from the established theme and callers. */
-.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 255 123 107) / .2)}
-.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 46 125 91) / .3)}
-.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 46 125 91) / .4)}
-.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 231 227 218) / .7)}
-.border-semantic-danger\/20{border-color:#c93d3d33}
-.border-semantic-danger\/30{border-color:#c93d3d4d}
-.border-semantic-info\/30{border-color:#2f6f9f4d}
-.border-semantic-warning\/30{border-color:#b66a094d}
-.border-semantic-warning\/40{border-color:#b66a0966}
-.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 46 125 91) / .4)}
-.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .6)}
-.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .7)}
-.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .8)}
+/* Preserve RGB alpha composition aligned with Sumi tokens. */
+.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 200 75 49) / .2)}
+.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 17 19 21) / .3)}
+.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 17 19 21) / .4)}
+.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
+.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 228 228 224) / .7)}
+.border-semantic-danger\/20{border-color:#b91c1c33}
+.border-semantic-danger\/30{border-color:#b91c1c4d}
+.border-semantic-info\/30{border-color:#383b404d}
+.border-semantic-warning\/30{border-color:#b453094d}
+.border-semantic-warning\/40{border-color:#b4530966}
+.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 17 19 21) / .4)}
+.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .6)}
+.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .7)}
+.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .8)}
 .border-white\/10{border-color:#ffffff1a}
 .border-white\/15{border-color:#ffffff26}
 .border-white\/20{border-color:#fff3}
 .border-white\/30{border-color:#ffffff4d}
 .border-white\/90{border-color:#ffffffe6}
 .bg-black\/65{background-color:#000000a6}
-.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 255 248 243) / .95)}
-.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .7)}
-.bg-semantic-overlay\/40{background-color:#12191766}
-.bg-semantic-overlay\/50{background-color:#12191780}
-.bg-semantic-overlay\/60{background-color:#12191799}
-.bg-semantic-overlay\/75{background-color:#121917bf}
-.bg-semantic-overlay\/80{background-color:#121917cc}
-.bg-semantic-overlay\/90{background-color:#121917e6}
-.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 231 245 236) / .4)}
+.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 247 247 245) / .95)}
+.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
+.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .7)}
+.bg-semantic-overlay\/40{background-color:#11131566}
+.bg-semantic-overlay\/50{background-color:#11131580}
+.bg-semantic-overlay\/60{background-color:#11131599}
+.bg-semantic-overlay\/75{background-color:#111315bf}
+.bg-semantic-overlay\/80{background-color:#111315cc}
+.bg-semantic-overlay\/90{background-color:#111315e6}
+.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 247 247 245) / .4)}
 .bg-semantic-surface\/95{background-color:#fffffff2}
-.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 255 248 243) / .95)}
-.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .5)}
-.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .6)}
-.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .8)}
+.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 247 247 245) / .95)}
+.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .5)}
+.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .6)}
+.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .8)}
 .bg-white\/10{background-color:#ffffff1a}
+.bg-white\/90{background-color:#ffffffe6}
 .bg-white\/95{background-color:#fffffff2}
 .text-white\/80{color:#fffc}
 
@@ -142,41 +246,41 @@
 /* Preserve sRGB gradients and their established transparent stops. */
 .bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
 .bg-gradient-to-r{background-image:linear-gradient(to right,var(--takosan-legacy-gradient-stops))}
-.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
+.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 17 19 21) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 17 19 21) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-transparent{--takosan-legacy-gradient-from: transparent;--takosan-legacy-gradient-to: rgb(0 0 0 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-white{--takosan-legacy-gradient-from: #fff;--takosan-legacy-gradient-to: rgb(255 255 255 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
-.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 255 123 107) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 255 123 107)), var(--takosan-legacy-gradient-to)}
-.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 36 102 72) / 1)}
-.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 223 244 230) / 1)}
+.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 200 75 49) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 200 75 49)), var(--takosan-legacy-gradient-to)}
+.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 35 38 42) / 1)}
+.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 239 236 230) / 1)}
 .to-transparent{--takosan-legacy-gradient-to: transparent}
 
-/* Preserve existing focus/ring and hover contracts. */
-.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 252 251 248) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 252 251 248) / .6)}
-.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 231 227 218) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(255 240 240 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(181 52 52 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-overlay\/80:hover{background-color:#121917cc}
-.hover\:bg-semantic-overlay\/85:hover{background-color:#121917d9}
-.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 31 86 62) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 38 105 76) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(207 237 218 / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover\/70:hover{background-color:#cfeddab3}
+/* Preserve existing focus/ring and hover contracts aligned to Sumi. */
+.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 247 247 245) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 247 247 245) / .6)}
+.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 228 228 224) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
+.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-overlay\/80:hover{background-color:#111315cc}
+.hover\:bg-semantic-overlay\/85:hover{background-color:#111315d9}
+.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 17 19 21) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 35 38 42) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(239 236 230 / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover\/70:hover{background-color:#efece6b3}
 .hover\:bg-white:hover{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}
 .hover\:bg-white\/20:hover{background-color:#fff3}
 .focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}
 .focus\:ring-2:focus{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
-.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / .2)}
+.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
+.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / .2)}
 .focus-visible\:outline-none:focus-visible{outline:2px solid transparent;outline-offset:2px}
 .focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(201 194 182 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(182 106 9 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(201 200 195 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(180 83 9 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
 .focus-visible\:ring-offset-2:focus-visible{--tw-ring-offset-width: 2px}
 .peer:focus-visible~.peer-focus-visible\:ring-2{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
+.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
 .peer:focus-visible~.peer-focus-visible\:ring-offset-2{--tw-ring-offset-width: 2px}
 
 @layer base {
@@ -186,6 +290,11 @@
     font-family: var(--takosan-font-ui);
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background-color: #efece6;
+    color: #111315;
   }
 
   /* Text stays selectable app-wide (a11y); only interactive controls opt out. */
@@ -202,8 +311,6 @@
 }
 
 @layer utilities {
-  /* Bottom nav sits flush with the screen edge — only the device safe-area inset,
-     no extra 16px padding (that made the bar unnecessarily tall on all phones). */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
@@ -226,8 +333,6 @@
     scrollbar-width: none;
   }
 
-  /* Horizontal chip rails: children keep their intrinsic width and the rail
-     scrolls, instead of flex shrinking every chip into clipped text. */
   .no-scrollbar > * {
     flex-shrink: 0;
   }
@@ -237,10 +342,9 @@
   }
 
   .animate-slide-up {
-    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideUp 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* T17 skeleton pulse — opacity only, no spatial motion (states/loading.md). */
   .t17-skeleton {
     animation: t17SkeletonPulse 1.4s ease-in-out infinite;
   }
@@ -250,24 +354,18 @@
   .t17-skeleton {
     animation: none;
   }
-  /* Reduced motion is mandatory (motion/reduced-motion.md): the runtime
-     honors it via MotionConfig; CSS-driven motion stops here too. */
   .animate-fade-in,
   .animate-slide-up {
     animation: none;
     opacity: 1;
     transform: none;
   }
-  /* Decorative Tailwind keyframes (pulse/bounce) stop as well; spinners
-     keep turning because they communicate progress, not decoration. */
   .animate-pulse,
   .animate-bounce,
   .animate-bounce-slow,
   .animate-ping {
     animation: none;
   }
-  /* Spatial transitions collapse to instant; colour/opacity feedback may stay
-     but never longer than the "instant" motion token. */
   .transition-tap,
   .transition-transform {
     transition-duration: 1ms !important;
@@ -291,11 +389,11 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px) scale(0.99);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

@@ -35,6 +35,7 @@ import { ApiError } from '../services/http';
 import { ReviewSource } from '../components/scan/ReviewSource';
 import { ScanProcessingState } from '../components/scan/ScanProcessingState';
 import { scanErrorMessage } from '../lib/scan-errors';
+import { isMealPlannerEnabled } from '../features/planner/feature';
 
 interface ReceiptItemState {
   id: string;
@@ -99,13 +100,26 @@ function reviewedItems(receipt: ReceiptState): ReceiptItemState[] {
   }));
 }
 
-export const ReceiptReviewPage: React.FC = () => {
+export const ReceiptReviewPage: React.FC<{ plannerRoutePrefix?: '/planner' | '/week' }> = ({
+  plannerRoutePrefix,
+}) => {
   const [searchParams] = useSearchParams();
   const receiptScanId = searchParams.get('scanId');
-  return <ReceiptReview key={receiptScanId || ''} receiptScanId={receiptScanId} />;
+  const effectivePlannerPrefix =
+    plannerRoutePrefix ?? (isMealPlannerEnabled() ? '/planner' : '/week');
+  return (
+    <ReceiptReview
+      key={receiptScanId || ''}
+      receiptScanId={receiptScanId}
+      plannerRoutePrefix={effectivePlannerPrefix}
+    />
+  );
 };
 
-const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScanId }) => {
+const ReceiptReview: React.FC<{
+  receiptScanId: string | null;
+  plannerRoutePrefix: '/planner' | '/week';
+}> = ({ receiptScanId, plannerRoutePrefix }) => {
   const navigate = useNavigate();
   const currentPlan = useWeekStore((s) => s.currentPlan);
   const mounted = useRef(false);
@@ -242,7 +256,9 @@ const ReceiptReview: React.FC<{ receiptScanId: string | null }> = ({ receiptScan
       );
       setTimeout(() => {
         if (mounted.current && isCurrent()) {
-          navigate(openWeek && currentPlan ? `/week/${currentPlan.id}/shopping` : '/fridge');
+          navigate(
+            openWeek && currentPlan ? `${plannerRoutePrefix}/${currentPlan.id}/shopping` : '/fridge',
+          );
         }
       }, 1200);
     } catch (err) {

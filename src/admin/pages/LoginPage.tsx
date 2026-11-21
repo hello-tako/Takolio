@@ -2,7 +2,7 @@ import { useState, type FormEvent, type ReactNode } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AdminApiError } from '../api/client';
 import { useAuthConfig, useLogin } from '../api/hooks';
-import { Button, ErrorState, Field, LoadingState, Notice } from '../components/ui';
+import { Button, ErrorState, Field, LoadingState, Notice, SumiOctopusMark } from '../components/ui';
 import { vi } from '../i18n/vi';
 import { loginErrorMessage } from '../lib/errors';
 
@@ -127,7 +127,7 @@ export function LoginPage() {
       <main id="admin-main" className="login-card" tabIndex={-1}>
         <div className="brand brand-login">
           <span className="brand-mark" aria-hidden="true">
-            T
+            <SumiOctopusMark size={20} />
           </span>
           <span className="brand-name">{vi.appName}</span>
         </div>

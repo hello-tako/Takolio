@@ -8,6 +8,43 @@ import { vi } from '../i18n/vi';
 
 export type Tone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'info';
 
+/** Crisp #111315 Sumi Octopus Monogram SVG for Admin Console brand lockups (AD01–AD11). */
+export function SumiOctopusMark({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 3.5C8.134 3.5 5 6.522 5 10.25C5 12.42 6.06 14.34 7.72 15.55C7.35 17.2 6.3 18.45 4.85 19.15"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 3.5C15.866 3.5 19 6.522 19 10.25C19 12.42 17.94 14.34 16.28 15.55C16.65 17.2 17.7 18.45 19.15 19.15"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.8 15.9C9.65 17.9 8.95 19.45 7.85 20.35M14.2 15.9C14.35 17.9 15.05 19.45 16.15 20.35"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+      />
+      <circle cx="9.5" cy="10.5" r="1.2" fill="currentColor" />
+      <circle cx="14.5" cy="10.5" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function PageHeader({ title, description, actions }: { title: string; description?: string; actions?: ReactNode }) {
   return (
     <header className="page-header">

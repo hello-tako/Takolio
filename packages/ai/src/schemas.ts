@@ -13,29 +13,29 @@ export const StandardUnitSchema = z.enum([
 ]);
 
 export const DetectedIngredientSchema = z.object({
-  raw_name: z.string().min(1, 'Tên nguyên liệu không được để trống'),
+  raw_name: z.string().min(1, 'Tên nguyên liệu không được để trống').max(200),
   estimated_quantity: z.number().positive('Số lượng phải lớn hơn 0'),
   unit: StandardUnitSchema,
   // T13R-B: like receipts, a fridge line whose provider reported no confidence
   // is UNKNOWN. A required field forced every provider to invent one.
   confidence: z.number().min(0).max(1).optional(),
-  canonical_id: z.string().optional(),
-  category: z.string().optional(),
+  canonical_id: z.string().max(100).optional(),
+  category: z.string().max(80).optional(),
   storage: z.enum(['fridge', 'freezer', 'pantry']).optional().default('fridge'),
 });
 
 export const VisionScanResultSchema = z.object({
-  items: z.array(DetectedIngredientSchema),
+  items: z.array(DetectedIngredientSchema).max(50),
 });
 
 export const ReceiptItemSchema = z.object({
-  raw_name: z.string().min(1, 'Tên sản phẩm không được để trống'),
+  raw_name: z.string().min(1, 'Tên sản phẩm không được để trống').max(200),
   estimated_quantity: z.number().positive('Số lượng phải lớn hơn 0'),
   unit: StandardUnitSchema,
   unit_price_vnd: z.number().nonnegative().optional(),
   total_price_vnd: z.number().nonnegative().optional(),
-  canonical_id: z.string().optional(),
-  category: z.string().optional(),
+  canonical_id: z.string().max(100).optional(),
+  category: z.string().max(80).optional(),
   storage: z.enum(['fridge', 'freezer', 'pantry']).optional().default('fridge'),
   // T13: a missing confidence is unknown, not high. Defaulting to 0.9 claimed
   // certainty the model never expressed, so absence must stay absent.
@@ -45,11 +45,11 @@ export const ReceiptItemSchema = z.object({
 export const ReceiptScanResultSchema = z.object({
   // T13: no fabricated merchant. An unread merchant name stays absent rather
   // than becoming a plausible-looking "Siêu thị".
-  merchant_name: z.string().optional(),
-  invoice_number: z.string().optional(),
-  purchase_date: z.string().optional(),
+  merchant_name: z.string().max(200).optional(),
+  invoice_number: z.string().max(120).optional(),
+  purchase_date: z.string().max(40).optional(),
   total_amount_vnd: z.number().nonnegative().optional(),
-  items: z.array(ReceiptItemSchema),
+  items: z.array(ReceiptItemSchema).max(50),
 });
 
 export type DetectedIngredient = z.infer<typeof DetectedIngredientSchema>;

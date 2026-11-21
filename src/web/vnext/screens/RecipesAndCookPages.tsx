@@ -105,6 +105,13 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
     setParams(next);
   };
 
+  const clearDiscoveryFilters = () => {
+    const next = resetDiscoveryFilters(params);
+    const vnextVal = params.get('vnext');
+    if (vnextVal) next.set('vnext', vnextVal);
+    setParams(next, { replace: true });
+  };
+
   const returnCurrentUrl = `${location.pathname}${location.search}`;
 
   return (
@@ -112,10 +119,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)] tabular-nums">
               Kho công thức gia đình · Khẩu phần {effectiveServings} người
             </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)] mt-0.5">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] mt-0.5 tabular-nums">
               {savedView
                 ? 'Món đã lưu'
                 : filters.q.trim()
@@ -130,10 +137,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
               aria-pressed={!savedView}
               onClick={() => toggleSavedView(false)}
               className={clsx(
-                'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-bold border transition-colors',
+                'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
                 !savedView
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                  : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
+                  ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                  : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]',
               )}
             >
               Khám phá
@@ -143,10 +150,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
               aria-pressed={savedView}
               onClick={() => toggleSavedView(true)}
               className={clsx(
-                'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-bold border transition-colors',
+                'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
                 savedView
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                  : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
+                  ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                  : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]',
               )}
             >
               Đã lưu
@@ -167,7 +174,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
               label="Tìm công thức món ăn"
             />
 
-            {/* Filter Pills matching C15.png ("Món Việt · Nấu nhanh · Đủ nguyên liệu") */}
+            {/* Sumi Monochrome Filter Pills */}
             <div className="flex items-center gap-2 overflow-x-auto pb-1" aria-label="Bộ lọc món ăn">
               <button
                 type="button"
@@ -178,10 +185,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                   })
                 }
                 className={clsx(
-                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap border transition-colors',
+                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border transition-colors',
                   filters.cuisine === 'vietnamese'
-                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                    : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                    : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
                 )}
               >
                 Món Việt
@@ -192,10 +199,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                 aria-pressed={filters.fast}
                 onClick={() => applyFilterPatch({ fast: !filters.fast })}
                 className={clsx(
-                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap border transition-colors',
+                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border transition-colors tabular-nums',
                   filters.fast
-                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                    : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                    : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
                 )}
               >
                 Nấu nhanh (≤ 20p)
@@ -206,10 +213,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                 aria-pressed={filters.noBuy}
                 onClick={() => applyFilterPatch({ noBuy: !filters.noBuy })}
                 className={clsx(
-                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap border transition-colors',
+                  'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border transition-colors',
                   filters.noBuy
-                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                    : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                    : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
                 )}
               >
                 Đủ nguyên liệu
@@ -228,10 +235,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                       })
                     }
                     className={clsx(
-                      'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap border transition-colors',
+                      'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border transition-colors',
                       active
-                        ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                        : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                        ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                        : 'bg-white text-[var(--sumi-muted,#5C5F62)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
                     )}
                   >
                     {cat.label}
@@ -242,8 +249,8 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
               {hasActiveFilter && (
                 <button
                   type="button"
-                  onClick={() => setParams(resetDiscoveryFilters(params))}
-                  className="tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs font-extrabold text-[var(--tkv-coral-cta)] underline whitespace-nowrap"
+                  onClick={clearDiscoveryFilters}
+                  className="tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs font-bold text-[var(--sumi-ink,#111315)] underline underline-offset-4 whitespace-nowrap"
                 >
                   Xóa bộ lọc
                 </button>
@@ -263,17 +270,14 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                 onRetry={() => void discoveryQuery.refetch()}
               />
             ) : items.length === 0 ? (
-              <TkvSurface tone="mint" className="p-6 text-center space-y-3">
-                <p className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+              <TkvSurface className="p-6 text-center space-y-3 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+                <p className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
                   Không có món ăn khớp điều kiện lọc hiện tại
                 </p>
-                <p className="text-sm text-[var(--tkv-ink-secondary)]">
+                <p className="text-sm text-[var(--sumi-muted,#5C5F62)]">
                   Thử mở rộng thời gian nấu, tắt chế độ “Đủ nguyên liệu” hoặc xóa từ khóa tìm kiếm.
                 </p>
-                <TkvButton
-                  variant="secondary"
-                  onClick={() => setParams(resetDiscoveryFilters(params))}
-                >
+                <TkvButton variant="secondary" onClick={clearDiscoveryFilters}>
                   Xóa toàn bộ bộ lọc
                 </TkvButton>
               </TkvSurface>
@@ -286,23 +290,23 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                         to={vnextHref(
                           `/recipes/${recipe.slug || recipe.id}?returnTo=${encodeURIComponent(returnCurrentUrl)}`,
                         )}
-                        className="tkv-focusable h-full flex flex-col justify-between rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border)] overflow-hidden hover:border-[var(--tkv-primary)] transition-colors shadow-[var(--tkv-shadow-card)]"
+                        className="tkv-focusable h-full flex flex-col justify-between rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] overflow-hidden hover:border-[var(--sumi-ink,#111315)] transition-colors"
                       >
                         <div>
-                          <div className="p-2 sm:p-2.5 bg-[var(--tkv-surface-mint)]/60">
+                          <div className="p-2 sm:p-2.5 bg-[var(--sumi-canvas,#F7F7F5)]">
                             <VerifiedDishImage
                               slug={recipe.slug}
                               title={recipe.title}
                               canonicalFallbackSrc={resolveRecipeImage(recipe)}
                               aspectClass="aspect-[4/3]"
-                              className="rounded-2xl"
+                              className="rounded-xl"
                             />
                           </div>
-                          <div className="p-3 sm:p-4 space-y-2">
-                            <h2 className="tkv-heading text-sm sm:text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2">
+                          <div className="p-3 sm:p-4 space-y-1.5">
+                            <h2 className="tkv-heading text-sm sm:text-base font-bold text-[var(--sumi-ink,#111315)] line-clamp-2">
                               {recipe.title}
                             </h2>
-                            <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                            <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
                               {recipe.cookTimeMinutes} phút · {recipe.servings} người
                             </p>
                           </div>
@@ -310,12 +314,14 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
 
                         <div className="px-3 sm:px-4 pb-3 sm:pb-4">
                           <TkvBadge
-                            tone={canCookWithoutBuying ? 'success' : 'neutral'}
+                            tone="neutral"
                             icon={canCookWithoutBuying ? 'check' : 'shopping'}
                           >
-                            {canCookWithoutBuying
-                              ? 'Đủ nguyên liệu'
-                              : `Thiếu ${missingRequiredIngredientCount} mục`}
+                            <span className="tabular-nums">
+                              {canCookWithoutBuying
+                                ? 'Đủ nguyên liệu'
+                                : `Thiếu ${missingRequiredIngredientCount} mục`}
+                            </span>
                           </TkvBadge>
                         </div>
                       </Link>
@@ -326,7 +332,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                 {pageData && pageData.pages > 1 && (
                   <nav
                     aria-label="Phân trang danh sách món ăn"
-                    className="pt-2 flex items-center justify-between gap-3"
+                    className="pt-2 flex items-center justify-between gap-3 tabular-nums"
                   >
                     <TkvButton
                       variant="secondary"
@@ -341,7 +347,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                     >
                       Trang trước
                     </TkvButton>
-                    <span className="text-xs font-extrabold text-[var(--tkv-ink-secondary)]">
+                    <span className="text-xs font-bold text-[var(--sumi-muted,#5C5F62)]">
                       Trang {pageData.page} / {pageData.pages}
                     </span>
                     <TkvButton
@@ -469,6 +475,13 @@ export const C20C21CookingStudioVNext: React.FC = () => {
     if (timerSecondsRemaining !== 0 || alertedGeneration.current === timerGeneration) return;
     alertedGeneration.current = timerGeneration;
     audioEffects.playTimerAlertSound();
+    try {
+      if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+        navigator.vibrate([180, 80, 180]);
+      }
+    } catch {
+      // Ignore vibration API restrictions on unsupported browsers.
+    }
   }, [timerSecondsRemaining, timerGeneration]);
 
   useEffect(() => {
@@ -550,6 +563,13 @@ export const C20C21CookingStudioVNext: React.FC = () => {
   const step = activeRecipe.steps[currentStepIndex] ?? activeRecipe.steps[0];
   const isLastStep = currentStepIndex >= totalSteps - 1;
   const progressPct = totalSteps > 0 ? Math.round(((currentStepIndex + 1) / totalSteps) * 100) : 100;
+  const defaultStepSeconds = Math.max(60, (step?.timerMinutes ?? 3) * 60);
+  const timerRatio =
+    timerSecondsRemaining !== null
+      ? Math.max(0, Math.min(1, timerSecondsRemaining / Math.max(defaultStepSeconds, timerSecondsRemaining)))
+      : 1;
+  const ringCircumference = 2 * Math.PI * 36;
+  const ringDashOffset = ringCircumference * (1 - timerRatio);
 
   const handleToggleSpeech = () => {
     if (!step) return;
@@ -567,25 +587,55 @@ export const C20C21CookingStudioVNext: React.FC = () => {
 
   return (
     <div
-      className="tkv-root tkv-immersive-cook-frame flex flex-col min-h-dvh"
+      className={clsx(
+        'tkv-root tkv-immersive-cook-frame flex flex-col min-h-dvh transition-colors',
+        isPrepStage
+          ? 'bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)]'
+          : 'bg-[var(--sumi-ink,#111315)] text-[var(--sumi-paper,#FAF9F6)]',
+      )}
       data-tkv-screen={isPrepStage ? 'C20' : 'C21'}
     >
       {/* Distraction-Free Sanctuary Top Bar */}
-      <header className="sticky top-0 z-20 bg-[var(--tkv-surface)]/95 backdrop-blur-md border-b border-[var(--tkv-border)] px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <header
+        className={clsx(
+          'sticky top-0 z-20 backdrop-blur-md border-b px-4 sm:px-6 h-16 flex items-center justify-between gap-3',
+          isPrepStage
+            ? 'bg-white/95 border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)]'
+            : 'bg-[var(--sumi-ink,#111315)]/95 border-white/15 text-[var(--sumi-paper,#FAF9F6)]',
+        )}
+      >
         <button
           type="button"
           onClick={() => setConfirmExit(true)}
-          className="tkv-focusable min-h-[44px] inline-flex items-center gap-2 px-3 rounded-xl text-sm font-bold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-ink)] transition-colors"
+          className={clsx(
+            'tkv-focusable min-h-[44px] inline-flex items-center gap-2 px-3 rounded-xl text-sm font-semibold transition-colors',
+            isPrepStage
+              ? 'text-[var(--sumi-muted,#5C5F62)] hover:bg-[var(--sumi-canvas,#F7F7F5)] hover:text-[var(--sumi-ink,#111315)]'
+              : 'text-white/80 hover:bg-white/10 hover:text-white',
+          )}
         >
           <VNextIcon name="arrow-left" size={18} />
           <span>Thoát bếp</span>
         </button>
 
         <div className="flex items-center gap-2.5 min-w-0">
-          <TkvBadge tone="success" icon="recipes">
-            {isPrepStage ? 'C20 · Chuẩn bị nấu' : `Bước ${currentStepIndex + 1} / ${totalSteps}`}
-          </TkvBadge>
-          <span className="hidden sm:inline text-sm font-extrabold text-[var(--tkv-ink)] truncate max-w-[280px]">
+          <span
+            className={clsx(
+              'inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tabular-nums border',
+              isPrepStage
+                ? 'bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)]'
+                : 'bg-white/10 border-white/15 text-[var(--sumi-paper,#FAF9F6)]',
+            )}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span>{isPrepStage ? 'C20 · Chuẩn bị nấu' : `Bước ${currentStepIndex + 1} / ${totalSteps}`}</span>
+          </span>
+          <span
+            className={clsx(
+              'hidden sm:inline text-sm font-bold truncate max-w-[280px]',
+              isPrepStage ? 'text-[var(--sumi-ink,#111315)]' : 'text-[var(--sumi-paper,#FAF9F6)]',
+            )}
+          >
             {activeRecipe.title}
           </span>
         </div>
@@ -599,7 +649,12 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               else next.set('stage', 'prep');
               setParams(next, { replace: true });
             }}
-            className="tkv-focusable min-h-[40px] px-3 rounded-xl text-xs font-extrabold border border-[var(--tkv-border)] bg-white text-[var(--tkv-primary)] hover:border-[var(--tkv-primary)] transition-colors"
+            className={clsx(
+              'tkv-focusable min-h-[40px] px-3 rounded-xl text-xs font-bold border transition-colors',
+              isPrepStage
+                ? 'border-[var(--sumi-border,#E4E4E0)] bg-white text-[var(--sumi-ink,#111315)] hover:border-[var(--sumi-ink,#111315)]'
+                : 'border-white/20 bg-white/10 text-white hover:bg-white/15',
+            )}
           >
             {isPrepStage ? 'Vào bước nấu' : 'Xem sơ chế (C20)'}
           </button>
@@ -607,26 +662,47 @@ export const C20C21CookingStudioVNext: React.FC = () => {
       </header>
 
       {confirmExit && (
-        <div className="bg-[var(--tkv-surface-saffron)] border-b border-[var(--tkv-warning)]/35 px-4 py-3">
+        <div
+          className={clsx(
+            'border-b px-4 py-3',
+            isPrepStage
+              ? 'bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)]'
+              : 'bg-black/40 border-white/15 text-[var(--sumi-paper,#FAF9F6)]',
+          )}
+        >
           <div className="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <p className="text-xs sm:text-sm text-[var(--tkv-ink)] font-semibold">
+            <p className="text-xs sm:text-sm font-medium">
               Thoát chế độ nấu ngay bây giờ sẽ <strong>không trừ bất kỳ nguyên liệu nào</strong> trong tủ lạnh của bạn.
             </p>
             <div className="flex items-center gap-2 shrink-0">
-              <TkvButton size="sm" variant="secondary" onClick={() => setConfirmExit(false)}>
+              <button
+                type="button"
+                onClick={() => setConfirmExit(false)}
+                className={clsx(
+                  'tkv-focusable min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-colors',
+                  isPrepStage
+                    ? 'bg-white border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)]'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/15',
+                )}
+              >
                 Tiếp tục nấu
-              </TkvButton>
-              <TkvButton
-                size="sm"
-                variant="coral"
+              </button>
+              <button
+                type="button"
                 onClick={() => {
                   voiceChef.stopSpeaking();
                   state.clearTimer();
                   navigate(vnextHref(`/recipes/${activeRecipe.slug || activeRecipe.id}`));
                 }}
+                className={clsx(
+                  'tkv-focusable min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors',
+                  isPrepStage
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white'
+                    : 'bg-white text-[var(--sumi-ink,#111315)]',
+                )}
               >
                 Rời khỏi bếp
-              </TkvButton>
+              </button>
             </div>
           </div>
         </div>
@@ -634,35 +710,35 @@ export const C20C21CookingStudioVNext: React.FC = () => {
 
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {isPrepStage ? (
-          /* C20 — Chuẩn bị nấu (Mise-en-place checklist matching C20.png) */
+          /* C20 — Chuẩn bị nấu (Sumi Monochrome Mise-en-place checklist) */
           <div className="space-y-6">
-            <TkvSurface tone="mint" className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <TkvSurface className="p-5 sm:p-6 bg-white border-[var(--sumi-border,#E4E4E0)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <MascotIllustration pose="cooking" size={72} className="border-2 border-white shrink-0" />
+                <MascotIllustration pose="cooking" size={72} className="border border-[var(--sumi-border,#E4E4E0)] shrink-0" />
                 <div className="space-y-1">
-                  <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+                  <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)] tabular-nums">
                     Sẵn sàng nguyên liệu · {activeRecipe.servings} khẩu phần
                   </p>
-                  <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+                  <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
                     {activeRecipe.title}
                   </h1>
-                  <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
+                  <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] tabular-nums">
                     Tổng thời gian khoảng {activeRecipe.cookTimeMinutes} phút · {totalSteps} bước thực hiện.
                   </p>
                 </div>
               </div>
             </TkvSurface>
 
-            <TkvSurface className="p-5 sm:p-6 space-y-4">
+            <TkvSurface className="p-5 sm:p-6 space-y-4 bg-white border-[var(--sumi-border,#E4E4E0)]">
               <div className="flex items-center justify-between gap-2 flex-wrap">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
                   Kiểm điểm nguyên liệu trên bàn sơ chế ({activeRecipe.ingredients.length})
                 </h2>
                 <TkvBadge tone="neutral" icon="shield">
                   Chưa trừ kho ở bước chuẩn bị
                 </TkvBadge>
               </div>
-              <ul className="divide-y divide-[var(--tkv-border)]">
+              <ul className="divide-y divide-[var(--sumi-border,#E4E4E0)]">
                 {activeRecipe.ingredients.map((ing) => {
                   const key = `${ing.ingredientId}-${ing.name}`;
                   const checked = Boolean(checkedPrep[key]);
@@ -673,18 +749,18 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                           type="checkbox"
                           checked={checked}
                           onChange={() => setCheckedPrep((prev) => ({ ...prev, [key]: !checked }))}
-                          className="w-5 h-5 rounded accent-[var(--tkv-primary)]"
+                          className="w-5 h-5 rounded accent-[var(--sumi-ink,#111315)]"
                         />
                         <span
                           className={clsx(
                             'text-sm sm:text-base font-bold',
-                            checked ? 'line-through text-[var(--tkv-ink-muted)]' : 'text-[var(--tkv-ink)]',
+                            checked ? 'line-through text-[var(--sumi-muted,#5C5F62)]' : 'text-[var(--sumi-ink,#111315)]',
                           )}
                         >
                           {ing.name}
                         </span>
                       </label>
-                      <span className="text-sm font-extrabold text-[var(--tkv-primary)] shrink-0">
+                      <span className="text-sm font-bold font-mono tabular-nums text-[var(--sumi-ink,#111315)] shrink-0">
                         {cookingQuantityText(ing.requiredQuantity, ing.unit)}
                       </span>
                     </li>
@@ -694,7 +770,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             </TkvSurface>
 
             <TkvButton
-              variant="coral"
+              variant="primary"
               size="lg"
               fullWidth
               iconRight="arrow-right"
@@ -709,16 +785,16 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             </TkvButton>
           </div>
         ) : (
-          /* C21 — Chế độ nấu từng bước (Step-by-Step Guided Sanctuary matching C21.png) */
+          /* C21 — Signature Matte Carbon Cooking Mode (#111315 surface + #FAF9F6 step typography + circular timer) */
           <div className="space-y-6">
-            {/* Step Progress Bar */}
+            {/* Step Progress Bar with smooth width transition */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-extrabold text-[var(--tkv-ink-secondary)]">
-                <span>{activeRecipe.title}</span>
-                <span>Hoàn thành {progressPct}%</span>
+              <div className="flex items-center justify-between text-xs font-semibold text-white/75 tabular-nums">
+                <span className="truncate pr-2">{activeRecipe.title}</span>
+                <span className="shrink-0">Hoàn thành {progressPct}%</span>
               </div>
               <div
-                className="h-2.5 w-full rounded-full bg-[var(--tkv-surface-mint)] overflow-hidden"
+                className="h-2 w-full rounded-full bg-white/15 overflow-hidden"
                 role="progressbar"
                 aria-label={`Tiến độ nấu: bước ${currentStepIndex + 1} trên ${totalSteps}`}
                 aria-valuenow={currentStepIndex + 1}
@@ -726,108 +802,155 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 aria-valuemax={totalSteps}
               >
                 <div
-                  className="h-full bg-[var(--tkv-primary)] transition-colors"
+                  className="h-full bg-[var(--sumi-paper,#FAF9F6)] transition-[width] duration-300"
                   style={{ width: `${progressPct}%` }}
                 />
               </div>
             </div>
 
-            {/* Active Step Instruction Card — Large Across-the-Counter Typography */}
-            <TkvSurface className="p-6 sm:p-8 space-y-5 shadow-[var(--tkv-shadow-elevated)]">
+            {/* Active Step Instruction Card — Matte Carbon Across-the-Counter Sanctuary */}
+            <div className="rounded-[24px] bg-white/[0.04] border border-white/15 p-6 sm:p-8 space-y-6">
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <div className="flex items-center gap-3">
-                  <MascotIllustration pose="cooking" size={56} className="border border-[var(--tkv-border)] shrink-0" />
+                  <MascotIllustration pose="cooking" size={52} className="border border-white/20 shrink-0" />
                   <div>
-                    <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-white/65 tabular-nums">
                       Công đoạn {currentStepIndex + 1} / {totalSteps}
                     </p>
-                    <h1 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
+                    <h1 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--sumi-paper,#FAF9F6)] tabular-nums">
                       Bước {currentStepIndex + 1}
                     </h1>
                   </div>
                 </div>
 
-                <TkvButton
-                  variant="secondary"
-                  size="sm"
-                  iconLeft="volume"
+                <button
+                  type="button"
                   onClick={handleToggleSpeech}
+                  className="tkv-focusable min-h-[40px] px-3.5 py-2 rounded-xl border border-white/20 bg-white/10 hover:bg-white/15 text-xs font-bold text-[var(--sumi-paper,#FAF9F6)] inline-flex items-center gap-2 transition-colors"
                 >
-                  {speaking ? 'Dừng đọc' : 'Đọc bước này'}
-                </TkvButton>
+                  <VNextIcon name="volume" size={16} />
+                  <span>{speaking ? 'Dừng đọc' : 'Đọc bước này'}</span>
+                </button>
               </div>
 
-              <p className="tkv-heading text-xl sm:text-[1.65rem] leading-relaxed font-bold text-[var(--tkv-ink)]">
+              <p className="tkv-heading text-xl sm:text-[1.75rem] leading-relaxed font-semibold text-[var(--sumi-paper,#FAF9F6)]">
                 {step?.instruction}
               </p>
 
+              {step?.tip && (
+                <p className="text-xs sm:text-sm text-white/75 border-l-2 border-white/30 pl-3 py-0.5">
+                  Mẹo bếp: {step.tip}
+                </p>
+              )}
+
               {voiceMessage && (
-                <p role="status" className="text-xs text-[var(--tkv-ink-secondary)] bg-[var(--tkv-bg)] p-3 rounded-xl">
+                <p role="status" className="text-xs text-white/80 bg-white/10 border border-white/15 p-3 rounded-xl">
                   {voiceMessage}
                 </p>
               )}
 
-              {/* Step Countdown Timer Panel */}
-              <div className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 rounded-2xl bg-white text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
-                    <VNextIcon name="timer" size={22} />
-                  </span>
+              {/* Circular Tabular Countdown Timer Panel */}
+              <div className="rounded-2xl bg-black/35 border border-white/15 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-16 h-16 flex items-center justify-center shrink-0">
+                    <svg viewBox="0 0 88 88" className="w-16 h-16 -rotate-90" aria-hidden="true">
+                      <circle
+                        cx="44"
+                        cy="44"
+                        r="36"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="5"
+                        className="text-white/15"
+                      />
+                      <circle
+                        cx="44"
+                        cy="44"
+                        r="36"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="5"
+                        strokeLinecap="round"
+                        strokeDasharray={ringCircumference}
+                        strokeDashoffset={ringDashOffset}
+                        className="text-[var(--sumi-paper,#FAF9F6)] transition-colors"
+                      />
+                    </svg>
+                    <VNextIcon name="timer" size={20} className="absolute text-[var(--sumi-paper,#FAF9F6)]" />
+                  </div>
                   <div>
-                    <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
-                      Bộ hẹn giờ công đoạn
+                    <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/70">
+                      {(isTimerRunning || timerSecondsRemaining === 0) && (
+                        <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                      )}
+                      <span>
+                        {timerSecondsRemaining === 0
+                          ? 'Đã hết giờ công đoạn'
+                          : isTimerRunning
+                            ? 'Đang đếm ngược'
+                            : 'Bộ hẹn giờ công đoạn'}
+                      </span>
                     </p>
-                    <p className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink)] tabular-nums">
+                    <p
+                      data-testid="c21-timer-readout"
+                      className="tkv-heading text-3xl font-extrabold font-mono text-[var(--sumi-paper,#FAF9F6)] tabular-nums mt-0.5"
+                    >
                       {timerSecondsRemaining !== null
                         ? formatTimerClock(timerSecondsRemaining)
-                        : step?.timerMinutes
-                          ? `${step.timerMinutes}:00`
-                          : '03:00'}
+                        : formatTimerClock(defaultStepSeconds)}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2 flex-wrap">
                   {timerSecondsRemaining === null ? (
-                    <TkvButton
-                      variant="primary"
-                      size="sm"
+                    <button
+                      type="button"
                       onClick={() => state.setTimer((step?.timerMinutes ?? 3) * 60)}
+                      className="tkv-focusable min-h-[42px] px-4 py-2 rounded-xl bg-[var(--sumi-paper,#FAF9F6)] text-[var(--sumi-ink,#111315)] hover:bg-white text-sm font-bold transition-colors"
                     >
                       Bắt đầu hẹn giờ
-                    </TkvButton>
+                    </button>
                   ) : (
                     <>
-                      <TkvButton variant="primary" size="sm" onClick={() => state.toggleTimer()}>
+                      <button
+                        type="button"
+                        onClick={() => state.toggleTimer()}
+                        className="tkv-focusable min-h-[42px] px-4 py-2 rounded-xl bg-[var(--sumi-paper,#FAF9F6)] text-[var(--sumi-ink,#111315)] hover:bg-white text-sm font-bold transition-colors"
+                      >
                         {isTimerRunning ? 'Tạm dừng' : 'Tiếp tục'}
-                      </TkvButton>
-                      <TkvButton
-                        variant="secondary"
-                        size="sm"
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => state.setTimer((timerSecondsRemaining ?? 0) + 60)}
+                        className="tkv-focusable min-h-[42px] px-3.5 py-2 rounded-xl border border-white/20 bg-white/10 hover:bg-white/15 text-sm font-semibold text-white tabular-nums transition-colors"
                       >
                         +1 phút
-                      </TkvButton>
-                      <TkvButton variant="quiet" size="sm" onClick={() => state.clearTimer()}>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => state.clearTimer()}
+                        className="tkv-focusable min-h-[42px] px-3 py-2 rounded-xl text-xs font-semibold text-white/75 hover:text-white transition-colors"
+                      >
                         Đặt lại
-                      </TkvButton>
+                      </button>
                     </>
                   )}
                 </div>
               </div>
-            </TkvSurface>
+            </div>
 
-            {/* Quick Ingredient Reference Drawer */}
-            <details className="rounded-2xl bg-white border border-[var(--tkv-border)] px-5 py-3.5">
-              <summary className="cursor-pointer min-h-[36px] flex items-center justify-between font-extrabold text-sm text-[var(--tkv-ink)]">
+            {/* Quick Ingredient Reference Drawer on Matte Carbon */}
+            <details className="rounded-2xl bg-white/[0.04] border border-white/15 px-5 py-3.5 text-[var(--sumi-paper,#FAF9F6)]">
+              <summary className="cursor-pointer min-h-[36px] flex items-center justify-between font-bold text-sm tabular-nums">
                 <span>Nguyên liệu của món ({activeRecipe.ingredients.length} mục · {activeRecipe.servings} người)</span>
-                <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)]" />
+                <VNextIcon name="chevron-right" size={18} className="text-white/60" />
               </summary>
-              <ul className="pt-3 mt-2 border-t border-[var(--tkv-border)] space-y-2 text-sm">
+              <ul className="pt-3 mt-2 border-t border-white/15 space-y-2 text-sm">
                 {activeRecipe.ingredients.map((ing) => (
                   <li key={`${ing.ingredientId}-${ing.name}`} className="flex items-center justify-between gap-2">
-                    <span className="text-[var(--tkv-ink)] font-semibold">{ing.name}</span>
-                    <span className="font-bold text-[var(--tkv-primary)]">
+                    <span className="text-white/90 font-medium">{ing.name}</span>
+                    <span className="font-bold font-mono tabular-nums text-[var(--sumi-paper,#FAF9F6)]">
                       {cookingQuantityText(ing.requiredQuantity, ing.unit)}
                     </span>
                   </li>
@@ -837,40 +960,41 @@ export const C20C21CookingStudioVNext: React.FC = () => {
 
             {/* Primary Step Navigation Controls */}
             <div className="pt-2 grid grid-cols-2 gap-3">
-              <TkvButton
-                variant="secondary"
-                size="lg"
+              <button
+                type="button"
                 disabled={currentStepIndex <= 0}
-                iconLeft="arrow-left"
                 onClick={() => state.prevStep()}
+                className="tkv-focusable min-h-[52px] px-5 py-3 rounded-[var(--tkv-radius-btn)] border border-white/20 bg-white/10 hover:bg-white/15 disabled:opacity-35 text-sm sm:text-base font-bold text-white inline-flex items-center justify-center gap-2 transition-colors"
               >
-                Bước trước
-              </TkvButton>
+                <VNextIcon name="arrow-left" size={18} />
+                <span>Bước trước</span>
+              </button>
 
               {isLastStep ? (
-                <TkvButton
-                  variant="coral"
-                  size="lg"
-                  iconRight="check"
+                <button
+                  type="button"
                   onClick={() => {
                     voiceChef.stopSpeaking();
                     state.clearTimer();
                     navigate(vnextHref('/cooking/complete'));
                   }}
                   data-testid="c21-finish-cook-cta"
+                  className="tkv-focusable min-h-[52px] px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-paper,#FAF9F6)] hover:bg-white text-[var(--sumi-ink,#111315)] text-sm sm:text-base font-extrabold inline-flex items-center justify-center gap-2 transition-colors"
                 >
-                  Hoàn thành món
-                </TkvButton>
+                  <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                  <span>Hoàn thành món</span>
+                  <VNextIcon name="check" size={18} />
+                </button>
               ) : (
-                <TkvButton
-                  variant="primary"
-                  size="lg"
-                  iconRight="arrow-right"
+                <button
+                  type="button"
                   onClick={() => state.nextStep()}
                   data-testid="c21-next-step-cta"
+                  className="tkv-focusable min-h-[52px] px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-paper,#FAF9F6)] hover:bg-white text-[var(--sumi-ink,#111315)] text-sm sm:text-base font-extrabold inline-flex items-center justify-center gap-2 transition-colors"
                 >
-                  Bước tiếp theo
-                </TkvButton>
+                  <span>Bước tiếp theo</span>
+                  <VNextIcon name="arrow-right" size={18} />
+                </button>
               )}
             </div>
           </div>
@@ -974,25 +1098,25 @@ export const C22CookingCompleteVNext: React.FC = () => {
       showContextualScan={false}
     >
       <form onSubmit={handleSubmit} noValidate className="max-w-3xl mx-auto space-y-6">
-        <TkvSurface tone="mint" className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <TkvSurface className="p-5 sm:p-6 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)] flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <MascotIllustration
             pose={done ? 'achievement' : 'cooking'}
             size={80}
-            className="border-2 border-white shrink-0"
+            className="border border-[var(--sumi-border,#E4E4E0)] shrink-0"
           />
           <div className="space-y-2 min-w-0">
-            <TkvBadge tone={done ? 'success' : 'warning'} icon={done ? 'check' : 'recipes'}>
+            <TkvBadge tone="neutral" icon={done ? 'check' : 'recipes'}>
               {done ? 'Đã ghi nhận bữa nấu' : 'Kiểm tra lượng thực dùng'}
             </TkvBadge>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
               {done
                 ? attempt?.status === 'queued'
                   ? 'Đã lưu yêu cầu chờ đồng bộ'
                   : 'Đã cập nhật tủ lạnh thành công!'
                 : 'Hoàn thành bữa ăn'}
             </h1>
-            <p className="text-sm font-bold text-[var(--tkv-primary)]">{recipe.title}</p>
-            <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+            <p className="text-sm font-bold text-[var(--sumi-ink,#111315)]">{recipe.title}</p>
+            <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
               {done
                 ? attempt?.status === 'queued'
                   ? 'Thiết bị đang ngoại tuyến; yêu cầu sẽ gửi lên máy chủ ngay khi có mạng với khóa chống trừ trùng.'
@@ -1005,9 +1129,12 @@ export const C22CookingCompleteVNext: React.FC = () => {
         {attempt?.error && (
           <div
             role="alert"
-            className="p-4 rounded-2xl bg-[var(--tkv-surface-coral)] border border-[var(--tkv-danger)]/35 text-sm text-[var(--tkv-danger)] font-semibold space-y-2"
+            className="p-4 rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border-strong,#CFCFC9)] text-sm text-[var(--sumi-ink,#111315)] font-semibold space-y-2"
           >
-            <p>{attempt.error}</p>
+            <p className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+              <span>{attempt.error}</span>
+            </p>
             {attempt.status === 'rejected' && (
               <TkvButton
                 type="button"
@@ -1023,22 +1150,22 @@ export const C22CookingCompleteVNext: React.FC = () => {
         )}
 
         {refreshMessage && (
-          <p role="status" className="text-xs sm:text-sm font-semibold text-[var(--tkv-primary)]">
+          <p role="status" className="text-xs sm:text-sm font-semibold text-[var(--sumi-ink,#111315)]">
             {refreshMessage}
           </p>
         )}
 
-        <TkvSurface className="p-5 sm:p-6 space-y-4">
+        <TkvSurface className="p-5 sm:p-6 space-y-4 bg-white border-[var(--sumi-border,#E4E4E0)]">
           <div className="flex items-center justify-between gap-2 flex-wrap">
-            <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+            <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
               Lượng thực tế đã dùng ({deductions.length} mục)
             </h2>
-            <span className="text-xs font-semibold text-[var(--tkv-ink-muted)]">
+            <span className="text-xs font-semibold text-[var(--sumi-muted,#5C5F62)]">
               Nhập 0 nếu không dùng nguyên liệu đó
             </span>
           </div>
 
-          <div className="divide-y divide-[var(--tkv-border)]">
+          <div className="divide-y divide-[var(--sumi-border,#E4E4E0)]">
             {deductions.map((line, index) => (
               <div
                 key={`${line.ingredientId}-${index}`}
@@ -1047,11 +1174,11 @@ export const C22CookingCompleteVNext: React.FC = () => {
                 <div className="min-w-0 space-y-0.5">
                   <label
                     htmlFor={`cooking-use-${index}`}
-                    className="tkv-heading text-sm sm:text-base font-extrabold text-[var(--tkv-ink)] block"
+                    className="tkv-heading text-sm sm:text-base font-bold text-[var(--sumi-ink,#111315)] block"
                   >
                     {line.name}
                   </label>
-                  <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                  <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
                     Trong tủ: <strong>{cookingQuantityText(line.currentQuantity, line.unit)}</strong> · Còn dự kiến:{' '}
                     <strong>
                       {deductionErrors[index]
@@ -1060,7 +1187,10 @@ export const C22CookingCompleteVNext: React.FC = () => {
                     </strong>
                   </p>
                   {deductionErrors[index] && (
-                    <p className="text-xs font-bold text-[var(--tkv-danger)]">{deductionErrors[index]}</p>
+                    <p className="text-xs font-bold text-[var(--sumi-ink,#111315)] flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                      <span>{deductionErrors[index]}</span>
+                    </p>
                   )}
                 </div>
 
@@ -1070,7 +1200,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
                     aria-label={`Giảm lượng ${line.name}`}
                     disabled={locked}
                     onClick={() => adjustLine(index, -1)}
-                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] text-[var(--tkv-ink)] font-extrabold disabled:opacity-45"
+                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] font-extrabold disabled:opacity-45"
                   >
                     −
                   </button>
@@ -1082,9 +1212,9 @@ export const C22CookingCompleteVNext: React.FC = () => {
                       disabled={locked}
                       value={deductionInputs[index] ?? '0'}
                       onChange={(e) => state.editDeduction(index, e.target.value)}
-                      className="tkv-focusable w-20 min-h-[44px] px-2.5 text-center rounded-xl border border-[var(--tkv-border)] bg-white font-extrabold text-sm text-[var(--tkv-ink)]"
+                      className="tkv-focusable w-20 min-h-[44px] px-2.5 text-center rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-white font-bold font-mono tabular-nums text-sm text-[var(--sumi-ink,#111315)]"
                     />
-                    <span className="text-xs font-bold text-[var(--tkv-ink-secondary)] min-w-[28px]">
+                    <span className="text-xs font-bold text-[var(--sumi-muted,#5C5F62)] min-w-[28px]">
                       {line.unit}
                     </span>
                   </div>
@@ -1093,7 +1223,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
                     aria-label={`Tăng lượng ${line.name}`}
                     disabled={locked}
                     onClick={() => adjustLine(index, 1)}
-                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] text-[var(--tkv-ink)] font-extrabold disabled:opacity-45"
+                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] font-extrabold disabled:opacity-45"
                   >
                     +
                   </button>
@@ -1131,13 +1261,13 @@ export const C22CookingCompleteVNext: React.FC = () => {
               </TkvButton>
             </>
           ) : attempt?.status === 'uncertain' ? (
-            <TkvButton type="submit" variant="coral" size="lg">
+            <TkvButton type="submit" variant="primary" size="lg">
               Thử lại cùng yêu cầu (chống trừ kép)
             </TkvButton>
           ) : (
             <TkvButton
               type="submit"
-              variant="coral"
+              variant="primary"
               size="lg"
               isLoading={attempt?.status === 'sending'}
               disabled={locked}

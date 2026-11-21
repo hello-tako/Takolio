@@ -1224,7 +1224,7 @@ describe('final auth hardening adversarial regressions', () => {
     expect(unknown.status).toBe(known.status);
     expect(resetPublicBody(unknown.json)).toEqual(resetPublicBody(known.json));
     expect(known.json).toEqual({
-      success: true, message: expect.stringContaining('Nếu email này có tài khoản Frigo'), expiresInMinutes: 10,
+      success: true, message: expect.stringContaining('Nếu email này có tài khoản Takolio'), expiresInMinutes: 10,
       otpDelivered: false, deliveryState: 'pending', otpKeyIssuedAtMs: expect.any(Number), otpExpiresAtMs: expect.any(Number), retryAfterSeconds: 60,
     });
     expect(sendEmail).toHaveBeenCalledTimes(1);

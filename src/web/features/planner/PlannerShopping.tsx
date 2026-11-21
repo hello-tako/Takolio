@@ -202,6 +202,11 @@ export function PlannerShopping({
   const fresh = plan.freshness.status === 'fresh';
   const canShare = canSharePlannerShopping(plan, model.familyPlan);
   const hasFutureMeals = hasFuturePlannerSlot(plan);
+  const cachedShoppingSnapshot = client.getQueryData<{
+    items?: Array<{ id: string; name: string; quantity: number; unit: string; isChecked?: boolean }>;
+  }>([...queryKeys.shoppingList(), 'snapshot']);
+  const cachedItems = cachedShoppingSnapshot?.items ?? [];
+  const checkedItems = cachedItems.filter((it) => it.isChecked);
   const response =
     fresh && !model.busy && !model.error && shopping.data?.planRevision === plan.revision
       ? shopping.data
@@ -342,6 +347,66 @@ export function PlannerShopping({
           </Link>
         </Card>
       )}
+      <Card
+        data-testid="c29-fridge-import-workflow"
+        className="border border-[var(--sumi-border,#E4E4E0)] bg-white space-y-3"
+      >
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div className="space-y-1">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <span>{locale === 'vi' ? 'C29 · Sau khi đi chợ về' : 'C29 · Post-shopping stock'}</span>
+            </p>
+            <h2 className="font-heading font-bold text-lg text-[var(--sumi-ink,#111315)]">
+              {locale === 'vi' ? 'Nhập món đã mua vào Tủ lạnh' : 'Import purchased items to Fridge'}
+            </h2>
+            <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+              {locale === 'vi'
+                ? 'Takolio không tự động cộng kho ngầm từ danh sách mua. Hãy duyệt hóa đơn/ảnh thực phẩm hoặc đối soát các mục bạn thực sự đã mua để giữ định lượng tủ lạnh chính xác.'
+                : 'Takolio never mutates fridge stock silently from a checklist. Scan your receipt/groceries or reconcile purchased items before updating stock.'}
+            </p>
+          </div>
+          {cachedItems.length > 0 && (
+            <span className="px-3 py-1 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)] tabular-nums">
+              {locale === 'vi'
+                ? `Đã đánh dấu mua: ${checkedItems.length}/${cachedItems.length}`
+                : `Marked bought: ${checkedItems.length}/${cachedItems.length}`}
+            </span>
+          )}
+        </div>
+        {checkedItems.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5 pt-1" aria-label={locale === 'vi' ? 'Các món đã đánh dấu mua' : 'Marked items'}>
+            {checkedItems.slice(0, 6).map((it) => (
+              <li
+                key={it.id}
+                className="px-2.5 py-1 rounded-lg bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-medium text-[var(--sumi-ink,#111315)] tabular-nums"
+              >
+                {it.name} ({it.quantity} {it.unit})
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="flex flex-wrap items-center gap-2.5 pt-1">
+          <Link
+            to="/scan"
+            className="min-h-[42px] px-4 py-2 rounded-xl bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white text-sm font-semibold inline-flex items-center gap-2 transition-colors"
+          >
+            {locale === 'vi' ? 'Quét hóa đơn / thực phẩm vừa mua' : 'Scan receipt or groceries'}
+          </Link>
+          <Link
+            to="/fridge?action=add"
+            className="min-h-[42px] px-4 py-2 rounded-xl bg-white border border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] text-[var(--sumi-ink,#111315)] text-sm font-semibold inline-flex items-center transition-colors"
+          >
+            {locale === 'vi' ? 'Nhập thủ công vào Tủ lạnh' : 'Add manually to Fridge'}
+          </Link>
+          <Link
+            to="/inventory-reconciliation"
+            className="min-h-[42px] px-3 py-2 text-xs font-semibold text-[var(--sumi-ink,#111315)] underline underline-offset-4 inline-flex items-center"
+          >
+            {locale === 'vi' ? 'Đối soát tồn kho' : 'Reconcile stock'}
+          </Link>
+        </div>
+      </Card>
       <details className="planning-diagnostics planning-price-options">
         <summary>
           {locale === 'vi'

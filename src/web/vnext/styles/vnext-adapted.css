@@ -1,4 +1,4 @@
-/* Scoped Kitchen Studio Direction A surface adaptation for authoritative inner domain views
+/* Scoped Takolio Sumi Edition surface adaptation for authoritative inner domain views
    (C06/C07 LotDetail, C08 Reconciliation, C09-C14 Scan/Receipt, C24-C29 Planner/Shopping, U02-U05 Settings, U07/U08 Plus).
    Suppresses duplicate legacy top headers when already hosted inside ConsumerStudioShell while preserving
    100% of interactive controls, aria-labels, form inputs, and anti-race data-testids. */
@@ -6,6 +6,21 @@
 .tkv-adapted-surface {
   color: var(--tkv-ink);
   font-family: var(--tkv-font-body);
+  --frigo-tap-target: 44px;
+  --frigo-cream: #f7f7f5;
+  --frigo-text-main: #111315;
+  --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --content-compact: 45rem;
+  --kitchen-coral: #111315;
+  --kitchen-pine: #111315;
+  --kitchen-canvas: #f7f7f5;
+  --semantic-text-primary-rgb: 17 19 21;
+  --semantic-text-secondary-rgb: 56 59 64;
+  --semantic-text-muted-rgb: 94 99 106;
+  --semantic-text-on-soft: #111315;
+  --semantic-border-rgb: 228 228 224;
+  --semantic-background-subtle-rgb: 247 247 245;
+  --semantic-danger-strong: #b91c1c;
 }
 
 /* Hide duplicate legacy shell headers inside ConsumerStudioShell while keeping main content & alerts visible */
@@ -36,37 +51,6 @@
   color: var(--tkv-ink);
   font-family: var(--tkv-font-body);
 }
-
-/* Token completion for hosted legacy surfaces (CSS audit fix, 2026-11-19).
-   The kitchen-*.css layers reference the Takosan semantic variables, but the
-   web entry never imports takosan-tokens.css (only the admin app does), so
-   var() references without a fallback are invalid at computed-value time and
-   the declaration silently drops. Only the variables needed to restore the
-   measured defects are defined here, with the exact values the design file
-   specifies, scoped to adapted surfaces. Deliberately NOT defined: the
-   --semantic-action-primary* / text remapping from .takosan-rebuild —
-   activating it would repaint primary actions (and the U07 Plus hero) from
-   the current production green to navy; that palette decision belongs to
-   the owner and is flagged in the audit report. */
-.tkv-adapted-surface {
-  --semantic-border-rgb: 231 227 218; /* = --semantic-border #E7E3DA */
-  --semantic-background-subtle-rgb: 252 251 248; /* = #FCFBF8 */
-  --kitchen-pine: #2e6b40; /* checkbox/radio accent in planning & shopping */
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   CSS AUDIT FIX (2026-11-19) — missing base styles for legacy class families
-   hosted inside adapted surfaces.
-   Root cause: the base styles for the family-* form system, the meal
-   composition blocks, the shopping-demand review and several planner blocks
-   never shipped. The only rules that existed were density tweaks in
-   kitchen-density.css scoped to [data-kitchen-density='compact'] /
-   .onboarding-page — attributes no code ever sets — so the controls rendered
-   as bare native form elements (U03 settings, C24 planner setup, C25 meal
-   composer, C27/C29 shopping). Everything below is scoped to
-   :is(.tkv-adapted-surface, .tkv-root) so standalone legacy contexts stay untouched, and uses
-   the existing Direction A tokens (--tkv-*).
-   ════════════════════════════════════════════════════════════════════════════ */
 
 /* ── Family form system (FamilyPreferenceFields, FamilyPlannerSetup,
       FamilyPlanningSettingsPage, PlannerShopping, ShoppingDemandReview) ── */
@@ -100,8 +84,6 @@
   margin-bottom: 2px;
 }
 
-/* Bare labels + fields inside the family forms (household size, dates,
-   servings, trip range) get the kit field treatment. */
 .tkv-adapted-surface
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   label {
@@ -123,12 +105,13 @@
   margin-top: 6px;
   min-height: 44px;
   padding: 10px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: 12px;
   background-color: var(--tkv-surface);
   color: var(--tkv-ink);
-  font-size: 16px; /* ≥16px prevents iOS focus zoom */
+  font-size: 16px;
   font-family: inherit;
+  transition: border-color 150ms ease;
 }
 
 .tkv-adapted-surface
@@ -137,7 +120,7 @@
   appearance: none;
   -webkit-appearance: none;
   padding-right: 38px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2348615b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23383b40' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
 }
@@ -145,6 +128,7 @@
 .tkv-adapted-surface
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   :is(input, select, textarea):focus-visible {
+  border-color: var(--tkv-primary);
   outline: 2px solid var(--tkv-focus);
   outline-offset: 1px;
 }
@@ -158,7 +142,6 @@
   accent-color: var(--tkv-primary);
 }
 
-/* FamilyPreferenceFields: stacked sections, each a bordered card */
 :is(.tkv-adapted-surface, .tkv-root) .family-preference-fields {
   display: flex;
   flex-direction: column;
@@ -190,7 +173,6 @@
   color: var(--tkv-ink-secondary);
 }
 
-/* Checkbox/radio options become tappable chips */
 :is(.tkv-adapted-surface, .tkv-root) .family-choice-row,
 :is(.tkv-adapted-surface, .tkv-root) .family-days {
   display: flex;
@@ -204,28 +186,31 @@
   gap: 8px;
   min-height: 44px;
   padding: 8px 14px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   font-size: 14px;
   font-weight: 600;
   color: var(--tkv-ink);
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) :is(.family-choice-row, .family-days) > label:hover {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-bg);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) :is(.family-choice-row, .family-days) > label:has(> input:checked) {
   border-color: var(--tkv-primary);
-  background-color: var(--tkv-surface-mint);
-  color: var(--tkv-primary-deep);
+  background-color: var(--tkv-surface-subtle);
+  color: var(--tkv-ink);
 }
 
-/* Two-up field pairs (dates, servings, shopping trip range) */
 :is(.tkv-adapted-surface, .tkv-root) .family-field-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 12px;
-  /* Bottom-align so paired controls share a baseline even when one label
-     wraps to two lines and the other does not. */
   align-items: end;
 }
 
@@ -235,7 +220,6 @@
   }
 }
 
-/* Collapsible "more habits" sections */
 :is(.tkv-adapted-surface, .tkv-root) .family-extra {
   border: 1px solid var(--tkv-border);
   border-radius: 16px;
@@ -250,7 +234,7 @@
   padding: 10px 0;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -267,7 +251,6 @@
   color: var(--tkv-ink-muted);
 }
 
-/* Plan-mode radio cards (C24) */
 :is(.tkv-adapted-surface, .tkv-root) .family-plan-mode {
   display: grid;
   gap: 10px;
@@ -278,15 +261,16 @@
   gap: 10px;
   align-items: flex-start;
   padding: 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: 14px;
   background-color: var(--tkv-surface);
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-plan-mode > label[data-selected='true'] {
   border-color: var(--tkv-primary);
-  background-color: var(--tkv-surface-mint);
+  background-color: var(--tkv-bg);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-plan-mode > label input[type='radio'] {
@@ -306,7 +290,6 @@
   color: var(--tkv-ink-secondary);
 }
 
-/* Setup heading (C24) */
 :is(.tkv-adapted-surface, .tkv-root) .family-setup-heading {
   display: flex;
   gap: 12px;
@@ -332,13 +315,13 @@
   color: var(--tkv-ink-secondary);
 }
 
-/* "You already have habits" notice + safety/allergen wrapper */
 :is(.tkv-adapted-surface, .tkv-root) .family-existing-choice {
   display: flex;
   flex-direction: column;
   gap: 8px;
   border-radius: 14px;
-  background-color: var(--tkv-surface-mint);
+  border: 1px solid var(--tkv-border);
+  background-color: var(--tkv-bg);
   padding: 12px 14px;
   font-size: 14px;
   line-height: 1.55;
@@ -351,7 +334,6 @@
   min-width: 0;
 }
 
-/* Ingredient picker field (avoid-list search + chosen chips) */
 :is(.tkv-adapted-surface, .tkv-root) .family-ingredient-field ul {
   display: flex;
   flex-wrap: wrap;
@@ -365,21 +347,14 @@
   gap: 6px;
   min-height: 36px;
   padding: 4px 6px 4px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   font-size: 13px;
   font-weight: 600;
 }
 
-/* ── Scan (C09): keep the whole viewfinder — shutter included — above the
-      fixed bottom navigation on short screens. The viewfinder top sits at a
-      fixed offset under the shell header + mode tabs + guide copy, so on
-      screens shorter than ~850px the default 48dvh height pushed the shutter
-      row underneath the nav at first paint. Cap the height by the remaining
-      viewport budget instead; the shell's bottom padding still covers the
-      rest of the page. Also drop the legacy workspace side/bottom padding
-      that double-padded the adapted surface. ── */
+/* ── Scan (C09) viewport budget ── */
 :is(.tkv-adapted-surface, .tkv-root) .scan-workspace {
   padding-left: 0;
   padding-right: 0;
@@ -398,7 +373,6 @@
   }
 }
 
-/* Icon-only header links keep a real tap target wherever they stay visible */
 :is(.tkv-adapted-surface, .tkv-root) .kitchen-icon-link {
   display: inline-flex;
   align-items: center;
@@ -406,17 +380,15 @@
   width: 44px;
   height: 44px;
   border-radius: var(--tkv-radius-pill);
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
-/* ── Meal composition blocks (C25 MealComposer / IngredientCoverage /
-      MealTimeNotice, C18 recipe detail save control) ── */
-
+/* ── Meal composition blocks (C25 MealComposer / IngredientCoverage / MealTimeNotice) ── */
 :is(.tkv-adapted-surface, .tkv-root) .planning-composer-state {
   margin: 0;
   font-size: 14px;
   font-weight: 700;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-meal-time-note {
@@ -426,8 +398,9 @@
   margin: 0;
   padding: 8px 10px;
   border-radius: 10px;
-  background-color: var(--tkv-surface-saffron);
-  color: var(--tkv-warning);
+  border: 1px solid var(--tkv-border);
+  background-color: var(--tkv-bg);
+  color: var(--tkv-ink-secondary);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -435,6 +408,7 @@
 :is(.tkv-adapted-surface, .tkv-root) .planning-meal-time-note > svg {
   flex: none;
   margin-top: 2px;
+  color: var(--tkv-warning);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-component-primary-actions {
@@ -445,8 +419,6 @@
   margin-top: 10px;
 }
 
-/* Save-recipe control: a real small outline button next to "Đổi món",
-   instead of an unstyled inline span whose icon floated over the row. */
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-control {
   display: inline-flex;
 }
@@ -457,18 +429,26 @@
   gap: 6px;
   min-height: 36px;
   padding: 6px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   color: var(--tkv-ink-secondary);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .recipe-save-button:hover:not(:disabled) {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-bg);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-button[aria-pressed='true'] {
-  border-color: var(--tkv-coral);
-  color: var(--tkv-coral-cta);
+  border-color: var(--tkv-primary);
+  background-color: var(--tkv-primary);
+  color: #ffffff;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-button:disabled {
@@ -476,21 +456,20 @@
   cursor: default;
 }
 
-/* Ingredient coverage: status line + quantity breakdown grid */
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px dashed var(--tkv-border);
+  border-top: 1px solid var(--tkv-border);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status {
   margin: 0;
   font-size: 13px;
   font-weight: 700;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status[data-status='needs_shopping'],
@@ -509,7 +488,7 @@
   min-height: 40px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -532,6 +511,7 @@
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage li {
   border: 1px solid var(--tkv-border);
   border-radius: 12px;
+  background-color: var(--tkv-surface);
   padding: 10px 12px;
 }
 
@@ -569,9 +549,7 @@
   color: var(--tkv-danger);
 }
 
-/* ── Shopping (C27 list summary, C29 share/diagnostics,
-      ShoppingDemandReview quantity decisions + purchase dialog) ── */
-
+/* ── Shopping (C27 list summary, C29 share/diagnostics, ShoppingDemandReview) ── */
 :is(.tkv-adapted-surface, .tkv-root) .shopping-count-summary {
   text-align: right;
   font-size: 13px;
@@ -625,7 +603,7 @@
   min-height: 44px;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -645,7 +623,7 @@
   padding: 12px 14px;
   border: 1px solid var(--tkv-border);
   border-radius: 12px;
-  background-color: var(--tkv-surface-saffron);
+  background-color: var(--tkv-bg);
   font-size: 14px;
 }
 
@@ -657,7 +635,7 @@
   padding: 12px 14px;
   border: 1px solid var(--tkv-danger);
   border-radius: 12px;
-  background-color: var(--tkv-surface-coral);
+  background-color: #fef2f2;
   color: var(--tkv-danger);
   font-size: 14px;
   line-height: 1.55;
@@ -667,7 +645,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-unresolved > h3 {
@@ -736,13 +714,19 @@
   gap: 6px;
   min-height: 40px;
   padding: 8px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: 10px;
   background-color: var(--tkv-surface);
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) :is(.shopping-demand-skip, .shopping-demand-reopen):hover:not(:disabled) {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-bg);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-skip:disabled,
@@ -752,7 +736,7 @@
 }
 
 :is(.tkv-adapted-surface, .tkv-root) :is(.shopping-demand-chosen, .shopping-skipped) {
-  border-top: 1px dashed var(--tkv-border);
+  border-top: 1px solid var(--tkv-border);
   padding-top: 6px;
 }
 
@@ -762,7 +746,7 @@
   min-height: 44px;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -779,21 +763,19 @@
   min-height: 40px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
-/* Purchase-quantity / meal-plan dialog card (rendered inside a Tailwind
-   overlay; also used by FavoritesCollection in native vNext screens, so this
-   block is scoped to .tkv-root rather than .tkv-adapted-surface) */
 .tkv-root .family-dialog {
   width: min(92vw, 480px);
   max-height: min(86dvh, 720px);
   overflow-y: auto;
-  border-radius: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--tkv-border);
   background-color: var(--tkv-surface);
   padding: 20px;
-  box-shadow: var(--tkv-shadow-float);
+  box-shadow: var(--tkv-shadow-elevated);
 }
 
 .tkv-root .family-dialog-heading {

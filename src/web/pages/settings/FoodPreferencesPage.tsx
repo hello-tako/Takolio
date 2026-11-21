@@ -21,6 +21,9 @@ const CUISINE_TAGS = [
 ];
 
 const RESTRICTION_TAGS = [
+  { id: 'vegetarian', label: 'Ăn chay linh hoạt' },
+  { id: 'more_greens', label: 'Nhiều rau' },
+  { id: 'quick_meals', label: 'Nấu nhanh' },
   { id: 'beef', label: 'Thịt bò' },
   { id: 'seafood', label: 'Hải sản' },
   { id: 'peanuts', label: 'Đậu phộng' },
@@ -48,8 +51,10 @@ interface Draft {
 
 const SPICY_IDS = ['none', 'mild', 'medium', 'hot'] as const;
 type SpicyLevel = (typeof SPICY_IDS)[number];
-const asSpicyLevel = (v: unknown, fallback: SpicyLevel = 'medium'): SpicyLevel =>
-  SPICY_IDS.includes(v as SpicyLevel) ? (v as SpicyLevel) : fallback;
+const asSpicyLevel = (v: unknown, fallback: SpicyLevel = 'medium'): SpicyLevel => {
+  if (v === 'spicy') return 'hot';
+  return SPICY_IDS.includes(v as SpicyLevel) ? (v as SpicyLevel) : fallback;
+};
 
 /**
  * T17 screen 20 — dedicated food-preferences editor over the real
@@ -123,20 +128,18 @@ export const FoodPreferencesPage: React.FC = () => {
     }
   };
 
-  const chip = (selected: boolean, tone: 'action' | 'warning' = 'action') =>
+  const chip = (selected: boolean, _tone: 'action' | 'warning' = 'action') =>
     `h-11 px-4 rounded-pill text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
       selected
-        ? tone === 'action'
-          ? 'bg-semantic-success-soft text-semantic-action-primary-hover border-semantic-action-primary/40 font-semibold'
-          : 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/40'
-        : 'bg-semantic-surface text-semantic-text-secondary border-semantic-border'
+        ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)] font-semibold'
+        : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]'
     }`;
 
   return (
     <AccountPage title="Sở thích & hạn chế" description="Gu món ăn giúp Takolio gợi ý món sát hơn">
 
       {isGuestOffline && (
-        <p className="text-xs text-semantic-text-muted mb-3">
+        <p className="text-xs text-[var(--sumi-muted,#5C5F62)] mb-3">
           Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng trong phiên này và sẽ mất khi tải lại ứng dụng.
         </p>
       )}
@@ -147,34 +150,75 @@ export const FoodPreferencesPage: React.FC = () => {
       )}
 
       {draft && (
-        <fieldset disabled={saving} className="account-editor space-y-4 pb-8">
+        <fieldset disabled={saving} className="account-editor space-y-5 pb-8">
           <legend className="sr-only">Chọn cài đặt</legend>
           <fieldset>
-            <legend className="text-type-label text-semantic-text-primary flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Số người thường ăn
+            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
+              <Users className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Số người thường ăn
             </legend>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {[1, 2, 3, 4, 5].map((n) => (
                 <button
                   key={n}
                   type="button"
                   aria-pressed={n === 5 ? draft.householdSize >= 5 : draft.householdSize === n}
-                  onClick={() => setDraft({ ...draft, householdSize: n })}
-                  className={`h-11 min-w-11 px-4 rounded-pill text-sm font-semibold border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+                  onClick={() =>
+                    setDraft({
+                      ...draft,
+                      householdSize: n === 5 ? Math.max(5, draft.householdSize) : n,
+                    })
+                  }
+                  className={`h-11 min-w-11 px-4 rounded-pill text-sm font-semibold tabular-nums border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
                     (n === 5 ? draft.householdSize >= 5 : draft.householdSize === n)
-                      ? 'bg-semantic-action-primary text-semantic-text-inverse border-transparent'
-                      : 'bg-semantic-surface text-semantic-text-secondary border-semantic-border hover:border-semantic-border-strong'
+                      ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                      : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]'
                   }`}
                 >
                   {n === 5 ? '5+' : n}
                 </button>
               ))}
+              {draft.householdSize >= 5 && (
+                <div
+                  role="group"
+                  aria-label="Điều chỉnh khẩu phần gia đình đông người"
+                  className="inline-flex items-center gap-1.5 rounded-pill bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] px-2 py-1"
+                >
+                  <button
+                    type="button"
+                    aria-label="Giảm số người"
+                    disabled={draft.householdSize <= 5}
+                    onClick={() =>
+                      setDraft({ ...draft, householdSize: Math.max(5, draft.householdSize - 1) })
+                    }
+                    className="w-8 h-8 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-bold text-[var(--sumi-ink,#111315)] disabled:opacity-40 transition-colors"
+                  >
+                    −
+                  </button>
+                  <span
+                    data-testid="u02-household-stepper-value"
+                    className="min-w-[68px] text-center text-sm font-semibold tabular-nums text-[var(--sumi-ink,#111315)]"
+                  >
+                    {draft.householdSize} người
+                  </span>
+                  <button
+                    type="button"
+                    aria-label="Tăng số người"
+                    disabled={draft.householdSize >= 20}
+                    onClick={() =>
+                      setDraft({ ...draft, householdSize: Math.min(20, draft.householdSize + 1) })
+                    }
+                    className="w-8 h-8 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-bold text-[var(--sumi-ink,#111315)] disabled:opacity-40 transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </div>
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-semantic-text-primary flex items-center gap-2 mb-2">
-              <Utensils className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Món ưa thích
+            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
+              <Utensils className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Món ưa thích
             </legend>
             <div className="flex flex-wrap gap-2">
               {CUISINE_TAGS.map((tag) => (
@@ -192,8 +236,8 @@ export const FoodPreferencesPage: React.FC = () => {
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-semantic-text-primary flex items-center gap-2 mb-2">
-              <Heart className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Nguyên liệu hạn chế
+            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
+              <Heart className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Nguyên liệu hạn chế
             </legend>
             <div className="flex flex-wrap gap-2">
               {RESTRICTION_TAGS.map((tag) => (
@@ -208,14 +252,14 @@ export const FoodPreferencesPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            <p className="text-xs text-semantic-text-muted mt-2">
+            <p className="text-xs text-[var(--sumi-muted,#5C5F62)] mt-2">
               Giới hạn này giúp lọc gợi ý, không thay thế tư vấn y tế.
             </p>
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-semantic-text-primary flex items-center gap-2 mb-2">
-              <Flame className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" /> Mức độ cay
+            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
+              <Flame className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Mức độ cay
             </legend>
             <div className="flex flex-wrap gap-2">
               {SPICY_LEVELS.map((level) => (

@@ -118,35 +118,35 @@ export type MascotPose =
 const MASCOT_POSE_MAP: Record<Exclude<MascotPose, 'vector'>, { base: string; alt: string }> = {
   welcome: {
     base: '/takolio/vnext/mascot/pose-01-welcome',
-    alt: 'Linh vật Bé Mầm Bếp vẫy tay chào mừng',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio vẫy xúc tu chào mừng',
   },
   guide: {
     base: '/takolio/vnext/mascot/pose-02-guide',
-    alt: 'Linh vật Bé Mầm Bếp cầm muôi gỗ hướng dẫn thiết lập bếp',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio hướng dẫn thiết lập và thực đơn',
   },
   scanning: {
     base: '/takolio/vnext/mascot/pose-03-scanning',
-    alt: 'Linh vật Bé Mầm Bếp cầm khung nhận diện nguyên liệu tươi',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio quét nhận diện nguyên liệu AI',
   },
   'empty-fridge': {
     base: '/takolio/vnext/mascot/pose-04-empty-fridge',
-    alt: 'Linh vật Bé Mầm Bếp bên ngăn tủ lạnh đang trống',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio bên ngăn tủ lạnh đang trống',
   },
   cooking: {
     base: '/takolio/vnext/mascot/pose-05-cooking',
-    alt: 'Linh vật Bé Mầm Bếp khuấy nồi món ăn đang sôi',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio đồng hành nấu ăn từng bước',
   },
   achievement: {
     base: '/takolio/vnext/mascot/pose-06-achievement',
-    alt: 'Linh vật Bé Mầm Bếp chúc mừng hoàn thành bữa ăn',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio chúc mừng hoàn thành bữa ăn',
   },
   offline: {
     base: '/takolio/vnext/mascot/pose-07-offline',
-    alt: 'Linh vật Bé Mầm Bếp giữ giỏ dữ liệu an toàn khi ngoại tuyến',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio giữ dữ liệu an toàn khi ngoại tuyến',
   },
   error: {
     base: '/takolio/vnext/mascot/pose-08-error',
-    alt: 'Linh vật Bé Mầm Bếp nhẹ nhàng thông báo sự cố cần thử lại',
+    alt: 'Tako — Trợ lý bếp bạch tuộc Takolio nhẹ nhàng thông báo sự cố cần thử lại',
   },
 };
 
@@ -168,7 +168,7 @@ export const BrandLockup: React.FC<{
       <img
         src="/takolio/vnext/brand/lockup-direction-a.svg"
         alt="Takolio"
-        width={154}
+        width={128}
         height={34}
         className="h-[34px] w-auto shrink-0"
       />
@@ -187,7 +187,8 @@ export const MascotIllustration: React.FC<{
     return (
       <img
         src="/takolio/vnext/mascot/mascot-master-vector.svg"
-        alt={decorative ? '' : 'Linh vật Bé Mầm Bếp Takolio'}
+        alt={decorative ? '' : 'Tako — Trợ lý bếp bạch tuộc Takolio'}
+        title={decorative ? undefined : 'Tako — Trợ lý bếp bạch tuộc Takolio'}
         aria-hidden={decorative || undefined}
         width={size}
         height={size}
@@ -197,18 +198,22 @@ export const MascotIllustration: React.FC<{
   }
   const meta = MASCOT_POSE_MAP[pose];
   return (
-    <img
-      src={`${meta.base}-256w.webp`}
-      srcSet={`${meta.base}-256w.webp 256w, ${meta.base}.webp 512w`}
-      sizes={`${size}px`}
-      alt={decorative ? '' : meta.alt}
-      aria-hidden={decorative || undefined}
-      width={size}
-      height={size}
-      loading="lazy"
-      onError={() => setFailed(true)}
-      className={`aspect-square object-cover rounded-full select-none ${className}`}
-    />
+    <picture className="inline-flex shrink-0">
+      <source srcSet={`${meta.base}.svg`} type="image/svg+xml" />
+      <img
+        src={`${meta.base}-256w.webp`}
+        srcSet={`${meta.base}-256w.webp 256w, ${meta.base}.webp 512w`}
+        sizes={`${size}px`}
+        alt={decorative ? '' : meta.alt}
+        title={decorative ? undefined : 'Tako — Trợ lý bếp bạch tuộc Takolio'}
+        aria-hidden={decorative || undefined}
+        width={size}
+        height={size}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        className={`aspect-square object-contain select-none ${className}`}
+      />
+    </picture>
   );
 };
 
@@ -240,7 +245,7 @@ export const VerifiedDishImage: React.FC<{
 
   if (!errored && vnextEntry) {
     return (
-      <div className={`relative overflow-hidden bg-[var(--tkv-surface-mint)] ${aspectClass} ${className}`}>
+      <div className={`relative overflow-hidden bg-[var(--tkv-bg)] ${aspectClass} ${className}`}>
         <img
           src={vnextEntry.src640}
           srcSet={`${vnextEntry.src640} 640w, ${vnextEntry.src} 1200w`}
@@ -256,7 +261,7 @@ export const VerifiedDishImage: React.FC<{
 
   if (!errored && resolvedFallbackUrl) {
     return (
-      <div className={`relative overflow-hidden bg-[var(--tkv-surface-mint)] ${aspectClass} ${className}`}>
+      <div className={`relative overflow-hidden bg-[var(--tkv-bg)] ${aspectClass} ${className}`}>
         <img
           src={resolvedFallbackUrl}
           alt={`Món ${title}`}
@@ -270,7 +275,7 @@ export const VerifiedDishImage: React.FC<{
 
   return (
     <div
-      className={`relative flex flex-col items-center justify-center ${compact ? 'gap-1 p-1.5' : 'gap-2 p-4'} overflow-hidden bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink-muted)] text-center ${aspectClass} ${className}`}
+      className={`relative flex flex-col items-center justify-center ${compact ? 'gap-1 p-1.5' : 'gap-2 p-4'} overflow-hidden bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] text-center ${aspectClass} ${className}`}
     >
       <svg
         viewBox="0 0 64 48"
@@ -278,23 +283,23 @@ export const VerifiedDishImage: React.FC<{
         height={compact ? 22 : 42}
         fill="none"
         aria-hidden="true"
-        className="text-[var(--tkv-primary)] opacity-75 shrink-0"
+        className="text-[var(--tkv-ink-secondary)] opacity-80 shrink-0"
       >
         <path
           d="M24 8c0 3 3 4 3 7M32 6c0 3 3 4 3 7M40 8c0 3 3 4 3 7"
           stroke="currentColor"
-          strokeWidth="2.2"
+          strokeWidth="1.6"
           strokeLinecap="round"
         />
         <path
           d="M12 22h40c0 11.5-8.95 20-20 20S12 33.5 12 22Z"
           stroke="currentColor"
-          strokeWidth="2.4"
+          strokeWidth="1.6"
           strokeLinejoin="round"
         />
-        <path d="M22 42h20" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+        <path d="M22 42h20" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
       </svg>
-      <span className={compact ? 'text-[10px] font-bold leading-tight' : 'text-xs font-semibold line-clamp-2'}>
+      <span className={compact ? 'text-[10px] font-semibold leading-tight' : 'text-xs font-medium line-clamp-2'}>
         {compact ? 'Chưa có ảnh' : `Chưa có ảnh xác minh cho món ${title}`}
       </span>
     </div>

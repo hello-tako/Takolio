@@ -274,11 +274,11 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
         </td></tr>
         <tr><td style="padding:32px;">
           <h1 style="margin:0 0 8px;font-size:18px;color:#0F172A;">Mã ${action}</h1>
-          <p style="margin:0 0 24px;font-size:14px;color:#475569;line-height:1.5;">Nhập mã sau vào ứng dụng Frigo để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
+          <p style="margin:0 0 24px;font-size:14px;color:#475569;line-height:1.5;">Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
           <div style="background:#E6F4EA;border-radius:12px;padding:20px;text-align:center;margin-bottom:24px;">
             <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#059669;font-family:'SF Mono',Menlo,monospace;">${code}</span>
           </div>
-          <p style="margin:0 0 4px;font-size:13px;color:#475569;">Không chia sẻ mã này với bất kỳ ai — nhân viên Frigo không bao giờ hỏi mã của bạn.</p>
+          <p style="margin:0 0 4px;font-size:13px;color:#475569;">Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.</p>
           <p style="margin:0;font-size:13px;color:#94A3B8;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
         </td></tr>
         <tr><td style="background:#F8FAF9;padding:16px 32px;text-align:center;">

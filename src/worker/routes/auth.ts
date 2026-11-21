@@ -31,18 +31,24 @@ interface PreferencesRow {
   household_size: number; spicy_level: string; favorite_cuisines: string | null; dietary_restrictions: string | null;
 }
 interface PasswordAccountRow {
-  user_id: string; password_hash: string; salt: string; is_verified: number;
+  user_id: string; password_hash: string | null; salt: string | null; is_verified: number;
   display_name: string | null; avatar_url: string | null; onboarding_completed_at: string | null;
 }
 interface GoogleAccountRow {
-  id: string; user_id: string; email: string; google_id: string | null; onboarding_completed_at: string | null;
+  id: string; user_id: string; email: string; google_id: string | null; is_verified: number; onboarding_completed_at: string | null;
 }
+const DUMMY_PASSWORD_SALT = '00112233445566778899aabbccddeeff';
+const DUMMY_PASSWORD_HASH = 'f0e1d2c3b4a5968778695a4b3c2d1e0f00112233445566778899aabbccddeeff';
+
 export const authRoutes = new Hono<AuthRouteEnv>();
 
 // Session bootstrap also needs CSRF protection before a cookie exists.
 for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password', 'google', 'guest', 'logout']) {
   authRoutes.use(`/auth/${path}`, async (c, next) => {
-    if (c.req.method === 'POST' && c.env.ENVIRONMENT === 'production' && !hasTrustedOrigin(c)) {
+    const requireTrustedOrigin =
+      c.env.ENVIRONMENT === 'production' ||
+      (c.env.ENVIRONMENT === 'staging' && Boolean(c.env.APP_URL?.trim()));
+    if (c.req.method === 'POST' && requireTrustedOrigin && !hasTrustedOrigin(c)) {
       return c.json({ error: 'Cross-site request blocked', code: 'CSRF_ORIGIN_DENIED' }, 403);
     }
     return next();
@@ -59,8 +65,17 @@ for (const path of ['register', 'verify-otp', 'resend-otp', 'forgot-password', '
   });
 }
 
-// Apply rate limiting to all auth endpoints (max 15 requests per minute)
-authRoutes.use('/auth/*', rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth' }));
+// Apply rate limiting to all auth endpoints (max 15 requests per minute).
+// OTP routes remain D1-authoritative via StrictOtpCoordinator when KV is down;
+// non-OTP credential/session endpoints fail closed in production when KV is bound.
+const authBestEffortLimiter = rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth' });
+const authFailClosedLimiter = rateLimiter({ maxRequests: 15, windowSeconds: 60, prefix: 'rl_auth', enforcement: 'fail-closed' });
+const FAIL_CLOSED_AUTH_PATHS = new Set(['/auth/login', '/api/v1/auth/login', '/auth/google', '/api/v1/auth/google', '/auth/guest', '/api/v1/auth/guest']);
+authRoutes.use('/auth/*', (c, next) =>
+  c.env.CACHE && FAIL_CLOSED_AUTH_PATHS.has(c.req.path)
+    ? authFailClosedLimiter(c, next)
+    : authBestEffortLimiter(c, next)
+);
 
 function setSessionCookie(c: Context<AuthRouteEnv>, token: string): void {
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
@@ -80,7 +95,7 @@ async function createSessionAndToken(
   // Persist session to D1 if available
   if (db) {
     try {
-      const sessionId = `sess_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+      const sessionId = `sess_${Date.now()}_${crypto.randomUUID().replace(/-/g, '').slice(0, 12)}`;
       const expiresAt = new Date(expSec * 1000).toISOString();
       await db
         .prepare('INSERT INTO sessions_v2 (id, user_id, household_id, token_hash, expires_at) VALUES (?, ?, ?, ?, ?)')
@@ -116,7 +131,7 @@ authRoutes.get('/me', async (c) => {
         email: userRow?.email || auth.email || `${auth.userId}@frigo.local`,
         isGuest: Boolean(userRow?.is_guest ?? auth.isGuest),
         isPlus: quota.isPlus,
-        displayName: userRow?.display_name || (auth.isGuest ? 'Khách ghé thăm' : 'Người dùng Frigo'),
+        displayName: userRow?.display_name || (auth.isGuest ? 'Khách ghé thăm' : 'Người dùng Takolio'),
         avatarUrl: userRow?.avatar_url || '/icons/favicon.svg',
         onboardingCompleted: Boolean(userRow?.onboarding_completed_at),
         household: {
@@ -286,7 +301,8 @@ authRoutes.post('/auth/login', async (c) => {
       .bind(normalizedEmail)
       .first<PasswordAccountRow>();
 
-    if (!account) {
+    if (!account || !account.password_hash || !account.salt) {
+      await verifyPassword(password, DUMMY_PASSWORD_SALT, DUMMY_PASSWORD_HASH);
       return c.json({ error: 'Email hoặc mật khẩu không chính xác' }, 401);
     }
 
@@ -340,7 +356,7 @@ authRoutes.post('/auth/login', async (c) => {
       user: {
         id: account.user_id,
         email: normalizedEmail,
-        displayName: account.display_name || 'Người dùng Frigo',
+        displayName: account.display_name || 'Người dùng Takolio',
         avatarUrl: account.avatar_url || '/icons/favicon.svg',
         householdId,
         isGuest: false,
@@ -438,8 +454,8 @@ authRoutes.post('/auth/google', async (c) => {
     name = googleVerify.user.name;
     googleId = googleVerify.user.sub;
     avatarUrl = googleVerify.user.picture || avatarUrl;
-  } else if (userInfo && c.env.ENVIRONMENT !== 'production') {
-    // Only allow manual userInfo payload in non-production environments
+  } else if (userInfo && c.env.ENVIRONMENT !== 'production' && c.env.ENVIRONMENT !== 'staging') {
+    // Only allow manual userInfo payload in local development/test environments
     email = userInfo.email.toLowerCase();
     name = userInfo.name || email.split('@')[0];
     googleId = userInfo.sub || `g_${Date.now()}`;
@@ -459,12 +475,12 @@ authRoutes.post('/auth/google', async (c) => {
     // silently point at two different local accounts; doing so would let a
     // later upsert rebind one account to another provider identity.
     const existingByEmail = await db
-      .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, p.onboarding_completed_at
+      .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, a.is_verified, p.onboarding_completed_at
         FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id WHERE a.email = ? LIMIT 1`)
       .bind(email)
       .first<GoogleAccountRow>();
     const existingByGoogle = await db
-      .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, p.onboarding_completed_at
+      .prepare(`SELECT a.id, a.user_id, a.email, a.google_id, a.is_verified, p.onboarding_completed_at
         FROM auth_accounts a LEFT JOIN profiles p ON p.user_id = a.user_id WHERE a.google_id = ? LIMIT 1`)
       .bind(googleId)
       .first<GoogleAccountRow>();
@@ -476,7 +492,7 @@ authRoutes.post('/auth/google', async (c) => {
     ) {
       return c.json(
         {
-          error: 'Tài khoản Google đã liên kết với một tài khoản Frigo khác',
+          error: 'Tài khoản Google đã liên kết với một tài khoản Takolio khác',
           code: 'GOOGLE_ACCOUNT_CONFLICT',
         },
         409
@@ -527,6 +543,8 @@ authRoutes.post('/auth/google', async (c) => {
            user_id = excluded.user_id,
            email = excluded.email,
            google_id = excluded.google_id,
+           password_hash = CASE WHEN auth_accounts.is_verified = 1 THEN auth_accounts.password_hash ELSE NULL END,
+           salt = CASE WHEN auth_accounts.is_verified = 1 THEN auth_accounts.salt ELSE NULL END,
            is_verified = 1,
            updated_at = datetime('now')`
       ).bind(existing?.id || userId, userId, email, googleId),
@@ -577,7 +595,7 @@ authRoutes.post('/auth/guest', async (c) => {
   // Keep the suffix alphanumeric so it remains compatible with the guest
   // migration contract (`hh_guest_<suffix>`), while avoiding timestamp-only
   // collisions under concurrent requests.
-  const guestSuffix = `${Date.now()}${Math.random().toString(36).slice(2, 10)}`;
+  const guestSuffix = `${Date.now()}${crypto.randomUUID().replace(/-/g, '').slice(0, 12)}`;
   const newGuestId = `guest_${guestSuffix}`;
   const householdId = `hh_${newGuestId}`;
   const email = `${newGuestId}@frigo.local`;
@@ -614,7 +632,7 @@ authRoutes.post('/auth/guest', async (c) => {
           .prepare(
             'INSERT OR IGNORE INTO subscriptions (id, user_id, plan, status, scan_count_current_month, max_scans_per_month) VALUES (?, ?, ?, ?, ?, ?)'
           )
-          .bind(`sub_${newGuestId}`, newGuestId, 'free', 'active', 0, SCAN_QUOTA_POLICY.free),
+          .bind(`sub_${newGuestId}`, newGuestId, 'guest', 'active', 0, SCAN_QUOTA_POLICY.guest),
         c.env.DB
           .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)')
           .bind(`list_${householdId}`, householdId, 'Danh sách mua sắm'),
@@ -679,7 +697,7 @@ authRoutes.post('/auth/plus/activate', async (c) => {
   const rawBody = await c.req.json().catch(() => ({}));
 
   if (auth?.isGuest) {
-    return c.json({ error: 'Vui lòng đăng nhập để kích hoạt Frigo Plus.' }, 401);
+    return c.json({ error: 'Vui lòng đăng nhập để kích hoạt Takolio Plus.' }, 401);
   }
 
   if (!db) {

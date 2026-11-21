@@ -1,4 +1,4 @@
-/* V3 semantic mapping is scoped to migrated product surfaces. */
+/* V3 semantic mapping aligned to Takolio Sumi Edition (Architectural Monochrome). */
 .takosan-rebuild {
   background: var(--kitchen-canvas);
   color: rgb(var(--semantic-text-primary-rgb));
@@ -16,7 +16,7 @@
 }
 .takosan-rebuild :focus-visible {
   outline: 2px solid var(--semantic-focus);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 .recipe-workspace {
@@ -31,10 +31,10 @@
 }
 .recipe-availability {
   padding: 16px;
-  background: white;
-  border: 1px solid rgb(var(--semantic-border-rgb));
-  border-left: 4px solid var(--kitchen-coral);
-  border-radius: 0 10px 10px 0;
+  background: #ffffff;
+  border: 1px solid #e4e4e0;
+  border-left: 3px solid #111315;
+  border-radius: 0 12px 12px 0;
 }
 .recipe-preparation {
   min-width: 0;
@@ -79,13 +79,12 @@
   }
 }
 .kitchen-loop-strip {
-
   margin-bottom: 24px;
   padding: 14px 16px;
-  background: white;
-  border: 1px solid rgb(var(--semantic-border-rgb));
+  background: #ffffff;
+  border: 1px solid #e4e4e0;
   border-radius: 16px;
-  box-shadow: var(--takolio-shadow-card, 0 6px 20px rgb(var(--semantic-text-primary-rgb) / 0.05));
+  box-shadow: var(--tkv-shadow-card);
 }
 .recipe-loop-wrapper {
   padding: 20px 16px 0;
@@ -106,14 +105,15 @@
   gap: 6px;
   padding: 4px 10px;
   border-radius: 9999px;
-  background: var(--takosan-mint);
-  color: var(--kitchen-pine);
+  background: #f7f7f5;
+  border: 1px solid #e4e4e0;
+  color: #111315;
   font-size: 12px;
   font-weight: 700;
 }
 .kitchen-loop-summary {
   font-size: 13px;
-  color: rgb(var(--semantic-text-secondary-rgb));
+  color: #383b40;
   font-weight: 500;
 }
 .kitchen-loop-steps {
@@ -128,16 +128,18 @@
   min-height: 48px;
   padding: 8px 12px;
   border-radius: 12px;
-  border: 1px solid rgb(var(--semantic-border-rgb));
-  background: var(--takosan-cream);
+  border: 1px solid #e4e4e0;
+  background: #f7f7f5;
   text-decoration: none;
+  transition: border-color 150ms ease, background-color 150ms ease;
 }
 .kitchen-loop-step:hover {
-  border-color: var(--kitchen-pine);
+  border-color: #c9c8c3;
+  background: #ffffff;
 }
 .kitchen-loop-step-active {
-  background: var(--takosan-mint);
-  border-color: var(--kitchen-pine);
+  background: #ffffff;
+  border-color: #111315;
 }
 .kitchen-loop-step-icon {
   display: inline-flex;
@@ -146,7 +148,8 @@
   width: 34px;
   height: 34px;
   border-radius: 10px;
-  background: white;
+  background: #ffffff;
+  border: 1px solid #e4e4e0;
   flex-shrink: 0;
 }
 .kitchen-loop-step-copy {
@@ -160,11 +163,11 @@
   gap: 5px;
   font-size: 13px;
   font-weight: 700;
-  color: rgb(var(--semantic-text-primary-rgb));
+  color: #111315;
 }
 .kitchen-loop-step-sub {
   font-size: 12px;
-  color: rgb(var(--semantic-text-secondary-rgb));
+  color: #5e636a;
 }
 
 .culinary-technique-visual {
@@ -173,8 +176,8 @@
   gap: 14px;
   padding: 12px 14px;
   border-radius: 14px;
-  background: var(--takosan-cream);
-  border: 1px solid rgb(var(--semantic-border-rgb));
+  background: #f7f7f5;
+  border: 1px solid #e4e4e0;
 }
 .culinary-variant-stage {
   margin-bottom: 16px;
@@ -186,8 +189,8 @@
   flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;
-  background: white;
-  border: 1px solid rgb(var(--semantic-border-rgb));
+  background: #ffffff;
+  border: 1px solid #e4e4e0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,8 +213,8 @@
 .culinary-step-pill {
   padding: 2px 8px;
   border-radius: 9999px;
-  background: var(--kitchen-pine);
-  color: white;
+  background: #111315;
+  color: #ffffff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -220,7 +223,7 @@
 .culinary-technique-pill {
   font-size: 14px;
   font-weight: 700;
-  color: rgb(var(--semantic-text-primary-rgb));
+  color: #111315;
 }
 .culinary-technique-sub {
   display: flex;
@@ -229,7 +232,7 @@
   gap: 6px;
   margin-top: 4px;
   font-size: 12px;
-  color: rgb(var(--semantic-text-secondary-rgb));
+  color: #383b40;
 }
 .culinary-sub-item {
   display: inline-flex;

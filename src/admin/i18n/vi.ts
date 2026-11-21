@@ -168,6 +168,7 @@ export const vi = {
     nav: {
       overview: 'Tổng quan',
       users: 'Người dùng & hộ gia đình',
+      households: 'Hộ gia đình',
       billing: 'Thanh toán',
       ai: 'AI & OCR',
       recipes: 'Công thức',

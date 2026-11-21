@@ -1,4 +1,4 @@
-import React, { useId, useRef } from 'react';
+import React, { useEffect, useId, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { clsx } from 'clsx';
 import { motion } from 'motion/react';
@@ -6,8 +6,7 @@ import { ChevronRight, X } from 'lucide-react';
 import { useModalFocus } from './use-modal-focus';
 
 /**
- * T17 shared primitives (components/*.md contracts). These extend — never
- * duplicate — `components/common`; one implementation authority per component.
+ * T17 shared primitives aligned to Takolio Sumi Edition (Architectural Monochrome 92 / 6 / 2).
  */
 
 export type PageWidth = 'compact' | 'default' | 'wide' | 'fullscreen';
@@ -19,10 +18,6 @@ const PAGE_WIDTH: Record<PageWidth, string> = {
   fullscreen: 'max-w-none',
 };
 
-/**
- * Page requests a semantic width and owns vertical rhythm — not global
- * viewport composition (components/PAGE.md). AppShell owns gutters.
- */
 export const Page: React.FC<
   React.HTMLAttributes<HTMLDivElement> & { width?: PageWidth; gutter?: boolean }
 > = ({ width = 'default', gutter = true, className, children, ...props }) => (
@@ -53,16 +48,16 @@ export const PageHeader: React.FC<{
           type="button"
           onClick={onBack}
           aria-label={backLabel}
-          className="tap-target -ml-2 mt-0.5 inline-flex items-center justify-center rounded-card text-semantic-text-secondary hover:bg-semantic-background-subtle focus-visible:outline-none focus-visible:shadow-t17-focus"
+          className="tap-target -ml-2 mt-0.5 inline-flex items-center justify-center rounded-xl text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-subtle)] hover:text-[var(--tkv-ink)] tkv-focusable transition-colors"
         >
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M15 18 L9 12 L15 6" />
           </svg>
         </button>
       )}
       <div className="min-w-0">
-        <h1 className="text-type-heading text-semantic-text-primary">{title}</h1>
-        {subtitle && <p className="text-sm text-semantic-text-muted mt-0.5">{subtitle}</p>}
+        <h1 className="text-type-heading text-[var(--tkv-ink)]">{title}</h1>
+        {subtitle && <p className="text-sm text-[var(--tkv-ink-muted)] mt-0.5">{subtitle}</p>}
       </div>
     </div>
     {actions && <div className="flex items-center gap-2 shrink-0">{actions}</div>}
@@ -76,8 +71,8 @@ export const Section: React.FC<
     {(title || action) && (
       <div className="flex items-end justify-between gap-3 mb-3">
         <div className="min-w-0">
-          {title && <h2 className="text-type-label text-semantic-text-primary">{title}</h2>}
-          {summary && <p className="text-sm text-semantic-text-muted mt-0.5">{summary}</p>}
+          {title && <h2 className="text-type-label text-[var(--tkv-ink)]">{title}</h2>}
+          {summary && <p className="text-sm text-[var(--tkv-ink-muted)] mt-0.5">{summary}</p>}
         </div>
         {action}
       </div>
@@ -86,7 +81,7 @@ export const Section: React.FC<
   </section>
 );
 
-/** Restrained raised panel (components/CARD.md: whitespace/tone beat boxes). */
+/** Restrained raised panel aligned to Sumi Monochrome hairlines. */
 export const Surface: React.FC<React.HTMLAttributes<HTMLDivElement> & { tone?: 'default' | 'subtle' | 'accent' }> = ({
   tone = 'default',
   className,
@@ -95,10 +90,10 @@ export const Surface: React.FC<React.HTMLAttributes<HTMLDivElement> & { tone?: '
 }) => (
   <div
     className={clsx(
-      'rounded-card',
-      tone === 'default' && 'bg-semantic-surface border border-semantic-border',
-      tone === 'subtle' && 'bg-semantic-background-subtle border border-semantic-border',
-      tone === 'accent' && 'bg-semantic-accent-soft border border-semantic-accent/20',
+      'rounded-2xl',
+      tone === 'default' && 'bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-card)]',
+      tone === 'subtle' && 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)]',
+      tone === 'accent' && 'bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)]',
       className
     )}
     {...props}
@@ -107,9 +102,6 @@ export const Surface: React.FC<React.HTMLAttributes<HTMLDivElement> & { tone?: '
   </div>
 );
 
-/** One mobile primary action above bottom nav/safe area (components/FIXED_ACTIONS.md).
- *  Mobile: clears the 68px bottom nav; sm+: nav is a rail/sidebar so bottom-0
- *  and a left offset apply; lg: renders inline. */
 export const BottomCTA: React.FC<{ children: React.ReactNode; hideOnDesktop?: boolean }> = ({
   children,
   hideOnDesktop = false,
@@ -117,7 +109,7 @@ export const BottomCTA: React.FC<{ children: React.ReactNode; hideOnDesktop?: bo
   <div
     data-kitchen-action="fixed"
     className={clsx(
-      'kitchen-bottom-cta fixed inset-x-0 bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 sm:left-20 z-20 bg-semantic-background/95 backdrop-blur border-t border-semantic-border px-4 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] lg:static lg:left-auto lg:bottom-auto lg:z-auto lg:bg-transparent lg:border-0 lg:p-0',
+      'kitchen-bottom-cta fixed inset-x-0 bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 sm:left-20 z-20 bg-white/90 backdrop-blur-md border-t border-[var(--tkv-border)] px-4 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] lg:static lg:left-auto lg:bottom-auto lg:z-auto lg:bg-transparent lg:border-0 lg:p-0',
       hideOnDesktop && 'lg:hidden'
     )}
   >
@@ -125,16 +117,15 @@ export const BottomCTA: React.FC<{ children: React.ReactNode; hideOnDesktop?: bo
   </div>
 );
 
-/** Paired editor actions; stays visible, never conceals validation errors.
- *  Sticky offset equals the mobile bottom nav height so actions never hide
- *  behind it; rail/sidebar breakpoints stick to the true bottom. */
 export const StickyActions: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div data-kitchen-action="fixed" className="kitchen-sticky-actions sticky bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 z-20 -mx-4 md:-mx-6 lg:-mx-8 mt-4 bg-semantic-background/95 backdrop-blur border-t border-semantic-border px-4 md:px-6 lg:px-8 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] flex gap-3">
+  <div
+    data-kitchen-action="fixed"
+    className="kitchen-sticky-actions sticky bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 z-20 -mx-4 md:-mx-6 lg:-mx-8 mt-4 bg-white/90 backdrop-blur-md border-t border-[var(--tkv-border)] px-4 md:px-6 lg:px-8 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] flex gap-3"
+  >
     {children}
   </div>
 );
 
-/** Immediate on/off setting (components/SWITCH.md): role=switch, aria-checked. */
 export const Switch: React.FC<{
   checked: boolean;
   onChange: (next: boolean) => void;
@@ -146,11 +137,11 @@ export const Switch: React.FC<{
   return (
     <div className="flex items-start justify-between gap-4 py-3">
       <div className="min-w-0">
-        <label id={`${id}-label`} htmlFor={id} className="text-sm font-semibold text-semantic-text-primary block">
+        <label id={`${id}-label`} htmlFor={id} className="text-sm font-semibold text-[var(--tkv-ink)] block">
           {label}
         </label>
         {description && (
-          <p id={`${id}-desc`} className="text-xs text-semantic-text-muted mt-0.5">
+          <p id={`${id}-desc`} className="text-xs text-[var(--tkv-ink-muted)] mt-0.5">
             {description}
           </p>
         )}
@@ -165,27 +156,22 @@ export const Switch: React.FC<{
         disabled={disabled}
         onClick={() => onChange(!checked)}
         className={clsx(
-          // 52×32 visual track; the ::before pseudo-element extends the hit
-          // area to the 44px touch target without changing the visual size.
-          'relative shrink-0 w-[52px] h-8 rounded-pill transition-colors duration-150 focus-visible:outline-none focus-visible:shadow-t17-focus before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""]',
-          checked ? 'bg-semantic-action-primary' : 'bg-semantic-border-strong',
+          'relative shrink-0 w-[52px] h-8 rounded-pill transition-colors duration-150 tkv-focusable before:absolute before:-inset-y-1.5 before:-inset-x-1 before:content-[""]',
+          checked ? 'bg-[var(--tkv-primary)]' : 'bg-[var(--tkv-border-strong)]',
           disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
         )}
       >
-        {/* Transform-driven thumb: deterministic travel, respects MotionConfig
-            reduced motion (layout animations on absolute children are not). */}
         <motion.span
           aria-hidden="true"
           animate={{ x: checked ? 20 : 0 }}
           transition={{ type: 'spring', stiffness: 500, damping: 32 }}
-          className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-t17-sm"
+          className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-xs"
         />
       </button>
     </div>
   );
 };
 
-/** Settings/navigation row — a real link or button, never a div (components/LIST.md). */
 export const SettingsRow: React.FC<{
   to?: string;
   onClick?: () => void;
@@ -197,7 +183,7 @@ export const SettingsRow: React.FC<{
   const inner = (
     <>
       {icon && (
-        <span className="w-9 h-9 rounded-card bg-semantic-background-subtle text-semantic-action-primary flex items-center justify-center shrink-0" aria-hidden="true">
+        <span className="w-9 h-9 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-ink)] flex items-center justify-center shrink-0" aria-hidden="true">
           {icon}
         </span>
       )}
@@ -205,18 +191,18 @@ export const SettingsRow: React.FC<{
         <span
           className={clsx(
             'text-sm font-semibold block truncate',
-            danger ? 'text-semantic-danger' : 'text-semantic-text-primary'
+            danger ? 'text-[var(--tkv-danger)]' : 'text-[var(--tkv-ink)]'
           )}
         >
           {label}
         </span>
-        {meta && <span className="text-xs text-semantic-text-muted block truncate">{meta}</span>}
+        {meta && <span className="text-xs text-[var(--tkv-ink-muted)] block truncate">{meta}</span>}
       </span>
-      <ChevronRight className="w-4 h-4 text-semantic-text-muted shrink-0" aria-hidden="true" />
+      <ChevronRight className="w-4 h-4 text-[var(--tkv-ink-muted)] shrink-0" aria-hidden="true" />
     </>
   );
   const cls =
-    'w-full flex items-center gap-3 px-4 py-3.5 text-left hover:bg-semantic-background-subtle active:bg-semantic-background-subtle focus-visible:outline-none focus-visible:shadow-t17-focus transition-colors';
+    'w-full flex items-center gap-3 px-4 py-3.5 text-left hover:bg-[var(--tkv-bg)] active:bg-[var(--tkv-surface-subtle)] tkv-focusable transition-colors';
   return to ? (
     <Link to={to} className={cls}>
       {inner}
@@ -230,61 +216,57 @@ export const SettingsRow: React.FC<{
 
 export type SemanticTone = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
-/** StatusBadge maps semantic states; never color alone (design-system/component-states.json). */
+/** StatusBadge: Sumi Monochrome pill with 6px semantic status dot (92 / 6 / 2). */
 export const StatusBadge: React.FC<{ tone: SemanticTone; children: React.ReactNode; className?: string }> = ({
   tone,
   children,
   className,
 }) => {
-  const tones: Record<SemanticTone, string> = {
-    success: 'bg-semantic-success-soft text-semantic-success',
-    warning: 'bg-semantic-warning-soft text-semantic-warning',
-    danger: 'bg-semantic-danger-soft text-semantic-danger',
-    info: 'bg-semantic-info-soft text-semantic-info',
-    neutral: 'bg-semantic-background-subtle text-semantic-text-secondary',
+  const dotColors: Record<SemanticTone, string> = {
+    success: 'bg-[var(--tkv-success)]',
+    warning: 'bg-[var(--tkv-warning)]',
+    danger: 'bg-[var(--tkv-danger)]',
+    info: 'bg-[var(--tkv-ink-secondary)]',
+    neutral: 'bg-[var(--tkv-ink-muted)]',
   };
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 rounded-pill px-2.5 py-0.5 text-xs font-semibold',
-        tones[tone],
+        'inline-flex items-center gap-1.5 rounded-pill px-2.5 py-0.5 text-xs font-semibold bg-[var(--tkv-bg)] text-[var(--tkv-ink)] border border-[var(--tkv-border)]',
         className
       )}
     >
-      <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-current" />
+      <span aria-hidden="true" className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dotColors[tone])} />
       {children}
     </span>
   );
 };
 
-/** Honest "not configured / not supported" inline note (states/disabled.md). */
 export const UnavailableState: React.FC<{ title?: string; children: React.ReactNode }> = ({
   title = 'Chưa hỗ trợ',
   children,
 }) => (
   <div
     role="note"
-    className="rounded-card border border-dashed border-semantic-border-strong bg-semantic-background-subtle px-4 py-3.5"
+    className="rounded-2xl border border-dashed border-[var(--tkv-border-strong)] bg-[var(--tkv-bg)] px-4 py-3.5"
   >
-    <p className="text-sm font-semibold text-semantic-text-secondary">{title}</p>
-    <p className="text-xs text-semantic-text-muted mt-1 leading-relaxed">{children}</p>
+    <p className="text-sm font-semibold text-[var(--tkv-ink-secondary)]">{title}</p>
+    <p className="text-xs text-[var(--tkv-ink-muted)] mt-1 leading-relaxed">{children}</p>
   </div>
 );
 
-/** Skeleton block: subtle pulse, disabled by reduced motion via CSS. */
 export const Skeleton: React.FC<{ className?: string; label?: string }> = ({ className, label }) => (
   <div
     role={label ? 'status' : undefined}
     aria-label={label}
-    className={clsx('rounded-card bg-semantic-background-subtle t17-skeleton', className)}
+    className={clsx('rounded-2xl bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)] t17-skeleton', className)}
   />
 );
 
 /**
- * Bottom sheet (components/BOTTOM_SHEET.md): a labelled modal dialog anchored
- * to the bottom edge on phones and centred from `sm` up. Owns the scrim,
- * focus trap, Escape and focus return; content is the caller's. Entrance uses
- * the reduced-motion-gated `animate-slide-up` utility.
+ * Bottom sheet (components/BOTTOM_SHEET.md): labelled modal dialog anchored
+ * to the bottom edge on phones and centred from `sm` up. Uses tactile spring/CSS
+ * entrance motion, Escape & Tab focus containment, and body scroll lock.
  */
 export const BottomSheet: React.FC<{
   open: boolean;
@@ -293,50 +275,64 @@ export const BottomSheet: React.FC<{
   closeLabel?: string;
   children: React.ReactNode;
   className?: string;
-  /** Extra class on the scrim (z-index override, etc.). */
   scrimClassName?: string;
 }> = ({ open, title, onClose, closeLabel = 'Đóng', children, className, scrimClassName }) => {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
   useModalFocus(open, panelRef, onClose, closeRef);
+
+  useEffect(() => {
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open]);
+
   if (!open) return null;
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
       className={clsx(
-        'fixed inset-0 z-50 flex items-end justify-center bg-semantic-overlay/40 p-0 backdrop-blur-xs sm:items-center sm:p-4 animate-fade-in',
+        'fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 backdrop-blur-xs sm:items-center sm:p-4 animate-fade-in',
         scrimClassName,
       )}
       onClick={onClose}
       role="presentation"
     >
-      <div
+      <motion.div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        initial={{ opacity: 0, y: 20, scale: 0.99 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.85 }}
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          'w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-t-2xl border border-semantic-border bg-semantic-surface p-5 shadow-2xl sm:rounded-2xl animate-slide-up',
+          'w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-t-2xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 shadow-[var(--tkv-shadow-elevated)] sm:rounded-2xl animate-slide-up',
           className,
         )}
       >
-        {/* Grab bar is decorative; the close button is the real affordance. */}
-        <div className="mx-auto mb-3 h-1 w-10 shrink-0 rounded-full bg-semantic-border sm:hidden" aria-hidden="true" />
+        <div className="mx-auto mb-3 h-1 w-10 shrink-0 rounded-full bg-[var(--tkv-border-strong)] sm:hidden" aria-hidden="true" />
         <div className="mb-4 flex items-center justify-between gap-3">
-          <h2 id={titleId} className="font-heading text-base font-bold text-semantic-text-primary">{title}</h2>
+          <h2 id={titleId} className="tkv-heading text-base font-bold text-[var(--tkv-ink)]">{title}</h2>
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
             aria-label={closeLabel}
-            className="tap-target flex items-center justify-center rounded-lg p-1.5 text-semantic-text-muted transition-colors hover:bg-semantic-border/60 hover:text-semantic-text-secondary"
+            className="tap-target flex items-center justify-center rounded-xl p-1.5 text-[var(--tkv-ink-muted)] transition-colors hover:bg-[var(--tkv-surface-subtle)] hover:text-[var(--tkv-ink)] tkv-focusable"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
         {children}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

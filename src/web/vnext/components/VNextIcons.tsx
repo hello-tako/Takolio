@@ -518,7 +518,7 @@ export interface VNextIconProps {
 export const VNextIcon: React.FC<VNextIconProps> = ({
   name,
   size = 24,
-  strokeWidth = 2,
+  strokeWidth = 1.6,
   className,
   label,
 }) => (

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { vnextHref } from '../feature';
 import { trackPublicConversion, useVNextSeo } from '../lib/seo';
 import { PublicMarketingShell } from '../components/Shells';
-import { TkvBadge, TkvButton, TkvSurface, TkvTextField } from '../components/Primitives';
+import { TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
 import { MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
 
@@ -35,8 +36,8 @@ const FeatureSubnavBar: React.FC<{ activeId: string }> = ({ activeId }) => (
               className={clsx(
                 'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs font-bold inline-flex items-center whitespace-nowrap border transition-colors',
                 active
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                  : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                  ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                  : 'bg-white text-[var(--sumi-muted,#5C5F62)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] hover:text-[var(--sumi-ink,#111315)]',
               )}
             >
               {item.label}
@@ -154,17 +155,17 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
     deepDiveTitle: 'Nguyên tắc an toàn ảnh chụp & hóa đơn (C09–C14)',
     deepDiveSteps: [
       {
-        code: 'A',
+        code: '01',
         heading: 'Ảnh riêng tư theo phiên hộ gia đình',
         body: 'Ảnh quét chỉ gắn với hộ gia đình của bạn, không chia sẻ chéo giữa các tài khoản hay bộ nhớ đệm.',
       },
       {
-        code: 'B',
+        code: '02',
         heading: 'Giữ nguyên bằng chứng OCR gốc trên hóa đơn',
         body: 'Khi duyệt hóa đơn siêu thị (C14), hệ thống giữ đối chiếu dòng OCR gốc và không tự bịa giá tiền thiếu.',
       },
       {
-        code: 'C',
+        code: '03',
         heading: 'Chống gửi trùng khi mạng chập chờn',
         body: 'Khóa xác nhận idempotent đảm bảo bấm lại khi mạng chậm không tạo hai lô nguyên liệu trùng nhau.',
       },
@@ -327,7 +328,7 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
     ctaHref: '/auth?mode=login&returnTo=%2Frecipes%2Fthit-kho-trung',
     imageSrc: '/takolio/vnext/marketing/m07-guided-cooking.webp',
     imageSrc640: '/takolio/vnext/marketing/m07-guided-cooking-640w.webp',
-    imageAlt: 'Nồi gang xanh lá ninh món ăn trên bếp sạch sẽ cùng sả gừng hành lá',
+    imageAlt: 'Nồi gang ninh món ăn trên bếp sạch sẽ cùng sả gừng hành lá',
     truthBadge: 'Chỉ trừ kho khi bạn xác nhận hoàn thành',
     truthNote: 'Mở màn chuẩn bị nấu hoặc thoát giữa chừng sẽ không bao giờ tự ý trừ nguyên liệu trong tủ lạnh.',
     bullets: [
@@ -339,7 +340,7 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
       {
         icon: 'timer',
         title: 'Nấu theo từng bước',
-        detail: 'Chữ cỡ lớn dễ đọc từ xa, bộ hẹn giờ gắn theo từng công đoạn và tùy chọn đọc giọng nói khi tay bận.',
+        detail: 'Bề mặt Matte Carbon chữ lớn dễ đọc từ xa, bộ hẹn giờ vòng tròn gắn theo từng công đoạn và tùy chọn đọc giọng nói.',
       },
       {
         icon: 'sparkles',
@@ -383,7 +384,7 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
       {
         icon: 'shopping',
         title: 'Nhóm theo khu vực mua',
-        detail: 'Sắp xếp mục cần mua rõ ràng giữa phần đang thiếu và phần đã cho vào giỏ để đi siêu thị hoặc chợ nhanh hơn.',
+        detail: 'Sắp xếp mục cần mua theo quầy kệ và chế độ đi chợ nhanh một tay để đi siêu thị hoặc chợ thuận tiện.',
       },
       {
         icon: 'check',
@@ -393,7 +394,7 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
       {
         icon: 'fridge',
         title: 'Nhập kho có xác nhận',
-        detail: 'Chuyển các mục đã mua vào tủ lạnh thông qua sổ cái xác nhận máy chủ, ngăn chặn nhân đôi số lượng.',
+        detail: 'Chuyển các mục đã mua vào tủ lạnh thông qua quy trình duyệt nhập kho, ngăn chặn nhân đôi số lượng.',
       },
     ],
     deepDiveTitle: 'Khép kín chu trình từ chợ về tủ lạnh (C27–C29)',
@@ -438,7 +439,6 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
     <PublicMarketingShell screenId={spec.screenId}>
       <FeatureSubnavBar activeId={spec.screenId} />
 
-      {/* Hero matching M02..M08 wireframes 1:1 */}
       <section
         aria-labelledby={`tkv-${spec.screenId}-h1`}
         className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-12"
@@ -446,45 +446,49 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Title + Subtitle + 3 Structured Highlight Cards */}
           <div className="lg:col-span-6 space-y-5">
-            <TkvBadge tone="success" icon="sparkles">
-              {spec.eyebrow}
-            </TkvBadge>
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <span>{spec.eyebrow}</span>
+            </span>
 
             <div className="space-y-2.5">
               <h1
                 id={`tkv-${spec.screenId}-h1`}
-                className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink)] leading-[1.15]"
+                className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--sumi-ink,#111315)] leading-[1.15]"
               >
                 {spec.title}
               </h1>
-              <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)] leading-relaxed">
+              <p className="text-base sm:text-lg text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                 {spec.subtitle}
               </p>
             </div>
 
             <div className="space-y-3 pt-1">
               {spec.bullets.map((b) => (
-                <TkvSurface key={b.title} className="p-4 sm:p-5 flex items-start gap-3.5">
-                  <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
-                    <VNextIcon name={b.icon} size={22} />
+                <div
+                  key={b.title}
+                  className="rounded-[20px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 sm:p-5 flex items-start gap-3.5"
+                >
+                  <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                    <VNextIcon name={b.icon} size={20} />
                   </span>
                   <div className="space-y-1 min-w-0">
-                    <h2 className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink)]">
+                    <h2 className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
                       {b.title}
                     </h2>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                    <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                       {b.detail}
                     </p>
                   </div>
-                </TkvSurface>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Right Column: Mint Studio Showcase + Full-Width Coral CTA matching wireframe */}
+          {/* Right Column: Crisp Architectural Showcase + Sumi Carbon CTA */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="rounded-[28px] bg-[var(--tkv-surface-mint)] p-4 sm:p-6 border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-float)] space-y-4">
-              <div className="rounded-[20px] overflow-hidden aspect-[4/3] bg-white shadow-sm">
+            <div className="rounded-[24px] bg-white p-4 sm:p-5 border border-[var(--sumi-border,#E4E4E0)] space-y-4">
+              <div className="rounded-[18px] overflow-hidden aspect-[4/3] bg-[var(--sumi-canvas,#F7F7F5)]">
                 <img
                   src={spec.imageSrc640}
                   srcSet={`${spec.imageSrc640} 640w, ${spec.imageSrc} 1200w`}
@@ -494,67 +498,69 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
                 />
               </div>
 
-              <div className="rounded-2xl bg-white/90 border border-[var(--tkv-border)] p-4 space-y-2">
-                <p className="text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5">
+              <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 space-y-1.5">
+                <p className="text-xs font-extrabold text-[var(--sumi-ink,#111315)] inline-flex items-center gap-1.5">
                   <VNextIcon name="shield" size={15} />
                   <span>{spec.truthBadge}</span>
                 </p>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                   {spec.truthNote}
                 </p>
               </div>
             </div>
 
-            <TkvButton
-              variant="coral"
-              size="lg"
-              fullWidth
-              iconRight="arrow-right"
+            <button
+              type="button"
               onClick={() => {
                 trackPublicConversion('feature_primary_cta', { screenId: spec.screenId });
                 navigate(vnextHref(spec.ctaHref));
               }}
+              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-bold text-base inline-flex items-center justify-center gap-2 transition-colors"
             >
-              {spec.ctaLabel}
-            </TkvButton>
+              <span>{spec.ctaLabel}</span>
+              <VNextIcon name="arrow-right" size={18} />
+            </button>
           </div>
         </div>
       </section>
 
       {/* Deep-Dive Section */}
-      <section className="bg-[var(--tkv-surface)] border-y border-[var(--tkv-border)] py-12 px-4 sm:px-6">
+      <section className="bg-white border-y border-[var(--sumi-border,#E4E4E0)] py-12 px-4 sm:px-6">
         <div className="max-w-[1200px] mx-auto space-y-6">
-          <h2 className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink)]">
+          <h2 className="tkv-heading text-2xl font-extrabold text-[var(--sumi-ink,#111315)]">
             {spec.deepDiveTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {spec.deepDiveSteps.map((st) => (
-              <TkvSurface key={st.code} tone="mint" className="p-5 space-y-2.5">
-                <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--tkv-primary)] text-white text-xs font-extrabold">
+              <div
+                key={st.code}
+                className="rounded-[20px] bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-5 space-y-2.5"
+              >
+                <span className="font-mono tabular-nums inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--sumi-ink,#111315)] text-white text-xs font-extrabold">
                   {st.code}
                 </span>
-                <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                <h3 className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">
                   {st.heading}
                 </h3>
-                <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">{st.body}</p>
-              </TkvSurface>
+                <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">{st.body}</p>
+              </div>
             ))}
           </div>
 
           {spec.screenId === 'M06' && (
             <div className="pt-4 space-y-4">
-              <h3 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+              <h3 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
                 Một số món ăn xác minh nguyên liệu trong kho công thức
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {SHOWCASE_RECIPES.map((r) => (
-                  <TkvSurface key={r.slug} padded={false} className="overflow-hidden flex flex-col">
+                  <TkvSurface key={r.slug} padded={false} className="overflow-hidden flex flex-col bg-white border-[var(--sumi-border,#E4E4E0)]">
                     <VerifiedDishImage slug={r.slug} title={r.title} aspectClass="aspect-[4/3]" />
                     <div className="p-4 space-y-1">
-                      <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                      <p className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">
                         {r.title}
                       </p>
-                      <p className="text-xs text-[var(--tkv-ink-secondary)]">{r.meta}</p>
+                      <p className="text-xs font-mono tabular-nums text-[var(--sumi-muted,#5C5F62)]">{r.meta}</p>
                     </div>
                   </TkvSurface>
                 ))}
@@ -575,16 +581,55 @@ export const M06RecipesFeaturePage: React.FC = () => <FeatureStoryLayout spec={F
 export const M07CookingFeaturePage: React.FC = () => <FeatureStoryLayout spec={FEATURE_STORIES.M07} />;
 export const M08ShoppingFeaturePage: React.FC = () => <FeatureStoryLayout spec={FEATURE_STORIES.M08} />;
 
+interface PublicBillingPlanDto {
+  plan: 'monthly' | 'annual';
+  amountVnd: number;
+  currency: string;
+}
+
+async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
+  try {
+    const res = await fetch('/api/v1/billing/plans', { credentials: 'include' });
+    if (!res.ok) return null;
+    const body = (await res.json()) as { plans?: unknown };
+    if (!Array.isArray(body?.plans)) return null;
+    const valid = body.plans.filter(
+      (item): item is PublicBillingPlanDto =>
+        Boolean(item) &&
+        typeof item === 'object' &&
+        ((item as PublicBillingPlanDto).plan === 'monthly' ||
+          (item as PublicBillingPlanDto).plan === 'annual') &&
+        typeof (item as PublicBillingPlanDto).amountVnd === 'number' &&
+        Number.isFinite((item as PublicBillingPlanDto).amountVnd) &&
+        (item as PublicBillingPlanDto).amountVnd > 0,
+    );
+    return valid.length > 0 ? valid : null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * M09 — Các gói Takolio (`/pricing`).
- * Matches M09.png 1:1 while honoring Owner Decision 4 (`BLOCKED_CONTENT` commercial pricing truth:
- * zero fabricated public VND figures; authoritative prices are loaded inside authenticated `/plus`).
+ * Fetches live server plan prices from `/api/v1/billing/plans` with graceful fallback when offline or unauthenticated,
+ * keeping `"Miễn phí"` and `"Takolio Pro"` headings intact and zero invented client prices.
  */
 export const M09PricingPage: React.FC = () => {
   const navigate = useNavigate();
   const { userId, householdId, isGuest } = useAuthStore();
   const setGuestSession = useAuthStore((s) => s.setGuestSession);
   const [isStarting, setIsStarting] = useState(false);
+
+  const livePlansQuery = useQuery({
+    queryKey: ['public-billing-plans'],
+    queryFn: fetchLiveBillingPlans,
+    staleTime: 60_000,
+    retry: false,
+  });
+
+  const livePlans = livePlansQuery.data ?? null;
+  const monthlyPlan = livePlans?.find((p) => p.plan === 'monthly') ?? null;
+  const annualPlan = livePlans?.find((p) => p.plan === 'annual') ?? null;
 
   useVNextSeo({
     title: 'Các gói Takolio',
@@ -601,7 +646,7 @@ export const M09PricingPage: React.FC = () => {
     setIsStarting(true);
     try {
       await setGuestSession();
-      navigate(vnextHref('/onboarding/household'));
+      navigate(vnextHref('/onboarding/welcome'));
     } catch {
       navigate(vnextHref('/auth?mode=register'));
     } finally {
@@ -614,111 +659,147 @@ export const M09PricingPage: React.FC = () => {
       ? '/plus'
       : vnextHref('/auth?mode=login&returnTo=%2Fplus');
 
+  const formatServerVnd = (p: PublicBillingPlanDto) =>
+    `${new Intl.NumberFormat('vi-VN').format(p.amountVnd)} ${p.currency || 'VND'}`;
+
   return (
     <PublicMarketingShell screenId="M09">
       <section aria-labelledby="tkv-m09-h1" className="max-w-[1060px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-3 max-w-2xl">
-          <TkvBadge tone="warning" icon="info">
-            Minh bạch biểu phí theo dữ liệu máy chủ
-          </TkvBadge>
-          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.65rem] font-extrabold text-[var(--tkv-ink)]">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span>Minh bạch biểu phí theo dữ liệu máy chủ</span>
+          </span>
+          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.65rem] font-extrabold text-[var(--sumi-ink,#111315)]">
             Các gói Takolio
           </h1>
-          <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)]">
+          <p className="text-base sm:text-lg text-[var(--sumi-muted,#5C5F62)]">
             Lựa chọn gói phù hợp với nhu cầu sử dụng của hộ gia đình bạn.
           </p>
         </div>
 
-        {/* 2-Column Plan Cards matching M09.png */}
+        {/* 2-Column Architectural Sumi Plan Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-          <TkvSurface className="p-6 sm:p-8 flex flex-col justify-between gap-6">
+          <div className="rounded-[24px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 sm:p-8 flex flex-col justify-between gap-6">
             <div className="space-y-4">
-              <span className="inline-flex px-3 py-1 rounded-full text-xs font-extrabold bg-[var(--tkv-bg)] text-[var(--tkv-ink-secondary)] border border-[var(--tkv-border)]">
+              <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-muted,#5C5F62)] border border-[var(--sumi-border,#E4E4E0)]">
                 Cơ bản cho mọi gia đình
               </span>
-              <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-primary)]">
-                Miễn phí
-              </h2>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
-                Giá và quyền lợi hiển thị theo hệ thống chính thức. Bắt đầu ngay không cần thẻ thanh toán.
+              <div className="space-y-1">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
+                  Miễn phí
+                </h2>
+                <p className="font-mono tabular-nums text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                  0 VND <span className="text-xs font-sans font-semibold text-[var(--sumi-muted,#5C5F62)]">/ trọn đời cơ bản</span>
+                </p>
+              </div>
+              <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                Bắt đầu ngay không cần thẻ thanh toán — đầy đủ vòng lặp quản lý tủ lạnh, công thức và đi chợ cốt lõi.
               </p>
-              <ul className="space-y-2.5 pt-2 text-sm text-[var(--tkv-ink)]">
+              <ul className="space-y-2.5 pt-2 text-sm text-[var(--sumi-ink,#111315)]">
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
                   <span>Quản lý tồn kho tủ lạnh theo lô và cảnh báo hạn dùng</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
                   <span>Tra cứu kho công thức món Việt & chế độ nấu từng bước có timer</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
                   <span>Danh sách đi chợ đồng bộ ngoại tuyến và đối chiếu định lượng</span>
                 </li>
               </ul>
             </div>
 
-            <TkvButton
-              variant="primary"
-              size="lg"
-              fullWidth
-              isLoading={isStarting}
-              onClick={handleStartFree}
+            <button
+              type="button"
+              disabled={isStarting}
+              onClick={() => void handleStartFree()}
               data-testid="m09-free-cta"
+              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-ink,#111315)] text-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-canvas,#F7F7F5)] font-bold text-base transition-colors disabled:opacity-60"
             >
-              Bắt đầu
-            </TkvButton>
-          </TkvSurface>
+              {isStarting ? 'Đang mở…' : 'Bắt đầu'}
+            </button>
+          </div>
 
-          <TkvSurface tone="mint" className="p-6 sm:p-8 flex flex-col justify-between gap-6 border-[var(--tkv-border-strong)]">
+          <div className="rounded-[24px] bg-[var(--sumi-ink,#111315)] text-white border border-[var(--sumi-ink,#111315)] p-6 sm:p-8 flex flex-col justify-between gap-6">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-white text-[var(--tkv-primary)] border border-[var(--tkv-border)]">
-                <VNextIcon name="crown" size={14} />
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white border border-white/15">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
                 <span>Nâng cao cho căn bếp bận rộn</span>
               </span>
-              <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-primary)]">
-                Takolio Pro
-              </h2>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
-                Giá và quyền lợi hiển thị theo hệ thống chính thức tại trang tài khoản /plus sau khi đăng nhập.
+              <div className="space-y-2">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-white">
+                  Takolio Pro
+                </h2>
+                {livePlans ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-testid="m09-live-prices">
+                    {monthlyPlan && (
+                      <div className="rounded-xl bg-white/10 border border-white/15 px-3.5 py-2.5">
+                        <p className="text-[11px] uppercase tracking-wider text-white/70 font-bold">Gói 1 tháng</p>
+                        <p className="font-mono tabular-nums text-base sm:text-lg font-extrabold text-white mt-0.5">
+                          {formatServerVnd(monthlyPlan)}
+                        </p>
+                      </div>
+                    )}
+                    {annualPlan && (
+                      <div className="rounded-xl bg-white/10 border border-white/25 px-3.5 py-2.5">
+                        <p className="text-[11px] uppercase tracking-wider text-white/70 font-bold">Gói 1 năm</p>
+                        <p className="font-mono tabular-nums text-base sm:text-lg font-extrabold text-white mt-0.5">
+                          {formatServerVnd(annualPlan)}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-xs font-mono text-white/80 bg-white/10 border border-white/15 rounded-xl px-3 py-2">
+                    {livePlansQuery.isPending
+                      ? 'Đang đồng bộ biểu phí trực tiếp từ máy chủ…'
+                      : 'Biểu phí VND chính thức tải trực tiếp tại trang /plus sau khi đăng nhập'}
+                  </p>
+                )}
+              </div>
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+                Mở rộng hạn mức quét AI chính xác cao, lập thực đơn tuần tự động và thanh toán VietQR bảo mật theo phiên đã xác thực.
               </p>
-              <ul className="space-y-2.5 pt-2 text-sm text-[var(--tkv-ink)]">
+              <ul className="space-y-2.5 pt-1 text-sm text-white/95">
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="sparkles" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
-                  <span>Mở rộng hạn mức quét AI tủ lạnh & hóa đơn có bước duyệt trước khi lưu</span>
+                  <VNextIcon name="sparkles" size={18} className="text-white shrink-0 mt-0.5" />
+                  <span>Ưu tiên nhận diện hoá đơn & nguyên liệu AI chính xác cao (có duyệt trước khi lưu)</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="calendar" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+                  <VNextIcon name="calendar" size={18} className="text-white shrink-0 mt-0.5" />
                   <span>Lập thực đơn tuần chuyên sâu & tối ưu danh sách đi chợ theo lịch</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="shield" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
-                  <span>Thanh toán VietQR / PayOS bảo mật trực tiếp từ phiên đã xác thực</span>
+                  <VNextIcon name="shield" size={18} className="text-white shrink-0 mt-0.5" />
+                  <span>Thanh toán VietQR / PayOS đối soát trực tiếp từ máy chủ</span>
                 </li>
               </ul>
             </div>
 
-            <TkvButton
-              variant="coral"
-              size="lg"
-              fullWidth
+            <button
+              type="button"
               onClick={() => {
                 trackPublicConversion('pricing_view_plus');
                 navigate(plusDestination);
               }}
               data-testid="m09-plus-cta"
+              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white text-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-canvas,#F7F7F5)] font-extrabold text-base transition-colors"
             >
               Xem các gói
-            </TkvButton>
-          </TkvSurface>
+            </button>
+          </div>
         </div>
 
-        <TkvSurface tone="saffron" className="p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink)] flex items-start gap-3">
-          <VNextIcon name="info" size={18} className="text-[var(--tkv-warning)] shrink-0 mt-0.5" />
+        <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] flex items-start gap-3">
+          <VNextIcon name="info" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
           <p>
-            <strong>Ghi chú minh bạch thương mại (M09):</strong> Trang giới thiệu công khai không niêm yết cứng số tiền khi chưa kết nối API bảng giá công khai. Mọi mức phí và chu kỳ thanh toán luôn được lấy trực tiếp từ máy chủ tại mục <strong>Takolio Pro (/plus)</strong> sau khi bạn đăng nhập.
+            <strong className="text-[var(--sumi-ink,#111315)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
+            Biểu phí hiển thị trên trang này chỉ đọc từ điểm cuối máy chủ <code>/api/v1/billing/plans</code> khi khả dụng và không bao giờ gán cứng số tiền ước đoán ở phía trình duyệt.
           </p>
-        </TkvSurface>
+        </div>
       </section>
     </PublicMarketingShell>
   );
@@ -747,17 +828,18 @@ const FAQ_ITEMS = [
   },
   {
     id: 'faq-plus',
-    q: 'Tính năng nào có trong Plus?',
-    a: 'Chi tiết quyền lợi và biểu phí hiện hành của Takolio Pro được hiển thị trực tiếp từ máy chủ tại trang /plus sau khi bạn đăng nhập tài khoản đã xác thực.',
+    q: 'Tính năng nào có trong Takolio Pro?',
+    a: 'Chi tiết quyền lợi và biểu phí hiện hành của Takolio Pro được đồng bộ trực tiếp từ máy chủ tại trang /plus sau khi bạn đăng nhập tài khoản đã xác thực.',
   },
 ] as const;
 
 /**
  * M10 — Câu hỏi thường gặp (`/faq`).
- * Accessible accordion matching M10.png 1:1.
+ * Accessible accordion + instant client-side search filter.
  */
 export const M10FaqPage: React.FC = () => {
   const [openId, setOpenId] = useState<string>(FAQ_ITEMS[0].id);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useVNextSeo({
     title: 'Câu hỏi thường gặp',
@@ -765,56 +847,105 @@ export const M10FaqPage: React.FC = () => {
     canonicalPath: '/faq',
   });
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredFaq = normalizedQuery
+    ? FAQ_ITEMS.filter(
+        (item) =>
+          item.q.toLowerCase().includes(normalizedQuery) ||
+          item.a.toLowerCase().includes(normalizedQuery),
+      )
+    : FAQ_ITEMS;
+
   return (
     <PublicMarketingShell screenId="M10">
       <section aria-labelledby="tkv-m10-h1" className="max-w-[920px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-2.5">
-          <TkvBadge tone="success" icon="help">
-            Giải đáp minh bạch
-          </TkvBadge>
-          <h1 id="tkv-m10-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink)]">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span>Giải đáp minh bạch</span>
+          </span>
+          <h1 id="tkv-m10-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--sumi-ink,#111315)]">
             Câu hỏi thường gặp
           </h1>
-          <p className="text-base text-[var(--tkv-ink-secondary)]">
+          <p className="text-base text-[var(--sumi-muted,#5C5F62)]">
             Những thông tin quan trọng trước khi bạn đưa Takolio vào căn bếp hằng ngày.
           </p>
         </div>
 
-        <div className="space-y-3">
-          {FAQ_ITEMS.map((item) => {
-            const expanded = openId === item.id;
-            const panelId = `${item.id}-panel`;
-            return (
-              <TkvSurface key={item.id} padded={false} className="overflow-hidden">
-                <h2>
-                  <button
-                    type="button"
-                    aria-expanded={expanded}
-                    aria-controls={panelId}
-                    onClick={() => setOpenId(expanded ? '' : item.id)}
-                    className="tkv-focusable w-full min-h-[60px] px-5 py-4 flex items-center justify-between gap-4 text-left hover:bg-[var(--tkv-surface-mint)]/40 transition-colors"
-                  >
-                    <span className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink)]">
-                      {item.q}
-                    </span>
-                    <span className="w-8 h-8 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
-                      <VNextIcon name={expanded ? 'minus' : 'plus'} size={16} />
-                    </span>
-                  </button>
-                </h2>
-                {expanded && (
-                  <div
-                    id={panelId}
-                    role="region"
-                    className="px-5 pb-5 pt-1 text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed border-t border-[var(--tkv-border)]/60"
-                  >
-                    {item.a}
-                  </div>
-                )}
-              </TkvSurface>
-            );
-          })}
+        {/* Instant Accessible FAQ Search */}
+        <div className="relative flex items-center">
+          <label htmlFor="m10-faq-search" className="sr-only">
+            Tìm câu hỏi thường gặp
+          </label>
+          <span className="absolute left-4 text-[var(--sumi-muted,#5C5F62)] pointer-events-none">
+            <VNextIcon name="search" size={18} />
+          </span>
+          <input
+            id="m10-faq-search"
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Tìm câu hỏi..."
+            className="tkv-focusable w-full min-h-[48px] pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-[var(--sumi-border,#E4E4E0)] text-base text-[var(--sumi-ink,#111315)] placeholder:text-[var(--sumi-muted,#5C5F62)]"
+          />
         </div>
+
+        {filteredFaq.length === 0 ? (
+          <div
+            role="status"
+            className="rounded-[20px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 text-center space-y-3"
+          >
+            <p className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">
+              Không tìm thấy câu hỏi khớp từ khóa “{searchQuery.trim()}”
+            </p>
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="tkv-focusable min-h-[40px] px-4 py-2 rounded-xl bg-[var(--sumi-ink,#111315)] text-white text-xs font-bold"
+            >
+              Hiển thị tất cả câu hỏi
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {filteredFaq.map((item) => {
+              const expanded = Boolean(normalizedQuery) || openId === item.id;
+              const panelId = `${item.id}-panel`;
+              return (
+                <div
+                  key={item.id}
+                  className="rounded-[20px] bg-white border border-[var(--sumi-border,#E4E4E0)] overflow-hidden"
+                >
+                  <h2>
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      aria-controls={panelId}
+                      onClick={() => setOpenId(openId === item.id ? '' : item.id)}
+                      className="tkv-focusable w-full min-h-[60px] px-5 py-4 flex items-center justify-between gap-4 text-left hover:bg-[var(--sumi-canvas,#F7F7F5)] transition-colors"
+                    >
+                      <span className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                        {item.q}
+                      </span>
+                      <span className="w-8 h-8 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                        <VNextIcon name={expanded ? 'minus' : 'plus'} size={16} />
+                      </span>
+                    </button>
+                  </h2>
+                  {expanded && (
+                    <div
+                      id={panelId}
+                      role="region"
+                      className="px-5 pb-5 pt-2 text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed border-t border-[var(--sumi-border,#E4E4E0)]"
+                    >
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </section>
     </PublicMarketingShell>
   );
@@ -824,20 +955,20 @@ const STORIES_GUIDES = [
   {
     id: '5-mon-nhanh-toi-ban-ron',
     title: '5 món ăn nhanh cho tối bận rộn',
-    readTime: '4 phút đọc · Mẹo thực đơn',
+    readTime: '04 phút đọc · Mẹo thực đơn',
     excerpt:
       'Cách kết hợp trứng, đậu phụ, rau theo mùa và thịt thái sẵn để hoàn thành mâm cơm nóng hổi dưới 25 phút sau giờ làm.',
     slug: 'dau-phu-sot-ca-chua',
     points: [
       'Ưu tiên 1 món mặn nhanh (đậu phụ sốt cà chua, gà kho gừng) kết hợp 1 món canh hoặc rau xào tỏi.',
       'Kiểm tra mục “Nguyên liệu nên dùng sớm” trên trang Hôm nay trước khi ra chợ chiều.',
-      'Dùng bộ lọc thời gian tối đa ≤ 25 phút trong Kho công thức để lọc ngay các món gọn bước.',
+      'Dùng bộ lọc thời gian tối đa ≤ 20 phút trong Kho công thức để lọc ngay các món gọn bước.',
     ],
   },
   {
     id: 'bao-quan-rau-dung-cach',
     title: 'Bảo quản rau đúng cách',
-    readTime: '5 phút đọc · Tủ lạnh thông minh',
+    readTime: '05 phút đọc · Tủ lạnh thông minh',
     excerpt:
       'Phân loại rau ăn lá, củ quả và gia vị tươi theo độ ẩm ngăn mát để giữ độ giòn lâu hơn và giảm hao hụt.',
     slug: 'rau-muong-xao-toi',
@@ -850,7 +981,7 @@ const STORIES_GUIDES = [
   {
     id: 'bua-com-30-phut',
     title: 'Bữa cơm 30 phút',
-    readTime: '4 phút đọc · Đứng bếp nhẹ đầu',
+    readTime: '04 phút đọc · Đứng bếp nhẹ đầu',
     excerpt:
       'Sắp xếp thứ tự sơ chế — ướp trước, nấu canh song song, xào rau sau cùng — với bộ hẹn giờ từng bước trên Takolio.',
     slug: 'sup-ga-ngo-non-nam-huong',
@@ -864,7 +995,6 @@ const STORIES_GUIDES = [
 
 /**
  * M11 — Takolio Stories (`/stories`).
- * Matches M11.png 3-card layout cleanly with interactive guide reader & honest `BLOCKED_CONTENT` CMS notice.
  */
 export const M11StoriesPage: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string>(STORIES_GUIDES[0].id);
@@ -880,35 +1010,34 @@ export const M11StoriesPage: React.FC = () => {
   return (
     <PublicMarketingShell screenId="M11">
       <section aria-labelledby="tkv-m11-h1" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-2.5">
-            <TkvBadge tone="success" icon="sparkles">
-              Cẩm nang bếp gia đình
-            </TkvBadge>
-            <h1 id="tkv-m11-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink)]">
-              Takolio Stories
-            </h1>
-            <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)]">
-              Cảm hứng cho mỗi bữa ăn và những mẹo bếp thực tế.
-            </p>
-          </div>
+        <div className="space-y-2.5">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span>Cẩm nang bếp gia đình</span>
+          </span>
+          <h1 id="tkv-m11-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+            Takolio Stories
+          </h1>
+          <p className="text-base sm:text-lg text-[var(--sumi-muted,#5C5F62)]">
+            Cảm hứng cho mỗi bữa ăn và những mẹo bếp thực tế.
+          </p>
         </div>
 
-        {/* 3 Editorial Cards matching M11.png */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {STORIES_GUIDES.map((story) => {
             const active = story.id === selected.id;
             return (
-              <TkvSurface
+              <div
                 key={story.id}
-                padded={false}
                 className={clsx(
-                  'overflow-hidden flex flex-col justify-between transition-colors',
-                  active && 'ring-2 ring-[var(--tkv-primary)]',
+                  'rounded-[22px] bg-white border overflow-hidden flex flex-col justify-between transition-colors',
+                  active
+                    ? 'border-[var(--sumi-ink,#111315)] ring-1 ring-[var(--sumi-ink,#111315)]'
+                    : 'border-[var(--sumi-border,#E4E4E0)]',
                 )}
               >
                 <div>
-                  <div className="p-3 bg-[var(--tkv-surface-mint)]">
+                  <div className="p-3 bg-[var(--sumi-canvas,#F7F7F5)]">
                     <VerifiedDishImage
                       slug={story.slug}
                       title={story.title}
@@ -917,47 +1046,55 @@ export const M11StoriesPage: React.FC = () => {
                     />
                   </div>
                   <div className="p-5 space-y-2">
-                    <p className="text-xs font-bold text-[var(--tkv-primary)]">{story.readTime}</p>
-                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+                    <p className="text-xs font-mono tabular-nums font-bold text-[var(--sumi-muted,#5C5F62)]">
+                      {story.readTime}
+                    </p>
+                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)]">
                       {story.title}
                     </h2>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                    <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                       {story.excerpt}
                     </p>
                   </div>
                 </div>
                 <div className="px-5 pb-5">
-                  <TkvButton
-                    variant={active ? 'primary' : 'secondary'}
-                    size="sm"
-                    fullWidth
+                  <button
+                    type="button"
                     onClick={() => setSelectedId(story.id)}
+                    className={clsx(
+                      'tkv-focusable w-full min-h-[44px] px-4 py-2 rounded-xl text-sm font-bold border transition-colors',
+                      active
+                        ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                        : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border-strong,#CFCFC9)] hover:bg-[var(--sumi-canvas,#F7F7F5)]',
+                    )}
                   >
                     {active ? 'Đang xem hướng dẫn dưới đây' : 'Đọc hướng dẫn nhanh'}
-                  </TkvButton>
+                  </button>
                 </div>
-              </TkvSurface>
+              </div>
             );
           })}
         </div>
 
         {/* Expanded Guide Reader */}
-        <TkvSurface tone="mint" className="p-6 sm:p-8 space-y-4">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
+        <div className="rounded-[22px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 sm:p-8 space-y-4">
+          <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--sumi-border,#E4E4E0)] pb-3">
+            <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--sumi-ink,#111315)]">
               {selected.title}
             </h2>
-            <span className="text-xs font-bold text-[var(--tkv-primary)]">{selected.readTime}</span>
+            <span className="text-xs font-mono tabular-nums font-bold text-[var(--sumi-muted,#5C5F62)]">
+              {selected.readTime}
+            </span>
           </div>
-          <ul className="space-y-2.5 text-sm sm:text-base text-[var(--tkv-ink)]">
+          <ul className="space-y-2.5 text-sm sm:text-base text-[var(--sumi-ink,#111315)]">
             {selected.points.map((pt) => (
               <li key={pt} className="flex items-start gap-2.5">
-                <VNextIcon name="check" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-1" />
+                <VNextIcon name="check" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-1" />
                 <span>{pt}</span>
               </li>
             ))}
           </ul>
-        </TkvSurface>
+        </div>
       </section>
     </PublicMarketingShell>
   );
@@ -965,7 +1102,7 @@ export const M11StoriesPage: React.FC = () => {
 
 /**
  * M12 — Giới thiệu · Liên hệ · Pháp lý (`/about`, `/contact`, `/privacy`, `/terms`).
- * Implements the 4-route template family specified in `SCREENS/M12.md` & `M12.png`.
+ * Honest structured Support & Feedback Guide (zero fake copy-paste `<pre>` submission, zero non-synthetic emails).
  */
 export const M12CompanyLegalPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -977,12 +1114,6 @@ export const M12CompanyLegalPage: React.FC = () => {
         ? 'terms'
         : 'about';
 
-  const [senderName, setSenderName] = useState('');
-  const [senderEmail, setSenderEmail] = useState('');
-  const [messageBody, setMessageBody] = useState('');
-  const [draftPrepared, setDraftPrepared] = useState(false);
-  const [copiedDraft, setCopiedDraft] = useState(false);
-
   const titles: Record<typeof section, { title: string; canonical: string; desc: string }> = {
     about: {
       title: 'Giới thiệu · Liên hệ · Pháp lý',
@@ -992,7 +1123,7 @@ export const M12CompanyLegalPage: React.FC = () => {
     contact: {
       title: 'Liên hệ Takolio',
       canonical: '/contact',
-      desc: 'Kênh liên hệ hỗ trợ sản phẩm và đóng góp ý kiến cho đội ngũ phát triển Takolio.',
+      desc: 'Hướng dẫn hỗ trợ sản phẩm, tra cứu thông tin phiên và đóng góp ý kiến cho Takolio.',
     },
     privacy: {
       title: 'Chính sách bảo mật',
@@ -1012,12 +1143,6 @@ export const M12CompanyLegalPage: React.FC = () => {
     canonicalPath: titles[section].canonical,
   });
 
-  const handlePrepareContact = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!senderName.trim() || !senderEmail.trim() || !messageBody.trim()) return;
-    setDraftPrepared(true);
-  };
-
   return (
     <PublicMarketingShell screenId="M12">
       <section aria-labelledby="tkv-m12-h1" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
@@ -1036,8 +1161,8 @@ export const M12CompanyLegalPage: React.FC = () => {
               className={clsx(
                 'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-bold inline-flex items-center border transition-colors',
                 section === t.key
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                  : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]',
+                  ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                  : 'bg-white text-[var(--sumi-muted,#5C5F62)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] hover:text-[var(--sumi-ink,#111315)]',
               )}
             >
               {t.label}
@@ -1048,25 +1173,26 @@ export const M12CompanyLegalPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content Column */}
           <div className="lg:col-span-7 space-y-5">
-            <TkvBadge tone="success" icon="shield">
-              Cam kết minh bạch & Bảo vệ dữ liệu hộ gia đình
-            </TkvBadge>
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <span>Cam kết minh bạch & Bảo vệ dữ liệu hộ gia đình</span>
+            </span>
 
-            <h1 id="tkv-m12-h1" className="tkv-heading text-3xl sm:text-[2.5rem] font-extrabold text-[var(--tkv-ink)] leading-tight">
+            <h1 id="tkv-m12-h1" className="tkv-heading text-3xl sm:text-[2.5rem] font-extrabold text-[var(--sumi-ink,#111315)] leading-tight">
               {titles[section].title}
             </h1>
 
-            <p className="text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
-              Thông tin về sản phẩm, hỗ trợ và chính sách bảo vệ dữ liệu căn bếp gia đình.
+            <p className="text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+              Thông tin về sản phẩm, hướng dẫn hỗ trợ và chính sách bảo vệ dữ liệu căn bếp gia đình.
             </p>
 
             {section === 'about' && (
-              <TkvSurface className="p-6 space-y-4 text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
+              <div className="rounded-[22px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 space-y-4 text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                 <div className="flex items-center gap-4">
-                  <MascotIllustration pose="welcome" size={72} />
+                  <MascotIllustration pose="welcome" size={64} className="border border-[var(--sumi-border,#E4E4E0)]" />
                   <div>
-                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                      Triết lý Kitchen Studio của Takolio
+                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                      Triết lý Sumi Kitchen Studio của Takolio
                     </h2>
                     <p className="text-sm">Giảm lãng phí thực phẩm, bớt áp lực nghĩ món mỗi chiều.</p>
                   </div>
@@ -1077,124 +1203,110 @@ export const M12CompanyLegalPage: React.FC = () => {
                 <p>
                   Mọi tính năng đều đặt sự trung thực dữ liệu lên hàng đầu: phân biệt rõ hạn dùng ước tính và hạn in trên bao bì, yêu cầu người dùng duyệt kết quả AI trước khi lưu, và cô lập tuyệt đối dữ liệu giữa các hộ gia đình.
                 </p>
-              </TkvSurface>
+              </div>
             )}
 
             {section === 'privacy' && (
-              <TkvSurface className="p-6 space-y-4 text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+              <div className="rounded-[22px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 space-y-4 text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
                   Tóm tắt kỹ thuật bảo vệ dữ liệu hiện hành trên hệ thống
                 </h2>
                 <ul className="space-y-2.5 list-disc pl-5">
-                  <li><strong>Cô lập theo hộ gia đình:</strong> Tồn kho, lịch tuần, giỏ mua sắm và ảnh quét đều được kiểm tra quyền sở hữu theo <code>household_id</code> ở tầng máy chủ.</li>
-                  <li><strong>Phiên đăng nhập an toàn:</strong> Xác thực bằng cookie <code>HttpOnly</code>; khi đăng xuất hoặc đổi tài khoản, bộ nhớ tạm trên trình duyệt được dọn sạch.</li>
-                  <li><strong>Ảnh quét AI:</strong> Chỉ gửi xử lý khi bạn chủ động bấm chụp/tải lên và không tự động nhập kho nếu chưa xác nhận.</li>
-                  <li><strong>Quyền xuất/xóa dữ liệu (U10):</strong> Đang được lập đặc tả kỹ thuật (<code>RFC-002</code>) để triển khai quy trình tự phục vụ an toàn.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Cô lập theo hộ gia đình:</strong> Tồn kho, lịch tuần, giỏ mua sắm và ảnh quét đều được kiểm tra quyền sở hữu theo <code>household_id</code> ở tầng máy chủ.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Phiên đăng nhập an toàn:</strong> Xác thực bằng cookie <code>HttpOnly</code>; khi đăng xuất hoặc đổi tài khoản, bộ nhớ tạm trên trình duyệt được dọn sạch.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Ảnh quét AI:</strong> Chỉ gửi xử lý khi bạn chủ động bấm chụp/tải lên và không tự động nhập kho nếu chưa xác nhận.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Quyền xuất/xóa dữ liệu (U10):</strong> Đang được lập đặc tả kỹ thuật (<code>RFC-002</code>) để triển khai quy trình tự phục vụ an toàn.</li>
                 </ul>
-              </TkvSurface>
+              </div>
             )}
 
             {section === 'terms' && (
-              <TkvSurface className="p-6 space-y-4 text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+              <div className="rounded-[22px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 space-y-4 text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
                   Nguyên tắc sử dụng dịch vụ
                 </h2>
                 <ul className="space-y-2.5 list-disc pl-5">
-                  <li><strong>Kiểm tra an toàn thực phẩm:</strong> Nhãn hạn dùng ước tính và gợi ý AI chỉ mang tính hỗ trợ quản lý; người dùng luôn kiểm tra thực tế tình trạng thực phẩm và dị ứng của gia đình trước khi chế biến.</li>
-                  <li><strong>Định lượng & dinh dưỡng:</strong> Chỉ các công thức có nguồn dinh dưỡng xác minh mới hiển thị chỉ số macro; ứng dụng không thay thế tư vấn y khoa.</li>
-                  <li><strong>Gói Takolio Pro:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Kiểm tra an toàn thực phẩm:</strong> Nhãn hạn dùng ước tính và gợi ý AI chỉ mang tính hỗ trợ quản lý; người dùng luôn kiểm tra thực tế tình trạng thực phẩm và dị ứng của gia đình trước khi chế biến.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Định lượng & dinh dưỡng:</strong> Chỉ các công thức có nguồn dinh dưỡng xác minh mới hiển thị chỉ số macro; ứng dụng không thay thế tư vấn y khoa.</li>
+                  <li><strong className="text-[var(--sumi-ink,#111315)]">Gói Takolio Pro:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
                 </ul>
-              </TkvSurface>
+              </div>
             )}
 
             {section === 'contact' && (
-              <TkvSurface tone="mint" className="p-6 space-y-2 text-sm text-[var(--tkv-ink-secondary)]">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                  Hỗ trợ & phản hồi sản phẩm
+              <div className="rounded-[22px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 space-y-3 text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                  Nguyên tắc hỗ trợ minh bạch
                 </h2>
                 <p>
-                  Điền biểu mẫu bên cạnh để chuẩn bị nội dung liên hệ. Vì cổng gửi ticket tự động chưa bật trên môi trường công khai hiện tại, hệ thống sẽ tạo bản nháp hoàn chỉnh để bạn sao chép hoặc mở trình thư điện tử của mình một cách minh bạch (không giả lập báo gửi thành công).
+                  Cổng gửi yêu cầu trực tiếp trên web công khai chưa bật trong phiên bản hiện hành. Thay vì hiển thị biểu mẫu giả lập báo gửi thành công, Takolio cung cấp danh mục tự kiểm tra trạng thái phiên, đối soát thanh toán và hướng dẫn xử lý sự cố ngay bên cạnh.
                 </p>
-              </TkvSurface>
+              </div>
             )}
           </div>
 
-          {/* Right Contact Card matching M12.png */}
+          {/* Right Structured Support & Feedback Guide (replaces fake copy-paste <pre>) */}
           <div className="lg:col-span-5">
-            <TkvSurface className="p-6 sm:p-7 space-y-4">
-              <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-primary)]">
-                Liên hệ Takolio
-              </h2>
-              <form onSubmit={handlePrepareContact} className="space-y-4">
-                <TkvTextField
-                  label="Họ và tên"
-                  value={senderName}
-                  onChange={(e) => {
-                    setSenderName(e.target.value);
-                    setDraftPrepared(false);
-                  }}
-                  placeholder="Nguyễn Văn A"
-                  required
-                />
-                <TkvTextField
-                  label="Email"
-                  type="email"
-                  value={senderEmail}
-                  onChange={(e) => {
-                    setSenderEmail(e.target.value);
-                    setDraftPrepared(false);
-                  }}
-                  placeholder="email@example.com"
-                  required
-                />
-                <div className="space-y-2">
-                  <label htmlFor="m12-contact-body" className="block text-sm font-bold text-[var(--tkv-ink)]">
-                    Nội dung
-                  </label>
-                  <textarea
-                    id="m12-contact-body"
-                    rows={4}
-                    required
-                    value={messageBody}
-                    onChange={(e) => {
-                      setMessageBody(e.target.value);
-                      setDraftPrepared(false);
-                    }}
-                    placeholder="Mô tả câu hỏi hoặc góp ý của bạn…"
-                    className="tkv-focusable w-full rounded-[14px] border border-[var(--tkv-border-strong)] bg-[var(--tkv-bg)] px-3.5 py-2.5 text-sm text-[var(--tkv-ink)]"
-                  />
-                </div>
-                <TkvButton type="submit" variant="primary" size="lg" fullWidth>
-                  Chuẩn bị nội dung liên hệ
-                </TkvButton>
-              </form>
+            <div className="rounded-[24px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-6 sm:p-7 space-y-5">
+              <div className="space-y-1.5">
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold text-[var(--sumi-muted,#5C5F62)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                  <span>Hướng dẫn hỗ trợ & phản hồi</span>
+                </span>
+                <h2 className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)]">
+                  Trung tâm hỗ trợ tự phục vụ
+                </h2>
+                <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                  Tra cứu nhanh cách xử lý các tình huống thường gặp về tài khoản, bản quét AI và giao dịch Takolio Pro.
+                </p>
+              </div>
 
-              {draftPrepared && (
-                <div role="status" className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-4 text-xs text-[var(--tkv-ink)] space-y-2.5">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <p className="font-extrabold text-[var(--tkv-primary)]">
-                      Đã chuẩn bị nội dung liên hệ sẵn sàng sao chép:
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const text = `Từ: ${senderName} <${senderEmail}>\nNội dung: ${messageBody}`;
-                        void navigator.clipboard?.writeText(text).then(() => {
-                          setCopiedDraft(true);
-                          window.setTimeout(() => setCopiedDraft(false), 2500);
-                        });
-                      }}
-                      className="tkv-focusable min-h-[34px] px-3 rounded-lg bg-white border border-[var(--tkv-border-strong)] font-extrabold text-[var(--tkv-primary)] hover:bg-[var(--tkv-bg)]"
-                    >
-                      {copiedDraft ? 'Đã sao chép!' : 'Sao chép nội dung'}
-                    </button>
-                  </div>
-                  <pre className="whitespace-pre-wrap font-sans bg-white/80 p-2.5 rounded-xl border border-[var(--tkv-border)]">
-                    {`Từ: ${senderName} <${senderEmail}>\nNội dung: ${messageBody}`}
-                  </pre>
-                </div>
-              )}
-            </TkvSurface>
+              <ol className="space-y-3 text-xs sm:text-sm">
+                <li className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--sumi-ink,#111315)]">
+                    <span className="font-mono tabular-nums mr-1.5">01.</span>
+                    Đối soát giao dịch Takolio Pro
+                  </p>
+                  <p className="text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                    Đăng nhập và mở mục <strong>Takolio Pro (/plus)</strong> để xem trạng thái lệnh VietQR trực tiếp từ máy chủ hoặc mở lại lệnh đang chờ mà không cần chuyển khoản lại.
+                  </p>
+                </li>
+                <li className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--sumi-ink,#111315)]">
+                    <span className="font-mono tabular-nums mr-1.5">02.</span>
+                    Kiểm tra đồng bộ & phiên bản ứng dụng
+                  </p>
+                  <p className="text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                    Tại <strong>Cài đặt ứng dụng</strong> và <strong>Quyền riêng tư</strong>, bạn có thể kiểm tra số thao tác ngoại tuyến đang chờ đồng bộ, mã phiên bản build và làm mới bộ nhớ đệm an toàn.
+                  </p>
+                </li>
+                <li className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--sumi-ink,#111315)]">
+                    <span className="font-mono tabular-nums mr-1.5">03.</span>
+                    Bảo mật thông tin khi gửi phản hồi
+                  </p>
+                  <p className="text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                    Chỉ đính kèm mã hỗ trợ bản quét (<code>supportId</code>) hoặc 4 số cuối mã đơn thanh toán — không bao giờ chia sẻ mật khẩu hoặc mã OTP 6 chữ số.
+                  </p>
+                </li>
+              </ol>
+
+              <div className="pt-1 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <Link
+                  to="/faq"
+                  className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--sumi-ink,#111315)] text-white text-xs sm:text-sm font-bold inline-flex items-center justify-center gap-1.5 hover:bg-[var(--sumi-ink-hover,#23262A)] transition-colors"
+                >
+                  <span>Tra cứu FAQ</span>
+                  <VNextIcon name="arrow-right" size={15} />
+                </Link>
+                <Link
+                  to={vnextHref('/auth?mode=login')}
+                  className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--sumi-border-strong,#CFCFC9)] text-[var(--sumi-ink,#111315)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--sumi-canvas,#F7F7F5)] transition-colors"
+                >
+                  Đăng nhập kiểm tra phiên
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@ import { SESSION_COOKIE, sha256Hex } from '../utils/session';
 
 type OtpContext = Context<{ Bindings: Env; Variables: { auth: AuthContext } }>;
 type Registration = { name: string; password: string };
-const RESET_MESSAGE = 'Nếu email này có tài khoản Frigo, hướng dẫn đặt lại mật khẩu sẽ được gửi đến email của bạn.';
+const RESET_MESSAGE = 'Nếu email này có tài khoản Takolio, hướng dẫn đặt lại mật khẩu sẽ được gửi đến email của bạn.';
 
 async function metadata(c: OtpContext, result?: StrictOtpResult) {
   let epoch = result && 'serverEpochMillis' in result ? result.serverEpochMillis : undefined;
@@ -161,7 +161,7 @@ export async function verifyStrictOtp(c: OtpContext,
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(result.sessionToken)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
   return c.json({ ...meta, success: true, replayed: false, sessionRequired: false,
     message: input.purpose === 'register' ? 'Xác thực tài khoản thành công!' : 'Đặt lại mật khẩu thành công!',
-    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || 'Người dùng Frigo',
+    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || 'Người dùng Takolio',
       avatarUrl: profile.avatar_url || '/icons/favicon.svg', householdId: `hh_${profile.user_id}`,
       isGuest: false, onboardingCompleted: Boolean(profile.onboarding_completed_at) },
   });

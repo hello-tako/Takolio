@@ -5,9 +5,9 @@ import { ADMIN_ROLE_LABELS_VI, type AdminMe } from '@shared/admin';
 import { getAdminDataContext, subscribeAdminDataContext } from '../api/client';
 import { useLogout } from '../api/hooks';
 import { useSidebarCollapsed } from '../lib/hooks';
-import { isNavItemActive, visibleNavItems } from '../lib/nav';
+import { isNavItemActive, visibleNavItems, visibleSubNavItems } from '../lib/nav';
 import { vi } from '../i18n/vi';
-import { Button, FixtureBanner } from './ui';
+import { Button, FixtureBanner, SumiOctopusMark } from './ui';
 
 function useDataContext() {
   return useSyncExternalStore(subscribeAdminDataContext, getAdminDataContext, getAdminDataContext);
@@ -50,7 +50,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
       <aside id="admin-sidebar" className={clsx('admin-sidebar', drawerOpen && 'is-open')} aria-label={vi.layout.sidebarLabel}>
         <div className="brand">
           <span className="brand-mark" aria-hidden="true">
-            T
+            <SumiOctopusMark size={20} />
           </span>
           <span className="brand-name">{vi.appName}</span>
         </div>
@@ -59,7 +59,9 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
             {items.map((item) => {
               const label = vi.layout.nav[item.id];
               const Icon = item.icon;
-              const active = isNavItemActive(item, location.pathname);
+              const subItems = visibleSubNavItems(item, me.permissions);
+              const activeSub = subItems.some((sub) => isNavItemActive(sub, location.pathname));
+              const active = isNavItemActive(item, location.pathname) && !activeSub;
               return (
                 <li key={item.id}>
                   <Link
@@ -72,6 +74,29 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
                     <Icon size={18} aria-hidden="true" />
                     <span className={clsx(collapsed ? 'sr-only' : 'nav-label')}>{label}</span>
                   </Link>
+                  {subItems.length > 0 ? (
+                    <ul className="nav-sublist">
+                      {subItems.map((sub) => {
+                        const subLabel = vi.layout.nav[sub.id];
+                        const SubIcon = sub.icon;
+                        const subIsActive = isNavItemActive(sub, location.pathname);
+                        return (
+                          <li key={sub.id}>
+                            <Link
+                              to={sub.to}
+                              title={collapsed ? subLabel : undefined}
+                              data-testid={`admin-nav-${sub.id}`}
+                              aria-current={subIsActive ? 'page' : undefined}
+                              className={clsx('nav-link nav-sublink', subIsActive && 'is-active')}
+                            >
+                              <SubIcon size={16} aria-hidden="true" />
+                              <span className={clsx(collapsed ? 'sr-only' : 'nav-label')}>{subLabel}</span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : null}
                 </li>
               );
             })}

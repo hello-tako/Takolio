@@ -156,7 +156,7 @@ class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { 
         <SystemStatusPage title="Không thể mở trang này">
           <p role="alert">Vui lòng tải lại ứng dụng để thử lại.</p>
           <button
-            className="rounded-xl bg-takosan-green px-4 py-3 text-white outline-none focus-visible:ring-2 focus-visible:ring-semantic-focus"
+            className="rounded-xl bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] px-4 py-3 font-semibold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--sumi-ink,#111315)]"
             onClick={() => window.location.reload()}
           >
             Tải lại

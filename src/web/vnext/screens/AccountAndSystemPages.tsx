@@ -6,6 +6,14 @@ import '../styles/tokens.css';
 import '../styles/vnext-adapted.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
+
+const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
+function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+  const trimmed = (raw ?? '').trim();
+  if (!trimmed) return isGuest ? 'Người dùng Takolio' : 'Bếp trưởng';
+  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  return raw as string;
+}
 import { queryKeys } from '../../lib/queryKeys';
 import { getPendingOps } from '../../lib/sync';
 import { FoodPreferencesPage } from '../../pages/settings/FoodPreferencesPage';
@@ -61,16 +69,16 @@ export const C30NotificationsVNext: React.FC = () => {
       <div className="max-w-3xl space-y-6">
         <div className="flex items-end justify-between gap-3 flex-wrap">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
               Nhắc nhở từ trạng thái thực tế
             </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)] mt-0.5">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] mt-0.5">
               Thông báo căn bếp
             </h1>
           </div>
           <Link
             to={vnextHref('/settings/notifications')}
-            className="tkv-focusable min-h-[42px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border)] bg-white text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5"
+            className="tkv-focusable min-h-[42px] px-3.5 py-2 rounded-xl border border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] bg-white text-xs font-bold text-[var(--sumi-ink,#111315)] inline-flex items-center gap-1.5 transition-colors"
           >
             <VNextIcon name="settings" size={15} />
             <span>Cài đặt thông báo</span>
@@ -96,7 +104,7 @@ export const C30NotificationsVNext: React.FC = () => {
             primaryAction={
               <Link
                 to={vnextHref('/fridge')}
-                className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] text-white font-bold text-sm inline-flex items-center"
+                className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-semibold text-sm inline-flex items-center transition-colors"
               >
                 Kiểm tra tủ lạnh
               </Link>
@@ -113,20 +121,23 @@ export const C30NotificationsVNext: React.FC = () => {
                     : 'recipes';
               return (
                 <li key={item.id}>
-                  <TkvSurface className="p-4 sm:p-5 flex items-start justify-between gap-4">
+                  <TkvSurface className="p-4 sm:p-5 flex items-start justify-between gap-4 bg-white border-[var(--sumi-border,#E4E4E0)]">
                     <div className="flex items-start gap-3.5 min-w-0">
-                      <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                      <span className="relative w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
                         <VNextIcon name={icon} size={20} />
+                        {item.type === 'expiring_soon' && (
+                          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                        )}
                       </span>
                       <div className="space-y-1 min-w-0">
-                        <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                        <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">
                           {item.title}
                         </p>
-                        <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                        <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                           {item.message}
                         </p>
                         {item.createdAt && (
-                          <p className="text-xs text-[var(--tkv-ink-muted)]">
+                          <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
                             {relativeTimeVi(item.createdAt)}
                           </p>
                         )}
@@ -234,31 +245,45 @@ export const U01ProfileHubVNext: React.FC = () => {
     },
   ];
 
+  const cleanDisplayName = sanitizeUserDisplayName(displayName, isGuest);
+
   return (
     <ConsumerStudioShell screenId="U01" title="Hồ sơ cá nhân">
       <div className="max-w-3xl space-y-6">
-        <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+        <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
           Hồ sơ cá nhân
         </h1>
 
         {/* Identity Summary Card */}
-        <TkvSurface tone="mint" className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <TkvSurface className="p-5 sm:p-6 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4 min-w-0">
-            <MascotIllustration pose="welcome" size={64} className="border-2 border-white shrink-0" />
+            <MascotIllustration pose="welcome" size={64} className="border border-[var(--sumi-border,#E4E4E0)] shrink-0" />
             <div className="min-w-0 space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--tkv-ink)] truncate">
-                  {displayName || 'Người dùng Takolio'}
+                <h2 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--sumi-ink,#111315)] truncate">
+                  {cleanDisplayName}
                 </h2>
-                <TkvBadge tone={isGuest ? 'warning' : 'success'} icon={isGuest ? 'info' : 'check'}>
-                  {isGuest ? 'Phiên dùng thử khách' : isPlus ? 'Thành viên Plus' : 'Tài khoản đã xác thực'}
-                </TkvBadge>
+                <span
+                  className={clsx(
+                    'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border',
+                    isPlus && !isGuest
+                      ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                      : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)]',
+                  )}
+                >
+                  {isPlus && !isGuest && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                  )}
+                  <span>
+                    {isGuest ? 'Phiên dùng thử khách' : isPlus ? 'Takolio Pro' : 'Tài khoản đã xác thực'}
+                  </span>
+                </span>
               </div>
-              <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] truncate">
+              <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] truncate">
                 {isGuest ? 'Chưa liên kết email · Đăng ký để lưu dữ liệu lâu dài' : email}
               </p>
               {householdId && (
-                <p className="text-[11px] font-mono text-[var(--tkv-ink-muted)] truncate">
+                <p className="text-[11px] font-mono tabular-nums text-[var(--sumi-muted,#5C5F62)] truncate">
                   Mã hộ: {householdId}
                 </p>
               )}
@@ -267,7 +292,7 @@ export const U01ProfileHubVNext: React.FC = () => {
 
           {isGuest && (
             <TkvButton
-              variant="coral"
+              variant="primary"
               size="sm"
               onClick={() => navigate(vnextHref('/auth?mode=register'))}
             >
@@ -276,30 +301,30 @@ export const U01ProfileHubVNext: React.FC = () => {
           )}
         </TkvSurface>
 
-        {/* Navigation List matching U01.png */}
+        {/* Navigation List */}
         <ul className="space-y-2.5" aria-label="Danh mục tài khoản và cài đặt">
           {navRows.map((row) => (
             <li key={row.id}>
               <Link
                 to={row.to}
-                className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border)] p-4 hover:border-[var(--tkv-primary)] transition-colors shadow-[var(--tkv-shadow-card)]"
+                className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3.5 min-w-0">
-                    <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                    <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
                       <VNextIcon name={row.icon} size={20} />
                     </span>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                        <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">
                           {row.title}
                         </p>
-                        {row.badge && <TkvBadge tone="success">{row.badge}</TkvBadge>}
+                        {row.badge && <TkvBadge tone="neutral">{row.badge}</TkvBadge>}
                       </div>
-                      <p className="text-xs text-[var(--tkv-ink-secondary)] truncate">{row.subtitle}</p>
+                      <p className="text-xs text-[var(--sumi-muted,#5C5F62)] truncate tabular-nums">{row.subtitle}</p>
                     </div>
                   </div>
-                  <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)] shrink-0" />
+                  <VNextIcon name="chevron-right" size={18} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
                 </div>
               </Link>
             </li>
@@ -309,9 +334,10 @@ export const U01ProfileHubVNext: React.FC = () => {
         {logoutError && (
           <div
             role="alert"
-            className="p-4 rounded-2xl bg-[var(--tkv-surface-coral)] border border-[var(--tkv-danger)]/35 text-sm text-[var(--tkv-danger)] font-semibold"
+            className="p-4 rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border-strong,#CFCFC9)] text-sm text-[var(--sumi-ink,#111315)] font-semibold flex items-center gap-2"
           >
-            {logoutError}
+            <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+            <span>{logoutError}</span>
           </div>
         )}
 
@@ -402,51 +428,52 @@ export const U06HouseholdHonestPage: React.FC = () => {
   return (
     <ConsumerStudioShell screenId="U06" title="Hộ gia đình" backTo={vnextHref('/me')}>
       <div className="max-w-3xl space-y-6">
-        <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+        <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
           Hộ gia đình
         </h1>
 
-        {/* Active Household Card matching U06.png */}
-        <TkvSurface tone="mint" className="p-5 sm:p-6 space-y-3">
-          <TkvBadge tone="warning" icon="info">
-            BLOCKED_BACKEND · RFC-001 đang chờ triển khai tầng máy chủ
-          </TkvBadge>
-          <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-primary)]">
+        {/* Active Household Card */}
+        <TkvSurface className="p-5 sm:p-6 space-y-3 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+          <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span>BLOCKED_BACKEND · RFC-001 đang chờ triển khai tầng máy chủ</span>
+          </span>
+          <h2 className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)]">
             Hộ gia đình hiện tại
           </h2>
-          <p className="text-sm text-[var(--tkv-ink-secondary)]">
+          <p className="text-sm text-[var(--sumi-muted,#5C5F62)]">
             Mời, tham gia hộ khác và quản lý danh sách thành viên cần API máy chủ mới để bảo đảm cô lập dữ liệu.
           </p>
-          <div className="rounded-2xl bg-white border border-[var(--tkv-border)] p-4 space-y-2 text-sm">
+          <div className="rounded-2xl bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 space-y-2 text-sm">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <span className="font-bold text-[var(--tkv-ink-secondary)]">Mã hộ hiện tại</span>
-              <code className="font-mono text-xs font-extrabold text-[var(--tkv-ink)] bg-[var(--tkv-bg)] px-2.5 py-1 rounded-lg">
+              <span className="font-semibold text-[var(--sumi-muted,#5C5F62)]">Mã hộ hiện tại</span>
+              <code className="font-mono text-xs font-bold tabular-nums text-[var(--sumi-ink,#111315)] bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] px-2.5 py-1 rounded-lg">
                 {householdId || 'Chưa khởi tạo'}
               </code>
             </div>
-            <div className="flex items-center justify-between gap-2 border-t border-[var(--tkv-border)] pt-2">
-              <span className="font-bold text-[var(--tkv-ink-secondary)]">Khẩu phần nấu mặc định</span>
-              <strong className="text-[var(--tkv-ink)]">{householdSize} người</strong>
+            <div className="flex items-center justify-between gap-2 border-t border-[var(--sumi-border,#E4E4E0)] pt-2">
+              <span className="font-semibold text-[var(--sumi-muted,#5C5F62)]">Khẩu phần nấu mặc định</span>
+              <strong className="text-[var(--sumi-ink,#111315)] tabular-nums">{householdSize} người</strong>
             </div>
-            <div className="flex items-center justify-between gap-2 border-t border-[var(--tkv-border)] pt-2">
-              <span className="font-bold text-[var(--tkv-ink-secondary)]">Loại phiên</span>
-              <strong className="text-[var(--tkv-ink)]">
+            <div className="flex items-center justify-between gap-2 border-t border-[var(--sumi-border,#E4E4E0)] pt-2">
+              <span className="font-semibold text-[var(--sumi-muted,#5C5F62)]">Loại phiên</span>
+              <strong className="text-[var(--sumi-ink,#111315)]">
                 {isGuest ? 'Phiên khách cục bộ' : 'Tài khoản đã đăng ký'}
               </strong>
             </div>
           </div>
         </TkvSurface>
 
-        {/* Honest Unavailable Feature Rows matching U06.png */}
+        {/* Honest Unavailable Feature Rows */}
         <div className="space-y-3" aria-label="Các tính năng chia sẻ hộ gia đình chưa mở">
           {unavailableItems.map((it) => (
-            <TkvSurface key={it.title} className="p-4 sm:p-5 flex items-start gap-3.5 opacity-90">
-              <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] flex items-center justify-center shrink-0 border border-[var(--tkv-border)]">
+            <TkvSurface key={it.title} className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--sumi-border,#E4E4E0)]">
+              <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0 border border-[var(--sumi-border,#E4E4E0)]">
                 <VNextIcon name={it.icon} size={20} />
               </span>
               <div className="space-y-1">
-                <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">{it.title}</p>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">{it.title}</p>
+                <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
                   {it.detail}
                 </p>
               </div>
@@ -514,28 +541,28 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
       <div className="max-w-3xl space-y-7">
         {/* U09 — Quyền riêng tư */}
         <section aria-labelledby="tkv-u09-h1" className="space-y-4">
-          <h1 id="tkv-u09-h1" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+          <h1 id="tkv-u09-h1" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
             Quyền riêng tư
           </h1>
-          <TkvSurface className="p-5 sm:p-6 space-y-4 text-sm text-[var(--tkv-ink-secondary)]">
+          <TkvSurface className="p-5 sm:p-6 space-y-4 text-sm text-[var(--sumi-muted,#5C5F62)] bg-white border-[var(--sumi-border,#E4E4E0)]">
             <div className="flex items-start gap-3">
-              <VNextIcon name="shield" size={20} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+              <VNextIcon name="shield" size={20} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
               <p>
-                <strong>Cô lập dữ liệu theo hộ gia đình:</strong> Mọi truy vấn tồn kho, thực đơn tuần, giỏ đi chợ và bản quét AI đều được xác thực theo phiên máy chủ và <code>household_id</code> riêng biệt.
+                <strong className="text-[var(--sumi-ink,#111315)]">Cô lập dữ liệu theo hộ gia đình:</strong> Mọi truy vấn tồn kho, thực đơn tuần, giỏ đi chợ và bản quét AI đều được xác thực theo phiên máy chủ và <code>household_id</code> riêng biệt.
               </p>
             </div>
-            <div className="flex items-start gap-3 border-t border-[var(--tkv-border)] pt-3">
-              <VNextIcon name="scan" size={20} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 border-t border-[var(--sumi-border,#E4E4E0)] pt-3">
+              <VNextIcon name="scan" size={20} className="text-[var(--sumi-ink,#111315)] shrink-0 mt-0.5" />
               <p>
-                <strong>Xử lý ảnh quét AI:</strong> Ảnh tủ lạnh hoặc hóa đơn chỉ được gửi khi bạn bấm chụp/chọn ảnh và luôn yêu cầu bước duyệt thủ công trước khi ghi vào tồn kho.
+                <strong className="text-[var(--sumi-ink,#111315)]">Xử lý ảnh quét AI:</strong> Ảnh tủ lạnh hoặc hóa đơn chỉ được gửi khi bạn bấm chụp/chọn ảnh và luôn yêu cầu bước duyệt thủ công trước khi ghi vào tồn kho.
               </p>
             </div>
-            <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border)] pt-3 flex-wrap">
+            <div className="flex items-center justify-between gap-4 border-t border-[var(--sumi-border,#E4E4E0)] pt-3 flex-wrap">
               <div>
-                <p className="font-extrabold text-[var(--tkv-ink)]">
+                <p className="font-bold text-[var(--sumi-ink,#111315)]">
                   Đồng ý ghi nhận tương tác trang giới thiệu (cục bộ)
                 </p>
-                <p className="text-xs text-[var(--tkv-ink-muted)]">
+                <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">
                   Mặc định tắt · Không gửi dữ liệu cho bên thứ ba khi chưa đồng ý
                 </p>
               </div>
@@ -545,61 +572,62 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                 aria-checked={analyticsConsent}
                 onClick={toggleConsent}
                 className={clsx(
-                  'tkv-focusable min-h-[42px] px-4 py-1.5 rounded-full text-xs font-extrabold border transition-colors',
+                  'tkv-focusable min-h-[42px] px-4 py-1.5 rounded-full text-xs font-bold border transition-colors',
                   analyticsConsent
-                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
-                    : 'bg-[var(--tkv-bg)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                    : 'bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-muted,#5C5F62)] border-[var(--sumi-border,#E4E4E0)]',
                 )}
               >
                 {analyticsConsent ? 'Đang bật' : 'Đang tắt'}
               </button>
             </div>
-            <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border)] pt-3 text-xs">
+            <div className="flex items-center justify-between gap-4 border-t border-[var(--sumi-border,#E4E4E0)] pt-3 text-xs tabular-nums">
               <span>Thao tác ngoại tuyến đang chờ đồng bộ trên trình duyệt này:</span>
-              <strong className="text-[var(--tkv-ink)]">{pendingCount} mục</strong>
+              <strong className="text-[var(--sumi-ink,#111315)]">{pendingCount} mục</strong>
             </div>
           </TkvSurface>
         </section>
 
-        {/* U10 — Xuất và xóa dữ liệu (Honest BLOCKED_BACKEND matching U10.png) */}
+        {/* U10 — Xuất và xóa dữ liệu (Honest BLOCKED_BACKEND) */}
         <section id="data-rights" aria-labelledby="tkv-u10-h2" className="space-y-4">
-          <h2 id="tkv-u10-h2" className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink)]">
+          <h2 id="tkv-u10-h2" className="tkv-heading text-2xl font-extrabold text-[var(--sumi-ink,#111315)]">
             Xuất và xóa dữ liệu
           </h2>
 
-          <TkvSurface tone="mint" className="p-5 space-y-2">
-            <TkvBadge tone="warning" icon="info">
-              U10 · BLOCKED_BACKEND (RFC-002)
-            </TkvBadge>
-            <p className="text-sm sm:text-base font-bold text-[var(--tkv-ink)]">
+          <TkvSurface className="p-5 space-y-2 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <span>U10 · BLOCKED_BACKEND (RFC-002)</span>
+            </span>
+            <p className="text-sm sm:text-base font-bold text-[var(--sumi-ink,#111315)]">
               Dữ liệu thuộc quyền kiểm soát của bạn. Tính năng xuất bản sao và xóa tài khoản tự động cần API máy chủ được phê duyệt.
             </p>
           </TkvSurface>
 
           <div className="space-y-3">
-            <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5">
-              <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] flex items-center justify-center shrink-0 border border-[var(--tkv-border)]">
+            <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--sumi-border,#E4E4E0)]">
+              <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0 border border-[var(--sumi-border,#E4E4E0)]">
                 <VNextIcon name="download" size={20} />
               </span>
               <div className="space-y-1">
-                <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">
                   Xuất dữ liệu · Cần API máy chủ (RFC-002)
                 </p>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
+                <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)]">
                   Đang chờ triển khai điểm cuối đóng gói JSON/CSV toàn bộ tồn kho, lịch tuần và giỏ đi chợ theo hộ gia đình.
                 </p>
               </div>
             </TkvSurface>
 
-            <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5">
-              <span className="w-11 h-11 rounded-2xl bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] flex items-center justify-center shrink-0 border border-[var(--tkv-border)]">
+            <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--sumi-border,#E4E4E0)]">
+              <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0 border border-[var(--sumi-border,#E4E4E0)]">
                 <VNextIcon name="trash" size={20} />
               </span>
               <div className="space-y-1">
-                <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">
                   Xóa tài khoản · Cần API máy chủ (RFC-002)
                 </p>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
+                <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)]">
                   Ứng dụng không hiển thị nút xóa giả. Quy trình xóa vĩnh viễn yêu cầu xác thực lại và xử lý đối soát gói Pro trên tầng máy chủ.
                 </p>
               </div>
@@ -753,29 +781,34 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
   });
 
   return (
-    <div className="tkv-root min-h-dvh flex flex-col items-center justify-center px-4 py-10" data-tkv-screen={spec.id}>
+    <div className="tkv-root min-h-dvh bg-[var(--sumi-canvas,#F7F7F5)] flex flex-col items-center justify-center px-4 py-10" data-tkv-screen={spec.id}>
       <main className="w-full max-w-xl space-y-6">
-        <TkvSurface className="p-6 sm:p-8 space-y-6">
+        <TkvSurface className="p-6 sm:p-8 space-y-6 bg-white border-[var(--sumi-border,#E4E4E0)]">
           <div className="flex items-center justify-between gap-2 flex-wrap">
-            <TkvBadge tone="neutral">{spec.id} · Trạng thái hệ thống</TkvBadge>
+            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <span>{spec.id} · Trạng thái hệ thống</span>
+            </span>
             {normalized === 's04' && (
-              <TkvBadge tone={online ? 'success' : 'warning'}>
-                {online ? 'Mạng đã kết nối' : 'Đang ngoại tuyến'} · Chờ đồng bộ: {pendingOpsCount}
+              <TkvBadge tone="neutral">
+                <span className="tabular-nums">
+                  {online ? 'Mạng đã kết nối' : 'Đang ngoại tuyến'} · Chờ đồng bộ: {pendingOpsCount}
+                </span>
               </TkvBadge>
             )}
           </div>
 
           <div className="flex justify-center">
-            <div className="w-32 h-32 rounded-full bg-[var(--tkv-surface-mint)] p-3 flex items-center justify-center border border-[var(--tkv-border)]">
-              <MascotIllustration pose={spec.pose} size={104} />
+            <div className="w-28 h-28 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] p-3 flex items-center justify-center border border-[var(--sumi-border,#E4E4E0)]">
+              <MascotIllustration pose={spec.pose} size={92} />
             </div>
           </div>
 
           <div className="text-center space-y-2">
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
               {spec.title}
             </h1>
-            <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
               {spec.lead}
             </p>
           </div>
@@ -783,19 +816,19 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
           <div className="space-y-2.5">
             {spec.cards.map((c) => {
               const inner = (
-                <div className="rounded-2xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] p-4 flex items-center justify-between gap-3 hover:border-[var(--tkv-primary)] transition-colors">
+                <div className="rounded-2xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] p-4 flex items-center justify-between gap-3 hover:border-[var(--sumi-ink,#111315)] transition-colors">
                   <div className="flex items-center gap-3.5">
-                    <span className="w-10 h-10 rounded-xl bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                    <span className="w-10 h-10 rounded-xl bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
                       <VNextIcon name={c.icon} size={18} />
                     </span>
                     <div>
-                      <p className="tkv-heading text-sm sm:text-base font-extrabold text-[var(--tkv-ink)]">
+                      <p className="tkv-heading text-sm sm:text-base font-bold text-[var(--sumi-ink,#111315)]">
                         {c.heading}
                       </p>
-                      <p className="text-xs text-[var(--tkv-ink-secondary)]">{c.sub}</p>
+                      <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">{c.sub}</p>
                     </div>
                   </div>
-                  {c.to && <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />}
+                  {c.to && <VNextIcon name="chevron-right" size={16} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />}
                 </div>
               );
               return c.to ? (

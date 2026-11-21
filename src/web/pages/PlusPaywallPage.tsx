@@ -230,32 +230,35 @@ export const PlusPaywallPage: React.FC = () => {
         <KitchenHeader backTo="/me" />
         <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]">
           <KitchenPageHeading title="Takolio Pro" />
-          <section className="overflow-hidden rounded-feature border border-semantic-border bg-semantic-surface shadow-card">
-            <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
-                <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
+          <section className="overflow-hidden rounded-feature border border-[var(--sumi-border,#E4E4E0)] bg-white">
+            <div className="plus-hero bg-[var(--sumi-ink,#111315)] px-6 py-7 text-white">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
+                <ShieldCheck aria-hidden="true" className="h-6 w-6 text-white" />
               </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">Tài khoản bắt buộc</p>
+              <p className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                <span>Tài khoản bắt buộc</span>
+              </p>
               <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Pro</h2>
-              <p className="mt-3 text-sm leading-relaxed text-white">
+              <p className="mt-3 text-sm leading-relaxed text-white/85">
                 Gói Pro được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
               </p>
             </div>
             <div className="space-y-3 p-5">
               <Link
                 to="/auth?mode=login&returnTo=%2Fplus"
-                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-takosan-green px-4 py-3 font-heading text-sm font-bold text-white shadow-xs transition hover:bg-takosan-green-deep active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-takosan-green focus-visible:ring-offset-2"
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--sumi-ink,#111315)] px-4 py-3 font-heading text-sm font-bold text-white transition-colors hover:bg-[var(--sumi-ink-hover,#23262A)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sumi-ink,#111315)] focus-visible:ring-offset-2"
               >
                 <LogIn aria-hidden="true" className="h-4 w-4" />
                 Đăng nhập để tiếp tục
               </Link>
               <Link
                 to="/"
-                className="flex min-h-11 w-full items-center justify-center rounded-xl border border-semantic-border bg-white px-4 py-3 text-sm font-semibold text-semantic-text-secondary transition hover:bg-semantic-background-subtle active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-semantic-border-strong focus-visible:ring-offset-2"
+                className="flex min-h-11 w-full items-center justify-center rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-white px-4 py-3 text-sm font-semibold text-[var(--sumi-ink,#111315)] transition-colors hover:bg-[var(--sumi-canvas,#F7F7F5)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sumi-border-strong,#CFCFC9)] focus-visible:ring-offset-2"
               >
                 Quay lại bảng điều khiển
               </Link>
-              <p className="text-center text-xs leading-relaxed text-semantic-text-muted">
+              <p className="text-center text-xs leading-relaxed text-[var(--sumi-muted,#5C5F62)]">
                 Chưa có tài khoản? Bạn có thể đăng ký từ màn hình đăng nhập.
               </p>
             </div>
@@ -270,29 +273,30 @@ export const PlusPaywallPage: React.FC = () => {
       <KitchenHeader backTo="/me" />
       <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)] space-y-5">
         <KitchenPageHeading title={isPlus ? "Quản lý Takolio Pro" : "Nâng cấp Takolio Pro"} />
-        <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
-          <div className="space-y-1 max-w-[200px]">
-            <div className="flex items-center gap-1.5 mb-1">
-              <Sparkles className="w-4 h-4 text-takosan-yellow" />
-              <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takolio Pro</span>
+        <div className="plus-hero bg-[var(--sumi-ink,#111315)] text-white rounded-card p-5 flex items-center justify-between gap-3 overflow-hidden border border-[var(--sumi-ink,#111315)]">
+          <div className="space-y-1 max-w-[230px]">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+              <Sparkles className="w-3.5 h-3.5 text-white/80" />
+              <span className="text-[10px] font-semibold text-white/80 uppercase tracking-widest">Takolio Pro</span>
             </div>
             <h2 className="font-heading font-bold text-xl leading-tight text-white">
               {isPlus ? 'Bạn là hội viên Pro' : 'Nấu ăn thông minh hơn'}
             </h2>
-            <p className="text-xs text-white">
+            <p className="text-xs text-white/80 leading-relaxed">
               {isPlus ? 'Gói hội viên đang hoạt động với đầy đủ đặc quyền' : 'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef'}
             </p>
           </div>
-          <div className="w-24 h-24 shrink-0 overflow-hidden flex items-center justify-center">
+          <div className="w-20 h-20 shrink-0 overflow-hidden flex items-center justify-center rounded-2xl bg-white/10 border border-white/15 p-1.5">
             <img src="/takolio/vnext/mascot/pose-06-achievement.webp" alt="" aria-hidden="true" className="w-full h-full object-contain" />
           </div>
         </div>
 
         <BillingAccountPanel refreshVersion={accountRefreshVersion} isBusy={isCreating} onResume={handleHistoryResume} onLoaded={onAccountLoaded} onLoading={onAccountLoading} />
-        {accountReady && historyBlockingCheckout && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.</p>}
+        {accountReady && historyBlockingCheckout && <p role="status" className="rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] p-4 text-sm text-[var(--sumi-ink,#111315)]">Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.</p>}
 
-        {priceNotice && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">{priceNotice}</p>}
-        {errorMsg && <div className="space-y-2"><p role="alert" className="rounded-xl border border-semantic-danger/20 bg-semantic-danger-soft px-3 py-2 text-sm text-semantic-danger-strong">{errorMsg}</p>{checkoutRecoveryPending && <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>Tải lại bảng giá</Button>}</div>}
+        {priceNotice && <p role="status" className="rounded-xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] p-4 text-sm text-[var(--sumi-ink,#111315)]">{priceNotice}</p>}
+        {errorMsg && <div className="space-y-2"><p role="alert" className="rounded-xl border border-[var(--sumi-border-strong,#CFCFC9)] bg-[var(--sumi-canvas,#F7F7F5)] px-3.5 py-2.5 text-sm font-medium text-[var(--sumi-ink,#111315)]">{errorMsg}</p>{checkoutRecoveryPending && <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>Tải lại bảng giá</Button>}</div>}
 
         <div className="grid grid-cols-2 gap-3" role="group" aria-label="Gói Takolio Pro">
           {plans.map((price) => {
@@ -305,19 +309,26 @@ export const PlusPaywallPage: React.FC = () => {
                 disabled={attemptedPlan !== null || hasOpenCheckout || historyBlockingCheckout}
                 onClick={() => { setSelectedPlan(price.plan); setPaymentIntent(null); setIsQRModalOpen(false); }}
                 className={clsx(
-                  'text-left rounded-xl p-4 relative shadow-xs cursor-pointer transition-tap active:scale-[0.98] focus-visible:outline-none focus-visible:shadow-t17-focus',
-                  isSelected ? 'bg-semantic-surface border-semantic-action-primary ring-1 ring-semantic-action-primary' : 'bg-white border border-semantic-border hover:border-semantic-border-strong',
+                  'text-left rounded-xl p-4 relative cursor-pointer transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:shadow-t17-focus border',
+                  isSelected
+                    ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
+                    : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
                 )}
               >
-                <p className="font-heading font-semibold text-xs text-semantic-text-secondary">{planName(price.plan)}</p>
-                <p className="font-heading font-bold text-xl text-semantic-text-primary mt-1">{formatPrice(price)}</p>
+                <p className={clsx('font-heading font-semibold text-xs flex items-center justify-between', isSelected ? 'text-white/80' : 'text-[var(--sumi-muted,#5C5F62)]')}>
+                  <span>{planName(price.plan)}</span>
+                  {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />}
+                </p>
+                <p className={clsx('font-heading font-bold text-xl mt-1 tabular-nums', isSelected ? 'text-white' : 'text-[var(--sumi-ink,#111315)]')}>
+                  {formatPrice(price)}
+                </p>
               </button>
             );
           })}
         </div>
 
-        <div className="space-y-2 bg-white rounded-xl p-4 border border-semantic-border shadow-xs">
-          <h3 className="font-heading font-bold text-sm text-semantic-text-primary mb-2">Quyền lợi thành viên:</h3>
+        <div className="space-y-2 bg-white rounded-xl p-4 border border-[var(--sumi-border,#E4E4E0)]">
+          <h3 className="font-heading font-bold text-sm text-[var(--sumi-ink,#111315)] mb-2">Quyền lợi thành viên:</h3>
           {[
             'Không giới hạn số lượng nguyên liệu trong tủ lạnh',
             'Không giới hạn lượt quét AI tủ lạnh & hóa đơn siêu thị OCR',
@@ -325,22 +336,22 @@ export const PlusPaywallPage: React.FC = () => {
             'AI Voice Sous Chef trợ lý nấu ăn rảnh tay thông minh',
             'Đầy đủ 6 nền ẩm thực (Việt, Hàn, Nhật, Trung, Thái, Ý)',
             'Gợi ý công thức nâng cao bởi DeepSeek AI Chef',
-            'Chia sẻ tủ lạnh gia đình không giới hạn thiết bị',
+            'Ưu tiên nhận diện hoá đơn & nguyên liệu AI chính xác cao',
           ].map((feature) => (
-            <div key={feature} className="flex items-center gap-2.5 text-xs text-semantic-text-secondary font-medium py-1">
-              <div className="w-5 h-5 rounded-full bg-semantic-success-soft border border-semantic-action-primary/30 flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 text-semantic-action-primary stroke-[2.5]" /></div>
+            <div key={feature} className="flex items-center gap-2.5 text-xs text-[var(--sumi-muted,#5C5F62)] font-medium py-1">
+              <div className="w-5 h-5 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 text-[var(--sumi-ink,#111315)] stroke-[2.5]" /></div>
               <span>{feature}</span>
             </div>
           ))}
         </div>
 
-        <div className="pt-2">
+        <div className="pt-2 space-y-2">
           {recoverableCheckoutId && (
             <Button fullWidth size="lg" disabled={isCreating || !accountReady} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
               Mở lệnh thanh toán cũ
             </Button>
           )}
-          <Button fullWidth size="lg" disabled={checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }} className="flex items-center justify-center gap-2">
+          <Button fullWidth size="lg" disabled={checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }} className="flex items-center justify-center gap-2 tabular-nums">
             <span>{isCreating ? 'Đang tạo lệnh thanh toán…' : isPlus ? 'Gia hạn hội viên' : selectedPrice ? `Nâng cấp ngay với ${formatPrice(selectedPrice)}` : 'Đang tải bảng giá…'}</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
