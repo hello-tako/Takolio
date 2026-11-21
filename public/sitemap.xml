@@ -1,19 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://takolio.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://takolio.com/landing</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://takolio.com/how-it-works</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://takolio.com/features/ai-scan</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/features/fridge</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/features/meal-planning</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/features/recipes</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://takolio.com/features/cooking</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/features/shopping</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/pricing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://takolio.com/faq</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://takolio.com/stories</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://takolio.com/about</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://takolio.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://takolio.com/privacy</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://takolio.com/terms</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Takolio Public Marketing & Culinary Knowledge Hub (takolio.com) -->
+  <url>
+    <loc>https://takolio.com/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/social/og-1200x630.webp</image:loc>
+      <image:title>Takolio — Trợ lý căn bếp thông minh cho gia đình hiện đại</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp</image:loc>
+      <image:title>Không gian Nắng Bếp Gốm Sứ Takolio</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/how-it-works</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m02-closed-loop-kitchen.webp</image:loc>
+      <image:title>Vòng lặp căn bếp khép kín Takolio</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/ai-scan</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m03-fresh-produce-scan.webp</image:loc>
+      <image:title>AI Scan nguyên liệu có kiểm duyệt trước khi lưu</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/fridge</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m04-smart-fridge.webp</image:loc>
+      <image:title>Tủ lạnh thông minh theo dõi hạn dùng theo lô</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/meal-planning</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m05-meal-planning-prep.webp</image:loc>
+      <image:title>Lên thực đơn tuần 7 ngày khớp định lượng</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/recipes</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m06-vietnamese-recipes.webp</image:loc>
+      <image:title>Kho công thức bữa cơm gia đình Việt trên Takolio</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/cooking</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m07-guided-cooking.webp</image:loc>
+      <image:title>Hướng dẫn nấu ăn từng bước kèm bộ hẹn giờ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.com/features/shopping</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/marketing/m08-smart-shopping-basket.webp</image:loc>
+      <image:title>Danh sách đi chợ trừ tồn kho thông minh</image:title>
+    </image:image>
+  </url>
+  <url><loc>https://takolio.com/pricing</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://takolio.com/faq</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://takolio.com/stories</loc><lastmod>2026-11-22</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://takolio.com/about</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://takolio.com/contact</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://takolio.com/privacy</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://takolio.com/terms</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Takolio Interactive Kitchen Web Application & Verified Vietnamese Recipes (takolio.app) -->
+  <url><loc>https://takolio.app/recipes</loc><lastmod>2026-11-22</lastmod><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url>
+    <loc>https://takolio.app/recipes/thit-kho-trung</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/thit-kho-trung.webp</image:loc>
+      <image:title>Thịt kho tàu nước dừa trứng gà ta</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/canh-chua-ca-loc-nam-bo</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/canh-chua-ca-loc-nam-bo.webp</image:loc>
+      <image:title>Canh chua cá lóc Nam Bộ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/ga-ta-kho-gung-sa</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/ga-ta-kho-gung-sa.webp</image:loc>
+      <image:title>Gà ta kho gừng sả đậm đà</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/rau-muong-xao-toi</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/rau-muong-xao-toi.webp</image:loc>
+      <image:title>Rau muống xào tỏi xanh giòn</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/ca-loc-kho-to-tieu-den</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/ca-loc-kho-to-tieu-den.webp</image:loc>
+      <image:title>Cá lóc kho tộ tiêu đen</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/pho-bo-tai-lan-ha-noi</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/pho-bo-tai-lan-ha-noi.webp</image:loc>
+      <image:title>Phở bò tái lăn Hà Nội</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/bun-cha-ha-noi-than-hoa</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/bun-cha-ha-noi-than-hoa.webp</image:loc>
+      <image:title>Bún chả nướng than hoa Hà Nội</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/sup-ga-ngo-non-nam-huong</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/sup-ga-ngo-non-nam-huong.webp</image:loc>
+      <image:title>Súp gà ngô non nấm hương</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/goi-ga-xe-phay-bap-cai</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/goi-ga-xe-phay-bap-cai.webp</image:loc>
+      <image:title>Gỏi gà xé phay bắp cải</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/dau-phu-sot-ca-chua</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/dau-phu-sot-ca-chua.webp</image:loc>
+      <image:title>Đậu phụ sốt cà chua</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/canh-bi-do-thit-bam</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/canh-bi-do-thit-bam.webp</image:loc>
+      <image:title>Canh bí đỏ thịt bằm</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://takolio.app/recipes/chawanmushi</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://takolio.com/takolio/vnext/food/chawanmushi.webp</image:loc>
+      <image:title>Trứng hấp Chawanmushi Nhật Bản</image:title>
+    </image:image>
+  </url>
 </urlset>

@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { vnextHref } from '../feature';
-import { trackPublicConversion, useVNextSeo } from '../lib/seo';
+import {
+  buildBreadcrumbJsonLd,
+  buildFaqJsonLd,
+  buildPricingJsonLd,
+  buildStoriesBlogJsonLd,
+  trackPublicConversion,
+  useVNextSeo,
+} from '../lib/seo';
+import {
+  isSatelliteComRuntime,
+  navigateToAppSurface,
+  resolveAppSurfaceHref,
+} from '../lib/domain-surface';
 import { PublicMarketingShell } from '../components/Shells';
 import { TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
 import { MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
+import {
+  InteractiveAiScanHudSvg,
+  InteractiveFridgeCutawaySvg,
+  InteractiveKitchenLoopSvg,
+  InteractivePortionMacroDialSvg,
+  InteractiveSimmerWaveSvg,
+} from '../interactive-svg';
+
+const LazyFridgeFreshnessOrbital3D = lazy(() =>
+  import('../webgl/FridgeFreshnessOrbital3D').then((m) => ({
+    default: m.FridgeFreshnessOrbital3D,
+  })),
+);
 
 const FEATURE_SUBNAV: Array<{ id: string; label: string; to: string }> = [
   { id: 'M02', label: 'Cách hoạt động', to: '/how-it-works' },
@@ -76,9 +101,9 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
     subtitle: 'Từ những gì có sẵn trong tủ đến bữa ăn hoàn chỉnh.',
     ctaLabel: 'Khám phá Takolio',
     ctaHref: '/auth?mode=register',
-    imageSrc: '/takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp',
-    imageSrc640: '/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp',
-    imageAlt: 'Mâm cơm gia đình Việt trên bàn gỗ sồi ấm sáng từ nguyên liệu sẵn có trong tủ lạnh',
+    imageSrc: '/takolio/vnext/marketing/m02-closed-loop-kitchen.webp',
+    imageSrc640: '/takolio/vnext/marketing/m02-closed-loop-kitchen-640w.webp',
+    imageAlt: 'Bàn bếp sáng thoáng với nguyên liệu sơ chế gốm sứ chuẩn bị cho vòng lặp nấu ăn khép kín',
     truthBadge: 'Kiểm soát thủ công ở mọi điểm ghi kho',
     truthNote: 'Không tự động trừ kho hay lưu kết quả AI khi chưa có xác nhận trực tiếp từ bạn.',
     bullets: [
@@ -277,9 +302,9 @@ const FEATURE_STORIES: Record<FeatureStorySpec['screenId'], FeatureStorySpec> = 
     subtitle: 'Tìm món theo nguyên liệu sẵn có và thời gian nấu.',
     ctaLabel: 'Khám phá kho món ăn',
     ctaHref: '/auth?mode=login&returnTo=%2Frecipes',
-    imageSrc: '/takolio/vnext/food/thit-kho-trung.webp',
-    imageSrc640: '/takolio/vnext/food/thit-kho-trung-640w.webp',
-    imageAlt: 'Thịt kho tàu nước dừa trứng gà ta óng màu cánh gián trong bát gốm ấm',
+    imageSrc: '/takolio/vnext/marketing/m06-vietnamese-recipes.webp',
+    imageSrc640: '/takolio/vnext/marketing/m06-vietnamese-recipes-640w.webp',
+    imageAlt: 'Mâm cơm gia đình Việt với thịt kho trứng nước dừa, canh chua và rau xanh trên bát đĩa gốm sứ',
     truthBadge: 'Ảnh món ăn khớp đúng công thức xác minh',
     truthNote: 'Mỗi ảnh món ăn đều khớp nguyên liệu của đúng công thức đó; món chưa có ảnh xác minh sẽ hiển thị biểu tượng trung thực.',
     bullets: [
@@ -429,11 +454,31 @@ const SHOWCASE_RECIPES = [
 
 const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
   const navigate = useNavigate();
+  const breadcrumbJsonLd = useMemo(
+    () =>
+      buildBreadcrumbJsonLd([
+        { name: 'Takolio', path: '/' },
+        { name: spec.title, path: spec.canonicalPath },
+      ]),
+    [spec.title, spec.canonicalPath],
+  );
+
   useVNextSeo({
     title: spec.title,
     description: `${spec.subtitle} ${spec.truthNote}`,
     canonicalPath: spec.canonicalPath,
+    domainSurface: 'marketing',
+    ogImage: spec.imageSrc,
+    ogImageAlt: spec.imageAlt,
+    jsonLd: breadcrumbJsonLd,
   });
+
+  const hasInteractiveLab =
+    spec.screenId === 'M02' ||
+    spec.screenId === 'M03' ||
+    spec.screenId === 'M04' ||
+    spec.screenId === 'M05' ||
+    spec.screenId === 'M07';
 
   return (
     <PublicMarketingShell screenId={spec.screenId}>
@@ -513,7 +558,7 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
               type="button"
               onClick={() => {
                 trackPublicConversion('feature_primary_cta', { screenId: spec.screenId });
-                navigate(vnextHref(spec.ctaHref));
+                navigateToAppSurface(vnextHref(spec.ctaHref), navigate);
               }}
               className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-bold text-base shadow-xs inline-flex items-center justify-center gap-2 transition-colors"
             >
@@ -522,6 +567,70 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
             </button>
           </div>
         </div>
+
+        {/* Live Interactive SVG & 3D WebGL Culinary Lab */}
+        {hasInteractiveLab && (
+          <div className="mt-10 pt-8 border-t border-[var(--tkv-border,#EAE0D5)] space-y-5">
+            <div className="space-y-1.5">
+              <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-accent-ink,#9E4322)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+                <span>Mô phỏng tương tác trực tiếp</span>
+              </span>
+              <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                Trải nghiệm ngay cơ chế vận hành trên trình duyệt
+              </h2>
+            </div>
+
+            {spec.screenId === 'M02' && (
+              <InteractiveKitchenLoopSvg
+                onNavigate={(href) => navigateToAppSurface(vnextHref(href), navigate)}
+              />
+            )}
+
+            {spec.screenId === 'M03' && (
+              <InteractiveAiScanHudSvg
+                onApproveDraft={() =>
+                  navigateToAppSurface(vnextHref('/auth?mode=login&returnTo=%2Fscan'), navigate)
+                }
+              />
+            )}
+
+            {spec.screenId === 'M04' && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                <InteractiveFridgeCutawaySvg
+                  countsByZone={{ cool: 5, crisper: 6, chiller: 3, freezer: 4 }}
+                  expiringCount={2}
+                />
+                <Suspense
+                  fallback={
+                    <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 text-sm text-[var(--tkv-ink-muted,#87776E)]">
+                      Đang khởi tạo khay gốm 3D độ tươi thực phẩm…
+                    </div>
+                  }
+                >
+                  <LazyFridgeFreshnessOrbital3D freshCount={12} soonCount={4} urgentCount={2} />
+                </Suspense>
+              </div>
+            )}
+
+            {spec.screenId === 'M05' && (
+              <InteractivePortionMacroDialSvg
+                initialServings={4}
+                baseServings={4}
+                baseTimeMinutes={30}
+              />
+            )}
+
+            {spec.screenId === 'M07' && (
+              <InteractiveSimmerWaveSvg
+                progress={0.62}
+                isRunning={true}
+                totalSeconds={900}
+                remainingSeconds={342}
+              />
+            )}
+          </div>
+        )}
       </section>
 
       {/* Deep-Dive Section */}
@@ -630,15 +739,31 @@ export const M09PricingPage: React.FC = () => {
   const livePlans = livePlansQuery.data ?? null;
   const monthlyPlan = livePlans?.find((p) => p.plan === 'monthly') ?? null;
   const annualPlan = livePlans?.find((p) => p.plan === 'annual') ?? null;
+  const pricingJsonLd = useMemo(
+    () => [
+      buildBreadcrumbJsonLd([
+        { name: 'Takolio', path: '/' },
+        { name: 'Các gói Takolio', path: '/pricing' },
+      ]),
+      buildPricingJsonLd(livePlans),
+    ],
+    [livePlans],
+  );
 
   useVNextSeo({
     title: 'Các gói Takolio',
     description: 'Lựa chọn gói Miễn phí hoặc Takolio Pro phù hợp nhu cầu căn bếp gia đình.',
     canonicalPath: '/pricing',
+    domainSurface: 'marketing',
+    jsonLd: pricingJsonLd,
   });
 
   const handleStartFree = async () => {
     trackPublicConversion('pricing_start_free');
+    if (isSatelliteComRuntime()) {
+      window.location.assign(resolveAppSurfaceHref('/auth?mode=guest'));
+      return;
+    }
     if (userId && householdId) {
       navigate(vnextHref('/'));
       return;
@@ -783,7 +908,7 @@ export const M09PricingPage: React.FC = () => {
               type="button"
               onClick={() => {
                 trackPublicConversion('pricing_view_plus');
-                navigate(plusDestination);
+                navigateToAppSurface(plusDestination, navigate);
               }}
               data-testid="m09-plus-cta"
               className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-extrabold text-base shadow-xs transition-colors"
@@ -840,11 +965,23 @@ const FAQ_ITEMS = [
 export const M10FaqPage: React.FC = () => {
   const [openId, setOpenId] = useState<string>(FAQ_ITEMS[0].id);
   const [searchQuery, setSearchQuery] = useState('');
+  const faqJsonLd = useMemo(
+    () => [
+      buildBreadcrumbJsonLd([
+        { name: 'Takolio', path: '/' },
+        { name: 'Câu hỏi thường gặp', path: '/faq' },
+      ]),
+      buildFaqJsonLd(FAQ_ITEMS),
+    ],
+    [],
+  );
 
   useVNextSeo({
     title: 'Câu hỏi thường gặp',
     description: 'Giải đáp minh bạch về cách hoạt động, AI Scan, quyền riêng tư hộ gia đình và gói Takolio Pro.',
     canonicalPath: '/faq',
+    domainSurface: 'marketing',
+    jsonLd: faqJsonLd,
   });
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -958,7 +1095,10 @@ const STORIES_GUIDES = [
     readTime: '04 phút đọc · Mẹo thực đơn',
     excerpt:
       'Cách kết hợp trứng, đậu phụ, rau theo mùa và thịt thái sẵn để hoàn thành mâm cơm nóng hổi dưới 25 phút sau giờ làm.',
-    slug: 'dau-phu-sot-ca-chua',
+    coverSrc: '/takolio/vnext/stories/story-01-weeknight-dinner.webp',
+    coverSrc640: '/takolio/vnext/stories/story-01-weeknight-dinner-640w.webp',
+    coverAlt: 'Mâm cơm chiều 25 phút ấm áp với đậu phụ sốt cà chua, rau xanh và cơm trắng trong bát gốm sứ',
+    publishedAt: '2026-11-18',
     points: [
       'Ưu tiên 1 món mặn nhanh (đậu phụ sốt cà chua, gà kho gừng) kết hợp 1 món canh hoặc rau xào tỏi.',
       'Kiểm tra mục “Nguyên liệu nên dùng sớm” trên trang Hôm nay trước khi ra chợ chiều.',
@@ -971,7 +1111,10 @@ const STORIES_GUIDES = [
     readTime: '05 phút đọc · Tủ lạnh thông minh',
     excerpt:
       'Phân loại rau ăn lá, củ quả và gia vị tươi theo độ ẩm ngăn mát để giữ độ giòn lâu hơn và giảm hao hụt.',
-    slug: 'rau-muong-xao-toi',
+    coverSrc: '/takolio/vnext/stories/story-02-crisp-greens.webp',
+    coverSrc640: '/takolio/vnext/stories/story-02-crisp-greens-640w.webp',
+    coverAlt: 'Rau ăn lá tươi giòn bảo quản trong hộp thủy tinh lót khăn giấy sạch trong ngăn mát sáng thoáng',
+    publishedAt: '2026-11-16',
     points: [
       'Không rửa ướt sũng rau ăn lá trước khi cất hộp; lót giấy thấm khô và ghi nhận mốc hạn ước tính 3 ngày.',
       'Tách riêng hành lá, ngò rí, sả ớt vào nhóm gia vị tươi để dễ kiểm tra khi chuẩn bị nấu.',
@@ -980,15 +1123,66 @@ const STORIES_GUIDES = [
   },
   {
     id: 'bua-com-30-phut',
-    title: 'Bữa cơm 30 phút',
+    title: 'Bữa cơm 30 phút song song hai bếp',
     readTime: '04 phút đọc · Đứng bếp nhẹ đầu',
     excerpt:
       'Sắp xếp thứ tự sơ chế — ướp trước, nấu canh song song, xào rau sau cùng — với bộ hẹn giờ từng bước trên Takolio.',
-    slug: 'sup-ga-ngo-non-nam-huong',
+    coverSrc: '/takolio/vnext/stories/story-03-parallel-cooking.webp',
+    coverSrc640: '/takolio/vnext/stories/story-03-parallel-cooking-640w.webp',
+    coverAlt: 'Hai nồi gốm và chảo xào vận hành song song trên mặt bếp sáng với khay nguyên liệu sơ chế gọn gàng',
+    publishedAt: '2026-11-14',
     points: [
       'Mở bước Chuẩn bị nấu (C20) để bày đủ định lượng ra bàn trước khi bật bếp.',
       'Tận dụng hẹn giờ trên từng bước nấu để không quên nồi kho hoặc nồi canh đang sôi.',
       'Xác nhận lượng thực tế đã dùng ở cuối bữa để tủ lạnh luôn phản ánh đúng số nguyên liệu còn lại.',
+    ],
+  },
+  {
+    id: 'so-che-gia-vi-tuoi-bep-viet',
+    title: 'Sơ chế hành tỏi sả gừng cho cả tuần',
+    readTime: '05 phút đọc · Mise-en-place gia đình',
+    excerpt:
+      'Chuẩn bị sẵn khay gia vị thơm Việt Nam vào chiều Chủ Nhật giúp tiết kiệm 10 phút đứng bếp mỗi buổi tối trong tuần.',
+    coverSrc: '/takolio/vnext/stories/story-04-aromatics-prep.webp',
+    coverSrc640: '/takolio/vnext/stories/story-04-aromatics-prep-640w.webp',
+    coverAlt: 'Hành tím, tỏi ta, sả cây, gừng tươi và ớt đỏ xếp ngay ngắn trong chén gốm trắng trên thớt gỗ',
+    publishedAt: '2026-11-12',
+    points: [
+      'Bóc sẵn hành tím, tỏi khô để ráo hoàn toàn trong hũ kín lót giấy thấm ở ngăn mát trên (4°C).',
+      'Sả cây cắt khúc vừa ăn, phần gốc băm nhỏ cấp đông theo viên để sẵn sàng cho món kho gừng sả.',
+      'Ghi nhận từng hũ gia vị vào Tủ lạnh thông minh để không mua trùng khi đi chợ giữa tuần.',
+    ],
+  },
+  {
+    id: 'xoay-vong-tu-lanh-khong-lang-phi',
+    title: 'Quy tắc xoay vòng FEFO chống lãng phí',
+    readTime: '06 phút đọc · Quản trị thực phẩm',
+    excerpt:
+      'Áp dụng nguyên tắc hết hạn trước — nấu trước (First-Expired, First-Out) cho ngăn rau củ và thực phẩm tươi sống.',
+    coverSrc: '/takolio/vnext/stories/story-05-zero-waste-tray.webp',
+    coverSrc640: '/takolio/vnext/stories/story-05-zero-waste-tray-640w.webp',
+    coverAlt: 'Khay gốm ưu tiên nấu trước tập hợp các nguyên liệu tươi cần chế biến trong 48 giờ tới',
+    publishedAt: '2026-11-10',
+    points: [
+      'Dành riêng một khay gốm hoặc hộp trong suốt ở ngang tầm mắt cho các lô thực phẩm còn 1–2 ngày.',
+      'Bật bộ lọc “Đủ nguyên liệu” trên Takolio để tìm ngay các món tận dụng trọn khay ưu tiên đó.',
+      'Luôn phân biệt hạn dùng in trên bao bì với hạn ước tính cảm quan trước khi chế biến.',
+    ],
+  },
+  {
+    id: 'bi-quyet-kho-to-ni-dat-dam-vi',
+    title: 'Bí quyết kho tộ nồi đất lên màu hổ phách',
+    readTime: '05 phút đọc · Tinh hoa món kho Việt',
+    excerpt:
+      'Canh chuẩn tỷ lệ nước màu dừa, nước mắm nhĩ và nhiệt độ lửa riu để thịt kho trứng mềm rục mà nước kho vẫn trong.',
+    coverSrc: '/takolio/vnext/stories/story-06-claypot-braise.webp',
+    coverSrc640: '/takolio/vnext/stories/story-06-claypot-braise-640w.webp',
+    coverAlt: 'Nồi đất nung kho thịt ba chỉ trứng gà nước dừa sôi lăn tăn ánh màu hổ phách ấm nắng',
+    publishedAt: '2026-11-08',
+    points: [
+      'Ướp thịt với hành tím băm và nước mắm ngon tối thiểu 20 phút trước khi thắng nước màu.',
+      'Châm nước dừa tươi ấm xâm xấp mặt thịt rồi hạ lửa riu liu riu để mỡ trong và thấm đều.',
+      'Sử dụng bộ hẹn giờ công đoạn C21 trên Takolio để canh chuẩn 35–40 phút ninh mềm.',
     ],
   },
 ] as const;
@@ -997,14 +1191,29 @@ const STORIES_GUIDES = [
  * M11 — Takolio Stories (`/stories`).
  */
 export const M11StoriesPage: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState<string>(STORIES_GUIDES[0].id);
   const selected = STORIES_GUIDES.find((g) => g.id === selectedId) ?? STORIES_GUIDES[0];
+  const storiesJsonLd = useMemo(
+    () => [
+      buildBreadcrumbJsonLd([
+        { name: 'Takolio', path: '/' },
+        { name: 'Takolio Stories', path: '/stories' },
+      ]),
+      buildStoriesBlogJsonLd(STORIES_GUIDES),
+    ],
+    [],
+  );
 
   useVNextSeo({
-    title: 'Takolio Stories',
+    title: 'Takolio Stories — Cẩm nang căn bếp gia đình',
     description: 'Cảm hứng cho mỗi bữa ăn và những mẹo quản lý căn bếp gia đình thực tế.',
     canonicalPath: '/stories',
+    domainSurface: 'marketing',
     ogType: 'article',
+    ogImage: selected.coverSrc,
+    ogImageAlt: selected.coverAlt,
+    jsonLd: storiesJsonLd,
   });
 
   return (
@@ -1019,31 +1228,36 @@ export const M11StoriesPage: React.FC = () => {
             Takolio Stories
           </h1>
           <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)]">
-            Cảm hứng cho mỗi bữa ăn và những mẹo bếp thực tế.
+            Cảm hứng cho mỗi bữa ăn, mẹo bảo quản thực phẩm và kỹ thuật đứng bếp thực tế cho gia đình Việt.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {STORIES_GUIDES.map((story) => {
             const active = story.id === selected.id;
             return (
-              <div
+              <article
                 key={story.id}
+                id={story.id}
                 className={clsx(
                   'rounded-[22px] bg-white border overflow-hidden flex flex-col justify-between transition-colors',
                   active
-                    ? 'border-[var(--tkv-primary,#D86A43)] ring-1 ring-[var(--tkv-primary,#D86A43)]'
+                    ? 'border-[var(--tkv-primary,#D86A43)] ring-1 ring-[var(--tkv-primary,#D86A43)] shadow-soft'
                     : 'border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                 )}
               >
                 <div>
                   <div className="p-3 bg-[var(--tkv-surface-muted,#F7EFE6)]">
-                    <VerifiedDishImage
-                      slug={story.slug}
-                      title={story.title}
-                      aspectClass="aspect-[4/3]"
-                      className="rounded-2xl"
-                    />
+                    <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-white">
+                      <img
+                        src={story.coverSrc640}
+                        srcSet={`${story.coverSrc640} 640w, ${story.coverSrc} 1200w`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                        alt={story.coverAlt}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
                   <div className="p-5 space-y-2">
                     <p className="text-xs font-mono tabular-nums font-bold text-[var(--tkv-ink-muted,#87776E)]">
@@ -1068,16 +1282,16 @@ export const M11StoriesPage: React.FC = () => {
                         : 'bg-white text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border-strong,#D5C3B3)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)]',
                     )}
                   >
-                    {active ? 'Đang xem hướng dẫn dưới đây' : 'Đọc hướng dẫn nhanh'}
+                    {active ? 'Đang xem hướng dẫn dưới đây' : 'Đọc hướng dẫn chi tiết'}
                   </button>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
 
         {/* Expanded Guide Reader */}
-        <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-8 space-y-4">
+        <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-8 space-y-4 shadow-xs">
           <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--tkv-border,#EAE0D5)] pb-3">
             <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
               {selected.title}
@@ -1094,6 +1308,16 @@ export const M11StoriesPage: React.FC = () => {
               </li>
             ))}
           </ul>
+          <div className="pt-2 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => navigateToAppSurface(vnextHref('/auth?mode=register'), navigate)}
+              className="tkv-focusable min-h-[44px] px-5 py-2 rounded-xl bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white text-sm font-bold inline-flex items-center gap-2 transition-colors"
+            >
+              <span>Áp dụng ngay trong căn bếp Takolio</span>
+              <VNextIcon name="arrow-right" size={16} />
+            </button>
+          </div>
         </div>
       </section>
     </PublicMarketingShell>
@@ -1137,10 +1361,21 @@ export const M12CompanyLegalPage: React.FC = () => {
     },
   };
 
+  const legalJsonLd = useMemo(
+    () =>
+      buildBreadcrumbJsonLd([
+        { name: 'Takolio', path: '/' },
+        { name: titles[section].title, path: titles[section].canonical },
+      ]),
+    [section],
+  );
+
   useVNextSeo({
     title: titles[section].title,
     description: titles[section].desc,
     canonicalPath: titles[section].canonical,
+    domainSurface: 'marketing',
+    jsonLd: legalJsonLd,
   });
 
   return (
@@ -1299,12 +1534,21 @@ export const M12CompanyLegalPage: React.FC = () => {
                   <span>Tra cứu FAQ</span>
                   <VNextIcon name="arrow-right" size={15} />
                 </Link>
-                <Link
-                  to={vnextHref('/auth?mode=login')}
-                  className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
-                >
-                  Đăng nhập kiểm tra phiên
-                </Link>
+                {isSatelliteComRuntime() ? (
+                  <a
+                    href={resolveAppSurfaceHref('/auth?mode=login')}
+                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
+                  >
+                    Đăng nhập kiểm tra phiên
+                  </a>
+                ) : (
+                  <Link
+                    to={vnextHref('/auth?mode=login')}
+                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
+                  >
+                    Đăng nhập kiểm tra phiên
+                  </Link>
+                )}
               </div>
             </div>
           </div>

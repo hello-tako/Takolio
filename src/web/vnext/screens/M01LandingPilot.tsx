@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { vnextHref } from '../feature';
-import { trackPublicConversion, useVNextSeo } from '../lib/seo';
+import {
+  buildPlatformWebAppJsonLd,
+  trackPublicConversion,
+  useVNextSeo,
+} from '../lib/seo';
+import {
+  isSatelliteComRuntime,
+  navigateToAppSurface,
+  resolveAppSurfaceHref,
+} from '../lib/domain-surface';
 import { PublicMarketingShell } from '../components/Shells';
 import { TkvButton, TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
-import { MascotIllustration, VERIFIED_VNEXT_RECIPE_MEDIA, VerifiedDishImage } from '../components/VNextMedia';
+import {
+  MascotIllustration,
+  VERIFIED_VNEXT_RECIPE_MEDIA,
+  VerifiedDishImage,
+} from '../components/VNextMedia';
+import { InteractiveKitchenLoopSvg } from '../interactive-svg/InteractiveKitchenLoopSvg';
+
+const LazySunlitKitchenStage3D = lazy(() =>
+  import('../webgl/SunlitKitchenStage3D').then((m) => ({
+    default: m.SunlitKitchenStage3D,
+  })),
+);
 
 const WORKFLOW_STEPS: Array<{
   step: string;
@@ -52,22 +73,59 @@ const SHOWCASE_SLUGS = [
   { slug: 'rau-muong-xao-toi', title: 'Rau muống xào tỏi xanh giòn', time: '10 phút', servings: '3 người' },
 ] as const;
 
+const GEO_COMPARISON_ROWS = [
+  {
+    criterion: 'Theo dõi tồn kho tủ lạnh',
+    takolio: 'Theo lô nguyên liệu, ngăn nhiệt độ, phiên bản dữ liệu và phân biệt rõ hạn in bao bì với hạn ước tính.',
+    manual: 'Dễ quên cập nhật sau khi nấu, khó chia sẻ nhất quán.',
+    genericRecipeApp: 'Không quản lý lượng thực tế đang còn trong tủ.',
+  },
+  {
+    criterion: 'Nhận diện nguyên liệu & hóa đơn AI',
+    takolio: 'AI gợi ý bản nháp kèm độ tin cậy; bắt buộc người dùng duyệt trước khi lưu vào kho.',
+    manual: 'Nhập từng dòng mất thời gian sau mỗi lần đi chợ.',
+    genericRecipeApp: 'Ít hỗ trợ hoặc tự ghi đè thiếu kiểm chứng.',
+  },
+  {
+    criterion: 'Đối chiếu công thức & khẩu phần',
+    takolio: 'Nhân chia chính xác cho 1–20 người theo gram, ml, quả/cái và tính lượng mua thiếu ròng.',
+    manual: 'Phải tự nhẩm tính khi tăng giảm số người ăn.',
+    genericRecipeApp: 'Thường chỉ khớp tên nguyên liệu mà bỏ qua đơn vị đo.',
+  },
+  {
+    criterion: 'Trừ tồn kho sau khi nấu',
+    takolio: 'Chỉ trừ kho đúng 1 lần (idempotent) sau khi bạn xác nhận hoàn thành bữa ăn ở bước C22.',
+    manual: 'Thường bị bỏ sót khiến số liệu lệch dần.',
+    genericRecipeApp: 'Không kết nối vòng lặp nấu ăn với tồn kho.',
+  },
+] as const;
+
 export const M01LandingPilot: React.FC = () => {
   const navigate = useNavigate();
   const setGuestSession = useAuthStore((s) => s.setGuestSession);
   const [isStarting, setIsStarting] = useState(false);
   const [guestError, setGuestError] = useState<string | null>(null);
+  const [heroView, setHeroView] = useState<'3d' | 'photo'>('3d');
+
+  const platformJsonLd = useMemo(() => buildPlatformWebAppJsonLd(), []);
+  const satellite = isSatelliteComRuntime();
 
   useVNextSeo({
     title: 'Hôm nay ăn gì? Để Takolio giúp bạn',
     description:
       'Quản lý thực phẩm trong tủ lạnh, chọn món ngon khớp định lượng, lên thực đơn tuần và đi chợ thông minh cho gia đình hiện đại.',
-    canonicalPath: '/landing',
+    canonicalPath: '/',
+    domainSurface: 'marketing',
+    jsonLd: platformJsonLd,
   });
 
   const handleStartFree = async () => {
     trackPublicConversion('m01_start_free');
     setGuestError(null);
+    if (isSatelliteComRuntime()) {
+      window.location.assign(resolveAppSurfaceHref('/auth?mode=guest'));
+      return;
+    }
     setIsStarting(true);
     try {
       await setGuestSession();
@@ -85,9 +143,9 @@ export const M01LandingPilot: React.FC = () => {
 
   return (
     <PublicMarketingShell screenId="M01">
-      {/* Hero Section — Sunlit Ceramic & Terracotta Herb */}
+      {/* Hero Section — Sunlit Ceramic & Terracotta Herb + Live 3D WebGL Stage */}
       <section aria-labelledby="m01-hero-heading" className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-10 sm:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           <div className="lg:col-span-6 space-y-5">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
@@ -96,14 +154,14 @@ export const M01LandingPilot: React.FC = () => {
 
             <h1
               id="m01-hero-heading"
-              className="tkv-heading text-[2rem] sm:text-[2.75rem] lg:text-[3.1rem] font-extrabold text-[var(--tkv-ink,#2C221E)] tracking-tight leading-[1.14]"
+              className="tkv-display font-extrabold text-[var(--tkv-ink,#2C221E)]"
             >
               Hôm nay ăn gì?
               <span className="block text-[var(--tkv-primary,#D86A43)] mt-1">Để Takolio giúp bạn.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)] max-w-xl leading-relaxed">
-              Quản lý thực phẩm, chọn món ngon từ nguyên liệu sẵn có, lên thực đơn tuần và đi chợ thông minh — giữ trọn dữ liệu riêng tư cho từng hộ gia đình.
+              Quản lý thực phẩm, chọn món ngon từ nguyên liệu sẵn có, lên thực đơn tuần và đi chợ thông minh — giữ trọn dữ liệu riêng tư cho từng hộ gia đình trên <strong className="text-[var(--tkv-ink,#2C221E)]">takolio.app</strong>.
             </p>
 
             {guestError && (
@@ -136,34 +194,124 @@ export const M01LandingPilot: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--tkv-ink-soft,#5F524A)]">
-              <Link
-                to={vnextHref('/auth?mode=register')}
-                className="tkv-focusable font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
-              >
-                Tạo tài khoản đồng bộ
-              </Link>
-              <span aria-hidden="true">·</span>
-              <span>
-                Đã có tài khoản?{' '}
-                <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline">
-                  Đăng nhập
-                </Link>
-              </span>
+              {satellite ? (
+                <>
+                  <a
+                    href={resolveAppSurfaceHref('/auth?mode=register')}
+                    className="tkv-focusable font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
+                  >
+                    Tạo tài khoản đồng bộ
+                  </a>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    Đã có tài khoản?{' '}
+                    <a
+                      href={resolveAppSurfaceHref('/auth?mode=login')}
+                      className="font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
+                    >
+                      Đăng nhập
+                    </a>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to={vnextHref('/auth?mode=register')}
+                    className="tkv-focusable font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
+                  >
+                    Tạo tài khoản đồng bộ
+                  </Link>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    Đã có tài khoản?{' '}
+                    <Link
+                      to={vnextHref('/auth?mode=login')}
+                      className="font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
+                    >
+                      Đăng nhập
+                    </Link>
+                  </span>
+                </>
+              )}
             </div>
           </div>
 
           <div className="lg:col-span-6">
-            <div className="rounded-[24px] bg-white p-3 sm:p-4 border border-[var(--tkv-border,#EAE0D5)] shadow-soft">
-              <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] bg-[var(--tkv-surface-muted,#F7EFE6)]">
-                <img
-                  src="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp"
-                  srcSet="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp 640w, /takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp 1280w"
-                  sizes="(max-width: 1024px) 100vw, 580px"
-                  alt="Mâm cơm gia đình Việt với thịt kho tàu trứng, canh chua cá lóc, rau muống xào tỏi và rổ nguyên liệu tươi"
-                  className="w-full h-full object-cover"
-                />
+            <div className="tkv-bento-card p-3 sm:p-4 space-y-3">
+              <div className="flex items-center justify-between gap-2 px-1 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                  <span className="w-2 h-2 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+                  <span>Bàn bếp Nắng Gốm Sứ</span>
+                </span>
+                <div
+                  role="tablist"
+                  aria-label="Chế độ hiển thị không gian bếp"
+                  className="inline-flex items-center gap-1 p-0.5 rounded-full bg-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)]"
+                >
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={heroView === '3d'}
+                    onClick={() => setHeroView('3d')}
+                    className={clsx(
+                      'tkv-focusable min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-full text-xs font-bold transition-colors',
+                      heroView === '3d'
+                        ? 'bg-[var(--tkv-primary,#D86A43)] text-white shadow-xs'
+                        : 'text-[var(--tkv-ink-soft,#5F524A)] hover:text-[var(--tkv-ink,#2C221E)]',
+                    )}
+                  >
+                    3D Tương tác (WebGL)
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={heroView === 'photo'}
+                    onClick={() => setHeroView('photo')}
+                    className={clsx(
+                      'tkv-focusable min-h-[44px] min-w-[44px] px-3.5 py-2 rounded-full text-xs font-bold transition-colors',
+                      heroView === 'photo'
+                        ? 'bg-[var(--tkv-primary,#D86A43)] text-white shadow-xs'
+                        : 'text-[var(--tkv-ink-soft,#5F524A)] hover:text-[var(--tkv-ink,#2C221E)]',
+                    )}
+                  >
+                    Ảnh mâm cơm Việt
+                  </button>
+                </div>
               </div>
-              <div className="mt-3.5 flex items-center justify-between gap-3 px-1 flex-wrap">
+
+              {heroView === '3d' ? (
+                <Suspense
+                  fallback={
+                    <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] bg-[var(--tkv-surface-muted,#F7EFE6)]">
+                      <img
+                        src="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp"
+                        srcSet="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp 640w, /takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp 1280w"
+                        sizes="(max-width: 1024px) 100vw, 580px"
+                        alt="Mâm cơm gia đình Việt trên bàn gốm sứ ấm nắng"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  }
+                >
+                  <LazySunlitKitchenStage3D
+                    posterSrc="/takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp"
+                    posterSrcSet="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp 640w, /takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp 1280w"
+                    posterAlt="Mâm cơm gia đình Việt với nồi đất nung và nguyên liệu tươi trên bàn gỗ sáng"
+                  />
+                </Suspense>
+              ) : (
+                <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] bg-[var(--tkv-surface-muted,#F7EFE6)]">
+                  <img
+                    src="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp"
+                    srcSet="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp 640w, /takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp 1280w"
+                    sizes="(max-width: 1024px) 100vw, 580px"
+                    alt="Mâm cơm gia đình Việt với thịt kho tàu trứng, canh chua cá lóc, rau muống xào tỏi và rổ nguyên liệu tươi"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="pt-0.5 flex items-center justify-between gap-3 px-1 flex-wrap">
                 <div className="flex items-center gap-2.5">
                   <MascotIllustration pose="welcome" size={40} decorative className="border border-[var(--tkv-border,#EAE0D5)] bg-[var(--tkv-bg,#FCF9F5)]" />
                   <div>
@@ -207,7 +355,7 @@ export const M01LandingPilot: React.FC = () => {
         </div>
       </section>
 
-      {/* M02 Preview Section — 3-Step Closed-Loop Kitchen Workflow */}
+      {/* M02 Preview Section — Interactive 5-Station Closed-Loop SVG + 3-Step Workflow */}
       <section
         id="tkv-how-it-works"
         aria-labelledby="m01-workflow-heading"
@@ -223,9 +371,13 @@ export const M01LandingPilot: React.FC = () => {
               Từ nguyên liệu trong tủ đến bữa cơm trọn vẹn chỉ với 3 bước
             </h2>
             <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
-              AI hỗ trợ nhận diện nhanh — quyền kiểm duyệt và xác nhận cuối cùng luôn thuộc về bạn.
+              Chạm vào từng trạm trong sơ đồ tương tác bên dưới để xem cơ chế đối chiếu định lượng và kiểm duyệt thủ công của Takolio.
             </p>
           </div>
+
+          <InteractiveKitchenLoopSvg
+            onNavigate={(href) => navigateToAppSurface(vnextHref(href), navigate)}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {WORKFLOW_STEPS.map((item) => (
@@ -300,6 +452,59 @@ export const M01LandingPilot: React.FC = () => {
               </div>
             </TkvSurface>
           ))}
+        </div>
+      </section>
+
+      {/* GEO Answer-First Summary & Comparison Matrix */}
+      <section
+        id="tkv-geo-summary"
+        aria-labelledby="m01-geo-heading"
+        className="max-w-[1200px] mx-auto pb-12 sm:pb-16 px-4 sm:px-6 space-y-5"
+      >
+        <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-8 space-y-5 shadow-xs">
+          <div className="max-w-3xl space-y-2">
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-sage-ink,#355940)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
+              <span>Vì sao gia đình Việt chọn Takolio</span>
+            </span>
+            <h2 id="m01-geo-heading" className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+              Takolio khác gì so với ghi chú thủ công hay ứng dụng công thức đơn lẻ?
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              Takolio là trợ lý căn bếp khép kín vận hành trên hai không gian chuyên biệt: cổng thông tin ẩm thực công khai tại <strong className="text-[var(--tkv-ink,#2C221E)]">takolio.com</strong> và không gian bếp riêng tư cho từng hộ gia đình tại <strong className="text-[var(--tkv-ink,#2C221E)]">takolio.app</strong>.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-[var(--tkv-border,#EAE0D5)]">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr className="bg-[var(--tkv-surface-muted,#F7EFE6)] text-[var(--tkv-ink,#2C221E)] border-b border-[var(--tkv-border,#EAE0D5)]">
+                  <th scope="col" className="py-3.5 px-4 font-extrabold">Tiêu chí thực tế</th>
+                  <th scope="col" className="py-3.5 px-4 font-extrabold text-[var(--tkv-accent-ink,#9E4322)]">Takolio Kitchen Studio</th>
+                  <th scope="col" className="py-3.5 px-4 font-bold text-[var(--tkv-ink-soft,#5F524A)]">Ghi chú thủ công</th>
+                  <th scope="col" className="py-3.5 px-4 font-bold text-[var(--tkv-ink-soft,#5F524A)]">App công thức đơn lẻ</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[var(--tkv-border,#EAE0D5)]">
+                {GEO_COMPARISON_ROWS.map((row) => (
+                  <tr key={row.criterion} className="hover:bg-[var(--tkv-bg,#FCF9F5)] transition-colors">
+                    <th scope="row" className="py-3.5 px-4 font-bold text-[var(--tkv-ink,#2C221E)] align-top">
+                      {row.criterion}
+                    </th>
+                    <td className="py-3.5 px-4 text-[var(--tkv-ink,#2C221E)] font-medium align-top">
+                      {row.takolio}
+                    </td>
+                    <td className="py-3.5 px-4 text-[var(--tkv-ink-soft,#5F524A)] align-top">
+                      {row.manual}
+                    </td>
+                    <td className="py-3.5 px-4 text-[var(--tkv-ink-soft,#5F524A)] align-top">
+                      {row.genericRecipeApp}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 

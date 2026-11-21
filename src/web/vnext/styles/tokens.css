@@ -72,13 +72,21 @@
   --sumi-border: #eae0d5;
   --sumi-accent: #cf623a;
 
-  /* Standardized Geometry & Warm Ceramic Elevation */
-  --tkv-radius-card: 16px;
-  --tkv-radius-btn: 12px;
+  /* Standardized Geometry & 4-Tier Warm Ceramic Elevation (Design System v2) */
+  --tkv-radius-card: 20px;
+  --tkv-radius-bento: 24px;
+  --tkv-radius-btn: 14px;
   --tkv-radius-pill: 999px;
-  --tkv-shadow-card: 0 1px 3px rgba(66, 44, 33, 0.04), 0 6px 18px rgba(66, 44, 33, 0.035);
-  --tkv-shadow-elevated: 0 6px 20px rgba(66, 44, 33, 0.06), 0 14px 32px rgba(66, 44, 33, 0.055);
-  --tkv-shadow-float: 0 12px 32px rgba(66, 44, 33, 0.10), 0 2px 8px rgba(66, 44, 33, 0.05);
+  --tkv-shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 3px rgba(66, 44, 33, 0.04), 0 8px 22px rgba(66, 44, 33, 0.035);
+  --tkv-shadow-interactive: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 4px 14px rgba(66, 44, 33, 0.055), 0 14px 28px rgba(66, 44, 33, 0.05);
+  --tkv-shadow-elevated: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 8px 24px rgba(66, 44, 33, 0.065), 0 18px 38px rgba(66, 44, 33, 0.06);
+  --tkv-shadow-float: 0 14px 36px rgba(66, 44, 33, 0.11), 0 3px 10px rgba(66, 44, 33, 0.05);
+
+  /* Fluid Vietnamese Editorial Typography Scale */
+  --tkv-text-display: clamp(2.25rem, 4.1vw, 3.55rem);
+  --tkv-text-h1: clamp(1.85rem, 3.1vw, 2.7rem);
+  --tkv-text-h2: clamp(1.35rem, 2.1vw, 1.85rem);
+  --tkv-text-lead: clamp(1rem, 1.25vw, 1.15rem);
 
   /* Consolidated Self-Hosted Vietnamese Typography */
   --tkv-font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -96,8 +104,20 @@
 
 .tkv-heading {
   font-family: var(--tkv-font-heading);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.024em;
+  line-height: 1.16;
+}
+
+.tkv-display {
+  font-family: var(--tkv-font-heading);
+  font-size: var(--tkv-text-display);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.tkv-tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 .tkv-hero-ceramic {
@@ -105,6 +125,27 @@
   color: var(--tkv-ink);
   border: 1px solid var(--tkv-border-hero);
   box-shadow: var(--tkv-shadow-elevated);
+}
+
+.tkv-glass-ceramic {
+  background-color: rgba(252, 249, 245, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 224, 213, 0.9);
+  box-shadow: var(--tkv-shadow-card);
+}
+
+.tkv-bento-card {
+  border-radius: var(--tkv-radius-bento);
+  background-color: var(--tkv-surface);
+  border: 1px solid var(--tkv-border);
+  box-shadow: var(--tkv-shadow-card);
+  transition: transform 220ms cubic-bezier(0.2, 0, 0, 1), box-shadow 220ms cubic-bezier(0.2, 0, 0, 1), border-color 180ms ease;
+}
+
+.tkv-bento-card:hover {
+  border-color: var(--tkv-border-strong);
+  box-shadow: var(--tkv-shadow-interactive);
 }
 
 .tkv-skip-link {

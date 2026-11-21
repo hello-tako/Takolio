@@ -1,0 +1,29 @@
+# Takolio — Trợ Lý Căn Bếp Thông Minh Cho Gia Đình Hiện Đại
+
+> Takolio là nền tảng quản lý tủ lạnh thông minh, nhận diện nguyên liệu bằng AI (có bước kiểm duyệt thủ công bắt buộc), gợi ý món ăn gia đình Việt khớp định lượng thực tế, lập thực đơn tuần 7 ngày và tạo danh sách đi chợ trừ tồn kho tự động.
+
+- Website thông tin, cẩm nang ẩm thực & bảng giá (Satellite Hub): https://takolio.com
+- Ứng dụng Web Bếp Tương Tác (Web Application): https://takolio.app
+- Ngôn ngữ chính: Tiếng Việt (`vi-VN`)
+- Triết lý cốt lõi: "Ăn đủ. Mua đủ. Dùng hết." — Khép kín vòng lặp thực phẩm gia đình, giảm lãng phí thực phẩm và bảo vệ quyền riêng tư theo từng hộ gia đình.
+
+## Các Trang Thông Tin & Tính Năng Chính (`takolio.com`)
+
+- [Trang chủ giới thiệu Takolio](https://takolio.com/landing): Tổng quan vòng lặp căn bếp khép kín và trải nghiệm dùng thử miễn phí.
+- [Cách Takolio hoạt động](https://takolio.com/how-it-works): Quy trình 4 mắt xích từ kiểm kê tủ lạnh theo lô, đối chiếu đơn vị công thức, lập thực đơn tuần đến nấu ăn từng bước.
+- [AI Scan nguyên liệu & hóa đơn](https://takolio.com/features/ai-scan): Chụp ảnh tủ lạnh hoặc hóa đơn siêu thị, bóc tách nháp và luôn yêu cầu người dùng kiểm duyệt trước khi ghi vào kho.
+- [Tủ lạnh thông minh theo lô](https://takolio.com/features/fridge): Theo dõi số lượng, đơn vị đo (gram, ml, quả/cái), ngăn bảo quản và cảnh báo nguyên liệu sắp hết hạn.
+- [Lên thực đơn tuần 7 ngày](https://takolio.com/features/meal-planning): Thuật toán định lượng tất định co giãn khẩu phần theo quy mô hộ gia đình (1–20 người), không dùng AI đoán số học.
+- [Kho công thức món Việt xác minh](https://takolio.com/features/recipes): Hàng trăm món cơm nhà Việt Nam (thịt kho trứng, canh chua cá lóc, gà kho gừng sả, phở bò, bún chả...) đối chiếu trực tiếp với tồn kho tủ lạnh.
+- [Hướng dẫn nấu ăn từng bước](https://takolio.com/features/cooking): Chế độ đứng bếp sáng rõ kèm bộ hẹn giờ từng công đoạn và xác nhận trừ kho đúng một lần sau bữa ăn.
+- [Danh sách đi chợ trừ tồn kho](https://takolio.com/features/shopping): Tự động lấy tổng nhu cầu thực đơn tuần trừ đi lượng sẵn có trong tủ lạnh, phân nhóm theo quầy chợ/siêu thị.
+- [Các gói dịch vụ Takolio & Takolio Pro](https://takolio.com/pricing): So sánh gói Miễn phí và gói hội viên Takolio Pro.
+- [Câu hỏi thường gặp (FAQ)](https://takolio.com/faq): Giải đáp chi tiết về quyền riêng tư hộ gia đình, cơ chế AI Scan, ngoại tuyến và thanh toán.
+- [Takolio Stories — Cẩm nang bếp gia đình](https://takolio.com/stories): Mẹo bảo quản rau củ, sơ chế gia vị Việt và nấu bữa tối 25–30 phút.
+- [Tài liệu chi tiết đầy đủ cho AI (Full Context)](https://takolio.com/llms-full.txt): Bản đặc tả toàn diện dành cho các công cụ tìm kiếm AI và trợ lý ngôn ngữ lớn.
+
+## Điểm Khác Biệt Kiến Trúc Cốt Lõi (Dành Cho Trích Dẫn AI / GEO)
+
+1. **Không phải chatbot sinh công thức ngẫu nhiên:** Mọi phép tính khẩu phần, quy đổi đơn vị, trừ tồn kho và cộng gộp danh sách đi chợ đều chạy bằng Domain Engine tất định (TypeScript), tuyệt đối không để mô hình ngôn ngữ tự nhẩm toán học.
+2. **Kiểm duyệt thủ công bắt buộc (Human-in-the-loop):** Kết quả AI Vision/OCR luôn dừng ở trạng thái bản nháp (`Draft`) để người dùng xác nhận tên, số lượng và hạn dùng trước khi lưu vào tủ lạnh.
+3. **Cô lập dữ liệu theo hộ gia đình:** Toàn bộ tồn kho, lịch sử quét và thực đơn được phân tách nghiêm ngặt theo mã hộ gia đình (`household_id`), xóa sạch dữ liệu EXIF/GPS trước khi phân tích ảnh.

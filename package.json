@@ -9,6 +9,7 @@
     "dev:worker": "wrangler dev --var ENVIRONMENT:development",
     "build": "vite build && vite build -c vite.admin.config.ts && tsc -p tsconfig.worker.json",
     "build:web": "vite build",
+    "build:site": "vite build -c vite.site.config.ts && node scripts/site-prerender.mjs",
     "build:admin": "vite build -c vite.admin.config.ts",
     "build:worker": "tsc -p tsconfig.worker.json",
     "preview": "vite preview",
@@ -53,6 +54,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "7.18.3",
     "tailwind-merge": "^3.0.2",
+    "three": "^0.187.0",
     "zod": "^4.6.7",
     "zustand": "^5.0.3"
   },
@@ -60,9 +62,11 @@
     "@axe-core/playwright": "4.10.2",
     "@cloudflare/workers-types": "5.20261006.1",
     "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
     "@types/node": "^22.13.10",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@types/three": "^0.187.0",
     "@typescript-eslint/eslint-plugin": "8.71.1",
     "@typescript-eslint/parser": "8.71.1",
     "@vitejs/plugin-react": "^4.3.4",
@@ -77,8 +81,7 @@
     "typescript": "^5.7.3",
     "vite": "^6.4.5",
     "vitest": "4.1.12",
-    "wrangler": "4.149.0",
-    "@tailwindcss/postcss": "4.3.3"
+    "wrangler": "4.149.0"
   },
   "pnpm": {
     "overrides": {

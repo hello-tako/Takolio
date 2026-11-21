@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
@@ -24,6 +24,8 @@ import {
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
 import { VerifiedDishImage } from '../components/VNextMedia';
+import { buildRecipeJsonLd, useVNextSeo } from '../lib/seo';
+import { InteractivePortionMacroDialSvg } from '../interactive-svg/InteractivePortionMacroDialSvg';
 
 const UNIT_LABELS_VI: Record<string, string> = {
   piece: 'quả/cái',
@@ -125,6 +127,34 @@ export const C18RecipeDetailPilot: React.FC = () => {
     recipeQuery.error instanceof ApiError &&
     recipeQuery.error.kind === 'http' &&
     recipeQuery.error.status === 404;
+
+  const recipeJsonLd = useMemo(() => {
+    if (!recipe) return null;
+    return buildRecipeJsonLd({
+      slug: recipe.slug,
+      title: recipe.title,
+      description: recipe.description,
+      imageUrl: resolveRecipeImage(recipe).src,
+      cookMinutes: recipe.cookTimeMinutes,
+      servings: recipe.servings,
+      calories: recipe.nutrition?.calories ?? null,
+      ingredients: recipe.ingredients.map(
+        (ing) => `${ing.name} (${formatQty(ing.requiredQuantity, ing.unit)})`,
+      ),
+      steps: recipe.steps.map((st) => st.instruction),
+    });
+  }, [recipe]);
+
+  useVNextSeo({
+    title: recipe ? `${recipe.title} — Công thức chuẩn định lượng` : 'Chi tiết món ăn',
+    description: recipe
+      ? recipe.description
+      : 'Công thức bữa cơm gia đình Việt đối chiếu định lượng tồn kho tủ lạnh trên Takolio.',
+    canonicalPath: `/recipes/${recipe?.slug || recipeKey}`,
+    domainSurface: 'app',
+    noindex: notFound,
+    jsonLd: recipeJsonLd,
+  });
 
   const updateServings = (nextServings: number) => {
     const clamped = Math.max(1, Math.min(20, nextServings));
@@ -284,6 +314,18 @@ export const C18RecipeDetailPilot: React.FC = () => {
               </p>
             )}
           </TkvSurface>
+
+          <InteractivePortionMacroDialSvg
+            initialServings={Math.min(8, recipe.servings)}
+            baseServings={Math.min(8, baseRecipe?.servings ?? recipe.servings)}
+            baseTimeMinutes={recipe.cookTimeMinutes}
+            sampleIngredients={recipe.ingredients.slice(0, 5).map((ing) => ({
+              name: ing.name,
+              baseQty: ing.requiredQuantity,
+              unit: UNIT_LABELS_VI[ing.unit] ?? ing.unit,
+            }))}
+            onServingsChange={(next) => updateServings(next)}
+          />
         </div>
 
         {/* Right Ingredients (C19) & Cooking Steps Column (7 cols on Desktop) */}

@@ -8,6 +8,7 @@ import { SystemStatusPage } from './components/common/SystemStatusPage';
 import { useAuthStore } from './stores/useAuthStore';
 import { AppLayout } from './components/layout/AppLayout';
 import { VerifyRouteLifecycle } from './features/auth/VerifyRouteLifecycle';
+import { isSatelliteComRuntime } from './vnext/lib/domain-surface';
 
 const M01LandingPage = lazy(() =>
   import('./vnext/screens/M01LandingPilot').then((m) => ({ default: m.M01LandingPilot })),
@@ -156,7 +157,7 @@ class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { 
         <SystemStatusPage title="Không thể mở trang này">
           <p role="alert">Vui lòng tải lại ứng dụng để thử lại.</p>
           <button
-            className="rounded-xl bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] px-4 py-3 font-semibold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--sumi-ink,#111315)]"
+            className="rounded-xl bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] px-4 py-3 font-semibold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--tkv-primary,#D86A43)]"
             onClick={() => window.location.reload()}
           >
             Tải lại
@@ -185,6 +186,7 @@ const WeekShoppingRedirect: React.FC = () => {
 
 export const App: React.FC = () => {
   const { isGuest, isOnboarded, userId, householdId, primaryGoal } = useAuthStore();
+  const satelliteMode = isSatelliteComRuntime();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -197,7 +199,7 @@ export const App: React.FC = () => {
                 {/* S01–S08 System State Routes */}
                 <Route path="/vnext/states/:stateId" element={<VNextSystemStatePage />} />
 
-                {/* M02–M12 Public Marketing Website Routes (DDR-001 Option A) */}
+                {/* M02–M12 Public Marketing Website Routes (takolio.com Satellite & Local Preview) */}
                 <Route path="/how-it-works" element={<M02HowItWorksPage />} />
                 <Route path="/features/ai-scan" element={<M03AiScanFeaturePage />} />
                 <Route path="/features/fridge" element={<M04FridgeFeaturePage />} />
@@ -213,11 +215,14 @@ export const App: React.FC = () => {
                 <Route path="/privacy" element={<M12CompanyLegalPage />} />
                 <Route path="/terms" element={<M12CompanyLegalPage />} />
 
+                {/* On takolio.com satellite host, `/` renders M01LandingPage directly with zero session redirect */}
+                {satelliteMode && <Route path="/" element={<M01LandingPage />} />}
+
                 {/* M01 Landing, A01–A08 Auth & O01–O06 Onboarding */}
                 <Route
                   path="/landing"
                   element={
-                    userId && householdId ? (
+                    !satelliteMode && userId && householdId ? (
                       <Navigate to={isOnboarded ? '/' : '/onboarding'} replace />
                     ) : (
                       <M01LandingPage />

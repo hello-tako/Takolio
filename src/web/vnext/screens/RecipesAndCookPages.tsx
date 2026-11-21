@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
@@ -38,6 +38,16 @@ import {
 } from '../components/Primitives';
 import { BrandLockup, MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
 import { VNextIcon } from '../components/VNextIcons';
+import {
+  InteractiveSimmerWaveSvg,
+  InteractiveTakoChefSvg,
+} from '../interactive-svg';
+
+const LazyCulinarySimmerShaderBg = lazy(() =>
+  import('../webgl/CulinarySimmerShaderBg').then((m) => ({
+    default: m.CulinarySimmerShaderBg,
+  })),
+);
 
 const QUICK_CATEGORIES: Array<{ id: string; label: string }> = [
   { id: 'mon_kho', label: 'Món kho' },
@@ -72,6 +82,8 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
         : 'Khám phá món ăn',
     description: 'Tìm món ăn theo nguyên liệu sẵn có trong tủ lạnh, thời gian nấu và khẩu vị gia đình.',
     canonicalPath: '/recipes',
+    domainSurface: 'app',
+    noindex: savedView,
   });
 
   const req = discoveryRequest({ ...filters, servings: effectiveServings });
@@ -429,6 +441,8 @@ export const C20C21CookingStudioVNext: React.FC = () => {
     title: isPrepStage ? 'Chuẩn bị nấu' : 'Chế độ nấu từng bước',
     description: 'Không gian đứng bếp tập trung với hẹn giờ từng công đoạn và hướng dẫn rõ ràng.',
     canonicalPath: recipeKey ? `/cook/${recipeKey}` : '/recipes',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const recipeQuery = useQuery({
@@ -588,13 +602,21 @@ export const C20C21CookingStudioVNext: React.FC = () => {
   return (
     <div
       className={clsx(
-        'tkv-root tkv-immersive-cook-frame flex flex-col min-h-dvh transition-colors text-[var(--tkv-ink,#2C221E)]',
+        'tkv-root tkv-immersive-cook-frame relative overflow-hidden flex flex-col min-h-dvh transition-colors text-[var(--tkv-ink,#2C221E)]',
         isPrepStage
           ? 'bg-[var(--tkv-bg,#FCF9F5)]'
           : 'bg-gradient-to-b from-[var(--tkv-cook-from,#FFFDFB)] to-[var(--tkv-cook-to,#F8F1E9)]',
       )}
       data-tkv-screen={isPrepStage ? 'C20' : 'C21'}
     >
+      {!isPrepStage && (
+        <Suspense fallback={null}>
+          <LazyCulinarySimmerShaderBg
+            timerRunning={isTimerRunning}
+            className="pointer-events-none fixed inset-0 z-0 opacity-60"
+          />
+        </Suspense>
+      )}
       {/* Distraction-Free Sunlit Countertop Studio Top Bar */}
       <header className="sticky top-0 z-20 backdrop-blur-md bg-white/95 border-b border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-ink,#2C221E)] px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
         <button
@@ -668,7 +690,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
         </div>
       )}
 
-      <main className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main className="relative z-10 flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {isPrepStage ? (
           /* C20 — Chuẩn bị nấu (Sunlit Ceramic Mise-en-place checklist) */
           <div className="space-y-6">
@@ -906,6 +928,14 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               </div>
             </div>
 
+            {/* Interactive Broth Simmer Wave & Heat Level Guide */}
+            <InteractiveSimmerWaveSvg
+              progress={1 - timerRatio}
+              isRunning={isTimerRunning}
+              totalSeconds={defaultStepSeconds}
+              remainingSeconds={timerSecondsRemaining ?? defaultStepSeconds}
+            />
+
             {/* Quick Ingredient Reference Drawer on Sunlit Ceramic */}
             <details className="rounded-2xl bg-white border border-[var(--tkv-border,#EAE0D5)] px-5 py-3.5 text-[var(--tkv-ink,#2C221E)]">
               <summary className="cursor-pointer min-h-[36px] flex items-center justify-between font-bold text-sm tabular-nums">
@@ -986,6 +1016,8 @@ export const C22CookingCompleteVNext: React.FC = () => {
     title: 'Hoàn thành bữa ăn',
     description: 'Kiểm tra lượng nguyên liệu thực tế đã dùng trước khi cập nhật tủ lạnh.',
     canonicalPath: '/cooking/complete',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   if (!runId || !recipe) {
@@ -1064,10 +1096,10 @@ export const C22CookingCompleteVNext: React.FC = () => {
     >
       <form onSubmit={handleSubmit} noValidate className="max-w-3xl mx-auto space-y-6">
         <TkvSurface className="p-5 sm:p-6 bg-gradient-to-br from-[var(--tkv-linen-from,#FFFDFB)] to-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)] flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <MascotIllustration
-            pose={done ? 'achievement' : 'cooking'}
-            size={80}
-            className="border border-[var(--tkv-border,#EAE0D5)] bg-white shrink-0"
+          <InteractiveTakoChefSvg
+            size={84}
+            mood={done ? 'celebrate' : 'cooking'}
+            className="shrink-0"
           />
           <div className="space-y-2 min-w-0">
             <TkvBadge tone={done ? 'success' : 'coral'} icon={done ? 'check' : 'recipes'}>

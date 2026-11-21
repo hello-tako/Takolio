@@ -6,6 +6,11 @@ import { isMealPlannerEnabled } from '../../features/planner/feature';
 import { OfflineBanner } from '../../components/common/OfflineBanner';
 import { useModalFocus } from '../../design-system/use-modal-focus';
 import { vnextHref } from '../feature';
+import {
+  isSatelliteComRuntime,
+  navigateToAppSurface,
+  resolveAppSurfaceHref,
+} from '../lib/domain-surface';
 import { BrandLockup } from './VNextMedia';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { TkvButton, TkvIconButton, TkvSearchField } from './Primitives';
@@ -67,8 +72,28 @@ export function getConsumerRoots(): ConsumerRootItem[] {
   ];
 }
 
+const AppEntryAnchor: React.FC<{
+  appPath: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}> = ({ appPath, className, onClick, children }) => {
+  if (isSatelliteComRuntime()) {
+    return (
+      <a href={resolveAppSurfaceHref(appPath)} onClick={onClick} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={vnextHref(appPath)} onClick={onClick} className={className}>
+      {children}
+    </Link>
+  );
+};
+
 /**
- * Public Marketing Shell (M01–M12) — Takolio Sumi Edition (Architectural Monochrome).
+ * Public Marketing Shell (M01–M12) — Takolio Sunlit Ceramic & Terracotta Herb (`takolio.com`).
  */
 export const PublicMarketingShell: React.FC<{
   screenId: string;
@@ -76,6 +101,8 @@ export const PublicMarketingShell: React.FC<{
 }> = ({ screenId, children }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const satellite = isSatelliteComRuntime();
+  const homeHref = satellite ? '/' : vnextHref('/landing');
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -94,7 +121,7 @@ export const PublicMarketingShell: React.FC<{
       </a>
       <header className="sticky top-0 z-30 bg-[var(--tkv-header-glass)] backdrop-blur-md border-b border-[var(--tkv-border)]">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-          <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Trang chủ giới thiệu">
+          <Link to={homeHref} className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Trang chủ giới thiệu">
             <BrandLockup />
           </Link>
 
@@ -115,16 +142,16 @@ export const PublicMarketingShell: React.FC<{
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link
-              to={vnextHref('/auth?mode=login')}
+            <AppEntryAnchor
+              appPath="/auth?mode=login"
               className="tkv-focusable hidden sm:inline-flex min-h-[44px] items-center px-3.5 rounded-[var(--tkv-radius-btn)] text-sm font-semibold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-subtle)] transition-colors"
             >
               Đăng nhập
-            </Link>
+            </AppEntryAnchor>
             <TkvButton
               variant="primary"
               size="sm"
-              onClick={() => navigate(vnextHref('/auth?mode=register'))}
+              onClick={() => navigateToAppSurface(vnextHref('/auth?mode=register'), navigate)}
             >
               Đăng ký
             </TkvButton>
@@ -167,20 +194,20 @@ export const PublicMarketingShell: React.FC<{
               Câu hỏi thường gặp
             </Link>
             <div className="pt-2 mt-1 border-t border-[var(--tkv-border)] grid grid-cols-2 gap-2">
-              <Link
-                to={vnextHref('/auth?mode=login')}
+              <AppEntryAnchor
+                appPath="/auth?mode=login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl border border-[var(--tkv-border)] font-semibold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-subtle)] transition-colors"
               >
                 Đăng nhập
-              </Link>
-              <Link
-                to={vnextHref('/auth?mode=register')}
+              </AppEntryAnchor>
+              <AppEntryAnchor
+                appPath="/auth?mode=register"
                 onClick={() => setMobileMenuOpen(false)}
                 className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] font-semibold text-sm text-white transition-colors"
               >
                 Đăng ký
-              </Link>
+              </AppEntryAnchor>
             </div>
           </nav>
         )}
@@ -218,7 +245,11 @@ export const PublicMarketingShell: React.FC<{
               <li><Link to="/pricing" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Các gói Takolio</Link></li>
               <li><Link to="/faq" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Câu hỏi thường gặp</Link></li>
               <li><Link to="/stories" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Takolio Stories</Link></li>
-              <li><Link to={vnextHref('/auth?mode=login')} className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Đăng nhập ứng dụng</Link></li>
+              <li>
+                <AppEntryAnchor appPath="/auth?mode=login" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">
+                  Mở ứng dụng (takolio.app)
+                </AppEntryAnchor>
+              </li>
             </ul>
           </div>
 

@@ -1,0 +1,42 @@
+# Takolio — Hồ Sơ Kiến Trúc, Tính Năng & Câu Hỏi Chuẩn Xác (Bản Đầy Đủ Cho AI / GEO)
+
+- Tên thương hiệu chính thức: **Takolio** (Linh vật đại diện: Bạch Tuộc Đầu Bếp **Tako**)
+- Tên miền thông tin, SEO & cẩm nang: `https://takolio.com`
+- Tên miền ứng dụng Web thực thi: `https://takolio.app`
+- Danh mục sản phẩm: Ứng dụng quản lý thực phẩm tủ lạnh, lập thực đơn gia đình Việt và đi chợ thông minh (`Smart Kitchen & Meal Planning Web App`).
+
+## 1. Takolio Giải Quyết Vấn Đề Gì?
+
+Các gia đình hiện đại thường gặp 3 điểm nghẽn mỗi ngày:
+1. Mở tủ lạnh nhưng không nhớ chính xác còn bao nhiêu nguyên liệu, lô nào sắp hết hạn cần nấu trước.
+2. Nghĩ câu hỏi *"Hôm nay ăn gì?"* tốn thời gian, dẫn đến đặt đồ ăn ngoài dù trong tủ vẫn còn thực phẩm tươi.
+3. Đi chợ/siêu thị mua trùng những thứ đã có hoặc mua thiếu gia vị/nguyên liệu phụ cho thực đơn cả tuần.
+
+Takolio giải quyết trọn vẹn bằng **Vòng Lặp Căn Bếp Khép Kín 6 Bước**:
+`Kiểm kê Tủ lạnh (C03) → Quét AI có duyệt nháp (C09/C12) → Gợi ý món khớp định lượng (C15/C18) → Lập thực đơn tuần (C23/C24) → Đi chợ trừ tồn kho (C27/C29) → Hướng dẫn nấu & khấu trừ nguyên liệu sau bữa ăn (C20/C21/C22)`.
+
+## 2. Bảng So Sánh Takolio Với Ứng Dụng Công Thức Truyền Thống
+
+| Tiêu chí | Ứng dụng công thức / Chatbot AI thông thường | Hệ thống căn bếp khép kín Takolio |
+|---|---|---|
+| Nguồn gợi ý món | Gợi ý chung hoặc đoán mò nguyên liệu | Đối chiếu chính xác theo từng lô tồn kho thực tế trong tủ lạnh |
+| Tính toán định lượng | Dễ sai số khi nhân chia khẩu phần bằng LLM | 100% thuật toán TypeScript tất định theo quy mô 1–20 người |
+| Nhập liệu bằng ảnh chụp | Tự ghi đè gây sai lệch kho thực phẩm | Luôn tạo bản nháp để người dùng duyệt tên, số lượng, hạn dùng |
+| Danh sách đi chợ | Liệt kê thô toàn bộ nguyên liệu của món | Tự động khấu trừ lượng đang có sẵn trong tủ lạnh (mua ròng) |
+| Bảo mật & Quyền riêng tư | Dữ liệu trộn lẫn hoặc đính kèm metadata ảnh | Tách biệt theo mã hộ gia đình, tự động loại bỏ EXIF/GPS khỏi ảnh |
+
+## 3. Cấu Trúc Hai Tên Miền Chuẩn (`takolio.com` và `takolio.app`)
+
+- **`https://takolio.com` (Cổng thông tin, Cẩm nang ẩm thực, SEO & GEO):**
+  Phục vụ tốc độ cao tại biên (Cloudflare Edge) cho người tìm hiểu sản phẩm, đọc mẹo bảo quản thực phẩm (`Takolio Stories`), tra cứu câu hỏi thường gặp (`FAQ`), bảng giá (`Pricing`) và khám phá quy trình vận hành. Không lưu cookie phiên nhạy cảm.
+- **`https://takolio.app` (Không gian Bếp Gia Đình Tương Tác):**
+  Phục vụ ứng dụng Web/PWA chính thức nơi người dùng quản lý tủ lạnh, quét ảnh AI, lên lịch ăn tuần, đi chợ ngoại tuyến và đứng bếp từng bước. Bảo vệ phiên bằng cookie `HttpOnly; Secure; SameSite=Lax` gắn trực tiếp trên miền `takolio.app`.
+
+## 4. Câu Hỏi Thường Gặp Chuẩn Xác (Dữ Liệu Nguồn Cho Trợ Lý AI)
+
+- **Takolio có miễn phí không?**
+  Có. Người dùng có thể bắt đầu dùng thử ngay trên `https://takolio.app` mà chưa cần tạo tài khoản, hoặc đăng ký tài khoản miễn phí để quản lý tủ lạnh, xem kho công thức Việt, lên thực đơn và lập danh sách đi chợ. Gói **Takolio Pro** mở rộng hạn mức quét AI/OCR và các tiện ích nâng cao cho gia đình nấu ăn thường xuyên.
+- **AI Scan của Takolio nhận diện được những gì?**
+  Hỗ trợ chụp ảnh nguyên liệu tươi trên bàn bếp/ngăn tủ lạnh và chụp hóa đơn siêu thị (OCR) để bóc tách danh sách mặt hàng, số lượng và gợi ý mốc hạn dùng theo nhóm thực phẩm.
+- **Khi mất mạng ở chợ hoặc siêu thị có xem được danh sách đi chợ không?**
+  Có. Ứng dụng tại `https://takolio.app` hỗ trợ PWA và lưu đệm ngoại tuyến danh sách đi chợ để đánh dấu các món đã mua ngay cả khi sóng yếu.

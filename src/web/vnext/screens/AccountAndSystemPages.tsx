@@ -55,6 +55,8 @@ export const C30NotificationsVNext: React.FC = () => {
     title: 'Thông báo căn bếp',
     description: 'Nhắc nhở nguyên liệu nên dùng sớm và gợi ý thao tác từ dữ liệu thật của hộ gia đình.',
     canonicalPath: '/notifications',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const notificationsQuery = useQuery({
@@ -176,6 +178,8 @@ export const U01ProfileHubVNext: React.FC = () => {
     title: 'Hồ sơ cá nhân',
     description: 'Quản lý tài khoản, hộ gia đình, thông báo, gói Pro và cài đặt quyền riêng tư trên Takolio.',
     canonicalPath: '/me',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const handleLogout = async () => {
@@ -415,6 +419,8 @@ export const U06HouseholdHonestPage: React.FC = () => {
     title: 'Hộ gia đình',
     description: 'Thông tin mã hộ gia đình hiện tại và trạng thái tính năng chia sẻ thành viên.',
     canonicalPath: '/me/household',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const unavailableItems = [
@@ -529,6 +535,8 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
       location.hash === '#data-rights' ? 'Xuất và xóa dữ liệu' : 'Quyền riêng tư & Dữ liệu',
     description: 'Kiểm soát quyền riêng tư hộ gia đình, sự đồng ý đo lường và trạng thái xuất/xóa dữ liệu.',
     canonicalPath: '/settings/privacy',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const toggleConsent = () => {
@@ -788,6 +796,8 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
     title: spec.title,
     description: spec.lead,
     canonicalPath: forcedState === 's02' ? '/404' : `/vnext/states/${normalized}`,
+    domainSurface: 'app',
+    noindex: true,
   });
 
   return (

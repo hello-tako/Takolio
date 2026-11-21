@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useAuthStore } from '../../stores/useAuthStore';
@@ -39,6 +39,13 @@ import {
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
 import { VerifiedDishImage } from '../components/VNextMedia';
+import { useVNextSeo } from '../lib/seo';
+
+const LazyFridgeFreshnessOrbital3D = lazy(() =>
+  import('../webgl/FridgeFreshnessOrbital3D').then((m) => ({
+    default: m.FridgeFreshnessOrbital3D,
+  })),
+);
 
 const MEAL_LABELS = {
   breakfast: 'Bữa sáng',
@@ -78,6 +85,18 @@ export const C01HomePilot: React.FC = () => {
   });
 
   const activeItems = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
+  const urgentCount = activeItems.filter((item) => item.freshness === 'expiring').length;
+  const soonCount = activeItems.filter((item) => item.freshness === 'use_soon').length;
+  const freshCount = Math.max(0, activeItems.length - urgentCount - soonCount);
+
+  useVNextSeo({
+    title: 'Hôm nay ăn gì?',
+    description: 'Bảng điều khiển căn bếp thông minh cho hộ gia đình trên Takolio.',
+    canonicalPath: '/',
+    domainSurface: 'app',
+    noindex: true,
+  });
+
   const useSoonItems = activeItems
     .filter((item) => item.freshness === 'use_soon' || item.freshness === 'expiring')
     .sort(
@@ -318,8 +337,25 @@ export const C01HomePilot: React.FC = () => {
             </section>
           </div>
 
-          {/* Right Workbench Column (5 cols on Desktop — FEFO Stock + Recommended Dishes) */}
+          {/* Right Workbench Column (5 cols on Desktop — 3D Freshness Tray + FEFO Stock + Recommended Dishes) */}
           <div className="lg:col-span-5 space-y-6 min-w-0">
+            <Suspense fallback={null}>
+              <LazyFridgeFreshnessOrbital3D
+                freshCount={freshCount}
+                soonCount={soonCount}
+                urgentCount={urgentCount}
+                onSelectTone={(tone) =>
+                  navigate(
+                    tone === 'urgent' || tone === 'soon'
+                      ? '/fridge?filter=expiring'
+                      : tone === 'fresh'
+                        ? '/fridge?filter=fresh'
+                        : '/fridge',
+                  )
+                }
+              />
+            </Suspense>
+
             <section aria-labelledby="c01-use-soon-heading" className="space-y-3">
               <div className="flex items-center justify-between">
                 <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">

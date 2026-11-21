@@ -1,0 +1,29 @@
+{
+  // Dedicated Cloudflare Worker for Takolio Public Satellite, SEO & GEO Hub (`takolio.com`).
+  // Isolated completely from the interactive application Worker (`wrangler.jsonc` -> `takolio.app`).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "takolio-site",
+  "account_id": "ef250a88911fd24073cb73d1c07e0218",
+  "main": "src/site/site-worker.ts",
+  "compatibility_date": "2026-03-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "takolio.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.takolio.com",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist/site",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "vars": {
+    "APP_ORIGIN": "https://takolio.app"
+  }
+}

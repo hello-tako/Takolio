@@ -18,9 +18,10 @@ import {
 import { TurnstileWidget } from '../../components/common/TurnstileWidget';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
-import { BrandLockup, MascotIllustration } from '../components/VNextMedia';
+import { BrandLockup } from '../components/VNextMedia';
 import { TkvSurface, TkvTextField } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
+import { InteractiveTakoChefSvg } from '../interactive-svg/InteractiveTakoChefSvg';
 
 export type VNextAuthMode =
   | 'welcome'
@@ -188,6 +189,7 @@ export const VNextAuthFlow: React.FC = () => {
   const [googleStatus, setGoogleStatus] = useState<'idle' | 'loading' | 'ready' | 'unavailable'>('loading');
   const [googleRetry, setGoogleRetry] = useState(0);
   const googleBtnRef = useRef<HTMLDivElement>(null);
+  const autoGuestHandoffRef = useRef(false);
 
   useVNextSeo({
     title:
@@ -206,7 +208,37 @@ export const VNextAuthFlow: React.FC = () => {
                   : 'Đăng nhập tài khoản',
     description: 'Đăng nhập hoặc tạo tài khoản Takolio nhanh chóng bằng Google hoặc email.',
     canonicalPath: pathname === '/auth/verify' ? '/auth/verify' : '/auth',
+    domainSurface: 'app',
+    noindex: true,
   });
+
+  // 1st-party cross-domain guest handoff from `https://takolio.com` -> `https://takolio.app/auth?mode=guest`
+  useEffect(() => {
+    if (searchParams.get('mode') !== 'guest' || autoGuestHandoffRef.current) return;
+    if (hasActiveGuestSession) {
+      autoGuestHandoffRef.current = true;
+      navigate(vnextHref('/onboarding/welcome'), { replace: true });
+      return;
+    }
+    autoGuestHandoffRef.current = true;
+    setIsStartingGuest(true);
+    setErrorMessage(null);
+    setGuestSession()
+      .then(() => {
+        navigate(vnextHref('/onboarding/welcome'), { replace: true });
+      })
+      .catch((err) => {
+        setErrorMessage(
+          apiErrorMessage(
+            err,
+            'Chưa thể khởi tạo phiên dùng thử tự động. Bạn có thể bấm Dùng thử ngay bên dưới hoặc đăng ký tài khoản.',
+          ),
+        );
+      })
+      .finally(() => {
+        setIsStartingGuest(false);
+      });
+  }, [searchParams, hasActiveGuestSession, navigate, setGuestSession]);
 
   // Fetch public Turnstile + Google Client ID configuration once (or on explicit retry).
   useEffect(() => {
@@ -1282,7 +1314,7 @@ export const VNextAuthFlow: React.FC = () => {
           <div className="hidden lg:block lg:col-span-6">
             <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-linen-from,#FFFDFB)] to-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] p-8 space-y-5 shadow-soft">
               <div className="flex items-center gap-4">
-                <MascotIllustration pose="guide" size={80} className="border border-[var(--tkv-border,#EAE0D5)] bg-white shrink-0" />
+                <InteractiveTakoChefSvg size={92} mood="happy" className="shrink-0" />
                 <div className="space-y-1">
                   <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />

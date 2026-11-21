@@ -18,9 +18,10 @@ import { familyPreferencesKey, useFamilyPreferences } from '../../features/famil
 import { isMealPlannerEnabled } from '../../features/planner/feature';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
-import { BrandLockup, MascotIllustration } from '../components/VNextMedia';
+import { BrandLockup } from '../components/VNextMedia';
 import { TkvIconButton, TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
+import { InteractiveTakoChefSvg } from '../interactive-svg/InteractiveTakoChefSvg';
 
 export type OnboardingStepKey = 'welcome' | 'goals' | 'household' | 'preferences' | 'start' | 'ready';
 
@@ -179,6 +180,8 @@ export const VNextOnboardingFlow: React.FC = () => {
     title: `Thiết lập căn bếp (${stepNum}/6)`,
     description: 'Cá nhân hóa khẩu phần hộ gia đình và sở thích món ăn trên Takolio.',
     canonicalPath: pathname,
+    domainSurface: 'app',
+    noindex: true,
   });
 
   useEffect(() => {
@@ -370,14 +373,12 @@ export const VNextOnboardingFlow: React.FC = () => {
               ))}
             </div>
 
-            {/* Mascot Medallion */}
+            {/* Interactive Tako Chef Medallion */}
             <div className="flex justify-center pt-1">
-              <div className="w-28 h-28 rounded-full bg-[var(--tkv-surface-muted,#F7EFE6)] p-2.5 flex items-center justify-center border border-[var(--tkv-border,#EAE0D5)]">
-                <MascotIllustration
-                  pose={step === 'ready' ? 'achievement' : step === 'welcome' ? 'welcome' : 'guide'}
-                  size={96}
-                />
-              </div>
+              <InteractiveTakoChefSvg
+                size={96}
+                mood={step === 'ready' ? 'celebrate' : step === 'welcome' ? 'happy' : 'curious'}
+              />
             </div>
 
             {errorMessage && (

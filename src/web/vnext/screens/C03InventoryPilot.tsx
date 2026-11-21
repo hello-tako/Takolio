@@ -27,6 +27,8 @@ import {
   TkvTextField,
 } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
+import { useVNextSeo } from '../lib/seo';
+import { InteractiveFridgeCutawaySvg } from '../interactive-svg/InteractiveFridgeCutawaySvg';
 
 const CATEGORY_ICONS: Record<string, VNextIconName> = {
   vegetable: 'cat-vegetable',
@@ -88,6 +90,15 @@ export const C03InventoryPilot: React.FC = () => {
   const activeFilter = searchParams.get('filter') ?? 'all';
 
   const [addOpen, setAddOpen] = useState(() => searchParams.get('action') === 'add');
+  const [cutawayOpen, setCutawayOpen] = useState(false);
+
+  useVNextSeo({
+    title: 'Tủ lạnh của tôi',
+    description: 'Quản lý tồn kho thực phẩm theo lô và cảnh báo hạn dùng trên Takolio.',
+    canonicalPath: '/fridge',
+    domainSurface: 'app',
+    noindex: true,
+  });
   useEffect(() => {
     if (searchParams.get('action') === 'add') {
       setAddOpen(true);
@@ -209,6 +220,17 @@ export const C03InventoryPilot: React.FC = () => {
     (i) => i.freshness === 'expiring' || i.freshness === 'use_soon',
   ).length;
   const healthyCount = items.length - expiringCount;
+  const freezerZoneCount = items.filter((i) => i.storage === 'freezer').length;
+  const crisperZoneCount = items.filter(
+    (i) => i.storage !== 'freezer' && (i.category === 'vegetable' || i.category === 'fruit'),
+  ).length;
+  const chillerZoneCount = items.filter(
+    (i) => i.storage !== 'freezer' && (i.category === 'meat' || i.category === 'seafood'),
+  ).length;
+  const coolZoneCount = Math.max(
+    0,
+    items.length - freezerZoneCount - crisperZoneCount - chillerZoneCount,
+  );
 
   const filteredItems = items.filter((item) => {
     if (query.trim() && !item.name.toLowerCase().includes(query.trim().toLowerCase())) {
@@ -263,6 +285,15 @@ export const C03InventoryPilot: React.FC = () => {
             >
               Thêm nguyên liệu
             </TkvButton>
+            <button
+              type="button"
+              aria-pressed={cutawayOpen}
+              onClick={() => setCutawayOpen((v) => !v)}
+              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)] inline-flex items-center gap-1.5 transition-colors"
+            >
+              <VNextIcon name="fridge" size={16} className="text-[var(--tkv-primary,#D86A43)]" />
+              <span>{cutawayOpen ? 'Ẩn sơ đồ ngăn tủ' : 'Sơ đồ ngăn tủ'}</span>
+            </button>
             <Link
               to="/inventory-reconciliation"
               className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)] inline-flex items-center gap-1.5 transition-colors"
@@ -272,6 +303,23 @@ export const C03InventoryPilot: React.FC = () => {
             </Link>
           </div>
         </div>
+
+        {cutawayOpen && (
+          <InteractiveFridgeCutawaySvg
+            countsByZone={{
+              cool: coolZoneCount,
+              crisper: crisperZoneCount,
+              chiller: chillerZoneCount,
+              freezer: freezerZoneCount,
+            }}
+            expiringCount={expiringCount}
+            onSelectZone={(zoneId) => {
+              if (zoneId === 'crisper') updateUrlParam('filter', 'vegetable');
+              else if (zoneId === 'chiller') updateUrlParam('filter', 'meat');
+              else updateUrlParam('filter', 'all');
+            }}
+          />
+        )}
 
         {/* S05 / Conflict or Mutation Notice */}
         {mutationBanner && (

@@ -21,6 +21,7 @@
   },
   "include": [
     "src/worker",
+    "src/site/site-worker.ts",
     "src/shared",
     "packages"
   ]

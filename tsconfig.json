@@ -28,6 +28,8 @@
   },
   "include": [
     "src/web",
+    "src/site/SiteApp.tsx",
+    "src/site/main.tsx",
     "src/admin",
     "src/shared",
     "packages",
