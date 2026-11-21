@@ -56,7 +56,7 @@ export function AdminOverviewVNext() {
           className={overview.isPlaceholderData ? 'is-stale tkv-admin-stack' : 'tkv-admin-stack'}
           aria-busy={overview.isPlaceholderData}
         >
-          {/* Top 3 Operational Status Tiles — Sumi Monochrome + 6px status indicator dots */}
+          {/* Top 3 Operational Status Tiles — Warm Culinary Studio Ops + Botanical Sage / Terracotta indicators */}
           <section aria-label="Tóm tắt trạng thái vận hành" className="tkv-admin-status-trio">
             <div className="tkv-status-tile">
               <span className="tkv-tile-label">

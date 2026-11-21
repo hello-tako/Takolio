@@ -92,7 +92,7 @@ export const PublicMarketingShell: React.FC<{
       <a href="#tkv-public-main" className="tkv-skip-link">
         Đến nội dung chính
       </a>
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-[var(--tkv-border)]">
+      <header className="sticky top-0 z-30 bg-[var(--tkv-header-glass)] backdrop-blur-md border-b border-[var(--tkv-border)]">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
           <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Trang chủ giới thiệu">
             <BrandLockup />
@@ -152,7 +152,7 @@ export const PublicMarketingShell: React.FC<{
                 className={clsx(
                   'tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl text-sm transition-colors',
                   item.active
-                    ? 'bg-[var(--tkv-primary)] text-white font-bold'
+                    ? 'bg-[var(--tkv-surface-coral)] text-[var(--tkv-primary-deep)] border border-[var(--tkv-border-coral)] font-bold'
                     : 'font-semibold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-subtle)]',
                 )}
               >
@@ -341,7 +341,7 @@ export const ConsumerStudioShell: React.FC<{
                         className={clsx(
                           'tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-xl flex items-center gap-3 text-sm transition-colors',
                           active
-                            ? 'bg-[var(--tkv-primary)] text-white font-bold shadow-xs'
+                            ? 'bg-[var(--tkv-surface-coral)] text-[var(--tkv-primary-deep)] border border-[var(--tkv-border-coral)] font-bold shadow-xs'
                             : 'text-[var(--tkv-ink-secondary)] font-semibold hover:bg-[var(--tkv-surface-subtle)] hover:text-[var(--tkv-ink)]',
                         )}
                       >
@@ -379,7 +379,7 @@ export const ConsumerStudioShell: React.FC<{
           <OfflineBanner />
 
           {/* Mobile / Tablet Contextual Header (<1024px) */}
-          <header className="lg:hidden sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-[var(--tkv-border)] px-4 h-14 flex items-center justify-between gap-2">
+          <header className="lg:hidden sticky top-0 z-20 bg-[var(--tkv-header-glass)] backdrop-blur-md border-b border-[var(--tkv-border)] px-4 h-14 flex items-center justify-between gap-2">
             <div className="flex items-center gap-2.5 min-w-0">
               {backTo ? (
                 <TkvIconButton
@@ -434,7 +434,7 @@ export const ConsumerStudioShell: React.FC<{
       {/* Mobile 5-Root Bottom Navigation (<1024px) — Scan stays contextual, NOT a 6th root */}
       <nav
         aria-label="Điều hướng chính trên điện thoại"
-        className="lg:hidden fixed inset-x-0 bottom-0 z-30 bg-white/90 backdrop-blur-md border-t border-[var(--tkv-border)] pb-[env(safe-area-inset-bottom,0px)]"
+        className="lg:hidden fixed inset-x-0 bottom-0 z-30 bg-[var(--tkv-nav-glass)] backdrop-blur-md border-t border-[var(--tkv-border)] pb-[env(safe-area-inset-bottom,0px)]"
       >
         <ul className="grid grid-cols-5 px-1.5 py-1">
           {roots.map((item) => {
@@ -446,13 +446,13 @@ export const ConsumerStudioShell: React.FC<{
                   aria-current={active ? 'page' : undefined}
                   className={clsx(
                     'tkv-focusable min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl px-1 py-1.5 transition-colors',
-                    active ? 'text-[var(--tkv-primary)]' : 'text-[var(--tkv-ink-muted)]',
+                    active ? 'text-[var(--tkv-primary-deep)]' : 'text-[var(--tkv-ink-muted)]',
                   )}
                 >
                   <span
                     className={clsx(
                       'w-10 h-7 rounded-full flex items-center justify-center transition-colors',
-                      active && 'bg-[var(--tkv-primary)] text-white',
+                      active && 'bg-[var(--tkv-surface-coral)] text-[var(--tkv-primary-deep)] border border-[var(--tkv-border-coral)]',
                     )}
                   >
                     <VNextIcon name={item.icon} size={20} strokeWidth={active ? 1.9 : 1.6} />
@@ -471,7 +471,7 @@ export const ConsumerStudioShell: React.FC<{
       {quickFindOpen && (
         <div
           role="presentation"
-          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start justify-center p-4 pt-14 animate-fade-in"
+          className="fixed inset-0 z-50 bg-[var(--tkv-scrim)] backdrop-blur-xs flex items-start justify-center p-4 pt-14 animate-fade-in"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeQuickFind();
           }}

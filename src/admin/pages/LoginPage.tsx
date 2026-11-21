@@ -127,7 +127,7 @@ export function LoginPage() {
       <main id="admin-main" className="login-card" tabIndex={-1}>
         <div className="brand brand-login">
           <span className="brand-mark" aria-hidden="true">
-            <SumiOctopusMark size={20} />
+            <SumiOctopusMark size={24} />
           </span>
           <span className="brand-name">{vi.appName}</span>
         </div>

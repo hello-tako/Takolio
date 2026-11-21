@@ -199,7 +199,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
         {/* Left Media & Facts Column (5 cols on Desktop; Top Hero on Mobile) */}
         <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-20">
-          <div className="rounded-[24px] bg-[var(--sumi-canvas,#F7F7F5)] p-2.5 border border-[var(--sumi-border,#E4E4E0)]">
+          <div className="rounded-[24px] bg-[var(--tkv-surface-muted,#F7EFE6)] p-2.5 border border-[var(--tkv-border,#EAE0D5)] shadow-xs">
             <VerifiedDishImage
               slug={recipe.slug}
               title={recipe.title}
@@ -212,28 +212,28 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
           <div className="space-y-3">
             <div className="flex items-start justify-between gap-3">
-              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] leading-tight">
+              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] leading-tight">
                 {recipe.title}
               </h1>
               <SaveRecipeButton recipeId={recipe.id} title={recipe.title} compact />
             </div>
 
-            {/* 3 Sumi Monochrome Metadata Pills */}
+            {/* 3 Sunlit Ceramic Metadata Pills */}
             <div className="flex items-center gap-2 flex-wrap tabular-nums">
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--sumi-ink,#111315)] text-white text-sm font-bold inline-flex items-center gap-1.5">
-                <VNextIcon name="timer" size={15} />
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-accent-ink,#9E4322)] text-sm font-bold inline-flex items-center gap-1.5">
+                <VNextIcon name="timer" size={15} className="text-[var(--tkv-primary,#D86A43)]" />
                 {recipe.cookTimeMinutes} phút
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] text-sm font-semibold inline-flex items-center gap-1.5">
-                <VNextIcon name="users" size={15} />
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-ink,#2C221E)] text-sm font-semibold inline-flex items-center gap-1.5">
+                <VNextIcon name="users" size={15} className="text-[var(--tkv-sage,#4E7A5B)]" />
                 {recipe.servings} người
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] text-sm font-semibold inline-flex items-center">
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-[var(--tkv-sage-ink,#355940)] text-sm font-semibold inline-flex items-center">
                 {difficultyLabel}
               </span>
             </div>
 
-            <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
               {recipe.description}
             </p>
 
@@ -252,34 +252,34 @@ export const C18RecipeDetailPilot: React.FC = () => {
           </div>
 
           {/* Sourced Nutrition Card — strictly honest when null */}
-          <TkvSurface className="p-4 space-y-2.5 bg-white border-[var(--sumi-border,#E4E4E0)]">
+          <TkvSurface className="p-4 space-y-2.5 bg-white border-[var(--tkv-border,#EAE0D5)]">
             <div className="flex items-center justify-between">
-              <h2 className="tkv-heading text-sm font-extrabold text-[var(--sumi-ink,#111315)]">
+              <h2 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink,#2C221E)]">
                 Thông tin dinh dưỡng / khẩu phần
               </h2>
-              <span className="text-xs text-[var(--sumi-muted,#5C5F62)]">Nguồn công thức</span>
+              <span className="text-xs text-[var(--tkv-ink-muted,#87776E)]">Nguồn công thức</span>
             </div>
             {recipe.nutrition ? (
               <div className="grid grid-cols-4 gap-2 text-center tabular-nums">
-                <div className="p-2 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)]">
-                  <p className="text-sm font-extrabold text-[var(--sumi-ink,#111315)]">{recipe.nutrition.calories}</p>
-                  <p className="text-[11px] text-[var(--sumi-muted,#5C5F62)]">kcal</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#2C221E)]">{recipe.nutrition.calories}</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#87776E)]">kcal</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)]">
-                  <p className="text-sm font-extrabold text-[var(--sumi-ink,#111315)]">{recipe.nutrition.proteinG}g</p>
-                  <p className="text-[11px] text-[var(--sumi-muted,#5C5F62)]">Đạm</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#2C221E)]">{recipe.nutrition.proteinG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#87776E)]">Đạm</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)]">
-                  <p className="text-sm font-extrabold text-[var(--sumi-ink,#111315)]">{recipe.nutrition.carbG}g</p>
-                  <p className="text-[11px] text-[var(--sumi-muted,#5C5F62)]">Tinh bột</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#2C221E)]">{recipe.nutrition.carbG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#87776E)]">Tinh bột</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)]">
-                  <p className="text-sm font-extrabold text-[var(--sumi-ink,#111315)]">{recipe.nutrition.fatG}g</p>
-                  <p className="text-[11px] text-[var(--sumi-muted,#5C5F62)]">Chất béo</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#2C221E)]">{recipe.nutrition.fatG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#87776E)]">Chất béo</p>
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">
+              <p className="text-xs text-[var(--tkv-ink-muted,#87776E)]">
                 Chưa có thông tin dinh dưỡng đã xác minh cho món ăn này.
               </p>
             )}
@@ -291,12 +291,12 @@ export const C18RecipeDetailPilot: React.FC = () => {
           {/* Ingredients Section */}
           <section aria-labelledby="c18-ingredients-heading" className="space-y-3.5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
-              <h2 id="c18-ingredients-heading" className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
+              <h2 id="c18-ingredients-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
                 Nguyên liệu chính ({availability.length})
               </h2>
 
-              <div className="inline-flex items-center gap-2 bg-white border border-[var(--sumi-border,#E4E4E0)] rounded-2xl p-1">
-                <span className="pl-2.5 text-xs font-semibold text-[var(--sumi-muted,#5C5F62)]">
+              <div className="inline-flex items-center gap-2 bg-white border border-[var(--tkv-border,#EAE0D5)] rounded-2xl p-1">
+                <span className="pl-2.5 text-xs font-semibold text-[var(--tkv-ink-soft,#5F524A)]">
                   Thay khẩu phần:
                 </span>
                 <TkvIconButton
@@ -307,7 +307,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
                 />
                 <span
                   data-testid="c18-servings-value"
-                  className="min-w-[60px] text-center text-sm font-bold tabular-nums text-[var(--sumi-ink,#111315)]"
+                  className="min-w-[60px] text-center text-sm font-bold tabular-nums text-[var(--tkv-ink,#2C221E)]"
                 >
                   {recipe.servings} người
                 </span>
@@ -329,25 +329,37 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
                 return (
                   <li key={`${ing.ingredientId}-${ing.name}`}>
-                    <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 flex-wrap bg-white border-[var(--sumi-border,#E4E4E0)]">
+                    <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 flex-wrap bg-white border-[var(--tkv-border,#EAE0D5)]">
                       <div className="flex items-center gap-3 min-w-0 flex-1">
-                        <span className="relative w-10 h-10 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                        <span
+                          className={
+                            ing.status === 'satisfied'
+                              ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-[var(--tkv-sage,#4E7A5B)] flex items-center justify-center shrink-0'
+                              : ing.status === 'unresolved'
+                                ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-[var(--tkv-honey-ink,#8C5B18)] flex items-center justify-center shrink-0'
+                                : 'relative w-10 h-10 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0'
+                          }
+                        >
                           <VNextIcon
                             name={ing.status === 'satisfied' ? 'check' : ing.status === 'unresolved' ? 'warning' : 'shopping'}
                             size={18}
                           />
                           {ing.status !== 'satisfied' && (
                             <span
-                              className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)]"
+                              className={
+                                ing.status === 'unresolved'
+                                  ? 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-honey,#C68634)]'
+                                  : 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-primary,#D86A43)]'
+                              }
                               aria-hidden="true"
                             />
                           )}
                         </span>
                         <div className="min-w-0">
-                          <p className="text-base font-bold text-[var(--sumi-ink,#111315)] tabular-nums">
+                          <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)] tabular-nums">
                             {ing.name} · {formatQty(ing.requiredQuantity, ing.unit)}
                           </p>
-                          <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                          <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
                             {!inventoryQuery.isSuccess
                               ? 'Đang kiểm tra tồn kho trong tủ lạnh…'
                               : ing.status === 'satisfied'
@@ -362,7 +374,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
                       </div>
 
                       {added ? (
-                        <TkvBadge tone="neutral" icon="check">
+                        <TkvBadge tone="success" icon="check">
                           Đã thêm giỏ mua
                         </TkvBadge>
                       ) : canAddShortfall ? (
@@ -383,7 +395,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
                         </TkvButton>
                       ) : (
                         <TkvBadge
-                          tone="neutral"
+                          tone={ing.status === 'satisfied' ? 'success' : 'warning'}
                           icon={ing.status === 'satisfied' ? 'check' : 'info'}
                         >
                           {ing.status === 'satisfied' ? 'Đủ lượng' : 'Kiểm tra tủ'}
@@ -398,28 +410,28 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
           {/* Step-by-Step Instructions */}
           <section aria-labelledby="c18-steps-heading" className="space-y-3.5">
-            <h2 id="c18-steps-heading" className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
+            <h2 id="c18-steps-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
               Các bước thực hiện ({recipe.steps.length})
             </h2>
             <ol className="space-y-3">
               {recipe.steps.map((step) => (
                 <li key={step.stepNumber}>
-                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--sumi-border,#E4E4E0)]">
-                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--sumi-ink,#111315)] text-white font-bold text-xs font-mono tabular-nums flex items-center justify-center shrink-0">
+                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#EAE0D5)]">
+                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-accent-ink,#9E4322)] font-bold text-xs font-mono tabular-nums flex items-center justify-center shrink-0">
                       {String(step.stepNumber).padStart(2, '0')}
                     </span>
                     <div className="space-y-2 min-w-0 flex-1">
-                      <p className="text-sm sm:text-base text-[var(--sumi-ink,#111315)] leading-relaxed">
+                      <p className="text-sm sm:text-base text-[var(--tkv-ink,#2C221E)] leading-relaxed">
                         {step.instruction}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {typeof step.timerMinutes === 'number' && step.timerMinutes > 0 && (
-                          <TkvBadge tone="neutral" icon="timer">
+                          <TkvBadge tone="coral" icon="timer">
                             <span className="tabular-nums">Hẹn giờ gợi ý: {step.timerMinutes} phút</span>
                           </TkvBadge>
                         )}
                         {step.tip && (
-                          <span className="text-xs font-medium text-[var(--sumi-ink,#111315)] bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] px-2.5 py-1 rounded-xl">
+                          <span className="text-xs font-medium text-[var(--tkv-honey-ink,#8C5B18)] bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] px-2.5 py-1 rounded-xl">
                             Mẹo bếp: {step.tip}
                           </span>
                         )}

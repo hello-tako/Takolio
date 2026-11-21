@@ -62,10 +62,10 @@ export const OfflineBanner: React.FC = () => {
 
   return (
     <>
-      <div className="bg-[var(--sumi-ink,#111315)] border-b border-white/15 text-[var(--sumi-paper,#FAF9F6)] px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2 sticky top-0 z-50 animate-slide-up">
+      <div className="bg-semantic-warning-soft border-b border-semantic-border text-semantic-text-primary px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2 sticky top-0 z-50 animate-slide-up">
         <span role="status" aria-live="polite" aria-atomic="true" className="font-medium flex flex-1 basis-48 items-center gap-2 min-w-0 tabular-nums">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
-          <WifiOff className="w-3.5 h-3.5 text-white/85 shrink-0" />
+          <span className="w-1.5 h-1.5 rounded-full bg-semantic-warning shrink-0" aria-hidden="true" />
+          <WifiOff className="w-3.5 h-3.5 text-semantic-warning-strong shrink-0" />
           <span>
             {blocked
               ? 'Yêu cầu đổi món xung đột với dữ liệu đã lưu. Yêu cầu vẫn được giữ trên thiết bị.'
@@ -85,7 +85,7 @@ export const OfflineBanner: React.FC = () => {
             onClick={() => void handleSyncNow()}
             disabled={syncing}
             aria-label="Đồng bộ ngay"
-            className="tap-target shrink-0 inline-flex items-center justify-center gap-1 rounded-full bg-white text-[var(--sumi-ink,#111315)] px-3 py-1 font-semibold disabled:opacity-60 transition-colors"
+            className="tap-target shrink-0 inline-flex items-center justify-center gap-1 rounded-full bg-semantic-action-primary hover:bg-semantic-action-primary-hover text-semantic-on-action-primary px-3 py-1 font-semibold disabled:opacity-60 transition-colors"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
             {syncing ? 'Đang…' : 'Đồng bộ ngay'}
@@ -96,7 +96,7 @@ export const OfflineBanner: React.FC = () => {
             type="button"
             onClick={() => setConfirmation(blocked)}
             disabled={syncing}
-            className="tap-target rounded-full border border-white/30 px-3 py-1 font-semibold text-white disabled:opacity-60 transition-colors"
+            className="tap-target rounded-full border border-semantic-border-strong bg-semantic-surface px-3 py-1 font-semibold text-semantic-text-primary disabled:opacity-60 transition-colors"
           >
             Tải lại và bỏ yêu cầu đổi món
           </button>

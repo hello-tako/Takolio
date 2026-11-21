@@ -216,23 +216,31 @@ export const SettingsRow: React.FC<{
 
 export type SemanticTone = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
-/** StatusBadge: Sumi Monochrome pill with 6px semantic status dot (92 / 6 / 2). */
+/** StatusBadge: Sunlit Ceramic pill with culinary status dot. */
 export const StatusBadge: React.FC<{ tone: SemanticTone; children: React.ReactNode; className?: string }> = ({
   tone,
   children,
   className,
 }) => {
+  const pillTones: Record<SemanticTone, string> = {
+    success: 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-success-ink)] border-[var(--tkv-border-mint)]',
+    warning: 'bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] border-[var(--tkv-border-saffron)]',
+    danger: 'bg-[var(--tkv-surface-danger)] text-[var(--tkv-danger-ink)] border-[var(--tkv-border-danger)]',
+    info: 'bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral-ink)] border-[var(--tkv-border-coral)]',
+    neutral: 'bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
+  };
   const dotColors: Record<SemanticTone, string> = {
     success: 'bg-[var(--tkv-success)]',
     warning: 'bg-[var(--tkv-warning)]',
     danger: 'bg-[var(--tkv-danger)]',
-    info: 'bg-[var(--tkv-ink-secondary)]',
+    info: 'bg-[var(--tkv-primary)]',
     neutral: 'bg-[var(--tkv-ink-muted)]',
   };
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 rounded-pill px-2.5 py-0.5 text-xs font-semibold bg-[var(--tkv-bg)] text-[var(--tkv-ink)] border border-[var(--tkv-border)]',
+        'inline-flex items-center gap-1.5 rounded-pill px-2.5 py-0.5 text-xs font-semibold border',
+        pillTones[tone],
         className
       )}
     >
@@ -298,7 +306,7 @@ export const BottomSheet: React.FC<{
       animate={{ opacity: 1 }}
       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
       className={clsx(
-        'fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 backdrop-blur-xs sm:items-center sm:p-4 animate-fade-in',
+        'fixed inset-0 z-50 flex items-end justify-center bg-semantic-overlay/60 p-0 backdrop-blur-xs sm:items-center sm:p-4 animate-fade-in',
         scrimClassName,
       )}
       onClick={onClose}

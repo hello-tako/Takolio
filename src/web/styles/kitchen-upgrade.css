@@ -9,7 +9,7 @@
 }
 .landing-page .entry-brand-header {
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #e4e4e0;
+  border-bottom: 1px solid #eae0d5;
 }
 .landing-hero {
   display: grid;
@@ -51,8 +51,8 @@
   aspect-ratio: 1;
   max-width: 26rem;
   border-radius: 24px;
-  background: #efece6;
-  border: 1px solid #e4e4e0;
+  background: #f7efe6;
+  border: 1px solid #eae0d5;
 }
 .landing-scene .landing-mascot {
   width: min(100%, 24rem);
@@ -64,7 +64,7 @@
   text-align: center;
   font-family: var(--takolio-font-heading);
   font-weight: 800;
-  color: #111315;
+  color: #2c221e;
   line-height: 1.5;
 }
 .landing-scene figcaption span {
@@ -72,13 +72,13 @@
   font-family: var(--takolio-font-body);
   font-size: 0.75rem;
   font-weight: 500;
-  color: #383b40;
+  color: #5f524a;
 }
 .landing-page .landing-flow {
   margin-top: 0;
   padding: 1.5rem 0;
   border-radius: 0;
-  border-top: 1px solid #e4e4e0;
+  border-top: 1px solid #eae0d5;
   background: transparent;
 }
 .landing-page .landing-flow h2 {
@@ -93,7 +93,7 @@
   line-height: 1.6;
 }
 .landing-page .landing-step-number {
-  color: #383b40;
+  color: #cf623a;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
@@ -151,21 +151,21 @@
   }
 }
 
-/* Crisp Sumi control placeholders and hairline strokes */
+/* Sunlit Ceramic control placeholders and hairline strokes */
 .takosan-rebuild :is(
   .kitchen-search-input,
   .family-collection-heading input,
   .family-ingredient-field input[type='search'],
   .shopping-add-form input[name='shopping-name']
 )::placeholder {
-  color: #5e636a;
+  color: #87776e;
   opacity: 1;
 }
 
 .takosan-rebuild
   .account-switch-row
   button[role='switch'][aria-checked='false']:not(:disabled) {
-  background-color: #c9c8c3;
+  background-color: #d5c3b3;
 }
 
 .takosan-rebuild :is(
@@ -178,5 +178,5 @@
   .shopping-add-form input,
   .shopping-add-form select
 ) {
-  box-shadow: inset 0 0 0 1px #e4e4e0;
+  box-shadow: inset 0 0 0 1px #eae0d5;
 }

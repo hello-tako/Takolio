@@ -309,13 +309,13 @@ export const VNextOnboardingFlow: React.FC = () => {
   };
 
   const primaryBtnClass =
-    'tkv-focusable min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-bold text-base inline-flex items-center justify-center transition-colors disabled:opacity-60';
+    'tkv-focusable min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-bold text-base shadow-xs inline-flex items-center justify-center transition-colors disabled:opacity-60';
   const secondaryBtnClass =
-    'tkv-focusable min-h-[50px] px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border-strong,#CFCFC9)] hover:bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] font-bold text-base inline-flex items-center justify-center transition-colors shrink-0';
+    'tkv-focusable min-h-[50px] px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] text-[var(--tkv-ink,#2C221E)] font-bold text-base inline-flex items-center justify-center transition-colors shrink-0';
 
   return (
     <div
-      className="tkv-root min-h-dvh flex flex-col bg-[var(--sumi-canvas,#F7F7F5)]"
+      className="tkv-root min-h-dvh flex flex-col bg-[var(--tkv-bg,#FCF9F5)]"
       data-tkv-direction="a"
       data-tkv-screen={screenId}
     >
@@ -329,7 +329,7 @@ export const VNextOnboardingFlow: React.FC = () => {
         className="flex-1 max-w-[980px] w-full mx-auto px-4 sm:px-6 py-5 sm:py-10 flex items-center justify-center"
       >
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <TkvSurface className="lg:col-span-7 p-6 sm:p-8 space-y-6 bg-white border-[var(--sumi-border,#E4E4E0)]">
+          <TkvSurface className="lg:col-span-7 p-6 sm:p-8 space-y-6 bg-white border-[var(--tkv-border,#EAE0D5)] shadow-soft">
             {/* Top Bar + Skip */}
             <div className="flex items-center justify-between gap-3">
               <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1">
@@ -340,14 +340,14 @@ export const VNextOnboardingFlow: React.FC = () => {
                   type="button"
                   disabled={isSaving}
                   onClick={() => void commitServerOnboarding(true)}
-                  className="tkv-focusable min-h-[44px] px-3 rounded-xl text-sm font-bold text-[var(--sumi-muted,#5C5F62)] hover:bg-[var(--sumi-canvas,#F7F7F5)] hover:text-[var(--sumi-ink,#111315)]"
+                  className="tkv-focusable min-h-[44px] px-3 rounded-xl text-sm font-bold text-[var(--tkv-ink-soft,#5F524A)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] hover:text-[var(--tkv-ink,#2C221E)]"
                 >
                   Bỏ qua
                 </button>
               )}
             </div>
 
-            {/* 6-Segment Sumi Progress Bar */}
+            {/* 6-Segment Terracotta Progress Bar */}
             <div
               role="progressbar"
               aria-label={`Tiến độ thiết lập: bước ${stepNum} trên 6`}
@@ -363,8 +363,8 @@ export const VNextOnboardingFlow: React.FC = () => {
                   className={clsx(
                     'h-1.5 rounded-full transition-colors',
                     idx <= stepNum
-                      ? 'bg-[var(--sumi-ink,#111315)]'
-                      : 'bg-[var(--sumi-border,#E4E4E0)]',
+                      ? 'bg-[var(--tkv-primary,#D86A43)]'
+                      : 'bg-[var(--tkv-border,#EAE0D5)]',
                   )}
                 />
               ))}
@@ -372,7 +372,7 @@ export const VNextOnboardingFlow: React.FC = () => {
 
             {/* Mascot Medallion */}
             <div className="flex justify-center pt-1">
-              <div className="w-28 h-28 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] p-2.5 flex items-center justify-center border border-[var(--sumi-border,#E4E4E0)]">
+              <div className="w-28 h-28 rounded-full bg-[var(--tkv-surface-muted,#F7EFE6)] p-2.5 flex items-center justify-center border border-[var(--tkv-border,#EAE0D5)]">
                 <MascotIllustration
                   pose={step === 'ready' ? 'achievement' : step === 'welcome' ? 'welcome' : 'guide'}
                   size={96}
@@ -383,9 +383,9 @@ export const VNextOnboardingFlow: React.FC = () => {
             {errorMessage && (
               <div
                 role="alert"
-                className="p-3.5 rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border-strong,#CFCFC9)] text-sm font-semibold text-[var(--sumi-ink,#111315)] flex items-center gap-2.5"
+                className="p-3.5 rounded-2xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] flex items-center gap-2.5"
               >
-                <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+                <span className="w-2 h-2 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0" aria-hidden="true" />
                 <span>{errorMessage}</span>
               </div>
             )}
@@ -394,23 +394,23 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'welcome' && (
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Chào mừng đến Takolio
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     Sắp xếp căn bếp thông minh theo cách riêng của bạn.
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-[var(--sumi-border,#E4E4E0)] bg-[var(--sumi-canvas,#F7F7F5)] p-4 flex items-center gap-3.5">
-                  <span className="w-11 h-11 rounded-xl bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                <div className="rounded-2xl border border-[var(--tkv-accent-border,#F2D5C7)] bg-[var(--tkv-accent-soft,#FDF0EA)] p-4 flex items-center gap-3.5">
+                  <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                     <VNextIcon name="sparkles" size={20} />
                   </span>
                   <div>
-                    <p className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">
+                    <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">
                       Tự động gợi ý cho bữa hôm nay
                     </p>
-                    <p className="text-xs sm:text-sm text-[var(--sumi-muted,#5C5F62)]">
+                    <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#5F524A)]">
                       Bắt đầu đơn giản, nâng cao dần theo thói quen gia đình
                     </p>
                   </div>
@@ -430,10 +430,10 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'goals' && (
               <div className="space-y-5">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Mục tiêu sử dụng
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     Bạn muốn Takolio giúp việc gì trước tiên?
                   </p>
                 </div>
@@ -452,21 +452,21 @@ export const VNextOnboardingFlow: React.FC = () => {
                         className={clsx(
                           'tkv-focusable w-full p-4 rounded-2xl border text-left flex items-center justify-between gap-3.5 transition-colors',
                           selected
-                            ? 'bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-ink,#111315)] ring-1 ring-[var(--sumi-ink,#111315)]'
-                            : 'bg-white border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
+                            ? 'bg-[var(--tkv-accent-soft,#FDF0EA)] border-[var(--tkv-primary,#D86A43)] ring-1 ring-[var(--tkv-primary,#D86A43)]'
+                            : 'bg-white border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                         )}
                       >
                         <div className="flex items-center gap-3.5">
-                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                             <VNextIcon name={g.icon} size={20} />
                           </span>
                           <div>
-                            <p className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">{g.title}</p>
-                            <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">{g.subtitle}</p>
+                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">{g.title}</p>
+                            <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">{g.subtitle}</p>
                           </div>
                         </div>
                         {selected && (
-                          <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0" aria-hidden="true" />
                         )}
                       </button>
                     );
@@ -488,16 +488,16 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'household' && (
               <div className="space-y-5">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Gia đình và khẩu phần
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     Chọn số người ăn thường xuyên để Takolio quy đổi lượng nguyên liệu và khẩu phần hợp lý.
                   </p>
                 </div>
 
                 <fieldset className="space-y-3">
-                  <legend className="text-sm font-extrabold text-[var(--sumi-ink,#111315)] mb-2">
+                  <legend className="text-sm font-extrabold text-[var(--tkv-ink,#2C221E)] mb-2">
                     Gia đình bạn có bao nhiêu người?
                   </legend>
                   <div className="grid grid-cols-5 gap-2.5">
@@ -517,8 +517,8 @@ export const VNextOnboardingFlow: React.FC = () => {
                           className={clsx(
                             'tkv-focusable min-h-[56px] rounded-2xl font-mono tabular-nums text-lg font-extrabold border transition-colors',
                             active
-                              ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                              : 'bg-[var(--sumi-canvas,#F7F7F5)] text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
+                              ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
+                              : 'bg-[var(--tkv-bg,#FCF9F5)] text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                           )}
                         >
                           {b === 5 ? '5+' : b}
@@ -529,10 +529,10 @@ export const VNextOnboardingFlow: React.FC = () => {
                 </fieldset>
 
                 {householdSize >= 5 && (
-                  <div className="p-4 rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] flex items-center justify-between gap-3">
+                  <div className="p-4 rounded-2xl bg-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-sm font-bold text-[var(--sumi-ink,#111315)]">Số người cụ thể (5–20 người)</p>
-                      <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">Máy chủ lưu chính xác từ 1 đến 20 người</p>
+                      <p className="text-sm font-bold text-[var(--tkv-ink,#2C221E)]">Số người cụ thể (5–20 người)</p>
+                      <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">Máy chủ lưu chính xác từ 1 đến 20 người</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <TkvIconButton
@@ -540,7 +540,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                         label="Giảm số người"
                         onClick={() => setHouseholdSize((n) => Math.max(1, n - 1))}
                       />
-                      <span className="min-w-[68px] text-center font-mono tabular-nums text-base font-extrabold text-[var(--sumi-ink,#111315)]">
+                      <span className="min-w-[68px] text-center font-mono tabular-nums text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">
                         {householdSize} người
                       </span>
                       <TkvIconButton
@@ -566,7 +566,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                     Tiếp tục
                   </button>
                 </div>
-                <p className="text-center text-xs text-[var(--sumi-muted,#5C5F62)]">
+                <p className="text-center text-xs text-[var(--tkv-ink-muted,#87776E)]">
                   Chỉ dùng để tính khẩu phần món ăn — có thể thay đổi bất cứ lúc nào trong phần Cài đặt.
                 </p>
               </div>
@@ -576,16 +576,16 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'preferences' && (
               <div className="space-y-5">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Khẩu vị của bạn
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     Chọn nền ẩm thực, thói quen ăn uống và mức cay phù hợp với gia đình.
                   </p>
                 </div>
 
                 <fieldset className="space-y-2.5">
-                  <legend className="text-xs font-extrabold uppercase tracking-wider text-[var(--sumi-muted,#5C5F62)]">
+                  <legend className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)]">
                     Ẩm thực & thói quen
                   </legend>
                   <div className="flex flex-wrap gap-2">
@@ -603,8 +603,8 @@ export const VNextOnboardingFlow: React.FC = () => {
                           className={clsx(
                             'tkv-focusable min-h-[42px] px-3.5 py-1.5 rounded-full text-sm font-bold border transition-colors',
                             active
-                              ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                              : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
+                              ? 'bg-[var(--tkv-sage,#4E7A5B)] text-white border-[var(--tkv-sage,#4E7A5B)] shadow-xs'
+                              : 'bg-white text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                           )}
                         >
                           {chip.label}
@@ -615,7 +615,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                 </fieldset>
 
                 <fieldset className="space-y-2.5">
-                  <legend className="text-xs font-extrabold uppercase tracking-wider text-[var(--sumi-muted,#5C5F62)]">
+                  <legend className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)]">
                     Mức độ cay
                   </legend>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -630,8 +630,8 @@ export const VNextOnboardingFlow: React.FC = () => {
                           className={clsx(
                             'tkv-focusable min-h-[42px] px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border transition-colors',
                             active
-                              ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                              : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
+                              ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
+                              : 'bg-white text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                           )}
                         >
                           {sp.label}
@@ -641,7 +641,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                   </div>
                 </fieldset>
 
-                <p className="text-center text-xs text-[var(--sumi-muted,#5C5F62)]">
+                <p className="text-center text-xs text-[var(--tkv-ink-muted,#87776E)]">
                   Lưu ý an toàn: nhãn khẩu vị hỗ trợ gợi ý món ăn, không thay thế việc kiểm tra thành phần gây dị ứng y khoa trên từng nguyên liệu.
                 </p>
 
@@ -660,10 +660,10 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'start' && (
               <div className="space-y-5">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Khởi tạo căn bếp
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     Thêm nguyên liệu bằng tay, quét ảnh hoặc khám phá món trước.
                   </p>
                 </div>
@@ -681,21 +681,21 @@ export const VNextOnboardingFlow: React.FC = () => {
                         className={clsx(
                           'tkv-focusable w-full p-4 rounded-2xl border text-left flex items-center justify-between gap-3.5 transition-colors',
                           selected
-                            ? 'bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-ink,#111315)] ring-1 ring-[var(--sumi-ink,#111315)]'
-                            : 'bg-white border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]',
+                            ? 'bg-[var(--tkv-accent-soft,#FDF0EA)] border-[var(--tkv-primary,#D86A43)] ring-1 ring-[var(--tkv-primary,#D86A43)]'
+                            : 'bg-white border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
                         )}
                       >
                         <div className="flex items-center gap-3.5">
-                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                             <VNextIcon name={sp.icon} size={20} />
                           </span>
                           <div>
-                            <p className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)]">{sp.title}</p>
-                            <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">{sp.subtitle}</p>
+                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">{sp.title}</p>
+                            <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">{sp.subtitle}</p>
                           </div>
                         </div>
                         {selected && (
-                          <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0" aria-hidden="true" />
                         )}
                       </button>
                     );
@@ -722,25 +722,25 @@ export const VNextOnboardingFlow: React.FC = () => {
             {step === 'ready' && (
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h1 className="tkv-heading text-2xl sm:text-[1.85rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Sẵn sàng vào bếp
                   </h1>
-                  <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
                     {serverConfirmed
                       ? 'Thiết lập ban đầu đã được máy chủ xác nhận, hãy bắt đầu việc đầu tiên.'
                       : 'Xác nhận lưu thiết lập với máy chủ trước khi vào căn bếp của bạn.'}
                   </p>
                 </div>
 
-                <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-5 text-center space-y-2">
-                  <span className="w-12 h-12 mx-auto rounded-2xl bg-[var(--sumi-ink,#111315)] text-white flex items-center justify-center">
+                <div className="rounded-2xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] p-5 text-center space-y-2">
+                  <span className="w-12 h-12 mx-auto rounded-2xl bg-[var(--tkv-sage,#4E7A5B)] text-white flex items-center justify-center">
                     <VNextIcon name="check" size={22} />
                   </span>
-                  <p className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <p className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     Bạn đã sẵn sàng bắt đầu hành trình bếp thông minh.
                   </p>
-                  <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">
-                    Khẩu phần mặc định: <strong className="font-mono tabular-nums text-[var(--sumi-ink,#111315)]">{householdSize} người</strong> · Có thể chỉnh lại bất kỳ lúc nào tại mục Cài đặt.
+                  <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">
+                    Khẩu phần mặc định: <strong className="font-mono tabular-nums text-[var(--tkv-ink,#2C221E)]">{householdSize} người</strong> · Có thể chỉnh lại bất kỳ lúc nào tại mục Cài đặt.
                   </p>
                 </div>
 
@@ -764,29 +764,29 @@ export const VNextOnboardingFlow: React.FC = () => {
 
           {/* Desktop Live Scaling & Summary Side Panel */}
           <div className="hidden lg:block lg:col-span-5">
-            <div className="rounded-[24px] bg-white border border-[var(--sumi-border,#E4E4E0)] p-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-mono tabular-nums font-extrabold text-[var(--sumi-ink,#111315)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-linen-from,#FFFDFB)] to-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] p-7 space-y-4 shadow-soft">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-mono tabular-nums font-extrabold text-[var(--tkv-accent-ink,#9E4322)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
                 <span>Khẩu phần hiện chọn: {householdSize} người</span>
               </div>
-              <h2 className="tkv-heading text-xl font-extrabold text-[var(--sumi-ink,#111315)]">
+              <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
                 Định lượng tự động nhân chia theo bàn ăn nhà bạn
               </h2>
-              <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
-                Ví dụ với món <strong className="text-[var(--sumi-ink,#111315)]">Thịt kho tàu nước dừa trứng</strong> chuẩn 4 người, Takolio quy đổi sang khẩu phần <strong className="font-mono tabular-nums text-[var(--sumi-ink,#111315)]">{householdSize} người</strong>:
+              <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                Ví dụ với món <strong className="text-[var(--tkv-ink,#2C221E)]">Thịt kho tàu nước dừa trứng</strong> chuẩn 4 người, Takolio quy đổi sang khẩu phần <strong className="font-mono tabular-nums text-[var(--tkv-ink,#2C221E)]">{householdSize} người</strong>:
               </p>
-              <div className="bg-[var(--sumi-canvas,#F7F7F5)] rounded-2xl p-4 border border-[var(--sumi-border,#E4E4E0)] space-y-2 text-sm">
+              <div className="bg-white rounded-2xl p-4 border border-[var(--tkv-border,#EAE0D5)] space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-[var(--sumi-muted,#5C5F62)]">Thịt ba chỉ</span>
-                  <strong className="font-mono tabular-nums text-[var(--sumi-ink,#111315)]">{Math.round((400 / 4) * householdSize)} g</strong>
+                  <span className="text-[var(--tkv-ink-soft,#5F524A)]">Thịt ba chỉ</span>
+                  <strong className="font-mono tabular-nums text-[var(--tkv-ink,#2C221E)]">{Math.round((400 / 4) * householdSize)} g</strong>
                 </div>
-                <div className="flex justify-between border-t border-[var(--sumi-border,#E4E4E0)] pt-2">
-                  <span className="text-[var(--sumi-muted,#5C5F62)]">Trứng gà ta</span>
-                  <strong className="font-mono tabular-nums text-[var(--sumi-ink,#111315)]">{Math.max(1, Math.round((4 / 4) * householdSize))} quả</strong>
+                <div className="flex justify-between border-t border-[var(--tkv-border,#EAE0D5)] pt-2">
+                  <span className="text-[var(--tkv-ink-soft,#5F524A)]">Trứng gà ta</span>
+                  <strong className="font-mono tabular-nums text-[var(--tkv-ink,#2C221E)]">{Math.max(1, Math.round((4 / 4) * householdSize))} quả</strong>
                 </div>
-                <div className="flex justify-between border-t border-[var(--sumi-border,#E4E4E0)] pt-2">
-                  <span className="text-[var(--sumi-muted,#5C5F62)]">Nước mắm Phú Quốc</span>
-                  <strong className="font-mono tabular-nums text-[var(--sumi-ink,#111315)]">{Math.round((40 / 4) * householdSize)} ml</strong>
+                <div className="flex justify-between border-t border-[var(--tkv-border,#EAE0D5)] pt-2">
+                  <span className="text-[var(--tkv-ink-soft,#5F524A)]">Nước mắm Phú Quốc</span>
+                  <strong className="font-mono tabular-nums text-[var(--tkv-ink,#2C221E)]">{Math.round((40 / 4) * householdSize)} ml</strong>
                 </div>
               </div>
             </div>

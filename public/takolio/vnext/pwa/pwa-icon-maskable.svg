@@ -1,18 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="Takolio Maskable Icon">
-  <rect width="512" height="512" fill="#111315"/>
-  <g transform="translate(64, 64) scale(0.75)">
-    <path d="M168 272C112 272 82 234 96 198C106 174 134 178 134 202C134 216 120 222 116 214" stroke="#FAF9F6" stroke-width="28" stroke-linecap="round"/>
-    <path d="M344 272C400 272 430 234 416 198C406 174 378 178 378 202C378 216 392 222 396 214" stroke="#FAF9F6" stroke-width="28" stroke-linecap="round"/>
-    <path d="M178 312C124 340 92 324 92 292C92 272 112 264 122 278" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M334 312C388 340 420 324 420 292C420 272 400 264 390 278" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M198 338C162 388 128 404 114 380C104 364 120 350 132 362" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M314 338C350 388 384 404 398 380C408 364 392 350 380 362" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M162 216C162 140 202 96 256 96C310 96 350 140 350 216C350 272 316 310 256 310C196 310 162 272 162 216Z" fill="#FAF9F6"/>
-    <rect x="216" y="222" width="14" height="24" rx="7" fill="#111315"/>
-    <rect x="282" y="222" width="14" height="24" rx="7" fill="#111315"/>
-    <path d="M214 298C180 330 172 382 198 414" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M298 298C332 330 340 382 314 414" stroke="#FAF9F6" stroke-width="24" stroke-linecap="round"/>
-    <path d="M196 348H316C316 388 292 414 256 414C220 414 196 388 196 348Z" fill="#FAF9F6"/>
-    <rect x="230" y="412" width="52" height="12" rx="6" fill="#FAF9F6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Takolio">
+  <rect width="64" height="64" rx="0" fill="#D86A43"/>
+  <g transform="scale(0.125)">
+    <path d="M168 272C112 272 82 234 96 198M344 272C400 272 430 234 416 198M178 312C124 340 92 324 92 292M334 312C388 340 420 324 420 292M198 338C162 388 128 404 114 380M314 338C350 388 384 404 398 380" stroke="#FFFDF9" stroke-width="30" stroke-linecap="round"/>
+    <path d="M162 216C162 140 202 96 256 96C310 96 350 140 350 216C350 272 316 310 256 310C196 310 162 272 162 216Z" fill="#FFFDF9"/>
+    <circle cx="222" cy="232" r="13" fill="#D86A43"/>
+    <circle cx="290" cy="232" r="13" fill="#D86A43"/>
+    <path d="M196 348H316C316 388 292 414 256 414C220 414 196 388 196 348Z" fill="#FFFDF9"/>
   </g>
 </svg>

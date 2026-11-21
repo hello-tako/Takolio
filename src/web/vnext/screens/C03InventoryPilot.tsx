@@ -56,7 +56,7 @@ const IngredientThumb: React.FC<{
   const showImage = Boolean(src) && !failed && !src.includes('placeholder');
 
   return (
-    <span className="w-10 h-10 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
+    <span className="w-10 h-10 rounded-xl bg-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
       {showImage ? (
         <img
           src={src}
@@ -240,13 +240,13 @@ export const C03InventoryPilot: React.FC = () => {
         {/* Top Heading & Workbench Actions */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
+            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
               Quản lý tồn kho theo lô
             </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] mt-0.5">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
               Tủ lạnh của tôi
             </h1>
-            <p className="text-sm text-[var(--sumi-muted,#5C5F62)] mt-0.5 tabular-nums">
+            <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] mt-0.5 tabular-nums">
               {inventoryQuery.isSuccess
                 ? `Đang có ${items.length} lô nguyên liệu khả dụng · Đối soát phiên bản máy chủ tự động.`
                 : 'Theo dõi định lượng và hạn dùng thực tế của hộ gia đình.'}
@@ -265,7 +265,7 @@ export const C03InventoryPilot: React.FC = () => {
             </TkvButton>
             <Link
               to="/inventory-reconciliation"
-              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] text-sm font-semibold text-[var(--sumi-ink,#111315)] inline-flex items-center gap-1.5 transition-colors"
+              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)] inline-flex items-center gap-1.5 transition-colors"
             >
               <VNextIcon name="history" size={16} />
               <span>Đối soát tồn kho</span>
@@ -275,9 +275,9 @@ export const C03InventoryPilot: React.FC = () => {
 
         {/* S05 / Conflict or Mutation Notice */}
         {mutationBanner && (
-          <TkvSurface role="alert" className="p-4 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border-strong,#CFCFC9)] flex items-center justify-between gap-3 flex-wrap">
-            <div className="flex items-center gap-2.5 text-sm font-semibold text-[var(--sumi-ink,#111315)]">
-              <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+          <TkvSurface role="alert" className="p-4 bg-[var(--tkv-honey-soft,#FCF5E6)] border-[var(--tkv-honey-border,#EDD9B4)] flex items-center justify-between gap-3 flex-wrap">
+            <div className="flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-honey-ink,#8C5B18)]">
+              <span className="w-2 h-2 rounded-full bg-[var(--tkv-honey,#C68634)] shrink-0" aria-hidden="true" />
               <VNextIcon name="warning" size={18} />
               <span>{mutationBanner.message}</span>
             </div>
@@ -291,9 +291,9 @@ export const C03InventoryPilot: React.FC = () => {
 
         {/* C05 Inline Add Ingredient Sheet */}
         {addOpen && (
-          <TkvSurface className="p-5 space-y-4 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+          <TkvSurface className="p-5 space-y-4 bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)]">
             <div className="flex items-center justify-between">
-              <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+              <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                 Thêm nguyên liệu thủ công
               </h2>
               <TkvIconButton icon="close" label="Đóng biểu mẫu thêm nguyên liệu" onClick={() => setAddOpen(false)} />
@@ -316,7 +316,7 @@ export const C03InventoryPilot: React.FC = () => {
                 required
               />
               <div className="space-y-2">
-                <label htmlFor="tkv-c05-unit" className="text-sm font-bold text-[var(--sumi-ink,#111315)] block">
+                <label htmlFor="tkv-c05-unit" className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] block">
                   Đơn vị & Vị trí
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -324,7 +324,7 @@ export const C03InventoryPilot: React.FC = () => {
                     id="tkv-c05-unit"
                     value={unit}
                     onChange={(e) => setUnit(e.target.value as StandardUnit)}
-                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-semibold text-[var(--sumi-ink,#111315)]"
+                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)]"
                   >
                     <option value="piece">quả / cái</option>
                     <option value="g">g</option>
@@ -337,7 +337,7 @@ export const C03InventoryPilot: React.FC = () => {
                     aria-label="Vị trí bảo quản"
                     value={storage}
                     onChange={(e) => setStorage(e.target.value)}
-                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-semibold text-[var(--sumi-ink,#111315)]"
+                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)]"
                   >
                     <option value="fridge">Ngăn mát</option>
                     <option value="freezer">Ngăn đông</option>
@@ -346,7 +346,7 @@ export const C03InventoryPilot: React.FC = () => {
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="tkv-c05-expiry" className="text-sm font-bold text-[var(--sumi-ink,#111315)] block">
+                <label htmlFor="tkv-c05-expiry" className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] block">
                   Hạn dùng ước tính
                 </label>
                 <div className="flex gap-2">
@@ -354,7 +354,7 @@ export const C03InventoryPilot: React.FC = () => {
                     id="tkv-c05-expiry"
                     value={expiryDays}
                     onChange={(e) => setExpiryDays(Number(e.target.value))}
-                    className="tkv-focusable flex-1 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-semibold text-[var(--sumi-ink,#111315)]"
+                    className="tkv-focusable flex-1 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)]"
                   >
                     <option value={3}>Ước tính ~3 ngày</option>
                     <option value={5}>Ước tính ~5 ngày</option>
@@ -365,7 +365,7 @@ export const C03InventoryPilot: React.FC = () => {
                     aria-label="Nhóm nguyên liệu"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="tkv-focusable min-h-[48px] px-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-semibold text-[var(--sumi-ink,#111315)]"
+                    className="tkv-focusable min-h-[48px] px-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] text-sm font-semibold text-[var(--tkv-ink,#2C221E)]"
                   >
                     <option value="vegetable">Rau củ</option>
                     <option value="meat">Thịt</option>
@@ -432,7 +432,7 @@ export const C03InventoryPilot: React.FC = () => {
             primaryAction={
               <Link
                 to="/scan"
-                className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-semibold text-sm inline-flex items-center gap-2 transition-colors"
+                className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-semibold text-sm inline-flex items-center gap-2 transition-colors"
               >
                 <VNextIcon name="scan" size={18} />
                 <span>Quét nguyên liệu</span>
@@ -446,11 +446,11 @@ export const C03InventoryPilot: React.FC = () => {
           />
         ) : filteredItems.length === 0 ? (
           /* Empty Filter / Search — NEVER conflated with Empty Fridge! */
-          <TkvSurface className="p-6 text-center space-y-3 bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]" data-testid="c03-filtered-empty">
-            <h2 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+          <TkvSurface className="p-6 text-center space-y-3 bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)]" data-testid="c03-filtered-empty">
+            <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
               Không có nguyên liệu khớp bộ lọc hiện tại
             </h2>
-            <p className="text-sm text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+            <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
               Tủ lạnh của bạn vẫn đang có <strong>{items.length}</strong> nguyên liệu ở các nhóm khác.
             </p>
             <TkvButton
@@ -479,7 +479,7 @@ export const C03InventoryPilot: React.FC = () => {
 
               return (
                 <li key={item.id} data-testid="inventory-row" data-item-id={item.id}>
-                  <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 bg-white border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)] transition-colors">
+                  <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 bg-white border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors">
                     <Link
                       to={`/fridge/${item.id}`}
                       className="tkv-focusable flex items-center gap-3.5 min-w-0 flex-1 rounded-xl py-0.5"
@@ -490,22 +490,33 @@ export const C03InventoryPilot: React.FC = () => {
                         category={item.category}
                       />
                       <div className="min-w-0 space-y-1">
-                        <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)] truncate">
+                        <p className="tkv-heading text-base font-bold text-[var(--tkv-ink,#2C221E)] truncate">
                           {item.name}
                         </p>
-                        <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
-                          <span className="font-bold text-[var(--sumi-ink,#111315)]">
+                        <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
+                          <span className="font-bold text-[var(--tkv-ink,#2C221E)]">
                             {item.quantity} {item.unit}
                           </span>
                           <span>·</span>
                           <span>{STORAGE_LABELS[item.storage] ?? item.storage}</span>
                           <span>·</span>
-                          <span className="font-mono">v{item.version}</span>
+                          <span className="font-mono text-[var(--tkv-ink-muted,#87776E)]">v{item.version}</span>
                         </div>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)] tabular-nums">
-                          {isExpiring && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
-                          )}
+                        <span
+                          className={
+                            isExpiring
+                              ? 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-xs font-semibold text-[var(--tkv-honey-ink,#8C5B18)] tabular-nums'
+                              : 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)] tabular-nums'
+                          }
+                        >
+                          <span
+                            className={
+                              isExpiring
+                                ? 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)]'
+                                : 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]'
+                            }
+                            aria-hidden="true"
+                          />
                           <span>
                             {exp.date
                               ? exp.estimated

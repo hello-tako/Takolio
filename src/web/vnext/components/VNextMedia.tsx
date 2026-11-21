@@ -158,7 +158,7 @@ export const BrandLockup: React.FC<{
   <span className={`inline-flex items-center gap-2.5 ${className}`} translate="no">
     {compact ? (
       <img
-        src="/takolio/vnext/pwa/favicon-vnext.svg"
+        src="/takolio/vnext/pwa/favicon-vnext.svg?v=ceramic"
         alt="Takolio"
         width={36}
         height={36}
@@ -166,7 +166,7 @@ export const BrandLockup: React.FC<{
       />
     ) : (
       <img
-        src="/takolio/vnext/brand/lockup-direction-a.svg"
+        src="/takolio/vnext/brand/lockup-direction-a.svg?v=ceramic"
         alt="Takolio"
         width={128}
         height={34}
@@ -275,7 +275,7 @@ export const VerifiedDishImage: React.FC<{
 
   return (
     <div
-      className={`relative flex flex-col items-center justify-center ${compact ? 'gap-1 p-1.5' : 'gap-2 p-4'} overflow-hidden bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] text-center ${aspectClass} ${className}`}
+      className={`relative flex flex-col items-center justify-center ${compact ? 'gap-1 p-1.5' : 'gap-2 p-4'} overflow-hidden bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-muted)] text-center ${aspectClass} ${className}`}
     >
       <svg
         viewBox="0 0 64 48"
@@ -283,7 +283,7 @@ export const VerifiedDishImage: React.FC<{
         height={compact ? 22 : 42}
         fill="none"
         aria-hidden="true"
-        className="text-[var(--tkv-ink-secondary)] opacity-80 shrink-0"
+        className="text-[var(--tkv-primary)] opacity-85 shrink-0"
       >
         <path
           d="M24 8c0 3 3 4 3 7M32 6c0 3 3 4 3 7M40 8c0 3 3 4 3 7"

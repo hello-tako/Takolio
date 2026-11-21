@@ -47,8 +47,8 @@ const MEAL_LABELS = {
 } as const;
 
 /**
- * C01 — Hôm nay ăn gì? (Sumi Edition Live Pilot).
- * Architectural Sumi Monochrome (`#111315` / `#FFFFFF` / `#F7F7F5` + 2% `#C84B31` micro-dot)
+ * C01 — Hôm nay ăn gì? (Sunlit Ceramic & Terracotta Herb Live Pilot).
+ * Sunlit Ceramic & Terracotta Herb (`#FCF9F5` / `#FFFFFF` / `#D86A43` / `#4E7A5B`)
  * over 100% real API queries (`useHomePlan`, `api.getInventory`, `api.getRecipeDiscovery`).
  * Preserves independent loading/empty/error widgets and `presentExpiry` estimated labels.
  */
@@ -107,10 +107,10 @@ export const C01HomePilot: React.FC = () => {
         {/* Page Heading */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
+            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
               {greetingName ? `Chào ${greetingName}` : isGuest ? 'Phiên dùng thử khách' : 'Căn bếp gia đình'}
             </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] mt-0.5">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
               Hôm nay ăn gì?
             </h1>
           </div>
@@ -133,7 +133,7 @@ export const C01HomePilot: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Primary Column (7 cols on Desktop) */}
           <div data-testid="tkv-c01-primary" className="lg:col-span-7 space-y-6 min-w-0">
-            {/* Hero Task Card — Sumi Carbon #111315 */}
+            {/* Hero Task Card — Sunlit Ceramic & Linen Hero Card */}
             {home.query.isPending ? (
               <TkvSkeleton className="h-48" label="Đang tải bữa ăn tiếp theo…" />
             ) : home.query.isError ? (
@@ -143,17 +143,17 @@ export const C01HomePilot: React.FC = () => {
                 onRetry={() => void home.retry()}
               />
             ) : (
-              <div className="rounded-[var(--tkv-radius-card)] bg-[var(--sumi-ink,#111315)] border border-[var(--sumi-ink,#111315)] p-5 sm:p-6 text-white">
+              <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 text-[var(--tkv-ink,#2C221E)] shadow-soft">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
                   <div className="space-y-2.5 flex-1 min-w-0">
-                    <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[var(--sumi-paper,#FAF9F6)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                    <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
                       {meal && plan
                         ? `${MEAL_LABELS[meal.mealType]} · ${calendarLabel(meal.date, plan.today)}`
                         : 'Gợi ý trọng tâm hôm nay'}
                     </span>
 
-                    <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--sumi-paper,#FAF9F6)]">
+                    <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
                       {home.requiresAccount
                         ? 'Gợi ý món từ tủ lạnh của bạn'
                         : meal?.state === 'ready' && meal.dishes.length > 0
@@ -163,7 +163,7 @@ export const C01HomePilot: React.FC = () => {
                             : 'Bắt đầu bữa ngon từ nguyên liệu sẵn có'}
                     </h2>
 
-                    <p className="text-sm text-white/80 leading-relaxed tabular-nums">
+                    <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed tabular-nums">
                       {home.requiresAccount
                         ? 'Bạn đang ở phiên khách. Xem ngay món khớp nguyên liệu hoặc đăng nhập để lưu thực đơn tuần.'
                         : meal?.state === 'ready'
@@ -182,7 +182,7 @@ export const C01HomePilot: React.FC = () => {
                               ? `/recipes/${topRecommendation.recipe.slug || topRecommendation.recipe.id}`
                               : `/recipes`
                         }
-                        className="tkv-focusable min-h-[46px] px-4.5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white text-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-canvas,#F7F7F5)] font-bold text-sm inline-flex items-center gap-2 transition-colors"
+                        className="tkv-focusable min-h-[46px] px-4.5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-bold text-sm inline-flex items-center gap-2 transition-colors"
                       >
                         <span>{meal ? 'Xem bữa ăn' : 'Xem món gợi ý'}</span>
                         <VNextIcon name="arrow-right" size={16} />
@@ -190,7 +190,7 @@ export const C01HomePilot: React.FC = () => {
                       {home.requiresAccount && (
                         <Link
                           to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
-                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] border border-white/25 text-white hover:bg-white/10 font-semibold text-sm inline-flex items-center transition-colors"
+                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] font-semibold text-sm inline-flex items-center transition-colors"
                         >
                           Đăng nhập lập tuần
                         </Link>
@@ -205,7 +205,7 @@ export const C01HomePilot: React.FC = () => {
                       canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                       aspectClass="aspect-square"
                       priority
-                      className="rounded-2xl border border-white/20"
+                      className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] shadow-xs"
                     />
                   </div>
                 </div>
@@ -215,12 +215,12 @@ export const C01HomePilot: React.FC = () => {
             {/* "Dành cho bạn" Action Stack */}
             <section aria-labelledby="c01-for-you-heading" className="space-y-3">
               <div className="flex items-center justify-between gap-2">
-                <h2 id="c01-for-you-heading" className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                <h2 id="c01-for-you-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                   Dành cho bạn hôm nay
                 </h2>
                 <Link
                   to="/recipes"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--sumi-ink,#111315)] underline underline-offset-4"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
                 >
                   Xem tất cả món
                 </Link>
@@ -229,24 +229,24 @@ export const C01HomePilot: React.FC = () => {
               <div className="space-y-3">
                 <Link
                   to="/fridge"
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="relative w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                      <span className="relative w-11 h-11 rounded-xl bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-[var(--tkv-honey-ink,#8C5B18)] flex items-center justify-center shrink-0">
                         <VNextIcon name="fridge" size={20} />
                         {useSoonItems.length > 0 && (
                           <span
-                            className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)]"
+                            className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-honey,#C68634)]"
                             aria-hidden="true"
                           />
                         )}
                       </span>
                       <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--sumi-ink,#111315)]">
+                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
                           Nguyên liệu nên dùng sớm
                         </p>
-                        <p className="text-sm text-[var(--sumi-muted,#5C5F62)] truncate tabular-nums">
+                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate tabular-nums">
                           {inventoryQuery.isPending
                             ? 'Đang kiểm tra tủ lạnh…'
                             : inventoryQuery.isError
@@ -259,24 +259,24 @@ export const C01HomePilot: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
+                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
                   </div>
                 </Link>
 
                 <Link
                   to="/recipes"
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                      <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                         <VNextIcon name="recipes" size={20} />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--sumi-ink,#111315)]">
+                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
                           Bữa hôm nay từ nguyên liệu có sẵn
                         </p>
-                        <p className="text-sm text-[var(--sumi-muted,#5C5F62)] truncate tabular-nums">
+                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate tabular-nums">
                           {recommendationsQuery.isPending
                             ? 'Đang đối chiếu định lượng công thức…'
                             : recommendations.length > 0
@@ -285,24 +285,24 @@ export const C01HomePilot: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
+                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
                   </div>
                 </Link>
 
                 <Link
                   to={`${plannerBase}`}
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                      <span className="w-11 h-11 rounded-xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-[var(--tkv-sage,#4E7A5B)] flex items-center justify-center shrink-0">
                         <VNextIcon name="calendar" size={20} />
                       </span>
                       <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--sumi-ink,#111315)]">
+                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
                           {plan ? 'Thực đơn tuần hiện tại' : 'Lập thực đơn tuần'}
                         </p>
-                        <p className="text-sm text-[var(--sumi-muted,#5C5F62)] truncate">
+                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate">
                           {home.requiresAccount
                             ? 'Yêu cầu tài khoản đã đăng ký để lưu lịch tuần'
                             : plan
@@ -311,7 +311,7 @@ export const C01HomePilot: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
+                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
                   </div>
                 </Link>
               </div>
@@ -322,12 +322,12 @@ export const C01HomePilot: React.FC = () => {
           <div className="lg:col-span-5 space-y-6 min-w-0">
             <section aria-labelledby="c01-use-soon-heading" className="space-y-3">
               <div className="flex items-center justify-between">
-                <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                   Chi tiết nguyên liệu ưu tiên
                 </h2>
                 <Link
                   to="/fridge"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-semibold text-[var(--sumi-ink,#111315)] underline underline-offset-4"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
                 >
                   Mở tủ lạnh
                 </Link>
@@ -341,7 +341,7 @@ export const C01HomePilot: React.FC = () => {
                   onRetry={() => void inventoryQuery.refetch()}
                 />
               ) : useSoonItems.length === 0 ? (
-                <TkvSurface className="p-4 text-sm text-[var(--sumi-muted,#5C5F62)] bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)] flex items-center justify-between gap-3">
+                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)] flex items-center justify-between gap-3">
                   <span>
                     {activeItems.length === 0
                       ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
@@ -352,7 +352,7 @@ export const C01HomePilot: React.FC = () => {
                   </TkvButton>
                 </TkvSurface>
               ) : (
-                <TkvSurface padded={false} className="divide-y divide-[var(--sumi-border,#E4E4E0)] bg-white border-[var(--sumi-border,#E4E4E0)]">
+                <TkvSurface padded={false} className="divide-y divide-[var(--tkv-border,#EAE0D5)] bg-white border-[var(--tkv-border,#EAE0D5)]">
                   {useSoonItems.map((item) => {
                     const exp = presentExpiry(item);
                     const remDays = daysUntil(exp.date ?? undefined);
@@ -360,18 +360,18 @@ export const C01HomePilot: React.FC = () => {
                       <Link
                         key={item.id}
                         to={`/fridge/${item.id}`}
-                        className="tkv-focusable min-h-[56px] p-4 flex items-center justify-between gap-3 hover:bg-[var(--sumi-canvas,#F7F7F5)] transition-colors"
+                        className="tkv-focusable min-h-[56px] p-4 flex items-center justify-between gap-3 hover:bg-[var(--tkv-bg,#FCF9F5)] transition-colors"
                       >
                         <div className="min-w-0">
-                          <p className="text-sm font-bold text-[var(--sumi-ink,#111315)] truncate">
+                          <p className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] truncate">
                             {item.name}
                           </p>
-                          <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                          <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
                             {item.quantity} {item.unit}
                           </p>
                         </div>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold text-[var(--sumi-ink,#111315)] tabular-nums shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-xs font-semibold text-[var(--tkv-honey-ink,#8C5B18)] tabular-nums shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)]" aria-hidden="true" />
                           <span>
                             {exp.estimated
                               ? remDays !== null
@@ -390,7 +390,7 @@ export const C01HomePilot: React.FC = () => {
             </section>
 
             <section aria-labelledby="c01-recs-heading" className="space-y-3">
-              <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+              <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                 Món gợi ý cho bữa tới
               </h2>
               {recommendationsQuery.isPending ? (
@@ -406,7 +406,7 @@ export const C01HomePilot: React.FC = () => {
                     <Link
                       key={recipe.id}
                       to={`/recipes/${recipe.slug || recipe.id}`}
-                      className="tkv-focusable rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-3 flex items-center gap-3.5 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                      className="tkv-focusable rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-3 flex items-center gap-3.5 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                     >
                       <VerifiedDishImage
                         slug={recipe.slug}
@@ -417,14 +417,14 @@ export const C01HomePilot: React.FC = () => {
                         className="w-20 h-20 rounded-xl shrink-0"
                       />
                       <div className="min-w-0 flex-1 space-y-1">
-                        <h3 className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)] truncate">
+                        <h3 className="tkv-heading text-base font-bold text-[var(--tkv-ink,#2C221E)] truncate">
                           {recipe.title}
                         </h3>
-                        <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                        <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
                           {recipe.cookTimeMinutes} phút · {recipe.servings} người
                         </p>
                         <TkvBadge
-                          tone="neutral"
+                          tone={canCookWithoutBuying ? 'success' : 'coral'}
                           icon={canCookWithoutBuying ? 'check' : 'shopping'}
                         >
                           <span className="tabular-nums">

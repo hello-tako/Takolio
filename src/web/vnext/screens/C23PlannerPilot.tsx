@@ -58,8 +58,8 @@ function resolvePlannedMealSlug(meal: PlannedMealDto): string {
 }
 
 /**
- * C23 — Thực đơn tuần (Sumi Edition Live Pilot).
- * Sumi Monochrome weekly workbench (`#111315` / `#FFFFFF` / `#F7F7F5` + `tabular-nums`),
+ * C23 — Thực đơn tuần (Sunlit Ceramic & Terracotta Herb Live Pilot).
+ * Sunlit Ceramic & Linen weekly workbench (`#FCF9F5` / `#FFFFFF` / `#D86A43` + `tabular-nums`),
  * resolving every planned dish's real recipe slug/image without hardcoded dish fallbacks.
  * Preserves guest RegisteredAccountPrompt, `usePlanner` server truth, and `/week` compatibility.
  */
@@ -94,10 +94,10 @@ export const C23PlannerPilot: React.FC = () => {
         {/* Page Heading */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
+            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
               {isGuest ? 'Hoạch định bữa ăn gia đình' : `Bếp của ${cleanName} · Hoạch định tuần`}
             </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)] mt-0.5">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
               Thực đơn tuần
             </h1>
           </div>
@@ -114,7 +114,7 @@ export const C23PlannerPilot: React.FC = () => {
               {plan && (
                 <Link
                   to={`/planner/${plan.id}/shopping`}
-                  className="tkv-focusable min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] text-[var(--sumi-ink,#111315)] text-sm font-semibold inline-flex items-center gap-1.5 transition-colors"
+                  className="tkv-focusable min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-sm font-semibold inline-flex items-center gap-1.5 transition-colors"
                 >
                   <VNextIcon name="shopping" size={16} />
                   <span>Đi chợ theo tuần</span>
@@ -135,7 +135,7 @@ export const C23PlannerPilot: React.FC = () => {
               <Link
                 data-testid="planner-login-cta"
                 to={`/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`}
-                className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-semibold text-sm inline-flex items-center gap-2 transition-colors"
+                className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-semibold text-sm inline-flex items-center gap-2 transition-colors"
               >
                 <span>Đăng nhập để tiếp tục</span>
                 <VNextIcon name="arrow-right" size={16} />
@@ -156,23 +156,23 @@ export const C23PlannerPilot: React.FC = () => {
           />
         ) : !plan ? (
           <div className="space-y-5">
-            {/* Sumi Carbon Banner before first plan is generated */}
-            <div className="rounded-[var(--tkv-radius-card)] bg-[var(--sumi-ink,#111315)] border border-[var(--sumi-ink,#111315)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-white">
+            {/* Airy Sunlit Warm Ceramic & Linen Hero Banner before first plan is generated */}
+            <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-[var(--tkv-ink,#2C221E)] shadow-soft">
               <div className="space-y-2 max-w-xl">
-                <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[var(--sumi-paper,#FAF9F6)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
                   <span>Chưa có kế hoạch tuần đang mở</span>
                 </span>
-                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--sumi-paper,#FAF9F6)]">
+                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
                   Thực đơn tuần này
                 </h2>
-                <p className="text-sm text-white/80 leading-relaxed">
+                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
                   Hộ gia đình bạn chưa có kế hoạch bữa ăn đang hoạt động. Tạo lịch ăn mới để Takolio đối chiếu nguyên liệu sẵn có trong tủ lạnh và tính phần cần mua thêm.
                 </p>
                 <div className="pt-1">
                   <Link
                     to="/planner/new"
-                    className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white text-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-canvas,#F7F7F5)] font-bold text-sm inline-flex items-center gap-2 transition-colors"
+                    className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-bold text-sm inline-flex items-center gap-2 transition-colors"
                   >
                     <VNextIcon name="plus" size={16} />
                     <span>Tạo kế hoạch tuần mới</span>
@@ -184,7 +184,7 @@ export const C23PlannerPilot: React.FC = () => {
                   slug=""
                   title="Mâm cơm tuần"
                   aspectClass="aspect-square"
-                  className="rounded-2xl border border-white/20"
+                  className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] bg-white"
                 />
               </div>
             </div>
@@ -203,27 +203,28 @@ export const C23PlannerPilot: React.FC = () => {
           </div>
         ) : (
           <div className="space-y-6">
-            {/* Active Week Sumi Carbon Hero Banner */}
-            <div className="rounded-[var(--tkv-radius-card)] bg-[var(--sumi-ink,#111315)] border border-[var(--sumi-ink,#111315)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-white">
+            {/* Active Week Sunlit Warm Ceramic & Linen Hero Banner */}
+            <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-[var(--tkv-ink,#2C221E)] shadow-soft">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 flex-wrap tabular-nums">
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white">
+                  <span className="px-2.5 py-1 rounded-full bg-white/90 border border-[var(--tkv-border,#EAE0D5)] text-xs font-semibold text-[var(--tkv-ink,#2C221E)]">
                     Phiên bản v{plan.revision}
                   </span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white">
-                    {plannerStatusLabel(plan.result.status, 'vi')}
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
+                    <span>{plannerStatusLabel(plan.result.status, 'vi')}</span>
                   </span>
                   {plan.freshness.status === 'requires_revalidation' && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white text-[var(--sumi-ink,#111315)] text-xs font-bold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-[var(--tkv-honey-ink,#8C5B18)] text-xs font-bold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)]" aria-hidden="true" />
                       <span>Tủ lạnh vừa đổi · Nên kiểm tra lại lượng</span>
                     </span>
                   )}
                 </div>
-                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--sumi-paper,#FAF9F6)] tabular-nums">
+                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
                   Thực đơn tuần này ({plan.result.meals.length} bữa đã xếp)
                 </h2>
-                <p className="text-sm text-white/80 tabular-nums">
+                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
                   Bắt đầu từ {plan.intent.startDate} · Khẩu phần mặc định {plan.intent.defaultServings} người.
                 </p>
               </div>
@@ -232,7 +233,7 @@ export const C23PlannerPilot: React.FC = () => {
                   slug={featuredSlug}
                   title={featuredMeal?.title ?? 'Thực đơn tuần'}
                   aspectClass="aspect-square"
-                  className="rounded-2xl border border-white/20"
+                  className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] bg-white"
                 />
               </div>
             </div>
@@ -240,12 +241,12 @@ export const C23PlannerPilot: React.FC = () => {
             {/* Mobile 1-Col Day Cards & Desktop Multi-Day Workbench Grid */}
             <section aria-labelledby="c23-schedule-heading" className="space-y-3.5">
               <div className="flex items-center justify-between gap-2">
-                <h2 id="c23-schedule-heading" className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                <h2 id="c23-schedule-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                   Thực đơn của tuần
                 </h2>
                 <Link
                   to="/planner/new"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--sumi-ink,#111315)] underline underline-offset-4"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
                 >
                   Chỉnh sửa cấu hình
                 </Link>
@@ -255,13 +256,13 @@ export const C23PlannerPilot: React.FC = () => {
                 {orderedDates.map((dateKey) => {
                   const dayMeals = mealsByDate.get(dateKey) ?? [];
                   return (
-                    <TkvSurface key={dateKey} className="p-4 space-y-3 flex flex-col justify-between bg-white border-[var(--sumi-border,#E4E4E0)]">
+                    <TkvSurface key={dateKey} className="p-4 space-y-3 flex flex-col justify-between bg-white border-[var(--tkv-border,#EAE0D5)]">
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between border-b border-[var(--sumi-border,#E4E4E0)] pb-2">
-                          <h3 className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)] capitalize">
+                        <div className="flex items-center justify-between border-b border-[var(--tkv-border,#EAE0D5)] pb-2">
+                          <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)] capitalize">
                             {formatDayHeadingVi(dateKey)}
                           </h3>
-                          <span className="text-xs font-semibold text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                          <span className="text-xs font-semibold text-[var(--tkv-ink-muted,#87776E)] tabular-nums">
                             {dayMeals.length} bữa
                           </span>
                         </div>
@@ -276,7 +277,7 @@ export const C23PlannerPilot: React.FC = () => {
                               <li key={slot.slotId}>
                                 <Link
                                   to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
-                                  className="tkv-focusable p-3 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)] flex items-center justify-between gap-3 transition-colors"
+                                  className="tkv-focusable p-3 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] flex items-center justify-between gap-3 transition-colors"
                                 >
                                   <div className="flex items-center gap-3 min-w-0">
                                     <VerifiedDishImage
@@ -287,16 +288,21 @@ export const C23PlannerPilot: React.FC = () => {
                                       className="w-12 h-12 rounded-lg shrink-0"
                                     />
                                     <div className="min-w-0">
-                                      <p className="text-xs font-semibold text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                                      <p className="text-xs font-semibold text-[var(--tkv-ink-muted,#87776E)] tabular-nums">
                                         {MEAL_LABELS[slot.mealType]} · {slot.servings} người
                                       </p>
-                                      <p className="text-sm font-bold text-[var(--sumi-ink,#111315)] truncate mt-0.5">
+                                      <p className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] truncate mt-0.5">
                                         {slot.title}
                                       </p>
-                                      <p className="text-xs text-[var(--sumi-muted,#5C5F62)] mt-0.5 inline-flex items-center gap-1.5 tabular-nums">
-                                        {missingReqs > 0 && (
-                                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
-                                        )}
+                                      <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] mt-0.5 inline-flex items-center gap-1.5 tabular-nums">
+                                        <span
+                                          className={
+                                            missingReqs > 0
+                                              ? 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0'
+                                              : 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)] shrink-0'
+                                          }
+                                          aria-hidden="true"
+                                        />
                                         <span>
                                           {missingReqs === 0
                                             ? 'Đủ nguyên liệu dự kiến'
@@ -305,7 +311,7 @@ export const C23PlannerPilot: React.FC = () => {
                                       </p>
                                     </div>
                                   </div>
-                                  <VNextIcon name="chevron-right" size={16} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
+                                  <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
                                 </Link>
                               </li>
                             );

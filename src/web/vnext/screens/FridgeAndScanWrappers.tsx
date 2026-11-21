@@ -103,13 +103,13 @@ export const C02QuickSearchPage: React.FC = () => {
     <ConsumerStudioShell screenId="C02" title="Tìm nhanh" backTo={vnextHref('/')}>
       <div className="max-w-3xl space-y-6">
         <div className="space-y-1">
-          <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--sumi-muted,#5C5F62)]">
+          <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
             Tra cứu tức thì
           </p>
-          <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
+          <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
             Tìm nhanh
           </h1>
-          <p className="text-sm text-[var(--sumi-muted,#5C5F62)]">
+          <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)]">
             Tìm nguyên liệu trong tủ, công thức món ăn hoặc chuyển nhanh đến khu vực cần thao tác.
           </p>
         </div>
@@ -137,8 +137,8 @@ export const C02QuickSearchPage: React.FC = () => {
               className={clsx(
                 'tkv-focusable min-h-[42px] px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors',
                 scope === tab.id
-                  ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                  : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]',
+                  ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
+                  : 'bg-white text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
               )}
             >
               {tab.label}
@@ -149,11 +149,11 @@ export const C02QuickSearchPage: React.FC = () => {
         {trimmed ? (
           <div className="space-y-5">
             <section className="space-y-2.5" aria-label="Kết quả trong tủ lạnh">
-              <h2 className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
+              <h2 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
                 Nguyên liệu trong tủ lạnh ({matchingStock.length})
               </h2>
               {matchingStock.length === 0 ? (
-                <TkvSurface className="p-4 text-sm text-[var(--sumi-muted,#5C5F62)] bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)]">
                   Không có lô nguyên liệu nào khớp từ khóa “{trimmed}”.
                 </TkvSurface>
               ) : (
@@ -162,10 +162,10 @@ export const C02QuickSearchPage: React.FC = () => {
                     <Link
                       key={lot.id}
                       to={vnextHref(`/fridge/${lot.id}`)}
-                      className="tkv-focusable block rounded-2xl bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                      className="tkv-focusable block rounded-2xl bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-sm text-[var(--sumi-ink,#111315)]">{lot.name}</span>
+                        <span className="font-bold text-sm text-[var(--tkv-ink,#2C221E)]">{lot.name}</span>
                         <TkvBadge tone="neutral">
                           <span className="tabular-nums">
                             {lot.quantity} {lot.unit}
@@ -179,13 +179,13 @@ export const C02QuickSearchPage: React.FC = () => {
             </section>
 
             <section className="space-y-2.5" aria-label="Kết quả công thức món ăn">
-              <h2 className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)] tabular-nums">
+              <h2 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
                 Công thức món ăn ({matchingRecipes.length})
               </h2>
               {discoveryQuery.isPending ? (
-                <p className="text-sm text-[var(--sumi-muted,#5C5F62)]">Đang tìm trong kho công thức…</p>
+                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)]">Đang tìm trong kho công thức…</p>
               ) : matchingRecipes.length === 0 ? (
-                <TkvSurface className="p-4 text-sm text-[var(--sumi-muted,#5C5F62)] bg-[var(--sumi-canvas,#F7F7F5)] border-[var(--sumi-border,#E4E4E0)]">
+                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)]">
                   Không tìm thấy món ăn nào khớp từ khóa “{trimmed}”.
                 </TkvSurface>
               ) : (
@@ -194,16 +194,16 @@ export const C02QuickSearchPage: React.FC = () => {
                     <Link
                       key={recipe.id}
                       to={vnextHref(`/recipes/${recipe.slug || recipe.id}`)}
-                      className="tkv-focusable block rounded-2xl bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                      className="tkv-focusable block rounded-2xl bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div>
-                          <p className="font-bold text-sm text-[var(--sumi-ink,#111315)]">{recipe.title}</p>
-                          <p className="text-xs text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                          <p className="font-bold text-sm text-[var(--tkv-ink,#2C221E)]">{recipe.title}</p>
+                          <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
                             {recipe.cookTimeMinutes} phút · {recipe.servings} người
                           </p>
                         </div>
-                        <TkvBadge tone="neutral">
+                        <TkvBadge tone={canCookWithoutBuying ? 'success' : 'neutral'}>
                           {canCookWithoutBuying ? 'Đủ nguyên liệu' : 'Xem chi tiết'}
                         </TkvBadge>
                       </div>
@@ -219,21 +219,21 @@ export const C02QuickSearchPage: React.FC = () => {
               <Link
                 key={sc.id}
                 to={sc.to}
-                className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--sumi-border,#E4E4E0)] p-4 hover:border-[var(--sumi-ink,#111315)] transition-colors"
+                className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3.5">
-                    <span className="w-11 h-11 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+                    <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                       <VNextIcon name={sc.icon} size={20} />
                     </span>
                     <div>
-                      <p className="tkv-heading text-base font-bold text-[var(--sumi-ink,#111315)]">
+                      <p className="tkv-heading text-base font-bold text-[var(--tkv-ink,#2C221E)]">
                         {sc.title}
                       </p>
-                      <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">{sc.subtitle}</p>
+                      <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">{sc.subtitle}</p>
                     </div>
                   </div>
-                  <VNextIcon name="chevron-right" size={18} className="text-[var(--sumi-muted,#5C5F62)] shrink-0" />
+                  <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
                 </div>
               </Link>
             ))}
@@ -263,13 +263,13 @@ export const C06LotDetailVNext: React.FC = () => (
 export const C08ReconciliationVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C08" title="Đối soát tồn kho" backTo={vnextHref('/fridge')}>
     <div className="space-y-4">
-      <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
+      <div className="rounded-2xl bg-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
         <div className="space-y-1">
-          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--sumi-ink,#111315)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--tkv-ink,#2C221E)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
             <span>C08 · Đối soát dữ liệu máy chủ & quan sát thực tế</span>
           </p>
-          <p className="text-sm text-[var(--sumi-muted,#5C5F62)]">
+          <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)]">
             Kiểm tra các chênh lệch số lượng, vị trí bảo quản hoặc hạn dùng trước khi gửi quyết định lên máy chủ.
           </p>
         </div>
@@ -294,8 +294,8 @@ export const C09ScanStudioVNext: React.FC = () => (
 export const C12ScanReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C12" title="Duyệt kết quả AI" backTo={vnextHref('/scan')} showContextualScan={false}>
     <div className="space-y-4">
-      <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 text-xs sm:text-sm text-[var(--sumi-ink,#111315)] flex items-center gap-2.5">
-        <VNextIcon name="shield" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0" />
+      <div className="rounded-2xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] p-4 text-xs sm:text-sm text-[var(--tkv-sage-ink,#355940)] flex items-center gap-2.5">
+        <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0" />
         <span>
           <strong>Nguyên tắc duyệt trước khi lưu:</strong> Vui lòng kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.
         </span>
@@ -313,9 +313,9 @@ export const C12ScanReviewVNext: React.FC = () => (
 export const C14ReceiptReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C14" title="Duyệt hóa đơn" backTo={vnextHref('/scan')} showContextualScan={false}>
     <div className="space-y-4">
-      <div className="rounded-2xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-4 text-xs sm:text-sm text-[var(--sumi-ink,#111315)] flex items-center gap-2.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
-        <VNextIcon name="info" size={18} className="text-[var(--sumi-ink,#111315)] shrink-0" />
+      <div className="rounded-2xl bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] p-4 text-xs sm:text-sm text-[var(--tkv-honey-ink,#8C5B18)] flex items-center gap-2.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)] shrink-0" aria-hidden="true" />
+        <VNextIcon name="info" size={18} className="text-[var(--tkv-honey,#C68634)] shrink-0" />
         <span>
           <strong>Bảo vệ thông tin hóa đơn:</strong> Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.
         </span>

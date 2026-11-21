@@ -49,7 +49,7 @@
 .stock-detail-body .stock-summary {
   align-items: flex-start;
   padding: 24px 20px;
-  border-top: 3px solid #111315;
+  border-top: 3px solid #cf623a;
   border-radius: 4px 4px 16px 16px;
 }
 .stock-summary > div:last-child {
@@ -61,7 +61,7 @@
   align-items: flex-start;
 }
 .stock-detail-body .stock-quantity {
-  color: #111315;
+  color: #2c221e;
   font-size: 20px;
   font-weight: 600;
   margin-top: 12px;
@@ -110,11 +110,11 @@
 }
 .stock-recipe-note {
   margin-bottom: 16px;
-  color: #383b40;
+  color: #5f524a;
 }
 .stock-detail-body .reconciliation-record {
   padding: 24px 20px;
-  border-top: 3px solid #111315;
+  border-top: 3px solid #cf623a;
   border-radius: 4px 4px 16px 16px;
 }
 .reconciliation-record > header {
@@ -139,7 +139,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 4px;
   padding-block: 12px;
-  border-bottom: 1px solid #e4e4e0;
+  border-bottom: 1px solid #eae0d5;
 }
 .reconciliation-record dt {
   font-weight: 600;
@@ -197,7 +197,7 @@
 .system-status-content {
   display: grid;
   gap: 24px;
-  border-top: 3px solid #111315;
+  border-top: 3px solid #cf623a;
   padding-top: 24px;
 }
 .system-status-content h1 {
@@ -210,7 +210,7 @@
   overflow-wrap: anywhere;
 }
 .system-status-eyebrow {
-  color: #5e636a;
+  color: #87776e;
   font-size: 14px;
   font-weight: 600;
 }
@@ -230,7 +230,7 @@
 }
 .stock-edit-trigger {
   width: 100%;
-  border: 1px solid #e4e4e0;
+  border: 1px solid #eae0d5;
   background: #ffffff;
   border-radius: 12px;
   padding-inline: 16px;
@@ -267,9 +267,9 @@
 }
 .stock-editor input,
 .stock-editor select {
-  color: #111315;
+  color: #2c221e;
   background-color: #ffffff;
-  border: 1px solid #e4e4e0;
+  border: 1px solid #eae0d5;
   border-radius: 10px;
 }
 .stock-detail-body > *,

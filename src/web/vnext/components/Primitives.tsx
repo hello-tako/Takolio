@@ -17,13 +17,13 @@ export interface TkvButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
 
 const BUTTON_VARIANTS: Record<TkvButtonVariant, string> = {
   primary:
-    'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-xs border border-transparent',
+    'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-[var(--tkv-shadow-cta)] border border-transparent',
   coral:
-    'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-xs border border-transparent',
+    'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-[var(--tkv-shadow-cta)] border border-transparent',
   secondary:
-    'bg-[var(--tkv-surface)] hover:bg-[var(--tkv-bg)] text-[var(--tkv-ink)] border border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
+    'bg-[var(--tkv-surface)] hover:bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink)] border border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] shadow-xs',
   quiet:
-    'bg-[var(--tkv-surface)] hover:bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink)] border border-[var(--tkv-border)]',
+    'bg-[var(--tkv-surface-subtle)] hover:bg-[var(--tkv-surface-subtle-hover)] text-[var(--tkv-ink)] border border-[var(--tkv-border)]',
   ghost:
     'bg-transparent hover:bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)] border border-transparent',
   danger:
@@ -124,11 +124,12 @@ export const TkvSurface: React.FC<
       'rounded-2xl transition-colors',
       tone === 'default' &&
         'bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-card)]',
-      (tone === 'muted' || tone === 'mint' || tone === 'saffron' || tone === 'coral') &&
-        'bg-[var(--tkv-bg)] border border-[var(--tkv-border)]',
+      tone === 'muted' && 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)]',
       tone === 'subtle' && 'bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)]',
-      (tone === 'dark' || tone === 'inverse' || tone === 'hero') &&
-        'bg-[var(--tkv-surface-inverse)] text-white border border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-elevated)]',
+      tone === 'mint' && 'bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)]',
+      tone === 'saffron' && 'bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)]',
+      tone === 'coral' && 'bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)]',
+      (tone === 'dark' || tone === 'inverse' || tone === 'hero') && 'tkv-hero-ceramic',
       padded && 'p-5',
       className,
     )}
@@ -144,6 +145,18 @@ export const TkvBadge: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ tone = 'neutral', icon, children, className }) => {
+  const pillStyle: Record<NonNullable<typeof tone>, string> = {
+    success:
+      'bg-[var(--tkv-surface-mint)] text-[var(--tkv-success-ink)] border-[var(--tkv-border-mint)]',
+    warning:
+      'bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] border-[var(--tkv-border-saffron)]',
+    danger:
+      'bg-[var(--tkv-surface-danger)] text-[var(--tkv-danger-ink)] border-[var(--tkv-border-danger)]',
+    coral:
+      'bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral-ink)] border-[var(--tkv-border-coral)]',
+    neutral:
+      'bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
+  };
   const dotColor: Record<NonNullable<typeof tone>, string> = {
     success: 'bg-[var(--tkv-success)]',
     warning: 'bg-[var(--tkv-warning)]',
@@ -154,12 +167,13 @@ export const TkvBadge: React.FC<{
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold leading-tight bg-[var(--tkv-bg)] text-[var(--tkv-ink)] border border-[var(--tkv-border)]',
+        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold leading-tight border',
+        pillStyle[tone],
         className,
       )}
     >
       <span aria-hidden="true" className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dotColor[tone])} />
-      {icon && <VNextIcon name={icon} size={13} className="text-[var(--tkv-ink-secondary)]" />}
+      {icon && <VNextIcon name={icon} size={13} className="opacity-85" />}
       <span>{children}</span>
     </span>
   );

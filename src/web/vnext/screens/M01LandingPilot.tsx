@@ -85,33 +85,33 @@ export const M01LandingPilot: React.FC = () => {
 
   return (
     <PublicMarketingShell screenId="M01">
-      {/* Hero Section — Sumi Edition Editorial Monochrome */}
+      {/* Hero Section — Sunlit Ceramic & Terracotta Herb */}
       <section aria-labelledby="m01-hero-heading" className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-10 sm:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 space-y-5">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-xs font-bold text-[var(--sumi-ink,#111315)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
               <span>Trợ lý bếp thông minh cho gia đình hiện đại</span>
             </span>
 
             <h1
               id="m01-hero-heading"
-              className="tkv-heading text-[2rem] sm:text-[2.75rem] lg:text-[3.1rem] font-extrabold text-[var(--sumi-ink,#111315)] tracking-tight leading-[1.14]"
+              className="tkv-heading text-[2rem] sm:text-[2.75rem] lg:text-[3.1rem] font-extrabold text-[var(--tkv-ink,#2C221E)] tracking-tight leading-[1.14]"
             >
               Hôm nay ăn gì?
-              <span className="block text-[var(--sumi-muted,#5C5F62)] mt-1">Để Takolio giúp bạn.</span>
+              <span className="block text-[var(--tkv-primary,#D86A43)] mt-1">Để Takolio giúp bạn.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[var(--sumi-muted,#5C5F62)] max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)] max-w-xl leading-relaxed">
               Quản lý thực phẩm, chọn món ngon từ nguyên liệu sẵn có, lên thực đơn tuần và đi chợ thông minh — giữ trọn dữ liệu riêng tư cho từng hộ gia đình.
             </p>
 
             {guestError && (
               <div
                 role="alert"
-                className="p-3.5 rounded-2xl bg-white border border-[var(--sumi-border-strong,#CFCFC9)] text-sm font-semibold text-[var(--sumi-ink,#111315)] flex items-center gap-2.5"
+                className="p-3.5 rounded-2xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] flex items-center gap-2.5"
               >
-                <span className="w-2 h-2 rounded-full bg-[var(--sumi-dot,#C84B31)] shrink-0" aria-hidden="true" />
+                <span className="w-2 h-2 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0" aria-hidden="true" />
                 <span>{guestError}</span>
               </div>
             )}
@@ -122,30 +122,30 @@ export const M01LandingPilot: React.FC = () => {
                 disabled={isStarting}
                 onClick={() => void handleStartFree()}
                 data-testid="m01-start-free-cta"
-                className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--sumi-ink,#111315)] hover:bg-[var(--sumi-ink-hover,#23262A)] text-white font-bold text-base inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-60"
+                className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-bold text-base shadow-xs inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-60"
               >
                 <span>{isStarting ? 'Đang mở căn bếp…' : 'Bắt đầu miễn phí'}</span>
                 <VNextIcon name="arrow-right" size={18} />
               </button>
               <Link
                 to="/how-it-works"
-                className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--sumi-border-strong,#CFCFC9)] text-[var(--sumi-ink,#111315)] font-bold text-base inline-flex items-center justify-center gap-2 hover:bg-[var(--sumi-canvas,#F7F7F5)] transition-colors"
+                className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] font-bold text-base inline-flex items-center justify-center gap-2 hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
               >
                 <span>Khám phá cách hoạt động</span>
               </Link>
             </div>
 
-            <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--sumi-muted,#5C5F62)]">
+            <div className="flex items-center gap-2 flex-wrap text-xs text-[var(--tkv-ink-soft,#5F524A)]">
               <Link
                 to={vnextHref('/auth?mode=register')}
-                className="tkv-focusable font-bold text-[var(--sumi-ink,#111315)] underline"
+                className="tkv-focusable font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline"
               >
                 Tạo tài khoản đồng bộ
               </Link>
               <span aria-hidden="true">·</span>
               <span>
                 Đã có tài khoản?{' '}
-                <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--sumi-ink,#111315)] underline">
+                <Link to={vnextHref('/auth?mode=login')} className="font-bold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline">
                   Đăng nhập
                 </Link>
               </span>
@@ -153,8 +153,8 @@ export const M01LandingPilot: React.FC = () => {
           </div>
 
           <div className="lg:col-span-6">
-            <div className="rounded-[24px] bg-white p-3 sm:p-4 border border-[var(--sumi-border,#E4E4E0)] shadow-xs">
-              <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] bg-[var(--sumi-canvas,#F7F7F5)]">
+            <div className="rounded-[24px] bg-white p-3 sm:p-4 border border-[var(--tkv-border,#EAE0D5)] shadow-soft">
+              <div className="relative overflow-hidden rounded-[18px] aspect-[16/10] bg-[var(--tkv-surface-muted,#F7EFE6)]">
                 <img
                   src="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp"
                   srcSet="/takolio/vnext/marketing/hero-m01-kitchen-studio-table-640w.webp 640w, /takolio/vnext/marketing/hero-m01-kitchen-studio-table.webp 1280w"
@@ -165,18 +165,18 @@ export const M01LandingPilot: React.FC = () => {
               </div>
               <div className="mt-3.5 flex items-center justify-between gap-3 px-1 flex-wrap">
                 <div className="flex items-center gap-2.5">
-                  <MascotIllustration pose="welcome" size={40} decorative className="border border-[var(--sumi-border,#E4E4E0)]" />
+                  <MascotIllustration pose="welcome" size={40} decorative className="border border-[var(--tkv-border,#EAE0D5)] bg-[var(--tkv-bg,#FCF9F5)]" />
                   <div>
-                    <p className="text-xs font-extrabold text-[var(--sumi-ink,#111315)]">
+                    <p className="text-xs font-extrabold text-[var(--tkv-ink,#2C221E)]">
                       Vòng lặp bếp khép kín
                     </p>
-                    <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">
+                    <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">
                       Tủ lạnh → Món ăn → Thực đơn → Đi chợ → Đứng bếp
                     </p>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[11px] font-bold text-[var(--sumi-ink,#111315)]">
-                  <VNextIcon name="shield" size={13} />
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-[11px] font-bold text-[var(--tkv-sage-ink,#355940)]">
+                  <VNextIcon name="shield" size={13} className="text-[var(--tkv-sage,#4E7A5B)]" />
                   <span>Tách biệt theo hộ gia đình</span>
                 </span>
               </div>
@@ -184,21 +184,21 @@ export const M01LandingPilot: React.FC = () => {
           </div>
         </div>
 
-        {/* 5 Capability Architectural Strip */}
+        {/* 5 Capability Culinary Strip */}
         <div id="tkv-features" className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {FEATURE_PILLS.map((pill) => (
             <div
               key={pill.label}
-              className="rounded-2xl bg-white border border-[var(--sumi-border,#E4E4E0)] px-3.5 py-3 flex items-center gap-2.5"
+              className="rounded-2xl bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] px-3.5 py-3 flex items-center gap-2.5 transition-colors"
             >
-              <span className="w-9 h-9 rounded-xl bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)] flex items-center justify-center shrink-0">
+              <span className="w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
                 <VNextIcon name={pill.icon} size={18} />
               </span>
               <div className="min-w-0">
-                <p className="text-[10px] font-mono font-bold text-[var(--sumi-muted,#5C5F62)] tabular-nums">
+                <p className="text-[10px] font-mono font-bold text-[var(--tkv-ink-muted,#87776E)] tabular-nums">
                   {pill.code}
                 </p>
-                <p className="text-xs sm:text-sm font-bold text-[var(--sumi-ink,#111315)] leading-snug">
+                <p className="text-xs sm:text-sm font-bold text-[var(--tkv-ink,#2C221E)] leading-snug">
                   {pill.label}
                 </p>
               </div>
@@ -211,18 +211,18 @@ export const M01LandingPilot: React.FC = () => {
       <section
         id="tkv-how-it-works"
         aria-labelledby="m01-workflow-heading"
-        className="border-y border-[var(--sumi-border,#E4E4E0)] bg-white py-12 sm:py-16 px-4 sm:px-6"
+        className="border-y border-[var(--tkv-border,#EAE0D5)] bg-white py-12 sm:py-16 px-4 sm:px-6"
       >
         <div className="max-w-[1200px] mx-auto space-y-7">
           <div className="max-w-2xl space-y-2">
-            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--sumi-muted,#5C5F62)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
               <span>Cách Takolio hoạt động</span>
             </span>
-            <h2 id="m01-workflow-heading" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
+            <h2 id="m01-workflow-heading" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
               Từ nguyên liệu trong tủ đến bữa cơm trọn vẹn chỉ với 3 bước
             </h2>
-            <p className="text-sm sm:text-base text-[var(--sumi-muted,#5C5F62)]">
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)]">
               AI hỗ trợ nhận diện nhanh — quyền kiểm duyệt và xác nhận cuối cùng luôn thuộc về bạn.
             </p>
           </div>
@@ -231,21 +231,21 @@ export const M01LandingPilot: React.FC = () => {
             {WORKFLOW_STEPS.map((item) => (
               <div
                 key={item.step}
-                className="rounded-[20px] bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] p-5 sm:p-6 space-y-3 flex flex-col justify-between"
+                className="rounded-[20px] bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] p-5 sm:p-6 space-y-3 flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono tabular-nums text-xs font-extrabold px-2.5 py-1 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-[var(--sumi-ink,#111315)]">
+                    <span className="font-mono tabular-nums text-xs font-extrabold px-2.5 py-1 rounded-full bg-white border border-[var(--tkv-border,#EAE0D5)] text-[var(--tkv-ink,#2C221E)]">
                       Bước {item.step}
                     </span>
-                    <span className="w-10 h-10 rounded-xl bg-[var(--sumi-ink,#111315)] text-white flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center">
                       <VNextIcon name={item.icon} size={18} />
                     </span>
                   </div>
-                  <h3 className="tkv-heading text-lg font-extrabold text-[var(--sumi-ink,#111315)]">
+                  <h3 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[var(--sumi-muted,#5C5F62)] leading-relaxed">
+                  <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -259,11 +259,11 @@ export const M01LandingPilot: React.FC = () => {
       <section id="tkv-dishes" aria-labelledby="m01-dishes-heading" className="max-w-[1200px] mx-auto py-12 sm:py-16 px-4 sm:px-6 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-2">
-            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--sumi-muted,#5C5F62)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
               <span>Kho công thức Việt chuẩn định lượng</span>
             </span>
-            <h2 id="m01-dishes-heading" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--sumi-ink,#111315)]">
+            <h2 id="m01-dishes-heading" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
               Món cơm nhà quen thuộc, đối chiếu lượng có và thiếu rõ ràng
             </h2>
           </div>
@@ -279,23 +279,23 @@ export const M01LandingPilot: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SHOWCASE_SLUGS.map((dish) => (
-            <TkvSurface key={dish.slug} padded={false} className="overflow-hidden flex flex-col bg-white border-[var(--sumi-border,#E4E4E0)]">
+            <TkvSurface key={dish.slug} padded={false} className="overflow-hidden flex flex-col bg-white border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]">
               <VerifiedDishImage slug={dish.slug} title={dish.title} />
               <div className="p-4 flex-1 flex flex-col justify-between gap-3">
                 <div className="space-y-1">
-                  <h3 className="tkv-heading text-base font-extrabold text-[var(--sumi-ink,#111315)] line-clamp-2">
+                  <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)] line-clamp-2">
                     {dish.title}
                   </h3>
-                  <p className="text-xs text-[var(--sumi-muted,#5C5F62)]">
+                  <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)]">
                     {VERIFIED_VNEXT_RECIPE_MEDIA[dish.slug]?.verifiedIngredientsSummary}
                   </p>
                 </div>
-                <div className="flex items-center justify-between text-xs font-mono tabular-nums font-bold text-[var(--sumi-ink,#111315)] pt-2 border-t border-[var(--sumi-border,#E4E4E0)]">
-                  <span className="inline-flex items-center gap-1">
+                <div className="flex items-center justify-between text-xs font-mono tabular-nums font-bold text-[var(--tkv-ink,#2C221E)] pt-2 border-t border-[var(--tkv-border,#EAE0D5)]">
+                  <span className="inline-flex items-center gap-1 text-[var(--tkv-accent-ink,#9E4322)]">
                     <VNextIcon name="timer" size={14} />
                     {dish.time}
                   </span>
-                  <span>{dish.servings}</span>
+                  <span className="text-[var(--tkv-ink-soft,#5F524A)]">{dish.servings}</span>
                 </div>
               </div>
             </TkvSurface>
@@ -303,19 +303,19 @@ export const M01LandingPilot: React.FC = () => {
         </div>
       </section>
 
-      {/* M09 Transparent Pro Notice */}
+      {/* M09 Sunlit Terracotta-Linen Pro Notice */}
       <section id="tkv-plus" aria-labelledby="m01-plus-heading" className="max-w-[1200px] mx-auto pb-14 px-4 sm:px-6">
-        <div className="rounded-[24px] bg-[var(--sumi-ink,#111315)] text-white p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-pro-from,#FFF9F5)] via-[var(--tkv-pro-via,#FDF1EA)] to-[var(--tkv-pro-to,#F9E5D8)] border border-[var(--tkv-pro-border,#EBCBB9)] text-[var(--tkv-ink,#2C221E)] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-soft">
           <div className="space-y-2 max-w-2xl">
-            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 text-xs font-bold text-white">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/85 border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
               <span>Các gói sử dụng Takolio</span>
             </span>
-            <h2 id="m01-plus-heading" className="tkv-heading text-xl sm:text-2xl font-extrabold text-white">
+            <h2 id="m01-plus-heading" className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
               Bắt đầu miễn phí với tủ lạnh, kho công thức và thực đơn cơ bản
             </h2>
-            <p className="text-sm text-white/80 leading-relaxed">
-              Mức phí và hạn mức gói <strong>Takolio Pro</strong> luôn được đọc trực tiếp từ máy chủ thanh toán chính thức — minh bạch biểu phí VND và không hiển thị giá ước đoán giả định.
+            <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              Mức phí và hạn mức gói <strong className="text-[var(--tkv-ink,#2C221E)]">Takolio Pro</strong> luôn được đọc trực tiếp từ máy chủ thanh toán chính thức — minh bạch biểu phí VND và không hiển thị giá ước đoán giả định.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
@@ -323,13 +323,13 @@ export const M01LandingPilot: React.FC = () => {
               type="button"
               disabled={isStarting}
               onClick={() => void handleStartFree()}
-              className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white text-[var(--sumi-ink,#111315)] text-sm font-extrabold inline-flex items-center hover:bg-[var(--sumi-canvas,#F7F7F5)] transition-colors"
+              className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white text-sm font-extrabold shadow-xs inline-flex items-center transition-colors"
             >
               {isStarting ? 'Đang mở…' : 'Dùng thử miễn phí'}
             </button>
             <Link
               to="/pricing"
-              className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] border border-white/25 text-sm font-bold text-white inline-flex items-center hover:bg-white/10 transition-colors"
+              className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-sm font-bold text-[var(--tkv-ink,#2C221E)] inline-flex items-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
             >
               Xem biểu phí Pro
             </Link>

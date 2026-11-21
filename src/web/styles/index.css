@@ -19,11 +19,11 @@
 @source not inline("space-y-{0,0.5,1,1.5,2,2.5,3,3.5,4,5,6,7}");
 @source not inline("text-{xs,sm} rounded-full");
 
-/* Unified Root Cascade — Takolio Sumi Edition (Architectural Monochrome 92 / 6 / 2) */
+/* Unified Root Cascade — Takolio Sunlit Ceramic & Terracotta Herb ("Nắng Bếp Gốm Sứ") */
 :root {
   --frigo-tap-target: 44px;
-  --frigo-cream: #F7F7F5;
-  --frigo-text-main: #111315;
+  --frigo-cream: #FCF9F5;
+  --frigo-text-main: #2C221E;
   --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
   --takolio-font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
   --takolio-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -44,71 +44,71 @@
   --motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
 
-  --kitchen-coral: #111315;
-  --kitchen-pine: #111315;
-  --kitchen-canvas: #F7F7F5;
+  --kitchen-coral: #D86A43;
+  --kitchen-pine: #4E7A5B;
+  --kitchen-canvas: #FCF9F5;
 
-  --semantic-background: #F7F7F5;
-  --semantic-background-rgb: 247 247 245;
-  --semantic-background-subtle: #EFECE6;
-  --semantic-background-subtle-rgb: 247 247 245;
+  --semantic-background: #FCF9F5;
+  --semantic-background-rgb: 252 249 245;
+  --semantic-background-subtle: #F7EFE6;
+  --semantic-background-subtle-rgb: 247 239 230;
   --semantic-surface: #FFFFFF;
   --semantic-surface-raised: #FFFFFF;
-  --semantic-text-primary: #111315;
-  --semantic-text-primary-rgb: 17 19 21;
-  --semantic-text-secondary: #383B40;
-  --semantic-text-secondary-rgb: 56 59 64;
-  --semantic-text-muted: #5E636A;
-  --semantic-text-muted-rgb: 94 99 106;
+  --semantic-text-primary: #2C221E;
+  --semantic-text-primary-rgb: 44 34 30;
+  --semantic-text-secondary: #5F524A;
+  --semantic-text-secondary-rgb: 95 82 74;
+  --semantic-text-muted: #87776E;
+  --semantic-text-muted-rgb: 135 119 110;
   --semantic-text-inverse: #FFFFFF;
-  --semantic-text-on-soft: #111315;
+  --semantic-text-on-soft: #2C221E;
 
-  --semantic-action-primary: #111315;
-  --semantic-action-primary-rgb: 17 19 21;
-  --semantic-action-primary-hover: #23262A;
-  --semantic-action-primary-hover-rgb: 35 38 42;
-  --semantic-action-primary-pressed: #111315;
-  --semantic-action-primary-pressed-rgb: 17 19 21;
+  --semantic-action-primary: #D86A43;
+  --semantic-action-primary-rgb: 216 106 67;
+  --semantic-action-primary-hover: #C25731;
+  --semantic-action-primary-hover-rgb: 194 87 49;
+  --semantic-action-primary-pressed: #A84724;
+  --semantic-action-primary-pressed-rgb: 168 71 36;
   --semantic-on-action-primary: #FFFFFF;
 
-  --semantic-accent: #C84B31;
-  --semantic-accent-rgb: 200 75 49;
-  --semantic-accent-soft: #EFECE6;
-  --semantic-accent-soft-rgb: 239 236 230;
+  --semantic-accent: #D86A43;
+  --semantic-accent-rgb: 216 106 67;
+  --semantic-accent-soft: #FDF0EA;
+  --semantic-accent-soft-rgb: 253 240 234;
 
-  --semantic-success: #2D6A4F;
-  --semantic-success-rgb: 45 106 79;
-  --semantic-success-soft: #F7F7F5;
-  --semantic-success-soft-rgb: 247 247 245;
-  --semantic-warning: #B45309;
-  --semantic-warning-soft: #F7F7F5;
-  --semantic-warning-strong: #92400E;
-  --semantic-danger: #B91C1C;
-  --semantic-danger-soft: #FEF2F2;
-  --semantic-danger-strong: #B91C1C;
-  --semantic-info: #383B40;
-  --semantic-info-soft: #F7F7F5;
+  --semantic-success: #4E7A5B;
+  --semantic-success-rgb: 78 122 91;
+  --semantic-success-soft: #EEF5F0;
+  --semantic-success-soft-rgb: 238 245 240;
+  --semantic-warning: #C68634;
+  --semantic-warning-soft: #FCF5E6;
+  --semantic-warning-strong: #8A5A19;
+  --semantic-danger: #C2463A;
+  --semantic-danger-soft: #FDF1F0;
+  --semantic-danger-strong: #A33329;
+  --semantic-info: #4E7A5B;
+  --semantic-info-soft: #EEF5F0;
 
-  --semantic-border: #E4E4E0;
-  --semantic-border-rgb: 228 228 224;
-  --semantic-border-strong: #C9C8C3;
-  --semantic-focus: #111315;
-  --semantic-focus-rgb: 17 19 21;
-  --semantic-overlay: rgba(17, 19, 21, 0.48);
+  --semantic-border: #EAE0D5;
+  --semantic-border-rgb: 234 224 213;
+  --semantic-border-strong: #D5C3B3;
+  --semantic-focus: #4E7A5B;
+  --semantic-focus-rgb: 78 122 91;
+  --semantic-overlay: rgba(44, 34, 30, 0.34);
 
-  --takosan-cream: #F7F7F5;
-  --takosan-cream-color-rgb: 247 247 245;
-  --takosan-mint: #EFECE6;
-  --takosan-mint-color-rgb: 239 236 230;
-  --takosan-mint-deep-color-rgb: 201 200 195;
-  --takosan-green: #111315;
-  --takosan-green-color-rgb: 17 19 21;
-  --takosan-green-hover-color-rgb: 35 38 42;
-  --takosan-green-deep-color-rgb: 17 19 21;
-  --takosan-navy: #111315;
-  --takosan-navy-color-rgb: 17 19 21;
-  --takosan-coral: #C84B31;
-  --takosan-coral-color-rgb: 200 75 49;
+  --takosan-cream: #FCF9F5;
+  --takosan-cream-color-rgb: 252 249 245;
+  --takosan-mint: #EEF5F0;
+  --takosan-mint-color-rgb: 238 245 240;
+  --takosan-mint-deep-color-rgb: 207 226 213;
+  --takosan-green: #CF623A;
+  --takosan-green-color-rgb: 207 98 58;
+  --takosan-green-hover-color-rgb: 185 80 42;
+  --takosan-green-deep-color-rgb: 158 65 32;
+  --takosan-navy: #2C221E;
+  --takosan-navy-color-rgb: 44 34 30;
+  --takosan-coral: #CF623A;
+  --takosan-coral-color-rgb: 207 98 58;
 }
 
 .rounded-full { border-radius: 9999px; }
@@ -177,42 +177,42 @@
 
 @tailwind utilities;
 
-/* Preserve RGB alpha composition aligned with Sumi tokens. */
-.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 200 75 49) / .2)}
-.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 17 19 21) / .3)}
-.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 17 19 21) / .4)}
-.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
-.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 228 228 224) / .7)}
-.border-semantic-danger\/20{border-color:#b91c1c33}
-.border-semantic-danger\/30{border-color:#b91c1c4d}
-.border-semantic-info\/30{border-color:#383b404d}
-.border-semantic-warning\/30{border-color:#b453094d}
-.border-semantic-warning\/40{border-color:#b4530966}
-.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 17 19 21) / .4)}
-.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .6)}
-.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .7)}
-.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 201 200 195) / .8)}
+/* Preserve RGB alpha composition aligned with Sunlit Ceramic tokens. */
+.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 207 98 58) / .2)}
+.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 207 98 58) / .3)}
+.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 207 98 58) / .4)}
+.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
+.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 234 224 213) / .7)}
+.border-semantic-danger\/20{border-color:#c2463a33}
+.border-semantic-danger\/30{border-color:#c2463a4d}
+.border-semantic-info\/30{border-color:#4e7a5b4d}
+.border-semantic-warning\/30{border-color:#c686344d}
+.border-semantic-warning\/40{border-color:#c6863466}
+.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 207 98 58) / .4)}
+.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .6)}
+.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .7)}
+.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .8)}
 .border-white\/10{border-color:#ffffff1a}
 .border-white\/15{border-color:#ffffff26}
 .border-white\/20{border-color:#fff3}
 .border-white\/30{border-color:#ffffff4d}
 .border-white\/90{border-color:#ffffffe6}
-.bg-black\/65{background-color:#000000a6}
-.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 247 247 245) / .95)}
-.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
-.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .7)}
-.bg-semantic-overlay\/40{background-color:#11131566}
-.bg-semantic-overlay\/50{background-color:#11131580}
-.bg-semantic-overlay\/60{background-color:#11131599}
-.bg-semantic-overlay\/75{background-color:#111315bf}
-.bg-semantic-overlay\/80{background-color:#111315cc}
-.bg-semantic-overlay\/90{background-color:#111315e6}
-.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 247 247 245) / .4)}
+.bg-black\/65{background-color:#2c221e80}
+.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 252 249 245) / .95)}
+.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
+.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .7)}
+.bg-semantic-overlay\/40{background-color:#2c221e4d}
+.bg-semantic-overlay\/50{background-color:#2c221e66}
+.bg-semantic-overlay\/60{background-color:#2c221e80}
+.bg-semantic-overlay\/75{background-color:#2c221e99}
+.bg-semantic-overlay\/80{background-color:#2c221eb3}
+.bg-semantic-overlay\/90{background-color:#2c221ed9}
+.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 238 245 240) / .4)}
 .bg-semantic-surface\/95{background-color:#fffffff2}
-.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 247 247 245) / .95)}
-.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .5)}
-.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .6)}
-.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 239 236 230) / .8)}
+.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 252 249 245) / .95)}
+.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .5)}
+.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .6)}
+.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .8)}
 .bg-white\/10{background-color:#ffffff1a}
 .bg-white\/90{background-color:#ffffffe6}
 .bg-white\/95{background-color:#fffffff2}
@@ -254,33 +254,33 @@
 .to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 239 236 230) / 1)}
 .to-transparent{--takosan-legacy-gradient-to: transparent}
 
-/* Preserve existing focus/ring and hover contracts aligned to Sumi. */
-.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 247 247 245) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 247 247 245) / .6)}
-.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 228 228 224) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 228 228 224) / .6)}
-.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-overlay\/80:hover{background-color:#111315cc}
-.hover\:bg-semantic-overlay\/85:hover{background-color:#111315d9}
-.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 17 19 21) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 35 38 42) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(239 236 230 / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover\/70:hover{background-color:#efece6b3}
+/* Preserve existing focus/ring and hover contracts aligned to Sunlit Ceramic. */
+.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 247 239 230) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 247 239 230) / .6)}
+.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 234 224 213) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
+.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(253 241 240 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(163 51 41 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-overlay\/80:hover{background-color:#2c221eb3}
+.hover\:bg-semantic-overlay\/85:hover{background-color:#2c221ec7}
+.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 158 65 32) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 185 80 42) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(238 245 240 / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover\/70:hover{background-color:#eef5f0b3}
 .hover\:bg-white:hover{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}
 .hover\:bg-white\/20:hover{background-color:#fff3}
 .focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}
 .focus\:ring-2:focus{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
-.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / .2)}
+.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
+.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / .2)}
 .focus-visible\:outline-none:focus-visible{outline:2px solid transparent;outline-offset:2px}
 .focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(201 200 195 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(180 83 9 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(213 195 179 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(198 134 52 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
 .focus-visible\:ring-offset-2:focus-visible{--tw-ring-offset-width: 2px}
 .peer:focus-visible~.peer-focus-visible\:ring-2{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 17 19 21) / var(--tw-ring-opacity, 1))}
+.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
 .peer:focus-visible~.peer-focus-visible\:ring-offset-2{--tw-ring-offset-width: 2px}
 
 @layer base {
@@ -293,8 +293,8 @@
   }
 
   ::selection {
-    background-color: #efece6;
-    color: #111315;
+    background-color: #fdf0ea;
+    color: #2c221e;
   }
 
   /* Text stays selectable app-wide (a11y); only interactive controls opt out. */

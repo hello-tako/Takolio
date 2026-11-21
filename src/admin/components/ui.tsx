@@ -8,8 +8,8 @@ import { vi } from '../i18n/vi';
 
 export type Tone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'info';
 
-/** Crisp #111315 Sumi Octopus Monogram SVG for Admin Console brand lockups (AD01–AD11). */
-export function SumiOctopusMark({ size = 20 }: { size?: number }) {
+/** Warm #D86A43 Terracotta Octopus Monogram SVG with #FFFDF9 silhouette for Admin Console brand lockups (AD01–AD11). */
+export function SumiOctopusMark({ size = 24 }: { size?: number }) {
   return (
     <svg
       width={size}
@@ -19,28 +19,29 @@ export function SumiOctopusMark({ size = 20 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
+      <rect width="24" height="24" rx="6" fill="#D86A43" />
       <path
-        d="M12 3.5C8.134 3.5 5 6.522 5 10.25C5 12.42 6.06 14.34 7.72 15.55C7.35 17.2 6.3 18.45 4.85 19.15"
-        stroke="currentColor"
-        strokeWidth="1.9"
+        d="M12 4.2C8.45 4.2 5.6 6.95 5.6 10.35C5.6 12.35 6.58 14.12 8.1 15.22C7.76 16.72 6.8 17.86 5.48 18.5"
+        stroke="#FFFDF9"
+        strokeWidth="1.85"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M12 3.5C15.866 3.5 19 6.522 19 10.25C19 12.42 17.94 14.34 16.28 15.55C16.65 17.2 17.7 18.45 19.15 19.15"
-        stroke="currentColor"
-        strokeWidth="1.9"
+        d="M12 4.2C15.55 4.2 18.4 6.95 18.4 10.35C18.4 12.35 17.42 14.12 15.9 15.22C16.24 16.72 17.2 17.86 18.52 18.5"
+        stroke="#FFFDF9"
+        strokeWidth="1.85"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M9.8 15.9C9.65 17.9 8.95 19.45 7.85 20.35M14.2 15.9C14.35 17.9 15.05 19.45 16.15 20.35"
-        stroke="currentColor"
-        strokeWidth="1.9"
+        d="M10 15.55C9.86 17.35 9.22 18.78 8.22 19.6M14 15.55C14.14 17.35 14.78 18.78 15.78 19.6"
+        stroke="#FFFDF9"
+        strokeWidth="1.85"
         strokeLinecap="round"
       />
-      <circle cx="9.5" cy="10.5" r="1.2" fill="currentColor" />
-      <circle cx="14.5" cy="10.5" r="1.2" fill="currentColor" />
+      <circle cx="9.7" cy="10.6" r="1.15" fill="#FFFDF9" />
+      <circle cx="14.3" cy="10.6" r="1.15" fill="#FFFDF9" />
     </svg>
   );
 }

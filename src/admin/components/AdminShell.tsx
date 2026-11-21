@@ -50,7 +50,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
       <aside id="admin-sidebar" className={clsx('admin-sidebar', drawerOpen && 'is-open')} aria-label={vi.layout.sidebarLabel}>
         <div className="brand">
           <span className="brand-mark" aria-hidden="true">
-            <SumiOctopusMark size={20} />
+            <SumiOctopusMark size={24} />
           </span>
           <span className="brand-name">{vi.appName}</span>
         </div>

@@ -16,16 +16,16 @@ import { VNextIcon } from '../components/VNextIcons';
 export const C24PlannerSetupVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C24" title="Lập thực đơn mới" backTo={vnextHref('/planner')}>
     <div className="space-y-5">
-      <div className="rounded-[var(--tkv-radius-card)] bg-[var(--sumi-ink,#111315)] border border-[var(--sumi-ink,#111315)] p-5 sm:p-6 text-white">
-        <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/80">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+      <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 text-[var(--tkv-ink,#2C221E)] shadow-soft">
+        <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[var(--tkv-accent-ink,#9E4322)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
           <VNextIcon name="calendar" size={14} />
           <span>Kế hoạch tuần mới</span>
         </p>
-        <p className="tkv-heading text-lg sm:text-xl font-bold text-[var(--sumi-paper,#FAF9F6)] mt-2">
+        <p className="tkv-heading text-lg sm:text-xl font-bold text-[var(--tkv-ink,#2C221E)] mt-2">
           Thiết lập nhịp nấu tại nhà theo tồn kho thực tế
         </p>
-        <p className="text-sm text-white/75 mt-1 max-w-2xl leading-relaxed">
+        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] mt-1 max-w-2xl leading-relaxed">
           Chọn số ngày, các bữa nấu tại nhà và khẩu phần gia đình để máy chủ tính toán thực đơn cân đối từ kho công thức thật.
         </p>
       </div>

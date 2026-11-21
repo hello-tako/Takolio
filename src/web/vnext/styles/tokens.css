@@ -1,58 +1,84 @@
-/* Takolio Sumi Edition — Architectural Monochrome Semantic Tokens (92 / 6 / 2)
+/* Takolio Sunlit Ceramic & Terracotta Herb Edition ("Nắng Bếp Gốm Sứ")
+ * Bright, airy, gentle, modern culinary design tokens inspired by sunlit ceramic,
+ * woven linen, warm terracotta cookware, and fresh sage herbs.
  * Applied globally on :root and .tkv-root so portals, modals, sheets, and
  * adapted domain surfaces share a unified, deterministic token cascade.
- * Fonts ('Plus Jakarta Sans' & 'Nunito') are loaded once via brand-takolio-fonts.css / brand-v3-fonts.css.
  */
 
 :root,
 .tkv-root,
 .tkv-root[data-tkv-direction='a'] {
-  /* 92% Architectural Monochrome Ink & Paper */
-  --tkv-bg: #f7f7f5;
+  /* Sunlit Porcelain & Woven Linen Surfaces */
+  --tkv-bg: #fcf9f5;
   --tkv-surface: #ffffff;
-  --tkv-surface-subtle: #efece6;
-  --tkv-surface-inverse: #111315;
+  --tkv-surface-subtle: #f7efe6;
+  --tkv-surface-inverse: #fff6f0;
 
-  /* Compatibility aliases mapped to Sumi Monochrome (zero pastel washes) */
-  --tkv-surface-mint: #efece6;
-  --tkv-surface-saffron: #f7f7f5;
-  --tkv-surface-coral: #f7f7f5;
+  /* Culinary Tonal Washes (Sage Herb, Honey Butter, Terracotta Blush) */
+  --tkv-surface-mint: #eef5f0;
+  --tkv-surface-saffron: #fcf5e6;
+  --tkv-surface-coral: #fdf0ea;
+  --tkv-surface-danger: #fdf1f0;
 
-  /* Primary Ink / Solid Primary CTA / Active Nav: Sumi Carbon (18.1:1 AAA on #FFFFFF) */
-  --tkv-primary: #111315;
-  --tkv-primary-hover: #23262a;
-  --tkv-primary-cta-hover: #26292e;
-  --tkv-primary-deep: #111315;
+  /* Primary Culinary CTA & Brand: Warm Terracotta Clay */
+  --tkv-primary: #d86a43;
+  --tkv-primary-hover: #c25731;
+  --tkv-primary-cta-hover: #c25731;
+  --tkv-primary-deep: #9e4120;
 
-  /* 2% Single Signature Micro-Accent: Muted Akane Terracotta (micro-dot ONLY) */
-  --tkv-accent: #c84b31;
-  --tkv-coral: #111315;
-  --tkv-coral-cta: #111315;
-  --tkv-coral-cta-hover: #26292e;
-  --tkv-saffron: #efece6;
+  /* Culinary Accents */
+  --tkv-accent: #d86a43;
+  --tkv-coral: #d86a43;
+  --tkv-coral-cta: #d86a43;
+  --tkv-coral-cta-hover: #c25731;
+  --tkv-saffron: #c68634;
 
-  /* Neutral Graphite Typography Hierarchy */
-  --tkv-ink: #111315;
-  --tkv-ink-secondary: #383b40;
-  --tkv-ink-muted: #5e636a;
+  /* Warm Espresso Walnut & Oolong Taupe Typography (never stark #000000) */
+  --tkv-ink: #2c221e;
+  --tkv-ink-secondary: #5f524a;
+  --tkv-ink-muted: #87776e;
 
-  /* Crisp Architectural Hairlines */
-  --tkv-border: #e4e4e0;
-  --tkv-border-strong: #c9c8c3;
+  /* Warm Sand Glaze Hairlines */
+  --tkv-border: #eae0d5;
+  --tkv-border-strong: #d5c3b3;
+  --tkv-border-mint: #cfe2d5;
+  --tkv-border-saffron: #edd9b4;
+  --tkv-border-coral: #f2d5c7;
+  --tkv-border-hero: #ebcbb9;
+  --tkv-border-danger: #f2cecb;
+  --tkv-surface-subtle-hover: #efe3d5;
+  --tkv-header-glass: rgba(252, 249, 245, 0.92);
+  --tkv-nav-glass: rgba(252, 249, 245, 0.95);
+  --tkv-scrim: rgba(44, 34, 30, 0.30);
+  --tkv-shadow-cta: 0 2px 10px rgba(216, 106, 67, 0.22);
 
-  /* 6% Restrained Semantic Status Dots */
-  --tkv-success: #2d6a4f;
-  --tkv-warning: #b45309;
-  --tkv-danger: #b91c1c;
-  --tkv-focus: #111315;
+  /* Culinary Semantic Status & Pill Text Colors */
+  --tkv-success: #4e7a5b;
+  --tkv-success-ink: #325940;
+  --tkv-warning: #c68634;
+  --tkv-warning-ink: #8a5a19;
+  --tkv-danger: #c2463a;
+  --tkv-danger-ink: #a33329;
+  --tkv-coral-ink: #9e4120;
+  --tkv-focus: #4e7a5b;
 
-  /* Standardized Geometry & Tactile Elevation */
+  /* Compatibility aliases so any legacy --sumi-* references resolve warmly */
+  --sumi-bg: #fcf9f5;
+  --sumi-surface: #ffffff;
+  --sumi-subtle: #f7efe6;
+  --sumi-ink: #2c221e;
+  --sumi-ink-secondary: #5f524a;
+  --sumi-ink-muted: #87776e;
+  --sumi-border: #eae0d5;
+  --sumi-accent: #cf623a;
+
+  /* Standardized Geometry & Warm Ceramic Elevation */
   --tkv-radius-card: 16px;
   --tkv-radius-btn: 12px;
   --tkv-radius-pill: 999px;
-  --tkv-shadow-card: 0 1px 2px rgba(17, 19, 21, 0.04), 0 4px 12px rgba(17, 19, 21, 0.03);
-  --tkv-shadow-elevated: 0 4px 16px rgba(17, 19, 21, 0.06), 0 12px 28px rgba(17, 19, 21, 0.06);
-  --tkv-shadow-float: 0 12px 32px rgba(17, 19, 21, 0.12), 0 2px 6px rgba(17, 19, 21, 0.06);
+  --tkv-shadow-card: 0 1px 3px rgba(66, 44, 33, 0.04), 0 6px 18px rgba(66, 44, 33, 0.035);
+  --tkv-shadow-elevated: 0 6px 20px rgba(66, 44, 33, 0.06), 0 14px 32px rgba(66, 44, 33, 0.055);
+  --tkv-shadow-float: 0 12px 32px rgba(66, 44, 33, 0.10), 0 2px 8px rgba(66, 44, 33, 0.05);
 
   /* Consolidated Self-Hosted Vietnamese Typography */
   --tkv-font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -72,6 +98,13 @@
   font-family: var(--tkv-font-heading);
   letter-spacing: -0.02em;
   line-height: 1.2;
+}
+
+.tkv-hero-ceramic {
+  background-image: linear-gradient(135deg, #fffdfb 0%, #fff6f0 55%, #f9eae0 100%);
+  color: var(--tkv-ink);
+  border: 1px solid var(--tkv-border-hero);
+  box-shadow: var(--tkv-shadow-elevated);
 }
 
 .tkv-skip-link {
