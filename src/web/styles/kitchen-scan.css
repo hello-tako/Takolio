@@ -326,7 +326,7 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .takosan-rebuild .scan-processing-motion {
+  :is(.takolio-rebuild, .takosan-rebuild) .scan-processing-motion {
     animation: none;
   }
 }

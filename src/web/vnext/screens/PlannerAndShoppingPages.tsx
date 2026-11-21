@@ -30,7 +30,7 @@ export const C24PlannerSetupVNext: React.FC = () => (
         </p>
       </div>
 
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <PlannerPage />
       </div>
     </div>
@@ -48,7 +48,7 @@ export const C25C26PlannerMealVNext: React.FC = () => {
       title="Chi tiết & đổi món"
       backTo={vnextHref(planId ? `/planner/${planId}` : '/planner')}
     >
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <PlannerPage />
       </div>
     </ConsumerStudioShell>
@@ -61,7 +61,7 @@ export const C25C26PlannerMealVNext: React.FC = () => {
  */
 export const C27C28ShoppingVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C27" title="Danh sách đi chợ">
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <ShoppingPage />
     </div>
   </ConsumerStudioShell>
@@ -79,7 +79,7 @@ export const C29ShoppingImportVNext: React.FC = () => {
       title="Đi chợ & nhập kho theo tuần"
       backTo={vnextHref(planId ? `/planner/${planId}` : '/planner')}
     >
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <PlannerPage />
       </div>
     </ConsumerStudioShell>

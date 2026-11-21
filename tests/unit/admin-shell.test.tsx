@@ -83,10 +83,10 @@ describe('admin shell for a content editor', () => {
   }
 
   it('shows only permitted navigation, the fixture banner, and PermissionDenied on a forbidden route', async () => {
-    mountAt('/admin/billing', 'takosan-demo-2026');
+    mountAt('/admin/billing', 'takolio-demo-2026');
 
     await waitFor(() => host.querySelector('[data-testid="admin-permission-denied"]') !== null);
-    expect(host.querySelector('[data-testid="admin-fixture-banner"]')?.textContent).toContain('takosan-demo-2026');
+    expect(host.querySelector('[data-testid="admin-fixture-banner"]')?.textContent).toContain('takolio-demo-2026');
     expect(host.querySelector('[data-testid="admin-page-title"]')?.textContent).toBeTruthy();
 
     const navIds = Array.from(host.querySelectorAll('[data-testid^="admin-nav-"]')).map((element) => element.getAttribute('data-testid'));

@@ -104,9 +104,9 @@ export async function login(env: AdminEnv, email: string, password = PASSWORD, e
   const result = await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email, password }, ...extra });
   if (result.status !== 200) throw new Error(`login ${email} failed: ${result.status} ${result.text}`);
   const cookies = result.headers.getSetCookie();
-  const token = /__Host-takosan_admin_session=([0-9a-f]{64})/.exec(cookies.join('\n'))?.[1];
+  const token = /__Host-takolio_admin_session=([0-9a-f]{64})/.exec(cookies.join('\n'))?.[1];
   if (!token) throw new Error('no session cookie');
-  return { cookie: `__Host-takosan_admin_session=${token}`, token, csrf: result.json.csrfToken, sessionId: result.json.data.session.id };
+  return { cookie: `__Host-takolio_admin_session=${token}`, token, csrf: result.json.csrfToken, sessionId: result.json.data.session.id };
 }
 
 export const count = (db: SqliteD1, query: string, ...binds: unknown[]) => db.query<{ n: number }>(query, ...binds)[0].n;

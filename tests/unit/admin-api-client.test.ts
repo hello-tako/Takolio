@@ -39,7 +39,7 @@ describe('admin API client', () => {
 
   it('attaches X-Admin-CSRF from memory on writes, never on reads, and never from a cookie', async () => {
     // A cookie with the legacy name must be ignored: the token lives in memory only.
-    setCookieString('theme=dark; __Host-takosan_admin_csrf=cookie-token');
+    setCookieString('theme=dark; __Host-takolio_admin_csrf=cookie-token');
     await adminFetch('PUT', '/preferences', { body: { density: 'compact' } });
     expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBeUndefined();
 
@@ -65,7 +65,7 @@ describe('admin API client', () => {
   });
 
   it('does not send the CSRF header on login', async () => {
-    setCookieString('__Host-takosan_admin_csrf=stale');
+    setCookieString('__Host-takolio_admin_csrf=stale');
     await adminFetch('POST', '/auth/login', { skipCsrf: true });
     expect(lastInit(fetchMock).headers['X-Admin-CSRF']).toBeUndefined();
   });
@@ -108,10 +108,10 @@ describe('admin API client', () => {
     fetchMock.mockResolvedValueOnce(
       jsonResponse(200, {
         data: {},
-        context: { environment: 'staging', generatedAt: '2026-10-12T00:00:00.000Z', fixtureDataset: 'takosan-demo-v1' },
+        context: { environment: 'staging', generatedAt: '2026-10-12T00:00:00.000Z', fixtureDataset: 'takolio-demo-v1' },
       }),
     );
     await adminFetch('GET', '/overview');
-    expect(getAdminDataContext()).toMatchObject({ environment: 'staging', fixtureDataset: 'takosan-demo-v1' });
+    expect(getAdminDataContext()).toMatchObject({ environment: 'staging', fixtureDataset: 'takolio-demo-v1' });
   });
 });

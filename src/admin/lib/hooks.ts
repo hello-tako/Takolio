@@ -35,7 +35,7 @@ export function useRangeParam(): [AdminRange, (next: AdminRange) => void] {
   return [range, setRange];
 }
 
-const SIDEBAR_KEY = 'takosan-admin.sidebar-collapsed';
+const SIDEBAR_KEY = 'takolio-admin.sidebar-collapsed';
 
 export function storeSidebarPreference(collapsed: boolean): void {
   try {

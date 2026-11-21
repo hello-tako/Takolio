@@ -415,7 +415,7 @@ export function PlannerShopping({
         </summary>
         <Card className="planning-shopping-form">
           <h2 className="font-heading font-bold text-xl flex items-center gap-2">
-            <ShoppingBag className="text-takosan-green-deep" />
+            <ShoppingBag className="text-semantic-text-primary" />
             {t.shopping}
           </h2>
           <p className="text-sm text-semantic-text-secondary mt-2 leading-relaxed">
@@ -480,7 +480,7 @@ export function PlannerShopping({
             </Button>
           </form>
           {model.busy === 'shopping' && (
-            <p role="status" className="text-sm mt-3 text-takosan-green-deep">
+            <p role="status" className="text-sm mt-3 text-semantic-text-primary">
               {t.optimizing}
             </p>
           )}
@@ -489,7 +489,7 @@ export function PlannerShopping({
       {response && <ShoppingResult key={response.result.id} response={response} locale={locale} />}
       {!fresh && (
         <Link
-          className="inline-flex min-h-11 items-center underline text-sm text-takosan-green-deep"
+          className="inline-flex min-h-11 items-center underline text-sm text-semantic-text-primary"
           to={`/planner/${plan.id}`}
         >
           {t.back}

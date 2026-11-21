@@ -309,7 +309,7 @@ const ReceiptReview: React.FC<{
       {/* Success Toast */}
       {successToast && (
         <div className="fixed top-16 left-4 right-4 z-50 bg-semantic-text-primary text-semantic-text-inverse px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 animate-fade-in max-w-md mx-auto border border-white/10">
-          <CheckCircle2 className="w-5 h-5 text-takosan-mint shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-semantic-success shrink-0" />
           <p role="status" className="text-sm font-semibold leading-relaxed">
             {successToast}
           </p>
@@ -378,7 +378,7 @@ const ReceiptReview: React.FC<{
           {isConfirmed && (
             <p
               role="status"
-              className="rounded-xl bg-takosan-mint p-3 text-xs text-takosan-green-deep"
+              className="rounded-xl bg-semantic-accent-soft p-3 text-xs text-semantic-text-primary"
             >
               Hóa đơn đã được xác nhận. Thông tin dưới đây đã lưu; sửa lô trong tủ lạnh nếu cần.
             </p>
@@ -387,7 +387,7 @@ const ReceiptReview: React.FC<{
           <div className="bg-white rounded-xl p-4 border border-semantic-border shadow-xs space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-takosan-mint border border-takosan-mint-deep flex items-center justify-center text-takosan-green-deep shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-semantic-accent-soft border border-semantic-border flex items-center justify-center text-semantic-text-primary shrink-0">
                   <Store className="w-5 h-5" />
                 </div>
                 <div>
@@ -401,7 +401,7 @@ const ReceiptReview: React.FC<{
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep/60">
+              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border">
                 AI OCR
               </span>
             </div>
@@ -461,7 +461,7 @@ const ReceiptReview: React.FC<{
                           ) : (
                             <>
                               <span
-                                className="text-xs font-semibold text-takosan-green"
+                                className="text-xs font-semibold text-semantic-action-primary"
                                 data-testid="receipt-price"
                               >
                                 Thành tiền OCR: {presentPrice(item.totalPriceVnd)}
@@ -476,7 +476,7 @@ const ReceiptReview: React.FC<{
                                       ? 'bg-semantic-danger-soft text-semantic-danger-strong border-semantic-danger/30'
                                       : confidence.tone === 'medium'
                                         ? 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/30'
-                                        : 'bg-takosan-mint text-takosan-green-deep border-takosan-mint-deep/60',
+                                        : 'bg-semantic-accent-soft text-semantic-text-primary border-semantic-border',
                                 )}
                               >
                                 {confidence.label}
@@ -639,7 +639,7 @@ const ReceiptReview: React.FC<{
                   onClick={() => void handleConfirm(true)}
                   className="flex items-center justify-center gap-2 text-semantic-text-primary"
                 >
-                  <CalendarCheck className="w-4 h-4 text-takosan-green" />
+                  <CalendarCheck className="w-4 h-4 text-semantic-action-primary" />
                   <span>Lưu hóa đơn & mở danh sách tuần</span>
                 </Button>
               )}

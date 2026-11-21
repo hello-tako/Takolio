@@ -63,10 +63,10 @@ describe('admin authentication', () => {
     const result = await call('/api/v1/admin/auth/login', { env, method: 'POST', body: { email: fx('super'), password: PASSWORD } });
     const cookies = result.headers.getSetCookie();
     expect(cookies).toHaveLength(1);
-    expect(cookies[0]).toMatch(/^__Host-takosan_admin_session=[0-9a-f]{64}; Path=\/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800$/);
+    expect(cookies[0]).toMatch(/^__Host-takolio_admin_session=[0-9a-f]{64}; Path=\/; HttpOnly; Secure; SameSite=Strict; Max-Age=28800$/);
     expect(cookies[0]).not.toMatch(/Domain=/i);
     const token = /=([0-9a-f]{64})/.exec(cookies[0])![1];
-    expect(result.json.csrfToken).toBe(await sha256Hex(`takosan-admin-csrf:v1:${token}`));
+    expect(result.json.csrfToken).toBe(await sha256Hex(`takolio-admin-csrf:v1:${token}`));
     expect(result.json.data.csrfToken).toBe(result.json.csrfToken);
     const row = dbs.admin.query<{ token_hash: string; credential_fingerprint: string }>('SELECT token_hash, credential_fingerprint FROM admin_sessions')[0];
     expect(row.token_hash).toBe(await sha256Hex(token));

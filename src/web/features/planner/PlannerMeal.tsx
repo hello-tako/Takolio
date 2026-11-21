@@ -86,7 +86,7 @@ export function PlannerMeal({
     return (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
@@ -99,14 +99,14 @@ export function PlannerMeal({
     return composing && !compositions.isError && slotExists ? (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
           {t.back}
         </Link>
         <Card className="planning-meal-overview !p-5 sm:!p-6">
-          <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+          <p className="text-xs font-bold text-semantic-text-primary uppercase tracking-wide">
             {slotComposition?.date} · {slotComposition ? t[slotComposition.mealType] : ''}
           </p>
           <h2 className="text-2xl font-heading font-bold mt-2">
@@ -149,14 +149,14 @@ export function PlannerMeal({
   return (
     <>
       <Link
-        className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+        className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
         to={`/planner/${plan.id}`}
       >
         <ArrowLeft size={16} />
         {t.back}
       </Link>
       <Card className="planning-meal-overview !p-5 sm:!p-6">
-        <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+        <p className="text-xs font-bold text-semantic-text-primary uppercase tracking-wide">
           {t[meal.mealType]} · {meal.date}
         </p>
         <h2 className="text-2xl font-heading font-bold text-semantic-text-primary mt-2 leading-tight">
@@ -281,7 +281,7 @@ export function PlannerMeal({
               </p>
             )}
             {(explanation || aiFailed) && (
-              <p role="status" className="text-xs text-takosan-green-deep mt-3">
+              <p role="status" className="text-xs text-semantic-text-primary mt-3">
                 {explanation?.source === 'ai' ? t.aiUsed : t.fallback}
               </p>
             )}

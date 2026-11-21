@@ -9,7 +9,7 @@ interface StatusChipProps {
 
 export const StatusChip: React.FC<StatusChipProps> = ({ status, className }) => {
   const configs: Record<string, { label: string; bg: string; text: string; dot: string }> = {
-    fresh: { label: 'Tươi ngon', bg: 'bg-takosan-mint border border-takosan-mint-deep/80', text: 'text-takosan-green-deep', dot: 'bg-takosan-green' },
+    fresh: { label: 'Tươi ngon', bg: 'bg-semantic-accent-soft border border-semantic-border', text: 'text-semantic-text-primary', dot: 'bg-semantic-action-primary' },
     use_soon: { label: 'Dùng sớm', bg: 'bg-semantic-warning-soft border border-semantic-warning/30', text: 'text-semantic-warning-strong', dot: 'bg-semantic-warning' },
     expiring: { label: 'Sắp hết hạn', bg: 'bg-semantic-danger-soft border border-semantic-danger/30', text: 'text-semantic-danger-strong', dot: 'bg-semantic-danger' },
     out_of_stock: { label: 'Đã hết', bg: 'bg-semantic-border/60 border border-semantic-border', text: 'text-semantic-text-secondary', dot: 'bg-semantic-border-strong' },

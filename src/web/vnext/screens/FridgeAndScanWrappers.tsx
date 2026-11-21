@@ -253,7 +253,7 @@ export const C02QuickSearchPage: React.FC = () => {
 /** C06 / C07 — Chi tiết nguyên liệu & Chỉnh sửa số lượng (wraps authoritative IngredientDetailPage). */
 export const C06LotDetailVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C06" title="Chi tiết nguyên liệu" backTo={vnextHref('/fridge')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <IngredientDetailPage />
     </div>
   </ConsumerStudioShell>
@@ -274,7 +274,7 @@ export const C08ReconciliationVNext: React.FC = () => (
           </p>
         </div>
       </div>
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <ReconciliationPage />
       </div>
     </div>
@@ -284,7 +284,7 @@ export const C08ReconciliationVNext: React.FC = () => (
 /** C09 / C10 — Quét nguyên liệu & Quyền camera / Tải ảnh dự phòng (Kitchen Studio Scan Frame). */
 export const C09ScanStudioVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C09" title="Quét nguyên liệu" backTo={vnextHref('/fridge')} showContextualScan={false}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <ScanPage />
     </div>
   </ConsumerStudioShell>
@@ -300,7 +300,7 @@ export const C12ScanReviewVNext: React.FC = () => (
           <strong>Nguyên tắc duyệt trước khi lưu:</strong> Vui lòng kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.
         </span>
       </div>
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <div className="tkv-review-host">
           <ScanResultPage />
         </div>
@@ -320,7 +320,7 @@ export const C14ReceiptReviewVNext: React.FC = () => (
           <strong>Bảo vệ thông tin hóa đơn:</strong> Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.
         </span>
       </div>
-      <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <div className="tkv-review-host">
           <ReceiptReviewPage plannerRoutePrefix="/planner" />
         </div>

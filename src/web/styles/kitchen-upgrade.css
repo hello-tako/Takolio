@@ -152,7 +152,7 @@
 }
 
 /* Sunlit Ceramic control placeholders and hairline strokes */
-.takosan-rebuild :is(
+:is(.takolio-rebuild, .takosan-rebuild) :is(
   .kitchen-search-input,
   .family-collection-heading input,
   .family-ingredient-field input[type='search'],
@@ -162,13 +162,13 @@
   opacity: 1;
 }
 
-.takosan-rebuild
+:is(.takolio-rebuild, .takosan-rebuild)
   .account-switch-row
   button[role='switch'][aria-checked='false']:not(:disabled) {
   background-color: #d5c3b3;
 }
 
-.takosan-rebuild :is(
+:is(.takolio-rebuild, .takosan-rebuild) :is(
   .kitchen-search-input,
   .discovery-select-label select,
   .discovery-filter-panel summary,

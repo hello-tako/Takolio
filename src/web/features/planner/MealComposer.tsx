@@ -288,9 +288,9 @@ export function MealComposer({
       {[...new Set([...composition.missingRoles, ...composition.recommendedRoles])].map((role) => (
         <div
           key={role}
-          className="mt-3 rounded-xl bg-takosan-mint/60 p-3 flex flex-wrap items-center justify-between gap-2"
+          className="mt-3 rounded-xl bg-semantic-background-subtle p-3 flex flex-wrap items-center justify-between gap-2"
         >
-          <p className="text-sm text-takosan-green-deep">{c.missing(roleLabel(role, locale))}</p>
+          <p className="text-sm text-semantic-text-primary">{c.missing(roleLabel(role, locale))}</p>
           <Button
             size="sm"
             variant="outline"
@@ -474,7 +474,7 @@ function ComponentRow({
         <div className="min-w-0">
           <p className="text-sm font-semibold leading-snug">{title}</p>
           <p className="text-xs text-semantic-text-muted mt-1">
-            <span className="font-bold uppercase tracking-wide text-takosan-green-deep">
+            <span className="font-bold uppercase tracking-wide text-semantic-text-primary">
               {roleLabel(component.role, locale)}
             </span>
             {component.locked && <span> · {c.locked}</span>}
@@ -521,7 +521,7 @@ function ComponentRow({
         {component.recipeId && <SaveRecipeButton recipeId={component.recipeId} title={title} />}
       </div>
       <details className="mt-2 group">
-        <summary className="text-xs text-takosan-green-deep underline cursor-pointer min-h-11 inline-flex items-center">
+        <summary className="text-xs text-semantic-text-primary underline cursor-pointer min-h-11 inline-flex items-center">
           {c.remove} · {c.role} · {locale === 'vi' ? 'Sắp xếp' : 'Reorder'}
         </summary>
         <div className="flex flex-wrap items-center gap-2 mt-2">
@@ -634,7 +634,7 @@ function Suggestions({
           className="rounded-xl bg-white p-3 border border-semantic-border"
         >
           {options.length > 1 && (
-            <p className="text-xs font-bold text-takosan-green-deep mb-2">
+            <p className="text-xs font-bold text-semantic-text-primary mb-2">
               {c.option} {index + 1}
             </p>
           )}

@@ -6,7 +6,7 @@ import { adminSecurityHeaders } from './routes/admin/headers';
 import type { AdminApp, AdminContext } from './routes/admin/http';
 
 /**
- * Takosan Admin Console Worker (wrangler.admin.jsonc): a deployment boundary
+ * Takolio Admin Console Worker (wrangler.admin.jsonc): a deployment boundary
  * separate from the customer Worker. Every request (documents, assets, API)
  * passes the surface gate first; assets are configured with run_worker_first so
  * the static asset layer can never answer for the admin app on its own.

@@ -11,7 +11,7 @@
 import type { Recipe, RecipeMediaPresentationSet } from '@frigo/recipes';
 import { legacyRecipeImageIssue } from '../../../packages/recipes/src/legacy-media-policy';
 
-export const RECIPE_IMAGE_PLACEHOLDER = '/takosan/recipe-placeholder.svg';
+export const RECIPE_IMAGE_PLACEHOLDER = '/takolio/vnext/brand/dish-fallback.svg';
 
 export type RecipeWithOptionalMedia = Pick<Recipe, 'imageUrl'> & {
   id?: string;

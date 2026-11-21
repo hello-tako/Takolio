@@ -234,7 +234,7 @@ async function main() {
         check('auth config discloses only the mode', JSON.stringify(config.json) === JSON.stringify({ data: { mode: 'password' } }), config.json),
         check('login from the customer origin → 403', customerLogin.status === 403, customerLogin),
         check('forged Host header → 404', forgedHost.status === 404, forgedHost),
-        check('same-origin login → 200 with one HttpOnly SameSite=Strict __Host- cookie', login.status === 200 && login.setCookie.length === 1 && /^__Host-takosan_admin_session=[0-9a-f]{64}; Path=\/; HttpOnly; Secure; SameSite=Strict/.test(login.setCookie[0]), { status: login.status, setCookie: login.setCookie.map((c) => c.replace(/=[0-9a-f]{64}/, '=<redacted>')) }),
+        check('same-origin login → 200 with one HttpOnly SameSite=Strict __Host- cookie', login.status === 200 && login.setCookie.length === 1 && /^__Host-takolio_admin_session=[0-9a-f]{64}; Path=\/; HttpOnly; Secure; SameSite=Strict/.test(login.setCookie[0]), { status: login.status, setCookie: login.setCookie.map((c) => c.replace(/=[0-9a-f]{64}/, '=<redacted>')) }),
         check('GET /me → 200 with a session-derived CSRF token', me.status === 200 && /^[0-9a-f]{64}$/.test(String(csrf)), { status: me.status }),
         check('mutation without CSRF → 403', noCsrf.status === 403 && noCsrf.json?.code === 'ADMIN_CSRF_FAILED', noCsrf.json),
         check('mutation with CSRF + exact Origin → 200', withCsrf.status === 200, { status: withCsrf.status }),

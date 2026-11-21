@@ -31,7 +31,7 @@ const confidenceClass = {
   unknown: 'text-semantic-text-secondary bg-semantic-border/60',
   low: 'text-semantic-warning-strong bg-semantic-warning-soft',
   medium: 'text-semantic-warning-strong bg-semantic-warning-soft',
-  high: 'text-takosan-green-deep bg-takosan-mint',
+  high: 'text-semantic-text-primary bg-semantic-accent-soft',
 };
 
 export const ScanResultPage: React.FC = () => {
@@ -336,13 +336,13 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
               className={
                 scanStatus === 'failed'
                   ? 'bg-semantic-danger-soft border border-semantic-danger/30 rounded-xl p-3.5 flex items-start gap-3'
-                  : 'bg-takosan-mint/80 border border-takosan-mint-deep/70 rounded-xl p-3.5 flex items-start gap-3'
+                  : 'bg-semantic-success-soft border border-semantic-border rounded-xl p-3.5 flex items-start gap-3'
               }
             >
               {scanStatus === 'failed' ? (
                 <AlertCircle className="w-5 h-5 text-semantic-danger shrink-0 mt-0.5" />
               ) : (
-                <CheckCircle2 className="w-5 h-5 text-takosan-green shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-semantic-action-primary shrink-0 mt-0.5" />
               )}
               <div className="text-xs">
                 <p className="font-heading font-bold text-sm text-semantic-text-primary">
@@ -573,7 +573,7 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
               onClick={() => setIsManualAddOpen(true)}
               className="flex items-center justify-center gap-1.5 text-xs"
             >
-              <Plus className="w-4 h-4 text-takosan-green" aria-hidden="true" />
+              <Plus className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" />
               <span>Thêm nguyên liệu AI còn thiếu</span>
             </Button>
           )}

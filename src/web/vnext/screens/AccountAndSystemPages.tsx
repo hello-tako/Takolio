@@ -369,7 +369,7 @@ export const U01ProfileHubVNext: React.FC = () => {
 /** U02 — Sở thích món ăn (`/me/preferences`, `/settings/food`). */
 export const U02FoodPrefsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U02" title="Sở thích món ăn" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <FoodPreferencesPage />
     </div>
   </ConsumerStudioShell>
@@ -378,7 +378,7 @@ export const U02FoodPrefsVNext: React.FC = () => (
 /** U03 — Cài đặt thực đơn (`/settings/planning`). */
 export const U03PlanningSettingsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U03" title="Cài đặt thực đơn" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <PlanningSettingsPage />
     </div>
   </ConsumerStudioShell>
@@ -387,7 +387,7 @@ export const U03PlanningSettingsVNext: React.FC = () => (
 /** U04 — Cài đặt ứng dụng (`/settings/app`, `/settings`). */
 export const U04AppSettingsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U04" title="Cài đặt ứng dụng" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <SettingsPage />
     </div>
   </ConsumerStudioShell>
@@ -396,7 +396,7 @@ export const U04AppSettingsVNext: React.FC = () => (
 /** U05 — Cài đặt thông báo (`/settings/notifications`). */
 export const U05NotificationPrefsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U05" title="Cài đặt thông báo" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <NotificationPreferencesPage />
     </div>
   </ConsumerStudioShell>
@@ -502,7 +502,7 @@ export const U06HouseholdHonestPage: React.FC = () => {
  */
 export const U07U08PlusReadOnlyWrapper: React.FC = () => (
   <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takosan-rebuild" data-tkv-surface-adapt="1">
+    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
       <PlusPaywallPage />
     </div>
   </ConsumerStudioShell>

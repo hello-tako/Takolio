@@ -50,7 +50,7 @@ export const ScanProcessingState: React.FC<ScanProcessingStateProps> = ({
     <div
       data-testid="scan-processing-state"
       className={clsx(
-        'rounded-2xl border border-takosan-mint-deep/60 bg-white/95 text-semantic-text-primary shadow-lg',
+        'rounded-2xl border border-semantic-border bg-white/95 text-semantic-text-primary shadow-lg',
         compact ? 'p-3' : 'p-4',
       )}
     >
@@ -58,9 +58,9 @@ export const ScanProcessingState: React.FC<ScanProcessingStateProps> = ({
         {STAGES[currentIndex].label}.
       </p>
       <div className="flex items-start gap-3">
-        <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-takosan-mint text-takosan-green-deep">
+        <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-semantic-accent-soft text-semantic-text-primary">
           <ScanLine className="h-5 w-5" />
-          <span className="absolute inset-0 rounded-xl border border-takosan-green/40 scan-processing-motion motion-safe:animate-ping" />
+          <span className="absolute inset-0 rounded-xl border border-semantic-action-primary/40 scan-processing-motion motion-safe:animate-ping" />
         </div>
         <div className="min-w-0 flex-1">
           <p className="font-heading text-sm font-bold">Đang xử lý {noun}…</p>
@@ -68,7 +68,7 @@ export const ScanProcessingState: React.FC<ScanProcessingStateProps> = ({
             Bạn có thể chờ ở màn hình này; kết quả chỉ hiện khi AI xử lý xong và đã được kiểm tra.
           </p>
         </div>
-        <Sparkles className="h-4 w-4 shrink-0 scan-processing-motion motion-safe:animate-pulse text-takosan-coral" />
+        <Sparkles className="h-4 w-4 shrink-0 scan-processing-motion motion-safe:animate-pulse text-semantic-accent" />
       </div>
 
       <div className="mt-4 flex items-center gap-2 text-sm" aria-label="Trạng thái bản quét">

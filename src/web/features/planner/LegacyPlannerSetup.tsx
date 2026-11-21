@@ -9,7 +9,7 @@ import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 
 export const plannerInputClass =
-  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-takosan-green focus:outline-none';
+  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
 
 export function LegacyPlannerSetup({
   model,
@@ -70,7 +70,7 @@ export function LegacyPlannerSetup({
     <div className="planning-setup-layout">
       <Card className="planning-setup-form">
         <div className="flex items-center gap-3 mb-5">
-          <span className="p-3 rounded-2xl bg-takosan-mint text-takosan-green-deep">
+          <span className="p-3 rounded-2xl bg-semantic-accent-soft text-semantic-text-primary">
             <CalendarDays />
           </span>
           <h2 className="text-xl font-heading font-bold text-semantic-text-primary">{t.newPlan}</h2>
@@ -123,7 +123,7 @@ export function LegacyPlannerSetup({
                 {(['breakfast', 'lunch', 'dinner'] as const).map((type) => (
                   <label
                     key={type}
-                    className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-xl border text-sm cursor-pointer ${meals.includes(type) ? 'bg-takosan-mint border-takosan-green text-takosan-green-deep' : 'border-semantic-border'}`}
+                    className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-xl border text-sm cursor-pointer ${meals.includes(type) ? 'bg-semantic-accent-soft border-semantic-action-primary text-semantic-text-primary' : 'border-semantic-border'}`}
                   >
                     <input
                       type="checkbox"
@@ -135,7 +135,7 @@ export function LegacyPlannerSetup({
                             : meals.filter((item) => item !== type),
                         )
                       }
-                      className="accent-takosan-green w-4 h-4"
+                      className="accent-semantic-action-primary w-4 h-4"
                     />
                     {t[type]}
                   </label>
@@ -181,7 +181,7 @@ export function LegacyPlannerSetup({
             {t.generate}
           </Button>
           {model.busy && (
-            <p role="status" className="text-sm text-center text-takosan-green-deep">
+            <p role="status" className="text-sm text-center text-semantic-text-primary">
               {t.generating}
             </p>
           )}

@@ -25,7 +25,7 @@ export type EmailResult = {
   | { sent: false; state: 'rejected' | 'delivery_unknown' | 'not_configured'; evidence: EmailEvidence; error: EmailError }
 );
 
-const FROM_NAME = 'Takosan';
+const FROM_NAME = 'Takolio';
 // Cloudflare onboards the apex sending domain; subdomains need separate onboarding.
 const FROM_EMAIL = 'no-reply@tungjpstore.net';
 const PROVIDER_TIMEOUT_MS = 8000;
@@ -248,7 +248,7 @@ export async function sendEmail(env: Env, params: SendEmailParams): Promise<Emai
 }
 
 /**
- * Build Frigo-styled OTP email. Purpose-specific copy in Vietnamese.
+ * Build Takolio-styled OTP email (Sunlit Ceramic & Terracotta Herb). Purpose-specific copy in Vietnamese.
  */
 export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_password' | 'login'): { subject: string; html: string; text: string } {
   const action =
@@ -265,24 +265,24 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
   const html = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#F8FAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAF9;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#FCF9F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FCF9F5;padding:32px 16px;">
     <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.08);">
-        <tr><td style="background:#059669;padding:24px 32px;text-align:center;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border:1px solid #EAE0D5;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(66,44,33,0.06);">
+        <tr><td style="background:#D86A43;padding:24px 32px;text-align:center;">
           <span style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;">Takolio</span>
         </td></tr>
         <tr><td style="padding:32px;">
-          <h1 style="margin:0 0 8px;font-size:18px;color:#0F172A;">Mã ${action}</h1>
-          <p style="margin:0 0 24px;font-size:14px;color:#475569;line-height:1.5;">Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
-          <div style="background:#E6F4EA;border-radius:12px;padding:20px;text-align:center;margin-bottom:24px;">
-            <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#059669;font-family:'SF Mono',Menlo,monospace;">${code}</span>
+          <h1 style="margin:0 0 8px;font-size:18px;color:#2C221E;">Mã ${action}</h1>
+          <p style="margin:0 0 24px;font-size:14px;color:#5F524A;line-height:1.5;">Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
+          <div style="background:#FDF0EA;border:1px solid #F2D5C7;border-radius:12px;padding:20px;text-align:center;margin-bottom:24px;">
+            <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#9E4120;font-family:'SF Mono',Menlo,monospace;">${code}</span>
           </div>
-          <p style="margin:0 0 4px;font-size:13px;color:#475569;">Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.</p>
-          <p style="margin:0;font-size:13px;color:#94A3B8;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
+          <p style="margin:0 0 4px;font-size:13px;color:#5F524A;">Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.</p>
+          <p style="margin:0;font-size:13px;color:#87776E;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
         </td></tr>
-        <tr><td style="background:#F8FAF9;padding:16px 32px;text-align:center;">
-          <span style="font-size:12px;color:#94A3B8;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
+        <tr><td style="background:#F7EFE6;padding:16px 32px;text-align:center;">
+          <span style="font-size:12px;color:#5F524A;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
         </td></tr>
       </table>
     </td></tr>

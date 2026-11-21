@@ -1,4 +1,4 @@
-// Takosan Admin Console Worker (separate deployment boundary from the customer Worker).
+// Takolio Admin Console Worker (separate deployment boundary from the customer Worker).
 // NOT DEPLOYED. Disabled by default: the console stays 404 until ADMIN_CONSOLE_ENABLED=true,
 // ADMIN_ORIGIN (dedicated https host), Cloudflare Access (team domain + AUD) are configured.
 // Placeholders that must be replaced at integration: ADMIN_DB database_id, CACHE KV id, routes.

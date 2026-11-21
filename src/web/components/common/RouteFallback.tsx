@@ -3,7 +3,7 @@ import React from 'react';
 /** Branded Suspense fallback shown while a lazy route chunk loads. */
 export const RouteFallback: React.FC = () => (
   <div
-    className="takosan-rebuild min-h-dvh bg-semantic-background flex flex-col items-center justify-center gap-4"
+    className="takolio-rebuild min-h-dvh bg-semantic-background flex flex-col items-center justify-center gap-4"
     role="status"
     aria-live="polite"
     aria-label="Đang tải trang"

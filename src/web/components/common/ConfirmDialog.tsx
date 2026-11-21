@@ -67,7 +67,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             type="button"
             onClick={onConfirm}
             className={`flex-1 py-2.5 rounded-xl font-heading font-bold text-sm text-white active:scale-95 transition-tap tap-target ${
-              destructive ? 'bg-semantic-danger hover:bg-semantic-danger-strong' : 'bg-takosan-green hover:bg-takosan-green-hover'
+              destructive ? 'bg-semantic-danger hover:bg-semantic-danger-strong' : 'bg-semantic-action-primary hover:bg-semantic-action-primary-hover'
             }`}
           >
             {confirmText}

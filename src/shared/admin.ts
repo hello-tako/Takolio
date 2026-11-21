@@ -1,5 +1,5 @@
 /**
- * Takosan Admin Console V1 shared contract.
+ * Takolio Admin Console V1 shared contract.
  *
  * The permission matrix below is the single authorization authority for the
  * console. The worker evaluates it server-side on every admin request; the
@@ -109,7 +109,7 @@ export const ADMIN_PERMISSION_LABELS_VI: Readonly<Record<AdminPermission, string
 // ── Transport constants ────────────────────────────────────────────────────
 
 export const ADMIN_API_BASE = '/api/v1/admin';
-export const ADMIN_SESSION_COOKIE = '__Host-takosan_admin_session';
+export const ADMIN_SESSION_COOKIE = '__Host-takolio_admin_session';
 /** CSRF token is session-derived and delivered in JSON (login, GET /me); there is no CSRF cookie. */
 export const ADMIN_CSRF_HEADER = 'X-Admin-CSRF';
 export const ADMIN_SESSION_ABSOLUTE_MINUTES = 8 * 60;
