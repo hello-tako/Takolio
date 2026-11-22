@@ -18,6 +18,7 @@ import {
 import { TurnstileWidget } from '../../components/common/TurnstileWidget';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
+import { detectRuntimeDomainRole, resolveSatelliteSurfaceHref } from '../lib/domain-surface';
 import { BrandLockup } from '../components/VNextMedia';
 import { TkvSurface, TkvTextField } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
@@ -747,6 +748,9 @@ export const VNextAuthFlow: React.FC = () => {
     }
   };
 
+  const isAppHost = detectRuntimeDomainRole() === 'application-app';
+  const externalMarketingHref =
+    !hasActiveGuestSession && isAppHost ? resolveSatelliteSurfaceHref('/') : null;
   const exitHref = hasActiveGuestSession ? vnextHref('/') : vnextHref('/landing');
   const exitLabel = hasActiveGuestSession ? 'Về căn bếp' : 'Trang giới thiệu';
   const needVerifyPasswordField = !activationPassword && !password;
@@ -772,18 +776,34 @@ export const VNextAuthFlow: React.FC = () => {
             <TkvSurface className="p-6 sm:p-8 relative overflow-hidden space-y-5 bg-white border-[var(--tkv-border,#EAE0D5)] shadow-soft">
               {/* Top Header: Brand Lockup + Deterministic 1-Click Exit */}
               <div className="relative flex items-center justify-between gap-3">
-                <Link to={exitHref} className="tkv-focusable rounded-xl py-1">
-                  <BrandLockup />
-                </Link>
+                {externalMarketingHref ? (
+                  <a href={externalMarketingHref} className="tkv-focusable rounded-xl py-1">
+                    <BrandLockup />
+                  </a>
+                ) : (
+                  <Link to={exitHref} className="tkv-focusable rounded-xl py-1">
+                    <BrandLockup />
+                  </Link>
+                )}
 
                 {isPrimaryAuthTab || activeMode === 'welcome' ? (
-                  <Link
-                    to={exitHref}
-                    className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#5F524A)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] hover:text-[var(--tkv-ink,#2C221E)] transition-colors"
-                  >
-                    <VNextIcon name="arrow-left" size={15} />
-                    <span>{exitLabel}</span>
-                  </Link>
+                  externalMarketingHref ? (
+                    <a
+                      href={externalMarketingHref}
+                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#5F524A)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] hover:text-[var(--tkv-ink,#2C221E)] transition-colors"
+                    >
+                      <VNextIcon name="arrow-left" size={15} />
+                      <span>{exitLabel}</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={exitHref}
+                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#5F524A)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] hover:text-[var(--tkv-ink,#2C221E)] transition-colors"
+                    >
+                      <VNextIcon name="arrow-left" size={15} />
+                      <span>{exitLabel}</span>
+                    </Link>
+                  )
                 ) : (
                   <button
                     type="button"

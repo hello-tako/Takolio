@@ -23,6 +23,7 @@ import { NotificationPreferencesPage } from '../../pages/settings/NotificationPr
 import { PlusPaywallPage } from '../../pages/PlusPaywallPage';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
+import { detectRuntimeDomainRole } from '../lib/domain-surface';
 import { ConsumerStudioShell } from '../components/Shells';
 import {
   TkvBadge,
@@ -185,7 +186,10 @@ export const U01ProfileHubVNext: React.FC = () => {
   const handleLogout = async () => {
     const ok = await logout();
     if (ok) {
-      navigate(vnextHref('/landing'), { replace: true });
+      navigate(
+        vnextHref(detectRuntimeDomainRole() === 'application-app' ? '/auth?mode=welcome' : '/landing'),
+        { replace: true },
+      );
     }
   };
 
