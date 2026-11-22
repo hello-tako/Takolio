@@ -3,7 +3,11 @@ import { isStandardUnit } from '../../../packages/domain/src/units';
 import { convertQuantity, Quantity, QuantityRangeError } from '../../../packages/domain/src/quantity';
 import { canonicalJson } from '../../../packages/recipes/src/planner-context';
 import { SharePlanShoppingSchema, type ShoppingContribution } from '../../../packages/domain/src/shopping-plan-api';
-import { findCanonicalIngredient } from '../../../packages/domain/src/index';
+import {
+  localizeCanonicalIngredientName,
+  localizeDefaultShoppingListName,
+  type SupportedLocale,
+} from '../../../packages/domain/src/index';
 import { sha256Hex } from '../utils/session';
 import { MealPlanningError } from './meal-planning-error';
 
@@ -21,8 +25,9 @@ export interface ShoppingDemandSnapshot {
 interface Demand { key:string; ingredientId:string; name:string; quantity:Quantity|null; unit:string; contributions:ShoppingContribution[] }
 
 /** Reconciles the shared purchase list from server shortages without touching physical stock. */
-export async function sharePlanShopping(db:D1DatabaseBinding, scope:{householdId:string;userId:string},
+export async function sharePlanShopping(db:D1DatabaseBinding, scope:{householdId:string;userId:string;locale?:SupportedLocale},
   rawInput:unknown, requestKey:string, loadDemand:()=>Promise<ShoppingDemandSnapshot>) {
+  const activeLocale: SupportedLocale = scope.locale ?? 'vi';
   const input = SharePlanShoppingSchema.parse(rawInput);
   if (!/^[A-Za-z0-9_-]{8,100}$/.test(requestKey)) throw new MealPlanningError('INVALID_REQUEST_KEY',422,'A valid command key is required');
   const owned=await db.prepare(`SELECT g.id FROM generated_meal_plans g JOIN household_members hm ON hm.household_id=g.household_id AND hm.user_id=g.creator_user_id WHERE g.id=? AND g.household_id=? AND g.creator_user_id=?`).bind(input.planId,scope.householdId,scope.userId).first<{id:string}>();
@@ -48,7 +53,7 @@ export async function sharePlanShopping(db:D1DatabaseBinding, scope:{householdId
     const key = `${row.ingredientId}:${normalizedUnit}`;
     let demand = demands.get(key);
     if (!demand) {
-      demand={key,ingredientId:row.ingredientId,name:findCanonicalIngredient(row.ingredientId)?.nameVi ?? row.name,
+      demand={key,ingredientId:row.ingredientId,name:localizeCanonicalIngredientName(row.ingredientId,activeLocale,row.name),
         quantity:row.quantity === null ? null : Quantity.from(0),unit:normalizedUnit,contributions:[]}; demands.set(key,demand);
     }
     if (row.quantity === null) demand.quantity=null;
@@ -83,8 +88,9 @@ export async function sharePlanShopping(db:D1DatabaseBinding, scope:{householdId
     AND (SELECT values_json FROM household_ranking_preferences WHERE household_id = ?) IS ?
     AND COALESCE((SELECT revision FROM family_meal_preferences WHERE household_id = ? AND user_id = ?),0) = ?` : '';
   const preferenceBindings = preferences ? [scope.householdId,scope.userId,preferences.memberJson,scope.householdId,preferences.householdJson,scope.householdId,scope.userId,preferences.profileRevision] : [];
-  statements.push(db.prepare(`INSERT OR IGNORE INTO shopping_lists(id,household_id,name) SELECT ?,?,'Đi chợ cho gia đình'
-    WHERE EXISTS(SELECT 1 FROM household_members WHERE household_id = ? AND user_id = ?)`).bind(listId,scope.householdId,scope.householdId,scope.userId));
+  const defaultListName = activeLocale === 'vi' ? 'Đi chợ cho gia đình' : localizeDefaultShoppingListName(activeLocale);
+  statements.push(db.prepare(`INSERT OR IGNORE INTO shopping_lists(id,household_id,name) SELECT ?,?,?
+    WHERE EXISTS(SELECT 1 FROM household_members WHERE household_id = ? AND user_id = ?)`).bind(listId,scope.householdId,defaultListName,scope.householdId,scope.userId));
   statements.push(db.prepare(`INSERT INTO shopping_plan_sources(id,list_id,plan_id,creator_user_id,plan_revision,start_date,end_date,updated_at)
     VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET plan_revision=excluded.plan_revision,start_date=excluded.start_date,end_date=excluded.end_date,updated_at=excluded.updated_at`)
     .bind(sourceId,listId,input.planId,scope.userId,input.expectedRevision,input.startDate,input.endDate,now));

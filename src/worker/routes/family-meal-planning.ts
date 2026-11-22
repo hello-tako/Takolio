@@ -3,6 +3,7 @@ import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
 import type { AuthContext, Env } from '../types';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
 import { MealPlanningIntentSchema, PlanIdSchema, PlanningRequestKeySchema, RegenerateMealPlanSchema } from '../../../packages/domain/src/meal-planning-api';
 import type { FamilyMealPlanDto } from '../../../packages/domain/src/family-meal-planning-api';
@@ -59,10 +60,19 @@ export function createFamilyMealPlanningRoutes(options: Partial<MealPlanningServ
   const compute = rateLimiter({ maxRequests: 10, windowSeconds: 60, prefix: 'planner-compute', scope: 'account' });
   const reads = rateLimiter({ maxRequests: 60, windowSeconds: 60, prefix: 'meal-planning-read' });
   const scope = (c: Ctx) => ({ householdId: c.get('auth').householdId, userId: c.get('auth').userId });
-  const service = (c: Ctx) => new MealPlanningApplicationService(c.env.DB, { ...options, compositionV2Enabled: true,
-    familyPreferences: options.familyPreferences ?? ((owned) => readFamilyPreferences(c.env.DB, owned)),
-    recipeAuthority: options.recipeAuthority ?? (async (owned) => (await resolveRecipeAuthority(c.env, {
-      tenantKey: owned.householdId, backgroundExecutor: backgroundExecutorOf(c) })).snapshot) });
+  const service = async (c: Ctx) => {
+    const edge = negotiateEdgeLocaleContext(c.req, c.env);
+    const effective = await resolveEffectiveLocaleContext(c.env.DB, c.get('auth'), edge);
+    const locale = effective.source !== 'default' ? effective.locale : ('vi' as const);
+    return new MealPlanningApplicationService(c.env.DB, {
+      ...options,
+      locale,
+      compositionV2Enabled: true,
+      familyPreferences: options.familyPreferences ?? ((owned) => readFamilyPreferences(c.env.DB, owned)),
+      recipeAuthority: options.recipeAuthority ?? (async (owned) => (await resolveRecipeAuthority(c.env, {
+        tenantKey: owned.householdId, backgroundExecutor: backgroundExecutorOf(c) })).snapshot),
+    });
+  };
   const planId = (c: Ctx) => {
     const parsed = PlanIdSchema.safeParse(c.req.param('id'));
     if (!parsed.success) throw new MealPlanningError('INVALID_PLAN_ID', 422, 'Invalid plan ID');
@@ -71,16 +81,16 @@ export function createFamilyMealPlanningRoutes(options: Partial<MealPlanningServ
   routes.post('/meal-planning/plans', compute, (c) => respond(c, async () => {
     const parsed = PlanningRequestKeySchema.safeParse(c.req.header('Idempotency-Key'));
     if (!parsed.success) throw new MealPlanningError('IDEMPOTENCY_KEY_REQUIRED', 400, 'A valid Idempotency-Key header is required');
-    return service(c).generateFamily(scope(c), await body(c, MealPlanningIntentSchema), parsed.data);
+    return (await service(c)).generateFamily(scope(c), await body(c, MealPlanningIntentSchema), parsed.data);
   }));
   routes.post('/meal-planning/drafts', compute, (c) => respond(c, async () => {
     const parsed = PlanningRequestKeySchema.safeParse(c.req.header('Idempotency-Key'));
     if (!parsed.success) throw new MealPlanningError('IDEMPOTENCY_KEY_REQUIRED', 400, 'A valid Idempotency-Key header is required');
-    return service(c).createManualFamily(scope(c), await body(c, MealPlanningIntentSchema), parsed.data);
+    return (await service(c)).createManualFamily(scope(c), await body(c, MealPlanningIntentSchema), parsed.data);
   }));
-  routes.get('/meal-planning/plans/current', reads, (c) => respond(c, () => service(c).currentFamily(scope(c))));
-  routes.get('/meal-planning/plans/:id', reads, (c) => respond(c, () => service(c).getFamily(scope(c), planId(c))));
+  routes.get('/meal-planning/plans/current', reads, (c) => respond(c, async () => (await service(c)).currentFamily(scope(c))));
+  routes.get('/meal-planning/plans/:id', reads, (c) => respond(c, async () => (await service(c)).getFamily(scope(c), planId(c))));
   routes.post('/meal-planning/plans/:id/regenerate', compute, (c) => respond(c, async () =>
-    service(c).regenerateFamily(scope(c), planId(c), await body(c, RegenerateMealPlanSchema))));
+    (await service(c)).regenerateFamily(scope(c), planId(c), await body(c, RegenerateMealPlanSchema))));
   return routes;
 }

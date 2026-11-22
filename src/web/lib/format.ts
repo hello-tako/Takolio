@@ -1,4 +1,16 @@
-// Centralized Vietnamese-facing formatting helpers.
+import type { GlobalCurrency } from '../../../packages/domain/src/i18n';
+import { formatMoneyMinor, getActiveUiLocale } from '../i18n';
+
+// Centralized formatting helpers (preserves legacy VND helpers while adding multi-currency support).
+
+/** Multi-currency minor-unit formatter (`JPY` ¥480, `EUR` 4,99 €, `GBP` £4.49, `VND` 79.000 ₫). */
+export function formatGlobalCurrencyMinor(
+  amountMinor: number,
+  currency: GlobalCurrency,
+  locale = getActiveUiLocale(),
+): string {
+  return formatMoneyMinor(amountMinor, currency, locale);
+}
 
 /** 560000 -> "560k", 1200000 -> "1,2tr" — compact VND for tight widgets. */
 export function formatVndCompact(amount: number): string {

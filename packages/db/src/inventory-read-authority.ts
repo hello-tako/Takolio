@@ -39,7 +39,7 @@ function displayStorage(snapshot: MappedLotSnapshot, lot: InventoryLot): string 
 }
 
 function toReadItem(snapshot: MappedLotSnapshot, mapped: { lot: InventoryLot; legacyItemId: string | null },
-  now: number): InventoryReadItem {
+  now: number, timeZone?: string): InventoryReadItem {
   const { lot, legacyItemId } = mapped;
   if (lot.state === 'ACTIVE' && lot.quantityMilli <= 0) {
     throw new InventoryReadAuthorityError('CORRUPT_LOT_ROW', `Lot ${lot.id}: ${READ_STATE_QUANTITY}`);
@@ -57,7 +57,7 @@ function toReadItem(snapshot: MappedLotSnapshot, mapped: { lot: InventoryLot; le
   const category = snapshot.ingredients.find((ingredient) => ingredient.id === lot.ingredientId)?.category ?? lot.displayCategory ?? 'other';
   let freshness: InventoryReadItem['freshness'];
   try {
-    freshness = computeReadFreshness(expiry.expiry_date, lot.state, now);
+    freshness = computeReadFreshness(expiry.expiry_date, lot.state, now, timeZone ? { timeZone } : undefined);
   } catch (error) {
     if (error instanceof InventoryReadFreshnessError) throw new InventoryReadAuthorityError('CORRUPT_LOT_ROW', `Lot ${lot.id}: ${error.message}`);
     throw error;
@@ -120,7 +120,7 @@ export async function readInventoryAuthority(db: D1DatabaseBinding,
     `Inventory view exceeds the read bound of ${limit} lots`);
   return {
     inventoryVersion: snapshot.inventoryVersion,
-    items: active.map((mapped) => toReadItem(snapshot, mapped, now)),
+    items: active.map((mapped) => toReadItem(snapshot, mapped, now, query.timeZone)),
   };
 }
 

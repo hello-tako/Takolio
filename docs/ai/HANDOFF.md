@@ -1,3 +1,22 @@
+## Global Expansion Backend + Dodo Payments MoR, Web i18n & Catalog Compiler Complete Handoff - 2026-11-22 JST
+
+Branch `feat/takolio-global-expansion` in isolated worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-global` (branched from `origin/main` `08d0e6caaf887b4a5226e7aa4a5535c8bfb896d7`) carries all 4 phases (`0048`..`0051`) plus the 4 Production Completion Workstreams (Dodo Payments MoR, Tier-1 Web i18n + Multilingual Voice Sous-Chef, Catalog Localization Compiler, and Production Rollout Runbook). NOT pushed, NO remote D1 migration, NO Staging/Production deployment.
+
+Key deliverables across Phases 1–4 & Workstreams A–D:
+- **Phase 1 (`a572aa46`, `0048`)**: `packages/domain/src/i18n.ts` (10 locales, 14 currencies, Kana-safe `normalizeMultilingualText`, IANA civil end-of-day & EU DST math), O(1) `catalog_manifest`, FTS5 `recipe_search_fts`, D1 Read Replication `withSession` (`X-D1-Bookmark`), Edge Cache API on recipe media, localized shopping & 10-locale OTP emails.
+- **Phase 2 (`12172d01`, `0049`)**: Multi-culture planner (`jp_home` *Ichiju-sansai* + `bentoFromDinner`, `eu_continental` *Abendbrot* unlocking `sf-bread`, `eu_mediterranean`), `recipe_content_localizations`, JP CAA 28 + EU 1169/2011 14 allergens + Kosher/Halal + whole-household cooking safety union, `culinary-units.ts` (`cup_jp` `200ml`, `合` `180ml`, `cl`/`dl`, EU 98/6/EC unit pricing), `GET /api/v1/barcodes/:code` (JAN-13/EAN-13 + Open Food Facts + D1 cache), Reiwa/MHD/DLC dual-expiry parser, multi-currency OCR (`¥298(軽8%)`, `1,99 €`, `半額`), and regional AI model/endpoint governance.
+- **Phase 3 + Workstream A (`0050`, Dodo Payments MoR)**: Unified `DodoPaymentsMoRAdapter` (`dodo_mor` for all non-VN markets + `payos_vn` for VN), Standard Webhooks (`whsec_` Base64 HMAC-SHA256 + 300s replay window) at `POST /api/v1/billing/dodo/webhook`, `POST /api/v1/billing/global/portal`, JP Konbini async (`payment.processing` -> `awaiting_async_payment` -> `payment.succeeded`), `GET /api/v1/billing/tokushoho` (`特定商取引法に基づく表記`), EU Directive 2011/83/EU Art. 16(m) 14-day withdrawal waiver enforcement, 7-day `past_due` grace window, Web Crypto `RS256`/`ES256` Edge JWKS (`jwks-oidc.ts`), `POST /api/v1/auth/apple`, and `POST /api/v1/auth/line`. Existing PayOS VND endpoints untouched.
+- **Phase 4 (`64de1f63`, `0051`)**: `wrangler.eu.jsonc` (D1 & R2 `jurisdiction: "eu"`, `ENFORCE_CELL_SOVEREIGNTY=true`), `wrangler.jp.jsonc`, `sovereign-cell.ts` (`421 Misdirected Request`), `privacy-compliance.ts` & `account-privacy.ts` (`GET/POST /api/v1/account/consents`, `GET /api/v1/account/export` GDPR Art. 20 bundle, `DELETE /api/v1/account` + `runPrivacyScheduledSweep` 2-phase D1 + retryable R2 image purge + zero-PII `financial_tax_archive` with 10y EU / 7y JP retention).
+- **Workstreams B, C & D**: `src/web/i18n/` (`en`, `ja`, `de`, `fr`, `vi` strict key-parity catalogs + `Noto Sans JP` loader + Zero-Vietnamese-Leakage test gate), `src/web/lib/voice-chef.ts` (`vi-VN`, `ja-JP`, `en-GB`, `de-DE`, `fr-FR`), `src/web/components/global/GlobalExperienceHub.tsx` + `src/web/services/global-api.ts`, `scripts/localize-catalog.mjs` (deterministic SHA-256 fingerprint-preserving `recipe_content_localizations` + Kana FTS5 SQL compiler), and `docs/handoff/GLOBAL_ROLLOUT_RUNBOOK.md`.
+
+Watch-outs for future operators:
+- Never modify pinned V1 catalog files (`packages/recipes/src/runtime-recipe.ts` SHA-256 `57b48a7c...`) or `wrangler.jsonc` / `wrangler.staging.jsonc`; EU and JP cells use dedicated `wrangler.eu.jsonc` and `wrangler.jp.jsonc`.
+- Dodo Payments uses Standard Webhooks (`whsec_<base64>`); always decode the `whsec_` suffix from Base64 into raw bytes before HMAC-SHA256 verification.
+- Keep `PROTECTED_FILE_HASHES.json` and `tests/unit/production-certify-workflow.test.mjs` (`scripts/d1-schema-gate.sql` SHA-256) synchronized whenever migration/worker files change.
+- Do NOT deploy or run `--remote` D1 migrations until the Product Owner issues a separate explicit deployment command.
+
+---
+
 ## Owner Decisions Executed Handoff - 2026-11-19 JST
 
 Branch `fix/takolio-css-audit` now also carries the owner's three rulings on the CSS audit's open items (commits `2c0fe50`, `92d6401` + docs). NOT pushed, no PR. Evidence: report addendum in `~/workspace/takolio-recolor/CSS-AUDIT-REPORT.md`; captures `~/workspace/takolio-recolor/css-audit-captures/after-pro/`; generation checklist `~/workspace/takolio-recolor/css-audit/frigo-generation-checklist.md`.

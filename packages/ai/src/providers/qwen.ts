@@ -1,4 +1,4 @@
-import { AIProvider, AIProviderUsage, VisionScanParams } from '../types';
+import { AIJurisdiction, AIProvider, AIProviderUsage, VisionScanParams } from '../types';
 import { createTaskCallControl, validateTaskCallDeadline, type TaskProviderCallOptions } from '../task-provider';
 import {
   ReceiptScanResult,
@@ -14,8 +14,10 @@ import {
   createAITimeoutError,
   isAIProviderError,
 } from '../errors';
-import { resolveProviderCanonical, normalizeOcrNumber } from '../normalization';
-import { findCanonicalIngredient } from '@frigo/domain';
+import { resolveProviderCanonical, normalizeOcrNumber, toCurrencyMinorUnits } from '../normalization';
+import { assertJurisdictionEndpointAllowed, resolveJurisdictionFromCountry } from '../jurisdiction';
+import { buildLocalizedReceiptPrompt, buildLocalizedVisionPrompt } from '../prompts';
+import { findCanonicalIngredient, parseLocalizedExpiryLabel } from '@frigo/domain';
 import { capabilitiesForPhysicalModel, type ModelCapabilities } from '../model-governance';
 
 const DEFAULT_BASE_URL = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1';
@@ -58,17 +60,30 @@ function unwrapResult(payload: unknown): unknown {
 function normalizeUnit(value: unknown): unknown {
   if (typeof value !== 'string') return value;
   const aliases: Record<string, StandardUnit> = {
-    gram: 'g', grams: 'g', gam: 'g', 'g.': 'g',
-    kilogram: 'kg', kilograms: 'kg', 'kg.': 'kg',
-    milliliter: 'ml', milliliters: 'ml', mililit: 'ml', 'ml.': 'ml',
+    gram: 'g', grams: 'g', gam: 'g', 'g.': 'g', gramm: 'g', 'グラム': 'g',
+    kilogram: 'kg', kilograms: 'kg', 'kg.': 'kg', 'キロ': 'kg',
+    milliliter: 'ml', milliliters: 'ml', mililit: 'ml', 'ml.': 'ml', cc: 'ml',
     liter: 'l', liters: 'l', litre: 'l', lít: 'l', 'l.': 'l',
     quả: 'piece', cái: 'piece', con: 'piece', chai: 'piece', lọ: 'piece', piece: 'piece', pieces: 'piece',
     pc: 'piece', pcs: 'piece', ea: 'piece', each: 'piece', unit: 'piece', bottle: 'piece', jar: 'piece', can: 'piece',
+    stk: 'piece', 'stück': 'piece', 'pièce': 'piece', unidad: 'piece', '個': 'piece', '本': 'piece', '玉': 'piece',
     pack: 'pack', packs: 'pack', packet: 'pack', bag: 'pack', box: 'pack', gói: 'pack', hộp: 'pack', túi: 'pack', thùng: 'pack',
-    bunch: 'bunch', bundle: 'bunch', bó: 'bunch', mớ: 'bunch',
-    slice: 'slice', lát: 'slice', miếng: 'slice',
+    packung: 'pack', paquet: 'pack', 'パック': 'pack', '袋': 'pack', '丁': 'pack', '株': 'pack',
+    bunch: 'bunch', bundle: 'bunch', bó: 'bunch', mớ: 'bunch', bund: 'bunch', botte: 'bunch', '束': 'bunch',
+    slice: 'slice', lát: 'slice', miếng: 'slice', scheibe: 'slice', tranche: 'slice', '切れ': 'slice', '枚': 'slice',
   };
   return aliases[value.trim().toLowerCase()] || value;
+}
+
+function normalizeStorageZone(value: unknown): 'fridge' | 'veg_crisper' | 'chilled' | 'freezer' | 'pantry' | undefined {
+  if (typeof value !== 'string' || !value.trim()) return undefined;
+  const s = value.trim().toLowerCase();
+  if (s === 'veg_crisper' || s.includes('野菜')) return 'veg_crisper';
+  if (s === 'chilled' || s.includes('チルド') || s.includes('パーシャル')) return 'chilled';
+  if (s === 'freezer' || s.includes('冷凍') || s.includes('đông')) return 'freezer';
+  if (s === 'pantry' || s.includes('常温') || s.includes('khô')) return 'pantry';
+  if (s === 'fridge' || s.includes('冷蔵') || s.includes('lạnh')) return 'fridge';
+  return undefined;
 }
 
 function normalizeStorage(value: unknown): unknown {
@@ -99,9 +114,68 @@ function normalizeConfidence(value: unknown): unknown {
     : normalized;
 }
 
-function normalizeItem(item: unknown): unknown {
+function normalizeExpiryFields(
+  value: Record<string, unknown>,
+  locale?: string,
+): { expiry_date?: string; expiry_regime?: 'USE_BY' | 'BEST_BEFORE' | 'ESTIMATED' | 'UNKNOWN' } {
+  const rawDate = recordValue(value, ['expiry_date', 'expiryDate', 'best_before', 'use_by']);
+  const rawRegime = recordValue(value, ['expiry_regime', 'expiryRegime']);
+  let regime: 'USE_BY' | 'BEST_BEFORE' | 'ESTIMATED' | 'UNKNOWN' | undefined;
+  if (typeof rawRegime === 'string') {
+    const upper = rawRegime.toUpperCase();
+    if (upper.startsWith('USE_BY') || rawRegime.includes('消費期限')) regime = 'USE_BY';
+    else if (upper.startsWith('BEST_BEFORE') || rawRegime.includes('賞味期限')) regime = 'BEST_BEFORE';
+    else if (upper === 'ESTIMATED') regime = 'ESTIMATED';
+    else if (upper === 'UNKNOWN') regime = 'UNKNOWN';
+  }
+  if (typeof rawDate === 'string' && rawDate.trim()) {
+    const parsed = parseLocalizedExpiryLabel(rawDate, { locale });
+    if (parsed) {
+      return {
+        expiry_date: parsed.expiryDate,
+        expiry_regime: regime ?? (parsed.regime !== 'UNKNOWN' ? parsed.regime : undefined),
+      };
+    }
+  }
+  return regime ? { expiry_regime: regime } : {};
+}
+
+function normalizeItem(item: unknown, context?: { locale?: string; currency?: string }): unknown {
   if (!item || typeof item !== 'object' || Array.isArray(item)) return item;
   const value = item as Record<string, unknown>;
+  const itemCurrencyRaw = recordValue(value, ['currency']) ?? context?.currency;
+  const itemCurrency = typeof itemCurrencyRaw === 'string' && itemCurrencyRaw.trim()
+    ? itemCurrencyRaw.trim().toUpperCase()
+    : undefined;
+  const rawUnitMinor = recordValue(value, ['unit_price_minor', 'unitPriceMinor']);
+  const rawTotalMinor = recordValue(value, ['total_price_minor', 'totalPriceMinor']);
+  const rawDiscountMinor = recordValue(value, ['discount_amount_minor', 'discountAmountMinor', 'discount']);
+  const rawUnitPrice = recordValue(value, [
+    'unit_price_vnd', 'unitPriceVnd', 'unit_price', 'unitPrice', 'price_per_unit', 'pricePerUnit',
+    'unit_cost', 'unitCost',
+  ]);
+  const rawTotalPrice = recordValue(value, [
+    'total_price_vnd', 'totalPriceVnd', 'total_price', 'totalPrice', 'line_total', 'lineTotal',
+    'subtotal', 'line_amount', 'lineAmount', 'total_cost', 'totalCost', 'net_amount', 'netAmount', 'amount', 'price',
+  ]);
+
+  const unitPriceMinor = rawUnitMinor !== undefined
+    ? normalizeOcrNumber(rawUnitMinor, { locale: context?.locale })
+    : itemCurrency && itemCurrency !== 'VND' && rawUnitPrice !== undefined
+      ? toCurrencyMinorUnits(rawUnitPrice, itemCurrency)
+      : undefined;
+  const totalPriceMinor = rawTotalMinor !== undefined
+    ? normalizeOcrNumber(rawTotalMinor, { locale: context?.locale })
+    : itemCurrency && itemCurrency !== 'VND' && rawTotalPrice !== undefined
+      ? toCurrencyMinorUnits(rawTotalPrice, itemCurrency)
+      : undefined;
+  const discountMinor = rawDiscountMinor !== undefined
+    ? normalizeOcrNumber(rawDiscountMinor, { locale: context?.locale })
+    : undefined;
+
+  const storageZone = normalizeStorageZone(recordValue(value, ['storage_zone', 'storageZone', 'storage']));
+  const expiry = normalizeExpiryFields(value, context?.locale);
+
   return {
     ...value,
     raw_name: recordValue(value, [
@@ -110,19 +184,21 @@ function normalizeItem(item: unknown): unknown {
     ]),
     estimated_quantity: normalizeOcrNumber(recordValue(value, [
       'estimated_quantity', 'estimatedQuantity', 'quantity', 'qty', 'count', 'quantity_value', 'quantityValue',
-    ])),
+    ]), { locale: context?.locale, currency: itemCurrency, isQuantity: true }),
     unit: normalizeUnit(recordValue(value, [
       'unit', 'measurement_unit', 'measurementUnit', 'quantity_unit', 'quantityUnit', 'unit_name', 'unitName',
       'unit_of_measure', 'unitOfMeasure', 'uom',
     ])),
-    unit_price_vnd: normalizeOcrNumber(recordValue(value, [
-      'unit_price_vnd', 'unitPriceVnd', 'unit_price', 'unitPrice', 'price_per_unit', 'pricePerUnit',
-      'unit_cost', 'unitCost',
-    ])),
-    total_price_vnd: normalizeOcrNumber(recordValue(value, [
-      'total_price_vnd', 'totalPriceVnd', 'total_price', 'totalPrice', 'line_total', 'lineTotal',
-      'subtotal', 'line_amount', 'lineAmount', 'total_cost', 'totalCost', 'net_amount', 'netAmount', 'amount', 'price',
-    ])),
+    unit_price_vnd: (!itemCurrency || itemCurrency === 'VND')
+      ? normalizeOcrNumber(rawUnitPrice)
+      : undefined,
+    total_price_vnd: (!itemCurrency || itemCurrency === 'VND')
+      ? normalizeOcrNumber(rawTotalPrice)
+      : undefined,
+    ...(itemCurrency ? { currency: itemCurrency } : {}),
+    ...(typeof unitPriceMinor === 'number' && Number.isSafeInteger(unitPriceMinor) ? { unit_price_minor: unitPriceMinor } : {}),
+    ...(typeof totalPriceMinor === 'number' && Number.isSafeInteger(totalPriceMinor) ? { total_price_minor: totalPriceMinor } : {}),
+    ...(typeof discountMinor === 'number' && Number.isSafeInteger(discountMinor) ? { discount_amount_minor: discountMinor } : {}),
     confidence: normalizeConfidence(recordValue(value, [
       'confidence', 'confidence_score', 'confidenceScore', 'confidence_percent', 'confidencePercent', 'score', 'probability', 'certainty',
     ])),
@@ -134,19 +210,21 @@ function normalizeItem(item: unknown): unknown {
       'storage', 'storage_location', 'storageLocation', 'storage_recommendation', 'storageRecommendation',
       'storage_type', 'storageType', 'location',
     ])),
+    ...(storageZone ? { storage_zone: storageZone } : {}),
+    ...expiry,
     category: normalizeCategory(recordValue(value, ['category', 'food_category', 'foodCategory', 'food_type', 'foodType', 'group'])),
   };
 }
 
-function itemArray(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(normalizeItem);
-  if (value && typeof value === 'object') return [normalizeItem(value)];
+function itemArray(value: unknown, context?: { locale?: string; currency?: string }): unknown {
+  if (Array.isArray(value)) return value.map((entry) => normalizeItem(entry, context));
+  if (value && typeof value === 'object') return [normalizeItem(value, context)];
   return value;
 }
 
-function normalizeVisionPayload(payload: unknown): unknown {
+function normalizeVisionPayload(payload: unknown, context?: { locale?: string }): unknown {
   const unwrapped = unwrapResult(payload);
-  if (Array.isArray(unwrapped)) return { items: unwrapped.map(normalizeItem) };
+  if (Array.isArray(unwrapped)) return { items: unwrapped.map((entry) => normalizeItem(entry, context)) };
   if (!unwrapped || typeof unwrapped !== 'object') return unwrapped;
   const record = unwrapped as Record<string, unknown>;
   const items = recordValue(record, [
@@ -155,19 +233,38 @@ function normalizeVisionPayload(payload: unknown): unknown {
   ]);
   return {
     ...record,
-    items: itemArray(items),
+    items: itemArray(items, context),
   };
 }
 
-function normalizeReceiptPayload(payload: unknown): unknown {
+function normalizeReceiptPayload(payload: unknown, context?: { locale?: string; currency?: string }): unknown {
   const unwrapped = unwrapResult(payload);
-  if (Array.isArray(unwrapped)) return { items: unwrapped.map(normalizeItem) };
+  if (Array.isArray(unwrapped)) return { items: unwrapped.map((entry) => normalizeItem(entry, context)) };
   if (!unwrapped || typeof unwrapped !== 'object') return unwrapped;
   const record = unwrapped as Record<string, unknown>;
   const items = recordValue(record, [
     'items', 'line_items', 'lineItems', 'receipt_items', 'receiptItems', 'purchased_items', 'purchasedItems',
     'products', 'goods', 'food_items', 'foodItems',
   ]);
+  const rawCurrency = recordValue(record, ['currency']) ?? context?.currency;
+  const currency = typeof rawCurrency === 'string' && rawCurrency.trim() ? rawCurrency.trim().toUpperCase() : undefined;
+  const rawTotalMinor = recordValue(record, ['total_amount_minor', 'totalAmountMinor']);
+  const rawTotalAmount = recordValue(record, [
+    'total_amount_vnd', 'totalAmountVnd', 'total_amount', 'totalAmount', 'grand_total', 'grandTotal',
+    'amount_due', 'amountDue', 'amount_payable', 'amountPayable', 'total',
+  ]);
+  const totalMinor = rawTotalMinor !== undefined
+    ? normalizeOcrNumber(rawTotalMinor, { locale: context?.locale })
+    : currency && currency !== 'VND' && rawTotalAmount !== undefined
+      ? toCurrencyMinorUnits(rawTotalAmount, currency)
+      : undefined;
+  const rawDate = recordValue(record, [
+    'purchase_date', 'purchaseDate', 'transaction_date', 'transactionDate', 'invoice_date', 'invoiceDate', 'date',
+  ]);
+  const normalizedPurchaseDate = typeof rawDate === 'string'
+    ? (parseLocalizedExpiryLabel(rawDate, { locale: context?.locale })?.expiryDate ?? rawDate)
+    : rawDate;
+
   return {
     ...record,
     merchant_name: recordValue(record, [
@@ -178,14 +275,15 @@ function normalizeReceiptPayload(payload: unknown): unknown {
       'invoice_number', 'invoiceNumber', 'receipt_number', 'receiptNumber', 'bill_number', 'billNumber',
       'transaction_id', 'transactionId',
     ]),
-    purchase_date: recordValue(record, [
-      'purchase_date', 'purchaseDate', 'transaction_date', 'transactionDate', 'invoice_date', 'invoiceDate', 'date',
-    ]),
-    total_amount_vnd: normalizeOcrNumber(recordValue(record, [
-      'total_amount_vnd', 'totalAmountVnd', 'total_amount', 'totalAmount', 'grand_total', 'grandTotal',
-      'amount_due', 'amountDue', 'amount_payable', 'amountPayable', 'total',
-    ])),
-    items: itemArray(items),
+    purchase_date: normalizedPurchaseDate,
+    total_amount_vnd: (!currency || currency === 'VND')
+      ? normalizeOcrNumber(rawTotalAmount)
+      : undefined,
+    ...(currency ? { currency } : {}),
+    ...(typeof totalMinor === 'number' && Number.isSafeInteger(totalMinor) && totalMinor >= 0
+      ? { total_amount_minor: totalMinor }
+      : {}),
+    items: itemArray(items, { locale: context?.locale, currency }),
   };
 }
 
@@ -257,6 +355,7 @@ export class QwenProvider implements AIProvider {
   private readonly model: string;
   private readonly requestTimeoutMs: number;
   private readonly capabilities: ModelCapabilities;
+  private readonly jurisdiction?: AIJurisdiction;
   private lastUsage: AIProviderUsage | undefined;
 
   constructor(
@@ -265,10 +364,12 @@ export class QwenProvider implements AIProvider {
     modelOrOptions: string | number | QwenProviderOptions = DEFAULT_MODEL,
     requestTimeoutMs = DEFAULT_REQUEST_TIMEOUT_MS,
     capabilities?: ModelCapabilities,
+    jurisdiction?: AIJurisdiction,
   ) {
     if (!apiKey.trim()) throw new Error('Qwen API key is required');
     this.apiKey = apiKey;
     this.baseUrl = baseUrl.replace(/\/$/, '');
+    this.jurisdiction = jurisdiction;
     // The numeric third argument was the historical timeout parameter. Keep
     // accepting it while allowing deployments to select a Qwen model.
     if (typeof modelOrOptions === 'number') {
@@ -291,7 +392,13 @@ export class QwenProvider implements AIProvider {
   }
 
   async vision(params: VisionScanParams, options: QwenCallOptions = {}): Promise<VisionScanResult> {
-    const basePrompt = params.promptOverride || `Bạn là chuyên gia nhận diện nguyên liệu thực phẩm trong tủ lạnh cho ứng dụng Frigo tại Việt Nam.
+    const effectiveJurisdiction = params.jurisdiction ?? this.jurisdiction ?? resolveJurisdictionFromCountry(params.countryCode);
+    assertJurisdictionEndpointAllowed(this.baseUrl, effectiveJurisdiction, this.name);
+    const includeGlobal = Boolean(params.locale && !params.locale.toLowerCase().startsWith('vi'))
+      || Boolean(params.countryCode && params.countryCode.toUpperCase() !== 'VN');
+    const basePrompt = params.promptOverride
+      || buildLocalizedVisionPrompt({ locale: params.locale, countryCode: params.countryCode })
+      || `Bạn là chuyên gia nhận diện nguyên liệu thực phẩm trong tủ lạnh cho ứng dụng Frigo tại Việt Nam.
 Hãy phân tích bức ảnh và trả về DUY NHẤT một JSON object hợp lệ theo định dạng:
 {
   "items": [
@@ -311,7 +418,7 @@ Chỉ trả về JSON thuần, không thêm markdown code block thừa.`;
     const parsed = await this.completeVision(prompt, params, { ...options, maxTokens: options.maxTokens ?? 1024 });
     let validated: VisionScanResult;
     try {
-      validated = VisionScanResultSchema.parse(normalizeVisionPayload(parsed));
+      validated = VisionScanResultSchema.parse(normalizeVisionPayload(parsed, { locale: params.locale }));
     } catch (error) {
       throw createAISchemaError('Qwen', 'Qwen response failed vision schema validation', this.model, error);
     }
@@ -321,7 +428,7 @@ Chỉ trả về JSON thuần, không thêm markdown code block thừa.`;
 
     // Annotate canonical IDs
     validated.items = validated.items.map(item => {
-      const canonical = resolveProviderCanonical(item.raw_name, item.canonical_id);
+      const canonical = resolveProviderCanonical(item.raw_name, item.canonical_id, { includeGlobalLocales: includeGlobal });
       return {
         ...item,
         canonical_id: canonical?.id,
@@ -334,7 +441,14 @@ Chỉ trả về JSON thuần, không thêm markdown code block thừa.`;
   }
 
   async receiptScan(params: VisionScanParams, options: QwenCallOptions = {}): Promise<ReceiptScanResult> {
-    const basePrompt = params.promptOverride || `Bạn là hệ thống OCR hóa đơn thực phẩm cho ứng dụng Frigo tại Việt Nam.
+    const effectiveJurisdiction = params.jurisdiction ?? this.jurisdiction ?? resolveJurisdictionFromCountry(params.countryCode);
+    assertJurisdictionEndpointAllowed(this.baseUrl, effectiveJurisdiction, this.name);
+    const includeGlobal = Boolean(params.locale && !params.locale.toLowerCase().startsWith('vi'))
+      || Boolean(params.countryCode && params.countryCode.toUpperCase() !== 'VN')
+      || Boolean(params.currency && params.currency.toUpperCase() !== 'VND');
+    const basePrompt = params.promptOverride
+      || buildLocalizedReceiptPrompt({ locale: params.locale, countryCode: params.countryCode, currency: params.currency })
+      || `Bạn là hệ thống OCR hóa đơn thực phẩm cho ứng dụng Frigo tại Việt Nam.
 Đọc ảnh hóa đơn và trả về DUY NHẤT một JSON object hợp lệ theo định dạng:
 {
   "merchant_name": "Tên cửa hàng",
@@ -359,7 +473,9 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
     const parsed = await this.completeVision(prompt, params, { ...options, maxTokens: options.maxTokens ?? 1_500 });
     let validated: ReceiptScanResult;
     try {
-      validated = ReceiptScanResultSchema.parse(normalizeReceiptPayload(parsed));
+      validated = ReceiptScanResultSchema.parse(
+        normalizeReceiptPayload(parsed, { locale: params.locale, currency: params.currency }),
+      );
     } catch (error) {
       throw createAISchemaError('Qwen', 'Qwen response failed receipt schema validation', this.model, error);
     }
@@ -369,7 +485,7 @@ Bỏ qua dòng không phải thực phẩm và không tự bịa sản phẩm kh
     return {
       ...validated,
       items: validated.items.map((item) => {
-        const canonical = resolveProviderCanonical(item.raw_name, item.canonical_id);
+        const canonical = resolveProviderCanonical(item.raw_name, item.canonical_id, { includeGlobalLocales: includeGlobal });
         return {
           ...item,
           canonical_id: canonical?.id,

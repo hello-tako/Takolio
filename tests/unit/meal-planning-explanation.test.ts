@@ -70,7 +70,9 @@ describe('grounded meal explanation selection', () => {
   it('validates strict intent and response provenance combinations', () => {
     const request = { revision: 2, slotId: input.slotId, locale: 'en' };
     expect(PlanExplanationRequestSchema.safeParse(request).success).toBe(true);
-    for (const invalid of [{ ...request, locale: 'ja' }, { ...request, revision: '2' },
+    expect(PlanExplanationRequestSchema.safeParse({ ...request, locale: 'ja' }).success).toBe(true);
+    expect(PlanExplanationRequestSchema.safeParse({ ...request, locale: 'de' }).success).toBe(true);
+    for (const invalid of [{ ...request, locale: 'zh' }, { ...request, revision: '2' },
       { ...request, facts: input.reasonCodes }, { ...request, householdId: 'other' }]) {
       expect(PlanExplanationRequestSchema.safeParse(invalid).success).toBe(false);
     }

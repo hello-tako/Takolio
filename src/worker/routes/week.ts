@@ -23,7 +23,9 @@ import {
 import type { RecipeAuthoritySnapshot } from '@frigo/recipes';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
+import { formatLocalCalendarDate } from '../../../packages/domain/src/i18n';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { selectPlanShoppingItems } from '../utils/week-shopping';
 
@@ -146,7 +148,24 @@ const WeekPlanCreateSchema = z.object({
   dietaryRestrictions: z.array(z.string().min(1).max(80)).max(20).optional(),
   dislikedIngredients: z.array(z.string().min(1).max(80)).max(50).optional(),
   preferredCuisines: z
-    .array(z.enum(['vietnamese', 'korean', 'japanese', 'chinese', 'thai', 'italian']))
+    .array(
+      z.enum([
+        'vietnamese',
+        'korean',
+        'japanese',
+        'chinese',
+        'thai',
+        'italian',
+        'french',
+        'german',
+        'spanish',
+        'mediterranean',
+        'european',
+        'american',
+        'indian',
+        'mexican',
+      ])
+    )
     .max(20)
     .optional(),
 });
@@ -749,10 +768,18 @@ weekRoutes.post('/week/plans', async (c) => {
     }
   }
 
+  const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+  const effectiveLocale = await resolveEffectiveLocaleContext(c.env.DB, auth, edgeLocale);
+  const defaultStartDate =
+    effectiveLocale.source !== 'default'
+      ? formatLocalCalendarDate(Date.now(), effectiveLocale.timeZone)
+      : new Date().toISOString().split('T')[0];
+
   const input: MealPlanSetupInput = {
     ...body,
+    preferredCuisines: body.preferredCuisines as MealPlanSetupInput['preferredCuisines'],
     householdId: householdId,
-    startDate: body.startDate || new Date().toISOString().split('T')[0],
+    startDate: body.startDate || defaultStartDate,
     planId: requestedPlanId,
   };
 

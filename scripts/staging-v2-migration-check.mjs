@@ -13,6 +13,10 @@ export const CHAIN = Object.freeze(['0044_inventory_display_category.sql', '0045
 export const TIP = CHAIN.at(-1);
 export const CONTENT_TIP = '0046_recipe_content_versions.sql';
 export const SAVED_CONTENT_TIP = '0047_saved_recipe_content.sql';
+export const GLOBAL_FOUNDATION_TIP = '0048_global_locale_timezone_and_search_foundation.sql';
+export const GLOBAL_CULINARY_TIP = '0049_global_culinary_allergens_units_barcode_and_ocr.sql';
+export const GLOBAL_BILLING_OAUTH_TIP = '0050_global_billing_subscriptions_and_oauth_identities.sql';
+export const GLOBAL_PRIVACY_SOVEREIGN_TIP = '0051_privacy_erasure_portability_and_consent_ledger.sql';
 function migration(tip = TIP) {
   if (tip === TIP) return { preTip: PRE_TIP, chain: CHAIN,
     tables: ['inventory_lots', 'inventory_commands', 'inventory_events', 'inventory_adoption_receipts', 'week_swap_receipts'],
@@ -23,7 +27,19 @@ function migration(tip = TIP) {
   if (tip === SAVED_CONTENT_TIP) return { preTip: TIP, chain: [CONTENT_TIP, SAVED_CONTENT_TIP],
     tables: ['recipe_content_versions', 'recipe_content_access', 'cooked_meals', 'generated_meal_plan_components'],
     status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED' };
-  throw new Error('Only reviewed staging migration 0045, 0046 or 0047 is authorized');
+  if (tip === GLOBAL_FOUNDATION_TIP) return { preTip: SAVED_CONTENT_TIP, chain: [GLOBAL_FOUNDATION_TIP],
+    tables: ['catalog_manifest', 'recipe_search_documents', 'user_preferences', 'households', 'shopping_lists'],
+    status: 'STAGING_0048_GLOBAL_FOUNDATION_CERTIFIED' };
+  if (tip === GLOBAL_CULINARY_TIP) return { preTip: GLOBAL_FOUNDATION_TIP, chain: [GLOBAL_CULINARY_TIP],
+    tables: ['recipe_content_localizations', 'barcode_products', 'scans', 'scan_items', 'nutrition_profiles'],
+    status: 'STAGING_0049_GLOBAL_CULINARY_CERTIFIED' };
+  if (tip === GLOBAL_BILLING_OAUTH_TIP) return { preTip: GLOBAL_CULINARY_TIP, chain: [GLOBAL_BILLING_OAUTH_TIP],
+    tables: ['global_payment_intents', 'billing_webhook_events', 'oauth_identities', 'subscriptions'],
+    status: 'STAGING_0050_GLOBAL_BILLING_OAUTH_CERTIFIED' };
+  if (tip === GLOBAL_PRIVACY_SOVEREIGN_TIP) return { preTip: GLOBAL_BILLING_OAUTH_TIP, chain: [GLOBAL_PRIVACY_SOVEREIGN_TIP],
+    tables: ['privacy_requests', 'consent_records', 'financial_tax_archive', 'users'],
+    status: 'STAGING_0051_GLOBAL_PRIVACY_CERTIFIED' };
+  throw new Error('Only reviewed staging migration 0045, 0046, 0047, 0048, 0049, 0050 or 0051 is authorized');
 }
 export const schemaQuery = (tip = TIP) => `SELECT type, name, sql FROM sqlite_master WHERE tbl_name IN (${migration(tip).tables.map(name => `'${name}'`).join(', ')}) ORDER BY name`;
 

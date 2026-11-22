@@ -115,6 +115,7 @@ healthRoutes.get('/health/recipe-authority', async (c) => {
 // Public browser configuration only. OAuth client IDs and Turnstile site keys
 // identify applications; neither value is a secret.
 healthRoutes.get('/config', (c) => {
+  c.header('Vary', 'Accept-Language, CF-IPCountry, X-Takolio-Locale');
   return c.json({
     turnstileSiteKey: c.env.TURNSTILE_SITE_KEY || null,
     googleClientId: c.env.GOOGLE_CLIENT_ID || null,

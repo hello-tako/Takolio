@@ -42,3 +42,118 @@ export function buildPrompt(task: AITask, input: string, context?: string): stri
   const contextBlock = context ? `\nDYNAMIC CONTEXT\n${context}` : '';
   return `${definition.system}\n\nSTATIC OUTPUT CONTRACT\nReturn only the requested ${definition.structured ? 'JSON' : 'text'} value.\n${contextBlock}\nDYNAMIC INPUT\n${input}`;
 }
+
+export function buildLocalizedVisionPrompt(options?: {
+  locale?: string;
+  countryCode?: string;
+}): string | undefined {
+  const locale = options?.locale?.trim().toLowerCase();
+  const country = options?.countryCode?.trim().toUpperCase();
+  if (!locale && !country) return undefined;
+  const baseLang = locale?.split(/[-_]/)[0] ?? 'en';
+  if (baseLang === 'vi' && (!country || country === 'VN')) return undefined;
+
+  if (baseLang === 'ja' || country === 'JP') {
+    return `あなたは日本の冷蔵庫・食材認識AI（Takolio）です。画像を解析し、見えている食材のみを以下の有効なJSONオブジェクト1つだけで返してください（推測・捏造禁止）：
+{
+  "items": [
+    {
+      "raw_name": "日本語の食材名（例：鶏むね肉、木綿豆腐、納豆、長ねぎ、卵）",
+      "estimated_quantity": 300,
+      "unit": "g" | "kg" | "ml" | "l" | "piece" | "pack" | "bunch" | "slice",
+      "storage": "fridge" | "freezer" | "pantry",
+      "storage_zone": "fridge" | "veg_crisper" | "chilled" | "freezer" | "pantry",
+      "expiry_date": "YYYY-MM-DD（印字が見える場合のみ。令和R8=2026年に変換）",
+      "expiry_regime": "USE_BY（消費期限）" | "BEST_BEFORE（賞味期限）",
+      "confidence": 0.95
+    }
+  ]
+}
+JSONのみを返し、コードブロックや説明文を含めないでください。`;
+  }
+
+  return `You are Takolio's multilingual food & refrigerator vision specialist (target locale: ${baseLang}, market: ${country || 'GLOBAL'}).
+Analyze the image and return ONLY a single valid JSON object with observable food items (never fabricate unseen items or dates):
+{
+  "items": [
+    {
+      "raw_name": "Localized food name in '${baseLang}' (e.g. Hähnchenbrust, Tomates, Latte intero, Chicken breast)",
+      "estimated_quantity": 250,
+      "unit": "g" | "kg" | "ml" | "l" | "piece" | "pack" | "bunch" | "slice",
+      "storage": "fridge" | "freezer" | "pantry",
+      "expiry_date": "YYYY-MM-DD (only when printed on packaging; convert DD.MM.YYYY or DD/MM/YYYY to YYYY-MM-DD)",
+      "expiry_regime": "USE_BY (zu verbrauchen bis / DLC / Use by)" | "BEST_BEFORE (MHD / DDM / Best before)",
+      "confidence": 0.95
+    }
+  ]
+}
+Return raw JSON only without markdown fences.`;
+}
+
+export function buildLocalizedReceiptPrompt(options?: {
+  locale?: string;
+  countryCode?: string;
+  currency?: string;
+}): string | undefined {
+  const locale = options?.locale?.trim().toLowerCase();
+  const country = options?.countryCode?.trim().toUpperCase();
+  const currency = options?.currency?.trim().toUpperCase();
+  if (!locale && !country && !currency) return undefined;
+  const baseLang = locale?.split(/[-_]/)[0] ?? 'en';
+  if (baseLang === 'vi' && (!country || country === 'VN') && (!currency || currency === 'VND')) {
+    return undefined;
+  }
+
+  if (baseLang === 'ja' || country === 'JP' || currency === 'JPY') {
+    return `あなたは日本のスーパー・コンビニレシートOCRシステム（Takolio）です。
+レシート画像から店舗名・購入日・合計金額（円）および食品明細のみを抽出し、以下のJSONオブジェクト1つだけを返してください：
+- 軽減税率記号（※、軽、外8%、内8%）は金額に含めないこと（例：「¥298(外8%)」→ 298）
+- 半額・値引シール行がある場合は discount_amount_minor に値引き額（整数円）を記録し、total_price_minor に割引後金額を入れること
+- 令和表記（例：R8年11月25日）は西暦 YYYY-MM-DD（2026-11-25）に変換すること
+- レジ袋・日用品・小計・消費税・お預り・お釣り行は除外すること
+{
+  "merchant_name": "店舗名",
+  "invoice_number": "レシート番号",
+  "purchase_date": "YYYY-MM-DD",
+  "currency": "JPY",
+  "total_amount_minor": 1580,
+  "items": [
+    {
+      "raw_name": "商品名",
+      "estimated_quantity": 1,
+      "unit": "piece" | "pack" | "g" | "kg" | "bunch" | "ml" | "l" | "slice",
+      "currency": "JPY",
+      "unit_price_minor": 298,
+      "total_price_minor": 298,
+      "discount_amount_minor": 0,
+      "confidence": 0.94
+    }
+  ]
+}`;
+  }
+
+  const targetCurrency = currency || 'EUR';
+  return `You are Takolio's European & global grocery receipt OCR engine (locale: ${baseLang}, currency: ${targetCurrency}).
+Extract store name, purchase date (YYYY-MM-DD), total in minor currency units (e.g. EUR cents: 1,99 EUR -> 199), and ONLY food line items:
+- Parse European comma decimals accurately (e.g. "0,462 kg x 2,99 EUR/kg = 1,38 EUR" -> estimated_quantity: 462, unit: "g", total_price_minor: 138).
+- Ignore non-food lines, bottle deposits (Pfand / Leergut), VAT summary lines (MwSt / TVA / IVA), and payment tenders.
+- Never invent unread prices, merchants, or dates.
+{
+  "merchant_name": "Store name",
+  "invoice_number": "Receipt ID",
+  "purchase_date": "YYYY-MM-DD",
+  "currency": "${targetCurrency}",
+  "total_amount_minor": 1250,
+  "items": [
+    {
+      "raw_name": "Food item name as printed",
+      "estimated_quantity": 1,
+      "unit": "piece" | "pack" | "g" | "kg" | "bunch" | "ml" | "l" | "slice",
+      "currency": "${targetCurrency}",
+      "unit_price_minor": 199,
+      "total_price_minor": 199,
+      "confidence": 0.93
+    }
+  ]
+}`;
+}

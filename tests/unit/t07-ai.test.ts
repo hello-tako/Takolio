@@ -4,7 +4,7 @@ import { MealPlanningIntentSchema } from '../../packages/domain/src/meal-plannin
 import { MealPlanningApplicationService } from '../../src/worker/services/meal-planning';
 import { createMealPlanningRoutes } from '../../src/worker/routes/meal-planning';
 import {
-  createExplanationTransport, EXPLANATION_TIMEOUT_MS, explainMealReasons,
+  createExplanationTransport, EXPLANATION_TIMEOUT_MS, explainMealReasons, type ExplanationTransport,
 } from '../../src/worker/services/meal-planning-explanation';
 import type { AuthContext, Env } from '../../src/worker/types';
 import { SqliteD1 } from '../helpers/sqlite-d1';
@@ -16,7 +16,7 @@ const input = {
   reasonCodes: ['REQUIRES_SHOPPING', 'NUTRITION_DATA_UNKNOWN', 'USES_EXPIRING_INGREDIENTS'], enabled: true,
 };
 
-function flagApp(explanationTransport?: (facts: { locale: 'vi' | 'en'; reasonCodes: readonly string[] }) => Promise<unknown>) {
+function flagApp(explanationTransport?: ExplanationTransport) {
   const db = new SqliteD1();
   const auth: AuthContext = { userId: 'flag-user', householdId: 'flag-household', isGuest: false };
   db.seed(`INSERT INTO users (id) VALUES ('${auth.userId}');

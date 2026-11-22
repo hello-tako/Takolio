@@ -1,4 +1,9 @@
 import { D1DatabaseBinding } from '@frigo/db';
+import type {
+  GlobalCurrency,
+  SupportedLocale,
+  WeekStartDay,
+} from '../../packages/domain/src/i18n';
 import type { CloudflareAIBinding } from '../../packages/ai/src/providers/cloudflare';
 import type { ScanQueueMessage } from './services/scan-queue';
 import type {
@@ -70,6 +75,14 @@ export interface Env {
   QWEN_BASE_URL?: string;
   QWEN_MODEL?: string;
   QWEN_REQUEST_TIMEOUT_MS?: string;
+  AI_JURISDICTION?: 'EU' | 'JP' | 'VN' | 'GLOBAL';
+  CELL_REGION?: 'EU' | 'JP' | 'VN' | 'GLOBAL';
+  ENFORCE_CELL_SOVEREIGNTY?: string;
+  EU_CELL_URL?: string;
+  JP_CELL_URL?: string;
+  AI_EU_BASE_URL?: string;
+  AI_JP_BASE_URL?: string;
+  BARCODE_OFF_BASE_URL?: string;
   AI_ENABLED?: string;
   AI_QWEN_ONLY?: string;
   AI_ALLOW_REASONING_MODEL?: string;
@@ -110,17 +123,33 @@ export interface Env {
   TURNSTILE_SITE_KEY?: string;
   TURNSTILE_SECRET_KEY?: string;
   GOOGLE_CLIENT_ID?: string;
+  GOOGLE_JWKS_VERIFY_ENABLED?: string;
+  GOOGLE_JWKS_URL?: string;
+  APPLE_CLIENT_ID?: string;
+  APPLE_JWKS_URL?: string;
+  LINE_CHANNEL_ID?: string;
+  LINE_CHANNEL_SECRET?: string;
+  LINE_JWKS_URL?: string;
   JWT_SECRET?: string;
   OTP_HASH_SECRET?: string;
   // Reviewed first-cutover recovery: refuse OTP work without resetting durable authority.
   STRICT_OTP_FAIL_CLOSED?: string;
   RESEND_API_KEY?: string;
+  EMAIL_FROM_ADDRESS?: string;
+  EMAIL_FROM_NAME?: string;
+  DEFAULT_MARKET_COUNTRY?: string;
   // Legacy deployment binding; no longer authorizes a subscription grant.
   PLUS_GRANT_SECRET?: string;
   PAYOS_CHECKOUT_ENABLED?: string;
   PAYOS_CHECKSUM_KEY?: string;
   PAYOS_CLIENT_ID?: string;
   PAYOS_API_KEY?: string;
+  DODO_PAYMENTS_API_KEY?: string;
+  DODO_PAYMENTS_WEBHOOK_KEY?: string;
+  DODO_PAYMENTS_ENVIRONMENT?: 'test' | 'live';
+  DODO_PAYMENTS_BASE_URL?: string;
+  DODO_PRODUCT_ID_MONTHLY?: string;
+  DODO_PRODUCT_ID_ANNUAL?: string;
 }
 
 export interface AuthContext {
@@ -130,4 +159,18 @@ export interface AuthContext {
   email?: string;
   role?: string;
   sessionId?: string;
+  locale?: SupportedLocale;
+  countryCode?: string;
+  currency?: GlobalCurrency;
+  timeZone?: string;
+  weekStartDay?: WeekStartDay;
+}
+
+export interface RequestLocaleContext {
+  locale: SupportedLocale;
+  countryCode: string;
+  currency: GlobalCurrency;
+  timeZone: string;
+  weekStartDay: WeekStartDay;
+  source: 'user_preference' | 'header' | 'accept_language' | 'cf_geo' | 'default';
 }

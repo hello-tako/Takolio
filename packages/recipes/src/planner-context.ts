@@ -1,6 +1,12 @@
 import { z } from 'zod';
 import { compareIds } from '../../domain/src/availability';
 import { OffsetDateTimeSchema, CatalogIdSchema } from '../../domain/src/foundation';
+import {
+  formatLocalCalendarDate,
+  getTimeZoneOffsetMs,
+  IanaTimeZoneSchema,
+  wallClockToUtcInstant,
+} from '../../domain/src/i18n';
 import { createRecipeCatalog, type RecipeCatalogSnapshot } from './catalog';
 import { type RecipeCandidate } from './candidates';
 import { RankingContextSchema, resolveRankingPreferences } from './personalization';
@@ -13,23 +19,37 @@ export interface PlanningReference {
   instant: string;
   localDate: string;
   utcOffsetMinutes: number;
+  timeZone?: string;
 }
 
-export function planningReference(instant: string): PlanningReference {
+export function planningReference(instant: string, timeZone?: string): PlanningReference {
   OffsetDateTimeSchema.parse(instant);
+  const validatedTz = timeZone !== undefined ? IanaTimeZoneSchema.parse(timeZone) : undefined;
   const suffix = instant.match(/(Z|([+-])(\d{2}):(\d{2}))$/);
   if (!suffix) throw new Error('Planning reference requires Z or an explicit HH:MM offset');
   const hours = Number(suffix[3] ?? 0);
   const minutes = Number(suffix[4] ?? 0);
   if (hours > 14 || minutes > 59 || (hours === 14 && minutes !== 0)) throw new Error('Unsupported UTC offset');
-  const utcOffsetMinutes = (hours * 60 + minutes) * (suffix[2] === '-' ? -1 : 1);
   const epoch = Date.parse(instant);
   if (!Number.isFinite(epoch)) throw new Error('Invalid planning instant');
+  if (validatedTz) {
+    const tzOffsetMinutes = Math.round(getTimeZoneOffsetMs(epoch, validatedTz) / 60_000);
+    return {
+      instant: new Date(epoch).toISOString(),
+      localDate: formatLocalCalendarDate(epoch, validatedTz),
+      utcOffsetMinutes: tzOffsetMinutes,
+      timeZone: validatedTz,
+    };
+  }
+  const utcOffsetMinutes = (hours * 60 + minutes) * (suffix[2] === '-' ? -1 : 1);
   return { instant: new Date(epoch).toISOString(),
     localDate: new Date(epoch + utcOffsetMinutes * 60_000).toISOString().slice(0, 10), utcOffsetMinutes };
 }
 
 export function slotInstant(date: string, time: string, reference: PlanningReference): string {
+  if (reference.timeZone) {
+    return wallClockToUtcInstant(date, time, reference.timeZone);
+  }
   const epoch = Date.parse(`${date}T${time}:00Z`) - reference.utcOffsetMinutes * 60_000;
   return new Date(epoch).toISOString();
 }
@@ -65,6 +85,7 @@ export function freezePlanningValue<T>(value: T): T {
 export interface PlanningSourceInput {
   snapshotId: string;
   referenceInstant: string;
+  timeZone?: string;
   inventory: readonly InventoryLotSnapshot[];
   catalog: RecipeCatalogSnapshot;
   rankingContext: z.input<typeof RankingContextSchema>;
@@ -123,7 +144,7 @@ export function derivePlanningContext(context: PlanningContext, overrides: {
 }
 
 function prepareSource(source: PlanningSourceInput) {
-  const reference = planningReference(source.referenceInstant);
+  const reference = planningReference(source.referenceInstant, source.timeZone);
   const snapshotId = z.string().min(1).max(200).parse(source.snapshotId);
   const rankingContext = RankingContextSchema.parse(source.rankingContext);
   if (rankingContext.feedback.length > PLANNER_LIMITS.feedbackEvents) throw new Error('Planning history limit exceeded');

@@ -4,6 +4,10 @@
  */
 
 import type { Env } from '../types';
+import {
+  resolveSupportedLocale,
+  type SupportedLocale,
+} from '../../../packages/domain/src/i18n';
 
 export interface SendEmailParams {
   to: string;
@@ -171,6 +175,8 @@ function logDeliveryFailure(env: Env, params: SendEmailParams, result: EmailResu
 }
 
 async function sendResend(env: Env, params: SendEmailParams): Promise<EmailResult> {
+  const senderAddress = env.EMAIL_FROM_ADDRESS?.trim() || FROM_EMAIL;
+  const senderName = params.fromName || env.EMAIL_FROM_NAME?.trim() || FROM_NAME;
   const controller = new AbortController();
   const deadline = providerDeadline(() => controller.abort());
   try {
@@ -179,8 +185,9 @@ async function sendResend(env: Env, params: SendEmailParams): Promise<EmailResul
       redirect: 'error',
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: `${params.fromName || FROM_NAME} <${FROM_EMAIL}>`,
+        from: `${senderName} <${senderAddress}>`,
         to: [params.to], subject: params.subject, html: params.html, text: params.text,
+        headers: { 'Auto-Submitted': 'auto-generated' },
       }),
       signal: controller.signal,
     }).then((response) => {
@@ -208,6 +215,8 @@ async function sendResend(env: Env, params: SendEmailParams): Promise<EmailResul
 }
 
 export async function sendEmail(env: Env, params: SendEmailParams): Promise<EmailResult> {
+  const senderAddress = env.EMAIL_FROM_ADDRESS?.trim() || FROM_EMAIL;
+  const senderName = params.fromName || env.EMAIL_FROM_NAME?.trim() || FROM_NAME;
   if (env.SEND_EMAIL) {
     const deadline = providerDeadline();
     let attempt;
@@ -215,7 +224,7 @@ export async function sendEmail(env: Env, params: SendEmailParams): Promise<Emai
     try {
       attempt = await deadline.wait(() => env.SEND_EMAIL!.send({
         to: params.to,
-        from: { email: FROM_EMAIL, name: params.fromName || FROM_NAME },
+        from: { email: senderAddress, name: senderName },
         subject: params.subject, html: params.html,
         text: params.text || params.html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(),
         headers: { 'X-Frigo-Kind': 'transactional' },
@@ -247,25 +256,178 @@ export async function sendEmail(env: Env, params: SendEmailParams): Promise<Emai
   return result;
 }
 
+interface OtpCopyBundle {
+  subject: (code: string) => string;
+  heading: Record<'register' | 'forgot_password' | 'login', string>;
+  introHtml: string;
+  warning: string;
+  ignore: string;
+  tagline: string;
+  plainText: (heading: string, code: string) => string;
+}
+
+const OTP_EMAIL_COPY: Readonly<Record<SupportedLocale, OtpCopyBundle>> = Object.freeze({
+  en: {
+    subject: (code) => `Takolio verification code: ${code}`,
+    heading: {
+      register: 'Verify your account',
+      forgot_password: 'Reset your password',
+      login: 'Sign-in verification code',
+    },
+    introHtml: 'Enter the code below in Takolio to continue. This code expires in <strong>10 minutes</strong>.',
+    warning: 'Never share this code with anyone — Takolio staff will never ask for it.',
+    ignore: 'If you did not request this code, you can safely ignore this email.',
+    tagline: 'Takolio — Plan smart. Shop right. Waste nothing.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\nValid for 10 minutes. Never share this code with anyone.\n\nIf you did not request this code, please ignore this email.\n— Takolio`,
+  },
+  ja: {
+    subject: (code) => `【Takolio】認証コード：${code}`,
+    heading: {
+      register: 'アカウント登録の認証コード',
+      forgot_password: 'パスワード再設定の認証コード',
+      login: 'ログイン認証コード',
+    },
+    introHtml: 'Takolioの画面に以下の認証コードを入力してください。有効期限は<strong>10分間</strong>です。',
+    warning: 'このコードを第三者に教えないでください。Takolio運営が認証コードを尋ねることは一切ありません。',
+    ignore: 'お心当たりがない場合は、このまま本メールを破棄してください。',
+    tagline: 'Takolio — 賢く献立、無駄なくお買い物。',
+    plainText: (heading, code) =>
+      `${heading}：${code}\n有効期限は10分間です。第三者に共有しないでください。\n\nお心当たりがない場合は本メールを破棄してください。\n— Takolio`,
+  },
+  de: {
+    subject: (code) => `Takolio-Bestätigungscode: ${code}`,
+    heading: {
+      register: 'Konto bestätigen',
+      forgot_password: 'Passwort zurücksetzen',
+      login: 'Anmeldecode',
+    },
+    introHtml: 'Geben Sie den folgenden Code in Takolio ein. Der Code ist <strong>10 Minuten</strong> gültig.',
+    warning: 'Teilen Sie diesen Code niemals mit Dritten — Takolio fragt Sie nie danach.',
+    ignore: 'Falls Sie diesen Code nicht angefordert haben, ignorieren Sie diese E-Mail bitte.',
+    tagline: 'Takolio — Clever planen. Passend einkaufen. Nichts verschwenden.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\n10 Minuten gültig. Teilen Sie diesen Code nicht.\n\nFalls nicht angefordert, ignorieren Sie diese E-Mail.\n— Takolio`,
+  },
+  fr: {
+    subject: (code) => `Code de vérification Takolio : ${code}`,
+    heading: {
+      register: 'Vérification de votre compte',
+      forgot_password: 'Réinitialisation du mot de passe',
+      login: 'Code de connexion',
+    },
+    introHtml: 'Saisissez le code ci-dessous dans Takolio pour continuer. Ce code est valable <strong>10 minutes</strong>.',
+    warning: 'Ne partagez jamais ce code — l’équipe Takolio ne vous le demandera jamais.',
+    ignore: 'Si vous n’êtes pas à l’origine de cette demande, ignorez simplement cet e-mail.',
+    tagline: 'Takolio — Mieux planifier. Acheter juste. Zéro gaspillage.',
+    plainText: (heading, code) =>
+      `${heading} : ${code}\nValable 10 minutes. Ne partagez ce code avec personne.\n\nSi vous n’avez rien demandé, ignorez cet e-mail.\n— Takolio`,
+  },
+  es: {
+    subject: (code) => `Código de verificación de Takolio: ${code}`,
+    heading: {
+      register: 'Verifica tu cuenta',
+      forgot_password: 'Restablece tu contraseña',
+      login: 'Código de inicio de sesión',
+    },
+    introHtml: 'Introduce el siguiente código en Takolio para continuar. Caduca en <strong>10 minutos</strong>.',
+    warning: 'No compartas este código con nadie; el equipo de Takolio nunca te lo pedirá.',
+    ignore: 'Si no solicitaste este código, puedes ignorar este correo.',
+    tagline: 'Takolio — Planifica bien. Compra justo. Cero desperdicio.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\nVálido durante 10 minutos. No compartas este código.\n\nSi no lo solicitaste, ignora este correo.\n— Takolio`,
+  },
+  it: {
+    subject: (code) => `Codice di verifica Takolio: ${code}`,
+    heading: {
+      register: 'Verifica il tuo account',
+      forgot_password: 'Reimposta la password',
+      login: 'Codice di accesso',
+    },
+    introHtml: 'Inserisci il codice seguente in Takolio per continuare. Scade tra <strong>10 minuti</strong>.',
+    warning: 'Non condividere mai questo codice: il team Takolio non te lo chiederà mai.',
+    ignore: 'Se non hai richiesto questo codice, ignora questa email.',
+    tagline: 'Takolio — Pianifica bene. Compra il giusto. Zero sprechi.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\nValido per 10 minuti. Non condividere questo codice.\n\nSe non richiesto, ignora questa email.\n— Takolio`,
+  },
+  nl: {
+    subject: (code) => `Takolio-verificatiecode: ${code}`,
+    heading: {
+      register: 'Bevestig je account',
+      forgot_password: 'Wachtwoord opnieuw instellen',
+      login: 'Inlogcode',
+    },
+    introHtml: 'Voer onderstaande code in Takolio in om door te gaan. De code is <strong>10 minuten</strong> geldig.',
+    warning: 'Deel deze code met niemand — Takolio vraagt hier nooit om.',
+    ignore: 'Heb je deze code niet aangevraagd, negeer deze e-mail dan.',
+    tagline: 'Takolio — Slim plannen. Precies kopen. Niets verspillen.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\n10 minuten geldig. Deel deze code met niemand.\n— Takolio`,
+  },
+  pl: {
+    subject: (code) => `Kod weryfikacyjny Takolio: ${code}`,
+    heading: {
+      register: 'Potwierdź konto',
+      forgot_password: 'Resetowanie hasła',
+      login: 'Kod logowania',
+    },
+    introHtml: 'Wpisz poniższy kod w aplikacji Takolio. Kod wygasa za <strong>10 minut</strong>.',
+    warning: 'Nikomu nie udostępniaj tego kodu — zespół Takolio nigdy o niego nie prosi.',
+    ignore: 'Jeśli to nie Ty wysłałeś prośbę, zignoruj tę wiadomość.',
+    tagline: 'Takolio — Planuj mądrze. Kupuj z głową. Zero marnowania.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\nWażny przez 10 minut. Nie udostępniaj tego kodu.\n— Takolio`,
+  },
+  sv: {
+    subject: (code) => `Verifieringskod för Takolio: ${code}`,
+    heading: {
+      register: 'Bekräfta ditt konto',
+      forgot_password: 'Återställ lösenord',
+      login: 'Inloggningskod',
+    },
+    introHtml: 'Ange koden nedan i Takolio för att fortsätta. Koden gäller i <strong>10 minuter</strong>.',
+    warning: 'Dela aldrig koden med någon — Takolio ber aldrig om den.',
+    ignore: 'Om du inte begärt denna kod kan du bortse från mejlet.',
+    tagline: 'Takolio — Planera smart. Handla rätt. Inget matsvinn.',
+    plainText: (heading, code) =>
+      `${heading}: ${code}\nGiltig i 10 minuter. Dela aldrig denna kod.\n— Takolio`,
+  },
+  vi: {
+    subject: (code) => `Mã xác thực Takolio: ${code}`,
+    heading: {
+      register: 'Mã xác thực tài khoản',
+      forgot_password: 'Mã đặt lại mật khẩu',
+      login: 'Mã đăng nhập',
+    },
+    introHtml: 'Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.',
+    warning: 'Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.',
+    ignore: 'Nếu bạn không yêu cầu mã này, hãy bỏ qua email.',
+    tagline: 'Takolio — Ăn đủ. Mua đủ. Dùng hết.',
+    plainText: (heading, code) =>
+      `${heading} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takolio: Bữa ngon, nhẹ đầu. · Ăn đủ. Mua đủ. Dùng hết.`,
+  },
+});
+
 /**
- * Build Takolio-styled OTP email (Official Brand Board: Leaf Green, Tomato Coral & Warm Ivory). Purpose-specific copy in Vietnamese.
+ * Build Takolio-styled localized OTP email across global markets (JP, EU, VN, Global EN)
+ * using Official Brand Board v2 palette (Leaf Green #196149, Tomato Coral & Warm Ivory #FFF9F1).
  */
-export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_password' | 'login'): { subject: string; html: string; text: string } {
-  const action =
-    purpose === 'register'
-      ? 'xác thực tài khoản'
-      : purpose === 'forgot_password'
-        ? 'đặt lại mật khẩu'
-        : 'đăng nhập';
-
-  const subject = `Mã xác thực Takolio: ${code}`;
-
-  const text = `Mã ${action} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takolio: Bữa ngon, nhẹ đầu. · Ăn đủ. Mua đủ. Dùng hết.`;
+export function buildOtpEmail(
+  code: string,
+  purpose: 'register' | 'forgot_password' | 'login',
+  localeInput?: string | null,
+): { subject: string; html: string; text: string } {
+  const locale = resolveSupportedLocale(localeInput, 'vi');
+  const copy = OTP_EMAIL_COPY[locale];
+  const heading = copy.heading[purpose];
+  const subject = copy.subject(code);
+  const text = copy.plainText(heading, code);
 
   const html = `<!DOCTYPE html>
-<html>
+<html lang="${locale}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#FFF9F1;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<body style="margin:0;padding:0;background:#FFF9F1;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic','Segoe UI',Roboto,sans-serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF9F1;padding:32px 16px;">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border:1px solid #DCE6DE;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(21,46,44,0.06);">
@@ -273,16 +435,16 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
           <span style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;">Takolio</span>
         </td></tr>
         <tr><td style="padding:32px;">
-          <h1 style="margin:0 0 8px;font-size:18px;color:#152E2C;">Mã ${action}</h1>
-          <p style="margin:0 0 24px;font-size:14px;color:#3C5954;line-height:1.5;">Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
+          <h1 style="margin:0 0 8px;font-size:18px;color:#152E2C;">${heading}</h1>
+          <p style="margin:0 0 24px;font-size:14px;color:#3C5954;line-height:1.5;">${copy.introHtml}</p>
           <div style="background:#E7F4EC;border:1px solid #BDE0CC;border-radius:14px;padding:20px;text-align:center;margin-bottom:24px;">
             <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#196149;font-family:'SF Mono',Menlo,monospace;">${code}</span>
           </div>
-          <p style="margin:0 0 4px;font-size:13px;color:#3C5954;">Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.</p>
-          <p style="margin:0;font-size:13px;color:#52706A;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
+          <p style="margin:0 0 4px;font-size:13px;color:#3C5954;">${copy.warning}</p>
+          <p style="margin:0;font-size:13px;color:#52706A;">${copy.ignore}</p>
         </td></tr>
         <tr><td style="background:#FFF0E9;padding:16px 32px;text-align:center;">
-          <span style="font-size:12px;color:#152E2C;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
+          <span style="font-size:12px;color:#152E2C;">${copy.tagline}</span>
         </td></tr>
       </table>
     </td></tr>

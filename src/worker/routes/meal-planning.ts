@@ -4,6 +4,7 @@ import { bodyLimit } from 'hono/body-limit';
 import { z } from 'zod';
 import type { AuthContext, Env } from '../types';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
 import {
   MealPlanningIntentSchema, PlanIdSchema, PlanningRequestKeySchema, RegenerateMealPlanSchema,
@@ -86,7 +87,15 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     // T20: independent of every T19 recipe-authority flag.
     compositionV2Enabled: c.env.MEAL_COMPOSITION_V2_ENABLED === 'true',
   });
-  const scope = (c: Ctx) => ({ householdId: c.get('auth').householdId, userId: c.get('auth').userId });
+  const scope = (c: Ctx) => ({
+    householdId: c.get('auth').householdId,
+    userId: c.get('auth').userId,
+  });
+  const activeLocale = async (c: Ctx) => {
+    const edge = negotiateEdgeLocaleContext(c.req, c.env);
+    const effective = await resolveEffectiveLocaleContext(c.env.DB, c.get('auth'), edge);
+    return effective.source !== 'default' ? effective.locale : ('vi' as const);
+  };
   const planId = (c: Ctx) => {
     const parsed = PlanIdSchema.safeParse(c.req.param('id'));
     if (!parsed.success) throw new MealPlanningError('INVALID_PLAN_ID', 422, 'Invalid plan ID');
@@ -131,7 +140,7 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
   routes.use('/meal-planning/plans/:id/slots/*', compositionGate);
   routes.use('/meal-planning/compositions/*', compositionGate);
   const compositionWrites = rateLimiter({ maxRequests: 60, windowSeconds: 60, prefix: 'meal-composition-write' });
-  const compositions = (c: Ctx) => service(c).compositions();
+  const compositions = async (c: Ctx) => service(c).compositions(await activeLocale(c));
   const slotId = (c: Ctx) => {
     const parsed = CompositionSlotIdSchema.safeParse(c.req.param('slotId'));
     if (!parsed.success) throw new MealPlanningError('INVALID_SLOT_ID', 422, 'Invalid meal slot ID');
@@ -150,47 +159,47 @@ export function createMealPlanningRoutes(options: Partial<MealPlanningServiceOpt
     return parsed.data.includeAssessment === 'true';
   };
   const slotPath = '/meal-planning/plans/:id/slots/:slotId';
-  const planResponse = async (c: Ctx, operation: ReturnType<ReturnType<typeof compositions>['compositions']>) => {
+  const planResponse = async (c: Ctx, operation: ReturnType<Awaited<ReturnType<typeof compositions>>['compositions']>) => {
     const dto = await operation;
     return supportsRecipeContent(c.req.header('Accept')) ? dto : legacyPlanCompositions(dto);
   };
-  const slotResponse = async (c: Ctx, operation: ReturnType<ReturnType<typeof compositions>['composition']>) => {
+  const slotResponse = async (c: Ctx, operation: ReturnType<Awaited<ReturnType<typeof compositions>>['composition']>) => {
     const dto = await operation;
     return supportsRecipeContent(c.req.header('Accept')) ? dto : legacySlotComposition(dto);
   };
-  routes.get('/meal-planning/plans/:id/compositions', reads, (c) => respond(c, () =>
-    planResponse(c, compositions(c).compositions(scope(c), planId(c), includeAssessment(c)))));
-  routes.get(`${slotPath}/composition`, reads, (c) => respond(c, () =>
-    slotResponse(c, compositions(c).composition(scope(c), planId(c), slotId(c), includeAssessment(c)))));
+  routes.get('/meal-planning/plans/:id/compositions', reads, (c) => respond(c, async () =>
+    planResponse(c, (await compositions(c)).compositions(scope(c), planId(c), includeAssessment(c)))));
+  routes.get(`${slotPath}/composition`, reads, (c) => respond(c, async () =>
+    slotResponse(c, (await compositions(c)).composition(scope(c), planId(c), slotId(c), includeAssessment(c)))));
   routes.put(`${slotPath}/composition`, compositionWrites, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema)))));
+    slotResponse(c, (await compositions(c)).replace(scope(c), planId(c), slotId(c), await body(c, ReplaceCompositionSchema)))));
   routes.post(`${slotPath}/components`, compositionWrites, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).add(scope(c), planId(c), slotId(c), await body(c, AddComponentSchema)))));
+    slotResponse(c, (await compositions(c)).add(scope(c), planId(c), slotId(c), await body(c, AddComponentSchema)))));
   routes.post(`${slotPath}/components/:componentId/swap`, compositionWrites, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).swap(scope(c), planId(c), slotId(c), componentId(c), await body(c, SwapComponentSchema)))));
+    slotResponse(c, (await compositions(c)).swap(scope(c), planId(c), slotId(c), componentId(c), await body(c, SwapComponentSchema)))));
   routes.patch(`${slotPath}/components/:componentId`, compositionWrites, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).update(scope(c), planId(c), slotId(c), componentId(c), await body(c, UpdateComponentSchema)))));
-  routes.delete(`${slotPath}/components/:componentId`, compositionWrites, (c) => respond(c, () => {
+    slotResponse(c, (await compositions(c)).update(scope(c), planId(c), slotId(c), componentId(c), await body(c, UpdateComponentSchema)))));
+  routes.delete(`${slotPath}/components/:componentId`, compositionWrites, (c) => respond(c, async () => {
     const parsed = RemoveComponentQuerySchema.safeParse(c.req.query());
     if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
       throw new MealPlanningError('INVALID_REQUEST', 422, 'A single positive plan revision is required');
     }
-    return slotResponse(c, compositions(c).remove(scope(c), planId(c), slotId(c), componentId(c), Number(parsed.data.revision)));
+    return slotResponse(c, (await compositions(c)).remove(scope(c), planId(c), slotId(c), componentId(c), Number(parsed.data.revision)));
   }));
   routes.post(`${slotPath}/assist`, compute, expensive, (c) => respond(c, async () =>
-    compositions(c).assist(scope(c), planId(c), slotId(c), await body(c, AssistRequestSchema))));
+    (await compositions(c)).assist(scope(c), planId(c), slotId(c), await body(c, AssistRequestSchema))));
   routes.post(`${slotPath}/assist/apply`, compute, expensive, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).assistApply(scope(c), planId(c), slotId(c), await body(c, AssistApplySchema)))));
+    slotResponse(c, (await compositions(c)).assistApply(scope(c), planId(c), slotId(c), await body(c, AssistApplySchema)))));
   routes.post(`${slotPath}/auto`, compute, expensive, (c) => respond(c, async () =>
-    compositions(c).auto(scope(c), planId(c), slotId(c), await body(c, AutoRequestSchema))));
+    (await compositions(c)).auto(scope(c), planId(c), slotId(c), await body(c, AutoRequestSchema))));
   routes.post(`${slotPath}/auto/apply`, compute, expensive, (c) => respond(c, async () =>
-    slotResponse(c, compositions(c).autoApply(scope(c), planId(c), slotId(c), await body(c, AutoApplySchema)))));
-  routes.get('/meal-planning/compositions/picker', reads, (c) => respond(c, () => {
+    slotResponse(c, (await compositions(c)).autoApply(scope(c), planId(c), slotId(c), await body(c, AutoApplySchema)))));
+  routes.get('/meal-planning/compositions/picker', reads, (c) => respond(c, async () => {
     const parsed = PickerQuerySchema.safeParse(c.req.query());
     if (!parsed.success || Object.values(c.req.queries()).some((values) => values.length !== 1)) {
       throw new MealPlanningError('INVALID_REQUEST', 422, 'Picker query does not match the contract');
     }
-    return compositions(c).picker(scope(c), parsed.data);
+    return (await compositions(c)).picker(scope(c), parsed.data);
   }));
 
   routes.post('/meal-planning/plans/:id/feedback', feedbackLimit, (c) => respond(c, async () =>

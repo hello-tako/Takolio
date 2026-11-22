@@ -8,10 +8,16 @@ export interface AICallControl {
   deadlineAt?: number;
 }
 
+export type AIJurisdiction = 'EU' | 'JP' | 'VN' | 'GLOBAL';
+
 export interface VisionScanParams {
   imageBase64OrUrl: string;
   mimeType?: string;
   promptOverride?: string;
+  locale?: string;
+  countryCode?: string;
+  currency?: string;
+  jurisdiction?: AIJurisdiction;
 }
 
 export interface AIProviderUsage {
@@ -63,4 +69,7 @@ export interface AIConfig {
   backgroundExecutor?: (promise: Promise<unknown>) => void;
   aiGatewayUrl?: string;
   aiBinding?: CloudflareAIBinding;
+  jurisdiction?: AIJurisdiction;
+  aiEuBaseUrl?: string;
+  aiJpBaseUrl?: string;
 }

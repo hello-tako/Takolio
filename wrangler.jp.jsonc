@@ -1,0 +1,109 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Japan / APAC Cell (`--config wrangler.jp.jsonc`):
+  // Co-located in APAC (Tokyo NRT / Osaka KIX) for sub-50ms D1 & R2 latency and
+  // Japan APPI (`個人情報保護法`) cross-border AI endpoint governance.
+  "name": "frigo-jp",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frigo-db-jp",
+      "database_id": "1d460f8e-8736-4ba5-a86e-962211df33eb",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "frigo-images-jp"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "0000000000004000800000000000a002"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "SCAN_QUEUE",
+        "queue": "frigo-scan-queue-jp"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "frigo-scan-queue-jp",
+        "max_batch_size": 5,
+        "max_batch_timeout": 10,
+        "dead_letter_queue": "frigo-scan-dlq-jp"
+      }
+    ]
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "send_email": [
+    {
+      "name": "SEND_EMAIL"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "CELL_REGION": "JP",
+    "ENFORCE_CELL_SOVEREIGNTY": "false",
+    "AI_JURISDICTION": "JP",
+    "DEFAULT_MARKET_COUNTRY": "JP",
+    "APP_URL": "https://jp.takolio.com",
+    "AI_MOCK_MODE": "false",
+    "SCAN_QUEUE_MODE": "async",
+    "QWEN_BASE_URL": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+    "QWEN_MODEL": "qwen3.7-flash",
+    "QWEN_REQUEST_TIMEOUT_MS": "60000",
+    "AI_ENABLED": "true",
+    "AI_QWEN_ONLY": "true",
+    "AI_ALLOW_REASONING_MODEL": "false",
+    "AI_ALLOW_JUDGE_MODEL": "false",
+    "AI_MAX_CALLS_PER_OPERATION": "3",
+    "AI_MAX_TOTAL_TOKENS": "16000",
+    "AI_MAX_INPUT_TOKENS": "12000",
+    "AI_MAX_OUTPUT_TOKENS": "2048",
+    "AI_MAX_IMAGE_BYTES": "5242880",
+    "AI_MAX_OCR_IMAGE_BYTES": "5242880",
+    "AI_SHADOW_CANARY_PERCENT": "0",
+    "AI_MODEL_FAST": "qwen3.7-flash-2026-07-15",
+    "AI_MODEL_FAST_CANARY": "qwen3.7-flash",
+    "AI_MODEL_MULTIMODAL": "qwen3.8-flash",
+    "AI_MODEL_OCR": "qwen-vl-ocr",
+    "AI_MODEL_REASONING": "qwen3.8-27b",
+    "AI_MODEL_JUDGE": "qwen3.8-max-0902",
+    "GROQ_FALLBACK_ENABLED": "false",
+    "CLOUDFLARE_VISION_FALLBACK": "false",
+    "GLM_FALLBACK_ENABLED": "false",
+    "DEEPSEEK_FALLBACK_ENABLED": "false",
+    "CLEANUP_RESERVED_SCAN_RETENTION_MINUTES": "60",
+    "WEEK_SCHEMA_MODE": "dual",
+    "MEAL_COMPOSITION_V2_ENABLED": "true",
+    "GOOGLE_JWKS_VERIFY_ENABLED": "true"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  },
+  "triggers": {
+    "crons": ["0 18 * * *"]
+  }
+}

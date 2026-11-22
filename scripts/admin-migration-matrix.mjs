@@ -254,9 +254,11 @@ try {
     JSON.stringify(candidateManifest.migrations.slice(0, mainManifest.count)) === JSON.stringify(mainManifest.migrations);
   const v2Identity = v2Manifest.count === 45 &&
     JSON.stringify(candidateManifest.migrations.slice(0, v2Manifest.count)) === JSON.stringify(v2Manifest.migrations);
-  const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 47 &&
-    headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
-    !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql');
+  const exactV3Tip = workingManifest.count === candidateManifest.count
+    ? (headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
+      !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql'))
+    : (JSON.stringify(workingManifest.migrations.slice(0, candidateManifest.count)) === JSON.stringify(candidateManifest.migrations));
+  const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 47 && exactV3Tip;
   row('pinned 43-file customer ledger identity', 'all historical main migrations remain byte-identical in the candidate',
     { head, baseline: MAIN_BASELINE, currentMain: mainManifest.sha256, headManifest: headManifest.sha256,
       workingManifest: workingManifest.sha256, count: mainManifest.count,

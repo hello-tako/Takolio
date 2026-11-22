@@ -1,4 +1,4 @@
-import { CANONICAL_INGREDIENTS } from '../../../domain/src';
+import { CANONICAL_INGREDIENTS, normalizeMultilingualText } from '../../../domain/src';
 import {
   MEAL_ROLES,
   type MealRole,
@@ -49,26 +49,25 @@ export interface PersistedRoleAssignment {
 }
 
 export function normalizeText(value: string): string {
-  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'd')
-    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return normalizeMultilingualText(value);
 }
 
 const CANONICAL_CATEGORY = new Map(CANONICAL_INGREDIENTS.map((item) => [item.id, item.category]));
 const PROTEIN_CATEGORIES = new Set(['meat', 'seafood', 'egg']);
 // Matched on diacritic-preserving lowercase text: "cà chua" (tomato) is not "cá" (fish), "bơ" is not "bò".
-const PROTEIN_WORDS = /(?<![\p{L}\p{N}])(thịt|ba chỉ|sườn|bò|gà|heo|lợn|vịt|cá|tôm|mực|cua|ghẹ|nghêu|sò|hàu|trứng|đậu phụ|đậu hũ|hải sản|bạch tuộc|ốc|xúc xích|chả|nem|lạp xưởng|giò|pate|thăn|bacon|chicken|beef|pork|salmon|shrimp|egg|tofu)(?![\p{L}\p{N}])/u;
+const PROTEIN_WORDS = /(?<![\p{L}\p{N}])(thịt|ba chỉ|sườn|bò|gà|heo|lợn|vịt|cá|tôm|mực|cua|ghẹ|nghêu|sò|hàu|trứng|đậu phụ|đậu hũ|hải sản|bạch tuộc|ốc|xúc xích|chả|nem|lạp xưởng|giò|pate|thăn|bacon|chicken|beef|pork|salmon|shrimp|egg|tofu|poulet|boeuf|bœuf|porc|saumon|hähnchen|rind|schwein|lachs|pollo|manzo|maiale|cerdo|ternera)(?![\p{L}\p{N}])|(?:豚|牛|鶏|鮭|さば|鯖|えび|海老|いか|たこ|かに|卵|玉子|たまご|豆腐|納豆|ひき肉|ベーコン|べーこん|ソーセージ)/u;
 const lower = (value: string) => value.normalize('NFC').toLowerCase();
-const NOODLE_OR_RICE = /^(pho|bun|mi|mien|hu tieu|banh canh|udon|ramen|ramyeon|soba|pad thai|com|xoi|chao|risotto|pasta|spaghetti|lasagna|banh mi|naengmyeon|japchae|bibimbap|gimbap|kimbap|mi quang|cao lau|pizza)\b/;
-const BROTHY_NOODLE = /^(pho|chao|ramen|ramyeon|udon|banh canh|hu tieu|mien|bun|mi quang)\b/;
-const NOT_BROTHY = /\b(xao|tron|cha|lanh|kho|y|nuong|chien)\b/;
+const NOODLE_OR_RICE = /^(pho|bun|mi|mien|hu tieu|banh canh|udon|ramen|ramyeon|soba|pad thai|com|xoi|chao|risotto|pasta|spaghetti|lasagna|banh mi|naengmyeon|japchae|bibimbap|gimbap|kimbap|mi quang|cao lau|pizza|paella|gnocchi|pierogi|stamppot|couscous|quiche|flammkuchen|tarte flambee|toast|sandwich|tartine)\b|\b(gratin|kartoffelgratin|bratkartoffeln|shepherd s pie|casserole)\b|(?:丼|うどん|そば|らーめん|パスタ|ぱすた|スパゲッティ|すぱげってぃ|チャーハン|ちゃーはん|オムライス|おむらいす|カレーライス|かれーらいす|炊き込みご飯|グラタン|ぐらたん|ドリア|どりあ|トースト|とーすと|サンドイッチ|さんどいっち)/u;
+const BROTHY_NOODLE = /^(pho|chao|ramen|ramyeon|udon|banh canh|hu tieu|mien|bun|mi quang)\b|(?:うどん|らーめん|かけそば)/u;
+const NOT_BROTHY = /\b(xao|tron|cha|lanh|kho|y|nuong|chien)\b|(?:焼き|ざる|まぜ)/u;
 // Diacritic-preserving: "canh" (soup) is not "cánh" (wing); "chè" (dessert) is not "chế".
-const SOUP_TITLE = /^(canh|súp|soup|tom yum|miso)(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])(jjigae|guk|soup|súp)(?![\p{L}\p{N}])/u;
-const DESSERT_TITLE = /^(chè|bánh flan|flan|kem|pudding|mochi|tiramisu|panna cotta|sữa chua|thạch|bánh plan)(?![\p{L}\p{N}])/u;
-const SIDE_TITLE = /^(goi|nom|salad|dua|kim chi|cu cai|rau song|banh trang tron|edamame|sunomono)\b/;
+const SOUP_TITLE = /^(canh|súp|soup|tom yum|miso|soupe|potage|velouté|veloute|zuppa|minestrone|sopa|gazpacho)(?![\p{L}\p{N}])|(?<![\p{L}\p{N}])(jjigae|guk|soup|súp|suppe|eintopf)(?![\p{L}\p{N}])|(?:味噌汁|みそ汁|豚汁|けんちん汁|すまし汁|お吸い物|すーぷ|ポタージュ|ぽたーじゅ)$/u;
+const DESSERT_TITLE = /^(chè|bánh flan|flan|kem|pudding|mochi|tiramisu|panna cotta|sữa chua|thạch|bánh plan)(?![\p{L}\p{N}])|(?:ぷりん|大福|どら焼き|ぜんざい|ぱふぇ)$/u;
+const SIDE_TITLE = /^(goi|nom|salad|salat|salade|ensalada|insalata|dua|kim chi|cu cai|rau song|banh trang tron|edamame|sunomono|ratatouille|coleslaw|kartoffelsalat|beilage)\b|(?:おひたし|お浸し|きんぴら|和え|白和え|胡麻和え|ごま和え|酢の物|浅漬け|漬物|冷奴|サラダ|さらだ|ナムル|筑前煮|ひじき煮|切り干し大根)/u;
 const ROLL_TITLE = /^(cuon|goi cuon|nem|cha gio|bo bia)\b|\bcuon\b/;
-const VEG_METHOD = /\b(xao|luoc|hap|nuong|om|tron|chien|ap chao|nau|kho|rang)\b/;
-const HOTPOT = /^lau\b/;
-const PLAIN_STAPLE = /^(com trang|com nong|xoi trang|banh mi khong|com gao lut)\b/;
+const VEG_METHOD = /\b(xao|luoc|hap|nuong|om|tron|chien|ap chao|nau|kho|rang|roasted|sauteed|steamed|gebraten|gedampft|poele|roti)\b|(?:炒め|煮びたし|蒸し|焼きびたし)/u;
+const HOTPOT = /^lau\b|(?:鍋|しゃぶしゃぶ|すき焼き)$/u;
+const PLAIN_STAPLE = /^(com trang|com nong|xoi trang|banh mi khong|com gao lut|plain rice|steamed rice)\b|^(?:白ご飯|ご飯|ごはん|白米|玄米ご飯)$/u;
 
 function add(list: RoleAssignment[], role: MealRole, evidence: string) {
   if (!list.some((entry) => entry.role === role)) {

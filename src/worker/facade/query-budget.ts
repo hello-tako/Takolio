@@ -1,8 +1,12 @@
 import type { D1DatabaseBinding, D1PreparedStatement } from '@frigo/db';
 import { assertReadOnlySql } from '../routes/admin/readonly-db';
 
-export const MAX_SOURCE_ROWS = 5000;
+export const MAX_SOURCE_ROWS = 25000;
 export const MAX_OPERATION_QUERIES = 40;
+export interface FacadeBudgetOptions {
+  maxSourceRows?: number;
+  maxOperationQueries?: number;
+}
 // Static projections exclude raw credentials before any query executes.
 const tables: Record<string, [string, string]> = {
   users:['id','id,email,is_guest,created_at'],
@@ -35,7 +39,7 @@ const tables: Record<string, [string, string]> = {
  * Capped materialized CTEs prevent concurrent inserts bypassing the budget.
  * The guard rejects oversize sources instead of returning sampled totals.
  */
-export function boundedSql(sql: string): string {
+export function boundedSql(sql: string, maxSourceRows: number = MAX_SOURCE_ROWS): string {
   assertReadOnlySql(sql);
   if (!/^\s*SELECT\b/i.test(sql)) throw new Error('FACADE_QUERY_FORBIDDEN');
   const names = [...new Set([...sql.matchAll(/\b(?:FROM|JOIN)\s+([a-z_][a-z0-9_]*)/gi)].map(m=>m[1]))];
@@ -44,16 +48,18 @@ export function boundedSql(sql: string): string {
   if (!selected.length) return sql;
   const ctes = selected.map(name=>{
     const [pk, columns] = tables[name];
-    return `${name} AS MATERIALIZED (SELECT ${columns} FROM main.${name} WHERE ${pk} >= '' ORDER BY ${pk} LIMIT ${MAX_SOURCE_ROWS + 1})`;
+    return `${name} AS MATERIALIZED (SELECT ${columns} FROM main.${name} WHERE ${pk} >= '' ORDER BY ${pk} LIMIT ${maxSourceRows + 1})`;
   });
-  const exceeded = selected.map(name=>`(SELECT COUNT(*) FROM ${name}) > ${MAX_SOURCE_ROWS}`).join(' OR ');
+  const exceeded = selected.map(name=>`(SELECT COUNT(*) FROM ${name}) > ${maxSourceRows}`).join(' OR ');
   return `WITH ${ctes.join(',')}, _result AS MATERIALIZED (SELECT raw.*,1 AS __facade_present FROM (${sql}) raw), _budget AS MATERIALIZED (SELECT ${exceeded} AS __facade_exceeded) SELECT _result.*,_budget.__facade_exceeded FROM _budget LEFT JOIN _result ON 1`;
 }
-export function budgetedDatabase(db: D1DatabaseBinding): D1DatabaseBinding {
+export function budgetedDatabase(db: D1DatabaseBinding, options: FacadeBudgetOptions = {}): D1DatabaseBinding {
+  const maxSourceRows = options.maxSourceRows ?? MAX_SOURCE_ROWS;
+  const maxOperationQueries = options.maxOperationQueries ?? MAX_OPERATION_QUERIES;
   let queries = 0;
   function prepare(sql: string): D1PreparedStatement {
-    if (++queries > MAX_OPERATION_QUERIES) throw new Error('FACADE_QUERY_BUDGET');
-    const bounded = boundedSql(sql);
+    if (++queries > maxOperationQueries) throw new Error('FACADE_QUERY_BUDGET');
+    const bounded = boundedSql(sql, maxSourceRows);
     return wrap(db.prepare(bounded), /__facade_exceeded/.test(bounded));
   }
   function wrap(statement: D1PreparedStatement, bounded: boolean): D1PreparedStatement {

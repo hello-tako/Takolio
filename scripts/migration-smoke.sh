@@ -633,5 +633,36 @@ INSERT INTO assert_zero SELECT COUNT(*) FROM (SELECT id, household_id, user_id, 
  household_id, user_id, recipe_id, servings_cooked, deductions_applied, completed_at FROM cooked_meals);
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
+.read migrations/0047_saved_recipe_content.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('generated_meal_plan_components') WHERE name = 'recipe_content_fingerprint';
+.read migrations/0048_global_locale_timezone_and_search_foundation.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM catalog_manifest WHERE id = 1 AND catalog_revision = 1 AND manifest_token = 'rev:1';
+UPDATE recipes SET title = title WHERE id = 'vn-canh-01';
+INSERT INTO assert_one SELECT COUNT(*) FROM catalog_manifest WHERE id = 1 AND catalog_revision = 2 AND manifest_token = 'rev:2';
+INSERT INTO recipe_search_documents (recipe_id, locale, normalized_title, reading_hiragana, search_tokens)
+VALUES ('vn-canh-01', 'ja', 'ぶたじる', 'ぶたじる', 'ぶたじる ぶた じる');
+INSERT INTO assert_one SELECT COUNT(*) FROM recipe_search_fts WHERE recipe_search_fts MATCH '"ぶた"*' AND locale = 'ja';
+INSERT INTO assert_zero SELECT COUNT(*) FROM recipe_search_fts WHERE recipe_search_fts MATCH '"ふた"*' AND locale = 'ja';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('user_preferences') WHERE name = 'locale';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('households') WHERE name = 'timezone';
+.read migrations/0049_global_culinary_allergens_units_barcode_and_ocr.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'recipe_content_localizations';
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'barcode_products';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('scans') WHERE name = 'total_amount_minor';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('scan_items') WHERE name = 'expiry_regime';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('nutrition_profiles') WHERE name = 'salt_g';
+.read migrations/0050_global_billing_subscriptions_and_oauth_identities.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'global_payment_intents';
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'billing_webhook_events';
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'oauth_identities';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('subscriptions') WHERE name = 'grace_period_ends_at';
+.read migrations/0051_privacy_erasure_portability_and_consent_ledger.sql
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'privacy_requests';
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'consent_records';
+INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'financial_tax_archive';
+INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('users') WHERE name = 'erased_at';
+INSERT INTO assert_one SELECT COUNT(*) = 500 FROM recipes;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
+INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';
 SQL

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { OffsetDateTimeSchema, CatalogIdSchema } from './foundation';
+import { IanaTimeZoneSchema } from './i18n';
 import { ExactQuantityDtoSchema, MoneyDtoSchema, ShoppingResultDtoSchema } from './meal-shopping-api';
 
 export const PlanIdSchema = z.string().uuid();
@@ -15,6 +16,7 @@ export const MealPlanningIntentSchema = z.object({
   startDate: z.string().date(),
   horizonDays: z.number().int().min(1).max(14).default(7),
   utcOffsetMinutes: z.number().int().min(-840).max(840).default(0),
+  timeZone: IanaTimeZoneSchema.optional(),
   defaultServings: Servings,
   mode: z.enum(['cook_now', 'shopping_allowed']).default('cook_now'),
   slots: z.array(z.object({

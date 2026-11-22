@@ -1,0 +1,112 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // European Sovereign Cell (`--config wrangler.eu.jsonc`):
+  // Enforces Cloudflare D1 & R2 `jurisdiction: "eu"` so EEA/UK/CH personal data
+  // and fridge/receipt images never leave European Union data centers at rest.
+  "name": "frigo-eu",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "frigo-db-eu",
+      "database_id": "dacc8c0f-f7e3-4a5f-a321-d03a4350ca16",
+      "jurisdiction": "eu",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "frigo-images-eu",
+      "jurisdiction": "eu"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "0000000000004000800000000000e002"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "SCAN_QUEUE",
+        "queue": "frigo-scan-queue-eu"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "frigo-scan-queue-eu",
+        "max_batch_size": 5,
+        "max_batch_timeout": 10,
+        "dead_letter_queue": "frigo-scan-dlq-eu"
+      }
+    ]
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "send_email": [
+    {
+      "name": "SEND_EMAIL"
+    }
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "CELL_REGION": "EU",
+    "ENFORCE_CELL_SOVEREIGNTY": "true",
+    "AI_JURISDICTION": "EU",
+    "DEFAULT_MARKET_COUNTRY": "DE",
+    "APP_URL": "https://eu.takolio.com",
+    "AI_MOCK_MODE": "false",
+    "SCAN_QUEUE_MODE": "async",
+    "QWEN_BASE_URL": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+    "QWEN_MODEL": "qwen3.7-flash",
+    "QWEN_REQUEST_TIMEOUT_MS": "60000",
+    "AI_ENABLED": "true",
+    "AI_QWEN_ONLY": "true",
+    "AI_ALLOW_REASONING_MODEL": "false",
+    "AI_ALLOW_JUDGE_MODEL": "false",
+    "AI_MAX_CALLS_PER_OPERATION": "3",
+    "AI_MAX_TOTAL_TOKENS": "16000",
+    "AI_MAX_INPUT_TOKENS": "12000",
+    "AI_MAX_OUTPUT_TOKENS": "2048",
+    "AI_MAX_IMAGE_BYTES": "5242880",
+    "AI_MAX_OCR_IMAGE_BYTES": "5242880",
+    "AI_SHADOW_CANARY_PERCENT": "0",
+    "AI_MODEL_FAST": "qwen3.7-flash-2026-07-15",
+    "AI_MODEL_FAST_CANARY": "qwen3.7-flash",
+    "AI_MODEL_MULTIMODAL": "qwen3.8-flash",
+    "AI_MODEL_OCR": "qwen-vl-ocr",
+    "AI_MODEL_REASONING": "qwen3.8-27b",
+    "AI_MODEL_JUDGE": "qwen3.8-max-0902",
+    "GROQ_FALLBACK_ENABLED": "false",
+    // Strictly disabled in EU Sovereign Cell per Meta Llama 3.2 EU Multimodal License restriction.
+    "CLOUDFLARE_VISION_FALLBACK": "false",
+    "GLM_FALLBACK_ENABLED": "false",
+    "DEEPSEEK_FALLBACK_ENABLED": "false",
+    "CLEANUP_RESERVED_SCAN_RETENTION_MINUTES": "60",
+    "WEEK_SCHEMA_MODE": "dual",
+    "MEAL_COMPOSITION_V2_ENABLED": "true",
+    "GOOGLE_JWKS_VERIFY_ENABLED": "true"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  },
+  "triggers": {
+    "crons": ["0 2 * * *"]
+  }
+}

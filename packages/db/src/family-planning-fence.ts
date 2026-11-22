@@ -20,8 +20,19 @@ export class FamilyPlanningInputChanged extends Error { constructor() { super('F
 function receiptQuery(table: string, columns: readonly string[]) {
   return `SELECT json_group_array(json_array(${columns.join(', ')})) AS receipt FROM (SELECT ${columns.join(', ')} FROM ${table} ORDER BY ${columns.join(', ')})`;
 }
+const MANIFEST_RECEIPT_QUERY =
+  "SELECT catalog_revision || ':' || manifest_token AS receipt FROM catalog_manifest WHERE id = 1";
+
 export interface CatalogReceipt { query: string; value: string }
 export async function readFamilyCatalogReceipts(db: D1DatabaseBinding): Promise<CatalogReceipt[]> {
+  try {
+    const manifestRow = await db.prepare(MANIFEST_RECEIPT_QUERY).first<{ receipt: string }>();
+    if (manifestRow && typeof manifestRow.receipt === 'string' && manifestRow.receipt.length > 0) {
+      return [{ query: MANIFEST_RECEIPT_QUERY, value: manifestRow.receipt }];
+    }
+  } catch {
+    // Fallback for pre-0048 historical schema snapshots in migration tests.
+  }
   const queries = CATALOG_COLUMNS.map(([table, columns]) => receiptQuery(table, columns));
   const results = await db.batch<{ receipt: string }>(queries.map((query) => db.prepare(query)));
   if (results.some((result) => !result.success || result.results.length !== 1)) throw new Error('Family catalog fence read failed');

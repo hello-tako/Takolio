@@ -3,6 +3,8 @@ import type { AuthContext, Env } from '../types';
 import { StrictOtpCoordinator, type StrictOtpResult } from './auth-otp';
 import { readOtpDatabaseTime } from '../../../packages/db/src/auth-otp';
 import { sendEmail, buildOtpEmail } from './email';
+import { negotiateEdgeLocaleContext } from '../middleware/locale';
+import { localizeDefaultUserDisplayName } from '../../../packages/domain/src/i18n';
 import { OTP_POLICY, type OtpPurpose } from '../config/otp-policy';
 import { signJwt } from '../utils/jwt';
 import { getJwtSecret } from '../middleware/auth';
@@ -83,7 +85,9 @@ export async function issueStrictOtp(c: OtpContext, email: string, purpose: OtpP
       state = 'accepted'; // Synthetic authority preserves accounting without sending to unknown accounts.
     } else {
       try {
-        const message = buildOtpEmail(code, purpose);
+        const edge = negotiateEdgeLocaleContext(c.req, c.env);
+        const otpLocale = edge.source === 'default' ? 'vi' : edge.locale;
+        const message = buildOtpEmail(code, purpose, otpLocale);
         const sent = await sendEmail(c.env, { to: email, ...message, purpose });
         state = sent.state === 'accepted' ? 'accepted' : sent.state === 'delivery_unknown' ? 'delivery_unknown' : 'rejected';
         if (c.env.ENVIRONMENT === 'development' && sent.state === 'not_configured') state = 'accepted';
@@ -159,9 +163,11 @@ export async function verifyStrictOtp(c: OtpContext,
     .first<{ user_id: string; email: string; display_name?: string; avatar_url?: string; onboarding_completed_at?: string }>();
   if (!profile) return failure(c, { kind: 'unavailable' });
   c.header('Set-Cookie', `${SESSION_COOKIE}=${encodeURIComponent(result.sessionToken)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${7 * 86400}`);
+  const edgeVerify = negotiateEdgeLocaleContext(c.req, c.env);
+  const verifyLocale = edgeVerify.source === 'default' ? 'vi' : edgeVerify.locale;
   return c.json({ ...meta, success: true, replayed: false, sessionRequired: false,
     message: input.purpose === 'register' ? 'Xác thực tài khoản thành công!' : 'Đặt lại mật khẩu thành công!',
-    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || 'Người dùng Takolio',
+    user: { id: profile.user_id, email: profile.email, displayName: profile.display_name || (verifyLocale === 'vi' ? 'Người dùng Takolio' : localizeDefaultUserDisplayName(verifyLocale)),
       avatarUrl: profile.avatar_url || '/icons/favicon.svg', householdId: `hh_${profile.user_id}`,
       isGuest: false, onboardingCompleted: Boolean(profile.onboarding_completed_at) },
   });

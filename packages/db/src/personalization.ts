@@ -4,6 +4,7 @@ import {
   RecipeFeedbackSchema,
   RecipeIdentitySchema,
   RankingContextSchema,
+  mergeHouseholdMemberSafetyIntoContext,
   type RankingContext,
   type RankingPreferences,
   type RecipeFeedback,
@@ -389,4 +390,33 @@ export async function loadRankingContext(
     await db.batch(prepareRankingContextRead(db, trustedScope, rawReferenceTime, rawWindows)),
     trustedScope,
   );
+}
+
+/**
+ * Loads hard safety preferences (`allergens`, `forbiddenIngredientIds`, `requiredDietaryTags`)
+ * across ALL members of the authorized household and merges them into the household hard scope,
+ * ensuring a child's or partner's allergy blocks unsafe recipes at cooking & family boundaries.
+ */
+export async function loadHouseholdSafetyRankingContext(
+  db: D1DatabaseBinding,
+  trustedScope: unknown,
+  rawReferenceTime: unknown,
+  rawWindows: unknown = {},
+): Promise<RankingContext> {
+  const scope = TrustedRankingScopeSchema.parse(trustedScope);
+  const baseContext = await loadRankingContext(db, scope, rawReferenceTime, rawWindows);
+  const allMembersResult = await db
+    .prepare(
+      `SELECT mp.values_json
+         FROM member_ranking_preferences mp
+         JOIN household_members hm
+           ON hm.household_id = mp.household_id AND hm.user_id = mp.user_id
+        WHERE mp.household_id = ?
+        ORDER BY mp.user_id`,
+    )
+    .bind(scope.householdId)
+    .all();
+  const allMembersRows = rowsFromResult(allMembersResult, 'all household member safety preferences');
+  const memberPrefs = allMembersRows.map((row) => parseStoredPreference(row, 'member safety'));
+  return mergeHouseholdMemberSafetyIntoContext(baseContext, memberPrefs);
 }

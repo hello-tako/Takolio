@@ -29,9 +29,13 @@ const PUBLIC_PATHS = [
   '/auth/forgot-password',
   '/auth/reset-password',
   '/auth/google',
+  '/auth/apple',
+  '/auth/line',
   '/auth/guest',
   '/auth/logout',
+  '/billing/tokushoho',
   '/billing/payos/webhook',
+  '/billing/dodo/webhook',
 ];
 
 const EXACT_PUBLIC_PATHS = new Set(
@@ -111,9 +115,22 @@ export async function authMiddleware(
         c.set('auth', { userId: row.user_id, householdId: row.household_id, email: row.email, isGuest: Boolean(row.is_guest), sessionId: row.id });
         const lastSeen = Date.parse(row.last_seen_at?.replace(' ', 'T') + (row.last_seen_at?.endsWith('Z') ? '' : 'Z'));
         if (!Number.isFinite(lastSeen) || lastSeen <= Date.now() - SESSION_LAST_SEEN_INTERVAL_MINUTES * 60_000) {
-          await c.env.DB.prepare(`UPDATE sessions_v2 SET last_seen_at = datetime('now') WHERE id = ?
+          const updateLastSeen = c.env.DB.prepare(`UPDATE sessions_v2 SET last_seen_at = datetime('now') WHERE id = ?
             AND (last_seen_at IS NULL OR datetime(last_seen_at) <= datetime('now', ?))`)
             .bind(row.id, `-${SESSION_LAST_SEEN_INTERVAL_MINUTES} minutes`).run().catch(() => {});
+          let waitUntil: ((p: Promise<unknown>) => void) | null = null;
+          try {
+            if (c.executionCtx && typeof c.executionCtx.waitUntil === 'function') {
+              waitUntil = (p) => c.executionCtx.waitUntil(p);
+            }
+          } catch {
+            waitUntil = null;
+          }
+          if (waitUntil) {
+            waitUntil(updateLastSeen);
+          } else {
+            await updateLastSeen;
+          }
         }
         return await next();
       }

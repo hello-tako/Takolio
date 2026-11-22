@@ -1,3 +1,17 @@
+## Global Expansion Backend & Production Completion Blueprint (on `feat/takolio-global-expansion`) - 2026-11-22 JST
+
+- [x] **Phase 1 — Multilingual i18n, Kana/Unicode Safety, IANA Timezone/DST, FTS5 & D1 Edge Latency** (`a572aa46`, Migration `0048`): `413/413` test files (`9,307/9,307` tests) PASS, `admin:migration:matrix` `39/39` PASS.
+- [x] **Phase 2 — Culinary Engine, Regional Units, JP/EU Mandatory Allergens, JAN/EAN-13 Barcode & Multi-Region AI OCR** (`12172d01`, Migration `0049`): `415/415` test files (`9,326/9,326` tests) PASS, `admin:migration:matrix` `39/39` PASS.
+- [x] **Phase 3 — Multi-Currency Billing & Global OAuth (`Apple` / `LINE` / JWKS)** (`f89eb0d0`, Migration `0050`): `417/417` test files (`9,342/9,342` tests) PASS, `admin:migration:matrix` `39/39` PASS.
+- [x] **Phase 4 — EU Sovereign Cell (`--jurisdiction=eu`), 2-Phase GDPR/APPI Account Erasure, Art. 20 Data Export & Full E2E Certification** (`64de1f63`, Migration `0051`): `419/419` test files (`9,355/9,355` tests) PASS, `admin:migration:matrix` `39/39` PASS.
+- [x] **Workstream A — Unified Dodo Payments Merchant of Record (`dodo_mor` + `payos_vn`)**: `DodoPaymentsMoRAdapter`, Standard Webhooks (`whsec_` Base64 HMAC-SHA256) on `POST /api/v1/billing/dodo/webhook`, Customer Portal (`POST /api/v1/billing/global/portal`), JP Konbini async (`payment.processing` -> `awaiting_async_payment` -> `payment.succeeded`), Tokushoho & EU 14-day withdrawal waiver.
+- [x] **Workstream B — Tier-1 Frontend i18n (`en`, `ja`, `de`, `fr`, `vi`), Global UI Components & Multilingual Voice Sous-Chef**: `src/web/i18n/`, `Noto Sans JP` loader, `VoiceSousChef` (`vi-VN`, `ja-JP`, `en-GB`, `de-DE`, `fr-FR`), `GlobalExperienceHub.tsx`, Zero-Vietnamese-Leakage automated test gate.
+- [x] **Workstream C — Recipe Catalog Localization & Kana FTS5 Compiler**: `scripts/localize-catalog.mjs` (SHA-256 fingerprint-preserving, Hiragana reading gate, step-count parity gate, CAA/EU allergen gate).
+- [x] **Workstream D — Global Production Rollout Runbook**: `docs/handoff/GLOBAL_ROLLOUT_RUNBOOK.md`.
+- [ ] **HARD STOP**: Awaiting Product Owner inspection and explicit separate command before any push, remote D1 migration, or Staging/Production deployment.
+
+---
+
 ## Owner Decisions on CSS Audit — Executed - 2026-11-19 JST
 
 - [x] **Decision 1**: Regenerate the `/frigo/**` image set — 99/99 images generated (3D-clay, cream background, 512×512) at the exact `frigo-assets.ts` paths; `ingredient-images` test 7/7 PASS; C06 image verified rendering.

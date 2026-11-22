@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { listMigrations, renderSchemaGateSql, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1 } from '../../scripts/staging-family-migration-check.mjs';
 import {
-  baselineQuery, CONTENT_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
+  baselineQuery, CONTENT_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_CULINARY_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
   verifyBaselinePreserved, verifyCandidateChain, verifySchema,
 } from '../../scripts/staging-v2-migration-check.mjs';
 
@@ -38,11 +38,19 @@ function fixture() {
   return { receipt, write, read: () => JSON.parse(readFileSync(receipt, 'utf8')) };
 }
 
+const POST_0047_GATE_RE = /catalog_manifest|recipe_search_|trg_catalog_|idx_recipe_search_|idx_household_members_user_household|idx_shopping_lists_household_created|idx_scans_household_created|'locale'|'country_code'|'currency'|'timezone'|'week_start_day'|'is_default_name'|recipe_content_localizations|barcode_products|idx_recipe_content_localizations_|idx_barcode_products_|total_amount_minor|tax_amount_minor|discount_amount_minor|ai_region|unit_price_minor|total_price_minor|expiry_regime|'barcode'|storage_zone|energy_kj|saturated_fat_g|salt_g|edible_yield_ratio|global_payment_intents|billing_webhook_events|oauth_identities|idx_global_payment_intents_|idx_oauth_identities_|'subscriptions'|'provider'|provider_subscription_id|dodo_customer_id|billing_currency|cancel_at_period_end|grace_period_ends_at|privacy_requests|consent_records|financial_tax_archive|idx_privacy_requests_|idx_consent_records_|idx_financial_tax_archive_|erased_at/;
+
 function historicalContentSchemaGateSql() {
-  // Exercise 0046's contract; the current 0047 gate is checked separately below.
+  // Exercise 0046's contract; the 0047 and 0048 gates are checked separately below.
   return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
-    .filter(line => !/trg_meal_components_content_|generated_meal_plan_components.*recipe_content_fingerprint/.test(line))
+    .filter(line => !/trg_meal_components_content_|generated_meal_plan_components.*recipe_content_fingerprint/.test(line) && !POST_0047_GATE_RE.test(line))
     .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
+}
+
+function historicalSavedContentSchemaGateSql(migrations0047) {
+  return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
+    .filter(line => !POST_0047_GATE_RE.test(line))
+    .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, migrations0047.map(name => `    ('${name}')`).join(',\n'));
 }
 
 describe('bounded canonical staging 0045->0046 content archive certification', () => {
@@ -167,7 +175,7 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
   it('selects dispatch contract explicitly then binds every query and recheck to the receipt', () => {
     const workflow = load(readFileSync('.github/workflows/staging-v2-migrate.yml', 'utf8'));
     const input = workflow.on.workflow_dispatch.inputs.migration;
-    expect(input).toMatchObject({ type: 'choice', required: true, default: SAVED_CONTENT_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP] });
+    expect(input).toMatchObject({ type: 'choice', required: true, default: GLOBAL_PRIVACY_SOVEREIGN_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_CULINARY_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP] });
     const steps = workflow.jobs.certify.steps;
     const gates = steps.filter(step => step.env?.MIGRATION_TIP);
     expect(gates).toHaveLength(1);
@@ -241,7 +249,7 @@ describe('0045->0046->0047 saved content certification', () => {
       for (const name of migrations) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
       const post = [write('post-ledger.json', result(migrations.map(name => ({ name })))), fk, quick,
         write('after.json', capture()), write('schema.json', result(rows)),
-        write('gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+        write('gate.json', result(db.prepare(historicalSavedContentSchemaGateSql(migrations)).all()))];
       expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED',
         aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 47, tip }, schemaCheck: { constraints: 'PASS' } });
     } finally { db.close(); }

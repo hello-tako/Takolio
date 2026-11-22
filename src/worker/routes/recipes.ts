@@ -8,7 +8,9 @@ import { inventoryAuthorityFailure } from '../utils/inventory-authority';
 import { Env, AuthContext } from '../types';
 import { rankRecipes, evaluateRecipeMatch, CuisineType, type Recipe, type RecipeAuthoritySource } from '@frigo/recipes';
 import { areUnitsCompatible, convertUnit, findCanonicalIngredient, StandardUnit } from '@frigo/domain';
-import { SQL } from '@frigo/db';
+import { SQL, searchIndexedRecipes } from '@frigo/db';
+import { negotiateEdgeLocaleContext } from '../middleware/locale';
+import { normalizeMultilingualText, tokenizeMultilingualSearch } from '../../../packages/domain/src/i18n';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { tenancyGuard } from '../middleware/tenancy';
 import { CookingCompleteSchema } from '../validation/schemas';
@@ -224,11 +226,12 @@ recipeRoutes.get('/recipe-discovery', tenancyGuard, async (c) => {
 
 // GET /api/v1/recipes
 recipeRoutes.get('/recipes', async (c) => {
+  c.header('Vary', 'Accept-Language, CF-IPCountry, X-Takolio-Locale');
   const { snapshot } = await recipeAuthority(c);
   const cuisine = c.req.query('cuisine') as CuisineType | undefined;
   const category = c.req.query('category');
   const region = c.req.query('region');
-  const search = c.req.query('q')?.toLowerCase();
+  const rawSearch = c.req.query('q')?.trim();
 
   let list = snapshot.list();
   if (cuisine) {
@@ -240,14 +243,37 @@ recipeRoutes.get('/recipes', async (c) => {
   if (region) {
     list = list.filter((r) => r.region === region || r.region === 'toan_quoc');
   }
-  if (search) {
-    list = list.filter(
-      (r) =>
-        r.title.toLowerCase().includes(search) ||
-        r.description.toLowerCase().includes(search) ||
-        (r.tags && r.tags.some((t) => t.toLowerCase().includes(search))) ||
-        r.ingredients.some((i) => i.name.toLowerCase().includes(search))
-    );
+  if (rawSearch) {
+    const normalizedQuery = normalizeMultilingualText(rawSearch);
+    const queryTokens = tokenizeMultilingualSearch(rawSearch);
+    let ftsIds: Set<string> | null = null;
+    if (c.env.DB && snapshot.source === 'd1') {
+      try {
+        const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+        const ftsHits = await searchIndexedRecipes(c.env.DB, {
+          query: rawSearch,
+          locale: edgeLocale.locale,
+          fallbackLocales: ['en', 'vi', 'ja', 'de', 'fr', 'es', 'it'],
+          limit: 100,
+        });
+        if (ftsHits.length > 0) {
+          ftsIds = new Set(ftsHits.map((hit) => hit.recipeId));
+        }
+      } catch {
+        ftsIds = null;
+      }
+    }
+    list = list.filter((r) => {
+      if (ftsIds?.has(r.id)) return true;
+      const fields = [
+        r.title,
+        r.description,
+        ...(r.tags ?? []),
+        ...r.ingredients.map((i) => i.name),
+      ].map((f) => normalizeMultilingualText(f));
+      if (normalizedQuery && fields.some((f) => f.includes(normalizedQuery))) return true;
+      return queryTokens.length > 0 && queryTokens.every((tok) => fields.some((f) => f.includes(tok)));
+    });
   }
 
   // T14C: media is attached after the authority snapshot decided content and order; never before.

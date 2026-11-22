@@ -21,6 +21,7 @@ import {
   StandardUnit,
 } from '@frigo/domain';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
 import { InventoryCreateSchema, InventoryUpdateSchema } from '../validation/schemas';
 
@@ -486,6 +487,10 @@ export interface InventoryReadOptions {
    * compatibility reads for not-yet-adopted households do not need it.
    */
   actorId?: string;
+  /**
+   * Optional IANA timezone for local end-of-day civil freshness evaluation.
+   */
+  timeZone?: string;
 }
 
 export class InventoryReadError extends Error {
@@ -518,7 +523,11 @@ export async function fetchHouseholdInventoryFromDb(
   if (await readInventoryAuthorityMode(db, householdId) === 'native') {
     if (!options.actorId) throw new InventoryReadError('Authority read requires an authenticated actor');
     try {
-      const authority = await readInventoryAuthority(db, { householdId, actorId: options.actorId });
+      const authority = await readInventoryAuthority(
+        db,
+        { householdId, actorId: options.actorId },
+        options.timeZone ? { timeZone: options.timeZone } : {},
+      );
       return authority.items.map((item) => inventoryReadItemToApi(item, authority.inventoryVersion));
     } catch (err) {
       console.error('T11 authority read failed:');
@@ -563,7 +572,14 @@ inventoryRoutes.get('/inventory', async (c) => {
   const kv = c.env.CACHE;
 
   try {
-    const items = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, { strict: true, actorId: auth.userId });
+    const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+    const effectiveLocale = await resolveEffectiveLocaleContext(db, auth, edgeLocale);
+    const timeZone = effectiveLocale.source !== 'default' ? effectiveLocale.timeZone : undefined;
+    const items = await fetchHouseholdInventoryFromDb(db, auth.householdId, kv, {
+      strict: true,
+      actorId: auth.userId,
+      timeZone,
+    });
     return c.json({ items });
   } catch (err) {
     console.error('GET inventory unavailable:');
@@ -595,7 +611,15 @@ inventoryRoutes.post('/inventory', async (c) => {
   const ingredientId = canonical?.id || null;
   const category = body.category !== 'other' ? body.category : (canonical ? canonical.category : 'other');
   const unit = body.unit !== 'piece' ? body.unit : (canonical ? canonical.defaultUnit : 'piece');
-  const freshness = computeFreshness(body.expiryDate ?? undefined, undefined, canonical?.defaultShelfLifeDays || 7);
+  const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+  const effectiveLocale = await resolveEffectiveLocaleContext(db, auth, edgeLocale);
+  const activeTimeZone = effectiveLocale.source !== 'default' ? effectiveLocale.timeZone : undefined;
+  const freshness = computeFreshness(
+    body.expiryDate ?? undefined,
+    undefined,
+    canonical?.defaultShelfLifeDays || 7,
+    activeTimeZone ? { timeZone: activeTimeZone } : undefined,
+  );
 
   const newItem = {
     id: body.id || `item_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,

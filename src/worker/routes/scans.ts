@@ -6,7 +6,7 @@ import { inventoryAuthorityFailure } from '../utils/inventory-authority';
 import {
   lotExpiryFromEvidence, rawEvidenceAbsent, rawScanEvidence, receiptLineFacts, reviewedScanExpiry,
   scanCorrectionLine, scanProvenance,
-  type ExpiryBasis, type ScanProvenanceType,
+  type ExpiryBasis, type PurchasePriceMinor, type ScanProvenanceType,
 } from '../utils/scan-evidence';
 import { buildInventoryObservation, guardedObservationInsertStatement } from '../../../packages/db/src/inventory-observations';
 import { ObservationError } from '../../../packages/domain/src/inventory-observations';
@@ -23,8 +23,10 @@ import {
   StandardUnit,
 } from '@frigo/domain';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
 import { ipRateLimiter } from '../middleware/ip-rate-limit';
+import { formatLocalCalendarDate } from '../../../packages/domain/src/i18n';
 import { ScanConfirmSchema } from '../validation/schemas';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { getScanQuota, reserveScanQuota, finalizeScanQuota, type ScanReservationSpec } from '../services/scan-quota';
@@ -109,7 +111,7 @@ async function confirmAdoptedScan(c: Context<{ Bindings: Env; Variables: { auth:
     inserts: Array<{ id: string; quantity: number; unit: string; expiryDate: string; ingredientId: string | null; name: string; category: string; storage: string; expiryBasis: ExpiryBasis; lineIds: string[] }>;
     provenance: ScanProvenanceType;
     evidenceByItemId: Map<string, InventoryScanEvidence>;
-    purchase: { purchasedAt: string | null; purchasePriceFor: (lineIds: string[]) => { currency: 'VND'; amountMinor: number; minorDigits: 0 } | null };
+    purchase: { purchasedAt: string | null; purchasePriceFor: (lineIds: string[]) => PurchasePriceMinor | null };
     observations: Array<{ sourceRef: string; ingredientId: string | null; rawName: string | null;
       legacyItemId: string | null; quantity: number; unit: string; storage: 'fridge' | 'freezer' | 'pantry';
       expiryDate: string | null; expiryBasis: ExpiryBasis; note: string | null }>;
@@ -288,6 +290,9 @@ export interface PersistedScanItem {
   category?: string | null;
   storage?: string | null;
   is_confirmed?: number | boolean | null;
+  currency?: string | null;
+  unit_price_minor?: number | null;
+  total_price_minor?: number | null;
   unit_price_vnd?: number | null;
   total_price_vnd?: number | null;
   ocr_raw_name?: string | null;
@@ -1016,9 +1021,16 @@ scanRoutes.post('/scans/fridge', async (c) => {
   // 75-second request budget.
   let visionResult;
   try {
+    const edgeLocale = auth.locale ?? (c.req.header('Accept-Language') ? negotiateEdgeLocaleContext(c.req).locale : undefined);
+    const edgeCountry = auth.countryCode ?? (c.req.header('CF-IPCountry') || undefined);
     const aiRouter = getAIRouter(c.env, (promise) => c.executionCtx.waitUntil(promise));
     visionResult = await withScanTimeout(
-      (control) => aiRouter.vision({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }, control),
+      (control) => aiRouter.vision({
+        imageBase64OrUrl: image.dataUrl,
+        mimeType: image.mimeType,
+        ...(edgeLocale ? { locale: edgeLocale } : {}),
+        ...(edgeCountry ? { countryCode: edgeCountry } : {}),
+      }, control),
       75_000,
       'Phân tích ảnh quá lâu. Vui lòng thử lại.',
     );
@@ -1252,9 +1264,18 @@ scanRoutes.post('/scans/receipt', async (c) => {
 
   let receiptResult;
   try {
+    const edgeLocale = auth.locale ?? (c.req.header('Accept-Language') ? negotiateEdgeLocaleContext(c.req).locale : undefined);
+    const edgeCountry = auth.countryCode ?? (c.req.header('CF-IPCountry') || undefined);
+    const edgeCurrency = auth.currency ?? (edgeCountry ? negotiateEdgeLocaleContext(c.req).currency : undefined);
     const aiRouter = getAIRouter(c.env, (promise) => c.executionCtx.waitUntil(promise));
     receiptResult = await withScanTimeout(
-      (control) => aiRouter.receiptScan({ imageBase64OrUrl: image.dataUrl, mimeType: image.mimeType }, control),
+      (control) => aiRouter.receiptScan({
+        imageBase64OrUrl: image.dataUrl,
+        mimeType: image.mimeType,
+        ...(edgeLocale ? { locale: edgeLocale } : {}),
+        ...(edgeCountry ? { countryCode: edgeCountry } : {}),
+        ...(edgeCurrency ? { currency: edgeCurrency } : {}),
+      }, control),
       75_000,
       'Đọc hóa đơn quá lâu. Vui lòng thử lại.',
     );
@@ -1280,8 +1301,12 @@ scanRoutes.post('/scans/receipt', async (c) => {
     invoiceNumber: receiptResult.invoice_number,
     purchaseDate: receiptResult.purchase_date,
     totalAmountVnd: receiptResult.total_amount_vnd,
+    currency: receiptResult.currency,
+    totalAmountMinor: receiptResult.total_amount_minor,
     items: receiptResult.items.map((item, idx) => {
-      const canonical = findCanonicalIngredient(item.raw_name);
+      const canonical = findCanonicalIngredient(item.raw_name, {
+        includeGlobalLocales: Boolean(receiptResult.currency && receiptResult.currency !== 'VND'),
+      });
       const providerCanonical = item.canonical_id
         ? findCanonicalIngredientById(item.canonical_id)
         : null;
@@ -1293,6 +1318,12 @@ scanRoutes.post('/scans/receipt', async (c) => {
         unit: item.unit as StandardUnit,
         unitPriceVnd: item.unit_price_vnd,
         totalPriceVnd: item.total_price_vnd,
+        currency: item.currency ?? receiptResult.currency,
+        unitPriceMinor: item.unit_price_minor,
+        totalPriceMinor: item.total_price_minor,
+        discountAmountMinor: item.discount_amount_minor,
+        expiryRegime: item.expiry_regime,
+        storageZone: item.storage_zone,
         category: item.category || 'other',
         storage: item.storage || 'fridge',
         confidence: item.confidence,
@@ -1326,6 +1357,14 @@ scanRoutes.post('/scans/receipt', async (c) => {
         ),
     ];
 
+    if (receiptRecord.currency || receiptRecord.totalAmountMinor !== undefined) {
+      statements.push(
+        db
+          .prepare('UPDATE scans SET currency = ?, total_amount_minor = ? WHERE id = ? AND household_id = ?')
+          .bind(receiptRecord.currency ?? null, receiptRecord.totalAmountMinor ?? null, scanId, auth.householdId),
+      );
+    }
+
     for (const item of receiptRecord.items) {
       statements.push(
         db
@@ -1351,6 +1390,34 @@ scanRoutes.post('/scans/receipt', async (c) => {
             item.storage,
           )
       );
+      if (
+        item.currency ||
+        item.unitPriceMinor !== undefined ||
+        item.totalPriceMinor !== undefined ||
+        item.discountAmountMinor !== undefined ||
+        item.expiryRegime ||
+        item.storageZone
+      ) {
+        statements.push(
+          db
+            .prepare(
+              `UPDATE scan_items
+                  SET currency = ?, unit_price_minor = ?, total_price_minor = ?,
+                      discount_amount_minor = ?, expiry_regime = ?, storage_zone = ?
+                WHERE id = ? AND scan_id = ?`,
+            )
+            .bind(
+              item.currency ?? null,
+              item.unitPriceMinor ?? null,
+              item.totalPriceMinor ?? null,
+              item.discountAmountMinor ?? null,
+              item.expiryRegime ?? null,
+              item.storageZone ?? null,
+              item.id,
+              scanId,
+            ),
+        );
+      }
     }
 
     const batchResults = await db.batch(statements);
@@ -1637,9 +1704,19 @@ scanRoutes.post('/scans/:id/confirm', async (c) => {
         .map((item) => item.expiryDate)
         .filter((value): value is string => Boolean(value));
       const existingExpiry = existing?.expiry_date || null;
-      const expiryDate = [...submittedExpiries, ...(existingExpiry ? [existingExpiry] : [])]
-        .sort()[0] || new Date(Date.now() + shelfLife * 86400000).toISOString().split('T')[0];
-      const freshness = computeFreshness(expiryDate, undefined, shelfLife);
+      const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+      const activeTimeZone = edgeLocale.source !== 'default' ? edgeLocale.timeZone : undefined;
+      const fallbackExpiry = activeTimeZone
+        ? formatLocalCalendarDate(Date.now() + shelfLife * 86400000, activeTimeZone)
+        : new Date(Date.now() + shelfLife * 86400000).toISOString().split('T')[0];
+      const expiryDate =
+        [...submittedExpiries, ...(existingExpiry ? [existingExpiry] : [])].sort()[0] || fallbackExpiry;
+      const freshness = computeFreshness(
+        expiryDate,
+        undefined,
+        shelfLife,
+        activeTimeZone ? { timeZone: activeTimeZone } : undefined,
+      );
       // T13 expiry truth. The winning date decides the evidence class: a
       // reviewer-supplied date is KNOWN; a day-chip estimate or the default
       // shelf-life fallback is ESTIMATED. The pre-T13 code wrote every one of

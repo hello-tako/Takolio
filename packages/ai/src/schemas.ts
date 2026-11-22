@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { GLOBAL_CURRENCIES } from '@frigo/domain';
 import type { AIFailureDiagnostics } from './failure-diagnostics';
 
 export const StandardUnitSchema = z.enum([
@@ -12,6 +13,21 @@ export const StandardUnitSchema = z.enum([
   'slice'
 ]);
 
+export const StorageZoneSchema = z.enum([
+  'fridge',
+  'veg_crisper',
+  'chilled',
+  'freezer',
+  'pantry',
+]);
+
+export const ExpiryRegimeSchema = z.enum([
+  'USE_BY',
+  'BEST_BEFORE',
+  'ESTIMATED',
+  'UNKNOWN',
+]);
+
 export const DetectedIngredientSchema = z.object({
   raw_name: z.string().min(1, 'Tên nguyên liệu không được để trống').max(200),
   estimated_quantity: z.number().positive('Số lượng phải lớn hơn 0'),
@@ -22,6 +38,10 @@ export const DetectedIngredientSchema = z.object({
   canonical_id: z.string().max(100).optional(),
   category: z.string().max(80).optional(),
   storage: z.enum(['fridge', 'freezer', 'pantry']).optional().default('fridge'),
+  storage_zone: StorageZoneSchema.optional(),
+  expiry_date: z.string().optional(),
+  expiry_regime: ExpiryRegimeSchema.optional(),
+  barcode: z.string().regex(/^\d{8,14}$/).optional(),
 });
 
 export const VisionScanResultSchema = z.object({
@@ -34,9 +54,17 @@ export const ReceiptItemSchema = z.object({
   unit: StandardUnitSchema,
   unit_price_vnd: z.number().nonnegative().optional(),
   total_price_vnd: z.number().nonnegative().optional(),
+  currency: z.enum(GLOBAL_CURRENCIES).optional(),
+  unit_price_minor: z.number().int().safe().optional(),
+  total_price_minor: z.number().int().safe().optional(),
+  discount_amount_minor: z.number().int().safe().optional(),
   canonical_id: z.string().max(100).optional(),
   category: z.string().max(80).optional(),
   storage: z.enum(['fridge', 'freezer', 'pantry']).optional().default('fridge'),
+  storage_zone: StorageZoneSchema.optional(),
+  expiry_date: z.string().optional(),
+  expiry_regime: ExpiryRegimeSchema.optional(),
+  barcode: z.string().regex(/^\d{8,14}$/).optional(),
   // T13: a missing confidence is unknown, not high. Defaulting to 0.9 claimed
   // certainty the model never expressed, so absence must stay absent.
   confidence: z.number().min(0).max(1).optional(),
@@ -49,6 +77,10 @@ export const ReceiptScanResultSchema = z.object({
   invoice_number: z.string().max(120).optional(),
   purchase_date: z.string().max(40).optional(),
   total_amount_vnd: z.number().nonnegative().optional(),
+  currency: z.enum(GLOBAL_CURRENCIES).optional(),
+  total_amount_minor: z.number().int().nonnegative().safe().optional(),
+  tax_amount_minor: z.number().int().nonnegative().safe().optional(),
+  discount_amount_minor: z.number().int().safe().optional(),
   items: z.array(ReceiptItemSchema).max(50),
 });
 

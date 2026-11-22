@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { GLOBAL_CURRENCIES, currencyMinorDigits } from '@frigo/domain';
 import { StandardUnitSchema } from './schemas';
 
 const IdentifierSchema = z.string().min(1).max(128).regex(/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/);
@@ -106,8 +107,16 @@ export type ScanV3Field<T> =
 
 export const ScanV3MoneySchema = z.object({
   amountMinor: z.number().int().nonnegative().safe(),
-  currency: z.enum(['VND', 'JPY']),
-}).strict();
+  currency: z.enum(GLOBAL_CURRENCIES),
+  minorDigits: z.union([z.literal(0), z.literal(2)]).optional(),
+}).strict().superRefine((money, ctx) => {
+  const expectedMinorDigits = currencyMinorDigits(money.currency);
+  if (expectedMinorDigits > 0 && money.minorDigits !== expectedMinorDigits) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'SCAN_V3_MINOR_DIGITS_REQUIRED' });
+  } else if (expectedMinorDigits === 0 && money.minorDigits !== undefined && money.minorDigits !== 0) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'SCAN_V3_MINOR_DIGITS_MISMATCH' });
+  }
+});
 export type ScanV3Money = z.infer<typeof ScanV3MoneySchema>;
 const TextBases = ['source_extraction', 'visual_observation', 'user_review'] as const;
 const QuantityBases = ['source_extraction', 'visual_observation', 'user_review', 'evidence_conversion'] as const;

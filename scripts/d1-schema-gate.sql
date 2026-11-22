@@ -85,6 +85,17 @@ required_tables(name) AS (
     ,('recipe_content_versions')
     ,('recipe_content_access')
     ,('generated_meal_plan_components')
+    ,('catalog_manifest')
+    ,('recipe_search_documents')
+    ,('recipe_search_fts')
+    ,('recipe_content_localizations')
+    ,('barcode_products')
+    ,('global_payment_intents')
+    ,('billing_webhook_events')
+    ,('oauth_identities')
+    ,('privacy_requests')
+    ,('consent_records')
+    ,('financial_tax_archive')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -294,11 +305,112 @@ required_columns(table_name, column_name) AS (
     ,('recipe_content_access', 'fingerprint')
     ,('recipe_content_access', 'created_at')
     ,('generated_meal_plan_components', 'recipe_content_fingerprint')
+    ,('user_preferences', 'locale')
+    ,('user_preferences', 'country_code')
+    ,('user_preferences', 'currency')
+    ,('user_preferences', 'timezone')
+    ,('user_preferences', 'week_start_day')
+    ,('households', 'locale')
+    ,('households', 'country_code')
+    ,('households', 'currency')
+    ,('households', 'timezone')
+    ,('households', 'week_start_day')
+    ,('households', 'is_default_name')
+    ,('shopping_lists', 'is_default_name')
+    ,('catalog_manifest', 'catalog_revision')
+    ,('catalog_manifest', 'manifest_token')
+    ,('recipe_search_documents', 'recipe_id')
+    ,('recipe_search_documents', 'locale')
+    ,('recipe_search_documents', 'normalized_title')
+    ,('recipe_search_documents', 'search_tokens')
+    ,('recipe_content_localizations', 'fingerprint')
+    ,('recipe_content_localizations', 'locale')
+    ,('recipe_content_localizations', 'localized_slug')
+    ,('recipe_content_localizations', 'title')
+    ,('recipe_content_localizations', 'steps_json')
+    ,('barcode_products', 'barcode')
+    ,('barcode_products', 'barcode_symbology')
+    ,('barcode_products', 'product_name')
+    ,('barcode_products', 'allergen_tags_json')
+    ,('barcode_products', 'expires_at')
+    ,('scans', 'currency')
+    ,('scans', 'total_amount_minor')
+    ,('scans', 'tax_amount_minor')
+    ,('scans', 'discount_amount_minor')
+    ,('scans', 'ai_region')
+    ,('scan_items', 'currency')
+    ,('scan_items', 'unit_price_minor')
+    ,('scan_items', 'total_price_minor')
+    ,('scan_items', 'discount_amount_minor')
+    ,('scan_items', 'expiry_regime')
+    ,('scan_items', 'barcode')
+    ,('scan_items', 'storage_zone')
+    ,('nutrition_profiles', 'energy_kj')
+    ,('nutrition_profiles', 'saturated_fat_g')
+    ,('nutrition_profiles', 'salt_g')
+    ,('nutrition_profiles', 'edible_yield_ratio')
+    ,('global_payment_intents', 'provider')
+    ,('global_payment_intents', 'currency')
+    ,('global_payment_intents', 'amount_minor')
+    ,('global_payment_intents', 'minor_digits')
+    ,('global_payment_intents', 'eu_withdrawal_waiver_at')
+    ,('global_payment_intents', 'status')
+    ,('billing_webhook_events', 'provider')
+    ,('billing_webhook_events', 'event_id')
+    ,('oauth_identities', 'user_id')
+    ,('oauth_identities', 'provider')
+    ,('oauth_identities', 'provider_subject')
+    ,('oauth_identities', 'is_private_relay')
+    ,('subscriptions', 'provider')
+    ,('subscriptions', 'provider_subscription_id')
+    ,('subscriptions', 'dodo_customer_id')
+    ,('subscriptions', 'billing_currency')
+    ,('subscriptions', 'cancel_at_period_end')
+    ,('subscriptions', 'grace_period_ends_at')
+    ,('privacy_requests', 'subject_hash')
+    ,('privacy_requests', 'request_type')
+    ,('privacy_requests', 'jurisdiction')
+    ,('privacy_requests', 'status')
+    ,('privacy_requests', 'r2_keys_json')
+    ,('privacy_requests', 'deadline_at')
+    ,('consent_records', 'user_id')
+    ,('consent_records', 'consent_type')
+    ,('consent_records', 'policy_version')
+    ,('consent_records', 'granted')
+    ,('consent_records', 'jurisdiction')
+    ,('financial_tax_archive', 'source_intent_hash')
+    ,('financial_tax_archive', 'provider')
+    ,('financial_tax_archive', 'amount_minor')
+    ,('financial_tax_archive', 'country_code')
+    ,('financial_tax_archive', 'retention_until')
+    ,('users', 'erased_at')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
+    ('index', 'idx_privacy_requests_status_deadline'),
+    ('index', 'idx_consent_records_user_type'),
+    ('index', 'idx_financial_tax_archive_retention'),
+    ('index', 'idx_global_payment_intents_user_idem'),
+    ('index', 'idx_global_payment_intents_provider_session'),
+    ('index', 'idx_global_payment_intents_provider_ref'),
+    ('index', 'idx_global_payment_intents_user_status'),
+    ('index', 'idx_oauth_identities_user'),
+    ('index', 'idx_recipe_content_localizations_locale_slug'),
+    ('index', 'idx_barcode_products_ingredient'),
+    ('index', 'idx_barcode_products_expires_at'),
+    ('trigger', 'trg_catalog_manifest_no_delete'),
+    ('trigger', 'trg_catalog_rev_recipes_ins'),
+    ('trigger', 'trg_catalog_rev_recipes_upd'),
+    ('trigger', 'trg_catalog_rev_recipes_del'),
+    ('trigger', 'trg_recipe_search_docs_ins'),
+    ('trigger', 'trg_recipe_search_docs_upd'),
+    ('trigger', 'trg_recipe_search_docs_del'),
+    ('index', 'idx_recipe_search_docs_locale_title'),
+    ('index', 'idx_household_members_user_household'),
+    ('index', 'idx_shopping_lists_household_created'),
+    ('index', 'idx_scans_household_created'),
     ('trigger', 'trg_meal_components_content_insert'),
     ('trigger', 'trg_meal_components_content_update'),
     ('index', 'idx_recipe_content_versions_recipe'),
