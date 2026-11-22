@@ -53,7 +53,7 @@ export const TkvButton: React.FC<TkvButtonProps> = ({
     type={type}
     disabled={disabled || isLoading}
     className={clsx(
-      'tkv-focusable tkv-tactile inline-flex items-center justify-center gap-2 font-semibold active:scale-[0.985] select-none disabled:opacity-50 disabled:cursor-not-allowed',
+      'tkv-focusable tkv-tactile inline-flex items-center justify-center gap-2 font-bold tracking-[0.005em] [word-spacing:0.06em] active:scale-[0.985] select-none disabled:opacity-50 disabled:cursor-not-allowed',
       BUTTON_VARIANTS[variant],
       BUTTON_SIZES[size],
       fullWidth && 'w-full',
@@ -299,7 +299,10 @@ export const TkvSearchField: React.FC<{
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="tkv-focusable w-full min-h-[48px] pl-11 pr-11 py-2.5 rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] focus:border-[var(--tkv-primary)] text-base text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] shadow-xs transition-colors"
+        className={clsx(
+          'tkv-focusable w-full min-h-[48px] pl-10 py-2.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] focus:border-[var(--tkv-primary)] text-sm sm:text-base text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] shadow-xs transition-colors',
+          value ? 'pr-11' : 'pr-4',
+        )}
       />
       {value && (
         <button

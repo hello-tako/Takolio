@@ -174,23 +174,25 @@ describe('Primary vNext shell renders Takolio Kitchen Studio, not Frigo', () => 
   const render = (ui: React.ReactElement, path = '/') =>
     renderToStaticMarkup(<StaticRouter location={path}>{ui}</StaticRouter>);
 
-  it('M01LandingPilot shows the Kitchen Studio Direction A identity with zero Frigo copy', () => {
+  it('M01LandingPilot shows the Official Takolio Brand Board v2 identity with zero Frigo copy', () => {
     const html = render(<M01LandingPilot />, '/landing');
-    expect(html).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
-    expect(html).toContain('Hôm nay ăn gì?');
+    expect(html).toContain('/takolio/brand-v2/brand/takolio-logo-mark');
+    expect(html).toContain('Bữa ngon,');
+    expect(html).toContain('nhẹ đầu.');
+    expect(html).toContain('Ăn đủ. Mua đủ. Dùng hết.');
     expect(html).not.toContain('Frigo');
     expect(html).not.toContain('/frigo/brand/');
   });
 
-  it('PublicMarketingShell and ConsumerStudioShell use the vNext lockup and 5-root navigation grammar', () => {
+  it('PublicMarketingShell and ConsumerStudioShell use the Brand Board v2 lockup and 5-root navigation grammar', () => {
     const pub = render(<PublicMarketingShell screenId="M01"><div>Nội dung</div></PublicMarketingShell>, '/landing');
-    expect(pub).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
+    expect(pub).toContain('/takolio/brand-v2/brand/takolio-logo-mark');
     expect(pub).toContain('alt="Takolio"');
     expect(pub).not.toContain('frigo-logo');
 
     const studio = render(<ConsumerStudioShell screenId="C01"><div>Bếp</div></ConsumerStudioShell>, '/');
-    expect(studio).toContain('/takolio/vnext/brand/lockup-direction-a.svg');
-    for (const label of ['Hôm nay', 'Tủ lạnh', 'Món ăn', 'Thực đơn', 'Tôi']) {
+    expect(studio).toContain('/takolio/brand-v2/brand/takolio-logo-mark');
+    for (const label of ['Trang chủ', 'Tủ lạnh', 'Thực đơn', 'Mua sắm', 'Cá nhân']) {
       expect(studio).toContain(label);
     }
     expect(studio).toContain('aria-current="page"');

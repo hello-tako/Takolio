@@ -1,96 +1,141 @@
-/* Takolio Sunlit Ceramic & Terracotta Herb Edition ("Nắng Bếp Gốm Sứ")
- * Bright, airy, gentle, modern culinary design tokens inspired by sunlit ceramic,
- * woven linen, warm terracotta cookware, and fresh sage herbs.
- * Applied globally on :root and .tkv-root so portals, modals, sheets, and
- * adapted domain surfaces share a unified, deterministic token cascade.
+/* Takolio Official Brand Board v2 — Leaf Green, Tomato Coral, Saffron Yellow & Warm Ivory
+ * Authority: /Users/tunbee27/takolio-brand-handoff/BRAND-BOARD-BRIEF.md + board.jpg + board-2.jpg
+ * Palette:
+ *   Leaf Green   #196149 (Chính)
+ *   Tomato Coral #F46B52 (Nhấn)
+ *   Saffron      #F6C453 (Hỗ trợ)
+ *   Warm Ivory   #FFF9F1 (Nền)
+ *   Deep Ink     #152E2C (Chữ / Đậm)
+ *   Mint         #E7F4EC (Nền phụ / chip)
+ *   Coral Light  #FFF0E9 (Nền phụ / chip)
+ * Typography:
+ *   Headings: Nunito Rounded (ExtraBold 800 / Black 900)
+ *   Body/UI:  Plus Jakarta Sans (400–700)
  */
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-vietnamese-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: 'Takolio Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC;
+}
+
+@font-face {
+  font-family: 'Takolio Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url('/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2') format('woff2-variations');
+}
 
 :root,
 .tkv-root,
 .tkv-root[data-tkv-direction='a'] {
-  /* Sunlit Porcelain & Woven Linen Surfaces */
-  --tkv-bg: #fcf9f5;
+  /* Official Brand Board Surfaces */
+  --tkv-bg: #fff9f1;
   --tkv-surface: #ffffff;
-  --tkv-surface-subtle: #f7efe6;
-  --tkv-surface-inverse: #fff6f0;
+  --tkv-surface-subtle: #f4efe4;
+  --tkv-surface-muted: #f4efe4;
+  --tkv-surface-inverse: #e7f4ec;
 
-  /* Culinary Tonal Washes (Sage Herb, Honey Butter, Terracotta Blush) */
-  --tkv-surface-mint: #eef5f0;
-  --tkv-surface-saffron: #fcf5e6;
-  --tkv-surface-coral: #fdf0ea;
-  --tkv-surface-danger: #fdf1f0;
+  /* Secondary Brand Tints & Chips */
+  --tkv-surface-mint: #e7f4ec;
+  --tkv-surface-coral: #fff0e9;
+  --tkv-surface-saffron: #fff5d6;
+  --tkv-surface-danger: #fff0ec;
 
-  /* Primary Culinary CTA & Brand: Warm Terracotta Clay */
-  --tkv-primary: #d86a43;
-  --tkv-primary-hover: #c25731;
-  --tkv-primary-cta-hover: #c25731;
-  --tkv-primary-deep: #9e4120;
+  /* Primary Brand Color: Leaf Green #196149 (7.38:1 vs #FFFFFF — WCAG AAA) */
+  --tkv-primary: #196149;
+  --tkv-primary-hover: #134c39;
+  --tkv-primary-cta-hover: #134c39;
+  --tkv-primary-deep: #0e3b2c;
 
-  /* Culinary Accents */
-  --tkv-accent: #d86a43;
-  --tkv-coral: #d86a43;
-  --tkv-coral-cta: #d86a43;
-  --tkv-coral-cta-hover: #c25731;
-  --tkv-saffron: #c68634;
+  /* Accent & Support Brand Colors: Tomato Coral #F46B52 & Saffron Yellow #F6C453 */
+  --tkv-accent: #f46b52;
+  --tkv-coral: #f46b52;
+  --tkv-coral-cta: #c8432b; /* Hardened white-text small CTA = 5.38:1 WCAG AA */
+  --tkv-coral-cta-hover: #ad3620;
+  --tkv-saffron: #f6c453;
 
-  /* Warm Espresso Walnut & Oolong Taupe Typography (never stark #000000) */
-  --tkv-ink: #2c221e;
-  --tkv-ink-secondary: #5f524a;
-  --tkv-ink-muted: #87776e;
+  /* Deep Ink Typography (#152E2C = 13.9:1 vs #FFF9F1 — WCAG AAA) */
+  --tkv-ink: #152e2c;
+  --tkv-ink-secondary: #3c5954;
+  --tkv-ink-soft: #3c5954;
+  --tkv-ink-muted: #52706a;
 
-  /* Warm Sand Glaze Hairlines */
-  --tkv-border: #eae0d5;
-  --tkv-border-strong: #d5c3b3;
-  --tkv-border-mint: #cfe2d5;
-  --tkv-border-saffron: #edd9b4;
-  --tkv-border-coral: #f2d5c7;
-  --tkv-border-hero: #ebcbb9;
-  --tkv-border-danger: #f2cecb;
-  --tkv-surface-subtle-hover: #efe3d5;
-  --tkv-header-glass: rgba(252, 249, 245, 0.92);
-  --tkv-nav-glass: rgba(252, 249, 245, 0.95);
-  --tkv-scrim: rgba(44, 34, 30, 0.30);
-  --tkv-shadow-cta: 0 2px 10px rgba(216, 106, 67, 0.22);
+  /* Soft Leaf & Ivory Hairlines */
+  --tkv-border: #dce6de;
+  --tkv-border-strong: #b8cabe;
+  --tkv-border-mint: #bde0cc;
+  --tkv-border-coral: #fad0c4;
+  --tkv-border-saffron: #f5de93;
+  --tkv-border-hero: #c6e3d2;
+  --tkv-border-danger: #f6c6bf;
+  --tkv-surface-subtle-hover: #e7f4ec;
+  --tkv-header-glass: rgba(255, 249, 241, 0.92);
+  --tkv-nav-glass: rgba(255, 255, 255, 0.96);
+  --tkv-scrim: rgba(21, 46, 44, 0.34);
+  --tkv-shadow-cta: 0 4px 14px rgba(25, 97, 73, 0.24);
 
-  /* Culinary Semantic Status & Pill Text Colors */
-  --tkv-success: #4e7a5b;
-  --tkv-success-ink: #325940;
-  --tkv-warning: #c68634;
-  --tkv-warning-ink: #8a5a19;
-  --tkv-danger: #c2463a;
-  --tkv-danger-ink: #a33329;
-  --tkv-coral-ink: #9e4120;
-  --tkv-focus: #4e7a5b;
+  /* Semantic Status & Pill Ink */
+  --tkv-success: #196149;
+  --tkv-success-ink: #134c39;
+  --tkv-warning: #8a5205;
+  --tkv-warning-ink: #724303;
+  --tkv-danger: #ba2f38;
+  --tkv-danger-ink: #99222a;
+  --tkv-coral-ink: #b33a22;
+  --tkv-focus: #196149;
 
-  /* Compatibility aliases so any legacy --sumi-* references resolve warmly */
-  --sumi-bg: #fcf9f5;
-  --sumi-surface: #ffffff;
-  --sumi-subtle: #f7efe6;
-  --sumi-ink: #2c221e;
-  --sumi-ink-secondary: #5f524a;
-  --sumi-ink-muted: #87776e;
-  --sumi-border: #eae0d5;
-  --sumi-accent: #cf623a;
+  /* Adapted surface token aliases -> Official Brand Board v2 */
+  --sumi-ink: #196149;
+  --sumi-ink-hover: #134c39;
+  --sumi-muted: #52706a;
+  --sumi-border: #dce6de;
+  --sumi-border-strong: #b8cabe;
+  --sumi-canvas: #fff9f1;
+  --sumi-paper: #fff9f1;
+  --sumi-dot: #f46b52;
 
-  /* Standardized Geometry & 4-Tier Warm Ceramic Elevation (Design System v2) */
-  --tkv-radius-card: 20px;
+  /* Rounded Geometry & Soft Kitchen Studio Shadows (per Brand Board §4) */
+  --tkv-radius-card: 22px;
   --tkv-radius-bento: 24px;
   --tkv-radius-btn: 14px;
   --tkv-radius-pill: 999px;
-  --tkv-shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 1px 3px rgba(66, 44, 33, 0.04), 0 8px 22px rgba(66, 44, 33, 0.035);
-  --tkv-shadow-interactive: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 4px 14px rgba(66, 44, 33, 0.055), 0 14px 28px rgba(66, 44, 33, 0.05);
-  --tkv-shadow-elevated: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 8px 24px rgba(66, 44, 33, 0.065), 0 18px 38px rgba(66, 44, 33, 0.06);
-  --tkv-shadow-float: 0 14px 36px rgba(66, 44, 33, 0.11), 0 3px 10px rgba(66, 44, 33, 0.05);
+  --tkv-shadow-card: 0 2px 10px rgba(21, 46, 44, 0.045), 0 10px 28px rgba(21, 46, 44, 0.035);
+  --tkv-shadow-interactive: 0 6px 18px rgba(25, 97, 73, 0.09), 0 14px 30px rgba(21, 46, 44, 0.05);
+  --tkv-shadow-elevated: 0 10px 28px rgba(25, 97, 73, 0.1), 0 20px 42px rgba(21, 46, 44, 0.06);
+  --tkv-shadow-float: 0 12px 32px rgba(25, 97, 73, 0.18);
 
-  /* Fluid Vietnamese Editorial Typography Scale */
-  --tkv-text-display: clamp(2.25rem, 4.1vw, 3.55rem);
-  --tkv-text-h1: clamp(1.85rem, 3.1vw, 2.7rem);
+  /* Fluid Vietnamese Typography Scale */
+  --tkv-text-display: clamp(2.25rem, 4.2vw, 3.6rem);
+  --tkv-text-h1: clamp(1.75rem, 3vw, 2.6rem);
   --tkv-text-h2: clamp(1.35rem, 2.1vw, 1.85rem);
-  --tkv-text-lead: clamp(1rem, 1.25vw, 1.15rem);
+  --tkv-text-lead: clamp(1rem, 1.2vw, 1.15rem);
 
-  /* Consolidated Self-Hosted Vietnamese Typography */
-  --tkv-font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --tkv-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Official Brand Board Fonts: Nunito Rounded (Headings) + Plus Jakarta Sans (Body/UI) */
+  --tkv-font-heading: 'Takolio Nunito', 'Nunito', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
 
 .tkv-root {
@@ -104,35 +149,21 @@
 
 .tkv-heading {
   font-family: var(--tkv-font-heading);
-  letter-spacing: -0.024em;
-  line-height: 1.16;
+  font-weight: 800;
+  letter-spacing: -0.018em;
+  line-height: 1.18;
 }
 
 .tkv-display {
   font-family: var(--tkv-font-heading);
   font-size: var(--tkv-text-display);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  font-weight: 900;
 }
 
 .tkv-tabular {
   font-variant-numeric: tabular-nums;
-}
-
-.tkv-hero-ceramic {
-  background-image: linear-gradient(135deg, #fffdfb 0%, #fff6f0 55%, #f9eae0 100%);
-  color: var(--tkv-ink);
-  border: 1px solid var(--tkv-border-hero);
-  box-shadow: var(--tkv-shadow-elevated);
-}
-
-.tkv-glass-ceramic {
-  background-color: rgba(252, 249, 245, 0.84);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(234, 224, 213, 0.9);
-  box-shadow: var(--tkv-shadow-card);
 }
 
 .tkv-bento-card {
@@ -140,12 +171,18 @@
   background-color: var(--tkv-surface);
   border: 1px solid var(--tkv-border);
   box-shadow: var(--tkv-shadow-card);
-  transition: transform 220ms cubic-bezier(0.2, 0, 0, 1), box-shadow 220ms cubic-bezier(0.2, 0, 0, 1), border-color 180ms ease;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms cubic-bezier(0.2, 0, 0, 1), border-color 160ms ease;
 }
 
 .tkv-bento-card:hover {
-  border-color: var(--tkv-border-strong);
+  border-color: var(--tkv-border-mint);
   box-shadow: var(--tkv-shadow-interactive);
+}
+
+/* Soft green wave / hill section accent per Brand Board §4 */
+.tkv-leaf-wave-band {
+  background-image: radial-gradient(120% 90% at 15% 105%, #e7f4ec 0%, rgba(231, 244, 236, 0) 65%),
+    radial-gradient(110% 85% at 88% 108%, #d4eedd 0%, rgba(212, 238, 221, 0) 62%);
 }
 
 .tkv-skip-link {
@@ -167,7 +204,7 @@
 
 .tkv-skip-link:focus {
   top: 12px;
-  outline: 2px solid var(--tkv-focus);
+  outline: 3px solid var(--tkv-focus);
   outline-offset: 2px;
 }
 

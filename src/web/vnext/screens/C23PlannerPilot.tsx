@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { clsx } from 'clsx';
 import type { PlannedMealDto } from '../../../../packages/domain/src/meal-planning-api';
 import { useAuthStore } from '../../stores/useAuthStore';
-
-const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
-function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
-  const trimmed = (raw ?? '').trim();
-  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
-  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
-  return raw as string;
-}
 import { usePlanner } from '../../features/planner/usePlanner';
 import { plannerStatusLabel } from '../../features/planner/presentation';
 import { ConsumerStudioShell } from '../components/Shells';
@@ -21,13 +14,28 @@ import {
   TkvSurface,
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
-import { VerifiedDishImage } from '../components/VNextMedia';
+import {
+  BrandFeatureIcon,
+  MascotIllustration,
+  VerifiedDishImage,
+} from '../components/VNextMedia';
+import { useVNextSeo } from '../lib/seo';
+
+const LEGACY_NAME_RE = /\bFri\w*\b/i;
+function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+  const trimmed = (raw ?? '').trim();
+  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
+  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  return raw as string;
+}
 
 const MEAL_LABELS: Record<'breakfast' | 'lunch' | 'dinner', string> = {
   breakfast: 'Bữa sáng',
   lunch: 'Bữa trưa',
   dinner: 'Bữa tối',
 };
+
+const WEEKDAY_PILLS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'] as const;
 
 function formatDayHeadingVi(isoDate: string): string {
   const parsed = new Date(`${isoDate}T00:00:00Z`);
@@ -58,10 +66,10 @@ function resolvePlannedMealSlug(meal: PlannedMealDto): string {
 }
 
 /**
- * C23 — Thực đơn tuần (Sunlit Ceramic & Terracotta Herb Live Pilot).
- * Sunlit Ceramic & Linen weekly workbench (`#FCF9F5` / `#FFFFFF` / `#D86A43` + `tabular-nums`),
- * resolving every planned dish's real recipe slug/image without hardcoded dish fallbacks.
- * Preserves guest RegisteredAccountPrompt, `usePlanner` server truth, and `/week` compatibility.
+ * C23 — Thực đơn 7 ngày (Official Takolio Brand Board v2).
+ * Matches `board.jpg` & `board-2.jpg` right phone mockup (`T2..CN` pill selector,
+ * day meal preview cards, full-width Leaf Green CTA, `+ Tạo thực đơn mới`, and
+ * Coral `Danh sách mua sắm` row) while preserving 100% of `usePlanner` server truth.
  */
 export const C23PlannerPilot: React.FC = () => {
   const { planId } = useParams<{ planId?: string }>();
@@ -71,11 +79,19 @@ export const C23PlannerPilot: React.FC = () => {
   const displayName = useAuthStore((s) => s.displayName);
   const cleanName = sanitizeUserDisplayName(displayName, isGuest);
   const returnTo = `${location.pathname}${location.search}`;
+  const [selectedDayIdx, setSelectedDayIdx] = useState(0);
+
+  useVNextSeo({
+    title: 'Thực đơn 7 ngày — Takolio',
+    description: 'Cân bằng dinh dưỡng cho cả gia đình và tự động tạo danh sách mua sắm thông minh.',
+    canonicalPath: '/planner',
+    domainSurface: 'app',
+    noindex: true,
+  });
 
   const model = usePlanner(planId, !isGuest);
   const plan = model.plan;
 
-  // Group planned meals by date for clean mobile stack & desktop calendar grid
   const mealsByDate = new Map<string, PlannedMealDto[]>();
   if (plan) {
     for (const meal of plan.result.meals) {
@@ -85,63 +101,163 @@ export const C23PlannerPilot: React.FC = () => {
     }
   }
   const orderedDates = Array.from(mealsByDate.keys()).sort();
-  const featuredMeal = plan?.result.meals[0];
-  const featuredSlug = featuredMeal ? resolvePlannedMealSlug(featuredMeal) : '';
+  const activeDateKey = orderedDates[selectedDayIdx] ?? orderedDates[0] ?? null;
+  const activeDayMeals = activeDateKey ? mealsByDate.get(activeDateKey) ?? [] : [];
+  const missingShoppingCount = plan
+    ? new Set(
+        plan.result.meals.flatMap((m) =>
+          m.requirements
+            .filter((r) => !r.optional && r.status !== 'satisfied')
+            .map((r) => r.ingredientId),
+        ),
+      ).size
+    : 0;
+  const activeDayLabel =
+    selectedDayIdx === 6 ? 'Chủ nhật' : `Thứ ${selectedDayIdx + 2}`;
 
   return (
-    <ConsumerStudioShell screenId="C23" title="Thực đơn tuần">
-      <div className="space-y-6">
-        {/* Page Heading */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-          <div>
-            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
-              {isGuest ? 'Hoạch định bữa ăn gia đình' : `Bếp của ${cleanName} · Hoạch định tuần`}
-            </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
-              Thực đơn tuần
-            </h1>
+    <ConsumerStudioShell screenId="C23" title="Thực đơn 7 ngày">
+      <div className="space-y-4 sm:space-y-6">
+        {/* Top Brand Board Heading (`board-2.jpg` right screen) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3.5">
+            <BrandFeatureIcon name="planner" size={48} />
+            <div>
+              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+                Thực đơn 7 ngày
+              </h1>
+              <p className="text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5">
+                {isGuest || plan
+                  ? 'Cân bằng dinh dưỡng cho cả gia đình'
+                  : `Bếp của ${cleanName} · Cân bằng dinh dưỡng cho cả gia đình`}
+              </p>
+            </div>
           </div>
+
           {!isGuest && (
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="hidden sm:flex flex-wrap items-center gap-2.5">
               <TkvButton
                 variant="primary"
                 size="sm"
                 iconLeft="plus"
                 onClick={() => navigate('/planner/new')}
               >
-                Lập thực đơn mới
+                Tạo thực đơn mới
               </TkvButton>
               {plan && (
                 <Link
                   to={`/planner/${plan.id}/shopping`}
-                  className="tkv-focusable min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-sm font-semibold inline-flex items-center gap-1.5 transition-colors"
+                  className="tkv-focusable min-h-[44px] px-4 py-2 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral-ink)] text-sm font-extrabold inline-flex items-center gap-1.5 transition-colors"
                 >
                   <VNextIcon name="shopping" size={16} />
-                  <span>Đi chợ theo tuần</span>
+                  <span>Danh sách mua sắm</span>
                 </Link>
               )}
             </div>
           )}
         </div>
 
-        {/* Guest Gate — preserves exact PlannerPage contract */}
+        {/* 7-Day `T2 · T3 · T4 · T5 · T6 · T7 · CN` Pill Selector (`board.jpg` & `board-2.jpg` right phone!) */}
+        <div
+          role="group"
+          aria-label="Chọn thứ trong tuần"
+          className="grid grid-cols-7 gap-1.5 sm:gap-2.5 max-w-xl"
+        >
+          {WEEKDAY_PILLS.map((dayLabel, idx) => {
+            const active = selectedDayIdx === idx;
+            return (
+              <button
+                key={dayLabel}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setSelectedDayIdx(idx)}
+                className={clsx(
+                  'tkv-focusable min-h-[44px] rounded-full text-xs sm:text-sm font-extrabold flex items-center justify-center transition-colors border',
+                  active
+                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-cta)]'
+                    : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
+                )}
+              >
+                {dayLabel}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Guest Gate vs Loading vs Error vs Empty Plan vs Active Weekly Schedule */}
         {isGuest ? (
-          <TkvEmptyState
-            pose="guide"
-            eyebrow="Yêu cầu tài khoản đã đăng ký"
-            title="Đăng nhập để tạo và lưu thực đơn tuần"
-            description="Thực đơn tuần được đồng bộ theo tài khoản hộ gia đình đã xác thực. Trong phiên khách, bạn vẫn có thể quản lý tủ lạnh và xem kho công thức."
-            primaryAction={
+          <div className="space-y-4">
+            <TkvSurface className="p-5 sm:p-6 space-y-5 bg-[var(--tkv-surface)]">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <MascotIllustration pose="shopping" size={96} className="w-24 h-24 shrink-0" />
+                  <div className="space-y-1.5">
+                    <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)]">
+                      {WEEKDAY_PILLS[selectedDayIdx]} · Đồng bộ hộ gia đình
+                    </span>
+                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+                      Đăng nhập để tạo và lưu thực đơn 7 ngày
+                    </h2>
+                    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                      Thực đơn tuần được đồng bộ theo tài khoản để tự động đối chiếu tủ lạnh và tổng hợp danh sách mua sắm thông minh cho cả nhà.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <Link
                 data-testid="planner-login-cta"
                 to={`/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`}
-                className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-semibold text-sm inline-flex items-center gap-2 transition-colors"
+                className="tkv-focusable w-full min-h-[50px] px-5 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-[var(--tkv-shadow-cta)] font-extrabold text-sm inline-flex items-center justify-center gap-2 transition-colors"
               >
-                <span>Đăng nhập để tiếp tục</span>
-                <VNextIcon name="arrow-right" size={16} />
+                <span>Đăng nhập để lập thực đơn 7 ngày</span>
+                <VNextIcon name="chevron-right" size={16} />
               </Link>
-            }
-          />
+            </TkvSurface>
+
+            {/* Action Rows matching `board-2.jpg` right phone bottom rows */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                to={`/auth?mode=login&returnTo=${encodeURIComponent('/planner/new')}`}
+                className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center font-extrabold">
+                    <VNextIcon name="plus" size={18} />
+                  </span>
+                  <div>
+                    <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                      Tạo thực đơn mới
+                    </p>
+                    <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                      Tuỳ chỉnh số bữa & khẩu phần gia đình
+                    </p>
+                  </div>
+                </div>
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+              </Link>
+
+              <Link
+                to="/shopping"
+                className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-10 h-10 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center">
+                    <VNextIcon name="shopping" size={18} />
+                  </span>
+                  <div>
+                    <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                      Danh sách mua sắm
+                    </p>
+                    <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                      Mở giỏ đi chợ hiện tại của bạn
+                    </p>
+                  </div>
+                </div>
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+              </Link>
+            </div>
+          </div>
         ) : model.query.isPending ? (
           <div className="space-y-4">
             <TkvSkeleton className="h-36" label="Đang tải thực đơn tuần…" />
@@ -155,114 +271,154 @@ export const C23PlannerPilot: React.FC = () => {
             onRetry={() => void model.query.refetch()}
           />
         ) : !plan ? (
-          <div className="space-y-5">
-            {/* Airy Sunlit Warm Ceramic & Linen Hero Banner before first plan is generated */}
-            <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-[var(--tkv-ink,#2C221E)] shadow-soft">
-              <div className="space-y-2 max-w-xl">
-                <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
-                  <span>Chưa có kế hoạch tuần đang mở</span>
-                </span>
-                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                  Thực đơn tuần này
-                </h2>
-                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
-                  Hộ gia đình bạn chưa có kế hoạch bữa ăn đang hoạt động. Tạo lịch ăn mới để Takolio đối chiếu nguyên liệu sẵn có trong tủ lạnh và tính phần cần mua thêm.
-                </p>
-                <div className="pt-1">
-                  <Link
-                    to="/planner/new"
-                    className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-bold text-sm inline-flex items-center gap-2 transition-colors"
-                  >
-                    <VNextIcon name="plus" size={16} />
-                    <span>Tạo kế hoạch tuần mới</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="w-24 h-24 shrink-0 hidden sm:block">
-                <VerifiedDishImage
-                  slug=""
-                  title="Mâm cơm tuần"
-                  aspectClass="aspect-square"
-                  className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] bg-white"
-                />
-              </div>
-            </div>
-
+          <div className="space-y-4">
             <TkvEmptyState
-              pose="welcome"
+              pose="shopping"
               eyebrow="Sẵn sàng lập lịch"
               title="Bắt đầu thực đơn 7 ngày đầu tiên"
-              description="Chọn số ngày, số bữa và khẩu phần tại màn hình thiết lập kế hoạch — toàn bộ tính toán định lượng do miền nghiệp vụ máy chủ đảm nhiệm."
+              description="Chọn số ngày, số bữa và khẩu phần tại màn hình thiết lập kế hoạch — Bé Mầm Bếp sẽ đối chiếu tủ lạnh và tính sẵn phần cần mua thêm."
               primaryAction={
                 <TkvButton onClick={() => navigate('/planner/new')} iconRight="arrow-right">
-                  Mở thiết lập thực đơn
+                  + Tạo thực đơn mới
+                </TkvButton>
+              }
+              secondaryAction={
+                <TkvButton variant="secondary" iconLeft="shopping" onClick={() => navigate('/shopping')}>
+                  Danh sách mua sắm
                 </TkvButton>
               }
             />
           </div>
         ) : (
-          <div className="space-y-6">
-            {/* Active Week Sunlit Warm Ceramic & Linen Hero Banner */}
-            <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 text-[var(--tkv-ink,#2C221E)] shadow-soft">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 flex-wrap tabular-nums">
-                  <span className="px-2.5 py-1 rounded-full bg-white/90 border border-[var(--tkv-border,#EAE0D5)] text-xs font-semibold text-[var(--tkv-ink,#2C221E)]">
-                    Phiên bản v{plan.revision}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
-                    <span>{plannerStatusLabel(plan.result.status, 'vi')}</span>
-                  </span>
-                  {plan.freshness.status === 'requires_revalidation' && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-[var(--tkv-honey-ink,#8C5B18)] text-xs font-bold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)]" aria-hidden="true" />
-                      <span>Tủ lạnh vừa đổi · Nên kiểm tra lại lượng</span>
-                    </span>
-                  )}
+          <div className="space-y-4 sm:space-y-6">
+            {/* Highlighted Selected Day Card (`board-2.jpg` right phone card!) */}
+            {activeDateKey && (
+              <TkvSurface className="p-4 sm:p-5 space-y-3.5 bg-[var(--tkv-surface)] border-[var(--tkv-border)]">
+                <div className="flex items-center justify-between gap-2">
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap tabular-nums">
+                      <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+                        {activeDayLabel}
+                      </h2>
+                      <span className="hidden sm:inline-flex px-2.5 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-xs font-extrabold text-[var(--tkv-primary)]">
+                        {plannerStatusLabel(plan.result.status, 'vi')} · v{plan.revision}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5 tabular-nums">
+                      {activeDayMeals.length} món · Khoảng 30–35 phút
+                    </p>
+                  </div>
+                  <Link
+                    to={
+                      activeDayMeals[0]
+                        ? `/planner/${plan.id}/meal/${encodeURIComponent(activeDayMeals[0].slotId)}`
+                        : `/planner/new`
+                    }
+                    className="tkv-focusable w-9 h-9 rounded-full bg-[var(--tkv-bg)] flex items-center justify-center text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)]"
+                    aria-label={`Chi tiết ${activeDayLabel}`}
+                  >
+                    <VNextIcon name="chevron-right" size={18} />
+                  </Link>
                 </div>
-                <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)] tabular-nums">
-                  Thực đơn tuần này ({plan.result.meals.length} bữa đã xếp)
-                </h2>
-                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
-                  Bắt đầu từ {plan.intent.startDate} · Khẩu phần mặc định {plan.intent.defaultServings} người.
-                </p>
-              </div>
-              <div className="w-24 h-24 shrink-0 hidden sm:block">
-                <VerifiedDishImage
-                  slug={featuredSlug}
-                  title={featuredMeal?.title ?? 'Thực đơn tuần'}
-                  aspectClass="aspect-square"
-                  className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] bg-white"
-                />
-              </div>
+
+                {/* Dish Photo Trio Strip (`board-2.jpg` right phone!) */}
+                <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                  {(() => {
+                    const seenSlugs = new Set<string>();
+                    return activeDayMeals.slice(0, 3).map((slot, slotIdx) => {
+                      const rawSlug = resolvePlannedMealSlug(slot);
+                      const uniqueSlug = seenSlugs.has(rawSlug) ? undefined : rawSlug;
+                      seenSlugs.add(rawSlug);
+                      return (
+                        <Link
+                          key={slot.slotId}
+                          to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
+                          className="tkv-focusable group rounded-2xl overflow-hidden border border-[var(--tkv-border)] bg-[var(--tkv-bg)]"
+                        >
+                          <VerifiedDishImage
+                            slug={uniqueSlug}
+                            title={uniqueSlug ? slot.title : `${slot.mealType}-${slotIdx}`}
+                            fallbackSeed={slotIdx}
+                            aspectClass="aspect-square sm:aspect-[16/10] lg:aspect-[21/10]"
+                            compact
+                          />
+                        </Link>
+                      );
+                    });
+                  })()}
+                </div>
+
+                <Link
+                  to={
+                    activeDayMeals[0]
+                      ? `/planner/${plan.id}/meal/${encodeURIComponent(activeDayMeals[0].slotId)}`
+                      : `/planner/new`
+                  }
+                  className="tkv-focusable w-full min-h-[48px] px-5 py-2.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-extrabold text-sm inline-flex items-center justify-between shadow-[var(--tkv-shadow-cta)] transition-colors"
+                >
+                  <span className="mx-auto pl-4">Xem chi tiết thực đơn</span>
+                  <VNextIcon name="chevron-right" size={16} />
+                </Link>
+              </TkvSurface>
+            )}
+
+            {/* Quick Action Rows (`+ Tạo thực đơn mới` & `Danh sách mua sắm` per `board-2.jpg`!) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                to="/planner/new"
+                className="tkv-focusable tkv-bento-card p-3.5 sm:p-4 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-9 h-9 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                    <VNextIcon name="plus" size={18} />
+                  </span>
+                  <span className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                    Tạo thực đơn mới
+                  </span>
+                </div>
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+              </Link>
+
+              <Link
+                to={`/planner/${plan.id}/shopping`}
+                className="tkv-focusable tkv-bento-card p-3.5 sm:p-4 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-9 h-9 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center shrink-0">
+                    <VNextIcon name="shopping" size={18} />
+                  </span>
+                  <div>
+                    <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                      Danh sách mua sắm
+                    </p>
+                    <p className="text-xs font-medium text-[var(--tkv-ink-secondary)] tabular-nums">
+                      {missingShoppingCount > 0
+                        ? `${missingShoppingCount} nguyên liệu cần mua`
+                        : 'Tổng hợp nguyên liệu cần mua theo tuần'}
+                    </p>
+                  </div>
+                </div>
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+              </Link>
             </div>
 
-            {/* Mobile 1-Col Day Cards & Desktop Multi-Day Workbench Grid */}
+            {/* Full Multi-Day Schedule Grid */}
             <section aria-labelledby="c23-schedule-heading" className="space-y-3.5">
-              <div className="flex items-center justify-between gap-2">
-                <h2 id="c23-schedule-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                  Thực đơn của tuần
-                </h2>
-                <Link
-                  to="/planner/new"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
-                >
-                  Chỉnh sửa cấu hình
-                </Link>
-              </div>
+              <h2 id="c23-schedule-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+                Lịch chi tiết cả tuần ({plan.result.meals.length} bữa)
+              </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {orderedDates.map((dateKey) => {
                   const dayMeals = mealsByDate.get(dateKey) ?? [];
                   return (
-                    <TkvSurface key={dateKey} className="p-4 space-y-3 flex flex-col justify-between bg-white border-[var(--tkv-border,#EAE0D5)]">
+                    <TkvSurface key={dateKey} className="p-4 space-y-3 flex flex-col justify-between bg-[var(--tkv-surface)]">
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between border-b border-[var(--tkv-border,#EAE0D5)] pb-2">
-                          <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)] capitalize">
+                        <div className="flex items-center justify-between border-b border-[var(--tkv-border)] pb-2">
+                          <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] capitalize">
                             {formatDayHeadingVi(dateKey)}
                           </h3>
-                          <span className="text-xs font-semibold text-[var(--tkv-ink-muted,#87776E)] tabular-nums">
+                          <span className="text-xs font-bold text-[var(--tkv-primary)] tabular-nums">
                             {dayMeals.length} bữa
                           </span>
                         </div>
@@ -277,41 +433,41 @@ export const C23PlannerPilot: React.FC = () => {
                               <li key={slot.slotId}>
                                 <Link
                                   to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
-                                  className="tkv-focusable p-3 rounded-xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] flex items-center justify-between gap-3 transition-colors"
+                                  className="tkv-focusable p-3 rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] hover:border-[var(--tkv-border-mint)] flex items-center justify-between gap-3 transition-colors"
                                 >
-                                  <div className="flex items-center gap-3 min-w-0">
+                                  <div className="flex items-start gap-3 min-w-0">
                                     <VerifiedDishImage
                                       slug={slotSlug}
                                       title={slot.title}
                                       aspectClass="aspect-square"
                                       compact
-                                      className="w-12 h-12 rounded-lg shrink-0"
+                                      className="w-12 h-12 rounded-xl shrink-0 mt-0.5"
                                     />
-                                    <div className="min-w-0">
-                                      <p className="text-xs font-semibold text-[var(--tkv-ink-muted,#87776E)] tabular-nums">
+                                    <div className="min-w-0 pr-1">
+                                      <p className="text-xs font-semibold text-[var(--tkv-ink-muted)] tabular-nums">
                                         {MEAL_LABELS[slot.mealType]} · {slot.servings} người
                                       </p>
-                                      <p className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] truncate mt-0.5">
+                                      <p className="text-sm font-extrabold text-[var(--tkv-ink)] leading-snug break-words mt-0.5">
                                         {slot.title}
                                       </p>
-                                      <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] mt-0.5 inline-flex items-center gap-1.5 tabular-nums">
+                                      <p className="text-xs text-[var(--tkv-ink-secondary)] mt-0.5 inline-flex items-center gap-1.5 tabular-nums">
                                         <span
                                           className={
                                             missingReqs > 0
-                                              ? 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)] shrink-0'
-                                              : 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)] shrink-0'
+                                              ? 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0'
+                                              : 'w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0'
                                           }
                                           aria-hidden="true"
                                         />
                                         <span>
                                           {missingReqs === 0
                                             ? 'Đủ nguyên liệu dự kiến'
-                                            : `Thiếu / cần mua ${missingReqs} mục`}
+                                            : `Cần mua ${missingReqs} mục`}
                                         </span>
                                       </p>
                                     </div>
                                   </div>
-                                  <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
+                                  <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
                                 </Link>
                               </li>
                             );

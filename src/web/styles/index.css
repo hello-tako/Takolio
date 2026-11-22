@@ -19,13 +19,13 @@
 @source not inline("space-y-{0,0.5,1,1.5,2,2.5,3,3.5,4,5,6,7}");
 @source not inline("text-{xs,sm} rounded-full");
 
-/* Unified Root Cascade — Takolio Sunlit Ceramic & Terracotta Herb ("Nắng Bếp Gốm Sứ") */
+/* Unified Root Cascade — Takolio Official Brand Board v2 (Leaf Green, Tomato Coral, Warm Ivory) */
 :root {
   --frigo-tap-target: 44px;
-  --frigo-cream: #FCF9F5;
-  --frigo-text-main: #2C221E;
+  --frigo-cream: #FFF9F1;
+  --frigo-text-main: #152E2C;
   --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --takolio-font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takolio-font-heading: 'Takolio Nunito', 'Nunito', 'Plus Jakarta Sans', system-ui, sans-serif;
   --takolio-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   --content-compact: 45rem;
@@ -44,71 +44,72 @@
   --motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
 
-  --kitchen-coral: #D86A43;
-  --kitchen-pine: #4E7A5B;
-  --kitchen-canvas: #FCF9F5;
+  --kitchen-coral: #F46B52;
+  --kitchen-pine: #196149;
+  --kitchen-canvas: #FFF9F1;
 
-  --semantic-background: #FCF9F5;
-  --semantic-background-rgb: 252 249 245;
-  --semantic-background-subtle: #F7EFE6;
-  --semantic-background-subtle-rgb: 247 239 230;
+  --semantic-background: #FFF9F1;
+  --semantic-background-rgb: 255 249 241;
+  --semantic-background-subtle: #E7F4EC;
+  --semantic-background-subtle-rgb: 231 244 236;
   --semantic-surface: #FFFFFF;
   --semantic-surface-raised: #FFFFFF;
-  --semantic-text-primary: #2C221E;
-  --semantic-text-primary-rgb: 44 34 30;
-  --semantic-text-secondary: #5F524A;
-  --semantic-text-secondary-rgb: 95 82 74;
-  --semantic-text-muted: #87776E;
-  --semantic-text-muted-rgb: 135 119 110;
+  --semantic-text-primary: #152E2C;
+  --semantic-text-primary-rgb: 21 46 44;
+  --semantic-text-secondary: #3C5954;
+  --semantic-text-secondary-rgb: 60 89 84;
+  --semantic-text-muted: #52706A;
+  --semantic-text-muted-rgb: 82 112 106;
   --semantic-text-inverse: #FFFFFF;
-  --semantic-text-on-soft: #2C221E;
+  --semantic-text-on-soft: #152E2C;
 
-  --semantic-action-primary: #D86A43;
-  --semantic-action-primary-rgb: 216 106 67;
-  --semantic-action-primary-hover: #C25731;
-  --semantic-action-primary-hover-rgb: 194 87 49;
-  --semantic-action-primary-pressed: #A84724;
-  --semantic-action-primary-pressed-rgb: 168 71 36;
+  --semantic-action-primary: #196149;
+  --semantic-action-primary-rgb: 25 97 73;
+  --semantic-action-primary-hover: #134C39;
+  --semantic-action-primary-hover-rgb: 19 76 57;
+  --semantic-action-primary-pressed: #0E3B2C;
+  --semantic-action-primary-pressed-rgb: 14 59 44;
   --semantic-on-action-primary: #FFFFFF;
 
-  --semantic-accent: #D86A43;
-  --semantic-accent-rgb: 216 106 67;
-  --semantic-accent-soft: #FDF0EA;
-  --semantic-accent-soft-rgb: 253 240 234;
+  --semantic-accent: #F46B52;
+  --semantic-accent-rgb: 244 107 82;
+  --semantic-accent-soft: #FFF0E9;
+  --semantic-accent-soft-rgb: 255 240 233;
 
-  --semantic-success: #4E7A5B;
-  --semantic-success-rgb: 78 122 91;
-  --semantic-success-soft: #EEF5F0;
-  --semantic-success-soft-rgb: 238 245 240;
-  --semantic-warning: #C68634;
-  --semantic-warning-soft: #FCF5E6;
-  --semantic-warning-strong: #8A5A19;
-  --semantic-danger: #C2463A;
-  --semantic-danger-soft: #FDF1F0;
-  --semantic-danger-strong: #A33329;
-  --semantic-info: #4E7A5B;
-  --semantic-info-soft: #EEF5F0;
+  --semantic-success: #196149;
+  --semantic-success-rgb: 25 97 73;
+  --semantic-success-soft: #E7F4EC;
+  --semantic-success-soft-rgb: 231 244 236;
+  --semantic-warning: #8A5205;
+  --semantic-warning-soft: #FFF5D6;
+  --semantic-warning-strong: #724303;
+  --semantic-danger: #BA2F38;
+  --semantic-danger-soft: #FFF0EC;
+  --semantic-danger-strong: #99222A;
+  --semantic-info: #196149;
+  --semantic-info-soft: #E7F4EC;
 
-  --semantic-border: #EAE0D5;
-  --semantic-border-rgb: 234 224 213;
-  --semantic-border-strong: #D5C3B3;
-  --semantic-focus: #4E7A5B;
-  --semantic-focus-rgb: 78 122 91;
-  --semantic-overlay: rgba(44, 34, 30, 0.34);
+  --semantic-border: #DCE6DE;
+  --semantic-border-rgb: 220 230 222;
+  --semantic-border-strong: #B8CABE;
+  --semantic-focus: #196149;
+  --semantic-focus-rgb: 25 97 73;
+  --semantic-overlay: rgba(21, 46, 44, 0.36);
 
-  --takosan-cream: #FCF9F5;
-  --takosan-cream-color-rgb: 252 249 245;
-  --takosan-mint: #EEF5F0;
-  --takosan-mint-color-rgb: 238 245 240;
-  --takosan-mint-deep-color-rgb: 207 226 213;
-  --takosan-green: #CF623A;
-  --takosan-green-color-rgb: 207 98 58;
-  --takosan-green-hover-color-rgb: 185 80 42;
-  --takosan-green-deep-color-rgb: 158 65 32;
-  --takosan-navy: #2C221E;
-  --takosan-navy-color-rgb: 44 34 30;
-  --takosan-coral: #CF623A;
-  --takosan-coral-color-rgb: 207 98 58;
+  --takosan-cream: #FFF9F1;
+  --takosan-cream-color-rgb: 255 249 241;
+  --takosan-mint: #E7F4EC;
+  --takosan-mint-color-rgb: 231 244 236;
+  --takosan-mint-deep-color-rgb: 189 224 204;
+  --takosan-green: #196149;
+  --takosan-green-color-rgb: 25 97 73;
+  --takosan-green-hover-color-rgb: 19 76 57;
+  --takosan-green-deep-color-rgb: 14 59 44;
+  --takosan-navy: #152E2C;
+  --takosan-navy-color-rgb: 21 46 44;
+  --takosan-coral: #F46B52;
+  --takosan-coral-color-rgb: 244 107 82;
+  --takosan-yellow: #F6C453;
 }
 
 .rounded-full { border-radius: 9999px; }
@@ -177,42 +178,42 @@
 
 @tailwind utilities;
 
-/* Preserve RGB alpha composition aligned with Sunlit Ceramic tokens. */
-.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 207 98 58) / .2)}
-.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 207 98 58) / .3)}
-.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 207 98 58) / .4)}
-.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
-.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 234 224 213) / .7)}
-.border-semantic-danger\/20{border-color:#c2463a33}
-.border-semantic-danger\/30{border-color:#c2463a4d}
-.border-semantic-info\/30{border-color:#4e7a5b4d}
-.border-semantic-warning\/30{border-color:#c686344d}
-.border-semantic-warning\/40{border-color:#c6863466}
-.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 207 98 58) / .4)}
-.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .6)}
-.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .7)}
-.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 207 226 213) / .8)}
+/* Preserve RGB alpha composition aligned with Official Brand Board v2 tokens. */
+.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 244 107 82) / .2)}
+.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 25 97 73) / .3)}
+.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 25 97 73) / .4)}
+.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 220 230 222) / .7)}
+.border-semantic-danger\/20{border-color:#ba2f3833}
+.border-semantic-danger\/30{border-color:#ba2f384d}
+.border-semantic-info\/30{border-color:#1961494d}
+.border-semantic-warning\/30{border-color:#f6c45366}
+.border-semantic-warning\/40{border-color:#f6c45380}
+.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 25 97 73) / .4)}
+.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .6)}
+.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .7)}
+.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .8)}
 .border-white\/10{border-color:#ffffff1a}
 .border-white\/15{border-color:#ffffff26}
 .border-white\/20{border-color:#fff3}
 .border-white\/30{border-color:#ffffff4d}
 .border-white\/90{border-color:#ffffffe6}
-.bg-black\/65{background-color:#2c221e80}
-.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 252 249 245) / .95)}
-.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
-.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .7)}
-.bg-semantic-overlay\/40{background-color:#2c221e4d}
-.bg-semantic-overlay\/50{background-color:#2c221e66}
-.bg-semantic-overlay\/60{background-color:#2c221e80}
-.bg-semantic-overlay\/75{background-color:#2c221e99}
-.bg-semantic-overlay\/80{background-color:#2c221eb3}
-.bg-semantic-overlay\/90{background-color:#2c221ed9}
-.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 238 245 240) / .4)}
+.bg-black\/65{background-color:#152e2ca6}
+.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 255 249 241) / .95)}
+.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .7)}
+.bg-semantic-overlay\/40{background-color:#152e2c4d}
+.bg-semantic-overlay\/50{background-color:#152e2c66}
+.bg-semantic-overlay\/60{background-color:#152e2c80}
+.bg-semantic-overlay\/75{background-color:#152e2c99}
+.bg-semantic-overlay\/80{background-color:#152e2cb3}
+.bg-semantic-overlay\/90{background-color:#152e2cd9}
+.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 231 244 236) / .4)}
 .bg-semantic-surface\/95{background-color:#fffffff2}
-.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 252 249 245) / .95)}
-.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .5)}
-.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .6)}
-.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 238 245 240) / .8)}
+.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 255 249 241) / .95)}
+.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .5)}
+.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .6)}
+.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .8)}
 .bg-white\/10{background-color:#ffffff1a}
 .bg-white\/90{background-color:#ffffffe6}
 .bg-white\/95{background-color:#fffffff2}
@@ -246,41 +247,41 @@
 /* Preserve sRGB gradients and their established transparent stops. */
 .bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
 .bg-gradient-to-r{background-image:linear-gradient(to right,var(--takosan-legacy-gradient-stops))}
-.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 17 19 21) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 17 19 21) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
+.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-transparent{--takosan-legacy-gradient-from: transparent;--takosan-legacy-gradient-to: rgb(0 0 0 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-white{--takosan-legacy-gradient-from: #fff;--takosan-legacy-gradient-to: rgb(255 255 255 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
-.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 200 75 49) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 200 75 49)), var(--takosan-legacy-gradient-to)}
-.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 35 38 42) / 1)}
-.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 239 236 230) / 1)}
+.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 244 107 82) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 244 107 82)), var(--takosan-legacy-gradient-to)}
+.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 19 76 57) / 1)}
+.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 231 244 236) / 1)}
 .to-transparent{--takosan-legacy-gradient-to: transparent}
 
-/* Preserve existing focus/ring and hover contracts aligned to Sunlit Ceramic. */
-.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 247 239 230) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 247 239 230) / .6)}
-.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 234 224 213) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 234 224 213) / .6)}
-.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(253 241 240 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(163 51 41 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-overlay\/80:hover{background-color:#2c221eb3}
-.hover\:bg-semantic-overlay\/85:hover{background-color:#2c221ec7}
-.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 158 65 32) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 185 80 42) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(238 245 240 / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover\/70:hover{background-color:#eef5f0b3}
+/* Preserve existing focus/ring and hover contracts aligned to Official Brand Board v2. */
+.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 231 244 236) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 231 244 236) / .6)}
+.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 220 230 222) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(255 240 236 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(153 34 42 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-overlay\/80:hover{background-color:#152e2cb3}
+.hover\:bg-semantic-overlay\/85:hover{background-color:#152e2cc7}
+.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 14 59 44) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 19 76 57) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(231 244 236 / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover\/70:hover{background-color:#e7f4ecb3}
 .hover\:bg-white:hover{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}
 .hover\:bg-white\/20:hover{background-color:#fff3}
 .focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}
 .focus\:ring-2:focus{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
-.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / .2)}
+.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
+.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / .2)}
 .focus-visible\:outline-none:focus-visible{outline:2px solid transparent;outline-offset:2px}
 .focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(213 195 179 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(198 134 52 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(184 202 190 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(246 196 83 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
 .focus-visible\:ring-offset-2:focus-visible{--tw-ring-offset-width: 2px}
 .peer:focus-visible~.peer-focus-visible\:ring-2{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 207 98 58) / var(--tw-ring-opacity, 1))}
+.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
 .peer:focus-visible~.peer-focus-visible\:ring-offset-2{--tw-ring-offset-width: 2px}
 
 @layer base {
@@ -293,8 +294,8 @@
   }
 
   ::selection {
-    background-color: #fdf0ea;
-    color: #2c221e;
+    background-color: #e7f4ec;
+    color: #152e2c;
   }
 
   /* Text stays selectable app-wide (a11y); only interactive controls opt out. */
@@ -303,10 +304,10 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--takosan-font-ui);
-    letter-spacing: -0.02em;
+    font-family: var(--takolio-font-heading);
+    letter-spacing: -0.018em;
     color: var(--frigo-text-main);
-    font-weight: 700;
+    font-weight: 800;
   }
 }
 

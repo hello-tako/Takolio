@@ -1,7 +1,33 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
+import { api } from '../../services/api';
+import { queryKeys } from '../../lib/queryKeys';
+import { daysUntil } from '../../lib/format';
+import { presentExpiry } from '../../lib/inventory-truth';
+import { calendarLabel } from '../../lib/home-plan';
+import { useHomePlan } from '../../lib/use-home-plan';
+import { isMealPlannerEnabled } from '../../features/planner/feature';
+import { resolveRecipeImage } from '../../lib/recipe-media';
+import { getIngredientImage } from '../../lib/ingredient-images';
+import { ConsumerStudioShell } from '../components/Shells';
+import {
+  TkvBadge,
+  TkvButton,
+  TkvChip,
+  TkvErrorState,
+  TkvSkeleton,
+  TkvSurface,
+} from '../components/Primitives';
+import { VNextIcon } from '../components/VNextIcons';
+import {
+  BrandFeatureIcon,
+  MascotIllustration,
+  VerifiedDishImage,
+} from '../components/VNextMedia';
+import { useVNextSeo } from '../lib/seo';
 
 function slugifyDishTitle(title: string): string {
   return title
@@ -13,39 +39,13 @@ function slugifyDishTitle(title: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
+const LEGACY_NAME_RE = /\bFri\w*\b/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
   const trimmed = (raw ?? '').trim();
   if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
   if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
   return raw as string;
 }
-import { api } from '../../services/api';
-import { queryKeys } from '../../lib/queryKeys';
-import { daysUntil } from '../../lib/format';
-import { presentExpiry } from '../../lib/inventory-truth';
-import { calendarLabel } from '../../lib/home-plan';
-import { useHomePlan } from '../../lib/use-home-plan';
-import { isMealPlannerEnabled } from '../../features/planner/feature';
-import { resolveRecipeImage } from '../../lib/recipe-media';
-import { ConsumerStudioShell } from '../components/Shells';
-import {
-  TkvBadge,
-  TkvButton,
-  TkvChip,
-  TkvErrorState,
-  TkvSkeleton,
-  TkvSurface,
-} from '../components/Primitives';
-import { VNextIcon } from '../components/VNextIcons';
-import { VerifiedDishImage } from '../components/VNextMedia';
-import { useVNextSeo } from '../lib/seo';
-
-const LazyFridgeFreshnessOrbital3D = lazy(() =>
-  import('../webgl/FridgeFreshnessOrbital3D').then((m) => ({
-    default: m.FridgeFreshnessOrbital3D,
-  })),
-);
 
 const MEAL_LABELS = {
   breakfast: 'Bữa sáng',
@@ -53,16 +53,36 @@ const MEAL_LABELS = {
   dinner: 'Bữa tối',
 } as const;
 
+const UNIT_LABELS_VI: Record<string, string> = {
+  piece: 'quả',
+  bunch: 'bó',
+  pack: 'gói',
+  slice: 'lát',
+  g: 'g',
+  kg: 'kg',
+  ml: 'ml',
+  l: 'lít',
+};
+
+type HomeFilterTab = 'for-you' | 'quick' | 'family' | 'saving';
+
+const HOME_FILTER_CHIPS: ReadonlyArray<{ id: HomeFilterTab; label: string }> = [
+  { id: 'for-you', label: 'Gợi ý cho bạn' },
+  { id: 'quick', label: 'Nhanh gọn' },
+  { id: 'family', label: 'Gia đình' },
+  { id: 'saving', label: 'Tiết kiệm' },
+];
+
 /**
- * C01 — Hôm nay ăn gì? (Sunlit Ceramic & Terracotta Herb Live Pilot).
- * Sunlit Ceramic & Terracotta Herb (`#FCF9F5` / `#FFFFFF` / `#D86A43` / `#4E7A5B`)
- * over 100% real API queries (`useHomePlan`, `api.getInventory`, `api.getRecipeDiscovery`).
- * Preserves independent loading/empty/error widgets and `presentExpiry` estimated labels.
+ * C01 — Hôm nay ăn gì? (Official Takolio Brand Board v2).
+ * Matches `board.jpg` & `board-2.jpg` center phone mockup over 100% real API queries
+ * (`useHomePlan`, `api.getInventory`, `api.getRecipeDiscovery`).
  */
 export const C01HomePilot: React.FC = () => {
   const navigate = useNavigate();
   const { displayName, isGuest } = useAuthStore();
   const [now, setNow] = useState(() => new Date());
+  const [activeMood, setActiveMood] = useState<HomeFilterTab>('for-you');
 
   useEffect(() => {
     const update = () => setNow(new Date());
@@ -85,13 +105,10 @@ export const C01HomePilot: React.FC = () => {
   });
 
   const activeItems = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
-  const urgentCount = activeItems.filter((item) => item.freshness === 'expiring').length;
-  const soonCount = activeItems.filter((item) => item.freshness === 'use_soon').length;
-  const freshCount = Math.max(0, activeItems.length - urgentCount - soonCount);
 
   useVNextSeo({
-    title: 'Hôm nay ăn gì?',
-    description: 'Bảng điều khiển căn bếp thông minh cho hộ gia đình trên Takolio.',
+    title: 'Hôm nay ăn gì? — Takolio',
+    description: 'Gợi ý thực đơn phù hợp với nguyên liệu trong tủ lạnh của bạn cùng Bé Mầm Bếp.',
     canonicalPath: '/',
     domainSurface: 'app',
     noindex: true,
@@ -106,8 +123,17 @@ export const C01HomePilot: React.FC = () => {
     )
     .slice(0, 4);
 
-  const recommendations = recommendationsQuery.data?.items ?? [];
-  const topRecommendation = recommendations[0];
+  const rawRecommendations = recommendationsQuery.data?.items ?? [];
+  const recommendations = rawRecommendations.filter(({ recipe, canCookWithoutBuying }) => {
+    if (activeMood === 'quick') return recipe.cookTimeMinutes <= 30;
+    if (activeMood === 'family') return recipe.servings >= 3;
+    if (activeMood === 'saving') return canCookWithoutBuying;
+    return true;
+  });
+  const displayedRecommendations =
+    recommendations.length > 0 ? recommendations : rawRecommendations;
+
+  const topRecommendation = rawRecommendations[0];
   const plannerBase = isMealPlannerEnabled() ? '/planner' : '/week';
   const sanitizedName = sanitizeUserDisplayName(displayName, isGuest);
   const greetingName = isGuest
@@ -123,36 +149,78 @@ export const C01HomePilot: React.FC = () => {
   return (
     <ConsumerStudioShell screenId="C01">
       <div className="space-y-6">
-        {/* Page Heading */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-          <div>
-            <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#87776E)]">
-              {greetingName ? `Chào ${greetingName}` : isGuest ? 'Phiên dùng thử khách' : 'Căn bếp gia đình'}
-            </p>
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
-              Hôm nay ăn gì?
-            </h1>
+        {/* Top Brand Board Heading + Pro Crown Accent (`board.jpg` & `board-2.jpg` center screen) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <BrandFeatureIcon name="recipes" size={46} className="mt-0.5 hidden sm:inline-flex" />
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+                  Hôm nay ăn gì?
+                </h1>
+                <Link
+                  to="/plus"
+                  aria-label="Khám phá Takolio Pro"
+                  className="tkv-focusable inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)] px-2.5 py-1 text-xs font-extrabold text-[var(--tkv-ink)]"
+                >
+                  <VNextIcon name="crown" size={14} className="text-[var(--tkv-warning)]" />
+                  <span>Pro</span>
+                </Link>
+              </div>
+              <p className="text-sm font-medium text-[var(--tkv-ink-secondary)] mt-0.5">
+                {greetingName
+                  ? `Chào ${greetingName} · Gợi ý thực đơn phù hợp với nguyên liệu của bạn`
+                  : 'Gợi ý thực đơn phù hợp với nguyên liệu của bạn'}
+              </p>
+            </div>
           </div>
 
           {/* Quick Shortcuts */}
-          <div aria-label="Lối tắt nhanh" className="flex items-center gap-2 overflow-x-auto pb-1">
+          <div aria-label="Lối tắt nhanh" className="flex flex-wrap items-center gap-2">
             <TkvChip active icon="scan" onClick={() => navigate('/scan')}>
               Quét AI
             </TkvChip>
             <TkvChip icon="plus" onClick={() => navigate('/fridge?action=add')}>
-              Thêm nguyên liệu
+              Thêm đồ
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>
-              Đi chợ
+              Mua sắm
             </TkvChip>
           </div>
+        </div>
+
+        {/* Mood / Context Filter Pills (`Gợi ý cho bạn · Nhanh gọn · Gia đình · Tiết kiệm` from `board-2.jpg`) */}
+        <div
+          role="group"
+          aria-label="Chế độ gợi ý món ăn"
+          className="flex flex-wrap items-center gap-1.5 sm:gap-2"
+        >
+          {HOME_FILTER_CHIPS.map((chip) => {
+            const active = activeMood === chip.id;
+            return (
+              <button
+                key={chip.id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setActiveMood(chip.id)}
+                className={clsx(
+                  'tkv-focusable min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border',
+                  active
+                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                    : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
+                )}
+              >
+                {chip.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Desktop 12-Col Workbench / Mobile 1-Col Stack */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Primary Column (7 cols on Desktop) */}
           <div data-testid="tkv-c01-primary" className="lg:col-span-7 space-y-6 min-w-0">
-            {/* Hero Task Card — Sunlit Ceramic & Linen Hero Card */}
+            {/* Hero Meal / Bé Mầm Bếp Card */}
             {home.query.isPending ? (
               <TkvSkeleton className="h-48" label="Đang tải bữa ăn tiếp theo…" />
             ) : home.query.isError ? (
@@ -162,17 +230,35 @@ export const C01HomePilot: React.FC = () => {
                 onRetry={() => void home.retry()}
               />
             ) : (
-              <div className="rounded-[var(--tkv-radius-card)] bg-gradient-to-br from-[var(--tkv-hero-from,#FFFDFB)] via-[var(--tkv-hero-via,#FFF6F0)] to-[var(--tkv-hero-to,#F8EAE0)] border border-[var(--tkv-hero-border,#ECD5C5)] p-5 sm:p-6 text-[var(--tkv-ink,#2C221E)] shadow-soft">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+              <div className="tkv-leaf-wave-band rounded-3xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4 sm:p-6 text-[var(--tkv-ink)] shadow-[var(--tkv-shadow-card)]">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-5">
+                  {/* Mobile Hero Dish Photo (`board-2.jpg` center phone top dish card!) */}
+                  <div className="sm:hidden">
+                    {heroSlug ? (
+                      <VerifiedDishImage
+                        slug={heroSlug}
+                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
+                        aspectClass="aspect-[16/9]"
+                        priority
+                        className="w-full rounded-2xl border border-[var(--tkv-border)] shadow-xs"
+                      />
+                    ) : (
+                      <div className="flex justify-center py-2">
+                        <MascotIllustration pose="welcome" size={96} priority className="w-24 h-24" />
+                      </div>
+                    )}
+                  </div>
+
                   <div className="space-y-2.5 flex-1 min-w-0">
-                    <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-semibold text-[var(--tkv-sage-ink,#355940)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold text-[var(--tkv-primary)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
                       {meal && plan
                         ? `${MEAL_LABELS[meal.mealType]} · ${calendarLabel(meal.date, plan.today)}`
-                        : 'Gợi ý trọng tâm hôm nay'}
+                        : 'Bữa ngon, nhẹ đầu · Ăn đủ. Mua đủ. Dùng hết.'}
                     </span>
 
-                    <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                    <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
                       {home.requiresAccount
                         ? 'Gợi ý món từ tủ lạnh của bạn'
                         : meal?.state === 'ready' && meal.dishes.length > 0
@@ -182,9 +268,9 @@ export const C01HomePilot: React.FC = () => {
                             : 'Bắt đầu bữa ngon từ nguyên liệu sẵn có'}
                     </h2>
 
-                    <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed tabular-nums">
+                    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed tabular-nums">
                       {home.requiresAccount
-                        ? 'Bạn đang ở phiên khách. Xem ngay món khớp nguyên liệu hoặc đăng nhập để lưu thực đơn tuần.'
+                        ? 'Bé Mầm Bếp đối chiếu nguyên liệu thực tế trong tủ lạnh để gợi ý món ngon sát khẩu phần gia đình.'
                         : meal?.state === 'ready'
                           ? `Khẩu phần ${meal.servings} người${meal.cookTimeMinutes ? ` · ${meal.cookTimeMinutes} phút chuẩn bị` : ''}.`
                           : topRecommendation
@@ -201,7 +287,7 @@ export const C01HomePilot: React.FC = () => {
                               ? `/recipes/${topRecommendation.recipe.slug || topRecommendation.recipe.id}`
                               : `/recipes`
                         }
-                        className="tkv-focusable min-h-[46px] px-4.5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white shadow-xs font-bold text-sm inline-flex items-center gap-2 transition-colors"
+                        className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs font-extrabold text-sm inline-flex items-center gap-2 transition-colors"
                       >
                         <span>{meal ? 'Xem bữa ăn' : 'Xem món gợi ý'}</span>
                         <VNextIcon name="arrow-right" size={16} />
@@ -209,7 +295,7 @@ export const C01HomePilot: React.FC = () => {
                       {home.requiresAccount && (
                         <Link
                           to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
-                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] font-semibold text-sm inline-flex items-center transition-colors"
+                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-ink)] hover:opacity-95 font-extrabold text-sm inline-flex items-center transition-colors"
                         >
                           Đăng nhập lập tuần
                         </Link>
@@ -217,153 +303,134 @@ export const C01HomePilot: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="hidden sm:block sm:w-36 shrink-0">
-                    <VerifiedDishImage
-                      slug={heroSlug}
-                      title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
-                      canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
-                      aspectClass="aspect-square"
-                      priority
-                      className="rounded-2xl border border-[var(--tkv-border,#EAE0D5)] shadow-xs"
-                    />
+                  <div className="hidden sm:flex items-center justify-center sm:w-36 shrink-0">
+                    {heroSlug ? (
+                      <VerifiedDishImage
+                        slug={heroSlug}
+                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
+                        aspectClass="aspect-square"
+                        priority
+                        className="w-36 h-36 rounded-2xl border border-[var(--tkv-border)] shadow-xs"
+                      />
+                    ) : (
+                      <MascotIllustration pose="welcome" size={128} priority className="w-32 h-32" />
+                    )}
                   </div>
                 </div>
               </div>
             )}
 
-            {/* "Dành cho bạn" Action Stack */}
-            <section aria-labelledby="c01-for-you-heading" className="space-y-3">
+            {/* Large Visual Dish Recommendation Cards (matching `board-2.jpg` center phone cards!) */}
+            <section aria-labelledby="c01-recs-heading" className="space-y-3.5">
               <div className="flex items-center justify-between gap-2">
-                <h2 id="c01-for-you-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                  Dành cho bạn hôm nay
+                <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+                  Món gợi ý cho bữa tới
                 </h2>
                 <Link
                   to="/recipes"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
                   Xem tất cả món
                 </Link>
               </div>
 
-              <div className="space-y-3">
-                <Link
-                  to="/fridge"
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="relative w-11 h-11 rounded-xl bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-[var(--tkv-honey-ink,#8C5B18)] flex items-center justify-center shrink-0">
-                        <VNextIcon name="fridge" size={20} />
-                        {useSoonItems.length > 0 && (
-                          <span
-                            className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-honey,#C68634)]"
-                            aria-hidden="true"
+              {recommendationsQuery.isPending ? (
+                <TkvSkeleton className="h-52" label="Đang tải món gợi ý…" />
+              ) : recommendationsQuery.isError ? (
+                <TkvErrorState
+                  message="Chưa tải được danh sách gợi ý món ăn."
+                  onRetry={() => void recommendationsQuery.refetch()}
+                />
+              ) : displayedRecommendations.length === 0 ? (
+                <TkvSurface className="p-5 flex items-center gap-4 bg-[var(--tkv-surface)]">
+                  <MascotIllustration pose="cooking" size={76} className="w-20 h-20 shrink-0" />
+                  <div className="space-y-1.5">
+                    <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+                      Sẵn sàng chọn món ngon hôm nay
+                    </p>
+                    <p className="text-sm text-[var(--tkv-ink-secondary)]">
+                      Thêm nguyên liệu vào tủ lạnh để nhận điểm khớp định lượng hoặc duyệt toàn bộ kho món Việt.
+                    </p>
+                  </div>
+                </TkvSurface>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {displayedRecommendations.map(
+                    ({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => (
+                      <Link
+                        key={recipe.id}
+                        to={`/recipes/${recipe.slug || recipe.id}`}
+                        className="tkv-focusable tkv-bento-card overflow-hidden flex flex-col justify-between"
+                      >
+                        <div>
+                          <VerifiedDishImage
+                            slug={recipe.slug}
+                            title={recipe.title}
+                            canonicalFallbackSrc={resolveRecipeImage(recipe)}
+                            aspectClass="aspect-[16/10]"
                           />
-                        )}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
-                          Nguyên liệu nên dùng sớm
-                        </p>
-                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate tabular-nums">
-                          {inventoryQuery.isPending
-                            ? 'Đang kiểm tra tủ lạnh…'
-                            : inventoryQuery.isError
-                              ? 'Chưa tải được tồn kho — chạm để mở tủ lạnh'
-                              : useSoonItems.length > 0
-                                ? `${useSoonItems.length} lô cần ưu tiên dùng trước (có gắn nhãn ước tính nếu chưa rõ ngày)`
-                                : activeItems.length > 0
-                                  ? `Tủ đang có ${activeItems.length} nguyên liệu ổn định`
-                                  : 'Tủ lạnh đang trống — thêm nguyên liệu để gợi ý sát hơn'}
-                        </p>
-                      </div>
-                    </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
-                  </div>
-                </Link>
+                          <div className="p-4 space-y-2">
+                            <div className="flex items-start justify-between gap-2">
+                              <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
+                                {recipe.title}
+                              </h3>
+                              <span
+                                aria-hidden="true"
+                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral)] items-center justify-center shrink-0"
+                              >
+                                <VNextIcon name="bookmark" size={14} />
+                              </span>
+                            </div>
 
-                <Link
-                  to="/recipes"
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
-                        <VNextIcon name="recipes" size={20} />
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
-                          Bữa hôm nay từ nguyên liệu có sẵn
-                        </p>
-                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate tabular-nums">
-                          {recommendationsQuery.isPending
-                            ? 'Đang đối chiếu định lượng công thức…'
-                            : recommendations.length > 0
-                              ? `${recommendations.length} món gợi ý hàng đầu sẵn sàng kiểm tra khẩu phần`
-                              : 'Khám phá kho công thức gia đình Việt'}
-                        </p>
-                      </div>
-                    </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
-                  </div>
-                </Link>
+                            <div className="flex items-center gap-2 flex-wrap text-xs font-semibold text-[var(--tkv-ink-secondary)] tabular-nums">
+                              <span className="inline-flex items-center gap-1">
+                                <VNextIcon name="timer" size={13} className="text-[var(--tkv-primary)]" />
+                                {recipe.cookTimeMinutes} phút
+                              </span>
+                              <span>·</span>
+                              <span className="inline-flex items-center gap-1">
+                                <VNextIcon name="users" size={13} className="text-[var(--tkv-primary)]" />
+                                {recipe.servings} người
+                              </span>
+                              <span>·</span>
+                              <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
+                                Dễ làm
+                              </span>
+                            </div>
 
-                <Link
-                  to={`${plannerBase}`}
-                  className="tkv-focusable block rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3.5 min-w-0">
-                      <span className="w-11 h-11 rounded-xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-[var(--tkv-sage,#4E7A5B)] flex items-center justify-center shrink-0">
-                        <VNextIcon name="calendar" size={20} />
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-base font-bold text-[var(--tkv-ink,#2C221E)]">
-                          {plan ? 'Thực đơn tuần hiện tại' : 'Lập thực đơn tuần'}
-                        </p>
-                        <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] truncate">
-                          {home.requiresAccount
-                            ? 'Yêu cầu tài khoản đã đăng ký để lưu lịch tuần'
-                            : plan
-                              ? 'Nhấn để xem lịch 7 ngày, đổi món và tính danh sách mua thiếu'
-                              : 'Tạo kế hoạch bữa ăn cân đối và tự động trừ tồn kho'}
-                        </p>
-                      </div>
-                    </div>
-                    <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted,#87776E)] shrink-0" />
-                  </div>
-                </Link>
-              </div>
+                            <div className="pt-1">
+                              <TkvBadge
+                                tone={canCookWithoutBuying ? 'success' : 'coral'}
+                                icon={canCookWithoutBuying ? 'check' : 'shopping'}
+                              >
+                                <span className="tabular-nums">
+                                  {canCookWithoutBuying
+                                    ? 'Đủ nguyên liệu sẵn có'
+                                    : `Cần thêm ${missingRequiredIngredientCount} nguyên liệu`}
+                                </span>
+                              </TkvBadge>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ),
+                  )}
+                </div>
+              )}
             </section>
           </div>
 
-          {/* Right Workbench Column (5 cols on Desktop — 3D Freshness Tray + FEFO Stock + Recommended Dishes) */}
+          {/* Right Workbench Column (5 cols on Desktop — FEFO Stock + Core Journey Cards) */}
           <div className="lg:col-span-5 space-y-6 min-w-0">
-            <Suspense fallback={null}>
-              <LazyFridgeFreshnessOrbital3D
-                freshCount={freshCount}
-                soonCount={soonCount}
-                urgentCount={urgentCount}
-                onSelectTone={(tone) =>
-                  navigate(
-                    tone === 'urgent' || tone === 'soon'
-                      ? '/fridge?filter=expiring'
-                      : tone === 'fresh'
-                        ? '/fridge?filter=fresh'
-                        : '/fridge',
-                  )
-                }
-              />
-            </Suspense>
-
             <section aria-labelledby="c01-use-soon-heading" className="space-y-3">
               <div className="flex items-center justify-between">
-                <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                  Chi tiết nguyên liệu ưu tiên
+                <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+                  Nguyên liệu ưu tiên dùng sớm
                 </h2>
                 <Link
                   to="/fridge"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-semibold text-[var(--tkv-accent-ink,#9E4322)] hover:text-[var(--tkv-primary,#D86A43)] underline underline-offset-4"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
                   Mở tủ lạnh
                 </Link>
@@ -377,37 +444,54 @@ export const C01HomePilot: React.FC = () => {
                   onRetry={() => void inventoryQuery.refetch()}
                 />
               ) : useSoonItems.length === 0 ? (
-                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] bg-[var(--tkv-surface-muted,#F7EFE6)] border-[var(--tkv-border,#EAE0D5)] flex items-center justify-between gap-3">
-                  <span>
-                    {activeItems.length === 0
-                      ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
-                      : 'Chưa có nguyên liệu nào ở ngưỡng sắp hết hạn.'}
-                  </span>
+                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-secondary)] bg-[var(--tkv-surface)] flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <MascotIllustration pose="fridge" size={56} decorative className="w-14 h-14 shrink-0" />
+                    <span>
+                      {activeItems.length === 0
+                        ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
+                        : `Tủ đang có ${activeItems.length} nguyên liệu tươi ngon ổn định.`}
+                    </span>
+                  </div>
                   <TkvButton size="sm" variant="secondary" onClick={() => navigate('/fridge')}>
                     {activeItems.length === 0 ? 'Thêm ngay' : 'Xem tủ'}
                   </TkvButton>
                 </TkvSurface>
               ) : (
-                <TkvSurface padded={false} className="divide-y divide-[var(--tkv-border,#EAE0D5)] bg-white border-[var(--tkv-border,#EAE0D5)]">
+                <TkvSurface padded={false} className="divide-y divide-[var(--tkv-border)] bg-[var(--tkv-surface)]">
                   {useSoonItems.map((item) => {
                     const exp = presentExpiry(item);
                     const remDays = daysUntil(exp.date ?? undefined);
+                    const thumbSrc = getIngredientImage(item.ingredientId, item.name);
                     return (
                       <Link
                         key={item.id}
                         to={`/fridge/${item.id}`}
-                        className="tkv-focusable min-h-[56px] p-4 flex items-center justify-between gap-3 hover:bg-[var(--tkv-bg,#FCF9F5)] transition-colors"
+                        className="tkv-focusable min-h-[60px] p-3.5 flex items-center justify-between gap-3 hover:bg-[var(--tkv-bg)] transition-colors"
                       >
-                        <div className="min-w-0">
-                          <p className="text-sm font-bold text-[var(--tkv-ink,#2C221E)] truncate">
-                            {item.name}
-                          </p>
-                          <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
-                            {item.quantity} {item.unit}
-                          </p>
+                        <div className="flex items-center gap-3 min-w-0">
+                          {thumbSrc && !thumbSrc.includes('placeholder') ? (
+                            <img
+                              src={thumbSrc}
+                              alt=""
+                              width={36}
+                              height={36}
+                              loading="lazy"
+                              className="w-9 h-9 rounded-xl bg-[var(--tkv-bg)] p-1 object-contain shrink-0"
+                            />
+                          ) : (
+                            <BrandFeatureIcon name="fridge" size={36} />
+                          )}
+                          <div className="min-w-0">
+                            <p className="text-sm font-extrabold text-[var(--tkv-ink)] truncate">
+                              {item.name}
+                            </p>
+                            <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
+                              {item.quantity} {UNIT_LABELS_VI[item.unit] ?? item.unit}
+                            </p>
+                          </div>
                         </div>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft,#FCF5E6)] border border-[var(--tkv-honey-border,#EDD9B4)] text-xs font-semibold text-[var(--tkv-honey-ink,#8C5B18)] tabular-nums shrink-0">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#C68634)]" aria-hidden="true" />
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-xs font-extrabold text-[var(--tkv-coral-ink)] tabular-nums shrink-0">
                           <span>
                             {exp.estimated
                               ? remDays !== null
@@ -425,55 +509,69 @@ export const C01HomePilot: React.FC = () => {
               )}
             </section>
 
-            <section aria-labelledby="c01-recs-heading" className="space-y-3">
-              <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                Món gợi ý cho bữa tới
+            {/* Core Kitchen Action Stack with AI-Rendered BrandFeatureIcons */}
+            <section aria-labelledby="c01-for-you-heading" className="space-y-3">
+              <h2 id="c01-for-you-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
+                Trợ lý bếp cùng bạn hôm nay
               </h2>
-              {recommendationsQuery.isPending ? (
-                <TkvSkeleton className="h-44" label="Đang tải món gợi ý…" />
-              ) : recommendationsQuery.isError ? (
-                <TkvErrorState
-                  message="Chưa tải được danh sách gợi ý món ăn."
-                  onRetry={() => void recommendationsQuery.refetch()}
-                />
-              ) : (
-                <div className="space-y-3">
-                  {recommendations.map(({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => (
-                    <Link
-                      key={recipe.id}
-                      to={`/recipes/${recipe.slug || recipe.id}`}
-                      className="tkv-focusable rounded-[var(--tkv-radius-card)] bg-white border border-[var(--tkv-border,#EAE0D5)] p-3 flex items-center gap-3.5 hover:border-[var(--tkv-border-strong,#D5C3B3)] transition-colors"
-                    >
-                      <VerifiedDishImage
-                        slug={recipe.slug}
-                        title={recipe.title}
-                        canonicalFallbackSrc={resolveRecipeImage(recipe)}
-                        aspectClass="aspect-square"
-                        compact
-                        className="w-20 h-20 rounded-xl shrink-0"
-                      />
-                      <div className="min-w-0 flex-1 space-y-1">
-                        <h3 className="tkv-heading text-base font-bold text-[var(--tkv-ink,#2C221E)] truncate">
-                          {recipe.title}
-                        </h3>
-                        <p className="text-xs text-[var(--tkv-ink-soft,#5F524A)] tabular-nums">
-                          {recipe.cookTimeMinutes} phút · {recipe.servings} người
-                        </p>
-                        <TkvBadge
-                          tone={canCookWithoutBuying ? 'success' : 'coral'}
-                          icon={canCookWithoutBuying ? 'check' : 'shopping'}
-                        >
-                          <span className="tabular-nums">
-                            {canCookWithoutBuying
-                              ? 'Đủ nguyên liệu theo lượng'
-                              : `Cần kiểm tra / mua thêm ${missingRequiredIngredientCount} mục`}
-                          </span>
-                        </TkvBadge>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+
+              <div className="space-y-3">
+                <Link
+                  to="/scan"
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
+                    <BrandFeatureIcon name="scan" size={46} className="mt-0.5" />
+                    <div className="min-w-0 space-y-1">
+                      <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                        Quét & thêm nguyên liệu bằng AI
+                      </p>
+                      <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
+                        Chụp ngăn mát hoặc hóa đơn đi chợ, luôn kiểm duyệt{'\u00A0'}trước{'\u00A0'}khi{'\u00A0'}lưu
+                      </p>
+                    </div>
+                  </div>
+                  <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)] shrink-0" />
+                </Link>
+
+                <Link
+                  to={`${plannerBase}`}
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
+                    <BrandFeatureIcon name="planner" size={46} className="mt-0.5" />
+                    <div className="min-w-0 space-y-1">
+                      <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                        {plan ? 'Thực đơn 7 ngày đang mở' : 'Lên thực đơn 7 ngày'}
+                      </p>
+                      <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
+                        {home.requiresAccount
+                          ? 'Đăng nhập để đồng bộ lịch bữa ăn tuần của hộ gia đình'
+                          : `Cân bằng dinh dưỡng cho cả gia đình, linh hoạt đổi\u00A0món\u00A01\u00A0chạm`}
+                      </p>
+                    </div>
+                  </div>
+                  <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)] shrink-0" />
+                </Link>
+
+                <Link
+                  to="/shopping"
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
+                    <BrandFeatureIcon name="shopping" size={46} className="mt-0.5" />
+                    <div className="min-w-0 space-y-1">
+                      <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                        Danh sách mua sắm thông minh
+                      </p>
+                      <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
+                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua{'\u00A0'}vừa{'\u00A0'}đủ
+                      </p>
+                    </div>
+                  </div>
+                  <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)] shrink-0" />
+                </Link>
+              </div>
             </section>
           </div>
         </div>

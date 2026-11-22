@@ -1,32 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332 88" fill="none" role="img" aria-label="Takolio">
-  <defs>
-    <linearGradient id="tk-clay" x1="6" y1="8" x2="78" y2="80" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E37A54"/>
-      <stop offset="100%" stop-color="#CC5D36"/>
-    </linearGradient>
-  </defs>
-  <rect x="6" y="8" width="72" height="72" rx="20" fill="url(#tk-clay)"/>
-  <g transform="translate(6, 8) scale(0.140625)">
-    <path d="M168 272C112 272 82 234 96 198C106 174 134 178 134 202" stroke="#FFFDF9" stroke-width="30" stroke-linecap="round"/>
-    <path d="M344 272C400 272 430 234 416 198C406 174 378 178 378 202" stroke="#FFFDF9" stroke-width="30" stroke-linecap="round"/>
-    <path d="M178 312C124 340 92 324 92 292" stroke="#FFFDF9" stroke-width="26" stroke-linecap="round"/>
-    <path d="M334 312C388 340 420 324 420 292" stroke="#FFFDF9" stroke-width="26" stroke-linecap="round"/>
-    <path d="M198 338C162 388 128 404 114 380" stroke="#FFFDF9" stroke-width="26" stroke-linecap="round"/>
-    <path d="M314 338C350 388 384 404 398 380" stroke="#FFFDF9" stroke-width="26" stroke-linecap="round"/>
-    <path d="M162 216C162 140 202 96 256 96C310 96 350 140 350 216C350 272 316 310 256 310C196 310 162 272 162 216Z" fill="#FFFDF9"/>
-    <circle cx="222" cy="232" r="11" fill="#D86A43"/>
-    <circle cx="290" cy="232" r="11" fill="#D86A43"/>
-    <path d="M242 252C248 260 264 260 270 252" stroke="#D86A43" stroke-width="11" stroke-linecap="round"/>
-    <path d="M196 348H316C316 388 292 414 256 414C220 414 196 388 196 348Z" fill="#FFFDF9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" fill="none" role="img" aria-label="Takolio Kitchen Studio — Direction A">
+  <rect x="2" y="4" width="40" height="40" rx="12" fill="#196149"/>
+  <path d="M22 14C22 10 17.5 8 14 9.5C14 13 17.5 15 22 14Z" fill="#F6C453"/>
+  <path d="M22 14C22 10 26.5 8 30 9.5C30 13 26.5 15 22 14Z" fill="#E7F4EC"/>
+  <rect x="11" y="18" width="22" height="17" rx="8.5" fill="#FFF9F1"/>
+  <path d="M8 23H11M33 23H36" stroke="#FFF9F1" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="18" cy="26" r="1.8" fill="#152E2C"/>
+  <circle cx="26" cy="26" r="1.8" fill="#152E2C"/>
+  <path d="M19.5 29.5C21 31 23 31 24.5 29.5" stroke="#F46B52" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="36" cy="11" r="4" fill="#F46B52"/>
+  <!-- Custom vector logotype paths for 'takolio' (zero font dependency in SVG) -->
+  <g fill="#152E2C">
+    <path d="M58 14h5v6h4v4h-4v9c0 1.4.8 2 2.2 2H67v4h-2.8c-4.2 0-6.2-2-6.2-6v-9h-3v-4h3v-6Z"/>
+    <path d="M79.5 19.5c5.2 0 8.5 2.9 8.5 7.8V39h-4.8v-2.4c-1.3 1.8-3.3 2.8-5.9 2.8-4.1 0-6.8-2.4-6.8-5.9 0-3.7 2.9-5.8 7.8-5.8h4.9v-.5c0-2.2-1.4-3.6-3.9-3.6-2 0-3.5.8-4.2 2.2l-4.1-2c1.4-2.8 4.4-4.3 8.5-4.3Zm-1.2 16.2c2.8 0 4.9-1.7 4.9-4.1v-.9h-4.3c-2.3 0-3.6.9-3.6 2.5 0 1.5 1.2 2.5 3 2.5Z"/>
+    <path d="M93 11h5v16.2l6.8-7.2h6l-7.6 7.8L111.5 39h-6.1l-5.8-8.2-1.6 1.7V39h-5V11Z"/>
+    <path d="M123.5 19.5c5.8 0 10 4.2 10 10s-4.2 10-10 10-10-4.2-10-10 4.2-10 10-10Zm0 15.6c3.1 0 5.1-2.3 5.1-5.6s-2-5.6-5.1-5.6-5.1 2.3-5.1 5.6 2 5.6 5.1 5.6Z"/>
+    <path d="M138 11h5v28h-5V11Z"/>
+    <circle cx="151" cy="14" r="2.9" fill="#F46B52"/>
+    <path d="M148.5 20h5v19h-5V20Z"/>
+    <path d="M168 19.5c5.8 0 10 4.2 10 10s-4.2 10-10 10-10-4.2-10-10 4.2-10 10-10Zm0 15.6c3.1 0 5.1-2.3 5.1-5.6s-2-5.6-5.1-5.6-5.1 2.3-5.1 5.6 2 5.6 5.1 5.6Z"/>
   </g>
-  <g fill="#2C221E">
-    <path d="M100 22h8.2v10h6.8v6.8h-6.8v15.4c0 2.6 1.3 3.8 3.9 3.8h3.3v7h-4.9c-7.1 0-10.5-3.4-10.5-10.4V38.8H95V32h5V22Z"/>
-    <path d="M136.5 31.2c9.2 0 14.8 5 14.8 13.6V65h-8v-4.2c-2.2 3.1-5.7 4.9-10.2 4.9-7.1 0-11.9-4.2-11.9-10.2 0-6.4 5.1-10.1 13.6-10.1h8.5v-.9c0-3.8-2.5-6.2-6.8-6.2-3.5 0-6.1 1.4-7.4 3.9l-7-3.4c2.5-4.9 7.6-7.6 14.4-7.6Zm-2.1 28.1c4.8 0 8.5-2.9 8.5-7.1v-1.6h-7.5c-4 0-6.2 1.5-6.2 4.3 0 2.6 2.1 4.4 5.2 4.4Z"/>
-    <path d="M159.5 17h8.4v27.8l11.6-12.8h10.2l-13 13.5L191 65h-10.3l-9.9-14.1-2.9 3V65h-8.4V17Z"/>
-    <path d="M211.5 31.2c10.1 0 17.4 7.3 17.4 17.3s-7.3 17.3-17.4 17.3-17.4-7.3-17.4-17.3 7.3-17.3 17.4-17.3Zm0 27.1c5.4 0 8.9-4 8.9-9.8s-3.5-9.8-8.9-9.8-8.9 4-8.9 9.8 3.5 9.8 8.9 9.8Z"/>
-    <path d="M236.5 17h8.4v48h-8.4V17Z"/>
-    <path d="M253.5 32h8.4v33h-8.4V32Z"/>
-    <circle cx="257.7" cy="22" r="4.6" fill="#D86A43"/>
-    <path d="M287 31.2c10.1 0 17.4 7.3 17.4 17.3s-7.3 17.4-17.4 17.3-17.4-7.3-17.4-17.3 7.3-17.3 17.4-17.3Zm0 27.1c5.4 0 8.9-4 8.9-9.8s-3.5-9.8-8.9-9.8-8.9 4-8.9 9.8 3.5 9.8 8.9 9.8Z"/></g>
-  <circle cx="314" cy="60" r="4.2" fill="#4E7A5B"/>
 </svg>

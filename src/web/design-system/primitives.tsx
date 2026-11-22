@@ -6,7 +6,7 @@ import { ChevronRight, X } from 'lucide-react';
 import { useModalFocus } from './use-modal-focus';
 
 /**
- * T17 shared primitives aligned to Takolio Sumi Edition (Architectural Monochrome 92 / 6 / 2).
+ * T17 shared primitives aligned to Official Takolio Brand Board v2 (Leaf Green #196149, Tomato Coral #F46B52, Warm Ivory #FFF9F1).
  */
 
 export type PageWidth = 'compact' | 'default' | 'wide' | 'fullscreen';

@@ -281,7 +281,7 @@ const ROUTES = [
     h1: 'Takolio Stories',
     description:
       'Cẩm nang nấu ăn tối bận rộn, bảo quản rau tươi giòn, sơ chế gia vị Việt và xoay vòng tủ lạnh chống lãng phí.',
-    ogImage: '/takolio/vnext/stories/story-01-weeknight-dinner.webp',
+    ogImage: '/takolio/vnext/food/dau-phu-sot-ca-chua.webp',
     highlights: [
       '5 món ăn nhanh cho tối bận rộn dưới 25 phút.',
       'Bảo quản rau ăn lá và gia vị thơm tươi lâu trong ngăn mát.',

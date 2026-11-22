@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
@@ -20,20 +20,11 @@ import {
 import { PublicMarketingShell } from '../components/Shells';
 import { TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
-import { MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
 import {
-  InteractiveAiScanHudSvg,
-  InteractiveFridgeCutawaySvg,
-  InteractiveKitchenLoopSvg,
-  InteractivePortionMacroDialSvg,
-  InteractiveSimmerWaveSvg,
-} from '../interactive-svg';
-
-const LazyFridgeFreshnessOrbital3D = lazy(() =>
-  import('../webgl/FridgeFreshnessOrbital3D').then((m) => ({
-    default: m.FridgeFreshnessOrbital3D,
-  })),
-);
+  CulinaryHillsBanner,
+  MascotIllustration,
+  VerifiedDishImage,
+} from '../components/VNextMedia';
 
 const FEATURE_SUBNAV: Array<{ id: string; label: string; to: string }> = [
   { id: 'M02', label: 'Cách hoạt động', to: '/how-it-works' },
@@ -61,8 +52,8 @@ const FeatureSubnavBar: React.FC<{ activeId: string }> = ({ activeId }) => (
               className={clsx(
                 'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs font-bold inline-flex items-center whitespace-nowrap border transition-colors',
                 active
-                  ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
-                  : 'bg-white text-[var(--tkv-ink-soft,#5F524A)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] hover:text-[var(--tkv-ink,#2C221E)]',
+                  ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
+                  : 'bg-white text-[var(--tkv-ink-soft,#3C5954)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)] hover:text-[var(--tkv-ink,#152E2C)]',
               )}
             >
               {item.label}
@@ -491,19 +482,19 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Title + Subtitle + 3 Structured Highlight Cards */}
           <div className="lg:col-span-6 space-y-5">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
               <span>{spec.eyebrow}</span>
             </span>
 
             <div className="space-y-2.5">
               <h1
                 id={`tkv-${spec.screenId}-h1`}
-                className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#2C221E)] leading-[1.15]"
+                className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#152E2C)] leading-[1.15]"
               >
                 {spec.title}
               </h1>
-              <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                 {spec.subtitle}
               </p>
             </div>
@@ -512,16 +503,16 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
               {spec.bullets.map((b) => (
                 <div
                   key={b.title}
-                  className="rounded-[20px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-4 sm:p-5 flex items-start gap-3.5"
+                  className="rounded-[20px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-start gap-3.5"
                 >
-                  <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
+                  <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
                     <VNextIcon name={b.icon} size={20} />
                   </span>
                   <div className="space-y-1 min-w-0">
-                    <h2 className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                    <h2 className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                       {b.title}
                     </h2>
-                    <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                    <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                       {b.detail}
                     </p>
                   </div>
@@ -532,8 +523,8 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
 
           {/* Right Column: Crisp Sunlit Ceramic Showcase + Terracotta CTA */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="rounded-[24px] bg-white p-4 sm:p-5 border border-[var(--tkv-border,#EAE0D5)] shadow-soft space-y-4">
-              <div className="rounded-[18px] overflow-hidden aspect-[4/3] bg-[var(--tkv-surface-muted,#F7EFE6)]">
+            <div className="rounded-[24px] bg-white p-4 sm:p-5 border border-[var(--tkv-border,#DCE6DE)] shadow-soft space-y-4">
+              <div className="rounded-[18px] overflow-hidden aspect-[4/3] bg-[var(--tkv-surface-muted,#E7F4EC)]">
                 <img
                   src={spec.imageSrc640}
                   srcSet={`${spec.imageSrc640} 640w, ${spec.imageSrc} 1200w`}
@@ -543,12 +534,12 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
                 />
               </div>
 
-              <div className="rounded-2xl bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] p-4 space-y-1.5">
-                <p className="text-xs font-extrabold text-[var(--tkv-sage-ink,#355940)] inline-flex items-center gap-1.5">
-                  <VNextIcon name="shield" size={15} className="text-[var(--tkv-sage,#4E7A5B)]" />
+              <div className="rounded-2xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] p-4 space-y-1.5">
+                <p className="text-xs font-extrabold text-[var(--tkv-sage-ink,#134C39)] inline-flex items-center gap-1.5">
+                  <VNextIcon name="shield" size={15} className="text-[var(--tkv-sage,#196149)]" />
                   <span>{spec.truthBadge}</span>
                 </p>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                   {spec.truthNote}
                 </p>
               </div>
@@ -560,7 +551,7 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
                 trackPublicConversion('feature_primary_cta', { screenId: spec.screenId });
                 navigateToAppSurface(vnextHref(spec.ctaHref), navigate);
               }}
-              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-bold text-base shadow-xs inline-flex items-center justify-center gap-2 transition-colors"
+              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white font-bold text-base shadow-xs inline-flex items-center justify-center gap-2 transition-colors"
             >
               <span>{spec.ctaLabel}</span>
               <VNextIcon name="arrow-right" size={18} />
@@ -568,108 +559,51 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
           </div>
         </div>
 
-        {/* Live Interactive SVG & 3D WebGL Culinary Lab */}
+        {/* Bé Mầm Bếp & Culinary Banner */}
         {hasInteractiveLab && (
-          <div className="mt-10 pt-8 border-t border-[var(--tkv-border,#EAE0D5)] space-y-5">
-            <div className="space-y-1.5">
-              <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-accent-ink,#9E4322)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
-                <span>Mô phỏng tương tác trực tiếp</span>
-              </span>
-              <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                Trải nghiệm ngay cơ chế vận hành trên trình duyệt
-              </h2>
-            </div>
-
-            {spec.screenId === 'M02' && (
-              <InteractiveKitchenLoopSvg
-                onNavigate={(href) => navigateToAppSurface(vnextHref(href), navigate)}
-              />
-            )}
-
-            {spec.screenId === 'M03' && (
-              <InteractiveAiScanHudSvg
-                onApproveDraft={() =>
-                  navigateToAppSurface(vnextHref('/auth?mode=login&returnTo=%2Fscan'), navigate)
-                }
-              />
-            )}
-
-            {spec.screenId === 'M04' && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                <InteractiveFridgeCutawaySvg
-                  countsByZone={{ cool: 5, crisper: 6, chiller: 3, freezer: 4 }}
-                  expiringCount={2}
-                />
-                <Suspense
-                  fallback={
-                    <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 text-sm text-[var(--tkv-ink-muted,#87776E)]">
-                      Đang khởi tạo khay gốm 3D độ tươi thực phẩm…
-                    </div>
-                  }
-                >
-                  <LazyFridgeFreshnessOrbital3D freshCount={12} soonCount={4} urgentCount={2} />
-                </Suspense>
-              </div>
-            )}
-
-            {spec.screenId === 'M05' && (
-              <InteractivePortionMacroDialSvg
-                initialServings={4}
-                baseServings={4}
-                baseTimeMinutes={30}
-              />
-            )}
-
-            {spec.screenId === 'M07' && (
-              <InteractiveSimmerWaveSvg
-                progress={0.62}
-                isRunning={true}
-                totalSeconds={900}
-                remainingSeconds={342}
-              />
-            )}
+          <div className="mt-10 pt-8 border-t border-[var(--tkv-border)]">
+            <CulinaryHillsBanner />
           </div>
         )}
       </section>
 
       {/* Deep-Dive Section */}
-      <section className="bg-white border-y border-[var(--tkv-border,#EAE0D5)] py-12 px-4 sm:px-6">
+      <section className="bg-white border-y border-[var(--tkv-border,#DCE6DE)] py-12 px-4 sm:px-6">
         <div className="max-w-[1200px] mx-auto space-y-6">
-          <h2 className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+          <h2 className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
             {spec.deepDiveTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {spec.deepDiveSteps.map((st) => (
               <div
                 key={st.code}
-                className="rounded-[20px] bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] p-5 space-y-2.5"
+                className="rounded-[20px] bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] p-5 space-y-2.5"
               >
-                <span className="font-mono tabular-nums inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-accent-ink,#9E4322)] text-xs font-extrabold">
+                <span className="tkv-heading tabular-nums inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] text-xs font-extrabold">
                   {st.code}
                 </span>
-                <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   {st.heading}
                 </h3>
-                <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">{st.body}</p>
+                <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">{st.body}</p>
               </div>
             ))}
           </div>
 
           {spec.screenId === 'M06' && (
             <div className="pt-4 space-y-4">
-              <h3 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+              <h3 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                 Một số món ăn xác minh nguyên liệu trong kho công thức
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {SHOWCASE_RECIPES.map((r) => (
-                  <TkvSurface key={r.slug} padded={false} className="overflow-hidden flex flex-col bg-white border-[var(--tkv-border,#EAE0D5)]">
+                  <TkvSurface key={r.slug} padded={false} className="overflow-hidden flex flex-col bg-white border-[var(--tkv-border,#DCE6DE)]">
                     <VerifiedDishImage slug={r.slug} title={r.title} aspectClass="aspect-[4/3]" />
                     <div className="p-4 space-y-1">
-                      <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                      <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">
                         {r.title}
                       </p>
-                      <p className="text-xs font-mono tabular-nums text-[var(--tkv-ink-muted,#87776E)]">{r.meta}</p>
+                      <p className="text-xs font-semibold tabular-nums text-[var(--tkv-ink-muted,#52706A)]">{r.meta}</p>
                     </div>
                   </TkvSurface>
                 ))}
@@ -791,47 +725,47 @@ export const M09PricingPage: React.FC = () => {
     <PublicMarketingShell screenId="M09">
       <section aria-labelledby="tkv-m09-h1" className="max-w-[1060px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-3 max-w-2xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
             <span>Minh bạch biểu phí theo dữ liệu máy chủ</span>
           </span>
-          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.65rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
+          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.65rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
             Các gói Takolio
           </h1>
-          <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)]">
+          <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#3C5954)]">
             Lựa chọn gói phù hợp với nhu cầu sử dụng của hộ gia đình bạn.
           </p>
         </div>
 
         {/* 2-Column Sunlit Ceramic & Terracotta-Linen Plan Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-          <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-xs">
+          <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-xs">
             <div className="space-y-4">
-              <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-[var(--tkv-sage-soft,#EEF5F0)] text-[var(--tkv-sage-ink,#355940)] border border-[var(--tkv-sage-border,#CFE2D5)]">
+              <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-[var(--tkv-sage-soft,#E7F4EC)] text-[var(--tkv-sage-ink,#134C39)] border border-[var(--tkv-sage-border,#BDE0CC)]">
                 Cơ bản cho mọi gia đình
               </span>
               <div className="space-y-1">
-                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Miễn phí
                 </h2>
-                <p className="font-mono tabular-nums text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                  0 VND <span className="text-xs font-sans font-semibold text-[var(--tkv-ink-muted,#87776E)]">/ trọn đời cơ bản</span>
+                <p className="tabular-nums text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                  0 VND <span className="text-xs font-semibold text-[var(--tkv-ink-muted,#52706A)]">/ trọn đời cơ bản</span>
                 </p>
               </div>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                 Bắt đầu ngay không cần thẻ thanh toán — đầy đủ vòng lặp quản lý tủ lạnh, công thức và đi chợ cốt lõi.
               </p>
-              <ul className="space-y-2.5 pt-2 text-sm text-[var(--tkv-ink,#2C221E)]">
+              <ul className="space-y-2.5 pt-2 text-sm text-[var(--tkv-ink,#152E2C)]">
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
                   <span>Quản lý tồn kho tủ lạnh theo lô và cảnh báo hạn dùng</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
                   <span>Tra cứu kho công thức món Việt & chế độ nấu từng bước có timer</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0 mt-0.5" />
+                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
                   <span>Danh sách đi chợ đồng bộ ngoại tuyến và đối chiếu định lượng</span>
                 </li>
               </ul>
@@ -842,63 +776,63 @@ export const M09PricingPage: React.FC = () => {
               disabled={isStarting}
               onClick={() => void handleStartFree()}
               data-testid="m09-free-cta"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)] font-bold text-base transition-colors disabled:opacity-60"
+              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#B8CABE)] text-[var(--tkv-ink,#152E2C)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] font-bold text-base transition-colors disabled:opacity-60"
             >
               {isStarting ? 'Đang mở…' : 'Bắt đầu'}
             </button>
           </div>
 
-          <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-pro-from,#FFF9F5)] via-[var(--tkv-pro-via,#FDF1EA)] to-[var(--tkv-pro-to,#F9E5D8)] text-[var(--tkv-ink,#2C221E)] border border-[var(--tkv-pro-border,#EBCBB9)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-soft">
+          <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-surface)] via-[var(--tkv-bg)] to-[var(--tkv-surface-coral)] text-[var(--tkv-ink,#152E2C)] border border-[var(--tkv-border-coral,#FAD0C4)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-soft">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/85 text-[var(--tkv-accent-ink,#9E4322)] border border-[var(--tkv-accent-border,#F2D5C7)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/85 text-[var(--tkv-accent-ink,#B33A22)] border border-[var(--tkv-accent-border,#FAD0C4)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
                 <span>Nâng cao cho căn bếp bận rộn</span>
               </span>
               <div className="space-y-2">
-                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Takolio Pro
                 </h2>
                 {livePlans ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-testid="m09-live-prices">
                     {monthlyPlan && (
-                      <div className="rounded-xl bg-white/85 border border-[var(--tkv-accent-border,#F2D5C7)] px-3.5 py-2.5">
-                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-ink-muted,#87776E)] font-bold">Gói 1 tháng</p>
-                        <p className="font-mono tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
+                      <div className="rounded-xl bg-white/85 border border-[var(--tkv-accent-border,#FAD0C4)] px-3.5 py-2.5">
+                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-ink-muted,#52706A)] font-bold">Gói 1 tháng</p>
+                        <p className="tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5">
                           {formatServerVnd(monthlyPlan)}
                         </p>
                       </div>
                     )}
                     {annualPlan && (
-                      <div className="rounded-xl bg-white/95 border border-[var(--tkv-pro-border,#EBCBB9)] px-3.5 py-2.5">
-                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-accent-ink,#9E4322)] font-bold">Gói 1 năm</p>
-                        <p className="font-mono tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#2C221E)] mt-0.5">
+                      <div className="rounded-xl bg-white/95 border border-[var(--tkv-border-coral,#FAD0C4)] px-3.5 py-2.5">
+                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-accent-ink,#B33A22)] font-bold">Gói 1 năm</p>
+                        <p className="tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5">
                           {formatServerVnd(annualPlan)}
                         </p>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <p className="text-xs font-mono text-[var(--tkv-ink-soft,#5F524A)] bg-white/80 border border-[var(--tkv-accent-border,#F2D5C7)] rounded-xl px-3 py-2">
+                  <p className="text-xs font-medium text-[var(--tkv-ink-soft,#3C5954)] bg-white/80 border border-[var(--tkv-accent-border,#FAD0C4)] rounded-xl px-3 py-2">
                     {livePlansQuery.isPending
                       ? 'Đang đồng bộ biểu phí trực tiếp từ máy chủ…'
                       : 'Biểu phí VND chính thức tải trực tiếp tại trang /plus sau khi đăng nhập'}
                   </p>
                 )}
               </div>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                 Mở rộng hạn mức quét AI chính xác cao, lập thực đơn tuần tự động và thanh toán VietQR bảo mật theo phiên đã xác thực.
               </p>
-              <ul className="space-y-2.5 pt-1 text-sm text-[var(--tkv-ink,#2C221E)]">
+              <ul className="space-y-2.5 pt-1 text-sm text-[var(--tkv-ink,#152E2C)]">
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="sparkles" size={18} className="text-[var(--tkv-primary,#D86A43)] shrink-0 mt-0.5" />
+                  <VNextIcon name="sparkles" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
                   <span>Ưu tiên nhận diện hoá đơn & nguyên liệu AI chính xác cao (có duyệt trước khi lưu)</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="calendar" size={18} className="text-[var(--tkv-primary,#D86A43)] shrink-0 mt-0.5" />
+                  <VNextIcon name="calendar" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
                   <span>Lập thực đơn tuần chuyên sâu & tối ưu danh sách đi chợ theo lịch</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0 mt-0.5" />
+                  <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
                   <span>Thanh toán VietQR / PayOS đối soát trực tiếp từ máy chủ</span>
                 </li>
               </ul>
@@ -911,17 +845,17 @@ export const M09PricingPage: React.FC = () => {
                 navigateToAppSurface(plusDestination, navigate);
               }}
               data-testid="m09-plus-cta"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white font-extrabold text-base shadow-xs transition-colors"
+              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white font-extrabold text-base shadow-xs transition-colors"
             >
               Xem các gói
             </button>
           </div>
         </div>
 
-        <div className="rounded-2xl bg-[var(--tkv-surface-muted,#F7EFE6)] border border-[var(--tkv-border,#EAE0D5)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink-soft,#5F524A)] flex items-start gap-3">
-          <VNextIcon name="info" size={18} className="text-[var(--tkv-primary,#D86A43)] shrink-0 mt-0.5" />
+        <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] flex items-start gap-3">
+          <VNextIcon name="info" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
           <p>
-            <strong className="text-[var(--tkv-ink,#2C221E)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
+            <strong className="text-[var(--tkv-ink,#152E2C)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
             Biểu phí hiển thị trên trang này chỉ đọc từ điểm cuối máy chủ <code>/api/v1/billing/plans</code> khi khả dụng và không bao giờ gán cứng số tiền ước đoán ở phía trình duyệt.
           </p>
         </div>
@@ -997,14 +931,14 @@ export const M10FaqPage: React.FC = () => {
     <PublicMarketingShell screenId="M10">
       <section aria-labelledby="tkv-m10-h1" className="max-w-[920px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-2.5">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
             <span>Giải đáp minh bạch</span>
           </span>
-          <h1 id="tkv-m10-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
+          <h1 id="tkv-m10-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
             Câu hỏi thường gặp
           </h1>
-          <p className="text-base text-[var(--tkv-ink-soft,#5F524A)]">
+          <p className="text-base text-[var(--tkv-ink-soft,#3C5954)]">
             Những thông tin quan trọng trước khi bạn đưa Takolio vào căn bếp hằng ngày.
           </p>
         </div>
@@ -1014,7 +948,7 @@ export const M10FaqPage: React.FC = () => {
           <label htmlFor="m10-faq-search" className="sr-only">
             Tìm câu hỏi thường gặp
           </label>
-          <span className="absolute left-4 text-[var(--tkv-ink-muted,#87776E)] pointer-events-none">
+          <span className="absolute left-4 text-[var(--tkv-ink-muted,#52706A)] pointer-events-none">
             <VNextIcon name="search" size={18} />
           </span>
           <input
@@ -1023,22 +957,22 @@ export const M10FaqPage: React.FC = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm câu hỏi..."
-            className="tkv-focusable w-full min-h-[48px] pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-[var(--tkv-border,#EAE0D5)] focus:border-[var(--tkv-primary,#D86A43)] text-base text-[var(--tkv-ink,#2C221E)] placeholder:text-[var(--tkv-ink-muted,#87776E)] transition-colors"
+            className="tkv-focusable w-full min-h-[48px] pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-[var(--tkv-border,#DCE6DE)] focus:border-[var(--tkv-primary,#196149)] text-base text-[var(--tkv-ink,#152E2C)] placeholder:text-[var(--tkv-ink-muted,#52706A)] transition-colors"
           />
         </div>
 
         {filteredFaq.length === 0 ? (
           <div
             role="status"
-            className="rounded-[20px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 text-center space-y-3"
+            className="rounded-[20px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 text-center space-y-3"
           >
-            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#2C221E)]">
+            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">
               Không tìm thấy câu hỏi khớp từ khóa “{searchQuery.trim()}”
             </p>
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="tkv-focusable min-h-[40px] px-4 py-2 rounded-xl bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white text-xs font-bold transition-colors"
+              className="tkv-focusable min-h-[40px] px-4 py-2 rounded-xl bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white text-xs font-bold transition-colors"
             >
               Hiển thị tất cả câu hỏi
             </button>
@@ -1051,7 +985,7 @@ export const M10FaqPage: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  className="rounded-[20px] bg-white border border-[var(--tkv-border,#EAE0D5)] overflow-hidden"
+                  className="rounded-[20px] bg-white border border-[var(--tkv-border,#DCE6DE)] overflow-hidden"
                 >
                   <h2>
                     <button
@@ -1059,12 +993,12 @@ export const M10FaqPage: React.FC = () => {
                       aria-expanded={expanded}
                       aria-controls={panelId}
                       onClick={() => setOpenId(openId === item.id ? '' : item.id)}
-                      className="tkv-focusable w-full min-h-[60px] px-5 py-4 flex items-center justify-between gap-4 text-left hover:bg-[var(--tkv-bg,#FCF9F5)] transition-colors"
+                      className="tkv-focusable w-full min-h-[60px] px-5 py-4 flex items-center justify-between gap-4 text-left hover:bg-[var(--tkv-bg,#FFF9F1)] transition-colors"
                     >
-                      <span className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                      <span className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                         {item.q}
                       </span>
-                      <span className="w-8 h-8 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-[var(--tkv-primary,#D86A43)] flex items-center justify-center shrink-0">
+                      <span className="w-8 h-8 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
                         <VNextIcon name={expanded ? 'minus' : 'plus'} size={16} />
                       </span>
                     </button>
@@ -1073,7 +1007,7 @@ export const M10FaqPage: React.FC = () => {
                     <div
                       id={panelId}
                       role="region"
-                      className="px-5 pb-5 pt-2 text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed border-t border-[var(--tkv-border,#EAE0D5)]"
+                      className="px-5 pb-5 pt-2 text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed border-t border-[var(--tkv-border,#DCE6DE)]"
                     >
                       {item.a}
                     </div>
@@ -1095,8 +1029,8 @@ const STORIES_GUIDES = [
     readTime: '04 phút đọc · Mẹo thực đơn',
     excerpt:
       'Cách kết hợp trứng, đậu phụ, rau theo mùa và thịt thái sẵn để hoàn thành mâm cơm nóng hổi dưới 25 phút sau giờ làm.',
-    coverSrc: '/takolio/vnext/stories/story-01-weeknight-dinner.webp',
-    coverSrc640: '/takolio/vnext/stories/story-01-weeknight-dinner-640w.webp',
+    coverSrc: '/takolio/vnext/food/dau-phu-sot-ca-chua.webp',
+    coverSrc640: '/takolio/vnext/food/dau-phu-sot-ca-chua-640w.webp',
     coverAlt: 'Mâm cơm chiều 25 phút ấm áp với đậu phụ sốt cà chua, rau xanh và cơm trắng trong bát gốm sứ',
     publishedAt: '2026-11-18',
     points: [
@@ -1111,8 +1045,8 @@ const STORIES_GUIDES = [
     readTime: '05 phút đọc · Tủ lạnh thông minh',
     excerpt:
       'Phân loại rau ăn lá, củ quả và gia vị tươi theo độ ẩm ngăn mát để giữ độ giòn lâu hơn và giảm hao hụt.',
-    coverSrc: '/takolio/vnext/stories/story-02-crisp-greens.webp',
-    coverSrc640: '/takolio/vnext/stories/story-02-crisp-greens-640w.webp',
+    coverSrc: '/takolio/vnext/marketing/m04-smart-fridge.webp',
+    coverSrc640: '/takolio/vnext/marketing/m04-smart-fridge-640w.webp',
     coverAlt: 'Rau ăn lá tươi giòn bảo quản trong hộp thủy tinh lót khăn giấy sạch trong ngăn mát sáng thoáng',
     publishedAt: '2026-11-16',
     points: [
@@ -1127,8 +1061,8 @@ const STORIES_GUIDES = [
     readTime: '04 phút đọc · Đứng bếp nhẹ đầu',
     excerpt:
       'Sắp xếp thứ tự sơ chế — ướp trước, nấu canh song song, xào rau sau cùng — với bộ hẹn giờ từng bước trên Takolio.',
-    coverSrc: '/takolio/vnext/stories/story-03-parallel-cooking.webp',
-    coverSrc640: '/takolio/vnext/stories/story-03-parallel-cooking-640w.webp',
+    coverSrc: '/takolio/vnext/marketing/m07-guided-cooking.webp',
+    coverSrc640: '/takolio/vnext/marketing/m07-guided-cooking-640w.webp',
     coverAlt: 'Hai nồi gốm và chảo xào vận hành song song trên mặt bếp sáng với khay nguyên liệu sơ chế gọn gàng',
     publishedAt: '2026-11-14',
     points: [
@@ -1143,8 +1077,8 @@ const STORIES_GUIDES = [
     readTime: '05 phút đọc · Mise-en-place gia đình',
     excerpt:
       'Chuẩn bị sẵn khay gia vị thơm Việt Nam vào chiều Chủ Nhật giúp tiết kiệm 10 phút đứng bếp mỗi buổi tối trong tuần.',
-    coverSrc: '/takolio/vnext/stories/story-04-aromatics-prep.webp',
-    coverSrc640: '/takolio/vnext/stories/story-04-aromatics-prep-640w.webp',
+    coverSrc: '/takolio/vnext/marketing/m05-meal-planning-prep.webp',
+    coverSrc640: '/takolio/vnext/marketing/m05-meal-planning-prep-640w.webp',
     coverAlt: 'Hành tím, tỏi ta, sả cây, gừng tươi và ớt đỏ xếp ngay ngắn trong chén gốm trắng trên thớt gỗ',
     publishedAt: '2026-11-12',
     points: [
@@ -1159,8 +1093,8 @@ const STORIES_GUIDES = [
     readTime: '06 phút đọc · Quản trị thực phẩm',
     excerpt:
       'Áp dụng nguyên tắc hết hạn trước — nấu trước (First-Expired, First-Out) cho ngăn rau củ và thực phẩm tươi sống.',
-    coverSrc: '/takolio/vnext/stories/story-05-zero-waste-tray.webp',
-    coverSrc640: '/takolio/vnext/stories/story-05-zero-waste-tray-640w.webp',
+    coverSrc: '/takolio/vnext/marketing/m08-smart-shopping-basket.webp',
+    coverSrc640: '/takolio/vnext/marketing/m08-smart-shopping-basket-640w.webp',
     coverAlt: 'Khay gốm ưu tiên nấu trước tập hợp các nguyên liệu tươi cần chế biến trong 48 giờ tới',
     publishedAt: '2026-11-10',
     points: [
@@ -1175,8 +1109,8 @@ const STORIES_GUIDES = [
     readTime: '05 phút đọc · Tinh hoa món kho Việt',
     excerpt:
       'Canh chuẩn tỷ lệ nước màu dừa, nước mắm nhĩ và nhiệt độ lửa riu để thịt kho trứng mềm rục mà nước kho vẫn trong.',
-    coverSrc: '/takolio/vnext/stories/story-06-claypot-braise.webp',
-    coverSrc640: '/takolio/vnext/stories/story-06-claypot-braise-640w.webp',
+    coverSrc: '/takolio/vnext/food/thit-kho-trung.webp',
+    coverSrc640: '/takolio/vnext/food/thit-kho-trung-640w.webp',
     coverAlt: 'Nồi đất nung kho thịt ba chỉ trứng gà nước dừa sôi lăn tăn ánh màu hổ phách ấm nắng',
     publishedAt: '2026-11-08',
     points: [
@@ -1220,14 +1154,14 @@ export const M11StoriesPage: React.FC = () => {
     <PublicMarketingShell screenId="M11">
       <section aria-labelledby="tkv-m11-h1" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-2.5">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FDF0EA)] border border-[var(--tkv-accent-border,#F2D5C7)] text-xs font-bold text-[var(--tkv-accent-ink,#9E4322)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
             <span>Cẩm nang bếp gia đình</span>
           </span>
-          <h1 id="tkv-m11-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#2C221E)]">
+          <h1 id="tkv-m11-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
             Takolio Stories
           </h1>
-          <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#5F524A)]">
+          <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#3C5954)]">
             Cảm hứng cho mỗi bữa ăn, mẹo bảo quản thực phẩm và kỹ thuật đứng bếp thực tế cho gia đình Việt.
           </p>
         </div>
@@ -1242,12 +1176,12 @@ export const M11StoriesPage: React.FC = () => {
                 className={clsx(
                   'rounded-[22px] bg-white border overflow-hidden flex flex-col justify-between transition-colors',
                   active
-                    ? 'border-[var(--tkv-primary,#D86A43)] ring-1 ring-[var(--tkv-primary,#D86A43)] shadow-soft'
-                    : 'border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)]',
+                    ? 'border-[var(--tkv-primary,#196149)] ring-1 ring-[var(--tkv-primary,#196149)] shadow-soft'
+                    : 'border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
                 )}
               >
                 <div>
-                  <div className="p-3 bg-[var(--tkv-surface-muted,#F7EFE6)]">
+                  <div className="p-3 bg-[var(--tkv-surface-muted,#E7F4EC)]">
                     <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-white">
                       <img
                         src={story.coverSrc640}
@@ -1260,13 +1194,13 @@ export const M11StoriesPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="p-5 space-y-2">
-                    <p className="text-xs font-mono tabular-nums font-bold text-[var(--tkv-ink-muted,#87776E)]">
+                    <p className="text-xs tabular-nums font-bold text-[var(--tkv-ink-muted,#52706A)]">
                       {story.readTime}
                     </p>
-                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
                       {story.title}
                     </h2>
-                    <p className="text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                    <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                       {story.excerpt}
                     </p>
                   </div>
@@ -1278,8 +1212,8 @@ export const M11StoriesPage: React.FC = () => {
                     className={clsx(
                       'tkv-focusable w-full min-h-[44px] px-4 py-2 rounded-xl text-sm font-bold border transition-colors',
                       active
-                        ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
-                        : 'bg-white text-[var(--tkv-ink,#2C221E)] border-[var(--tkv-border-strong,#D5C3B3)] hover:bg-[var(--tkv-surface-muted,#F7EFE6)]',
+                        ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
+                        : 'bg-white text-[var(--tkv-ink,#152E2C)] border-[var(--tkv-border-strong,#B8CABE)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)]',
                     )}
                   >
                     {active ? 'Đang xem hướng dẫn dưới đây' : 'Đọc hướng dẫn chi tiết'}
@@ -1291,19 +1225,19 @@ export const M11StoriesPage: React.FC = () => {
         </div>
 
         {/* Expanded Guide Reader */}
-        <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-8 space-y-4 shadow-xs">
-          <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--tkv-border,#EAE0D5)] pb-3">
-            <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+        <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 sm:p-8 space-y-4 shadow-xs">
+          <div className="flex items-center justify-between flex-wrap gap-2 border-b border-[var(--tkv-border,#DCE6DE)] pb-3">
+            <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
               {selected.title}
             </h2>
-            <span className="text-xs font-mono tabular-nums font-bold text-[var(--tkv-ink-muted,#87776E)]">
+            <span className="text-xs tabular-nums font-bold text-[var(--tkv-ink-muted,#52706A)]">
               {selected.readTime}
             </span>
           </div>
-          <ul className="space-y-2.5 text-sm sm:text-base text-[var(--tkv-ink,#2C221E)]">
+          <ul className="space-y-2.5 text-sm sm:text-base text-[var(--tkv-ink,#152E2C)]">
             {selected.points.map((pt) => (
               <li key={pt} className="flex items-start gap-2.5">
-                <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#4E7A5B)] shrink-0 mt-1" />
+                <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-1" />
                 <span>{pt}</span>
               </li>
             ))}
@@ -1312,7 +1246,7 @@ export const M11StoriesPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigateToAppSurface(vnextHref('/auth?mode=register'), navigate)}
-              className="tkv-focusable min-h-[44px] px-5 py-2 rounded-xl bg-[var(--tkv-primary,#D86A43)] hover:bg-[var(--tkv-primary-hover,#C25731)] text-white text-sm font-bold inline-flex items-center gap-2 transition-colors"
+              className="tkv-focusable min-h-[44px] px-5 py-2 rounded-xl bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white text-sm font-bold inline-flex items-center gap-2 transition-colors"
             >
               <span>Áp dụng ngay trong căn bếp Takolio</span>
               <VNextIcon name="arrow-right" size={16} />
@@ -1396,8 +1330,8 @@ export const M12CompanyLegalPage: React.FC = () => {
               className={clsx(
                 'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-bold inline-flex items-center border transition-colors',
                 section === t.key
-                  ? 'bg-[var(--tkv-primary,#D86A43)] text-white border-[var(--tkv-primary,#D86A43)] shadow-xs'
-                  : 'bg-white text-[var(--tkv-ink-soft,#5F524A)] border-[var(--tkv-border,#EAE0D5)] hover:border-[var(--tkv-border-strong,#D5C3B3)] hover:text-[var(--tkv-ink,#2C221E)]',
+                  ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
+                  : 'bg-white text-[var(--tkv-ink-soft,#3C5954)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)] hover:text-[var(--tkv-ink,#152E2C)]',
               )}
             >
               {t.label}
@@ -1408,28 +1342,28 @@ export const M12CompanyLegalPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Content Column */}
           <div className="lg:col-span-7 space-y-5">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-sage-soft,#EEF5F0)] border border-[var(--tkv-sage-border,#CFE2D5)] text-xs font-bold text-[var(--tkv-sage-ink,#355940)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#4E7A5B)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-xs font-bold text-[var(--tkv-sage-ink,#134C39)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#196149)]" aria-hidden="true" />
               <span>Cam kết minh bạch & Bảo vệ dữ liệu hộ gia đình</span>
             </span>
 
-            <h1 id="tkv-m12-h1" className="tkv-heading text-3xl sm:text-[2.5rem] font-extrabold text-[var(--tkv-ink,#2C221E)] leading-tight">
+            <h1 id="tkv-m12-h1" className="tkv-heading text-3xl sm:text-[2.5rem] font-extrabold text-[var(--tkv-ink,#152E2C)] leading-tight">
               {titles[section].title}
             </h1>
 
-            <p className="text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+            <p className="text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
               Thông tin về sản phẩm, hướng dẫn hỗ trợ và chính sách bảo vệ dữ liệu căn bếp gia đình.
             </p>
 
             {section === 'about' && (
-              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 space-y-4 text-sm sm:text-base text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 space-y-4 text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                 <div className="flex items-center gap-4">
-                  <MascotIllustration pose="welcome" size={64} className="border border-[var(--tkv-border,#EAE0D5)] bg-[var(--tkv-bg,#FCF9F5)]" />
+                  <MascotIllustration pose="welcome" size={64} className="border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)]" />
                   <div>
-                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                      Triết lý Nắng Bếp Gốm Sứ của Takolio
+                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                      Triết lý Bữa ngon, nhẹ đầu của Takolio
                     </h2>
-                    <p className="text-sm">Giảm lãng phí thực phẩm, bớt áp lực nghĩ món mỗi chiều.</p>
+                    <p className="text-sm">Ăn đủ. Mua đủ. Dùng hết — giảm lãng phí thực phẩm, bớt áp lực nghĩ món mỗi chiều.</p>
                   </div>
                 </div>
                 <p>
@@ -1442,35 +1376,35 @@ export const M12CompanyLegalPage: React.FC = () => {
             )}
 
             {section === 'privacy' && (
-              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 space-y-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 space-y-4 text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Tóm tắt kỹ thuật bảo vệ dữ liệu hiện hành trên hệ thống
                 </h2>
                 <ul className="space-y-2.5 list-disc pl-5">
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Cô lập theo hộ gia đình:</strong> Tồn kho, lịch tuần, giỏ mua sắm và ảnh quét đều được kiểm tra quyền sở hữu theo <code>household_id</code> ở tầng máy chủ.</li>
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Phiên đăng nhập an toàn:</strong> Xác thực bằng cookie <code>HttpOnly</code>; khi đăng xuất hoặc đổi tài khoản, bộ nhớ tạm trên trình duyệt được dọn sạch.</li>
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Ảnh quét AI:</strong> Chỉ gửi xử lý khi bạn chủ động bấm chụp/tải lên và không tự động nhập kho nếu chưa xác nhận.</li>
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Quyền xuất/xóa dữ liệu (U10):</strong> Đang được lập đặc tả kỹ thuật (<code>RFC-002</code>) để triển khai quy trình tự phục vụ an toàn.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Cô lập theo hộ gia đình:</strong> Tồn kho, lịch tuần, giỏ mua sắm và ảnh quét đều được kiểm tra quyền sở hữu theo <code>household_id</code> ở tầng máy chủ.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Phiên đăng nhập an toàn:</strong> Xác thực bằng cookie <code>HttpOnly</code>; khi đăng xuất hoặc đổi tài khoản, bộ nhớ tạm trên trình duyệt được dọn sạch.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Ảnh quét AI:</strong> Chỉ gửi xử lý khi bạn chủ động bấm chụp/tải lên và không tự động nhập kho nếu chưa xác nhận.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Quyền xuất/xóa dữ liệu (U10):</strong> Đang được lập đặc tả kỹ thuật (<code>RFC-002</code>) để triển khai quy trình tự phục vụ an toàn.</li>
                 </ul>
               </div>
             )}
 
             {section === 'terms' && (
-              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 space-y-4 text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 space-y-4 text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Nguyên tắc sử dụng dịch vụ
                 </h2>
                 <ul className="space-y-2.5 list-disc pl-5">
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Kiểm tra an toàn thực phẩm:</strong> Nhãn hạn dùng ước tính và gợi ý AI chỉ mang tính hỗ trợ quản lý; người dùng luôn kiểm tra thực tế tình trạng thực phẩm và dị ứng của gia đình trước khi chế biến.</li>
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Định lượng & dinh dưỡng:</strong> Chỉ các công thức có nguồn dinh dưỡng xác minh mới hiển thị chỉ số macro; ứng dụng không thay thế tư vấn y khoa.</li>
-                  <li><strong className="text-[var(--tkv-ink,#2C221E)]">Gói Takolio Pro:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Kiểm tra an toàn thực phẩm:</strong> Nhãn hạn dùng ước tính và gợi ý AI chỉ mang tính hỗ trợ quản lý; người dùng luôn kiểm tra thực tế tình trạng thực phẩm và dị ứng của gia đình trước khi chế biến.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Định lượng & dinh dưỡng:</strong> Chỉ các công thức có nguồn dinh dưỡng xác minh mới hiển thị chỉ số macro; ứng dụng không thay thế tư vấn y khoa.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Gói Takolio Pro:</strong> Quyền lợi và giao dịch thanh toán tuân theo thông tin chính thức tại màn hình <code>/plus</code> khi đăng nhập.</li>
                 </ul>
               </div>
             )}
 
             {section === 'contact' && (
-              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 space-y-3 text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
-                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#2C221E)]">
+              <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 space-y-3 text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+                <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Nguyên tắc hỗ trợ minh bạch
                 </h2>
                 <p>
@@ -1482,45 +1416,45 @@ export const M12CompanyLegalPage: React.FC = () => {
 
           {/* Right Structured Support & Feedback Guide (replaces fake copy-paste <pre>) */}
           <div className="lg:col-span-5">
-            <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#EAE0D5)] p-6 sm:p-7 space-y-5 shadow-xs">
+            <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 sm:p-7 space-y-5 shadow-xs">
               <div className="space-y-1.5">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold text-[var(--tkv-ink-muted,#87776E)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#D86A43)]" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-[var(--tkv-ink-muted,#52706A)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
                   <span>Hướng dẫn hỗ trợ & phản hồi</span>
                 </span>
-                <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#2C221E)]">
+                <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
                   Trung tâm hỗ trợ tự phục vụ
                 </h2>
-                <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                   Tra cứu nhanh cách xử lý các tình huống thường gặp về tài khoản, bản quét AI và giao dịch Takolio Pro.
                 </p>
               </div>
 
               <ol className="space-y-3 text-xs sm:text-sm">
-                <li className="rounded-2xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] p-4 space-y-1">
-                  <p className="font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                    <span className="font-mono tabular-nums text-[var(--tkv-primary,#D86A43)] mr-1.5">01.</span>
+                <li className="rounded-2xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                    <span className="tabular-nums text-[var(--tkv-primary,#196149)] mr-1.5">01.</span>
                     Đối soát giao dịch Takolio Pro
                   </p>
-                  <p className="text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                  <p className="text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                     Đăng nhập và mở mục <strong>Takolio Pro (/plus)</strong> để xem trạng thái lệnh VietQR trực tiếp từ máy chủ hoặc mở lại lệnh đang chờ mà không cần chuyển khoản lại.
                   </p>
                 </li>
-                <li className="rounded-2xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] p-4 space-y-1">
-                  <p className="font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                    <span className="font-mono tabular-nums text-[var(--tkv-primary,#D86A43)] mr-1.5">02.</span>
+                <li className="rounded-2xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                    <span className="tabular-nums text-[var(--tkv-primary,#196149)] mr-1.5">02.</span>
                     Kiểm tra đồng bộ & phiên bản ứng dụng
                   </p>
-                  <p className="text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                  <p className="text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                     Tại <strong>Cài đặt ứng dụng</strong> và <strong>Quyền riêng tư</strong>, bạn có thể kiểm tra số thao tác ngoại tuyến đang chờ đồng bộ, mã phiên bản build và làm mới bộ nhớ đệm an toàn.
                   </p>
                 </li>
-                <li className="rounded-2xl bg-[var(--tkv-bg,#FCF9F5)] border border-[var(--tkv-border,#EAE0D5)] p-4 space-y-1">
-                  <p className="font-extrabold text-[var(--tkv-ink,#2C221E)]">
-                    <span className="font-mono tabular-nums text-[var(--tkv-primary,#D86A43)] mr-1.5">03.</span>
+                <li className="rounded-2xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] p-4 space-y-1">
+                  <p className="font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                    <span className="tabular-nums text-[var(--tkv-primary,#196149)] mr-1.5">03.</span>
                     Bảo mật thông tin khi gửi phản hồi
                   </p>
-                  <p className="text-[var(--tkv-ink-soft,#5F524A)] leading-relaxed">
+                  <p className="text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                     Chỉ đính kèm mã hỗ trợ bản quét (<code>supportId</code>) hoặc 4 số cuối mã đơn thanh toán — không bao giờ chia sẻ mật khẩu hoặc mã OTP 6 chữ số.
                   </p>
                 </li>
@@ -1529,7 +1463,7 @@ export const M12CompanyLegalPage: React.FC = () => {
               <div className="pt-1 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <Link
                   to="/faq"
-                  className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--tkv-primary,#D86A43)] text-white text-xs sm:text-sm font-bold inline-flex items-center justify-center gap-1.5 hover:bg-[var(--tkv-primary-hover,#C25731)] shadow-xs transition-colors"
+                  className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--tkv-primary,#196149)] text-white text-xs sm:text-sm font-bold inline-flex items-center justify-center gap-1.5 hover:bg-[var(--tkv-primary-hover,#134C39)] shadow-xs transition-colors"
                 >
                   <span>Tra cứu FAQ</span>
                   <VNextIcon name="arrow-right" size={15} />
@@ -1537,14 +1471,14 @@ export const M12CompanyLegalPage: React.FC = () => {
                 {isSatelliteComRuntime() ? (
                   <a
                     href={resolveAppSurfaceHref('/auth?mode=login')}
-                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
+                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#B8CABE)] text-[var(--tkv-ink,#152E2C)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#E7F4EC)] transition-colors"
                   >
                     Đăng nhập kiểm tra phiên
                   </a>
                 ) : (
                   <Link
                     to={vnextHref('/auth?mode=login')}
-                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#D5C3B3)] text-[var(--tkv-ink,#2C221E)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#F7EFE6)] transition-colors"
+                    className="tkv-focusable min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-[var(--tkv-border-strong,#B8CABE)] text-[var(--tkv-ink,#152E2C)] text-xs sm:text-sm font-bold inline-flex items-center justify-center hover:bg-[var(--tkv-surface-muted,#E7F4EC)] transition-colors"
                   >
                     Đăng nhập kiểm tra phiên
                   </Link>

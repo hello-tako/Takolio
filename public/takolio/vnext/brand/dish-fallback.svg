@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none" role="img" aria-label="Món ăn gia đình">
-  <rect width="320" height="240" fill="#FAF4EC"/>
-  <circle cx="160" cy="124" r="68" fill="#FFFFFF" stroke="#E8DDD0" stroke-width="2"/>
-  <path d="M116 126h88c-3 26-20 42-44 42s-41-16-44-42Z" fill="#FBECE4" stroke="#D86A43" stroke-width="2.4" stroke-linejoin="round"/>
-  <line x1="138" y1="174" x2="182" y2="174" stroke="#D86A43" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M144 108c0-8 5-12 5-20M160 104c0-8 5-12 5-20M176 108c0-8 5-12 5-20" stroke="#C68634" stroke-width="2.2" stroke-linecap="round" opacity="0.7"/>
-  <path d="M178 118c4-10 14-14 22-11-2 9-10 14-22 11Z" fill="#4E7A5B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" fill="#E7F4EC"/>
+  <circle cx="200" cy="150" r="76" fill="#FFF9F1" stroke="#196149" stroke-width="3"/>
+  <path d="M168 152h64a32 32 0 0 1-64 0Z" fill="#DCE4DB" stroke="#196149" stroke-width="2.5"/>
+  <path d="M186 126c0 6 5 8 5 14M204 124c0 6 5 8 5 14" stroke="#196149" stroke-width="2.5" stroke-linecap="round"/>
 </svg>

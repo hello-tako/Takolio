@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Takolio">
-  <rect width="64" height="64" rx="0" fill="#D86A43"/>
-  <g transform="scale(0.125)">
-    <path d="M168 272C112 272 82 234 96 198M344 272C400 272 430 234 416 198M178 312C124 340 92 324 92 292M334 312C388 340 420 324 420 292M198 338C162 388 128 404 114 380M314 338C350 388 384 404 398 380" stroke="#FFFDF9" stroke-width="30" stroke-linecap="round"/>
-    <path d="M162 216C162 140 202 96 256 96C310 96 350 140 350 216C350 272 316 310 256 310C196 310 162 272 162 216Z" fill="#FFFDF9"/>
-    <circle cx="222" cy="232" r="13" fill="#D86A43"/>
-    <circle cx="290" cy="232" r="13" fill="#D86A43"/>
-    <path d="M196 348H316C316 388 292 414 256 414C220 414 196 388 196 348Z" fill="#FFFDF9"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" fill="#196149"/>
+  <circle cx="256" cy="256" r="176" fill="#217558"/>
+  <path d="M256 138C256 102 214 84 182 98C182 132 214 148 256 138Z" fill="#F6C453"/>
+  <path d="M256 138C256 102 298 84 330 98C330 132 298 148 256 138Z" fill="#E7F4EC"/>
+  <rect x="146" y="182" width="220" height="168" rx="84" fill="#FFF9F1"/>
+  <path d="M116 242H146M366 242H396" stroke="#FFF9F1" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="214" cy="258" r="16" fill="#152E2C"/>
+  <circle cx="298" cy="258" r="16" fill="#152E2C"/>
+  <path d="M232 296C244 312 268 312 280 296" stroke="#F46B52" stroke-width="16" stroke-linecap="round"/>
 </svg>

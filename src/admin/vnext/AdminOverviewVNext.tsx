@@ -56,20 +56,10 @@ export function AdminOverviewVNext() {
           className={overview.isPlaceholderData ? 'is-stale tkv-admin-stack' : 'tkv-admin-stack'}
           aria-busy={overview.isPlaceholderData}
         >
-          {/* Top 3 Operational Status Tiles — Warm Culinary Studio Ops + Botanical Sage / Terracotta indicators */}
+          {/* Top 3 Operational Status Tiles matching AD02.png ("Trạng thái | Cần kiểm tra | Tác vụ / Chỉ số") */}
           <section aria-label="Tóm tắt trạng thái vận hành" className="tkv-admin-status-trio">
-            <div className="tkv-status-tile">
-              <span className="tkv-tile-label">
-                <span
-                  className={
-                    overview.data.health.status === 'ok'
-                      ? 'tkv-status-dot is-ok'
-                      : 'tkv-status-dot is-alert'
-                  }
-                  aria-hidden="true"
-                />
-                <span>Trạng thái hệ thống</span>
-              </span>
+            <div className="tkv-status-tile is-mint">
+              <span className="tkv-tile-label">Trạng thái hệ thống</span>
               <strong className="tkv-tile-value">
                 {vi.labels.healthStatus[overview.data.health.status] ?? overview.data.health.status}
               </strong>
@@ -78,18 +68,8 @@ export function AdminOverviewVNext() {
               </span>
             </div>
 
-            <div className="tkv-status-tile">
-              <span className="tkv-tile-label">
-                <span
-                  className={
-                    overview.data.incidents.length === 0
-                      ? 'tkv-status-dot is-ok'
-                      : 'tkv-status-dot is-alert'
-                  }
-                  aria-hidden="true"
-                />
-                <span>Sự cố & cảnh báo</span>
-              </span>
+            <div className="tkv-status-tile is-saffron">
+              <span className="tkv-tile-label">Sự cố & cảnh báo</span>
               <strong className="tkv-tile-value">
                 {overview.data.incidents.length === 0
                   ? 'Không có cảnh báo'
@@ -98,11 +78,8 @@ export function AdminOverviewVNext() {
               <span className="tkv-tile-meta">Nguồn: nhật ký vận hành máy chủ</span>
             </div>
 
-            <div className="tkv-status-tile">
-              <span className="tkv-tile-label">
-                <span className="tkv-status-dot is-neutral" aria-hidden="true" />
-                <span>Chỉ số thu thập ({range})</span>
-              </span>
+            <div className="tkv-status-tile is-sky">
+              <span className="tkv-tile-label">Chỉ số thu thập ({range})</span>
               <strong className="tkv-tile-value">{overview.data.metrics.length} nhóm chỉ số</strong>
               <span className="tkv-tile-meta">Không suy diễn số liệu ngoài API</span>
             </div>

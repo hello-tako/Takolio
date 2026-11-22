@@ -1,4 +1,4 @@
-/* Scoped Takolio Sunlit Ceramic & Terracotta Herb surface adaptation for authoritative inner domain views
+/* Scoped Takolio Official Brand Board v2 surface adaptation for authoritative inner domain views
    (C06/C07 LotDetail, C08 Reconciliation, C09-C14 Scan/Receipt, C24-C29 Planner/Shopping, U02-U05 Settings, U07/U08 Plus).
    Suppresses duplicate legacy top headers when already hosted inside ConsumerStudioShell while preserving
    100% of interactive controls, aria-labels, form inputs, and anti-race data-testids. */
@@ -7,20 +7,20 @@
   color: var(--tkv-ink);
   font-family: var(--tkv-font-body);
   --frigo-tap-target: 44px;
-  --frigo-cream: #fcf9f5;
-  --frigo-text-main: #2c221e;
+  --frigo-cream: #fff9f1;
+  --frigo-text-main: #152e2c;
   --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
   --content-compact: 45rem;
-  --kitchen-coral: #cf623a;
-  --kitchen-pine: #4e7a5b;
-  --kitchen-canvas: #fcf9f5;
-  --semantic-text-primary-rgb: 44 34 30;
-  --semantic-text-secondary-rgb: 95 82 74;
-  --semantic-text-muted-rgb: 135 119 110;
-  --semantic-text-on-soft: #2c221e;
-  --semantic-border-rgb: 234 224 213;
-  --semantic-background-subtle-rgb: 247 239 230;
-  --semantic-danger-strong: #a33329;
+  --kitchen-coral: #f46b52;
+  --kitchen-pine: #196149;
+  --kitchen-canvas: #fff9f1;
+  --semantic-text-primary-rgb: 21 46 44;
+  --semantic-text-secondary-rgb: 60 89 84;
+  --semantic-text-muted-rgb: 82 112 106;
+  --semantic-text-on-soft: #152e2c;
+  --semantic-border-rgb: 220 230 222;
+  --semantic-background-subtle-rgb: 231 244 236;
+  --semantic-danger-strong: #99222a;
 }
 
 /* Hide duplicate legacy shell headers inside ConsumerStudioShell while keeping main content & alerts visible */
@@ -120,7 +120,7 @@
   appearance: none;
   -webkit-appearance: none;
   padding-right: 38px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235f524a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23196149' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
 }
