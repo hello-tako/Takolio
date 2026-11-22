@@ -77,12 +77,14 @@ export function IngredientCoverage({
           <ul>
             {assessment.requirements.map((line, index) => (
               <li key={`${line.ingredientId}:${line.unit}:${index}`}>
-                <strong>{line.name}</strong>
-                {line.isOptional && (
-                  <span className="text-xs text-semantic-text-muted">
-                    {locale === 'vi' ? 'Không bắt buộc' : 'Optional'}
-                  </span>
-                )}
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                  <strong>{line.name}</strong>
+                  {line.isOptional && (
+                    <span className="text-xs text-semantic-text-muted">
+                      {locale === 'vi' ? 'Không bắt buộc' : 'Optional'}
+                    </span>
+                  )}
+                </div>
                 <dl>
                   <div>
                     <dt>{locale === 'vi' ? 'Cần' : 'Needed'}</dt>

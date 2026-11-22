@@ -435,10 +435,10 @@
 :is(.takolio-rebuild, .takosan-rebuild)
   .account-switch-row
   button[role='switch'][aria-checked='false']:not(:disabled) {
-  background-color: rgb(var(--semantic-text-muted-rgb));
+  background-color: var(--tkv-border-strong, #b8cabe);
 }
 
-/* Inset strokes restore measured control boundaries without changing geometry. */
+/* Inset strokes keep subtle control boundaries aligned with Brand Board v2 tokens. */
 :is(.takolio-rebuild, .takosan-rebuild) :is(
   .kitchen-search-input,
   .discovery-select-label select,
@@ -449,5 +449,5 @@
   .shopping-add-form input,
   .shopping-add-form select
 ) {
-  box-shadow: inset 0 0 0 1px rgb(var(--semantic-text-muted-rgb));
+  box-shadow: none;
 }

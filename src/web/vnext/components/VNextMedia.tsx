@@ -277,14 +277,14 @@ export const BrandLockup: React.FC<{
       className={compact ? 'w-9 h-9 rounded-xl shrink-0 object-contain' : 'w-10 h-10 rounded-xl shrink-0 object-contain'}
     />
     {!compact && (
-      <span className="inline-flex flex-col leading-none min-w-0">
-        <span className="tkv-heading text-[22px] font-black tracking-tight text-[var(--tkv-ink)] whitespace-nowrap">
+      <span className="inline-flex flex-col min-w-0">
+        <span className="tkv-heading text-[22px] font-black leading-none tracking-tight text-[var(--tkv-ink)] whitespace-nowrap">
           Takolio
         </span>
         {showTagline && (
           <span
             translate="yes"
-            className="mt-1 text-[10.5px] font-semibold tracking-normal text-[var(--tkv-ink-secondary)] whitespace-nowrap"
+            className="mt-1 text-[10.5px] font-semibold leading-snug tracking-normal text-[var(--tkv-ink-secondary)] truncate"
           >
             Trợ lý bếp gia đình thông minh với AI
           </span>

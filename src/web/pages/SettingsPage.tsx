@@ -63,23 +63,23 @@ export const SettingsPage: React.FC = () => {
   return (
     <AccountPage title="Cài đặt ứng dụng" description="Mở bếp nhanh hơn, quản lý tài nguyên trên thiết bị.">
       <Card className="p-5 space-y-3">
-        <h2 className="flex items-center gap-2"><Smartphone size={20} aria-hidden="true" /> Takolio trên điện thoại</h2>
+        <h2 className="flex items-center gap-2"><Smartphone size={20} className="shrink-0" aria-hidden="true" /> Takolio trên điện thoại</h2>
         <p>{isStandalone
           ? 'Bạn đang mở Takolio từ ứng dụng đã cài trên màn hình chính.'
           : 'Thêm Takolio vào màn hình chính để mở nhanh. Một số dữ liệu đã lưu có thể xem khi mất mạng; tính năng cần máy chủ vẫn cần kết nối.'}</p>
         {!isStandalone && <Button variant="outline" fullWidth onClick={handleInstallPwa} isLoading={installing}>Cài đặt lên màn hình chính</Button>}
       </Card>
       <Card className="p-5 space-y-3">
-        <h2 className="flex items-center gap-2"><Wifi size={20} aria-hidden="true" /> Bộ nhớ đệm ứng dụng</h2>
+        <h2 className="flex items-center gap-2"><Wifi size={20} className="shrink-0" aria-hidden="true" /> Bộ nhớ đệm ứng dụng</h2>
         <p>Xóa tài nguyên ứng dụng đã lưu trên trình duyệt. Thao tác này không xóa dữ liệu ngoại tuyến hoặc thay đổi chưa đồng bộ của bạn.</p>
-        <Button variant="outline" fullWidth onClick={handleClearCache} isLoading={clearing}>
-          <Trash2 size={18} aria-hidden="true" /> Xóa bộ nhớ đệm ứng dụng
+        <Button variant="outline" fullWidth className="gap-2" onClick={handleClearCache} isLoading={clearing}>
+          <Trash2 size={18} className="shrink-0" aria-hidden="true" /> Xóa bộ nhớ đệm ứng dụng
         </Button>
         {cacheCleared && <p role="status">Đã xóa bộ nhớ đệm ứng dụng.</p>}
       </Card>
       {actionError && <p role="alert" className="text-semantic-danger-strong">{actionError}</p>}
       <Card className="p-5 space-y-3">
-        <h2 className="flex items-center gap-2"><Globe size={20} aria-hidden="true" /> Ngôn ngữ hiển thị</h2>
+        <h2 className="flex items-center gap-2"><Globe size={20} className="shrink-0" aria-hidden="true" /> Ngôn ngữ hiển thị</h2>
         <p>Tiếng Việt. Tiếng Anh sẽ được bổ sung khi bản dịch đầy đủ sẵn sàng.</p>
       </Card>
       <Link to="/settings/privacy" className="account-text-link">Xem quyền riêng tư & dữ liệu</Link>

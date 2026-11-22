@@ -113,7 +113,7 @@ const SixDigitOtpInput: React.FC<{
   return (
     <div className="space-y-2">
       <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">Mã xác thực 6 chữ số</p>
-      <div className="grid grid-cols-6 gap-2 sm:gap-2.5" role="group" aria-label="Nhập mã OTP 6 chữ số">
+      <div className="grid grid-cols-6 gap-1.5 sm:gap-2.5" role="group" aria-label="Nhập mã OTP 6 chữ số">
         {Array.from({ length: OTP_LEN }, (_, idx) => (
           <input
             key={idx}
@@ -130,7 +130,7 @@ const SixDigitOtpInput: React.FC<{
             onChange={(e) => handleDigitChange(idx, e.target.value)}
             onKeyDown={(e) => handleKeyDown(idx, e)}
             onPaste={handlePaste}
-            className="tkv-focusable h-13 sm:h-14 w-full rounded-xl border border-[var(--tkv-border-strong,#B8CABE)] focus:border-[var(--tkv-primary,#196149)] bg-white text-center font-mono tabular-nums text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#152E2C)] transition-colors"
+            className="tkv-focusable h-12 sm:h-14 w-full min-w-0 rounded-xl border border-[var(--tkv-border-strong)] focus:border-[var(--tkv-primary)] bg-white text-center font-mono tabular-nums text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)] transition-colors"
           />
         ))}
       </div>
@@ -767,14 +767,14 @@ export const VNextAuthFlow: React.FC = () => {
       <main
         id="tkv-auth-main"
         tabIndex={-1}
-        className="flex-1 max-w-[1040px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-10 flex items-center justify-center"
+        className="flex-1 max-w-[1040px] w-full mx-auto px-4 sm:px-6 pt-[max(1.25rem,env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:py-10 flex items-center justify-center"
       >
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Unified Sunlit Ceramic Auth Card */}
           <div className="lg:col-span-6 w-full max-w-[440px] mx-auto">
-            <TkvSurface className="p-6 sm:p-8 relative overflow-hidden space-y-5 bg-white border-[var(--tkv-border,#DCE6DE)] shadow-soft">
+            <TkvSurface className="p-4 sm:p-8 relative overflow-hidden space-y-5 bg-white border-[var(--tkv-border)] shadow-soft">
               {/* Top Header: Brand Lockup + Deterministic 1-Click Exit */}
-              <div className="relative flex items-center justify-between gap-3">
+              <div className="relative flex flex-wrap items-center justify-between gap-2.5">
                 {externalMarketingHref ? (
                   <a href={externalMarketingHref} className="tkv-focusable rounded-xl py-1">
                     <BrandLockup />
@@ -789,7 +789,7 @@ export const VNextAuthFlow: React.FC = () => {
                   externalMarketingHref ? (
                     <a
                       href={externalMarketingHref}
-                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#3C5954)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] hover:text-[var(--tkv-ink,#152E2C)] transition-colors"
+                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-ink)] transition-colors shrink-0"
                     >
                       <VNextIcon name="arrow-left" size={15} />
                       <span>{exitLabel}</span>
@@ -797,7 +797,7 @@ export const VNextAuthFlow: React.FC = () => {
                   ) : (
                     <Link
                       to={exitHref}
-                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#3C5954)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] hover:text-[var(--tkv-ink,#152E2C)] transition-colors"
+                      className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-ink)] transition-colors shrink-0"
                     >
                       <VNextIcon name="arrow-left" size={15} />
                       <span>{exitLabel}</span>
@@ -809,7 +809,7 @@ export const VNextAuthFlow: React.FC = () => {
                     onClick={() =>
                       switchMode(activeMode === 'verify' ? 'register' : 'login', { replace: true })
                     }
-                    className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink,#152E2C)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] transition-colors"
+                    className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors shrink-0"
                   >
                     <VNextIcon name="arrow-left" size={15} />
                     <span>{activeMode === 'verify' ? 'Quay lại đăng ký' : 'Quay lại đăng nhập'}</span>
@@ -822,7 +822,7 @@ export const VNextAuthFlow: React.FC = () => {
                 <div
                   role="tablist"
                   aria-label="Chuyển đổi Đăng nhập và Tạo tài khoản"
-                  className="grid grid-cols-2 gap-1 p-1 rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)]"
+                  className="grid grid-cols-2 gap-1 p-1 rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)]"
                 >
                   <button
                     type="button"
@@ -831,10 +831,10 @@ export const VNextAuthFlow: React.FC = () => {
                     data-testid="auth-tab-login"
                     onClick={() => switchMode('login', { replace: true })}
                     className={clsx(
-                      'tkv-focusable min-h-[42px] rounded-xl text-sm font-extrabold transition-colors',
+                      'tkv-focusable min-h-[44px] rounded-xl text-sm font-extrabold transition-colors',
                       activeMode === 'login'
-                        ? 'bg-white text-[var(--tkv-ink,#152E2C)] shadow-xs border border-[var(--tkv-border,#DCE6DE)]'
-                        : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
+                        ? 'bg-white text-[var(--tkv-ink)] shadow-xs border border-[var(--tkv-border)]'
+                        : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
                     )}
                   >
                     Đăng nhập
@@ -846,10 +846,10 @@ export const VNextAuthFlow: React.FC = () => {
                     data-testid="auth-tab-register"
                     onClick={() => switchMode('register', { replace: true })}
                     className={clsx(
-                      'tkv-focusable min-h-[42px] rounded-xl text-sm font-extrabold transition-colors',
+                      'tkv-focusable min-h-[44px] rounded-xl text-sm font-extrabold transition-colors',
                       activeMode === 'register'
-                        ? 'bg-white text-[var(--tkv-ink,#152E2C)] shadow-xs border border-[var(--tkv-border,#DCE6DE)]'
-                        : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
+                        ? 'bg-white text-[var(--tkv-ink)] shadow-xs border border-[var(--tkv-border)]'
+                        : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
                     )}
                   >
                     Tạo tài khoản
@@ -920,12 +920,12 @@ export const VNextAuthFlow: React.FC = () => {
                   </div>
 
                   {!hasActiveGuestSession && (
-                    <div className="pt-2 border-t border-[var(--tkv-border,#DCE6DE)] text-center">
+                    <div className="pt-2 border-t border-[var(--tkv-border)] text-center">
                       <button
                         type="button"
                         disabled={isStartingGuest || isLoading}
                         onClick={() => void handleGuestStart()}
-                        className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-accent-ink,#B33A22)] hover:underline"
+                        className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-accent-ink)] hover:underline"
                       >
                         <span>
                           {isStartingGuest
@@ -993,7 +993,7 @@ export const VNextAuthFlow: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => switchMode('forgot')}
-                            className="tkv-focusable text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)] hover:text-[var(--tkv-primary,#196149)] hover:underline py-0.5"
+                            className="tkv-focusable min-h-[44px] px-2 -my-2 inline-flex items-center text-xs font-bold text-[var(--tkv-accent-ink)] hover:text-[var(--tkv-primary)] hover:underline"
                           >
                             Quên mật khẩu?
                           </button>
@@ -1010,7 +1010,7 @@ export const VNextAuthFlow: React.FC = () => {
                             type="button"
                             onClick={() => setShowPassword((v) => !v)}
                             aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
-                            className="tkv-focusable w-9 h-9 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted,#52706A)] hover:text-[var(--tkv-ink,#152E2C)]"
+                            className="tkv-focusable w-11 h-11 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-ink)]"
                           >
                             <VNextIcon name={showPassword ? 'eye-off' : 'eye'} size={18} />
                           </button>
@@ -1061,7 +1061,7 @@ export const VNextAuthFlow: React.FC = () => {
                             type="button"
                             onClick={() => setShowPassword((v) => !v)}
                             aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
-                            className="tkv-focusable w-9 h-9 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted,#52706A)] hover:text-[var(--tkv-ink,#152E2C)]"
+                            className="tkv-focusable w-11 h-11 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-ink)]"
                           >
                             <VNextIcon name={showPassword ? 'eye-off' : 'eye'} size={18} />
                           </button>
@@ -1069,7 +1069,7 @@ export const VNextAuthFlow: React.FC = () => {
                       />
 
                       {turnstileSiteKey && (
-                        <div className="pt-0.5 flex justify-center">
+                        <div className="pt-0.5 w-full overflow-x-auto flex justify-center">
                           <TurnstileWidget
                             key={turnstileGen}
                             siteKey={turnstileSiteKey}
@@ -1082,7 +1082,7 @@ export const VNextAuthFlow: React.FC = () => {
                         type="submit"
                         disabled={isLoading}
                         data-testid="a04-submit-btn"
-                        className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white font-bold text-base shadow-xs transition-colors disabled:opacity-60"
+                        className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-bold text-base shadow-xs transition-colors disabled:opacity-60"
                       >
                         {isLoading ? 'Đang gửi mã…' : 'Tạo tài khoản'}
                       </button>
@@ -1090,12 +1090,12 @@ export const VNextAuthFlow: React.FC = () => {
                   )}
 
                   {!hasActiveGuestSession && (
-                    <div className="pt-2 border-t border-[var(--tkv-border,#DCE6DE)] text-center">
+                    <div className="pt-2 border-t border-[var(--tkv-border)] text-center">
                       <button
                         type="button"
                         disabled={isStartingGuest || isLoading}
                         onClick={() => void handleGuestStart()}
-                        className="tkv-focusable min-h-[38px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-accent-ink,#B33A22)] hover:underline"
+                        className="tkv-focusable min-h-[44px] px-3 rounded-xl inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-accent-ink)] hover:underline"
                       >
                         <span>{isStartingGuest ? 'Đang mở phiên dùng thử…' : 'Chưa cần tài khoản? Dùng thử ngay không cần đăng ký →'}</span>
                       </button>
@@ -1138,17 +1138,21 @@ export const VNextAuthFlow: React.FC = () => {
                     <SixDigitOtpInput digits={otpDigits} onChange={setOtpDigits} disabled={isLoading} />
 
                     {needVerifyPasswordField && (
-                      <TkvTextField
-                        label="Mật khẩu tài khoản"
-                        type={showPassword ? 'text' : 'password'}
-                        autoComplete="new-password"
-                        iconLeft="lock"
-                        value={activationPassword}
-                        onChange={(e) => setActivationPassword(e.target.value)}
-                        placeholder="Nhập mật khẩu tối thiểu 6 ký tự"
-                        hint="Trang vừa được tải lại — vui lòng nhập lại mật khẩu để hoàn tất."
-                        required
-                      />
+                      <div className="space-y-1.5">
+                        <TkvTextField
+                          label="Mật khẩu tài khoản"
+                          type={showPassword ? 'text' : 'password'}
+                          autoComplete="new-password"
+                          iconLeft="lock"
+                          value={activationPassword}
+                          onChange={(e) => setActivationPassword(e.target.value)}
+                          placeholder="Nhập mật khẩu tối thiểu 6 ký tự"
+                          required
+                        />
+                        <p className="text-xs text-[var(--tkv-ink-muted)] leading-relaxed">
+                          Trang vừa được tải lại — vui lòng nhập lại mật khẩu để hoàn tất.
+                        </p>
+                      </div>
                     )}
 
                     <div className="flex items-center justify-between text-xs font-bold">
@@ -1156,7 +1160,7 @@ export const VNextAuthFlow: React.FC = () => {
                         type="button"
                         disabled={resendSeconds > 0 || isLoading || !email.trim()}
                         onClick={() => void handleResendOtp('register')}
-                        className="tkv-focusable tabular-nums text-[var(--tkv-accent-ink,#B33A22)] disabled:text-[var(--tkv-ink-muted,#52706A)] hover:underline py-1"
+                        className="tkv-focusable min-h-[44px] inline-flex items-center tabular-nums text-[var(--tkv-accent-ink)] disabled:text-[var(--tkv-ink-muted)] hover:underline"
                       >
                         {resendSeconds > 0
                           ? `Gửi lại mã · 00:${String(resendSeconds).padStart(2, '0')}`
@@ -1243,7 +1247,7 @@ export const VNextAuthFlow: React.FC = () => {
                         type="button"
                         disabled={resendSeconds > 0 || isLoading || !email.trim()}
                         onClick={() => void handleResendOtp('forgot_password')}
-                        className="tkv-focusable tabular-nums text-[var(--tkv-accent-ink,#B33A22)] disabled:text-[var(--tkv-ink-muted,#52706A)] hover:underline py-0.5"
+                        className="tkv-focusable min-h-[44px] inline-flex items-center tabular-nums text-[var(--tkv-accent-ink)] disabled:text-[var(--tkv-ink-muted)] hover:underline"
                       >
                         {resendSeconds > 0
                           ? `Gửi lại mã · 00:${String(resendSeconds).padStart(2, '0')}`
@@ -1264,7 +1268,7 @@ export const VNextAuthFlow: React.FC = () => {
                           type="button"
                           onClick={() => setShowPassword((v) => !v)}
                           aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
-                          className="tkv-focusable w-9 h-9 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted,#52706A)] hover:text-[var(--tkv-ink,#152E2C)]"
+                          className="tkv-focusable w-11 h-11 rounded-lg inline-flex items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-ink)]"
                         >
                           <VNextIcon name={showPassword ? 'eye-off' : 'eye'} size={18} />
                         </button>

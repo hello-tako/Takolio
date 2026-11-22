@@ -471,7 +471,7 @@ function ComponentRow({
   return (
     <li id={`component-${component.id}`} tabIndex={-1} className="planning-component-row">
       <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold leading-snug">{title}</p>
           <p className="text-xs text-semantic-text-muted mt-1">
             <span className="font-bold uppercase tracking-wide text-semantic-text-primary">
@@ -482,13 +482,6 @@ function ComponentRow({
           </p>
           {!component.resolvable && (
             <p className="text-xs text-semantic-warning-strong mt-1">{c.unavailable}</p>
-          )}
-          {assessment && (
-            <IngredientCoverage
-              assessment={assessment}
-              locale={locale}
-              title={locale === 'vi' ? 'Xem lượng cho món này' : 'Review this dish quantities'}
-            />
           )}
         </div>
         <Button
@@ -507,6 +500,13 @@ function ComponentRow({
           )}
         </Button>
       </div>
+      {assessment && (
+        <IngredientCoverage
+          assessment={assessment}
+          locale={locale}
+          title={locale === 'vi' ? 'Xem lượng cho món này' : 'Review this dish quantities'}
+        />
+      )}
       <div className="planning-component-primary-actions">
         <Button
           size="sm"
@@ -575,7 +575,7 @@ function ComponentRow({
       </details>
       <div className="mt-2 text-xs">
         {component.cookable && component.recipeId ? (
-          <span className="flex gap-3">
+          <span className="flex flex-wrap gap-x-4 gap-y-1">
             <Link
               className="underline min-h-11 inline-flex items-center"
               to={`/recipes/id/${encodeURIComponent(component.recipeId)}?servings=${servings}${component.contentFingerprint ? `&contentFingerprint=${component.contentFingerprint}` : ''}`}

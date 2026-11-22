@@ -329,10 +329,10 @@ export const VNextOnboardingFlow: React.FC = () => {
       <main
         id="tkv-onb-main"
         tabIndex={-1}
-        className="flex-1 max-w-[980px] w-full mx-auto px-4 sm:px-6 py-5 sm:py-10 flex items-center justify-center"
+        className="flex-1 max-w-[980px] w-full mx-auto px-4 sm:px-6 pt-[max(1.25rem,env(safe-area-inset-top,0px))] pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:py-10 flex items-center justify-center"
       >
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <TkvSurface className="lg:col-span-7 p-6 sm:p-8 space-y-6 bg-white border-[var(--tkv-border,#DCE6DE)] shadow-soft">
+          <TkvSurface className="lg:col-span-7 p-4 sm:p-8 space-y-6 bg-white border-[var(--tkv-border)] shadow-soft">
             {/* Top Bar + Skip */}
             <div className="flex items-center justify-between gap-3">
               <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1">
@@ -458,13 +458,13 @@ export const VNextOnboardingFlow: React.FC = () => {
                             : 'bg-white border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
                         )}
                       >
-                        <div className="flex items-center gap-3.5">
-                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                        <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                             <VNextIcon name={g.icon} size={20} />
                           </span>
-                          <div>
-                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">{g.title}</p>
-                            <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)]">{g.subtitle}</p>
+                          <div className="min-w-0">
+                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">{g.title}</p>
+                            <p className="text-xs text-[var(--tkv-ink-secondary)]">{g.subtitle}</p>
                           </div>
                         </div>
                         {selected && (
@@ -531,18 +531,18 @@ export const VNextOnboardingFlow: React.FC = () => {
                 </fieldset>
 
                 {householdSize >= 5 && (
-                  <div className="p-4 rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-bold text-[var(--tkv-ink,#152E2C)]">Số người cụ thể (5–20 người)</p>
-                      <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)]">Máy chủ lưu chính xác từ 1 đến 20 người</p>
+                  <div className="p-4 rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-bold text-[var(--tkv-ink)]">Số người cụ thể (5–20 người)</p>
+                      <p className="text-xs text-[var(--tkv-ink-secondary)]">Máy chủ lưu chính xác từ 1 đến 20 người</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto">
                       <TkvIconButton
                         icon="minus"
                         label="Giảm số người"
                         onClick={() => setHouseholdSize((n) => Math.max(1, n - 1))}
                       />
-                      <span className="min-w-[68px] text-center tabular-nums text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                      <span className="min-w-[68px] text-center tabular-nums text-base font-extrabold text-[var(--tkv-ink)]">
                         {householdSize} người
                       </span>
                       <TkvIconButton
@@ -603,10 +603,10 @@ export const VNextOnboardingFlow: React.FC = () => {
                           aria-pressed={active}
                           onClick={() => toggleTasteChip(chip)}
                           className={clsx(
-                            'tkv-focusable min-h-[42px] px-3.5 py-1.5 rounded-full text-sm font-bold border transition-colors',
+                            'tkv-focusable min-h-[44px] px-3.5 py-2 rounded-full text-sm font-bold border transition-colors',
                             active
-                              ? 'bg-[var(--tkv-sage,#196149)] text-white border-[var(--tkv-sage,#196149)] shadow-xs'
-                              : 'bg-white text-[var(--tkv-ink,#152E2C)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
+                              ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                              : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                           )}
                         >
                           {chip.label}
@@ -630,10 +630,10 @@ export const VNextOnboardingFlow: React.FC = () => {
                           aria-pressed={active}
                           onClick={() => setSpicyLevel(sp.id)}
                           className={clsx(
-                            'tkv-focusable min-h-[42px] px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold border transition-colors',
+                            'tkv-focusable min-h-[44px] px-3 py-2 rounded-full text-xs sm:text-sm font-bold border transition-colors',
                             active
-                              ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
-                              : 'bg-white text-[var(--tkv-ink,#152E2C)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
+                              ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                              : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                           )}
                         >
                           {sp.label}
@@ -687,13 +687,13 @@ export const VNextOnboardingFlow: React.FC = () => {
                             : 'bg-white border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
                         )}
                       >
-                        <div className="flex items-center gap-3.5">
-                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                        <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                          <span className="w-11 h-11 rounded-xl bg-white border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                             <VNextIcon name={sp.icon} size={20} />
                           </span>
-                          <div>
-                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">{sp.title}</p>
-                            <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)]">{sp.subtitle}</p>
+                          <div className="min-w-0">
+                            <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">{sp.title}</p>
+                            <p className="text-xs text-[var(--tkv-ink-secondary)]">{sp.subtitle}</p>
                           </div>
                         </div>
                         {selected && (

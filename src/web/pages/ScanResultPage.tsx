@@ -373,7 +373,7 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
           {pollError && (
             <div
               role={scanStatus === 'pending' ? 'alert' : undefined}
-              className="rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-xs text-semantic-warning-strong flex items-center justify-between gap-3"
+              className="rounded-xl border border-semantic-warning/30 bg-semantic-warning-soft px-3 py-2 text-xs text-semantic-warning-strong flex flex-wrap items-center justify-between gap-2 sm:gap-3"
             >
               <span>{pollError}</span>
               <div className="flex items-center gap-2 shrink-0">
@@ -581,7 +581,7 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
       </div>
 
       {/* Confirmation remains in document flow; short viewports do not pin it over fields. */}
-      <div className="review-actions">
+      <div className="review-actions" data-kitchen-action="fixed">
         <div ref={confirmBarRef} className="review-actions-inner">
           {pendingNotice && <p role="status">{pendingNotice}</p>}
           {isConfirmed || pendingNotice ? (

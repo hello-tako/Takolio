@@ -135,10 +135,10 @@ export const C02QuickSearchPage: React.FC = () => {
               aria-selected={scope === tab.id}
               onClick={() => setScope(tab.id)}
               className={clsx(
-                'tkv-focusable min-h-[42px] px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors',
+                'tkv-focusable min-h-[44px] px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors',
                 scope === tab.id
-                  ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
-                  : 'bg-white text-[var(--tkv-ink,#152E2C)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)]',
+                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                  : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
               )}
             >
               {tab.label}
@@ -164,9 +164,9 @@ export const C02QuickSearchPage: React.FC = () => {
                       to={vnextHref(`/fridge/${lot.id}`)}
                       className="tkv-focusable block rounded-2xl bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 hover:border-[var(--tkv-border-strong,#B8CABE)] transition-colors"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-sm text-[var(--tkv-ink,#152E2C)]">{lot.name}</span>
-                        <TkvBadge tone="neutral">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="font-bold text-sm text-[var(--tkv-ink)] min-w-0 flex-1 break-words">{lot.name}</span>
+                        <TkvBadge tone="neutral" className="shrink-0">
                           <span className="tabular-nums">
                             {lot.quantity} {lot.unit}
                           </span>
@@ -197,13 +197,13 @@ export const C02QuickSearchPage: React.FC = () => {
                       className="tkv-focusable block rounded-2xl bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 hover:border-[var(--tkv-border-strong,#B8CABE)] transition-colors"
                     >
                       <div className="flex items-center justify-between gap-3">
-                        <div>
-                          <p className="font-bold text-sm text-[var(--tkv-ink,#152E2C)]">{recipe.title}</p>
-                          <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
+                        <div className="min-w-0 flex-1">
+                          <p className="font-bold text-sm text-[var(--tkv-ink)] break-words">{recipe.title}</p>
+                          <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
                             {recipe.cookTimeMinutes} phút · {recipe.servings} người
                           </p>
                         </div>
-                        <TkvBadge tone={canCookWithoutBuying ? 'success' : 'neutral'}>
+                        <TkvBadge tone={canCookWithoutBuying ? 'success' : 'neutral'} className="shrink-0 whitespace-nowrap">
                           {canCookWithoutBuying ? 'Đủ nguyên liệu' : 'Xem chi tiết'}
                         </TkvBadge>
                       </div>

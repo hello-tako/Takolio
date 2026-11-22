@@ -62,7 +62,7 @@ export const OfflineBanner: React.FC = () => {
 
   return (
     <>
-      <div className="bg-semantic-warning-soft border-b border-semantic-border text-semantic-text-primary px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2 sticky top-0 z-50 animate-slide-up">
+      <div className="bg-semantic-warning-soft border-b border-semantic-border text-semantic-text-primary px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2 animate-slide-up">
         <span role="status" aria-live="polite" aria-atomic="true" className="font-medium flex flex-1 basis-48 items-center gap-2 min-w-0 tabular-nums">
           <span className="w-1.5 h-1.5 rounded-full bg-semantic-warning shrink-0" aria-hidden="true" />
           <WifiOff className="w-3.5 h-3.5 text-semantic-warning-strong shrink-0" />

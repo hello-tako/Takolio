@@ -120,9 +120,9 @@ export const C23PlannerPilot: React.FC = () => {
       <div className="space-y-4 sm:space-y-6">
         {/* Top Brand Board Heading (`board-2.jpg` right screen) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3.5">
+          <div className="flex items-center gap-3.5 min-w-0">
             <BrandFeatureIcon name="planner" size={48} />
-            <div>
+            <div className="min-w-0">
               <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
                 Thực đơn 7 ngày
               </h1>
@@ -135,7 +135,7 @@ export const C23PlannerPilot: React.FC = () => {
           </div>
 
           {!isGuest && (
-            <div className="hidden sm:flex flex-wrap items-center gap-2.5">
+            <div className="hidden sm:flex flex-wrap items-center gap-2.5 shrink-0">
               <TkvButton
                 variant="primary"
                 size="sm"
@@ -161,7 +161,7 @@ export const C23PlannerPilot: React.FC = () => {
         <div
           role="group"
           aria-label="Chọn thứ trong tuần"
-          className="grid grid-cols-7 gap-1.5 sm:gap-2.5 max-w-xl"
+          className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:grid sm:grid-cols-7 sm:gap-2.5 max-w-xl"
         >
           {WEEKDAY_PILLS.map((dayLabel, idx) => {
             const active = selectedDayIdx === idx;
@@ -172,7 +172,7 @@ export const C23PlannerPilot: React.FC = () => {
                 aria-pressed={active}
                 onClick={() => setSelectedDayIdx(idx)}
                 className={clsx(
-                  'tkv-focusable min-h-[44px] rounded-full text-xs sm:text-sm font-extrabold flex items-center justify-center transition-colors border',
+                  'tkv-focusable min-w-[44px] flex-1 min-h-[44px] rounded-full text-xs sm:text-sm font-extrabold flex items-center justify-center transition-colors border',
                   active
                     ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-cta)]'
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
@@ -187,21 +187,19 @@ export const C23PlannerPilot: React.FC = () => {
         {/* Guest Gate vs Loading vs Error vs Empty Plan vs Active Weekly Schedule */}
         {isGuest ? (
           <div className="space-y-4">
-            <TkvSurface className="p-5 sm:p-6 space-y-5 bg-[var(--tkv-surface)]">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <MascotIllustration pose="shopping" size={96} className="w-24 h-24 shrink-0" />
-                  <div className="space-y-1.5">
-                    <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)]">
-                      {WEEKDAY_PILLS[selectedDayIdx]} · Đồng bộ hộ gia đình
-                    </span>
-                    <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
-                      Đăng nhập để tạo và lưu thực đơn 7 ngày
-                    </h2>
-                    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-                      Thực đơn tuần được đồng bộ theo tài khoản để tự động đối chiếu tủ lạnh và tổng hợp danh sách mua sắm thông minh cho cả nhà.
-                    </p>
-                  </div>
+            <TkvSurface className="p-4 sm:p-6 space-y-5 bg-[var(--tkv-surface)]">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3.5 sm:gap-4">
+                <MascotIllustration pose="shopping" size={96} className="w-20 h-20 sm:w-24 sm:h-24 shrink-0" />
+                <div className="space-y-1.5 min-w-0 flex-1">
+                  <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)]">
+                    {WEEKDAY_PILLS[selectedDayIdx]} · Đồng bộ hộ gia đình
+                  </span>
+                  <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+                    Đăng nhập để tạo và lưu thực đơn 7 ngày
+                  </h2>
+                  <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+                    Thực đơn tuần được đồng bộ theo tài khoản để tự động đối chiếu tủ lạnh và tổng hợp danh sách mua sắm thông minh cho cả nhà.
+                  </p>
                 </div>
               </div>
 
@@ -211,7 +209,7 @@ export const C23PlannerPilot: React.FC = () => {
                 className="tkv-focusable w-full min-h-[50px] px-5 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-[var(--tkv-shadow-cta)] font-extrabold text-sm inline-flex items-center justify-center gap-2 transition-colors"
               >
                 <span>Đăng nhập để lập thực đơn 7 ngày</span>
-                <VNextIcon name="chevron-right" size={16} />
+                <VNextIcon name="chevron-right" size={16} className="shrink-0" />
               </Link>
             </TkvSurface>
 
@@ -221,11 +219,11 @@ export const C23PlannerPilot: React.FC = () => {
                 to={`/auth?mode=login&returnTo=${encodeURIComponent('/planner/new')}`}
                 className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center font-extrabold">
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="w-10 h-10 shrink-0 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center font-extrabold">
                     <VNextIcon name="plus" size={18} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                       Tạo thực đơn mới
                     </p>
@@ -234,18 +232,18 @@ export const C23PlannerPilot: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
               </Link>
 
               <Link
                 to="/shopping"
                 className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center">
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="w-10 h-10 shrink-0 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center">
                     <VNextIcon name="shopping" size={18} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                       Danh sách mua sắm
                     </p>
@@ -254,7 +252,7 @@ export const C23PlannerPilot: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
               </Link>
             </div>
           </div>
@@ -314,7 +312,7 @@ export const C23PlannerPilot: React.FC = () => {
                         ? `/planner/${plan.id}/meal/${encodeURIComponent(activeDayMeals[0].slotId)}`
                         : `/planner/new`
                     }
-                    className="tkv-focusable w-9 h-9 rounded-full bg-[var(--tkv-bg)] flex items-center justify-center text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)]"
+                    className="tkv-focusable w-11 h-11 shrink-0 rounded-full bg-[var(--tkv-bg)] flex items-center justify-center text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)]"
                     aria-label={`Chi tiết ${activeDayLabel}`}
                   >
                     <VNextIcon name="chevron-right" size={18} />
@@ -322,7 +320,16 @@ export const C23PlannerPilot: React.FC = () => {
                 </div>
 
                 {/* Dish Photo Trio Strip (`board-2.jpg` right phone!) */}
-                <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                <div
+                  className={clsx(
+                    'grid gap-2.5 sm:gap-3',
+                    activeDayMeals.length === 1
+                      ? 'grid-cols-1'
+                      : activeDayMeals.length === 2
+                        ? 'grid-cols-2'
+                        : 'grid-cols-3',
+                  )}
+                >
                   {(() => {
                     const seenSlugs = new Set<string>();
                     return activeDayMeals.slice(0, 3).map((slot, slotIdx) => {
@@ -333,6 +340,7 @@ export const C23PlannerPilot: React.FC = () => {
                         <Link
                           key={slot.slotId}
                           to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
+                          aria-label={slot.title}
                           className="tkv-focusable group rounded-2xl overflow-hidden border border-[var(--tkv-border)] bg-[var(--tkv-bg)]"
                         >
                           <VerifiedDishImage
@@ -357,7 +365,7 @@ export const C23PlannerPilot: React.FC = () => {
                   className="tkv-focusable w-full min-h-[48px] px-5 py-2.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-extrabold text-sm inline-flex items-center justify-between shadow-[var(--tkv-shadow-cta)] transition-colors"
                 >
                   <span className="mx-auto pl-4">Xem chi tiết thực đơn</span>
-                  <VNextIcon name="chevron-right" size={16} />
+                  <VNextIcon name="chevron-right" size={16} className="shrink-0" />
                 </Link>
               </TkvSurface>
             )}
@@ -368,26 +376,26 @@ export const C23PlannerPilot: React.FC = () => {
                 to="/planner/new"
                 className="tkv-focusable tkv-bento-card p-3.5 sm:p-4 flex items-center justify-between gap-3"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                   <span className="w-9 h-9 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                     <VNextIcon name="plus" size={18} />
                   </span>
-                  <span className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+                  <span className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)] min-w-0">
                     Tạo thực đơn mới
                   </span>
                 </div>
-                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
               </Link>
 
               <Link
                 to={`/planner/${plan.id}/shopping`}
                 className="tkv-focusable tkv-bento-card p-3.5 sm:p-4 flex items-center justify-between gap-3"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                   <span className="w-9 h-9 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center shrink-0">
                     <VNextIcon name="shopping" size={18} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                       Danh sách mua sắm
                     </p>
@@ -398,7 +406,7 @@ export const C23PlannerPilot: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)]" />
+                <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
               </Link>
             </div>
 
@@ -414,11 +422,11 @@ export const C23PlannerPilot: React.FC = () => {
                   return (
                     <TkvSurface key={dateKey} className="p-4 space-y-3 flex flex-col justify-between bg-[var(--tkv-surface)]">
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between border-b border-[var(--tkv-border)] pb-2">
-                          <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] capitalize">
+                        <div className="flex items-center justify-between gap-2 border-b border-[var(--tkv-border)] pb-2">
+                          <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] capitalize min-w-0">
                             {formatDayHeadingVi(dateKey)}
                           </h3>
-                          <span className="text-xs font-bold text-[var(--tkv-primary)] tabular-nums">
+                          <span className="text-xs font-bold text-[var(--tkv-primary)] tabular-nums shrink-0 whitespace-nowrap">
                             {dayMeals.length} bữa
                           </span>
                         </div>

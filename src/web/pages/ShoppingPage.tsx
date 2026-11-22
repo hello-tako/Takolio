@@ -401,14 +401,14 @@ export const ShoppingPage: React.FC = () => {
                   aria-pressed={quickMode}
                   data-testid="c28-quick-market-toggle"
                   onClick={() => setQuickMode((prev) => !prev)}
-                  className={`min-h-[38px] px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors inline-flex items-center gap-1.5 ${
+                  className={`min-h-[44px] px-3.5 py-2 rounded-full text-xs font-bold border transition-colors inline-flex items-center gap-1.5 ${
                     quickMode
-                      ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                      : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]'
+                      ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
+                      : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]'
                   }`}
                 >
                   {quickMode && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--sumi-dot,#C84B31)]" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
                   )}
                   <span>Chế độ đi chợ nhanh</span>
                 </button>
@@ -417,10 +417,10 @@ export const ShoppingPage: React.FC = () => {
                   aria-pressed={groupByAisle}
                   data-testid="c27-aisle-group-toggle"
                   onClick={() => setGroupByAisle((prev) => !prev)}
-                  className={`min-h-[38px] px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                  className={`min-h-[44px] px-3.5 py-2 rounded-full text-xs font-bold border transition-colors ${
                     groupByAisle
-                      ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                      : 'bg-white text-[var(--sumi-muted,#5C5F62)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-ink,#111315)]'
+                      ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
+                      : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]'
                   }`}
                 >
                   Nhóm theo quầy chợ
@@ -477,9 +477,9 @@ export const ShoppingPage: React.FC = () => {
                     {groupByAisle
                       ? aisleGroups.map((group) => (
                           <React.Fragment key={group.id}>
-                            <li className="shopping-aisle-header list-none pt-2 pb-1 px-1 flex items-center justify-between border-b border-[var(--sumi-border,#E4E4E0)] text-xs font-semibold uppercase tracking-wider text-[var(--sumi-muted,#5C5F62)]">
-                              <span>{group.label}</span>
-                              <span className="tabular-nums">{group.items.length} mục</span>
+                            <li className="shopping-aisle-header list-none pt-2 pb-1.5 px-1 flex items-center justify-between gap-2 border-b border-[var(--tkv-border)] text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted)]">
+                              <span className="min-w-0">{group.label}</span>
+                              <span className="tabular-nums shrink-0">{group.items.length} mục</span>
                             </li>
                             {group.items.map(row)}
                           </React.Fragment>
@@ -579,17 +579,30 @@ function ShoppingEditDialog({
     if (!save.isPending) onClose();
   });
   return (
-    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+    <div
+      role="presentation"
+      onClick={() => {
+        if (!save.isPending) onClose();
+      }}
+      className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50"
+    >
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby="shopping-edit-title"
+        onClick={(e) => e.stopPropagation()}
         className="family-dialog"
       >
         <div className="family-dialog-heading">
           <h2 id="shopping-edit-title">Chỉnh món cần mua</h2>
-          <Button variant="ghost" aria-label="Đóng" disabled={save.isPending} onClick={onClose}>
+          <Button
+            variant="ghost"
+            className="!px-2.5 !min-w-[44px]"
+            aria-label="Đóng"
+            disabled={save.isPending}
+            onClick={onClose}
+          >
             <X size={20} aria-hidden="true" />
           </Button>
         </div>
@@ -617,6 +630,7 @@ function ShoppingEditDialog({
                 Số lượng
                 <input
                   type="number"
+                  inputMode="decimal"
                   step="any"
                   min={Number.MIN_VALUE}
                   required

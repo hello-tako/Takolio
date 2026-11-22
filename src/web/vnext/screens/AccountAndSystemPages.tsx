@@ -81,7 +81,7 @@ export const C30NotificationsVNext: React.FC = () => {
           </div>
           <Link
             to={vnextHref('/settings/notifications')}
-            className="tkv-focusable min-h-[42px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)] bg-white text-xs font-bold text-[var(--tkv-ink,#152E2C)] inline-flex items-center gap-1.5 transition-colors"
+            className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] bg-white text-xs sm:text-sm font-bold text-[var(--tkv-ink)] inline-flex items-center gap-1.5 transition-colors"
           >
             <VNextIcon name="settings" size={15} />
             <span>Cài đặt thông báo</span>
@@ -263,32 +263,32 @@ export const U01ProfileHubVNext: React.FC = () => {
         </h1>
 
         {/* Identity Summary Card */}
-        <TkvSurface className="p-5 sm:p-6 bg-gradient-to-br from-[var(--tkv-linen-from,#FFFFFF)] to-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-4 min-w-0">
-            <MascotIllustration pose="welcome" size={64} className="border border-[var(--tkv-border,#DCE6DE)] bg-white shrink-0" />
+        <TkvSurface className="p-4 sm:p-6 bg-gradient-to-br from-[var(--tkv-surface)] to-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+            <MascotIllustration pose="welcome" size={64} className="border border-[var(--tkv-border)] bg-white shrink-0" />
             <div className="min-w-0 space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--tkv-ink,#152E2C)] truncate">
+                <h2 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--tkv-ink)] break-words">
                   {cleanDisplayName}
                 </h2>
                 <span
                   className={clsx(
                     'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border',
                     isPlus && !isGuest
-                      ? 'bg-[var(--tkv-accent-soft,#FFF0E9)] text-[var(--tkv-accent-ink,#B33A22)] border-[var(--tkv-accent-border,#FAD0C4)]'
+                      ? 'bg-[var(--tkv-accent-soft)] text-[var(--tkv-accent-ink)] border-[var(--tkv-accent-border)]'
                       : isGuest
-                        ? 'bg-[var(--tkv-honey-soft,#FFF5D6)] text-[var(--tkv-honey-ink,#8A5205)] border-[var(--tkv-honey-border,#F5DE93)]'
-                        : 'bg-[var(--tkv-sage-soft,#E7F4EC)] text-[var(--tkv-sage-ink,#134C39)] border-[var(--tkv-sage-border,#BDE0CC)]',
+                        ? 'bg-[var(--tkv-honey-soft)] text-[var(--tkv-honey-ink)] border-[var(--tkv-honey-border)]'
+                        : 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-sage-ink)] border-[var(--tkv-border-mint)]',
                   )}
                 >
                   <span
                     className={clsx(
-                      'w-1.5 h-1.5 rounded-full',
+                      'w-1.5 h-1.5 rounded-full shrink-0',
                       isPlus && !isGuest
-                        ? 'bg-[var(--tkv-primary,#196149)]'
+                        ? 'bg-[var(--tkv-primary)]'
                         : isGuest
-                          ? 'bg-[var(--tkv-honey,#F6C453)]'
-                          : 'bg-[var(--tkv-sage,#196149)]',
+                          ? 'bg-[var(--tkv-saffron)]'
+                          : 'bg-[var(--tkv-primary)]',
                     )}
                     aria-hidden="true"
                   />
@@ -297,11 +297,11 @@ export const U01ProfileHubVNext: React.FC = () => {
                   </span>
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] truncate">
+              <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] leading-snug break-words">
                 {isGuest ? 'Chưa liên kết email · Đăng ký để lưu dữ liệu lâu dài' : email}
               </p>
               {householdId && (
-                <p className="text-[11px] tabular-nums text-[var(--tkv-ink-muted,#52706A)] truncate">
+                <p className="text-[11px] tabular-nums text-[var(--tkv-ink-muted)] truncate">
                   Mã hộ: {householdId}
                 </p>
               )}
@@ -453,31 +453,31 @@ export const U06HouseholdHonestPage: React.FC = () => {
         </h1>
 
         {/* Active Household Card */}
-        <TkvSurface className="p-5 sm:p-6 space-y-3 bg-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)]">
-          <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] text-xs font-semibold text-[var(--tkv-honey-ink,#8A5205)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#F6C453)]" aria-hidden="true" />
+        <TkvSurface className="p-4 sm:p-6 space-y-3 bg-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)]">
+          <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft)] border border-[var(--tkv-honey-border)] text-xs font-semibold text-[var(--tkv-honey-ink)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-saffron)] shrink-0" aria-hidden="true" />
             <span>BLOCKED_BACKEND · RFC-001 đang chờ triển khai tầng máy chủ</span>
           </span>
-          <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
+          <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
             Hộ gia đình hiện tại
           </h2>
-          <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
+          <p className="text-sm text-[var(--tkv-ink-secondary)]">
             Mời, tham gia hộ khác và quản lý danh sách thành viên cần API máy chủ mới để bảo đảm cô lập dữ liệu.
           </p>
-          <div className="rounded-2xl bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 space-y-2 text-sm">
+          <div className="rounded-2xl bg-white border border-[var(--tkv-border)] p-4 space-y-2.5 text-sm">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <span className="font-semibold text-[var(--tkv-ink-soft,#3C5954)]">Mã hộ hiện tại</span>
-              <code className="font-mono text-xs font-bold tabular-nums text-[var(--tkv-ink,#152E2C)] bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] px-2.5 py-1 rounded-lg">
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Mã hộ hiện tại</span>
+              <code className="font-mono text-xs font-bold tabular-nums break-all max-w-full text-[var(--tkv-ink)] bg-[var(--tkv-bg)] border border-[var(--tkv-border)] px-2.5 py-1 rounded-lg">
                 {householdId || 'Chưa khởi tạo'}
               </code>
             </div>
-            <div className="flex items-center justify-between gap-2 border-t border-[var(--tkv-border,#DCE6DE)] pt-2">
-              <span className="font-semibold text-[var(--tkv-ink-soft,#3C5954)]">Khẩu phần nấu mặc định</span>
-              <strong className="text-[var(--tkv-ink,#152E2C)] tabular-nums">{householdSize} người</strong>
+            <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-2.5">
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Khẩu phần nấu mặc định</span>
+              <strong className="text-[var(--tkv-ink)] tabular-nums">{householdSize} người</strong>
             </div>
-            <div className="flex items-center justify-between gap-2 border-t border-[var(--tkv-border,#DCE6DE)] pt-2">
-              <span className="font-semibold text-[var(--tkv-ink-soft,#3C5954)]">Loại phiên</span>
-              <strong className="text-[var(--tkv-ink,#152E2C)]">
+            <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-2.5">
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Loại phiên</span>
+              <strong className="text-[var(--tkv-ink)]">
                 {isGuest ? 'Phiên khách cục bộ' : 'Tài khoản đã đăng ký'}
               </strong>
             </div>
@@ -579,12 +579,12 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                 <strong className="text-[var(--tkv-ink,#152E2C)]">Xử lý ảnh quét AI:</strong> Ảnh tủ lạnh hoặc hóa đơn chỉ được gửi khi bạn bấm chụp/chọn ảnh và luôn yêu cầu bước duyệt thủ công trước khi ghi vào tồn kho.
               </p>
             </div>
-            <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border,#DCE6DE)] pt-3 flex-wrap">
-              <div>
-                <p className="font-bold text-[var(--tkv-ink,#152E2C)]">
+            <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border)] pt-3 flex-wrap">
+              <div className="min-w-0 flex-1">
+                <p className="font-bold text-[var(--tkv-ink)]">
                   Đồng ý ghi nhận tương tác trang giới thiệu (cục bộ)
                 </p>
-                <p className="text-xs text-[var(--tkv-ink-muted,#52706A)]">
+                <p className="text-xs text-[var(--tkv-ink-muted)]">
                   Mặc định tắt · Không gửi dữ liệu cho bên thứ ba khi chưa đồng ý
                 </p>
               </div>
@@ -594,18 +594,18 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                 aria-checked={analyticsConsent}
                 onClick={toggleConsent}
                 className={clsx(
-                  'tkv-focusable min-h-[42px] px-4 py-1.5 rounded-full text-xs font-bold border transition-colors',
+                  'tkv-focusable min-h-[44px] px-4 py-2 rounded-full text-xs sm:text-sm font-bold border transition-colors shrink-0',
                   analyticsConsent
-                    ? 'bg-[var(--tkv-sage,#196149)] text-white border-[var(--tkv-sage,#196149)] shadow-xs'
-                    : 'bg-[var(--tkv-surface-muted,#E7F4EC)] text-[var(--tkv-ink-soft,#3C5954)] border-[var(--tkv-border,#DCE6DE)]',
+                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                    : 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
                 )}
               >
                 {analyticsConsent ? 'Đang bật' : 'Đang tắt'}
               </button>
             </div>
-            <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border,#DCE6DE)] pt-3 text-xs tabular-nums">
-              <span>Thao tác ngoại tuyến đang chờ đồng bộ trên trình duyệt này:</span>
-              <strong className="text-[var(--tkv-ink,#152E2C)]">{pendingCount} mục</strong>
+            <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-3 text-xs tabular-nums">
+              <span className="min-w-0">Thao tác ngoại tuyến đang chờ đồng bộ trên trình duyệt này:</span>
+              <strong className="text-[var(--tkv-ink)] shrink-0">{pendingCount} mục</strong>
             </div>
           </TkvSurface>
         </section>
@@ -805,12 +805,15 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
   });
 
   return (
-    <div className="tkv-root min-h-dvh bg-[var(--tkv-bg,#FFF9F1)] flex flex-col items-center justify-center px-4 py-10" data-tkv-screen={spec.id}>
+    <div
+      className="tkv-root min-h-dvh bg-[var(--tkv-bg)] flex flex-col items-center justify-center px-4 pt-[max(1.5rem,env(safe-area-inset-top,0px))] pb-[max(2rem,env(safe-area-inset-bottom,0px))] sm:py-10"
+      data-tkv-screen={spec.id}
+    >
       <main className="w-full max-w-xl space-y-6">
-        <TkvSurface className="p-6 sm:p-8 space-y-6 bg-white border-[var(--tkv-border,#DCE6DE)] shadow-soft">
+        <TkvSurface className="p-4 sm:p-8 space-y-6 bg-white border-[var(--tkv-border)] shadow-soft">
           <div className="flex items-center justify-between gap-2 flex-wrap">
-            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-semibold text-[var(--tkv-accent-ink,#B33A22)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-accent-soft)] border border-[var(--tkv-accent-border)] text-xs font-semibold text-[var(--tkv-accent-ink)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
               <span>{spec.id} · Trạng thái hệ thống</span>
             </span>
             {normalized === 's04' && (
@@ -823,16 +826,16 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
           </div>
 
           <div className="flex justify-center">
-            <div className="w-28 h-28 rounded-full bg-[var(--tkv-surface-muted,#E7F4EC)] p-3 flex items-center justify-center border border-[var(--tkv-border,#DCE6DE)]">
+            <div className="w-28 h-28 rounded-full bg-[var(--tkv-surface-mint)] p-3 flex items-center justify-center border border-[var(--tkv-border-mint)]">
               <MascotIllustration pose={spec.pose} size={92} />
             </div>
           </div>
 
           <div className="text-center space-y-2">
-            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
+            <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
               {spec.title}
             </h1>
-            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
               {spec.lead}
             </p>
           </div>
@@ -840,19 +843,19 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
           <div className="space-y-2.5">
             {spec.cards.map((c) => {
               const inner = (
-                <div className="rounded-2xl border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)] p-4 flex items-center justify-between gap-3 hover:border-[var(--tkv-border-strong,#B8CABE)] transition-colors">
-                  <div className="flex items-center gap-3.5">
-                    <span className="w-10 h-10 rounded-xl bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                <div className="rounded-2xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] p-4 flex items-center justify-between gap-3 hover:border-[var(--tkv-border-strong)] transition-colors">
+                  <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                    <span className="w-10 h-10 rounded-xl bg-white border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                       <VNextIcon name={c.icon} size={18} />
                     </span>
-                    <div>
-                      <p className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink,#152E2C)]">
+                    <div className="min-w-0">
+                      <p className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink)]">
                         {c.heading}
                       </p>
-                      <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)]">{c.sub}</p>
+                      <p className="text-xs text-[var(--tkv-ink-secondary)] leading-snug">{c.sub}</p>
                     </div>
                   </div>
-                  {c.to && <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted,#52706A)] shrink-0" />}
+                  {c.to && <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />}
                 </div>
               );
               return c.to ? (

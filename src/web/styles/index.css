@@ -12,6 +12,7 @@
 @import "./kitchen-stock-detail.css";
 @import "./kitchen-density.css";
 @import "./kitchen-upgrade.css";
+@import "../vnext/styles/vnext-adapted.css";
 @config "../../../tailwind.config.js";
 @source "../";
 @source "../../../index.html";
@@ -244,9 +245,8 @@
 .focus-visible\:ring-2:focus-visible{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
 .peer:focus-visible~.peer-focus-visible\:ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
 
-/* Preserve sRGB gradients and their established transparent stops. */
-.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
-.bg-gradient-to-r{background-image:linear-gradient(to right,var(--takosan-legacy-gradient-stops))}
+/* Preserve legacy sRGB gradient on PlusPaywall hero without breaking Tailwind v4 arbitrary gradients. */
+.plus-hero.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
 .from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-transparent{--takosan-legacy-gradient-from: transparent;--takosan-legacy-gradient-to: rgb(0 0 0 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-white{--takosan-legacy-gradient-from: #fff;--takosan-legacy-gradient-to: rgb(255 255 255 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}

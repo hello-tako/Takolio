@@ -41,7 +41,7 @@ export const PageHeader: React.FC<{
   backLabel?: string;
   actions?: React.ReactNode;
 }> = ({ title, subtitle, onBack, backLabel = 'Quay lại', actions }) => (
-  <header className="flex items-start justify-between gap-4 pt-5 pb-3">
+  <header className="flex flex-wrap items-start justify-between gap-3 sm:gap-4 pt-5 pb-3">
     <div className="flex items-start gap-3 min-w-0">
       {onBack && (
         <button
@@ -69,7 +69,7 @@ export const Section: React.FC<
 > = ({ title, summary, action, className, children, ...props }) => (
   <section className={clsx('py-4', className)} {...props}>
     {(title || action) && (
-      <div className="flex items-end justify-between gap-3 mb-3">
+      <div className="flex flex-wrap items-end justify-between gap-3 mb-3">
         <div className="min-w-0">
           {title && <h2 className="text-type-label text-[var(--tkv-ink)]">{title}</h2>}
           {summary && <p className="text-sm text-[var(--tkv-ink-muted)] mt-0.5">{summary}</p>}
@@ -109,7 +109,7 @@ export const BottomCTA: React.FC<{ children: React.ReactNode; hideOnDesktop?: bo
   <div
     data-kitchen-action="fixed"
     className={clsx(
-      'kitchen-bottom-cta fixed inset-x-0 bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 sm:left-20 z-20 bg-white/90 backdrop-blur-md border-t border-[var(--tkv-border)] px-4 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] lg:static lg:left-auto lg:bottom-auto lg:z-auto lg:bg-transparent lg:border-0 lg:p-0',
+      'kitchen-bottom-cta fixed inset-x-0 bottom-[calc(74px+env(safe-area-inset-bottom,0px))] z-20 bg-white/95 backdrop-blur-md border-t border-[var(--tkv-border)] px-4 py-3 lg:static lg:left-auto lg:bottom-auto lg:z-auto lg:bg-transparent lg:border-0 lg:p-0',
       hideOnDesktop && 'lg:hidden'
     )}
   >
@@ -120,7 +120,7 @@ export const BottomCTA: React.FC<{ children: React.ReactNode; hideOnDesktop?: bo
 export const StickyActions: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div
     data-kitchen-action="fixed"
-    className="kitchen-sticky-actions sticky bottom-[calc(68px+env(safe-area-inset-bottom,0px))] sm:bottom-0 z-20 -mx-4 md:-mx-6 lg:-mx-8 mt-4 bg-white/90 backdrop-blur-md border-t border-[var(--tkv-border)] px-4 md:px-6 lg:px-8 py-3 sm:pb-[calc(env(safe-area-inset-bottom,0px)+12px)] flex gap-3"
+    className="kitchen-sticky-actions sticky bottom-[calc(74px+env(safe-area-inset-bottom,0px))] lg:bottom-0 z-20 mt-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[var(--tkv-border)] px-4 py-3 shadow-[var(--tkv-shadow-card)] flex flex-wrap gap-3"
   >
     {children}
   </div>
@@ -322,7 +322,7 @@ export const BottomSheet: React.FC<{
         transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.85 }}
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          'w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-t-2xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 shadow-[var(--tkv-shadow-elevated)] sm:rounded-2xl animate-slide-up',
+          'w-full max-w-md max-h-[90dvh] overflow-y-auto overscroll-contain rounded-t-2xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pb-5 shadow-[var(--tkv-shadow-elevated)] sm:rounded-2xl animate-slide-up',
           className,
         )}
       >

@@ -16,17 +16,17 @@ import { BrandFeatureIcon } from '../components/VNextMedia';
 export const C24PlannerSetupVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C24" title="Lập thực đơn mới" backTo={vnextHref('/planner')}>
     <div className="space-y-5">
-      <div className="tkv-leaf-wave-band rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface,#FFFFFF)] border border-[var(--tkv-border-mint,#BDE0CC)] p-5 sm:p-6 text-[var(--tkv-ink,#152E2C)] shadow-soft flex items-start gap-4">
-        <BrandFeatureIcon name="planner" size={48} className="mt-0.5" />
-        <div>
-          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[var(--tkv-primary,#196149)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+      <div className="tkv-leaf-wave-band rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4 sm:p-6 text-[var(--tkv-ink)] shadow-soft flex items-start gap-3.5 sm:gap-4">
+        <BrandFeatureIcon name="planner" size={44} className="mt-0.5 shrink-0" />
+        <div className="min-w-0 flex-1">
+          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
             <span>Kế hoạch tuần mới</span>
           </p>
-          <p className="tkv-heading text-lg sm:text-xl font-bold text-[var(--tkv-ink,#152E2C)] mt-1">
+          <p className="tkv-heading text-base sm:text-xl font-bold text-[var(--tkv-ink)] mt-1">
             Thiết lập nhịp nấu tại nhà theo tồn kho thực tế
           </p>
-          <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)] mt-1 max-w-2xl leading-relaxed">
+          <p className="text-sm text-[var(--tkv-ink-secondary)] mt-1 max-w-2xl leading-relaxed">
             Chọn số ngày, các bữa nấu tại nhà và khẩu phần gia đình để máy chủ tính toán thực đơn cân đối từ kho công thức thật.
           </p>
         </div>
@@ -78,7 +78,7 @@ export const C29ShoppingImportVNext: React.FC = () => {
   return (
     <ConsumerStudioShell
       screenId="C29"
-      title="Đi chợ & nhập kho theo tuần"
+      title="Đi chợ theo tuần"
       backTo={vnextHref(planId ? `/planner/${planId}` : '/planner')}
     >
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">

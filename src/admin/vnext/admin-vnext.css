@@ -115,7 +115,8 @@
 }
 
 .tkv-status-tile.is-sky {
-  background: #e6f2f5;
+  background: #fff0e9;
+  border-color: #fad0c4;
 }
 
 .tkv-tile-label {
@@ -199,6 +200,10 @@
   gap: 16px;
 }
 
+.tkv-admin-two-col > * {
+  min-width: 0;
+}
+
 .tkv-admin-ops-list {
   list-style: none;
   margin: 0 0 16px;
@@ -214,6 +219,15 @@
   gap: 12px;
   padding: 12px 0;
   border-bottom: 1px solid #dce4db;
+}
+
+.tkv-admin-ops-list li > div {
+  min-width: 0;
+  flex: 1 1 200px;
+}
+
+.tkv-admin-ops-list p {
+  margin: 2px 0 0;
 }
 
 .tkv-ops-link {
@@ -272,7 +286,14 @@
 .login-card button[type='submit'] {
   background: #196149;
   border-color: #196149;
+  color: #ffffff;
   border-radius: 12px;
   min-height: 44px;
   font-weight: 800;
+}
+
+.admin-app.is-vnext-admin button[type='submit']:hover:not(:disabled),
+.login-card button[type='submit']:hover:not(:disabled) {
+  background: #134c39;
+  border-color: #134c39;
 }

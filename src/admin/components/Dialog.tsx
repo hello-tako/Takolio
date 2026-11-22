@@ -24,6 +24,8 @@ export function Dialog({
 
   useEffect(() => {
     if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const panel = panelRef.current;
     const focusables = () => (panel ? Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE)) : []);
@@ -54,6 +56,7 @@ export function Dialog({
 
     document.addEventListener('keydown', onKeyDown);
     return () => {
+      document.body.style.overflow = prevOverflow;
       document.removeEventListener('keydown', onKeyDown);
       previouslyFocused?.focus();
     };
@@ -61,7 +64,12 @@ export function Dialog({
 
   if (!open) return null;
   return (
-    <div className="dialog-overlay">
+    <div
+      className="dialog-overlay"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
       <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId} tabIndex={-1} className="dialog" data-testid={testId}>
         <h2 id={titleId}>{title}</h2>
         <div className="dialog-body">{children}</div>

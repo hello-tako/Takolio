@@ -161,7 +161,7 @@ export const C01HomePilot: React.FC = () => {
                 <Link
                   to="/plus"
                   aria-label="Khám phá Takolio Pro"
-                  className="tkv-focusable inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)] px-2.5 py-1 text-xs font-extrabold text-[var(--tkv-ink)]"
+                  className="tkv-focusable relative before:absolute before:-inset-y-2 before:-inset-x-1 inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)] px-2.5 py-1 text-xs font-extrabold text-[var(--tkv-ink)]"
                 >
                   <VNextIcon name="crown" size={14} className="text-[var(--tkv-warning)]" />
                   <span>Pro</span>
@@ -204,7 +204,7 @@ export const C01HomePilot: React.FC = () => {
                 aria-pressed={active}
                 onClick={() => setActiveMood(chip.id)}
                 className={clsx(
-                  'tkv-focusable min-h-[38px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border',
+                  'tkv-focusable min-h-[44px] px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border',
                   active
                     ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
@@ -251,11 +251,13 @@ export const C01HomePilot: React.FC = () => {
                   </div>
 
                   <div className="space-y-2.5 flex-1 min-w-0">
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold text-[var(--tkv-primary)]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
-                      {meal && plan
-                        ? `${MEAL_LABELS[meal.mealType]} · ${calendarLabel(meal.date, plan.today)}`
-                        : 'Bữa ngon, nhẹ đầu · Ăn đủ. Mua đủ. Dùng hết.'}
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-2xl sm:rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold leading-snug text-[var(--tkv-primary)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
+                      <span>
+                        {meal && plan
+                          ? `${MEAL_LABELS[meal.mealType]} · ${calendarLabel(meal.date, plan.today)}`
+                          : 'Bữa ngon, nhẹ đầu · Ăn đủ. Mua đủ. Dùng hết.'}
+                      </span>
                     </span>
 
                     <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
@@ -323,13 +325,13 @@ export const C01HomePilot: React.FC = () => {
 
             {/* Large Visual Dish Recommendation Cards (matching `board-2.jpg` center phone cards!) */}
             <section aria-labelledby="c01-recs-heading" className="space-y-3.5">
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                 <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
                   Món gợi ý cho bữa tới
                 </h2>
                 <Link
                   to="/recipes"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-sm font-extrabold text-[var(--tkv-primary)] hover:underline"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center shrink-0 whitespace-nowrap text-sm font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
                   Xem tất cả món
                 </Link>
@@ -424,13 +426,13 @@ export const C01HomePilot: React.FC = () => {
           {/* Right Workbench Column (5 cols on Desktop — FEFO Stock + Core Journey Cards) */}
           <div className="lg:col-span-5 space-y-6 min-w-0">
             <section aria-labelledby="c01-use-soon-heading" className="space-y-3">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                 <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
                   Nguyên liệu ưu tiên dùng sớm
                 </h2>
                 <Link
                   to="/fridge"
-                  className="tkv-focusable min-h-[44px] inline-flex items-center text-xs font-extrabold text-[var(--tkv-primary)] hover:underline"
+                  className="tkv-focusable min-h-[44px] inline-flex items-center shrink-0 whitespace-nowrap text-xs font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
                   Mở tủ lạnh
                 </Link>
@@ -444,16 +446,16 @@ export const C01HomePilot: React.FC = () => {
                   onRetry={() => void inventoryQuery.refetch()}
                 />
               ) : useSoonItems.length === 0 ? (
-                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-secondary)] bg-[var(--tkv-surface)] flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 min-w-0">
+                <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-secondary)] bg-[var(--tkv-surface)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0 flex-1">
                     <MascotIllustration pose="fridge" size={56} decorative className="w-14 h-14 shrink-0" />
-                    <span>
+                    <span className="min-w-0">
                       {activeItems.length === 0
                         ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
                         : `Tủ đang có ${activeItems.length} nguyên liệu tươi ngon ổn định.`}
                     </span>
                   </div>
-                  <TkvButton size="sm" variant="secondary" onClick={() => navigate('/fridge')}>
+                  <TkvButton size="sm" variant="secondary" className="w-full sm:w-auto shrink-0" onClick={() => navigate('/fridge')}>
                     {activeItems.length === 0 ? 'Thêm ngay' : 'Xem tủ'}
                   </TkvButton>
                 </TkvSurface>
@@ -467,9 +469,9 @@ export const C01HomePilot: React.FC = () => {
                       <Link
                         key={item.id}
                         to={`/fridge/${item.id}`}
-                        className="tkv-focusable min-h-[60px] p-3.5 flex items-center justify-between gap-3 hover:bg-[var(--tkv-bg)] transition-colors"
+                        className="tkv-focusable min-h-[60px] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 hover:bg-[var(--tkv-bg)] transition-colors"
                       >
-                        <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
                           {thumbSrc && !thumbSrc.includes('placeholder') ? (
                             <img
                               src={thumbSrc}
@@ -482,16 +484,16 @@ export const C01HomePilot: React.FC = () => {
                           ) : (
                             <BrandFeatureIcon name="fridge" size={36} />
                           )}
-                          <div className="min-w-0">
-                            <p className="text-sm font-extrabold text-[var(--tkv-ink)] truncate">
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
                               {item.name}
                             </p>
-                            <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
+                            <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums mt-0.5">
                               {item.quantity} {UNIT_LABELS_VI[item.unit] ?? item.unit}
                             </p>
                           </div>
                         </div>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-xs font-extrabold text-[var(--tkv-coral-ink)] tabular-nums shrink-0">
+                        <span className="self-start sm:self-center inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-xs font-extrabold text-[var(--tkv-coral-ink)] tabular-nums shrink-0">
                           <span>
                             {exp.estimated
                               ? remDays !== null
@@ -518,16 +520,16 @@ export const C01HomePilot: React.FC = () => {
               <div className="space-y-3">
                 <Link
                   to="/scan"
-                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
                 >
-                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
-                    <BrandFeatureIcon name="scan" size={46} className="mt-0.5" />
+                  <div className="flex items-start gap-3 min-w-0 flex-1">
+                    <BrandFeatureIcon name="scan" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                         Quét & thêm nguyên liệu bằng AI
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Chụp ngăn mát hoặc hóa đơn đi chợ, luôn kiểm duyệt{'\u00A0'}trước{'\u00A0'}khi{'\u00A0'}lưu
+                        Chụp ngăn mát hoặc hóa đơn đi chợ, luôn kiểm duyệt trước khi lưu
                       </p>
                     </div>
                   </div>
@@ -536,10 +538,10 @@ export const C01HomePilot: React.FC = () => {
 
                 <Link
                   to={`${plannerBase}`}
-                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
                 >
-                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
-                    <BrandFeatureIcon name="planner" size={46} className="mt-0.5" />
+                  <div className="flex items-start gap-3 min-w-0 flex-1">
+                    <BrandFeatureIcon name="planner" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                         {plan ? 'Thực đơn 7 ngày đang mở' : 'Lên thực đơn 7 ngày'}
@@ -547,7 +549,7 @@ export const C01HomePilot: React.FC = () => {
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
                         {home.requiresAccount
                           ? 'Đăng nhập để đồng bộ lịch bữa ăn tuần của hộ gia đình'
-                          : `Cân bằng dinh dưỡng cho cả gia đình, linh hoạt đổi\u00A0món\u00A01\u00A0chạm`}
+                          : 'Cân bằng dinh dưỡng cho cả gia đình, linh hoạt đổi món 1 chạm'}
                       </p>
                     </div>
                   </div>
@@ -556,16 +558,16 @@ export const C01HomePilot: React.FC = () => {
 
                 <Link
                   to="/shopping"
-                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-4"
+                  className="tkv-focusable tkv-bento-card p-4 flex items-center justify-between gap-3"
                 >
-                  <div className="flex items-start gap-3.5 min-w-0 flex-1 pr-3">
-                    <BrandFeatureIcon name="shopping" size={46} className="mt-0.5" />
+                  <div className="flex items-start gap-3 min-w-0 flex-1">
+                    <BrandFeatureIcon name="shopping" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                         Danh sách mua sắm thông minh
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua{'\u00A0'}vừa{'\u00A0'}đủ
+                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ
                       </p>
                     </div>
                   </div>

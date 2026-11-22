@@ -341,7 +341,7 @@ const ReceiptReview: React.FC<{
           {pollError && (
             <div
               role="alert"
-              className="rounded-xl border border-semantic-danger/30 bg-semantic-danger-soft px-3 py-2 text-xs text-semantic-danger-strong flex items-center justify-between gap-3"
+              className="rounded-xl border border-semantic-danger/30 bg-semantic-danger-soft px-3 py-2 text-xs text-semantic-danger-strong flex flex-wrap items-center justify-between gap-2 sm:gap-3"
             >
               <div className="flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0" />
@@ -384,33 +384,33 @@ const ReceiptReview: React.FC<{
             </p>
           )}
           {/* Receipt Header Card */}
-          <div className="bg-white rounded-xl p-4 border border-semantic-border shadow-xs space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
+          <div className="bg-white rounded-2xl p-4 border border-semantic-border shadow-xs space-y-3">
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex items-start gap-2.5 min-w-0 flex-1">
                 <div className="w-10 h-10 rounded-xl bg-semantic-accent-soft border border-semantic-border flex items-center justify-center text-semantic-text-primary shrink-0">
                   <Store className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="font-heading font-bold text-sm text-semantic-text-primary">
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-heading font-bold text-sm text-semantic-text-primary break-words">
                     {liveReceipt.merchantName || 'Không rõ cửa hàng'}
                   </h3>
-                  <p className="text-xs text-semantic-text-muted flex items-center gap-1 mt-0.5">
-                    <Calendar className="w-3 h-3 text-semantic-text-muted" />
+                  <p className="text-xs text-semantic-text-muted flex flex-wrap items-center gap-1 mt-0.5">
+                    <Calendar className="w-3 h-3 text-semantic-text-muted shrink-0" />
                     <span>{presentPurchaseDate(liveReceipt.purchaseDate)}</span>
                     {liveReceipt.invoiceNumber && <span>• {liveReceipt.invoiceNumber}</span>}
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border">
+              <span className="shrink-0 whitespace-nowrap text-xs font-semibold px-2.5 py-1 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border">
                 AI OCR
               </span>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-semantic-border/70">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-semantic-border/70">
               <span className="text-xs text-semantic-text-muted">Tổng hóa đơn (OCR):</span>
               <span
                 data-testid="receipt-total"
-                className="font-heading font-bold text-lg text-semantic-text-primary"
+                className="font-heading font-bold text-lg text-semantic-text-primary tabular-nums"
               >
                 {presentPrice(liveReceipt.totalAmountVnd)}
               </span>
@@ -418,7 +418,7 @@ const ReceiptReview: React.FC<{
           </div>
 
           {/* Extracted Items Count */}
-          <div className="flex items-center justify-between px-1">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-1">
             <h4 className="font-heading font-semibold text-sm text-semantic-text-primary">
               Các dòng nguyên liệu ({items.length} món)
             </h4>
@@ -501,10 +501,10 @@ const ReceiptReview: React.FC<{
                           item.rejected ? `Khôi phục ${item.rawName}` : `Bỏ qua ${item.rawName}`
                         }
                         aria-pressed={Boolean(item.rejected)}
-                        className="p-1.5 text-semantic-text-muted hover:text-semantic-danger hover:bg-semantic-danger-soft rounded-lg transition-colors tap-target"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-semantic-text-muted hover:text-semantic-danger hover:bg-semantic-danger-soft rounded-xl transition-colors tap-target"
                       >
-                        <Trash2 className="w-4 h-4" />
-                        <span className="ml-1 text-xs">
+                        <Trash2 className="w-4 h-4 shrink-0" />
+                        <span className="text-xs font-semibold whitespace-nowrap">
                           {item.rejected ? 'Khôi phục' : 'Bỏ qua'}
                         </span>
                       </button>
@@ -529,6 +529,7 @@ const ReceiptReview: React.FC<{
                       </p>
                       {item.expiryDate && (
                         <button
+                          type="button"
                           disabled={disabled}
                           onClick={() =>
                             updateItem(item.id, { expiryDate: undefined, expiryEstimated: false })

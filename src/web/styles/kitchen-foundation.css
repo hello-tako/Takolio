@@ -6,12 +6,7 @@
   font-size: 16px;
   line-height: 1.5;
 }
-:is(.takolio-rebuild, .takosan-rebuild) h1,
-:is(.takolio-rebuild, .takosan-rebuild) h2,
-:is(.takolio-rebuild, .takosan-rebuild) h3,
-:is(.takolio-rebuild, .takosan-rebuild) h4,
-:is(.takolio-rebuild, .takosan-rebuild) h5,
-:is(.takolio-rebuild, .takosan-rebuild) h6 {
+:where(.takolio-rebuild, .takosan-rebuild) :where(h1, h2, h3, h4, h5, h6) {
   color: rgb(var(--semantic-text-primary-rgb));
 }
 :is(.takolio-rebuild, .takosan-rebuild) :focus-visible {

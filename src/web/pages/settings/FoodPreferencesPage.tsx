@@ -129,17 +129,17 @@ export const FoodPreferencesPage: React.FC = () => {
   };
 
   const chip = (selected: boolean, _tone: 'action' | 'warning' = 'action') =>
-    `h-11 px-4 rounded-pill text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+    `min-h-[44px] px-4 py-2 rounded-pill text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
       selected
-        ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)] font-semibold'
-        : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]'
+        ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] font-semibold'
+        : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]'
     }`;
 
   return (
     <AccountPage title="Sở thích & hạn chế" description="Gu món ăn giúp Takolio gợi ý món sát hơn">
 
       {isGuestOffline && (
-        <p className="text-xs text-[var(--sumi-muted,#5C5F62)] mb-3">
+        <p className="text-xs text-[var(--tkv-ink-muted)] mb-3">
           Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng trong phiên này và sẽ mất khi tải lại ứng dụng.
         </p>
       )}
@@ -153,8 +153,8 @@ export const FoodPreferencesPage: React.FC = () => {
         <fieldset disabled={saving} className="account-editor space-y-5 pb-8">
           <legend className="sr-only">Chọn cài đặt</legend>
           <fieldset>
-            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Số người thường ăn
+            <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
+              <Users className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Số người thường ăn
             </legend>
             <div className="flex flex-wrap items-center gap-2">
               {[1, 2, 3, 4, 5].map((n) => (
@@ -168,10 +168,10 @@ export const FoodPreferencesPage: React.FC = () => {
                       householdSize: n === 5 ? Math.max(5, draft.householdSize) : n,
                     })
                   }
-                  className={`h-11 min-w-11 px-4 rounded-pill text-sm font-semibold tabular-nums border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
+                  className={`min-h-[44px] min-w-[44px] px-4 rounded-pill text-sm font-semibold tabular-nums border transition-colors focus-visible:outline-none focus-visible:shadow-t17-focus ${
                     (n === 5 ? draft.householdSize >= 5 : draft.householdSize === n)
-                      ? 'bg-[var(--sumi-ink,#111315)] text-white border-[var(--sumi-ink,#111315)]'
-                      : 'bg-white text-[var(--sumi-ink,#111315)] border-[var(--sumi-border,#E4E4E0)] hover:border-[var(--sumi-border-strong,#CFCFC9)]'
+                      ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
+                      : 'bg-white text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]'
                   }`}
                 >
                   {n === 5 ? '5+' : n}
@@ -181,7 +181,7 @@ export const FoodPreferencesPage: React.FC = () => {
                 <div
                   role="group"
                   aria-label="Điều chỉnh khẩu phần gia đình đông người"
-                  className="inline-flex items-center gap-1.5 rounded-pill bg-[var(--sumi-canvas,#F7F7F5)] border border-[var(--sumi-border,#E4E4E0)] px-2 py-1"
+                  className="inline-flex items-center gap-1.5 rounded-pill bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-2 py-1"
                 >
                   <button
                     type="button"
@@ -190,13 +190,13 @@ export const FoodPreferencesPage: React.FC = () => {
                     onClick={() =>
                       setDraft({ ...draft, householdSize: Math.max(5, draft.householdSize - 1) })
                     }
-                    className="w-8 h-8 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-bold text-[var(--sumi-ink,#111315)] disabled:opacity-40 transition-colors"
+                    className="w-11 h-11 min-h-0 p-0 inline-flex items-center justify-center rounded-full bg-white border border-[var(--tkv-border)] text-base font-bold text-[var(--tkv-ink)] disabled:opacity-40 transition-colors"
                   >
                     −
                   </button>
                   <span
                     data-testid="u02-household-stepper-value"
-                    className="min-w-[68px] text-center text-sm font-semibold tabular-nums text-[var(--sumi-ink,#111315)]"
+                    className="min-w-[68px] text-center text-sm font-semibold tabular-nums text-[var(--tkv-ink)]"
                   >
                     {draft.householdSize} người
                   </span>
@@ -207,7 +207,7 @@ export const FoodPreferencesPage: React.FC = () => {
                     onClick={() =>
                       setDraft({ ...draft, householdSize: Math.min(20, draft.householdSize + 1) })
                     }
-                    className="w-8 h-8 rounded-full bg-white border border-[var(--sumi-border,#E4E4E0)] text-sm font-bold text-[var(--sumi-ink,#111315)] disabled:opacity-40 transition-colors"
+                    className="w-11 h-11 min-h-0 p-0 inline-flex items-center justify-center rounded-full bg-white border border-[var(--tkv-border)] text-base font-bold text-[var(--tkv-ink)] disabled:opacity-40 transition-colors"
                   >
                     +
                   </button>
@@ -217,8 +217,8 @@ export const FoodPreferencesPage: React.FC = () => {
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
-              <Utensils className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Món ưa thích
+            <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
+              <Utensils className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Món ưa thích
             </legend>
             <div className="flex flex-wrap gap-2">
               {CUISINE_TAGS.map((tag) => (
@@ -236,8 +236,8 @@ export const FoodPreferencesPage: React.FC = () => {
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
-              <Heart className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Nguyên liệu hạn chế
+            <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
+              <Heart className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Nguyên liệu hạn chế
             </legend>
             <div className="flex flex-wrap gap-2">
               {RESTRICTION_TAGS.map((tag) => (
@@ -252,14 +252,14 @@ export const FoodPreferencesPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            <p className="text-xs text-[var(--sumi-muted,#5C5F62)] mt-2">
+            <p className="text-xs text-[var(--tkv-ink-muted)] mt-2">
               Giới hạn này giúp lọc gợi ý, không thay thế tư vấn y tế.
             </p>
           </fieldset>
 
           <fieldset>
-            <legend className="text-type-label text-[var(--sumi-ink,#111315)] flex items-center gap-2 mb-2">
-              <Flame className="w-4 h-4 text-[var(--sumi-ink,#111315)]" aria-hidden="true" /> Mức độ cay
+            <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
+              <Flame className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Mức độ cay
             </legend>
             <div className="flex flex-wrap gap-2">
               {SPICY_LEVELS.map((level) => (

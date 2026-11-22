@@ -508,12 +508,19 @@ export function ShoppingDemandReview({
       </p>
       {!purchaseDemand && recovery()}
       {purchaseDemand && (
-        <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+        <div
+          role="presentation"
+          onClick={() => {
+            if (!busy) setPurchaseDemand(null);
+          }}
+          className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50"
+        >
           <div
             ref={dialog}
             role="dialog"
             aria-modal="true"
             aria-labelledby="shopping-demand-purchase-title"
+            onClick={(e) => e.stopPropagation()}
             className="family-dialog shopping-demand-dialog"
           >
             <div className="family-dialog-heading">
@@ -525,6 +532,7 @@ export function ShoppingDemandReview({
               </div>
               <Button
                 variant="ghost"
+                className="!px-2.5 !min-w-[44px]"
                 aria-label="Đóng"
                 disabled={busy}
                 onClick={() => setPurchaseDemand(null)}

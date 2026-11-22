@@ -320,25 +320,38 @@ export function RecipeMealDialog({
       ? defaultServings
       : undefined;
   return (
-    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+    <div
+      role="presentation"
+      onClick={() => {
+        if (!busyRef.current) onClose();
+      }}
+      className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50"
+    >
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby="favorite-meal-title"
+        onClick={(e) => e.stopPropagation()}
         className="family-dialog recipe-meal-dialog"
       >
         <div className="family-dialog-heading">
           <h2 id="favorite-meal-title">Đặt {entry.title} vào bữa</h2>
-          <Button variant="ghost" disabled={busy} onClick={onClose} aria-label="Đóng">
+          <Button
+            variant="ghost"
+            className="!px-2.5 !min-w-[44px]"
+            disabled={busy}
+            onClick={onClose}
+            aria-label="Đóng"
+          >
             <X size={20} aria-hidden="true" />
           </Button>
         </div>
         {guest ? (
-          <div>
+          <div className="space-y-3">
             <p>Đăng nhập để chọn món cho bữa của gia đình.</p>
             <Link
-              className="planning-primary-link"
+              className="planning-primary-link w-full sm:w-auto"
               to={`/auth?mode=login&returnTo=${encodeURIComponent(`/recipes/id/${entry.recipeId}`)}`}
               onClick={onClose}
             >
@@ -350,10 +363,10 @@ export function RecipeMealDialog({
         ) : plan.isError ? (
           <InlineError error={plan.error} onRetry={() => void plan.refetch()} />
         ) : done ? (
-          <div role="status">
+          <div role="status" className="space-y-3">
             <p>Đã đặt món vào bữa. Các món khác được giữ nguyên.</p>
             <Link
-              className="planning-primary-link"
+              className="planning-primary-link w-full sm:w-auto"
               to={`/planner/${family?.plan.id}/meal/${encodeURIComponent(selected?.slotId ?? '')}`}
               onClick={onClose}
             >
@@ -361,10 +374,10 @@ export function RecipeMealDialog({
             </Link>
           </div>
         ) : !family || !compositions.length ? (
-          <div>
+          <div className="space-y-3">
             <p>Chọn lịch và số người ăn để đặt món vào bữa tới.</p>
             <Link
-              className="planning-primary-link"
+              className="planning-primary-link w-full sm:w-auto"
               to={`/planner/new?recipe=${encodeURIComponent(entry.recipeId)}${handoffServings ? `&servings=${handoffServings}` : ''}`}
               onClick={onClose}
             >

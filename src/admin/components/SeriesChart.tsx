@@ -5,7 +5,7 @@ import { vi } from '../i18n/vi';
 
 const WIDTH = 640;
 const HEIGHT = 220;
-const PAD = { top: 12, right: 12, bottom: 28, left: 52 };
+const PAD = { top: 12, right: 12, bottom: 28, left: 64 };
 
 /** Hand-written SVG chart; the visually hidden table carries the same data for screen readers. */
 export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; variant?: 'bar' | 'line' }) {
@@ -33,13 +33,14 @@ export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; 
 
   return (
     <figure className="chart">
-      <svg
-        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-        role="img"
-        aria-labelledby={titleId}
-        aria-describedby={descId}
-        className="chart-svg"
-      >
+      <div className="chart-scroll">
+        <svg
+          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+          role="img"
+          aria-labelledby={titleId}
+          aria-describedby={descId}
+          className="chart-svg"
+        >
         <title id={titleId}>{series.label}</title>
         <desc id={descId}>{description}</desc>
         {ticks.map((tick) => (
@@ -85,7 +86,8 @@ export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; 
             </text>
           ) : null,
         )}
-      </svg>
+        </svg>
+      </div>
       <div className="sr-only">
         <table>
         <caption>{vi.chart.tableCaption(series.label)}</caption>

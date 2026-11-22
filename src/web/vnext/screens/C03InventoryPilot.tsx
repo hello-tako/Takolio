@@ -361,12 +361,12 @@ export const C03InventoryPilot: React.FC = () => {
                 >
                   Đơn vị & Vị trí
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                   <select
                     id="tkv-c05-unit"
                     value={unit}
                     onChange={(e) => setUnit(e.target.value as StandardUnit)}
-                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-sm font-semibold text-[var(--tkv-ink)]"
+                    className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
                     <option value="piece">quả / cái</option>
                     <option value="g">g</option>
@@ -379,7 +379,7 @@ export const C03InventoryPilot: React.FC = () => {
                     aria-label="Vị trí bảo quản"
                     value={storage}
                     onChange={(e) => setStorage(e.target.value)}
-                    className="tkv-focusable min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-sm font-semibold text-[var(--tkv-ink)]"
+                    className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
                     <option value="fridge">Ngăn mát</option>
                     <option value="freezer">Ngăn đông</option>
@@ -394,12 +394,12 @@ export const C03InventoryPilot: React.FC = () => {
                 >
                   Hạn dùng ước tính
                 </label>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                   <select
                     id="tkv-c05-expiry"
                     value={expiryDays}
                     onChange={(e) => setExpiryDays(Number(e.target.value))}
-                    className="tkv-focusable flex-1 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-sm font-semibold text-[var(--tkv-ink)]"
+                    className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
                     <option value={2}>Còn 2 ngày</option>
                     <option value={3}>Còn 3 ngày</option>
@@ -412,7 +412,7 @@ export const C03InventoryPilot: React.FC = () => {
                     aria-label="Nhóm nguyên liệu"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="tkv-focusable min-h-[48px] px-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-sm font-semibold text-[var(--tkv-ink)]"
+                    className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
                     <option value="vegetable">Rau củ</option>
                     <option value="meat">Thịt cá</option>
@@ -460,32 +460,32 @@ export const C03InventoryPilot: React.FC = () => {
           <div
             role="group"
             aria-label="Bộ lọc trạng thái tủ lạnh"
-            className="grid grid-cols-4 sm:flex sm:flex-wrap items-center gap-2 tabular-nums"
+            className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:flex-wrap tabular-nums"
           >
             {filterChips.map((chip) => (
               <TkvChip
                 key={chip.id}
                 active={activeFilter === chip.id}
                 onClick={() => updateUrlParam('filter', chip.id)}
-                className="w-full sm:w-auto justify-center px-2.5 sm:px-4 min-h-[40px] text-[13px] sm:text-sm"
+                className="px-3.5 sm:px-4 text-sm"
               >
                 {chip.label}
               </TkvChip>
             ))}
-            <div className="hidden sm:inline-flex items-center gap-2">
-              <TkvChip
-                active={activeFilter === 'expiring'}
-                onClick={() => updateUrlParam('filter', 'expiring')}
-              >
-                Sắp hết ({expiringCount})
-              </TkvChip>
-              <TkvChip
-                active={activeFilter === 'fresh'}
-                onClick={() => updateUrlParam('filter', 'fresh')}
-              >
-                Còn đủ ({healthyCount})
-              </TkvChip>
-            </div>
+            <TkvChip
+              active={activeFilter === 'expiring'}
+              onClick={() => updateUrlParam('filter', 'expiring')}
+              className="px-3.5 sm:px-4 text-sm"
+            >
+              Sắp hết ({expiringCount})
+            </TkvChip>
+            <TkvChip
+              active={activeFilter === 'fresh'}
+              onClick={() => updateUrlParam('filter', 'fresh')}
+              className="px-3.5 sm:px-4 text-sm"
+            >
+              Còn đủ ({healthyCount})
+            </TkvChip>
           </div>
         </div>
 
@@ -572,19 +572,19 @@ export const C03InventoryPilot: React.FC = () => {
                 <li key={item.id} data-testid="inventory-row" data-item-id={item.id}>
                   <TkvSurface
                     padded={false}
-                    className="p-4 flex items-center justify-between gap-3 bg-[var(--tkv-surface)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-mint)] transition-colors"
+                    className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[var(--tkv-surface)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-mint)] transition-colors"
                   >
                     <Link
                       to={`/fridge/${item.id}`}
-                      className="tkv-focusable flex items-center gap-3.5 min-w-0 flex-1 rounded-xl py-0.5"
+                      className="tkv-focusable flex items-start sm:items-center gap-3 min-w-0 flex-1 rounded-xl py-0.5"
                     >
                       <IngredientThumb
                         ingredientId={item.ingredientId}
                         name={item.name}
                         category={item.category}
                       />
-                      <div className="min-w-0 space-y-1">
-                        <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] truncate">
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
                           {item.name}
                         </p>
                         <div className="flex items-center gap-1.5 flex-wrap text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
@@ -601,7 +601,7 @@ export const C03InventoryPilot: React.FC = () => {
                               : 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold text-[var(--tkv-primary)] tabular-nums'
                           }
                         >
-                          <VNextIcon name="timer" size={12} />
+                          <VNextIcon name="timer" size={12} className="shrink-0" />
                           <span>
                             {effectiveDate
                               ? exp.estimated
@@ -621,7 +621,7 @@ export const C03InventoryPilot: React.FC = () => {
                       </div>
                     </Link>
 
-                    <div className="flex items-center gap-1.5 shrink-0">
+                    <div className="flex items-center justify-end gap-1.5 pt-2 sm:pt-0 border-t border-[var(--tkv-border)] sm:border-0 shrink-0">
                       <TkvIconButton
                         icon="minus"
                         label={`Giảm lượng ${item.name}`}
@@ -637,7 +637,7 @@ export const C03InventoryPilot: React.FC = () => {
                       <Link
                         to={`/fridge/${item.id}`}
                         aria-label={`Chi tiết ${item.name}`}
-                        className="tkv-focusable w-8 h-8 rounded-full inline-flex items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-primary)]"
+                        className="tkv-focusable hidden sm:inline-flex w-11 h-11 rounded-full items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-primary)]"
                       >
                         <VNextIcon name="chevron-right" size={16} />
                       </Link>

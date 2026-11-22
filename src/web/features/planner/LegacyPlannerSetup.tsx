@@ -9,7 +9,7 @@ import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 
 export const plannerInputClass =
-  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-sm text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
+  'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-base sm:text-sm text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
 
 export function LegacyPlannerSetup({
   model,
@@ -123,7 +123,7 @@ export function LegacyPlannerSetup({
                 {(['breakfast', 'lunch', 'dinner'] as const).map((type) => (
                   <label
                     key={type}
-                    className={`flex flex-col sm:flex-row items-center gap-2 p-3 rounded-xl border text-sm cursor-pointer ${meals.includes(type) ? 'bg-semantic-accent-soft border-semantic-action-primary text-semantic-text-primary' : 'border-semantic-border'}`}
+                    className={`flex flex-col sm:flex-row items-center gap-2 p-2.5 sm:p-3 rounded-xl border text-sm cursor-pointer ${meals.includes(type) ? 'bg-semantic-accent-soft border-semantic-action-primary text-semantic-text-primary' : 'border-semantic-border'}`}
                   >
                     <input
                       type="checkbox"

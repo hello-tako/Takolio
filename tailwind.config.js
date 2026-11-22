@@ -29,18 +29,16 @@ export default {
           "accent-soft": "rgb(var(--semantic-accent-soft-rgb, 255 240 237) / <alpha-value>)",
           "success": "rgb(var(--semantic-success-rgb, 46 125 91) / <alpha-value>)",
           "success-soft": "rgb(var(--semantic-success-soft-rgb, 231 245 236) / <alpha-value>)",
-          "warning": "rgb(182 106 9 / <alpha-value>)",
-          "warning-soft": "rgb(255 243 214 / <alpha-value>)",
-          // Derived text shades for use on the *-soft fills where the base
-          // hue falls under 4.5:1 (warning 3.77, danger 4.498). Not kit values.
-          "warning-strong": "rgb(143 83 7 / <alpha-value>)",
-          "danger": "rgb(201 61 61 / <alpha-value>)",
-          "danger-soft": "rgb(255 240 240 / <alpha-value>)",
-          "danger-strong": "rgb(181 52 52 / <alpha-value>)",
-          "info": "rgb(47 111 159 / <alpha-value>)",
-          "info-soft": "rgb(234 244 251 / <alpha-value>)",
-          "border": "rgb(var(--semantic-border-rgb, 231 227 218) / <alpha-value>)",
-          "border-strong": "rgb(201 194 182 / <alpha-value>)",
+          "warning": "rgb(138 82 5 / <alpha-value>)",
+          "warning-soft": "rgb(255 245 214 / <alpha-value>)",
+          "warning-strong": "rgb(114 67 3 / <alpha-value>)",
+          "danger": "rgb(186 47 56 / <alpha-value>)",
+          "danger-soft": "rgb(255 240 236 / <alpha-value>)",
+          "danger-strong": "rgb(153 34 42 / <alpha-value>)",
+          "info": "rgb(25 97 73 / <alpha-value>)",
+          "info-soft": "rgb(231 244 236 / <alpha-value>)",
+          "border": "rgb(var(--semantic-border-rgb, 220 230 222) / <alpha-value>)",
+          "border-strong": "rgb(184 202 190 / <alpha-value>)",
           "focus": "rgb(var(--semantic-focus-rgb, 46 125 91) / <alpha-value>)",
           // Scrim colour from design-tokens.json (--semantic-overlay); alpha
           // is supplied per use (bg-semantic-overlay/50).

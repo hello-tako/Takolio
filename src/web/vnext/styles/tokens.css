@@ -107,8 +107,24 @@
   --tkv-coral-ink: #b33a22;
   --tkv-focus: #196149;
 
+  /* Compatibility Semantic Aliases -> Official Brand Board v2 */
+  --tkv-accent-soft: #fff0e9;
+  --tkv-accent-border: #fad0c4;
+  --tkv-accent-ink: #b33a22;
+  --tkv-sage: #196149;
+  --tkv-sage-soft: #e7f4ec;
+  --tkv-sage-border: #bde0cc;
+  --tkv-sage-ink: #134c39;
+  --tkv-honey: #f6c453;
+  --tkv-honey-soft: #fff5d6;
+  --tkv-honey-border: #f5de93;
+  --tkv-honey-ink: #724303;
+  --tkv-linen-from: #ffffff;
+  --tkv-cook-to: #fff0e9;
+  --tkv-ring-track: #fad0c4;
+
   /* Adapted surface token aliases -> Official Brand Board v2 */
-  --sumi-ink: #196149;
+  --sumi-ink: #152e2c;
   --sumi-ink-hover: #134c39;
   --sumi-muted: #52706a;
   --sumi-border: #dce6de;
@@ -151,15 +167,31 @@
   font-family: var(--tkv-font-heading);
   font-weight: 800;
   letter-spacing: -0.018em;
-  line-height: 1.18;
+  line-height: 1.24;
 }
 
 .tkv-display {
   font-family: var(--tkv-font-heading);
   font-size: var(--tkv-text-display);
   letter-spacing: -0.022em;
-  line-height: 1.12;
+  line-height: 1.22;
   font-weight: 900;
+}
+
+.tkv-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tkv-primary);
+}
+
+.tkv-hero-ceramic {
+  border-radius: var(--tkv-radius-bento);
+  background: linear-gradient(135deg, #196149 0%, #134c39 100%);
+  color: #ffffff;
+  border: 1px solid #0e3b2c;
+  box-shadow: var(--tkv-shadow-elevated);
 }
 
 .tkv-tabular {

@@ -141,7 +141,7 @@ export const M01LandingPilot: React.FC = () => {
         {/* HERO SECTION — Exact Official Brand Board v2 (`board-2.jpg`) */}
         <section
           aria-labelledby="m01-hero-heading"
-          className="tkv-leaf-wave-band rounded-3xl border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface)] p-6 sm:p-10 shadow-[var(--tkv-shadow-elevated)]"
+          className="tkv-leaf-wave-band rounded-3xl border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface)] p-4 sm:p-10 shadow-[var(--tkv-shadow-elevated)]"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-6 space-y-5">
@@ -199,7 +199,7 @@ export const M01LandingPilot: React.FC = () => {
                   <Link
                     key={card.to}
                     to={card.to}
-                    className="tkv-focusable rounded-2xl bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-2.5 flex flex-col items-center text-center gap-2 transition-colors"
+                    className="tkv-focusable last:col-span-2 sm:last:col-span-1 rounded-2xl bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] p-2.5 flex flex-col items-center text-center gap-2 transition-colors min-w-0"
                   >
                     <BrandFeatureIcon name={card.icon} size={44} />
                     <span className="tkv-heading text-xs font-extrabold text-[var(--tkv-ink)] leading-snug">
@@ -221,9 +221,9 @@ export const M01LandingPilot: React.FC = () => {
                   loading="eager"
                   className="w-full aspect-[16/10] object-cover"
                 />
-                <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 rounded-full bg-[var(--tkv-primary)] text-white px-4 py-1.5 shadow-[var(--tkv-shadow-float)] border border-white/30 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[var(--tkv-saffron)]" aria-hidden="true" />
-                  <span className="tkv-heading text-xs sm:text-sm font-extrabold">
+                <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 max-w-[calc(100%-24px)] rounded-full bg-[var(--tkv-primary)] text-white px-3.5 sm:px-4 py-1.5 shadow-[var(--tkv-shadow-float)] border border-white/30 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[var(--tkv-saffron)] shrink-0" aria-hidden="true" />
+                  <span className="tkv-heading text-xs sm:text-sm font-extrabold truncate">
                     Bé Mầm Bếp · Mascot Takolio
                   </span>
                 </div>
@@ -262,7 +262,7 @@ export const M01LandingPilot: React.FC = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <BrandFeatureIcon name={feat.icon} size={50} />
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
                         {feat.title}
                       </h3>
@@ -288,7 +288,7 @@ export const M01LandingPilot: React.FC = () => {
         <section
           aria-labelledby="m01-mascot-heading"
           data-testid="m01-bemam-showcase"
-          className="rounded-3xl border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface)] p-5 sm:p-7 space-y-5 shadow-[var(--tkv-shadow-card)]"
+          className="rounded-3xl border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface)] p-4 sm:p-7 space-y-5 shadow-[var(--tkv-shadow-card)]"
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="space-y-1.5">
@@ -304,14 +304,14 @@ export const M01LandingPilot: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5">
             {BEMAM_MASCOT_SHOWCASE.map((item) => (
               <div
                 key={item.pose}
-                className="rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] p-3.5 flex flex-col items-center text-center gap-2.5"
+                className="rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] p-3 sm:p-3.5 flex flex-col items-center text-center gap-2 min-w-0"
               >
-                <MascotIllustration pose={item.pose} size={116} className="w-28 h-28" />
-                <div className="space-y-0.5">
+                <MascotIllustration pose={item.pose} size={116} className="w-20 h-20 sm:w-28 sm:h-28 max-w-full" />
+                <div className="space-y-0.5 min-w-0">
                   <h3 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
                     {item.title}
                   </h3>

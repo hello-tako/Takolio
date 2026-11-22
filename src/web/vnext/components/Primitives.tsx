@@ -1,5 +1,6 @@
 import React, { useId } from 'react';
 import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { MascotIllustration, type MascotPose } from './VNextMedia';
 
@@ -19,7 +20,7 @@ const BUTTON_VARIANTS: Record<TkvButtonVariant, string> = {
   primary:
     'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-[var(--tkv-shadow-cta)] border border-transparent',
   coral:
-    'bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white shadow-[var(--tkv-shadow-cta)] border border-transparent',
+    'bg-[var(--tkv-coral-cta)] hover:bg-[var(--tkv-coral-cta-hover)] text-white shadow-xs border border-transparent',
   secondary:
     'bg-[var(--tkv-surface)] hover:bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink)] border border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] shadow-xs',
   quiet:
@@ -120,18 +121,20 @@ export const TkvSurface: React.FC<
   }
 > = ({ tone = 'default', padded = true, className, children, ...rest }) => (
   <div
-    className={clsx(
-      'rounded-2xl transition-colors',
-      tone === 'default' &&
-        'bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-card)]',
-      tone === 'muted' && 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)]',
-      tone === 'subtle' && 'bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)]',
-      tone === 'mint' && 'bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)]',
-      tone === 'saffron' && 'bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)]',
-      tone === 'coral' && 'bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)]',
-      (tone === 'dark' || tone === 'inverse' || tone === 'hero') && 'tkv-hero-ceramic',
-      padded && 'p-5',
-      className,
+    className={twMerge(
+      clsx(
+        'rounded-2xl transition-colors',
+        tone === 'default' &&
+          'bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-card)]',
+        tone === 'muted' && 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)]',
+        tone === 'subtle' && 'bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)]',
+        tone === 'mint' && 'bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)]',
+        tone === 'saffron' && 'bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)]',
+        tone === 'coral' && 'bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)]',
+        (tone === 'dark' || tone === 'inverse' || tone === 'hero') && 'tkv-hero-ceramic',
+        padded && 'p-4 sm:p-5',
+        className,
+      ),
     )}
     {...rest}
   >
@@ -173,8 +176,8 @@ export const TkvBadge: React.FC<{
       )}
     >
       <span aria-hidden="true" className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dotColor[tone])} />
-      {icon && <VNextIcon name={icon} size={13} className="opacity-85" />}
-      <span>{children}</span>
+      {icon && <VNextIcon name={icon} size={13} className="opacity-85 shrink-0" />}
+      <span className="min-w-0">{children}</span>
     </span>
   );
 };
@@ -223,7 +226,7 @@ export const TkvTextField: React.FC<
   return (
     <div className={clsx('space-y-2', className)}>
       {(label || hint || labelAction) && (
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
           {label && (
             <label htmlFor={fieldId} className="text-sm font-semibold text-[var(--tkv-ink)]">
               {label}
@@ -245,17 +248,17 @@ export const TkvTextField: React.FC<
           className={clsx(
             'tkv-focusable w-full min-h-[48px] bg-[var(--tkv-surface)] text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] rounded-[var(--tkv-radius-btn)] border text-base px-4 py-2.5 transition-colors',
             iconLeft && 'pl-11',
-            rightSlot && 'pr-12',
+            rightSlot && 'pr-13',
             error ? 'border-[var(--tkv-danger)]' : 'border-[var(--tkv-border)] focus:border-[var(--tkv-primary)]',
           )}
           {...rest}
         />
-        {rightSlot && <div className="absolute right-1.5 flex items-center">{rightSlot}</div>}
+        {rightSlot && <div className="absolute right-1 flex items-center">{rightSlot}</div>}
       </div>
       {error && (
-        <p id={errId} role="alert" className="text-xs font-semibold text-[var(--tkv-danger)] flex items-center gap-1.5">
-          <VNextIcon name="error" size={14} />
-          <span>{error}</span>
+        <p id={errId} role="alert" className="text-xs font-semibold text-[var(--tkv-danger)] flex items-start gap-1.5">
+          <VNextIcon name="error" size={14} className="shrink-0 mt-0.5" />
+          <span className="min-w-0">{error}</span>
         </p>
       )}
     </div>
@@ -300,8 +303,8 @@ export const TkvSearchField: React.FC<{
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={clsx(
-          'tkv-focusable w-full min-h-[48px] pl-10 py-2.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] focus:border-[var(--tkv-primary)] text-sm sm:text-base text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] shadow-xs transition-colors',
-          value ? 'pr-11' : 'pr-4',
+          'tkv-focusable w-full min-h-[48px] pl-11 py-2.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] focus:border-[var(--tkv-primary)] text-base text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] shadow-xs transition-colors',
+          value ? 'pr-13' : 'pr-4',
         )}
       />
       {value && (

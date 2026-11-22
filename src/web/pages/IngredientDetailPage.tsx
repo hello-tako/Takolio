@@ -596,12 +596,12 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
           thiếu và cách nấu.
         </p>
         {matchingRecipes.length === 0 && (
-          <p className="stock-recipe-note">
-            Chưa có món liên quan trong danh sách này.{' '}
-            <Link to="/recipes" className="underline">
+          <div className="stock-recipe-note space-y-2">
+            <p>Chưa có món liên quan trong danh sách này.</p>
+            <Link to="/recipes" className="min-h-[44px] inline-flex items-center font-semibold text-semantic-action-primary underline underline-offset-4">
               Khám phá món ăn
             </Link>
-          </p>
+          </div>
         )}
         <div className="space-y-2.5">
           {matchingRecipes.map((recipe) => (
@@ -621,18 +621,18 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 onError={recipeImageErrorHandler(resolveRecipeImage(recipe).fallbackSrc)}
               />
               <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">
-                  {recipe.cuisine}
+                <span className="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">
+                  {recipe.cuisine === 'vietnamese' ? 'Món Việt' : recipe.cuisine}
                 </span>
-                <h4 className="font-heading font-semibold text-sm text-semantic-text-primary truncate mt-1">
+                <h4 className="font-heading font-semibold text-sm text-semantic-text-primary line-clamp-2 mt-1">
                   {recipe.title}
                 </h4>
-                <span className="flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
-                  <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted" />
+                <span className="inline-flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
+                  <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted shrink-0" />
                   <span>{recipe.cookTimeMinutes} phút</span>
                 </span>
               </div>
-              <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted" />
+              <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted shrink-0" />
             </Link>
           ))}
         </div>

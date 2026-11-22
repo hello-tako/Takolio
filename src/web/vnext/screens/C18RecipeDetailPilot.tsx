@@ -282,14 +282,14 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
           {/* Sourced Nutrition Card — strictly honest when null */}
           <TkvSurface className="p-4 space-y-2.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
               <h2 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">
                 Thông tin dinh dưỡng / khẩu phần
               </h2>
-              <span className="text-xs text-[var(--tkv-ink-muted,#52706A)]">Nguồn công thức</span>
+              <span className="text-xs text-[var(--tkv-ink-muted,#52706A)] shrink-0">Nguồn công thức</span>
             </div>
             {recipe.nutrition ? (
-              <div className="grid grid-cols-4 gap-2 text-center tabular-nums">
+              <div className="grid grid-cols-2 min-[400px]:grid-cols-4 gap-2 text-center tabular-nums">
                 <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
                   <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.calories}</p>
                   <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">kcal</p>
@@ -358,7 +358,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
                 return (
                   <li key={`${ing.ingredientId}-${ing.name}`}>
-                    <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 flex-wrap bg-white border-[var(--tkv-border,#DCE6DE)]">
+                    <TkvSurface padded={false} className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-[var(--tkv-border,#DCE6DE)]">
                       <div className="flex items-center gap-3 min-w-0 flex-1">
                         <span
                           className={
@@ -411,6 +411,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
                           size="sm"
                           variant="secondary"
                           iconLeft="plus"
+                          className="w-full sm:w-auto shrink-0"
                           isLoading={addShortfallMutation.isPending}
                           onClick={() =>
                             addShortfallMutation.mutate({

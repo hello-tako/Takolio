@@ -39,21 +39,21 @@ const FEATURE_SUBNAV: Array<{ id: string; label: string; to: string }> = [
 const FeatureSubnavBar: React.FC<{ activeId: string }> = ({ activeId }) => (
   <nav
     aria-label="Điều hướng chi tiết tính năng"
-    className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-4 overflow-x-auto"
+    className="max-w-[1200px] mx-auto pt-4 overflow-x-auto no-scrollbar"
   >
-    <ul className="inline-flex items-center gap-2 pb-1">
+    <ul className="inline-flex items-center gap-2 px-4 sm:px-6 pb-1">
       {FEATURE_SUBNAV.map((item) => {
         const active = item.id === activeId;
         return (
-          <li key={item.id}>
+          <li key={item.id} className="shrink-0">
             <Link
               to={item.to}
               aria-current={active ? 'page' : undefined}
               className={clsx(
-                'tkv-focusable min-h-[40px] px-3.5 py-1.5 rounded-full text-xs font-bold inline-flex items-center whitespace-nowrap border transition-colors',
+                'tkv-focusable min-h-[44px] px-3.5 py-2 rounded-full text-xs font-bold inline-flex items-center whitespace-nowrap border transition-colors',
                 active
-                  ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
-                  : 'bg-white text-[var(--tkv-ink-soft,#3C5954)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)] hover:text-[var(--tkv-ink,#152E2C)]',
+                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                  : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] hover:text-[var(--tkv-ink)]',
               )}
             >
               {item.label}
@@ -524,7 +524,7 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
           {/* Right Column: Crisp Sunlit Ceramic Showcase + Terracotta CTA */}
           <div className="lg:col-span-6 space-y-4">
             <div className="rounded-[24px] bg-white p-4 sm:p-5 border border-[var(--tkv-border,#DCE6DE)] shadow-soft space-y-4">
-              <div className="rounded-[18px] overflow-hidden aspect-[4/3] bg-[var(--tkv-surface-muted,#E7F4EC)]">
+              <div className="rounded-[18px] overflow-hidden aspect-[4/3] bg-[var(--tkv-surface-mint)]">
                 <img
                   src={spec.imageSrc640}
                   srcSet={`${spec.imageSrc640} 640w, ${spec.imageSrc} 1200w`}
@@ -776,7 +776,7 @@ export const M09PricingPage: React.FC = () => {
               disabled={isStarting}
               onClick={() => void handleStartFree()}
               data-testid="m09-free-cta"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong,#B8CABE)] text-[var(--tkv-ink,#152E2C)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] font-bold text-base transition-colors disabled:opacity-60"
+              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong)] text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] font-bold text-base transition-colors disabled:opacity-60"
             >
               {isStarting ? 'Đang mở…' : 'Bắt đầu'}
             </button>
@@ -852,11 +852,11 @@ export const M09PricingPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] flex items-start gap-3">
-          <VNextIcon name="info" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
-          <p>
-            <strong className="text-[var(--tkv-ink,#152E2C)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
-            Biểu phí hiển thị trên trang này chỉ đọc từ điểm cuối máy chủ <code>/api/v1/billing/plans</code> khi khả dụng và không bao giờ gán cứng số tiền ước đoán ở phía trình duyệt.
+        <div className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink-secondary)] flex items-start gap-3">
+          <VNextIcon name="info" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
+          <p className="min-w-0">
+            <strong className="text-[var(--tkv-ink)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
+            Biểu phí hiển thị trên trang này chỉ đọc từ điểm cuối máy chủ <code className="break-all">/api/v1/billing/plans</code> khi khả dụng và không bao giờ gán cứng số tiền ước đoán ở phía trình duyệt.
           </p>
         </div>
       </section>
@@ -972,7 +972,7 @@ export const M10FaqPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="tkv-focusable min-h-[40px] px-4 py-2 rounded-xl bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white text-xs font-bold transition-colors"
+              className="tkv-focusable min-h-[44px] px-4 py-2 rounded-xl bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white text-xs sm:text-sm font-bold transition-colors"
             >
               Hiển thị tất cả câu hỏi
             </button>
@@ -1181,7 +1181,7 @@ export const M11StoriesPage: React.FC = () => {
                 )}
               >
                 <div>
-                  <div className="p-3 bg-[var(--tkv-surface-muted,#E7F4EC)]">
+                  <div className="p-3 bg-[var(--tkv-surface-mint)]">
                     <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-white">
                       <img
                         src={story.coverSrc640}
@@ -1328,10 +1328,10 @@ export const M12CompanyLegalPage: React.FC = () => {
               to={t.to}
               aria-current={section === t.key ? 'page' : undefined}
               className={clsx(
-                'tkv-focusable min-h-[42px] px-4 py-2 rounded-full text-sm font-bold inline-flex items-center border transition-colors',
+                'tkv-focusable min-h-[44px] px-4 py-2 rounded-full text-sm font-bold inline-flex items-center border transition-colors',
                 section === t.key
-                  ? 'bg-[var(--tkv-primary,#196149)] text-white border-[var(--tkv-primary,#196149)] shadow-xs'
-                  : 'bg-white text-[var(--tkv-ink-soft,#3C5954)] border-[var(--tkv-border,#DCE6DE)] hover:border-[var(--tkv-border-strong,#B8CABE)] hover:text-[var(--tkv-ink,#152E2C)]',
+                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                  : 'bg-white text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] hover:text-[var(--tkv-ink)]',
               )}
             >
               {t.label}
@@ -1358,9 +1358,9 @@ export const M12CompanyLegalPage: React.FC = () => {
             {section === 'about' && (
               <div className="rounded-[22px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 space-y-4 text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
                 <div className="flex items-center gap-4">
-                  <MascotIllustration pose="welcome" size={64} className="border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)]" />
-                  <div>
-                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                  <MascotIllustration pose="welcome" size={64} className="shrink-0 border border-[var(--tkv-border)] bg-[var(--tkv-bg)]" />
+                  <div className="min-w-0">
+                    <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
                       Triết lý Bữa ngon, nhẹ đầu của Takolio
                     </h2>
                     <p className="text-sm">Ăn đủ. Mua đủ. Dùng hết — giảm lãng phí thực phẩm, bớt áp lực nghĩ món mỗi chiều.</p>

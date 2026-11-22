@@ -29,11 +29,16 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
 
   useEffect(() => {
     if (!drawerOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setDrawerOpen(false);
     };
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, [drawerOpen]);
 
   const handleLogout = async () => {
@@ -53,6 +58,14 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
             T
           </span>
           <span className="brand-name">{vi.appName}</span>
+          <button
+            type="button"
+            className="drawer-close-button"
+            aria-label={vi.layout.closeMenu}
+            onClick={() => setDrawerOpen(false)}
+          >
+            ×
+          </button>
         </div>
         <nav aria-label={vi.layout.navLabel} id="admin-sidebar-nav">
           <ul className="nav-list">

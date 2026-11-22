@@ -138,7 +138,7 @@ function FamilyPlanningSettingsPage() {
                 Lưu thói quen
               </Button>
             </fieldset>
-            <p className="planning-note">
+            <p className="planning-note mt-3">
               Thay đổi này không sửa các bữa đã xếp. Tạo tuần mới hoặc xem gợi ý lại để áp dụng.
             </p>
           </form>
