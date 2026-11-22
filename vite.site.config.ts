@@ -3,11 +3,10 @@ import react from '@vitejs/plugin-react';
 import path from 'node:path';
 
 /**
- * Vite build configuration for `https://takolio.com` (Public Satellite, SEO & GEO Site).
- * Outputs to `dist/site`, followed by `scripts/site-prerender.mjs` which emits pre-rendered
- * HTML + Schema.org JSON-LD + GEO discovery files (`llms.txt`, `llms-full.txt`, `robots.txt`, `sitemap.xml`).
+ * Vite build configuration for `https://takolio.com` (Public Satellite, Multilingual SEO & GEO Hub).
+ * Supports both client bundle (`dist/site`) and True React SSR entry (`dist/site-ssr/entry-server.js`).
  */
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   root: __dirname,
   publicDir: false,
   plugins: [react()],
@@ -22,15 +21,30 @@ export default defineConfig({
       '@frigo/db': path.resolve(__dirname, './packages/db/src/index.ts'),
     },
   },
-  build: {
-    outDir: 'dist/site',
-    emptyOutDir: true,
-    assetsDir: 'assets',
-    sourcemap: false,
-    rollupOptions: {
-      input: {
-        site: path.resolve(__dirname, 'site/index.html'),
-      },
-    },
+  ssr: {
+    noExternal: ['react-router-dom', 'react-router'],
   },
-});
+  build: isSsrBuild
+    ? {
+        outDir: 'dist/site-ssr',
+        emptyOutDir: true,
+        sourcemap: false,
+        rollupOptions: {
+          output: {
+            format: 'es',
+            entryFileNames: 'entry-server.js',
+          },
+        },
+      }
+    : {
+        outDir: 'dist/site',
+        emptyOutDir: true,
+        assetsDir: 'assets',
+        sourcemap: false,
+        rollupOptions: {
+          input: {
+            site: path.resolve(__dirname, 'site/index.html'),
+          },
+        },
+      },
+}));

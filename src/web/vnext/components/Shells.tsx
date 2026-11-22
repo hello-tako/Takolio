@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
+import { useAppLocale, type AppChromeCopy } from '../../i18n/LocaleContext';
 import { OfflineBanner } from '../../components/common/OfflineBanner';
 import { useModalFocus } from '../../design-system/use-modal-focus';
 import { vnextHref } from '../feature';
@@ -27,19 +28,19 @@ export interface ConsumerRootItem {
  * Official 5-destination navigation per Brand Board §4 (`board.jpg` & `board-2.jpg`):
  * Trang chủ · Tủ lạnh · Thực đơn · Mua sắm · Cá nhân
  */
-export function getConsumerRoots(): ConsumerRootItem[] {
+export function getConsumerRoots(navLabels?: AppChromeCopy['nav']): ConsumerRootItem[] {
   const plannerPath = isMealPlannerEnabled() ? '/planner' : '/week';
   return [
     {
       id: 'home',
-      label: 'Trang chủ',
+      label: navLabels?.home ?? 'Trang chủ',
       to: '/',
       icon: 'home',
       match: (p) => p === '/' || p.startsWith('/recipes') || p.startsWith('/cook'),
     },
     {
       id: 'fridge',
-      label: 'Tủ lạnh',
+      label: navLabels?.fridge ?? 'Tủ lạnh',
       to: '/fridge',
       icon: 'fridge',
       match: (p) =>
@@ -51,21 +52,21 @@ export function getConsumerRoots(): ConsumerRootItem[] {
     },
     {
       id: 'planner',
-      label: 'Thực đơn',
+      label: navLabels?.planner ?? 'Thực đơn',
       to: plannerPath,
       icon: 'calendar',
       match: (p) => p.startsWith('/planner') || p.startsWith('/week'),
     },
     {
       id: 'shopping',
-      label: 'Mua sắm',
+      label: navLabels?.shopping ?? 'Mua sắm',
       to: '/shopping',
       icon: 'shopping',
       match: (p) => p.startsWith('/shopping'),
     },
     {
       id: 'me',
-      label: 'Cá nhân',
+      label: navLabels?.me ?? 'Cá nhân',
       to: '/me',
       icon: 'profile',
       match: (p) =>
@@ -319,7 +320,8 @@ export const ConsumerStudioShell: React.FC<{
   const quickDialogRef = useRef<HTMLDivElement>(null);
   const quickInputRef = useRef<HTMLInputElement>(null);
   const closeQuickFind = useCallback(() => setQuickFindOpen(false), []);
-  const roots = getConsumerRoots();
+  const { copy: appCopy } = useAppLocale();
+  const roots = getConsumerRoots(appCopy.nav);
 
   useModalFocus(quickFindOpen, quickDialogRef, closeQuickFind, quickInputRef);
 

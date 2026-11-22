@@ -20,6 +20,7 @@ import {
   VerifiedDishImage,
 } from '../components/VNextMedia';
 import { useVNextSeo } from '../lib/seo';
+import { useAppLocale } from '../../i18n/LocaleContext';
 
 const LEGACY_NAME_RE = /\bFri\w*\b/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
@@ -34,8 +35,6 @@ const MEAL_LABELS: Record<'breakfast' | 'lunch' | 'dinner', string> = {
   lunch: 'Bữa trưa',
   dinner: 'Bữa tối',
 };
-
-const WEEKDAY_PILLS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'] as const;
 
 function formatDayHeadingVi(isoDate: string): string {
   const parsed = new Date(`${isoDate}T00:00:00Z`);
@@ -112,11 +111,17 @@ export const C23PlannerPilot: React.FC = () => {
         ),
       ).size
     : 0;
+  const { locale: appLocale, copy: appCopy } = useAppLocale();
+  const plannerLocale: 'vi' | 'en' = appLocale === 'vi' ? 'vi' : 'en';
   const activeDayLabel =
-    selectedDayIdx === 6 ? 'Chủ nhật' : `Thứ ${selectedDayIdx + 2}`;
+    selectedDayIdx === 6
+      ? appCopy.planner.sundayFull
+      : appLocale === 'vi'
+        ? `Thứ ${selectedDayIdx + 2}`
+        : appCopy.planner.weekdays[selectedDayIdx];
 
   return (
-    <ConsumerStudioShell screenId="C23" title="Thực đơn 7 ngày">
+    <ConsumerStudioShell screenId="C23" title={appCopy.planner.title}>
       <div className="flex flex-col gap-4 sm:gap-6">
         {/* Top Brand Board Heading (`board-2.jpg` right screen) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -124,12 +129,14 @@ export const C23PlannerPilot: React.FC = () => {
             <BrandFeatureIcon name="planner" size={48} />
             <div className="min-w-0">
               <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
-                Thực đơn 7 ngày
+                {appCopy.planner.title}
               </h1>
               <p className="text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5">
                 {isGuest || plan
-                  ? 'Cân bằng dinh dưỡng cho cả gia đình'
-                  : `Bếp của ${cleanName} · Cân bằng dinh dưỡng cho cả gia đình`}
+                  ? appCopy.planner.subtitleDefault
+                  : appLocale === 'vi'
+                    ? `Bếp của ${cleanName} · ${appCopy.planner.subtitleDefault}`
+                    : `${cleanName} · ${appCopy.planner.subtitleDefault}`}
               </p>
             </div>
           </div>
@@ -142,7 +149,7 @@ export const C23PlannerPilot: React.FC = () => {
                 iconLeft="plus"
                 onClick={() => navigate('/planner/new')}
               >
-                Tạo thực đơn mới
+                {appCopy.planner.createNew}
               </TkvButton>
               {plan && (
                 <Link
@@ -150,20 +157,20 @@ export const C23PlannerPilot: React.FC = () => {
                   className="tkv-focusable min-h-[44px] px-4 py-2 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral-ink)] text-sm font-extrabold inline-flex items-center gap-1.5 transition-colors"
                 >
                   <VNextIcon name="shopping" size={16} />
-                  <span>Danh sách mua sắm</span>
+                  <span>{appCopy.planner.shoppingList}</span>
                 </Link>
               )}
             </div>
           )}
         </div>
 
-        {/* 7-Day `T2 · T3 · T4 · T5 · T6 · T7 · CN` Pill Selector (`board.jpg` & `board-2.jpg` right phone!) */}
+        {/* 7-Day Pill Selector */}
         <div
           role="group"
           aria-label="Chọn thứ trong tuần"
           className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:grid sm:grid-cols-7 sm:gap-2.5 max-w-xl"
         >
-          {WEEKDAY_PILLS.map((dayLabel, idx) => {
+          {appCopy.planner.weekdays.map((dayLabel, idx) => {
             const active = selectedDayIdx === idx;
             return (
               <button
@@ -192,7 +199,7 @@ export const C23PlannerPilot: React.FC = () => {
                 <MascotIllustration pose="shopping" size={96} className="w-20 h-20 sm:w-24 sm:h-24 shrink-0" />
                 <div className="space-y-1.5 min-w-0 flex-1">
                   <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)]">
-                    {WEEKDAY_PILLS[selectedDayIdx]} · Đồng bộ hộ gia đình
+                    {appCopy.planner.weekdays[selectedDayIdx]} · Đồng bộ hộ gia đình
                   </span>
                   <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
                     Đăng nhập để tạo và lưu thực đơn 7 ngày
@@ -299,7 +306,7 @@ export const C23PlannerPilot: React.FC = () => {
                         {activeDayLabel}
                       </h2>
                       <span className="hidden sm:inline-flex px-2.5 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-xs font-extrabold text-[var(--tkv-primary)]">
-                        {plannerStatusLabel(plan.result.status, 'vi')} · v{plan.revision}
+                        {plannerStatusLabel(plan.result.status, plannerLocale)} · v{plan.revision}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5 tabular-nums">

@@ -631,25 +631,31 @@ interface PublicBillingPlanDto {
 }
 
 async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
-  try {
-    const res = await fetch('/api/v1/billing/plans', { credentials: 'include' });
-    if (!res.ok) return null;
-    const body = (await res.json()) as { plans?: unknown };
-    if (!Array.isArray(body?.plans)) return null;
-    const valid = body.plans.filter(
-      (item): item is PublicBillingPlanDto =>
-        Boolean(item) &&
-        typeof item === 'object' &&
-        ((item as PublicBillingPlanDto).plan === 'monthly' ||
-          (item as PublicBillingPlanDto).plan === 'annual') &&
-        typeof (item as PublicBillingPlanDto).amountVnd === 'number' &&
-        Number.isFinite((item as PublicBillingPlanDto).amountVnd) &&
-        (item as PublicBillingPlanDto).amountVnd > 0,
-    );
-    return valid.length > 0 ? valid : null;
-  } catch {
-    return null;
+  const endpoints = isSatelliteComRuntime()
+    ? ['/api/v1/public/pricing']
+    : ['https://takolio.com/api/v1/public/pricing'];
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, { credentials: 'omit' });
+      if (!res.ok) continue;
+      const body = (await res.json()) as { plans?: unknown };
+      if (!Array.isArray(body?.plans)) continue;
+      const valid = body.plans.filter(
+        (item): item is PublicBillingPlanDto =>
+          Boolean(item) &&
+          typeof item === 'object' &&
+          ((item as PublicBillingPlanDto).plan === 'monthly' ||
+            (item as PublicBillingPlanDto).plan === 'annual') &&
+          typeof (item as PublicBillingPlanDto).amountVnd === 'number' &&
+          Number.isFinite((item as PublicBillingPlanDto).amountVnd) &&
+          (item as PublicBillingPlanDto).amountVnd > 0,
+      );
+      if (valid.length > 0) return valid;
+    } catch {
+      // Try next endpoint gracefully
+    }
   }
+  return null;
 }
 
 /**
@@ -855,8 +861,8 @@ export const M09PricingPage: React.FC = () => {
         <div className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] p-4 sm:p-5 text-xs sm:text-sm text-[var(--tkv-ink-secondary)] flex items-start gap-3">
           <VNextIcon name="info" size={18} className="text-[var(--tkv-primary)] shrink-0 mt-0.5" />
           <p className="min-w-0">
-            <strong className="text-[var(--tkv-ink)]">Nguyên tắc minh bạch thương mại (M09):</strong>{' '}
-            Biểu phí hiển thị trên trang này chỉ đọc từ điểm cuối máy chủ <code className="break-all">/api/v1/billing/plans</code> khi khả dụng và không bao giờ gán cứng số tiền ước đoán ở phía trình duyệt.
+            <strong className="text-[var(--tkv-ink)]">Nguyên tắc minh bạch thương mại:</strong>{' '}
+            Biểu phí hiển thị trên trang này luôn đồng bộ trực tiếp từ hệ thống thanh toán chính thức và không bao giờ hiển thị giá ước đoán.
           </p>
         </div>
       </section>
@@ -1066,7 +1072,7 @@ const STORIES_GUIDES = [
     coverAlt: 'Hai nồi gốm và chảo xào vận hành song song trên mặt bếp sáng với khay nguyên liệu sơ chế gọn gàng',
     publishedAt: '2026-11-14',
     points: [
-      'Mở bước Chuẩn bị nấu (C20) để bày đủ định lượng ra bàn trước khi bật bếp.',
+      'Mở bước Chuẩn bị nấu để bày đủ định lượng ra bàn trước khi bật bếp.',
       'Tận dụng hẹn giờ trên từng bước nấu để không quên nồi kho hoặc nồi canh đang sôi.',
       'Xác nhận lượng thực tế đã dùng ở cuối bữa để tủ lạnh luôn phản ánh đúng số nguyên liệu còn lại.',
     ],
@@ -1116,7 +1122,7 @@ const STORIES_GUIDES = [
     points: [
       'Ướp thịt với hành tím băm và nước mắm ngon tối thiểu 20 phút trước khi thắng nước màu.',
       'Châm nước dừa tươi ấm xâm xấp mặt thịt rồi hạ lửa riu liu riu để mỡ trong và thấm đều.',
-      'Sử dụng bộ hẹn giờ công đoạn C21 trên Takolio để canh chuẩn 35–40 phút ninh mềm.',
+      'Sử dụng bộ hẹn giờ công đoạn trong chế độ nấu từng bước trên Takolio để canh chuẩn 35–40 phút ninh mềm.',
     ],
   },
 ] as const;
@@ -1384,7 +1390,7 @@ export const M12CompanyLegalPage: React.FC = () => {
                   <li><strong className="text-[var(--tkv-ink,#152E2C)]">Cô lập theo hộ gia đình:</strong> Tồn kho, lịch tuần, giỏ mua sắm và ảnh quét đều được kiểm tra quyền sở hữu theo <code>household_id</code> ở tầng máy chủ.</li>
                   <li><strong className="text-[var(--tkv-ink,#152E2C)]">Phiên đăng nhập an toàn:</strong> Xác thực bằng cookie <code>HttpOnly</code>; khi đăng xuất hoặc đổi tài khoản, bộ nhớ tạm trên trình duyệt được dọn sạch.</li>
                   <li><strong className="text-[var(--tkv-ink,#152E2C)]">Ảnh quét AI:</strong> Chỉ gửi xử lý khi bạn chủ động bấm chụp/tải lên và không tự động nhập kho nếu chưa xác nhận.</li>
-                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Quyền xuất/xóa dữ liệu (U10):</strong> Đang được lập đặc tả kỹ thuật (<code>RFC-002</code>) để triển khai quy trình tự phục vụ an toàn.</li>
+                  <li><strong className="text-[var(--tkv-ink,#152E2C)]">Quyền xuất & xóa dữ liệu:</strong> Người dùng có thể quản lý phiên, xóa bộ nhớ đệm cục bộ và gửi yêu cầu hỗ trợ tài khoản minh bạch trong phần Quyền riêng tư.</li>
                 </ul>
               </div>
             )}

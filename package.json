@@ -9,7 +9,7 @@
     "dev:worker": "wrangler dev --var ENVIRONMENT:development",
     "build": "vite build && vite build -c vite.admin.config.ts && tsc -p tsconfig.worker.json",
     "build:web": "vite build",
-    "build:site": "vite build -c vite.site.config.ts && node scripts/site-prerender.mjs",
+    "build:site": "vite build -c vite.site.config.ts && vite build -c vite.site.config.ts --ssr site/entry-server.tsx --outDir dist/site-ssr && node scripts/site-prerender.mjs",
     "build:admin": "vite build -c vite.admin.config.ts",
     "build:worker": "tsc -p tsconfig.worker.json",
     "preview": "vite preview",

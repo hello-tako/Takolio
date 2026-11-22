@@ -1,29 +1,34 @@
-# Takolio — Trợ Lý Căn Bếp Thông Minh Cho Gia Đình Hiện Đại
+# Takolio — Smart AI Family Kitchen Assistant ("Bữa ngon, nhẹ đầu.")
 
-> Takolio là nền tảng quản lý tủ lạnh thông minh, nhận diện nguyên liệu bằng AI (có bước kiểm duyệt thủ công bắt buộc), gợi ý món ăn gia đình Việt khớp định lượng thực tế, lập thực đơn tuần 7 ngày và tạo danh sách đi chợ trừ tồn kho tự động.
+> Takolio is a closed-loop smart kitchen platform that tracks household fridge inventory by batch (FEFO), scans produce and grocery receipts with mandatory human-in-the-loop review, matches 500 verified global recipes across 6 cuisines by exact ingredient quantities, builds 7-day family meal plans for 1–20 servings, and generates net shopping lists that automatically subtract what you already have at home.
 
-- Website thông tin, cẩm nang ẩm thực & bảng giá (Satellite Hub): https://takolio.com
-- Ứng dụng Web Bếp Tương Tác (Web Application): https://takolio.app
-- Ngôn ngữ chính: Tiếng Việt (`vi-VN`)
-- Triết lý cốt lõi: "Ăn đủ. Mua đủ. Dùng hết." — Khép kín vòng lặp thực phẩm gia đình, giảm lãng phí thực phẩm và bảo vệ quyền riêng tư theo từng hộ gia đình.
+- Public Information, Recipes & GEO Hub: https://takolio.com (Vietnamese default `/` + Global English `/en`, Japanese `/ja`, Korean `/ko`, Thai `/th`, Chinese `/zh`, Italian `/it`)
+- Interactive Kitchen Web App / PWA: https://takolio.app
+- Official Brand Identity & Mascot: **Bé Mầm Bếp** (white ceramic cooking pot wearing a chef hat with a green sprout and coral neckerchief)
+- Core Philosophy: **"Ăn đủ. Mua đủ. Dùng hết."** / **"Eat enough. Buy enough. Use it all."**
+- Verified Catalog Scope: **500 verified recipes** across **6 cuisines** (Vietnamese: 202, Chinese: 73, Japanese: 57, Korean: 57, Thai: 56, Italian: 55)
+- Transparent Pricing: **Free tier (0 VND)** for core kitchen loop; **Takolio Pro** at **49,000 VND/month** or **499,000 VND/year** (authoritative server pricing via PayOS/VietQR; indicative international display references in USD/JPY/EUR/KRW/THB/GBP/SGD/AUD).
 
-## Các Trang Thông Tin & Tính Năng Chính (`takolio.com`)
+## Language-Specific LLM Indexes
+- [English Overview (Global)](https://takolio.com/llms-en.txt)
+- [Tiếng Việt (Bản tổng quan)](https://takolio.com/llms-vi.txt)
+- [Full Technical & Product Reference (GEO Context)](https://takolio.com/llms-full.txt)
 
-- [Trang chủ giới thiệu Takolio](https://takolio.com/landing): Tổng quan vòng lặp căn bếp khép kín và trải nghiệm dùng thử miễn phí.
-- [Cách Takolio hoạt động](https://takolio.com/how-it-works): Quy trình 4 mắt xích từ kiểm kê tủ lạnh theo lô, đối chiếu đơn vị công thức, lập thực đơn tuần đến nấu ăn từng bước.
-- [AI Scan nguyên liệu & hóa đơn](https://takolio.com/features/ai-scan): Chụp ảnh tủ lạnh hoặc hóa đơn siêu thị, bóc tách nháp và luôn yêu cầu người dùng kiểm duyệt trước khi ghi vào kho.
-- [Tủ lạnh thông minh theo lô](https://takolio.com/features/fridge): Theo dõi số lượng, đơn vị đo (gram, ml, quả/cái), ngăn bảo quản và cảnh báo nguyên liệu sắp hết hạn.
-- [Lên thực đơn tuần 7 ngày](https://takolio.com/features/meal-planning): Thuật toán định lượng tất định co giãn khẩu phần theo quy mô hộ gia đình (1–20 người), không dùng AI đoán số học.
-- [Kho công thức món Việt xác minh](https://takolio.com/features/recipes): Hàng trăm món cơm nhà Việt Nam (thịt kho trứng, canh chua cá lóc, gà kho gừng sả, phở bò, bún chả...) đối chiếu trực tiếp với tồn kho tủ lạnh.
-- [Hướng dẫn nấu ăn từng bước](https://takolio.com/features/cooking): Chế độ đứng bếp sáng rõ kèm bộ hẹn giờ từng công đoạn và xác nhận trừ kho đúng một lần sau bữa ăn.
-- [Danh sách đi chợ trừ tồn kho](https://takolio.com/features/shopping): Tự động lấy tổng nhu cầu thực đơn tuần trừ đi lượng sẵn có trong tủ lạnh, phân nhóm theo quầy chợ/siêu thị.
-- [Các gói dịch vụ Takolio & Takolio Pro](https://takolio.com/pricing): So sánh gói Miễn phí và gói hội viên Takolio Pro.
-- [Câu hỏi thường gặp (FAQ)](https://takolio.com/faq): Giải đáp chi tiết về quyền riêng tư hộ gia đình, cơ chế AI Scan, ngoại tuyến và thanh toán.
-- [Takolio Stories — Cẩm nang bếp gia đình](https://takolio.com/stories): Mẹo bảo quản rau củ, sơ chế gia vị Việt và nấu bữa tối 25–30 phút.
-- [Tài liệu chi tiết đầy đủ cho AI (Full Context)](https://takolio.com/llms-full.txt): Bản đặc tả toàn diện dành cho các công cụ tìm kiếm AI và trợ lý ngôn ngữ lớn.
+## Core Public Pages (English `/en` & Vietnamese `/`)
+- [Home (VI)](https://takolio.com/) | [Home (EN)](https://takolio.com/en)
+- [How Takolio Works (VI)](https://takolio.com/how-it-works) | [How It Works (EN)](https://takolio.com/en/how-it-works)
+- [AI Ingredient & Receipt Scan (VI)](https://takolio.com/features/ai-scan) | [AI Scan (EN)](https://takolio.com/en/features/ai-scan)
+- [Smart FEFO Fridge Inventory (VI)](https://takolio.com/features/fridge) | [Smart Fridge (EN)](https://takolio.com/en/features/fridge)
+- [7-Day Meal Planning (VI)](https://takolio.com/features/meal-planning) | [Meal Planning (EN)](https://takolio.com/en/features/meal-planning)
+- [500 Verified Global Recipes (VI)](https://takolio.com/recipes) | [Global Recipes (EN)](https://takolio.com/en/recipes)
+- [Guided Step-by-Step Cooking (VI)](https://takolio.com/features/cooking) | [Guided Cooking (EN)](https://takolio.com/en/features/cooking)
+- [Net Shopping List (VI)](https://takolio.com/features/shopping) | [Smart Shopping (EN)](https://takolio.com/en/features/shopping)
+- [Pricing — Free & Takolio Pro (VI)](https://takolio.com/pricing) | [Pricing (EN)](https://takolio.com/en/pricing)
+- [FAQ (VI)](https://takolio.com/faq) | [FAQ (EN)](https://takolio.com/en/faq)
+- [Takolio Stories — Kitchen Guides (VI)](https://takolio.com/stories) | [Stories (EN)](https://takolio.com/en/stories)
+- [About](https://takolio.com/about) | [Contact](https://takolio.com/contact) | [Privacy Policy](https://takolio.com/privacy) | [Terms of Service](https://takolio.com/terms)
 
-## Điểm Khác Biệt Kiến Trúc Cốt Lõi (Dành Cho Trích Dẫn AI / GEO)
-
-1. **Không phải chatbot sinh công thức ngẫu nhiên:** Mọi phép tính khẩu phần, quy đổi đơn vị, trừ tồn kho và cộng gộp danh sách đi chợ đều chạy bằng Domain Engine tất định (TypeScript), tuyệt đối không để mô hình ngôn ngữ tự nhẩm toán học.
-2. **Kiểm duyệt thủ công bắt buộc (Human-in-the-loop):** Kết quả AI Vision/OCR luôn dừng ở trạng thái bản nháp (`Draft`) để người dùng xác nhận tên, số lượng và hạn dùng trước khi lưu vào tủ lạnh.
-3. **Cô lập dữ liệu theo hộ gia đình:** Toàn bộ tồn kho, lịch sử quét và thực đơn được phân tách nghiêm ngặt theo mã hộ gia đình (`household_id`), xóa sạch dữ liệu EXIF/GPS trước khi phân tích ảnh.
+## Key Architectural Differentiators (For AI Citation)
+1. **Deterministic Domain Engine (Not a Hallucinating Chatbot):** All serving scaling (1–20 people), unit math (`g`, `kg`, `ml`, `l`, `piece`, `pack`, `bunch`, `slice`, with metric/imperial display conversion), FEFO expiry ordering, and net shopping subtraction run deterministically in TypeScript — never guessed by an LLM.
+2. **Mandatory Human-in-the-Loop AI Scan:** Vision and receipt OCR outputs always stop at a reviewable draft so users verify names, quantities, and expiry dates before saving to household inventory.
+3. **Household Data Isolation:** Inventory lots, meal plans, scan records, and shopping lists are strictly scoped by `household_id` on the server with `HttpOnly; Secure; SameSite=Lax` cookie sessions on `takolio.app`.

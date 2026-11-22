@@ -1,7 +1,14 @@
 /**
  * AI Voice Sous Chef
- * Web Speech API for Vietnamese speech synthesis and hands-free voice commands
+ * Web Speech API for multilingual speech synthesis and hands-free voice commands
  */
+import { LOCALE_CATALOG } from '../../shared/locales';
+import { getActiveAppLocale } from '../i18n/LocaleContext';
+
+function resolveVoiceSpeechLang(): string {
+  const active = getActiveAppLocale();
+  return LOCALE_CATALOG[active]?.speechLang ?? 'vi-VN';
+}
 
 export interface VoiceCommandCallbacks {
   onNext?: () => void;
@@ -29,16 +36,18 @@ class VoiceSousChef {
     try {
       window.speechSynthesis.cancel();
 
+      const speechLang = resolveVoiceSpeechLang();
+      const langPrefix = speechLang.split('-')[0];
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'vi-VN';
+      utterance.lang = speechLang;
       utterance.rate = 1.0;
       utterance.pitch = 1.0;
 
-      // Select Vietnamese voice if available
+      // Select matching locale voice if available
       const voices = window.speechSynthesis.getVoices();
-      const viVoice = voices.find((v) => v.lang === 'vi-VN' || v.lang.startsWith('vi'));
-      if (viVoice) {
-        utterance.voice = viVoice;
+      const matchedVoice = voices.find((v) => v.lang === speechLang || v.lang.startsWith(langPrefix));
+      if (matchedVoice) {
+        utterance.voice = matchedVoice;
       }
 
       utterance.onstart = () => {
@@ -95,7 +104,7 @@ class VoiceSousChef {
       }
 
       const recognition = new SpeechRecognition();
-      recognition.lang = 'vi-VN';
+      recognition.lang = resolveVoiceSpeechLang();
       recognition.continuous = true;
       recognition.interimResults = false;
 

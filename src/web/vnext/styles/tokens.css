@@ -266,3 +266,46 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Global Multi-Script Typography Fallback Stacks (CJK + Thai) */
+:root[lang='ja'],
+:root[lang='ja'] .tkv-root,
+:root[lang='ja'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Hiragino Maru Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+}
+
+:root[lang='ko'],
+:root[lang='ko'] .tkv-root,
+:root[lang='ko'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+}
+
+:root[lang='zh-Hans'],
+:root[lang='zh-Hans'] .tkv-root,
+:root[lang='zh-Hans'] .tkv-root[data-tkv-direction='a'],
+:root[lang='zh'],
+:root[lang='zh'] .tkv-root,
+:root[lang='zh'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+}
+
+:root[lang='th'],
+:root[lang='th'] .tkv-root,
+:root[lang='th'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Sukhumvit Set', 'Thonburi', 'Leelawadee UI', 'Noto Sans Thai', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Sukhumvit Set', 'Thonburi', 'Leelawadee UI', 'Noto Sans Thai', sans-serif;
+}
+
+:root[lang='th'] .tkv-root {
+  line-height: 1.72;
+}
+
+:root[lang='ja'] .tkv-heading,
+:root[lang='ko'] .tkv-heading,
+:root[lang='zh-Hans'] .tkv-heading,
+:root[lang='zh'] .tkv-heading {
+  letter-spacing: 0;
+}

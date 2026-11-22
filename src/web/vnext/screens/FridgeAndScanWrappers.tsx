@@ -33,6 +33,8 @@ export const C02QuickSearchPage: React.FC = () => {
     title: 'Tìm nhanh trong căn bếp',
     description: 'Tra cứu nhanh nguyên liệu trong tủ lạnh, công thức món ăn và lối tắt thao tác.',
     canonicalPath: '/search',
+    domainSurface: 'app',
+    noindex: true,
   });
 
   const inventoryQuery = useQuery({

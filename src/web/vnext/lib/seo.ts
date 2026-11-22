@@ -14,6 +14,11 @@ export interface VNextSeoOptions {
   ogType?: 'website' | 'article';
   ogImage?: string;
   ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  lang?: string;
+  ogLocale?: string;
+  hreflangs?: ReadonlyArray<{ hreflang: string; href: string }>;
   /** Set true on auth, onboarding, private user settings, and error states so crawlers never index private shells. */
   noindex?: boolean;
   /** Optional structured data graph or single schema.org object(s) injected as `<script type="application/ld+json">`. */
@@ -102,7 +107,7 @@ export function buildPlatformWebAppJsonLd(): JsonLdNode[] {
       sameAs: [TAKOLIO_APP_ORIGIN],
       logo: {
         '@type': 'ImageObject',
-        url: `${TAKOLIO_MARKETING_ORIGIN}/takolio/vnext/pwa/pwa-icon-512.png`,
+        url: `${TAKOLIO_MARKETING_ORIGIN}/takolio/brand-v2/pwa/icon-512.png`,
         width: 512,
         height: 512,
       },
@@ -111,14 +116,14 @@ export function buildPlatformWebAppJsonLd(): JsonLdNode[] {
       '@type': 'WebSite',
       '@id': `${TAKOLIO_MARKETING_ORIGIN}/#website`,
       url: TAKOLIO_MARKETING_ORIGIN,
-      name: 'Takolio — Trợ lý căn bếp thông minh cho gia đình hiện đại',
+      name: 'Takolio — Bữa ngon, nhẹ đầu. | Trợ lý bếp gia đình thông minh với AI',
       inLanguage: 'vi-VN',
       publisher: { '@id': `${TAKOLIO_MARKETING_ORIGIN}/#organization` },
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: `${TAKOLIO_APP_ORIGIN}/recipes?q={search_term_string}`,
+          urlTemplate: `${TAKOLIO_MARKETING_ORIGIN}/recipes?q={search_term_string}`,
         },
         'query-input': 'required name=search_term_string',
       },
@@ -229,42 +234,76 @@ export function buildStoriesBlogJsonLd(
   };
 }
 
+const CUISINE_SCHEMA_LABELS: Readonly<Record<string, string>> = {
+  vietnamese: 'Vietnamese',
+  japanese: 'Japanese',
+  korean: 'Korean',
+  chinese: 'Chinese',
+  thai: 'Thai',
+  italian: 'Italian',
+};
+
 export function buildRecipeJsonLd(recipe: {
   slug: string;
   title: string;
   description: string;
+  cuisine?: string | null;
+  category?: string | null;
+  locale?: string;
+  inLanguage?: string;
+  canonicalUrl?: string;
   imageUrl?: string | null;
-  prepMinutes?: number;
-  cookMinutes?: number;
+  prepMinutes?: number | null;
+  cookMinutes?: number | null;
   servings?: number;
   calories?: number | null;
+  proteinG?: number | null;
+  fatG?: number | null;
+  carbG?: number | null;
   ingredients?: ReadonlyArray<string>;
   steps?: ReadonlyArray<string>;
+  keywords?: ReadonlyArray<string>;
 }): JsonLdNode {
-  const prep = Math.max(0, Math.round(recipe.prepMinutes ?? 10));
-  const cook = Math.max(1, Math.round(recipe.cookMinutes ?? 20));
-  const total = prep + cook;
+  const prep =
+    typeof recipe.prepMinutes === 'number' && Number.isFinite(recipe.prepMinutes) && recipe.prepMinutes > 0
+      ? Math.round(recipe.prepMinutes)
+      : null;
+  const cook =
+    typeof recipe.cookMinutes === 'number' && Number.isFinite(recipe.cookMinutes) && recipe.cookMinutes > 0
+      ? Math.round(recipe.cookMinutes)
+      : 20;
+  const total = (prep ?? 0) + cook;
   const img = recipe.imageUrl
     ? recipe.imageUrl.startsWith('http')
       ? recipe.imageUrl
-      : `${TAKOLIO_MARKETING_ORIGIN}${recipe.imageUrl}`
-    : `${TAKOLIO_MARKETING_ORIGIN}/takolio/vnext/social/og-1200x630.webp`;
+      : recipe.imageUrl.startsWith('/api/')
+        ? `${TAKOLIO_APP_ORIGIN}${recipe.imageUrl}`
+        : `${TAKOLIO_MARKETING_ORIGIN}${recipe.imageUrl}`
+    : `${TAKOLIO_MARKETING_ORIGIN}/takolio/brand-v2/social/og-1200x630.png`;
+
+  const lang = recipe.inLanguage ?? (recipe.locale === 'en' ? 'en' : 'vi-VN');
+  const cuisineKey = (recipe.cuisine ?? 'vietnamese').toLowerCase();
+  const recipeCuisine = CUISINE_SCHEMA_LABELS[cuisineKey] ?? 'International';
+  const yieldSuffix = lang.startsWith('vi') ? 'khẩu phần' : 'servings';
+  const defaultCategory = lang.startsWith('vi') ? 'Món gia đình' : 'Home Cooking';
 
   return {
     '@type': 'Recipe',
     name: recipe.title,
     description: recipe.description,
-    url: `${TAKOLIO_APP_ORIGIN}/recipes/${recipe.slug}`,
+    url: recipe.canonicalUrl ?? `${TAKOLIO_MARKETING_ORIGIN}/recipes/${recipe.slug}`,
     image: [img],
-    inLanguage: 'vi-VN',
-    recipeCuisine: 'Vietnamese',
-    recipeCategory: 'Món gia đình',
-    prepTime: `PT${prep}M`,
+    inLanguage: lang,
+    recipeCuisine,
+    recipeCategory: recipe.category || defaultCategory,
+    ...(prep ? { prepTime: `PT${prep}M` } : {}),
     cookTime: `PT${cook}M`,
     totalTime: `PT${total}M`,
-    recipeYield: `${recipe.servings ?? 4} khẩu phần`,
+    recipeYield: `${recipe.servings ?? 4} ${yieldSuffix}`,
+    ...(recipe.keywords && recipe.keywords.length > 0 ? { keywords: recipe.keywords.join(', ') } : {}),
     author: {
       '@type': 'Organization',
+      '@id': `${TAKOLIO_MARKETING_ORIGIN}/#organization`,
       name: 'Takolio',
       url: TAKOLIO_MARKETING_ORIGIN,
     },
@@ -285,6 +324,9 @@ export function buildRecipeJsonLd(recipe: {
           nutrition: {
             '@type': 'NutritionInformation',
             calories: `${Math.round(recipe.calories)} calories`,
+            ...(recipe.proteinG ? { proteinContent: `${Math.round(recipe.proteinG)} g` } : {}),
+            ...(recipe.fatG ? { fatContent: `${Math.round(recipe.fatG)} g` } : {}),
+            ...(recipe.carbG ? { carbohydrateContent: `${Math.round(recipe.carbG)} g` } : {}),
           },
         }
       : {}),
@@ -302,8 +344,13 @@ export function useVNextSeo({
   canonicalPath,
   domainSurface,
   ogType = 'website',
-  ogImage = '/takolio/vnext/social/og-1200x630.webp',
+  ogImage = '/takolio/brand-v2/social/og-1200x630.png',
   ogImageAlt,
+  ogImageWidth = 1200,
+  ogImageHeight = 630,
+  lang,
+  ogLocale,
+  hreflangs,
   noindex = false,
   jsonLd = null,
 }: VNextSeoOptions) {
@@ -311,11 +358,16 @@ export function useVNextSeo({
     if (typeof document === 'undefined') return;
     const fullTitle = title.includes('Takolio') ? title : `${title} · Takolio`;
     document.title = fullTitle;
-    document.documentElement.lang = 'vi';
+    if (lang) {
+      document.documentElement.lang = lang;
+    } else if (!document.documentElement.lang) {
+      document.documentElement.lang = 'vi';
+    }
 
     const inferredSurface: 'marketing' | 'app' =
       domainSurface ??
-      (canonicalPath === '/landing' ||
+      (canonicalPath === '/' ||
+      canonicalPath === '/landing' ||
       canonicalPath === '/how-it-works' ||
       canonicalPath.startsWith('/features/') ||
       canonicalPath === '/pricing' ||
@@ -334,7 +386,7 @@ export function useVNextSeo({
     const absoluteOgImage = ogImage.startsWith('http')
       ? ogImage
       : `${TAKOLIO_MARKETING_ORIGIN}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
-    const imageAltText = ogImageAlt ?? `${fullTitle} — Không gian bếp gia đình Takolio`;
+    const imageAltText = ogImageAlt ?? `${fullTitle} — Takolio`;
 
     upsertMeta('meta[name="description"]', { name: 'description', content: description });
     upsertMeta('meta[name="robots"]', {
@@ -346,7 +398,7 @@ export function useVNextSeo({
 
     // OpenGraph
     upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'Takolio' });
-    upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: 'vi_VN' });
+    upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: ogLocale ?? 'vi_VN' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: fullTitle });
     upsertMeta('meta[property="og:description"]', {
       property: 'og:description',
@@ -356,8 +408,8 @@ export function useVNextSeo({
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalHref });
     upsertMeta('meta[property="og:image"]', { property: 'og:image', content: absoluteOgImage });
     upsertMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: imageAltText });
-    upsertMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: '1200' });
-    upsertMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: '630' });
+    upsertMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: String(ogImageWidth) });
+    upsertMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: String(ogImageHeight) });
 
     // Twitter / X Card
     upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' });
@@ -372,18 +424,24 @@ export function useVNextSeo({
       content: imageAltText,
     });
 
-    // Canonical & Hreflang
-    upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalHref });
-    upsertLink('link[rel="alternate"][hreflang="vi-VN"]', {
-      rel: 'alternate',
-      hreflang: 'vi-VN',
-      href: canonicalHref,
-    });
-    upsertLink('link[rel="alternate"][hreflang="x-default"]', {
-      rel: 'alternate',
-      hreflang: 'x-default',
-      href: canonicalHref,
-    });
+    // Canonical & Hreflang (omitted on noindex pages such as 404/auth)
+    if (noindex) {
+      document.head.querySelector('link[rel="canonical"]')?.remove();
+      document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    } else {
+      upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalHref });
+      const alternates = hreflangs ?? [
+        { hreflang: 'vi-VN', href: canonicalHref },
+        { hreflang: 'x-default', href: canonicalHref },
+      ];
+      for (const alt of alternates) {
+        upsertLink(`link[rel="alternate"][hreflang="${alt.hreflang}"]`, {
+          rel: 'alternate',
+          hreflang: alt.hreflang,
+          href: alt.href,
+        });
+      }
+    }
 
     // Structured Data (Schema.org JSON-LD)
     upsertJsonLd(jsonLd);
@@ -391,7 +449,22 @@ export function useVNextSeo({
     return () => {
       upsertJsonLd(null);
     };
-  }, [title, description, canonicalPath, domainSurface, ogType, ogImage, ogImageAlt, noindex, jsonLd]);
+  }, [
+    title,
+    description,
+    canonicalPath,
+    domainSurface,
+    ogType,
+    ogImage,
+    ogImageAlt,
+    ogImageWidth,
+    ogImageHeight,
+    lang,
+    ogLocale,
+    hreflangs,
+    noindex,
+    jsonLd,
+  ]);
 }
 
 /**
