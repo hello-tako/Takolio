@@ -71,9 +71,11 @@ export async function getRecipe(main: D1DatabaseBinding, id: string): Promise<Ad
       FROM recipes r WHERE r.id = ? LIMIT 1`).bind(id)
     .first<RecipeRow & { description: string | null; servings: number; prep_time_minutes: number | null; tags: string | null; source_reference: string | null; family_id: string | null }>();
   if (!row) return null;
-  const [counts, media] = await Promise.all([
-    main.prepare(`SELECT (SELECT COUNT(*) FROM recipe_ingredients WHERE recipe_id = ?1) AS ingredients, (SELECT COUNT(*) FROM recipe_steps WHERE recipe_id = ?1) AS steps`)
-      .bind(id).first<{ ingredients: number; steps: number }>(),
+  const [ingredients, steps, media] = await Promise.all([
+    main.prepare(`SELECT id, name, required_quantity, unit, is_optional FROM recipe_ingredients WHERE recipe_id = ? ORDER BY id LIMIT 200`)
+      .bind(id).all<{ id: string; name: string; required_quantity: number; unit: string; is_optional: number }>(),
+    main.prepare(`SELECT step_number, instruction, tip, timer_minutes FROM recipe_steps WHERE recipe_id = ? ORDER BY step_number, id LIMIT 100`)
+      .bind(id).all<{ step_number: number; instruction: string; tip: string | null; timer_minutes: number | null }>(),
     main.prepare(`SELECT role, version, status, source_type, mime_type FROM recipe_media WHERE recipe_id = ? ORDER BY role, version DESC LIMIT 20`)
       .bind(id).all<{ role: string; version: number; status: string; source_type: string | null; mime_type: string | null }>(),
   ]);
@@ -81,14 +83,27 @@ export async function getRecipe(main: D1DatabaseBinding, id: string): Promise<Ad
     ...summary(row, null),
     description: row.description,
     servings: Number(row.servings),
-    prepTimeMinutes: row.prep_time_minutes,
+    prepTimeMinutes: row.prep_time_minutes == null ? null : Number(row.prep_time_minutes),
     tags: parseTags(row.tags),
     sourceReference: row.source_reference,
     familyId: row.family_id,
-    ingredientCount: Number(counts?.ingredients ?? 0),
-    stepCount: Number(counts?.steps ?? 0),
+    ingredientCount: ingredients.results.length,
+    stepCount: steps.results.length,
+    ingredients: ingredients.results.map((ing) => ({
+      id: ing.id,
+      name: ing.name,
+      quantity: Number(ing.required_quantity),
+      unit: ing.unit,
+      isOptional: Number(ing.is_optional) === 1,
+    })),
+    steps: steps.results.map((s) => ({
+      stepNumber: Number(s.step_number),
+      instruction: s.instruction,
+      tip: s.tip,
+      timerMinutes: s.timer_minutes == null ? null : Number(s.timer_minutes),
+    })),
     media: media.results.map((m) => ({ role: m.role, version: Number(m.version), status: m.status, sourceType: m.source_type, mimeType: m.mime_type })),
     editorialReviews: [],
-    publication: { canPublish: false, note: 'Xuất bản vào danh mục công thức chính thức chưa khả dụng trong V1; ghi chú biên tập không thay đổi công thức.' },
+    publication: { canPublish: true, note: 'Xuất bản trực tiếp vào danh mục chính thức.' },
   };
 }

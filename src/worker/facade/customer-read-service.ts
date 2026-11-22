@@ -1,11 +1,23 @@
 import type { D1DatabaseBinding } from '@frigo/db';
-import { operationInputs, verifyCapability, type CustomerReadBinding, type ReadOperation, type ReadCapability } from './contract';
-import { getUser, listUsers, listHouseholds, userLabels } from './people';
+import {
+  mutationInputs,
+  operationInputs,
+  verifyCapability,
+  verifyMutationCapability,
+  type CustomerReadBinding,
+  type MutationCapability,
+  type MutationOperation,
+  type ReadCapability,
+  type ReadOperation,
+} from './contract';
+import { getHouseholdDetail, getUser, listHouseholds, listUsers, userLabels } from './people';
+import { executePeopleMutation, type PeopleMutationOperation } from './people-mutations';
 import { getRecipe, listRecipes, recipesSummary } from './recipes';
-import { aiSummary, billingSummary, listAiUsage, listTransactions } from './billing-ai';
+import { aiSummary, billingSummary, listAiUsage, listScanJobs, listTransactions } from './billing-ai';
+import { executeFlowMutation, isFlowMutationOperation } from './flow-mutations';
 import { buildOverview } from './overview';
 import { budgetedDatabase } from './query-budget';
-import { validateOutput } from './output-contract';
+import { validateMutationOutput, validateOutput } from './output-contract';
 
 // A second boundary after SQL projection. Never serialize unknown object keys.
 export function assertSafeOutput(value:unknown, depth=0):void {
@@ -21,33 +33,52 @@ export function assertSafeOutput(value:unknown, depth=0):void {
   }
 }
 export function createCustomerReadFacade(database:D1DatabaseBinding, options:{secret:string}):CustomerReadBinding {
-  return { async read(operation:ReadOperation, raw:unknown, capability:ReadCapability):Promise<unknown> {
-    if(!Object.hasOwn(operationInputs,operation)) throw new Error('FACADE_OPERATION_INVALID');
-    const schema=operationInputs[operation]; const input=schema.parse(raw);
-    await verifyCapability(options.secret,operation,raw,capability);
-    const db = budgetedDatabase(database);
-    let result:unknown;
-    // Each branch parses its named input independently to preserve inferred types.
-    switch(operation) {
-      case 'users.list': {const {adminIds,emailSearch,...q}=operationInputs[operation].parse(input); result=await listUsers(db,new Set(adminIds),q,{emailSearch});break;}
-      case 'users.get': {const q=operationInputs[operation].parse(input); result=await getUser(db,q.id,q.reveal);break;}
-      case 'users.eligible': {const q=operationInputs[operation].parse(input); result=!!await db.prepare(`SELECT u.id FROM users u WHERE u.id=? AND u.is_guest=0 AND EXISTS(SELECT 1 FROM auth_accounts a WHERE a.user_id=u.id AND a.is_verified=1) LIMIT 1`).bind(q.id).first();break;}
-      case 'users.labels': {const q=operationInputs[operation].parse(input); result=Object.fromEntries(await userLabels(db,q.ids));break;}
-      case 'households.list': result=await listHouseholds(db,operationInputs[operation].parse(input));break;
-      case 'recipes.list': result=await listRecipes(db,operationInputs[operation].parse(input));break;
-      case 'recipes.get': result=await getRecipe(db,operationInputs[operation].parse(input).id);break;
-      case 'recipes.version': result=(await db.prepare('SELECT version FROM recipes WHERE id=? LIMIT 1').bind(operationInputs[operation].parse(input).id).first<{version:number}>())?.version??null;break;
-      case 'recipes.summary': result=await recipesSummary(db,operationInputs[operation].parse(input).catalogMode);break;
-      case 'billing.summary': result=await billingSummary(db,operationInputs[operation].parse(input).range);break;
-      case 'billing.transactions': result=await listTransactions(db,operationInputs[operation].parse(input));break;
-      case 'ai.summary': result=await aiSummary(db,operationInputs[operation].parse(input).range);break;
-      case 'ai.usage': result=await listAiUsage(db,operationInputs[operation].parse(input));break;
-      case 'overview': result=await buildOverview(db,operationInputs[operation].parse(input).range,[]);break;
-      case 'system': {const rows=await db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','auth_accounts','sessions_v2','payment_intents','subscriptions','ai_requests','scan_queue_jobs','recipes') LIMIT 8`).all<{name:string}>();result={reachable:true,tables:rows.results.map(r=>r.name)};break;}
-    }
-    result = validateOutput(operation, result);
-    assertSafeOutput(result);
-    if(JSON.stringify(result).length>512_000) throw new Error('FACADE_OUTPUT_INVALID');
-    return result;
-  } };
+  return {
+    async read(operation:ReadOperation, raw:unknown, capability:ReadCapability):Promise<unknown> {
+      if(!Object.hasOwn(operationInputs,operation)) throw new Error('FACADE_OPERATION_INVALID');
+      const schema=operationInputs[operation]; const input=schema.parse(raw);
+      await verifyCapability(options.secret,operation,raw,capability);
+      const db = budgetedDatabase(database);
+      let result:unknown;
+      // Each branch parses its named input independently to preserve inferred types.
+      switch(operation) {
+        case 'users.list': {const {adminIds,emailSearch,...q}=operationInputs[operation].parse(input); result=await listUsers(db,new Set(adminIds),q,{emailSearch});break;}
+        case 'users.get': {const q=operationInputs[operation].parse(input); result=await getUser(db,q.id,q.reveal);break;}
+        case 'users.eligible': {const q=operationInputs[operation].parse(input); result=!!await db.prepare(`SELECT u.id FROM users u WHERE u.id=? AND u.is_guest=0 AND EXISTS(SELECT 1 FROM auth_accounts a WHERE a.user_id=u.id AND a.is_verified=1) LIMIT 1`).bind(q.id).first();break;}
+        case 'users.labels': {const q=operationInputs[operation].parse(input); result=Object.fromEntries(await userLabels(db,q.ids));break;}
+        case 'households.list': result=await listHouseholds(db,operationInputs[operation].parse(input));break;
+        case 'households.get': result=await getHouseholdDetail(db,operationInputs[operation].parse(input).id);break;
+        case 'recipes.list': result=await listRecipes(db,operationInputs[operation].parse(input));break;
+        case 'recipes.get': result=await getRecipe(db,operationInputs[operation].parse(input).id);break;
+        case 'recipes.version': result=(await db.prepare('SELECT version FROM recipes WHERE id=? LIMIT 1').bind(operationInputs[operation].parse(input).id).first<{version:number}>())?.version??null;break;
+        case 'recipes.summary': result=await recipesSummary(db,operationInputs[operation].parse(input).catalogMode);break;
+        case 'billing.summary': result=await billingSummary(db,operationInputs[operation].parse(input).range);break;
+        case 'billing.transactions': result=await listTransactions(db,operationInputs[operation].parse(input));break;
+        case 'ai.summary': result=await aiSummary(db,operationInputs[operation].parse(input).range);break;
+        case 'ai.usage': result=await listAiUsage(db,operationInputs[operation].parse(input));break;
+        case 'ai.scan_jobs': result=await listScanJobs(db,operationInputs[operation].parse(input));break;
+        case 'overview': result=await buildOverview(db,operationInputs[operation].parse(input).range,[]);break;
+        case 'system': {const rows=await db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','auth_accounts','sessions_v2','payment_intents','subscriptions','ai_requests','scan_queue_jobs','recipes') LIMIT 8`).all<{name:string}>();result={reachable:true,tables:rows.results.map(r=>r.name)};break;}
+      }
+      result = validateOutput(operation, result);
+      assertSafeOutput(result);
+      if(JSON.stringify(result).length>512_000) throw new Error('FACADE_OUTPUT_INVALID');
+      return result;
+    },
+    async mutate(operation:MutationOperation, raw:unknown, capability:MutationCapability):Promise<unknown> {
+      if(!Object.hasOwn(mutationInputs,operation)) throw new Error('FACADE_OPERATION_INVALID');
+      const input = mutationInputs[operation].parse(raw);
+      await verifyMutationCapability(options.secret,operation,raw,capability);
+      let result:unknown;
+      if (isFlowMutationOperation(operation)) {
+        result = await executeFlowMutation(database, operation, input);
+      } else {
+        result = await executePeopleMutation(database, operation as PeopleMutationOperation, input);
+      }
+      result = validateMutationOutput(operation, result);
+      assertSafeOutput(result);
+      if(JSON.stringify(result).length>512_000) throw new Error('FACADE_OUTPUT_INVALID');
+      return result;
+    },
+  };
 }

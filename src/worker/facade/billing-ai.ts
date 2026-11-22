@@ -1,13 +1,13 @@
 import type { D1DatabaseBinding } from '@frigo/db';
-import type { AdminAiSummary, AdminAiUsageRow, AdminBillingSummary, AdminPage, AdminRange, AdminTransaction } from '../../shared/admin';
-import { rangeStartDay } from '../routes/admin/http';
+import type { AdminAiSummary, AdminAiUsageRow, AdminBillingSummary, AdminPage, AdminRange, AdminScanJobRow, AdminTransaction } from '../../shared/admin';
+import { escapeLike, rangeStartDay } from '../routes/admin/http';
 import { maskOrderCode } from '../routes/admin/mask';
 import { AI_NOT_WIRED_NOTE, daily, PLUS_ACTIVE_SQL } from './overview';
 
 type PaymentStatus = AdminTransaction['status'];
-const EFFECTIVE_STATUS_SQL = `CASE WHEN status = 'pending' AND datetime(expires_at) <= datetime('now') THEN 'expired' ELSE status END`;
+const EFFECTIVE_STATUS_SQL = `CASE WHEN p.status = 'pending' AND datetime(p.expires_at) <= datetime('now') THEN 'expired' ELSE p.status END`;
+const RAW_EFFECTIVE_STATUS_SQL = `CASE WHEN status = 'pending' AND datetime(expires_at) <= datetime('now') THEN 'expired' ELSE status END`;
 
-// Read-only view over payment authority tables; nothing here mutates payments or entitlements.
 export async function billingSummary(db: D1DatabaseBinding, range: AdminRange): Promise<AdminBillingSummary> {
   const start = rangeStartDay(range);
   const [totals, plus, breakdown, checkout, exceptions] = await Promise.all([
@@ -18,7 +18,7 @@ export async function billingSummary(db: D1DatabaseBinding, range: AdminRange): 
         COUNT(CASE WHEN status = 'failed' AND date(updated_at) >= ?1 THEN 1 END) AS failed_count
       FROM payment_intents`).bind(start).first<{ paid_amount: number; paid_count: number; pending_count: number; failed_count: number }>(),
     db.prepare(`SELECT COUNT(*) AS value FROM subscriptions WHERE ${PLUS_ACTIVE_SQL}`).first<{ value: number }>(),
-    db.prepare(`SELECT ${EFFECTIVE_STATUS_SQL} AS status, COUNT(*) AS count, COALESCE(SUM(amount_vnd), 0) AS amount
+    db.prepare(`SELECT ${RAW_EFFECTIVE_STATUS_SQL} AS status, COUNT(*) AS count, COALESCE(SUM(amount_vnd), 0) AS amount
       FROM payment_intents WHERE date(created_at) >= ? GROUP BY 1 ORDER BY 1`).bind(start).all<{ status: PaymentStatus; count: number; amount: number }>(),
     db.prepare(`SELECT state, COUNT(*) AS count FROM checkout_admissions GROUP BY state ORDER BY state`).all<{ state: 'dispatching' | 'ready' | 'remote_uncertain'; count: number }>(),
     db.prepare(`SELECT intent_id, reason, first_observed_at, last_observed_at FROM payment_reconciliation_records
@@ -35,7 +35,7 @@ export async function billingSummary(db: D1DatabaseBinding, range: AdminRange): 
         definition: "status = 'pending' và chưa quá expires_at (hiện tại)." },
       { key: 'failed_count', label: 'Thất bại', value: Number(totals?.failed_count ?? 0), unit: 'count', status: 'ok', source: 'D1:payment_intents',
         definition: "status = 'failed' trong khoảng thời gian." },
-      { key: 'active_plus', label: 'Plus đang hoạt động', value: Number(plus?.value ?? 0), unit: 'count', status: 'ok', source: 'D1:subscriptions',
+      { key: 'active_plus', label: 'Takolio Pro đang hoạt động', value: Number(plus?.value ?? 0), unit: 'count', status: 'ok', source: 'D1:subscriptions',
         definition: "plan = 'plus', status = 'active', chưa hết hạn." },
       { key: 'reconciliation_exceptions', label: 'Cần đối soát', value: exceptions.results.length, unit: 'count', status: 'ok', source: 'D1:payment_reconciliation_records',
         definition: 'Số bản ghi đối soát đang mở (tối đa 20 hiển thị).' },
@@ -45,14 +45,31 @@ export async function billingSummary(db: D1DatabaseBinding, range: AdminRange): 
     reconciliationExceptions: exceptions.results.map((row) => ({ intentId: row.intent_id, reason: row.reason, firstObservedAt: row.first_observed_at, lastObservedAt: row.last_observed_at })),
     series: [{ key: 'revenue', label: 'Doanh thu đã xác nhận theo ngày', unit: 'vnd', source: 'D1:payment_intents',
       points: await daily(db, `SELECT date(updated_at) AS day, SUM(amount_vnd) AS value FROM payment_intents WHERE status = 'paid' AND date(updated_at) >= ? GROUP BY 1`, start, range) }],
-    providerReconciliation: { status: 'unavailable', note: 'Đối soát với nhà cung cấp thanh toán cần adapter trong tương lai; không truy cập API bên ngoài trong V1.' },
+    providerReconciliation: { status: 'unavailable', note: 'Đối soát tự động qua sao kê cổng thanh toán chưa kết nối; vận hành viên xử lý trực tiếp trên bảng điều khiển.' },
   };
 }
 
-export async function listTransactions(db: D1DatabaseBinding, query: { status?: PaymentStatus; page: number; pageSize: number }): Promise<AdminPage<AdminTransaction>> {
-  const clause = query.status ? `WHERE ${EFFECTIVE_STATUS_SQL} = ?` : '';
-  const binds = query.status ? [query.status] : [];
-  const total = await db.prepare(`SELECT COUNT(*) AS total FROM payment_intents ${clause}`).bind(...binds).first<{ total: number }>();
+export async function listTransactions(
+  db: D1DatabaseBinding,
+  query: { status?: PaymentStatus; q?: string; plan?: 'monthly' | 'annual'; page: number; pageSize: number },
+): Promise<AdminPage<AdminTransaction>> {
+  const where: string[] = [];
+  const binds: unknown[] = [];
+  if (query.status) {
+    where.push(`${EFFECTIVE_STATUS_SQL} = ?`);
+    binds.push(query.status);
+  }
+  if (query.plan) {
+    where.push('p.plan = ?');
+    binds.push(query.plan);
+  }
+  if (query.q) {
+    const suffix = `%${escapeLike(query.q)}`;
+    where.push(`(p.id = ? OR p.user_id = ? OR p.order_code LIKE ? ESCAPE '\\')`);
+    binds.push(query.q, query.q, suffix);
+  }
+  const clause = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const total = await db.prepare(`SELECT COUNT(*) AS total FROM payment_intents p ${clause}`).bind(...binds).first<{ total: number }>();
   const rows = await db.prepare(`SELECT p.id, p.user_id, p.order_code, p.plan, p.amount_vnd, p.status, ${EFFECTIVE_STATUS_SQL} AS effective_status,
       p.created_at, p.updated_at, p.expires_at, EXISTS (SELECT 1 FROM payment_reconciliation_records r WHERE r.intent_id = p.id) AS has_record
     FROM payment_intents p ${clause} ORDER BY p.created_at DESC, p.id DESC LIMIT ? OFFSET ?`)
@@ -115,7 +132,7 @@ export async function aiSummary(db: D1DatabaseBinding, range: AdminRange): Promi
     },
     queue: {
       localJobStatus: jobsAll.results.map((row) => ({ status: row.status, count: Number(row.count) })),
-      remoteBacklog: { status: 'unavailable', note: 'Độ trễ/backlog của Cloudflare Queue cần adapter từ xa; không truy cập trong V1.' },
+      remoteBacklog: { status: 'unavailable', note: 'Độ trễ Cloudflare Queue cần adapter từ xa; trạng thái bên dưới phản ánh bảng scan_queue_jobs nội bộ.' },
     },
     instrumentation: { aiRequestsWriter: 'not_wired', note: AI_NOT_WIRED_NOTE },
     series: [{ key: 'ai_requests', label: 'Yêu cầu AI theo ngày', unit: 'count', source: 'D1:ai_requests',
@@ -138,5 +155,63 @@ export async function listAiUsage(db: D1DatabaseBinding, query: { task?: string;
     items: rows.results.map((row) => ({ id: row.id, task: row.task, provider: row.provider, model: row.model, inputTokens: Number(row.input_tokens),
       outputTokens: Number(row.output_tokens), latencyMs: Number(row.latency_ms), estimatedCostUsd: Number(row.estimated_cost), status: row.status, createdAt: row.created_at })),
     page: query.page, pageSize: query.pageSize, total: Number(total?.total ?? 0),
+  };
+}
+
+export async function listScanJobs(
+  db: D1DatabaseBinding,
+  query: { status?: string; scanType?: string; page: number; pageSize: number },
+): Promise<AdminPage<AdminScanJobRow>> {
+  const where: string[] = [];
+  const binds: unknown[] = [];
+  if (query.status) {
+    where.push('j.status = ?');
+    binds.push(query.status);
+  }
+  if (query.scanType) {
+    where.push("COALESCE(s.scan_type, 'fridge') = ?");
+    binds.push(query.scanType);
+  }
+  const clause = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const fromSql = `FROM scan_queue_jobs j LEFT JOIN scans s ON s.id = j.scan_id`;
+  const total = await db.prepare(`SELECT COUNT(*) AS total ${fromSql} ${clause}`).bind(...binds).first<{ total: number }>();
+  const rows = await db.prepare(`SELECT j.id, j.scan_id, j.user_id, j.household_id, COALESCE(s.scan_type, 'fridge') AS scan_type,
+      j.status, j.attempts, j.max_attempts, j.error_code, j.error_message, j.locked_at, j.created_at, j.updated_at
+    ${fromSql} ${clause} ORDER BY j.updated_at DESC, j.id DESC LIMIT ? OFFSET ?`)
+    .bind(...binds, query.pageSize, (query.page - 1) * query.pageSize)
+    .all<{
+      id: string;
+      scan_id: string;
+      user_id: string;
+      household_id: string;
+      scan_type: string;
+      status: string;
+      attempts: number;
+      max_attempts: number;
+      error_code: string | null;
+      error_message: string | null;
+      locked_at: string | null;
+      created_at: string;
+      updated_at: string;
+    }>();
+  return {
+    items: rows.results.map((row) => ({
+      id: row.id,
+      scanId: row.scan_id,
+      userId: row.user_id,
+      householdId: row.household_id,
+      scanType: row.scan_type,
+      status: row.status,
+      attempts: Number(row.attempts),
+      maxAttempts: Number(row.max_attempts),
+      errorCode: row.error_code,
+      errorMessage: row.error_message,
+      lockedAt: row.locked_at,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    })),
+    page: query.page,
+    pageSize: query.pageSize,
+    total: Number(total?.total ?? 0),
   };
 }

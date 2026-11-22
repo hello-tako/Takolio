@@ -23,7 +23,7 @@ export async function systemChecks(env: AdminEnv, main: CustomerReadClient, admi
   const local = (key: string, label: string, status: AdminHealthCheck['status'], detail: string): AdminHealthCheck => ({ key, label, status, observedBy: 'local', detail });
   const remote = (key: string, label: string, detail: string): AdminHealthCheck => ({ key, label, status: 'unavailable', observedBy: 'remote', detail });
   return [
-    local('customer_db', 'D1 khách hàng (chỉ đọc)', mainOk ? 'ok' : 'error', mainOk ? 'Truy vấn SELECT 1 thành công.' : 'Truy vấn thất bại.'),
+    local('customer_db', 'D1 khách hàng (Service Binding)', mainOk ? 'ok' : 'error', mainOk ? 'Truy vấn SELECT 1 thành công.' : 'Truy vấn thất bại.'),
     local('admin_db', 'D1 quản trị', adminOk ? 'ok' : 'error', adminOk ? 'Truy vấn SELECT 1 thành công; phiên bản schema hợp lệ.' : 'Truy vấn thất bại.'),
     local('rate_limit_kv', 'KV giới hạn tần suất', env.CACHE ? 'ok' : policy.local ? 'degraded' : 'error',
       env.CACHE ? 'Binding có mặt.' : policy.local ? 'Không có KV; dùng bộ đếm cục bộ (chỉ môi trường local).' : 'Thiếu KV; đăng nhập và thao tác ghi bị chặn.'),
@@ -70,10 +70,10 @@ export async function systemStatus(env: AdminEnv, main: CustomerReadClient, admi
     ],
     warnings,
     remoteAdapters: [
-      { key: 'customer_worker_config', label: 'Cấu hình worker khách hàng (feature flags)', status: 'unavailable', note: 'Adapter tương lai; V1 không gọi Cloudflare API.' },
-      { key: 'cloudflare_analytics', label: 'Cloudflare Analytics / Logs', status: 'unavailable', note: 'Adapter tương lai.' },
-      { key: 'cloudflare_queues', label: 'Cloudflare Queues', status: 'unavailable', note: 'Adapter tương lai.' },
-      { key: 'github_releases', label: 'GitHub release / deployments', status: 'unavailable', note: 'Adapter tương lai; triển khai vẫn qua phê duyệt GitHub Environment.' },
+      { key: 'customer_worker_config', label: 'Cấu hình worker khách hàng (feature flags)', status: 'unavailable', note: 'Adapter từ xa chưa kết nối trực tiếp Cloudflare API.' },
+      { key: 'cloudflare_analytics', label: 'Cloudflare Analytics / Logs', status: 'unavailable', note: 'Adapter từ xa chưa kết nối.' },
+      { key: 'cloudflare_queues', label: 'Cloudflare Queues', status: 'unavailable', note: 'Adapter từ xa chưa kết nối.' },
+      { key: 'github_releases', label: 'GitHub release / deployments', status: 'unavailable', note: 'Triển khai qua phê duyệt GitHub Environment.' },
     ],
   };
 }
