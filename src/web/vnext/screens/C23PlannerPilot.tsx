@@ -117,7 +117,7 @@ export const C23PlannerPilot: React.FC = () => {
 
   return (
     <ConsumerStudioShell screenId="C23" title="Thực đơn 7 ngày">
-      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {/* Top Brand Board Heading (`board-2.jpg` right screen) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3.5 min-w-0">
@@ -288,7 +288,7 @@ export const C23PlannerPilot: React.FC = () => {
             />
           </div>
         ) : (
-          <div className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col gap-4 sm:gap-6">
             {/* Highlighted Selected Day Card (`board-2.jpg` right phone card!) */}
             {activeDateKey && (
               <TkvSurface className="p-4 sm:p-5 space-y-3.5 bg-[var(--tkv-surface)] border-[var(--tkv-border)]">

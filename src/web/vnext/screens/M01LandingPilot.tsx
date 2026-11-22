@@ -137,7 +137,7 @@ export const M01LandingPilot: React.FC = () => {
 
   return (
     <PublicMarketingShell screenId="M01">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-10 sm:space-y-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col gap-10 sm:gap-12">
         {/* HERO SECTION — Exact Official Brand Board v2 (`board-2.jpg`) */}
         <section
           aria-labelledby="m01-hero-heading"
