@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAdminFixtureSql, localWranglerEnv } from './admin-local-lib.mjs';
-import { CUSTOMER_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, GLOBAL_RELEASE_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
 
@@ -140,10 +140,14 @@ function row(scenario, expectation, observed, pass) {
 
 try {
   const head = git('rev-parse', 'HEAD');
-  const { mainBase: mergeBase, baseline: customerBaseline } = selectGuardedCustomerBaseline({
+  const { mainBase: mergeBase, baseline: guardedBaseline } = selectGuardedCustomerBaseline({
     git, originalBaseline: MAIN_BASELINE, releaseBaseline: V2_RELEASE_BASELINE, v3ReleaseBaseline: V3_RELEASE_BASELINE,
-    guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
+    globalReleaseBaseline: GLOBAL_RELEASE_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
   });
+  // Keep 47-file V3 matrix scenarios pinned to V3_RELEASE_BASELINE after guarding against GLOBAL_RELEASE_BASELINE.
+  const customerBaseline = guardedBaseline === GLOBAL_RELEASE_BASELINE
+    ? (git('merge-base', '--is-ancestor', V3_RELEASE_BASELINE, head), V3_RELEASE_BASELINE)
+    : guardedBaseline;
   runEvidence.head = head;
   runEvidence.customerBaseline = customerBaseline;
   runEvidence.tree = git('rev-parse', head + '^{tree}');
@@ -257,7 +261,8 @@ try {
   const exactV3Tip = workingManifest.count === candidateManifest.count
     ? (headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
       !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql'))
-    : (JSON.stringify(workingManifest.migrations.slice(0, candidateManifest.count)) === JSON.stringify(candidateManifest.migrations));
+    : (JSON.stringify(workingManifest.migrations.slice(0, candidateManifest.count)) === JSON.stringify(candidateManifest.migrations) &&
+      !git('diff', '--name-only', guardedBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql'));
   const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 47 && exactV3Tip;
   row('pinned 43-file customer ledger identity', 'all historical main migrations remain byte-identical in the candidate',
     { head, baseline: MAIN_BASELINE, currentMain: mainManifest.sha256, headManifest: headManifest.sha256,
