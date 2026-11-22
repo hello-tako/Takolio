@@ -1,3 +1,21 @@
+## Takolio Culinary Standard V4 — `0052` Promoted & Main Authority Router Wired - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_PROMOTED_AND_WIRED_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, commits `b5f92250` V4 catalog + `cd6ebe2d` live `0052` promotion & main router integration); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
+
+Additional deliverables in `cd6ebe2d`:
+- Promoted `migrations/0052_culinary_standard_v4_catalog_500.sql` (`migrationSha256=938b5c0f5f8562904177204de57407070d78098a84e96bd660f25a2891d94f3f`) and deleted `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql`.
+- `packages/domain/src/index.ts` (re-export `./culinary-ingredients-v4`), `packages/db/src/recipe-standard-v4.ts` (`readStandardV4Catalog` 3-SELECT `db.batch`), `packages/recipes/src/standard-v4/authority.ts` (`hydrateStandardV4D1Catalog`, `D1StandardV4RecipeAuthority`), `src/worker/services/recipe-authority.ts` (opt-in `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'` across `static`/`shadow`/`canary`/`d1` and `recipeAuthoritySnapshotIsCurrent`), `src/worker/services/recipe-authority-v4.ts` (delegates to `resolveRecipeAuthority`), and `.dev.vars.example` (`RECIPE_CATALOG_V4_STANDARD_ENABLED=true`). `src/worker/types.ts` and `.github/workflows/*` kept untouched.
+- Updated `tests/helpers/sqlite-d1.ts`, `scripts/d1-migration-check.mjs`, `scripts/family-meal-release.mjs`, `scripts/d1-schema-gate.sql` (`2aa9349ad36ea703a893dd76c85a510d19e05f23f3a619de6a757621b0322271`), `scripts/migration-smoke.sh`, and `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+
+Verified after `cd6ebe2d` edits (`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`):
+- `pnpm recipe:standard-v4:check`, `pnpm check:migrations` (`migration-smoke=ok`, `admin-migration-smoke=ok`), `pnpm typecheck`, `pnpm lint`, V1–V3 continuity checks, `pnpm build` (Web + Admin + Worker), and `git diff --check`: ALL PASS exit 0.
+- `vitest run` on all 24 targeted suites (`vnext-g02-foundation` `10/10`, `culinary-standard-v4` `3/3`, `culinary-standard-v4-d1-replay` `2/2`, `d1-schema-gate`, `foundation-hardening`, `d1-migration-check`, `production-certify-workflow`, `production-migration-preflight`, `production-d1-migration-runtime-proof`, `staging-v2`/`staging-content`, `family-meal-release`, `recipe-authority*`, `t19`, `t20`, `recipe-d1-parity`, `recipe-media-schema`, `production-migration-bridge`, `recipe-seed-readonly`, `admin-config`, `admin-remediation`): **24/24 files, 580/580 tests PASS**.
+- Known baseline/environment notes (zero regressions from branch): `node scripts/billing-contract.mjs --check` fails `BILLING_CONTRACT_DRIFT` on pre-existing `origin/main` drift in 4 billing/types files untouched by this branch; `t21rc4-cloudflare-identity-diagnostic.test.mjs` and `pnpm admin:migration:matrix` fail locally on `--filter=blob:none` partial clone missing historical git blobs (`cda5bf48...`).
+
+Next: Explicit Product Owner approval + adding `0052` to `.github/workflows/{staging-v2-migrate,production-d1-migrate}` workflow inputs if deploying `0052` and `RECIPE_CATALOG_V4_STANDARD_ENABLED=true` to remote Staging/Production.
+
+---
+
 ## Takolio Culinary Standard V4 (500-Recipe Deep Research & Standardization) - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_COMPLETE_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commit `b5f92250a2fb4b6bc1cd01ee5e94e588fc66f260`); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
