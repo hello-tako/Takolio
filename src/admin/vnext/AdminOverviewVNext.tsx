@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { useOverview } from '../api/hooks';
-import { useRangeParam } from '../lib/hooks';
 import { HealthCheckList } from '../components/HealthChecks';
 import { SeriesChart } from '../components/SeriesChart';
 import {
@@ -8,11 +8,13 @@ import {
   EmptyState,
   ErrorState,
   LoadingState,
+  MetricStatusBadge,
   RangeSelect,
   type Tone,
 } from '../components/ui';
-import { formatDateTime } from '../lib/format';
 import { vi } from '../i18n/vi';
+import { formatByUnit, formatDateTime, formatNumber } from '../lib/format';
+import { useRangeParam } from '../lib/hooks';
 import './admin-vnext.css';
 
 const SEVERITY_TONE: Record<string, Tone> = {
@@ -21,24 +23,69 @@ const SEVERITY_TONE: Record<string, Tone> = {
   critical: 'danger',
 };
 
-/**
- * AD02 — Tổng quan hệ thống (G02 Live Admin Pilot).
- * Faithfully matches `AD02.png` data-dense operational dashboard while strictly
- * preserving:
- * - Separate Admin session & RBAC (`overview.read`)
- * - 100% real `useOverview(range)` telemetry (ZERO fake KPIs!)
- * - Clear fixture banner when running against local synthetic dataset
- */
+const HEALTH_TONE: Record<string, Tone> = {
+  ok: 'success',
+  degraded: 'warning',
+  unhealthy: 'danger',
+};
+
 export function AdminOverviewVNext() {
   const [range, setRange] = useRangeParam();
   const overview = useOverview(range);
+
+  const actionQueue = overview.data?.actionQueue ?? {
+    pendingReconciliations: 0,
+    failedScanJobs: 0,
+    unverifiedRecipes: 0,
+    suspendedUsers: 0,
+    pendingApprovals: 0,
+  };
+
+  const queueItems = [
+    {
+      key: 'pendingReconciliations',
+      count: actionQueue.pendingReconciliations,
+      label: vi.overview.actionQueue.items.pendingReconciliations.label,
+      cta: vi.overview.actionQueue.items.pendingReconciliations.cta,
+      to: '/billing',
+    },
+    {
+      key: 'failedScanJobs',
+      count: actionQueue.failedScanJobs,
+      label: vi.overview.actionQueue.items.failedScanJobs.label,
+      cta: vi.overview.actionQueue.items.failedScanJobs.cta,
+      to: '/ai',
+    },
+    {
+      key: 'unverifiedRecipes',
+      count: actionQueue.unverifiedRecipes,
+      label: vi.overview.actionQueue.items.unverifiedRecipes.label,
+      cta: vi.overview.actionQueue.items.unverifiedRecipes.cta,
+      to: '/recipes',
+    },
+    {
+      key: 'suspendedUsers',
+      count: actionQueue.suspendedUsers,
+      label: vi.overview.actionQueue.items.suspendedUsers.label,
+      cta: vi.overview.actionQueue.items.suspendedUsers.cta,
+      to: '/users?accountStatus=suspended',
+    },
+    {
+      key: 'pendingApprovals',
+      count: actionQueue.pendingApprovals,
+      label: vi.overview.actionQueue.items.pendingApprovals.label,
+      cta: vi.overview.actionQueue.items.pendingApprovals.cta,
+      to: '/settings',
+    },
+  ] as const;
 
   return (
     <div className="tkv-admin-pilot" data-testid="ad02-vnext-overview">
       <div className="tkv-admin-header">
         <div>
-          <span className="tkv-admin-eyebrow">Bảng điều hành hệ thống</span>
-          <h1 className="tkv-admin-title" data-testid="admin-page-title">{vi.overview.title}</h1>
+          <h1 className="tkv-admin-title" data-testid="admin-page-title">
+            {vi.overview.title}
+          </h1>
           <p className="tkv-admin-subtitle">{vi.overview.description}</p>
         </div>
         <div className="tkv-admin-actions">
@@ -56,49 +103,52 @@ export function AdminOverviewVNext() {
           className={overview.isPlaceholderData ? 'is-stale tkv-admin-stack' : 'tkv-admin-stack'}
           aria-busy={overview.isPlaceholderData}
         >
-          {/* Top 3 Operational Status Tiles matching AD02.png ("Trạng thái | Cần kiểm tra | Tác vụ / Chỉ số") */}
-          <section aria-label="Tóm tắt trạng thái vận hành" className="tkv-admin-status-trio">
-            <div className="tkv-status-tile is-mint">
-              <span className="tkv-tile-label">Trạng thái hệ thống</span>
-              <strong className="tkv-tile-value">
-                {vi.labels.healthStatus[overview.data.health.status] ?? overview.data.health.status}
-              </strong>
-              <span className="tkv-tile-meta">
-                {overview.data.health.checks.length} hạng mục kiểm tra trực tiếp
-              </span>
+          <section
+            aria-labelledby="tkv-admin-queue-heading"
+            className="tkv-admin-card"
+            data-testid="admin-action-queue"
+          >
+            <div className="tkv-admin-card-head">
+              <div>
+                <h2 id="tkv-admin-queue-heading">{vi.overview.actionQueue.title}</h2>
+                <p className="muted small" style={{ margin: '2px 0 0' }}>
+                  {vi.overview.actionQueue.description}
+                </p>
+              </div>
             </div>
-
-            <div className="tkv-status-tile is-saffron">
-              <span className="tkv-tile-label">Sự cố & cảnh báo</span>
-              <strong className="tkv-tile-value">
-                {overview.data.incidents.length === 0
-                  ? 'Không có cảnh báo'
-                  : `${overview.data.incidents.length} mục cần xem`}
-              </strong>
-              <span className="tkv-tile-meta">Nguồn: nhật ký vận hành máy chủ</span>
-            </div>
-
-            <div className="tkv-status-tile is-sky">
-              <span className="tkv-tile-label">Chỉ số thu thập ({range})</span>
-              <strong className="tkv-tile-value">{overview.data.metrics.length} nhóm chỉ số</strong>
-              <span className="tkv-tile-meta">Không suy diễn số liệu ngoài API</span>
+            <div className="action-queue-grid">
+              {queueItems.map((item) => (
+                <Link
+                  key={item.key}
+                  to={item.to}
+                  className={clsx('action-queue-card', item.count > 0 && 'has-items')}
+                  data-testid={`admin-action-queue-${item.key}`}
+                >
+                  <div>
+                    <div className="action-queue-count">{formatNumber(item.count)}</div>
+                    <div className="action-queue-label">{item.label}</div>
+                  </div>
+                  <span className="action-queue-cta">{item.cta} →</span>
+                </Link>
+              ))}
             </div>
           </section>
 
-          {/* Real Server Metrics Grid (Zero fabricated numbers) */}
           <section aria-labelledby="tkv-admin-metrics-heading" className="tkv-admin-card">
             <div className="tkv-admin-card-head">
               <h2 id="tkv-admin-metrics-heading">{vi.overview.metrics}</h2>
-              <span className="muted small">Dữ liệu xác thực theo quyền RBAC</span>
             </div>
             <div className="tkv-admin-kpi-grid">
               {overview.data.metrics.map((metric) => (
                 <div key={metric.key} className="tkv-admin-kpi-item" data-testid={`admin-metric-${metric.key}`}>
-                  <span className="tkv-kpi-label">{metric.label}</span>
+                  <div className="metric-head">
+                    <span className="tkv-kpi-label">{metric.label}</span>
+                    <MetricStatusBadge status={metric.status} />
+                  </div>
                   <strong className="tkv-kpi-number">
                     {metric.value === null || metric.value === undefined
-                      ? 'Chưa có dữ liệu'
-                      : new Intl.NumberFormat('vi-VN').format(metric.value)}
+                      ? vi.common.notAvailable
+                      : formatByUnit(metric.value, metric.unit)}
                   </strong>
                   {metric.note ? <span className="tkv-kpi-note">{metric.note}</span> : null}
                 </div>
@@ -106,42 +156,14 @@ export function AdminOverviewVNext() {
             </div>
           </section>
 
-          {/* Operational Summary Table/Rows matching AD02.png ("Tổng quan vận hành") + Health & Incidents */}
           <div className="tkv-admin-two-col">
             <section className="tkv-admin-card" aria-labelledby="tkv-admin-ops-heading">
               <div className="tkv-admin-card-head">
-                <h2 id="tkv-admin-ops-heading">Tổng quan vận hành & điều hướng nhanh</h2>
+                <h2 id="tkv-admin-ops-heading">{vi.overview.health}</h2>
+                <Badge tone={HEALTH_TONE[overview.data.health.status] ?? 'neutral'}>
+                  {vi.labels.healthStatus[overview.data.health.status] ?? overview.data.health.status}
+                </Badge>
               </div>
-              <ul className="tkv-admin-ops-list">
-                <li>
-                  <div>
-                    <strong>{vi.overview.health}</strong>
-                    <p className="muted small">Kiểm tra cơ sở dữ liệu D1, hàng đợi và cấu hình môi trường</p>
-                  </div>
-                  <Link to="/system" className="tkv-ops-link">
-                    Chi tiết ›
-                  </Link>
-                </li>
-                <li>
-                  <div>
-                    <strong>Nhật ký kiểm toán bất biến</strong>
-                    <p className="muted small">Đối chiếu tác nhân quản trị và lịch sử thay đổi quyền</p>
-                  </div>
-                  <Link to="/audit" className="tkv-ops-link">
-                    Chi tiết ›
-                  </Link>
-                </li>
-                <li>
-                  <div>
-                    <strong>Vận hành AI & Quét ảnh</strong>
-                    <p className="muted small">Theo dõi trạng thái hàng đợi nhận diện không lộ PII</p>
-                  </div>
-                  <Link to="/ai" className="tkv-ops-link">
-                    Chi tiết ›
-                  </Link>
-                </li>
-              </ul>
-
               <div className="tkv-admin-health-wrap">
                 <HealthCheckList checks={overview.data.health.checks} />
               </div>

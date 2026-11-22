@@ -1,13 +1,30 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ADMIN_ROLE_LABELS_VI, type AdminAuditEvent } from '@shared/admin';
 import { useAuditEvents } from '../api/hooks';
-import { Badge, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
+import {
+  Badge,
+  Button,
+  EmptyState,
+  ErrorState,
+  Field,
+  LoadingState,
+  PageHeader,
+  Pagination,
+  Section,
+  type Tone,
+} from '../components/ui';
 import { vi } from '../i18n/vi';
 import { formatDateTime } from '../lib/format';
 import { useDebouncedValue } from '../lib/hooks';
-import { ADMIN_ROLE_LABELS_VI, type AdminAuditEvent } from '@shared/admin';
 
 const PAGE_SIZE = 25;
-const OUTCOME_TONE: Record<string, Tone> = { success: 'success', denied: 'warning', failure: 'danger' };
+const OUTCOME_TONE: Record<string, Tone> = {
+  success: 'success',
+  denied: 'warning',
+  failure: 'danger',
+};
+const OUTCOMES = ['success', 'denied', 'failure'] as const;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 function startOfDay(value: string): string | undefined {
@@ -40,6 +57,17 @@ export function AuditPage() {
   });
 
   const resetPage = () => setPage(1);
+  const hasFilters = Boolean(actionInput || actorInput || outcome || from || to);
+
+  const clearFilters = () => {
+    setActionInput('');
+    setActorInput('');
+    setOutcome('');
+    setFrom('');
+    setTo('');
+    setPage(1);
+  };
+
   const toggleExpanded = (id: string) => {
     setExpanded((current) => {
       const next = new Set(current);
@@ -53,6 +81,34 @@ export function AuditPage() {
     <>
       <PageHeader title={vi.audit.title} description={vi.audit.description} />
       <Section title={vi.audit.caption}>
+        <div className="filter-chips" role="group" aria-label={vi.audit.outcome}>
+          <button
+            type="button"
+            className={outcome === '' ? 'chip-btn is-active' : 'chip-btn'}
+            aria-pressed={outcome === ''}
+            onClick={() => {
+              setOutcome('');
+              resetPage();
+            }}
+          >
+            {vi.audit.outcomeAll}
+          </button>
+          {OUTCOMES.map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={outcome === value ? 'chip-btn is-active' : 'chip-btn'}
+              aria-pressed={outcome === value}
+              onClick={() => {
+                setOutcome(value);
+                resetPage();
+              }}
+            >
+              {vi.labels.outcome[value]}
+            </button>
+          ))}
+        </div>
+
         <div className="toolbar toolbar-wrap">
           <Field label={vi.audit.action} htmlFor="admin-audit-action">
             <input
@@ -78,7 +134,7 @@ export function AuditPage() {
               }}
             >
               <option value="">{vi.audit.outcomeAll}</option>
-              {(['success', 'denied', 'failure'] as const).map((value) => (
+              {OUTCOMES.map((value) => (
                 <option key={value} value={value}>
                   {vi.labels.outcome[value]}
                 </option>
@@ -122,13 +178,24 @@ export function AuditPage() {
               }}
             />
           </Field>
+          {hasFilters ? (
+            <Button variant="ghost" className="btn-small" onClick={clearFilters}>
+              {vi.common.clearFilters}
+            </Button>
+          ) : null}
         </div>
 
         {events.isPending ? <LoadingState rows={5} /> : null}
         {events.isError ? <ErrorState error={events.error} onRetry={() => void events.refetch()} /> : null}
         {events.data && events.data.items.length === 0 ? <EmptyState body={vi.audit.empty} /> : null}
         {events.data && events.data.items.length > 0 ? (
-          <div className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={events.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.audit.caption}>
+          <div
+            className={events.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={events.isPlaceholderData}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.audit.caption}
+          >
             <table className="data-table audit-table">
               <caption className="sr-only">{vi.audit.caption}</caption>
               <thead>
@@ -163,30 +230,95 @@ export function AuditPage() {
           </div>
         ) : null}
         {events.data ? (
-          <Pagination page={events.data.page} pageSize={events.data.pageSize} total={events.data.total} onPageChange={setPage} />
+          <Pagination
+            page={events.data.page}
+            pageSize={events.data.pageSize}
+            total={events.data.total}
+            onPageChange={setPage}
+          />
         ) : null}
       </Section>
     </>
   );
 }
 
-function AuditRowGroup({ event, isOpen, metadataId, onToggle }: { event: AdminAuditEvent; isOpen: boolean; metadataId: string; onToggle: () => void }) {
+function AuditTargetCell({ targetType, targetId }: { targetType: string | null; targetId: string | null }) {
+  if (!targetType) return <>{vi.common.dash}</>;
+  const label = `${targetType}${targetId ? `:${targetId}` : ''}`;
+  if (targetType === 'user' && targetId) {
+    return (
+      <Link to={`/users/${encodeURIComponent(targetId)}`} className="row-link">
+        {label}
+      </Link>
+    );
+  }
+  if (targetType === 'recipe' && targetId) {
+    return (
+      <Link to={`/recipes/${encodeURIComponent(targetId)}`} className="row-link">
+        {label}
+      </Link>
+    );
+  }
+  return <>{label}</>;
+}
+
+function AuditRowGroup({
+  event,
+  isOpen,
+  metadataId,
+  onToggle,
+}: {
+  event: AdminAuditEvent;
+  isOpen: boolean;
+  metadataId: string;
+  onToggle: () => void;
+}) {
   const metadataEntries = event.metadata ? Object.entries(event.metadata) : [];
   return (
     <>
       <tr data-testid="admin-audit-row">
         <td>{formatDateTime(event.occurredAt)}</td>
-        <td className="mono">{event.actorUserId ?? vi.common.dash}</td>
-        <td>{event.actorRoles.map((role) => ADMIN_ROLE_LABELS_VI[role]).join(', ') || vi.common.dash}</td>
-        <td className="mono">{event.action}</td>
-        <td className="mono">{event.targetType ? `${event.targetType}${event.targetId ? `:${event.targetId}` : ''}` : vi.common.dash}</td>
+        <td className="mono">
+          {event.actorUserId ? (
+            <Link to={`/users/${encodeURIComponent(event.actorUserId)}`} className="row-link">
+              {event.actorUserId}
+            </Link>
+          ) : (
+            vi.common.dash
+          )}
+        </td>
         <td>
-          <Badge tone={OUTCOME_TONE[event.outcome] ?? 'neutral'}>{vi.labels.outcome[event.outcome] ?? event.outcome}</Badge>
+          {event.actorRoles.length > 0 ? (
+            <div className="button-row">
+              {event.actorRoles.map((role) => (
+                <Badge key={role} tone="brand">
+                  {ADMIN_ROLE_LABELS_VI[role]}
+                </Badge>
+              ))}
+            </div>
+          ) : (
+            vi.common.dash
+          )}
+        </td>
+        <td className="mono">{event.action}</td>
+        <td className="mono">
+          <AuditTargetCell targetType={event.targetType} targetId={event.targetId} />
+        </td>
+        <td>
+          <Badge tone={OUTCOME_TONE[event.outcome] ?? 'neutral'}>
+            {vi.labels.outcome[event.outcome] ?? event.outcome}
+          </Badge>
         </td>
         <td className="mono">{event.reasonCode ?? vi.common.dash}</td>
         <td className="mono">{event.requestId ?? vi.common.dash}</td>
         <td>
-          <button type="button" className="btn btn-ghost btn-small" aria-expanded={isOpen} aria-controls={metadataId} onClick={onToggle}>
+          <button
+            type="button"
+            className="btn btn-ghost btn-small"
+            aria-expanded={isOpen}
+            aria-controls={metadataId}
+            onClick={onToggle}
+          >
             {isOpen ? vi.audit.hideMetadata : vi.audit.showMetadata}
           </button>
         </td>

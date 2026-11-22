@@ -2,12 +2,32 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecipes, useRecipesSummary } from '../api/hooks';
 import { KeyCountList } from '../components/KeyCountList';
-import { Badge, EmptyState, ErrorState, Field, LoadingState, PageHeader, Pagination, Section, type Tone } from '../components/ui';
+import {
+  Badge,
+  EmptyState,
+  ErrorState,
+  Field,
+  LoadingState,
+  PageHeader,
+  Pagination,
+  Section,
+  type Tone,
+} from '../components/ui';
 import { vi } from '../i18n/vi';
 import { useDebouncedValue } from '../lib/hooks';
 
 const PAGE_SIZE = 25;
-const VERIFICATION_TONE: Record<string, Tone> = { unverified: 'neutral', reviewed: 'success', rejected: 'danger' };
+const VERIFICATION_TONE: Record<string, Tone> = {
+  unverified: 'neutral',
+  reviewed: 'success',
+  rejected: 'danger',
+};
+const EDITORIAL_TONE: Record<string, Tone> = {
+  draft: 'neutral',
+  in_review: 'warning',
+  approved: 'success',
+  rejected: 'danger',
+};
 const VERIFICATION_STATES = ['unverified', 'reviewed', 'rejected'] as const;
 
 export function RecipesPage() {
@@ -54,7 +74,10 @@ export function RecipesPage() {
           <div className="three-col">
             <div>
               <h3>{vi.recipes.byVerification}</h3>
-              <KeyCountList items={data.byVerification.map((row) => ({ key: row.state, count: row.count }))} labelOf={(key) => vi.labels.verification[key] ?? key} />
+              <KeyCountList
+                items={data.byVerification.map((row) => ({ key: row.state, count: row.count }))}
+                labelOf={(key) => vi.labels.verification[key] ?? key}
+              />
             </div>
             <div>
               <h3>{vi.recipes.bySource}</h3>
@@ -72,7 +95,35 @@ export function RecipesPage() {
       ) : null}
 
       <Section title={vi.recipes.listCaption}>
-        <div className="toolbar">
+        <div className="filter-chips" role="group" aria-label={vi.recipes.verification}>
+          <button
+            type="button"
+            className={verification === '' ? 'chip-btn is-active' : 'chip-btn'}
+            aria-pressed={verification === ''}
+            onClick={() => {
+              setVerification('');
+              resetPage();
+            }}
+          >
+            {vi.common.all}
+          </button>
+          {VERIFICATION_STATES.map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={verification === value ? 'chip-btn is-active' : 'chip-btn'}
+              aria-pressed={verification === value}
+              onClick={() => {
+                setVerification(value);
+                resetPage();
+              }}
+            >
+              {vi.labels.verification[value]}
+            </button>
+          ))}
+        </div>
+
+        <div className="toolbar toolbar-wrap">
           <Field label={vi.recipes.search} htmlFor="admin-recipes-search-input">
             <input
               id="admin-recipes-search-input"
@@ -146,7 +197,13 @@ export function RecipesPage() {
         {recipes.isError ? <ErrorState error={recipes.error} onRetry={() => void recipes.refetch()} /> : null}
         {recipes.data && recipes.data.items.length === 0 ? <EmptyState /> : null}
         {recipes.data && recipes.data.items.length > 0 ? (
-          <div className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'} aria-busy={recipes.isPlaceholderData} tabIndex={0} role="region" aria-label={vi.recipes.listCaption}>
+          <div
+            className={recipes.isPlaceholderData ? 'table-wrap is-stale' : 'table-wrap'}
+            aria-busy={recipes.isPlaceholderData}
+            tabIndex={0}
+            role="region"
+            aria-label={vi.recipes.listCaption}
+          >
             <table className="data-table">
               <caption className="sr-only">{vi.recipes.listCaption}</caption>
               <thead>
@@ -171,19 +228,28 @@ export function RecipesPage() {
                       <div className="mono muted">{recipe.slug}</div>
                     </td>
                     <td>{recipe.cuisine}</td>
-                    <td>{recipe.difficulty}</td>
+                    <td>{vi.labels.difficulty[recipe.difficulty] ?? recipe.difficulty}</td>
                     <td>
                       <Badge tone={VERIFICATION_TONE[recipe.verificationState] ?? 'neutral'}>
                         {vi.labels.verification[recipe.verificationState] ?? recipe.verificationState}
                       </Badge>
                     </td>
                     <td>{recipe.sourceType}</td>
-                    <td>{recipe.version}</td>
-                    <td>{recipe.hasReadyMedia ? vi.recipes.mediaReady : vi.recipes.mediaMissing}</td>
+                    <td>v{recipe.version}</td>
                     <td>
-                      {recipe.latestEditorialState
-                        ? (vi.labels.editorialState as Record<string, string>)[recipe.latestEditorialState] ?? recipe.latestEditorialState
-                        : vi.common.dash}
+                      <Badge tone={recipe.hasReadyMedia ? 'success' : 'neutral'}>
+                        {recipe.hasReadyMedia ? vi.recipes.mediaReady : vi.recipes.mediaMissing}
+                      </Badge>
+                    </td>
+                    <td>
+                      {recipe.latestEditorialState ? (
+                        <Badge tone={EDITORIAL_TONE[recipe.latestEditorialState] ?? 'neutral'}>
+                          {(vi.labels.editorialState as Record<string, string>)[recipe.latestEditorialState] ??
+                            recipe.latestEditorialState}
+                        </Badge>
+                      ) : (
+                        vi.common.dash
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -192,7 +258,12 @@ export function RecipesPage() {
           </div>
         ) : null}
         {recipes.data ? (
-          <Pagination page={recipes.data.page} pageSize={recipes.data.pageSize} total={recipes.data.total} onPageChange={setPage} />
+          <Pagination
+            page={recipes.data.page}
+            pageSize={recipes.data.pageSize}
+            total={recipes.data.total}
+            onPageChange={setPage}
+          />
         ) : null}
       </Section>
     </>
