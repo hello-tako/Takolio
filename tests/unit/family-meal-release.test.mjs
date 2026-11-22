@@ -37,6 +37,10 @@ describe('family-meal recovery uses compatible code and paired flags-off assets'
   it.each([
     '0043_shopping_demand_review.sql', '0044_inventory_display_category.sql',
     '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql',
+    '0048_global_locale_timezone_and_search_foundation.sql',
+    '0049_global_culinary_allergens_units_barcode_and_ocr.sql',
+    '0050_global_billing_subscriptions_and_oauth_identities.sql',
+    '0051_privacy_erasure_portability_and_consent_ledger.sql',
   ])('requires and certifies compatible recovery at production %s', (tip) => {
     const candidate = { ...manifest, schema: { version: tip } };
     expect(needsRecovery(candidate)).toBe(true);

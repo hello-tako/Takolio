@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { CatalogIdSchema } from './foundation';
+import { SupportedLocaleSchema } from './i18n';
 import { MealPlanDtoSchema, PlanIdSchema, PlanRevisionSchema, PlannedMealDtoSchema } from './meal-planning-api';
 
 export const CurrentMealPlanDtoSchema = z.object({ plan: MealPlanDtoSchema.nullable() }).strict();
@@ -24,7 +25,7 @@ export type PlanAlternativesDto = z.infer<typeof PlanAlternativesDtoSchema>;
 export const PlanExplanationRequestSchema = z.object({
   revision: PlanRevisionSchema,
   slotId: PlannedMealDtoSchema.shape.slotId,
-  locale: z.enum(['vi', 'en']),
+  locale: SupportedLocaleSchema,
 }).strict();
 export type PlanExplanationRequest = z.infer<typeof PlanExplanationRequestSchema>;
 

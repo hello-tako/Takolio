@@ -9,7 +9,7 @@ import {
 } from '@frigo/recipes';
 import {
   createRankingEvidenceProviderFromNutritionRows,
-  loadRankingContext,
+  loadHouseholdSafetyRankingContext,
   type D1DatabaseBinding,
   type RankingNutritionRow,
 } from '@frigo/db';
@@ -58,7 +58,7 @@ export async function evaluateCookingHardRestrictions(
   recipe: Recipe,
 ): Promise<CookingHardRestrictionResult> {
   try {
-    const context = await loadRankingContext(db, {
+    const context = await loadHouseholdSafetyRankingContext(db, {
       householdId: auth.householdId,
       userId: auth.userId,
     }, new Date().toISOString());

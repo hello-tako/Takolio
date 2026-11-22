@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { CanonicalIngredientIdSchema } from './foundation';
+import { endOfCivilDayEpochMs, isValidIanaTimeZone } from './i18n';
 import { toLotQuantity } from './inventory-truth';
 
 // Same identity contract as inventory lots: non-empty, trimmed, no NULs.
@@ -58,6 +59,9 @@ export interface InventoryReadQuery {
   limit?: number;
   // Epoch milliseconds used for freshness derivation; defaults to Date.now().
   now?: number;
+  // Optional household IANA timezone (e.g. 'Asia/Tokyo', 'Europe/Berlin') so civil YYYY-MM-DD
+  // expiry dates evaluate against 23:59:59.999 local time rather than 00:00:00Z.
+  timeZone?: string;
 }
 
 export interface InventoryReadAuthorityResult {
@@ -93,14 +97,17 @@ function isCalendarDate(value: string): boolean {
 // (Date.parse -> NaN would make every comparison false). `now` is injectable
 // for tests; legacy thresholds (24h expiring, 72h use_soon) are unchanged.
 export function computeReadFreshness(expiry: string | null, state: InventoryReadState,
-  now: number = Date.now()): InventoryReadItem['freshness'] {
+  now: number = Date.now(), options?: { timeZone?: string }): InventoryReadItem['freshness'] {
   if (state !== 'ACTIVE') return 'out_of_stock';
   if (expiry === null) return 'fresh';
   if (typeof expiry !== 'string' || !isCalendarDate(expiry)) {
     throw new InventoryReadFreshnessError(`Invalid authoritative expiry date: ${String(expiry)}`);
   }
   if (!Number.isFinite(now)) throw new InventoryReadFreshnessError('Invalid clock for freshness derivation');
-  const parsed = Date.parse(expiry);
+  if (options?.timeZone !== undefined && !isValidIanaTimeZone(options.timeZone)) {
+    throw new InventoryReadFreshnessError(`Invalid IANA timeZone for freshness derivation: ${options.timeZone}`);
+  }
+  const parsed = options?.timeZone ? endOfCivilDayEpochMs(expiry, options.timeZone) : Date.parse(expiry);
   if (!Number.isFinite(parsed)) throw new InventoryReadFreshnessError(`Unparseable authoritative expiry date: ${expiry}`);
   const hours = (parsed - now) / 3_600_000;
   return hours <= 24 ? 'expiring' : hours <= 72 ? 'use_soon' : 'fresh';

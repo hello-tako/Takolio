@@ -8,8 +8,16 @@ import { SCAN_QUOTA_POLICY } from '../config/scan-quota-policy';
 import { verifyGoogleToken } from '../utils/oauth';
 import { verifyTurnstileToken } from '../utils/turnstile';
 import { hasTrustedOrigin } from '../middleware/csrf';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { issueStrictOtp, verifyStrictOtp } from '../services/auth-otp-http';
 import { getScanQuota } from '../services/scan-quota';
+import {
+  localizeDefaultHouseholdName,
+  localizeDefaultShoppingListName,
+  localizeDefaultUserDisplayName,
+  localizeGuestDisplayName,
+  resolveMarketDefaults,
+} from '../../../packages/domain/src/i18n';
 
 import { rateLimiter } from '../middleware/rate-limit';
 import {
@@ -26,9 +34,12 @@ type AuthRouteEnv = { Bindings: Env; Variables: { auth: AuthContext } };
 interface ProfileRow {
   email: string | null; is_guest: number; display_name: string | null; avatar_url: string | null;
   onboarding_completed_at: string | null; household_id: string | null; household_name: string | null;
+  household_is_default_name?: number | null;
 }
 interface PreferencesRow {
   household_size: number; spicy_level: string; favorite_cuisines: string | null; dietary_restrictions: string | null;
+  language?: string | null; locale?: string | null; country_code?: string | null;
+  currency?: string | null; timezone?: string | null; week_start_day?: number | null;
 }
 interface PasswordAccountRow {
   user_id: string; password_hash: string | null; salt: string | null; is_verified: number;
@@ -152,23 +163,64 @@ authRoutes.get('/me', async (c) => {
   }
 
   try {
-    const userRow = await db.prepare(SQL.GET_USER_PROFILE).bind(auth.householdId, auth.userId).first<ProfileRow>();
+    let userRow: ProfileRow | null = null;
+    try {
+      userRow = await db
+        .prepare(
+          `SELECT u.id, u.email, u.is_guest, p.display_name, p.avatar_url, p.onboarding_completed_at,
+                  h.id AS household_id, h.name AS household_name, h.is_default_name AS household_is_default_name
+             FROM users u
+             LEFT JOIN profiles p ON u.id = p.user_id
+             LEFT JOIN household_members hm ON u.id = hm.user_id AND hm.household_id = ?
+             LEFT JOIN households h ON hm.household_id = h.id
+            WHERE u.id = ?`,
+        )
+        .bind(auth.householdId, auth.userId)
+        .first<ProfileRow>();
+    } catch {
+      userRow = await db.prepare(SQL.GET_USER_PROFILE).bind(auth.householdId, auth.userId).first<ProfileRow>();
+    }
     const prefRow = await db.prepare(SQL.GET_USER_PREFERENCES).bind(auth.userId).first<PreferencesRow>();
+    const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+    const effectiveLocale = await resolveEffectiveLocaleContext(db, auth, edgeLocale);
+    const uiLocale = effectiveLocale.source !== 'default' ? effectiveLocale.locale : 'vi';
+    const isGuest = Boolean(userRow?.is_guest ?? auth.isGuest);
 
     const quota = await getScanQuota(db, auth.userId);
+    const resolvedDisplayName =
+      userRow?.display_name ||
+      (isGuest
+        ? localizeGuestDisplayName(uiLocale)
+        : uiLocale === 'vi'
+          ? 'Người dùng Takolio'
+          : localizeDefaultUserDisplayName(uiLocale));
+    const resolvedHouseholdName =
+      userRow?.household_name && userRow.household_is_default_name !== 1
+        ? userRow.household_name
+        : effectiveLocale.source !== 'default'
+          ? localizeDefaultHouseholdName(effectiveLocale.locale, {
+              ownerName: userRow?.display_name ?? null,
+              isGuest,
+            })
+          : userRow?.household_name || 'Tủ lạnh của tôi';
 
     return c.json({
       user: {
         id: auth.userId,
         email: userRow?.email || auth.email || `${auth.userId}@frigo.local`,
-        isGuest: Boolean(userRow?.is_guest ?? auth.isGuest),
+        isGuest,
         isPlus: quota.isPlus,
-        displayName: userRow?.display_name || (auth.isGuest ? 'Khách ghé thăm' : 'Người dùng Takolio'),
+        displayName: resolvedDisplayName,
         avatarUrl: userRow?.avatar_url || '/icons/favicon.svg',
         onboardingCompleted: Boolean(userRow?.onboarding_completed_at),
+        locale: uiLocale,
+        countryCode: effectiveLocale.countryCode,
+        currency: effectiveLocale.source !== 'default' ? effectiveLocale.currency : (prefRow?.currency || 'VND'),
+        timeZone: effectiveLocale.source !== 'default' ? effectiveLocale.timeZone : (prefRow?.timezone || 'Asia/Ho_Chi_Minh'),
+        weekStartDay: effectiveLocale.weekStartDay,
         household: {
           id: userRow?.household_id || auth.householdId,
-          name: userRow?.household_name || 'Tủ lạnh của tôi',
+          name: resolvedHouseholdName,
         },
         preferences: prefRow
           ? {
@@ -176,11 +228,15 @@ authRoutes.get('/me', async (c) => {
               spicyLevel: prefRow.spicy_level,
               favoriteCuisines: JSON.parse(prefRow.favorite_cuisines || '["vietnamese"]'),
               dietaryRestrictions: JSON.parse(prefRow.dietary_restrictions || '[]'),
+              ...(prefRow.language ? { language: prefRow.language } : {}),
             }
           : {
               householdSize: 2,
               spicyLevel: 'medium',
-              favoriteCuisines: ['vietnamese', 'korean'],
+              favoriteCuisines:
+                effectiveLocale.source !== 'default'
+                  ? resolveMarketDefaults(effectiveLocale.countryCode, effectiveLocale.locale).defaultCuisines
+                  : ['vietnamese', 'korean'],
               dietaryRestrictions: [],
             },
         subscription: {
@@ -495,7 +551,11 @@ authRoutes.post('/auth/google', async (c) => {
     if (!c.env.GOOGLE_CLIENT_ID) {
       return c.json({ error: 'Google Sign-In chưa được cấu hình', code: 'GOOGLE_NOT_CONFIGURED' }, 503);
     }
-    const googleVerify = await verifyGoogleToken(credential, c.env.GOOGLE_CLIENT_ID);
+    const googleVerify = await verifyGoogleToken(credential, c.env.GOOGLE_CLIENT_ID, {
+      useJwks: c.env.GOOGLE_JWKS_VERIFY_ENABLED === 'true',
+      cacheKv: c.env.CACHE,
+      jwksUrl: c.env.GOOGLE_JWKS_URL,
+    });
     if (!googleVerify.valid || !googleVerify.user) {
       return c.json({ error: `Xác thực Google thất bại: ${googleVerify.error || 'Token không hợp lệ'}` }, 401);
     }
@@ -560,12 +620,28 @@ authRoutes.post('/auth/google', async (c) => {
       .join('');
     const userId = existing ? existing.user_id : `usr_g_${googleHash.slice(0, 32)}`;
     const householdId = `hh_${userId}`;
+    const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+    const isLocalizedBootstrap = edgeLocale.source !== 'default';
+    const bootstrapLocale = isLocalizedBootstrap ? edgeLocale.locale : 'vi';
+    const bootstrapMarket = resolveMarketDefaults(
+      isLocalizedBootstrap ? edgeLocale.countryCode : 'VN',
+      bootstrapLocale,
+    );
+    const householdName = isLocalizedBootstrap
+      ? localizeDefaultHouseholdName(bootstrapLocale, { ownerName: name })
+      : `Tủ lạnh của ${name}`;
+    const shoppingListName = isLocalizedBootstrap
+      ? localizeDefaultShoppingListName(bootstrapLocale)
+      : 'Danh sách mua sắm';
+    const defaultCuisinesJson = JSON.stringify(
+      isLocalizedBootstrap ? bootstrapMarket.defaultCuisines : ['vietnamese'],
+    );
 
     if (await isUserSuspendedOrDeleted(db, userId)) {
       return c.json({ error: ACCOUNT_SUSPENDED_ERROR, code: 'ACCOUNT_SUSPENDED' }, 403);
     }
 
-    await db.batch([
+    const buildGoogleBatch = (withGlobalColumns: boolean) => [
       // Preserve existing child rows when a returning Google user signs in.
       db.prepare(
         `INSERT INTO users (id, email, is_guest) VALUES (?, ?, 0)
@@ -581,11 +657,26 @@ authRoutes.post('/auth/google', async (c) => {
         name,
         avatarUrl
       ),
-      db.prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)').bind(
-        householdId,
-        `Tủ lạnh của ${name}`,
-        userId
-      ),
+      withGlobalColumns
+        ? db.prepare(
+            `INSERT OR IGNORE INTO households
+               (id, name, created_by, locale, country_code, currency, timezone, week_start_day, is_default_name)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)`
+          ).bind(
+            householdId,
+            householdName,
+            userId,
+            bootstrapLocale,
+            isLocalizedBootstrap ? edgeLocale.countryCode : null,
+            isLocalizedBootstrap ? edgeLocale.currency : 'VND',
+            isLocalizedBootstrap ? edgeLocale.timeZone : 'Asia/Ho_Chi_Minh',
+            isLocalizedBootstrap ? edgeLocale.weekStartDay : 1,
+          )
+        : db.prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)').bind(
+            householdId,
+            householdName,
+            userId
+          ),
       db.prepare(
         'INSERT OR IGNORE INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)'
       ).bind(`hm_${userId}`, householdId, userId, 'owner'),
@@ -601,20 +692,50 @@ authRoutes.post('/auth/google', async (c) => {
            is_verified = 1,
            updated_at = datetime('now')`
       ).bind(existing?.id || userId, userId, email, googleId),
-      db.prepare(
-        `INSERT OR IGNORE INTO user_preferences
-          (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions)
-         VALUES (?, ?, 2, 'medium', '["vietnamese"]', '[]')`
-      ).bind(`pref_${userId}`, userId),
+      withGlobalColumns
+        ? db.prepare(
+            `INSERT OR IGNORE INTO user_preferences
+               (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions, language, locale, country_code, currency, timezone, week_start_day)
+             VALUES (?, ?, 2, 'medium', ?, '[]', ?, ?, ?, ?, ?, ?)`
+          ).bind(
+            `pref_${userId}`,
+            userId,
+            defaultCuisinesJson,
+            bootstrapLocale,
+            bootstrapLocale,
+            isLocalizedBootstrap ? edgeLocale.countryCode : null,
+            isLocalizedBootstrap ? edgeLocale.currency : null,
+            isLocalizedBootstrap ? edgeLocale.timeZone : null,
+            isLocalizedBootstrap ? edgeLocale.weekStartDay : null,
+          )
+        : db.prepare(
+            `INSERT OR IGNORE INTO user_preferences
+              (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions)
+             VALUES (?, ?, 2, 'medium', ?, '[]')`
+          ).bind(`pref_${userId}`, userId, defaultCuisinesJson),
       db.prepare(
         `INSERT OR IGNORE INTO subscriptions
           (id, user_id, plan, status, scan_count_current_month, max_scans_per_month)
          VALUES (?, ?, 'free', 'active', 0, ?)`
       ).bind(`sub_${userId}`, userId, SCAN_QUOTA_POLICY.free),
-      db.prepare(
-        'INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)'
-      ).bind(`list_hh_${userId}`, householdId, 'Danh sách mua sắm'),
-    ]);
+      withGlobalColumns
+        ? db.prepare(
+            'INSERT OR IGNORE INTO shopping_lists (id, household_id, name, is_default_name) VALUES (?, ?, ?, 1)'
+          ).bind(`list_hh_${userId}`, householdId, shoppingListName)
+        : db.prepare(
+            'INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)'
+          ).bind(`list_hh_${userId}`, householdId, shoppingListName),
+    ];
+
+    try {
+      await db.batch(buildGoogleBatch(true));
+    } catch (err) {
+      if (/no such column/i.test(String((err as Error)?.message ?? err))) {
+        await db.batch(buildGoogleBatch(false));
+      } else {
+        throw err;
+      }
+    }
 
     // SEC-04 FIX: Return signed cryptographic JWT
     const token = await createSessionAndToken(db, c.env, {
@@ -657,39 +778,112 @@ authRoutes.post('/auth/guest', async (c) => {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
+  const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+  const isLocalizedBootstrap = edgeLocale.source !== 'default';
+  const bootstrapLocale = isLocalizedBootstrap ? edgeLocale.locale : 'vi';
+  const bootstrapMarket = resolveMarketDefaults(
+    isLocalizedBootstrap ? edgeLocale.countryCode : 'VN',
+    bootstrapLocale,
+  );
+  const guestDisplayName = isLocalizedBootstrap
+    ? localizeGuestDisplayName(bootstrapLocale)
+    : 'Khách ghé thăm';
+  const guestHouseholdName = isLocalizedBootstrap
+    ? localizeDefaultHouseholdName(bootstrapLocale, { isGuest: true })
+    : 'Tủ lạnh khách ghé thăm';
+  const shoppingListName = isLocalizedBootstrap
+    ? localizeDefaultShoppingListName(bootstrapLocale)
+    : 'Danh sách mua sắm';
+  const defaultCuisinesJson = JSON.stringify(
+    isLocalizedBootstrap ? bootstrapMarket.defaultCuisines : ['vietnamese'],
+  );
+
   // A guest still needs real FK parents before inventory, scan, or shopping
   // mutations can be persisted. Without these rows every guest write fails
   // once D1 foreign-key enforcement is enabled.
   try {
-    await c.env.DB.batch([
-        c.env.DB
-          .prepare('INSERT OR IGNORE INTO users (id, email, is_guest) VALUES (?, ?, 1)')
-          .bind(newGuestId, email),
-        c.env.DB
-          .prepare('INSERT OR IGNORE INTO profiles (id, user_id, display_name, avatar_url) VALUES (?, ?, ?, ?)')
-          .bind(`prof_${newGuestId}`, newGuestId, 'Khách ghé thăm', '/icons/favicon.svg'),
-        c.env.DB
-          .prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)')
-          .bind(householdId, 'Tủ lạnh khách ghé thăm', newGuestId),
-        c.env.DB
-          .prepare(
-            'INSERT OR IGNORE INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)'
-          )
-          .bind(`hm_${newGuestId}`, householdId, newGuestId, 'owner'),
-        c.env.DB
-          .prepare(
-            'INSERT OR IGNORE INTO user_preferences (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions) VALUES (?, ?, ?, ?, ?, ?)'
-          )
-          .bind(`pref_${newGuestId}`, newGuestId, 2, 'medium', '["vietnamese"]', '[]'),
-        c.env.DB
-          .prepare(
-            'INSERT OR IGNORE INTO subscriptions (id, user_id, plan, status, scan_count_current_month, max_scans_per_month) VALUES (?, ?, ?, ?, ?, ?)'
-          )
-          .bind(`sub_${newGuestId}`, newGuestId, 'guest', 'active', 0, SCAN_QUOTA_POLICY.guest),
-        c.env.DB
-          .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)')
-          .bind(`list_${householdId}`, householdId, 'Danh sách mua sắm'),
-    ]);
+    const db = c.env.DB;
+    const buildGuestBatch = (withGlobalColumns: boolean) => [
+      db
+        .prepare('INSERT OR IGNORE INTO users (id, email, is_guest) VALUES (?, ?, 1)')
+        .bind(newGuestId, email),
+      db
+        .prepare('INSERT OR IGNORE INTO profiles (id, user_id, display_name, avatar_url) VALUES (?, ?, ?, ?)')
+        .bind(`prof_${newGuestId}`, newGuestId, guestDisplayName, '/icons/favicon.svg'),
+      withGlobalColumns
+        ? db
+            .prepare(
+              `INSERT OR IGNORE INTO households
+                 (id, name, created_by, locale, country_code, currency, timezone, week_start_day, is_default_name)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)`
+            )
+            .bind(
+              householdId,
+              guestHouseholdName,
+              newGuestId,
+              bootstrapLocale,
+              isLocalizedBootstrap ? edgeLocale.countryCode : null,
+              isLocalizedBootstrap ? edgeLocale.currency : 'VND',
+              isLocalizedBootstrap ? edgeLocale.timeZone : 'Asia/Ho_Chi_Minh',
+              isLocalizedBootstrap ? edgeLocale.weekStartDay : 1,
+            )
+        : db
+            .prepare('INSERT OR IGNORE INTO households (id, name, created_by) VALUES (?, ?, ?)')
+            .bind(householdId, guestHouseholdName, newGuestId),
+      db
+        .prepare(
+          'INSERT OR IGNORE INTO household_members (id, household_id, user_id, role) VALUES (?, ?, ?, ?)'
+        )
+        .bind(`hm_${newGuestId}`, householdId, newGuestId, 'owner'),
+      withGlobalColumns
+        ? db
+            .prepare(
+              `INSERT OR IGNORE INTO user_preferences
+                 (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions, language, locale, country_code, currency, timezone, week_start_day)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+            )
+            .bind(
+              `pref_${newGuestId}`,
+              newGuestId,
+              2,
+              'medium',
+              defaultCuisinesJson,
+              '[]',
+              bootstrapLocale,
+              bootstrapLocale,
+              isLocalizedBootstrap ? edgeLocale.countryCode : null,
+              isLocalizedBootstrap ? edgeLocale.currency : null,
+              isLocalizedBootstrap ? edgeLocale.timeZone : null,
+              isLocalizedBootstrap ? edgeLocale.weekStartDay : null,
+            )
+        : db
+            .prepare(
+              'INSERT OR IGNORE INTO user_preferences (id, user_id, household_size, spicy_level, favorite_cuisines, dietary_restrictions) VALUES (?, ?, ?, ?, ?, ?)'
+            )
+            .bind(`pref_${newGuestId}`, newGuestId, 2, 'medium', defaultCuisinesJson, '[]'),
+      db
+        .prepare(
+          'INSERT OR IGNORE INTO subscriptions (id, user_id, plan, status, scan_count_current_month, max_scans_per_month) VALUES (?, ?, ?, ?, ?, ?)'
+        )
+        .bind(`sub_${newGuestId}`, newGuestId, 'guest', 'active', 0, SCAN_QUOTA_POLICY.guest),
+      withGlobalColumns
+        ? db
+            .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name, is_default_name) VALUES (?, ?, ?, 1)')
+            .bind(`list_${householdId}`, householdId, shoppingListName)
+        : db
+            .prepare('INSERT OR IGNORE INTO shopping_lists (id, household_id, name) VALUES (?, ?, ?)')
+            .bind(`list_${householdId}`, householdId, shoppingListName),
+    ];
+
+    try {
+      await db.batch(buildGuestBatch(true));
+    } catch (err) {
+      if (/no such column/i.test(String((err as Error)?.message ?? err))) {
+        await db.batch(buildGuestBatch(false));
+      } else {
+        throw err;
+      }
+    }
   } catch {
     console.error(JSON.stringify({ event: 'guest_initialization_failed' }));
     return c.json(
@@ -715,7 +909,7 @@ authRoutes.post('/auth/guest', async (c) => {
     user: {
       id: newGuestId,
       email,
-      displayName: 'Khách ghé thăm',
+      displayName: guestDisplayName,
       avatarUrl: '/icons/favicon.svg',
       householdId,
       isGuest: true,

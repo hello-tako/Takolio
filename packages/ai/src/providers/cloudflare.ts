@@ -1,6 +1,8 @@
-import { AIProvider, VisionScanParams } from '../types';
+import { AIJurisdiction, AIProvider, VisionScanParams } from '../types';
 import { VisionScanResult, ReceiptScanResult, DetectedIngredient, ReceiptItem } from '../schemas';
 import { findCanonicalIngredient } from '@frigo/domain';
+import { assertEuVisionModelAllowed, resolveJurisdictionFromCountry } from '../jurisdiction';
+import { buildLocalizedReceiptPrompt, buildLocalizedVisionPrompt } from '../prompts';
 
 export interface CloudflareAIBinding {
   run: (model: string, inputs: Record<string, unknown>, options?: Record<string, unknown>) => Promise<unknown>;
@@ -127,9 +129,11 @@ export class CloudflareAIProvider implements AIProvider {
   name = 'cloudflare';
   private ai: CloudflareAIBinding;
   private licenseAgreed = false;
+  private readonly jurisdiction?: AIJurisdiction;
 
-  constructor(ai: CloudflareAIBinding) {
+  constructor(ai: CloudflareAIBinding, jurisdiction?: AIJurisdiction) {
     this.ai = ai;
+    this.jurisdiction = jurisdiction;
   }
 
   private async ensureVisionLicense(model: string): Promise<void> {
@@ -154,7 +158,9 @@ export class CloudflareAIProvider implements AIProvider {
       throw new Error('Invalid or empty image byte data for vision scan');
     }
 
-    const prompt = `Phân tích hình ảnh thực phẩm hoặc ngăn chứa tủ lạnh này. Nhận diện các nguyên liệu nhìn thấy.
+    const prompt = params.promptOverride
+      || buildLocalizedVisionPrompt({ locale: params.locale, countryCode: params.countryCode })
+      || `Phân tích hình ảnh thực phẩm hoặc ngăn chứa tủ lạnh này. Nhận diện các nguyên liệu nhìn thấy.
 Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau, không có bất kỳ văn bản nào khác:
 {
   "items": [
@@ -170,6 +176,8 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
 }`;
 
     const model = '@cf/meta/llama-3.2-11b-vision-instruct';
+    const effectiveJurisdiction = params.jurisdiction ?? this.jurisdiction ?? resolveJurisdictionFromCountry(params.countryCode);
+    assertEuVisionModelAllowed(model, effectiveJurisdiction);
     await this.ensureVisionLicense(model);
     const res = await this.ai.run(model, {
       prompt,
@@ -210,7 +218,9 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
       throw new Error('Invalid or empty image byte data for receipt scan');
     }
 
-    const prompt = `Phân tích hóa đơn mua hàng thực phẩm này. Bóc tách tên siêu thị, ngày mua, số tiền và từng món hàng.
+    const prompt = params.promptOverride
+      || buildLocalizedReceiptPrompt({ locale: params.locale, countryCode: params.countryCode, currency: params.currency })
+      || `Phân tích hóa đơn mua hàng thực phẩm này. Bóc tách tên siêu thị, ngày mua, số tiền và từng món hàng.
 Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau, không có văn bản nào khác:
 {
   "merchant_name": "Tên siêu thị/cửa hàng",
@@ -232,6 +242,8 @@ Chỉ trả về một đối tượng JSON hợp lệ duy nhất theo mẫu sau
 }`;
 
     const model = '@cf/meta/llama-3.2-11b-vision-instruct';
+    const effectiveJurisdiction = params.jurisdiction ?? this.jurisdiction ?? resolveJurisdictionFromCountry(params.countryCode);
+    assertEuVisionModelAllowed(model, effectiveJurisdiction);
     await this.ensureVisionLicense(model);
     const res = await this.ai.run(model, {
       prompt,

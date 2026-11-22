@@ -29,9 +29,9 @@ function baseline(db) {
   return baselineQuery().split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
 }
 function historicalSchemaGateSql() {
-  // This lifecycle predates 0046; the current-tip lifecycle is exercised separately.
+  // This lifecycle predates 0046..0051; the current-tip lifecycle is exercised separately.
   return readFileSync('scripts/d1-schema-gate.sql', 'utf8').split('\n')
-    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_|trg_meal_components_content_/.test(line))
+    .filter(line => !/recipe_content_versions|recipe_content_access|recipe_content_fingerprint|request_fingerprint|trg_cooked_meals_content_|trg_cooked_meals_request_|trg_meal_components_content_|catalog_manifest|recipe_search_|trg_catalog_|idx_recipe_search_|idx_household_members_user_household|idx_shopping_lists_household_created|idx_scans_household_created|'locale'|'country_code'|'currency'|'timezone'|'week_start_day'|'is_default_name'|recipe_content_localizations|barcode_products|idx_recipe_content_localizations_|idx_barcode_products_|total_amount_minor|tax_amount_minor|discount_amount_minor|ai_region|unit_price_minor|total_price_minor|expiry_regime|'barcode'|storage_zone|energy_kj|saturated_fat_g|salt_g|edible_yield_ratio|global_payment_intents|billing_webhook_events|oauth_identities|idx_global_payment_intents_|idx_oauth_identities_|'subscriptions'|'provider'|provider_subscription_id|dodo_customer_id|billing_currency|cancel_at_period_end|grace_period_ends_at|privacy_requests|consent_records|financial_tax_archive|idx_privacy_requests_|idx_consent_records_|idx_financial_tax_archive_|erased_at/.test(line))
     .join('\n').replace(REQUIRED_MIGRATIONS_MARKER, names.map(name => `    ('${name}')`).join(',\n'));
 }
 function fixture() {

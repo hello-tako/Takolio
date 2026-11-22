@@ -5,16 +5,32 @@ import { DOMAIN_PROFILES } from './config/domains';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
 import { HTTPException } from 'hono/http-exception';
-import { Env, AuthContext } from './types';
+import type { D1DatabaseBinding } from '@frigo/db';
+import { Env, AuthContext, RequestLocaleContext } from './types';
 import { apiCsp, spaCsp } from './config/csp';
 import { runScheduledCleanup } from './services/cleanup';
+import { runPrivacyScheduledSweep } from './services/privacy-compliance';
 import { authMiddleware } from './middleware/auth';
+import {
+  sovereignCellMiddleware,
+  TAKOLIO_REQUIRED_CELL_HEADER,
+} from './middleware/sovereign-cell';
+import {
+  D1_BOOKMARK_HEADER,
+  requestLocaleAndD1SessionMiddleware,
+  TAKOLIO_COUNTRY_HEADER,
+  TAKOLIO_LOCALE_HEADER,
+  TAKOLIO_TIMEZONE_HEADER,
+} from './middleware/locale';
 import { productionConfigGate } from './middleware/config-gate';
 import { healthRoutes } from './routes/health';
 import { authRoutes } from './routes/auth';
+import { authOauthRoutes } from './routes/auth-oauth';
+import { accountPrivacyRoutes } from './routes/account-privacy';
 import { inventoryRoutes } from './routes/inventory';
 import { inventoryTruthRoutes } from './routes/inventory-truth';
 import { scanRoutes } from './routes/scans';
+import { barcodeRoutes } from './routes/barcodes';
 import { recipeRoutes } from './routes/recipes';
 import { recipeMediaRoutes } from './routes/recipe-media';
 import { shoppingRoutes } from './routes/shopping';
@@ -27,11 +43,31 @@ import { mealPlanningRoutes } from './routes/meal-planning';
 import { createFamilyMealPlanningRoutes } from './routes/family-meal-planning';
 import { processScanJob, ScanQueueError } from './services/scan-queue';
 import { billingRoutes } from './routes/billing';
+import { billingGlobalPublicRoutes, billingGlobalRoutes } from './routes/billing-global';
 import { buildRequestTelemetry, createRequestCorrelation, emitRequestTelemetry } from './observability/request-telemetry';
 
 const SCAN_RETRY_DELAY_SECONDS = 5;
 
-type WorkerVariables = { auth: AuthContext; requestId: string; internalRequestError?: boolean };
+const INTERNAL_ERROR_MESSAGES: Record<string, string> = {
+  vi: 'Đã xảy ra lỗi máy chủ nội bộ',
+  en: 'An internal server error occurred',
+  ja: 'サーバー内部エラーが発生しました',
+  de: 'Ein interner Serverfehler ist aufgetreten',
+  fr: 'Une erreur interne du serveur est survenue',
+  es: 'Se produjo un error interno del servidor',
+  it: 'Si è verificato un errore interno del server',
+  nl: 'Er is een interne serverfout opgetreden',
+  pl: 'Wystąpił wewnętrzny błąd serwera',
+  sv: 'Ett internt serverfel uppstod',
+};
+
+type WorkerVariables = {
+  auth: AuthContext;
+  requestId: string;
+  internalRequestError?: boolean;
+  localeContext: RequestLocaleContext;
+  d1Database?: D1DatabaseBinding;
+};
 type WorkerApp = { Bindings: Env; Variables: WorkerVariables };
 
 const app = new Hono<WorkerApp>();
@@ -105,12 +141,29 @@ app.use('*', cors({
   // The SPA sends tenant context headers on every request and idempotency
   // keys on durable commands. Include them in preflight responses for a
   // separately-hosted frontend as well as same-origin deployments.
-  allowHeaders: ['Content-Type', 'Authorization', 'x-user-id', 'x-household-id',
-    'X-Frigo-Expected-User-Id', 'X-Frigo-Expected-Household-Id', 'Idempotency-Key', 'If-Match'],
+  allowHeaders: [
+    'Content-Type',
+    'Authorization',
+    'Accept-Language',
+    'x-user-id',
+    'x-household-id',
+    'X-Frigo-Expected-User-Id',
+    'X-Frigo-Expected-Household-Id',
+    'Idempotency-Key',
+    'If-Match',
+    TAKOLIO_LOCALE_HEADER,
+    TAKOLIO_TIMEZONE_HEADER,
+    TAKOLIO_COUNTRY_HEADER,
+    TAKOLIO_REQUIRED_CELL_HEADER,
+    D1_BOOKMARK_HEADER,
+  ],
   credentials: true,
   exposeHeaders: ['X-Request-Id'],
   maxAge: 86400,
 }));
+
+app.use('*', sovereignCellMiddleware);
+app.use('*', requestLocaleAndD1SessionMiddleware);
 
 // 4. Global Error Handler (Sanitize internal errors in production)
 app.onError((err, c) => {
@@ -130,9 +183,13 @@ app.onError((err, c) => {
     })
   );
   const isProd = c.env.ENVIRONMENT === 'production';
+  const localeCtx = c.get('localeContext');
+  const errorLocale = localeCtx && localeCtx.source !== 'default' ? localeCtx.locale : 'vi';
   return c.json(
     {
-      error: isProd ? 'Đã xảy ra lỗi máy chủ nội bộ' : (err.message || 'Internal Server Error'),
+      error: isProd
+        ? (INTERNAL_ERROR_MESSAGES[errorLocale] ?? INTERNAL_ERROR_MESSAGES.vi)
+        : (err.message || 'Internal Server Error'),
       code: 'INTERNAL_SERVER_ERROR',
       ...(isProd ? {} : { stack: err.stack }),
     },
@@ -140,8 +197,9 @@ app.onError((err, c) => {
   );
 });
 
-// 5. Public observability (no auth): liveness, readiness, public config.
+// 5. Public observability & statutory notices/webhooks (no session auth).
 app.route('/api/v1', healthRoutes);
+app.route('/api/v1', billingGlobalPublicRoutes);
 // T14C: public read-only canonical recipe media (same-origin, D1-trusted keys, allow-listed MIME).
 app.route('/api/v1', recipeMediaRoutes);
 
@@ -150,10 +208,14 @@ const api = new Hono<WorkerApp>();
 
 api.use('*', authMiddleware);
 api.route('/', authRoutes);
+api.route('/', authOauthRoutes);
+api.route('/', accountPrivacyRoutes);
+api.route('/', billingGlobalRoutes);
 api.route('/', billingRoutes);
 api.route('/', inventoryRoutes);
 api.route('/', inventoryTruthRoutes);
 api.route('/', scanRoutes);
+api.route('/', barcodeRoutes);
 api.route('/', recipeRoutes);
 api.route('/', shoppingRoutes);
 api.route('/', preferencesRoutes);
@@ -188,26 +250,33 @@ export default {
   fetch: app.fetch,
   async queue(batch: MessageBatch<any>, env: Env): Promise<void> {
     console.log(`[Queue] Received batch with ${batch.messages.length} messages`);
-    for (const msg of batch.messages) {
-      try {
-        await processScanJob(env, msg.body);
-        msg.ack();
-      } catch (error) {
-        const retryable = error instanceof ScanQueueError ? error.retryable : true;
-        if (retryable) {
-          console.warn(JSON.stringify({ event: 'scan_queue_retry', code: error instanceof ScanQueueError ? error.code : 'UNEXPECTED_ERROR' }));
-          msg.retry({ delaySeconds: SCAN_RETRY_DELAY_SECONDS });
-        } else {
-          // Permanent failures are acknowledged after being persisted as
-          // failed; this prevents poison messages from blocking the queue.
-          console.error(JSON.stringify({ event: 'scan_queue_failed', code: error instanceof ScanQueueError ? error.code : 'UNEXPECTED_ERROR' }));
-          msg.ack();
-        }
-      }
+    const CONCURRENCY = 4;
+    for (let i = 0; i < batch.messages.length; i += CONCURRENCY) {
+      const chunk = batch.messages.slice(i, i + CONCURRENCY);
+      await Promise.allSettled(
+        chunk.map(async (msg) => {
+          try {
+            await processScanJob(env, msg.body);
+            msg.ack();
+          } catch (error) {
+            const retryable = error instanceof ScanQueueError ? error.retryable : true;
+            if (retryable) {
+              console.warn(JSON.stringify({ event: 'scan_queue_retry', code: error instanceof ScanQueueError ? error.code : 'UNEXPECTED_ERROR' }));
+              msg.retry({ delaySeconds: SCAN_RETRY_DELAY_SECONDS });
+            } else {
+              // Permanent failures are acknowledged after being persisted as
+              // failed; this prevents poison messages from blocking the queue.
+              console.error(JSON.stringify({ event: 'scan_queue_failed', code: error instanceof ScanQueueError ? error.code : 'UNEXPECTED_ERROR' }));
+              msg.ack();
+            }
+          }
+        }),
+      );
     }
   },
   async scheduled(_event: ScheduledEvent, env: Env): Promise<void> {
     const report = await runScheduledCleanup(env);
-    console.log(`[Cleanup] ${JSON.stringify(report)}`);
+    const privacy = await runPrivacyScheduledSweep(env);
+    console.log(`[Cleanup] ${JSON.stringify({ ...report, privacy })}`);
   },
 };

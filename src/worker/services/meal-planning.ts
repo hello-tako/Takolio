@@ -9,7 +9,16 @@ import {
   recordCookedGeneratedMealPlanAnnotation,
   type GeneratedMealPlanRecord,
 } from '../../../packages/db/src/meal-planning';
-import { captureRecipeContentVersion, grantRecipeContentAccess } from './recipe-content-versions';
+import {
+  captureAndGrantRecipeContentBatch,
+  captureRecipeContentVersion,
+  grantRecipeContentAccess,
+} from './recipe-content-versions';
+import {
+  getTimeZoneOffsetMs,
+  isValidIanaTimeZone,
+  type SupportedLocale,
+} from '../../../packages/domain/src/i18n';
 import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import { recipeAuthoritySnapshotIsCurrent } from './recipe-authority';
 import { loadMealPlanningSnapshot } from '../../../packages/db/src/meal-planning-snapshot';
@@ -144,6 +153,7 @@ export interface MealPlanningServiceOptions {
    */
   compositionV2Enabled?: boolean;
   familyPreferences?: (scope: Scope) => Promise<{ revision: number; preferences: FamilyPreferences }>;
+  locale?: SupportedLocale;
 }
 
 export class MealPlanningApplicationService {
@@ -156,8 +166,13 @@ export class MealPlanningApplicationService {
   }
 
   /** @internal */
-  compositions() {
-    return new MealCompositionService(this.db, this, this.options.recipeAuthority);
+  compositions(locale?: SupportedLocale) {
+    return new MealCompositionService(
+      this.db,
+      this,
+      this.options.recipeAuthority,
+      locale ?? this.options.locale ?? 'vi',
+    );
   }
 
   private now() {
@@ -272,18 +287,24 @@ export class MealPlanningApplicationService {
   }
 
   /** @internal */
-  reference(now: string, offset: number) {
-    const local = new Date(Date.parse(now) + offset * 60_000).toISOString().slice(0, -1);
-    const suffix = `${offset < 0 ? '-' : '+'}${String(Math.floor(Math.abs(offset) / 60)).padStart(2, '0')}:${String(Math.abs(offset) % 60).padStart(2, '0')}`;
+  reference(now: string, offset: number, timeZone?: string) {
+    const epoch = Date.parse(now);
+    const effectiveOffset =
+      timeZone && isValidIanaTimeZone(timeZone)
+        ? Math.round(getTimeZoneOffsetMs(epoch, timeZone) / 60_000)
+        : offset;
+    const local = new Date(epoch + effectiveOffset * 60_000).toISOString().slice(0, -1);
+    const suffix = `${effectiveOffset < 0 ? '-' : '+'}${String(Math.floor(Math.abs(effectiveOffset) / 60)).padStart(2, '0')}:${String(Math.abs(effectiveOffset) % 60).padStart(2, '0')}`;
     return `${local}${suffix}`;
   }
 
   /** @internal T20: the same trusted T04 context the V1 planner builds, for Assisted/Auto candidates. */
   planningContext(snapshot: Snapshot, referenceInstant: string,
-    rankingContext: Snapshot['rankingContext'] = snapshot.rankingContext) {
+    rankingContext: Snapshot['rankingContext'] = snapshot.rankingContext, timeZone?: string) {
     return createPlanningContext(() => ({
       snapshotId: crypto.randomUUID(),
       referenceInstant,
+      ...(timeZone ? { timeZone } : {}),
       catalog: snapshot.catalog,
       inventory: snapshot.inventory,
       rankingContext,
@@ -302,7 +323,7 @@ export class MealPlanningApplicationService {
     snapshot: Snapshot,
     now: string,
   ) {
-    const referenceInstant = this.reference(now, intent.utcOffsetMinutes);
+    const referenceInstant = this.reference(now, intent.utcOffsetMinutes, intent.timeZone);
     const request = {
       startDate: intent.startDate,
       horizonDays: intent.horizonDays,
@@ -320,7 +341,7 @@ export class MealPlanningApplicationService {
       })),
     };
     try {
-      normalizePlannerRequest(input, planningReference(referenceInstant));
+      normalizePlannerRequest(input, planningReference(referenceInstant, intent.timeZone));
     } catch {
       throw new MealPlanningError(
         'INVALID_PLANNING_HORIZON',
@@ -328,7 +349,7 @@ export class MealPlanningApplicationService {
         'Slots must be unique, future and inside the planning horizon',
       );
     }
-    const context = this.planningContext(snapshot, referenceInstant);
+    const context = this.planningContext(snapshot, referenceInstant, snapshot.rankingContext, intent.timeZone);
     const plan = { ...planWeeklyMeals({ context, request: input }), id };
     if (plan.householdId !== scope.householdId || plan.userId !== scope.userId)
       throw new Error('Generated scope mismatch');
@@ -359,6 +380,19 @@ export class MealPlanningApplicationService {
   /** @internal Pins identify the unscaled authority snapshot used by this planning operation. */
   async pinResult(scope: Scope, authority: RecipeAuthoritySnapshot, result: z.infer<typeof StoredResultSchema>,
     previous: readonly PlannedMealDto[] = [], slots: readonly CompositionSlotWrite[] = []) {
+    const neededRecipes: RecipeAuthoritySnapshot['list'] extends () => readonly (infer R)[] ? R[] : never[] = [];
+    for (const meal of result.result.meals) {
+      const slot = slots.find((entry) => entry.slotId === meal.slotId);
+      if (slot) continue;
+      const prior = previous.find((entry) => entry.slotId === meal.slotId && canonicalJson(entry.source) === canonicalJson(meal.source));
+      if (prior || meal.source.kind !== 'recipe') continue;
+      const recipe = authority.findById(meal.source.id);
+      if (!recipe) throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
+      neededRecipes.push(recipe);
+    }
+    const batchPins = neededRecipes.length > 0
+      ? await captureAndGrantRecipeContentBatch(this.db, scope.householdId, neededRecipes)
+      : new Map<string, string>();
     const captures = new Map<string, Promise<string>>();
     const meals = await Promise.all(result.result.meals.map(async (meal) => {
       const slot = slots.find((entry) => entry.slotId === meal.slotId);
@@ -367,6 +401,8 @@ export class MealPlanningApplicationService {
       const prior = previous.find((entry) => entry.slotId === meal.slotId && canonicalJson(entry.source) === canonicalJson(meal.source));
       if (prior) return { ...meal, contentFingerprint: prior.contentFingerprint ?? null };
       if (meal.source.kind !== 'recipe') return { ...meal, contentFingerprint: null };
+      const prePinned = batchPins.get(meal.source.id);
+      if (prePinned) return { ...meal, contentFingerprint: prePinned };
       const recipe = authority.findById(meal.source.id);
       if (!recipe) throw new MealPlanningError('PLAN_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
       if (!captures.has(recipe.id)) captures.set(recipe.id, (async () => {
@@ -423,16 +459,30 @@ export class MealPlanningApplicationService {
   }
 
   private familyPolicy(result: FamilyPlanningResult, profile: { revision: number; preferences: FamilyPreferences }): FamilyPlanMetadataWrite['policy'] {
-    return { mealStyle: profile.preferences.mealStyle, preferredRegions: profile.preferences.preferredRegions,
+    const culture = profile.preferences.mealCulture;
+    const defaultCuisine = culture === 'jp_home'
+      ? 'japanese'
+      : culture === 'eu_mediterranean'
+        ? 'mediterranean'
+        : culture === 'eu_plated' || culture === 'eu_continental'
+          ? 'european'
+          : 'vietnamese';
+    return {
+      mealStyle: profile.preferences.mealStyle,
+      ...(culture ? { mealCulture: culture } : {}),
+      preferredRegions: profile.preferences.preferredRegions,
       internationalMealsPerWeek: profile.preferences.internationalMealsPerWeek,
       internationalGeneratedMainCount: result.internationalGeneratedMainCount,
-      lockedInternationalMainCount: result.lockedInternationalMainCount, defaultCuisine: 'vietnamese', profileRevision: profile.revision };
+      lockedInternationalMainCount: result.lockedInternationalMainCount,
+      defaultCuisine,
+      profileRevision: profile.revision,
+    };
   }
 
   /** A V1-compatible anchor projection of the actual chosen compositions, with one sequential shopping projection. */
   private familyStoredResult(scope: Scope, id: string, intent: MealPlanningIntent, snapshot: Snapshot, now: string,
     planning: FamilyPlanningResult) {
-    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
+    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes, intent.timeZone), snapshot.rankingContext, intent.timeZone);
     const source = readPlanningContext(context);
     const base = { result: { search: { exhaustive: false, plannerExhaustive: false, recipeExhaustive: true, truncated: false,
       limitReasons: [] as string[], incompleteReasons: [], rejections: [] } }, shoppingPlan: ShoppingMealPlanSnapshotSchema.parse({
@@ -511,7 +561,7 @@ export class MealPlanningApplicationService {
     }
     const profile = await this.familyProfile(scope); const now = this.now();
     const { snapshot, authority, fence } = await this.familySnapshot(scope, now, profile); const id = crypto.randomUUID();
-    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes));
+    const context = this.planningContext(snapshot, this.reference(now, intent.utcOffsetMinutes, intent.timeZone), snapshot.rankingContext, intent.timeZone);
     const request = this.familyRequest(intent, context);
     // A manual calendar intentionally starts empty; it never runs and then discards automatic suggestions.
     const normalized = normalizePlannerRequest(request, readPlanningContext(context).reference);
@@ -892,7 +942,8 @@ export class MealPlanningApplicationService {
         ? await this.compositions().shoppingPlanFor(scope, row)
         : stored.shoppingPlan;
     const context = createShoppingContext(() => ({
-      ...scope,
+      householdId: scope.householdId,
+      userId: scope.userId,
       currency: input.currency,
       mealPlan,
       budget,

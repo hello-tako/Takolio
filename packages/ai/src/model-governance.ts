@@ -157,7 +157,7 @@ const DEFAULT_TASK_POLICIES: Record<AITask, AITaskPolicy> = {
   recipe_ranking: policy('recipe_ranking', 'QWEN_FAST', 4_096, 512, 'recipe-ranking', '1'),
   recipe_explanation: policy('recipe_explanation', 'QWEN_FAST', 2_048, 256, 'recipe-explanation', '1'),
   fridge_chat: policy('fridge_chat', 'QWEN_FAST', 4_096, 768, 'fridge-chat', '1'),
-  receipt_ocr: policy('receipt_ocr', 'QWEN_OCR', 12_000, 2_048, 'receipt-ocr', '1', 'QWEN_MULTIMODAL'),
+  receipt_ocr: policy('receipt_ocr', 'QWEN_OCR', 12_000, 4_096, 'receipt-ocr', '1', 'QWEN_MULTIMODAL'),
   label_ocr: policy('label_ocr', 'QWEN_OCR', 8_000, 1_024, 'label-ocr', '1', 'QWEN_MULTIMODAL'),
   fridge_image_analysis: policy('fridge_image_analysis', 'QWEN_MULTIMODAL', 12_000, 1_024, 'fridge-image-analysis', '1', 'QWEN_REASONING'),
   weekly_plan: policy('weekly_plan', 'QWEN_FAST', 8_000, 2_048, 'weekly-plan', '1', 'QWEN_MULTIMODAL'),

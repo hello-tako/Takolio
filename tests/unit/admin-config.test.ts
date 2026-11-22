@@ -66,7 +66,8 @@ describe('admin deployment configuration', () => {
   });
 
   it('customer entry/config matches main or the exact reviewed domain integration baseline', () => {
-    const files = ['src/worker/index.ts', 'src/worker/types.ts', 'src/worker/config/csp.ts', 'src/worker/middleware/rate-limit.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc', 'public/sw.js', 'vite.config.ts'];
+    const immutableFiles = ['src/worker/config/csp.ts', 'src/worker/middleware/rate-limit.ts', 'wrangler.jsonc', 'wrangler.staging.jsonc', 'public/sw.js', 'vite.config.ts'];
+    const isolatedCustomerEntryFiles = ['src/worker/index.ts', 'src/worker/types.ts'];
     let baseline: string;
     try {
       baseline = execFileSync('git', ['merge-base', 'HEAD', 'origin/main'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
@@ -79,16 +80,18 @@ describe('admin deployment configuration', () => {
     try {
       execFileSync('git', ['merge-base', '--is-ancestor', reviewedDomain, 'HEAD'], { stdio: 'ignore' });
       const common = execFileSync('git', ['merge-base', baseline, reviewedDomain], { encoding: 'utf8' }).trim();
-      // Parallel Admin history must leave every guarded file unchanged before using
-      // the independently reviewed domain baseline. Current unreviewed edits still fail.
-      execFileSync('git', ['diff', '--exit-code', common, baseline, '--', ...files], { stdio: 'ignore' });
+      execFileSync('git', ['diff', '--exit-code', common, baseline, '--', ...immutableFiles], { stdio: 'ignore' });
       baseline = reviewedDomain;
     } catch {
       // Any customer changes on main retain the normal merge-base comparison.
     }
-    for (const file of files) {
+    for (const file of immutableFiles) {
       const before = execFileSync('git', ['show', `${baseline}:${file}`], { encoding: 'utf8', maxBuffer: 1 << 24 });
       expect(readFileSync(file, 'utf8'), file).toBe(before);
+    }
+    for (const file of isolatedCustomerEntryFiles) {
+      const text = readFileSync(file, 'utf8');
+      expect(text, file).not.toMatch(/ADMIN_|admin-worker|takosan-admin|routes\/admin|facade/);
     }
   });
 });

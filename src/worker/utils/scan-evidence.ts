@@ -80,31 +80,50 @@ export function trustworthyCalendarDate(value: unknown): string | null {
   return day <= days[month - 1] ? trimmed : null;
 }
 
+export type InventoryLotCurrency = 'VND' | 'JPY' | 'USD' | 'EUR';
+
+const LOT_CURRENCY_MINOR_DIGITS: Readonly<Record<InventoryLotCurrency, 0 | 2>> = Object.freeze({
+  VND: 0,
+  JPY: 0,
+  USD: 2,
+  EUR: 2,
+});
+
 export interface PurchasePriceMinor {
-  currency: 'VND';
+  currency: InventoryLotCurrency;
   amountMinor: number;
-  minorDigits: 0;
+  minorDigits: 0 | 2;
 }
 
 /**
  * Convert a receipt money fact into the project's exact minor-unit
- * representation. VND has zero minor digits, so only whole đồng are
- * representable; a fractional or out-of-range OCR amount is unprovable and
- * therefore absent. Missing price stays null — it is never coerced to 0,
- * because 0đ is itself a factual claim.
+ * representation (`VND`/`JPY` = 0 minor digits; `EUR`/`USD` = 2 minor digits).
+ * Missing price stays null — it is never coerced to 0, because 0 is itself a factual claim.
  */
-export function receiptPurchasePrice(amountVnd: unknown): PurchasePriceMinor | null {
-  if (amountVnd === null || amountVnd === undefined) return null;
-  const amount = Number(amountVnd);
+export function receiptPurchasePrice(
+  amountMinorInput: unknown,
+  currencyInput: unknown = 'VND',
+): PurchasePriceMinor | null {
+  if (amountMinorInput === null || amountMinorInput === undefined) return null;
+  const currency = typeof currencyInput === 'string' && currencyInput.trim()
+    ? currencyInput.trim().toUpperCase()
+    : 'VND';
+  if (!(currency in LOT_CURRENCY_MINOR_DIGITS)) return null;
+  const amount = Number(amountMinorInput);
   if (!Number.isFinite(amount) || amount < 0) return null;
   if (!Number.isSafeInteger(amount)) return null;
-  return { currency: 'VND', amountMinor: amount, minorDigits: 0 };
+  const typedCurrency = currency as InventoryLotCurrency;
+  return {
+    currency: typedCurrency,
+    amountMinor: amount,
+    minorDigits: LOT_CURRENCY_MINOR_DIGITS[typedCurrency],
+  };
 }
 
 export interface ReceiptLineFacts {
   /** Receipt-level purchase date, when the receipt actually carries one. */
   purchasedAt: string | null;
-  /** Line total in VND minor units, when the receipt actually carries one. */
+  /** Line total in minor units, when the receipt actually carries one. */
   purchasePrice: PurchasePriceMinor | null;
 }
 
@@ -113,25 +132,37 @@ export interface ReceiptLineFacts {
  * photo of a fridge proves nothing about what anything cost or when it was
  * bought, so inventing those facts there would be fabrication.
  */
-export function receiptLineFacts(provenance: ScanProvenanceType, scan: {
-  purchase_date?: unknown;
-}, line: { total_price_vnd?: unknown; unit_price_vnd?: unknown; estimated_quantity?: unknown }): ReceiptLineFacts {
+export function receiptLineFacts(
+  provenance: ScanProvenanceType,
+  scan: { purchase_date?: unknown; currency?: unknown },
+  line: {
+    currency?: unknown;
+    total_price_minor?: unknown;
+    unit_price_minor?: unknown;
+    total_price_vnd?: unknown;
+    unit_price_vnd?: unknown;
+    estimated_quantity?: unknown;
+  },
+): ReceiptLineFacts {
   if (provenance !== 'RECEIPT') return { purchasedAt: null, purchasePrice: null };
-  // Prefer the printed line total. A unit price is only promoted to a line
-  // total when the multiplication is exact and the quantity is a whole count;
-  // a derived fractional amount is an estimate, not a receipt fact.
-  let price = receiptPurchasePrice(line.total_price_vnd);
+  const lineCurrency = line.currency ?? scan.currency ?? 'VND';
+  const rawTotal = line.total_price_minor ?? line.total_price_vnd;
+  const rawUnit = line.unit_price_minor ?? line.unit_price_vnd;
+
+  let price = receiptPurchasePrice(rawTotal, lineCurrency);
   if (price === null) {
-    // A missing unit price must stay missing. `Number(null)` is 0, so an
-    // absent column would otherwise fabricate a "this cost 0₫" receipt fact.
-    if (line.unit_price_vnd === null || line.unit_price_vnd === undefined) {
+    if (rawUnit === null || rawUnit === undefined) {
       return { purchasedAt: trustworthyCalendarDate(scan.purchase_date), purchasePrice: null };
     }
-    const unitPrice = Number(line.unit_price_vnd);
+    const unitPrice = Number(rawUnit);
     const quantity = Number(line.estimated_quantity);
-    if (Number.isSafeInteger(unitPrice) && unitPrice >= 0
-      && Number.isSafeInteger(quantity) && quantity > 0) {
-      price = receiptPurchasePrice(unitPrice * quantity);
+    if (
+      Number.isSafeInteger(unitPrice) &&
+      unitPrice >= 0 &&
+      Number.isSafeInteger(quantity) &&
+      quantity > 0
+    ) {
+      price = receiptPurchasePrice(unitPrice * quantity, lineCurrency);
     }
   }
   return { purchasedAt: trustworthyCalendarDate(scan.purchase_date), purchasePrice: price };

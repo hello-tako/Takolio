@@ -521,15 +521,91 @@ export const CANONICAL_INGREDIENTS: CanonicalIngredient[] = [
   }
 ];
 
+import {
+  endOfCivilDayEpochMs,
+  isValidIanaTimeZone,
+  normalizeMultilingualText,
+  type SupportedLocale,
+} from './i18n';
+
 /** Normalize catalog names and OCR labels without guessing species or ingredients. */
 export function normalizeIngredientText(input: string): string {
-  return input.normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[đĐ]/g, 'd')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ');
+  return normalizeMultilingualText(input);
+}
+
+const LOCALIZED_CANONICAL_INGREDIENT_NAMES: Readonly<
+  Record<string, Partial<Record<SupportedLocale, string>>>
+> = Object.freeze({
+  PORK_BELLY: { ja: '豚バラ肉', de: 'Schweinebauch', fr: 'Poitrine de porc', es: 'Panceta de cerdo', it: 'Pancetta fresca' },
+  PORK_LOIN: { ja: '豚ロース', de: 'Schweinelende', fr: 'Longe de porc', es: 'Lomo de cerdo', it: 'Lonza di maiale' },
+  PORK_RIBS: { ja: '豚スペアリブ', de: 'Schweinerippchen', fr: 'Travers de porc', es: 'Costillas de cerdo', it: 'Costine di maiale' },
+  GROUND_PORK: { ja: '豚ひき肉', de: 'Schweinehackfleisch', fr: 'Porc haché', es: 'Carne picada de cerdo', it: 'Macinato di maiale' },
+  BEEF_SIRLOIN: { ja: '牛サーロイン', de: 'Rinderlende', fr: 'Faux-filet de bœuf', es: 'Solomillo de ternera', it: 'Controfiletto di manzo' },
+  CHICKEN_THIGH: { ja: '鶏もも肉', de: 'Hähnchenschenkel', fr: 'Haut de cuisse de poulet', es: 'Contramuslo de pollo', it: 'Sovracoscia di pollo' },
+  CHICKEN_BREAST: { ja: '鶏むね肉', de: 'Hähnchenbrust', fr: 'Blanc de poulet', es: 'Pechuga de pollo', it: 'Petto di pollo' },
+  CHICKEN_WING: { ja: '手羽先', de: 'Hähnchenflügel', fr: 'Ailes de poulet', es: 'Alitas de pollo', it: 'Ali di pollo' },
+  SHRIMP: { ja: 'えび', de: 'Garnelen', fr: 'Crevettes', es: 'Gambas', it: 'Gamberi' },
+  SQUID: { ja: 'いか', de: 'Tintenfisch', fr: 'Calamar', es: 'Calamar', it: 'Calamaro' },
+  SALMON: { ja: '鮭', de: 'Lachs', fr: 'Saumon', es: 'Salmón', it: 'Salmone' },
+  MACKEREL: { ja: 'さば', de: 'Makrele', fr: 'Maquereau', es: 'Caballa', it: 'Sgombro' },
+  FISH_FRESHWATER: { ja: '白身魚', de: 'Süßwasserfisch', fr: 'Poisson d’eau douce', es: 'Pescado blanco', it: 'Pesce d’acqua dolce' },
+  CRAB_MEAT: { ja: 'かに身', de: 'Krabbenfleisch', fr: 'Chair de crabe', es: 'Carne de cangrejo', it: 'Polpa di granchio' },
+  CHICKEN_EGG: { ja: '鶏卵', de: 'Hühnerei', fr: 'Œuf de poule', es: 'Huevo de gallina', it: 'Uovo di gallina' },
+  TOFU: { ja: '豆腐', de: 'Tofu', fr: 'Tofu', es: 'Tofu', it: 'Tofu' },
+  TOMATO: { ja: 'トマト', de: 'Tomate', fr: 'Tomate', es: 'Tomate', it: 'Pomodoro' },
+  CARROT: { ja: 'にんじん', de: 'Karotte', fr: 'Carotte', es: 'Zanahoria', it: 'Carota' },
+  CABBAGE: { ja: 'キャベツ', de: 'Weißkohl', fr: 'Chou blanc', es: 'Repollo', it: 'Cavolo cappuccio' },
+  BROCCOLI: { ja: 'ブロッコリー', de: 'Brokkoli', fr: 'Brocoli', es: 'Brócoli', it: 'Broccoli' },
+  CUCUMBER: { ja: 'きゅうり', de: 'Gurke', fr: 'Concombre', es: 'Pepino', it: 'Cetriolo' },
+  SPINACH: { ja: 'ほうれん草', de: 'Spinat', fr: 'Épinards', es: 'Espinacas', it: 'Spinaci' },
+  WATER_SPINACH: { ja: '空芯菜', de: 'Wasserspinat', fr: 'Liseron d’eau', es: 'Espinaca de agua', it: 'Spinacio d’acqua' },
+  BOK_CHOY: { ja: 'チンゲン菜', de: 'Pak Choi', fr: 'Pak-choï', es: 'Pak choi', it: 'Pak choi' },
+  BEAN_SPROUTS: { ja: 'もやし', de: 'Sojasprossen', fr: 'Pousses de haricot mungo', es: 'Brotes de soja', it: 'Germogli di soia' },
+  MUSHROOM_SHIITAKE: { ja: 'しいたけ', de: 'Shiitake-Pilze', fr: 'Shiitaké', es: 'Setas shiitake', it: 'Funghi shiitake' },
+  ONION: { ja: '玉ねぎ', de: 'Zwiebel', fr: 'Oignon', es: 'Cebolla', it: 'Cipolla' },
+  GARLIC: { ja: 'にんにく', de: 'Knoblauch', fr: 'Ail', es: 'Ajo', it: 'Aglio' },
+  GINGER: { ja: 'しょうが', de: 'Ingwer', fr: 'Gingembre', es: 'Jengibre', it: 'Zenzero' },
+  SCALLION: { ja: '青ねぎ', de: 'Frühlingszwiebel', fr: 'Cébette', es: 'Cebolleta', it: 'Cipollotto' },
+  CHILI: { ja: '唐辛子', de: 'Chilischote', fr: 'Piment', es: 'Guindilla', it: 'Peperoncino' },
+  LEMONGRASS: { ja: 'レモングラス', de: 'Zitronengras', fr: 'Citronnelle', es: 'Hierba limón', it: 'Citronella' },
+  CILANTRO: { ja: 'パクチー', de: 'Koriander', fr: 'Coriandre', es: 'Cilantro', it: 'Coriandolo' },
+  PINEAPPLE: { ja: 'パイナップル', de: 'Ananas', fr: 'Ananas', es: 'Piña', it: 'Ananas' },
+  BITTER_MELON: { ja: 'ゴーヤ', de: 'Bittermelone', fr: 'Margose', es: 'Melón amargo', it: 'Zucca amara' },
+  CHAYOTE: { ja: 'ハヤトウリ', de: 'Chayote', fr: 'Chayote', es: 'Chayote', it: 'Chayote' },
+  KIMCHI: { ja: 'キムチ', de: 'Kimchi', fr: 'Kimchi', es: 'Kimchi', it: 'Kimchi' },
+  FRESH_MILK: { ja: '牛乳', de: 'Frischmilch', fr: 'Lait frais', es: 'Leche fresca', it: 'Latte fresco' },
+  BUTTER: { ja: 'バター', de: 'Butter', fr: 'Beurre', es: 'Mantequilla', it: 'Burro' },
+  CHEDDAR_CHEESE: { ja: 'チェダーチーズ', de: 'Cheddar-Käse', fr: 'Cheddar', es: 'Queso cheddar', it: 'Cheddar' },
+  RICE: { ja: '米', de: 'Reis', fr: 'Riz', es: 'Arroz', it: 'Riso' },
+  RICE_NOODLE: { ja: 'ライスヌードル', de: 'Reisnudeln', fr: 'Nouilles de riz', es: 'Fideos de arroz', it: 'Spaghetti di riso' },
+  NOODLE: { ja: '中華麺', de: 'Nudeln', fr: 'Nouilles', es: 'Fideos', it: 'Tagliolini' },
+  SPAGHETTI_PASTA: { ja: 'スパゲッティ', de: 'Spaghetti', fr: 'Spaghetti', es: 'Espaguetis', it: 'Spaghetti' },
+  RICE_PAPER: { ja: 'ライスペーパー', de: 'Reispapier', fr: 'Galettes de riz', es: 'Papel de arroz', it: 'Carta di riso' },
+  FISH_SAUCE: { ja: 'ナンプラー', de: 'Fischsauce', fr: 'Sauce de poisson', es: 'Salsa de pescado', it: 'Salsa di pesce' },
+  SOY_SAUCE: { ja: '醤油', de: 'Sojasauce', fr: 'Sauce soja', es: 'Salsa de soja', it: 'Salsa di soia' },
+  OYSTER_SAUCE: { ja: 'オイスターソース', de: 'Austernsauce', fr: 'Sauce d’huître', es: 'Salsa de ostras', it: 'Salsa di ostriche' },
+  COOKING_OIL: { ja: 'サラダ油', de: 'Speiseöl', fr: 'Huile de cuisson', es: 'Aceite de cocina', it: 'Olio da cucina' },
+  SHRIMP_PASTE: { ja: 'シュリンプペースト', de: 'Garnelenpaste', fr: 'Pâte de crevettes', es: 'Pasta de gambas', it: 'Pasta di gamberetti' },
+});
+
+import {
+  GLOBAL_EXTENDED_INGREDIENTS,
+  findGlobalIngredientMetadata,
+  localizeAnyCanonicalIngredientName,
+} from './global-ingredients';
+
+export function localizeCanonicalIngredientName(
+  ingredientId: string,
+  locale: SupportedLocale = 'en',
+  fallback?: string,
+): string {
+  const ingredient = findCanonicalIngredientById(ingredientId);
+  if (ingredient) {
+    if (locale === 'vi') return ingredient.nameVi;
+    if (locale === 'en') return ingredient.nameEn;
+    return LOCALIZED_CANONICAL_INGREDIENT_NAMES[ingredient.id]?.[locale] ?? ingredient.nameEn;
+  }
+  return localizeAnyCanonicalIngredientName(ingredientId, locale, fallback) ?? fallback ?? ingredientId;
 }
 
 function uniqueIngredient(matches: CanonicalIngredient[]): CanonicalIngredient | null {
@@ -537,57 +613,104 @@ function uniqueIngredient(matches: CanonicalIngredient[]): CanonicalIngredient |
   return ids.size === 1 ? matches[0] : null;
 }
 
-export function findCanonicalIngredient(input: string): CanonicalIngredient | null {
+function matchesLocalizedName(ingredientId: string, normalizedTarget: string): boolean {
+  const map = LOCALIZED_CANONICAL_INGREDIENT_NAMES[ingredientId];
+  if (map && Object.values(map).some(
+    (label) => typeof label === 'string' && normalizeIngredientText(label) === normalizedTarget,
+  )) {
+    return true;
+  }
+  const globalMeta = findGlobalIngredientMetadata(ingredientId);
+  if (!globalMeta) return false;
+  return Object.values(globalMeta.localizedNames).some(
+    (label) => typeof label === 'string' && normalizeIngredientText(label) === normalizedTarget,
+  );
+}
+
+const OCR_QUANTITY_UNIT_SUFFIX_RE =
+  /(?:\s+\d+(?:\s+\d+)?\s*(?:kg|g|gram|gam|ml|cl|dl|l|lit|qua|cai|con|goi|hop|bich|tui|pack|pcs?|stk?|bund|piece|丁|ぱっく|袋|本|玉|束|個|枚|切れ))+$/u;
+
+export function findCanonicalIngredient(
+  input: string,
+  options?: { includeGlobalLocales?: boolean },
+): CanonicalIngredient | null {
   if (!input) return null;
+  const checkGlobal = options?.includeGlobalLocales === true;
+  const pool = checkGlobal ? [...CANONICAL_INGREDIENTS, ...GLOBAL_EXTENDED_INGREDIENTS] : CANONICAL_INGREDIENTS;
   const id = input.trim().toLowerCase();
-  const byId = CANONICAL_INGREDIENTS.find((ingredient) => ingredient.id.toLowerCase() === id);
+  const byId = pool.find((ingredient) => ingredient.id.toLowerCase() === id);
   if (byId) return byId;
 
   const clean = normalizeIngredientText(input);
   if (!clean) return null;
-  const byName = uniqueIngredient(CANONICAL_INGREDIENTS.filter((ingredient) =>
-    normalizeIngredientText(ingredient.nameVi) === clean || normalizeIngredientText(ingredient.nameEn) === clean));
+  const byName = uniqueIngredient(pool.filter((ingredient) =>
+    normalizeIngredientText(ingredient.nameVi) === clean ||
+    normalizeIngredientText(ingredient.nameEn) === clean ||
+    (checkGlobal && matchesLocalizedName(ingredient.id, clean))));
   if (byName) return byName;
-  const byAlias = uniqueIngredient(CANONICAL_INGREDIENTS.filter((ingredient) =>
+  const byAlias = uniqueIngredient(pool.filter((ingredient) =>
     ingredient.aliases.some((alias) => normalizeIngredientText(alias) === clean)));
   if (byAlias) return byAlias;
 
   // OCR sometimes appends a separate numeric quantity and unit. Strip only
   // that complete suffix, never arbitrary words or substrings.
-  const withoutQuantity = clean.replace(/(?:\s+\d+(?:\s+\d+)?\s*(?:kg|g|gram|gam|ml|l|lit|qua|cai|con|goi|hop|bich|tui|pack|pcs?))+$/, '');
+  const withoutQuantity = clean.replace(OCR_QUANTITY_UNIT_SUFFIX_RE, '');
   if (withoutQuantity === clean) return null;
-  return uniqueIngredient(CANONICAL_INGREDIENTS.filter((ingredient) =>
+  return uniqueIngredient(pool.filter((ingredient) =>
     normalizeIngredientText(ingredient.nameVi) === withoutQuantity ||
     normalizeIngredientText(ingredient.nameEn) === withoutQuantity ||
+    (checkGlobal && matchesLocalizedName(ingredient.id, withoutQuantity)) ||
     ingredient.aliases.some((alias) => normalizeIngredientText(alias) === withoutQuantity)));
 }
 
 /** Resolve a catalog ID without applying the fuzzy name/alias matching above. */
-export function findCanonicalIngredientById(input: unknown): CanonicalIngredient | null {
+export function findCanonicalIngredientById(
+  input: unknown,
+  options?: { includeGlobalLocales?: boolean },
+): CanonicalIngredient | null {
   if (typeof input !== 'string') return null;
   const clean = input.trim().toLowerCase();
   if (!clean) return null;
-  return CANONICAL_INGREDIENTS.find((ingredient) => ingredient.id.toLowerCase() === clean) || null;
+  const v1 = CANONICAL_INGREDIENTS.find((ingredient) => ingredient.id.toLowerCase() === clean);
+  if (v1) return v1;
+  if (options?.includeGlobalLocales) {
+    return GLOBAL_EXTENDED_INGREDIENTS.find((ingredient) => ingredient.id.toLowerCase() === clean) || null;
+  }
+  return null;
 }
 
+export * from './i18n';
 export * from './units';
+export * from './culinary-units';
+export * from './allergens';
+export * from './expiry-parser';
+export * from './global-ingredients';
 export * from './availability';
 export * from './quantity';
 
 // Calculate freshness status given expiry date or added date
-export function computeFreshness(expiryDate?: string, addedDate?: string, shelfLifeDays = 7): FreshnessStatus {
-  const now = new Date();
-  let targetExpiry: Date;
+export function computeFreshness(
+  expiryDate?: string,
+  addedDate?: string,
+  shelfLifeDays = 7,
+  options?: { timeZone?: string; nowMs?: number },
+): FreshnessStatus {
+  const nowMs = options?.nowMs ?? Date.now();
+  let targetExpiryMs: number;
 
   if (expiryDate) {
-    targetExpiry = new Date(expiryDate);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(expiryDate) && options?.timeZone && isValidIanaTimeZone(options.timeZone)) {
+      targetExpiryMs = endOfCivilDayEpochMs(expiryDate, options.timeZone);
+    } else {
+      targetExpiryMs = new Date(expiryDate).getTime();
+    }
   } else if (addedDate) {
-    targetExpiry = new Date(new Date(addedDate).getTime() + shelfLifeDays * 24 * 60 * 60 * 1000);
+    targetExpiryMs = new Date(addedDate).getTime() + shelfLifeDays * 24 * 60 * 60 * 1000;
   } else {
     return 'fresh';
   }
 
-  const diffHours = (targetExpiry.getTime() - now.getTime()) / (1000 * 60 * 60);
+  const diffHours = (targetExpiryMs - nowMs) / (1000 * 60 * 60);
 
   if (diffHours <= 0) return 'expiring';
   if (diffHours <= 24) return 'expiring';

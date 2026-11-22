@@ -80,8 +80,41 @@ export async function resolveCanonicalRecipeMedia(env: Pick<Env, 'DB'>, rawPath:
 
 export const recipeMediaRoutes = new Hono<{ Bindings: Env }>();
 
-async function serve(c: { env: Env; req: { path: string; raw: Request; param(name: string): string } }, includeBody: boolean): Promise<Response> {
-  const resolution = await resolveCanonicalRecipeMedia(c.env, new URL(c.req.raw.url).pathname, c.req.param('recipeId'), c.req.param('role'), c.req.param('version'));
+async function serve(
+  c: {
+    env: Env;
+    executionCtx?: { waitUntil(promise: Promise<unknown>): void };
+    req: { path: string; raw: Request; param(name: string): string };
+  },
+  includeBody: boolean,
+): Promise<Response> {
+  const rawUrl = new URL(c.req.raw.url);
+  if (hasSuspiciousRawPath(rawUrl.pathname)) {
+    return respondError(404, 'RECIPE_MEDIA_INVALID_PATH');
+  }
+
+  // Cloudflare Edge Cache API fast-path for immutable canonical media across global PoPs (NRT/FRA/etc.)
+  const edgeCache =
+    includeBody && typeof caches !== 'undefined' && (caches as unknown as { default?: Cache }).default
+      ? (caches as unknown as { default: Cache }).default
+      : null;
+  const cacheKey = edgeCache ? new Request(rawUrl.toString(), { method: 'GET' }) : null;
+  if (edgeCache && cacheKey) {
+    try {
+      const cached = await edgeCache.match(cacheKey);
+      if (cached) {
+        const cachedEtag = cached.headers.get('etag');
+        if (cachedEtag && c.req.raw.headers.get('if-none-match') === cachedEtag) {
+          return new Response(null, { status: 304, headers: cached.headers });
+        }
+        return cached;
+      }
+    } catch {
+      // Edge cache miss or unsupported runtime environment; continue to D1 + R2 origin.
+    }
+  }
+
+  const resolution = await resolveCanonicalRecipeMedia(c.env, rawUrl.pathname, c.req.param('recipeId'), c.req.param('role'), c.req.param('version'));
   if (!resolution.ok) return respondError(resolution.status, resolution.code);
   const { record } = resolution;
   if (!c.env.IMAGES) return respondError(503, 'RECIPE_MEDIA_UNAVAILABLE');
@@ -116,7 +149,26 @@ async function serve(c: { env: Env; req: { path: string; raw: Request; param(nam
   if (c.req.raw.headers.get('if-none-match') === etag) return new Response(null, { status: 304, headers });
   if (!includeBody) return new Response(null, { status: 200, headers });
   // Workers' ReadableStream type is structurally narrower than lib.dom's; the runtime object is the same.
-  return new Response(object.body as unknown as BodyInit, { status: 200, headers });
+  const response = new Response(object.body as unknown as BodyInit, { status: 200, headers });
+  if (edgeCache && cacheKey) {
+    try {
+      const toCache = response.clone();
+      const putPromise = edgeCache.put(cacheKey, toCache).catch(() => {});
+      let scheduled = false;
+      try {
+        if (c.executionCtx && typeof c.executionCtx.waitUntil === 'function') {
+          c.executionCtx.waitUntil(putPromise);
+          scheduled = true;
+        }
+      } catch {
+        scheduled = false;
+      }
+      if (!scheduled) void putPromise;
+    } catch {
+      // Ignore clone/cache errors if runtime stream cannot tee.
+    }
+  }
+  return response;
 }
 
 recipeMediaRoutes.get(ROUTE_PATH, (c) => serve(c, true));

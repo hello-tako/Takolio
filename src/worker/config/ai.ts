@@ -6,8 +6,12 @@ import { sanitizeFailureDiagnostics } from '../../../packages/ai/src/failure-dia
 
 /** Build one server-side AI policy from Worker vars. Secrets stay in Env. */
 export function aiConfigFromEnv(env: Env, backgroundExecutor?: (promise: Promise<unknown>) => void): AIConfig {
+  const envRecord = {
+    ...(env as unknown as Record<string, string | undefined>),
+    AI_MAX_OUTPUT_TOKENS: env.AI_MAX_OUTPUT_TOKENS ?? '4096',
+  };
   const governance = createGovernanceConfig(
-    env as unknown as Record<string, string | undefined>,
+    envRecord,
     {
       // Production must opt into the Qwen task runtime. Missing the flag in a
       // local/older environment remains safe because this helper is the only
@@ -26,6 +30,9 @@ export function aiConfigFromEnv(env: Env, backgroundExecutor?: (promise: Promise
     governance,
     backgroundExecutor,
     aiBinding: env.AI,
+    jurisdiction: env.AI_JURISDICTION,
+    aiEuBaseUrl: env.AI_EU_BASE_URL,
+    aiJpBaseUrl: env.AI_JP_BASE_URL,
     groqApiKey: env.GROQ_API_KEY,
     groqBaseUrl: env.GROQ_BASE_URL,
     groqVisionModel: env.GROQ_VISION_MODEL,

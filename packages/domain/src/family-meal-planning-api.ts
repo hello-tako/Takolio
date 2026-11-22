@@ -1,14 +1,16 @@
 import { z } from 'zod';
 import { MealPlanDtoSchema } from './meal-planning-api';
 import { PlanCompositionsDtoSchema } from './meal-composition-api';
+import { CULINARY_REGIONS, GLOBAL_CUISINES, MEAL_CULTURES } from './family-preferences-api';
 
 export const FamilyMealPolicySchema = z.object({
   mealStyle: z.enum(['family', 'quick', 'one_pot']),
-  preferredRegions: z.array(z.enum(['bac', 'trung', 'nam'])).max(3),
-  internationalMealsPerWeek: z.number().int().min(0).max(7),
+  mealCulture: z.enum(MEAL_CULTURES).optional(),
+  preferredRegions: z.array(z.enum(CULINARY_REGIONS)).max(8),
+  internationalMealsPerWeek: z.number().int().min(0).max(21),
   internationalGeneratedMainCount: z.number().int().nonnegative(),
   lockedInternationalMainCount: z.number().int().nonnegative(),
-  defaultCuisine: z.literal('vietnamese'),
+  defaultCuisine: z.enum(GLOBAL_CUISINES),
   profileRevision: z.number().int().safe().nonnegative(),
 }).strict();
 export const FamilyMealDiagnosticsSchema = z.object({

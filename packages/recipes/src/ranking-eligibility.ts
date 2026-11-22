@@ -1,4 +1,5 @@
 import { compareIds } from '../../domain/src/availability';
+import { matchesAllergenHierarchy } from '../../domain/src/allergens';
 import type { CandidateMode, RecipeCandidate } from './candidates';
 import type { RankingPreferences } from './personalization';
 import type { CandidateRankingEvidence, RankedNutritionFacts } from './ranking-evidence';
@@ -61,7 +62,7 @@ export function evaluateHardRestrictions(facts: HardRestrictionFacts, policies: 
       for (const key of keys) {
         const reviews = facts.evidence?.safety.filter((item) => item.kind === kind && item.key === key) ?? [];
         const conflict = reviews.some((item) => item.verdict === 'conflict') ||
-          (kind === 'allergen' && facts.allergenTags.includes(key));
+          (kind === 'allergen' && (facts.allergenTags.includes(key) || matchesAllergenHierarchy(facts.allergenTags, key)));
         const state = conflict ? 'conflict' : reviews.some((item) => item.verdict === 'safe') ? 'safe' : 'unknown';
         constraints.push({ kind, key, state });
         if (state === 'conflict') reasons.add(kind === 'allergen' ? 'ALLERGEN_CONFLICT' : 'DIETARY_CONFLICT');

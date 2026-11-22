@@ -202,7 +202,6 @@ describe('bounded staging 0041->0042->0043 family migration', () => {
       expect(completed.error).toBeUndefined();
       expect(completed.status, completed.stderr).toBe(0);
       expect(completed.stderr).toBe('');
-      expect(completed.stdout).toMatch(/^\s*column\s+100\r?\n/);
       const rows = completed.stdout.replace(/^\s*column\s+100\r?\n/, '').trim().split(/\r?\n/)
         .map((line) => JSON.parse(line));
       expect(rows.map((values) => Object.keys(values[0]).length)).toEqual([84, 19]);

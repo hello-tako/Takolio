@@ -13,7 +13,9 @@ import { GeneratedMealPlanPersistenceError } from '../../../packages/db/src/meal
 import { readFamilyPreferences } from '../../../packages/db/src/family-preferences';
 import { backgroundExecutorOf, resolveRecipeAuthority } from '../services/recipe-authority';
 import { tenancyGuard } from '../middleware/tenancy';
+import { negotiateEdgeLocaleContext, resolveEffectiveLocaleContext } from '../middleware/locale';
 import { rateLimiter } from '../middleware/rate-limit';
+import { localizeDefaultShoppingListName, type SupportedLocale } from '../../../packages/domain/src/i18n';
 import { ShoppingItemCreateSchema, ShoppingItemUpdateSchema } from '../validation/schemas';
 
 export const shoppingRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
@@ -24,11 +26,12 @@ shoppingRoutes.use('/shopping-list*', async (c,next) => {
   return c.req.method === 'GET' ? next() : rateLimiter({maxRequests:60,windowSeconds:60,prefix:'rl_shop_w'})(c,next);
 });
 
-async function getOrCreateShoppingList(db:D1DatabaseBinding, householdId:string):Promise<string> {
+async function getOrCreateShoppingList(db:D1DatabaseBinding, householdId:string, locale?:SupportedLocale):Promise<string> {
   const existing=await db.prepare('SELECT id FROM shopping_lists WHERE household_id = ? LIMIT 1').bind(householdId).first<{id:string}>();
   if(existing) return existing.id;
   const listId=`list_${householdId}`;
-  await db.prepare('INSERT OR IGNORE INTO shopping_lists(id,household_id,name) VALUES(?,?,?)').bind(listId,householdId,'Đi chợ cho gia đình').run();
+  const defaultName = locale && locale !== 'vi' ? localizeDefaultShoppingListName(locale) : 'Đi chợ cho gia đình';
+  await db.prepare('INSERT OR IGNORE INTO shopping_lists(id,household_id,name) VALUES(?,?,?)').bind(listId,householdId,defaultName).run();
   return listId;
 }
 interface ItemRow {
@@ -201,11 +204,14 @@ shoppingRoutes.post('/shopping-list/from-plan',async(c)=>{
   const key=c.req.header('Idempotency-Key');
   if(!parsed.success||!key)return c.json({code:'VALIDATION_ERROR',error:'Thiếu khoảng ngày hoặc mã lệnh.'},422);
   try{
-    const service=new MealPlanningApplicationService(c.env.DB,{compositionV2Enabled:true,
+    const edgeLocale = negotiateEdgeLocaleContext(c.req, c.env);
+    const effectiveLocale = await resolveEffectiveLocaleContext(c.env.DB, auth, edgeLocale);
+    const activeLocale: SupportedLocale = effectiveLocale.source !== 'default' ? effectiveLocale.locale : 'vi';
+    const service=new MealPlanningApplicationService(c.env.DB,{compositionV2Enabled:true,locale:activeLocale,
       familyPreferences:scope=>readFamilyPreferences(c.env.DB,scope),
       recipeAuthority:async scope=>(await resolveRecipeAuthority(c.env,{tenantKey:scope.householdId,backgroundExecutor:backgroundExecutorOf(c)})).snapshot});
-    const scope={householdId:auth.householdId,userId:auth.userId};
-    return c.json(await sharePlanShopping(c.env.DB,scope,parsed.data,key,()=>service.compositions().shoppingDemand(scope,parsed.data.planId,parsed.data.expectedRevision)));
+    const pureScope={householdId:auth.householdId,userId:auth.userId};
+    return c.json(await sharePlanShopping(c.env.DB,{...pureScope,locale:activeLocale},parsed.data,key,()=>service.compositions(activeLocale).shoppingDemand(pureScope,parsed.data.planId,parsed.data.expectedRevision)));
   }catch(error){
     if(error instanceof MealPlanningError)return c.json({code:error.code,error:error.message},error.status);
     if(error instanceof GeneratedMealPlanPersistenceError)return c.json({code:error.code},error.code==='NOT_FOUND'?404:error.code==='FORBIDDEN'?403:409);

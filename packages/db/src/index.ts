@@ -1,7 +1,16 @@
+export type D1SessionConstraint = 'first-primary' | 'first-unconstrained';
+
+export interface D1DatabaseSession {
+  prepare(query: string): D1PreparedStatement;
+  batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
+  getBookmark(): string | null;
+}
+
 export interface D1DatabaseBinding {
   prepare(query: string): D1PreparedStatement;
   batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
   exec(query: string): Promise<D1ExecResult>;
+  withSession?(constraintOrBookmark?: D1SessionConstraint | string): D1DatabaseSession;
 }
 
 export interface D1PreparedStatement {
@@ -36,3 +45,7 @@ export * from './personalization';
 export * from './ranking-nutrition';
 export * from './meal-planning';
 export * from './family-preferences';
+export * from './d1-session';
+export * from './recipe-search';
+export * from './recipe-localizations';
+export * from './barcode-products';

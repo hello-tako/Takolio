@@ -56,7 +56,12 @@ import {
   type PersistedRoleAssignment,
   type RoleIndex,
 } from '../../../packages/recipes/src/composition/roles';
-import { getSimpleFood, SIMPLE_FOODS } from '../../../packages/recipes/src/composition/simple-foods';
+import {
+  getSimpleFood,
+  localizeSimpleFoodTitle,
+  SIMPLE_FOODS,
+} from '../../../packages/recipes/src/composition/simple-foods';
+import type { SupportedLocale } from '../../../packages/domain/src/i18n';
 import {
   compatibilityIssues,
   missingRoles,
@@ -85,7 +90,11 @@ import { contextForSlot } from '../../../packages/recipes/src/weekly-planner';
 import { fingerprintRecipes, type RecipeAuthoritySnapshot } from '../../../packages/recipes/src/recipe-authority';
 import type { Recipe } from '../../../packages/recipes/src/types';
 import { MealPlanningError } from './meal-planning-error';
-import { captureRecipeContentVersion, grantRecipeContentAccess, readHouseholdRecipeContentVersion } from './recipe-content-versions';
+import {
+  captureAndGrantRecipeContentBatch,
+  readHouseholdRecipeContentVersion,
+  readHouseholdRecipeContentVersionsBatch,
+} from './recipe-content-versions';
 import { sha256Hex } from '../utils/session';
 import type { MealPlanningApplicationService } from './meal-planning';
 
@@ -146,8 +155,12 @@ function safetyProjectionKey(evaluation: ComponentEvaluation, evidenceSensitive:
 }
 
 export class MealCompositionService {
-  constructor(private readonly db: D1DatabaseBinding, private readonly planner: Planner,
-    private readonly recipeAuthority: (scope: Scope) => Promise<RecipeAuthoritySnapshot>) {}
+  constructor(
+    private readonly db: D1DatabaseBinding,
+    private readonly planner: Planner,
+    private readonly recipeAuthority: (scope: Scope) => Promise<RecipeAuthoritySnapshot>,
+    private readonly defaultLocale: SupportedLocale = 'vi',
+  ) {}
 
   // ------------------------------------------------------------------------ context
   async load(scope: Scope, planId: string, fenceMode: 'none' | 'family' | 'all' = 'none') {
@@ -164,38 +177,57 @@ export class MealCompositionService {
     const currentPins = new Map<string, string>();
     const projected = stored.result.meals.filter((meal) => !compositions.has(meal.slotId)).flatMap((meal) =>
       projectV1Composition({ slotId: meal.slotId, meal, locked: false, revision: row.revision }).components);
-    for (const component of [...compositions.values()].flatMap((entry) => entry.components).concat(projected)) {
+    const allComponents = [...compositions.values()].flatMap((entry) => entry.components).concat(projected);
+    const neededFingerprints = allComponents
+      .map((c) => c.contentFingerprint)
+      .filter((fp): fp is string => Boolean(fp));
+    const batchArchived = await readHouseholdRecipeContentVersionsBatch(
+      this.db,
+      scope.householdId,
+      neededFingerprints,
+    );
+    for (const component of allComponents) {
       if (!component.contentFingerprint) continue;
-      if (!archived.has(component.contentFingerprint)) {
-        const recipe = await readHouseholdRecipeContentVersion(this.db, scope.householdId, component.contentFingerprint);
-        if (recipe && recipe.id === component.recipeId) archived.set(component.contentFingerprint, recipe);
+      const recipe = batchArchived.get(component.contentFingerprint);
+      if (recipe && recipe.id === component.recipeId) {
+        archived.set(component.contentFingerprint, recipe);
       }
       const current = authority.findById(component.recipeId!);
       if (current && !currentPins.has(current.id)) currentPins.set(current.id, await fingerprintRecipes([current]));
     }
     const slots = this.slots(stored);
-    const referenceInstant = this.planner.reference(now, stored.intent.utcOffsetMinutes);
+    const referenceInstant = this.planner.reference(now, stored.intent.utcOffsetMinutes, stored.intent.timeZone);
     // One trusted T04 context per request: Auto candidates, Manual restrictions and the shopping
     // projection all read the same catalog, substitution policy and evidence provider from it.
-    const context = this.planner.planningContext(snapshot, referenceInstant);
+    const context = this.planner.planningContext(snapshot, referenceInstant, snapshot.rankingContext, stored.intent.timeZone);
     const planningProfile = fenced?.profile ?? (familyMetadata ? await this.planner.familyProfile(scope) : null);
     return { row, stored, now, snapshot, authority, roles, familyMetadata, planningFence: fenced?.fence ?? null,
       transactionFences: fenced?.transactionFences ?? [], planningProfile, compositions, archived, currentPins, slots, referenceInstant,
-      referenceDate: referenceInstant.slice(0, 10), context, evaluation: evaluationScope(context) };
+      referenceDate: referenceInstant.slice(0, 10), context, evaluation: evaluationScope(context), locale: this.defaultLocale };
   }
 
   async pinComponents(scope: Scope, authority: RecipeAuthoritySnapshot, components: readonly MealComponent[],
     previous: readonly MealComponent[] = []): Promise<MealComponent[]> {
-    return Promise.all(components.map(async (component) => {
+    const recipesToPin: Recipe[] = [];
+    for (const component of components) {
+      if (component.kind !== 'recipe') continue;
+      const prior = previous.find((entry) => entry.id === component.id && targetKey(entry) === targetKey(component));
+      if (prior) continue;
+      const recipe = authority.findById(component.recipeId!);
+      if (!recipe) throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
+      recipesToPin.push(recipe);
+    }
+    const pinnedByRecipeId = recipesToPin.length > 0
+      ? await captureAndGrantRecipeContentBatch(this.db, scope.householdId, recipesToPin)
+      : new Map<string, string>();
+    return components.map((component) => {
       if (component.kind !== 'recipe') return { ...component, contentFingerprint: null };
       const prior = previous.find((entry) => entry.id === component.id && targetKey(entry) === targetKey(component));
       if (prior) return { ...component, contentFingerprint: prior.contentFingerprint ?? null };
-      const recipe = authority.findById(component.recipeId!);
-      if (!recipe) throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
-      const contentFingerprint = await captureRecipeContentVersion(this.db, recipe);
-      await grantRecipeContentAccess(this.db, scope.householdId, contentFingerprint);
+      const contentFingerprint = pinnedByRecipeId.get(component.recipeId!);
+      if (!contentFingerprint) throw new MealPlanningError('COMPOSITION_REVALIDATION_REQUIRED', 409, 'Selected recipe is unavailable');
       return { ...component, contentFingerprint };
-    }));
+    });
   }
 
   async assertCurrentComponents(scope: Scope, authority: RecipeAuthoritySnapshot, components: readonly MealComponent[], legacyCurrent: boolean) {
@@ -300,7 +332,10 @@ export class MealCompositionService {
   }
 
   private title(loaded: Loaded, component: MealComponent): string {
-    if (component.kind === 'simple_food') return getSimpleFood(component.simpleFoodId!)?.title.vi ?? component.simpleFoodId!;
+    if (component.kind === 'simple_food') {
+      const food = getSimpleFood(component.simpleFoodId!);
+      return food ? localizeSimpleFoodTitle(food, loaded.locale) : component.simpleFoodId!;
+    }
     return (component.contentFingerprint ? loaded.archived.get(component.contentFingerprint)
       : this.compatible(loaded, component) ? loaded.authority.findById(component.recipeId!) : null)?.title ?? component.recipeId!;
   }
@@ -868,8 +903,13 @@ export class MealCompositionService {
     const roles = loaded?.roles ?? roleIndexFor(authority, await persistedRoles(this.db, authority));
     const hard = resolveRankingPreferences(context).hard;
     const safetyRequested = hard.some((policy) => policy.allergens.length > 0 || policy.requiredDietaryTags.length > 0);
-    const needle = query.q ? normalizeText(query.q) : '';
-    const matches = (title: string, id: string) => !needle || normalizeText(title).includes(needle) || (loaded !== null && id === query.q);
+    const activeLocale: SupportedLocale = loaded?.locale ?? this.defaultLocale;
+    const rawQuery = query.q?.trim() ?? '';
+    const needle = rawQuery ? normalizeText(rawQuery) : '';
+    const matches = (title: string, id: string) =>
+      !rawQuery ||
+      (needle.length > 0 && normalizeText(title).includes(needle)) ||
+      (loaded !== null && id === rawQuery);
     const constraintState = safetyRequested ? 'unknown' as const : 'none_requested' as const;
     const saved = query.savedOnly ? await this.db.prepare('SELECT recipe_id FROM saved_recipe_entries WHERE user_id = ? AND is_saved = 1')
       .bind(scope.userId).all<{ recipe_id: string }>() : null;
@@ -891,9 +931,10 @@ export class MealCompositionService {
     // Simple foods carry no cuisine metadata, so a cuisine filter excludes them rather than guessing one.
     if (query.kind !== 'recipe' && !query.cuisine && !query.savedOnly) {
       for (const food of SIMPLE_FOODS) {
-        if ((query.role && !food.roles.includes(query.role)) || !(matches(food.title.vi, food.id) || matches(food.title.en, food.id))) continue;
+        const allFoodTitles = Object.values(food.title).filter((v): v is string => typeof v === 'string');
+        if ((query.role && !food.roles.includes(query.role)) || !allFoodTitles.some((t) => matches(t, food.id))) continue;
         if (!simpleFoodRestrictions(food, hard).allowed) continue;
-        items.push({ kind: 'simple_food', id: food.id, title: food.title.vi, roles: food.roles, cuisine: null,
+        items.push({ kind: 'simple_food', id: food.id, title: localizeSimpleFoodTitle(food, activeLocale), roles: food.roles, cuisine: null,
           cookTimeMinutes: food.prepMinutes, difficulty: null, constraintState });
       }
     }
@@ -975,7 +1016,7 @@ export class MealCompositionService {
           + (recipe && soft.preferredCuisines.includes(recipe.cuisine) ? 1 : 0)
           - (recipe && soft.avoidedCuisines.includes(recipe.cuisine) ? 1 : 0);
         return [item.id, [recipe && preferredCuisines.includes(recipe.cuisine) ? 0 : recipe ? 1 : 0,
-          family?.preferredRegions.length && recipe?.region && family.preferredRegions.includes(recipe.region as 'bac' | 'trung' | 'nam') ? 0 : 1,
+          family?.preferredRegions.length && recipe?.region && (family.preferredRegions as readonly string[]).includes(recipe.region) ? 0 : 1,
           assessment.selectable ? 0 : 1,
           assessment.status === 'covered' ? 0 : assessment.status === 'needs_shopping' ? 1 : 2,
           assessment.missingCount, -softFit] as const] as const;

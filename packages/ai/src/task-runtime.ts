@@ -25,6 +25,7 @@ import {
 } from './model-governance';
 import { buildPrompt } from './prompts';
 import { QwenProvider } from './providers/qwen';
+import { resolveRegionalQwenBaseUrl } from './jurisdiction';
 import { createTaskCallControl, type TaskCallControl, type TaskProviderCallOptions,
   type RuntimeTaskProvider, type TaskRuntimeOptions, type TaskCallAdmission } from './task-provider';
 import { applyReceiptScanQualityGate, applyVisionScanQualityGate } from './quality-gate';
@@ -160,8 +161,9 @@ export class QwenTaskRuntime {
             capabilities, requestTimeoutMs: config.qwenRequestTimeoutMs });
           if (provider) this.providers.set(role, provider);
         } else {
-          const provider = new QwenProvider(config.qwenApiKey!, config.qwenBaseUrl, alias.physicalModel,
-            config.qwenRequestTimeoutMs, capabilities);
+          const regionalBaseUrl = resolveRegionalQwenBaseUrl(config);
+          const provider = new QwenProvider(config.qwenApiKey!, regionalBaseUrl, alias.physicalModel,
+            config.qwenRequestTimeoutMs, capabilities, config.jurisdiction);
           this.providers.set(role, {
             providerId: 'qwen',
             vision: (params, callOptions) => provider.vision(params, callOptions),

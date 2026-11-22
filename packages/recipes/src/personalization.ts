@@ -89,3 +89,42 @@ export function resolveRankingPreferences(context: RankingContext) {
     explicit: individual !== undefined || household !== undefined,
   };
 }
+
+/**
+ * Unions hard safety constraints (`allergens`, `forbiddenIngredientIds`, `requiredDietaryTags`)
+ * across ALL members of a household so a child's or partner's allergy protects shared family
+ * meals even when another member generates the plan or starts cooking.
+ */
+export function mergeHouseholdMemberSafetyIntoContext(
+  context: RankingContext,
+  memberPreferences: readonly RankingPreferences[],
+): RankingContext {
+  if (memberPreferences.length === 0) return context;
+  const existingHousehold = context.preferences.find((row) => row.userId === null)?.values;
+  const base = existingHousehold ?? RankingPreferencesSchema.parse({});
+  const unionAllergens = [...new Set([...base.allergens, ...memberPreferences.flatMap((m) => m.allergens)])];
+  const unionForbidden = [...new Set([...base.forbiddenIngredientIds, ...memberPreferences.flatMap((m) => m.forbiddenIngredientIds)])];
+  const unionDietary = [...new Set([...base.requiredDietaryTags, ...memberPreferences.flatMap((m) => m.requiredDietaryTags)])];
+
+  if (
+    existingHousehold === undefined &&
+    unionAllergens.length === 0 &&
+    unionForbidden.length === 0 &&
+    unionDietary.length === 0
+  ) {
+    return context;
+  }
+
+  const mergedHousehold = RankingPreferencesSchema.parse({
+    ...base,
+    allergens: unionAllergens.slice(0, 200),
+    forbiddenIngredientIds: unionForbidden.slice(0, 200),
+    requiredDietaryTags: unionDietary.slice(0, 200),
+  });
+
+  const others = context.preferences.filter((row) => row.userId !== null);
+  return RankingContextSchema.parse({
+    ...context,
+    preferences: [{ householdId: context.householdId, userId: null, values: mergedHousehold }, ...others],
+  });
+}

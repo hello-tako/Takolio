@@ -3,6 +3,7 @@ import { VisionScanResult, AIUsageLog } from './schemas';
 import { z } from 'zod';
 import { MockAIProvider } from './providers/mock';
 import { QwenProvider, QWEN_DEFAULT_MODEL } from './providers/qwen';
+import { resolveRegionalQwenBaseUrl } from './jurisdiction';
 import { GLMProvider } from './providers/glm';
 import { DeepSeekProvider } from './providers/deepseek';
 import { CloudflareAIProvider } from './providers/cloudflare';
@@ -88,8 +89,9 @@ export class AIRouter {
     if (!config.aiMockMode) {
       // Qwen is the primary multimodal/text provider. Other adapters remain
       // explicit fallbacks so a retired test model cannot silently take over.
+      const regionalQwenUrl = resolveRegionalQwenBaseUrl(config);
       const qwenProvider = config.qwenApiKey
-        ? new QwenProvider(config.qwenApiKey, config.qwenBaseUrl, config.qwenModel, config.qwenRequestTimeoutMs)
+        ? new QwenProvider(config.qwenApiKey, regionalQwenUrl, config.qwenModel, config.qwenRequestTimeoutMs, undefined, config.jurisdiction)
         : undefined;
       if (qwenProvider) {
         this.visionProviders.push(qwenProvider);
@@ -104,15 +106,15 @@ export class AIRouter {
         this.visionProviders.push(groqProvider);
         if (!qwenProvider || config.groqFallbackEnabled === true) this.textProviders.push(groqProvider);
       }
-      // Native Workers AI is an explicit fallback only; a missing flag must
-      // not silently switch providers or hide a production configuration gap.
-      if (config.aiBinding && config.cloudflareVisionFallback === true) {
-        this.visionProviders.push(new CloudflareAIProvider(config.aiBinding));
+      // Native Workers AI uses Meta Llama 3.2 Vision — disabled in EU jurisdiction per Meta AUP.
+      if (config.aiBinding && config.cloudflareVisionFallback === true && config.jurisdiction !== 'EU') {
+        this.visionProviders.push(new CloudflareAIProvider(config.aiBinding, config.jurisdiction));
       }
-      if (config.deepseekApiKey && config.deepseekFallbackEnabled === true) {
+      const restrictMainlandProviders = config.jurisdiction === 'EU' || config.jurisdiction === 'JP';
+      if (config.deepseekApiKey && config.deepseekFallbackEnabled === true && !restrictMainlandProviders) {
         this.textProviders.push(new DeepSeekProvider(config.deepseekApiKey, config.deepseekBaseUrl));
       }
-      if (config.zaiApiKey && config.glmFallbackEnabled === true) {
+      if (config.zaiApiKey && config.glmFallbackEnabled === true && !restrictMainlandProviders) {
         const glmProvider = new GLMProvider(config.zaiApiKey, config.zaiBaseUrl);
         this.visionProviders.push(glmProvider);
         this.textProviders.push(glmProvider);

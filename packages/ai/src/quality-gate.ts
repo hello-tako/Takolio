@@ -5,6 +5,7 @@ import {
   VisionScanResultSchema,
 } from './schemas';
 import { AIProviderError } from './errors';
+import { normalizeMultilingualText } from '../../domain/src/i18n';
 
 /** Confidence below this threshold requires review; it is still truthful draft evidence. */
 export const AI_SCAN_MIN_CONFIDENCE = 0.6;
@@ -47,18 +48,40 @@ const GENERIC_LABELS = new Set([
   'not sure',
   'not identified',
   'unrecognized',
+  // Japanese generic placeholders & receipt summary/tax lines
+  '不明',
+  '商品',
+  '商品名',
+  '食材',
+  '冷蔵庫',
+  '冷凍庫',
+  '小計',
+  '合計',
+  '消費税',
+  '外税',
+  '内税',
+  'お預り',
+  'お釣り',
+  // European receipt non-food summary/deposit/tax lines
+  'subtotal',
+  'total',
+  'totale',
+  'zwischensumme',
+  'summe',
+  'mwst',
+  'ust',
+  'pfand',
+  'leergut',
+  'sous total',
+  'tva',
+  'iva',
 ]);
 
-const GENERIC_LABEL_PATTERN = /^(?:item|food|product|ingredient|unknown|fridge|refrigerator|freezer|tu lanh|tu dong|san pham|nguyen lieu|thuc pham)(?:\s+\d+)?$|^ten (?:san pham|nguyen lieu|thuc pham|cua hang|sieu thi)(?:\s|$)/;
+const GENERIC_LABEL_PATTERN =
+  /^(?:item|food|product|ingredient|unknown|fridge|refrigerator|freezer|tu lanh|tu dong|san pham|nguyen lieu|thuc pham|商品|食材|不明)(?:\s+\d+)?$|^ten (?:san pham|nguyen lieu|thuc pham|cua hang|sieu thi)(?:\s|$)/u;
 
 function normalizeLabel(value: string): string {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[đĐ]/g, 'd')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim();
+  return normalizeMultilingualText(value);
 }
 
 /** Returns true for empty, placeholder, or model-template labels. */
@@ -96,15 +119,22 @@ function receiptDuplicateKey(item: ReceiptScanResult['items'][number]): string {
     normalizeLabel(item.raw_name),
     item.estimated_quantity,
     item.unit,
-    item.unit_price_vnd ?? '',
-    item.total_price_vnd ?? '',
+    item.unit_price_minor ?? item.unit_price_vnd ?? '',
+    item.total_price_minor ?? item.total_price_vnd ?? '',
   ].join('|');
 }
 
-/** Reject only mathematically contradictory prices; package/weight pricing is ambiguous by design. */
+/** Reject only mathematically contradictory prices; package/weight pricing & Japanese 半額 / EU markdowns are preserved. */
 function hasImpossibleReceiptPrice(item: ReceiptScanResult['items'][number]): boolean {
-  const unitPrice = item.unit_price_vnd;
-  const totalPrice = item.total_price_vnd;
+  // Explicit markdowns (e.g. Japanese 半額 50% off bento or EU clearance sticker) legitimately reduce line totals.
+  if (
+    item.discount_amount_minor !== undefined ||
+    /半額|値引|割引|rabatt|remise|descuento|sconto|korting|%\s*off/iu.test(item.raw_name)
+  ) {
+    return false;
+  }
+  const unitPrice = item.unit_price_minor ?? item.unit_price_vnd;
+  const totalPrice = item.total_price_minor ?? item.total_price_vnd;
   if (unitPrice === undefined || totalPrice === undefined || unitPrice <= 0 || totalPrice <= 0) return false;
   if (item.unit !== 'piece' || !Number.isSafeInteger(item.estimated_quantity)) return false;
   const expected = unitPrice * item.estimated_quantity;

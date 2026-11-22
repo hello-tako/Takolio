@@ -336,7 +336,7 @@ describe('customer database is read-only for admin code', () => {
   });
 
   it('a full admin workflow leaves every customer table byte-identical', async () => {
-    const tables = dbs.main.query<{ name: string }>("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name").map((row) => row.name);
+    const tables = dbs.main.query<{ name: string }>("SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE 'recipe_search_fts_%' ORDER BY name").map((row) => row.name);
     const snapshot = () => JSON.stringify(tables.map((name) => dbs.main.query(`SELECT * FROM "${name}" ORDER BY rowid`)));
     const before = snapshot();
     const sup = await login(env, fx('super'));

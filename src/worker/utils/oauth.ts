@@ -4,6 +4,9 @@
 // check, an ID token minted for ANY other Google OAuth client would be accepted
 // (cross-client token substitution).
 
+import type { KVNamespace } from '@cloudflare/workers-types';
+import { GOOGLE_JWKS_URL, GOOGLE_OIDC_ISSUERS, verifyOidcIdToken } from './jwks-oidc';
+
 export interface GoogleUserPayload {
   sub: string;
   email: string;
@@ -14,10 +17,54 @@ export interface GoogleUserPayload {
 
 const GOOGLE_ISSUERS = new Set(['accounts.google.com', 'https://accounts.google.com']);
 
+export async function verifyGoogleTokenViaJwks(
+  idToken: string,
+  expectedAudience: string | undefined,
+  options?: { cacheKv?: KVNamespace; jwksUrl?: string },
+): Promise<{ valid: boolean; user?: GoogleUserPayload; error?: string }> {
+  try {
+    if (!idToken || typeof idToken !== 'string') {
+      return { valid: false, error: 'Missing or invalid Google token' };
+    }
+    if (!expectedAudience) {
+      return { valid: false, error: 'Google OAuth is not configured' };
+    }
+    const claims = await verifyOidcIdToken({
+      token: idToken,
+      expectedIssuer: GOOGLE_OIDC_ISSUERS,
+      expectedAudience,
+      jwksUrl: options?.jwksUrl || GOOGLE_JWKS_URL,
+      cacheKv: options?.cacheKv,
+    });
+    if (!claims.email || !claims.sub) {
+      return { valid: false, error: 'Google token does not contain email or sub claim' };
+    }
+    if (claims.email_verified === 'false' || claims.email_verified === false) {
+      return { valid: false, error: 'Google account email is not verified' };
+    }
+    return {
+      valid: true,
+      user: {
+        sub: claims.sub,
+        email: claims.email.toLowerCase(),
+        name: claims.name || claims.email.split('@')[0],
+        picture: claims.picture,
+        email_verified: true,
+      },
+    };
+  } catch (err: unknown) {
+    return { valid: false, error: err instanceof Error ? err.message : 'Failed to verify Google JWKS token' };
+  }
+}
+
 export async function verifyGoogleToken(
   idToken: string,
   expectedAudience: string | undefined,
+  options?: { useJwks?: boolean; cacheKv?: KVNamespace; jwksUrl?: string },
 ): Promise<{ valid: boolean; user?: GoogleUserPayload; error?: string }> {
+  if (options?.useJwks) {
+    return verifyGoogleTokenViaJwks(idToken, expectedAudience, options);
+  }
   try {
     if (!idToken || typeof idToken !== 'string') {
       return { valid: false, error: 'Missing or invalid Google token' };

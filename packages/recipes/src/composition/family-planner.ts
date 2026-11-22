@@ -1,5 +1,6 @@
 import { compareIds } from '../../../domain/src/availability';
-import type { FamilyPreferences } from '../../../domain/src/family-preferences-api';
+import { evaluateDietaryProfileConflicts } from '../../../domain/src/allergens';
+import type { FamilyPreferences, MealCulture } from '../../../domain/src/family-preferences-api';
 import type { MealRole } from '../../../domain/src/meal-composition-api';
 import { generateRecipeCandidates, type RecipeCandidate } from '../candidates';
 import { derivePlanningContext, planningFingerprint, readPlanningContext, type PlanningContext } from '../planner-context';
@@ -20,8 +21,52 @@ import { normalizeText, type RoleIndex } from './roles';
 import { getSimpleFood, SIMPLE_FOODS } from './simple-foods';
 
 export const FAMILY_SEARCH_LIMITS = Object.freeze({ weekBeam: 3, mealBeam: 4, mains: 4, perRole: 6, evaluations: 4096, poolBuilds: 1536, candidateWork: 32768 });
-export function familyMealRoles(mealType: NormalizedPlannerSlot['mealType'], style: FamilyPreferences['mealStyle']): MealRole[] {
+
+const JP_DOMESTIC_HOME_CUISINES = new Set(['japanese', 'chinese', 'italian', 'french', 'european', 'american']);
+const EU_DOMESTIC_CUISINES = new Set(['italian', 'french', 'german', 'spanish', 'mediterranean', 'european']);
+
+export function isDomesticCuisineForCulture(
+  cuisine: string | undefined,
+  culture: MealCulture | undefined,
+  preferredCuisines: readonly string[],
+): boolean {
+  if (!cuisine) return false;
+  const effective = culture ?? 'vn_family';
+  if (effective === 'vn_family') return cuisine === 'vietnamese';
+  if (effective === 'jp_home') {
+    return cuisine === 'japanese' || (JP_DOMESTIC_HOME_CUISINES.has(cuisine) && preferredCuisines.includes(cuisine));
+  }
+  if (effective === 'eu_plated' || effective === 'eu_continental' || effective === 'eu_mediterranean') {
+    return EU_DOMESTIC_CUISINES.has(cuisine);
+  }
+  if (effective === 'global_balanced') {
+    return preferredCuisines.includes(cuisine);
+  }
+  return cuisine === 'vietnamese';
+}
+
+export function defaultCuisineForCulture(culture: MealCulture | undefined): FamilyPreferences['preferredCuisines'][number] {
+  if (culture === 'jp_home') return 'japanese';
+  if (culture === 'eu_mediterranean') return 'mediterranean';
+  if (culture === 'eu_plated' || culture === 'eu_continental') return 'european';
+  return 'vietnamese';
+}
+
+export function familyMealRoles(
+  mealType: NormalizedPlannerSlot['mealType'],
+  style: FamilyPreferences['mealStyle'],
+  culture?: MealCulture,
+): MealRole[] {
   if (mealType === 'breakfast' || style === 'one_pot') return ['main'];
+  const effective = culture ?? 'vn_family';
+  if (effective === 'eu_continental') {
+    if (mealType === 'dinner') return ['main', 'staple']; // Abendbrot / Broodmaaltijd
+    return style === 'quick' ? ['main', 'vegetable'] : ['main', 'vegetable', 'staple'];
+  }
+  if (effective === 'eu_plated' || effective === 'eu_mediterranean') {
+    return style === 'quick' ? ['main', 'vegetable'] : ['main', 'vegetable', 'staple'];
+  }
+  // vn_family & jp_home (Ichiju-sansai 一汁三菜: main + vegetable/fukusai + soup/shirumono + staple/rice)
   return style === 'quick' ? ['main', 'vegetable', 'staple'] : ['main', 'vegetable', 'soup', 'staple'];
 }
 
@@ -32,8 +77,8 @@ export function isManualOneDishMeal(components: readonly MealComponent[], roles:
     && roles.get(component.recipeId)?.traits.includes('complete_meal'));
 }
 export function familyMealRolesForComponents(mealType: NormalizedPlannerSlot['mealType'], style: FamilyPreferences['mealStyle'],
-  components: readonly MealComponent[], roles: RoleIndex): MealRole[] {
-  return isManualOneDishMeal(components, roles) ? ['main'] : familyMealRoles(mealType, style);
+  components: readonly MealComponent[], roles: RoleIndex, culture?: MealCulture): MealRole[] {
+  return isManualOneDishMeal(components, roles) ? ['main'] : familyMealRoles(mealType, style, culture);
 }
 export interface FamilyPlannedSlot {
   slot: NormalizedPlannerSlot;
@@ -95,11 +140,31 @@ export function planFamilyMeals(input: {
     candidateWork += cost;
     return true;
   };
+  const culture = input.preferences.mealCulture;
+  const dietaryProfiles = input.preferences.dietaryProfile ?? [];
+  const isDomestic = (cuisine: string | undefined) =>
+    isDomesticCuisineForCulture(cuisine, culture, input.preferences.preferredCuisines);
+  const allowBreadSimpleFood = (mealType: NormalizedPlannerSlot['mealType']) => {
+    if (!culture || culture === 'vn_family') return false;
+    if (culture === 'jp_home') return mealType === 'breakfast';
+    return true;
+  };
+  const componentIngredients = (components: readonly MealComponent[]): string[] =>
+    components.flatMap((component) => {
+      if (component.kind === 'recipe' && component.recipeId) {
+        return definitions.get(component.recipeId)?.ingredients.map((line) => line.ingredientId) ?? [];
+      }
+      if (component.kind === 'simple_food' && component.simpleFoodId) {
+        const portion = getSimpleFood(component.simpleFoodId)?.portion;
+        return portion ? [portion.ingredientId] : [];
+      }
+      return [];
+    });
   const internationalAllowed = (dates: readonly string[], date: string) =>
     !familyInternationalCapExceeded([...dates, date], date, input.preferences.internationalMealsPerWeek);
   const preservedInternationalDates = request.slots.flatMap(slot => (input.locked?.get(slot.id) ?? [])
     .filter(component => component.role === 'main' && component.recipeId && runtime.has(component.recipeId)
-      && runtime.get(component.recipeId)?.cuisine !== 'vietnamese').map(() => slot.date));
+      && !isDomestic(runtime.get(component.recipeId)?.cuisine)).map(() => slot.date));
   let frontier: Branch[] = [{ inventory: source.inventory, meals: [], score: 0, international: 0,
     internationalDates: [...(input.generatedInternationalDates ?? []), ...preservedInternationalDates], usedMains: new Set() }];
   const componentMinutes = (component: MealComponent): number | null => {
@@ -118,9 +183,12 @@ export function planFamilyMeals(input: {
     traits: component.recipeId ? input.roles.get(component.recipeId)?.traits ?? [] : [],
     dominantIngredientId: component.recipeId ? input.roles.get(component.recipeId)?.dominantIngredientId ?? null : null,
   }));
+  const isEuropeanCulture = culture === 'eu_plated' || culture === 'eu_continental' || culture === 'eu_mediterranean';
   const covered = (components: readonly MealComponent[], slot: NormalizedPlannerSlot) => {
     const explicit = new Set(components.map((component) => component.role));
-    return slot.mealType === 'breakfast' || input.preferences.mealStyle === 'one_pot' ? coveredRoles(items(components)) : explicit;
+    return slot.mealType === 'breakfast' || input.preferences.mealStyle === 'one_pot' || isEuropeanCulture
+      ? coveredRoles(items(components))
+      : explicit;
   };
   const rankKey = (branch: MealBranch) => branch.components.map(targetKey).join('|');
   const evaluate = (context: PlanningContext, component: MealComponent, inventory: ProjectedInventory, slot: NormalizedPlannerSlot,
@@ -158,9 +226,17 @@ export function planFamilyMeals(input: {
         if (!preserve) return null;
         warning = 'LOCKED_COMPONENT_REQUIRES_REVALIDATION';
       }
-      const definition = simpleFoodDefinition(food);
-      // Untracked simple foods are explicit manual choices, never an automatic way to hide demand.
-      if (!definition) return preserve ? { inventory, ranked, deltas: [], warning: 'UNTRACKED_COMPONENT' } : null;
+      const effectiveFood = food.id === 'sf-bread' && !food.portion && allowBreadSimpleFood(slot.mealType) && scoped.catalog.ingredientIds.includes('BREAD')
+        ? { ...food, portion: { ingredientId: 'BREAD', quantity: 2, unit: 'slice' as const } }
+        : food;
+      const definition = simpleFoodDefinition(effectiveFood);
+      // Untracked simple foods are explicit manual choices, except culturally unlocked bread in shopping_allowed mode.
+      if (!definition) {
+        if (food.id === 'sf-bread' && allowBreadSimpleFood(slot.mealType) && request.mode === 'shopping_allowed') {
+          return { inventory, ranked: null, deltas: [], ...(warning ? { warning } : {}) };
+        }
+        return preserve ? { inventory, ranked, deltas: [], warning: 'UNTRACKED_COMPONENT' } : null;
+      }
       candidate = evaluateDefinition(evaluationScope(context), definition, rows, slot.date, slot.servings);
       if (!candidate || (candidate.coverage.unresolvedRequiredCount && !preserve) || (!preserve && request.mode === 'cook_now' && !candidate.canCookWithoutBuying)) return null;
     }
@@ -190,7 +266,7 @@ export function planFamilyMeals(input: {
     const hardLimits = resolveRankingPreferences(readPlanningContext(scopedContext).rankingContext).hard
       .flatMap((policy) => policy.hardMaxTimeMinutes === undefined ? [] : [policy.hardMaxTimeMinutes]);
     const hardMaxTimeMinutes = hardLimits.length ? Math.min(...hardLimits) : undefined;
-    const wanted = familyMealRolesForComponents(slot.mealType, input.preferences.mealStyle, input.locked?.get(slot.id) ?? [], input.roles);
+    const wanted = familyMealRolesForComponents(slot.mealType, input.preferences.mealStyle, input.locked?.get(slot.id) ?? [], input.roles, culture);
     const nextWeek: Branch[] = [];
     for (const week of frontier) {
       const locked = [...(input.locked?.get(slot.id) ?? [])];
@@ -211,7 +287,8 @@ export function planFamilyMeals(input: {
       }
       const preferredMinutes = slot.preferredTimeMinutes ?? input.preferences.preferredTimeMinutes;
       base.score -= mealEffort(base.components, preferredMinutes);
-      const previousMain = week.meals.at(-1)?.components.find((component) => component.role === 'main' && component.recipeId);
+      const previousMeal = week.meals.at(-1);
+      const previousMain = previousMeal?.components.find((component) => component.role === 'main' && component.recipeId);
       const previousProtein = previousMain?.recipeId ? input.roles.get(previousMain.recipeId)?.dominantIngredientId : null;
       const companionCounts = new Map<string, number>();
       for (const component of week.meals.flatMap(meal => meal.components)) {
@@ -220,23 +297,35 @@ export function planFamilyMeals(input: {
       }
       const candidateUtility = (candidate: ComposerCandidate, role: MealRole) => {
         const recipe = candidate.kind === 'recipe' ? runtime.get(candidate.id) : undefined;
-        const regional = recipe?.region && input.preferences.preferredRegions.includes(recipe.region as 'bac' | 'trung' | 'nam') ? 0.04 : 0;
-        const repeated = role === 'main' && week.usedMains.has(candidate.id) ? 0.2 : 0;
-        const adjacent = role === 'main' && previousMain?.recipeId === candidate.id ? 0.8 : 0;
-        const protein = role === 'main' && previousProtein && candidate.dominantIngredientId === previousProtein ? 0.08 : 0;
-        const method = role === 'main' && recipe?.category && previousMain?.recipeId
+        const regional = recipe?.region && (input.preferences.preferredRegions as readonly string[]).includes(recipe.region) ? 0.04 : 0;
+        const isBentoCarryOver = Boolean(
+          culture === 'jp_home' &&
+          input.preferences.bentoFromDinner &&
+          slot.mealType === 'lunch' &&
+          role === 'main' &&
+          previousMeal?.slot.mealType === 'dinner' &&
+          previousMain?.recipeId === candidate.id &&
+          !input.roles.get(candidate.id)?.traits.includes('brothy'),
+        );
+        const repeated = !isBentoCarryOver && role === 'main' && week.usedMains.has(candidate.id) ? 0.2 : 0;
+        const adjacent = !isBentoCarryOver && role === 'main' && previousMain?.recipeId === candidate.id ? 0.8 : 0;
+        const bentoBonus = isBentoCarryOver ? 0.35 : 0;
+        const protein = !isBentoCarryOver && role === 'main' && previousProtein && candidate.dominantIngredientId === previousProtein ? 0.08 : 0;
+        const method = !isBentoCarryOver && role === 'main' && recipe?.category && previousMain?.recipeId
           && runtime.get(previousMain.recipeId)?.category === recipe.category ? 0.03 : 0;
         const companionRepeat = role !== 'staple' && role !== 'main' && week.meals.at(-1)?.components.some((component) => targetKey(component) === candidate.key) ? 0.08 : 0;
         const companionWeekRepeat = role !== 'staple' && role !== 'main'
           ? 0.15 * (companionCounts.get(candidate.key) ?? 0) : 0;
         const canh = role === 'soup' && input.preferences.mealStyle === 'family'
-          && recipe?.cuisine === 'vietnamese' && /^canh\b/.test(normalizeText(recipe.title)) ? 0.08 : 0;
+          && ((!culture || culture === 'vn_family') && recipe?.cuisine === 'vietnamese' && /^canh\b/.test(normalizeText(recipe.title))
+            || (culture === 'jp_home' && recipe?.cuisine === 'japanese' && /(?:miso|みそ汁|味噌汁|豚汁|けんちん汁|すまし汁|お吸い物)/iu.test(recipe.title))) ? 0.08 : 0;
+        const abendbrotBreadBonus = role === 'staple' && culture === 'eu_continental' && candidate.id === 'sf-bread' ? 0.25 : 0;
         const definition = definitions.get(candidate.id);
         const minutes = candidate.kind === 'simple_food' ? getSimpleFood(candidate.id)?.prepMinutes ?? null
           : definition?.prepTimeMinutes === undefined ? null : definition.prepTimeMinutes + definition.cookTimeMinutes;
         const effort = minutes === null ? 0.2 : 0.1 * Math.min(minutes / preferredMinutes, 6)
           + 0.6 * Math.min(Math.max(minutes - preferredMinutes, 0) / preferredMinutes, 3);
-        return candidate.preference + (candidate.coverage ?? 0) * 0.15 + regional + canh
+        return candidate.preference + (candidate.coverage ?? 0) * 0.15 + regional + canh + bentoBonus + abendbrotBreadBonus
           - repeated - adjacent - protein - method - companionRepeat - companionWeekRepeat - effort;
       };
       let meals: MealBranch[] = [base];
@@ -258,13 +347,19 @@ export function planFamilyMeals(input: {
             const profile = input.roles.get(definition.id);
             if (!recipe || !profile?.roles.includes(role)
               || (recipe.category === 'mon_lau_tiec' && input.preferences.mealStyle !== 'one_pot')) return false;
-            if (role !== 'main' && recipe.cuisine !== 'vietnamese'
-              && (!mainCuisine || mainCuisine === 'vietnamese' || recipe.cuisine !== mainCuisine
+            if (dietaryProfiles.length > 0 && evaluateDietaryProfileConflicts(
+              definition.ingredients.map((line) => line.ingredientId),
+              dietaryProfiles,
+            ).length > 0) return false;
+            if (role !== 'main' && !isDomestic(recipe.cuisine)
+              && (!mainCuisine || isDomestic(mainCuisine) || recipe.cuisine !== mainCuisine
                 || !input.preferences.preferredCuisines.includes(recipe.cuisine))) return false;
             if (role === 'main') {
-              if (recipe.cuisine !== 'vietnamese' && (!allowInternational || !input.preferences.preferredCuisines.includes(recipe.cuisine))) return false;
-              if (slot.mealType === 'breakfast' && !profile.traits.includes('complete_meal') && recipe.category !== 'mon_nhanh_sang') return false;
-              if (slot.mealType !== 'breakfast' && input.preferences.mealStyle === 'family' && profile.traits.includes('complete_meal')) return false;
+              if (!isDomestic(recipe.cuisine) && (!allowInternational || !input.preferences.preferredCuisines.includes(recipe.cuisine))) return false;
+              if (slot.mealType === 'breakfast' && !profile.traits.includes('complete_meal') && recipe.category !== 'mon_nhanh_sang'
+                && (!culture || culture === 'vn_family')) return false;
+              if (slot.mealType !== 'breakfast' && input.preferences.mealStyle === 'family' && profile.traits.includes('complete_meal')
+                && !isEuropeanCulture) return false;
               if (input.preferences.mealStyle === 'one_pot' && !profile.traits.includes('complete_meal')) return false;
             }
             return true;
@@ -283,7 +378,7 @@ export function planFamilyMeals(input: {
             pools.set(poolKey, pool);
           }
           const candidates = pool.filter((candidate) => candidate.roles.includes(role)
-            && !excludeKeys.has(candidate.key) && (candidate.kind !== 'simple_food' || candidate.id !== 'sf-bread'))
+            && !excludeKeys.has(candidate.key) && (candidate.kind !== 'simple_food' || candidate.id !== 'sf-bread' || allowBreadSimpleFood(slot.mealType)))
             .sort((a, b) => candidateUtility(b, role) - candidateUtility(a, role) || compareIds(a.key, b.key))
             .slice(0, role === 'main' ? FAMILY_SEARCH_LIMITS.mains : FAMILY_SEARCH_LIMITS.perRole);
           let added = false;
@@ -293,6 +388,7 @@ export function planFamilyMeals(input: {
               role, ordinal: meal.components.length, locked: false, provenance: 'auto', createdRevision: input.revision, updatedRevision: input.revision };
             const components = [...meal.components, component];
             if (hasHardIssue(compatibilityIssues(items(components)))) continue;
+            if (dietaryProfiles.length > 0 && evaluateDietaryProfileConflicts(componentIngredients(components), dietaryProfiles).length > 0) continue;
             const evaluated = evaluate(scopedContext, component, meal.inventory, slot, false);
             if (!evaluated) continue;
             const allMinutes = components.map(componentMinutes);
@@ -302,7 +398,7 @@ export function planFamilyMeals(input: {
               - mealEffort(components, preferredMinutes) + mealEffort(meal.components, preferredMinutes);
             nextMeals.push({ ...meal, inventory: evaluated.inventory, components, score: meal.score + score,
               anchor: role === 'main' ? evaluated.ranked : meal.anchor, anchorDeltas: role === 'main' ? evaluated.deltas : meal.anchorDeltas,
-              international: meal.international + (role === 'main' && candidate.kind === 'recipe' && runtime.get(candidate.id)?.cuisine !== 'vietnamese' ? 1 : 0) });
+              international: meal.international + (role === 'main' && candidate.kind === 'recipe' && !isDomestic(runtime.get(candidate.id)?.cuisine) ? 1 : 0) });
             added = true;
           }
           if (!added) nextMeals.push(meal);
@@ -319,7 +415,7 @@ export function planFamilyMeals(input: {
           : minutes.reduce((sum: number, value) => sum + (value ?? 0), 0) > preferredMinutes ? ['MEAL_TIME_ABOVE_PREFERENCE'] : [];
         const internationalDates = [...week.internationalDates, ...Array.from({ length: meal.international }, () => slot.date)];
         const capWarnings = components.some(component => component.role === 'main' && component.recipeId
-          && runtime.has(component.recipeId) && runtime.get(component.recipeId)?.cuisine !== 'vietnamese')
+          && runtime.has(component.recipeId) && !isDomestic(runtime.get(component.recipeId)?.cuisine))
           && familyInternationalCapExceeded(internationalDates, slot.date, input.preferences.internationalMealsPerWeek)
           ? ['PRESERVED_INTERNATIONAL_CAP_EXCEEDED'] : [];
         nextWeek.push({ inventory: meal.inventory, score: week.score + meal.score, international: week.international + meal.international,
@@ -338,6 +434,6 @@ export function planFamilyMeals(input: {
   const best = alternatives[0];
   return { request, reference: source.reference, meals: best.meals, finalInventory: projectInventoryRows(best.inventory),
     internationalGeneratedMainCount: best.international, lockedInternationalMainCount: best.meals.flatMap((meal) => meal.components)
-      .filter((component) => component.locked && component.role === 'main' && component.recipeId && runtime.has(component.recipeId) && runtime.get(component.recipeId)?.cuisine !== 'vietnamese').length,
+      .filter((component) => component.locked && component.role === 'main' && component.recipeId && runtime.has(component.recipeId) && !isDomestic(runtime.get(component.recipeId)?.cuisine)).length,
     evaluations, searchLimited, poolBuilds, candidateEvaluations, candidateWork, alternativeMeals: alternatives.map((entry) => entry.meals) };
 }

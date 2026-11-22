@@ -164,10 +164,34 @@ function FamilyPlannerSetup({
       navigate(destination, { replace: true });
     }
   }
-  const regionLabels =
+  const regionLabels: Record<string, string> =
     locale === 'vi'
-      ? { bac: 'Miền Bắc', trung: 'Miền Trung', nam: 'Miền Nam' }
-      : { bac: 'North', trung: 'Central', nam: 'South' };
+      ? {
+          bac: 'Miền Bắc',
+          trung: 'Miền Trung',
+          nam: 'Miền Nam',
+          jp_kanto: 'Kanto (Nhật)',
+          jp_kansai: 'Kansai (Nhật)',
+          jp_kyushu: 'Kyushu (Nhật)',
+          jp_hokkaido: 'Hokkaido (Nhật)',
+          eu_north: 'Bắc Âu',
+          eu_central: 'Trung Âu',
+          eu_south: 'Nam Âu',
+          eu_west: 'Tây Âu',
+        }
+      : {
+          bac: 'North VN',
+          trung: 'Central VN',
+          nam: 'South VN',
+          jp_kanto: 'Kanto (JP)',
+          jp_kansai: 'Kansai (JP)',
+          jp_kyushu: 'Kyushu (JP)',
+          jp_hokkaido: 'Hokkaido (JP)',
+          eu_north: 'Northern Europe',
+          eu_central: 'Central Europe',
+          eu_south: 'Southern Europe',
+          eu_west: 'Western Europe',
+        };
   const allergenLabels: Record<string, string> =
     locale === 'vi'
       ? {

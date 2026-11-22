@@ -5,12 +5,19 @@ export interface ScanSubscription {
   status: string | null;
   expires_at: string | null;
   is_guest?: number | boolean | null;
+  grace_period_ends_at?: string | null;
 }
 
 export function getScanQuotaEntitlement(subscription: ScanSubscription | null, now = new Date()) {
-  const isPlus = subscription?.plan === 'plus'
-    && (!subscription.status || subscription.status === 'active')
-    && (!subscription.expires_at || new Date(subscription.expires_at).getTime() > now.getTime());
+  const nowMs = now.getTime();
+  const inGracePeriod =
+    subscription?.status === 'past_due' &&
+    Boolean(subscription.grace_period_ends_at) &&
+    new Date(subscription.grace_period_ends_at!).getTime() > nowMs;
+  const statusActive = !subscription?.status || subscription.status === 'active' || inGracePeriod;
+  const notExpired =
+    inGracePeriod || !subscription?.expires_at || new Date(subscription.expires_at).getTime() > nowMs;
+  const isPlus = subscription?.plan === 'plus' && statusActive && notExpired;
   const isGuestTrial = !isPlus && (
     (subscription?.plan === 'guest' && (!subscription.status || subscription.status === 'active')) ||
     (!subscription?.plan && Boolean(subscription?.is_guest))

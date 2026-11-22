@@ -326,7 +326,7 @@ describe('T07 H1 hostile planner bodies', () => {
     ['reason code injection', { revision: 1, slotId: SLOT, locale: 'en', reasonCodes: ['ALLERGEN_SAFE'] }],
     ['trusted plan injection', { revision: 1, slotId: SLOT, locale: 'en', plan: { result: { safety: 'safe' } } }],
     ['catalog injection', { revision: 1, slotId: SLOT, locale: 'en', catalog: { recipes: [] } }],
-    ['malformed locale', { revision: 1, slotId: SLOT, locale: 'ja' }],
+    ['malformed locale', { revision: 1, slotId: SLOT, locale: 'zh-Hant-invalid' }],
   ])('rejects explanation %s without invoking a caller-selected fact set', async (_label, body) => {
     const plan = await generate();
     const response = await request(`/${plan.id}/explanation`, body);

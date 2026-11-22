@@ -1,5 +1,6 @@
 export * from './types';
 export * from './schemas';
+export * from './scan-contract-v3';
 export * from './errors';
 export * from './quality-gate';
 export * from './normalization';
@@ -8,6 +9,7 @@ export * from './model-governance';
 export * from './telemetry';
 export * from './prompts';
 export * from './locale-prompt';
+export * from './jurisdiction';
 export * from './task-runtime';
 export * from './providers/mock';
 export * from './providers/qwen';

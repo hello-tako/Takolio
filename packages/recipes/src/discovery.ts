@@ -1,3 +1,4 @@
+import { normalizeMultilingualText } from '../../domain/src/i18n';
 import { rankRecipes } from './engine';
 import { scaleRecipeServings } from './servings';
 import type { Recipe, RecipeMatchResult, RecipeScoringContext } from './types';
@@ -14,30 +15,41 @@ export class DiscoveryCursorError extends Error {
     super(code);
   }
 }
-export const normalizeDiscoverySearch = (value: string) =>
-  value.toLocaleLowerCase('vi-VN').normalize('NFD').replace(/\p{M}/gu, '').replace(/đ/g, 'd');
+export const normalizeDiscoverySearch = (value: string): string => normalizeMultilingualText(value);
+
+function matchesDiscoveryField(fieldText: string, normalizedNeedle: string): boolean {
+  if (normalizeDiscoverySearch(fieldText).includes(normalizedNeedle)) return true;
+  // Support German/Nordic ASCII digraph queries (`kaese` matching `Käse`, `moehren` matching `Möhren`)
+  if (/[äöüÄÖÜ]/.test(fieldText)) {
+    const digraph = normalizeMultilingualText(
+      fieldText.replace(/ä/gi, 'ae').replace(/ö/gi, 'oe').replace(/ü/gi, 'ue'),
+    );
+    if (digraph.includes(normalizedNeedle)) return true;
+  }
+  return false;
+}
 
 export function rankDiscovery(
   recipes: Recipe[],
   inventory: RecipeScoringContext['inventory'],
   query: DiscoveryQuery,
 ): RecipeMatchResult[] {
-  const search = normalizeDiscoverySearch(query.q.trim());
+  const rawSearch = query.q.trim();
+  const search = normalizeDiscoverySearch(rawSearch);
   const candidates = recipes.filter((recipe) => {
     if (query.cuisine && recipe.cuisine !== query.cuisine) return false;
     if (query.category && recipe.category !== query.category) return false;
     if (query.region && recipe.region !== query.region && recipe.region !== 'toan_quoc')
       return false;
     if (query.maxTime && recipe.cookTimeMinutes > query.maxTime) return false;
-    return (
-      !search ||
-      [
-        recipe.title,
-        recipe.description,
-        ...recipe.tags,
-        ...recipe.ingredients.map((line) => line.name),
-      ].some((text) => normalizeDiscoverySearch(text).includes(search))
-    );
+    if (!rawSearch) return true;
+    if (!search) return false;
+    return [
+      recipe.title,
+      recipe.description,
+      ...recipe.tags,
+      ...recipe.ingredients.map((line) => line.name),
+    ].some((text) => matchesDiscoveryField(text, search));
   });
   const portioned = query.servings ? candidates.map(recipe => scaleRecipeServings(recipe, query.servings!)) : candidates;
   return rankRecipes(portioned, {

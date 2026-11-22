@@ -1,4 +1,6 @@
 import { StandardUnit } from '../index';
+import { convertCulinaryQuantity } from '../culinary-units';
+import { CURRENCY_MINOR_DIGITS, type GlobalCurrency } from '../i18n';
 
 export interface IngredientPriceRecord {
   ingredientId: string;
@@ -377,11 +379,17 @@ export class ManualAveragePriceProvider implements PriceProvider {
 
     let multiplier = quantity;
 
-    // Handle unit conversions
-    if (price.baseUnit === 'g' && unit === 'kg') multiplier = quantity * 1000;
-    if (price.baseUnit === 'kg' && unit === 'g') multiplier = quantity / 1000;
-    if (price.baseUnit === 'ml' && unit === 'l') multiplier = quantity * 1000;
-    if (price.baseUnit === 'l' && unit === 'ml') multiplier = quantity / 1000;
+    // Handle physical AND standard retail package/piece conversions
+    // (fixes e.g. 180g SPAGHETTI_PASTA against a 500g 'pack' baseUnit -> 0.36 pack instead of 180x!)
+    const converted = convertCulinaryQuantity(quantity, unit, price.baseUnit, price.ingredientId);
+    if (converted !== null) {
+      multiplier = converted;
+    } else {
+      if (price.baseUnit === 'g' && unit === 'kg') multiplier = quantity * 1000;
+      if (price.baseUnit === 'kg' && unit === 'g') multiplier = quantity / 1000;
+      if (price.baseUnit === 'ml' && unit === 'l') multiplier = quantity * 1000;
+      if (price.baseUnit === 'l' && unit === 'ml') multiplier = quantity / 1000;
+    }
 
     const min = Math.round(price.pricePerUnitMin * multiplier);
     const max = Math.round(price.pricePerUnitMax * multiplier);
@@ -395,3 +403,90 @@ export class ManualAveragePriceProvider implements PriceProvider {
 }
 
 export const defaultPriceProvider = new ManualAveragePriceProvider();
+
+export interface GlobalIngredientPriceRecord {
+  ingredientId: string;
+  currency: 'JPY' | 'EUR' | 'VND';
+  pricePerUnitMinMinor: number;
+  pricePerUnitMaxMinor: number;
+  baseUnit: StandardUnit;
+}
+
+/** Japan retail supermarket baseline prices (AEON / Ito-Yokado / Life, in JPY minor units). */
+export const JAPAN_AVERAGE_PRICES: Readonly<Record<string, GlobalIngredientPriceRecord>> = Object.freeze({
+  PORK_BELLY: { ingredientId: 'PORK_BELLY', currency: 'JPY', pricePerUnitMinMinor: 2.2, pricePerUnitMaxMinor: 3.0, baseUnit: 'g' },
+  CHICKEN_BREAST: { ingredientId: 'CHICKEN_BREAST', currency: 'JPY', pricePerUnitMinMinor: 0.9, pricePerUnitMaxMinor: 1.4, baseUnit: 'g' },
+  CHICKEN_THIGH: { ingredientId: 'CHICKEN_THIGH', currency: 'JPY', pricePerUnitMinMinor: 1.3, pricePerUnitMaxMinor: 1.8, baseUnit: 'g' },
+  BEEF_SIRLOIN: { ingredientId: 'BEEF_SIRLOIN', currency: 'JPY', pricePerUnitMinMinor: 4.5, pricePerUnitMaxMinor: 7.5, baseUnit: 'g' },
+  SALMON_FILLET: { ingredientId: 'SALMON_FILLET', currency: 'JPY', pricePerUnitMinMinor: 2.8, pricePerUnitMaxMinor: 4.2, baseUnit: 'g' },
+  MACKEREL: { ingredientId: 'MACKEREL', currency: 'JPY', pricePerUnitMinMinor: 1.8, pricePerUnitMaxMinor: 2.8, baseUnit: 'g' },
+  SHRIMP: { ingredientId: 'SHRIMP', currency: 'JPY', pricePerUnitMinMinor: 2.5, pricePerUnitMaxMinor: 3.8, baseUnit: 'g' },
+  CHICKEN_EGG: { ingredientId: 'CHICKEN_EGG', currency: 'JPY', pricePerUnitMinMinor: 25, pricePerUnitMaxMinor: 35, baseUnit: 'piece' },
+  TOFU: { ingredientId: 'TOFU', currency: 'JPY', pricePerUnitMinMinor: 88, pricePerUnitMaxMinor: 148, baseUnit: 'pack' },
+  NATTO: { ingredientId: 'NATTO', currency: 'JPY', pricePerUnitMinMinor: 35, pricePerUnitMaxMinor: 55, baseUnit: 'pack' },
+  BEAN_SPROUTS: { ingredientId: 'BEAN_SPROUTS', currency: 'JPY', pricePerUnitMinMinor: 35, pricePerUnitMaxMinor: 58, baseUnit: 'pack' },
+  RICE: { ingredientId: 'RICE', currency: 'JPY', pricePerUnitMinMinor: 0.55, pricePerUnitMaxMinor: 0.85, baseUnit: 'g' },
+  MISO: { ingredientId: 'MISO', currency: 'JPY', pricePerUnitMinMinor: 0.4, pricePerUnitMaxMinor: 0.7, baseUnit: 'g' },
+  SPAGHETTI_PASTA: { ingredientId: 'SPAGHETTI_PASTA', currency: 'JPY', pricePerUnitMinMinor: 198, pricePerUnitMaxMinor: 298, baseUnit: 'pack' },
+});
+
+/** European retail supermarket baseline prices (REWE / Carrefour / Mercadona, in EUR cents). */
+export const EUROPE_AVERAGE_PRICES: Readonly<Record<string, GlobalIngredientPriceRecord>> = Object.freeze({
+  CHICKEN_BREAST: { ingredientId: 'CHICKEN_BREAST', currency: 'EUR', pricePerUnitMinMinor: 0.95, pricePerUnitMaxMinor: 1.45, baseUnit: 'g' },
+  GROUND_BEEF: { ingredientId: 'GROUND_BEEF', currency: 'EUR', pricePerUnitMinMinor: 1.1, pricePerUnitMaxMinor: 1.6, baseUnit: 'g' },
+  BEEF_SIRLOIN: { ingredientId: 'BEEF_SIRLOIN', currency: 'EUR', pricePerUnitMinMinor: 2.4, pricePerUnitMaxMinor: 3.5, baseUnit: 'g' },
+  SALMON_FILLET: { ingredientId: 'SALMON_FILLET', currency: 'EUR', pricePerUnitMinMinor: 2.2, pricePerUnitMaxMinor: 3.2, baseUnit: 'g' },
+  CHICKEN_EGG: { ingredientId: 'CHICKEN_EGG', currency: 'EUR', pricePerUnitMinMinor: 25, pricePerUnitMaxMinor: 42, baseUnit: 'piece' },
+  FRESH_MILK: { ingredientId: 'FRESH_MILK', currency: 'EUR', pricePerUnitMinMinor: 0.11, pricePerUnitMaxMinor: 0.16, baseUnit: 'ml' },
+  BUTTER: { ingredientId: 'BUTTER', currency: 'EUR', pricePerUnitMinMinor: 0.9, pricePerUnitMaxMinor: 1.3, baseUnit: 'g' },
+  CHEDDAR_CHEESE: { ingredientId: 'CHEDDAR_CHEESE', currency: 'EUR', pricePerUnitMinMinor: 22, pricePerUnitMaxMinor: 38, baseUnit: 'slice' },
+  SPAGHETTI_PASTA: { ingredientId: 'SPAGHETTI_PASTA', currency: 'EUR', pricePerUnitMinMinor: 99, pricePerUnitMaxMinor: 199, baseUnit: 'pack' },
+  BREAD: { ingredientId: 'BREAD', currency: 'EUR', pricePerUnitMinMinor: 15, pricePerUnitMaxMinor: 28, baseUnit: 'slice' },
+  POTATO: { ingredientId: 'POTATO', currency: 'EUR', pricePerUnitMinMinor: 0.15, pricePerUnitMaxMinor: 0.25, baseUnit: 'g' },
+  TOMATO: { ingredientId: 'TOMATO', currency: 'EUR', pricePerUnitMinMinor: 30, pricePerUnitMaxMinor: 55, baseUnit: 'piece' },
+});
+
+export function estimateGlobalIngredientCost(
+  ingredientId: string,
+  quantity: number,
+  unit: StandardUnit,
+  currency: GlobalCurrency = 'VND',
+): {
+  currency: GlobalCurrency;
+  minAmountMinor: number;
+  maxAmountMinor: number;
+  minorDigits: 0 | 2;
+  isEstimated: boolean;
+} {
+  const minorDigits = CURRENCY_MINOR_DIGITS[currency];
+  if (quantity <= 0) {
+    return { currency, minAmountMinor: 0, maxAmountMinor: 0, minorDigits, isEstimated: false };
+  }
+  if (currency === 'VND') {
+    const vnd = defaultPriceProvider.estimateCost(ingredientId, quantity, unit);
+    return {
+      currency: 'VND',
+      minAmountMinor: vnd.minVnd,
+      maxAmountMinor: vnd.maxVnd,
+      minorDigits: 0,
+      isEstimated: vnd.isEstimated,
+    };
+  }
+  const cleanId = ingredientId.trim().toUpperCase();
+  const table = currency === 'JPY' ? JAPAN_AVERAGE_PRICES : EUROPE_AVERAGE_PRICES;
+  const record = table[cleanId];
+  if (!record) {
+    const fallbackMin = currency === 'JPY' ? 150 : 150;
+    const fallbackMax = currency === 'JPY' ? 300 : 300;
+    return { currency, minAmountMinor: fallbackMin, maxAmountMinor: fallbackMax, minorDigits, isEstimated: true };
+  }
+  const multiplier = convertCulinaryQuantity(quantity, unit, record.baseUnit, cleanId) ?? quantity;
+  const floorMinor = currency === 'JPY' ? 10 : 10;
+  return {
+    currency,
+    minAmountMinor: Math.max(floorMinor, Math.round(record.pricePerUnitMinMinor * multiplier)),
+    maxAmountMinor: Math.max(floorMinor * 2, Math.round(record.pricePerUnitMaxMinor * multiplier)),
+    minorDigits,
+    isEstimated: false,
+  };
+}

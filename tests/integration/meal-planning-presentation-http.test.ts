@@ -319,7 +319,8 @@ describe('on-demand explanations and HTTP guard inheritance', () => {
     const plan = await generate();
     const payload = { revision: 1, slotId: SLOT, locale: 'vi' };
     expect((await request(`/${plan.id}/explanation`, payload, { realWorker: true, headers: { Origin: 'https://attacker.example' } })).status).toBe(403);
-    for (const body of [{ ...payload, reasonCodes: ['ALLERGEN_SAFE'] }, { ...payload, locale: 'ja' },
+    expect((await request(`/${plan.id}/explanation`, { ...payload, locale: 'ja' })).status).toBe(200);
+    for (const body of [{ ...payload, reasonCodes: ['ALLERGEN_SAFE'] }, { ...payload, locale: 'zh' },
       { ...payload, revision: '1' }, { ...payload, slotId: `${DATE}:lunch:0` }]) {
       expect((await request(`/${plan.id}/explanation`, body)).status).toBe(422);
     }
