@@ -4100,3 +4100,15 @@ Regression rehearses apply from0045 and certification at0047, with missing,
 reordered, extra and partial-ledger rejection. Rollback retains additive schema,
 archives, saved pins and receipts, using the same-source flags-OFF recovery; never
 restore old user data automatically. This does not authorize V3 publication.
+
+## ADR-084 - Additive Takolio Culinary Standard V4 for the 500-recipe catalog
+
+Status: accepted local standardization deliverable on isolated branch `feat/recipe-catalog-500-standardization`; NO remote push, D1 migration, or production deployment yet.
+
+Existing V1 recipes, V2 research artifacts, and V3 draft sidecars suffered from coarse/incomplete ingredient lists, unlinked provisional `ING_ENR_*` identifiers, missing or hand-estimated nutrition profiles, citation leakage in prose, and overly brief steps insufficient for reliable end-to-end home cooking or operational pantry/fridge deduction and shopping-list generation. At the same time, live production continuity fences (`catalog-release.current.json`, V2/V3 manifests, 45-entry `CANONICAL_INGREDIENTS`, 31-entry `GLOBAL_EXTENDED_INGREDIENTS`, live `migrations/0001..0051`, and the 341-file Red-Zone SHA-256 lock in `docs/handoff/vnext/PROTECTED_FILE_HASHES.json`) prohibit mutating frozen baseline files directly.
+
+Add **Takolio Culinary Standard V4** strictly as an additive, non-breaking layer:
+1. Introduce `packages/domain/src/culinary-ingredients-v4.ts` expanding the operational dictionary to `249` canonical IDs (`45` V1 + `31` Global + `173` curated V4 culinary ingredients) with USDA/MEXT/NIN nutrition per 100g, edible-yield ratios, liquid densities, piece/bunch/slice/pack weights, and statutory allergens, imported directly via subpath without modifying `packages/domain/src/index.ts`.
+2. Build `packages/recipes/src/standard-v4/` (`schema.ts`, `nutrition-engine.ts`, `compiler.ts`, `authority.ts`, `index.ts`) and `scripts/{prepare-v4-shards.mjs,recipe-standard-v4.mjs}` enforcing Zod V4 validation, zero citation/placeholder URLs in prose, deterministic edible-yield per-serving nutrition and allergen derivation, cooking-step ingredient cross-checks, and plausible calorie/macro/sodium bounds across all 500 catalog dishes (`data/recipe-standard/v4/recipes/*.json`, `compiled-runtime-500.json`, `manifest.json`).
+3. Stage proposed SQL promotion under `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql` (outside `migrations/`) and provide opt-in runtime wrapper `src/worker/services/recipe-authority-v4.ts` (`resolveRecipeAuthorityV4` gated by `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'`) so default Worker `resolveRecipeAuthority` and all 341 Red-Zone files remain byte-for-byte untouched.
+4. Keep V1 `rel-bd00a4f53fcaeee4`, V2 `da87da20...`, V3 audits, and `0001..0051` smoke checks completely green alongside local V4 + D1 replay tests; rollback of opt-in staging usage is setting `RECIPE_CATALOG_V4_STANDARD_ENABLED=false`.

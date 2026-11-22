@@ -1,3 +1,25 @@
+## Takolio Culinary Standard V4 — All 500 Recipes Deep-Researched, Standardized & Verified - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_COMPLETE_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commit `b5f92250a2fb4b6bc1cd01ee5e94e588fc66f260`); NOT pushed, NO remote D1 migration, NO Staging/Production deployment.
+
+Completed additive **Takolio Culinary Standard V4 (ADR-084)** across all **500 catalog recipes** (202 VN, 73 CN, 57 JP, 57 KR, 56 TH, 55 IT) while keeping V1 (`catalog-release.current.json`), V2 (`da87da20...`), V3 audits, live `migrations/0001..0051`, PayOS/billing/auth, and all 341 Red-Zone files (`docs/handoff/vnext/PROTECTED_FILE_HASHES.json`) untouched:
+1. **Operational Canonical Ingredients (`packages/domain/src/culinary-ingredients-v4.ts`)**: `249` canonical IDs (`45` V1 + `31` Global + `173` curated V4 culinary IDs) with USDA/MEXT/NIN nutrition per 100g, edible retention ratios, densities, unit gram weights, and allergens (`0` V4 alias collisions).
+2. **Standard V4 Schema, Nutrition Engine, Compiler & Opt-in Authority**: `packages/recipes/src/standard-v4/{schema.ts,nutrition-engine.ts,compiler.ts,authority.ts,index.ts}`, `src/worker/services/recipe-authority-v4.ts` (`resolveRecipeAuthorityV4` gated behind `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'`), `scripts/{prepare-v4-shards.mjs,recipe-standard-v4.mjs}`, and proposed promotion SQL `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql`.
+3. **Parallel Multi-Agent Research & Pro QA Audit**: `26` parallel `culinary-specialist` (`flash`) shard workers authored all 500 detailed recipes (`data/recipe-standard/v4/recipes/*.json`), followed by `6` independent `culinary-specialist` (`pro`) cuisine QA auditors reviewing all 500 dishes and refining `106` recipes for ingredient completeness, step usability, yield accuracy, and nutrition realism.
+4. **Manifest Metrics (`data/recipe-standard/v4/manifest.json`)**: `500/500` compiled & nutrition-certified recipes, `runtimeFingerprint=b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21`, `compiledRuntimeSha256=6aa1d42c8c8406c360cf2b1f71871fb7b4bc6bd405255fd29e5c76abb400d0b7`, `proposedMigrationSha256=b4ca3bc3aa1849ebbffe272952b0afe40d2b26cc37748cbdc40b143911518dcb`, `avgIngredientsPerRecipe=13.4`, `avgStepsPerRecipe=6`, `calRange=84..938`, `runtimeExcludedIngredientCount=0`, `provisionalIngEnrCount=0`.
+
+Executed with `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`:
+- `pnpm typecheck && pnpm lint`: PASS exit 0.
+- `pnpm recipe:standard-v4:check`: PASS exit 0 (`recipes=500 fingerprint=b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21 avgIngs=13.4 avgSteps=6 calRange=84..938`).
+- Continuity gates (`pnpm recipe:seed:check`, `pnpm recipe:import:check`, `pnpm recipe:refresh:check`, `pnpm recipe:ingredient-v2:audit`, `node scripts/recipe-intelligence-v3-audit.mjs --check`): ALL PASS exit 0.
+- Focused Vitest run (`9` files / `246` tests): PASS (`vnext-g02-foundation.test.tsx` `10/10` Red-Zone hash verification, `culinary-standard-v4.test.ts` `3/3`, `culinary-standard-v4-d1-replay.test.ts` `2/2`, `d1-migration-check.test.mjs` `170/170`, `recipe-authority.test.ts` `17/17`, `recipe-catalog-authority.test.ts` `6/6`, `global-web-i18n-voice-zero-leakage.test.tsx` `4/4`, `canonical-ocr-normalization.test.ts` `9/9`, `domain-foundation.test.ts` `25/25`).
+- Earlier full Vitest run (prior to Red-Zone revert): `425/427` files (`9403/9407` tests) passed; `vnext-g02-foundation.test.tsx` now fixed (`10/10`), while `t21rc4-cloudflare-identity-diagnostic.test.mjs` (`3/4`) and `pnpm admin:migration:matrix` (`0/1`) fail pre-existing in this `--filter=blob:none` partial clone due to un-fetched historical git blobs (no `t21rc4` files touched).
+- `pnpm check:migrations` (`migration-smoke=ok`, `admin-migration-smoke=ok`), `pnpm build` (Web + Admin + Worker), and `git diff --check`: PASS exit 0.
+
+Next: Human culinary & product inspection of V4 artifacts and explicit Product Owner authorization before promoting `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql` or wiring `resolveRecipeAuthorityV4` into production routing.
+
+---
+
 ## Global Expansion Backend + Dodo Payments MoR, Tier-1 Web i18n, Multilingual Voice Chef & Catalog Localization Compiler — Complete - 2026-11-22 JST
 
 Status: ALL_4_PHASES_AND_PRODUCTION_BLUEPRINT_DONE_ON_BRANCH `feat/takolio-global-expansion` (base `origin/main` `08d0e6caaf887b4a5226e7aa4a5535c8bfb896d7`); NOT pushed, NO remote D1 migration, NO Staging/Production deployment (per Owner rule).

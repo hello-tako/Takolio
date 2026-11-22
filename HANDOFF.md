@@ -1,3 +1,23 @@
+## Takolio Culinary Standard V4 (500-Recipe Deep Research & Standardization) - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_COMPLETE_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commit `b5f92250a2fb4b6bc1cd01ee5e94e588fc66f260`); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
+
+Deliverables committed in `b5f92250`:
+- `packages/domain/src/culinary-ingredients-v4.ts` (`249` operational canonical ingredients with USDA/MEXT/NIN nutrition, yields, densities, unit weights, allergens) — subpath import preserving Red-Zone `packages/domain/src/index.ts`.
+- `packages/recipes/src/standard-v4/{schema.ts,nutrition-engine.ts,compiler.ts,authority.ts,index.ts}` + `src/worker/services/recipe-authority-v4.ts` (`resolveRecipeAuthorityV4` opt-in wrapper via `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'`).
+- `scripts/prepare-v4-shards.mjs` & `scripts/recipe-standard-v4.mjs` (`pnpm recipe:standard-v4:check`).
+- `data/recipe-standard/v4/{operational-ingredients-reference.json,shards/*,recipes/*.json (500),compiled-runtime-500.json,manifest.json}` (`runtimeFingerprint=b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21`, `compiledRuntimeSha256=6aa1d42c8c8406c360cf2b1f71871fb7b4bc6bd405255fd29e5c76abb400d0b7`, `proposedMigrationSha256=b4ca3bc3aa1849ebbffe272952b0afe40d2b26cc37748cbdc40b143911518dcb`, `avgIngs=13.4`, `avgSteps=6`, `calRange=84..938`, `nutritionCertifiedCount=500`, `provisionalIngEnrCount=0`).
+- `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql` + `tests/unit/culinary-standard-v4.test.ts` + `tests/integration/culinary-standard-v4-d1-replay.test.ts`.
+
+Verified with `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`:
+- `pnpm typecheck`, `pnpm lint`, `pnpm recipe:standard-v4:check`, V1–V3 continuity gates (`seed:check`, `import:check`, `refresh:check`, `ingredient-v2:audit`, `recipe-intelligence-v3-audit.mjs --check`), `pnpm check:migrations`, `pnpm build`, `git diff --check`: ALL PASS exit 0.
+- Focused Vitest suites (`9` files / `246` tests, incl. `vnext-g02-foundation.test.tsx` `10/10` confirming `341/341` Red-Zone hashes intact, `culinary-standard-v4` `3/3`, and `culinary-standard-v4-d1-replay` `2/2`): PASS exit 0.
+- Known partial-clone environment limitation: `t21rc4-cloudflare-identity-diagnostic.test.mjs` (`3/4` on earlier full run before Red-Zone revert) and `pnpm admin:migration:matrix` (`0/1`) fail on this `--filter=blob:none` partial clone missing historical blobs (`cda5bf48...`); full repo clone runs them cleanly.
+
+Next: Product Owner review/sign-off for promoting `0052_culinary_standard_v4_catalog_500.sql` into live `migrations/` and wiring `resolveRecipeAuthorityV4` cleanly at release time.
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

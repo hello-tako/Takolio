@@ -1,3 +1,12 @@
+## Takolio Culinary Standard V4 (500-Recipe Deep Research & Standardization) - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_COMPLETE_ON_BRANCH `feat/recipe-catalog-500-standardization` (commit `b5f92250a2fb4b6bc1cd01ee5e94e588fc66f260`); NOT pushed, NO remote D1 migration.
+- Added `249` operational canonical ingredients (`packages/domain/src/culinary-ingredients-v4.ts`), V4 Zod schema / deterministic nutrition engine / compiler / opt-in `resolveRecipeAuthorityV4` (`packages/recipes/src/standard-v4/`, `src/worker/services/recipe-authority-v4.ts`), shard & validation scripts, and `500` standardized & pro-QA-audited recipes compiled to `data/recipe-standard/v4/compiled-runtime-500.json` + proposed `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql`.
+- Verified `pnpm typecheck`, `pnpm lint`, `pnpm recipe:standard-v4:check`, V1–V3 continuity gates, `9/9` focused Vitest suites (`246/246`, incl. `vnext-g02-foundation.test.tsx` `10/10` Red-Zone hash guard and full `0001..0052` SQLite D1 replay), `pnpm check:migrations`, `pnpm build`, and `git diff --check` PASS exit 0.
+- Next: Product Owner review before promoting `0052` into `migrations/` or updating Red-Zone Worker authority routing.
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.
