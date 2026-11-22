@@ -7,6 +7,7 @@ import { useLogout } from '../api/hooks';
 import { useSidebarCollapsed } from '../lib/hooks';
 import { isNavItemActive, visibleNavItems } from '../lib/nav';
 import { vi } from '../i18n/vi';
+import { CommandPalette } from './CommandPalette';
 import { Button, FixtureBanner } from './ui';
 
 function useDataContext() {
@@ -20,6 +21,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
   const logout = useLogout();
   const [collapsed, toggleCollapsed] = useSidebarCollapsed();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [cmdkOpen, setCmdkOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const items = visibleNavItems(me.permissions);
 
@@ -40,6 +42,17 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [drawerOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setCmdkOpen((current) => !current);
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   const handleLogout = async () => {
     setLoggingOut(true);
@@ -106,7 +119,12 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
         </button>
       </aside>
       {drawerOpen ? (
-        <button type="button" className="drawer-backdrop" aria-label={vi.layout.closeMenu} onClick={() => setDrawerOpen(false)} />
+        <button
+          type="button"
+          className="sidebar-backdrop"
+          aria-label={vi.layout.closeMenu}
+          onClick={() => setDrawerOpen(false)}
+        />
       ) : null}
       <div className="admin-body">
         <header className="admin-topbar">
@@ -125,6 +143,14 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
               {vi.common.environment}: {context.environment}
             </span>
           ) : null}
+          <button
+            type="button"
+            className="cmdk-trigger"
+            data-testid="admin-cmdk-trigger"
+            onClick={() => setCmdkOpen(true)}
+          >
+            <span>Tìm nhanh ({vi.layout.commandShortcut})</span>
+          </button>
           <div className="topbar-spacer" />
           <div className="user-chip" data-testid="admin-user-menu">
             <span className="user-name">{me.displayName}</span>
@@ -141,6 +167,7 @@ export function AdminShell({ me, children }: { me: AdminMe; children: ReactNode 
           {children}
         </main>
       </div>
+      <CommandPalette open={cmdkOpen} onClose={() => setCmdkOpen(false)} permissions={me.permissions} />
     </div>
   );
 }

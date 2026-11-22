@@ -1,49 +1,52 @@
-/* Scoped Admin vNext Kitchen Studio Tokens (AD02 Pilot) — matches AD02.png dark forest sidebar & clean warm ivory workspace */
+/* Scoped Admin vNext Control Center Tokens — Takolio Forest (#0F2D24 / #196149) + Warm Canvas (#FAF8F4) */
 
 .admin-app.is-vnext-admin {
-  --admin-bg: #fff9f1;
-  --admin-surface: #ffffff;
-  --admin-ink: #152e2c;
-  --admin-muted: #48615b;
-  --admin-line: #dce4db;
+  --admin-bg: #FAF8F4;
+  --admin-surface: #FFFFFF;
+  --admin-surface-subtle: #F4F7F5;
+  --admin-ink: #122923;
+  --admin-muted: #415951;
+  --admin-line: #DCE4DD;
+  --admin-field-line: #687F77;
   --admin-green: #196149;
-  --admin-green-deep: #12352a;
+  --admin-green-deep: #0F2D24;
+  --admin-green-hover: #134C39;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar {
-  background: #12352a;
-  color: #ffffff;
-  border-right-color: #1e4d3e;
+  background: #0F2D24;
+  color: #FFFFFF;
+  border-right-color: #1C4638;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .brand-name {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .brand-mark {
   background: #196149;
-  color: #f6c453;
+  color: #F6C453;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .nav-link {
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 255, 255, 0.86);
   min-height: 44px;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .nav-link:hover {
-  background: rgba(255, 255, 255, 0.09);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .nav-link.is-active {
-  background: #237a5c;
-  color: #ffffff;
+  background: #237A5C;
+  color: #FFFFFF;
   font-weight: 800;
 }
 
 .admin-app.is-vnext-admin .admin-sidebar .sidebar-toggle {
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.22);
   background: rgba(255, 255, 255, 0.06);
   min-height: 44px;
 }
@@ -51,7 +54,8 @@
 .tkv-admin-pilot {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
+  min-width: 0;
 }
 
 .tkv-admin-header {
@@ -59,12 +63,17 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tkv-admin-header > div {
+  min-width: 0;
 }
 
 .tkv-admin-eyebrow {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -73,75 +82,32 @@
 }
 
 .tkv-admin-title {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  color: #152e2c;
+  color: #122923;
   margin: 0;
 }
 
 .tkv-admin-subtitle {
   font-size: 0.92rem;
-  color: #48615b;
+  color: #415951;
   margin: 4px 0 0;
 }
 
 .tkv-admin-stack {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.tkv-admin-status-trio {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 14px;
-}
-
-.tkv-status-tile {
-  border-radius: 20px;
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  border: 1px solid #dce4db;
-}
-
-.tkv-status-tile.is-mint {
-  background: #e7f4ec;
-}
-
-.tkv-status-tile.is-saffron {
-  background: #fff0c5;
-}
-
-.tkv-status-tile.is-sky {
-  background: #fff0e9;
-  border-color: #fad0c4;
-}
-
-.tkv-tile-label {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #152e2c;
-}
-
-.tkv-tile-value {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #196149;
-}
-
-.tkv-tile-meta {
-  font-size: 0.78rem;
-  color: #48615b;
+  gap: 18px;
+  min-width: 0;
 }
 
 .tkv-admin-card {
-  background: #ffffff;
-  border: 1px solid #dce4db;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(21, 46, 44, 0.04);
+  background: #FFFFFF;
+  border: 1px solid #DCE4DD;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(15, 45, 36, 0.05);
+  min-width: 0;
 }
 
 .tkv-admin-card-head {
@@ -151,13 +117,14 @@
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 14px;
+  min-width: 0;
 }
 
 .tkv-admin-card-head h2 {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 800;
-  color: #152e2c;
+  color: #122923;
 }
 
 .tkv-admin-kpi-grid {
@@ -167,9 +134,9 @@
 }
 
 .tkv-admin-kpi-item {
-  background: #fff9f1;
-  border: 1px solid #dce4db;
-  border-radius: 14px;
+  background: #FAF8F4;
+  border: 1px solid #DCE4DD;
+  border-radius: 12px;
   padding: 14px;
   display: flex;
   flex-direction: column;
@@ -180,120 +147,39 @@
 .tkv-kpi-label {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #3f5852;
+  color: #415951;
 }
 
 .tkv-kpi-number {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  color: #152e2c;
+  color: #122923;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 .tkv-kpi-note {
-  font-size: 0.75rem;
-  color: #445d57;
+  font-size: 0.76rem;
+  color: #415951;
 }
 
 .tkv-admin-two-col {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 16px;
+  min-width: 0;
 }
 
 .tkv-admin-two-col > * {
   min-width: 0;
 }
 
-.tkv-admin-ops-list {
-  list-style: none;
-  margin: 0 0 16px;
-  padding: 0;
-  border-top: 1px solid #dce4db;
-}
-
-.tkv-admin-ops-list li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #dce4db;
-}
-
-.tkv-admin-ops-list li > div {
-  min-width: 0;
-  flex: 1 1 200px;
-}
-
-.tkv-admin-ops-list p {
-  margin: 2px 0 0;
-}
-
-.tkv-ops-link {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  font-size: 0.86rem;
-  font-weight: 800;
-  color: #196149;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.tkv-ops-link:hover {
-  text-decoration: underline;
-}
-
 .tkv-admin-health-wrap {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
-/* Gate G10: Cohesive Kitchen Studio Control Tower theme across AD01 Login & AD03-AD11 Tables */
-.login-page {
-  background: #fff9f1;
-}
-
-.login-card {
-  border-radius: 24px;
-  border: 1px solid #dce4db;
-  background: #ffffff;
-  box-shadow: 0 12px 32px rgba(21, 46, 44, 0.07);
-}
-
-.login-card .brand-mark {
-  background: #196149;
-  color: #f6c453;
-  border-radius: 12px;
-}
-
-.admin-app.is-vnext-admin .card,
-.admin-app.is-vnext-admin .panel {
-  border-radius: 18px;
-  border-color: #dce4db;
-  background: #ffffff;
-  box-shadow: 0 2px 10px rgba(21, 46, 44, 0.04);
-}
-
-.admin-app.is-vnext-admin th {
-  background: #f4f8f4;
-  color: #152e2c;
-  font-weight: 800;
-}
-
-.admin-app.is-vnext-admin button[type='submit'],
-.login-card button[type='submit'] {
-  background: #196149;
-  border-color: #196149;
-  color: #ffffff;
-  border-radius: 12px;
-  min-height: 44px;
-  font-weight: 800;
-}
-
-.admin-app.is-vnext-admin button[type='submit']:hover:not(:disabled),
-.login-card button[type='submit']:hover:not(:disabled) {
-  background: #134c39;
-  border-color: #134c39;
+@media (max-width: 767px) {
+  .tkv-admin-card {
+    padding: 14px;
+  }
 }

@@ -1,8 +1,13 @@
 import { Hono } from 'hono';
 import type { z } from 'zod';
 import type { D1PreparedStatement } from '@frigo/db';
-import { ADMIN_SUPER_ADMIN_MINIMUM, hasAdminPermission } from '../../../shared/admin';
-import { auditStatement, guardedAuditStatement, requireAudit, writeAudit } from './audit';
+import {
+  ADMIN_SUPER_ADMIN_MINIMUM,
+  hasAdminPermission,
+  type AdminSystemHygieneResult,
+} from '../../../shared/admin';
+import type { MutationInput, MutationOperation } from '../../facade/contract';
+import { auditStatement, guardedAuditStatement, requireAudit, writeAudit, type AuditMetadata } from './audit';
 import {
   adminApiGate,
   adminAuthRoutes,
@@ -13,16 +18,49 @@ import {
   requirePermission,
   revokeUserSessionsStatement,
 } from './auth';
-import { aiSummary, billingSummary, listAiUsage, listTransactions } from './billing-ai';
+import { aiSummary, billingSummary, listAiUsage, listScanJobs, listTransactions } from './billing-ai';
 import { AdminHttpError, errorResponse, isConstraintError, newId, nowIso, ok, plusMinutes, type AdminApp, type AdminContext } from './http';
 import { consumeLimit, limitResponse } from './limits';
 import { buildOverview } from './overview';
-import { getUser, listHouseholds, listUsers } from './people';
+import { getHousehold, getUser, isPlatformAdmin, listHouseholds, listUsers } from './people';
 import { ReadOnlyViolation } from './readonly-db';
 import { getRecipe, listRecipes, recipesSummary } from './recipes';
 import {
-  AiUsageQuery, AuditQuery, EmptyQuery, GrantRoleBody, HouseholdsQuery, IdParam, PreferencesBody, RangeQuery, RecipeReviewBody,
-  RecipesQuery, TransactionsQuery, UserDetailQuery, UsersQuery,
+  AiUsageQuery,
+  AuditQuery,
+  BillingMarkPaidBody,
+  BillingRefundBody,
+  BillingResolveBody,
+  BroadcastBody,
+  CancelSubscriptionBody,
+  DeleteUserBody,
+  EmptyQuery,
+  GrantRoleBody,
+  HouseholdsQuery,
+  HygieneBody,
+  IdParam,
+  NotifyUserBody,
+  PreferencesBody,
+  PurgeGuestHouseholdsBody,
+  RangeQuery,
+  RecipeMediaRejectBody,
+  RecipeMetadataUpdateBody,
+  RecipeReviewBody,
+  RecipesQuery,
+  RecipeVerificationBody,
+  ResetQuotaBody,
+  RevokeUserSessionsBody,
+  ScanJobCancelBody,
+  ScanJobRetryBody,
+  ScanJobsQuery,
+  SuspendUserBody,
+  TransactionsQuery,
+  UnsuspendUserBody,
+  UpdateHouseholdBody,
+  UpgradeSubscriptionBody,
+  UserDetailQuery,
+  UsersQuery,
+  VerifyEmailBody,
 } from './schemas';
 import { APPROVAL_COLUMNS, approvalView, listAudit, preferencesFor, settingsFor, type ApprovalRow } from './settings';
 import { systemChecks, systemStatus } from './system';
@@ -56,9 +94,45 @@ async function body<T extends z.ZodTypeAny>(c: AdminContext, schema: T): Promise
   try { raw = await c.req.json(); } catch { raw = undefined; }
   return parse(schema, raw);
 }
+async function optionalBody<T extends z.ZodTypeAny>(c: AdminContext, schema: T): Promise<z.infer<T>> {
+  const text = await c.req.text();
+  if (!text.trim()) return parse(schema, {});
+  let raw: unknown;
+  try { raw = JSON.parse(text); } catch { raw = undefined; }
+  if (raw === undefined) throw new AdminHttpError(400, 'ADMIN_VALIDATION_FAILED', 'Tham số yêu cầu không hợp lệ.');
+  return parse(schema, raw);
+}
 const notFound = () => new AdminHttpError(404, 'ADMIN_NOT_FOUND', 'Không tìm thấy.');
 const conflict = (message?: string) => new AdminHttpError(409, 'ADMIN_CONFLICT', message ?? 'Dữ liệu đã thay đổi. Vui lòng tải lại.');
 const MINIMUM_MESSAGE = `Phải luôn còn ít nhất ${ADMIN_SUPER_ADMIN_MINIMUM} quản trị viên cấp cao đang hoạt động.`;
+
+async function runCustomerMutation<O extends MutationOperation, R = unknown>(
+  c: AdminContext,
+  operation: O,
+  input: MutationInput<O>,
+  audit: { action: string; targetType: string; targetId: string; metadata?: AuditMetadata },
+): Promise<R> {
+  const admin = c.get('admin');
+  const budget = await consumeLimit(c.env, c.get('policy').local, 'mutate', admin.userId, 60, 3600);
+  if (!budget.ok) {
+    c.header('Retry-After', String(budget.retryAfter));
+    throw new AdminHttpError(
+      budget.status,
+      budget.status === 429 ? 'RATE_LIMIT_EXCEEDED' : 'RATE_LIMIT_UNAVAILABLE',
+      budget.status === 429 ? 'Quá nhiều yêu cầu. Vui lòng thử lại sau.' : 'Dịch vụ giới hạn yêu cầu tạm thời không khả dụng.',
+    );
+  }
+  await requireAudit(c, {
+    actorUserId: admin.userId,
+    actorRoles: admin.roles,
+    action: audit.action,
+    targetType: audit.targetType,
+    targetId: audit.targetId,
+    outcome: 'success',
+    metadata: audit.metadata,
+  });
+  return c.get('main').mutate<R, O>(operation, input);
+}
 
 /** Batch that maps constraint/trigger aborts to 409 instead of 500. */
 async function commit(c: AdminContext, statements: D1PreparedStatement[], message?: string) {
@@ -132,10 +206,16 @@ authed.get('/users/:id', requirePermission('users.read'), async (c) => {
   return ok(c, user);
 });
 authed.get('/households', requirePermission('households.read'), async (c) => ok(c, await listHouseholds(c.get('main'), query(c, HouseholdsQuery))));
+authed.get('/households/:id', requirePermission('households.read'), async (c) => {
+  const household = await getHousehold(c.get('main'), param(c, 'id'));
+  if (!household) throw notFound();
+  return ok(c, household);
+});
 authed.get('/billing/summary', requirePermission('billing.read'), async (c) => ok(c, await billingSummary(c.get('main'), query(c, RangeQuery).range)));
 authed.get('/billing/transactions', requirePermission('billing.read'), async (c) => ok(c, await listTransactions(c.get('main'), query(c, TransactionsQuery))));
 authed.get('/ai/summary', requirePermission('ai.read'), async (c) => ok(c, await aiSummary(c.get('main'), query(c, RangeQuery).range)));
 authed.get('/ai/usage', requirePermission('ai.read'), async (c) => ok(c, await listAiUsage(c.get('main'), query(c, AiUsageQuery))));
+authed.get('/ai/scan-jobs', requirePermission('ai.read'), async (c) => ok(c, await listScanJobs(c.get('main'), query(c, ScanJobsQuery))));
 authed.get('/recipes/summary', requirePermission('recipes.read'), async (c) => {
   query(c, EmptyQuery);
   return ok(c, await recipesSummary(c.get('main'), c.get('adminDb'), c.env.RECIPE_CATALOG_MODE));
@@ -378,6 +458,326 @@ authed.post('/sessions/:id/revoke', requirePermission('admin.sessions.revoke'), 
   const after = await adminDb.prepare(`SELECT 1 AS present FROM admin_sessions WHERE id = ? AND revoked_at = ?`).bind(id, now).first();
   if (!after) throw notFound();
   return ok(c, { session: { id, revoked: true } });
+});
+
+// ── Customer Lifecycle, Billing, Recipes, AI & System Mutations ────────────
+
+authed.post('/users/:id/subscription/upgrade', requirePermission('users.billing.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, UpgradeSubscriptionBody);
+  const result = await runCustomerMutation(c, 'users.subscription.upgrade', { userId, ...input }, {
+    action: 'users.subscription.upgrade',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason, status: input.duration },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/subscription/cancel', requirePermission('users.billing.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, CancelSubscriptionBody);
+  const result = await runCustomerMutation(c, 'users.subscription.cancel', { userId, ...input }, {
+    action: 'users.subscription.cancel',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason, decision: input.immediate ? 'immediate' : 'period_end' },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/suspend', requirePermission('users.suspend'), async (c) => {
+  const admin = c.get('admin');
+  const userId = param(c, 'id');
+  const input = await body(c, SuspendUserBody);
+  if (userId === admin.userId) {
+    await writeAudit(c, {
+      actorUserId: admin.userId,
+      actorRoles: admin.roles,
+      action: 'users.suspend',
+      targetType: 'user',
+      targetId: userId,
+      outcome: 'denied',
+      reasonCode: 'self_suspend',
+      metadata: { reason: input.reason },
+    });
+    return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Không thể tự tạm khóa tài khoản của chính mình.');
+  }
+  if (await isPlatformAdmin(c.get('adminDb'), userId)) {
+    await writeAudit(c, {
+      actorUserId: admin.userId,
+      actorRoles: admin.roles,
+      action: 'users.suspend',
+      targetType: 'user',
+      targetId: userId,
+      outcome: 'denied',
+      reasonCode: 'platform_admin_protected',
+      metadata: { reason: input.reason },
+    });
+    return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Không thể tạm khóa tài khoản quản trị viên nền tảng.');
+  }
+  const result = await runCustomerMutation(c, 'users.suspend', { userId, reason: input.reason }, {
+    action: 'users.suspend',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/unsuspend', requirePermission('users.suspend'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, UnsuspendUserBody);
+  const result = await runCustomerMutation(c, 'users.unsuspend', { userId, reason: input.reason }, {
+    action: 'users.unsuspend',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/delete', requirePermission('users.delete'), async (c) => {
+  const admin = c.get('admin');
+  const userId = param(c, 'id');
+  const input = await body(c, DeleteUserBody);
+  if (userId === admin.userId) {
+    await writeAudit(c, {
+      actorUserId: admin.userId,
+      actorRoles: admin.roles,
+      action: 'users.delete',
+      targetType: 'user',
+      targetId: userId,
+      outcome: 'denied',
+      reasonCode: 'self_delete',
+      metadata: { reason: input.reason, decision: input.mode },
+    });
+    return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Không thể tự xóa tài khoản của chính mình.');
+  }
+  if (await isPlatformAdmin(c.get('adminDb'), userId)) {
+    await writeAudit(c, {
+      actorUserId: admin.userId,
+      actorRoles: admin.roles,
+      action: 'users.delete',
+      targetType: 'user',
+      targetId: userId,
+      outcome: 'denied',
+      reasonCode: 'platform_admin_protected',
+      metadata: { reason: input.reason, decision: input.mode },
+    });
+    return errorResponse(c, 403, 'ADMIN_FORBIDDEN', 'Không thể xóa tài khoản quản trị viên nền tảng.');
+  }
+  const result = await runCustomerMutation(c, 'users.delete', { userId, mode: input.mode, reason: input.reason }, {
+    action: 'users.delete',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason, decision: input.mode },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/sessions/revoke', requirePermission('users.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, RevokeUserSessionsBody);
+  const result = await runCustomerMutation(c, 'users.sessions.revoke', { userId, reason: input.reason }, {
+    action: 'users.sessions.revoke',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/verify-email', requirePermission('users.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, VerifyEmailBody);
+  const result = await runCustomerMutation(c, 'users.verify_email', { userId, reason: input.reason }, {
+    action: 'users.verify_email',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/quota/reset', requirePermission('users.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, ResetQuotaBody);
+  const result = await runCustomerMutation(c, 'users.quota.reset', { userId, reason: input.reason }, {
+    action: 'users.quota.reset',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/users/:id/notify', requirePermission('users.write'), async (c) => {
+  const userId = param(c, 'id');
+  const input = await body(c, NotifyUserBody);
+  const result = await runCustomerMutation(c, 'users.notify', { userId, ...input }, {
+    action: 'users.notify',
+    targetType: 'user',
+    targetId: userId,
+    metadata: { reason: input.reason, status: input.type ?? 'support' },
+  });
+  return ok(c, result);
+});
+
+authed.patch('/households/:id', requirePermission('households.write'), async (c) => {
+  const householdId = param(c, 'id');
+  const input = await body(c, UpdateHouseholdBody);
+  const result = await runCustomerMutation(c, 'households.update', { householdId, ...input }, {
+    action: 'households.update',
+    targetType: 'household',
+    targetId: householdId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/households/purge-guests', requirePermission('households.write'), async (c) => {
+  const input = await body(c, PurgeGuestHouseholdsBody);
+  const result = await runCustomerMutation(c, 'households.purge_guests', input, {
+    action: 'households.purge_guests',
+    targetType: 'household',
+    targetId: 'guest_households',
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/billing/transactions/:id/mark-paid', requirePermission('billing.write'), async (c) => {
+  const intentId = param(c, 'id');
+  const input = await body(c, BillingMarkPaidBody);
+  const result = await runCustomerMutation(c, 'billing.intent.mark_paid', { intentId, ...input }, {
+    action: 'billing.intent.mark_paid',
+    targetType: 'payment_intent',
+    targetId: intentId,
+    metadata: { reason: input.reason, status: 'paid' },
+  });
+  return ok(c, result);
+});
+
+authed.post('/billing/transactions/:id/refund', requirePermission('billing.write'), async (c) => {
+  const intentId = param(c, 'id');
+  const input = await body(c, BillingRefundBody);
+  const result = await runCustomerMutation(c, 'billing.intent.refund', { intentId, ...input }, {
+    action: 'billing.intent.refund',
+    targetType: 'payment_intent',
+    targetId: intentId,
+    metadata: { reason: input.reason, status: 'refunded' },
+  });
+  return ok(c, result);
+});
+
+authed.post('/billing/transactions/:id/resolve', requirePermission('billing.write'), async (c) => {
+  const intentId = param(c, 'id');
+  const input = await body(c, BillingResolveBody);
+  const result = await runCustomerMutation(c, 'billing.intent.resolve', { intentId, ...input }, {
+    action: 'billing.intent.resolve',
+    targetType: 'payment_intent',
+    targetId: intentId,
+    metadata: { reason: input.reason, status: input.outcome },
+  });
+  return ok(c, result);
+});
+
+authed.post('/recipes/:id/verification', requirePermission('recipes.write'), async (c) => {
+  const recipeId = param(c, 'id');
+  const input = await body(c, RecipeVerificationBody);
+  const result = await runCustomerMutation(c, 'recipes.verification.set', { recipeId, ...input }, {
+    action: 'recipes.verification.set',
+    targetType: 'recipe',
+    targetId: recipeId,
+    metadata: { reason: input.reason, state: input.verificationState, recipeVersion: input.recipeVersion },
+  });
+  return ok(c, result);
+});
+
+authed.patch('/recipes/:id', requirePermission('recipes.write'), async (c) => {
+  const recipeId = param(c, 'id');
+  const input = await body(c, RecipeMetadataUpdateBody);
+  const result = await runCustomerMutation(c, 'recipes.metadata.update', { recipeId, ...input }, {
+    action: 'recipes.metadata.update',
+    targetType: 'recipe',
+    targetId: recipeId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/recipes/:id/media/reject', requirePermission('recipes.write'), async (c) => {
+  const recipeId = param(c, 'id');
+  const input = await body(c, RecipeMediaRejectBody);
+  const result = await runCustomerMutation(c, 'recipes.media.reject', { recipeId, ...input }, {
+    action: 'recipes.media.reject',
+    targetType: 'recipe',
+    targetId: recipeId,
+    metadata: { reason: input.reason, role: input.role, recipeVersion: input.version },
+  });
+  return ok(c, result);
+});
+
+authed.post('/ai/scan-jobs/:id/retry', requirePermission('ai.write'), async (c) => {
+  const jobId = param(c, 'id');
+  const input = await body(c, ScanJobRetryBody);
+  const result = await runCustomerMutation(c, 'ai.scan_job.retry', { jobId, reason: input.reason }, {
+    action: 'ai.scan_job.retry',
+    targetType: 'scan_job',
+    targetId: jobId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/ai/scan-jobs/:id/cancel', requirePermission('ai.write'), async (c) => {
+  const jobId = param(c, 'id');
+  const input = await body(c, ScanJobCancelBody);
+  const result = await runCustomerMutation(c, 'ai.scan_job.cancel', { jobId, reason: input.reason }, {
+    action: 'ai.scan_job.cancel',
+    targetType: 'scan_job',
+    targetId: jobId,
+    metadata: { reason: input.reason },
+  });
+  return ok(c, result);
+});
+
+authed.post('/system/hygiene', requirePermission('system.write'), async (c) => {
+  const input = await optionalBody(c, HygieneBody);
+  const result = await runCustomerMutation< 'system.hygiene.run', AdminSystemHygieneResult>(
+    c,
+    'system.hygiene.run',
+    { reason: input.reason },
+    {
+      action: 'system.hygiene.run',
+      targetType: 'system',
+      targetId: 'hygiene',
+      metadata: input.reason ? { reason: input.reason } : undefined,
+    },
+  );
+  const adminDb = c.get('adminDb');
+  const now = nowIso();
+  const expiredApprovals = await adminDb
+    .prepare("SELECT COUNT(*) AS n FROM admin_action_approvals WHERE status = 'pending' AND expires_at <= ?")
+    .bind(now)
+    .first<{ n: number }>();
+  await adminDb
+    .prepare("UPDATE admin_action_approvals SET status = 'expired', decided_at = ? WHERE status = 'pending' AND expires_at <= ?")
+    .bind(now, now)
+    .run();
+  return ok(c, { ...result, expiredApprovalsClosed: Number(expiredApprovals?.n ?? 0) });
+});
+
+authed.post('/system/broadcast', requirePermission('system.write'), async (c) => {
+  const input = await body(c, BroadcastBody);
+  const result = await runCustomerMutation(c, 'system.broadcast.send', input, {
+    action: 'system.broadcast.send',
+    targetType: 'system',
+    targetId: input.target,
+    metadata: { reason: input.reason, status: input.target },
+  });
+  return ok(c, result);
 });
 
 adminRoutes.route('/', authed);

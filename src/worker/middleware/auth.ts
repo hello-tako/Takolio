@@ -85,15 +85,23 @@ export async function authMiddleware(
       const tokenHash = await sha256Hex(tokenValue);
       const row = await c.env.DB.prepare(
         `SELECT s.id, s.user_id, s.household_id, COALESCE(s.last_seen_at, s.created_at) AS last_seen_at, u.email, u.is_guest, p.display_name,
+                sub.status AS subscription_status,
                 EXISTS (SELECT 1 FROM household_members hm JOIN households h ON h.id = hm.household_id
                          WHERE hm.household_id = s.household_id AND hm.user_id = s.user_id
                            AND (u.is_guest = 0 OR h.created_by = s.user_id)) AS household_authorized
            FROM sessions_v2 s JOIN users u ON u.id = s.user_id
            LEFT JOIN profiles p ON p.user_id = s.user_id
+           LEFT JOIN subscriptions sub ON sub.user_id = s.user_id
           WHERE s.token_hash = ? AND s.revoked_at IS NULL AND datetime(s.expires_at) > datetime('now') LIMIT 1`
       ).bind(tokenHash).first<{ id: string; user_id: string; household_id: string; last_seen_at: string | null;
-        email: string | undefined; is_guest: number; household_authorized: number }>();
+        email: string | undefined; is_guest: number; subscription_status: string | null; household_authorized: number }>();
       if (row) {
+        if (row.subscription_status?.startsWith('suspended') || row.subscription_status === 'deleted') {
+          return c.json(
+            { error: 'Tài khoản của bạn đang tạm dừng hoạt động. Vui lòng liên hệ hỗ trợ.', code: 'ACCOUNT_SUSPENDED' },
+            403
+          );
+        }
         if (!hasExpectedOwner(c, { userId: row.user_id, householdId: row.household_id })) {
           return c.json({ error: 'Request owner does not match authenticated session', code: 'SESSION_OWNER_MISMATCH' }, 403);
         }
@@ -110,7 +118,10 @@ export async function authMiddleware(
         return await next();
       }
       return c.json({ error: 'Unauthorized: Missing or invalid authorization token', code: 'UNAUTHORIZED' }, 401);
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && /no such table:\s*subscriptions/i.test(error.message)) {
+        return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
+      }
       return c.json({ error: 'Authentication service unavailable', code: 'AUTH_UNAVAILABLE' }, 503);
     }
   }

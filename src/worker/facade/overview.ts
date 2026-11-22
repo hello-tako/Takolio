@@ -18,7 +18,7 @@ export const PLUS_ACTIVE_SQL = `plan = 'plus' AND status = 'active' AND (expires
 
 export async function buildOverview(main: D1DatabaseBinding, range: AdminRange, checks: AdminHealthCheck[]): Promise<AdminOverview> {
   const start = rangeStartDay(range);
-  const [registered, active, newUsers, plus, revenue, aiRequests, scans] = await Promise.all([
+  const [registered, active, newUsers, plus, revenue, aiRequests, scans, pendingReconciliations, failedScanJobs, unverifiedRecipes, suspendedUsers] = await Promise.all([
     scalar(main, 'SELECT COUNT(*) AS value FROM users WHERE is_guest = 0'),
     scalar(main, `SELECT COUNT(DISTINCT s.user_id) AS value FROM sessions_v2 s JOIN users u ON u.id = s.user_id
       WHERE u.is_guest = 0 AND date(COALESCE(s.last_seen_at, s.created_at)) >= ?`, start),
@@ -27,6 +27,10 @@ export async function buildOverview(main: D1DatabaseBinding, range: AdminRange, 
     scalar(main, "SELECT COALESCE(SUM(amount_vnd), 0) AS value FROM payment_intents WHERE status = 'paid' AND date(updated_at) >= ?", start),
     scalar(main, 'SELECT COUNT(*) AS value FROM ai_requests WHERE date(created_at) >= ?', start),
     scalar(main, 'SELECT COUNT(*) AS value FROM scans WHERE date(created_at) >= ?', start),
+    scalar(main, 'SELECT COUNT(*) AS value FROM payment_reconciliation_records'),
+    scalar(main, "SELECT COUNT(*) AS value FROM scan_queue_jobs WHERE status = 'failed'"),
+    scalar(main, "SELECT COUNT(*) AS value FROM recipes WHERE verification_state = 'unverified'"),
+    scalar(main, "SELECT COUNT(*) AS value FROM subscriptions WHERE status LIKE 'suspended%'"),
   ]);
   const metrics: AdminMetric[] = [
     { key: 'registered_users', label: 'Người dùng đã đăng ký', value: registered, unit: 'count', status: 'ok', source: 'D1:users',
@@ -36,7 +40,7 @@ export async function buildOverview(main: D1DatabaseBinding, range: AdminRange, 
       note: 'last_seen_at chỉ cập nhật tối đa 15 phút/lần; phiên đã xoá không được tính.' },
     { key: 'new_registrations', label: 'Đăng ký mới', value: newUsers, unit: 'count', status: 'ok', source: 'D1:users',
       definition: 'Tài khoản không phải khách được tạo trong khoảng thời gian (theo ngày UTC).' },
-    { key: 'active_plus', label: 'Gói Plus đang hoạt động', value: plus, unit: 'count', status: 'ok', source: 'D1:subscriptions',
+    { key: 'active_plus', label: 'Takolio Pro đang hoạt động', value: plus, unit: 'count', status: 'ok', source: 'D1:subscriptions',
       definition: "plan = 'plus', status = 'active' và chưa hết hạn tại thời điểm truy vấn." },
     { key: 'confirmed_revenue_vnd', label: 'Doanh thu đã xác nhận', value: revenue, unit: 'vnd', status: 'partial', source: 'D1:payment_intents',
       definition: "Tổng amount_vnd của payment_intents có status = 'paid', cập nhật trong khoảng thời gian.",
@@ -50,11 +54,24 @@ export async function buildOverview(main: D1DatabaseBinding, range: AdminRange, 
     { key: 'registrations', label: 'Đăng ký mới theo ngày', unit: 'count', source: 'D1:users',
       points: await daily(main, `SELECT date(created_at) AS day, COUNT(*) AS value FROM users WHERE is_guest = 0 AND date(created_at) >= ? GROUP BY 1`, start, range) },
     { key: 'scans', label: 'Lượt quét theo ngày', unit: 'count', source: 'D1:scans',
-      points: await daily(main, `SELECT date(created_at) AS day, COUNT(*) AS value FROM scans WHERE date(created_at) >= ? GROUP BY 1`, start, range) },
+      points: await daily(main, `SELECT date(created_at) AS day, SUM(1) AS value FROM scans WHERE date(created_at) >= ? GROUP BY 1`, start, range) },
     { key: 'revenue', label: 'Doanh thu đã xác nhận theo ngày', unit: 'vnd', source: 'D1:payment_intents',
       points: await daily(main, `SELECT date(updated_at) AS day, SUM(amount_vnd) AS value FROM payment_intents WHERE status = 'paid' AND date(updated_at) >= ? GROUP BY 1`, start, range) },
   ];
-  return { range, metrics, series, health: { status: healthStatus(checks), checks }, incidents: await incidents(main) };
+  return {
+    range,
+    metrics,
+    series,
+    health: { status: healthStatus(checks), checks },
+    incidents: await incidents(main),
+    actionQueue: {
+      pendingReconciliations,
+      failedScanJobs,
+      unverifiedRecipes,
+      suspendedUsers,
+      pendingApprovals: 0,
+    },
+  };
 }
 
 export function healthStatus(checks: AdminHealthCheck[]): 'ok' | 'degraded' | 'unhealthy' {

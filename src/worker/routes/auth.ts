@@ -33,6 +33,7 @@ interface PreferencesRow {
 interface PasswordAccountRow {
   user_id: string; password_hash: string | null; salt: string | null; is_verified: number;
   display_name: string | null; avatar_url: string | null; onboarding_completed_at: string | null;
+  subscription_status: string | null;
 }
 interface GoogleAccountRow {
   id: string; user_id: string; email: string; google_id: string | null; is_verified: number; onboarding_completed_at: string | null;
@@ -41,6 +42,37 @@ const DUMMY_PASSWORD_SALT = '00112233445566778899aabbccddeeff';
 const DUMMY_PASSWORD_HASH = 'f0e1d2c3b4a5968778695a4b3c2d1e0f00112233445566778899aabbccddeeff';
 
 export const authRoutes = new Hono<AuthRouteEnv>();
+
+const ACCOUNT_SUSPENDED_ERROR = 'Tài khoản của bạn đang tạm dừng hoạt động. Vui lòng liên hệ hỗ trợ.';
+
+function isSuspendedOrDeletedStatus(status: string | null | undefined): boolean {
+  return Boolean(status && (status.startsWith('suspended') || status === 'deleted'));
+}
+
+async function isUserSuspendedOrDeleted(db: D1DatabaseBinding, userId: string): Promise<boolean> {
+  const row = await db
+    .prepare('SELECT status FROM subscriptions WHERE user_id = ? LIMIT 1')
+    .bind(userId)
+    .first<{ status: string | null }>();
+  return isSuspendedOrDeletedStatus(row?.status);
+}
+
+async function isEmailSuspendedOrDeleted(db: D1DatabaseBinding, normalizedEmail: string): Promise<boolean> {
+  const row = await db
+    .prepare(
+      `SELECT s.status
+       FROM subscriptions s
+       WHERE s.user_id IN (
+         SELECT a.user_id FROM auth_accounts a WHERE lower(trim(a.email)) = ?
+         UNION
+         SELECT u.id FROM users u WHERE lower(trim(u.email)) = ?
+       )
+       LIMIT 1`
+    )
+    .bind(normalizedEmail, normalizedEmail)
+    .first<{ status: string | null }>();
+  return isSuspendedOrDeletedStatus(row?.status);
+}
 
 // Session bootstrap also needs CSRF protection before a cookie exists.
 for (const path of ['login', 'register', 'verify-otp', 'resend-otp', 'forgot-password', 'reset-password', 'google', 'guest', 'logout']) {
@@ -293,9 +325,11 @@ authRoutes.post('/auth/login', async (c) => {
   try {
     const account = await db
       .prepare(
-        `SELECT a.user_id, a.password_hash, a.salt, a.is_verified, p.display_name, p.avatar_url, p.onboarding_completed_at
+        `SELECT a.user_id, a.password_hash, a.salt, a.is_verified, p.display_name, p.avatar_url, p.onboarding_completed_at,
+                s.status AS subscription_status
          FROM auth_accounts a
          LEFT JOIN profiles p ON p.user_id = a.user_id
+         LEFT JOIN subscriptions s ON s.user_id = a.user_id
          WHERE a.email = ?`
       )
       .bind(normalizedEmail)
@@ -307,6 +341,7 @@ authRoutes.post('/auth/login', async (c) => {
     }
 
     // Verify PBKDF2 password
+    let needsHashUpgrade = false;
     const isPasswordValid = await verifyPassword(password, account.salt, account.password_hash);
     if (!isPasswordValid) {
       // Legacy SHA-256 fallback migration check
@@ -318,16 +353,24 @@ authRoutes.post('/auth/login', async (c) => {
         .join('');
 
       if (legacyHash === account.password_hash) {
-        // Upgrade legacy hash to PBKDF2 on the fly!
-        const newSalt = generateSalt();
-        const newPbkdf2Hash = await hashPassword(password, newSalt);
-        await db
-          .prepare('UPDATE auth_accounts SET password_hash = ?, salt = ? WHERE user_id = ?')
-          .bind(newPbkdf2Hash, newSalt, account.user_id)
-          .run();
+        needsHashUpgrade = true;
       } else {
         return c.json({ error: 'Email hoặc mật khẩu không chính xác' }, 401);
       }
+    }
+
+    if (isSuspendedOrDeletedStatus(account.subscription_status)) {
+      return c.json({ error: ACCOUNT_SUSPENDED_ERROR, code: 'ACCOUNT_SUSPENDED' }, 403);
+    }
+
+    if (needsHashUpgrade) {
+      // Upgrade legacy hash to PBKDF2 on the fly!
+      const newSalt = generateSalt();
+      const newPbkdf2Hash = await hashPassword(password, newSalt);
+      await db
+        .prepare('UPDATE auth_accounts SET password_hash = ?, salt = ? WHERE user_id = ?')
+        .bind(newPbkdf2Hash, newSalt, account.user_id)
+        .run();
     }
 
     // Check email verification status
@@ -387,6 +430,9 @@ authRoutes.post('/auth/forgot-password', async (c) => {
   }
 
   try {
+    if (await isEmailSuspendedOrDeleted(db, normalizedEmail)) {
+      return c.json({ error: ACCOUNT_SUSPENDED_ERROR, code: 'ACCOUNT_SUSPENDED' }, 403);
+    }
     return await issueStrictOtp(c, normalizedEmail, 'forgot_password', { source: 'forgot' });
   } catch {
     return c.json({ error: 'Không thể tạo yêu cầu quên mật khẩu', code: 'RESET_REQUEST_UNAVAILABLE' }, 503);
@@ -418,6 +464,9 @@ authRoutes.post('/auth/reset-password', async (c) => {
   }
 
   try {
+    if (await isEmailSuspendedOrDeleted(db, normalizedEmail)) {
+      return c.json({ error: ACCOUNT_SUSPENDED_ERROR, code: 'ACCOUNT_SUSPENDED' }, 403);
+    }
     return await verifyStrictOtp(c, { email: normalizedEmail, code: cleanCode, purpose: 'forgot_password', newPassword });
   } catch {
     console.error(JSON.stringify({ event: 'password_reset_failed' }));
@@ -511,6 +560,10 @@ authRoutes.post('/auth/google', async (c) => {
       .join('');
     const userId = existing ? existing.user_id : `usr_g_${googleHash.slice(0, 32)}`;
     const householdId = `hh_${userId}`;
+
+    if (await isUserSuspendedOrDeleted(db, userId)) {
+      return c.json({ error: ACCOUNT_SUSPENDED_ERROR, code: 'ACCOUNT_SUSPENDED' }, 403);
+    }
 
     await db.batch([
       // Preserve existing child rows when a returning Google user signs in.

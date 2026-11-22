@@ -1,10 +1,10 @@
 /**
- * Takolio Admin Console V1 shared contract.
+ * Takolio Admin Console shared contract (RBAC v3 & typed DTOs).
  *
  * The permission matrix below is the single authorization authority for the
  * console. The worker evaluates it server-side on every admin request; the
- * admin frontend reads the same matrix only to hide navigation, never to
- * grant access. Unknown roles or permissions are denied.
+ * admin frontend reads the same matrix only to hide navigation or controls,
+ * never to grant access. Unknown roles or permissions are denied.
  */
 
 export const ADMIN_ROLES = [
@@ -21,12 +21,21 @@ export const ADMIN_PERMISSIONS = [
   'overview.read',
   'users.read',
   'users.pii.reveal',
+  'users.write',
+  'users.billing.write',
+  'users.suspend',
+  'users.delete',
   'households.read',
+  'households.write',
   'billing.read',
+  'billing.write',
   'ai.read',
+  'ai.write',
   'recipes.read',
   'recipes.review',
+  'recipes.write',
   'system.read',
+  'system.write',
   'audit.read',
   'admin.roles.read',
   'admin.roles.manage',
@@ -37,7 +46,7 @@ export const ADMIN_PERMISSIONS = [
 export type AdminPermission = (typeof ADMIN_PERMISSIONS)[number];
 
 /** Bump when the matrix changes; recorded in audit metadata and system status. */
-export const ADMIN_RBAC_MATRIX_VERSION = '2026-10-13.v2';
+export const ADMIN_RBAC_MATRIX_VERSION = '2026-11-22.v3';
 
 const ALL_ROLES: readonly AdminRole[] = ADMIN_ROLES;
 
@@ -46,12 +55,21 @@ export const ADMIN_PERMISSION_MATRIX: Readonly<Record<AdminPermission, readonly 
   'overview.read': ALL_ROLES,
   'users.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'SUPPORT_AGENT', 'READ_ONLY_AUDITOR'],
   'users.pii.reveal': ['SUPER_ADMIN', 'SUPPORT_AGENT'],
+  'users.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'SUPPORT_AGENT'],
+  'users.billing.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
+  'users.suspend': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
+  'users.delete': ['SUPER_ADMIN'],
   'households.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'SUPPORT_AGENT', 'READ_ONLY_AUDITOR'],
+  'households.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
   'billing.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'READ_ONLY_AUDITOR'],
+  'billing.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
   'ai.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'READ_ONLY_AUDITOR'],
+  'ai.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
   'recipes.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'CONTENT_EDITOR', 'READ_ONLY_AUDITOR'],
   'recipes.review': ['SUPER_ADMIN', 'CONTENT_EDITOR'],
+  'recipes.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'CONTENT_EDITOR'],
   'system.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'READ_ONLY_AUDITOR'],
+  'system.write': ['SUPER_ADMIN', 'OPERATIONS_ADMIN'],
   'audit.read': ['SUPER_ADMIN', 'OPERATIONS_ADMIN', 'READ_ONLY_AUDITOR'],
   'admin.roles.read': ['SUPER_ADMIN', 'READ_ONLY_AUDITOR'],
   'admin.roles.manage': ['SUPER_ADMIN'],
@@ -92,12 +110,21 @@ export const ADMIN_PERMISSION_LABELS_VI: Readonly<Record<AdminPermission, string
   'overview.read': 'Xem tổng quan',
   'users.read': 'Xem danh sách người dùng (đã che thông tin nhạy cảm)',
   'users.pii.reveal': 'Hiện email đầy đủ của người dùng (có ghi nhật ký)',
-  'households.read': 'Xem tóm tắt hộ gia đình',
-  'billing.read': 'Xem thanh toán và gói đăng ký (chỉ đọc)',
+  'users.write': 'Hỗ trợ người dùng (xác minh email, đặt lại lượt quét, đăng xuất, thông báo)',
+  'users.billing.write': 'Cấp hoặc hủy gói Takolio Pro cho người dùng',
+  'users.suspend': 'Tạm khóa và mở khóa tài khoản người dùng',
+  'users.delete': 'Ẩn danh hoặc xóa vĩnh viễn tài khoản người dùng',
+  'households.read': 'Xem chi tiết hộ gia đình',
+  'households.write': 'Chỉnh sửa hộ gia đình và dọn hộ khách',
+  'billing.read': 'Xem thanh toán và gói đăng ký',
+  'billing.write': 'Xử lý giao dịch thanh toán và đối soát',
   'ai.read': 'Xem vận hành AI & OCR',
+  'ai.write': 'Điều khiển hàng đợi quét OCR (thử lại / hủy tác vụ)',
   'recipes.read': 'Xem danh mục công thức',
   'recipes.review': 'Tạo ghi chú biên tập/duyệt công thức',
+  'recipes.write': 'Cập nhật công thức, trạng thái xác minh và quản lý media',
   'system.read': 'Xem trạng thái hệ thống',
+  'system.write': 'Dọn dẹp dữ liệu hệ thống và gửi thông báo toàn hệ thống',
   'audit.read': 'Xem nhật ký kiểm toán',
   'admin.roles.read': 'Xem phân quyền quản trị',
   'admin.roles.manage': 'Cấp/thu hồi vai trò quản trị',
@@ -239,15 +266,26 @@ export interface AdminIncident {
   source: string;
 }
 
+export interface AdminActionQueue {
+  pendingReconciliations: number;
+  failedScanJobs: number;
+  unverifiedRecipes: number;
+  suspendedUsers: number;
+  pendingApprovals: number;
+}
+
 export interface AdminOverview {
   range: AdminRange;
   metrics: AdminMetric[];
   series: AdminSeries[];
   health: { status: 'ok' | 'degraded' | 'unhealthy'; checks: AdminHealthCheck[] };
   incidents: AdminIncident[];
+  actionQueue: AdminActionQueue;
 }
 
 // ── Users & households ─────────────────────────────────────────────────────
+
+export type AdminAccountStatus = 'active' | 'suspended' | 'deleted';
 
 export interface AdminUserSummary {
   id: string;
@@ -255,6 +293,7 @@ export interface AdminUserSummary {
   emailMasked: string | null;
   isGuest: boolean;
   isVerified: boolean;
+  accountStatus: AdminAccountStatus;
   plan: 'free' | 'plus';
   subscriptionStatus: string | null;
   subscriptionExpiresAt: string | null;
@@ -278,6 +317,11 @@ export interface AdminUserDetail extends AdminUserSummary {
     lastScanAt: string | null;
     payments: { paid: number; pending: number; failed: number };
   };
+  scanQuota: {
+    usedThisMonth: number;
+    maxPerMonth: number;
+  };
+  recentTransactions: AdminTransaction[];
   adminRoles: AdminRole[];
 }
 
@@ -289,6 +333,177 @@ export interface AdminHouseholdSummary {
   memberCount: number;
   inventoryItemCount: number;
   createdAt: string;
+}
+
+export interface AdminHouseholdMember {
+  id: string;
+  userId: string;
+  displayName: string | null;
+  emailMasked: string | null;
+  role: string;
+  createdAt: string;
+}
+
+export interface AdminHouseholdDetail {
+  id: string;
+  name: string;
+  ownerUserId: string;
+  ownerDisplayName: string | null;
+  createdAt: string;
+  inventoryMode: 'native' | 'legacy';
+  inventoryVersion: number;
+  itemCount: number;
+  lotCount: number;
+  expiringCount: number;
+  mealPlanCount: number;
+  cookedMealCount: number;
+  shoppingListCount: number;
+  members: AdminHouseholdMember[];
+}
+
+// ── User & Household Mutation DTOs ─────────────────────────────────────────
+
+export interface AdminReasonRequest {
+  reason: string;
+}
+
+export type AdminUpgradeDuration = 'monthly' | 'annual' | 'custom';
+
+export interface AdminUpgradeSubscriptionRequest {
+  duration: AdminUpgradeDuration;
+  customDays?: number;
+  reason: string;
+  notifyUser?: boolean;
+}
+
+export interface AdminUpgradeSubscriptionResult {
+  userId: string;
+  plan: 'plus';
+  status: 'active';
+  expiresAt: string;
+  notified: boolean;
+}
+
+export interface AdminCancelSubscriptionRequest {
+  immediate: boolean;
+  reason: string;
+}
+
+export interface AdminCancelSubscriptionResult {
+  userId: string;
+  plan: 'free' | 'plus';
+  status: string;
+  expiresAt: string | null;
+  immediate: boolean;
+}
+
+export type AdminSuspendUserRequest = AdminReasonRequest;
+
+export interface AdminSuspendUserResult {
+  userId: string;
+  accountStatus: 'suspended';
+  revokedSessions: number;
+  updatedAt: string;
+}
+
+export type AdminUnsuspendUserRequest = AdminReasonRequest;
+
+export interface AdminUnsuspendUserResult {
+  userId: string;
+  accountStatus: 'active';
+  updatedAt: string;
+}
+
+export type AdminDeleteUserMode = 'anonymize' | 'purge';
+
+export interface AdminDeleteUserRequest {
+  mode: AdminDeleteUserMode;
+  reason: string;
+}
+
+export interface AdminDeleteUserResult {
+  userId: string;
+  mode: AdminDeleteUserMode;
+  accountStatus: 'deleted';
+  revokedSessions: number;
+  deletedAt: string;
+}
+
+export type AdminVerifyEmailRequest = AdminReasonRequest;
+
+export interface AdminVerifyEmailResult {
+  userId: string;
+  isVerified: boolean;
+  accountsUpdated: number;
+  verifiedAt: string;
+}
+
+export type AdminResetQuotaRequest = AdminReasonRequest;
+
+export interface AdminResetQuotaResult {
+  userId: string;
+  usedThisMonth: number;
+  maxPerMonth: number;
+  resetAt: string;
+}
+
+export type AdminRevokeUserSessionsRequest = AdminReasonRequest;
+
+export interface AdminRevokeUserSessionsResult {
+  userId: string;
+  revokedSessions: number;
+  revokedAt: string;
+}
+
+export type AdminNotificationType =
+  | 'system'
+  | 'announcement'
+  | 'support'
+  | 'billing'
+  | 'expiring_soon'
+  | 'cook_ready'
+  | 'shopping_reminder';
+
+export interface AdminNotifyUserRequest {
+  title: string;
+  message: string;
+  type?: AdminNotificationType;
+  reason: string;
+}
+
+export interface AdminNotifyUserResult {
+  notificationId: string;
+  userId: string;
+  type: AdminNotificationType;
+  createdAt: string;
+}
+
+export interface AdminUpdateHouseholdRequest {
+  name?: string;
+  newOwnerUserId?: string;
+  removeUserId?: string;
+  reason: string;
+}
+
+export interface AdminUpdateHouseholdResult {
+  id: string;
+  name: string;
+  ownerUserId: string;
+  removedUserId: string | null;
+  memberCount: number;
+  updatedAt: string;
+}
+
+export interface AdminPurgeGuestHouseholdsRequest {
+  olderThanDays: number;
+  reason: string;
+}
+
+export interface AdminPurgeGuestHouseholdsResult {
+  olderThanDays: number;
+  deletedHouseholds: number;
+  deletedGuestUsers: number;
+  purgedAt: string;
 }
 
 // ── Billing ────────────────────────────────────────────────────────────────
@@ -318,6 +533,47 @@ export interface AdminTransaction {
   createdAt: string;
   updatedAt: string;
   expiresAt: string;
+}
+
+export interface AdminBillingMarkPaidRequest {
+  reason: string;
+  grantDays?: number;
+}
+
+export interface AdminBillingMarkPaidResult {
+  intentId: string;
+  userId: string;
+  status: 'paid';
+  subscriptionExpiresAt: string;
+  reconciliationCleared: boolean;
+  updatedAt: string;
+}
+
+export interface AdminBillingRefundRequest {
+  reason: string;
+  revokeSubscription: boolean;
+}
+
+export interface AdminBillingRefundResult {
+  intentId: string;
+  userId: string;
+  status: 'refunded';
+  subscriptionRevoked: boolean;
+  updatedAt: string;
+}
+
+export type AdminBillingResolveOutcome = 'expired' | 'failed';
+
+export interface AdminBillingResolveRequest {
+  outcome: AdminBillingResolveOutcome;
+  reason: string;
+}
+
+export interface AdminBillingResolveResult {
+  intentId: string;
+  status: AdminBillingResolveOutcome;
+  reconciliationCleared: boolean;
+  updatedAt: string;
 }
 
 // ── AI & OCR ───────────────────────────────────────────────────────────────
@@ -351,7 +607,36 @@ export interface AdminAiUsageRow {
   createdAt: string;
 }
 
+export interface AdminScanJobRow {
+  id: string;
+  scanId: string;
+  userId: string;
+  householdId: string;
+  scanType: string;
+  status: string;
+  attempts: number;
+  maxAttempts: number;
+  errorCode: string | null;
+  errorMessage: string | null;
+  lockedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type AdminScanJobRetryRequest = AdminReasonRequest;
+export type AdminScanJobCancelRequest = AdminReasonRequest;
+
+export interface AdminScanJobActionResult {
+  id: string;
+  scanId: string;
+  status: string;
+  attempts: number;
+  updatedAt: string;
+}
+
 // ── Recipes ────────────────────────────────────────────────────────────────
+
+export type AdminRecipeVerificationState = 'unverified' | 'reviewed' | 'rejected';
 
 export interface AdminRecipeSummary {
   id: string;
@@ -361,7 +646,7 @@ export interface AdminRecipeSummary {
   difficulty: string;
   cookTimeMinutes: number;
   sourceType: string;
-  verificationState: 'unverified' | 'reviewed' | 'rejected';
+  verificationState: AdminRecipeVerificationState;
   version: number;
   hasReadyMedia: boolean;
   latestEditorialState: AdminEditorialState | null;
@@ -369,6 +654,21 @@ export interface AdminRecipeSummary {
 }
 
 export type AdminEditorialState = 'draft' | 'in_review' | 'approved' | 'rejected';
+
+export interface AdminRecipeIngredient {
+  id: string;
+  name: string;
+  quantity: number;
+  unit: string;
+  isOptional: boolean;
+}
+
+export interface AdminRecipeStep {
+  stepNumber: number;
+  instruction: string;
+  tip: string | null;
+  timerMinutes: number | null;
+}
 
 export interface AdminRecipeDetail extends AdminRecipeSummary {
   description: string | null;
@@ -379,10 +679,11 @@ export interface AdminRecipeDetail extends AdminRecipeSummary {
   familyId: string | null;
   ingredientCount: number;
   stepCount: number;
+  ingredients: AdminRecipeIngredient[];
+  steps: AdminRecipeStep[];
   media: Array<{ role: string; version: number; status: string; sourceType: string | null; mimeType: string | null }>;
   editorialReviews: Array<{ id: string; state: AdminEditorialState; note: string; authorUserId: string; recipeVersion: number; createdAt: string }>;
-  /** Publishing into canonical recipe authority is not available in V1. */
-  publication: { canPublish: false; note: string };
+  publication: { canPublish: boolean; note: string };
 }
 
 export interface AdminRecipesSummary {
@@ -400,6 +701,54 @@ export interface AdminRecipeReviewRequest {
   note: string;
   /** Optimistic guard: must equal the recipe's current version. */
   recipeVersion: number;
+}
+
+export interface AdminRecipeVerificationRequest {
+  verificationState: AdminRecipeVerificationState;
+  recipeVersion: number;
+  reason: string;
+}
+
+export interface AdminRecipeVerificationResult {
+  id: string;
+  verificationState: AdminRecipeVerificationState;
+  version: number;
+  updatedAt: string;
+}
+
+export interface AdminRecipeMetadataUpdateRequest {
+  title?: string;
+  description?: string | null;
+  cuisine?: string;
+  difficulty?: string;
+  cookTimeMinutes?: number;
+  prepTimeMinutes?: number | null;
+  servings?: number;
+  tags?: string[];
+  reason: string;
+}
+
+export interface AdminRecipeMetadataUpdateResult {
+  id: string;
+  title: string;
+  version: number;
+  updatedAt: string;
+}
+
+export type AdminRecipeMediaRole = 'hero' | 'thumbnail';
+
+export interface AdminRecipeMediaRejectRequest {
+  role: AdminRecipeMediaRole;
+  version: number;
+  reason: string;
+}
+
+export interface AdminRecipeMediaRejectResult {
+  recipeId: string;
+  role: AdminRecipeMediaRole;
+  version: number;
+  status: 'rejected';
+  updatedAt: string;
 }
 
 // ── System ─────────────────────────────────────────────────────────────────
@@ -420,6 +769,33 @@ export interface AdminSystemStatus {
   featureFlags: Array<{ key: string; value: string | null }>;
   warnings: Array<{ code: string; message: string }>;
   remoteAdapters: Array<{ key: string; label: string; status: 'unavailable'; note: string }>;
+}
+
+export interface AdminSystemHygieneRequest {
+  reason?: string;
+}
+
+export interface AdminSystemHygieneResult {
+  revokedSessionsDeleted: number;
+  legacySessionsDeleted: number;
+  expiredOtpsDeleted: number;
+  expiredApprovalsClosed: number;
+  ranAt: string;
+}
+
+export type AdminBroadcastTarget = 'all_registered' | 'pro_only';
+
+export interface AdminSystemBroadcastRequest {
+  target: AdminBroadcastTarget;
+  title: string;
+  message: string;
+  reason: string;
+}
+
+export interface AdminSystemBroadcastResult {
+  target: AdminBroadcastTarget;
+  recipientCount: number;
+  sentAt: string;
 }
 
 // ── Audit ──────────────────────────────────────────────────────────────────
@@ -458,8 +834,8 @@ export interface AdminRoleAssignment {
 export type AdminApprovalAction = 'role.grant.super_admin' | 'role.revoke.super_admin';
 
 /**
- * Four-eyes request. Grants and revocations of SUPER_ADMIN both require a second,
- * distinct SUPER_ADMIN; the requester must still be an active SUPER_ADMIN when it is decided.
+ * Approval request. Grants and revocations of SUPER_ADMIN retain an explicit
+ * confirmation step; the requester must still be an active SUPER_ADMIN when decided.
  */
 export interface AdminApproval {
   id: string;
