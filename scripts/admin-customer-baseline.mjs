@@ -3,7 +3,7 @@ export const REVIEWED_DOMAIN_BASELINE = '352a4211afe7f70bf75115e0688ff9f4e1e232e
 // Candidate bytes are frozen here; independent PR review remains required.
 export const V2_RELEASE_BASELINE = '9b031f05c34a3f27f7a5d9958c65eb8a4405d227';
 export const V3_RELEASE_BASELINE = 'a1e706c7c870881d2e472ef7a1b211ac61bdd38c';
-export const GLOBAL_RELEASE_BASELINE = '34bc71b9aecc6efd9adb81c2a5591935a75261f9';
+export const GLOBAL_RELEASE_BASELINE = '8c1399eb60bce4df6b21305b53101b8e74934faf';
 
 export function selectGuardedCustomerBaseline({ git, originalBaseline, reviewedBaseline, releaseBaseline, v3ReleaseBaseline, globalReleaseBaseline, guardedPaths }) {
   const head = git('rev-parse', 'HEAD');
