@@ -1227,7 +1227,8 @@ input[type='hidden'] {
   }
 }
 
-.table-wrap:focus-visible {
+.table-wrap:focus-visible,
+.chart-scroll:focus-visible {
   outline: 3px solid var(--admin-green);
   outline-offset: 2px;
 }

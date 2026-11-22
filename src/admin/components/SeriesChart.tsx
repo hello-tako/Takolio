@@ -33,7 +33,7 @@ export function SeriesChart({ series, variant = 'bar' }: { series: AdminSeries; 
 
   return (
     <figure className="chart">
-      <div className="chart-scroll">
+      <div className="chart-scroll" tabIndex={0} role="region" aria-label={series.label}>
         <svg
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
           role="img"
