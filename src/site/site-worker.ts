@@ -39,14 +39,15 @@ function applyEdgeHeaders(
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self'",
+      "script-src 'self' https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
-      "font-src 'self'",
-      "connect-src 'self' https://takolio.app https://api.takolio.app",
+      "font-src 'self' data:",
+      "connect-src 'self' https://takolio.app https://api.takolio.app https://cloudflareinsights.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "object-src 'none'",
+      'upgrade-insecure-requests',
     ].join('; '),
   );
   return new Response(response.body, {
@@ -135,13 +136,16 @@ export default {
       });
     }
 
-    // 7. Pre-rendered Satellite HTML Routes
-    const cleanPath = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, '') : '/';
-    const htmlLookupUrl = new URL(
-      cleanPath === '/' ? '/index.html' : `${cleanPath}/index.html`,
-      url.origin,
-    );
-    const pageRes = await env.ASSETS.fetch(new Request(htmlLookupUrl.toString(), request));
+    // 7. Pre-rendered Satellite HTML Routes & Static Assets (`html_handling: "drop-trailing-slash"`, `not_found_handling: "404-page"`)
+    if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+      url.pathname = url.pathname.replace(/\/+$/, '');
+      return Response.redirect(url.toString(), 308);
+    }
+
+    const pageRes = await env.ASSETS.fetch(request);
+    if (pageRes.status >= 300 && pageRes.status < 400) {
+      return pageRes;
+    }
     if (pageRes.ok) {
       return applyEdgeHeaders(pageRes, {
         cacheControl: 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400',
@@ -149,19 +153,10 @@ export default {
       });
     }
 
-    // 8. 404 Not Found with proper HTTP 404 status and noindex
-    const notFoundUrl = new URL('/404.html', url.origin);
-    const fallbackRes = await env.ASSETS.fetch(new Request(notFoundUrl.toString(), request));
-    const status = fallbackRes.ok ? 404 : pageRes.status;
-    return applyEdgeHeaders(
-      new Response(fallbackRes.ok ? fallbackRes.body : pageRes.body, {
-        status,
-        headers: fallbackRes.ok ? fallbackRes.headers : pageRes.headers,
-      }),
-      {
-        cacheControl: 'no-store',
-        robotsTag: 'noindex, nofollow',
-      },
-    );
+    // 8. 404 Not Found (`dist/site/404.html` served with HTTP 404 and noindex)
+    return applyEdgeHeaders(pageRes, {
+      cacheControl: 'no-store',
+      robotsTag: 'noindex, nofollow',
+    });
   },
 };
