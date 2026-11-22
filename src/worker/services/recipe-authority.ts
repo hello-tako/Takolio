@@ -1,5 +1,6 @@
 import type { D1DatabaseBinding } from '@frigo/db';
 import { readRecipeContent } from '../../../packages/db/src/recipe-content';
+import { readStandardV4Catalog } from '../../../packages/db/src/recipe-standard-v4';
 import { hydrateRuntimeRecipes } from '../../../packages/recipes/src/runtime-hydration';
 import { fingerprintRecipes } from '../../../packages/recipes/src/catalog-fingerprint';
 import {
@@ -9,6 +10,13 @@ import {
   type RecipeAuthorityReadiness,
   type RecipeAuthoritySnapshot,
 } from '../../../packages/recipes/src/recipe-authority';
+import {
+  D1StandardV4RecipeAuthority,
+  hydrateStandardV4D1Catalog,
+  isStandardV4CatalogReady,
+  StandardV4RecipeAuthority,
+  standardV4RuntimeFingerprint,
+} from '../../../packages/recipes/src/standard-v4/authority';
 import {
   parseRecipeTestCohort,
   RecipeTestCohortConfigError,
@@ -78,7 +86,7 @@ export interface RecipeAuthorityConfig {
 }
 
 export type RecipeAuthorityConfigEnv = Pick<Env, 'RECIPE_CATALOG_MODE' | 'RECIPE_CATALOG_D1_CANARY_PERCENT' | 'RECIPE_CATALOG_CUTOVER_ENABLED' | 'RECIPE_CATALOG_TEST_COHORT_ENABLED' | 'RECIPE_CATALOG_TEST_INCLUDE' | 'RECIPE_CATALOG_TEST_EXCLUDE'>;
-export type RecipeAuthorityEnv = Pick<Env, 'DB' | 'RECIPE_CATALOG_SHADOW_INTERVAL_MS'> & RecipeAuthorityConfigEnv;
+export type RecipeAuthorityEnv = Pick<Env, 'DB' | 'RECIPE_CATALOG_SHADOW_INTERVAL_MS'> & RecipeAuthorityConfigEnv & { RECIPE_CATALOG_V4_STANDARD_ENABLED?: string };
 
 /**
  * Validates the whole authority configuration; throws a typed error for any invalid or
@@ -116,9 +124,15 @@ export const RECIPE_AUTHORITY_D1_TTL_MS = 30_000;
 export const RECIPE_AUTHORITY_D1_STALE_GRACE_MS = 5 * 60_000;
 
 interface CachedD1 { snapshot: RecipeAuthoritySnapshot; verifiedAt: number }
-let cachedD1: CachedD1 | null = null;
-let inflightD1: Promise<D1LoadOutcome> | null = null;
+interface D1CacheSlot {
+  cached: CachedD1 | null;
+  inflight: Promise<D1LoadOutcome> | null;
+}
+
+const v1CacheSlot: D1CacheSlot = { cached: null, inflight: null };
+const v4CacheSlot: D1CacheSlot = { cached: null, inflight: null };
 const staticAuthority = new StaticRecipeAuthority();
+const standardV4Authority = new StandardV4RecipeAuthority();
 
 type D1LoadOutcome =
   | { kind: 'fresh'; snapshot: RecipeAuthoritySnapshot }
@@ -128,38 +142,52 @@ type D1LoadOutcome =
 /** Mutations must prove the selected D1 snapshot still matches current content, even inside the cache TTL. */
 export async function recipeAuthoritySnapshotIsCurrent(db: D1DatabaseBinding, snapshot: RecipeAuthoritySnapshot): Promise<boolean> {
   if (snapshot.source !== 'd1') return true;
+  if (snapshot.fingerprint === standardV4RuntimeFingerprint()) {
+    const hydrated = hydrateStandardV4D1Catalog(await readStandardV4Catalog(db));
+    return hydrated.failures.length === 0 && await fingerprintRecipes(hydrated.recipes) === snapshot.fingerprint;
+  }
   const hydrated = hydrateRuntimeRecipes(await readRecipeContent(db));
   return hydrated.failures.length === 0 && await fingerprintRecipes(hydrated.recipes) === snapshot.fingerprint;
 }
 
-/** Test seam: forget the isolate's cached D1 snapshot and any in-flight refresh. */
-export function resetRecipeAuthorityCacheForTests(): void { cachedD1 = null; inflightD1 = null; }
+/** Test seam: forget the isolate's cached D1 snapshots and any in-flight refreshes. */
+export function resetRecipeAuthorityCacheForTests(): void {
+  v1CacheSlot.cached = null;
+  v1CacheSlot.inflight = null;
+  v4CacheSlot.cached = null;
+  v4CacheSlot.inflight = null;
+}
 
-async function loadVerifiedD1(db: D1DatabaseBinding | undefined, now: () => number): Promise<D1LoadOutcome> {
+async function loadVerifiedD1(db: D1DatabaseBinding | undefined, now: () => number, v4Enabled: boolean): Promise<D1LoadOutcome> {
+  const slot = v4Enabled ? v4CacheSlot : v1CacheSlot;
   const current = now();
-  if (cachedD1 && current - cachedD1.verifiedAt < RECIPE_AUTHORITY_D1_TTL_MS) return { kind: 'fresh', snapshot: cachedD1.snapshot };
-  if (inflightD1) return inflightD1;
-  inflightD1 = (async (): Promise<D1LoadOutcome> => {
-    const previous = cachedD1;
+  if (slot.cached && current - slot.cached.verifiedAt < RECIPE_AUTHORITY_D1_TTL_MS) {
+    return { kind: 'fresh', snapshot: slot.cached.snapshot };
+  }
+  if (slot.inflight) return slot.inflight;
+  slot.inflight = (async (): Promise<D1LoadOutcome> => {
+    const previous = slot.cached;
     if (!db) {
       const readiness: Exclude<RecipeAuthorityReadiness, { status: 'ready' }> = { status: 'error', source: 'd1', code: 'D1_READ_FAILED', error: 'D1 binding unavailable' };
       return previous && now() - previous.verifiedAt < RECIPE_AUTHORITY_D1_STALE_GRACE_MS
         ? { kind: 'stale', snapshot: previous.snapshot, readiness, ageMs: now() - previous.verifiedAt }
         : { kind: 'unavailable', readiness };
     }
-    const loaded = await new D1RecipeAuthority(() => readRecipeContent(db), staticAuthority, now).load();
+    const loaded = v4Enabled
+      ? await new D1StandardV4RecipeAuthority(() => readStandardV4Catalog(db), now).load()
+      : await new D1RecipeAuthority(() => readRecipeContent(db), staticAuthority, now).load();
     if (loaded.status === 'ready') {
-      cachedD1 = { snapshot: loaded.snapshot, verifiedAt: now() };
+      slot.cached = { snapshot: loaded.snapshot, verifiedAt: now() };
       return { kind: 'fresh', snapshot: loaded.snapshot };
     }
     // A failed refresh never evicts a verified snapshot early, but the grace window bounds its life.
     if (previous && now() - previous.verifiedAt < RECIPE_AUTHORITY_D1_STALE_GRACE_MS) {
       return { kind: 'stale', snapshot: previous.snapshot, readiness: loaded.readiness, ageMs: now() - previous.verifiedAt };
     }
-    cachedD1 = null;
+    slot.cached = null;
     return { kind: 'unavailable', readiness: loaded.readiness };
-  })().finally(() => { inflightD1 = null; });
-  return inflightD1;
+  })().finally(() => { slot.inflight = null; });
+  return slot.inflight;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -235,7 +263,8 @@ export async function resolveRecipeAuthority(env: RecipeAuthorityEnv, options: R
   const log = options.log ?? defaultLog;
   const diagnostics: RecipeAuthorityDiagnostic[] = [];
   const emit = (diagnostic: RecipeAuthorityDiagnostic) => { diagnostics.push(diagnostic); log(diagnostic); };
-  const staticSnapshot = await staticAuthority.load();
+  const v4Enabled = env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'true' && isStandardV4CatalogReady();
+  const staticSnapshot = v4Enabled ? await standardV4Authority.load() : await staticAuthority.load();
   let config: RecipeAuthorityConfig;
   try {
     config = resolveRecipeAuthorityConfig(env);
@@ -271,7 +300,7 @@ export async function resolveRecipeAuthority(env: RecipeAuthorityEnv, options: R
   }
   const reasonField = canaryAssignmentReason ? { assignmentReason: canaryAssignmentReason } : {};
 
-  const outcome = await loadVerifiedD1(env.DB, now);
+  const outcome = await loadVerifiedD1(env.DB, now, v4Enabled);
   if (outcome.kind === 'unavailable') {
     counters.notReady += 1;
     const reasonCode = outcome.readiness.code;

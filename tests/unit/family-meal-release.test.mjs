@@ -41,6 +41,7 @@ describe('family-meal recovery uses compatible code and paired flags-off assets'
     '0049_global_culinary_allergens_units_barcode_and_ocr.sql',
     '0050_global_billing_subscriptions_and_oauth_identities.sql',
     '0051_privacy_erasure_portability_and_consent_ledger.sql',
+    '0052_culinary_standard_v4_catalog_500.sql',
   ])('requires and certifies compatible recovery at production %s', (tip) => {
     const candidate = { ...manifest, schema: { version: tip } };
     expect(needsRecovery(candidate)).toBe(true);

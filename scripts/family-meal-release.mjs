@@ -20,6 +20,7 @@ export function needsRecovery(manifest) {
     '0049_global_culinary_allergens_units_barcode_and_ocr.sql',
     '0050_global_billing_subscriptions_and_oauth_identities.sql',
     '0051_privacy_erasure_portability_and_consent_ledger.sql',
+    '0052_culinary_standard_v4_catalog_500.sql',
   ].includes(manifest?.schema?.version);
 }
 

@@ -4,14 +4,12 @@ import { describe, expect, it } from 'vitest';
 import {
   CANONICAL_INGREDIENTS,
   GLOBAL_EXTENDED_INGREDIENTS,
-  normalizeIngredientText,
-} from '../../packages/domain/src';
-import {
   findOperationalIngredient,
   getAllOperationalIngredients,
   getOperationalAllergensV4,
   getOperationalNutritionV4,
-} from '../../packages/domain/src/culinary-ingredients-v4';
+  normalizeIngredientText,
+} from '../../packages/domain/src';
 import {
   FORBIDDEN_CITATION_RE,
   StandardRecipeV4Schema,
@@ -24,9 +22,9 @@ import {
 import { StandardV4RecipeAuthority, isStandardV4CatalogReady } from '../../packages/recipes/src/standard-v4/authority';
 import { fingerprintRecipes } from '../../packages/recipes/src/catalog-fingerprint';
 import {
-  resolveRecipeAuthorityV4,
-  type RecipeAuthorityV4Env,
-} from '../../src/worker/services/recipe-authority-v4';
+  resolveRecipeAuthority,
+  type RecipeAuthorityEnv,
+} from '../../src/worker/services/recipe-authority';
 
 const root = process.cwd();
 const releaseManifest = JSON.parse(
@@ -129,14 +127,14 @@ describe('Takolio Culinary Standard V4 — 500-recipe catalog & operational dict
     expect(v4Snapshot.size).toBe(500);
     expect(v4Snapshot.fingerprint).toBe(v4Manifest.runtimeFingerprint);
 
-    const staticEnv = (overrides: Partial<RecipeAuthorityV4Env> = {}): RecipeAuthorityV4Env =>
-      ({ DB: undefined, RECIPE_CATALOG_MODE: 'static', ...overrides }) as unknown as RecipeAuthorityV4Env;
+    const staticEnv = (overrides: Partial<RecipeAuthorityEnv> = {}): RecipeAuthorityEnv =>
+      ({ DB: undefined, RECIPE_CATALOG_MODE: 'static', ...overrides }) as unknown as RecipeAuthorityEnv;
 
-    const defaultRes = await resolveRecipeAuthorityV4(staticEnv());
+    const defaultRes = await resolveRecipeAuthority(staticEnv());
     expect(defaultRes.actualSource).toBe('static');
     expect(defaultRes.snapshot.size).toBe(71);
 
-    const optInRes = await resolveRecipeAuthorityV4(
+    const optInRes = await resolveRecipeAuthority(
       staticEnv({
         RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
       }),

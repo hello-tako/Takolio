@@ -1,58 +1,109 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { readRecipeContent } from '../../packages/db/src/recipe-content';
-import { evaluateRecipeAvailability, hydrateRuntimeRecipes, scaleRecipeServings } from '../../packages/recipes/src';
+import {
+  readStandardV4Catalog,
+  STANDARD_V4_CATALOG_READ_STATEMENT_COUNT,
+} from '../../packages/db/src/recipe-standard-v4';
+import { evaluateRecipeAvailability, scaleRecipeServings } from '../../packages/recipes/src';
+import { currentCatalogRelease } from '../../packages/recipes/src/recipe-authority';
+import { hydrateStandardV4D1Catalog } from '../../packages/recipes/src/standard-v4/authority';
 import { fingerprintRecipes } from '../../packages/recipes/src/catalog-fingerprint';
 import { allocateCookingLots } from '../../src/worker/routes/recipes';
-import { SqliteD1 } from '../helpers/sqlite-d1';
+import {
+  recipeAuthoritySnapshotIsCurrent,
+  resetRecipeAuthorityCacheForTests,
+  resetRecipeAuthorityCountersForTests,
+  resolveRecipeAuthority,
+} from '../../src/worker/services/recipe-authority';
+import type { Env } from '../../src/worker/types';
+import { SqliteD1, type SqliteStatementEvent } from '../helpers/sqlite-d1';
 
 const root = process.cwd();
-const proposedSql = readFileSync(
-  path.join(root, 'docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql'),
-  'utf8',
-);
 const v4Manifest = JSON.parse(
   readFileSync(path.join(root, 'data/recipe-standard/v4/manifest.json'), 'utf8'),
 ) as { runtimeFingerprint: string; orderedRecipeIds: string[] };
 
-describe('Takolio Culinary Standard V4 — D1 replay & operational cooking/inventory parity', () => {
+describe('Takolio Culinary Standard V4 — live 0052 D1 replay & authority routing parity', () => {
   let db: SqliteD1;
 
   beforeEach(() => {
     db = new SqliteD1();
-    db.seed(proposedSql);
+    resetRecipeAuthorityCacheForTests();
+    resetRecipeAuthorityCountersForTests();
   });
 
   afterEach(() => {
+    resetRecipeAuthorityCacheForTests();
+    resetRecipeAuthorityCountersForTests();
     db.close();
   });
 
-  it('replays 0001..0051 + proposed 0052 cleanly and hydrates all 500 V4 recipes with 0 failures', async () => {
-    const snapshot = await readRecipeContent(db);
-    expect(snapshot.recipes).toHaveLength(500);
+  it('applies 0001..0052 automatically, preserves 45 legacy ingredients, and routes D1 authority cleanly under opt-in flag', async () => {
+    expect(db.migrations.at(-1)).toBe('0052_culinary_standard_v4_catalog_500.sql');
 
-    const hydration = hydrateRuntimeRecipes(snapshot);
+    const legacyIngredientCount = db.query<{ cnt: number }>('SELECT COUNT(*) AS cnt FROM ingredients');
+    expect(legacyIngredientCount[0]?.cnt).toBe(45);
+
+    const v4IngredientCount = db.query<{ cnt: number }>(
+      'SELECT COUNT(*) AS cnt FROM culinary_standard_v4_ingredients',
+    );
+    expect(v4IngredientCount[0]?.cnt).toBe(249);
+
+    const batches: number[] = [];
+    const statements: SqliteStatementEvent[] = [];
+    db.hooks = {
+      beforeBatch: (batch) => {
+        batches.push(batch.length);
+        statements.push(...batch);
+      },
+      beforeStatement: (stmt) => {
+        statements.push(stmt);
+      },
+    };
+
+    const snapshot = await readStandardV4Catalog(db);
+    expect(snapshot.recipes).toHaveLength(500);
+    expect(batches).toEqual([STANDARD_V4_CATALOG_READ_STATEMENT_COUNT]);
+
+    const hydration = hydrateStandardV4D1Catalog(snapshot);
     expect(hydration.failures).toEqual([]);
     expect(hydration.recipes).toHaveLength(500);
     expect(hydration.recipes.map((r) => r.id)).toEqual(v4Manifest.orderedRecipeIds);
     expect(await fingerprintRecipes(hydration.recipes)).toBe(v4Manifest.runtimeFingerprint);
 
-    const profileRows = db.query<{ cnt: number }>(
-      "SELECT COUNT(*) AS cnt FROM nutrition_profiles WHERE id LIKE '%_nutrition_v4'",
-    );
-    expect(profileRows[0]?.cnt).toBe(500);
+    // Default V1 D1 mode remains untouched
+    const v1Release = currentCatalogRelease();
+    const v1D1 = await resolveRecipeAuthority({
+      DB: db,
+      RECIPE_CATALOG_MODE: 'd1',
+      RECIPE_CATALOG_CUTOVER_ENABLED: 'true',
+    } as unknown as Env);
+    expect(v1D1.actualSource).toBe('d1');
+    expect(v1D1.snapshot.size).toBe(500);
+    expect(v1D1.snapshot.fingerprint).toBe(v1Release.expectedRuntimeFingerprint);
 
-    const versionedRows = db.query<{ cnt: number }>(
-      "SELECT COUNT(*) AS cnt FROM recipes WHERE version = 4 AND verification_state = 'reviewed'",
-    );
-    expect(versionedRows[0]?.cnt).toBe(500);
+    // Opt-in V4 D1 mode serves 500 standardized V4 recipes from 0052 tables
+    const v4D1 = await resolveRecipeAuthority({
+      DB: db,
+      RECIPE_CATALOG_MODE: 'd1',
+      RECIPE_CATALOG_CUTOVER_ENABLED: 'true',
+      RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
+    } as unknown as Env);
+    expect(v4D1.actualSource).toBe('d1');
+    expect(v4D1.snapshot.size).toBe(500);
+    expect(v4D1.snapshot.fingerprint).toBe(v4Manifest.runtimeFingerprint);
+    expect(await recipeAuthoritySnapshotIsCurrent(db, v4D1.snapshot)).toBe(true);
   });
 
-  it('evaluates fridge availability, serving scaling, and cooking lot deductions accurately on standardized V4 recipes', async () => {
-    const snapshot = await readRecipeContent(db);
-    const hydration = hydrateRuntimeRecipes(snapshot);
-    const canhChua = hydration.recipes.find((r) => r.id === 'vn-canh-01')!;
+  it('evaluates fridge availability, serving scaling, and cooking lot deductions accurately on hydrated V4 D1 recipes', async () => {
+    const v4D1 = await resolveRecipeAuthority({
+      DB: db,
+      RECIPE_CATALOG_MODE: 'd1',
+      RECIPE_CATALOG_CUTOVER_ENABLED: 'true',
+      RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
+    } as unknown as Env);
+    const canhChua = v4D1.snapshot.findById('vn-canh-01')!;
     expect(canhChua).toBeDefined();
     expect(canhChua.nutrition?.calories).toBeGreaterThan(100);
 

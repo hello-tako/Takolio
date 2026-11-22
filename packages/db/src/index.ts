@@ -49,3 +49,4 @@ export * from './d1-session';
 export * from './recipe-search';
 export * from './recipe-localizations';
 export * from './barcode-products';
+export * from './recipe-standard-v4';

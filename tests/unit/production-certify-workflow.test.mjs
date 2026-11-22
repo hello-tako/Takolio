@@ -32,8 +32,8 @@ const reviewedSchemaGate = {
   'scripts/d1-readonly-query.mjs': '9d43f62c25561423c6b4c00d611a262a82387dce724c6756274d1db9cfc4deb3',
   'scripts/d1-schema-gate.sh': 'e48596c6001f7fc20bb0d03213553f0bfe7575585bc02144d432f0a11cccb625',
   'scripts/d1-schema-gate.mjs': 'e443766807873c458581c82049cef1b0967dff2493b61804e1ae7f6bb6e7128a',
-  // Reviewed 0044-0051: category, receipts, recipe content, global foundation, culinary/barcode/OCR, Dodo MoR billing/OAuth and GDPR/APPI privacy guards; SELECT-only checks.
-  'scripts/d1-schema-gate.sql': 'cc352f58651de56343ab4f01a7a0eba555d0dedb24e1c944f5f80cd43ceb7e5b',
+  // Reviewed 0044-0052: category, receipts, recipe content, global foundation, culinary/barcode/OCR, Dodo MoR billing/OAuth, GDPR/APPI privacy, and Culinary Standard V4 guards; SELECT-only checks.
+  'scripts/d1-schema-gate.sql': '2aa9349ad36ea703a893dd76c85a510d19e05f23f3a619de6a757621b0322271',
 };
 const step = (name) => workflow().jobs.certify.steps.find((s) => s.name === name);
 const inline = (script) => script.split("<<'JS'\n")[1].split('\nJS')[0];

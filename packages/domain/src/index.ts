@@ -687,6 +687,7 @@ export * from './expiry-parser';
 export * from './global-ingredients';
 export * from './availability';
 export * from './quantity';
+export * from './culinary-ingredients-v4';
 
 // Calculate freshness status given expiry date or added date
 export function computeFreshness(

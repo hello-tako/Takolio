@@ -506,8 +506,8 @@
   ],
   "runtimeFingerprint": "b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21",
   "compiledRuntimeSha256": "6aa1d42c8c8406c360cf2b1f71871fb7b4bc6bd405255fd29e5c76abb400d0b7",
-  "proposedMigrationPath": "docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql",
-  "proposedMigrationSha256": "b4ca3bc3aa1849ebbffe272952b0afe40d2b26cc37748cbdc40b143911518dcb",
+  "migrationPath": "migrations/0052_culinary_standard_v4_catalog_500.sql",
+  "migrationSha256": "938b5c0f5f8562904177204de57407070d78098a84e96bd660f25a2891d94f3f",
   "summary": {
     "avgIngredientsPerRecipe": 13.4,
     "avgStepsPerRecipe": 6,

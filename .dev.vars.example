@@ -67,5 +67,5 @@ PAYOS_CLIENT_ID=
 PAYOS_API_KEY=
 PAYOS_CHECKSUM_KEY=
 
-# Takolio Culinary Standard V4 (opt-in 500-recipe standardized catalog; default disabled)
-RECIPE_CATALOG_V4_STANDARD_ENABLED=false
+# Takolio Culinary Standard V4 (opt-in 500-recipe standardized catalog)
+RECIPE_CATALOG_V4_STANDARD_ENABLED=true

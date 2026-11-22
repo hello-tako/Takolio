@@ -10,7 +10,7 @@ const SHARD_ROOT = path.join(V4_ROOT, 'shards');
 const RECIPES_DIR = path.join(V4_ROOT, 'recipes');
 const COMPILED_PATH = path.join(V4_ROOT, 'compiled-runtime-500.json');
 const MANIFEST_PATH = path.join(V4_ROOT, 'manifest.json');
-const PROPOSED_SQL_PATH = path.join(ROOT, 'docs', 'migrations', 'proposed', '0052_culinary_standard_v4_catalog_500.sql');
+const MIGRATION_SQL_PATH = path.join(ROOT, 'migrations', '0052_culinary_standard_v4_catalog_500.sql');
 const CURRENT_RELEASE = path.join(ROOT, 'packages', 'recipes', 'src', 'import', 'catalog-release.current.json');
 
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
@@ -378,8 +378,8 @@ try {
         orderedRecipeIds: orderedIds,
         runtimeFingerprint,
         compiledRuntimeSha256: sha256(compiledPayload),
-        proposedMigrationPath: 'docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql',
-        proposedMigrationSha256: sha256(sqlText),
+        migrationPath: 'migrations/0052_culinary_standard_v4_catalog_500.sql',
+        migrationSha256: sha256(sqlText),
         summary: {
           avgIngredientsPerRecipe: avgIngredients,
           avgStepsPerRecipe: avgSteps,
@@ -396,13 +396,13 @@ try {
 
     if (command === 'build-all') {
       writeFile(COMPILED_PATH, compiledPayload);
-      writeFile(PROPOSED_SQL_PATH, sqlText);
+      writeFile(MIGRATION_SQL_PATH, sqlText);
       writeFile(MANIFEST_PATH, manifestPayload);
       console.log(
         `recipe-standard-v4 build-all=ok recipes=500 fingerprint=${runtimeFingerprint} avgIngs=${avgIngredients} avgSteps=${avgSteps}`,
       );
     } else {
-      if (!existsSync(COMPILED_PATH) || !existsSync(MANIFEST_PATH) || !existsSync(PROPOSED_SQL_PATH)) {
+      if (!existsSync(COMPILED_PATH) || !existsSync(MANIFEST_PATH) || !existsSync(MIGRATION_SQL_PATH)) {
         throw new Error('V4 build artifacts missing. Run build-all first.');
       }
       if (readFileSync(COMPILED_PATH, 'utf8') !== compiledPayload) {
@@ -411,7 +411,7 @@ try {
       if (readFileSync(MANIFEST_PATH, 'utf8') !== manifestPayload) {
         throw new Error('manifest.json drift detected vs recipe sources');
       }
-      if (readFileSync(PROPOSED_SQL_PATH, 'utf8') !== sqlText) {
+      if (readFileSync(MIGRATION_SQL_PATH, 'utf8') !== sqlText) {
         throw new Error('0052_culinary_standard_v4_catalog_500.sql drift detected vs recipe sources');
       }
       console.log(
