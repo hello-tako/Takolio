@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAdminFixtureSql, localWranglerEnv } from './admin-local-lib.mjs';
-import { CUSTOMER_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, GLOBAL_RELEASE_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
 
@@ -142,6 +142,7 @@ try {
   const head = git('rev-parse', 'HEAD');
   const { mainBase: mergeBase, baseline: customerBaseline } = selectGuardedCustomerBaseline({
     git, originalBaseline: MAIN_BASELINE, releaseBaseline: V2_RELEASE_BASELINE, v3ReleaseBaseline: V3_RELEASE_BASELINE,
+    globalReleaseBaseline: GLOBAL_RELEASE_BASELINE,
     guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
   });
   runEvidence.head = head;
@@ -154,6 +155,7 @@ try {
   const originalFiles = filesAt(ORIGINAL_ADMIN, 'migrations');
   const mainFiles = filesAt(MAIN_BASELINE, 'migrations');
   const v2Files = filesAt(V2_RELEASE_BASELINE, 'migrations');
+  const v3Files = filesAt(V3_RELEASE_BASELINE, 'migrations');
   const candidateFiles = filesAt(customerBaseline, 'migrations');
   const r1AdminFiles = filesAt(R1, 'migrations-admin');
   const currentAdminFiles = filesOnDisk(path.join(root, 'migrations-admin'));
@@ -161,6 +163,7 @@ try {
   const preManifest = migrationManifest(root, PRE_ADMIN);
   const mainManifest = migrationManifest(root, MAIN_BASELINE);
   const v2Manifest = migrationManifest(root, V2_RELEASE_BASELINE);
+  const v3Manifest = migrationManifest(root, V3_RELEASE_BASELINE);
   const candidateManifest = migrationManifest(root, customerBaseline);
   const headManifest = migrationManifest(root, head);
   const workingManifest = manifest(filesOnDisk(path.join(root, 'migrations')));
@@ -254,11 +257,13 @@ try {
     JSON.stringify(candidateManifest.migrations.slice(0, mainManifest.count)) === JSON.stringify(mainManifest.migrations);
   const v2Identity = v2Manifest.count === 45 &&
     JSON.stringify(candidateManifest.migrations.slice(0, v2Manifest.count)) === JSON.stringify(v2Manifest.migrations);
-  const exactV3Tip = workingManifest.count === candidateManifest.count
+  const v3Identity = v3Manifest.count === 47 &&
+    JSON.stringify(candidateManifest.migrations.slice(0, v3Manifest.count)) === JSON.stringify(v3Manifest.migrations);
+  const exactCandidateTip = workingManifest.count === candidateManifest.count
     ? (headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256 &&
       !git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql'))
     : (JSON.stringify(workingManifest.migrations.slice(0, candidateManifest.count)) === JSON.stringify(candidateManifest.migrations));
-  const candidateIdentity = customerBaseline === V3_RELEASE_BASELINE && candidateManifest.count === 47 && exactV3Tip;
+  const candidateIdentity = customerBaseline === GLOBAL_RELEASE_BASELINE && candidateManifest.count === 51 && exactCandidateTip;
   row('pinned 43-file customer ledger identity', 'all historical main migrations remain byte-identical in the candidate',
     { head, baseline: MAIN_BASELINE, currentMain: mainManifest.sha256, headManifest: headManifest.sha256,
       workingManifest: workingManifest.sha256, count: mainManifest.count,
@@ -266,7 +271,10 @@ try {
   row('pinned V2 customer release identity', 'all 45 immutable V2 migrations remain byte-identical in the candidate',
     { baseline: V2_RELEASE_BASELINE, count: v2Manifest.count, v2: v2Manifest.sha256,
       candidatePrefix: candidateManifest.migrations.slice(0, v2Manifest.count) }, v2Identity);
-  row('pinned V3 customer release identity', 'HEAD and working migrations/schema match the immutable 47-file V3 checkpoint',
+  row('pinned V3 customer release identity', 'all 47 immutable V3 migrations remain byte-identical in the candidate',
+    { baseline: V3_RELEASE_BASELINE, count: v3Manifest.count, v3: v3Manifest.sha256,
+      candidatePrefix: candidateManifest.migrations.slice(0, v3Manifest.count) }, v3Identity);
+  row('pinned Global customer release identity', 'HEAD and working migrations/schema match the immutable 51-file Global checkpoint',
     { baseline: customerBaseline, count: candidateManifest.count, candidate: candidateManifest.sha256,
       head: headManifest.sha256, working: workingManifest.sha256 }, candidateIdentity);
 
@@ -390,14 +398,14 @@ try {
 
   const v3Template = path.join(work, 'v3-schema-gate.sql');
   const v3MigrationDirectory = path.join(work, 'v3-migrations');
-  writeFiles(v3MigrationDirectory, candidateFiles);
-  writeFileSync(v3Template, git('show', customerBaseline + ':scripts/d1-schema-gate.sql'));
-  const v3Fresh = database('v3-fresh', candidateFiles);
+  writeFiles(v3MigrationDirectory, v3Files);
+  writeFileSync(v3Template, git('show', V3_RELEASE_BASELINE + ':scripts/d1-schema-gate.sql'));
+  const v3Fresh = database('v3-fresh', v3Files);
   const v3Apply = apply(v3Fresh), v3Reapply = apply(v3Fresh), v3Ledger = ledger(v3Fresh);
   const v3Gate = schemaGate(v3Fresh, v3MigrationDirectory, v3Template);
-  row('V3 47-file fresh apply + re-apply + strict gates', 'all47 apply once; exact candidate ledger and schema gate pass',
-    { apply: v3Apply.status, reapply: v3Reapply.status, ledger: releaseGate(customerBaseline, v3Ledger), schema: v3Gate },
-    v3Apply.status === 0 && v3Reapply.status === 0 && releaseGate(customerBaseline, v3Ledger).pass && v3Gate.pass);
+  row('V3 47-file fresh apply + re-apply + strict gates', 'all47 apply once; exact V3 ledger and schema gate pass',
+    { apply: v3Apply.status, reapply: v3Reapply.status, ledger: releaseGate(V3_RELEASE_BASELINE, v3Ledger), schema: v3Gate },
+    v3Apply.status === 0 && v3Reapply.status === 0 && releaseGate(V3_RELEASE_BASELINE, v3Ledger).pass && v3Gate.pass);
 
   const v3Upgrade = database('v3-populated-45-to-47', v2Files);
   const v3BaseApply = apply(v3Upgrade);
@@ -423,7 +431,7 @@ try {
   const beforeLegacy = legacyRows();
   const beforeComponents = query(v3Upgrade, 'SELECT * FROM generated_meal_plan_components ORDER BY id');
   const beforeCooking = query(v3Upgrade, 'SELECT * FROM cooked_meals ORDER BY id');
-  const v3Additions = candidateFiles.slice(v2Files.length);
+  const v3Additions = v3Files.slice(v2Files.length);
   writeFiles(v3Upgrade.migrationDirectory, v3Additions.filter(file => file.name === '0046_recipe_content_versions.sql'));
   const apply46 = apply(v3Upgrade), reapply46 = apply(v3Upgrade);
   const contentPin = 'a'.repeat(64);
@@ -454,12 +462,12 @@ try {
     { baselineApply: v3BaseApply.status, seed: populatedContentSeed.status, additions: v3Additions.map(file => file.name),
       apply46: apply46.status, reapply46: reapply46.status, archiveSeed: archiveSeed.status, apply47: apply47.status, reapply: reapply47.status,
       legacyPreserved, componentsPreserved, cookingPreserved, historiesPreserved46, objects46Preserved,
-      ledger: releaseGate(customerBaseline, upgrade47Ledger), schema: upgrade47Gate, integrity: v3Integrity, foreignKeys: v3ForeignKeys },
+      ledger: releaseGate(V3_RELEASE_BASELINE, upgrade47Ledger), schema: upgrade47Gate, integrity: v3Integrity, foreignKeys: v3ForeignKeys },
     v3BaseApply.status === 0 && populatedContentSeed.status === 0 && apply46.status === 0 && reapply46.status === 0 && archiveSeed.status === 0 &&
       apply47.status === 0 && reapply47.status === 0 && JSON.stringify(v3Additions.map(file => file.name)) ===
       JSON.stringify(['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']) &&
       legacyPreserved && componentsPreserved && cookingPreserved && historiesPreserved46 && objects46Preserved.pass &&
-      releaseGate(customerBaseline, upgrade47Ledger).pass && upgrade47Gate.pass &&
+      releaseGate(V3_RELEASE_BASELINE, upgrade47Ledger).pass && upgrade47Gate.pass &&
       Object.values(v3Integrity[0] ?? {})[0] === 'ok' && v3ForeignKeys.length === 0);
 
   const matchingPin = sql(v3Upgrade, `UPDATE generated_meal_plan_components SET recipe_content_fingerprint = '${contentPin}' WHERE id = 'matrix-recipe'`);
@@ -498,31 +506,108 @@ try {
       finalContentForeignKeys.length === 0);
 
   for (const missingName of ['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']) {
-    const missingV3 = database('v3-missing-' + missingName.slice(0, 4), candidateFiles);
+    const missingV3 = database('v3-missing-' + missingName.slice(0, 4), v3Files);
     const missingV3Apply = apply(missingV3);
     const missingV3Delete = sql(missingV3, `DELETE FROM d1_migrations WHERE name = '${missingName}'`);
     const missingV3Ledger = ledger(missingV3), missingV3Gate = schemaGate(missingV3, v3MigrationDirectory, v3Template);
     row('V3 missing' + missingName.slice(0, 4) + ' drift', 'both V3 gates reject the missing ledger entry',
       { apply: missingV3Apply.status, delete: missingV3Delete.status,
-        ledger: releaseGate(customerBaseline, missingV3Ledger), schema: missingV3Gate },
-      missingV3Apply.status === 0 && missingV3Delete.status === 0 && !releaseGate(customerBaseline, missingV3Ledger).pass &&
+        ledger: releaseGate(V3_RELEASE_BASELINE, missingV3Ledger), schema: missingV3Gate },
+      missingV3Apply.status === 0 && missingV3Delete.status === 0 && !releaseGate(V3_RELEASE_BASELINE, missingV3Ledger).pass &&
         !missingV3Gate.pass && missingV3Gate.issues.some(issue => issue.issue === 'missing_migration' && issue.detail === missingName));
   }
   const v3FutureName = '0048_unexpected_drift.sql';
-  const v3Unknown = database('v3-unknown-0048', [...candidateFiles, {
+  const v3Unknown = database('v3-unknown-0048', [...v3Files, {
     name: v3FutureName, content: 'CREATE TABLE unexpected_v3_drift (id TEXT PRIMARY KEY);\n',
   }]);
   const v3UnknownApply = apply(v3Unknown), v3UnknownLedger = ledger(v3Unknown);
   const v3UnknownGate = schemaGate(v3Unknown, v3MigrationDirectory, v3Template);
   row('V3 unknown0048 drift', 'both V3 gates reject an unexpected future migration',
-    { apply: v3UnknownApply.status, ledger: releaseGate(customerBaseline, v3UnknownLedger), schema: v3UnknownGate },
-    v3UnknownApply.status === 0 && !releaseGate(customerBaseline, v3UnknownLedger).pass && !v3UnknownGate.pass &&
+    { apply: v3UnknownApply.status, ledger: releaseGate(V3_RELEASE_BASELINE, v3UnknownLedger), schema: v3UnknownGate },
+    v3UnknownApply.status === 0 && !releaseGate(V3_RELEASE_BASELINE, v3UnknownLedger).pass && !v3UnknownGate.pass &&
       v3UnknownGate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === v3FutureName));
   const rollback45Gate = schemaGate(v3Fresh, candidateMigrationDirectory, candidateTemplate);
   row('strict45 release rejects V3 ledger on binary rollback', 'old V2 gates reject46/47; version-aware runtime recovery requires separate certification',
     { ledger: releaseGate(V2_RELEASE_BASELINE, v3Ledger), schema: rollback45Gate },
     !releaseGate(V2_RELEASE_BASELINE, v3Ledger).pass && !rollback45Gate.pass && v3Additions.every(file =>
       rollback45Gate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === file.name)));
+
+  const globalTemplate = path.join(work, 'global-schema-gate.sql');
+  const globalMigrationDirectory = path.join(work, 'global-migrations');
+  writeFiles(globalMigrationDirectory, candidateFiles);
+  writeFileSync(globalTemplate, git('show', customerBaseline + ':scripts/d1-schema-gate.sql'));
+  const globalFresh = database('global-fresh', candidateFiles);
+  const globalApply = apply(globalFresh), globalReapply = apply(globalFresh), globalLedger = ledger(globalFresh);
+  const globalGate = schemaGate(globalFresh, globalMigrationDirectory, globalTemplate);
+  row('Global 51-file fresh apply + re-apply + strict gates', 'all51 apply once; exact Global candidate ledger and schema gate pass',
+    { apply: globalApply.status, reapply: globalReapply.status, ledger: releaseGate(customerBaseline, globalLedger), schema: globalGate },
+    globalApply.status === 0 && globalReapply.status === 0 && releaseGate(customerBaseline, globalLedger).pass && globalGate.pass);
+
+  const globalUpgrade = database('global-populated-47-to-51', v3Files);
+  const globalBaseApply = apply(globalUpgrade);
+  const globalBaseSeed = sql(globalUpgrade, `
+    INSERT INTO users(id) VALUES ('matrix-global-user');
+    INSERT INTO households(id,name,created_by) VALUES ('matrix-global-house','Synthetic global household','matrix-global-user');
+    INSERT INTO household_members(id,household_id,user_id,role)
+      VALUES ('matrix-global-member','matrix-global-house','matrix-global-user','owner');
+    INSERT INTO recipe_content_versions(fingerprint,recipe_id,slug,content_json)
+      VALUES ('${contentPin}','gl-03','synthetic-global-egg','{"id":"gl-03","slug":"synthetic-global-egg"}');
+    INSERT INTO cooked_meals(id,household_id,user_id,recipe_id,servings_cooked,deductions_applied,recipe_content_fingerprint,request_fingerprint)
+      VALUES ('matrix-global-cook','matrix-global-house','matrix-global-user','gl-03',2,'[]','${contentPin}','matrix-global-req');`);
+  const beforeGlobalVersions = query(globalUpgrade, 'SELECT * FROM recipe_content_versions ORDER BY fingerprint');
+  const beforeGlobalCooking = query(globalUpgrade, 'SELECT * FROM cooked_meals ORDER BY id');
+  const globalAdditions = candidateFiles.slice(v3Files.length);
+  const expectedGlobalNames = [
+    '0048_global_locale_timezone_and_search_foundation.sql',
+    '0049_global_culinary_allergens_units_barcode_and_ocr.sql',
+    '0050_global_billing_subscriptions_and_oauth_identities.sql',
+    '0051_privacy_erasure_portability_and_consent_ledger.sql',
+  ];
+  writeFiles(globalUpgrade.migrationDirectory, globalAdditions);
+  const apply51 = apply(globalUpgrade), reapply51 = apply(globalUpgrade), upgrade51Ledger = ledger(globalUpgrade);
+  const upgrade51Gate = schemaGate(globalUpgrade, globalUpgrade.migrationDirectory, globalTemplate);
+  const globalVersionsPreserved = JSON.stringify(query(globalUpgrade, 'SELECT * FROM recipe_content_versions ORDER BY fingerprint')) === JSON.stringify(beforeGlobalVersions);
+  const globalCookingPreserved = JSON.stringify(query(globalUpgrade, 'SELECT * FROM cooked_meals ORDER BY id')) === JSON.stringify(beforeGlobalCooking);
+  const globalUserDefaults = query(globalUpgrade, "SELECT u.id, u.erased_at, h.locale, h.currency, h.timezone, h.week_start_day FROM users u JOIN households h ON h.created_by = u.id WHERE u.id = 'matrix-global-user'")[0];
+  const globalIntegrity = query(globalUpgrade, 'PRAGMA quick_check'), globalForeignKeys = query(globalUpgrade, 'PRAGMA foreign_key_check');
+  row('Global populated0047 -> 0051 upgrade + re-apply',
+    'only0048..0051 apply once; V3 archives/receipts survive, additive household/user defaults populate and strict gates pass',
+    { baselineApply: globalBaseApply.status, seed: globalBaseSeed.status, additions: globalAdditions.map(file => file.name),
+      apply51: apply51.status, reapply51: reapply51.status, globalVersionsPreserved, globalCookingPreserved, globalUserDefaults,
+      ledger: releaseGate(customerBaseline, upgrade51Ledger), schema: upgrade51Gate, integrity: globalIntegrity, foreignKeys: globalForeignKeys },
+    globalBaseApply.status === 0 && globalBaseSeed.status === 0 && apply51.status === 0 && reapply51.status === 0 &&
+      JSON.stringify(globalAdditions.map(file => file.name)) === JSON.stringify(expectedGlobalNames) &&
+      globalVersionsPreserved && globalCookingPreserved && Boolean(globalUserDefaults) && globalUserDefaults.erased_at === null &&
+      globalUserDefaults.locale === 'vi' && globalUserDefaults.currency === 'VND' &&
+      releaseGate(customerBaseline, upgrade51Ledger).pass && upgrade51Gate.pass &&
+      Object.values(globalIntegrity[0] ?? {})[0] === 'ok' && globalForeignKeys.length === 0);
+
+  for (const missingName of expectedGlobalNames) {
+    const missingGlobal = database('global-missing-' + missingName.slice(0, 4), candidateFiles);
+    const missingGlobalApply = apply(missingGlobal);
+    const missingGlobalDelete = sql(missingGlobal, `DELETE FROM d1_migrations WHERE name = '${missingName}'`);
+    const missingGlobalLedger = ledger(missingGlobal), missingGlobalGate = schemaGate(missingGlobal, globalMigrationDirectory, globalTemplate);
+    row('Global missing' + missingName.slice(0, 4) + ' drift', 'both Global gates reject the missing ledger entry',
+      { apply: missingGlobalApply.status, delete: missingGlobalDelete.status,
+        ledger: releaseGate(customerBaseline, missingGlobalLedger), schema: missingGlobalGate },
+      missingGlobalApply.status === 0 && missingGlobalDelete.status === 0 && !releaseGate(customerBaseline, missingGlobalLedger).pass &&
+        !missingGlobalGate.pass && missingGlobalGate.issues.some(issue => issue.issue === 'missing_migration' && issue.detail === missingName));
+  }
+  const globalFutureName = '0052_unexpected_drift.sql';
+  const globalUnknown = database('global-unknown-0052', [...candidateFiles, {
+    name: globalFutureName, content: 'CREATE TABLE unexpected_global_drift (id TEXT PRIMARY KEY);\n',
+  }]);
+  const globalUnknownApply = apply(globalUnknown), globalUnknownLedger = ledger(globalUnknown);
+  const globalUnknownGate = schemaGate(globalUnknown, globalMigrationDirectory, globalTemplate);
+  row('Global unknown0052 drift', 'both Global gates reject an unexpected future migration',
+    { apply: globalUnknownApply.status, ledger: releaseGate(customerBaseline, globalUnknownLedger), schema: globalUnknownGate },
+    globalUnknownApply.status === 0 && !releaseGate(customerBaseline, globalUnknownLedger).pass && !globalUnknownGate.pass &&
+      globalUnknownGate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === globalFutureName));
+  const rollback47Gate = schemaGate(globalFresh, v3MigrationDirectory, v3Template);
+  row('strict47 release rejects Global ledger on binary rollback', 'old V3 gates reject0048..0051; version-aware runtime recovery requires separate certification',
+    { ledger: releaseGate(V3_RELEASE_BASELINE, globalLedger), schema: rollback47Gate },
+    !releaseGate(V3_RELEASE_BASELINE, globalLedger).pass && !rollback47Gate.pass && globalAdditions.every(file =>
+      rollback47Gate.issues.some(issue => issue.issue === 'unexpected_migration' && issue.detail === file.name)));
 
   // SQL-only D1 evidence; this section does not infer Worker runtime or flags-OFF recovery.
   const r1AdminManifest = manifest(r1AdminFiles);
@@ -632,7 +717,8 @@ try {
       historicalR1: R1,
       currentMainBaseline: MAIN_BASELINE,
       v2ReleaseBaseline: V2_RELEASE_BASELINE,
-      v3ReleaseBaseline: runEvidence.customerBaseline,
+      v3ReleaseBaseline: V3_RELEASE_BASELINE,
+      globalReleaseBaseline: runEvidence.customerBaseline,
       currentMainMergeBase: runEvidence.mergeBase,
       dirtyScopedPaths: runEvidence.dirtyScopedPaths,
     },

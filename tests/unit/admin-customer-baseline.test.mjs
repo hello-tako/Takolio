@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { CUSTOMER_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, GLOBAL_RELEASE_BASELINE, REVIEWED_DOMAIN_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from '../../scripts/admin-customer-baseline.mjs';
 
 const directories = [];
 afterEach(() => {
@@ -38,14 +38,17 @@ describe('immutable customer release baselines', () => {
     expect(REVIEWED_DOMAIN_BASELINE).toBe('352a4211afe7f70bf75115e0688ff9f4e1e232ee');
     expect(V2_RELEASE_BASELINE).toBe('9b031f05c34a3f27f7a5d9958c65eb8a4405d227');
     expect(V3_RELEASE_BASELINE).toBe('a1e706c7c870881d2e472ef7a1b211ac61bdd38c');
+    expect(GLOBAL_RELEASE_BASELINE).toBe('8c1399eb60bce4df6b21305b53101b8e74934faf');
     const preflight = readFileSync('scripts/admin-release-preflight.mjs', 'utf8');
     expect(preflight).toContain('originalBaseline: CUSTOMER_BASELINE, reviewedBaseline: REVIEWED_DOMAIN_BASELINE');
     expect(preflight).toContain("git('diff', '--name-only', customerBaseline, '--', ...protectedPaths)");
     expect(preflight).toContain('releaseBaseline: V2_RELEASE_BASELINE');
     expect(preflight).toContain('v3ReleaseBaseline: V3_RELEASE_BASELINE');
+    expect(preflight).toContain('globalReleaseBaseline: GLOBAL_RELEASE_BASELINE');
     const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
     expect(matrix).toContain('releaseBaseline: V2_RELEASE_BASELINE');
     expect(matrix).toContain('v3ReleaseBaseline: V3_RELEASE_BASELINE');
+    expect(matrix).toContain('globalReleaseBaseline: GLOBAL_RELEASE_BASELINE');
     expect(matrix).toContain('headManifest.sha256 === candidateManifest.sha256 && workingManifest.sha256 === candidateManifest.sha256');
     expect(matrix).toContain("git('diff', '--name-only', customerBaseline, '--', 'migrations', 'scripts/d1-schema-gate.sql')");
   });
@@ -260,7 +263,7 @@ describe('immutable V3 candidate checkpoint', () => {
     expect(() => f.selectV3()).toThrow();
   });
 
-  it('retains historical43/45 and explicit47 SQL-only migration boundaries', () => {
+  it('retains historical43/45/47 and explicit51 Global SQL-only migration boundaries', () => {
     const matrix = readFileSync('scripts/admin-migration-matrix.mjs', 'utf8');
     for (const scenario of [
       'pinned 43-file customer ledger identity', 'pinned V2 customer release identity',
@@ -269,11 +272,31 @@ describe('immutable V3 candidate checkpoint', () => {
       'pinned V3 customer release identity', 'V3 47-file fresh apply + re-apply + strict gates',
       'V3 populated0045 -> 0046 -> 0047 upgrade + re-apply', 'V3 content identity and retained0046 guards',
       'V3 unknown0048 drift', 'strict45 release rejects V3 ledger on binary rollback',
+      'pinned Global customer release identity', 'Global 51-file fresh apply + re-apply + strict gates',
+      'Global populated0047 -> 0051 upgrade + re-apply', 'Global unknown0052 drift',
+      'strict47 release rejects Global ledger on binary rollback',
     ]) expect(matrix).toContain(scenario);
     expect(matrix).toContain("['0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql']");
+    expect(matrix).toContain("'0048_global_locale_timezone_and_search_foundation.sql'");
+    expect(matrix).toContain("'0051_privacy_erasure_portability_and_consent_ledger.sql'");
     expect(matrix).toContain("issue.issue === 'missing_migration' && issue.detail === missingName");
-    expect(matrix).toContain('candidateManifest.count === 47');
+    expect(matrix).toContain('candidateManifest.count === 51');
+    expect(matrix).toContain('v3Manifest.count === 47');
     expect(matrix).toContain('v2Manifest.count === 45');
     expect(matrix).toContain("applicationRuntime: 'not tested by this SQL-only matrix;");
+  });
+
+  it('retains the Global checkpoint both before and after merging 0048..0051 onto main', () => {
+    const f = v3Fixture();
+    const globalReleaseBaseline = f.commit('worker.ts', 'frozen Global 0048..0051 candidate\n');
+    f.commit('admin.txt', 'pin global baseline\n');
+    expect(f.select({ releaseBaseline: f.releaseBaseline, v3ReleaseBaseline: f.v3ReleaseBaseline, globalReleaseBaseline }).baseline)
+      .toBe(globalReleaseBaseline);
+    f.git('checkout', 'main');
+    f.git('merge', '--no-ff', '--no-edit', 'domain');
+    f.git('update-ref', 'refs/remotes/origin/main', 'HEAD');
+    expect(f.select({ releaseBaseline: f.releaseBaseline, v3ReleaseBaseline: f.v3ReleaseBaseline, globalReleaseBaseline }).baseline)
+      .toBe(globalReleaseBaseline);
+    expect(f.git('diff', '--name-only', globalReleaseBaseline, '--', 'worker.ts')).toBe('');
   });
 });
