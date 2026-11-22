@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
@@ -24,6 +24,7 @@ import {
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
 import { VerifiedDishImage } from '../components/VNextMedia';
+import { buildRecipeJsonLd, useVNextSeo } from '../lib/seo';
 
 const UNIT_LABELS_VI: Record<string, string> = {
   piece: 'quả/cái',
@@ -126,6 +127,34 @@ export const C18RecipeDetailPilot: React.FC = () => {
     recipeQuery.error.kind === 'http' &&
     recipeQuery.error.status === 404;
 
+  const recipeJsonLd = useMemo(() => {
+    if (!recipe) return null;
+    return buildRecipeJsonLd({
+      slug: recipe.slug,
+      title: recipe.title,
+      description: recipe.description,
+      imageUrl: resolveRecipeImage(recipe).src,
+      cookMinutes: recipe.cookTimeMinutes,
+      servings: recipe.servings,
+      calories: recipe.nutrition?.calories ?? null,
+      ingredients: recipe.ingredients.map(
+        (ing) => `${ing.name} (${formatQty(ing.requiredQuantity, ing.unit)})`,
+      ),
+      steps: recipe.steps.map((st) => st.instruction),
+    });
+  }, [recipe]);
+
+  useVNextSeo({
+    title: recipe ? `${recipe.title} — Công thức chuẩn định lượng` : 'Chi tiết món ăn',
+    description: recipe
+      ? recipe.description
+      : 'Công thức bữa cơm gia đình Việt đối chiếu định lượng tồn kho tủ lạnh trên Takolio.',
+    canonicalPath: `/recipes/${recipe?.slug || recipeKey}`,
+    domainSurface: 'app',
+    noindex: notFound,
+    jsonLd: recipeJsonLd,
+  });
+
   const updateServings = (nextServings: number) => {
     const clamped = Math.max(1, Math.min(20, nextServings));
     const next = new URLSearchParams(params);
@@ -184,7 +213,10 @@ export const C18RecipeDetailPilot: React.FC = () => {
       return;
     }
     startCooking(recipe, inventory, recipeQuery.data?.contentFingerprint);
-    const cookParams = new URLSearchParams({ servings: String(recipe.servings) });
+    const cookParams = new URLSearchParams({
+      stage: 'prep',
+      servings: String(recipe.servings),
+    });
     if (recipeQuery.data?.contentFingerprint) {
       cookParams.set('contentFingerprint', recipeQuery.data.contentFingerprint);
     }
@@ -194,43 +226,43 @@ export const C18RecipeDetailPilot: React.FC = () => {
   return (
     <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
-        {/* Left Media & Facts Column (5 cols on Desktop; Top Hero on Mobile matching C18.png) */}
+        {/* Left Media & Facts Column (5 cols on Desktop; Top Hero on Mobile) */}
         <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-20">
-          <div className="rounded-[26px] bg-[var(--tkv-surface-mint)] p-3 border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-card)]">
+          <div className="rounded-[24px] bg-[var(--tkv-surface-muted,#E7F4EC)] p-2.5 border border-[var(--tkv-border,#DCE6DE)] shadow-xs">
             <VerifiedDishImage
               slug={recipe.slug}
               title={recipe.title}
               canonicalFallbackSrc={canonicalImg}
               aspectClass="aspect-[4/3]"
               priority
-              className="rounded-[20px]"
+              className="rounded-[18px]"
             />
           </div>
 
           <div className="space-y-3">
             <div className="flex items-start justify-between gap-3">
-              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)] leading-tight">
+              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)] leading-tight">
                 {recipe.title}
               </h1>
               <SaveRecipeButton recipeId={recipe.id} title={recipe.title} compact />
             </div>
 
-            {/* 3 Metadata Pills matching C18.png ("35 phút | 4 người | Dễ") */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-primary)] text-white text-sm font-extrabold inline-flex items-center gap-1.5">
-                <VNextIcon name="timer" size={15} />
+            {/* 3 Sunlit Ceramic Metadata Pills */}
+            <div className="flex items-center gap-2 flex-wrap tabular-nums">
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] text-sm font-bold inline-flex items-center gap-1.5">
+                <VNextIcon name="timer" size={15} className="text-[var(--tkv-primary,#196149)]" />
                 {recipe.cookTimeMinutes} phút
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-ink)] text-sm font-bold inline-flex items-center gap-1.5">
-                <VNextIcon name="users" size={15} />
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-ink,#152E2C)] text-sm font-semibold inline-flex items-center gap-1.5">
+                <VNextIcon name="users" size={15} className="text-[var(--tkv-sage,#196149)]" />
                 {recipe.servings} người
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-ink)] text-sm font-bold inline-flex items-center">
+              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage-ink,#134C39)] text-sm font-semibold inline-flex items-center">
                 {difficultyLabel}
               </span>
             </div>
 
-            <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
               {recipe.description}
             </p>
 
@@ -249,34 +281,34 @@ export const C18RecipeDetailPilot: React.FC = () => {
           </div>
 
           {/* Sourced Nutrition Card — strictly honest when null */}
-          <TkvSurface className="p-4 space-y-2.5">
-            <div className="flex items-center justify-between">
-              <h2 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
+          <TkvSurface className="p-4 space-y-2.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
+            <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+              <h2 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">
                 Thông tin dinh dưỡng / khẩu phần
               </h2>
-              <span className="text-xs text-[var(--tkv-ink-muted)]">Nguồn công thức</span>
+              <span className="text-xs text-[var(--tkv-ink-muted,#52706A)] shrink-0">Nguồn công thức</span>
             </div>
             {recipe.nutrition ? (
-              <div className="grid grid-cols-4 gap-2 text-center">
-                <div className="p-2 rounded-xl bg-[var(--tkv-bg)]">
-                  <p className="text-sm font-extrabold text-[var(--tkv-ink)]">{recipe.nutrition.calories}</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted)]">kcal</p>
+              <div className="grid grid-cols-2 min-[400px]:grid-cols-4 gap-2 text-center tabular-nums">
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.calories}</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">kcal</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--tkv-bg)]">
-                  <p className="text-sm font-extrabold text-[var(--tkv-ink)]">{recipe.nutrition.proteinG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted)]">Đạm</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.proteinG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Đạm</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--tkv-bg)]">
-                  <p className="text-sm font-extrabold text-[var(--tkv-ink)]">{recipe.nutrition.carbG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted)]">Tinh bột</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.carbG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Tinh bột</p>
                 </div>
-                <div className="p-2 rounded-xl bg-[var(--tkv-bg)]">
-                  <p className="text-sm font-extrabold text-[var(--tkv-ink)]">{recipe.nutrition.fatG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted)]">Chất béo</p>
+                <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.fatG}g</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Chất béo</p>
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-[var(--tkv-ink-muted)]">
+              <p className="text-xs text-[var(--tkv-ink-muted,#52706A)]">
                 Chưa có thông tin dinh dưỡng đã xác minh cho món ăn này.
               </p>
             )}
@@ -285,15 +317,15 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
         {/* Right Ingredients (C19) & Cooking Steps Column (7 cols on Desktop) */}
         <div className="lg:col-span-7 space-y-7 min-w-0">
-          {/* Ingredients Section matching C18.png ("Nguyên liệu chính" + "Thay khẩu phần") */}
+          {/* Ingredients Section */}
           <section aria-labelledby="c18-ingredients-heading" className="space-y-3.5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
-              <h2 id="c18-ingredients-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+              <h2 id="c18-ingredients-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
                 Nguyên liệu chính ({availability.length})
               </h2>
 
-              <div className="inline-flex items-center gap-2 bg-[var(--tkv-surface)] border border-[var(--tkv-border)] rounded-2xl p-1">
-                <span className="pl-2.5 text-xs font-bold text-[var(--tkv-ink-secondary)]">
+              <div className="inline-flex items-center gap-2 bg-white border border-[var(--tkv-border,#DCE6DE)] rounded-2xl p-1">
+                <span className="pl-2.5 text-xs font-semibold text-[var(--tkv-ink-soft,#3C5954)]">
                   Thay khẩu phần:
                 </span>
                 <TkvIconButton
@@ -304,13 +336,12 @@ export const C18RecipeDetailPilot: React.FC = () => {
                 />
                 <span
                   data-testid="c18-servings-value"
-                  className="min-w-[54px] text-center text-sm font-extrabold text-[var(--tkv-primary)]"
+                  className="min-w-[60px] text-center text-sm font-bold tabular-nums text-[var(--tkv-ink,#152E2C)]"
                 >
                   {recipe.servings} người
                 </span>
                 <TkvIconButton
                   icon="plus"
-                  tone="mint"
                   label="Tăng khẩu phần"
                   onClick={() => updateServings(recipe.servings + 1)}
                   disabled={recipe.servings >= 20}
@@ -327,19 +358,37 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
                 return (
                   <li key={`${ing.ingredientId}-${ing.name}`}>
-                    <TkvSurface padded={false} className="p-4 flex items-center justify-between gap-3 flex-wrap">
+                    <TkvSurface padded={false} className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-[var(--tkv-border,#DCE6DE)]">
                       <div className="flex items-center gap-3 min-w-0 flex-1">
-                        <span className="w-10 h-10 rounded-2xl bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                        <span
+                          className={
+                            ing.status === 'satisfied'
+                              ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage,#196149)] flex items-center justify-center shrink-0'
+                              : ing.status === 'unresolved'
+                                ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] text-[var(--tkv-honey-ink,#8A5205)] flex items-center justify-center shrink-0'
+                                : 'relative w-10 h-10 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0'
+                          }
+                        >
                           <VNextIcon
                             name={ing.status === 'satisfied' ? 'check' : ing.status === 'unresolved' ? 'warning' : 'shopping'}
                             size={18}
                           />
+                          {ing.status !== 'satisfied' && (
+                            <span
+                              className={
+                                ing.status === 'unresolved'
+                                  ? 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-honey,#F6C453)]'
+                                  : 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-primary,#196149)]'
+                              }
+                              aria-hidden="true"
+                            />
+                          )}
                         </span>
                         <div className="min-w-0">
-                          <p className="text-base font-extrabold text-[var(--tkv-ink)]">
+                          <p className="text-base font-bold text-[var(--tkv-ink,#152E2C)] tabular-nums">
                             {ing.name} · {formatQty(ing.requiredQuantity, ing.unit)}
                           </p>
-                          <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                          <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
                             {!inventoryQuery.isSuccess
                               ? 'Đang kiểm tra tồn kho trong tủ lạnh…'
                               : ing.status === 'satisfied'
@@ -362,6 +411,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
                           size="sm"
                           variant="secondary"
                           iconLeft="plus"
+                          className="w-full sm:w-auto shrink-0"
                           isLoading={addShortfallMutation.isPending}
                           onClick={() =>
                             addShortfallMutation.mutate({
@@ -390,28 +440,28 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
           {/* Step-by-Step Instructions */}
           <section aria-labelledby="c18-steps-heading" className="space-y-3.5">
-            <h2 id="c18-steps-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
+            <h2 id="c18-steps-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
               Các bước thực hiện ({recipe.steps.length})
             </h2>
             <ol className="space-y-3">
               {recipe.steps.map((step) => (
                 <li key={step.stepNumber}>
-                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5">
-                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-primary)] text-white font-extrabold text-sm flex items-center justify-center shrink-0">
-                      0{step.stepNumber}
+                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
+                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] font-bold text-xs tabular-nums flex items-center justify-center shrink-0">
+                      {String(step.stepNumber).padStart(2, '0')}
                     </span>
                     <div className="space-y-2 min-w-0 flex-1">
-                      <p className="text-sm sm:text-base text-[var(--tkv-ink)] leading-relaxed">
+                      <p className="text-sm sm:text-base text-[var(--tkv-ink,#152E2C)] leading-relaxed">
                         {step.instruction}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {typeof step.timerMinutes === 'number' && step.timerMinutes > 0 && (
-                          <TkvBadge tone="neutral" icon="timer">
-                            Hẹn giờ gợi ý: {step.timerMinutes} phút
+                          <TkvBadge tone="coral" icon="timer">
+                            <span className="tabular-nums">Hẹn giờ gợi ý: {step.timerMinutes} phút</span>
                           </TkvBadge>
                         )}
                         {step.tip && (
-                          <span className="text-xs font-semibold text-[var(--tkv-primary)] bg-[var(--tkv-surface-mint)] px-2.5 py-1 rounded-xl">
+                          <span className="text-xs font-medium text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] px-2.5 py-1 rounded-xl">
                             Mẹo bếp: {step.tip}
                           </span>
                         )}

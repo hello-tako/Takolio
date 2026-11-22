@@ -1,20 +1,15 @@
 /* V3 semantic mapping is scoped to migrated product surfaces. */
-.takosan-rebuild {
+:is(.takolio-rebuild, .takosan-rebuild) {
   background: var(--kitchen-canvas);
   color: rgb(var(--semantic-text-primary-rgb));
   font-family: var(--takosan-font-ui);
   font-size: 16px;
   line-height: 1.5;
 }
-.takosan-rebuild h1,
-.takosan-rebuild h2,
-.takosan-rebuild h3,
-.takosan-rebuild h4,
-.takosan-rebuild h5,
-.takosan-rebuild h6 {
+:where(.takolio-rebuild, .takosan-rebuild) :where(h1, h2, h3, h4, h5, h6) {
   color: rgb(var(--semantic-text-primary-rgb));
 }
-.takosan-rebuild :focus-visible {
+:is(.takolio-rebuild, .takosan-rebuild) :focus-visible {
   outline: 2px solid var(--semantic-focus);
   outline-offset: 3px;
 }
@@ -46,10 +41,10 @@
   flex-shrink: 0;
   margin-left: auto;
 }
-.takosan-rebuild [role='tab'] {
+:is(.takolio-rebuild, .takosan-rebuild) [role='tab'] {
   font-size: 14px;
 }
-.takosan-rebuild [role='tabpanel'] {
+:is(.takolio-rebuild, .takosan-rebuild) [role='tabpanel'] {
   scroll-margin-top: 96px;
 }
 

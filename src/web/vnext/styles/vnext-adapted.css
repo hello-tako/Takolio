@@ -1,28 +1,105 @@
-/* Scoped Kitchen Studio Direction A surface adaptation for authoritative inner domain views
-   (C06/C07 LotDetail, C08 Reconciliation, C09-C14 Scan/Receipt, C24-C29 Planner/Shopping, U02-U05 Settings, U07/U08 Plus).
-   Suppresses duplicate legacy top headers when already hosted inside ConsumerStudioShell while preserving
-   100% of interactive controls, aria-labels, form inputs, and anti-race data-testids. */
+/* Scoped Takolio Official Brand Board v2 surface adaptation for authoritative inner domain views
+   (C06/C07 LotDetail, C08 Reconciliation, C09-C14 Scan/Receipt, C17 Favorites, C24-C29 Planner/Shopping,
+    U02-U05 Settings, U07/U08 Plus).
+   Eliminates double padding inside ConsumerStudioShell, styles all domain classes unconditionally
+   (without dead [data-kitchen-density='compact'] gates), and guarantees zero mobile overflow/crushing
+   across 360px / 375px / 390px viewports. */
 
 .tkv-adapted-surface {
   color: var(--tkv-ink);
   font-family: var(--tkv-font-body);
+  --frigo-tap-target: 44px;
+  --frigo-cream: #fff9f1;
+  --frigo-text-main: #152e2c;
+  --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --content-compact: 45rem;
+  --kitchen-coral: #f46b52;
+  --kitchen-pine: #196149;
+  --kitchen-canvas: #fff9f1;
+  --semantic-text-primary-rgb: 21 46 44;
+  --semantic-text-secondary-rgb: 60 89 84;
+  --semantic-text-muted-rgb: 82 112 106;
+  --semantic-text-on-soft: #152e2c;
+  --semantic-border-rgb: 220 230 222;
+  --semantic-background-subtle-rgb: 231 244 236;
+  --semantic-danger-strong: #99222a;
 }
 
-/* Hide duplicate legacy shell headers inside ConsumerStudioShell while keeping main content & alerts visible */
+/* Hide duplicate legacy shell headers/back buttons inside ConsumerStudioShell while keeping page H1 visible */
 .tkv-adapted-surface .kitchen-header,
 .tkv-adapted-surface [data-kitchen-header],
-.tkv-adapted-surface .scan-workspace-header,
+.tkv-adapted-surface .scan-workspace-header .kitchen-icon-link,
+.tkv-adapted-surface .review-heading .kitchen-icon-link,
 .tkv-adapted-surface > div > header:first-child {
   display: none;
 }
 
+/* Eliminate double horizontal/vertical padding & legacy canvas gradients inside ConsumerStudioShell */
 .tkv-adapted-surface main,
 .tkv-adapted-surface .kitchen-detail-page,
+.tkv-adapted-surface .stock-detail-page,
+.tkv-adapted-surface .stock-detail-workspace,
+.tkv-adapted-surface .account-workspace,
+.tkv-adapted-surface .planning-workspace,
+.tkv-adapted-surface .shopping-workspace,
 .tkv-adapted-surface .scan-workspace,
-.tkv-adapted-surface.takosan-rebuild {
-  background-color: transparent;
+.tkv-adapted-surface .review-workspace,
+.tkv-adapted-surface:is(.takolio-rebuild, .takosan-rebuild) {
+  background: transparent;
   min-height: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.tkv-adapted-surface .planning-page-body,
+.tkv-adapted-surface .kitchen-page-body,
+.tkv-review-host .review-heading,
+.tkv-review-host .review-layout {
+  padding-inline: 0;
   padding-top: 0;
+}
+
+.tkv-review-host .review-heading {
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.tkv-review-host .review-layout {
+  padding-bottom: 16px;
+}
+
+/* Base KitchenPageHeading & Eyebrow typography (no longer trapped behind dead compact gate) */
+:is(.tkv-adapted-surface, .tkv-root) .kitchen-page-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .kitchen-page-heading > div {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .kitchen-page-heading h1 {
+  font-family: var(--tkv-font-heading);
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 800;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: var(--tkv-ink);
+  margin: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .kitchen-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tkv-primary);
+  margin: 0 0 4px;
 }
 
 /* Preserve white headings on dark hero banners (e.g. U07 PlusPaywallPage) */
@@ -37,40 +114,100 @@
   font-family: var(--tkv-font-body);
 }
 
-/* Token completion for hosted legacy surfaces (CSS audit fix, 2026-11-19).
-   The kitchen-*.css layers reference the Takosan semantic variables, but the
-   web entry never imports takosan-tokens.css (only the admin app does), so
-   var() references without a fallback are invalid at computed-value time and
-   the declaration silently drops. Only the variables needed to restore the
-   measured defects are defined here, with the exact values the design file
-   specifies, scoped to adapted surfaces. Deliberately NOT defined: the
-   --semantic-action-primary* / text remapping from .takosan-rebuild —
-   activating it would repaint primary actions (and the U07 Plus hero) from
-   the current production green to navy; that palette decision belongs to
-   the owner and is flagged in the audit report. */
-.tkv-adapted-surface {
-  --semantic-border-rgb: 231 227 218; /* = --semantic-border #E7E3DA */
-  --semantic-background-subtle-rgb: 252 251 248; /* = #FCFBF8 */
-  --kitchen-pine: #2e6b40; /* checkbox/radio accent in planning & shopping */
+/* CSS-safe mobile refinements for protected PlusPaywallPage (zero JSX/billing logic change) */
+.tkv-adapted-surface .plus-hero > div:first-child {
+  min-width: 0;
+  flex: 1;
 }
 
-/* ════════════════════════════════════════════════════════════════════════════
-   CSS AUDIT FIX (2026-11-19) — missing base styles for legacy class families
-   hosted inside adapted surfaces.
-   Root cause: the base styles for the family-* form system, the meal
-   composition blocks, the shopping-demand review and several planner blocks
-   never shipped. The only rules that existed were density tweaks in
-   kitchen-density.css scoped to [data-kitchen-density='compact'] /
-   .onboarding-page — attributes no code ever sets — so the controls rendered
-   as bare native form elements (U03 settings, C24 planner setup, C25 meal
-   composer, C27/C29 shopping). Everything below is scoped to
-   :is(.tkv-adapted-surface, .tkv-root) so standalone legacy contexts stay untouched, and uses
-   the existing Direction A tokens (--tkv-*).
-   ════════════════════════════════════════════════════════════════════════════ */
+.tkv-adapted-surface .plus-page button + button {
+  margin-top: 12px;
+}
+
+@media (max-width: 390px) {
+  .tkv-adapted-surface .plus-page [role='group'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ── Disclosure Chevron Helpers (restores indicator on flex <summary> elements) ── */
+:is(.tkv-adapted-surface, .tkv-root)
+  :is(
+    .family-extra,
+    .shopping-add-panel,
+    .shopping-bought,
+    .shopping-source-details,
+    .planning-diagnostics,
+    .planning-price-options,
+    .planning-ingredient-coverage details,
+    .shopping-demand-chosen,
+    .shopping-skipped
+  )
+  > summary {
+  list-style: none;
+  position: relative;
+  padding-right: 26px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root)
+  :is(
+    .family-extra,
+    .shopping-add-panel,
+    .shopping-bought,
+    .shopping-source-details,
+    .planning-diagnostics,
+    .planning-price-options,
+    .planning-ingredient-coverage details,
+    .shopping-demand-chosen,
+    .shopping-skipped
+  )
+  > summary::-webkit-details-marker {
+  display: none;
+}
+
+:is(.tkv-adapted-surface, .tkv-root)
+  :is(
+    .family-extra,
+    .shopping-add-panel,
+    .shopping-bought,
+    .shopping-source-details,
+    .planning-diagnostics,
+    .planning-price-options,
+    .planning-ingredient-coverage details,
+    .shopping-demand-chosen,
+    .shopping-skipped
+  )
+  > summary::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--tkv-primary);
+  border-bottom: 2px solid var(--tkv-primary);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 160ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root)
+  :is(
+    .family-extra,
+    .shopping-add-panel,
+    .shopping-bought,
+    .shopping-source-details,
+    .planning-diagnostics,
+    .planning-price-options,
+    .planning-ingredient-coverage details,
+    .shopping-demand-chosen,
+    .shopping-skipped
+  )[open]
+  > summary::after {
+  transform: translateY(-35%) rotate(-135deg);
+}
 
 /* ── Family form system (FamilyPreferenceFields, FamilyPlannerSetup,
-      FamilyPlanningSettingsPage, PlannerShopping, ShoppingDemandReview) ── */
-
+      FamilyPlanningSettingsPage, PlannerShopping, ShoppingDemandReview, RecipeMealDialog) ── */
 :is(.tkv-adapted-surface, .tkv-root) .family-settings-form {
   display: flex;
   flex-direction: column;
@@ -88,7 +225,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-settings-form > fieldset > legend {
@@ -97,12 +234,10 @@
   font-size: 16px;
   color: var(--tkv-ink);
   padding: 0;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-/* Bare labels + fields inside the family forms (household size, dates,
-   servings, trip range) get the kit field treatment. */
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   label {
   display: block;
@@ -111,7 +246,7 @@
   color: var(--tkv-ink);
 }
 
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   :is(
     input:not([type='checkbox']):not([type='radio']),
@@ -120,45 +255,49 @@
   ) {
   display: block;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 6px;
-  min-height: 44px;
+  min-height: 46px;
   padding: 10px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: 12px;
   background-color: var(--tkv-surface);
   color: var(--tkv-ink);
-  font-size: 16px; /* ≥16px prevents iOS focus zoom */
+  font-size: 16px;
   font-family: inherit;
+  box-shadow: none;
+  transition: border-color 150ms ease;
 }
 
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   select {
   appearance: none;
   -webkit-appearance: none;
   padding-right: 38px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2348615b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23196149' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
 }
 
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   :is(.family-settings-form, .family-preference-fields, .planning-share-shopping)
   :is(input, select, textarea):focus-visible {
+  border-color: var(--tkv-primary);
   outline: 2px solid var(--tkv-focus);
   outline-offset: 1px;
 }
 
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   :is(.family-settings-form, .family-preference-fields)
   :is(input[type='checkbox'], input[type='radio']) {
-  width: 19px;
-  height: 19px;
+  width: 20px;
+  height: 20px;
   flex: none;
   accent-color: var(--tkv-primary);
 }
 
-/* FamilyPreferenceFields: stacked sections, each a bordered card */
 :is(.tkv-adapted-surface, .tkv-root) .family-preference-fields {
   display: flex;
   flex-direction: column;
@@ -166,7 +305,8 @@
   min-width: 0;
 }
 
-:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields > fieldset {
+/* Style BOTH direct and nested <fieldset> elements inside .family-extra accordions */
+:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields fieldset {
   border: 1px solid var(--tkv-border);
   border-radius: 16px;
   background-color: var(--tkv-surface);
@@ -175,7 +315,7 @@
   min-width: 0;
 }
 
-:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields > fieldset > legend {
+:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields fieldset > legend {
   font-family: var(--tkv-font-heading);
   font-weight: 800;
   font-size: 15px;
@@ -183,14 +323,13 @@
   padding-inline: 4px;
 }
 
-:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields > p {
-  margin: 0;
+:is(.tkv-adapted-surface, .tkv-root) .family-preference-fields p {
+  margin: 4px 0 8px;
   font-size: 13px;
   line-height: 1.55;
   color: var(--tkv-ink-secondary);
 }
 
-/* Checkbox/radio options become tappable chips */
 :is(.tkv-adapted-surface, .tkv-root) .family-choice-row,
 :is(.tkv-adapted-surface, .tkv-root) .family-days {
   display: flex;
@@ -203,54 +342,63 @@
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  padding: 8px 14px;
-  border: 1px solid var(--tkv-border-strong);
+  padding: 8px 13px;
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   font-size: 14px;
   font-weight: 600;
   color: var(--tkv-ink);
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) :is(.family-choice-row, .family-days) > label:hover {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-bg);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) :is(.family-choice-row, .family-days) > label:has(> input:checked) {
   border-color: var(--tkv-primary);
   background-color: var(--tkv-surface-mint);
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-primary);
 }
 
-/* Two-up field pairs (dates, servings, shopping trip range) */
 :is(.tkv-adapted-surface, .tkv-root) .family-field-pair {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 12px;
-  /* Bottom-align so paired controls share a baseline even when one label
-     wraps to two lines and the other does not. */
   align-items: end;
 }
 
-@media (max-width: 380px) {
+/* Stack date / select pairs on phones <= 540px so iOS date inputs & Vietnamese selects never clip */
+@media (max-width: 540px) {
   :is(.tkv-adapted-surface, .tkv-root) .family-field-pair {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* Collapsible "more habits" sections */
 :is(.tkv-adapted-surface, .tkv-root) .family-extra {
+  display: block;
   border: 1px solid var(--tkv-border);
   border-radius: 16px;
   background-color: var(--tkv-surface);
-  padding: 4px 14px 14px;
+  padding: 4px 14px 12px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-extra[open] > :not(summary) {
+  margin-top: 12px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-extra > summary {
   display: flex;
   align-items: center;
-  min-height: 48px;
-  padding: 10px 0;
+  min-height: 46px;
+  padding: 8px 26px 8px 0;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -267,7 +415,6 @@
   color: var(--tkv-ink-muted);
 }
 
-/* Plan-mode radio cards (C24) */
 :is(.tkv-adapted-surface, .tkv-root) .family-plan-mode {
   display: grid;
   gap: 10px;
@@ -278,10 +425,11 @@
   gap: 10px;
   align-items: flex-start;
   padding: 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: 14px;
   background-color: var(--tkv-surface);
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-plan-mode > label[data-selected='true'] {
@@ -306,12 +454,11 @@
   color: var(--tkv-ink-secondary);
 }
 
-/* Setup heading (C24) */
 :is(.tkv-adapted-surface, .tkv-root) .family-setup-heading {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-setup-heading > svg {
@@ -321,8 +468,8 @@
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-setup-heading h2 {
-  font-size: 20px;
-  line-height: 1.25;
+  font-size: 19px;
+  line-height: 1.28;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .family-setup-heading p {
@@ -332,26 +479,24 @@
   color: var(--tkv-ink-secondary);
 }
 
-/* "You already have habits" notice + safety/allergen wrapper */
-:is(.tkv-adapted-surface, .tkv-root) .family-existing-choice {
+:is(.tkv-adapted-surface, .tkv-root) label.family-existing-choice {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
   border-radius: 14px;
-  background-color: var(--tkv-surface-mint);
-  padding: 12px 14px;
+  border: 1px solid var(--tkv-border);
+  background-color: var(--tkv-bg);
+  padding: 10px 14px;
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-:is(.tkv-adapted-surface, .tkv-root) .family-safety {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
+:is(.tkv-adapted-surface, .tkv-root) .family-ingredient-field > p {
+  margin: 4px 0 8px;
 }
 
-/* Ingredient picker field (avoid-list search + chosen chips) */
 :is(.tkv-adapted-surface, .tkv-root) .family-ingredient-field ul {
   display: flex;
   flex-wrap: wrap;
@@ -363,23 +508,153 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 36px;
-  padding: 4px 6px 4px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  min-height: 44px;
+  padding: 4px 8px 4px 12px;
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   font-size: 13px;
   font-weight: 600;
 }
 
-/* ── Scan (C09): keep the whole viewfinder — shutter included — above the
-      fixed bottom navigation on short screens. The viewfinder top sits at a
-      fixed offset under the shell header + mode tabs + guide copy, so on
-      screens shorter than ~850px the default 48dvh height pushed the shutter
-      row underneath the nav at first paint. Cap the height by the remaining
-      viewport budget instead; the shell's bottom padding still covers the
-      rest of the page. Also drop the legacy workspace side/bottom padding
-      that double-padded the adapted surface. ── */
+/* ── Favorites Collection (C17 FavoritesCollection & RecipeMealDialog) ── */
+:is(.tkv-adapted-surface, .tkv-root) .family-favorites {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-collection-heading {
+  display: grid;
+  gap: 10px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-collection-heading h2 {
+  font-family: var(--tkv-font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--tkv-ink);
+  margin: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-collection-heading p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--tkv-ink-secondary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-collection-heading input[type='search'] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--tkv-border);
+  border-radius: 999px;
+  background: var(--tkv-surface);
+  color: var(--tkv-ink);
+  font-size: 16px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorites-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  :is(.tkv-adapted-surface, .tkv-root) .family-favorites-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  :is(.tkv-adapted-surface, .tkv-root) .family-favorites-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorite-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--tkv-border);
+  border-radius: 20px;
+  background: var(--tkv-surface);
+  box-shadow: var(--tkv-shadow-card);
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorite-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorite-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorite-title a {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--tkv-font-heading);
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--tkv-ink);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-favorite-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 10px;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--tkv-border);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-placement-choice {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--tkv-border);
+  border-radius: 14px;
+  background: var(--tkv-bg);
+  margin: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-placement-choice > legend {
+  font-family: var(--tkv-font-heading);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--tkv-ink);
+  padding-inline: 4px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .family-placement-choice > label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ── Scan (C09) viewport budget — strictly scoped to viewfinder frame only ── */
 :is(.tkv-adapted-surface, .tkv-root) .scan-workspace {
   padding-left: 0;
   padding-right: 0;
@@ -387,18 +662,17 @@
 }
 
 @media (max-width: 1023.5px) {
-  :is(.tkv-adapted-surface, .tkv-root) .scan-camera-region > div:not(.scan-preview) {
-    height: min(48dvh, calc(100dvh - 440px));
-    min-height: 230px;
+  :is(.tkv-adapted-surface, .tkv-root) .scan-viewfinder-frame {
+    height: min(52dvh, 420px);
+    min-height: 320px;
   }
 
   :is(.tkv-adapted-surface, .tkv-root) .scan-camera-region > .scan-preview {
-    height: min(56dvh, calc(100dvh - 440px));
-    min-height: 230px;
+    height: min(52dvh, 420px);
+    min-height: 260px;
   }
 }
 
-/* Icon-only header links keep a real tap target wherever they stay visible */
 :is(.tkv-adapted-surface, .tkv-root) .kitchen-icon-link {
   display: inline-flex;
   align-items: center;
@@ -406,28 +680,295 @@
   width: 44px;
   height: 44px;
   border-radius: var(--tkv-radius-pill);
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
-/* ── Meal composition blocks (C25 MealComposer / IngredientCoverage /
-      MealTimeNotice, C18 recipe detail save control) ── */
-
-:is(.tkv-adapted-surface, .tkv-root) .planning-composer-state {
+/* ── Meal Planner & ComponentPicker blocks (C23-C26) ── */
+:is(.tkv-adapted-surface, .tkv-root) .planning-board-status {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--tkv-ink);
   margin: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-board-meta {
+  font-size: 13px;
+  color: var(--tkv-ink-secondary);
+  margin: 4px 0 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-board-warning {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--tkv-surface-saffron);
+  border: 1px solid var(--tkv-border-saffron);
+  color: var(--tkv-warning-ink);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-composition-card {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-list {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--tkv-border);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-row:last-child {
+  border-bottom: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-copy {
+  flex: 1 1 170px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--tkv-ink-muted);
+  margin-top: 3px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-dish-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .dish-status.is-covered {
+  color: var(--tkv-success-ink);
+  font-weight: 700;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .dish-status.is-shopping {
+  color: var(--tkv-coral-ink);
+  font-weight: 700;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .dish-status.is-warning {
+  color: var(--tkv-warning-ink);
+  font-weight: 700;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-missing-roles {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--tkv-surface-saffron);
+  border: 1px solid var(--tkv-border-saffron);
+  color: var(--tkv-warning-ink);
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-meal-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-meal-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tkv-ink-muted);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-meal-name {
+  font-family: var(--tkv-font-heading);
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--tkv-ink);
+  margin-top: 2px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-icon-link {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--tkv-bg);
+  color: var(--tkv-ink-secondary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-legacy-meal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--tkv-ink-secondary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-legacy-meal-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-meal-availability {
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--tkv-primary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-manual-empty {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--tkv-border-strong);
+  background: var(--tkv-bg);
+  display: grid;
+  gap: 6px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-empty-composition {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px dashed var(--tkv-border-strong);
+  background: var(--tkv-bg);
+  display: grid;
+  gap: 6px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-family-policy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-family-policy-note > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--tkv-primary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-meal-style-note {
+  margin-top: 10px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-context {
+  margin-top: 4px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--tkv-primary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--tkv-surface-subtle);
+  border: 1px solid var(--tkv-border);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-tabs button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--tkv-ink-secondary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-tabs button[aria-pressed='true'] {
+  background: var(--tkv-primary);
+  color: #ffffff;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-stock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tkv-ink);
+  cursor: pointer;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px 12px;
+  padding: 12px;
+  border: 1px solid var(--tkv-border);
+  border-radius: 14px;
+  background: var(--tkv-surface);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-item > div {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .planning-picker-item-role {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tkv-ink-secondary);
+}
+
+/* ── Meal composition blocks (C25 MealComposer / IngredientCoverage / MealTimeNotice) ── */
+:is(.tkv-adapted-surface, .tkv-root) .planning-composer-state {
+  margin: 10px 0 0;
   font-size: 14px;
   font-weight: 700;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-meal-time-note {
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  margin: 0;
+  margin: 10px 0 0;
   padding: 8px 10px;
   border-radius: 10px;
-  background-color: var(--tkv-surface-saffron);
-  color: var(--tkv-warning);
+  border: 1px solid var(--tkv-border);
+  background-color: var(--tkv-bg);
+  color: var(--tkv-ink-secondary);
   font-size: 13px;
   line-height: 1.5;
 }
@@ -435,6 +976,7 @@
 :is(.tkv-adapted-surface, .tkv-root) .planning-meal-time-note > svg {
   flex: none;
   margin-top: 2px;
+  color: var(--tkv-warning);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-component-primary-actions {
@@ -445,30 +987,43 @@
   margin-top: 10px;
 }
 
-/* Save-recipe control: a real small outline button next to "Đổi món",
-   instead of an unstyled inline span whose icon floated over the row. */
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-control {
   display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  min-height: 36px;
+  min-width: 44px;
+  min-height: 44px;
   padding: 6px 12px;
-  border: 1px solid var(--tkv-border-strong);
+  border: 1px solid var(--tkv-border);
   border-radius: var(--tkv-radius-pill);
   background-color: var(--tkv-surface);
   color: var(--tkv-ink-secondary);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+  flex-shrink: 0;
   cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .recipe-save-button:hover:not(:disabled) {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-surface-mint);
+  color: var(--tkv-primary);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-button[aria-pressed='true'] {
-  border-color: var(--tkv-coral);
-  color: var(--tkv-coral-cta);
+  border-color: var(--tkv-primary);
+  background-color: var(--tkv-primary);
+  color: #ffffff;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .recipe-save-button:disabled {
@@ -476,26 +1031,34 @@
   cursor: default;
 }
 
-/* Ingredient coverage: status line + quantity breakdown grid */
+:is(.tkv-adapted-surface, .tkv-root) .recipe-save-error {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tkv-danger-ink);
+  text-align: right;
+  max-width: 220px;
+}
+
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px dashed var(--tkv-border);
+  border-top: 1px solid var(--tkv-border);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status {
   margin: 0;
   font-size: 13px;
   font-weight: 700;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status[data-status='needs_shopping'],
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status[data-status='unresolved'] {
-  color: var(--tkv-warning);
+  color: var(--tkv-warning-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-coverage-status[data-status='not_tracked'],
@@ -504,12 +1067,12 @@
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage details > summary {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  min-height: 40px;
+  min-height: 44px;
   font-size: 13px;
-  font-weight: 600;
-  color: var(--tkv-primary-deep);
+  font-weight: 700;
+  color: var(--tkv-primary);
   cursor: pointer;
 }
 
@@ -523,7 +1086,7 @@
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
@@ -532,6 +1095,7 @@
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage li {
   border: 1px solid var(--tkv-border);
   border-radius: 12px;
+  background-color: var(--tkv-bg);
   padding: 10px 12px;
 }
 
@@ -541,36 +1105,44 @@
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage li dl {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
   gap: 8px;
   margin: 8px 0 0;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage li dt {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--tkv-ink-muted);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-ingredient-coverage li dd {
   margin: 2px 0 0;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--tkv-ink);
 }
 
-.tkv-adapted-surface
+:is(.tkv-adapted-surface, .tkv-root)
   .planning-ingredient-coverage
   li
   dl
   > div[data-missing='true']
   dd {
-  color: var(--tkv-danger);
+  color: var(--tkv-danger-ink);
 }
 
-/* ── Shopping (C27 list summary, C29 share/diagnostics,
-      ShoppingDemandReview quantity decisions + purchase dialog) ── */
+/* ── Shopping (C27 list summary, C29 share/diagnostics, ShoppingDemandReview) ── */
+:is(.tkv-adapted-surface, .tkv-root) .shopping-add-panel > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--tkv-ink);
+  cursor: pointer;
+}
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-count-summary {
   text-align: right;
@@ -579,13 +1151,19 @@
   color: var(--tkv-ink-muted);
 }
 
+@media (max-width: 480px) {
+  :is(.tkv-adapted-surface, .tkv-root) .shopping-count-summary {
+    text-align: left;
+  }
+}
+
 :is(.tkv-adapted-surface, .tkv-root) .shopping-count-summary p {
   margin: 0;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-review-count {
-  font-weight: 600;
-  color: var(--tkv-warning);
+  font-weight: 700;
+  color: var(--tkv-warning-ink);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-share-heading {
@@ -615,7 +1193,7 @@
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-diagnostics,
 :is(.tkv-adapted-surface, .tkv-root) .planning-price-options {
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .planning-diagnostics > summary,
@@ -625,15 +1203,15 @@
   min-height: 44px;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-review {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 14px;
+  margin-top: 8px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-review-notice {
@@ -643,10 +1221,11 @@
   justify-content: space-between;
   gap: 10px;
   padding: 12px 14px;
-  border: 1px solid var(--tkv-border);
-  border-radius: 12px;
+  border: 1px solid var(--tkv-border-saffron);
+  border-radius: 14px;
   background-color: var(--tkv-surface-saffron);
-  font-size: 14px;
+  color: var(--tkv-warning-ink);
+  font-size: 13.5px;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-review-notice p {
@@ -655,10 +1234,10 @@
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-error {
   padding: 12px 14px;
-  border: 1px solid var(--tkv-danger);
+  border: 1px solid var(--tkv-border-danger);
   border-radius: 12px;
-  background-color: var(--tkv-surface-coral);
-  color: var(--tkv-danger);
+  background-color: var(--tkv-surface-danger);
+  color: var(--tkv-danger-ink);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -666,8 +1245,8 @@
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-receipt {
   margin: 0;
   font-size: 14px;
-  font-weight: 600;
-  color: var(--tkv-primary-deep);
+  font-weight: 700;
+  color: var(--tkv-primary);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-unresolved > h3 {
@@ -696,10 +1275,19 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid var(--tkv-border);
-  border-radius: 14px;
+  border-radius: 16px;
   background-color: var(--tkv-surface);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-demand-card.is-reviewed {
+  background-color: var(--tkv-surface-mint);
+  border-color: var(--tkv-border-mint);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-demand-card.is-skipped {
+  background-color: var(--tkv-surface-subtle);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-card-copy {
@@ -707,6 +1295,7 @@
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  flex: 1;
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-card-copy > strong {
@@ -728,21 +1317,44 @@
   flex: none;
 }
 
+@media (max-width: 540px) {
+  :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-actions > * {
+    flex: 1 1 130px;
+  }
+}
+
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-skip,
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-reopen {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid var(--tkv-border-strong);
-  border-radius: 10px;
+  border: 1px solid var(--tkv-border);
+  border-radius: 12px;
   background-color: var(--tkv-surface);
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) :is(.shopping-demand-skip, .shopping-demand-reopen):hover:not(:disabled) {
+  border-color: var(--tkv-border-strong);
+  background-color: var(--tkv-bg);
 }
 
 :is(.tkv-adapted-surface, .tkv-root) .shopping-demand-skip:disabled,
@@ -752,7 +1364,7 @@
 }
 
 :is(.tkv-adapted-surface, .tkv-root) :is(.shopping-demand-chosen, .shopping-skipped) {
-  border-top: 1px dashed var(--tkv-border);
+  border-top: 1px solid var(--tkv-border);
   padding-top: 6px;
 }
 
@@ -762,7 +1374,7 @@
   min-height: 44px;
   font-weight: 700;
   font-size: 14.5px;
-  color: var(--tkv-primary-deep);
+  color: var(--tkv-ink);
   cursor: pointer;
 }
 
@@ -773,27 +1385,86 @@
   color: var(--tkv-ink-secondary);
 }
 
+:is(.tkv-adapted-surface, .tkv-root) .shopping-demand-sources {
+  margin-top: 4px;
+  width: 100%;
+}
+
 :is(.tkv-adapted-surface, .tkv-root) .shopping-source-details > summary {
   display: flex;
   align-items: center;
-  min-height: 40px;
+  min-height: 44px;
   font-size: 13px;
-  font-weight: 600;
-  color: var(--tkv-primary-deep);
+  font-weight: 700;
+  color: var(--tkv-primary);
   cursor: pointer;
 }
 
-/* Purchase-quantity / meal-plan dialog card (rendered inside a Tailwind
-   overlay; also used by FavoritesCollection in native vNext screens, so this
-   block is scoped to .tkv-root rather than .tkv-adapted-surface) */
+:is(.tkv-adapted-surface, .tkv-root) .shopping-source-details > ul {
+  display: grid;
+  gap: 6px;
+  margin: 4px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-source-details > ul > li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background-color: var(--tkv-bg);
+  border: 1px solid var(--tkv-border);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--tkv-ink-secondary);
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-source-details > ul > li a {
+  color: var(--tkv-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-demand-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+:is(.tkv-adapted-surface, .tkv-root) .shopping-demand-dialog-help {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--tkv-ink-secondary);
+}
+
+/* ── Mobile-safe bottom-sheet dialogs (ShoppingEditDialog, ShoppingDemandReview, RecipeMealDialog) ── */
 .tkv-root .family-dialog {
   width: min(92vw, 480px);
-  max-height: min(86dvh, 720px);
+  max-height: min(88dvh, 720px);
   overflow-y: auto;
+  overscroll-behavior: contain;
   border-radius: 20px;
+  border: 1px solid var(--tkv-border);
   background-color: var(--tkv-surface);
   padding: 20px;
-  box-shadow: var(--tkv-shadow-float);
+  box-shadow: var(--tkv-shadow-elevated);
+}
+
+@media (max-width: 639px) {
+  .tkv-root .family-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90dvh;
+    border-radius: 22px 22px 0 0;
+    border-bottom: 0;
+    padding: 18px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .tkv-root .family-dialog-heading {
@@ -801,10 +1472,19 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+.tkv-root .family-dialog-heading > div {
+  flex: 1;
+  min-width: 0;
 }
 
 .tkv-root .family-dialog-heading h2 {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.3;
+}
+
+.tkv-adapted-surface .plus-hero img {
+  border-radius: 16px;
 }

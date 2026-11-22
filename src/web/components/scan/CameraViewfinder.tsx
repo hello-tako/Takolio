@@ -1,17 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Camera, RefreshCw, Zap, ZapOff, Image as ImageIcon } from 'lucide-react';
+import { Camera, RefreshCw, Zap, ZapOff, Image as ImageIcon, PlusCircle } from 'lucide-react';
 import { clsx } from 'clsx';
 import { PRIVATE_IMAGE_JPEG_QUALITY, PRIVATE_IMAGE_MAX_DIMENSION } from '../../lib/private-image';
 
 interface CameraViewfinderProps {
   onCapture: (base64: string) => void;
   onSelectFromGallery: () => void;
+  onManualEntry?: () => void;
   scanType: 'fridge' | 'food' | 'receipt';
 }
 
 export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
   onCapture,
   onSelectFromGallery,
+  onManualEntry,
   scanType,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -124,7 +126,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
   };
 
   return (
-    <div className="relative w-full h-[clamp(300px,48dvh,520px)] rounded-2xl overflow-hidden bg-semantic-overlay flex items-center justify-center border border-white/15 shadow-2xl">
+    <div className="scan-viewfinder-frame relative w-full h-[clamp(320px,50dvh,520px)] rounded-2xl overflow-hidden bg-[var(--tkv-ink)] flex items-center justify-center border border-white/15 shadow-xl">
       {/* Video stream */}
       {!hasCameraError && (
         <video
@@ -139,30 +141,44 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
         />
       )}
 
-      {/* Fallback Viewfinder if camera blocked/unavailable */}
+      {/* Fallback Viewfinder if camera blocked/unavailable (C10) */}
       {(hasCameraError || isStartingCamera) && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-3 bg-semantic-overlay/90 backdrop-blur-sm">
-          <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white/80">
-            <Camera className="w-7 h-7 text-takosan-mint" />
+        <div className="absolute inset-0 z-10 overflow-y-auto flex flex-col items-center justify-center p-5 text-center space-y-3 bg-[var(--tkv-ink)]/95 backdrop-blur-sm">
+          <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white shrink-0">
+            <Camera className="w-6 h-6 text-white" />
           </div>
           <div>
-            <p className="font-heading font-bold text-sm text-white">
+            <p className="font-heading font-bold text-sm text-[var(--tkv-bg)]">
               {hasCameraError ? 'Camera không sẵn sàng' : 'Đang bật camera...'}
             </p>
-            <p className="text-sm text-white mt-1 max-w-xs leading-relaxed">
+            <p className="text-sm text-white/80 mt-1 max-w-xs leading-relaxed">
               {hasCameraError
-                ? 'Bạn có thể chọn ảnh từ thư viện để tiếp tục'
+                ? 'Bạn có thể tải ảnh từ thư viện hoặc chuyển sang nhập nguyên liệu thủ công'
                 : 'Vui lòng cấp quyền truy cập camera nếu được hỏi'}
             </p>
           </div>
           {hasCameraError && (
-            <button
-              onClick={onSelectFromGallery}
-              className="px-4 py-2 rounded-xl bg-takosan-green hover:bg-takosan-green-hover text-white font-semibold text-sm flex items-center gap-1.5 shadow-sm tap-target transition-tap active:scale-[0.98]"
-            >
-              <ImageIcon className="w-4 h-4" />
-              <span>Tải ảnh từ thư viện</span>
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+              <button
+                type="button"
+                onClick={onSelectFromGallery}
+                className="px-4 py-2.5 rounded-xl bg-white text-[var(--tkv-ink)] hover:bg-[var(--tkv-bg)] font-semibold text-sm flex items-center gap-1.5 shadow-sm tap-target transition-tap active:scale-[0.98]"
+              >
+                <ImageIcon className="w-4 h-4 shrink-0" />
+                <span>Tải ảnh từ thư viện</span>
+              </button>
+              {onManualEntry && (
+                <button
+                  type="button"
+                  data-testid="c10-manual-entry-btn"
+                  onClick={onManualEntry}
+                  className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/25 text-white font-semibold text-sm flex items-center gap-1.5 tap-target transition-tap active:scale-[0.98]"
+                >
+                  <PlusCircle className="w-4 h-4 shrink-0" />
+                  <span>Nhập nguyên liệu thủ công</span>
+                </button>
+              )}
+            </div>
           )}
         </div>
       )}
@@ -170,15 +186,16 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
       {/* Viewfinder Guide Overlay */}
       <div className="absolute inset-3.5 pointer-events-none flex flex-col justify-between">
         {/* Top Controls */}
-        <div className="flex items-center justify-between pointer-events-auto">
+        <div className="flex items-center justify-between gap-2 pointer-events-auto">
           {hasTorchSupport ? (
             <button
+              type="button"
               onClick={toggleTorch}
               className={clsx(
-                'w-10 h-10 rounded-xl flex items-center justify-center backdrop-blur-md transition-tap tap-target border border-white/10',
+                'w-11 h-11 shrink-0 rounded-xl flex items-center justify-center backdrop-blur-md transition-tap tap-target border border-white/15',
                 isTorchOn
-                  ? 'bg-takosan-yellow text-takosan-navy'
-                  : 'bg-semantic-overlay/60 text-white',
+                  ? 'bg-white text-[var(--tkv-ink)]'
+                  : 'bg-[var(--tkv-ink)]/75 text-white',
               )}
               aria-label="Đèn pin"
             >
@@ -189,20 +206,24 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
               )}
             </button>
           ) : (
-            <div className="w-10" />
+            <div className="w-11 shrink-0" />
           )}
 
-          <div className="min-w-0 max-w-[60%] px-2 py-1.5 rounded-lg bg-semantic-overlay/75 backdrop-blur-md text-sm font-heading font-semibold text-white border border-white/15 shadow-md">
-            {scanType === 'receipt'
-              ? 'Căn chỉnh toàn bộ hóa đơn vào khung'
-              : scanType === 'fridge'
-                ? 'Hướng vào tủ lạnh để nhận diện thực phẩm'
-                : 'Đặt nguyên liệu vào giữa khung hình'}
+          <div className="flex-1 min-w-0 px-3 py-1.5 rounded-xl bg-[var(--tkv-ink)]/80 backdrop-blur-md text-xs sm:text-sm font-heading font-semibold text-white border border-white/15 shadow-md inline-flex items-center justify-center gap-2 text-center leading-snug">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
+            <span className="line-clamp-2">
+              {scanType === 'receipt'
+                ? 'Căn chỉnh toàn bộ hóa đơn vào khung'
+                : scanType === 'fridge'
+                  ? 'Hướng vào tủ lạnh để nhận diện thực phẩm'
+                  : 'Đặt nguyên liệu vào giữa khung hình'}
+            </span>
           </div>
 
           <button
+            type="button"
             onClick={switchCamera}
-            className="w-10 h-10 rounded-xl bg-semantic-overlay/60 backdrop-blur-md text-white border border-white/10 flex items-center justify-center tap-target hover:bg-semantic-overlay/80 transition-tap"
+            className="w-11 h-11 shrink-0 rounded-xl bg-[var(--tkv-ink)]/75 backdrop-blur-md text-white border border-white/15 flex items-center justify-center tap-target hover:bg-[var(--tkv-ink)]/90 transition-tap"
             aria-label="Đổi camera"
           >
             <RefreshCw className="w-4 h-4" />
@@ -213,45 +234,49 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
         <div className="relative flex-1 my-3 flex items-center justify-center">
           <div
             className={clsx(
-              'border border-white/30 transition-tap duration-300 relative overflow-hidden',
+              'border border-white/25 transition-tap duration-300 relative overflow-hidden',
               scanType === 'receipt' ? 'w-4/5 h-[90%] rounded-xl' : 'w-[85%] h-[85%] rounded-2xl',
             )}
           >
             {/* 4 Corner Markers */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-takosan-green rounded-tl-sm" />
-            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-takosan-green rounded-tr-sm" />
-            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-takosan-green rounded-bl-sm" />
-            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-takosan-green rounded-br-sm" />
+            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white rounded-tl-sm" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white rounded-tr-sm" />
+            <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white rounded-bl-sm" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white rounded-br-sm" />
 
-            {/* Scanning Laser Line */}
-            <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-takosan-coral to-transparent shadow-[0_0_8px_rgba(255,123,107,0.85)] motion-safe:animate-[scanLaser_2.5s_ease-in-out_infinite]" />
+            {/* Subtle Coral Scan Line */}
+            <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-[var(--tkv-coral)] to-transparent motion-safe:animate-[scanLaser_2.5s_ease-in-out_infinite]" />
           </div>
         </div>
 
         {/* Bottom Shutter Trigger Bar */}
-        <div className="flex items-center justify-around pointer-events-auto pb-1">
-          <button
-            onClick={onSelectFromGallery}
-            className="px-4 py-2.5 rounded-xl bg-semantic-overlay/60 border border-white/15 backdrop-blur-md text-white flex items-center gap-2 tap-target hover:bg-semantic-overlay/85 active:scale-95 transition-tap"
-            title="Thư viện"
-            aria-label="Thư viện"
-          >
-            <ImageIcon className="w-5 h-5" />
-            <span className="text-sm font-heading font-bold">Thư viện</span>
-          </button>
+        <div className="grid grid-cols-3 items-center pointer-events-auto pb-1">
+          <div className="justify-self-start">
+            <button
+              type="button"
+              onClick={onSelectFromGallery}
+              className="px-3.5 py-2.5 rounded-xl bg-[var(--tkv-ink)]/75 border border-white/15 backdrop-blur-md text-white inline-flex items-center gap-1.5 tap-target hover:bg-[var(--tkv-ink)]/95 active:scale-95 transition-tap"
+              title="Thư viện"
+              aria-label="Thư viện"
+            >
+              <ImageIcon className="w-5 h-5 shrink-0" />
+              <span className="text-sm font-heading font-bold whitespace-nowrap">Thư viện</span>
+            </button>
+          </div>
 
           {/* Big Shutter Button */}
           <button
+            type="button"
             onClick={handleCapture}
-            className="w-20 h-20 rounded-full border-[3px] border-white/90 flex items-center justify-center bg-transparent active:scale-95 transition-transform p-1.5 tap-target shadow-[0_0_24px_rgba(46,125,91,0.45)]"
+            className="justify-self-center w-20 h-20 rounded-full border-[3px] border-white/90 flex items-center justify-center bg-transparent active:scale-95 transition-transform p-1.5 tap-target shadow-lg"
             aria-label="Chụp ảnh"
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-white to-takosan-mint flex items-center justify-center shadow-md">
-              <Camera className="w-8 h-8 text-semantic-text-primary stroke-[2.2]" />
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-md">
+              <Camera className="w-8 h-8 text-[var(--tkv-ink)] stroke-[2.2]" />
             </div>
           </button>
 
-          <div className="w-11" />
+          <div />
         </div>
       </div>
     </div>

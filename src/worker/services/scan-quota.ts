@@ -14,10 +14,11 @@ export type ScanReservationSpec = {
 /** Read one snapshot without creating subscriptions, periods, or reservations. */
 export async function getScanQuota(db: D1DatabaseBinding, userId: string, now = new Date()) {
   const period = getScanQuotaPeriod(now);
-  const row = await db.prepare(`SELECT sub.plan, sub.status, sub.expires_at,
+  const row = await db.prepare(`SELECT sub.plan, sub.status, sub.expires_at, u.is_guest,
       (SELECT COUNT(*) FROM scan_quota_ledger
         WHERE user_id = principal.user_id AND period_start = ? AND status != 'released') AS used
     FROM (SELECT ? AS user_id) AS principal
+    LEFT JOIN users AS u ON u.id = principal.user_id
     LEFT JOIN subscriptions AS sub ON sub.user_id = principal.user_id`)
     .bind(period.start, userId).first<ScanSubscription & { used: number }>();
   if (!row || !Number.isSafeInteger(row.used) || row.used < 0) throw new Error('SCAN_QUOTA_UNAVAILABLE');
@@ -84,7 +85,10 @@ export async function reserveScanQuota(
     const now = new Date();
     const period = getScanQuotaPeriod(now).start;
     const sub = await db.prepare(
-      'SELECT plan, status, expires_at FROM subscriptions WHERE user_id = ?'
+      `SELECT sub.plan, sub.status, sub.expires_at, u.is_guest
+       FROM (SELECT ? AS user_id) AS principal
+       LEFT JOIN users AS u ON u.id = principal.user_id
+       LEFT JOIN subscriptions AS sub ON sub.user_id = principal.user_id`
     ).bind(input.userId).first<ScanSubscription>();
     const maxScans = getScanQuotaEntitlement(sub, now).limit;
     const reservationId = `quota_${crypto.randomUUID()}`;

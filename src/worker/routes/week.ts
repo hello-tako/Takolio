@@ -1192,20 +1192,22 @@ weekRoutes.post('/week/plans/:id/shopping/complete', async (c) => {
     // Fetch all matching rows in one query. A failed read aborts the command
     // rather than silently creating duplicate stock.
     const inventoryRevision = await readLegacyInventoryRevision(db, auth.householdId);
-    const seenNames = canonicalItemsToImport.map((item) => item.name.trim().toLowerCase());
-    const namePlaceholders = seenNames.map(() => 'LOWER(?)').join(',');
-    const ingredientPlaceholders = canonicalItemsToImport.map(() => '?').join(',');
+    const seenNames = [...new Set(canonicalItemsToImport.map((item) => item.name.trim().toLowerCase()))];
+    const ingredientIds = [...new Set(canonicalItemsToImport.map((item) => item.ingredientId).filter(Boolean))];
     const existingResult = await db
       .prepare(
         `SELECT id, quantity, unit, ingredient_id, LOWER(name) as lname
          FROM inventory_items
          WHERE household_id = ?
-           AND (ingredient_id IN (${ingredientPlaceholders}) OR LOWER(name) IN (${namePlaceholders}))`
+           AND (
+             ingredient_id IN (SELECT value FROM json_each(?))
+             OR LOWER(name) IN (SELECT LOWER(value) FROM json_each(?))
+           )`
       )
       .bind(
         auth.householdId,
-        ...canonicalItemsToImport.map((item) => item.ingredientId),
-        ...seenNames
+        JSON.stringify(ingredientIds),
+        JSON.stringify(seenNames)
       )
       .all();
     const existingRows: any[] = existingResult?.results || [];

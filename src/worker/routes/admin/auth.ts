@@ -48,7 +48,7 @@ async function localAuthorityAccount(db: import('@frigo/db').D1DatabaseBinding, 
 export const ADMIN_SCHEMA_VERSION = '4';
 
 export async function csrfTokenFor(sessionToken: string): Promise<string> {
-  return sha256Hex(`takosan-admin-csrf:v1:${sessionToken}`);
+  return sha256Hex(`takolio-admin-csrf:v1:${sessionToken}`);
 }
 
 export async function activeRoles(adminDb: D1DatabaseBinding, userId: string): Promise<AdminRole[]> {

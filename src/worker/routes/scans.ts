@@ -24,6 +24,7 @@ import {
 } from '@frigo/domain';
 import { tenancyGuard } from '../middleware/tenancy';
 import { rateLimiter } from '../middleware/rate-limit';
+import { ipRateLimiter } from '../middleware/ip-rate-limit';
 import { ScanConfirmSchema } from '../validation/schemas';
 import { fetchHouseholdInventoryFromDb } from './inventory';
 import { getScanQuota, reserveScanQuota, finalizeScanQuota, type ScanReservationSpec } from '../services/scan-quota';
@@ -596,8 +597,10 @@ scanRoutes.use('/scans*', async (c, next) => {
   await next();
 });
 
-// Rate limit AI vision operations (max 12 per minute)
+// Rate limit AI vision operations (max 12/min per account, max 20/min per IP)
+scanRoutes.use('/scans/fridge', ipRateLimiter({ maxRequests: 20, windowSeconds: 60, prefix: 'rl_scan_ip' }));
 scanRoutes.use('/scans/fridge', rateLimiter({ maxRequests: 12, windowSeconds: 60, prefix: 'rl_scan' }));
+scanRoutes.use('/scans/receipt', ipRateLimiter({ maxRequests: 20, windowSeconds: 60, prefix: 'rl_receipt_ip' }));
 scanRoutes.use('/scans/receipt', rateLimiter({ maxRequests: 12, windowSeconds: 60, prefix: 'rl_receipt' }));
 
 // Helper to init AI Router with Cloudflare Workers AI GPU binding
@@ -640,18 +643,37 @@ function decodeBase64(value: string): Uint8Array {
   return bytes;
 }
 
+const ALLOWED_SCAN_MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
+
+function maxRawBase64Length(maxBytes: number): number {
+  return Math.ceil((maxBytes * 4) / 3) + 256;
+}
+
+function looksLikeMarkupPayload(bytes: Uint8Array): boolean {
+  const probe = new TextDecoder().decode(bytes.subarray(0, 256)).trimStart().toLowerCase();
+  return (
+    probe.startsWith('<svg') ||
+    probe.startsWith('<?xml') ||
+    probe.startsWith('<!doctype') ||
+    probe.startsWith('<html') ||
+    probe.startsWith('<script')
+  );
+}
+
 /** Normalize data URLs and raw base64 so retries hash the same bytes. */
-function normalizeImagePayload(value: unknown): NormalizedImagePayload | null {
+export function normalizeImagePayload(value: unknown): NormalizedImagePayload | null {
   if (typeof value !== 'string') return null;
   const input = value.trim();
   if (!input) return null;
-  const dataUrl = input.match(/^data:(image\/[A-Za-z0-9.+-]+);base64,([\s\S]*)$/i);
-  const mimeType = (dataUrl?.[1] || 'image/jpeg').toLowerCase();
+  const dataUrl = input.match(/^data:([^;,]+);base64,([\s\S]*)$/i);
+  if (!dataUrl && /^data:/i.test(input)) return null;
+  const mimeType = (dataUrl?.[1] || 'image/jpeg').trim().toLowerCase();
+  if (!ALLOWED_SCAN_MIME_TYPES.has(mimeType)) return null;
   const encoded = (dataUrl?.[2] || input).replace(/\s+/g, '');
   if (!encoded) return null;
   try {
     const bytes = decodeBase64(encoded);
-    if (bytes.length === 0) return null;
+    if (bytes.length === 0 || looksLikeMarkupPayload(bytes)) return null;
     const canonicalBase64 = encodeBase64(bytes);
     return {
       base64: canonicalBase64,
@@ -875,15 +897,23 @@ scanRoutes.post('/scans/fridge', async (c) => {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
+  const maxBytes = configuredImageLimit(c.env.AI_MAX_IMAGE_BYTES);
+  if (imageInput.length > maxRawBase64Length(maxBytes)) {
+    return c.json(
+      { error: publicScanErrorMessage('AI_IMAGE_TOO_LARGE'), code: 'AI_IMAGE_TOO_LARGE' },
+      413
+    );
+  }
+
   const image = normalizeImagePayload(imageInput);
   if (!image) {
     return c.json({ error: 'Vui lòng tải lên một ảnh hợp lệ để quét', code: 'IMAGE_REQUIRED' }, 400);
   }
 
-  // SEC-08 FIX: Check payload size limit before reserving quota.
-  const sizeCheck = validateBase64Payload(image.base64, configuredImageLimit(c.env.AI_MAX_IMAGE_BYTES));
-  if (!sizeCheck.valid) {
-    return c.json({ error: sizeCheck.error, code: 'PAYLOAD_TOO_LARGE' }, 413);
+  // SEC-08 FIX: Check decoded payload size limit before reserving quota.
+  const sizeCheck = validateBase64Payload(image.base64, maxBytes);
+  if (!sizeCheck.valid || image.bytes.byteLength > maxBytes) {
+    return c.json({ error: sizeCheck.error || publicScanErrorMessage('AI_IMAGE_TOO_LARGE'), code: 'AI_IMAGE_TOO_LARGE' }, 413);
   }
 
   const command = await scanCommand(c, scanType);
@@ -1103,15 +1133,23 @@ scanRoutes.post('/scans/receipt', async (c) => {
     return c.json({ error: 'Database service unavailable', code: 'DATABASE_UNAVAILABLE' }, 503);
   }
 
+  const maxBytes = configuredImageLimit(c.env.AI_MAX_OCR_IMAGE_BYTES);
+  if (imageInput.length > maxRawBase64Length(maxBytes)) {
+    return c.json(
+      { error: publicScanErrorMessage('AI_IMAGE_TOO_LARGE'), code: 'AI_IMAGE_TOO_LARGE' },
+      413
+    );
+  }
+
   const image = normalizeImagePayload(imageInput);
   if (!image) {
     return c.json({ error: 'Vui lòng tải lên một ảnh hợp lệ để đọc hóa đơn', code: 'IMAGE_REQUIRED' }, 400);
   }
 
-  // SEC-08 FIX: Check payload size limit before reserving quota.
-  const sizeCheck = validateBase64Payload(image.base64, configuredImageLimit(c.env.AI_MAX_OCR_IMAGE_BYTES));
-  if (!sizeCheck.valid) {
-    return c.json({ error: sizeCheck.error, code: 'PAYLOAD_TOO_LARGE' }, 413);
+  // SEC-08 FIX: Check decoded payload size limit before reserving quota.
+  const sizeCheck = validateBase64Payload(image.base64, maxBytes);
+  if (!sizeCheck.valid || image.bytes.byteLength > maxBytes) {
+    return c.json({ error: sizeCheck.error || publicScanErrorMessage('AI_IMAGE_TOO_LARGE'), code: 'AI_IMAGE_TOO_LARGE' }, 413);
   }
 
   const command = await scanCommand(c, 'receipt');

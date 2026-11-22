@@ -22,8 +22,8 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'inline-flex items-center justify-center font-heading font-semibold tracking-tight transition-tap duration-150 active:scale-[0.98] tap-target disabled:opacity-50 disabled:pointer-events-none rounded-xl cursor-pointer select-none';
 
   const variants = {
-    primary: 'bg-takosan-green text-white shadow-sm hover:bg-takosan-green-hover active:bg-takosan-green-deep',
-    secondary: 'bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep hover:bg-takosan-mint-hover active:bg-takosan-mint-deep',
+    primary: 'bg-semantic-action-primary text-white shadow-sm hover:bg-semantic-action-primary-hover active:bg-semantic-action-primary-pressed',
+    secondary: 'bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border hover:bg-semantic-background-subtle active:bg-semantic-border',
     outline: 'border border-semantic-border text-semantic-text-primary bg-white hover:bg-semantic-background-subtle hover:border-semantic-border-strong active:bg-semantic-border/60',
     ghost: 'text-semantic-text-secondary hover:bg-semantic-border/60 active:bg-semantic-border/70',
     danger: 'bg-semantic-danger text-white shadow-sm hover:bg-semantic-danger-strong active:bg-semantic-danger-strong',

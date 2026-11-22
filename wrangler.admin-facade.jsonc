@@ -1,4 +1,4 @@
-// Takosan Admin Customer Read Facade Worker (R2 F1).
+// Takolio Admin Customer Read Facade Worker (R2 F1).
 // Internal-only Worker: workers_dev=false, no routes, default HTTP fetch returns 404.
 // Accessible only via Service Binding to AdminCustomerReadFacade entrypoint.
 {

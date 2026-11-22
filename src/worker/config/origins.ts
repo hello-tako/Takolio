@@ -12,7 +12,7 @@ export function applicationOrigin(env: Pick<Env, 'APP_URL' | 'ENVIRONMENT'>): st
     if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return null;
     const loopback = url.hostname === 'localhost' || url.hostname.endsWith('.localhost') ||
       url.hostname === '127.0.0.1' || url.hostname === '[::1]';
-    if (env.ENVIRONMENT === 'production' && (url.protocol !== 'https:' || loopback)) return null;
+    if ((env.ENVIRONMENT === 'production' || env.ENVIRONMENT === 'staging') && (url.protocol !== 'https:' || loopback)) return null;
     return url.origin;
   } catch {
     return null;

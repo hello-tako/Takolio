@@ -156,7 +156,7 @@ export const ReconciliationPage: React.FC = () => {
             >
               <header>
                 <div className="flex items-center gap-2 min-w-0">
-                  <ScanLine aria-hidden="true" className="w-4 h-4 text-takosan-green shrink-0" />
+                  <ScanLine aria-hidden="true" className="w-4 h-4 text-semantic-action-primary shrink-0" />
                   <h2 className="font-heading font-semibold text-semantic-text-primary">
                     {observation.rawName ?? observation.ingredientId ?? 'Nguyên liệu'}
                   </h2>

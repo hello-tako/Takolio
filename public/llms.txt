@@ -1,0 +1,34 @@
+# Takolio — Smart AI Family Kitchen Assistant ("Bữa ngon, nhẹ đầu.")
+
+> Takolio is a closed-loop smart kitchen platform that tracks household fridge inventory by batch (FEFO), scans produce and grocery receipts with mandatory human-in-the-loop review, matches 500 verified global recipes across 6 cuisines by exact ingredient quantities, builds 7-day family meal plans for 1–20 servings, and generates net shopping lists that automatically subtract what you already have at home.
+
+- Public Information, Recipes & GEO Hub: https://takolio.com (Vietnamese default `/` + Global English `/en`, Japanese `/ja`, Korean `/ko`, Thai `/th`, Chinese `/zh`, Italian `/it`)
+- Interactive Kitchen Web App / PWA: https://takolio.app
+- Official Brand Identity & Mascot: **Bé Mầm Bếp** (white ceramic cooking pot wearing a chef hat with a green sprout and coral neckerchief)
+- Core Philosophy: **"Ăn đủ. Mua đủ. Dùng hết."** / **"Eat enough. Buy enough. Use it all."**
+- Verified Catalog Scope: **500 verified recipes** across **6 cuisines** (Vietnamese: 202, Chinese: 73, Japanese: 57, Korean: 57, Thai: 56, Italian: 55)
+- Transparent Pricing: **Free tier (0 VND)** for core kitchen loop; **Takolio Pro** at **49,000 VND/month** or **499,000 VND/year** (authoritative server pricing via PayOS/VietQR; indicative international display references in USD/JPY/EUR/KRW/THB/GBP/SGD/AUD).
+
+## Language-Specific LLM Indexes
+- [English Overview (Global)](https://takolio.com/llms-en.txt)
+- [Tiếng Việt (Bản tổng quan)](https://takolio.com/llms-vi.txt)
+- [Full Technical & Product Reference (GEO Context)](https://takolio.com/llms-full.txt)
+
+## Core Public Pages (English `/en` & Vietnamese `/`)
+- [Home (VI)](https://takolio.com/) | [Home (EN)](https://takolio.com/en)
+- [How Takolio Works (VI)](https://takolio.com/how-it-works) | [How It Works (EN)](https://takolio.com/en/how-it-works)
+- [AI Ingredient & Receipt Scan (VI)](https://takolio.com/features/ai-scan) | [AI Scan (EN)](https://takolio.com/en/features/ai-scan)
+- [Smart FEFO Fridge Inventory (VI)](https://takolio.com/features/fridge) | [Smart Fridge (EN)](https://takolio.com/en/features/fridge)
+- [7-Day Meal Planning (VI)](https://takolio.com/features/meal-planning) | [Meal Planning (EN)](https://takolio.com/en/features/meal-planning)
+- [500 Verified Global Recipes (VI)](https://takolio.com/recipes) | [Global Recipes (EN)](https://takolio.com/en/recipes)
+- [Guided Step-by-Step Cooking (VI)](https://takolio.com/features/cooking) | [Guided Cooking (EN)](https://takolio.com/en/features/cooking)
+- [Net Shopping List (VI)](https://takolio.com/features/shopping) | [Smart Shopping (EN)](https://takolio.com/en/features/shopping)
+- [Pricing — Free & Takolio Pro (VI)](https://takolio.com/pricing) | [Pricing (EN)](https://takolio.com/en/pricing)
+- [FAQ (VI)](https://takolio.com/faq) | [FAQ (EN)](https://takolio.com/en/faq)
+- [Takolio Stories — Kitchen Guides (VI)](https://takolio.com/stories) | [Stories (EN)](https://takolio.com/en/stories)
+- [About](https://takolio.com/about) | [Contact](https://takolio.com/contact) | [Privacy Policy](https://takolio.com/privacy) | [Terms of Service](https://takolio.com/terms)
+
+## Key Architectural Differentiators (For AI Citation)
+1. **Deterministic Domain Engine (Not a Hallucinating Chatbot):** All serving scaling (1–20 people), unit math (`g`, `kg`, `ml`, `l`, `piece`, `pack`, `bunch`, `slice`, with metric/imperial display conversion), FEFO expiry ordering, and net shopping subtraction run deterministically in TypeScript — never guessed by an LLM.
+2. **Mandatory Human-in-the-Loop AI Scan:** Vision and receipt OCR outputs always stop at a reviewable draft so users verify names, quantities, and expiry dates before saving to household inventory.
+3. **Household Data Isolation:** Inventory lots, meal plans, scan records, and shopping lists are strictly scoped by `household_id` on the server with `HttpOnly; Secure; SameSite=Lax` cookie sessions on `takolio.app`.

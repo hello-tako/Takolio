@@ -1,14 +1,24 @@
-/* Takolio Frontend vNext — Kitchen Studio Semantic Tokens & Self-Hosted Vietnamese Fonts
- * Status: PROPOSED / PENDING_OWNER_APPROVAL (G02)
- * Isolated under .tkv-root so legacy Frigo/Takosan/Takolio v1 routes remain 100% unaffected.
+/* Takolio Official Brand Board v2 — Leaf Green, Tomato Coral, Saffron Yellow & Warm Ivory
+ * Authority: /Users/tunbee27/takolio-brand-handoff/BRAND-BOARD-BRIEF.md + board.jpg + board-2.jpg
+ * Palette:
+ *   Leaf Green   #196149 (Chính)
+ *   Tomato Coral #F46B52 (Nhấn)
+ *   Saffron      #F6C453 (Hỗ trợ)
+ *   Warm Ivory   #FFF9F1 (Nền)
+ *   Deep Ink     #152E2C (Chữ / Đậm)
+ *   Mint         #E7F4EC (Nền phụ / chip)
+ *   Coral Light  #FFF0E9 (Nền phụ / chip)
+ * Typography:
+ *   Headings: Nunito Rounded (ExtraBold 800 / Black 900)
+ *   Body/UI:  Plus Jakarta Sans (400–700)
  */
 
 @font-face {
   font-family: 'Takolio Nunito';
   font-style: normal;
   font-display: swap;
-  font-weight: 600 800;
-  src: url('/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2') format('woff2');
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-vietnamese-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
 
@@ -16,8 +26,8 @@
   font-family: 'Takolio Nunito';
   font-style: normal;
   font-display: swap;
-  font-weight: 600 800;
-  src: url('/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2');
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-latin-ext-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF;
 }
 
@@ -25,8 +35,8 @@
   font-family: 'Takolio Nunito';
   font-style: normal;
   font-display: swap;
-  font-weight: 600 800;
-  src: url('/takosan/v3/fonts/nunito-latin-wght-normal.woff2') format('woff2');
+  font-weight: 600 900;
+  src: url('/takolio/fonts/nunito-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC;
 }
 
@@ -35,82 +45,113 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400 800;
-  src: url('/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2') format('woff2');
+  src: url('/takolio/v1/fonts/plus-jakarta-sans-vietnamese-latin-wght.woff2') format('woff2-variations');
 }
 
-/* Direction A (Recommended): Kitchen Studio Leaf & Coral — matches DESIGN_TOKENS_CANDIDATE.json */
+:root,
 .tkv-root,
 .tkv-root[data-tkv-direction='a'] {
+  /* Official Brand Board Surfaces */
   --tkv-bg: #fff9f1;
   --tkv-surface: #ffffff;
+  --tkv-surface-subtle: #f4efe4;
+  --tkv-surface-muted: #f4efe4;
+  --tkv-surface-inverse: #e7f4ec;
+
+  /* Secondary Brand Tints & Chips */
   --tkv-surface-mint: #e7f4ec;
-  --tkv-surface-saffron: #fff0c5;
   --tkv-surface-coral: #fff0e9;
-  --tkv-primary: #196149; /* 7.38:1 vs #FFFFFF (WCAG AAA) */
+  --tkv-surface-saffron: #fff5d6;
+  --tkv-surface-danger: #fff0ec;
+
+  /* Primary Brand Color: Leaf Green #196149 (7.38:1 vs #FFFFFF — WCAG AAA) */
+  --tkv-primary: #196149;
   --tkv-primary-hover: #134c39;
+  --tkv-primary-cta-hover: #134c39;
   --tkv-primary-deep: #0e3b2c;
-  --tkv-coral: #f46b52; /* Brand coral highlight (pair with #152E2C ink = 5.12:1 AA) */
-  --tkv-coral-cta: #c8432b; /* Hardened white-text coral CTA = 5.38:1 (WCAG AA) */
+
+  /* Accent & Support Brand Colors: Tomato Coral #F46B52 & Saffron Yellow #F6C453 */
+  --tkv-accent: #f46b52;
+  --tkv-coral: #f46b52;
+  --tkv-coral-cta: #c8432b; /* Hardened white-text small CTA = 5.38:1 WCAG AA */
   --tkv-coral-cta-hover: #ad3620;
   --tkv-saffron: #f6c453;
-  --tkv-ink: #152e2c; /* 13.9:1 vs #FFF9F1 (WCAG AAA) */
-  --tkv-ink-secondary: #48615b; /* 6.42:1 vs #FFFFFF (WCAG AA+) */
-  --tkv-ink-muted: #56706a; /* 5.31:1 vs #FFFFFF (WCAG AA) */
-  --tkv-border: #dce4db;
-  --tkv-border-strong: #b9c8b8;
+
+  /* Deep Ink Typography (#152E2C = 13.9:1 vs #FFF9F1 — WCAG AAA) */
+  --tkv-ink: #152e2c;
+  --tkv-ink-secondary: #3c5954;
+  --tkv-ink-soft: #3c5954;
+  --tkv-ink-muted: #52706a;
+
+  /* Soft Leaf & Ivory Hairlines */
+  --tkv-border: #dce6de;
+  --tkv-border-strong: #b8cabe;
+  --tkv-border-mint: #bde0cc;
+  --tkv-border-coral: #fad0c4;
+  --tkv-border-saffron: #f5de93;
+  --tkv-border-hero: #c6e3d2;
+  --tkv-border-danger: #f6c6bf;
+  --tkv-surface-subtle-hover: #e7f4ec;
+  --tkv-header-glass: rgba(255, 249, 241, 0.92);
+  --tkv-nav-glass: rgba(255, 255, 255, 0.96);
+  --tkv-scrim: rgba(21, 46, 44, 0.34);
+  --tkv-shadow-cta: 0 4px 14px rgba(25, 97, 73, 0.24);
+
+  /* Semantic Status & Pill Ink */
   --tkv-success: #196149;
-  --tkv-warning: #8a5205; /* 5.74:1 vs #FFF0C5 (WCAG AA) */
-  --tkv-danger: #ba2f38; /* 5.91:1 vs #FFFFFF (WCAG AA) */
-  --tkv-focus: #165eae;
-  --tkv-radius-card: 20px;
+  --tkv-success-ink: #134c39;
+  --tkv-warning: #8a5205;
+  --tkv-warning-ink: #724303;
+  --tkv-danger: #ba2f38;
+  --tkv-danger-ink: #99222a;
+  --tkv-coral-ink: #b33a22;
+  --tkv-focus: #196149;
+
+  /* Compatibility Semantic Aliases -> Official Brand Board v2 */
+  --tkv-accent-soft: #fff0e9;
+  --tkv-accent-border: #fad0c4;
+  --tkv-accent-ink: #b33a22;
+  --tkv-sage: #196149;
+  --tkv-sage-soft: #e7f4ec;
+  --tkv-sage-border: #bde0cc;
+  --tkv-sage-ink: #134c39;
+  --tkv-honey: #f6c453;
+  --tkv-honey-soft: #fff5d6;
+  --tkv-honey-border: #f5de93;
+  --tkv-honey-ink: #724303;
+  --tkv-linen-from: #ffffff;
+  --tkv-cook-to: #fff0e9;
+  --tkv-ring-track: #fad0c4;
+
+  /* Adapted surface token aliases -> Official Brand Board v2 */
+  --sumi-ink: #152e2c;
+  --sumi-ink-hover: #134c39;
+  --sumi-muted: #52706a;
+  --sumi-border: #dce6de;
+  --sumi-border-strong: #b8cabe;
+  --sumi-canvas: #fff9f1;
+  --sumi-paper: #fff9f1;
+  --sumi-dot: #f46b52;
+
+  /* Rounded Geometry & Soft Kitchen Studio Shadows (per Brand Board §4) */
+  --tkv-radius-card: 22px;
+  --tkv-radius-bento: 24px;
   --tkv-radius-btn: 14px;
   --tkv-radius-pill: 999px;
-  --tkv-shadow-card: 0 2px 8px rgba(21, 46, 44, 0.05), 0 10px 28px rgba(21, 46, 44, 0.04);
-  --tkv-shadow-float: 0 12px 32px rgba(25, 97, 73, 0.14);
-  --tkv-font-heading: 'Takolio Nunito', 'Nunito', system-ui, -apple-system, sans-serif;
+  --tkv-shadow-card: 0 2px 10px rgba(21, 46, 44, 0.045), 0 10px 28px rgba(21, 46, 44, 0.035);
+  --tkv-shadow-interactive: 0 6px 18px rgba(25, 97, 73, 0.09), 0 14px 30px rgba(21, 46, 44, 0.05);
+  --tkv-shadow-elevated: 0 10px 28px rgba(25, 97, 73, 0.1), 0 20px 42px rgba(21, 46, 44, 0.06);
+  --tkv-shadow-float: 0 12px 32px rgba(25, 97, 73, 0.18);
+
+  /* Fluid Vietnamese Typography Scale */
+  --tkv-text-display: clamp(2.25rem, 4.2vw, 3.6rem);
+  --tkv-text-h1: clamp(1.75rem, 3vw, 2.6rem);
+  --tkv-text-h2: clamp(1.35rem, 2.1vw, 1.85rem);
+  --tkv-text-lead: clamp(1rem, 1.2vw, 1.15rem);
+
+  /* Official Brand Board Fonts: Nunito Rounded (Headings) + Plus Jakarta Sans (Body/UI) */
+  --tkv-font-heading: 'Takolio Nunito', 'Nunito', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --tkv-font-body: 'Takolio Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-}
-
-/* Direction B: Botanical Market Herb & Linen */
-.tkv-root[data-tkv-direction='b'] {
-  --tkv-bg: #f4f8f4;
-  --tkv-surface: #ffffff;
-  --tkv-surface-mint: #e1f0e7;
-  --tkv-surface-saffron: #fef3c7;
-  --tkv-surface-coral: #ffedd5;
-  --tkv-primary: #14533d;
-  --tkv-primary-hover: #0e3f2e;
-  --tkv-primary-deep: #0b2e22;
-  --tkv-coral: #f59e0b;
-  --tkv-coral-cta: #b45309; /* 5.02:1 vs #FFFFFF (WCAG AA) */
-  --tkv-coral-cta-hover: #92400e;
-  --tkv-saffron: #eab308;
-  --tkv-ink: #132a23;
-  --tkv-ink-secondary: #3f5950;
-  --tkv-ink-muted: #506b61;
-  --tkv-border: #d3e2d8;
-  --tkv-border-strong: #aec6b6;
-}
-
-/* Direction C: Warm Terracotta Hearth & Bistro Slate */
-.tkv-root[data-tkv-direction='c'] {
-  --tkv-bg: #fdf6ee;
-  --tkv-surface: #ffffff;
-  --tkv-surface-mint: #e8f1ee;
-  --tkv-surface-saffron: #fdecc8;
-  --tkv-surface-coral: #fce8e2;
-  --tkv-primary: #1e3a34;
-  --tkv-primary-hover: #152a25;
-  --tkv-primary-deep: #0f1f1b;
-  --tkv-coral: #e76f51;
-  --tkv-coral-cta: #b83b28; /* 5.65:1 vs #FFFFFF (WCAG AA) */
-  --tkv-coral-cta-hover: #992f1f;
-  --tkv-saffron: #e9c46a;
-  --tkv-ink: #1b2422;
-  --tkv-ink-secondary: #4a5753;
-  --tkv-ink-muted: #5c6b66;
-  --tkv-border: #e5dcd0;
-  --tkv-border-strong: #cbbca9;
 }
 
 .tkv-root {
@@ -124,8 +165,56 @@
 
 .tkv-heading {
   font-family: var(--tkv-font-heading);
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.018em;
+  line-height: 1.24;
+}
+
+.tkv-display {
+  font-family: var(--tkv-font-heading);
+  font-size: var(--tkv-text-display);
+  letter-spacing: -0.022em;
+  line-height: 1.22;
+  font-weight: 900;
+}
+
+.tkv-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tkv-primary);
+}
+
+.tkv-hero-ceramic {
+  border-radius: var(--tkv-radius-bento);
+  background: linear-gradient(135deg, #196149 0%, #134c39 100%);
+  color: #ffffff;
+  border: 1px solid #0e3b2c;
+  box-shadow: var(--tkv-shadow-elevated);
+}
+
+.tkv-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.tkv-bento-card {
+  border-radius: var(--tkv-radius-bento);
+  background-color: var(--tkv-surface);
+  border: 1px solid var(--tkv-border);
+  box-shadow: var(--tkv-shadow-card);
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms cubic-bezier(0.2, 0, 0, 1), border-color 160ms ease;
+}
+
+.tkv-bento-card:hover {
+  border-color: var(--tkv-border-mint);
+  box-shadow: var(--tkv-shadow-interactive);
+}
+
+/* Soft green wave / hill section accent per Brand Board §4 */
+.tkv-leaf-wave-band {
+  background-image: radial-gradient(120% 90% at 15% 105%, #e7f4ec 0%, rgba(231, 244, 236, 0) 65%),
+    radial-gradient(110% 85% at 88% 108%, #d4eedd 0%, rgba(212, 238, 221, 0) 62%);
 }
 
 .tkv-skip-link {
@@ -152,13 +241,19 @@
 }
 
 .tkv-focusable:focus-visible {
-  outline: 3px solid var(--tkv-focus);
+  outline: 2px solid var(--tkv-focus);
   outline-offset: 2px;
 }
 
 .tkv-tap {
   min-width: 44px;
   min-height: 44px;
+}
+
+.tkv-tactile {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  transition-duration: 150ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,4 +265,47 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Global Multi-Script Typography Fallback Stacks (CJK + Thai) */
+:root[lang='ja'],
+:root[lang='ja'] .tkv-root,
+:root[lang='ja'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Hiragino Maru Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans JP', sans-serif;
+}
+
+:root[lang='ko'],
+:root[lang='ko'] .tkv-root,
+:root[lang='ko'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+}
+
+:root[lang='zh-Hans'],
+:root[lang='zh-Hans'] .tkv-root,
+:root[lang='zh-Hans'] .tkv-root[data-tkv-direction='a'],
+:root[lang='zh'],
+:root[lang='zh'] .tkv-root,
+:root[lang='zh'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+}
+
+:root[lang='th'],
+:root[lang='th'] .tkv-root,
+:root[lang='th'] .tkv-root[data-tkv-direction='a'] {
+  --tkv-font-heading: 'Takolio Nunito', 'Sukhumvit Set', 'Thonburi', 'Leelawadee UI', 'Noto Sans Thai', sans-serif;
+  --tkv-font-body: 'Takolio Sans', 'Sukhumvit Set', 'Thonburi', 'Leelawadee UI', 'Noto Sans Thai', sans-serif;
+}
+
+:root[lang='th'] .tkv-root {
+  line-height: 1.72;
+}
+
+:root[lang='ja'] .tkv-heading,
+:root[lang='ko'] .tkv-heading,
+:root[lang='zh-Hans'] .tkv-heading,
+:root[lang='zh'] .tkv-heading {
+  letter-spacing: 0;
 }

@@ -170,7 +170,8 @@ describe('Takolio Frontend vNext — G00/G01/G02 Foundation & Safety Gates', () 
 
   it('renders G03 Public Website (M01-M12) and G04 Auth/Onboarding (A01-O06) flows cleanly', () => {
     const m01 = mountWithProviders(<M01LandingPilot />, ['/landing?vnext=1']);
-    expect(m01.container.querySelector('h1')?.textContent).toMatch(/Hôm nay ăn gì\?/i);
+    expect(m01.container.querySelector('h1')?.textContent).toMatch(/Bữa ngon,\s*nhẹ đầu\./i);
+    expect(m01.container.textContent).toMatch(/Ăn đủ\. Mua đủ\. Dùng hết\./);
     expect(m01.container.querySelector('[data-testid="m01-start-free-cta"]')).not.toBeNull();
     m01.unmount();
 

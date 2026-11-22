@@ -77,6 +77,7 @@ export const TurnstileWidget: React.FC<TurnstileWidgetProps> = ({ siteKey, onTok
       widgetId = api.render(containerRef.current, {
         sitekey: siteKey,
         appearance: 'interaction-only',
+        size: typeof window !== 'undefined' && window.innerWidth < 380 ? 'compact' : 'flexible',
         callback: (token: string) => publish(token),
         'expired-callback': () => publish(null),
         'error-callback': () => publish(null),

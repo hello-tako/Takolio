@@ -11461,3 +11461,10 @@ Correction (2026-11-20, later): the first version of this very entry quoted
 the sender address literally, and that added line tripped the same scan on
 tip `887c813`. The address is now described without its literal form; no
 code or test content changed in this correction.
+
+## Owner-approved Security Audit Hardening & Takolio Sumi Edition Overhaul (2026-11-21)
+
+Per owner instruction (`feat/takolio-sumi-overhaul` from `08d0e6ca`), completed:
+1. Full static security remediation across 15 Worker security files (`CRIT-01` Google OAuth pre-registration password wipe, `HIGH-01` staging auth/CSRF/Bearer/Turnstile lock-down, `HIGH-02` 1-scan guest cap + IP-keyed scan rate limiters + production `cf-connecting-ip` enforcement, `HIGH-03` bounded 7-day expired guest account cleanup, `HIGH-04` constant-time dummy PBKDF2 login verification, `MED-01/04/05` pre-decode scan size guard, raster-only MIME filter, exact public-path Set matching, `/preferences` body/rate limits, `week.ts` `json_each(?)`, and `LOW-01..04` Google `iss`/timeout checks, AI schema bounds, CSPRNG IDs, CSP `connect-src` tightening, and Takolio brand copy).
+2. Full visual & UX unification across all 85 screens (`M01–M12`, `A01–A08`, `O01–O06`, `C01–C30`, `U01–U10`, `S01–S08`, `AD01–AD11`) to **Takolio Sumi Edition** (`92%` Monochrome `#111315` / `#FFFFFF` / `#F7F7F5`, `6%` Tonal Stone `#EFECE6`, `2%` `#C84B31` micro-dot, Editorial Monoline Octopus **"Tako"** pure vector SVGs + transparent RGBA WebPs, and 53 optical `1.6px` monochrome icons).
+3. Refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` for exactly those 15 Worker files; the remaining 326 protected files (including guarded customer release-surface configs) remain byte-identical.

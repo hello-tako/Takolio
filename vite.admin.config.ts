@@ -8,10 +8,10 @@ import { readFileSync } from 'node:fs';
 // Everything lives under /admin/ so the admin Worker can allow-list its paths.
 const STATIC_FILES: ReadonlyArray<[string, string]> = [
   ['public/takolio/v1/app-icons/favicon.svg', 'admin/favicon.svg'],
-  ['public/takosan/v3/fonts/nunito-vietnamese-wght-normal.woff2', 'admin/fonts/nunito-vietnamese-wght-normal.woff2'],
-  ['public/takosan/v3/fonts/nunito-latin-ext-wght-normal.woff2', 'admin/fonts/nunito-latin-ext-wght-normal.woff2'],
-  ['public/takosan/v3/fonts/nunito-latin-wght-normal.woff2', 'admin/fonts/nunito-latin-wght-normal.woff2'],
-  ['public/takosan/v3/fonts/OFL.txt', 'admin/fonts/OFL.txt'],
+  ['public/takolio/fonts/nunito-vietnamese-wght-normal.woff2', 'admin/fonts/nunito-vietnamese-wght-normal.woff2'],
+  ['public/takolio/fonts/nunito-latin-ext-wght-normal.woff2', 'admin/fonts/nunito-latin-ext-wght-normal.woff2'],
+  ['public/takolio/fonts/nunito-latin-wght-normal.woff2', 'admin/fonts/nunito-latin-wght-normal.woff2'],
+  ['public/takolio/fonts/OFL.txt', 'admin/fonts/OFL.txt'],
 ];
 
 function adminStaticFiles(): Plugin {

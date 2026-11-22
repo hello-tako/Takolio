@@ -1,18 +1,121 @@
+# Takolio Public Satellite, Multilingual SEO & GEO Hub (https://takolio.com)
+# RFC 9309 compliant: Disallow rules are explicitly repeated inside every named User-agent group.
+
 User-agent: *
-Allow: /landing
+Allow: /
+Allow: /en/
+Allow: /ja/
+Allow: /ko/
+Allow: /th/
+Allow: /zh/
+Allow: /it/
 Allow: /how-it-works
 Allow: /features/
+Allow: /recipes
+Allow: /recipes/
 Allow: /pricing
 Allow: /faq
 Allow: /stories
+Allow: /stories/
 Allow: /about
 Allow: /contact
 Allow: /privacy
 Allow: /terms
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /llms-en.txt
+Allow: /llms-vi.txt
 Disallow: /api/
 Disallow: /admin/
+Disallow: /auth
+Disallow: /onboarding
+Disallow: /fridge
+Disallow: /inventory
+Disallow: /scan
+Disallow: /cook
+Disallow: /planner
+Disallow: /shopping
 Disallow: /me
 Disallow: /settings
-Disallow: /scan/
+Disallow: /plus
+
+# Generative AI Search & Answer Engine Crawlers (Explicit GEO Allow)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
 
 Sitemap: https://takolio.com/sitemap.xml

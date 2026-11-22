@@ -180,7 +180,7 @@ test('content editor sees only permitted screens and the server enforces the res
   expect(await api(page, '/api/v1/admin/roles', { method: 'POST', body: { userId: 'fx_user_001', role: 'SUPPORT_AGENT' } }))
     .toEqual({ status: 403, code: 'ADMIN_CSRF_FAILED' });
   // No CSRF cookie exists; the token comes from GET /me. With it, the server still refuses on permission.
-  expect(await page.evaluate(() => document.cookie)).not.toContain('takosan_admin');
+  expect(await page.evaluate(() => document.cookie)).not.toContain('takolio_admin');
   const csrfToken = await page.evaluate(async () => ((await (await fetch('/api/v1/admin/me', { credentials: 'same-origin' })).json()) as { data: { csrfToken: string } }).data.csrfToken);
   expect(csrfToken).toMatch(/^[0-9a-f]{64}$/);
   expect(await api(page, '/api/v1/admin/roles', { method: 'POST', headers: { 'X-Admin-CSRF': csrfToken }, body: { userId: 'fx_user_001', role: 'SUPPORT_AGENT' } }))

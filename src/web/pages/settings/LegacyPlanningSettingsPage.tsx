@@ -172,14 +172,14 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                       : 'border-semantic-border bg-semantic-surface hover:border-semantic-border-strong'
                   }`}
                 >
-                  <span>
+                  <span className="min-w-0 flex-1">
                     <span className="text-sm font-semibold text-semantic-text-primary block">
                       {preset.label}
                     </span>
                     <span className="text-xs text-semantic-text-muted">{preset.desc}</span>
                   </span>
                   {draft.mealSlotsPreset === preset.id && (
-                    <Check className="w-4 h-4 text-semantic-action-primary" aria-hidden="true" />
+                    <Check className="w-4 h-4 text-semantic-action-primary shrink-0" aria-hidden="true" />
                   )}
                 </button>
               ))}
@@ -224,7 +224,7 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                 onClick={() => togglePriority(p.id)}
                 className="w-full flex items-center justify-between gap-3 rounded-card px-4 py-3 text-left hover:bg-semantic-background-subtle focus-visible:outline-none focus-visible:shadow-t17-focus"
               >
-                <span>
+                <span className="min-w-0 flex-1">
                   <span className="text-sm font-semibold text-semantic-text-primary block">
                     {p.label}
                   </span>
@@ -232,7 +232,7 @@ export const LegacyPlanningSettingsPage: React.FC = () => {
                 </span>
                 <span
                   aria-hidden="true"
-                  className={`w-6 h-6 rounded-md border flex items-center justify-center ${
+                  className={`w-6 h-6 rounded-md border flex items-center justify-center shrink-0 ${
                     draft.priorities.includes(p.id)
                       ? 'bg-semantic-action-primary border-transparent text-white'
                       : 'border-semantic-border-strong bg-semantic-surface'

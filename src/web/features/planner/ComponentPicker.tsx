@@ -190,17 +190,24 @@ export function ComponentPicker({
     searchRef.current?.focus();
   }
   return (
-    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+    <div
+      role="presentation"
+      onClick={() => {
+        if (!busy) onClose();
+      }}
+      className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50"
+    >
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="planning-picker-panel w-full sm:max-w-lg max-h-[88dvh] flex flex-col rounded-t-2xl sm:rounded-2xl bg-white shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+        className="planning-picker-panel w-full sm:max-w-lg max-h-[88dvh] flex flex-col rounded-t-2xl sm:rounded-2xl bg-[var(--tkv-surface)] shadow-xl"
       >
-        <div className="p-4 sm:p-5 border-b border-semantic-border/70 space-y-3">
+        <div className="sticky top-0 z-10 bg-[var(--tkv-surface)] p-4 sm:p-5 border-b border-semantic-border/70 space-y-3">
           <div className="flex items-start justify-between gap-2">
-            <div>
+            <div className="min-w-0 flex-1">
               <h2 id={titleId} className="font-heading font-bold text-lg">
                 {c.pickerTitle}
               </h2>
@@ -217,7 +224,7 @@ export function ComponentPicker({
                 <p className="planning-picker-context">{mealContextLabel(context, locale)}</p>
               )}
             </div>
-            <Button variant="ghost" aria-label={c.close} disabled={busy} onClick={onClose}>
+            <Button variant="ghost" className="!px-2.5 !min-w-[44px]" aria-label={c.close} disabled={busy} onClick={onClose}>
               <X size={18} />
             </Button>
           </div>
@@ -265,17 +272,17 @@ export function ComponentPicker({
                   setQuery(event.target.value);
                 }}
                 placeholder={c.search}
-                className="w-full min-h-11 rounded-xl border border-semantic-border pl-9 pr-3 text-sm"
+                className="w-full min-h-11 rounded-xl border border-semantic-border pl-9 pr-3 text-base"
               />
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2">
               <label>
                 <span className="sr-only">{c.role}</span>
                 <select
                   value={role}
                   disabled={busy || !!initialRole}
                   onChange={(event) => selectRole(event.target.value as MealRole | '')}
-                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-sm bg-white"
+                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-base bg-white"
                 >
                   <option value="">{c.allRoles}</option>
                   {MEAL_ROLES.map((value) => (
@@ -291,7 +298,7 @@ export function ComponentPicker({
                   value={cuisine}
                   disabled={busy}
                   onChange={(event) => setCuisine(event.target.value as PickerCuisine | '')}
-                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-sm bg-white"
+                  className="w-full min-h-11 rounded-xl border border-semantic-border px-3 text-base bg-white"
                 >
                   <option value="">{c.allCuisines}</option>
                   {PICKER_CUISINES.map((value) => (
@@ -338,7 +345,7 @@ export function ComponentPicker({
             </>
           )}
           {handoffId && (
-            <div className="flex items-center justify-between gap-2 mb-2">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
               <p className="text-sm text-semantic-text-secondary">
                 {locale === 'vi' ? 'Món bạn vừa chọn' : 'Your selected dish'}
               </p>

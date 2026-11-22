@@ -33,7 +33,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-semantic-overlay/50 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] bg-semantic-overlay/50 backdrop-blur-sm animate-fade-in"
       onClick={onCancel}
       role="presentation"
     >
@@ -44,7 +44,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-2xl shadow-elevated w-full max-w-sm p-5 space-y-3"
+        className="bg-white rounded-2xl shadow-elevated w-full max-w-sm max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain p-5 space-y-3"
       >
         <h2 id={titleId} className="font-heading font-bold text-base text-semantic-text-primary">
           {title}
@@ -54,7 +54,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             {description}
           </p>
         )}
-        <div className="flex gap-2.5 pt-1">
+        <div className="flex flex-wrap gap-2.5 pt-1">
           <button
             ref={cancelRef}
             type="button"
@@ -67,7 +67,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             type="button"
             onClick={onConfirm}
             className={`flex-1 py-2.5 rounded-xl font-heading font-bold text-sm text-white active:scale-95 transition-tap tap-target ${
-              destructive ? 'bg-semantic-danger hover:bg-semantic-danger-strong' : 'bg-takosan-green hover:bg-takosan-green-hover'
+              destructive ? 'bg-semantic-danger hover:bg-semantic-danger-strong' : 'bg-semantic-action-primary hover:bg-semantic-action-primary-hover'
             }`}
           >
             {confirmText}

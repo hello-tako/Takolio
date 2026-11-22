@@ -248,6 +248,7 @@ describe('Zero-Trust Security & Cryptography Unit Tests', () => {
               email_verified: 'true',
               name: 'Tester',
               aud: GOOGLE_OAUTH_CLIENT_ID,
+              iss: 'https://accounts.google.com',
             }),
             { status: 200 }
           )

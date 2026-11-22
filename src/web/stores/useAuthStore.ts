@@ -14,6 +14,45 @@ import {
 } from '../lib/private-session';
 import { clearVerifyContext } from '../features/auth/verify-context';
 
+export const ONBOARDING_GOALS_STORAGE_KEY = 'takolio_onboarding_goals';
+
+const LEGACY_DEFAULT_NAME_RE = /^Người dùng\s+Fri\w*$/i;
+
+export function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+  const trimmed = (raw ?? '').trim();
+  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
+  if (LEGACY_DEFAULT_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  return raw as string;
+}
+
+function readPersistedPrimaryGoal(): string | undefined {
+  try {
+    const raw = localStorage.getItem(ONBOARDING_GOALS_STORAGE_KEY);
+    if (raw === 'fridge' || raw === 'today' || raw === 'week') return raw;
+  } catch {
+    // Ignore storage read errors.
+  }
+  return undefined;
+}
+
+function writePersistedPrimaryGoal(goal?: string): void {
+  try {
+    if (goal === 'fridge' || goal === 'today' || goal === 'week') {
+      localStorage.setItem(ONBOARDING_GOALS_STORAGE_KEY, goal);
+    }
+  } catch {
+    // Ignore storage write errors.
+  }
+}
+
+function clearPersistedPrimaryGoal(): void {
+  try {
+    localStorage.removeItem(ONBOARDING_GOALS_STORAGE_KEY);
+  } catch {
+    // Ignore storage removal errors.
+  }
+}
+
 interface AuthUser {
   id: string;
   email: string;
@@ -35,7 +74,7 @@ interface AuthState {
   spicyLevel: string;
   favoriteCuisines: string[];
   dietaryRestrictions: string[];
-  /** Client-only planning goal from onboarding; not persisted by the server. */
+  /** Client-only planning goal from onboarding; persisted in takolio_onboarding_goals. */
   primaryGoal?: string;
   isPlus: boolean;
   setPlusFromServer: (isPlus: boolean) => void;
@@ -83,15 +122,25 @@ export const useAuthStore = create<AuthState>((set, get) => {
   if (privateSessionBlocked()) {
     clearVerifyContext();
     clearPrivateIdentity();
+    clearPersistedPrimaryGoal();
   }
   const savedUserId = localStorage.getItem('frigo_user_id') || '';
   const savedHouseholdId = localStorage.getItem('frigo_household_id') || '';
+  const savedIsGuest = !savedUserId || localStorage.getItem('frigo_is_guest') === 'true';
 
-  const savedEmail = localStorage.getItem('frigo_email') || '';
-  const savedDisplayName = localStorage.getItem('frigo_display_name') || 'Người dùng Takolio';
+  if (savedIsGuest) {
+    localStorage.removeItem('frigo_email');
+  }
+  const savedEmail = savedIsGuest ? '' : localStorage.getItem('frigo_email') || '';
+  const rawDisplayName = localStorage.getItem('frigo_display_name');
+  const savedDisplayName = rawDisplayName
+    ? sanitizeUserDisplayName(rawDisplayName, savedIsGuest)
+    : savedIsGuest
+      ? 'Khách ghé thăm'
+      : 'Người dùng Takolio';
   const savedAvatarUrl = localStorage.getItem('frigo_avatar_url') || '';
   const savedOnboarded = localStorage.getItem('frigo_onboarded') === 'true';
-  const savedIsGuest = !savedUserId || localStorage.getItem('frigo_is_guest') === 'true';
+  const savedPrimaryGoal = readPersistedPrimaryGoal();
   if (savedUserId && !savedIsGuest) clearVerifyContext();
 
   return {
@@ -107,6 +156,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
     spicyLevel: 'medium',
     favoriteCuisines: [],
     dietaryRestrictions: [],
+    primaryGoal: savedPrimaryGoal,
     logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
     logoutError: privateSessionBlocked() ? LOGOUT_WARNING : null,
 
@@ -126,7 +176,15 @@ export const useAuthStore = create<AuthState>((set, get) => {
         localStorage.setItem('frigo_is_plus', isPlus ? 'true' : 'false');
         const isOnboarded = me?.user?.onboardingCompleted === true;
         localStorage.setItem('frigo_onboarded', isOnboarded ? 'true' : 'false');
-        set({ isPlus, isOnboarded, ...(me?.user?.preferences || {}) });
+        const nextDisplayName = me?.user?.displayName
+          ? sanitizeUserDisplayName(me.user.displayName, Boolean(me?.user?.isGuest))
+          : get().displayName;
+        set({
+          isPlus,
+          isOnboarded,
+          displayName: nextDisplayName,
+          ...(me?.user?.preferences || {}),
+        });
       } catch {
         // keep cached value if the server is unreachable
       }
@@ -139,22 +197,25 @@ export const useAuthStore = create<AuthState>((set, get) => {
       clearVerifyContext();
       const hid = user.householdId;
       const current = currentPrivateScope();
-      if (current.userId !== user.id || current.householdId !== hid) {
+      const identityChanged = current.userId !== user.id || current.householdId !== hid;
+      if (identityChanged) {
         resetPrivateSession();
-        for (const key of ['frigo_onboarded', 'frigo_is_plus', 'frigo_avatar_url'])
+        clearPersistedPrimaryGoal();
+        for (const key of ['frigo_onboarded', 'frigo_is_plus', 'frigo_avatar_url', 'frigo_email', 'frigo_display_name'])
           localStorage.removeItem(key);
       }
+      const cleanDisplayName = sanitizeUserDisplayName(user.displayName, false);
       localStorage.setItem('frigo_user_id', user.id);
       localStorage.setItem('frigo_household_id', hid);
-      localStorage.setItem('frigo_email', user.email);
-      localStorage.setItem('frigo_display_name', user.displayName);
+      if (user.email) localStorage.setItem('frigo_email', user.email);
+      else localStorage.removeItem('frigo_email');
+      localStorage.setItem('frigo_display_name', cleanDisplayName);
       if (user.avatarUrl) localStorage.setItem('frigo_avatar_url', user.avatarUrl);
       else localStorage.removeItem('frigo_avatar_url');
       localStorage.removeItem('frigo_token');
       sessionStorage.removeItem('frigo_guest_token');
       localStorage.setItem('frigo_is_guest', 'false');
       localStorage.removeItem(OFFLINE_GUEST_KEY);
-      const identityChanged = current.userId !== user.id || current.householdId !== hid;
       const isOnboarded =
         typeof user.onboardingCompleted === 'boolean'
           ? user.onboardingCompleted
@@ -167,7 +228,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
         userId: user.id,
         householdId: hid,
         email: user.email,
-        displayName: user.displayName,
+        displayName: cleanDisplayName,
         avatarUrl: user.avatarUrl,
         isGuest: false,
         isOnboarded,
@@ -202,6 +263,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
             set({
               userId: id,
               householdId: `hh_${id}`,
+              email: '',
               isGuest: true,
               displayName: 'Khách ghé thăm',
             });
@@ -224,8 +286,9 @@ export const useAuthStore = create<AuthState>((set, get) => {
           set({
             userId: id,
             householdId: hid,
+            email: '',
             isGuest: true,
-            displayName: data.user?.displayName || 'Khách ghé thăm',
+            displayName: sanitizeUserDisplayName(data.user?.displayName, true),
           });
         } finally {
           guestSessionRequest = null;
@@ -237,6 +300,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
     setOnboardingData: (data) => {
       if (privateSessionBlocked() || !get().userId) return;
       localStorage.setItem('frigo_onboarded', 'true');
+      writePersistedPrimaryGoal(data.primaryGoal);
       set({
         isOnboarded: true,
         ...data,
@@ -247,6 +311,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
       if (logoutRequest) return logoutRequest;
       localStorage.setItem(LOGOUT_PENDING_KEY, 'true');
       clearPrivateIdentity();
+      clearPersistedPrimaryGoal();
       set({ ...anonymousState, logoutStatus: 'pending', logoutError: null });
       logoutRequest = (async () => {
         try {
@@ -268,6 +333,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
 
 onPrivateSessionReset(() => {
   clearVerifyContext();
+  clearPersistedPrimaryGoal();
   useAuthStore.setState({
     ...anonymousState,
     logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
@@ -284,14 +350,18 @@ if (typeof window !== 'undefined') {
     ) {
       sessionStorage.removeItem('frigo_guest_token');
       resetPrivateSession();
+      const isGuestNext =
+        !currentPrivateScope().userId || localStorage.getItem('frigo_is_guest') === 'true';
+      const rawName = localStorage.getItem('frigo_display_name');
       useAuthStore.setState({
         ...currentPrivateScope(),
         email: localStorage.getItem('frigo_email') || '',
-        displayName: localStorage.getItem('frigo_display_name') || anonymousState.displayName,
+        displayName: rawName ? sanitizeUserDisplayName(rawName, isGuestNext) : anonymousState.displayName,
         avatarUrl: localStorage.getItem('frigo_avatar_url') || undefined,
-        isGuest: !currentPrivateScope().userId || localStorage.getItem('frigo_is_guest') === 'true',
+        isGuest: isGuestNext,
         isOnboarded: localStorage.getItem('frigo_onboarded') === 'true',
         isPlus: localStorage.getItem('frigo_is_plus') === 'true',
+        primaryGoal: readPersistedPrimaryGoal(),
         logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
         logoutError: privateSessionBlocked() ? LOGOUT_WARNING : null,
       });

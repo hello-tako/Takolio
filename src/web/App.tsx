@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './lib/query-client';
@@ -8,6 +8,10 @@ import { SystemStatusPage } from './components/common/SystemStatusPage';
 import { useAuthStore } from './stores/useAuthStore';
 import { AppLayout } from './components/layout/AppLayout';
 import { VerifyRouteLifecycle } from './features/auth/VerifyRouteLifecycle';
+import {
+  detectRuntimeDomainRole,
+  resolveSatelliteSurfaceHref,
+} from './vnext/lib/domain-surface';
 
 const M01LandingPage = lazy(() =>
   import('./vnext/screens/M01LandingPilot').then((m) => ({ default: m.M01LandingPilot })),
@@ -156,7 +160,7 @@ class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { 
         <SystemStatusPage title="Không thể mở trang này">
           <p role="alert">Vui lòng tải lại ứng dụng để thử lại.</p>
           <button
-            className="rounded-xl bg-takosan-green px-4 py-3 text-white outline-none focus-visible:ring-2 focus-visible:ring-semantic-focus"
+            className="rounded-xl bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] px-4 py-3 font-semibold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--tkv-primary,#196149)]"
             onClick={() => window.location.reload()}
           >
             Tải lại
@@ -183,8 +187,20 @@ const WeekShoppingRedirect: React.FC = () => {
   return <Navigate to={`/planner/${planId ?? ''}/shopping`} replace />;
 };
 
+const SatelliteSurfaceRedirect: React.FC = () => {
+  useEffect(() => {
+    const p = window.location.pathname;
+    window.location.replace(resolveSatelliteSurfaceHref(p === '/landing' ? '/' : p));
+  }, []);
+  return <RouteFallback />;
+};
+
 export const App: React.FC = () => {
   const { isGuest, isOnboarded, userId, householdId, primaryGoal } = useAuthStore();
+  const domainRole = detectRuntimeDomainRole();
+  const satelliteMode = domainRole === 'satellite-com';
+  const appOnlyMode = domainRole === 'application-app';
+  const unauthEntryPath = appOnlyMode ? '/auth?mode=welcome' : '/landing';
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -197,28 +213,33 @@ export const App: React.FC = () => {
                 {/* S01–S08 System State Routes */}
                 <Route path="/vnext/states/:stateId" element={<VNextSystemStatePage />} />
 
-                {/* M02–M12 Public Marketing Website Routes (DDR-001 Option A) */}
-                <Route path="/how-it-works" element={<M02HowItWorksPage />} />
-                <Route path="/features/ai-scan" element={<M03AiScanFeaturePage />} />
-                <Route path="/features/fridge" element={<M04FridgeFeaturePage />} />
-                <Route path="/features/meal-planning" element={<M05MealPlanningFeaturePage />} />
-                <Route path="/features/recipes" element={<M06RecipesFeaturePage />} />
-                <Route path="/features/cooking" element={<M07CookingFeaturePage />} />
-                <Route path="/features/shopping" element={<M08ShoppingFeaturePage />} />
-                <Route path="/pricing" element={<M09PricingPage />} />
-                <Route path="/faq" element={<M10FaqPage />} />
-                <Route path="/stories" element={<M11StoriesPage />} />
-                <Route path="/about" element={<M12CompanyLegalPage />} />
-                <Route path="/contact" element={<M12CompanyLegalPage />} />
-                <Route path="/privacy" element={<M12CompanyLegalPage />} />
-                <Route path="/terms" element={<M12CompanyLegalPage />} />
+                {/* M02–M12 Public Marketing Website Routes -> on takolio.app, hand off to takolio.com */}
+                <Route path="/how-it-works" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M02HowItWorksPage />} />
+                <Route path="/features/ai-scan" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M03AiScanFeaturePage />} />
+                <Route path="/features/fridge" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M04FridgeFeaturePage />} />
+                <Route path="/features/meal-planning" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M05MealPlanningFeaturePage />} />
+                <Route path="/features/recipes" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M06RecipesFeaturePage />} />
+                <Route path="/features/cooking" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M07CookingFeaturePage />} />
+                <Route path="/features/shopping" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M08ShoppingFeaturePage />} />
+                <Route path="/pricing" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M09PricingPage />} />
+                <Route path="/faq" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M10FaqPage />} />
+                <Route path="/stories" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M11StoriesPage />} />
+                <Route path="/about" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M12CompanyLegalPage />} />
+                <Route path="/contact" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M12CompanyLegalPage />} />
+                <Route path="/privacy" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M12CompanyLegalPage />} />
+                <Route path="/terms" element={appOnlyMode ? <SatelliteSurfaceRedirect /> : <M12CompanyLegalPage />} />
+
+                {/* On takolio.com satellite host, `/` renders M01LandingPage directly with zero session redirect */}
+                {satelliteMode && <Route path="/" element={<M01LandingPage />} />}
 
                 {/* M01 Landing, A01–A08 Auth & O01–O06 Onboarding */}
                 <Route
                   path="/landing"
                   element={
-                    userId && householdId ? (
+                    !satelliteMode && userId && householdId ? (
                       <Navigate to={isOnboarded ? '/' : '/onboarding'} replace />
+                    ) : appOnlyMode ? (
+                      <SatelliteSurfaceRedirect />
                     ) : (
                       <M01LandingPage />
                     )
@@ -254,7 +275,7 @@ export const App: React.FC = () => {
                         <VNextOnboardingFlowPage />
                       )
                     ) : (
-                      <Navigate to="/landing" replace />
+                      <Navigate to={unauthEntryPath} replace />
                     )
                   }
                 />
@@ -262,7 +283,7 @@ export const App: React.FC = () => {
                 {/* Core App Shell (C01–C30, U01–U10) */}
                 <Route
                   element={
-                    userId && householdId ? <AppLayout /> : <Navigate to="/landing" replace />
+                    userId && householdId ? <AppLayout /> : <Navigate to={unauthEntryPath} replace />
                   }
                 >
                   <Route

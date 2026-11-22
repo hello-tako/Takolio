@@ -12,6 +12,8 @@ export interface GoogleUserPayload {
   email_verified: boolean;
 }
 
+const GOOGLE_ISSUERS = new Set(['accounts.google.com', 'https://accounts.google.com']);
+
 export async function verifyGoogleToken(
   idToken: string,
   expectedAudience: string | undefined,
@@ -25,9 +27,10 @@ export async function verifyGoogleToken(
       return { valid: false, error: 'Google OAuth is not configured' };
     }
 
-    // Query Google's tokeninfo API to cryptographically verify signature, audience and expiration
+    // Query Google's tokeninfo API to cryptographically verify signature, audience, issuer and expiration
     const res = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(idToken)}`, {
       headers: { 'Accept': 'application/json' },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) {
@@ -44,6 +47,11 @@ export async function verifyGoogleToken(
     // SEC-8: audience binding — token must have been issued FOR this app.
     if (data.aud !== expectedAudience) {
       return { valid: false, error: 'Google token was issued for a different application (aud mismatch)' };
+    }
+
+    // Validate issuer strictly against Google's official OIDC issuers.
+    if (!GOOGLE_ISSUERS.has(String(data.iss || ''))) {
+      return { valid: false, error: 'Google token issuer is not valid (iss mismatch)' };
     }
 
     // Ensure email is verified by Google

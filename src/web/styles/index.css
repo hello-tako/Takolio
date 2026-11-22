@@ -4,6 +4,7 @@
 @import "./kitchen-fonts.css";
 @import "./brand-v3-fonts.css";
 @import "./brand-takolio-fonts.css";
+@import "../vnext/styles/tokens.css";
 @import "./kitchen-foundation.css";
 @import "./kitchen-scan.css";
 @import "./kitchen-planning.css";
@@ -11,15 +12,115 @@
 @import "./kitchen-stock-detail.css";
 @import "./kitchen-density.css";
 @import "./kitchen-upgrade.css";
+@import "../vnext/styles/vnext-adapted.css";
 @config "../../../tailwind.config.js";
 @source "../";
 @source "../../../index.html";
 /* Keep v3 geometry for existing utilities; v4 remains the compiler. */
-@source not inline("space-y-{0.5,1,2,2.5,3,3.5,4,5,6,7}");
+@source not inline("space-y-{0,0.5,1,1.5,2,2.5,3,3.5,4,5,6,7}");
 @source not inline("text-{xs,sm} rounded-full");
+
+/* Unified Root Cascade — Takolio Official Brand Board v2 (Leaf Green, Tomato Coral, Warm Ivory) */
+:root {
+  --frigo-tap-target: 44px;
+  --frigo-cream: #FFF9F1;
+  --frigo-text-main: #152E2C;
+  --takosan-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takolio-font-heading: 'Takolio Nunito', 'Nunito', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --takolio-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --content-compact: 45rem;
+  --content-default: 60rem;
+  --content-wide: 75rem;
+  --nav-mobile: 4.25rem;
+  --rail-tablet: 5rem;
+  --sidebar-desktop: 16rem;
+  --touch-target: 2.75rem;
+
+  --motion-instant: 80ms;
+  --motion-fast: 150ms;
+  --motion-normal: 220ms;
+  --motion-slow: 320ms;
+  --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --kitchen-coral: #F46B52;
+  --kitchen-pine: #196149;
+  --kitchen-canvas: #FFF9F1;
+
+  --semantic-background: #FFF9F1;
+  --semantic-background-rgb: 255 249 241;
+  --semantic-background-subtle: #E7F4EC;
+  --semantic-background-subtle-rgb: 231 244 236;
+  --semantic-surface: #FFFFFF;
+  --semantic-surface-raised: #FFFFFF;
+  --semantic-text-primary: #152E2C;
+  --semantic-text-primary-rgb: 21 46 44;
+  --semantic-text-secondary: #3C5954;
+  --semantic-text-secondary-rgb: 60 89 84;
+  --semantic-text-muted: #52706A;
+  --semantic-text-muted-rgb: 82 112 106;
+  --semantic-text-inverse: #FFFFFF;
+  --semantic-text-on-soft: #152E2C;
+
+  --semantic-action-primary: #196149;
+  --semantic-action-primary-rgb: 25 97 73;
+  --semantic-action-primary-hover: #134C39;
+  --semantic-action-primary-hover-rgb: 19 76 57;
+  --semantic-action-primary-pressed: #0E3B2C;
+  --semantic-action-primary-pressed-rgb: 14 59 44;
+  --semantic-on-action-primary: #FFFFFF;
+
+  --semantic-accent: #F46B52;
+  --semantic-accent-rgb: 244 107 82;
+  --semantic-accent-soft: #FFF0E9;
+  --semantic-accent-soft-rgb: 255 240 233;
+
+  --semantic-success: #196149;
+  --semantic-success-rgb: 25 97 73;
+  --semantic-success-soft: #E7F4EC;
+  --semantic-success-soft-rgb: 231 244 236;
+  --semantic-warning: #8A5205;
+  --semantic-warning-soft: #FFF5D6;
+  --semantic-warning-strong: #724303;
+  --semantic-danger: #BA2F38;
+  --semantic-danger-soft: #FFF0EC;
+  --semantic-danger-strong: #99222A;
+  --semantic-info: #196149;
+  --semantic-info-soft: #E7F4EC;
+
+  --semantic-border: #DCE6DE;
+  --semantic-border-rgb: 220 230 222;
+  --semantic-border-strong: #B8CABE;
+  --semantic-focus: #196149;
+  --semantic-focus-rgb: 25 97 73;
+  --semantic-overlay: rgba(21, 46, 44, 0.36);
+
+  --takosan-cream: #FFF9F1;
+  --takosan-cream-color-rgb: 255 249 241;
+  --takosan-mint: #E7F4EC;
+  --takosan-mint-color-rgb: 231 244 236;
+  --takosan-mint-deep-color-rgb: 189 224 204;
+  --takosan-green: #196149;
+  --takosan-green-color-rgb: 25 97 73;
+  --takosan-green-hover-color-rgb: 19 76 57;
+  --takosan-green-deep-color-rgb: 14 59 44;
+  --takosan-navy: #152E2C;
+  --takosan-navy-color-rgb: 21 46 44;
+  --takosan-coral: #F46B52;
+  --takosan-coral-color-rgb: 244 107 82;
+  --takosan-yellow: #F6C453;
+}
+
 .rounded-full { border-radius: 9999px; }
 .text-xs { font-size: 0.75rem; line-height: 1rem; }
 .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0rem * (1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0rem * var(--tw-space-y-reverse));
+}
 .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.125rem * (1 - var(--tw-space-y-reverse)));
@@ -29,6 +130,11 @@
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * (1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.375rem * (1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse));
 }
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -71,46 +177,46 @@
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
-
 @tailwind utilities;
 
-/* Preserve RGB alpha composition from the established theme and callers. */
-.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 255 123 107) / .2)}
-.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 46 125 91) / .3)}
-.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 46 125 91) / .4)}
-.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 231 227 218) / .7)}
-.border-semantic-danger\/20{border-color:#c93d3d33}
-.border-semantic-danger\/30{border-color:#c93d3d4d}
-.border-semantic-info\/30{border-color:#2f6f9f4d}
-.border-semantic-warning\/30{border-color:#b66a094d}
-.border-semantic-warning\/40{border-color:#b66a0966}
-.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 46 125 91) / .4)}
-.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .6)}
-.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .7)}
-.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 191 227 204) / .8)}
+/* Preserve RGB alpha composition aligned with Official Brand Board v2 tokens. */
+.border-semantic-accent\/20{border-color:rgb(var(--semantic-accent-rgb, 244 107 82) / .2)}
+.border-semantic-action-primary\/30{border-color:rgb(var(--semantic-action-primary-rgb, 25 97 73) / .3)}
+.border-semantic-action-primary\/40{border-color:rgb(var(--semantic-action-primary-rgb, 25 97 73) / .4)}
+.border-semantic-border\/60{border-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.border-semantic-border\/70{border-color:rgb(var(--semantic-border-rgb, 220 230 222) / .7)}
+.border-semantic-danger\/20{border-color:#ba2f3833}
+.border-semantic-danger\/30{border-color:#ba2f384d}
+.border-semantic-info\/30{border-color:#1961494d}
+.border-semantic-warning\/30{border-color:#f6c45366}
+.border-semantic-warning\/40{border-color:#f6c45380}
+.border-takosan-green\/40{border-color:rgb(var(--takosan-green-color-rgb, 25 97 73) / .4)}
+.border-takosan-mint-deep\/60{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .6)}
+.border-takosan-mint-deep\/70{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .7)}
+.border-takosan-mint-deep\/80{border-color:rgb(var(--takosan-mint-deep-color-rgb, 189 224 204) / .8)}
 .border-white\/10{border-color:#ffffff1a}
 .border-white\/15{border-color:#ffffff26}
 .border-white\/20{border-color:#fff3}
 .border-white\/30{border-color:#ffffff4d}
 .border-white\/90{border-color:#ffffffe6}
-.bg-black\/65{background-color:#000000a6}
-.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 255 248 243) / .95)}
-.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .7)}
-.bg-semantic-overlay\/40{background-color:#12191766}
-.bg-semantic-overlay\/50{background-color:#12191780}
-.bg-semantic-overlay\/60{background-color:#12191799}
-.bg-semantic-overlay\/75{background-color:#121917bf}
-.bg-semantic-overlay\/80{background-color:#121917cc}
-.bg-semantic-overlay\/90{background-color:#121917e6}
-.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 231 245 236) / .4)}
+.bg-black\/65{background-color:#152e2ca6}
+.bg-semantic-background\/95{background-color:rgb(var(--semantic-background-rgb, 255 249 241) / .95)}
+.bg-semantic-border\/60{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.bg-semantic-border\/70{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .7)}
+.bg-semantic-overlay\/40{background-color:#152e2c4d}
+.bg-semantic-overlay\/50{background-color:#152e2c66}
+.bg-semantic-overlay\/60{background-color:#152e2c80}
+.bg-semantic-overlay\/75{background-color:#152e2c99}
+.bg-semantic-overlay\/80{background-color:#152e2cb3}
+.bg-semantic-overlay\/90{background-color:#152e2cd9}
+.bg-semantic-success-soft\/40{background-color:rgb(var(--semantic-success-soft-rgb, 231 244 236) / .4)}
 .bg-semantic-surface\/95{background-color:#fffffff2}
-.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 255 248 243) / .95)}
-.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .5)}
-.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .6)}
-.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 223 244 230) / .8)}
+.bg-takosan-cream\/95{background-color:rgb(var(--takosan-cream-color-rgb, 255 249 241) / .95)}
+.bg-takosan-mint\/50{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .5)}
+.bg-takosan-mint\/60{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .6)}
+.bg-takosan-mint\/80{background-color:rgb(var(--takosan-mint-color-rgb, 231 244 236) / .8)}
 .bg-white\/10{background-color:#ffffff1a}
+.bg-white\/90{background-color:#ffffffe6}
 .bg-white\/95{background-color:#fffffff2}
 .text-white\/80{color:#fffc}
 
@@ -139,44 +245,43 @@
 .focus-visible\:ring-2:focus-visible{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
 .peer:focus-visible~.peer-focus-visible\:ring-2{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
 
-/* Preserve sRGB gradients and their established transparent stops. */
-.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
-.bg-gradient-to-r{background-image:linear-gradient(to right,var(--takosan-legacy-gradient-stops))}
-.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 29 85 61) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
+/* Preserve legacy sRGB gradient on PlusPaywall hero without breaking Tailwind v4 arbitrary gradients. */
+.plus-hero.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--takosan-legacy-gradient-stops))}
+.from-semantic-action-primary-pressed{--takosan-legacy-gradient-from: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 1);--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-pressed-rgb, 14 59 44) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-transparent{--takosan-legacy-gradient-from: transparent;--takosan-legacy-gradient-to: rgb(0 0 0 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
 .from-white{--takosan-legacy-gradient-from: #fff;--takosan-legacy-gradient-to: rgb(255 255 255 / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), var(--takosan-legacy-gradient-to)}
-.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 255 123 107) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 255 123 107)), var(--takosan-legacy-gradient-to)}
-.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 36 102 72) / 1)}
-.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 223 244 230) / 1)}
+.via-takosan-coral{--takosan-legacy-gradient-to: rgb(var(--takosan-coral-color-rgb, 244 107 82) / 0);--takosan-legacy-gradient-stops: var(--takosan-legacy-gradient-from), rgb(var(--takosan-coral-color-rgb, 244 107 82)), var(--takosan-legacy-gradient-to)}
+.to-semantic-action-primary-hover{--takosan-legacy-gradient-to: rgb(var(--semantic-action-primary-hover-rgb, 19 76 57) / 1)}
+.to-takosan-mint{--takosan-legacy-gradient-to: rgb(var(--takosan-mint-color-rgb, 231 244 236) / 1)}
 .to-transparent{--takosan-legacy-gradient-to: transparent}
 
-/* Preserve existing focus/ring and hover contracts. */
-.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 252 251 248) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 252 251 248) / .6)}
-.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 231 227 218) / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 231 227 218) / .6)}
-.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(255 240 240 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(181 52 52 / var(--tw-bg-opacity, 1))}
-.hover\:bg-semantic-overlay\/80:hover{background-color:#121917cc}
-.hover\:bg-semantic-overlay\/85:hover{background-color:#121917d9}
-.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 31 86 62) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 38 105 76) / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(207 237 218 / var(--tw-bg-opacity, 1))}
-.hover\:bg-takosan-mint-hover\/70:hover{background-color:#cfeddab3}
+/* Preserve existing focus/ring and hover contracts aligned to Official Brand Board v2. */
+.hover\:bg-semantic-background-subtle:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-background-subtle-rgb, 231 244 236) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-background-subtle\/60:hover{background-color:rgb(var(--semantic-background-subtle-rgb, 231 244 236) / .6)}
+.hover\:bg-semantic-border:hover{--tw-bg-opacity: 1;background-color:rgb(var(--semantic-border-rgb, 220 230 222) / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-border\/60:hover{background-color:rgb(var(--semantic-border-rgb, 220 230 222) / .6)}
+.hover\:bg-semantic-danger-soft:hover{--tw-bg-opacity: 1;background-color:rgb(255 240 236 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-danger-strong:hover{--tw-bg-opacity: 1;background-color:rgb(153 34 42 / var(--tw-bg-opacity, 1))}
+.hover\:bg-semantic-overlay\/80:hover{background-color:#152e2cb3}
+.hover\:bg-semantic-overlay\/85:hover{background-color:#152e2cc7}
+.hover\:bg-takosan-green-deep:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-deep-color-rgb, 14 59 44) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-green-hover:hover{--tw-bg-opacity: 1;background-color:rgb(var(--takosan-green-hover-color-rgb, 19 76 57) / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover:hover{--tw-bg-opacity: 1;background-color:rgb(231 244 236 / var(--tw-bg-opacity, 1))}
+.hover\:bg-takosan-mint-hover\/70:hover{background-color:#e7f4ecb3}
 .hover\:bg-white:hover{--tw-bg-opacity: 1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}
 .hover\:bg-white\/20:hover{background-color:#fff3}
 .focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}
 .focus\:ring-2:focus{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
-.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / .2)}
+.focus\:ring-takosan-green:focus{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
+.focus\:ring-takosan-green\/20:focus{--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / .2)}
 .focus-visible\:outline-none:focus-visible{outline:2px solid transparent;outline-offset:2px}
 .focus-visible\:ring-2:focus-visible{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(201 194 182 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(182 106 9 / var(--tw-ring-opacity, 1))}
-.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-border-strong:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(184 202 190 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-semantic-warning:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(246 196 83 / var(--tw-ring-opacity, 1))}
+.focus-visible\:ring-takosan-green:focus-visible{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
 .focus-visible\:ring-offset-2:focus-visible{--tw-ring-offset-width: 2px}
 .peer:focus-visible~.peer-focus-visible\:ring-2{--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000)}
-.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 46 125 91) / var(--tw-ring-opacity, 1))}
+.peer:focus-visible~.peer-focus-visible\:ring-takosan-green{--tw-ring-opacity: 1;--tw-ring-color: rgb(var(--takosan-green-color-rgb, 25 97 73) / var(--tw-ring-opacity, 1))}
 .peer:focus-visible~.peer-focus-visible\:ring-offset-2{--tw-ring-offset-width: 2px}
 
 @layer base {
@@ -188,22 +293,25 @@
     overscroll-behavior-y: none;
   }
 
+  ::selection {
+    background-color: #e7f4ec;
+    color: #152e2c;
+  }
+
   /* Text stays selectable app-wide (a11y); only interactive controls opt out. */
   button, [role="button"] {
     user-select: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--takosan-font-ui);
-    letter-spacing: -0.02em;
+    font-family: var(--takolio-font-heading);
+    letter-spacing: -0.018em;
     color: var(--frigo-text-main);
-    font-weight: 700;
+    font-weight: 800;
   }
 }
 
 @layer utilities {
-  /* Bottom nav sits flush with the screen edge — only the device safe-area inset,
-     no extra 16px padding (that made the bar unnecessarily tall on all phones). */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
@@ -226,8 +334,6 @@
     scrollbar-width: none;
   }
 
-  /* Horizontal chip rails: children keep their intrinsic width and the rail
-     scrolls, instead of flex shrinking every chip into clipped text. */
   .no-scrollbar > * {
     flex-shrink: 0;
   }
@@ -237,10 +343,9 @@
   }
 
   .animate-slide-up {
-    animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideUp 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* T17 skeleton pulse — opacity only, no spatial motion (states/loading.md). */
   .t17-skeleton {
     animation: t17SkeletonPulse 1.4s ease-in-out infinite;
   }
@@ -250,24 +355,18 @@
   .t17-skeleton {
     animation: none;
   }
-  /* Reduced motion is mandatory (motion/reduced-motion.md): the runtime
-     honors it via MotionConfig; CSS-driven motion stops here too. */
   .animate-fade-in,
   .animate-slide-up {
     animation: none;
     opacity: 1;
     transform: none;
   }
-  /* Decorative Tailwind keyframes (pulse/bounce) stop as well; spinners
-     keep turning because they communicate progress, not decoration. */
   .animate-pulse,
   .animate-bounce,
   .animate-bounce-slow,
   .animate-ping {
     animation: none;
   }
-  /* Spatial transitions collapse to instant; colour/opacity feedback may stay
-     but never longer than the "instant" motion token. */
   .transition-tap,
   .transition-transform {
     transition-duration: 1ms !important;
@@ -291,11 +390,11 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px) scale(0.99);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

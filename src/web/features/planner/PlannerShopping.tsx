@@ -202,6 +202,11 @@ export function PlannerShopping({
   const fresh = plan.freshness.status === 'fresh';
   const canShare = canSharePlannerShopping(plan, model.familyPlan);
   const hasFutureMeals = hasFuturePlannerSlot(plan);
+  const cachedShoppingSnapshot = client.getQueryData<{
+    items?: Array<{ id: string; name: string; quantity: number; unit: string; isChecked?: boolean }>;
+  }>([...queryKeys.shoppingList(), 'snapshot']);
+  const cachedItems = cachedShoppingSnapshot?.items ?? [];
+  const checkedItems = cachedItems.filter((it) => it.isChecked);
   const response =
     fresh && !model.busy && !model.error && shopping.data?.planRevision === plan.revision
       ? shopping.data
@@ -254,7 +259,7 @@ export function PlannerShopping({
         </section>
       )}
       {composing && (
-        <Card className="planning-share-shopping">
+        <Card className="planning-share-shopping space-y-3">
           <div className="planning-share-heading">
             <CalendarDays size={20} aria-hidden="true" />
             <div>
@@ -342,6 +347,66 @@ export function PlannerShopping({
           </Link>
         </Card>
       )}
+      <Card
+        data-testid="c29-fridge-import-workflow"
+        className="border border-[var(--tkv-border)] bg-[var(--tkv-surface)] space-y-3"
+      >
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div className="space-y-1 min-w-0 flex-1">
+            <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
+              <span>{locale === 'vi' ? 'Sau khi đi chợ về' : 'Post-shopping stock'}</span>
+            </p>
+            <h2 className="font-heading font-bold text-lg text-[var(--tkv-ink)]">
+              {locale === 'vi' ? 'Nhập món đã mua vào Tủ lạnh' : 'Import purchased items to Fridge'}
+            </h2>
+            <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
+              {locale === 'vi'
+                ? 'Takolio không tự động cộng kho ngầm từ danh sách mua. Hãy duyệt hóa đơn/ảnh thực phẩm hoặc đối soát các mục bạn thực sự đã mua để giữ định lượng tủ lạnh chính xác.'
+                : 'Takolio never mutates fridge stock silently from a checklist. Scan your receipt/groceries or reconcile purchased items before updating stock.'}
+            </p>
+          </div>
+          {cachedItems.length > 0 && (
+            <span className="px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-bold text-[var(--tkv-primary)] tabular-nums shrink-0">
+              {locale === 'vi'
+                ? `Đã đánh dấu mua: ${checkedItems.length}/${cachedItems.length}`
+                : `Marked bought: ${checkedItems.length}/${cachedItems.length}`}
+            </span>
+          )}
+        </div>
+        {checkedItems.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5 pt-1" aria-label={locale === 'vi' ? 'Các món đã đánh dấu mua' : 'Marked items'}>
+            {checkedItems.slice(0, 6).map((it) => (
+              <li
+                key={it.id}
+                className="px-2.5 py-1 rounded-lg bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-xs font-semibold text-[var(--tkv-ink)] tabular-nums"
+              >
+                {it.name} ({it.quantity} {it.unit})
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="flex flex-wrap items-center gap-2.5 pt-1">
+          <Link
+            to="/scan"
+            className="w-full sm:w-auto justify-center min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white text-sm font-bold inline-flex items-center gap-2 transition-colors"
+          >
+            {locale === 'vi' ? 'Quét hóa đơn / thực phẩm vừa mua' : 'Scan receipt or groceries'}
+          </Link>
+          <Link
+            to="/fridge?action=add"
+            className="w-full sm:w-auto justify-center min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-[var(--tkv-ink)] text-sm font-bold inline-flex items-center transition-colors"
+          >
+            {locale === 'vi' ? 'Nhập thủ công vào Tủ lạnh' : 'Add manually to Fridge'}
+          </Link>
+          <Link
+            to="/inventory-reconciliation"
+            className="min-h-[44px] px-3 py-2 text-xs font-bold text-[var(--tkv-primary)] underline underline-offset-4 inline-flex items-center"
+          >
+            {locale === 'vi' ? 'Đối soát tồn kho' : 'Reconcile stock'}
+          </Link>
+        </div>
+      </Card>
       <details className="planning-diagnostics planning-price-options">
         <summary>
           {locale === 'vi'
@@ -350,7 +415,7 @@ export function PlannerShopping({
         </summary>
         <Card className="planning-shopping-form">
           <h2 className="font-heading font-bold text-xl flex items-center gap-2">
-            <ShoppingBag className="text-takosan-green-deep" />
+            <ShoppingBag className="text-semantic-text-primary" />
             {t.shopping}
           </h2>
           <p className="text-sm text-semantic-text-secondary mt-2 leading-relaxed">
@@ -415,7 +480,7 @@ export function PlannerShopping({
             </Button>
           </form>
           {model.busy === 'shopping' && (
-            <p role="status" className="text-sm mt-3 text-takosan-green-deep">
+            <p role="status" className="text-sm mt-3 text-semantic-text-primary">
               {t.optimizing}
             </p>
           )}
@@ -424,7 +489,7 @@ export function PlannerShopping({
       {response && <ShoppingResult key={response.result.id} response={response} locale={locale} />}
       {!fresh && (
         <Link
-          className="inline-flex min-h-11 items-center underline text-sm text-takosan-green-deep"
+          className="inline-flex min-h-11 items-center underline text-sm text-semantic-text-primary"
           to={`/planner/${plan.id}`}
         >
           {t.back}
@@ -454,7 +519,7 @@ export function ShoppingResult({
         {result.cost.status === 'unknown' ? (
           <p className="font-semibold text-lg leading-snug">{t.priceUnavailable}</p>
         ) : (
-          <p className="text-3xl font-heading font-bold break-all">
+          <p className="text-2xl sm:text-3xl font-heading font-bold tabular-nums break-words">
             {formatMoney(complete ? result.cost.totalCost : result.cost.knownCost, locale)}
           </p>
         )}
@@ -562,9 +627,9 @@ export function ShoppingResult({
           <h2 className="font-heading font-bold">{t.largestCosts}</h2>
           <ul className="space-y-3 mt-3 text-sm">
             {result.budget.largestKnownCostDrivers.map((item) => (
-              <li key={item.ingredientId} className="flex justify-between gap-3">
-                <span>{ingredientLabel(item.ingredientId, locale)}</span>
-                <span className="break-all">{formatMoney(item.knownCost, locale)}</span>
+              <li key={item.ingredientId} className="flex flex-wrap justify-between gap-2">
+                <span className="min-w-0">{ingredientLabel(item.ingredientId, locale)}</span>
+                <span className="tabular-nums font-semibold shrink-0">{formatMoney(item.knownCost, locale)}</span>
               </li>
             ))}
           </ul>

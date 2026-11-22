@@ -34,6 +34,14 @@ const PUBLIC_PATHS = [
   '/billing/payos/webhook',
 ];
 
+const EXACT_PUBLIC_PATHS = new Set(
+  PUBLIC_PATHS.flatMap((p) => [p, `/api/v1${p}`, `/api/v2${p}`])
+);
+
+function isExactAuthSubpath(path: string): boolean {
+  return path.startsWith('/auth/') || path.startsWith('/api/v1/auth/') || path.startsWith('/api/v2/auth/');
+}
+
 function hasExpectedOwner(
   c: Context<{ Bindings: Env; Variables: { auth: AuthContext } }>,
   auth: Pick<AuthContext, 'userId' | 'householdId'>,
@@ -56,8 +64,8 @@ export async function authMiddleware(
   const authHeader = c.req.header('authorization');
   const hasSessionCookie = cookieToken !== undefined;
 
-  const isPublic = PUBLIC_PATHS.some((p) => path.endsWith(p));
-  if (hasSessionCookie && (!isPublic || path.includes('/auth/')) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
+  const isPublic = EXACT_PUBLIC_PATHS.has(path);
+  if (hasSessionCookie && (!isPublic || isExactAuthSubpath(path)) && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(c.req.method)) {
     if (!hasTrustedOrigin(c)) {
       return c.json({ error: 'Cross-site request blocked', code: 'CSRF_ORIGIN_DENIED' }, 403);
     }
@@ -149,7 +157,7 @@ export async function authMiddleware(
 
   // 1. Verify Cryptographic JWT
   const verification = await verifyJwt<JwtPayload>(token, jwtSecret);
-  if (verification.valid && verification.payload && c.env.ENVIRONMENT !== 'production') {
+  if (verification.valid && verification.payload && c.env.ENVIRONMENT !== 'production' && c.env.ENVIRONMENT !== 'staging') {
     const p = verification.payload;
     const isValidAccess = p.typ === 'access' && p.isGuest !== true;
     const isValidGuest = p.typ === 'guest' && p.isGuest === true;

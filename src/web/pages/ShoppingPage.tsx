@@ -13,6 +13,35 @@ import { queryKeys } from '../lib/queryKeys';
 import { parseShoppingForm, SHOPPING_UNITS, shoppingQuantity } from '../lib/shopping-form';
 import { ShoppingDemandReview } from '../features/ShoppingDemandReview';
 
+const AISLE_LABELS: Record<string, string> = {
+  produce: 'Rau củ & trái cây',
+  protein: 'Thịt, cá & hải sản',
+  dairy_egg: 'Trứng, sữa & đồ mát',
+  pantry: 'Đồ khô & gia vị',
+  other: 'Mục cần mua khác',
+};
+
+function classifyShoppingAisle(item: ShoppingItem): keyof typeof AISLE_LABELS {
+  const text = `${item.name} ${item.ingredientId ?? ''}`.toLowerCase();
+  if (
+    /(rau|cải|cà chua|cà rốt|hành|tỏi|ớt|gừng|sả|khoai|bí|nấm|dưa|chuối|táo|cam|chanh|ngò|mùi|bắp|đậu bắp|mướp|bầu|su hào)/.test(
+      text,
+    )
+  ) {
+    return 'produce';
+  }
+  if (/(thịt|gà|bò|heo|lợn|cá|tôm|mực|cua|hải sản|sườn|ba chỉ|xúc xích|chả)/.test(text)) {
+    return 'protein';
+  }
+  if (/(trứng|sữa|phô mai|bơ|sữa chua|đậu phụ|đậu hũ)/.test(text)) {
+    return 'dairy_egg';
+  }
+  if (/(gạo|mì|bún|phở|miến|nước mắm|muối|đường|tiêu|dầu|tương|bột|hạt nêm|giấm)/.test(text)) {
+    return 'pantry';
+  }
+  return 'other';
+}
+
 export const ShoppingPage: React.FC = () => {
   const client = useQueryClient();
   const shoppingKey = queryKeys.shoppingList();
@@ -37,6 +66,8 @@ export const ShoppingPage: React.FC = () => {
   const [invalid, setInvalid] = useState(false);
   const [removing, setRemoving] = useState<ShoppingItem | null>(null);
   const [editing, setEditing] = useState<ShoppingItem | null>(null);
+  const [quickMode, setQuickMode] = useState(false);
+  const [groupByAisle, setGroupByAisle] = useState(true);
   const [receipt, setReceipt] = useState('');
   const errorRef = useRef<HTMLDivElement>(null);
   const refresh = () => client.invalidateQueries({ queryKey: shoppingKey });
@@ -118,13 +149,27 @@ export const ShoppingPage: React.FC = () => {
   }
   const remaining = items.filter((item) => !item.isChecked);
   const checked = items.filter((item) => item.isChecked);
+  const aisleGroups = (() => {
+    const groups = new Map<string, ShoppingItem[]>();
+    for (const item of remaining) {
+      const key = classifyShoppingAisle(item);
+      const bucket = groups.get(key) ?? [];
+      bucket.push(item);
+      groups.set(key, bucket);
+    }
+    return Array.from(groups.entries()).map(([id, list]) => ({
+      id,
+      label: AISLE_LABELS[id] ?? AISLE_LABELS.other,
+      items: list,
+    }));
+  })();
   function row(item: ShoppingItem) {
     const sources = item.contributions ?? [];
     const titles = [...new Set(sources.map((source) => source.title))];
     return (
       <li
         key={item.id}
-        className={`shopping-saved-row ${item.isChecked ? 'is-checked' : ''} ${item.cannotBuy ? 'is-unavailable' : ''}`}
+        className={`shopping-saved-row ${item.isChecked ? 'is-checked' : ''} ${item.cannotBuy ? 'is-unavailable' : ''} ${quickMode ? 'py-2' : ''}`}
       >
         <label className="shopping-check-label">
           <input
@@ -139,28 +184,29 @@ export const ShoppingPage: React.FC = () => {
           />
           <span>
             <strong>{item.name}</strong>
-            <span className="shopping-row-quantity">
+            <span className="shopping-row-quantity tabular-nums">
               {shoppingQuantity(item.quantity, item.unit)}
               {item.unknownDemand
                 ? ' · Lượng bạn chọn'
                 : item.quantityOverridden && ' · lượng đã chỉnh'}
             </span>
-            {item.unknownDemand && (
+            {!quickMode && item.unknownDemand && (
               <span className="shopping-demand-badge">
                 Tổng lượng theo thực đơn chưa xác định
                 {item.reviewState === 'pending' && ' · cần chọn lại cho lượt này'}
               </span>
             )}
-            {titles.length > 0 ? (
-              <span className="shopping-row-source">
-                Cho {titles.slice(0, 2).join(', ')}
-                {titles.length > 2 && ` và ${titles.length - 2} món khác`}
-              </span>
-            ) : (
-              item.sourceRecipeTitle && (
-                <span className="shopping-row-source">Cho {item.sourceRecipeTitle}</span>
-              )
-            )}
+            {!quickMode &&
+              (titles.length > 0 ? (
+                <span className="shopping-row-source">
+                  Cho {titles.slice(0, 2).join(', ')}
+                  {titles.length > 2 && ` và ${titles.length - 2} món khác`}
+                </span>
+              ) : (
+                item.sourceRecipeTitle && (
+                  <span className="shopping-row-source">Cho {item.sourceRecipeTitle}</span>
+                )
+              ))}
             {item.pendingSync && <span className="shopping-pending-label">Chờ đồng bộ</span>}
             {item.cannotBuy && (
               <span className="shopping-unavailable-label">
@@ -189,7 +235,7 @@ export const ShoppingPage: React.FC = () => {
             <Trash2 size={16} aria-hidden="true" />
           </button>
         </div>
-        {sources.length > 0 && (
+        {!quickMode && sources.length > 0 && (
           <details className="shopping-source-details">
             <summary>Dùng cho bữa nào?</summary>
             <ul>
@@ -215,7 +261,7 @@ export const ShoppingPage: React.FC = () => {
                       source.title
                     )}
                   </span>
-                  <span>
+                  <span className="tabular-nums">
                     {source.quantity === null
                       ? 'Lượng món này chưa rõ'
                       : shoppingQuantity(source.quantity, source.unit)}
@@ -331,11 +377,11 @@ export const ShoppingPage: React.FC = () => {
             <div className="shopping-list-heading">
               <div>
                 <p className="planning-eyebrow">DANH SÁCH CỦA GIA ĐÌNH</p>
-                <h2 id="saved-list-heading">
+                <h2 id="saved-list-heading" className="tabular-nums">
                   Cần mua <span>{remaining.length}</span>
                 </h2>
               </div>
-              <div className="shopping-count-summary">
+              <div className="shopping-count-summary tabular-nums">
                 <p>{checked.length} đã mua</p>
                 {needsReviewCount > 0 && (
                   <p className="shopping-review-count">
@@ -344,6 +390,43 @@ export const ShoppingPage: React.FC = () => {
                 )}
               </div>
             </div>
+            {items.length > 0 && (
+              <div
+                role="group"
+                aria-label="Tùy chọn hiển thị khi đi chợ"
+                className="flex flex-wrap items-center gap-2 mb-3"
+              >
+                <button
+                  type="button"
+                  aria-pressed={quickMode}
+                  data-testid="c28-quick-market-toggle"
+                  onClick={() => setQuickMode((prev) => !prev)}
+                  className={`min-h-[44px] px-3.5 py-2 rounded-full text-xs font-bold border transition-colors inline-flex items-center gap-1.5 ${
+                    quickMode
+                      ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
+                      : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]'
+                  }`}
+                >
+                  {quickMode && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
+                  )}
+                  <span>Chế độ đi chợ nhanh</span>
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={groupByAisle}
+                  data-testid="c27-aisle-group-toggle"
+                  onClick={() => setGroupByAisle((prev) => !prev)}
+                  className={`min-h-[44px] px-3.5 py-2 rounded-full text-xs font-bold border transition-colors ${
+                    groupByAisle
+                      ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)]'
+                      : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-primary)]'
+                  }`}
+                >
+                  Nhóm theo quầy chợ
+                </button>
+              </div>
+            )}
             {query.data?.source === 'device' && (
               <p role="status" className="planning-notice">
                 Đang xem bản lưu trên thiết bị; các thay đổi ở dòng mua sẽ đồng bộ khi có kết nối.
@@ -390,7 +473,19 @@ export const ShoppingPage: React.FC = () => {
                   }}
                 />
                 {remaining.length ? (
-                  <ul className="shopping-item-list">{remaining.map(row)}</ul>
+                  <ul className={`shopping-item-list ${quickMode ? 'is-quick-market' : ''}`}>
+                    {groupByAisle
+                      ? aisleGroups.map((group) => (
+                          <React.Fragment key={group.id}>
+                            <li className="shopping-aisle-header list-none pt-2 pb-1.5 px-1 flex items-center justify-between gap-2 border-b border-[var(--tkv-border)] text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-muted)]">
+                              <span className="min-w-0">{group.label}</span>
+                              <span className="tabular-nums shrink-0">{group.items.length} mục</span>
+                            </li>
+                            {group.items.map(row)}
+                          </React.Fragment>
+                        ))
+                      : remaining.map(row)}
+                  </ul>
                 ) : (
                   <div className="shopping-empty planning-paper">
                     <ShoppingBag size={32} aria-hidden="true" />
@@ -484,17 +579,30 @@ function ShoppingEditDialog({
     if (!save.isPending) onClose();
   });
   return (
-    <div className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50">
+    <div
+      role="presentation"
+      onClick={() => {
+        if (!save.isPending) onClose();
+      }}
+      className="planning-picker fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-semantic-overlay/50"
+    >
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby="shopping-edit-title"
+        onClick={(e) => e.stopPropagation()}
         className="family-dialog"
       >
         <div className="family-dialog-heading">
           <h2 id="shopping-edit-title">Chỉnh món cần mua</h2>
-          <Button variant="ghost" aria-label="Đóng" disabled={save.isPending} onClick={onClose}>
+          <Button
+            variant="ghost"
+            className="!px-2.5 !min-w-[44px]"
+            aria-label="Đóng"
+            disabled={save.isPending}
+            onClick={onClose}
+          >
             <X size={20} aria-hidden="true" />
           </Button>
         </div>
@@ -522,6 +630,7 @@ function ShoppingEditDialog({
                 Số lượng
                 <input
                   type="number"
+                  inputMode="decimal"
                   step="any"
                   min={Number.MIN_VALUE}
                   required

@@ -1,22 +1,22 @@
-# Takosan
+# Takolio
 > **"Bữa ngon, nhẹ đầu."**
 > Less planning. More living.
 
-[![CI Status](https://github.com/vn-tak/Tako-san/actions/workflows/ci.yml/badge.svg)](https://github.com/vn-tak/Tako-san/actions)
+[![CI Status](https://github.com/hello-tako/Takolio/actions/workflows/ci.yml/badge.svg)](https://github.com/hello-tako/Takolio/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Domain](https://img.shields.io/badge/Production-frigo.tungjpstore.net-22C55E)](https://frigo.tungjpstore.net)
 
 ---
 
-## 1. Giới thiệu Takosan
+## 1. Giới thiệu Takolio
 
-**Takosan** là ứng dụng AI thông minh giúp người dùng quản lý thực phẩm trong tủ lạnh, nhận diện nguyên liệu qua ảnh chụp camera, tự động theo dõi hạn dùng/độ tươi, và đưa ra gợi ý món ăn tối ưu từ thực phẩm sẵn có.
+**Takolio** là ứng dụng AI thông minh giúp người dùng quản lý thực phẩm trong tủ lạnh, nhận diện nguyên liệu qua ảnh chụp camera, tự động theo dõi hạn dùng/độ tươi, và đưa ra gợi ý món ăn tối ưu từ thực phẩm sẵn có.
 
-Takosan **KHÔNG** phải là một chatbot công thức chung chung (generic recipe bot). Frigo xây dựng xung quanh vòng lặp thực phẩm khép kín hoàn chỉnh (Closed Product Loop):
+Takolio **KHÔNG** phải là một chatbot công thức chung chung (generic recipe bot). Takolio xây dựng xung quanh vòng lặp thực phẩm khép kín hoàn chỉnh (Closed Product Loop):
 
 ```mermaid
 graph TD
-    FRIDGE[🧊 TỦ LẠNH HIỆN CÓ] --> PLAN[📅 THỰC ĐƠN TUẦN FRIGO WEEK]
+    FRIDGE[🧊 TỦ LẠNH HIỆN CÓ] --> PLAN[📅 THỰC ĐƠN TUẦN TAKOLIO WEEK]
     PLAN --> SHOPPING[🛒 CHECKLIST ĐI CHỢ & MUA GÓI BÁN LẺ]
     SHOPPING --> IMPORT[📥 NHẬP KHO TỰ ĐỘNG SHOPPING_IMPORT]
     IMPORT --> COOK[👨‍🍳 NẤU ĂN TỪNG BỮA]
@@ -102,7 +102,7 @@ frigo/
 ├── migrations/                       # D1 Database SQL Migrations
 │   ├── 0001_initial_schema.sql       # Schema 25 bảng D1
 │   ├── 0002_seed_data.sql            # Seed dữ liệu demo tủ lạnh & công thức
-│   └── 0003_weekly_planner.sql       # Schema 10 bảng kế hoạch tuần Frigo Week
+│   └── 0003_weekly_planner.sql       # Schema 10 bảng kế hoạch tuần Takolio Week
 │
 ├── tests/                            # Vitest unit tests (scoring engine, AI schemas, week planner)
 ├── public/                           # Vector SVG logo, PWA icons, assets minh họa
@@ -122,8 +122,8 @@ frigo/
 
 ### Bước 1: Clone và Cài đặt
 ```bash
-git clone https://github.com/vn-tak/Tako-san.git
-cd Tako-san
+git clone https://github.com/hello-tako/Takolio.git
+cd Takolio
 pnpm install
 ```
 
@@ -279,9 +279,9 @@ projection issues. Không bật `dual` nếu gate này chưa xanh.
 
 ---
 
-## 8. Frigo Week — Thực đơn tuần ("Ăn đủ. Mua đủ. Dùng hết.")
+## 8. Takolio Week — Thực đơn tuần ("Ăn đủ. Mua đủ. Dùng hết.")
 
-Frigo Week là hệ thống lập kế hoạch thực đơn tuần thông minh khép kín vòng lặp thực phẩm gia đình.
+Takolio Week là hệ thống lập kế hoạch thực đơn tuần thông minh khép kín vòng lặp thực phẩm gia đình.
 
 ### Nguyên tắc kiến trúc cốt lõi:
 > **"AI KHÔNG BAO GIỜ làm phép tính toán học."**
@@ -330,10 +330,10 @@ Frigo Week là hệ thống lập kế hoạch thực đơn tuần thông minh k
 ## 10. Định hướng phát triển tiếp theo (Roadmap)
 
 - [x] MVP Core: Scan tủ lạnh AI, quản lý nguyên liệu, độ tươi, lọc "Không mua thêm gì", Chế độ nấu từng bước, Tự động trừ nguyên liệu, Shopping List.
-- [x] Frigo Week: Thực đơn tuần đa bữa, thuật toán khớp tất định, khấu trừ tồn kho tủ lạnh, định lượng gói bán lẻ, tráo món thông minh, checklist đi chợ 7 khu vực, nhập kho tự động.
+- [x] Takolio Week: Thực đơn tuần đa bữa, thuật toán khớp tất định, khấu trừ tồn kho tủ lạnh, định lượng gói bán lẻ, tráo món thông minh, checklist đi chợ 7 khu vực, nhập kho tự động.
 - [x] Nhận diện hóa đơn siêu thị (Receipt OCR to Inventory / Reconcile Shopping List).
 - [x] Trợ lý đầu bếp giọng nói tiếng Việt rảnh tay & âm thanh Web Audio (AI Voice Sous Chef).
 - [x] Live Camera Viewfinder với điều khiển đèn Flash/Torch và hiệu ứng laser quét.
-- [x] Cổng thanh toán Frigo Plus qua VietQR Napas 24/7 tự động kích hoạt.
+- [x] Cổng thanh toán Takolio Pro qua VietQR Napas 24/7 tự động kích hoạt.
 - [x] Mở rộng kho 32+ công thức nấu ăn chuẩn Việt & Quốc tế kèm định lượng dinh dưỡng calo/macro.
 - [x] Chia sẻ tủ lạnh gia đình qua mã mời / QR & xuất thực đơn tuần sang Zalo/Messenger.

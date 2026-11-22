@@ -13,7 +13,7 @@ export async function verifyTurnstileToken(
 ): Promise<{ ok: boolean; error?: string }> {
   const stagingTestWidget = env.ENVIRONMENT === 'staging' && env.TURNSTILE_SITE_KEY?.trim() === STAGING_TEST_SITE_KEY;
   const secret = stagingTestWidget ? STAGING_TEST_SECRET_KEY : env.TURNSTILE_SECRET_KEY?.trim();
-  if (env.ENVIRONMENT === 'production' && (!secret || !env.TURNSTILE_SITE_KEY?.trim())) {
+  if ((env.ENVIRONMENT === 'production' || env.ENVIRONMENT === 'staging') && (!secret || !env.TURNSTILE_SITE_KEY?.trim())) {
     return { ok: false, error: 'Turnstile chưa được cấu hình' };
   }
   if (!secret) {

@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 /**
- * T17 Takosan UI V2 visual coverage — isolated from the T13 Inventory suite
+ * T17 Takolio UI V2 visual coverage — isolated from the T13 Inventory suite
  * (visual-regression-plan.md). Same isolated preview server, separate
  * testDir/output; the T13 config and its tests remain untouched.
  */

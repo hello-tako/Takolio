@@ -1,59 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
+import { useAppLocale, type AppChromeCopy } from '../../i18n/LocaleContext';
 import { OfflineBanner } from '../../components/common/OfflineBanner';
+import { useModalFocus } from '../../design-system/use-modal-focus';
 import { vnextHref } from '../feature';
+import {
+  isSatelliteComRuntime,
+  navigateToAppSurface,
+  resolveAppSurfaceHref,
+} from '../lib/domain-surface';
 import { BrandLockup } from './VNextMedia';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { TkvButton, TkvIconButton, TkvSearchField } from './Primitives';
 
 export interface ConsumerRootItem {
-  id: 'home' | 'fridge' | 'recipes' | 'planner' | 'me';
+  id: 'home' | 'fridge' | 'planner' | 'shopping' | 'me';
   label: string;
   to: string;
   icon: VNextIconName;
   match: (pathname: string) => boolean;
 }
 
-export function getConsumerRoots(): ConsumerRootItem[] {
+/**
+ * Official 5-destination navigation per Brand Board §4 (`board.jpg` & `board-2.jpg`):
+ * Trang chủ · Tủ lạnh · Thực đơn · Mua sắm · Cá nhân
+ */
+export function getConsumerRoots(navLabels?: AppChromeCopy['nav']): ConsumerRootItem[] {
   const plannerPath = isMealPlannerEnabled() ? '/planner' : '/week';
   return [
     {
       id: 'home',
-      label: 'Hôm nay',
+      label: navLabels?.home ?? 'Trang chủ',
       to: '/',
       icon: 'home',
-      match: (p) => p === '/',
+      match: (p) => p === '/' || p.startsWith('/recipes') || p.startsWith('/cook'),
     },
     {
       id: 'fridge',
-      label: 'Tủ lạnh',
+      label: navLabels?.fridge ?? 'Tủ lạnh',
       to: '/fridge',
       icon: 'fridge',
       match: (p) =>
         p.startsWith('/fridge') ||
         p.startsWith('/inventory') ||
-        p.startsWith('/ingredients'),
-    },
-    {
-      id: 'recipes',
-      label: 'Món ăn',
-      to: '/recipes',
-      icon: 'recipes',
-      match: (p) => p.startsWith('/recipes') || p.startsWith('/cook'),
+        p.startsWith('/ingredients') ||
+        p.startsWith('/scan') ||
+        p.startsWith('/receipt'),
     },
     {
       id: 'planner',
-      label: 'Thực đơn',
+      label: navLabels?.planner ?? 'Thực đơn',
       to: plannerPath,
       icon: 'calendar',
       match: (p) => p.startsWith('/planner') || p.startsWith('/week'),
     },
     {
+      id: 'shopping',
+      label: navLabels?.shopping ?? 'Mua sắm',
+      to: '/shopping',
+      icon: 'shopping',
+      match: (p) => p.startsWith('/shopping'),
+    },
+    {
       id: 'me',
-      label: 'Tôi',
+      label: navLabels?.me ?? 'Cá nhân',
       to: '/me',
       icon: 'profile',
       match: (p) =>
@@ -66,9 +79,28 @@ export function getConsumerRoots(): ConsumerRootItem[] {
   ];
 }
 
+const AppEntryAnchor: React.FC<{
+  appPath: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}> = ({ appPath, className, onClick, children }) => {
+  if (isSatelliteComRuntime()) {
+    return (
+      <a href={resolveAppSurfaceHref(appPath)} onClick={onClick} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={vnextHref(appPath)} onClick={onClick} className={className}>
+      {children}
+    </Link>
+  );
+};
+
 /**
- * Public Marketing Shell (M01–M12). Matches M01.png navigation anatomy cleanly
- * on mobile (390×844) and editorial desktop (1440×900).
+ * Public Marketing Shell (M01–M12) — Official Takolio Brand Board (`takolio.com`).
  */
 export const PublicMarketingShell: React.FC<{
   screenId: string;
@@ -76,15 +108,30 @@ export const PublicMarketingShell: React.FC<{
 }> = ({ screenId, children }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const satellite = isSatelliteComRuntime();
+  const homeHref = satellite ? '/' : vnextHref('/landing');
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [mobileMenuOpen]);
+
   const navItems = [
-    { label: 'Tính năng', to: '/features/ai-scan', active: pathname.startsWith('/features/') },
+    { label: 'Tính năng', to: '/features/ai-scan', active: pathname.startsWith('/features/') && pathname !== '/features/recipes' },
     { label: 'Cách hoạt động', to: '/how-it-works', active: pathname === '/how-it-works' },
     { label: 'Món ăn', to: '/features/recipes', active: pathname === '/features/recipes' },
-    { label: 'Plus', to: '/pricing', active: pathname === '/pricing' },
-    { label: 'Blog', to: '/stories', active: pathname.startsWith('/stories') },
+    { label: 'Bảng giá', to: '/pricing', active: pathname === '/pricing' },
+    { label: 'Stories', to: '/stories', active: pathname.startsWith('/stories') },
   ];
 
   return (
@@ -92,9 +139,9 @@ export const PublicMarketingShell: React.FC<{
       <a href="#tkv-public-main" className="tkv-skip-link">
         Đến nội dung chính
       </a>
-      <header className="sticky top-0 z-30 bg-[var(--tkv-surface)]/95 backdrop-blur-md border-b border-[var(--tkv-border)]">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-          <Link to={vnextHref('/landing')} className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Trang chủ giới thiệu">
+      <header className="sticky top-0 z-30 bg-[var(--tkv-header-glass)] backdrop-blur-md border-b border-[var(--tkv-border)] pt-[env(safe-area-inset-top,0px)]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 min-h-16 py-2 flex items-center justify-between gap-2 sm:gap-3">
+          <Link to={homeHref} className="tkv-focusable rounded-xl py-1 min-w-0 shrink-0" aria-label="Takolio — Trang chủ giới thiệu">
             <BrandLockup />
           </Link>
 
@@ -114,17 +161,17 @@ export const PublicMarketingShell: React.FC<{
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <Link
-              to={vnextHref('/auth?mode=login')}
-              className="tkv-focusable hidden sm:inline-flex min-h-[44px] items-center px-3.5 rounded-[var(--tkv-radius-btn)] text-sm font-bold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]"
+          <div className="flex items-center gap-2 shrink-0">
+            <AppEntryAnchor
+              appPath="/auth?mode=login"
+              className="tkv-focusable hidden sm:inline-flex min-h-[44px] items-center px-3.5 rounded-[var(--tkv-radius-btn)] text-sm font-bold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
             >
               Đăng nhập
-            </Link>
+            </AppEntryAnchor>
             <TkvButton
-              variant="coral"
+              variant="primary"
               size="sm"
-              onClick={() => navigate(vnextHref('/auth?mode=register'))}
+              onClick={() => navigateToAppSurface(vnextHref('/auth?mode=register'), navigate)}
             >
               Đăng ký
             </TkvButton>
@@ -132,6 +179,7 @@ export const PublicMarketingShell: React.FC<{
               <TkvIconButton
                 icon={mobileMenuOpen ? 'close' : 'filter'}
                 label={mobileMenuOpen ? 'Đóng menu giới thiệu' : 'Mở menu giới thiệu'}
+                aria-expanded={mobileMenuOpen}
                 onClick={() => setMobileMenuOpen((v) => !v)}
               />
             </div>
@@ -141,14 +189,20 @@ export const PublicMarketingShell: React.FC<{
         {mobileMenuOpen && (
           <nav
             aria-label="Menu giới thiệu di động"
-            className="md:hidden border-t border-[var(--tkv-border)] bg-[var(--tkv-surface)] px-4 py-3 flex flex-col gap-1"
+            className="md:hidden border-t border-[var(--tkv-border)] bg-[var(--tkv-surface)] px-4 py-3 flex flex-col gap-1 max-h-[calc(100dvh-64px-env(safe-area-inset-top,0px))] overflow-y-auto overscroll-contain"
           >
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
+                aria-current={item.active ? 'page' : undefined}
                 onClick={() => setMobileMenuOpen(false)}
-                className="tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl font-semibold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]"
+                className={clsx(
+                  'tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl text-sm transition-colors',
+                  item.active
+                    ? 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)] font-bold'
+                    : 'font-semibold text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]',
+                )}
               >
                 {item.label}
               </Link>
@@ -156,25 +210,25 @@ export const PublicMarketingShell: React.FC<{
             <Link
               to="/faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl font-semibold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]"
+              className="tkv-focusable min-h-[44px] flex items-center px-3 rounded-xl font-semibold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
             >
               Câu hỏi thường gặp
             </Link>
             <div className="pt-2 mt-1 border-t border-[var(--tkv-border)] grid grid-cols-2 gap-2">
-              <Link
-                to={vnextHref('/auth?mode=login')}
+              <AppEntryAnchor
+                appPath="/auth?mode=login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl border border-[var(--tkv-border-strong)] font-bold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)]"
+                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl border border-[var(--tkv-border)] font-bold text-sm text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
               >
                 Đăng nhập
-              </Link>
-              <Link
-                to={vnextHref('/auth?mode=register')}
+              </AppEntryAnchor>
+              <AppEntryAnchor
+                appPath="/auth?mode=register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl bg-[var(--tkv-coral)] font-bold text-sm text-white"
+                className="tkv-focusable min-h-[44px] flex items-center justify-center px-3 rounded-xl bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] font-bold text-sm text-white transition-colors"
               >
                 Đăng ký
-              </Link>
+              </AppEntryAnchor>
             </div>
           </nav>
         )}
@@ -184,45 +238,52 @@ export const PublicMarketingShell: React.FC<{
         {children}
       </main>
 
-      <footer className="border-t border-[var(--tkv-border)] bg-[var(--tkv-surface)] py-10 px-4 sm:px-6">
+      <footer className="tkv-leaf-wave-band border-t border-[var(--tkv-border-mint)] bg-[var(--tkv-surface)] pt-10 pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] px-4 sm:px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-[var(--tkv-ink-secondary)]">
-          <div className="space-y-2.5">
-            <BrandLockup />
+          <div className="space-y-3">
+            <BrandLockup showTagline />
+            <p className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-1 text-xs font-extrabold text-[var(--tkv-primary)]">
+              Ăn đủ. Mua đủ. Dùng hết.
+            </p>
             <p className="text-xs leading-relaxed text-[var(--tkv-ink-muted)]">
-              Trợ lý căn bếp thông minh cho gia đình hiện đại — quản lý tủ lạnh theo lô, gợi ý món khớp định lượng, lập thực đơn tuần và đi chợ gọn nhẹ.
+              Bữa ngon, nhẹ đầu. Quản lý tủ lạnh thông minh, quét nguyên liệu bằng AI, gợi ý món Việt sát kho sẵn có và lên thực đơn 7 ngày cho cả gia đình.
             </p>
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Tính năng</p>
-            <ul className="space-y-1 text-xs font-semibold">
-              <li><Link to="/how-it-works" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Cách hoạt động</Link></li>
-              <li><Link to="/features/ai-scan" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">AI Scan nguyên liệu</Link></li>
-              <li><Link to="/features/fridge" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Tủ lạnh thông minh</Link></li>
-              <li><Link to="/features/meal-planning" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Lên thực đơn tuần</Link></li>
-              <li><Link to="/features/recipes" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Kho công thức</Link></li>
-              <li><Link to="/features/cooking" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Nấu ăn từng bước</Link></li>
-              <li><Link to="/features/shopping" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Danh sách đi chợ</Link></li>
+            <p className="tkv-heading text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Tính năng cốt lõi</p>
+            <ul className="space-y-0.5 text-xs font-medium">
+              <li><Link to="/how-it-works" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Cách hoạt động</Link></li>
+              <li><Link to="/features/fridge" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Quản lý tủ lạnh</Link></li>
+              <li><Link to="/features/ai-scan" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Quét nguyên liệu bằng AI</Link></li>
+              <li><Link to="/features/recipes" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Gợi ý công thức món ăn</Link></li>
+              <li><Link to="/features/meal-planning" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Lên thực đơn 7 ngày</Link></li>
+              <li><Link to="/features/shopping" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Danh sách mua sắm</Link></li>
+              <li><Link to="/features/cooking" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Nấu ăn từng bước</Link></li>
             </ul>
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Sản phẩm & Cảm hứng</p>
-            <ul className="space-y-1 text-xs font-semibold">
-              <li><Link to="/pricing" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Các gói Takolio</Link></li>
-              <li><Link to="/faq" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Câu hỏi thường gặp</Link></li>
-              <li><Link to="/stories" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Takolio Stories</Link></li>
-              <li><Link to={vnextHref('/auth?mode=login')} className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Đăng nhập ứng dụng</Link></li>
+            <p className="tkv-heading text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Sản phẩm & Cảm hứng</p>
+            <ul className="space-y-0.5 text-xs font-medium">
+              <li><Link to="/pricing" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Các gói Takolio</Link></li>
+              <li><Link to="/faq" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Câu hỏi thường gặp</Link></li>
+              <li><Link to="/stories" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Takolio Stories</Link></li>
+              <li>
+                <AppEntryAnchor appPath="/auth?mode=login" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">
+                  Mở ứng dụng (takolio.app)
+                </AppEntryAnchor>
+              </li>
             </ul>
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Giới thiệu & Pháp lý</p>
-            <ul className="space-y-1 text-xs font-semibold">
-              <li><Link to="/about" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Giới thiệu Takolio</Link></li>
-              <li><Link to="/contact" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Liên hệ hỗ trợ</Link></li>
-              <li><Link to="/privacy" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Chính sách bảo mật</Link></li>
-              <li><Link to="/terms" className="tkv-focusable inline-flex items-center min-h-[32px] py-1.5 hover:text-[var(--tkv-primary)]">Điều khoản sử dụng</Link></li>
+            <p className="tkv-heading text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink)]">Giới thiệu & Pháp lý</p>
+            <ul className="space-y-0.5 text-xs font-medium">
+              <li><Link to="/about" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Giới thiệu Takolio</Link></li>
+              <li><Link to="/contact" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Liên hệ hỗ trợ</Link></li>
+              <li><Link to="/privacy" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Chính sách bảo mật</Link></li>
+              <li><Link to="/terms" className="tkv-focusable inline-flex items-center min-h-[44px] py-2 hover:text-[var(--tkv-primary)]">Điều khoản sử dụng</Link></li>
             </ul>
           </div>
         </div>
@@ -233,10 +294,8 @@ export const PublicMarketingShell: React.FC<{
 
 /**
  * Authenticated / Guest Consumer Kitchen Studio Shell (C01–C30, U01–U10).
- * - Mobile (<1024px): Contextual top bar + 1-column content + 5-Root Bottom Nav
- *   (Hôm nay / Tủ lạnh / Món ăn / Thực đơn / Tôi) + contextual Scan button.
- * - Desktop (>=1024px): Fixed 248px Kitchen Studio Sidebar + Quick Find (C02)
- *   + 1200px max-width workbench.
+ * Implements Official Brand Board 5-item bottom navigation:
+ * Trang chủ · Tủ lạnh · Thực đơn · Mua sắm · Cá nhân
  */
 export const ConsumerStudioShell: React.FC<{
   screenId: string;
@@ -258,7 +317,13 @@ export const ConsumerStudioShell: React.FC<{
 
   const [quickFindOpen, setQuickFindOpen] = useState(false);
   const [quickQuery, setQuickQuery] = useState('');
-  const roots = getConsumerRoots();
+  const quickDialogRef = useRef<HTMLDivElement>(null);
+  const quickInputRef = useRef<HTMLInputElement>(null);
+  const closeQuickFind = useCallback(() => setQuickFindOpen(false), []);
+  const { copy: appCopy } = useAppLocale();
+  const roots = getConsumerRoots(appCopy.nav);
+
+  useModalFocus(quickFindOpen, quickDialogRef, closeQuickFind, quickInputRef);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -273,12 +338,22 @@ export const ConsumerStudioShell: React.FC<{
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (!quickFindOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [quickFindOpen]);
+
   const quickShortcuts = [
-    { label: 'Tìm món ăn theo nguyên liệu sẵn có', to: vnextHref('/recipes'), icon: 'recipes' as const },
-    { label: 'Kiểm tra tủ lạnh của tôi', to: vnextHref('/fridge'), icon: 'fridge' as const },
-    { label: 'Quét nguyên liệu / hóa đơn (AI có duyệt trước)', to: vnextHref('/scan'), icon: 'scan' as const },
-    { label: 'Xem thực đơn tuần', to: vnextHref(isMealPlannerEnabled() ? '/planner' : '/week'), icon: 'calendar' as const },
-    { label: 'Mở danh sách đi chợ', to: vnextHref('/shopping'), icon: 'shopping' as const },
+    { label: 'Hôm nay ăn gì? (Trang chủ)', to: vnextHref('/'), icon: 'home' as const },
+    { label: 'Khám phá kho công thức món ăn', to: vnextHref('/recipes'), icon: 'recipes' as const },
+    { label: 'Tủ lạnh của bạn', to: vnextHref('/fridge'), icon: 'fridge' as const },
+    { label: 'Quét nguyên liệu / hóa đơn bằng AI', to: vnextHref('/scan'), icon: 'scan' as const },
+    { label: 'Thực đơn 7 ngày', to: vnextHref(isMealPlannerEnabled() ? '/planner' : '/week'), icon: 'calendar' as const },
+    { label: 'Danh sách mua sắm', to: vnextHref('/shopping'), icon: 'shopping' as const },
   ].filter((item) => item.label.toLowerCase().includes(quickQuery.trim().toLowerCase()));
 
   return (
@@ -291,23 +366,23 @@ export const ConsumerStudioShell: React.FC<{
         {/* Desktop Kitchen Studio Sidebar (>=1024px) */}
         <aside
           aria-label="Điều hướng căn bếp chính (Desktop)"
-          className="hidden lg:flex w-[248px] shrink-0 flex-col justify-between border-r border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-4 sticky top-0 h-dvh"
+          className="hidden lg:flex w-[280px] shrink-0 flex-col justify-between border-r border-[var(--tkv-border)] bg-[var(--tkv-surface)] px-4 py-5 sticky top-0 h-dvh"
         >
           <div className="space-y-5">
-            <Link to="/" className="tkv-focusable block px-2 py-1 rounded-xl">
-              <BrandLockup />
+            <Link to="/" className="tkv-focusable block px-1.5 py-1 rounded-xl">
+              <BrandLockup showTagline />
             </Link>
 
             <button
               type="button"
               onClick={() => setQuickFindOpen(true)}
-              className="tkv-focusable w-full min-h-[44px] px-3.5 py-2 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] flex items-center justify-between text-sm text-[var(--tkv-ink-muted)] hover:border-[var(--tkv-primary)]"
+              className="tkv-focusable w-full min-h-[44px] px-3.5 py-2 rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] flex items-center justify-between gap-2 text-sm text-[var(--tkv-ink-muted)] hover:border-[var(--tkv-border-mint)] hover:text-[var(--tkv-ink)] transition-colors"
             >
-              <span className="inline-flex items-center gap-2 font-semibold">
+              <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
                 <VNextIcon name="search" size={16} />
                 Tìm nhanh…
               </span>
-              <kbd className="text-[11px] font-bold px-1.5 py-0.5 rounded bg-white border border-[var(--tkv-border)]">
+              <kbd className="text-[11px] font-semibold px-1.5 py-0.5 rounded bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-ink-secondary)] shrink-0">
                 ⌘K
               </kbd>
             </button>
@@ -322,13 +397,13 @@ export const ConsumerStudioShell: React.FC<{
                         to={item.to}
                         aria-current={active ? 'page' : undefined}
                         className={clsx(
-                          'tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-[14px] flex items-center gap-3 text-sm font-bold transition-colors',
+                          'tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-2xl flex items-center gap-3 text-sm transition-colors',
                           active
-                            ? 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)]'
-                            : 'text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-bg)] hover:text-[var(--tkv-ink)]',
+                            ? 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)] font-extrabold shadow-xs'
+                            : 'text-[var(--tkv-ink-secondary)] font-semibold hover:bg-[var(--tkv-bg)] hover:text-[var(--tkv-ink)]',
                         )}
                       >
-                        <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2.3 : 2} />
+                        <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2 : 1.7} />
                         <span>{item.label}</span>
                       </Link>
                     </li>
@@ -340,7 +415,7 @@ export const ConsumerStudioShell: React.FC<{
 
           <div className="space-y-2 pt-4 border-t border-[var(--tkv-border)]">
             <TkvButton
-              variant="coral"
+              variant="primary"
               fullWidth
               iconLeft="scan"
               onClick={() => navigate(vnextHref('/scan'))}
@@ -348,61 +423,65 @@ export const ConsumerStudioShell: React.FC<{
               Quét nguyên liệu
             </TkvButton>
             <Link
-              to={vnextHref('/shopping')}
-              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-[14px] flex items-center gap-2.5 text-sm font-bold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-bg)]"
+              to={vnextHref('/recipes')}
+              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-coral)] hover:text-[var(--tkv-coral-ink)] transition-colors"
             >
-              <VNextIcon name="shopping" size={18} />
-              <span>Danh sách đi chợ</span>
+              <VNextIcon name="recipes" size={18} />
+              <span>Kho công thức món Việt</span>
             </Link>
           </div>
         </aside>
 
         {/* Main Workbench Column */}
-        <div className="flex-1 min-w-0 flex flex-col pb-[calc(76px+env(safe-area-inset-bottom,0px))] lg:pb-8">
-          <OfflineBanner />
+        <div className="flex-1 min-w-0 flex flex-col pb-[calc(96px+env(safe-area-inset-bottom,0px))] lg:pb-8">
+          <div className="sticky top-0 z-20">
+            <OfflineBanner />
 
-          {/* Mobile / Tablet Contextual Header (<1024px) */}
-          <header className="lg:hidden sticky top-0 z-20 bg-[var(--tkv-bg)]/95 backdrop-blur-md border-b border-[var(--tkv-border)] px-4 h-14 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2.5 min-w-0">
-              {backTo ? (
-                <TkvIconButton
-                  icon="arrow-left"
-                  label="Quay lại trang trước"
-                  onClick={() => navigate(backTo)}
-                />
-              ) : (
-                <Link to="/" className="tkv-focusable rounded-xl py-1" aria-label="Takolio — Hôm nay">
-                  <BrandLockup compact />
-                </Link>
-              )}
-              {title ? (
-                <span className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] truncate">
-                  {title}
-                </span>
-              ) : (
-                <span className="tkv-heading text-base font-extrabold text-[var(--tkv-primary)]" translate="no">
-                  takolio
-                </span>
-              )}
-            </div>
+            {/* Mobile / Tablet Contextual Header (<1024px) */}
+            <header className="lg:hidden bg-[var(--tkv-header-glass)] backdrop-blur-md border-b border-[var(--tkv-border)] pt-[env(safe-area-inset-top,0px)]">
+              <div className="px-3 sm:px-4 min-h-14 py-1.5 flex items-center justify-between gap-1.5 sm:gap-2">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  {backTo ? (
+                    <TkvIconButton
+                      icon="arrow-left"
+                      label="Quay lại trang trước"
+                      onClick={() => navigate(backTo)}
+                    />
+                  ) : (
+                    <Link to="/" className="tkv-focusable rounded-xl py-1 shrink-0" aria-label="Takolio — Trang chủ">
+                      <BrandLockup compact />
+                    </Link>
+                  )}
+                  {title ? (
+                    <span className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] truncate min-w-0">
+                      {title}
+                    </span>
+                  ) : (
+                    <span className="tkv-heading text-lg font-black text-[var(--tkv-ink)] truncate" translate="no">
+                      Takolio
+                    </span>
+                  )}
+                </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <TkvIconButton
-                icon="search"
-                label="Tìm nhanh trong bếp"
-                onClick={() => setQuickFindOpen(true)}
-              />
-              {showContextualScan && (
-                <TkvIconButton
-                  icon="scan"
-                  tone="primary"
-                  label="Quét AI nguyên liệu"
-                  onClick={() => navigate(vnextHref('/scan'))}
-                />
-              )}
-              {headerRight}
-            </div>
-          </header>
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <TkvIconButton
+                    icon="search"
+                    label="Tìm nhanh trong bếp"
+                    onClick={() => setQuickFindOpen(true)}
+                  />
+                  {showContextualScan && (
+                    <TkvIconButton
+                      icon="scan"
+                      tone="primary"
+                      label="Quét AI nguyên liệu"
+                      onClick={() => navigate(vnextHref('/scan'))}
+                    />
+                  )}
+                  {headerRight}
+                </div>
+              </div>
+            </header>
+          </div>
 
           <main
             id="tkv-consumer-main"
@@ -414,12 +493,12 @@ export const ConsumerStudioShell: React.FC<{
         </div>
       </div>
 
-      {/* Mobile 5-Root Bottom Navigation (<1024px) — Scan stays contextual, NOT a 6th root */}
+      {/* Mobile 5-Root Bottom Navigation (<1024px): Trang chủ · Tủ lạnh · Thực đơn · Mua sắm · Cá nhân */}
       <nav
         aria-label="Điều hướng chính trên điện thoại"
-        className="lg:hidden fixed inset-x-0 bottom-0 z-30 bg-[var(--tkv-surface)]/98 backdrop-blur-md border-t border-[var(--tkv-border)] pb-[env(safe-area-inset-bottom,0px)]"
+        className="lg:hidden fixed inset-x-0 bottom-0 z-30 overflow-x-clip bg-[var(--tkv-nav-glass)] backdrop-blur-md border-t border-[var(--tkv-border)] pb-[env(safe-area-inset-bottom,0px)]"
       >
-        <ul className="grid grid-cols-5 px-1.5 py-1">
+        <ul className="grid grid-cols-5 px-1 pt-1.5 pb-2">
           {roots.map((item) => {
             const active = item.match(pathname);
             return (
@@ -428,19 +507,19 @@ export const ConsumerStudioShell: React.FC<{
                   to={item.to}
                   aria-current={active ? 'page' : undefined}
                   className={clsx(
-                    'tkv-focusable min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl px-1 py-1.5 transition-colors',
+                    'tkv-focusable min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl px-0.5 py-1 transition-colors',
                     active ? 'text-[var(--tkv-primary)]' : 'text-[var(--tkv-ink-muted)]',
                   )}
                 >
                   <span
                     className={clsx(
-                      'w-10 h-7 rounded-full flex items-center justify-center transition-colors',
-                      active && 'bg-[var(--tkv-surface-mint)]',
+                      'w-10 h-7 rounded-full flex items-center justify-center transition-colors shrink-0',
+                      active && 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)]',
                     )}
                   >
-                    <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2.3 : 1.9} />
+                    <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2 : 1.65} />
                   </span>
-                  <span className={clsx('text-[11px] leading-none truncate max-w-full', active ? 'font-extrabold' : 'font-semibold')}>
+                  <span className={clsx('max-w-full truncate text-[10.5px] sm:text-[11px] leading-snug pb-0.5', active ? 'font-extrabold' : 'font-semibold')}>
                     {item.label}
                   </span>
                 </Link>
@@ -450,25 +529,31 @@ export const ConsumerStudioShell: React.FC<{
         </ul>
       </nav>
 
-      {/* C02 Quick Find Dialog (Real navigation & search redirect, zero fabricated hits) */}
+      {/* C02 Quick Find Dialog */}
       {quickFindOpen && (
         <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="tkv-c02-title"
-          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-start justify-center p-4 pt-14"
+          role="presentation"
+          className="fixed inset-0 z-50 bg-[var(--tkv-scrim)] backdrop-blur-xs flex items-start justify-center p-4 pt-[max(1rem,env(safe-area-inset-top,0px))] sm:pt-14 pb-[max(1rem,env(safe-area-inset-bottom,0px))] overflow-y-auto animate-fade-in"
           onClick={(e) => {
-            if (e.target === e.currentTarget) setQuickFindOpen(false);
+            if (e.target === e.currentTarget) closeQuickFind();
           }}
         >
-          <div className="w-full max-w-lg rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-xl p-5 space-y-4">
+          <div
+            ref={quickDialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tkv-c02-title"
+            className="w-full max-w-lg max-h-[calc(100dvh-2rem-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))] overflow-y-auto overscroll-contain rounded-3xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-[var(--tkv-shadow-elevated)] p-4 sm:p-5 space-y-4 animate-slide-up"
+          >
             <div className="flex items-center justify-between gap-2">
               <h2 id="tkv-c02-title" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
                 Tìm nhanh trong căn bếp
               </h2>
-              <TkvIconButton icon="close" label="Đóng hộp thoại tìm nhanh" onClick={() => setQuickFindOpen(false)} />
+              <TkvIconButton icon="close" label="Đóng hộp thoại tìm nhanh" onClick={closeQuickFind} />
             </div>
             <TkvSearchField
+              inputRef={quickInputRef}
+              autoFocus
               value={quickQuery}
               onChange={setQuickQuery}
               placeholder="Nhập tên món ăn hoặc nguyên liệu…"
@@ -480,7 +565,7 @@ export const ConsumerStudioShell: React.FC<{
                   size="sm"
                   iconLeft="recipes"
                   onClick={() => {
-                    setQuickFindOpen(false);
+                    closeQuickFind();
                     navigate(`/recipes?q=${encodeURIComponent(quickQuery.trim())}`);
                   }}
                 >
@@ -491,7 +576,7 @@ export const ConsumerStudioShell: React.FC<{
                   variant="secondary"
                   iconLeft="fridge"
                   onClick={() => {
-                    setQuickFindOpen(false);
+                    closeQuickFind();
                     navigate(`/fridge?q=${encodeURIComponent(quickQuery.trim())}`);
                   }}
                 >
@@ -504,8 +589,8 @@ export const ConsumerStudioShell: React.FC<{
                 <li key={sc.to}>
                   <Link
                     to={sc.to}
-                    onClick={() => setQuickFindOpen(false)}
-                    className="tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-3 bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] text-sm font-bold text-[var(--tkv-ink)]"
+                    onClick={closeQuickFind}
+                    className="tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-2xl flex items-center justify-between gap-3 bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border)] text-sm font-semibold text-[var(--tkv-ink)] transition-colors"
                   >
                     <span className="inline-flex items-center gap-2.5">
                       <VNextIcon name={sc.icon} size={18} className="text-[var(--tkv-primary)]" />

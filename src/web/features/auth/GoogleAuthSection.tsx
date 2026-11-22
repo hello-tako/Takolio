@@ -19,7 +19,7 @@ export const GoogleAuthSection: React.FC<GoogleAuthSectionProps> = ({
       ref={buttonRef as RefObject<HTMLDivElement>}
       className={
         status === 'ready'
-          ? 'w-full flex justify-center min-h-[44px]'
+          ? 'w-full max-w-full overflow-hidden flex justify-center min-h-[44px]'
           : 'sr-only'
       }
     />
@@ -43,7 +43,7 @@ export const GoogleAuthSection: React.FC<GoogleAuthSectionProps> = ({
           <button
             type="button"
             onClick={onRetry}
-            className="tkv-focusable mt-1.5 inline-flex items-center justify-center min-h-[32px] px-3 rounded-lg font-bold text-[var(--tkv-primary)] underline"
+            className="tkv-focusable mt-1.5 inline-flex items-center justify-center min-h-[44px] px-3 rounded-lg font-bold text-[var(--tkv-primary)] underline"
           >
             Tải lại nút Google
           </button>

@@ -262,6 +262,10 @@ export const ScanPage: React.FC = () => {
                 void startAIScan(base64);
               }}
               onSelectFromGallery={() => fileInputRef.current?.click()}
+              onManualEntry={() => {
+                reset();
+                navigate('/fridge?action=add');
+              }}
             />
           )}
           {isProcessing && (

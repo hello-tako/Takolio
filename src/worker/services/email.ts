@@ -25,7 +25,7 @@ export type EmailResult = {
   | { sent: false; state: 'rejected' | 'delivery_unknown' | 'not_configured'; evidence: EmailEvidence; error: EmailError }
 );
 
-const FROM_NAME = 'Takosan';
+const FROM_NAME = 'Takolio';
 // Cloudflare onboards the apex sending domain; subdomains need separate onboarding.
 const FROM_EMAIL = 'no-reply@tungjpstore.net';
 const PROVIDER_TIMEOUT_MS = 8000;
@@ -248,7 +248,7 @@ export async function sendEmail(env: Env, params: SendEmailParams): Promise<Emai
 }
 
 /**
- * Build Frigo-styled OTP email. Purpose-specific copy in Vietnamese.
+ * Build Takolio-styled OTP email (Official Brand Board: Leaf Green, Tomato Coral & Warm Ivory). Purpose-specific copy in Vietnamese.
  */
 export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_password' | 'login'): { subject: string; html: string; text: string } {
   const action =
@@ -260,29 +260,29 @@ export function buildOtpEmail(code: string, purpose: 'register' | 'forgot_passwo
 
   const subject = `Mã xác thực Takolio: ${code}`;
 
-  const text = `Mã ${action} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takolio: Ăn đủ. Mua đủ. Dùng hết.`;
+  const text = `Mã ${action} của bạn là: ${code}\nMã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.\n\nNếu bạn không yêu cầu, hãy bỏ qua email này.\n— Takolio: Bữa ngon, nhẹ đầu. · Ăn đủ. Mua đủ. Dùng hết.`;
 
   const html = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#F8FAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAF9;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#FFF9F1;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FFF9F1;padding:32px 16px;">
     <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,0.08);">
-        <tr><td style="background:#059669;padding:24px 32px;text-align:center;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border:1px solid #DCE6DE;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(21,46,44,0.06);">
+        <tr><td style="background:#196149;padding:24px 32px;text-align:center;">
           <span style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.02em;">Takolio</span>
         </td></tr>
         <tr><td style="padding:32px;">
-          <h1 style="margin:0 0 8px;font-size:18px;color:#0F172A;">Mã ${action}</h1>
-          <p style="margin:0 0 24px;font-size:14px;color:#475569;line-height:1.5;">Nhập mã sau vào ứng dụng Frigo để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
-          <div style="background:#E6F4EA;border-radius:12px;padding:20px;text-align:center;margin-bottom:24px;">
-            <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#059669;font-family:'SF Mono',Menlo,monospace;">${code}</span>
+          <h1 style="margin:0 0 8px;font-size:18px;color:#152E2C;">Mã ${action}</h1>
+          <p style="margin:0 0 24px;font-size:14px;color:#3C5954;line-height:1.5;">Nhập mã sau vào ứng dụng Takolio để tiếp tục. Mã có hiệu lực trong <strong>10 phút</strong>.</p>
+          <div style="background:#E7F4EC;border:1px solid #BDE0CC;border-radius:14px;padding:20px;text-align:center;margin-bottom:24px;">
+            <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#196149;font-family:'SF Mono',Menlo,monospace;">${code}</span>
           </div>
-          <p style="margin:0 0 4px;font-size:13px;color:#475569;">Không chia sẻ mã này với bất kỳ ai — nhân viên Frigo không bao giờ hỏi mã của bạn.</p>
-          <p style="margin:0;font-size:13px;color:#94A3B8;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
+          <p style="margin:0 0 4px;font-size:13px;color:#3C5954;">Không chia sẻ mã này với bất kỳ ai — nhân viên Takolio không bao giờ hỏi mã của bạn.</p>
+          <p style="margin:0;font-size:13px;color:#52706A;">Nếu bạn không yêu cầu mã này, hãy bỏ qua email.</p>
         </td></tr>
-        <tr><td style="background:#F8FAF9;padding:16px 32px;text-align:center;">
-          <span style="font-size:12px;color:#94A3B8;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
+        <tr><td style="background:#FFF0E9;padding:16px 32px;text-align:center;">
+          <span style="font-size:12px;color:#152E2C;">Takolio — Ăn đủ. Mua đủ. Dùng hết.</span>
         </td></tr>
       </table>
     </td></tr>

@@ -12,23 +12,31 @@ const render = (route: string) =>
     </StaticRouter>,
   );
 
-describe('vNext ConsumerStudioShell 5-destination navigation consistency', () => {
+describe('vNext ConsumerStudioShell 5-destination Brand Board navigation consistency', () => {
   it.each([
-    ['/', 'Hôm nay'],
+    ['/', 'Trang chủ'],
+    ['/recipes', 'Trang chủ'],
+    ['/recipes/thit-kho-trung', 'Trang chủ'],
     ['/fridge', 'Tủ lạnh'],
     ['/fridge/lot-1', 'Tủ lạnh'],
-    ['/recipes', 'Món ăn'],
-    ['/recipes/thit-kho-trung', 'Món ăn'],
+    ['/scan', 'Tủ lạnh'],
     ['/planner', 'Thực đơn'],
     ['/planner/new', 'Thực đơn'],
-    ['/me', 'Tôi'],
-    ['/settings/privacy', 'Tôi'],
-    ['/plus', 'Tôi'],
-    ['/notifications', 'Tôi'],
+    ['/shopping', 'Mua sắm'],
+    ['/me', 'Cá nhân'],
+    ['/settings/privacy', 'Cá nhân'],
+    ['/plus', 'Cá nhân'],
+    ['/notifications', 'Cá nhân'],
   ])('highlights %s under its canonical 5-root destination (%s)', (route, expectedActiveLabel) => {
     const roots = getConsumerRoots();
     expect(roots).toHaveLength(5);
-    expect(roots.map((r) => r.label)).toEqual(['Hôm nay', 'Tủ lạnh', 'Món ăn', 'Thực đơn', 'Tôi']);
+    expect(roots.map((r) => r.label)).toEqual([
+      'Trang chủ',
+      'Tủ lạnh',
+      'Thực đơn',
+      'Mua sắm',
+      'Cá nhân',
+    ]);
 
     const html = render(route);
     for (const r of roots) {

@@ -1,9 +1,23 @@
 import { Hono } from 'hono';
+import { bodyLimit } from 'hono/body-limit';
 import { Env, AuthContext } from '../types';
 import { SQL } from '@frigo/db';
 import { z } from 'zod';
+import { rateLimiter } from '../middleware/rate-limit';
 
 export const preferencesRoutes = new Hono<{ Bindings: Env; Variables: { auth: AuthContext } }>();
+
+preferencesRoutes.use(
+  '/preferences',
+  bodyLimit({
+    maxSize: 16_384,
+    onError: (c) => c.json({ error: 'Dữ liệu tùy chọn quá lớn', code: 'PAYLOAD_TOO_LARGE' }, 413),
+  })
+);
+preferencesRoutes.use(
+  '/preferences',
+  rateLimiter({ maxRequests: 60, windowSeconds: 60, prefix: 'rl_preferences' })
+);
 
 const DEFAULT_PREFERENCES = {
   householdSize: 2,

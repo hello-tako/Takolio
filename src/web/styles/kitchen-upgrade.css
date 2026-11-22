@@ -406,7 +406,7 @@
 
 /* The empty-state block includes the existing add action beside its scan action. */
 [data-kitchen-density='compact']
-  .takosan-rebuild:has(.kitchen-stock-action):has(.kitchen-empty-state)
+  :is(.takolio-rebuild, .takosan-rebuild):has(.kitchen-stock-action):has(.kitchen-empty-state)
   > .kitchen-stock-action {
   display: none;
 }
@@ -422,7 +422,7 @@
 }
 
 /* Keep low-contrast control states readable without changing shared primitives. */
-.takosan-rebuild :is(
+:is(.takolio-rebuild, .takosan-rebuild) :is(
   .kitchen-search-input,
   .family-collection-heading input,
   .family-ingredient-field input[type='search'],
@@ -432,14 +432,14 @@
   opacity: 1;
 }
 
-.takosan-rebuild
+:is(.takolio-rebuild, .takosan-rebuild)
   .account-switch-row
   button[role='switch'][aria-checked='false']:not(:disabled) {
-  background-color: rgb(var(--semantic-text-muted-rgb));
+  background-color: var(--tkv-border-strong, #b8cabe);
 }
 
-/* Inset strokes restore measured control boundaries without changing geometry. */
-.takosan-rebuild :is(
+/* Inset strokes keep subtle control boundaries aligned with Brand Board v2 tokens. */
+:is(.takolio-rebuild, .takosan-rebuild) :is(
   .kitchen-search-input,
   .discovery-select-label select,
   .discovery-filter-panel summary,
@@ -449,5 +449,5 @@
   .shopping-add-form input,
   .shopping-add-form select
 ) {
-  box-shadow: inset 0 0 0 1px rgb(var(--semantic-text-muted-rgb));
+  box-shadow: none;
 }

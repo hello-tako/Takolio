@@ -7,6 +7,7 @@ export * from './router';
 export * from './model-governance';
 export * from './telemetry';
 export * from './prompts';
+export * from './locale-prompt';
 export * from './task-runtime';
 export * from './providers/mock';
 export * from './providers/qwen';

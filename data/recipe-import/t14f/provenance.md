@@ -11,7 +11,7 @@ the promoted D1 migrations and the compiled Catalog Release Manifest.
 | `sourceType` | `ai_generated` |
 | `sourceNamespace` | `frigo.t14f.original.v1` |
 | `sourceReference` | `T14F project-original recipe generation batch <batchId>` |
-| `license` | Project-original content authored for Frigo/Takosan (CC0-equivalent internal grant); no third-party recipe text |
+| `license` | Project-original content authored for Takolio (CC0-equivalent internal grant); no third-party recipe text |
 | `usageNote` | AI-drafted, editorially reviewed household recipes. Structured ingredient lines are canonical inventory items; pantry seasonings appear in step prose only. No nutrition claims (no evidence). |
 | web scraping | **NO** |
 | third-party recipe text copied | **NO** |

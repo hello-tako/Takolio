@@ -86,7 +86,7 @@ export function PlannerMeal({
     return (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
@@ -99,14 +99,14 @@ export function PlannerMeal({
     return composing && !compositions.isError && slotExists ? (
       <>
         <Link
-          className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
           to={`/planner/${plan.id}`}
         >
           <ArrowLeft size={16} />
           {t.back}
         </Link>
         <Card className="planning-meal-overview !p-5 sm:!p-6">
-          <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+          <p className="text-xs font-bold text-semantic-text-primary uppercase tracking-wide">
             {slotComposition?.date} · {slotComposition ? t[slotComposition.mealType] : ''}
           </p>
           <h2 className="text-2xl font-heading font-bold mt-2">
@@ -149,14 +149,14 @@ export function PlannerMeal({
   return (
     <>
       <Link
-        className="inline-flex items-center gap-2 min-h-11 text-sm text-takosan-green-deep font-semibold"
+        className="inline-flex items-center gap-2 min-h-11 text-sm text-semantic-text-primary font-semibold"
         to={`/planner/${plan.id}`}
       >
         <ArrowLeft size={16} />
         {t.back}
       </Link>
       <Card className="planning-meal-overview !p-5 sm:!p-6">
-        <p className="text-xs font-bold text-takosan-green-deep uppercase tracking-wide">
+        <p className="text-xs font-bold text-semantic-text-primary uppercase tracking-wide">
           {t[meal.mealType]} · {meal.date}
         </p>
         <h2 className="text-2xl font-heading font-bold text-semantic-text-primary mt-2 leading-tight">
@@ -281,7 +281,7 @@ export function PlannerMeal({
               </p>
             )}
             {(explanation || aiFailed) && (
-              <p role="status" className="text-xs text-takosan-green-deep mt-3">
+              <p role="status" className="text-xs text-semantic-text-primary mt-3">
                 {explanation?.source === 'ai' ? t.aiUsed : t.fallback}
               </p>
             )}
@@ -291,7 +291,7 @@ export function PlannerMeal({
       )}
       <Card>
         <h3 className="font-heading font-bold text-lg">{t.feedback}</h3>
-        <div className="grid grid-cols-2 gap-2 mt-4">
+        <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-2 mt-4">
           {(
             [
               'liked',
@@ -303,6 +303,7 @@ export function PlannerMeal({
           ).map((type) => (
             <Button
               key={type}
+              className="px-3 text-center"
               variant={receipts.includes(type) ? 'secondary' : 'outline'}
               disabled={!!model.busy || receipts.includes(type)}
               onClick={() => void feedback(type)}
@@ -337,15 +338,16 @@ export function PlannerMeal({
             }
           }}
           aria-labelledby="swap-title"
-          className="planning-swap-dialog w-[calc(100%-2rem)] max-w-lg max-h-[85dvh] rounded-2xl p-0 shadow-xl backdrop:bg-semantic-overlay/50"
+          className="planning-swap-dialog m-auto w-[calc(100%-2rem)] max-w-lg max-h-[85dvh] overflow-y-auto rounded-2xl p-0 shadow-xl backdrop:bg-semantic-overlay/50"
         >
-          <div className="p-5">
+          <div className="p-4 sm:p-5">
             <div className="flex items-start justify-between gap-2">
-              <h2 id="swap-title" className="font-heading font-bold text-xl">
+              <h2 id="swap-title" className="font-heading font-bold text-lg sm:text-xl min-w-0 flex-1">
                 {t.chooseAlternative}
               </h2>
               <Button
                 variant="ghost"
+                className="!px-2.5 !min-w-[44px]"
                 aria-label={t.cancel}
                 disabled={!!model.busy}
                 onClick={() => setSwapOpen(false)}
@@ -382,9 +384,9 @@ export function PlannerMeal({
                   .map((item) => (
                     <li
                       key={item.id}
-                      className="border border-semantic-border rounded-xl p-3 flex items-center gap-3 justify-between"
+                      className="border border-semantic-border rounded-xl p-3 flex flex-wrap items-center gap-2 sm:gap-3 justify-between"
                     >
-                      <span className="text-sm font-semibold">{item.title}</span>
+                      <span className="text-sm font-semibold min-w-0 flex-1">{item.title}</span>
                       <Button
                         disabled={!!model.busy}
                         variant="secondary"

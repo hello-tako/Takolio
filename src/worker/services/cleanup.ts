@@ -81,9 +81,85 @@ export async function cleanupStrictOtps(db: NonNullable<Env['DB']>, days: number
   return results.reduce((count, result) => count + changesOf(result), 0);
 }
 
+const DEFAULT_GUEST_RETENTION_DAYS = 7;
+const MAX_GUEST_CLEANUP_BATCH = 100;
+
 /** Legacy sessions are not an authentication or cleanup source after cutover. */
 export async function cleanupExpiredSessions(db: NonNullable<Env['DB']>, days: number): Promise<number> {
   return deleteExpired(db, 'sessions_v2', 'expires_at', days);
+}
+
+/**
+ * Bounded pruning of abandoned guest accounts (`is_guest = 1`) older than
+ * `days` (default 7) with no active/unexpired `sessions_v2` row and no shared
+ * household members. Deletes child rows in strict foreign-key leaf-to-root
+ * order inside a single atomic D1 batch.
+ */
+export async function cleanupExpiredGuestAccounts(
+  db: NonNullable<Env['DB']>,
+  days = DEFAULT_GUEST_RETENTION_DAYS,
+  batchLimit = MAX_GUEST_CLEANUP_BATCH,
+): Promise<number> {
+  const safeDays = Number.isFinite(days) ? Math.max(1, Math.floor(days)) : DEFAULT_GUEST_RETENTION_DAYS;
+  const safeLimit = Number.isFinite(batchLimit) ? Math.min(500, Math.max(1, Math.floor(batchLimit))) : MAX_GUEST_CLEANUP_BATCH;
+  const candidates = await db
+    .prepare(
+      `SELECT u.id
+       FROM users u
+       WHERE u.is_guest = 1
+         AND datetime(u.created_at) IS NOT NULL
+         AND datetime(u.created_at) < datetime('now', ?)
+         AND NOT EXISTS (
+           SELECT 1 FROM sessions_v2 s
+           WHERE s.user_id = u.id
+             AND s.revoked_at IS NULL
+             AND (datetime(s.expires_at) IS NULL OR datetime(s.expires_at) > datetime('now'))
+         )
+         AND NOT EXISTS (
+           SELECT 1 FROM households h
+           JOIN household_members hm ON hm.household_id = h.id
+           WHERE h.created_by = u.id AND hm.user_id != u.id
+         )
+       ORDER BY u.created_at ASC
+       LIMIT ?`
+    )
+    .bind(`-${safeDays} days`, safeLimit)
+    .all<{ id: string }>();
+
+  const guestIds = (candidates.results || []).map((row) => row.id).filter(Boolean);
+  if (guestIds.length === 0) return 0;
+
+  const guestJson = JSON.stringify(guestIds);
+  const eligibleGuestsSql = `SELECT u.id FROM users u
+    WHERE u.is_guest = 1
+      AND u.id IN (SELECT value FROM json_each(?))
+      AND NOT EXISTS (
+        SELECT 1 FROM sessions_v2 s
+        WHERE s.user_id = u.id
+          AND s.revoked_at IS NULL
+          AND (datetime(s.expires_at) IS NULL OR datetime(s.expires_at) > datetime('now'))
+      )
+      AND NOT EXISTS (
+        SELECT 1 FROM households h
+        JOIN household_members hm ON hm.household_id = h.id
+        WHERE h.created_by = u.id AND hm.user_id != u.id
+      )`;
+  const eligibleHouseholdsSql = `SELECT id FROM households WHERE created_by IN (${eligibleGuestsSql})`;
+
+  // Delete NO-ACTION user/household references first, then delete `households`
+  // so SQLite ON DELETE CASCADE cleans up lot/command/observation/swap-receipt
+  // tables after `households` is gone (satisfying their `WHEN EXISTS(households)`
+  // immutability triggers), and finally delete `users`.
+  const results = await db.batch([
+    db.prepare(`DELETE FROM scans WHERE household_id IN (${eligibleHouseholdsSql}) OR user_id IN (${eligibleGuestsSql})`).bind(guestJson, guestJson),
+    db.prepare(`DELETE FROM ai_requests WHERE user_id IN (${eligibleGuestsSql})`).bind(guestJson),
+    db.prepare(`DELETE FROM shopping_plan_sources WHERE creator_user_id IN (${eligibleGuestsSql})`).bind(guestJson),
+    db.prepare(`DELETE FROM cooked_meals WHERE household_id IN (${eligibleHouseholdsSql}) OR user_id IN (${eligibleGuestsSql})`).bind(guestJson, guestJson),
+    db.prepare(`DELETE FROM households WHERE created_by IN (${eligibleGuestsSql})`).bind(guestJson),
+    db.prepare(`DELETE FROM users WHERE id IN (${eligibleGuestsSql})`).bind(guestJson),
+  ]);
+  if (results.some((result) => !result.success)) throw new Error('GUEST_CLEANUP_UNAVAILABLE');
+  return changesOf(results[results.length - 1]);
 }
 
 /** Keep tombstones while the scan or its quota reservation may still need replay. */
@@ -173,8 +249,9 @@ export async function runScheduledCleanup(env: Env): Promise<CleanupReport> {
   }
 
   try {
-    const deleted = await cleanupExpiredSessions(db, retention.sessionDays);
-    tasks.push({ task: 'expired-sessions', status: 'ok', deleted });
+    const sessionsDeleted = await cleanupExpiredSessions(db, retention.sessionDays);
+    const guestsDeleted = await cleanupExpiredGuestAccounts(db, DEFAULT_GUEST_RETENTION_DAYS);
+    tasks.push({ task: 'expired-sessions', status: 'ok', deleted: sessionsDeleted + guestsDeleted });
   } catch {
     tasks.push({ task: 'expired-sessions', status: 'error', deleted: 0, error: CLEANUP_TASK_FAILURE });
   }

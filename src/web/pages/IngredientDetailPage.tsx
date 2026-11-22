@@ -28,7 +28,7 @@ const EXPIRY_TONE_CLASS: Record<string, string> = {
   expired: 'bg-semantic-danger-soft text-semantic-danger-strong border-semantic-danger/30',
   expiring: 'bg-semantic-warning-soft text-semantic-warning-strong border-semantic-warning/30',
   estimated: 'bg-semantic-info-soft text-semantic-info border-semantic-info/30',
-  fresh: 'bg-takosan-mint text-takosan-green-deep border-takosan-mint-deep',
+  fresh: 'bg-semantic-accent-soft text-semantic-text-primary border-semantic-border',
 };
 
 const STORAGE_LABEL: Record<string, string> = {
@@ -346,7 +346,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       <div className="stock-facts">
         <div className="bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs">
           <div className="flex items-center gap-1.5 text-semantic-text-muted mb-1">
-            <Layers aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+            <Layers aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
             <span className="text-[11px] font-semibold">Vị trí</span>
           </div>
           <p className="font-heading font-semibold text-sm text-semantic-text-primary">
@@ -356,7 +356,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
 
         <div className="bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs">
           <div className="flex items-center gap-1.5 text-semantic-text-muted mb-1">
-            <Calendar aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+            <Calendar aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
             <span className="text-[11px] font-semibold">Hạn sử dụng</span>
           </div>
           <p
@@ -374,7 +374,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       {lot && (
         <div className="stock-provenance bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs space-y-2">
           <div className="flex items-center gap-1.5 text-semantic-text-muted">
-            <Receipt aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+            <Receipt aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
             <span className="text-[11px] font-semibold">Nguồn gốc &amp; lô</span>
           </div>
           <dl className="grid grid-cols-2 gap-y-1.5 text-xs">
@@ -415,7 +415,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
           onClick={startEdit}
           className="stock-edit-trigger flex items-center justify-center gap-2"
         >
-          <PackageOpen aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+          <PackageOpen aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
           <span>Sửa thông tin nguyên liệu</span>
         </button>
       ) : (
@@ -449,7 +449,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 maxLength={100}
                 value={draft.name}
                 onChange={(event) => setDraft({ ...draft, name: event.target.value })}
-                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               />
             </div>
             <div>
@@ -471,7 +471,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   setDraft({ ...draft, quantity: event.target.value });
                 }}
                 aria-describedby="lot-quantity-note"
-                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               />
               <p id="lot-quantity-note" className="mt-1 text-xs text-semantic-text-secondary">
                 Nhập lượng bạn vừa kiểm tra, ví dụ 0,5 kg hoặc 250 g.
@@ -497,7 +497,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                     if (converted !== null) quantityUnitRef.current = unit;
                     setDraft({ ...draft, unit, quantity: converted === null ? draft.quantity : String(converted) });
                   }}
-                  className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                  className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
                 >
                   <option value="g">gam (g)</option>
                   <option value="kg">kg</option>
@@ -521,7 +521,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   name="category"
                   value={draft.category}
                   onChange={(event) => setDraft({ ...draft, category: event.target.value })}
-                  className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                  className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
                 >
                   {!Object.hasOwn(CATEGORY_LABEL, editBaseline.category) && (
                     <option value={editBaseline.category}>{editBaseline.category}</option>
@@ -548,7 +548,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 type="date"
                 value={draft.expiryDate}
                 onChange={(event) => setDraft({ ...draft, expiryDate: event.target.value })}
-                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               />
               <p className="text-[11px] text-semantic-text-muted mt-1">
                 Ngày bạn chọn được lưu là hạn dùng đã biết chắc chắn.
@@ -566,7 +566,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 name="storage"
                 value={draft.storage}
                 onChange={(event) => setDraft({ ...draft, storage: event.target.value })}
-                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-takosan-green/20 focus:border-takosan-green"
+                className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               >
                 <option value="fridge">Ngăn mát</option>
                 <option value="freezer">Ngăn đông</option>
@@ -587,7 +587,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
 
       <div className="pt-2">
         <h3 className="font-heading font-bold text-base text-semantic-text-primary flex items-center gap-1.5 mb-3">
-          <ChefHat aria-hidden="true" className="w-4 h-4 text-takosan-green" />
+          <ChefHat aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
           <span>Món có nguyên liệu này ({matchingRecipes.length})</span>
         </h3>
 
@@ -596,12 +596,12 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
           thiếu và cách nấu.
         </p>
         {matchingRecipes.length === 0 && (
-          <p className="stock-recipe-note">
-            Chưa có món liên quan trong danh sách này.{' '}
-            <Link to="/recipes" className="underline">
+          <div className="stock-recipe-note space-y-2">
+            <p>Chưa có món liên quan trong danh sách này.</p>
+            <Link to="/recipes" className="min-h-[44px] inline-flex items-center font-semibold text-semantic-action-primary underline underline-offset-4">
               Khám phá món ăn
             </Link>
-          </p>
+          </div>
         )}
         <div className="space-y-2.5">
           {matchingRecipes.map((recipe) => (
@@ -609,7 +609,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
               key={recipe.id}
               to={`/recipes/${recipe.slug}`}
               aria-label={recipe.title}
-              className="stock-recipe-link bg-white rounded-xl p-3 flex items-center gap-3.5 border border-semantic-border shadow-xs cursor-pointer hover:border-takosan-green/40 active:scale-[0.99] transition-tap"
+              className="stock-recipe-link bg-white rounded-xl p-3 flex items-center gap-3.5 border border-semantic-border shadow-xs cursor-pointer hover:border-semantic-border-strong active:scale-[0.99] transition-tap"
             >
               <img
                 src={resolveRecipeImage(recipe).src}
@@ -621,18 +621,18 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 onError={recipeImageErrorHandler(resolveRecipeImage(recipe).fallbackSrc)}
               />
               <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-takosan-mint text-takosan-green-deep border border-takosan-mint-deep/60 uppercase">
-                  {recipe.cuisine}
+                <span className="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">
+                  {recipe.cuisine === 'vietnamese' ? 'Món Việt' : recipe.cuisine}
                 </span>
-                <h4 className="font-heading font-semibold text-sm text-semantic-text-primary truncate mt-1">
+                <h4 className="font-heading font-semibold text-sm text-semantic-text-primary line-clamp-2 mt-1">
                   {recipe.title}
                 </h4>
-                <span className="flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
-                  <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted" />
+                <span className="inline-flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
+                  <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted shrink-0" />
                   <span>{recipe.cookTimeMinutes} phút</span>
                 </span>
               </div>
-              <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted" />
+              <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted shrink-0" />
             </Link>
           ))}
         </div>

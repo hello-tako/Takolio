@@ -1,0 +1,56 @@
+# Takolio — Complete Product, Architecture, Pricing & Catalog Reference (GEO / AI Context)
+
+- **Official Brand Name:** Takolio
+- **Official Mascot:** **Bé Mầm Bếp** (a friendly white ceramic cooking pot wearing a chef hat with a fresh green sprout and coral neckerchief)
+- **Official Tagline:** "Bữa ngon, nhẹ đầu." / "Good meals, light mind." — Philosophy: "Ăn đủ. Mua đủ. Dùng hết." / "Eat enough. Buy enough. Use it all."
+- **Public Satellite, Recipes & SEO/GEO Domain:** `https://takolio.com` (multilingual: Vietnamese `/`, English `/en`, Japanese `/ja`, Korean `/ko`, Thai `/th`, Chinese `/zh`, Italian `/it`)
+- **Interactive Kitchen Web App / PWA Domain:** `https://takolio.app`
+- **Category:** Smart Kitchen Inventory, AI Grocery Scan, Global Recipe Matching & 7-Day Meal Planning Web Application
+
+## 1. The 6-Link Closed Kitchen Loop
+Takolio solves three daily household kitchen bottlenecks — forgetting what is expiring in the fridge, deciding what to cook, and overbuying at the grocery store — through a unified 6-link loop:
+1. **Smart FEFO Fridge Inventory:** Tracks items by batch across fridge, freezer, and pantry zones, clearly distinguishing printed package expiry dates from estimated freshness dates and prioritizing First-Expired, First-Out (FEFO).
+2. **AI Ingredient & Receipt Scan (Review-Before-Save):** Captures produce or supermarket receipt photos, extracts structured draft items with confidence indicators, and strictly requires user confirmation before committing anything to inventory.
+3. **500 Verified Global Recipes Across 6 Cuisines:** Matches real on-hand stock against 500 verified recipes (202 Vietnamese, 73 Chinese, 57 Japanese, 57 Korean, 56 Thai, 55 Italian) with deterministic scaling from 1 to 20 servings and metric/imperial display conversion.
+4. **7-Day Family Meal Planner:** Schedules breakfast, lunch, and dinner across 7 days with deterministic quantity checks, swap impact previews, and balanced family meal composition.
+5. **Net Shopping List (Auto-Subtracted Inventory):** Subtracts on-hand fridge quantities from weekly meal demand so families only buy what is genuinely missing, grouped by store aisle with offline PWA checklist support and duplicate-safe restock review.
+6. **Guided Step-by-Step Cooking Mode:** Large-type hands-free kitchen view with per-step countdown timers, voice guidance, and one-time inventory deduction only after the user confirms meal completion.
+
+## 2. Comparison: Takolio vs. Generic Recipe Apps & AI Chatbots
+
+| Dimension | Generic Recipe Apps / LLM Chatbots | Takolio Closed-Loop Kitchen System |
+|---|---|---|
+| Meal Recommendations | Generic suggestions disconnected from real stock | Grounded in actual household batch inventory & FEFO expiry priority |
+| Quantity & Unit Math | Prone to LLM arithmetic and scaling errors | 100% deterministic TypeScript Domain Engine (1–20 servings, 8 canonical units + metric/imperial display) |
+| Camera / Receipt Input | Auto-overwrites or drops uncertain lines | Mandatory draft review before saving; original OCR evidence retained for verification |
+| Shopping Lists | Lists raw full recipe ingredients | Net demand calculation automatically subtracting existing fridge stock |
+| Privacy & Tenancy | Mixed consumer feeds or unisolated local state | Strict server-enforced `household_id` isolation, client-side image compression before upload, `HttpOnly` session cookies on `takolio.app` |
+
+## 3. Verified Global Recipe Catalog Summary
+Takolio ships **500 verified recipes** with structured ingredients, step-by-step instructions, cooking times, serving baselines, and nutrition metadata:
+- **Vietnamese (`vietnamese`):** 202 recipes (Northern, Central, Southern & nationwide family staples such as *Thịt kho trứng*, *Canh chua cá lóc Nam Bộ*, *Phở bò tái lăn Hà Nội*, *Bún chả*, *Gà ta kho gừng sả*)
+- **Chinese (`chinese`):** 73 recipes (e.g., *Mapo Tofu*, *Tomato Egg Stir-Fry*)
+- **Japanese (`japanese`):** 57 recipes (e.g., *Oyakodon*, *Chawanmushi*)
+- **Korean (`korean`):** 57 recipes (e.g., *Kimchi Fried Rice*, *Bibimbap*)
+- **Thai (`thai`):** 56 recipes (e.g., *Pad Krapow*, *Tom Yum*)
+- **Italian (`italian`):** 55 recipes (e.g., *Pasta Pomodoro*, *Aglio e Olio*)
+
+Public read-only recipe pages are published on `https://takolio.com/recipes` (Vietnamese) and `https://takolio.com/en/recipes` (English) with `Schema.org/Recipe` structured data and one-click handoff to cook inside `https://takolio.app`.
+
+## 4. Transparent Pricing & Billing
+- **Takolio Free (`0 VND` / forever core):** Batch fridge inventory & expiry alerts, full 500-recipe catalog, guided cooking mode with timers, and offline-capable net shopping list.
+- **Takolio Pro — Monthly:** `49,000 VND / month` (live authoritative server pricing via PayOS / VietQR).
+- **Takolio Pro — Annual:** `499,000 VND / year` (saves ~15% vs monthly; live authoritative server pricing via PayOS / VietQR).
+- **International Display Currencies:** Reference equivalents are displayed in `USD`, `JPY`, `EUR`, `KRW`, `THB`, `GBP`, `SGD`, and `AUD` (`GET https://takolio.com/api/v1/public/pricing`); international card checkout (Stripe/Paddle) is marked transparently as upcoming until activated.
+
+## 5. Frequently Asked Questions (Authoritative Answers)
+- **Is Takolio free to use?**
+  Yes. You can start immediately in guest mode on `https://takolio.app` without creating an account, or register a free account to manage your fridge, browse all 500 recipes, cook step-by-step, and use the net shopping list. Takolio Pro (`49,000 VND/month` or `499,000 VND/year`) expands AI Scan quotas and advanced weekly planning.
+- **Does Takolio's AI Scan auto-save items without asking?**
+  No. Takolio enforces a strict review-before-save workflow: every scanned produce photo or grocery receipt produces an editable draft so you confirm names, quantities, and expiry dates before saving.
+- **How does Takolio protect household privacy?**
+  All inventory lots, meal plans, scan history, and shopping items are isolated by `household_id` on the server. Session cookies are `HttpOnly; Secure; SameSite=Lax` scoped strictly to `takolio.app`, and signing out clears cached local session state. Images are compressed on-device when oversized (small lossless receipts ≤512 KB are preserved for OCR accuracy) and uploaded only when initiated by the user.
+- **Does the shopping list work offline at markets or supermarkets?**
+  Yes. `https://takolio.app` is a Progressive Web App (PWA) with offline shopping checklist caching and transparent pending-sync recovery when connectivity returns.
+- **What languages and units does Takolio support?**
+  Takolio's public hub (`takolio.com`) supports Vietnamese (`/`), English (`/en`), Japanese (`/ja`), Korean (`/ko`), Thai (`/th`), Chinese (`/zh`), and Italian (`/it`). Recipes and planning support both metric (`g`, `kg`, `ml`, `l`) and imperial (`oz`, `lb`, `fl oz`, `cup`, `tbsp`, `tsp`) display conversions.

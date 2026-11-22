@@ -770,6 +770,18 @@ code,
   margin: 0;
 }
 
+.chart-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-scroll:focus-visible {
+  outline: 3px solid var(--admin-green);
+  outline-offset: 2px;
+}
+
 .chart-svg {
   width: 100%;
   height: auto;

@@ -15,8 +15,8 @@ function RegisteredAccountPrompt({ returnTo, locale }: { returnTo: string; local
   const href = `/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`;
   const english = locale === 'en';
   return (
-    <Card className="planning-empty !py-10">
-      <LogIn className="mx-auto mb-5 text-takosan-green" size={40} aria-hidden="true" />
+    <Card className="planning-empty text-center !py-10">
+      <LogIn className="mx-auto mb-5 text-semantic-action-primary" size={40} aria-hidden="true" />
       <h2 className="text-xl font-heading font-bold">
         {english ? 'Sign in to use meal planning' : 'Đăng nhập để dùng kế hoạch bữa ăn'}
       </h2>
@@ -28,7 +28,7 @@ function RegisteredAccountPrompt({ returnTo, locale }: { returnTo: string; local
       <Link
         data-testid="planner-login-cta"
         to={href}
-        className="inline-flex min-h-12 mt-6 items-center justify-center gap-2 rounded-xl bg-takosan-green px-5 py-3 text-sm font-semibold text-white"
+        className="inline-flex w-full sm:w-auto min-h-12 mt-6 items-center justify-center gap-2 rounded-xl bg-semantic-action-primary px-5 py-3 text-sm font-semibold text-white"
       >
         {english ? 'Sign in to continue' : 'Đăng nhập để tiếp tục'}
         <ArrowRight size={18} aria-hidden="true" />
@@ -68,7 +68,7 @@ function PlannerWorkspace() {
           {setup ? (
             <PlannerSetup model={model} locale={locale} />
           ) : model.query.isPending ? (
-            <div role="status" className="py-16 text-center text-takosan-green-deep">
+            <div role="status" className="py-16 text-center text-semantic-text-primary">
               <CalendarDays className="mx-auto mb-4 animate-pulse" size={36} />
               <p>{t.loading}</p>
             </div>
@@ -84,13 +84,13 @@ function PlannerWorkspace() {
               </Link>
             </>
           ) : !plan ? (
-            <Card className="planning-empty !py-10">
-              <CalendarDays className="mx-auto mb-5 text-takosan-green" size={40} />
+            <Card className="planning-empty text-center !py-10">
+              <CalendarDays className="mx-auto mb-5 text-semantic-action-primary" size={40} />
               <h2 className="text-xl font-heading font-bold">{t.empty}</h2>
               <p className="mt-3 text-sm text-semantic-text-secondary leading-relaxed">{t.emptyText}</p>
               <Link
                 to="/planner/new"
-                className="inline-flex min-h-12 mt-6 items-center justify-center rounded-xl bg-takosan-green px-5 py-3 text-sm font-semibold text-white"
+                className="inline-flex w-full sm:w-auto min-h-12 mt-6 items-center justify-center rounded-xl bg-semantic-action-primary px-5 py-3 text-sm font-semibold text-white"
               >
                 {t.newPlan}
               </Link>

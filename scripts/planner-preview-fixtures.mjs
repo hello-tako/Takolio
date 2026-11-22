@@ -40,8 +40,8 @@ export function seedPlannerPreview(db) {
       ('${PREVIEW_USER_ID}', 'planner@example.test', 0);
     INSERT INTO auth_accounts (id, user_id, email, is_verified) VALUES
       ('planner-preview-account', '${PREVIEW_USER_ID}', 'planner@example.test', 1);
-    INSERT INTO profiles (id, user_id, display_name) VALUES
-      ('planner-preview-profile', '${PREVIEW_USER_ID}', 'Frigo Preview');
+    INSERT INTO profiles (id, user_id, display_name, onboarding_completed_at) VALUES
+      ('planner-preview-profile', '${PREVIEW_USER_ID}', 'Bếp trưởng', datetime('now'));
     INSERT INTO households (id, name, created_by) VALUES
       ('${PREVIEW_HOUSEHOLD_ID}', 'Bếp nhà Frigo', '${PREVIEW_USER_ID}');
     INSERT INTO household_members (id, household_id, user_id, role) VALUES
@@ -123,7 +123,8 @@ export function createPreviewControls({ getDatabase, resetDatabase, getOperatorR
           clearPrivateIdentity();
           localStorage.removeItem(LOGOUT_PENDING_KEY);
           useAuthStore.getState().setAuthSession({ id: user.id, email: user.email, displayName: user.displayName,
-            avatarUrl: user.avatarUrl, householdId: user.household.id });
+            avatarUrl: user.avatarUrl, householdId: user.household.id,
+            onboardingCompleted: typeof user.onboardingCompleted === 'boolean' ? user.onboardingCompleted : true });
           location.replace('/planner');
         } catch {
           document.getElementById('status').textContent = 'Không thể xác minh phiên. Mở /__preview để đăng nhập lại.';

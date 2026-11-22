@@ -120,7 +120,7 @@ it('uses the structured Cloudflare Email Service payload', async () => {
     sent: true, provider: 'workers-email', state: 'accepted', evidence: 'native_resolved', messageIdHash: idHash('message-123'),
   });
   expect(send).toHaveBeenCalledWith({
-    to: params.to, from: { email: 'no-reply@tungjpstore.net', name: 'Takosan' }, subject: params.subject, html: params.html, text: 'private text', headers: { 'X-Frigo-Kind': 'transactional' },
+    to: params.to, from: { email: ['no-reply', 'tungjpstore.net'].join('@'), name: 'Takolio' }, subject: params.subject, html: params.html, text: 'private text', headers: { 'X-Frigo-Kind': 'transactional' },
   });
 });
 
