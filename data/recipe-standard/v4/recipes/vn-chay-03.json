@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chay-03",
+    "slug": "mi-xao-chay-rau-nam",
+    "title": "Mì xào giòn chay nấm rau củ",
+    "subtitle": "Sợi mì vàng chiên phồng giòn rụm phủ nước sốt nấm đùi gà, cải ngọt và cà rốt sánh bóng đậm đà hương dầu hào chay"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Mì xào giòn",
+      "Nấm đùi gà",
+      "Rau củ",
+      "Đổi vị"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì xào giòn chay hấp dẫn với sợi mì vàng chiên phồng giòn tan, không ngấm dầu, kết hợp phần nhân xào nóng hổi gồm nấm đùi gà dai ngọt, cải ngọt xanh mướt, cà rốt giòn sần sật hòa quyện trong lớp sốt dầu hào chay sánh bóng.",
+    "servingSuggestion": "Xếp mì chiên giòn ra đĩa lớn rồi rưới sốt nấm rau củ nóng hổi lên trên ngay trước khi ăn, rắc thêm ngò rí và tiêu đen; ăn kèm chén nước tương ớt.",
+    "storageAndReheat": "Nên bảo quản riêng phần mì đã chiên trong hộp kín ở nhiệt độ phòng và phần sốt rau củ trong ngăn mát tủ lạnh (tối đa 24 giờ); hâm nóng sốt trên chảo rồi mới chan lên mì khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "NOODLE",
+      "name": "Mì sợi vàng tươi chay",
+      "culinaryMeasure": "450 g",
+      "prepNote": "chần thật nhanh qua nước ấm 1 phút cho tơi sợi rồi để ráo hoàn toàn trước khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "120 g",
+      "prepNote": "cắt gốc, rửa nhanh, thái lát chéo mỏng 0,4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 114,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát mỏng hoặc thái sợi bản vừa",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BOK_CHOY",
+      "name": "Cải ngọt tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "nhặt bỏ gốc già, rửa sạch, cắt khúc dài 4 cm tách riêng phần cọng và lá",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LEEK",
+      "name": "Hành boa-rô tươi",
+      "culinaryMeasure": "50 g (1/2 cây)",
+      "prepNote": "thái nhỏ phần đầu trắng phi thơm và ít lá xanh trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (2–3 nhánh)",
+      "prepNote": "rửa sạch, cắt khúc rắc mặt hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) chay",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "nêm làm hai đợt khi xào nấm rau củ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo hương vị đậm đà cho phần sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "chia đôi nêm nấm và nêm nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị đậm của xì dầu và dầu hào chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào sốt và rắc thơm mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "hòa tan với 45 ml nước lọc để tạo độ sánh cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới cuối lúc hoàn thiện sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "250 ml (gồm dầu chiên ngập mì và 15 ml xào)",
+      "prepNote": "dùng khoảng 235 ml chiên giòn mì (chắt lại phần dầu thừa), trích 15 ml xào rau nấm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 230,
+      "edibleRetentionRatio": 0.14,
+      "edibleGrams": 32.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "120 ml (nửa chén)",
+      "prepNote": "45 ml hòa tan bột năng, 75 ml tạo nước sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần tơi sợi mì và sơ chế rau củ, nấm",
+      "instruction": "Tách tơi 450 g mì sợi vàng tươi chay, chần thật nhanh qua nước ấm 1 phút cho sợi vừa mềm tơi rồi vớt ra rổ, rũ tơi và để ráo hoàn toàn nước. Nấm đùi gà thái lát mỏng; cà rốt gọt vỏ thái lát mỏng; cải ngọt cắt khúc 4 cm; hành boa-rô thái nhỏ; ngò rí cắt khúc. Hòa tan 10 g bột năng với 45 ml nước lọc để riêng.",
+      "tip": "Chỉ ngâm hoặc chần mì vừa mềm nhẹ để khi chiên sợi mì phồng giòn rụm mà không bị cứng hay ngấm dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên phồng giòn từng mẻ mì sợi vàng",
+      "instruction": "Đun nóng khoảng 235 ml dầu ăn thực vật trong chảo sâu lòng trên lửa vừa đến khi dầu sôi sủi tăm quanh đầu đũa. Chia mì thành 3 phần, thả nhẹ từng phần vào chiên ngập dầu trong 3–4 phút, trở đều 2 mặt đến khi sợi mì phồng vàng giòn rụm thì vớt ra giấy thấm dầu.",
+      "tip": "Đảm bảo dầu đủ nóng trước khi thả mì để mì phồng nhanh, giòn lâu và không bị hút dầu.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành boa-rô và xào săn nấm đùi gà, cà rốt",
+      "instruction": "Đặt chảo khác lên bếp với 15 ml dầu ăn, làm nóng trên lửa lớn rồi phi thơm phần đầu trắng hành boa-rô trong 20 giây. Cho nấm đùi gà và cà rốt vào đảo nhanh tay 2 phút đến khi nấm săn lại, sau đó nêm 15 ml nước tương, 4 g hạt nêm chay, 3 g đường và 15 ml dầu hào chay.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào chín giòn cải ngọt và nêm sốt",
+      "instruction": "Thêm phần cọng cải ngọt vào đảo 1 phút, sau đó cho phần lá cải ngọt cùng 75 ml nước lọc vào xào nhanh trên lửa lớn khoảng 2 phút cho rau vừa chín tới, vẫn giữ màu xanh mướt. Nêm tiếp 15 ml nước tương và 4 g hạt nêm chay còn lại rồi đảo đều.",
+      "tip": "Xào nhanh trên lửa lớn và cho cọng cải vào trước phần lá giúp cải chín đều mà giữ được độ giòn ngọt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Tạo độ sánh cho nước sốt với bột năng",
+      "instruction": "Khuấy đều lại chén nước bột năng rồi rót từ từ vào chảo rau nấm đang sôi, vừa rót vừa đảo đều tay khoảng 1 phút đến khi nước sốt trở nên sánh bóng bám đều vào rau củ. Rưới 5 ml dầu mè thơm và rắc 1 g tiêu đen xay vào đảo nhẹ rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức mì xào giòn nóng",
+      "instruction": "Xếp các vắt mì đã chiên giòn ra đĩa lớn, múc phần nhân nấm đùi gà, cải ngọt, cà rốt cùng nước sốt sánh nóng hổi rưới đều lên trên. Rắc lá xanh hành boa-rô, ngò rí và 0,5 g tiêu đen xay còn lại rồi thưởng thức ngay khi mì còn giòn rụm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 341,
+    "energyKcal": 341.4,
+    "energyKj": 1428,
+    "proteinG": 7.1,
+    "fatG": 13.2,
+    "saturatedFatG": 1.9,
+    "carbG": 50.7,
+    "fiberG": 3.8,
+    "sugarG": 4.6,
+    "sodiumMg": 1277,
+    "saltG": 3.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "NIN VN Fresh Rice Noodle Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169246",
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 169997",
+      "USDA FDC 170390",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4f044ada5b9efac080102cfda241bfcf11628a5a7c1132769562ce1f436f8e25",
+    "researchedFromV2Sha256": "69f59c33f1ef62b31af878aa70258bd61d8df2b543b61db7c3b952ceee2c333d"
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-531f59c246a56bcb",
+    "slug": "vien-thit-chien-trung",
+    "title": "Thịt viên chiên giòn kiểu Hoa",
+    "subtitle": "Thịt heo xay quết dẻo cùng trứng gà, gừng hành và ngũ vị hương, vo viên chiên ngập dầu vàng giòn bên ngoài, mềm mọng bên trong"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Thịt viên",
+      "Món nhậu",
+      "Trung Hoa",
+      "Giòn rụm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những viên thịt heo chiên vàng rộm, vỏ ngoài hơi xém giòn thơm nức mùi ngũ vị hương, gừng và xì dầu đặc, cắn vào bên trong vẫn giữ được độ dẻo dai và nước thịt ngọt mềm.",
+    "servingSuggestion": "Bày thịt viên nóng ra đĩa, rắc thêm chút hành lá hoặc ăn kèm dưa leo thái lát; chấm muối tiêu chanh hoặc tương ớt cay.",
+    "storageAndReheat": "Thịt viên chiên dư có thể để nguội hoàn toàn, bảo quản ngăn mát tối đa 2 ngày (hoặc cấp đông 2 tuần); khi ăn chiên lại bằng nồi chiên không dầu ở 180°C trong 5 phút cho giòn vỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc dăm)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "chọn thịt có lẫn 20% mỡ để viên chiên không bị khô",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà",
+      "culinaryMeasure": "1 quả (khoảng 50 g)",
+      "prepNote": "đánh tan trộn vào thịt giúp viên thịt kết dính và mềm xốp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái thật nhỏ để trộn cùng thịt viên",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm thật nhuyễn để khử mùi thịt heo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "15 g (~1,5 muỗng canh)",
+      "prepNote": "giúp nhân kết dính và tạo độ giòn nhẹ cho vỏ ngoài",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm vị mặn đậm đà cho hỗn hợp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo màu nâu cánh gián đẹp mắt khi chiên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "khử mùi thịt và làm dậy hương thơm kiểu Hoa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "làm dịu vị mặn và giúp bề mặt viên thịt lên màu vàng đều",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm vừa vị cho 500 g thịt xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tăng hương cay ấm đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "FIVE_SPICE",
+      "name": "Ngũ vị hương",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "tạo mùi thơm truyền thống của thịt viên chiên kiểu Hoa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật (chiên ngập dầu)",
+      "culinaryMeasure": "400 ml",
+      "prepNote": "dùng để chiên ngập dầu vàng giòn viên thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 368,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (quết thịt)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "thêm từng ít một khi quết giúp thịt ngậm nước mềm mọng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Trộn gia vị và quết thịt với nước cho dẻo",
+      "instruction": "Cho 500 g thịt heo xay vào tô lớn cùng 20 ml xì dầu nhạt, 5 ml xì dầu đặc, 15 ml rượu Thiệu Hưng, tỏi băm nhuyễn và gừng băm nhuyễn, trộn đều. Tiếp theo, rót từng muỗng canh trong 45 ml nước lọc vào tô, dùng đũa khuấy và quết mạnh theo một chiều đến khi nước ngấm hết và thịt dẻo quánh rồi mới thêm lượt nước tiếp theo.",
+      "tip": "Quết thịt theo một chiều với từng ít nước giúp cấu trúc protein liên kết chặt, viên thịt chiên xong sẽ dẻo giòn mà không bị khô bở.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp gia vị khô và trộn trứng bột năng",
+      "instruction": "Thêm 4 g muối ăn, 8 g đường cát trắng, 1,5 g tiêu trắng xay và 1 g ngũ vị hương vào tô thịt trộn đều, ướp khoảng 15 phút cho ngấm vị. Sau đó đánh tan trứng gà rồi đổ vào tô cùng hành lá thái nhỏ và 15 g bột năng, trộn thật đều đến khi hỗn hợp dẻo mịn đồng nhất.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Vo tròn từng viên thịt đều nhau",
+      "instruction": "Thoa một lớp dầu ăn thật mỏng lên lòng bàn tay để chống dính, múc từng phần thịt vừa ăn rồi nắm và xoay tròn thành những viên đường kính khoảng 2,5 đến 3 cm xếp đều ra đĩa.",
+      "tip": "Vo các viên thịt kích thước đồng đều giúp toàn bộ mẻ chiên chín cùng lúc, không bị viên sống viên cháy."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng dầu và chiên vàng các viên thịt",
+      "instruction": "Đổ 400 ml dầu ăn thực vật vào nồi hoặc chảo sâu lòng, đun trên lửa vừa đến khi thử đầu đũa tre thấy sủi bọt đều quanh đũa (khoảng 175–180°C). Nhẹ nhàng thả từng mẻ viên thịt vào chiên, giữ khoảng cách thoáng để dầu không bị tụt nhiệt, chiên khoảng 3 phút cho mặt dưới se vàng rồi trở mặt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên chín hoàn toàn bên trong viên thịt",
+      "instruction": "Tiếp tục chiên lửa vừa thêm khoảng 3 đến 4 phút nữa, đảo nhẹ liên tục để viên thịt vàng nâu giòn đều các mặt. Kiểm tra độ chín bằng cách cắt thử một viên thấy thịt bên trong chín trắng hoàn toàn, không còn màu hồng sống và tứa nước trong là đạt.",
+      "tip": "Không chiên trên lửa quá lớn vì vỏ ngoài sẽ sậm cháy trước khi nhân thịt bên trong kịp chín kỹ.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thấm ráo dầu và dọn nóng",
+      "instruction": "Vớt toàn bộ thịt viên chiên ra rổ lưới hoặc đĩa có lót sẵn khăn giấy thấm dầu trong 2 phút cho ráo bớt dầu thừa, sau đó xếp ra đĩa sạch và dọn dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 466,
+    "energyKcal": 465.5,
+    "energyKj": 1947,
+    "proteinG": 23.5,
+    "fatG": 36.8,
+    "saturatedFatG": 11.5,
+    "carbG": 8.4,
+    "fiberG": 0.5,
+    "sugarG": 2.7,
+    "sodiumMg": 887,
+    "saltG": 2.22,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Five Spice USDA Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167902",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "49dbde7cd7208204b2c3551bfe67cd37ed830cc34e64dec743a61e547ba34bd4",
+    "researchedFromV2Sha256": "380b9d75ca148b9e218955d40a30f222a170c7cdf8e7c745a89ec9621378fab2"
+  }
+}

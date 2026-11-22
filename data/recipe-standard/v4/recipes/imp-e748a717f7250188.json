@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e748a717f7250188",
+    "slug": "salad-ca-hoi-dua-leo",
+    "title": "Salad cá hồi áp chảo dưa leo sốt chanh",
+    "subtitle": "Cá hồi áp chảo xém cạnh mềm ngọt kết hợp dưa leo giòn mát, xà lách tươi và sốt dầu ô liu chanh vàng thanh nhẹ"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Salad",
+      "Cá hồi",
+      "Dưa leo",
+      "Thanh mát",
+      "Ít tinh bột"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa salad cá hồi thanh mát cân bằng dinh dưỡng với miếng phi lê cá hồi áp chảo vừa chín tới mềm ngọt, ăn cùng dưa leo ướp muối giữ độ giòn sần sật, rau xà lách tươi và nước sốt nhũ tương dầu ô liu chanh vàng dịu mát.",
+    "servingSuggestion": "Bày salad cá hồi ra đĩa rộng hoặc tô nông lòng khi cá còn hơi ấm hoặc đã để mát, dùng kèm bánh mì nướng giòn để bữa ăn thêm tròn vị.",
+    "storageAndReheat": "Salad trộn sốt ngon nhất khi dùng ngay trong vòng 1–2 giờ sau khi chế biến. Nếu chuẩn bị trước, nên bảo quản riêng phần cá hồi, rau củ và nước sốt chanh trong ngăn mát tối đa 24 giờ và chỉ trộn đều ngay trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê tươi bỏ da",
+      "culinaryMeasure": "360 g",
+      "prepNote": "nhổ sạch xương dăm, thấm thật khô rồi cắt miếng dày 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo giòn",
+      "culinaryMeasure": "2 quả vừa (~300 g)",
+      "prepNote": "rửa sạch, bổ đôi theo chiều dọc, thái lát mỏng 0,5 cm rồi xóc muối 10 phút cho ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LETTUCE",
+      "name": "Xà lách tươi",
+      "culinaryMeasure": "120 g",
+      "prepNote": "rửa sạch, vẩy ráo nước rồi xé miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (~100 g)",
+      "prepNote": "vắt lấy khoảng 30 ml nước cốt chanh, lọc bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhuyễn trộn vào nước sốt chanh dầu ô liu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "chia 15 ml ướp và áp chảo cá hồi, 30 ml đánh nhũ tương nước trộn salad",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "dùng 1,5 g ướp cá hồi, 1 g xóc dưa leo cho ra nước rồi chắt bỏ, 1,5 g pha nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia ướp cá hồi và pha sốt trộn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, xé nhỏ rắc trang trí lên đĩa salad",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Xử lý dưa leo giòn và rau xà lách",
+      "instruction": "Dưa leo giòn rửa sạch, bổ đôi dọc rồi thái lát mỏng 0,5 cm. Cho dưa leo vào rổ, rắc 1 g muối ăn xóc nhẹ và để ráo 12 phút cho thoát bớt nước thừa, sau đó vẩy nhẹ cho khô. Xà lách tươi rửa sạch, vẩy thật ráo rồi xé miếng vừa ăn.",
+      "tip": "Xóc muối cho dưa leo ra nước trước khi trộn sẽ giúp đĩa salad giòn rụm và không bị chảy nước lõng bõng.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp cá hồi phi lê",
+      "instruction": "Thấm khô 360 g cá hồi phi lê bằng khăn giấy, nhổ sạch xương dăm rồi cắt miếng dày khoảng 2,5 cm. Ướp đều các mặt cá với 1,5 g muối ăn, 1 g tiêu đen xay và 10 ml dầu ô liu nguyên chất trong 10 phút cho thấm vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đánh nhũ tương sốt chanh vàng dầu ô liu",
+      "instruction": "Vắt chanh vàng tươi lấy nước cốt lọc bỏ hạt, cho vào chén cùng 30 ml dầu ô liu nguyên chất, 1,5 g muối ăn, 0,5 g tiêu đen xay còn lại và 15 g ngò tây tươi thái nhuyễn. Dùng phới lồng hoặc nĩa đánh đều tay đến khi hỗn hợp hơi sánh quyện thành dạng nhũ tương.",
+      "tip": "Đánh kỹ nước cốt chanh và dầu ô liu thành nhũ tương sánh nhẹ sẽ giúp sốt bám đều lên cá và rau thay vì đọng đáy đĩa."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo cá hồi chín tới và tách miếng",
+      "instruction": "Đun nóng chảo chống dính với 5 ml dầu ô liu nguyên chất còn lại trên lửa vừa-lớn. Đặt các miếng cá hồi vào áp chảo mỗi mặt 2,5–3 phút đến khi mặt ngoài xém vàng đẹp và phần lõi thịt chuyển hồng đục chín hoàn toàn. Gắp cá ra đĩa để nguội bớt 5 phút rồi tách thành miếng vừa ăn.",
+      "tip": "Không đảo lật cá quá sớm hoặc nấu quá lâu để cá không bị nát và giữ được độ mềm ẩm tự nhiên.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trình bày và trộn nhẹ salad cá hồi",
+      "instruction": "Lót xà lách tươi xuống đáy đĩa rộng, xếp dưa leo đã ráo nước và các miếng cá hồi áp chảo lên trên. Rưới đều nước sốt chanh vàng dầu ô liu khắp mặt đĩa rồi dùng hai muỗng trộn thật nhẹ tay để rau thấm sốt mà cá không bị vỡ."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trang trí lá bạc hà và thưởng thức mát",
+      "instruction": "Rắc thêm vài lá bạc hà tươi xé nhỏ lên trên đĩa salad (tùy thích) và thưởng thức ngay khi rau còn giòn mát, hoặc làm lạnh nhanh 15 phút trong ngăn mát trước khi dọn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 394,
+    "energyKcal": 393.7,
+    "energyKj": 1647,
+    "proteinG": 26.1,
+    "fatG": 29.4,
+    "saturatedFatG": 5.5,
+    "carbG": 7.1,
+    "fiberG": 2,
+    "sugarG": 2.4,
+    "sodiumMg": 475,
+    "saltG": 1.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168409",
+      "USDA FDC 169247",
+      "USDA FDC 170416",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173474",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ffe972a9cd476d10b3596d20dc545bc59a30ae80013da34e07845f1508ee9351",
+    "researchedFromV2Sha256": "9d1d3ff34d0e9345ea631f5e5ca3adcb61fbb07c791469d72bbab4c83eb9c5fd"
+  }
+}

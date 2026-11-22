@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-364497296cfcf033",
+    "slug": "muc-nhoi-thit-hap-gung-hanh",
+    "title": "Mực nhồi thịt hấp gừng hành",
+    "subtitle": "Mực ống tươi nhồi đầy thịt heo xay trộn nấm hương thơm bùi, hấp chín mềm cùng gừng sợi và hành lá chấm muối tiêu chanh"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "trung",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Hải sản",
+      "Đãi khách",
+      "Thanh đạm",
+      "Miền Trung"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "pork",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Những khoanh mực ống trắng giòn ôm trọn phần nhân thịt heo xay dẻo ngọt quyện hương nấm hương, hành tím và gừng thơm nồng; món hấp thanh nhẹ nhưng đậm đà, đẹp mắt cho mâm cơm gia đình lẫn tiệc đãi khách.",
+    "servingSuggestion": "Cắt mực nhồi thịt thành khoanh dày khoảng 1,5 cm xếp xen lớp ra đĩa, trang trí hành lá và gừng sợi; ăn nóng chấm cùng muối tiêu chanh hoặc nước mắm ớt.",
+    "storageAndReheat": "Mực nhồi thịt đã hấp bảo quản hộp kín trong ngăn mát tối đa 24 giờ; khi ăn hấp lại 5–6 phút cho nhân thịt nóng đều mà vỏ mực không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi nguyên con",
+      "culinaryMeasure": "500 g (khoảng 3–4 con vừa)",
+      "prepNote": "làm sạch túi mực, nang và nội tạng, lột lớp da ngoài, giữ nguyên ống thân không rách",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc vai)",
+      "culinaryMeasure": "250 g",
+      "prepNote": "chọn phần nạc vai có chút mỡ giúp nhân thịt mềm ẩm, không bị khô bã",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô",
+      "culinaryMeasure": "15 g (khoảng 4–5 tai nấm)",
+      "prepNote": "ngâm nước ấm 20 phút cho mềm, bỏ chân rồi băm nhuyễn trộn nhân",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ; 10 g băm nhuyễn trộn nhân thịt, 15 g thái sợi rải lên mực khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch; 1/2 thái nhỏ trộn vào nhân thịt, 1/2 cắt khúc lót và rắc mặt mực",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "15 g (1 củ)",
+      "prepNote": "bóc vỏ, băm nhuyễn trộn nhân thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (khoảng 12,5 g, 3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn trộn cùng thịt xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng ướp nhân thịt cho đậm đà hương vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm vào phần nhân thịt heo xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn trong nhân thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "7 g (khoảng 1,2 muỗng cà phê)",
+      "prepNote": "chia 2 g rửa mực, 2 g trộn nhân thịt và 3 g pha muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 7,
+      "unit": "g",
+      "grossGrams": 7,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 5.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (1 muỗng cà phê)",
+      "prepNote": "chia 2 g trộn nhân thịt cho thơm cay và 1 g pha muối tiêu chanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "0.5 quả (khoảng 22,5 g)",
+      "prepNote": "vắt lấy nước cốt pha chén muối tiêu chanh chấm mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, thái lát cho vào muối chấm hoặc trang trí mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (hấp cách thủy)",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "đổ đáy nồi hấp để tạo hơi chín đều mực và nhân thịt",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch ống mực và ngâm mềm nấm hương",
+      "instruction": "Nắm phần đầu mực kéo nhẹ tách khỏi thân, rút bỏ túi mực, nang cứng và nội tạng, cắt bỏ mắt cùng răng mực rồi lột bỏ lớp da tím bên ngoài. Rửa mực với 2 g muối ăn rồi xả sạch lại nước mát, giữ nguyên ống thân không bị thủng rách và để thật ráo. Ngâm 15 g nấm hương khô trong nước ấm 20 phút cho nở mềm rồi băm nhuyễn.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Quết dẻo nhân thịt heo xay với nấm và gia vị",
+      "instruction": "Cho 250 g thịt heo xay vào tô lớn cùng nấm hương băm nhuyễn, 10 g gừng băm, 15 g hành tím băm, tỏi băm nhuyễn và một nửa lượng hành lá thái nhỏ. Nêm 15 ml nước mắm, 4 g hạt nêm, 4 g đường cát trắng, 2 g muối ăn và 2 g tiêu đen xay, dùng thìa quết mạnh tay 2 phút cho nhân dẻo mịn rồi để nghỉ 10 phút.",
+      "tip": "Quết nhân kỹ cho dẻo kết dính giúp phần thịt bên trong không bị rời rạc hay rỗng ruột khi cắt khoanh.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Nhồi nhân vào thân mực và cố định bằng tăm",
+      "instruction": "Dùng thìa nhỏ múc từng phần nhân thịt nhồi vào ống thân mực, ấn nhẹ cho nhân chặt đều nhưng chỉ nhồi khoảng 80% độ dài thân mực để trừ hao độ co khi chín. Đặt đầu mực trở lại miệng ống và dùng tăm tre ghim chéo cố định chắc chắn, có thể chích vài lỗ tăm nhỏ dọc thân mực để thoát khí.",
+      "tip": "Chỉ nhồi đầy khoảng 80% thân mực và chích 2–3 lỗ tăm nhỏ giúp vỏ mực không bị nứt vỡ khi hấp nóng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp cách thủy mực nhồi thịt chín đều",
+      "instruction": "Đun sôi 600 ml nước lọc trong nồi hấp. Xếp mực đã nhồi vào đĩa sâu lòng chịu nhiệt, rải đều 15 g gừng thái sợi và phần hành lá cắt khúc còn lại lên trên. Đặt đĩa vào xửng, đậy kín nắp và hấp trên lửa vừa khoảng 18 phút đến khi thân mực chuyển trắng đục và xiên tăm vào giữa thấy nhân thịt chín săn, nước tiết ra trong suốt.",
+      "tip": "Duy trì lửa vừa ổn định khi hấp giúp nhân thịt bên trong chín đều tới tâm mà lớp mực bên ngoài không bị co rút hay nứt vỡ.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh ớt chấm mực hấp",
+      "instruction": "Trộn đều 3 g muối ăn còn lại với 1 g tiêu đen xay trong chén nhỏ, vắt nước cốt 1/2 quả chanh tươi vào khuấy nhẹ rồi thả vài lát ớt tươi lên trên."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt khoanh mực nhồi thịt và trình bày nóng",
+      "instruction": "Nhấc đĩa mực ra khỏi xửng, chờ nguội bớt khoảng 3 phút cho nhân săn chắc rồi rút bỏ tăm tre. Dùng dao bản mỏng thật sắc thái mực thành từng khoanh tròn dày 1,5 cm, xếp ngay ngắn ra đĩa cùng phần gừng hành hấp và rưới nhẹ ít nước ngọt tiết ra, dọn nóng chấm muối tiêu chanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 297,
+    "energyKcal": 297.1,
+    "energyKj": 1243,
+    "proteinG": 28.4,
+    "fatG": 14.9,
+    "saturatedFatG": 5.3,
+    "carbG": 11.5,
+    "fiberG": 1.2,
+    "sugarG": 2,
+    "sodiumMg": 1112,
+    "saltG": 2.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168155",
+      "USDA FDC 168436",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "22ba22fae19d88be2589b4bf28bff3bd07cbb502fbc17ecf507ea5e8c6c28783",
+    "researchedFromV2Sha256": "a4d5fcb658c1edf506484e10c9679dc6d5bde4e3549da2fcfe4e72435a2c6e55"
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a9710414682c8521",
+    "slug": "mi-xao-xi-dau-bo-thai",
+    "title": "Mì xào xì dầu bò kiểu Thái",
+    "subtitle": "Sợi mì trứng dai ngon xào xém cạnh kiểu Pad See Ew cùng thịt bò ướp mềm, trứng gà tơi, bắp cải giòn ngọt và sốt xì dầu đậm đà"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Pad See Ew",
+      "Mì xào",
+      "Thịt bò",
+      "Xì dầu",
+      "Ẩm thực Thái"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "egg",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì xào xì dầu bò kiểu Thái (Pad See Ew biến tấu với mì sợi trứng) hấp dẫn với từng sợi mì vàng nâu bóng mượt, hơi xém cạnh thơm mùi khói chảo, hòa quyện thịt bò thăn mềm ngọt, trứng gà tơi béo và bắp cải giòn giòn đậm vị xì dầu.",
+    "servingSuggestion": "Gắp mì xào xì dầu bò nóng hổi ra đĩa, rắc thêm chút tiêu xay và hành lá; có thể ăn kèm vài lát ớt tươi hoặc giấm ớt ngâm kiểu Thái.",
+    "storageAndReheat": "Món mì ngon nhất khi ăn nóng ngay sau khi xào; phần dư bảo quản ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo chống dính khoảng 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì trứng khô (mì sợi)",
+      "culinaryMeasure": "270 g",
+      "prepNote": "luộc trong nước sôi bớt 1 phút so với hướng dẫn bao bì cho vừa chín tới rồi xả nước lạnh, để ráo trộn chút dầu ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 270,
+      "unit": "g",
+      "grossGrams": 270,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "thái lát mỏng ngang thớ, ướp gia vị trong 20 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "0,35 cái (280 g)",
+      "prepNote": "tách lá, rửa sạch để ráo rồi thái sợi hoặc miếng vuông vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.35,
+      "unit": "piece",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 238,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (100 g)",
+      "prepNote": "đập ra chén, đánh tan đều",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (18–19 g, ~5–6 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "25 ml (10 ml ướp bò + 15 ml pha sốt)",
+      "prepNote": "chia 10 ml ướp thịt bò và 15 ml pha sốt xào mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "pha sốt xào tạo độ bóng sánh cho sợi mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tạo màu nâu bóng đẹp và mùi thơm đặc trưng cho sợi mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (2 g ướp bò + 13 g pha sốt)",
+      "prepNote": "chia 2 g ướp thịt bò và 13 g pha sốt cân bằng vị mặn ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm lên đĩa mì khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3–4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "35 ml (5 ml ướp bò/trộn mì + 30 ml xào)",
+      "prepNote": "dùng áo mì chống dính, ướp thịt bò và xào mì trên chảo nóng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 28.98,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì và xào rau)",
+      "culinaryMeasure": "1530 ml (1500 ml luộc mì + 30 ml xào)",
+      "prepNote": "dùng 1500 ml luộc mì rồi chắt bỏ, giữ 30 ml châm khi xào bắp cải nếu chảo khô",
+      "componentGroup": "main",
+      "requiredQuantity": 1530,
+      "unit": "ml",
+      "grossGrams": 1530,
+      "edibleRetentionRatio": 0.02,
+      "edibleGrams": 30.6,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Ướp thịt bò mềm đậm và pha sẵn sốt xì dầu",
+      "instruction": "Thái 300 g thịt thăn bò thành lát mỏng ngang thớ, ướp cùng 10 ml xì dầu, 2 g đường cát trắng và 5 ml dầu ăn trong 20 phút cho thịt thấm vị và tơi mềm. Trong chén nhỏ, khuấy tan 15 ml xì dầu còn lại, 20 ml dầu hào, 10 ml xì dầu đặc và 13 g đường cát trắng.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Luộc mì trứng vừa chín tới và sơ chế rau củ",
+      "instruction": "Đun sôi 1500 ml nước lọc, cho 270 g mì trứng khô vào luộc khoảng 3–4 phút cho sợi vừa mềm tới (vẫn còn độ dai lõi), vớt ra xả ngay nước lạnh, để ráo và trộn 5 ml dầu ăn cho sợi tơi không dính. Thái sợi bắp cải, băm nhỏ tỏi, cắt khúc hành lá và đánh tan 2 quả trứng gà.",
+      "tip": "Không luộc mì quá mềm vì sợi mì còn tiếp tục chín và thấm sốt trong chảo nóng ở bước xào.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhanh thịt bò trên lửa lớn rồi trút riêng",
+      "instruction": "Làm nóng chảo rộng với 15 ml dầu ăn trên lửa lớn nhất, cho thịt bò đã ướp vào đảo nhanh tay 2 phút đến khi thịt vừa chín tái tới thì trút ngay ra đĩa riêng (không xào lâu kẻo thịt dai).",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi, đánh tơi trứng và xào bắp cải giòn ngọt",
+      "instruction": "Thêm 10 ml dầu ăn còn lại vào chảo trên lửa vừa, phi thơm tỏi băm 30 giây. Đổ trứng gà đánh tan vào để yên 15 giây cho se mặt rồi đảo tơi thành miếng vừa. Cho bắp cải vào xào lửa lớn 2 phút (thêm 30 ml nước lọc nếu chảo hơi khô) đến khi bắp cải vừa chín giòn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào mì thấm sốt xì dầu và áp chảo xém cạnh",
+      "instruction": "Cho mì trứng đã luộc vào chảo, rưới toàn bộ chén sốt xì dầu dầu hào vào đảo đều 2 phút cho sợi mì thấm màu nâu bóng đẹp. Dàn phẳng mì ra mặt chảo giữ yên 20 giây cho một mặt hơi xém thơm mùi khói rồi lật đảo thêm một lượt.",
+      "tip": "Áp chảo để sợi mì hơi xém nâu nhẹ giúp món Pad See Ew dậy hương vị thơm bùi đặc trưng khó cưỡng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn lại thịt bò, rắc tiêu hành và dọn nóng",
+      "instruction": "Cho thịt bò đã xào (gạn bỏ phần nước thịt đọng) trở lại chảo cùng hành lá cắt khúc, đảo nhanh 30 giây cho thịt bò chín hoàn toàn và quyện đều với mì. Tắt bếp, rắc 1,5 g tiêu đen xay lên trên rồi gắp ra đĩa dùng nóng.",
+      "tip": "Gạn bỏ phần nước thịt bò đọng lại trên đĩa trước khi trút vào chảo để sợi mì luôn ráo bóng và không bị nhão."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 692,
+    "energyKcal": 692,
+    "energyKj": 2896,
+    "proteinG": 38,
+    "fatG": 25.8,
+    "saturatedFatG": 7.1,
+    "carbG": 76.4,
+    "fiberG": 4.9,
+    "sugarG": 10.2,
+    "sodiumMg": 1455,
+    "saltG": 3.64,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0e3052bb90f0b98e1fc693da7bd39bb5e9be6dd885a0d6ca5cb0605afdf0d472",
+    "researchedFromV2Sha256": "68e69f4714727d3f6cb8c8d6e348ace939981a534be2eda050545a3813e731c5"
+  }
+}

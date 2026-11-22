@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f494a9f384ce66a4",
+    "slug": "cua-xao-cay-thai",
+    "title": "Cua xào cay kiểu Thái",
+    "subtitle": "Thịt cua biển ngọt mềm xào nhanh cùng ớt hiểm, tỏi phi thơm, ớt chuông xanh và sốt dầu hào đậm đà vị biển"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 4,
+    "tags": [
+      "Cua xào",
+      "Poo Pad Prik",
+      "Hải sản",
+      "Ẩm thực Thái",
+      "Cay nồng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cua xào cay kiểu Thái (Poo Pad Prik) nổi bật với thớ thịt cua tươi trắng ngọt tự nhiên quyện trong nước sốt dầu hào, xì dầu nhạt sánh nhẹ, dậy mùi tỏi phi, ớt hiểm cay nồng cùng vị giòn mát của ớt chuông xanh và hành lá.",
+    "servingSuggestion": "Dọn nóng thịt cua xào cay ra đĩa, dùng ngay với cơm trắng nóng hổi hoặc bánh mì giòn chấm nước sốt đậm đà.",
+    "storageAndReheat": "Thịt cua ngon nhất khi ăn ngay lúc vừa xào xong; phần dư bảo quản ngăn mát tối đa 24 giờ và làm nóng nhẹ trên chảo trong 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Thịt cua biển bóc sẵn (đã hấp chín)",
+      "culinaryMeasure": "400 g",
+      "prepNote": "nhặt kỹ loại bỏ hoàn toàn mảnh vỏ hoặc sụn cua còn sót, để ráo nhẹ",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông xanh",
+      "culinaryMeasure": "1 quả (150 g)",
+      "prepNote": "bỏ cuống, bỏ hạt, thái miếng vuông vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 127.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "5 quả (25 g)",
+      "prepNote": "bỏ cuống, rửa sạch, đập dập rồi băm nhỏ cùng một ít thái lát trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g, ~8 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "pha sốt xào tạo độ sánh bóng và vị ngọt mặn đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "nêm vị mặn thanh cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của dầu hào và xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (1/2 muỗng cà phê)",
+      "prepNote": "tăng hương cay ấm dịu cho phần sốt cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà nhạt",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "hòa vào hỗn hợp sốt để tạo lượng nước sốt vừa đủ áo quanh thịt cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi ớt và xào chín rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 37.26,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Kiểm tra thịt cua và sơ chế rau củ gia vị",
+      "instruction": "Dàn nhẹ 400 g thịt cua biển ra đĩa, rà kỹ bằng tay để nhặt bỏ hết mảnh vỏ hoặc sụn cua còn lẫn và để ráo. Rửa sạch ớt chuông xanh, bỏ hạt thái miếng vuông 2,5 cm; tỏi bóc vỏ băm nhỏ; ớt hiểm băm nhỏ (chừa 1 quả thái lát); hành lá cắt khúc 3 cm.",
+      "tip": "Kiểm tra kỹ thịt cua bóc sẵn giúp loại bỏ hoàn toàn mảnh sụn nhỏ mà vẫn giữ được các thớ thịt cua nguyên tảng đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn chén sốt dầu hào và nước dùng gà",
+      "instruction": "Trộn đều trong chén 45 ml dầu hào, 10 ml xì dầu nhạt, 5 g đường cát trắng, 1,5 g tiêu đen xay và 100 ml nước dùng gà, khuấy tan đường để phần sốt có vị mặn ngọt hài hòa.",
+      "tip": "Pha sẵn toàn bộ chén sốt trước khi bật bếp giúp món xào hải sản diễn ra nhanh gọn và thịt cua không bị chín quá lửa."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt trên lửa vừa không để cháy",
+      "instruction": "Đun nóng chảo rộng với 45 ml dầu ăn trên lửa vừa, cho tỏi băm và ớt hiểm băm vào phi khoảng 40 giây đến khi tỏi dậy mùi thơm cay nồng và vừa ngả vàng nhẹ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh ớt chuông xanh giữ độ giòn tươi",
+      "instruction": "Vặn lửa lớn, cho toàn bộ ớt chuông xanh thái miếng vuông vào chảo đảo nhanh tay khoảng 1 phút cho ớt vừa chín tới, dậy mùi thơm mà vẫn giữ được độ giòn ngọt và màu xanh mướt.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đun sôi nhẹ sốt và đảo đều thịt cua",
+      "instruction": "Rưới toàn bộ chén sốt dầu hào đã pha vào chảo đun sôi nhẹ 1 phút cho nước sốt hơi sánh lại. Nhẹ nhàng trút 400 g thịt cua vào chảo, dùng muôi gỗ đảo nhẹ tay từ dưới lên trong 2 phút cho thịt cua nóng đều tận trong và áo bóng sốt mà không bị nát vụn.",
+      "tip": "Thịt cua đã hấp chín sẵn nên chỉ cần đảo nhẹ 1–2 phút trong nước sốt sôi lăn tăn cho ngấm vị, tránh đảo mạnh tay làm cua bị vụn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá và thưởng thức nóng với cơm trắng",
+      "instruction": "Thả hành lá cắt khúc vào chảo đảo nhẹ 15 giây rồi tắt bếp ngay. Múc cua xào cay ra đĩa, rắc thêm vài lát ớt hiểm lên trên và dọn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 209,
+    "energyKcal": 209,
+    "energyKj": 875,
+    "proteinG": 19.8,
+    "fatG": 10.8,
+    "saturatedFatG": 1.7,
+    "carbG": 8.3,
+    "fiberG": 1.2,
+    "sugarG": 4.4,
+    "sodiumMg": 901,
+    "saltG": 2.25,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 174208",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d734e0f4c6a668bd462eada9da044ca6ac32f655039d7a66aa89d0f96b1d90f7",
+    "researchedFromV2Sha256": "388e1a390f90f04b9e42fbaf6e0359b82b90a94f83124da3274c1dbf44db5fc5"
+  }
+}

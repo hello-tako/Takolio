@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-389f525ea854b373",
+    "slug": "canh-chua-chay-dua-dau",
+    "title": "Canh chua chay dứa đậu phụ Nam Bộ",
+    "subtitle": "Nồi canh chua thanh mát chuẩn vị Nam Bộ với nước cốt me, dứa chín, cà chua, đậu bắp, bạc hà và đậu phụ mềm béo"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món chay",
+      "Canh chua",
+      "Nam Bộ",
+      "Thanh nhiệt",
+      "Đậu phụ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Bát canh chua chay Nam Bộ thanh tao đậm đà với sự hòa quyện cân bằng giữa vị chua dịu từ me chín, ngọt thơm của dứa chín, sắc đỏ của cà chua cùng đậu phụ béo mềm, đậu bắp, dọc mùng và giá đỗ giòn tươi.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, rắc rau ngổ, ngò gai thái nhỏ lên trên; dùng kèm cơm trắng nóng hoặc bún tươi đều rất hợp vị.",
+    "storageAndReheat": "Canh ngon nhất khi dùng hết trong ngày để giữ độ giòn của đậu bắp, dọc mùng và giá đỗ; nếu để sang ngày hôm sau nên vớt riêng rau và đun sôi lại phần nước canh trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng (hoặc đậu hũ non)",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa nhẹ, để ráo và cắt miếng vuông cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín",
+      "culinaryMeasure": "1/4 quả (khoảng 150 g)",
+      "prepNote": "gọt vỏ, bỏ mắt, thái lát xéo dày 0,5 cm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 97.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OKRA",
+      "name": "Đậu bắp tươi",
+      "culinaryMeasure": "180 g",
+      "prepNote": "rửa sạch, cắt bỏ cuống và thái lát vát xéo dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 158.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TARO_STEM",
+      "name": "Dọc mùng (bạc hà)",
+      "culinaryMeasure": "120 g",
+      "prepNote": "tước sạch vỏ xơ, thái lát xéo 0,5 cm, bóp nhẹ với 2 g muối rồi xả sạch vắt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "100 g",
+      "prepNote": "nhặt sạch vỏ đậu, rửa nhẹ và để thật ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "TAMARIND",
+      "name": "Me chín vắt lấy nước cốt",
+      "culinaryMeasure": "45 g (~2,5 muỗng canh cơm me)",
+      "prepNote": "ngâm với 100 ml nước ấm 5 phút, dằm nhuyễn và lọc qua rây bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 38.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LEEK",
+      "name": "Hành boa-rô tươi",
+      "culinaryMeasure": "40 g (phần đầu trắng)",
+      "prepNote": "rửa sạch, băm nhỏ phần đầu trắng để phi thơm nền canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 34,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi thơm hành boa-rô và xào cà chua dứa tạo màu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "tạo vị chua ngọt hài hòa đặc trưng miền Nam",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (1 muỗng cà phê)",
+      "prepNote": "dùng 2 g bóp sạch dọc mùng rồi xả bỏ, 4 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.67,
+      "edibleGrams": 4.02,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "làm nước dùng canh chua đậm đà thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "15 g (4–5 lá)",
+      "prepNote": "rửa sạch, thái khúc 1,5 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 14.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "RICE_PADDY_HERB",
+      "name": "Rau ngổ (ngò ôm)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt bỏ gốc già, rửa sạch, thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 14.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "100 ml nước ấm lọc me, 1300 ml nấu nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 1330,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lọc nước cốt me và sơ chế rau củ, đậu phụ",
+      "instruction": "Ngâm 45 g me chín với 100 ml nước ấm trong 5 phút rồi dằm nhuyễn, lọc qua rây lấy phần nước cốt sánh bỏ hạt. Đậu phụ trắng cắt miếng vuông cạnh 2,5 cm; dứa gọt vỏ, bỏ mắt, thái lát xéo 0,5 cm; cà chua bổ múi cau; đậu bắp thái lát xéo; giá đỗ rửa ráo. Tước vỏ dọc mùng, thái lát xéo, bóp nhẹ với 2 g muối ăn rồi xả thật sạch, vắt ráo; hành boa-rô băm nhỏ; ngò gai và rau ngổ cắt khúc.",
+      "tip": "Bóp dọc mùng với chút muối rồi xả sạch nhiều lần giúp loại bỏ nhựa gây ngứa họng mà vẫn giữ độ giòn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành boa-rô và xào sơ cà chua, dứa",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, phi thơm hành boa-rô băm khoảng 30 giây. Cho một nửa lượng cà chua và toàn bộ dứa thái lát vào xào đều 2 phút cho cà chua tiết màu đỏ cam tự nhiên và dứa dậy hương chua ngọt.",
+      "tip": "Xào sơ cà chua và dứa với chút dầu trước khi đổ nước giúp mặt canh có màu đỏ vàng bắt mắt mà không cần phẩm màu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun nước dùng và nêm vị chua ngọt",
+      "instruction": "Đổ 1300 ml nước lọc còn lại vào nồi, bật lửa lớn đun sôi bùng rồi hạ lửa vừa. Rót từ từ nước cốt me đã lọc vào nồi, nêm 20 g đường cát trắng, 4 g muối ăn và 8 g hạt nêm chay, khuấy đều đến khi gia vị tan và đạt độ chua mặn ngọt hài hòa.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu chín đậu bắp và thả đậu phụ",
+      "instruction": "Cho đậu bắp và phần cà chua múi cau còn lại vào nấu trên lửa vừa khoảng 3 phút cho đậu bắp chuyển màu xanh tươi. Hạ xuống lửa nhỏ rồi nhẹ nhàng thả đậu phụ trắng vào nấu thêm 3 phút để đậu nóng đều và thấm nước canh mà không bị nát.",
+      "tip": "Thả đậu phụ sau khi hạ nhỏ lửa và tránh khuấy mạnh tay để từng miếng đậu giữ nguyên vuông vức.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chần chín tới dọc mùng và giá đỗ",
+      "instruction": "Đưa dọc mùng đã vắt ráo vào nồi nấu sôi nhẹ khoảng 1 phút cho vừa chín giòn. Cuối cùng thả giá đỗ vào đảo thật nhẹ rồi tắt bếp ngay để giá không bị nhũn."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc rau thơm và dọn canh chua chay nóng",
+      "instruction": "Múc canh chua chay dứa đậu phụ ra tô lớn, rắc đều ngò gai và rau ngổ thái khúc lên mặt để dậy hương thơm đặc trưng Nam Bộ. Dùng nóng cùng cơm trắng hoặc bún tươi."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 204,
+    "energyKcal": 204,
+    "energyKj": 853,
+    "proteinG": 12,
+    "fatG": 8.4,
+    "saturatedFatG": 1.2,
+    "carbG": 25.1,
+    "fiberG": 4.8,
+    "sugarG": 15.4,
+    "sodiumMg": 717,
+    "saltG": 1.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "NIN VN Doc Mung Ref",
+      "USDA FDC 169124",
+      "USDA FDC 169246",
+      "USDA FDC 169260",
+      "USDA FDC 169655",
+      "USDA FDC 169918",
+      "USDA FDC 169963",
+      "USDA FDC 170457",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN Culinary Herb Ref",
+      "VN Herb Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "12b4dcea26bcfa995936dce6b4f2fbef435d9466ddc044ca2a54229108eb576a",
+    "researchedFromV2Sha256": "f0092dac3c2e4aec79902132e4cd0f6c53955fd92379e6d0d014aa6ca115c91f"
+  }
+}

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9a2994a529126adb",
+    "slug": "mi-xao-trung-rau",
+    "title": "Mì xào trứng rau",
+    "subtitle": "Sợi mì dai săn xào lửa lớn cùng trứng gà chiên tơi xốp, bắp cải và cà rốt giòn ngọt đậm sốt xì dầu, dầu hào"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Mì xào",
+      "Trứng rau",
+      "Ăn nhanh",
+      "Dưới 20 phút",
+      "Tiết kiệm"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì xào trứng rau đơn giản nhưng đủ sắc hương vị với sợi mì dai săn bóng bẩy quyện sốt xì dầu, dầu hào, trứng gà đánh tơi vàng ươm mềm xốp cùng bắp cải trắng và cà rốt giòn ngọt.",
+    "servingSuggestion": "Bày mì xào trứng rau ra đĩa nóng, rắc hành lá và tiêu đen xay; dùng kèm tương ớt hoặc ớt tươi thái lát rất tròn vị.",
+    "storageAndReheat": "Nên ăn nóng ngay sau khi xào để sợi mì tơi dai và rau củ giữ được độ giòn. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ rồi đảo nóng nhanh trên chảo lửa vừa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì trứng hoặc vắt mì gói",
+      "culinaryMeasure": "225 g (3 vắt mì khô)",
+      "prepNote": "chần nước sôi vừa bung tơi rồi xả nước lạnh cho sợi dai",
+      "componentGroup": "main",
+      "requiredQuantity": 225,
+      "unit": "g",
+      "grossGrams": 225,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 225,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đánh tan nhẹ cùng chút muối tiêu trước khi chiên tơi",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/3 bắp vừa (khoảng 240 g)",
+      "prepNote": "tách lá rửa sạch, để thật ráo rồi thái sợi bản khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 204,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ vừa (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái sợi dài hoặc lát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, tách riêng đầu hành trắng băm nhỏ phi thơm và lá xanh cắt khúc",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "4/5 củ (khoảng 20 g)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm xào rau và mì",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.8,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 17.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới đều lên sợi mì khi xào tạo màu nâu óng và hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp sợi mì bóng mướt và đậm vị ngọt thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm nhẹ khi xào bắp cải cà rốt cho dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của xì dầu và dầu hào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g nêm rau củ, 2 g nêm mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "đánh tan cùng trứng gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1 g đánh trứng, 1 g rắc mặt đĩa mì",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 5 ml trộn mì sau trụng, 10 ml chiên trứng, 15 ml xào rau và mì",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (trụng mì)",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "đun sôi để trụng sơ mì rồi chắt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Trụng tơi sợi mì và sơ chế rau củ, đánh trứng",
+      "instruction": "Đun sôi 1,2 lít nước lọc, thả 3 vắt mì vào trụng nhanh khoảng 90 giây cho sợi vừa bung rời, vớt ra xả ngay nước lạnh, để thật ráo rồi trộn với 5 ml dầu ăn chống dính. Thái sợi bắp cải trắng và cà rốt; băm nhỏ tỏi; tách riêng đầu hành trắng băm và lá hành xanh cắt khúc. Đập 3 quả trứng gà đánh tan cùng 2 g muối ăn và 1 g tiêu đen xay.",
+      "tip": "Xả nhanh nước lạnh và trộn chút dầu ăn ngay sau khi trụng giúp sợi mì săn dai và tách rời hoàn toàn lúc xào.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên tơi trứng gà vàng xốp để riêng",
+      "instruction": "Làm nóng 10 ml dầu ăn trong chảo lớn trên lửa vừa, đổ tô trứng gà vào đảo nhẹ nhàng khoảng 90 giây cho đến khi trứng vừa chín tới thành từng mảng vàng xốp mềm thì trút riêng ra đĩa.",
+      "tip": "Chiên riêng trứng trước rồi mới xào rau mì giúp trứng giữ được màu vàng tươi, xốp mềm mà không bị thâm màu xì dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi, đầu hành và xào rau củ giòn ngọt",
+      "instruction": "Làm nóng 15 ml dầu ăn còn lại trong chảo trên lửa lớn, phi thơm tỏi băm và đầu hành trắng. Cho cà rốt và bắp cải trắng vào xào nhanh 2 phút cho vừa chín tới giữ độ giòn, nêm 10 ml nước mắm ngon và 3 g hạt nêm rồi gạt gọn sang một bên chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo mì thấm sốt xì dầu, dầu hào",
+      "instruction": "Trút toàn bộ 225 g mì đã trụng vào phần chảo trống, rưới đều 20 ml xì dầu, 15 ml dầu hào, 5 g đường cát trắng và 2 g hạt nêm còn lại lên mì. Đảo đều cùng rau củ trên lửa lớn khoảng 2 phút đến khi sợi mì khô ráo, săn bóng và lên màu nâu đẹp mắt.",
+      "tip": "Giữ lửa lớn khi đảo mì và rau củ giúp nước sốt bám quyện đều vào sợi mì mà không bị đọng nước dưới đáy chảo."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn lại trứng gà chiên vào chảo mì rau",
+      "instruction": "Cho đĩa trứng gà chiên tơi trở lại chảo mì, đảo nhẹ tay thêm 30 giây cho trứng, sợi mì và rau củ hòa quyện đều mà không làm vụn nát mảng trứng rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và dọn nóng",
+      "instruction": "Rắc toàn bộ lá hành xanh cắt khúc và 1 g tiêu đen xay còn lại vào chảo đảo thêm 2 lượt cho hành vừa chín tái xanh mướt. Bày mì xào trứng rau ra 3 đĩa và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 462,
+    "energyKcal": 462.4,
+    "energyKj": 1935,
+    "proteinG": 17.5,
+    "fatG": 14.9,
+    "saturatedFatG": 3.2,
+    "carbG": 65.3,
+    "fiberG": 5.2,
+    "sugarG": 7.6,
+    "sodiumMg": 1861,
+    "saltG": 4.65,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "959d7530bc4a6892152a88e6121c7b1a7f03029916bc5526077e8ea1971c70a7",
+    "researchedFromV2Sha256": "39e061c73f6035f9a77370d946b212c29df6aa8a92cae1d5462c36b994adc90c"
+  }
+}

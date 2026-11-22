@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b01569fd0df22f66",
+    "slug": "mi-y-aglio-e-olio-toi-ot-dau-olive",
+    "title": "Mì Ý Aglio e Olio tỏi ớt dầu ô liu",
+    "subtitle": "Món mì Ý tối giản trứ danh với sợi Spaghetti bóng mượt nhũ tương dầu ô liu nguyên chất, tỏi thái lát vàng thơm và ớt sừng cay dịu"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 2,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Aglio e Olio",
+      "Dưới 30 phút",
+      "Tối giản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý Aglio e Olio là món mì đêm khuya kinh điển của người Ý chỉ dùng những nguyên liệu mộc mạc nhất: tỏi lát phi vàng dịu trong dầu ô liu nguyên chất, chút ớt sừng cay nhẹ và nước luộc mì giàu tinh bột tạo lớp sốt óng mượt.",
+    "servingSuggestion": "Chia mì ra đĩa sâu lòng đã làm ấm, rưới phần dầu tỏi ớt còn lại trong chảo và rắc thêm ngò tây tươi băm nhuyễn nếu thích, dùng nóng ngay.",
+    "storageAndReheat": "Món mì trộn dầu nhũ tương ngon nhất khi thưởng thức ngay lúc vừa chế biến; nếu còn dư nên bảo quản ngăn mát tối đa 1 ngày và đảo nhanh trên chảo cùng chút nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "180 g",
+      "prepNote": "luộc non hơn hướng dẫn bao bì khoảng 2 phút để hoàn thiện trong chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng loại extra virgin để phi tỏi ở nhiệt độ thấp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 31.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2/5 củ (3 tép lớn, ~10 g)",
+      "prepNote": "bóc vỏ, bổ đôi tách bỏ lõi xanh giữa tép rồi thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ tươi",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, bổ dọc bỏ hạt nếu muốn giảm cay, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "6 g (~1 muỗng canh băm)",
+      "prepNote": "nhặt lấy lá, rửa sạch, thấm khô và băm nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 10 g pha nước luộc mì và 2 g chỉnh vị khi xóc chảo",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 120 ml nước giàu tinh bột",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.06,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tỏi lát, ớt tươi và ngò tây",
+      "instruction": "Bóc vỏ 3 tép tỏi tươi, bổ dọc lấy bỏ phần lõi xanh ở giữa rồi thái thành những lát mỏng đều nhau để chín cùng lúc. Rửa sạch 1 quả ớt sừng đỏ tươi, bỏ hạt nếu ăn cay nhẹ rồi thái khoanh mỏng. Nhặt lá 6 g ngò tây tươi, rửa sạch, thấm khô và băm nhỏ.",
+      "tip": "Thái tỏi lát đều tay giúp tỏi vàng đồng loạt trong dầu mà không bị miếng cháy miếng sống."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun nước muối và luộc mì Ý al dente",
+      "instruction": "Đun sôi mạnh nồi với 2 lít nước lọc, cho 10 g muối hạt vào khuấy tan rồi thả 180 g mì Ý Spaghetti khô vào luộc khoảng 7–8 phút (bớt 2 phút so với hướng dẫn bao bì) để mì chín tiếp trong chảo sốt. Trước khi vớt, múc giữ lại 120 ml nước luộc mì.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi ớt trên lửa nhỏ với dầu ô liu",
+      "instruction": "Đổ 35 ml dầu ô liu nguyên chất vào chảo lớn, đặt lên bếp lửa thật nhỏ. Khi dầu vừa ấm, cho tỏi thái lát và ớt sừng vào phi nhẹ nhàng 2–3 phút đến khi tỏi dậy mùi thơm và vừa chuyển màu vàng nhạt thì lập tức nhấc chảo khỏi bếp để giữ màu đẹp.",
+      "tip": "Chỉ cần tỏi hơi ngả vàng nhạt là đạt, tuyệt đối không để tỏi chuyển nâu vì sẽ gây vị đắng gắt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nhũ tương hóa dầu tỏi với nước luộc mì",
+      "instruction": "Đặt chảo dầu tỏi ớt lại lên bếp ở lửa vừa, múc khoảng 60 ml nước luộc mì giàu tinh bột vào chảo và khuấy nhẹ cho hỗn hợp sủi lăn tăn, tạo thành lớp nền hơi sệt."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì Ý quyện sốt óng mượt",
+      "instruction": "Gắp mì Ý Spaghetti từ nồi thả thẳng vào chảo, đảo và xóc đều tay liên tục khoảng 2 phút trên lửa vừa. Thêm từng chút nước luộc mì còn lại nếu cần cho đến khi tinh bột hòa với dầu ô liu thành lớp sốt bóng mượt ôm trọn sợi mì.",
+      "tip": "Xóc chảo liên tục giúp dầu ô liu và nước tinh bột tạo nhũ tương mượt thay vì tách dầu đọng ở đáy chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chỉnh muối, rắc ngò tây và dọn nóng",
+      "instruction": "Nếm thử và rắc thêm chút muối hạt (khoảng 2 g nếu nhạt), tắt bếp rồi rắc ngò tây tươi băm nhỏ vào đảo nhẹ lần cuối. Chia mì ra 2 đĩa sâu lòng, rưới phần dầu tỏi ớt còn lại lên trên và thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 483,
+    "energyKcal": 483.3,
+    "energyKj": 2022,
+    "proteinG": 12.1,
+    "fatG": 17.4,
+    "saturatedFatG": 2.5,
+    "carbG": 69,
+    "fiberG": 3.1,
+    "sugarG": 2.6,
+    "sodiumMg": 473,
+    "saltG": 1.18,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ebfe0610823914364f6694fa21c115b70b5be262243085bd4c2e55e5db471287",
+    "researchedFromV2Sha256": "3b3b6eb8994c62d2d40174e3ba14683f8dc8636f49d2570457baf66806538964"
+  }
+}

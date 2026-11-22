@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-bf6c9c4d92b2e04c",
+    "slug": "tom-om-gung-nhat",
+    "title": "Tôm om gừng nước tương kiểu Nhật",
+    "subtitle": "Tôm tươi nguyên con om mềm đậm vị trong nước dùng Sake Mirin xì dầu Nhật và gừng thái lát thơm ấm nồng, dùng nóng chan cơm cực kỳ đưa miệng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món om Nhật",
+      "Tôm tươi",
+      "Gừng tươi",
+      "Nhanh gọn",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm om gừng Shogani kiểu Nhật Bản với những con tôm tươi săn giòn, đỏ au đẹp mắt thấm đẫm nước sốt om ngọt mặn hài hòa từ xì dầu Nhật, rượu Sake, Mirin, đường và hương gừng tươi cay ấm.",
+    "servingSuggestion": "Gắp tôm om ra đĩa sâu lòng, rưới 2–3 muỗng canh nước om ấm lên trên, phủ gừng thái sợi mảnh cùng hành lá xanh; dùng nóng kèm cơm trắng dẻo.",
+    "storageAndReheat": "Có thể bảo quản phần tôm và nước om trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn chỉ cần hâm nóng nhẹ trên lửa nhỏ khoảng 2 phút hoặc thưởng thức nguội theo kiểu món nguội Nhật cũng rất ngon."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "300 g (khoảng 10–12 con to)",
+      "prepNote": "cắt gọn râu, chân và gai nhọn ở đuôi, dùng tăm rút chỉ đen dọc lưng, chà muối rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 234,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "45 g (1 củ vừa)",
+      "prepNote": "gọt vỏ, chia 25 g thái lát mỏng để om cùng tôm và 20 g thái sợi thật mảnh rắc mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo hương thơm thanh và khử mùi tanh hải sản khi om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 37.91,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo độ bóng đẹp và vị ngọt dịu tự nhiên cho nước om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo màu nâu bóng và vị mặn umami chủ đạo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 42.48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "18 g (~1,5 muỗng canh)",
+      "prepNote": "hòa cùng nước om tạo vị mặn ngọt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (sơ chế tôm)",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "dùng chà xát nhẹ khử nhớt tanh cho tôm rồi xả sạch bằng nước lạnh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "pha cùng các gia vị Nhật làm nước om ngập mặt tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 210,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Cắt tỉa và làm sạch tôm tươi với muối",
+      "instruction": "Dùng kéo cắt gọn phần râu, chân và gai nhọn ở đuôi của 300 g tôm tươi nguyên con, dùng tăm xiên qua đốt lưng thứ 2 rút bỏ chỉ đen. Xát nhẹ tôm với 5 g muối ăn rồi rửa thật sạch dưới vòi nước lạnh và để ráo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái gừng tươi hai kiểu và cắt hành lá",
+      "instruction": "Gọt vỏ 45 g gừng tươi: lấy 25 g thái lát mỏng 0,5 cm để om lấy hương, 20 g còn lại thái sợi thật mảnh và ngâm nhanh qua nước mát cho giòn bớt hăng. Rửa sạch hành lá tươi và thái khoanh mỏng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đun sôi hỗn hợp nước om Nhật Bản",
+      "instruction": "Cho 300 ml nước lọc, 45 ml rượu Sake Nhật Bản, 45 ml rượu ngọt Mirin, 45 ml xì dầu Nhật Bản và 18 g đường cát trắng vào nồi nông rộng đáy, khuấy cho đường tan bớt rồi đun trên lửa vừa đến khi sôi. Thả 25 g gừng thái lát vào nồi nước om.",
+      "tip": "Dùng nồi đáy rộng để xếp tôm thành một lớp phẳng giúp từng con tôm ngập đều trong nước sốt mà không bị dập nát."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp tôm om thấm vị trong 5 phút",
+      "instruction": "Khi nước om sôi đều trở lại, nhẹ nhàng xếp tôm thành một lớp trong nồi, đậy hé vung (hoặc đặt giấy bạc khoét lỗ phủ nhẹ mặt tôm) và om trên lửa vừa khoảng 5 phút cho đến khi vỏ tôm đỏ au, thịt chín đục săn chắc; trong lúc om dùng muôi hớt sạch bọt nổi.",
+      "tip": "Tôm chín nhanh nên chỉ om đúng khoảng 5 phút trên lửa vừa để thịt giữ độ giòn ngọt, tránh om quá lâu làm tôm dai.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Tắt bếp ngâm ủ cho tôm ngấm sâu nước sốt",
+      "instruction": "Tắt bếp và giữ nguyên tôm trong nồi nước om ấm khoảng 8–10 phút để tôm từ từ hút ngược hương vị gừng xì dầu ngọt thanh vào tận bên trong thịt.",
+      "tip": "Bước ngâm ủ sau khi tắt bếp là bí quyết của món om Nhật giúp hải sản thấm vị sâu mà thịt không bị co khô do nhiệt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc gừng sợi và hành lá thưởng thức",
+      "instruction": "Gắp tôm om xếp gọn ra đĩa sâu lòng, rưới 2–3 muỗng canh nước om ấm lên trên, phủ phần gừng tươi thái sợi mảnh cùng hành lá thái nhỏ lên mặt và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 162,
+    "energyKcal": 162,
+    "energyKj": 678,
+    "proteinG": 17.2,
+    "fatG": 0.6,
+    "saturatedFatG": 0.1,
+    "carbG": 17.1,
+    "fiberG": 0.5,
+    "sugarG": 13.1,
+    "sodiumMg": 973,
+    "saltG": 2.43,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1494c153a97c61068bd81c0f6a34af390048665377a77ee56a46a0f3d9279865",
+    "researchedFromV2Sha256": "11afc0db5d6c391c184f4a77aa5b8af750777e4ce386e0eb88c08db55dadde91"
+  }
+}

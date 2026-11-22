@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cbb5635bfe848a49",
+    "slug": "ga-om-gung-tuong",
+    "title": "Đùi gà om gừng xì dầu kiểu Hoa",
+    "subtitle": "Đùi gà nguyên xương áp chảo vàng da, om liu riu cùng thật nhiều gừng tươi, hoa hồi, rượu Thiệu Hưng và xì dầu đặc sánh bóng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Đùi gà",
+      "Món om",
+      "Gừng tươi",
+      "Xì dầu",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món đùi gà om xì dầu đậm vị cơm nhà Trung Hoa: thịt đùi gà có xương giữ trọn độ mọng ngọt sau khi áp chảo vàng da, om thấm đẫm hương gừng tươi thái lát ấm nồng, hồi quế, đường nâu và hai loại xì dầu tạo nước sốt nâu bóng sánh đẹp.",
+    "servingSuggestion": "Gắp đùi gà om gừng ra đĩa sâu lòng, rưới nước sốt sánh bóng và rắc hành lá xanh thái nhỏ lên trên, ăn nóng kèm cơm trắng dẻo và rau luộc.",
+    "storageAndReheat": "Để nguội bảo quản hộp kín ngăn mát tối đa 3 ngày; khi ăn hâm lại trên lửa nhỏ với 2–3 muỗng canh nước lọc đến khi thịt gà nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà có xương và da (góc tư hoặc tỏi gà)",
+      "culinaryMeasure": "1400 g (khoảng 4–6 cái)",
+      "prepNote": "rửa sạch với nước mát, thấm thật khô bề mặt bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 1400,
+      "unit": "g",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 1148,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g",
+      "prepNote": "cạo sạch vỏ, thái lát mỏng để phi thơm và om cùng thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (~18 g, khoảng 5 tép)",
+      "prepNote": "bóc vỏ, đập dập nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 3 cây)",
+      "prepNote": "cắt khúc 5 cm, tách riêng phần đầu trắng phi thơm và phần lá xanh rắc cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "90 ml (~6 muỗng canh)",
+      "prepNote": "tạo vị mặn umami đậm đà cho nước sốt om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 106.2,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 47.79,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo sắc nâu cánh gián bóng mượt cho da gà và nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "60 ml (~1/4 chén)",
+      "prepNote": "khử hoàn toàn mùi tanh của gà và dậy hương món om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 59.4,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 26.73,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "hòa vào nước sốt om giúp thịt gà thơm béo dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 6.21,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "50 g (~3,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu hài hòa với xì dầu và giúp sốt sánh bóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "160 ml (~2/3 chén)",
+      "prepNote": "pha loãng nước sốt để đủ lượng om chín mềm đùi gà",
+      "componentGroup": "broth",
+      "requiredQuantity": 160,
+      "unit": "ml",
+      "grossGrams": 160,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 72,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 10,
+      "ingredientId": "STAR_ANISE",
+      "name": "Hoa hồi khô",
+      "culinaryMeasure": "3 g (~2 hoa)",
+      "prepNote": "rửa sơ, thả vào nồi om tạo mùi thơm đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "1,5 g (~3 lá)",
+      "prepNote": "rửa sơ, vớt bỏ sau khi om xong",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để phi thơm gừng tỏi và áp chảo đùi gà",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc vào bước hoàn thiện tăng độ thơm cay dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô đùi gà và sơ chế gia vị thơm",
+      "instruction": "Rửa sạch 1400 g đùi gà có xương và thấm thật khô mặt da bằng khăn giấy để khi áp chảo vàng giòn không bắn dầu. Thái lát mỏng 40 g gừng tươi, đập dập tỏi, cắt khúc 5 cm hành lá (tách riêng đầu trắng và lá xanh)."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm gừng, tỏi và đầu hành trắng",
+      "instruction": "Làm nóng 15 ml dầu ăn trong nồi đáy dày trên lửa vừa, cho gừng thái lát, tỏi đập dập và phần đầu hành trắng vào phi thơm 2 phút đến khi dậy hương dịu và tỏi vừa ngả vàng nhẹ (không để cháy đắng).",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo xém vàng hai mặt đùi gà",
+      "instruction": "Xếp các miếng đùi gà thành một lớp phẳng không chồng lấn (ưu tiên úp mặt da xuống trước), áp chảo 8 phút trên lửa vừa đến khi hai mặt săn lại và da gà lên màu vàng nhạt đẹp mắt.",
+      "tip": "Áp chảo trước giúp phần mỡ dưới da tiết bớt và giữ thịt gà săn chắc trong suốt quá trình om.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Đổ hỗn hợp xì dầu, rượu và thảo mộc",
+      "instruction": "Rót 90 ml xì dầu nhạt, 40 ml xì dầu đặc, 60 ml rượu Thiệu Hưng, 15 ml dầu mè thơm, 50 g đường nâu và 160 ml nước lọc vào nồi. Khuấy nhẹ cho đường tan rồi thả hoa hồi khô và lá nguyệt quế khô vào cùng.",
+      "tip": "Kết hợp xì dầu nhạt để lấy vị mặn thanh và xì dầu đặc để tạo màu nâu cánh gián óng mượt cho thịt gà."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om liu riu cho gà chín mềm thấm sốt",
+      "instruction": "Đun nồi sốt sôi bùng lên rồi lập tức hạ xuống lửa nhỏ nhất, đậy nắp kín om liu riu 35 phút cho thịt gà chín mềm tận xương và thấm đẫm nước sốt. Ở phút thứ 15, mở nắp lật trở mặt gà một lần cho ngấm đều hai phía.",
+      "tip": "Giữ lửa thật nhỏ khi om để nước sốt xì dầu không bị trào hoặc cô cạn quá nhanh gây mặn cháy.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cô sánh sốt, nêm vị và hoàn thiện",
+      "instruction": "Mở nắp nồi, đun thêm 5 phút trên lửa vừa cho nước sốt sánh bóng ôm đều miếng gà rồi rắc tiêu trắng xay vào đảo nhẹ. Thả phần lá hành xanh vào đảo đều rồi tắt bếp, vớt bỏ hoa hồi, lá nguyệt quế, gắp gà ra đĩa và chỉ rưới một lớp nước sốt bóng mượt vừa đủ lên trên (không chan hết phần nước om đậm vị dưới đáy nồi), dọn nóng cùng cơm trắng.",
+      "timerMinutes": 5
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 606,
+    "energyKcal": 606.1,
+    "energyKj": 2537,
+    "proteinG": 57.3,
+    "fatG": 35,
+    "saturatedFatG": 9,
+    "carbG": 11.1,
+    "fiberG": 0.6,
+    "sugarG": 6.6,
+    "sodiumMg": 1191,
+    "saltG": 2.98,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170917",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171316",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7248cc48f78e158b92d2ab0db61498e677ea91b5e3e53aadda2165b2d6508602",
+    "researchedFromV2Sha256": "37e4468fb9940bc7d142858cfc6a42d4b93b0b9d390adaaccceb7c620fdc0770"
+  }
+}

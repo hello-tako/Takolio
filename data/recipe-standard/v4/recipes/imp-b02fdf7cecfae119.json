@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b02fdf7cecfae119",
+    "slug": "muc-kho-tuong",
+    "title": "Mực ống kho xì dầu gừng",
+    "subtitle": "Khoanh mực ống tươi săn giòn ướp rượu Thiệu Hưng và xì dầu, kho nhanh cùng gừng sợi tạo nước sốt sánh nâu cánh gián thơm hương dầu mè"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Mực ống",
+      "Xì dầu",
+      "Cơm nhà",
+      "Đậm đà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "sesame",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mực ống kho xì dầu gừng kiểu Hoa với những khoanh mực trắng dày thịt săn giòn, thơm hương rượu Thiệu Hưng và gừng sợi ấm nồng, thấm đẫm nước sốt hai loại xì dầu sánh nâu bóng mượt điểm dầu mè thơm lừng.",
+    "servingSuggestion": "Múc mực kho cùng nước sốt sệt ra đĩa sâu lòng, rắc hành lá cắt khúc và tiêu đen xay; dùng nóng kèm cơm trắng dẻo rất bắt vị.",
+    "storageAndReheat": "Bảo quản mực kho trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn hâm nóng lại nhanh trên chảo lửa nhỏ khoảng 2–3 phút, tránh đun lâu làm mực bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi làm sạch",
+      "culinaryMeasure": "650 g (khoảng 2–3 con vừa)",
+      "prepNote": "rút túi mực, bỏ mắt và nang cứng, rửa sạch xát muối gừng rồi cắt khoanh dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 552.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 nhánh vừa)",
+      "prepNote": "chia 10 g đập dập xát rửa mực và 15 g thái sợi mỏng để ướp kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm hài hòa cho món mực kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tạo sắc nâu cánh gián bóng đẹp đặc trưng món kho Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "khử mùi tanh hải sản và tạo hương thơm dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 10.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "ướp giúp mực dịu vị và mau lên màu caramel",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng chà xát khử tanh bề mặt mực rồi rửa trôi sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 0.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp mực và một nửa rắc sau khi kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chao săn mực trước khi đổ nước kho",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 26.22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm rắc hoàn thiện món ăn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới khi hoàn thiện giúp mực kho thơm béo nhẹ kiểu Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "giúp kho mực thấm vị mà không cháy đáy nồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử tanh và cắt khoanh mực ống",
+      "instruction": "Nhẹ nhàng rút đầu và nội tạng mực ống ra khỏi thân, gỡ bỏ túi mực đen cẩn thận tránh làm vỡ, bỏ mắt và nang cứng trong thân. Chà xát đều 8 g muối ăn cùng 10 g gừng tươi đập dập lên khắp mình mực khoảng 2 phút để khử sạch mùi tanh và nhớt, sau đó rửa lại nhiều lần với nước lạnh, để ráo rồi cắt khoanh tròn dày 1,5 cm.",
+      "tip": "Không làm vỡ túi mực khi sơ chế và rửa lại thật sạch muối gừng giúp khoanh mực trắng giòn, thơm ngọt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp mực cùng xì dầu, rượu Thiệu Hưng và gừng sợi",
+      "instruction": "Thái sợi mảnh 15 g gừng tươi còn lại và cắt khúc 3 cm phần hành lá tươi. Cho mực vào tô ướp cùng 45 ml xì dầu, 10 ml xì dầu đặc, 15 ml rượu Thiệu Hưng, 25 g đường cát trắng, 1 g tiêu đen xay và gừng thái sợi, trộn đều rồi ướp trong 15 phút cho thấm gia vị.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn khoanh mực trên lửa vừa-lớn",
+      "instruction": "Làm nóng chảo sâu lòng hoặc nồi đáy dày với 30 ml dầu ăn thực vật trên lửa vừa-lớn, trút toàn bộ tô mực cùng nước ướp vào đảo đều khoảng 3 phút đến khi khoanh mực vừa săn lại và chuyển màu trắng đục.",
+      "tip": "Không nên chần mực qua nước sôi trước khi kho vì mực rất dễ bị co rút và dai khi nấu tiếp.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm nước lọc đun sôi đều vị",
+      "instruction": "Rót 100 ml nước lọc vào nồi mực sao cho nước xâm xấp mặt nguyên liệu, bật lửa lớn đun sôi bùng và đảo nhẹ cho nước sốt hòa quyện đều."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu đến khi nước sốt sánh nâu bóng",
+      "instruction": "Hạ xuống lửa vừa-nhỏ, kho liu riu khoảng 10 đến 12 phút không đậy nắp, thỉnh thoảng đảo nhẹ cho các khoanh mực thấm đều nước sốt. Khi nước kho rút cạn chỉ còn độ sánh sệt màu nâu bóng ôm quanh từng khoanh mực, nếm lại thấy vị mặn ngọt hài hòa là đạt.",
+      "tip": "Canh thời gian kho vừa đủ cho nước sánh lại; tránh kho quá lâu trên 20 phút khiến thịt mực bị cứng dai.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, dầu mè và dọn nóng",
+      "instruction": "Tắt bếp ngay khi sốt đạt độ sánh mong muốn, rưới 5 ml dầu mè thơm vào cùng hành lá tươi cắt khúc và 0,5 g tiêu đen xay còn lại, đảo nhẹ một lượt rồi múc ra đĩa dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 319,
+    "energyKcal": 319.1,
+    "energyKj": 1335,
+    "proteinG": 30.7,
+    "fatG": 13,
+    "saturatedFatG": 2.2,
+    "carbG": 17.9,
+    "fiberG": 0.7,
+    "sugarG": 9.3,
+    "sodiumMg": 1359,
+    "saltG": 3.4,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f6f1b70b0517adb77f41f869313d03f5968c5b45c5c9d4ebb037e44ea56f7f2d",
+    "researchedFromV2Sha256": "7bfa2e178cb64310786a5285564c758771542799b9dcf357eea423252d2f1cd1"
+  }
+}

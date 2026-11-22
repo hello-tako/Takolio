@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-aedcf1c5c1d05d04",
+    "slug": "tom-xao-tuong-han",
+    "title": "Tôm xào sốt tương bơ tỏi kiểu Hàn",
+    "subtitle": "Tôm tươi săn giòn xào lửa lớn với bơ tỏi thơm ngậy, nước tương, rượu ngọt Mirin và hành lá xanh mướt"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Tôm xào",
+      "Bơ tỏi",
+      "Hàn Quốc",
+      "Banchan",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "milk",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tôm xào sốt tương bơ tỏi kiểu Hàn là món ăn đưa cơm nhanh gọn chỉ mất 20 phút. Tôm tươi bóc vỏ ướp nhẹ muối tiêu được xào nhanh trên chảo bơ tỏi thơm lừng rồi áo đều lớp sốt nước tương, rượu mirin và chút đường tạo độ bóng mặn ngọt hài hòa.",
+    "servingSuggestion": "Trút tôm nóng ra đĩa, rắc thêm hạt mè trắng rang và hành lá; dùng ngay với cơm trắng nóng dẻo.",
+    "storageAndReheat": "Tôm xào ngon nhất khi ăn ngay lúc vừa chế biến; nếu bảo quản ngăn mát tối đa 24 giờ, chỉ nên đảo ấm lại trên chảo trong 1 phút để tôm không bị khô dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm thẻ hoặc tôm sú lớn)",
+      "culinaryMeasure": "350 g",
+      "prepNote": "bóc vỏ, chừa đuôi cho đẹp, rạch lưng rút sạch chỉ đen, rửa nước muối loãng rồi thấm thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 273,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm, để riêng phần đầu trắng và phần lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 18,8 g, ~5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm cho lớp sốt áo tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin Nhật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "khử mùi tanh hải sản và tạo độ bóng cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (1 nhúm nhỏ)",
+      "prepNote": "ướp sơ giúp thịt tôm săn chắc",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp tôm trước khi xào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt / Bơ mặn",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "tạo hương thơm béo ngậy quyện tỏi phi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha cùng bơ giúp bơ không bị cháy đen khi xào lửa lớn",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới sau khi tắt bếp để giữ trọn hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "giã hoặc xoa nhẹ trong lòng bàn tay trước khi rắc cho thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và ướp sơ tôm tươi",
+      "instruction": "Tôm tươi bóc vỏ, rút sạch chỉ đen dọc lưng, rửa qua nước muối loãng rồi dùng khăn giấy thấm thật ráo. Ướp tôm với 1 g muối ăn và 1 g tiêu đen xay trong 10 phút cho thịt tôm săn chắc. Thái lát mỏng hành tây, cắt khúc hành lá (tách riêng đầu trắng và lá xanh), băm nhỏ tỏi.",
+      "tip": "Thấm thật ráo nước giúp tôm xào săn giòn và bắt sốt nhanh mà không bị tiết nước đọng đáy chảo.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Hòa sẵn hỗn hợp sốt tương Mirin",
+      "instruction": "Trong chén nhỏ, khuấy tan 25 ml nước tương, 15 ml rượu ngọt Mirin Nhật và 6 g đường cát trắng để khi xào tôm chỉ việc rưới ngay vào chảo."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi cùng bơ và dầu ăn",
+      "instruction": "Làm nóng chảo trên lửa vừa với 15 ml dầu ăn thực vật và 12 g bơ lạt. Khi bơ vừa tan sủi bọt, cho tỏi băm vào phi khoảng 30 giây đến khi dậy mùi thơm dịu mà tỏi chưa bị cháy vàng sậm.",
+      "tip": "Kết hợp dầu ăn cùng bơ giúp nâng điểm bốc khói, giữ bơ thơm béo mà không bị cháy khét."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào lửa lớn cho tôm cong hồng chín săn",
+      "instruction": "Tăng lên lửa lớn, trút toàn bộ tôm đã ướp vào chảo xào nhanh tay khoảng 2–3 phút đến khi thân tôm uốn cong, chuyển màu đỏ hồng đục đều và chín hoàn toàn.",
+      "tip": "Xào tôm nhanh trên lửa lớn giúp thịt tôm săn giòn giữ được vị ngọt, không đảo quá 3 phút kẻo tôm bị khô xác.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rưới sốt tương và xào cùng hành tây, đầu hành",
+      "instruction": "Rưới hỗn hợp sốt tương Mirin vào chảo, thêm hành tây thái lát và phần đầu trắng hành lá, đảo đều trên lửa lớn thêm 2 phút cho hành vừa chín tới giòn ngọt và nước sốt rút sánh quyện quanh từng con tôm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả lá hành, rưới dầu mè và rắc mè rang",
+      "instruction": "Cho phần lá xanh hành lá vào đảo nhanh một lượt rồi tắt bếp, rưới 5 ml dầu mè rang lên trên. Trút tôm ra đĩa, xoa nhẹ hạt mè trắng rang rắc đều lên mặt và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 212,
+    "energyKcal": 212,
+    "energyKj": 887,
+    "proteinG": 20.2,
+    "fatG": 10.2,
+    "saturatedFatG": 3.1,
+    "carbG": 10.2,
+    "fiberG": 1.1,
+    "sugarG": 5.5,
+    "sodiumMg": 783,
+    "saltG": 1.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5fca005daf1c2f00542c62bb1e170aecb0c2013885b97cc1dba0d9e977e6dfa6",
+    "researchedFromV2Sha256": "76e11cec84031e27fbd2b8caf15b59d1b324d14ae34af731005a7957821a1bae"
+  }
+}

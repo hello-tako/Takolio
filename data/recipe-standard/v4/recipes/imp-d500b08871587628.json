@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d500b08871587628",
+    "slug": "tom-kho-dua-keo",
+    "title": "Tôm kho dứa sánh keo",
+    "subtitle": "Tôm tươi bóc vỏ chừa đuôi rim cùng dứa chín cắt lát và nước mắm đường sánh keo, hòa quyện vị chua thanh ngọt mặn chuẩn cơm nhà Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Tôm tươi",
+      "Dứa chín",
+      "Nam Bộ",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm tươi thịt chắc ngọt quyện trong lớp nước sốt dứa chín chua dịu sánh keo bám bóng màu đỏ cam, thơm mùi hành tỏi phi và tiêu xay cay ấm.",
+    "servingSuggestion": "Trút tôm kho dứa ra đĩa, rưới sốt keo và rắc hành lá cùng tiêu xay; ăn nóng với cơm trắng dẻo và canh rau tập tàng.",
+    "storageAndReheat": "Ngon nhất khi thưởng thức nóng trong ngày; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và làm nóng nhanh trên chảo lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ chừa đuôi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "bóc vỏ chừa phần đuôi cho đẹp, rút chỉ lưng, rửa sạch rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 273,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g cả vỏ)",
+      "prepNote": "gọt vỏ, bỏ mắt rồi thái lát mỏng vừa ăn dày khoảng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp tôm và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp tôm và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 18 ml ướp tôm và 12 ml nêm khi kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "chia 6 g ướp tôm và 9 g nêm cùng dứa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm cùng dứa lúc kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp tôm và rắc mặt lúc tắt bếp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tỏi và xào săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "chế xâm xấp mặt tôm để kho rút keo",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, dứa chín và gia vị thơm",
+      "instruction": "Rửa sạch 350 g tôm tươi, cắt bỏ đầu và râu, bóc vỏ chừa lại phần đuôi rồi khều sạch chỉ đen ở lưng và để thật ráo nước. Gọt sạch vỏ bỏ mắt 1/2 quả dứa chín, thái lát mỏng 0,5 cm; băm nhỏ hành tím và tỏi khô chia làm hai phần; thái lát ớt hiểm và cắt nhỏ hành lá.",
+      "tip": "Chọn dứa chín vàng có mùi thơm dịu sẽ giúp món tôm kho có vị chua thanh tự nhiên mà không bị chua gắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp tôm thấm vị trước khi kho",
+      "instruction": "Trộn đều tôm trong tô với một nửa phần hành tím và tỏi băm, 18 ml nước mắm ngon, 6 g đường cát trắng và nửa lượng tiêu đen xay. Ướp khoảng 15 phút để thịt tôm săn chắc và đậm vị.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi ớt và xào săn tôm",
+      "instruction": "Làm nóng chảo sâu lòng với 20 ml dầu ăn trên lửa vừa, phi thơm phần hành tím, tỏi băm còn lại cùng ớt hiểm thái lát trong 1 phút. Trút toàn bộ tôm đã ướp vào đảo đều trên lửa vừa lớn khoảng 3 phút cho đến khi tôm cong lại và chuyển màu đỏ cam đều.",
+      "tip": "Đảo nhẹ tay và không xào quá lâu ở bước đầu để giữ tôm nguyên con mọng nước, không bị khô teo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm dứa chín và gia vị vào chảo tôm",
+      "instruction": "Cho dứa cắt lát vào đảo nhẹ cùng tôm 1 phút, sau đó rưới 100 ml nước lọc vào xâm xấp mặt tôm, nêm tiếp 12 ml nước mắm còn lại, 9 g đường cát trắng và 4 g hạt nêm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho mở nắp cho nước sốt sánh keo bóng",
+      "instruction": "Đợi nước trong chảo sôi lên thì hạ lửa nhỏ, kho mở nắp liu riu khoảng 8–10 phút, thỉnh thoảng đảo nhẹ cho dứa tiết nước ngọt và nước kho rút cạn sánh keo bóng mượt bám đều quanh thân tôm và lát dứa.",
+      "tip": "Không cho quá nhiều nước từ đầu vì bản thân dứa chín cũng sẽ tiết thêm nước ngọt trong khi kho.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại, rắc hành lá và tiêu thưởng thức",
+      "instruction": "Nếm thử xem vị mặn ngọt chua hài hòa đã vừa miệng chưa rồi tắt bếp. Rắc hành lá thái nhỏ và phần tiêu đen xay còn lại lên trên, đảo nhẹ và dọn tôm kho dứa dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 198,
+    "energyKcal": 197.6,
+    "energyKj": 827,
+    "proteinG": 20,
+    "fatG": 6.2,
+    "saturatedFatG": 0.9,
+    "carbG": 17.3,
+    "fiberG": 1.5,
+    "sugarG": 12.4,
+    "sodiumMg": 1274,
+    "saltG": 3.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9dfd65a718a70b14640cebedce6147684664665850916dfd2c1220e78a12f1e2",
+    "researchedFromV2Sha256": "3a141299485836379c70c0698da6f7a5fa755b50e4ac744b1f945b7ed0cfa4b9"
+  }
+}

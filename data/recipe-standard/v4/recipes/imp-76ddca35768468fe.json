@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-76ddca35768468fe",
+    "slug": "bo-nuong-yakiniku-muoi",
+    "title": "Bò nướng Yakiniku muối chanh",
+    "subtitle": "Thịt bò thái lát mỏng nướng xém cạnh trên vỉ nóng, thưởng thức cùng muối tiêu, chanh tươi và sốt hành lá Negi-shio thơm lừng dầu mè"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Yakiniku",
+      "Thịt bò nướng",
+      "Sốt Negi-shio",
+      "Cuối tuần",
+      "Nhật Bản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Phiên bản Yakiniku vị thanh kiểu Nhật không ướp sốt ngọt dày, giữ trọn vị ngọt thịt của lát bò thăn nướng cháy cạnh, kết hợp muối tiêu, vị chua thơm của chanh tươi và chén sốt hành lá dầu mè Negi-shio béo thơm.",
+    "servingSuggestion": "Nướng từng mẻ thịt bò nóng hổi tại bàn, vắt trực tiếp vài giọt chanh tươi lên miếng thịt vừa chín, chấm hoặc cuộn kèm sốt hành lá Negi-shio và ăn cùng cơm trắng nóng.",
+    "storageAndReheat": "Thịt bò nên nướng đến đâu ăn đến đó để giữ độ mềm mọng. Phần sốt hành lá Negi-shio chưa dùng hết có thể đậy kín trong hũ thủy tinh, bảo quản ngăn mát tủ lạnh từ 5–7 ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn thái lát mỏng",
+      "culinaryMeasure": "360 g (lát dày khoảng 2–3 mm)",
+      "prepNote": "để thịt ở nhiệt độ phòng 10 phút trước khi nướng và thấm khô bề mặt bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (làm sốt Negi-shio)",
+      "culinaryMeasure": "2 bó nhỏ (khoảng 80 g)",
+      "prepNote": "rửa sạch, thấm thật ráo nước rồi băm nhỏ cả phần đầu trắng và lá xanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "bunch",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 73.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (khoảng 100 g)",
+      "prepNote": "vắt lấy 15 ml nước cốt trộn sốt Negi-shio, phần còn lại cắt múi cau để vắt trực tiếp lên thịt nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi bào nhuyễn",
+      "culinaryMeasure": "3 tép (khoảng 7,5 g)",
+      "prepNote": "bóc vỏ, bào hoặc băm thật nhuyễn để trộn vào sốt hành lá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 6.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn trực tiếp vào sốt hành lá tạo hương thơm béo đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phết thật nhẹ lên thịt hoặc rưới vào sốt giúp dậy mùi thơm thanh dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.9,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.67,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g pha sốt hành lá Negi-shio và 3 g rắc đều lên thịt bò khi nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g trộn sốt và 1 g rắc mặt thịt khi nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "trộn vào sốt hành lá hoặc rắc lên thịt nướng khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Băm hành lá và chuẩn bị chanh vàng",
+      "instruction": "Rửa sạch 2 bó hành lá tươi, vẩy ráo rồi thấm thật khô bằng khăn giấy, sau đó băm thật nhỏ cả phần đầu trắng lẫn lá xanh. Bào nhuyễn tỏi tươi, cắt đôi quả chanh vàng để vắt lấy 15 ml nước cốt, phần còn lại cắt thành 4–6 múi cau xếp ra đĩa riêng.",
+      "tip": "Thấm thật khô hành lá trước khi băm giúp sốt Negi-shio sánh quyện vào dầu mè mà không bị chảy nhiều nước loãng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sốt hành lá Negi-shio thơm béo",
+      "instruction": "Cho toàn bộ hành lá băm vào tô nhỏ, thêm 15 ml dầu mè thơm, 15 ml nước cốt chanh vàng, 15 ml rượu Sake, tỏi bào nhuyễn, 3 g muối ăn, 1 g tiêu đen xay và 6 g hạt mè trắng rang. Trộn thật đều và để sốt nghỉ tối thiểu 5 phút cho hành lá dịu vị hăng và tiết nước quyện đều gia vị.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Để thịt bò hồi nhiệt và thấm khô bề mặt",
+      "instruction": "Xếp 360 g thịt bò thăn thái lát mỏng ra đĩa lớn, để ở nhiệt độ phòng khoảng 10 phút cho thịt bớt lạnh, dùng khăn giấy thấm khô nhẹ bề mặt từng lát thịt.",
+      "tip": "Thịt bò lạnh đặt thẳng lên vỉ dễ bị tiết nước làm hấp thịt thay vì xém cạnh; để hồi nhiệt nhẹ giúp bò nướng mềm ngọt hơn.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng hoặc chảo gang",
+      "instruction": "Làm nóng vỉ nướng điện, bếp than hoặc chảo gang rãnh trên lửa lớn khoảng 3 phút cho đến khi mặt vỉ thật nóng và bốc hơi nhẹ."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng thịt bò nhanh tay trên lửa lớn",
+      "instruction": "Xếp từng lát thịt bò lên mặt vỉ nóng thành một lớp thoáng, không chồng lên nhau. Nướng lửa lớn khoảng 45–60 giây cho mặt dưới xém nâu cạnh, rắc một phần muối ăn (trong số 3 g còn lại) và tiêu đen xay lên mặt trên rồi lật mặt nướng tiếp 30–45 giây đến khi thịt chín đều không còn màu đỏ sống.",
+      "tip": "Lát bò Yakiniku mỏng chín rất nhanh; lật ngay khi thấy mặt dưới xém cạnh để thịt giữ độ mọng nước, tránh nướng quá kỹ gây dai.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Vắt chanh tươi và thưởng thức cùng sốt Negi-shio",
+      "instruction": "Gắp thịt bò vừa nướng xong ra đĩa nóng, vắt vài giọt chanh vàng từ múi cau lên thịt để dậy hương thanh mát, đặt một ít sốt hành lá Negi-shio lên trên từng miếng bò hoặc chấm trực tiếp vào chén sốt và dùng ngay khi nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 294,
+    "energyKcal": 293.8,
+    "energyKj": 1230,
+    "proteinG": 25.9,
+    "fatG": 18.4,
+    "saturatedFatG": 5.7,
+    "carbG": 5.2,
+    "fiberG": 1.6,
+    "sugarG": 1.1,
+    "sodiumMg": 770,
+    "saltG": 1.92,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 167746",
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "23767f393aced35d01513a53af99bc9727fa92fdef0322bce18c4a05293a6e60",
+    "researchedFromV2Sha256": "3e704595a0aa42d42847225a27bf983a74e0d3a431fbadd2650d77eceddd8d10"
+  }
+}

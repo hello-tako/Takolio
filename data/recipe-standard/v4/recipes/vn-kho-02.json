@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-02",
+    "slug": "ca-loc-kho-to-tieu-den",
+    "title": "Cá lóc kho tộ tiêu đen",
+    "subtitle": "Cá lóc đồng cắt khứa kho săn trong tộ đất cùng tóp mỡ giòn béo, nước mắm đường sánh kẹo và tiêu đen cay nồng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Niêu đất",
+      "Nam Bộ",
+      "Cá lóc",
+      "Đậm đà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Khứa cá lóc đồng chắc thịt thấm đẫm nước sốt kho sánh bóng màu cánh gián, béo thơm tóp mỡ rán giòn, cay ấm vị ớt hiểm và tiêu đen xay.",
+    "servingSuggestion": "Dọn nguyên tộ cá nóng hổi lên bàn ăn cùng cơm trắng hoặc cơm cháy giòn, kèm dưa leo và đĩa rau luộc chấm nước kho.",
+    "storageAndReheat": "Bảo quản tộ cá trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn thêm 1–2 muỗng nước ấm và đun lửa nhỏ cho nước sốt sánh bóng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá lóc đồng cắt khứa",
+      "culinaryMeasure": "500 g (3–4 khứa dày)",
+      "prepNote": "đánh vảy, bỏ mang, xát muối khử nhớt rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo (thắng tóp mỡ)",
+      "culinaryMeasure": "120 g",
+      "prepNote": "thái miếng mỏng nhỏ cỡ đốt ngón tay để thắng lấy mỡ nước và tóp mỡ giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (khoảng 10 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp cá và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (1–2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ để ướp và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, phần đầu hành trắng đập dập băm ướp cá, phần lá cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, giữ nguyên 1 quả và thái lát 1 quả để tạo vị cay nồng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm cá cơm ngon",
+      "culinaryMeasure": "35 ml (2,5 muỗng canh)",
+      "prepNote": "dùng toàn bộ để ướp thấm từng khứa cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "chia 12 g thắng nước màu và 8 g ướp cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp cá và 1 g rắc mặt lúc hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng 5 g xát khử nhớt cá rồi rửa sạch bỏ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tráng đáy tộ thắng nước màu và chiên sơ mặt cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "dùng 20 ml hãm nước màu và 100 ml chế kho cá",
+      "componentGroup": "broth",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch nhớt và ướp khứa cá lóc",
+      "instruction": "Chà xát đều 5 g muối hạt lên các khứa cá lóc để khử sạch nhớt và mùi tanh, rửa lại nước lạnh rồi thấm thật khô. Ướp cá với 35 ml nước mắm, 8 g đường cát trắng, 4 g hạt nêm, 2 g tiêu đen xay, phần đầu hành lá băm cùng một nửa tỏi và hành tím băm trong 25 phút cho thịt cá săn chắc.",
+      "tip": "Ướp cá đủ thời gian với nước mắm ngon giúp thịt cá săn cứng tự nhiên, khi kho không bị bở nát.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Thắng tóp mỡ giòn và phi thơm gia vị",
+      "instruction": "Bắc tộ đất hoặc chảo lên bếp, cho 120 g thịt ba chỉ thái mỏng vào đảo trên lửa vừa khoảng 6 phút cho đến khi thịt tiết mỡ và chuyển vàng giòn thành tóp mỡ. Vớt phần tóp mỡ ra chén riêng, giữ lại phần mỡ heo nóng trong nồi cùng 5 ml dầu ăn để phi thơm phần hành tím và tỏi băm còn lại.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Áp chảo sơ cá và thắng nước màu",
+      "instruction": "Cho 5 ml dầu ăn còn lại vào chảo khác, chiên áp chảo nhẹ từng khứa cá đã ướp khoảng 1 phút mỗi mặt cho săn se bề mặt rồi gắp riêng. Dùng chảo đó cho 12 g đường vào đun lửa nhỏ đến khi chuyển màu nâu cánh gián đậm, thêm 20 ml nước ấm khuấy đều để làm nước màu."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp cá vào tộ và kho thấm lửa nhỏ",
+      "instruction": "Xếp các khứa cá vào tộ đất có sẵn hành tỏi phi và mỡ heo, rưới toàn bộ phần nước ướp cá, nước màu vừa thắng cùng 100 ml nước ấm vào xâm xấp mặt cá. Đun lửa lớn cho sôi bùng 1 phút rồi hạ lửa nhỏ liu riu, thả 2 quả ớt hiểm vào kho mở hé vung trong 20 phút.",
+      "tip": "Không dùng đũa đảo cá trong tộ; chỉ cầm quai tộ lắc nhẹ hoặc dùng muỗng múc nước kho rưới lên mặt cá để khứa cá nguyên vẹn.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Sánh kẹo nước kho trên lửa vừa",
+      "instruction": "Mở hẳn nắp tộ, tăng lên lửa vừa kho thêm 5 phút cho nước kho rút cạn bớt và sánh sệt óng ả bám đều quanh khứa cá. Nếm thử nước kho xem độ mặn ngọt đã hài hòa chưa.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc tóp mỡ, tiêu đen và hành lá",
+      "instruction": "Khi nước sốt vừa sệt kẹo và khứa cá chín chắc hoàn toàn, rắc phần tóp mỡ vàng giòn, 1 g tiêu đen xay còn lại và phần lá hành cắt khúc lên mặt tộ cá rồi tắt bếp. Dọn nóng ngay khi còn sôi lăn tăn trong tộ đất.",
+      "tip": "Cho tóp mỡ vào sau cùng ngay trước khi tắt bếp để tóp mỡ giữ được độ giòn rụm hòa quyện với nước sốt béo thơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 417,
+    "energyKcal": 416.8,
+    "energyKj": 1743,
+    "proteinG": 30.6,
+    "fatG": 27.2,
+    "saturatedFatG": 9,
+    "carbG": 11.2,
+    "fiberG": 0.8,
+    "sugarG": 8.2,
+    "sodiumMg": 1403,
+    "saltG": 3.51,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175176",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7dc7bc1032f3c2af9796fe30c400fc6071a2f3d8a90c954003680554c2566f83",
+    "researchedFromV2Sha256": "777da9d686e142d26bbbe889280f1deabca2292407b72cd10e43e7ea7d763dfd"
+  }
+}

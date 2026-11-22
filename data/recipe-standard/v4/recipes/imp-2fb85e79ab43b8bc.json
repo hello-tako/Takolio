@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2fb85e79ab43b8bc",
+    "slug": "goi-bo-nuong-thai",
+    "title": "Gỏi bò nướng Nam Tok kiểu Thái",
+    "subtitle": "Thịt bò nướng chín tới thái lát mỏng trộn thính gạo rang thơm lừng, sả, hành tím, bạc hà và sốt mắm chanh ớt cay nồng"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "medium",
+    "prepTimeMinutes": 35,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Nam Tok",
+      "Gỏi bò",
+      "Thính gạo",
+      "Ẩm thực Thái",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi bò nướng Nam Tok kiểu Thái đặc trưng với thịt thăn bò ướp vừa vị nướng xém cạnh, giữ trọn nước thịt ngọt mềm, trộn ngay cùng thính gạo rang (Khao Khua), sả thái mỏng, hành tím, lá bạc hà và nước trộn chanh ớt mắm đậm đà.",
+    "servingSuggestion": "Trình bày gỏi bò Nam Tok ra đĩa, ăn ngay khi thịt còn ấm nhẹ kèm rau xà lách, dưa leo thái lát, xôi nếp hoặc cơm trắng.",
+    "storageAndReheat": "Món gỏi thính gạo ngon nhất ngay sau khi trộn để thính thơm và rau không bị ỉu; phần thịt bò nướng có thể bọc kín giữ mát 24 giờ và chỉ trộn sốt trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn ngoại bò (dày khoảng 2–2,5 cm)",
+      "culinaryMeasure": "350 g",
+      "prepNote": "thấm khô, để nguyên miếng lớn đem ướp gia vị rồi nướng nguyên khối trước khi thái lát",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ROASTED_RICE_POWDER",
+      "name": "Thính gạo rang (Khao Khua)",
+      "culinaryMeasure": "30 g (khoảng 3 muỗng canh)",
+      "prepNote": "rang vàng gạo nếp cùng 1 lá chanh rồi giã thô mịn (hoặc dùng thính gạo rang sẵn)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào (ướp bò)",
+      "culinaryMeasure": "12 ml (khoảng 2,5 muỗng cà phê)",
+      "prepNote": "hòa cùng nước tương ướp thấm miếng thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "ml",
+      "grossGrams": 14.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (ướp bò)",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "tạo vị mặn dịu cho lớp ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (1/2 muỗng cà phê)",
+      "prepNote": "ướp thơm thịt bò trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "chia 4 g vào hỗn hợp ướp thịt bò và 4 g hòa nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (ướp bò)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "áo ngoài miếng bò giúp không dính vỉ khi nướng lửa cao",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "làm nền vị mặn đặc trưng của nước trộn gỏi Nam Tok",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (67,5 g)",
+      "prepNote": "vắt lấy khoảng 40 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột vảy rang khô",
+      "culinaryMeasure": "3 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "tạo vị cay thơm đặc trưng của gỏi Nam Tok (gia giảm theo khẩu vị)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (chỉ phần non trắng)",
+      "culinaryMeasure": "2 cây (40 g)",
+      "prepNote": "bỏ lớp vỏ già, thái lát xéo thật mỏng như giấy để ăn trộn gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "45 g (khoảng 3 củ)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 39.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà (húng lủi)",
+      "culinaryMeasure": "20 g",
+      "prepNote": "nhặt lấy lá non, rửa sạch và để thật ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, để ráo rồi thái khúc ngắn 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khúc ngắn 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà nhạt (hoặc nước lọc ấm)",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "hòa vào sốt trộn giúp làm dịu độ mặn và ẩm đều thính gạo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Pha sốt ướp và ướp miếng thăn bò nguyên khối",
+      "instruction": "Khuấy tan 12 ml dầu hào, 8 ml xì dầu, 4 g đường cát trắng, 1,5 g tiêu đen xay và 15 ml dầu ăn. Xoa đều hỗn hợp này lên khắp miếng thịt thăn bò 350 g, bọc kín ướp trong ngăn mát ít nhất 60 phút, sau đó lấy ra để nhiệt độ phòng 20 phút trước khi nướng.",
+      "tip": "Để thịt bò về nhiệt độ phòng trước khi đặt lên vỉ giúp nhiệt độ chín đều từ ngoài vào trong và giữ phần lõi thịt hồng mọng.",
+      "timerMinutes": 60
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế mỏng sả, hành tím và các loại rau thơm",
+      "instruction": "Thái thật mỏng phần gốc non của 2 cây sả và 45 g hành tím khô; nhặt lá bạc hà (húng lủi), thái khúc 2 cm ngò rí và hành lá, để tất cả thật ráo nước."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nướng bò chín vừa và giữ lại nước thịt ngọt",
+      "instruction": "Làm nóng chảo gang hoặc vỉ nướng ở lửa vừa-lớn. Đặt miếng thăn bò lên nướng tổng 6–8 phút, trở mặt mỗi 2 phút đến khi hai mặt xém nâu đẹp và thịt đạt độ chín vừa (nhiệt độ lõi khoảng 60°C). Gắp ra đĩa sâu lòng để thịt nghỉ 5 phút và giữ lại toàn bộ nước thịt tiết ra.",
+      "tip": "Không cắt thịt ngay khi vừa nhấc khỏi chảo vì nước thịt sẽ chảy ra hết làm miếng bò khô xác; thời gian nghỉ 5 phút giúp thớ thịt giữ trọn độ mọng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Thái lát bò ngược thớ và giữ lại nước thịt",
+      "instruction": "Sau khi thịt bò đã nghỉ đủ thời gian, dùng dao sắc thái thành từng lát mỏng ngang thớ dày 3–4 mm rồi cho vào tô trộn cùng toàn bộ phần nước thịt ngọt tiết ra trên đĩa."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha nước trộn gỏi chua mặn cay cùng nước thịt",
+      "instruction": "Thêm vào tô thịt bò 20 ml nước mắm, nước cốt của 1,5 quả chanh tươi, 4 g đường cát trắng còn lại, 3 g ớt bột vảy rang và 35 ml nước dùng gà, trộn đều cho đường tan hoàn toàn và thịt ngấm vị đậm đà."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn thính gạo rang, rau thơm và dọn ăn ngay",
+      "instruction": "Rắc 30 g thính gạo rang vào tô thịt bò đảo đều cho thính bám thơm quyện sốt, nếm lại cho vừa vị chua mặn cay hài hòa. Cuối cùng cho sả thái mỏng, hành tím, lá bạc hà, ngò rí và hành lá vào đảo nhẹ tay rồi bày ra đĩa dùng ngay.",
+      "tip": "Chỉ trộn thính gạo và rau thơm ngay sát lúc dọn bàn ăn để thính giữ được hương rang bùi thơm và rau thơm tươi xanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 338,
+    "energyKcal": 337.6,
+    "energyKj": 1413,
+    "proteinG": 26.8,
+    "fatG": 17,
+    "saturatedFatG": 5.5,
+    "carbG": 19.6,
+    "fiberG": 2.1,
+    "sugarG": 4.9,
+    "sodiumMg": 1051,
+    "saltG": 2.63,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Toasted Rice Powder Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172883",
+      "USDA FDC 173474",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "dd34f1439f6adefe716cf5480bf3ce6474d5d002b9f3b558753bbe2212530e1d",
+    "researchedFromV2Sha256": "5058b8764ac170e4fce7934ae90e7bb8826fd09ded3c0d3f06591b1f11db681e"
+  }
+}

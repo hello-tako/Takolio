@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-05",
+    "slug": "tom-rim-man-ngot",
+    "title": "Tôm rim mặn ngọt tỏi ớt",
+    "subtitle": "Tôm tươi vỏ giòn thịt ngọt rim săn cùng nước mắm đường sánh keo và tỏi ớt thơm lừng, món mặn nhanh gọn cho bữa cơm gia đình"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món rim",
+      "Hải sản",
+      "Nhanh gọn",
+      "Đưa cơm",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm tươi giữ nguyên vỏ rang săn rồi rim kẹo với nước mắm ngon và đường thắng cánh gián, vị mặn ngọt hài hòa, thịt tôm săn chắc thơm mùi hành tỏi phi.",
+    "servingSuggestion": "Trút tôm rim ra đĩa, rắc hành lá và tiêu xay; ăn nóng với cơm trắng cùng rau muống luộc hoặc canh chua thanh mát.",
+    "storageAndReheat": "Ngon nhất khi ăn trong bữa; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và làm nóng nhanh trên chảo lửa nhỏ với chút nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên vỏ",
+      "culinaryMeasure": "450 g",
+      "prepNote": "cắt bỏ râu, chân và phần ngạnh cứng ở đầu, rút chỉ lưng rồi rửa nước muối loãng và để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 351,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để phi thơm và cho vào lúc nêm gia vị",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (10 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để phi thơm và cho vào cùng sốt rim",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng để rim mặn ngọt tạo vị đậm đà cho tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "22 g (~1,5–2 muỗng canh)",
+      "prepNote": "chia 10 g thắng nước màu nhẹ và 12 g nêm rim tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "g",
+      "grossGrams": 22,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc vào chảo tôm lúc hoàn thành cho thơm cay",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "5 g",
+      "prepNote": "pha nước muối loãng rửa sạch tôm rồi xả bỏ",
+      "componentGroup": "process",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tỏi và rang săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "40 ml",
+      "prepNote": "dùng hòa tan gia vị rim để không bị cháy đường",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm và khử mùi nước muối loãng",
+      "instruction": "Cắt bỏ râu, chân và phần ngạnh đầu nhọn của 450 g tôm tươi, khều sạch chỉ đen trên lưng. Rửa nhanh tôm qua nước pha 5 g muối rồi xả lại nước sạch, trút ra rổ để thật ráo nước trước khi chế biến.",
+      "tip": "Để tôm thật ráo nước và giữ nguyên vỏ khi rim sẽ giúp vỏ tôm giòn ngon, thịt bên trong ngọt chắc không bị ra nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế hành tím, tỏi, hành lá và ớt",
+      "instruction": "Bóc vỏ hành tím và tỏi khô rồi băm thật nhỏ, chia làm 2 phần bằng nhau để phi thơm và cho vào lúc rim. Hành lá rửa sạch thái nhỏ; ớt tươi bỏ cuống rồi thái lát mỏng để ráo."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và rang săn tôm trên lửa lớn",
+      "instruction": "Làm nóng chảo rộng với 20 ml dầu ăn trên lửa vừa, phi thơm 1/2 lượng hành tím và tỏi băm trong 1 phút. Tăng lên lửa lớn rồi trút tôm vào đảo nhanh tay trong 3–4 phút cho đến khi vỏ tôm chuyển màu đỏ cam rực, thịt tôm cong săn khoảng 70% và hơi sém thơm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm nước mắm đường và hành tỏi còn lại",
+      "instruction": "Hạ nhỏ bếp hoặc nhấc tạm chảo ra khỏi lửa để tránh đường cháy khét. Rưới 35 ml nước mắm ngon, 22 g đường cát trắng, 40 ml nước lọc và 1/2 phần hành tím tỏi băm còn lại vào chảo, xóc đều tay cho gia vị hòa quyện bám quanh thân tôm.",
+      "tip": "Nhấc chảo khỏi bếp trong vài giây khi cho đường và nước mắm sẽ giúp đường tan từ từ mà không bị cháy đen đắng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim mở nắp cho tôm chín kỹ và keo sốt",
+      "instruction": "Đặt chảo lại lên bếp ở lửa vừa nhỏ, tuyệt đối không đậy nắp, rim trong 5 phút và đảo nhẹ thường xuyên đến khi tôm chín hồng hoàn toàn, phần nước mắm đường cô đặc sánh bóng áo đẹp quanh vỏ tôm.",
+      "tip": "Không đậy vung khi rim tôm để hơi nước bay đi nhanh, nước sốt sánh kẹo và không gây mùi nồng của vỏ tôm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn hành lá, ớt tiêu và dọn dùng nóng",
+      "instruction": "Khi nước sốt đã keo bóng, cho hành lá cắt nhỏ, ớt thái lát và 1,5 g tiêu đen xay vào đảo nhanh 15 giây rồi tắt bếp ngay. Gắp tôm ra đĩa, rưới phần sốt keo lên trên và ăn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 195,
+    "energyKcal": 194.9,
+    "energyKj": 816,
+    "proteinG": 24.8,
+    "fatG": 6.2,
+    "saturatedFatG": 0.9,
+    "carbG": 10.9,
+    "fiberG": 0.6,
+    "sugarG": 8.7,
+    "sodiumMg": 1241,
+    "saltG": 3.1,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "41b7213a4c5c8d49f45de7f3ea3f41a6b72a218b15314482cd37383a8c437dce",
+    "researchedFromV2Sha256": "a033e72763755cd86724fe240f41ad8d88e9d9f4c04d2fd17452b7a648f4bc93"
+  }
+}

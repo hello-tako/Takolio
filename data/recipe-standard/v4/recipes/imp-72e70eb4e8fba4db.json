@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-72e70eb4e8fba4db",
+    "slug": "tom-xao-kim-chi",
+    "title": "Tôm xào kim chi Hàn Quốc",
+    "subtitle": "Tôm tươi áp chảo bơ tỏi gừng săn ngọt, xào nhanh cùng kim chi chua cay, cải thảo giòn và ớt chuông đỏ đậm vị đưa cơm"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Tôm tươi",
+      "Kim chi",
+      "Hàn Quốc",
+      "Bữa tối nhanh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "milk",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa tôm xào kim chi Hàn Quốc bắt mắt với thịt tôm hồng tươi giòn ngọt thấm hương bơ tỏi gừng, quyện cùng kim chi cải thảo chua cay nhẹ, cải thảo giòn sần sật và ớt chuông đỏ rực.",
+    "servingSuggestion": "Trút tôm xào kim chi ra đĩa, rắc thêm hành lá và hạt mè trắng rang; thưởng thức nóng ngay cùng cơm trắng dẻo.",
+    "storageAndReheat": "Tôm xào ngon nhất khi ăn ngay lúc vừa nấu xong; nếu bảo quản ngăn mát tối đa 24 giờ, chỉ đảo nóng nhanh 1–2 phút trên chảo lửa vừa để tôm không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm sú hoặc tôm thẻ)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "bóc vỏ, rút chỉ đen sống lưng, rửa sạch rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chua",
+      "culinaryMeasure": "150 g (cả cái và nước kim chi)",
+      "prepNote": "cắt miếng vừa ăn cỡ 3 cm, chắt giữ lại 25 ml nước kim chi để ướp tôm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "NAPA_CABBAGE",
+      "name": "Cải thảo tươi",
+      "culinaryMeasure": "120 g (khoảng 2–3 lá)",
+      "prepNote": "rửa sạch, thái sợi bản 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "3/4 quả (khoảng 112 g)",
+      "prepNote": "bỏ hạt, thái sợi dài vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 95.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn ướp tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "6 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm nhuyễn hoặc nạo mịn ướp tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g (~1,5 muỗng canh)",
+      "prepNote": "đun chảy để áp chảo tôm vàng thơm béo ngậy",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "dùng để xào nhanh cải thảo và ớt chuông",
+      "componentGroup": "main",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "nêm dịu vị mặn ngọt hài hòa khi xào kim chi và rau",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp cho dậy mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "rắc mặt trang trí trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "chỉ nêm nhẹ vào rau nếu cần",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc tăng mùi thơm khi ướp hoặc xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch tôm và ướp cùng nước kim chi, tỏi gừng",
+      "instruction": "Tôm tươi bóc vỏ, rút sạch chỉ đen dọc lưng, rửa qua nước lạnh rồi thấm thật khô bằng khăn giấy. Cắt kim chi cải thảo thành miếng vừa ăn và chắt riêng 25 ml nước kim chi. Trộn tôm trong tô với tỏi băm, gừng tươi băm nhuyễn, 25 ml nước kim chi và 1 g tiêu đen xay (nếu dùng), ướp trong ngăn mát 15 phút cho thấm vị.",
+      "tip": "Thấm thật khô tôm trước khi ướp và áp chảo giúp tôm xém mặt nhanh, giòn ngọt và không ra nhiều nước.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái cải thảo, ớt chuông và hành lá",
+      "instruction": "Cải thảo rửa sạch, thái sợi bản 1 cm cho nhanh chín; ớt chuông đỏ bỏ lõi hạt, thái sợi dài vừa ăn; hành lá rửa sạch, cắt khúc 3–4 cm để riêng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo tôm với bơ lạt đến khi chín hồng",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa, thả 25 g bơ lạt vào đun tan chảy hoàn toàn. Xếp tôm đã ướp thành một lớp và áp chảo khoảng 2 phút mỗi mặt đến khi tôm chuyển màu hồng cam tươi, thân cong săn lại và phần thịt đục chín hoàn toàn (không còn trong). Gắp tôm ra đĩa riêng, giữ lại phần bơ thơm trong chảo.",
+      "tip": "Vớt tôm ra trước khi xào rau giúp tôm không bị nấu quá lửa dẫn đến dai và mất độ giòn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào cải thảo và ớt chuông giữ độ giòn tươi",
+      "instruction": "Thêm 10 ml dầu ăn vào chảo bơ, tăng bếp lên lửa vừa–lớn rồi trút cải thảo và ớt chuông đỏ vào đảo nhanh tay khoảng 3 phút cho rau vừa chín tới vẫn giữ màu tươi và độ giòn nhẹ (rắc thêm chút muối ăn nếu thích vị đậm hơn).",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào kim chi với xì dầu và trộn lại cùng tôm",
+      "instruction": "Thả kim chi cải thảo đã cắt khúc cùng 30 ml xì dầu vào chảo rau, đảo đều khoảng 1 phút cho kim chi nóng dậy mùi thơm mà vẫn giữ được độ giòn chua đặc trưng. Tắt bếp rồi trút toàn bộ tôm đã áp chảo trở lại chảo, đảo nhanh tay cho tôm quyện đều sốt.",
+      "tip": "Chỉ cho kim chi vào xào ngắn 1 phút ở cuối để giữ trọn độ giòn và vị chua thanh tươi mới.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc hành lá và mè rang hoàn thiện",
+      "instruction": "Rưới 8 ml dầu mè rang lên khắp mặt chảo, cho hành lá cắt khúc vào đảo đều lần cuối. Bày tôm xào kim chi ra đĩa, rắc hạt mè trắng rang tùy thích và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 266,
+    "energyKcal": 265.9,
+    "energyKj": 1113,
+    "proteinG": 29.3,
+    "fatG": 14.2,
+    "saturatedFatG": 5.4,
+    "carbG": 7.6,
+    "fiberG": 2.7,
+    "sugarG": 2.8,
+    "sodiumMg": 1255,
+    "saltG": 3.14,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169977",
+      "USDA FDC 170005",
+      "USDA FDC 170108",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "adde2cf414ee9f879fa041bdd8ba5fe561a7ff99789a15f1afccdc543336f515",
+    "researchedFromV2Sha256": "b231514a60a11ef1276e537e2c5129538e168ebe74049ff174250f04375de99e"
+  }
+}

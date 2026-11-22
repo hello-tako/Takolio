@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-957396bc647d3798",
+    "slug": "bong-cai-om-ca-chua-y",
+    "title": "Bông cải xanh om cà chua kiểu Ý",
+    "subtitle": "Bông cải xanh chần giữ màu xanh mướt rồi om thấm vị cùng cà chua bi, tỏi phi dầu ô liu và chút ớt cay nhẹ"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Bông cải xanh",
+      "Cà chua",
+      "Món phụ",
+      "Món chay",
+      "Ẩm thực Ý"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "braise"
+    ],
+    "allergenTags": []
+  },
+  "overview": {
+    "description": "Món rau ăn kèm giản dị chuẩn bếp nhà Ý với từng nhánh bông cải xanh mềm ngọt nhưng vẫn giữ độ chắc, quyện trong nước sốt cà chua bi chua thanh sánh nhẹ, dậy mùi tỏi phi thơm trong dầu ô liu nguyên chất.",
+    "servingSuggestion": "Dọn bông cải om cà chua ra đĩa nông lòng, rắc ngò tây tươi thái nhỏ lên trên; thích hợp ăn kèm thịt nướng, cá áp chảo hoặc bánh mì giòn.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày. Khi dùng, làm nóng trên chảo lửa vừa cùng 1–2 muỗng canh nước trong 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "2 bông vừa (~600 g)",
+      "prepNote": "tách nhánh nhỏ vừa ăn, gọt bớt vỏ xơ phần cuống non rồi rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 492,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua bi chín đỏ",
+      "culinaryMeasure": "240 g (khoảng 2 phần quả lớn)",
+      "prepNote": "rửa sạch, bổ đôi từng quả",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, đập dập hoặc thái lát dày để phi thơm không bị cháy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi và om mềm cà chua cùng bông cải",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi đỏ",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, bỏ hạt và thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 4 g cho nước chần bông cải (đổ bỏ) và 2 g nêm khi om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm cuối cùng khi om xong",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần và om rau)",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "dùng 1150 ml đun sôi chần bông cải và giữ 50 ml nước nóng châm khi om",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 96,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Tách nhánh bông cải xanh và sơ chế rau củ",
+      "instruction": "Tách 600 g bông cải xanh thành các nhánh nhỏ vừa ăn, gọt sạch lớp vỏ xơ cứng ở cuống rồi rửa sạch. Cà chua bi bổ đôi, tỏi tươi đập dập, ớt tươi thái lát và 10 g ngò tây tươi thái nhỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần nhanh bông cải giữ màu xanh giòn",
+      "instruction": "Đun sôi 1150 ml nước lọc với 4 g muối ăn, thả bông cải xanh vào chần khoảng 3 phút cho vừa chín tới rồi vớt ngay ra rổ để thật ráo nước (có thể xả nhanh qua nước lạnh để giữ màu xanh tươi sáng).",
+      "tip": "Chần sơ trước giúp bông cải chín đều từ thân tới bông mà không bị sậm màu khi om cùng cà chua.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi với dầu ô liu và nấu cà chua",
+      "instruction": "Làm nóng 45 ml dầu ô liu nguyên chất trong chảo lớn trên lửa vừa-nhỏ, cho tỏi đập dập vào phi thơm vàng nhẹ khoảng 2 phút. Thêm cà chua bi bổ đôi vào, tăng lên lửa vừa và đảo khoảng 6 phút đến khi cà chua mềm ra nước tạo sốt sánh.",
+      "tip": "Phi tỏi đập dập ở lửa vừa-nhỏ giúp dầu ô liu thấm trọn hương tỏi dịu mà không bị cháy đắng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om bông cải xanh thấm sốt cà chua",
+      "instruction": "Cho toàn bộ bông cải xanh đã chần vào chảo sốt cà chua, đảo nhẹ cho sốt phủ đều các nhánh bông cải. Rưới thêm 50 ml nước lọc nóng, đậy nắp và om lửa nhỏ khoảng 8 phút đến khi bông cải mềm ngọt và ngấm đậm vị sốt.",
+      "tip": "Chỉ thêm lượng nước vừa đủ giữ ẩm đáy chảo để món om có lớp sốt sánh bám rau chứ không bị loãng thành canh.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm ớt tươi và nêm gia vị",
+      "instruction": "Mở nắp chảo, thả ớt tươi thái lát (nếu dùng) vào đảo đều 1 phút. Nêm 2 g muối ăn còn lại và 1,5 g tiêu đen xay cho vừa miệng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và dọn ăn nóng",
+      "instruction": "Gắp bỏ xác tỏi đập dập nếu muốn, bày bông cải xanh om cà chua ra đĩa sâu lòng, rắc ngò tây tươi thái nhỏ lên trên rồi dùng nóng hoặc ấm kèm món chính."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 149,
+    "energyKcal": 148.9,
+    "energyKj": 622,
+    "proteinG": 4.3,
+    "fatG": 10.9,
+    "saturatedFatG": 1.5,
+    "carbG": 11.7,
+    "fiberG": 4.2,
+    "sugarG": 3.8,
+    "sodiumMg": 278,
+    "saltG": 0.7,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170379",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f21b49a116388f4fc809468df9105ee8a8f932d44a0768efc622acab6e662791",
+    "researchedFromV2Sha256": "ca002c567928b3784aa667400854bb69c814de9194e4e0a16debfabc12ba6e85"
+  }
+}

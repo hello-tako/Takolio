@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-67054d03e5a5b011",
+    "slug": "chao-trung-ga-hanh-la-gung-am-bung",
+    "title": "Cháo trứng gà hành lá gừng ấm bụng",
+    "subtitle": "Cháo trắng ninh nhừ sánh mịn quyện vân trứng gà béo mượt, thêm gừng thái chỉ và hành lá thơm ấm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 20,
+    "servings": 2,
+    "tags": [
+      "Cháo trứng",
+      "Ăn sáng",
+      "Dưới 20 phút",
+      "Dễ tiêu",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Bát cháo trứng gà nóng hổi với hạt gạo tẻ nấu nhừ sánh quyện, vân trứng gà mềm mịn không tanh, nổi bật hương cay ấm dịu của gừng tươi thái chỉ, hành lá xanh mát và chút dầu mè.",
+    "servingSuggestion": "Múc cháo nóng sôi trực tiếp lên bát đã lót hành lá và gừng thái chỉ, nhỏ vài giọt dầu mè thơm và rắc tiêu đen xay rồi dùng ngay.",
+    "storageAndReheat": "Cháo trứng ngon nhất khi nấu tới đâu ăn nóng tới đó. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và đun nóng lại trên lửa nhỏ cùng chút nước sôi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm",
+      "culinaryMeasure": "100 g (~1/2 chén ăn cơm)",
+      "prepNote": "vo nhẹ 1–2 lần cho sạch bụi rồi ngâm nước ấm 10 phút nếu có thời gian cho nhanh nhừ",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra chén, đánh tan nhẹ cho lòng trắng và lòng đỏ hòa đều",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "cạo sạch vỏ, rửa sạch rồi thái sợi chỉ thật mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "nêm khi cháo đã nhừ để dậy vị ngọt umami tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm nền cho nồi cháo thanh đậm vừa vặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc mặt tô cháo nóng giúp khử mùi tanh trứng và làm ấm bụng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "nhỏ vài giọt sau cùng lên bát cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu cháo",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "đun sôi trước hoặc nấu trực tiếp với gạo tẻ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1020,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo gạo và sơ chế gừng, hành lá, đánh trứng",
+      "instruction": "Vo sạch 100 g gạo tẻ qua 2 lần nước nhẹ tay rồi để ráo. Cạo vỏ 15 g gừng tươi, rửa sạch và thái sợi chỉ thật mảnh. Rửa sạch hành lá, thái nhuyễn. Đập 2 quả trứng gà vào chén, dùng đũa đánh tan nhẹ đến khi lòng trắng và lòng đỏ hòa đều.",
+      "tip": "Thái gừng thành sợi thật mảnh sẽ giúp gừng tiết tinh dầu ấm nhanh khi gặp cháo nóng mà không bị cay gắt lúc nhai."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu gạo nở mềm trên lửa nhỏ vừa",
+      "instruction": "Cho gạo vào nồi cùng 1,2 lít nước lọc, đặt lên bếp đun sôi bùng trên lửa lớn rồi hạ ngay xuống lửa nhỏ. Đậy hé nắp và ninh khoảng 15 phút, thỉnh thoảng dùng vá khuấy sát đáy nồi để hạt gạo nở bung đều, nước cháo sánh mịn mà không bị bén đáy.",
+      "tip": "Đậy hé nắp khi ninh cháo giúp giữ nhiệt ổn định cho gạo nhanh nhừ mà không bị trào bọt ra bếp.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nêm gia vị cho nồi cháo trắng",
+      "instruction": "Khi hạt gạo đã nở nhừ sánh mịn, nêm 3 g muối ăn và 15 ml nước mắm ngon vào nồi, khuấy đều rồi nếm thử để điều chỉnh độ mặn thanh vừa miệng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rót trứng gà tạo vân tơi mịn",
+      "instruction": "Giữ nồi cháo sôi lăn tăn nhẹ trên lửa nhỏ, từ từ rót chén trứng gà đã đánh tan vào nồi theo dòng mảnh, đồng thời dùng đũa khuấy đều một chiều khoảng 1 phút để trứng kết thành những vân vàng mịn quyện đều trong cháo và chín hoàn toàn.",
+      "tip": "Rót trứng từ từ khi cháo đang sôi nhẹ giúp trứng chín ngay thành vân mượt mà không bị tanh hay vón cục lớn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hòa một phần gừng vào nồi cháo",
+      "instruction": "Thả một nửa lượng gừng tươi thái sợi vào nồi cháo, khuấy nhẹ thêm 30 giây cho hương gừng lan tỏa đều trong nước cháo rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chan cháo nóng lên hành lá và thưởng thức",
+      "instruction": "Lót hành lá thái nhỏ và phần gừng tươi thái sợi còn lại dưới đáy 2 bát sứ. Múc cháo trứng nóng hổi chan lên trên để hành lá chín tái dậy mùi thơm, nhỏ đều 5 ml dầu mè và rắc 1,5 g tiêu đen xay rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 276,
+    "energyKcal": 275.6,
+    "energyKj": 1153,
+    "proteinG": 9.6,
+    "fatG": 6.9,
+    "saturatedFatG": 1.8,
+    "carbG": 42.6,
+    "fiberG": 1.2,
+    "sugarG": 0.9,
+    "sodiumMg": 1353,
+    "saltG": 3.38,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169231",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "82bdf026928964ed652d9f9571899a34b05b413a19bcdaa3e6f245406a6378ca",
+    "researchedFromV2Sha256": "4264d139701e4ca8ea91902a80971094b56c5a4026b263ad314e70912330e76e"
+  }
+}

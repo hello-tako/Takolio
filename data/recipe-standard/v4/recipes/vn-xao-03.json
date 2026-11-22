@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-xao-03",
+    "slug": "muc-xao-can-toi-dua",
+    "title": "Mực ống xào cần tỏi dứa chua ngọt",
+    "subtitle": "Mực ống tươi dày mình giòn sần sật xào lửa lớn cùng dứa chín, cà chua, cần tây và tỏi tây đậm đà hương vị biển"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Hải sản",
+      "Chua ngọt",
+      "Đãi khách",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "celery",
+      "fish",
+      "molluscs",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Món mực ống xào cần tỏi dứa hài hòa sắc màu đỏ cam của cà chua, vàng tươi của dứa chín và xanh mướt của cần tỏi tây. Từng miếng mực giòn ngọt sần sật, thấm vị nước mắm thơm ngon mà không hề bị tanh hay ra nước.",
+    "servingSuggestion": "Dọn mực xào ra đĩa bầu dục khi còn bốc khói, rắc tiêu xay và vài lát ớt sừng; ăn nóng với cơm trắng hoặc chấm thêm nước mắm ớt gừng.",
+    "storageAndReheat": "Mực xào nên dùng hết trong bữa để giữ độ giòn đặc trưng; nếu bảo quản tủ mát trong ngày, hâm nóng lại rất nhanh trên chảo lửa lớn khoảng 1 phút để tránh mực bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rút bỏ túi mực, nang mực, mắt và nội tạng, rửa sạch, khứa vảy rồng rồi cắt miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CELERY",
+      "name": "Cần tây tươi",
+      "culinaryMeasure": "150 g (khoảng 2 cây)",
+      "prepNote": "nhặt rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 135,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEEK",
+      "name": "Tỏi tây (hành boa-rô)",
+      "culinaryMeasure": "120 g (khoảng 2 cây)",
+      "prepNote": "tách bẹ rửa sạch đất, chẻ đôi phần gốc to rồi cắt khúc 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa / Thơm chín",
+      "culinaryMeasure": "1/4 quả (khoảng 150 g)",
+      "prepNote": "gọt sạch vỏ và mắt, bỏ lõi cứng, thái lát xéo dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín",
+      "culinaryMeasure": "1,5 quả (khoảng 180 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, rửa sạch, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 củ nhỏ)",
+      "prepNote": "cạo vỏ, đập dập để thả vào nồi nước sôi chần khử tanh mực",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 7.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1,5 củ (khoảng 38 g)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để phi xào mực và phi xào rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, bỏ hạt và thái lát chéo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "chia 15 ml xào mực và 15 ml xào rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "dùng để nêm lúc xào mực cho dậy mùi thơm đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "chia 5 g nêm mực và 3 g nêm phần rau củ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "giúp cân bằng vị chua thanh của dứa và cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "rắc hoàn thiện món xào khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch mực ống và khứa vảy rồng",
+      "instruction": "Lột bỏ lớp màng tím ngoài thân mực ống, rút nhẹ đầu mực để lấy hết túi mực, nội tạng và thanh nang trắng bên trong, bỏ mắt và răng mực. Rửa thật sạch dưới vòi nước lạnh, xẻ đôi thân mực, khứa đường chéo vảy rồng rồi cắt miếng vuông khoảng 3 x 4 cm, để ráo.",
+      "tip": "Chọn mực ống thân dày, da sáng ánh nhũ, mắt trong và đầu dính chặt vào thân để món xào được giòn ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần gừng và sốc nhiệt nước đá giúp mực giòn",
+      "instruction": "Đun sôi một nồi nước với 25 g gừng tươi đập dập trên lửa lớn. Cho mực vào vợt, nhúng nhanh vào nước sôi trong 15–20 giây đến khi miếng mực vừa cuộn nhẹ và chuyển màu trắng đục thì lập tức vớt ra ngâm ngay vào thau nước đá lạnh 2 phút rồi để thật ráo nước.",
+      "tip": "Chần nhanh qua nước gừng rồi sốc nhiệt nước đá vừa khử sạch mùi tanh, vừa giúp mực ráo nước và giòn sần sật khi xào.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế rau củ, dứa và gia vị",
+      "instruction": "Dứa gọt sạch mắt, bỏ lõi cứng rồi thái lát mỏng vừa ăn. Cà chua và hành tây bổ múi cau. Cần tây và tỏi tây tách bẹ rửa thật sạch, cắt khúc dài 4 cm. Tỏi khô bóc vỏ băm nhỏ; ớt sừng đỏ thái lát xéo."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn mực ống trên lửa lớn",
+      "instruction": "Đặt chảo lên bếp lửa lớn, đun nóng 15 ml dầu ăn rồi phi thơm một nửa phần tỏi băm. Trút mực ống đã ráo nước vào đảo nhanh tay liên tục, nêm 15 ml nước mắm ngon và 5 g hạt nêm, xào khoảng 1–2 phút cho mực săn giòn, nở hoa đều thì trút ra đĩa riêng.",
+      "tip": "Xào mực riêng trên lửa thật lớn giúp mực chín đều, săn giòn mà không bị tiết nước làm loãng rau củ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào cà chua, hành tây, dứa và cần tỏi",
+      "instruction": "Dùng lại chảo, thêm 15 ml dầu ăn đun nóng rồi phi thơm nốt phần tỏi băm còn lại. Cho cà chua vào xào 1–2 phút trên lửa vừa-lớn cho hơi mềm tạo màu, sau đó tăng lửa lớn cho hành tây và dứa vào đảo 1 phút. Tiếp tục thả cần tây và tỏi tây vào, nêm 3 g hạt nêm và 5 g đường cát trắng, đảo đều 2 phút cho rau củ chín tới.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn mực với rau củ và trình bày",
+      "instruction": "Trút đĩa mực đã xào trở lại chảo rau củ, đảo nhanh tay trên lửa lớn khoảng 30–45 giây cho mực nóng hổi, chín kỹ và hòa quyện cùng sốt dứa cà chua. Thêm ớt sừng đỏ thái lát đảo sơ rồi tắt bếp, gắp ra đĩa và rắc 2 g tiêu đen xay lên trên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 304,
+    "energyKcal": 303.5,
+    "energyKj": 1270,
+    "proteinG": 23.3,
+    "fatG": 10.6,
+    "saturatedFatG": 1.8,
+    "carbG": 30.1,
+    "fiberG": 3.9,
+    "sugarG": 12.6,
+    "sodiumMg": 1017,
+    "saltG": 2.54,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169246",
+      "USDA FDC 169655",
+      "USDA FDC 169988",
+      "USDA FDC 170000",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 174223",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1535400255456-984241443b29?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4d7b7c10adae4a05ff60fc48351103f50bf9e9328c7e4130939c5f3a570f1e29",
+    "researchedFromV2Sha256": "d321d932925a72b1fdfb4bb61f94ab8c6723f2b6ee9774d5fe563ce3e9186305"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-aac2c265c3845ec4",
+    "slug": "tom-hap-gung-hanh",
+    "title": "Tôm hấp gừng hành kiểu Quảng Đông",
+    "subtitle": "Tôm sú tươi còn vỏ hấp chín hồng mọng nước cùng gừng sợi, rưới sốt xì dầu pha thơm nhẹ tinh tế"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Tôm sú",
+      "Gừng hành",
+      "Quảng Đông",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm hấp gừng hành kiểu Quảng Đông tôn vinh trọn vẹn độ ngọt giòn tự nhiên của tôm sú tươi hấp chín vừa tới trong vòng 5–6 phút, phủ lớp gừng sợi, hành lá xanh mướt và nước sốt xì dầu dịu nhẹ.",
+    "servingSuggestion": "Dọn nóng nguyên đĩa tôm hấp ngay khi vừa rưới sốt, dùng kèm cơm trắng và chấm thêm nước sốt xì dầu đọng dưới đáy đĩa.",
+    "storageAndReheat": "Tôm hấp ngon nhất khi thưởng thức ngay lúc nóng để thịt giòn ngọt; nếu còn dư, bóc vỏ bảo quản ngăn mát tối đa 24 giờ và hấp nhanh 2 phút khi dùng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi còn vỏ cỡ to",
+      "culinaryMeasure": "450 g",
+      "prepNote": "cắt râu, bỏ gai nhọn đầu tôm, rút sạch chỉ đen trên lưng rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 351,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g (1 nhánh vừa)",
+      "prepNote": "gọt vỏ, thái sợi thật mỏng, chia nửa rải lên tôm khi hấp và nửa rắc lúc hoàn thiện",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 3–4 cây)",
+      "prepNote": "rửa sạch, dùng 1/3 cắt khúc 5 cm lót dưới đĩa hấp và 2/3 thái khoanh mỏng rắc sau cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo nền vị mặn ngọt umami cho nước sốt rưới tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp khử tanh tôm và 10 ml pha nước sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 11.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "2 ml (~1/4 muỗng cà phê)",
+      "prepNote": "hòa vào chén sốt rưới giúp tăng hương thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "ml",
+      "grossGrams": 1.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "0,5 g (~2 nhúm)",
+      "prepNote": "chia một nửa ướp tôm và một nửa pha nước sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "làm dịu vị mặn của xì dầu nhạt trong sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "hòa vào nước sốt tạo độ bóng đẹp trên vỏ và thịt tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "pha loãng nhẹ hỗn hợp xì dầu để sốt không làm át vị ngọt tự nhiên của tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và ướp nhẹ tôm sú khử mùi tanh",
+      "instruction": "Cắt râu và phần gai nhọn trên đầu tôm sú tươi, dùng tăm khéo léo rút bỏ chỉ đen dọc sống lưng rồi rửa sạch, để ráo. Cho tôm vào tô cùng 5 ml rượu Thiệu Hưng và một nửa lượng tiêu trắng xay (0,25 g), trộn nhẹ và ướp 10 phút cho tôm thơm.",
+      "tip": "Giữ nguyên vỏ khi hấp giúp khóa ẩm tự nhiên, làm thịt tôm sau khi chín vẫn giòn ngọt và mọng nước.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái sợi gừng tươi và chuẩn bị hành lá",
+      "instruction": "Gừng tươi gọt vỏ, thái lát mỏng rồi cắt thành sợi thật mảnh. Hành lá tách 1/3 cắt khúc dài 5 cm để lót đĩa hấp, phần 2/3 còn lại thái khoanh mỏng để rắc sau khi hấp xong."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sẵn nước sốt xì dầu gừng hành",
+      "instruction": "Trong một chén nhỏ, trộn đều 25 ml xì dầu nhạt, 10 ml rượu Thiệu Hưng còn lại, 20 ml nước lọc, 4 g đường cát trắng, 2 ml dầu mè thơm, 0,25 g tiêu trắng xay còn lại và 10 ml dầu ăn thực vật. Khuấy kỹ đến khi đường tan hoàn toàn.",
+      "tip": "Pha thêm nước lọc vào xì dầu giúp vị sốt dịu thanh, tôn lên độ ngọt biển tự nhiên của tôm tươi."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp tôm thành một lớp trên đĩa lót hành và gừng",
+      "instruction": "Đun sôi mạnh nước trong nồi xửng hấp. Lót các khúc hành lá 5 cm dưới đáy đĩa chịu nhiệt, xếp tôm sú thành một lớp phẳng không chồng lên nhau và rải một nửa lượng gừng sợi lên mặt tôm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp tôm lửa lớn vừa chín hồng tới",
+      "instruction": "Khi nước trong nồi đã sôi bùng nhiều hơi, đặt đĩa tôm vào xửng, đậy kín nắp và hấp trên lửa lớn khoảng 5–6 phút đến khi vỏ tôm chuyển đỏ cam đồng đều, thân tôm uốn cong và thịt tôm chuyển trắng đục hoàn toàn.",
+      "tip": "Không hấp tôm quá 6 phút vì tôm chín quá lửa sẽ bị khô cứng và teo nhỏ.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chắt bỏ nước hấp đục, rưới sốt và dọn nóng",
+      "instruction": "Nhấc đĩa tôm ra khỏi nồi, nhẹ nhàng nghiêng đĩa chắt bỏ hết phần nước hấp đục tiết ra. Rưới đều chén nước sốt xì dầu lên khắp mình tôm, rắc phần gừng sợi còn lại và hành lá thái khoanh lên trên rồi thưởng thức nóng ngay.",
+      "tip": "Chắt bỏ phần nước đọng sau khi hấp giúp nước sốt xì dầu giữ nguyên độ đậm đà thanh sạch."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 158,
+    "energyKcal": 157.9,
+    "energyKj": 661,
+    "proteinG": 24.7,
+    "fatG": 4.4,
+    "saturatedFatG": 0.7,
+    "carbG": 4.6,
+    "fiberG": 0.6,
+    "sugarG": 1.9,
+    "sodiumMg": 703,
+    "saltG": 1.76,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "75f53e45e000423781fed7ad80e35ca630e10b7794c5c5ccdbde25259e127d3a",
+    "researchedFromV2Sha256": "a67b088b6d267853ff5fbadb7f73ca584408ad977930a83397c006538c8e7e57"
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-52b5963c6cecfb96",
+    "slug": "bo-nuong-bulgogi-ngot",
+    "title": "Bò nướng Bulgogi kiểu Hàn",
+    "subtitle": "Thịt bò thăn ngoại thái lát mỏng ướp xì dầu, mật ong, đường nâu và tỏi gừng nướng áp chảo xém cạnh thơm lừng"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Hàn Quốc",
+      "Món nướng",
+      "Bulgogi",
+      "Thịt bò",
+      "Tiệc nướng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bò nướng Bulgogi kiểu Hàn nổi bật với từng lát thịt bò thăn ngoại mềm ngọt, thấm sâu nước sốt ướp mặn ngọt dịu từ nước tương, mật ong, đường nâu và rượu ngọt Mirin, khi nướng áp chảo lửa lớn tạo lớp cạnh xém thơm quyến rũ.",
+    "servingSuggestion": "Bày thịt bò nướng Bulgogi nóng ra đĩa, rắc hạt mè trắng rang và hành lá thái nhỏ; ăn kèm cơm trắng hoặc cuốn xà lách cùng kim chi.",
+    "storageAndReheat": "Thịt bò ướp sống có thể để ngăn mát tối đa 24 giờ; thịt đã nướng chín bảo quản hộp kín trong tủ lạnh tối đa 2 ngày và hâm nhanh trên chảo nóng 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn ngoại thái lát mỏng",
+      "culinaryMeasure": "480 g",
+      "prepNote": "lọc bỏ phần gân cứng, thái lát mỏng 2–3 mm ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 480,
+      "unit": "g",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "1/2 củ bào nhuyễn lấy nước ướp giúp mềm thịt, 1/2 củ thái lát mỏng nướng kèm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0,5 củ (~55 g)",
+      "prepNote": "gọt vỏ, thái lát vát mỏng để áp chảo cùng thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhuyễn",
+      "culinaryMeasure": "0,4 củ (~10 g, 3–4 tép)",
+      "prepNote": "băm thật nhuyễn để hòa vào nước sốt ướp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi băm nhuyễn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "gọt vỏ, băm mịn để tăng hương thơm và khử mùi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "50 ml (~3,5 muỗng canh)",
+      "prepNote": "nền vị mặn thanh cho nước sốt ướp nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 59,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 59,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "24 g (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt caramel và màu nâu đẹp khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 24,
+      "unit": "g",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp bề mặt thịt bóng đẹp và mềm ẩm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 21.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo độ dịu thanh cho sốt ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 10 ml ướp thịt và 5 ml rưới cuối khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "phết mặt chảo gang hoặc vỉ nướng để thịt không bị dính",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo hương cay thơm nhẹ cho thịt nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc lên thịt bò sau khi nướng xong",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái mỏng thịt bò và chuẩn bị hành tây, cà rốt",
+      "instruction": "Thái 480 g thịt bò thăn ngoại thành lát mỏng 2–3 mm ngang thớ. Bào nhuyễn một nửa củ hành tây lấy cả nước lẫn xác để ướp mềm thịt, nửa củ còn lại thái lát mỏng. Thái lát mỏng cà rốt và cắt khúc 4 cm hành lá tươi.",
+      "tip": "Nước hành tây bào chứa enzyme tự nhiên giúp sợi cơ thịt bò mềm ra mà không bị bở."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt bò Bulgogi với mật ong và xì dầu",
+      "instruction": "Khuấy tan 50 ml nước tương, 24 g đường nâu, 15 ml mật ong nguyên chất, 15 ml rượu ngọt Mirin, 10 ml dầu mè rang, tỏi khô băm nhuyễn, gừng tươi băm nhuyễn, phần hành tây bào nhuyễn và 1 g tiêu đen xay. Cho thịt bò thái lát, hành tây thái lát và cà rốt vào trộn đều, bọc kín ướp 30 phút trong ngăn mát.",
+      "tip": "Nếu có thời gian, ướp thịt qua đêm trong tủ lạnh sẽ giúp từng lát bò thấm đẫm hương vị hơn.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng chảo gang và nướng mẻ thịt đầu tiên",
+      "instruction": "Làm nóng chảo gang hoặc chảo đáy dày trên lửa lớn với 8 ml dầu thực vật đến khi chảo thật nóng. Gắp một nửa lượng thịt bò cùng rau củ trải thành một lớp mỏng đều, áp chảo mỗi mặt khoảng 2 phút cho đến khi thịt chín và cháy xém nhẹ ở rìa.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng nốt mẻ thịt bò Bulgogi thứ hai",
+      "instruction": "Trút mẻ đầu ra đĩa, thêm 7 ml dầu thực vật còn lại vào chảo, dàn nốt phần thịt bò và rau củ còn lại nướng trên lửa lớn thêm 4 phút đến khi thịt chín đều, phần sốt ướp hơi keo lại bám bóng lên từng lát thịt.",
+      "tip": "Chia làm 2 mẻ nướng giúp nhiệt độ chảo không bị tụt, thịt nướng cháy cạnh thơm chứ không bị luộc trong nước.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo nhanh hành lá trên chảo nóng",
+      "instruction": "Cho lại mẻ thịt đầu vào chảo cùng hành lá tươi cắt khúc, đảo nhanh tay 30–45 giây trên lửa lớn cho hành vừa chín tái dậy mùi thơm và thịt nóng đều."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc mè rang và thưởng thức",
+      "instruction": "Tắt bếp, rưới 5 ml dầu mè rang còn lại lên mặt thịt, bày ra đĩa lớn và rắc 5 g hạt mè trắng rang lên trên; dọn nóng ăn kèm cơm trắng hoặc cuốn rau sống."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 367,
+    "energyKcal": 366.7,
+    "energyKj": 1535,
+    "proteinG": 27,
+    "fatG": 20.1,
+    "saturatedFatG": 6,
+    "carbG": 18.9,
+    "fiberG": 1.5,
+    "sugarG": 14,
+    "sodiumMg": 891,
+    "saltG": 2.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169640",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170187",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8730c296336bdc47bb20a3c9094b2aa57894fce500c49d9aa00c54371399dd98",
+    "researchedFromV2Sha256": "df3ab1eaf3d9a4c50a69d686194fa741ea582782e441361304bf90a86b0ebbbf"
+  }
+}

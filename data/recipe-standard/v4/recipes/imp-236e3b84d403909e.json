@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-236e3b84d403909e",
+    "slug": "ga-luoc-hanh-la",
+    "title": "Đùi gà luộc hành lá da vàng giòn",
+    "subtitle": "Đùi gà tơ luộc chín mềm mọng nước bằng cách ủ nhiệt, da căng bóng vàng ươm ăn kèm muối tiêu chanh lá chanh"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Món luộc",
+      "Gà ta",
+      "Giản dị",
+      "Cơm nhà",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil"
+    ],
+    "allergenTags": [
+      "chicken"
+    ]
+  },
+  "overview": {
+    "description": "Đùi gà góc tư luộc vừa sôi rồi ủ chín từ từ giúp thịt mềm ngọt giữ trọn nước, không bị nứt rách da hay đỏ xương; sốc lạnh nhanh cho lớp da giòn sần sật ánh vàng hấp dẫn.",
+    "servingSuggestion": "Chặt đùi gà thành miếng vừa ăn xếp ra đĩa, rắc hành lá thái nhỏ và lá chanh thái chỉ; dọn kèm chén muối tiêu chanh ớt và tận dụng nước luộc nấu canh hoặc cháo.",
+    "storageAndReheat": "Gà luộc bọc kín bảo quản ngăn mát tối đa 2 ngày; khi ăn có thể dùng nguội chặt lát hoặc hấp lại 5 phút cho ấm nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà tươi (4 đùi góc tư)",
+      "culinaryMeasure": "1000 g",
+      "prepNote": "nhổ sạch lông tơ, chà xát muối chanh rửa sạch rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "g",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 820,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "2 bó (khoảng 80 g)",
+      "prepNote": "rửa sạch; 1 bó cắt khúc 5 cm thả nồi luộc thơm, 1 bó thái nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "bunch",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 73.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g (1 củ vừa)",
+      "prepNote": "rửa sạch, giữ vỏ đập dập cho vào nồi nước luộc khử mùi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ ngoài, rửa sạch, đập dập thả vào nồi luộc gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TURMERIC",
+      "name": "Bột nghệ (tạo màu vàng da)",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "hòa với chút nước luộc hoặc dầu ăn quét mỏng lên da gà cho vàng đẹp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1.8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh tươi",
+      "culinaryMeasure": "5 g (khoảng 5–6 lá)",
+      "prepNote": "rửa sạch, thái sợi chỉ thật mảnh rắc lên đĩa gà luộc",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 4.25,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "1 quả dùng chà rửa khử mùi gà, 1 quả vắt lấy nước cốt pha muối tiêu chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, thái lát cho vào chén muối tiêu chanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "18 g (khoảng 1 muỗng canh)",
+      "prepNote": "chia 6 g chà rửa gà rồi xả bỏ, 6 g nêm nồi nước luộc và 6 g làm muối tiêu chanh chấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 9.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ vào nồi nước luộc giúp thịt gà ngọt đậm tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "trộn vào chén muối tiêu chanh chấm gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc gà)",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đổ ngập hoàn toàn các đùi gà trong nồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử mùi đùi gà và sơ chế hành gừng",
+      "instruction": "Nhặt sạch lông tơ còn sót trên 4 chiếc đùi gà, chà xát đều 6 g muối hạt và nước cốt 1 quả chanh tươi lên bề mặt da trong 2 phút rồi xả sạch dưới vòi nước lạnh, để ráo. Đập dập 40 g gừng và 30 g hành tím; rửa sạch hành lá cắt khúc 1 bó và thái nhỏ 1 bó; lá chanh thái sợi chỉ mảnh.",
+      "tip": "Chà xát muối hạt cùng nước cốt chanh giúp làm sạch hoàn toàn chất nhờn và mùi hôi trên da gà mà vẫn giữ được độ căng mịn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc đùi gà từ nước lạnh và hớt bọt trong",
+      "instruction": "Xếp đùi gà vào nồi rộng, đổ 2 lít nước lọc lạnh ngập mặt thịt rồi thêm gừng đập dập, hành tím đập dập, 1 bó hành lá cắt khúc, 6 g muối hạt và 5 g hạt nêm. Bật lửa vừa đun khoảng 8 phút đến khi nước bắt đầu sôi thì hớt sạch bọt nổi cho nước dùng trong veo.",
+      "tip": "Cho gà vào từ nước lạnh và chỉ đun lửa vừa giúp nhiệt truyền vào tận xương mà da gà không bị co rút nứt rách.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Sôi lăn tăn rồi tắt bếp ủ chín mềm mọng",
+      "instruction": "Hạ nhỏ lửa để nồi nước chỉ sôi lăn tăn nhẹ trong 6 phút, sau đó tắt bếp, đậy kín nắp vung và ủ gà trong nồi thêm 20 phút cho thịt chín ngấm từ từ đến tận xương mà vẫn giữ nguyên độ ẩm ngọt.",
+      "tip": "Phương pháp luộc kết hợp ủ nhiệt giúp thịt đùi gà mềm mọng đều, không bị khô bã ở phần ngoài hay còn đỏ máu ở khớp xương.",
+      "timerMinutes": 26
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ngâm nước lạnh làm giòn da và tạo màu vàng óng",
+      "instruction": "Dùng tăm xiên vào phần thịt dày nhất của đùi gà thấy nước ứa ra trong suốt không còn màu hồng là đã chín. Vớt gà ra ngâm ngay vào thau nước lạnh sạch khoảng 5 phút cho da săn giòn, rồi vớt ra rổ để ráo. Hòa 2 g bột nghệ với 1 muỗng canh nước luộc gà quét thật mỏng lên mặt da để lên màu vàng ươm bắt mắt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh ớt chấm thịt gà",
+      "instruction": "Trộn 6 g muối hạt còn lại với 2 g tiêu đen xay và vài lát ớt tươi trong chén nhỏ, vắt nước cốt 1 quả chanh tươi còn lại vào khuấy nhẹ cho dậy mùi thơm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chặt gà xếp đĩa và rắc hành lá, lá chanh",
+      "instruction": "Đợi đùi gà ráo mặt, dùng dao sắc chặt thành từng miếng vừa ăn xếp ngay ngắn ra đĩa. Rắc đều phần hành lá thái nhỏ và lá chanh thái chỉ lên trên, dọn dùng ngay cùng chén muối tiêu chanh ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 381,
+    "energyKcal": 380.8,
+    "energyKj": 1594,
+    "proteinG": 40.3,
+    "fatG": 21.7,
+    "saturatedFatG": 6,
+    "carbG": 4.5,
+    "fiberG": 1.2,
+    "sugarG": 1,
+    "sodiumMg": 1214,
+    "saltG": 3.04,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 172231",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b415115cee7f8e2a289b40da34cfa3686886fd43b03a650a1c4a390855ac7c0f",
+    "researchedFromV2Sha256": "8cb5f24779f43fdc212667a83a14f891d2dcb8e5709cd7f785d2d8c7ec53bcf0"
+  }
+}

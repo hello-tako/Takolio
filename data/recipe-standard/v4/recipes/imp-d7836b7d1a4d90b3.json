@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d7836b7d1a4d90b3",
+    "slug": "nam-chien-gion",
+    "title": "Nấm đùi gà chiên giòn",
+    "subtitle": "Nấm đùi gà xé dải chần ráo tẩm trứng và bột năng chiên hai lần giòn rụm, thơm lá húng quế chiên"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Nấm đùi gà",
+      "Giòn rụm",
+      "Ăn vặt",
+      "Trẻ em thích"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "egg"
+    ]
+  },
+  "overview": {
+    "description": "Nấm đùi gà chiên giòn là món ăn vặt lẫn món mặn đưa cơm rất bắt miệng. Thân nấm đùi gà được chần sơ vắt ráo để giữ độ dai ngọt tự nhiên, nhúng qua trứng gà rồi áo bột năng khô chiên hai lửa cùng lá húng quế, tạo lớp vỏ giòn tan mà bên trong vẫn mềm mọng.",
+    "servingSuggestion": "Xếp nấm chiên giòn và lá húng quế chiên ra đĩa, rắc thêm chút hành lá thái nhỏ nếu thích, dùng nóng ngay và chấm kèm tương ớt cay ngọt.",
+    "storageAndReheat": "Món này ngon nhất khi ăn nóng ngay sau khi chiên lần hai; tránh để qua đêm trong tủ lạnh vì lớp bột năng sẽ hút ẩm và mất độ giòn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "300 g (khoảng 3–4 cây vừa)",
+      "prepNote": "cắt bỏ gốc bẩn, rửa sạch, chần nhanh nước sôi rồi thấm thật khô và xé dải dài",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "100 g (~1 chén nhỏ)",
+      "prepNote": "trích 10 g pha vào trứng đánh, 90 g còn lại dùng áo khô ngoài nấm",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "1 quả (50 g)",
+      "prepNote": "đập ra chén, đánh tan cùng 10 g bột năng tạo lớp hồ bám",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế tươi",
+      "culinaryMeasure": "20 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lấy lá non và ngọn tươi, rửa sạch để thật ráo nước để chiên giòn ăn kèm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (rắc mặt, tùy chọn)",
+      "culinaryMeasure": "1/4 bó nhỏ (10 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí lên đĩa nấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.25,
+      "unit": "bunch",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 9.2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "ướp vào dải nấm trước khi áo bột",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp nấm tạo mùi thơm ấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên ngập nấm)",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "đun nóng già để chiên nấm hai lần và chiên giòn lá húng quế",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 414,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 49.68,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt (chấm kèm)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng chấm nóng kèm nấm chiên giòn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 29.33,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "đun sôi để chần sơ nấm đùi gà rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sơ và xé dải nấm đùi gà thật ráo",
+      "instruction": "Cắt bỏ phần gốc nấm đùi gà, rửa sạch rồi thả vào 800 ml nước lọc đang sôi chần nhanh 2 phút. Vớt nấm ra để nguội, dùng khăn giấy ép thấm thật khô ráo nước rồi cắt hoặc xé thành dải dài dọc theo thân nấm dày khoảng 1 cm.",
+      "tip": "Chần sơ rồi thấm thật khô giúp nấm bớt tiết nước khi chiên, giữ được độ dai ngọt và không làm ỉu lớp vỏ bột.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp nấm và chuẩn bị trứng áo bột năng",
+      "instruction": "Ướp các dải nấm với 4 g muối ăn và 2 g tiêu đen xay trong 10 phút cho ngấm vị. Trong tô, đánh tan 1 quả trứng gà với 10 g bột năng; đổ 90 g bột năng khô còn lại ra đĩa phẳng. Lá húng quế rửa sạch vẩy ráo hoàn toàn, hành lá thái nhỏ nếu dùng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Nhúng trứng và áo đều bột năng quanh nấm",
+      "instruction": "Lần lượt nhúng từng dải nấm qua chén trứng bột cho ướt đều rồi lăn ngay qua đĩa bột năng khô, lắc nhẹ tay cho bột phủ đều và rơi bớt phần bột thừa.",
+      "tip": "Không để nấm nhúng trứng nằm chờ quá lâu trước khi chiên để lớp bột khô không bị vón ẩm."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên nấm hai lần lửa cho vỏ giòn lâu",
+      "instruction": "Đun nóng 450 ml dầu ăn trong chảo sâu lòng trên lửa vừa đến khi đầu đũa sủi tăm. Thả nấm vào chiên lần 1 khoảng 4 phút cho vỏ vừa se vàng nhạt và nấm chín kỹ thì vớt ra giá. Sau đó đun dầu nóng già ở lửa lớn rồi thả nấm vào chiên nhanh lần 2 thêm 1 phút cho vỏ vàng giòn rụm, vớt ra giấy thấm dầu.",
+      "tip": "Chiên 2 lần lửa là kỹ thuật giúp món nấm chiên giữ độ giòn xốp lâu hơn hẳn và đẩy bớt dầu thừa ra ngoài.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên giòn nhanh lá húng quế ăn kèm",
+      "instruction": "Tắt bớt hoặc hạ lửa nhỏ, nhúng nhanh nắm lá húng quế khô ráo vào phần trứng bột còn lại (hoặc thả trực tiếp) chiên khoảng 20–30 giây đến khi lá vừa giòn tan xanh sậm thì vớt ngay ra giấy thấm dầu để không bị cháy đắng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày nấm chiên giòn và thưởng thức nóng",
+      "instruction": "Xếp nấm đùi gà chiên giòn xen kẽ lá húng quế chiên ra đĩa, rắc thêm hành lá thái nhỏ (nếu dùng) và dùng nóng ngay với tương ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 313,
+    "energyKcal": 313.3,
+    "energyKj": 1311,
+    "proteinG": 5.5,
+    "fatG": 18.5,
+    "saturatedFatG": 2.9,
+    "carbG": 33.7,
+    "fiberG": 2.9,
+    "sugarG": 3.7,
+    "sodiumMg": 756,
+    "saltG": 1.89,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d9c60c3abd47b2413b458bc805c0d44033f28f98e29b59b8106b2753209803a6",
+    "researchedFromV2Sha256": "392567b19f37770001c4123b0d6338f7210add82bd02805b2ef6ed719ed210fe"
+  }
+}

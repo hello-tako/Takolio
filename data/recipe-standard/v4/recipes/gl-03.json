@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-03",
+    "slug": "tomato-egg-stir-fry",
+    "title": "Cà chua xào trứng kiểu Trung Hoa",
+    "subtitle": "Trứng gà đánh với rượu Thiệu Hưng chiên xốp mềm, hòa quyện sốt cà chua đỏ mọng chua ngọt thanh nhẹ chuẩn bữa cơm gia đình"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 8,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Trung Hoa",
+      "Nhanh gọn",
+      "Cà chua trứng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cà chua xào trứng kiểu Trung Hoa là món ăn gia đình kinh điển với lớp trứng chiên tơi xốp ngấm trọn nước sốt cà chua đỏ sánh, vị chua ngọt dịu nhẹ và mùi thơm thoang thoảng của dầu mè cùng rượu Thiệu Hưng.",
+    "servingSuggestion": "Dùng nóng ngay sau khi tắt bếp, rắc thêm hành lá xanh và ăn kèm cơm trắng nóng hoặc mì trộn.",
+    "storageAndReheat": "Món ăn ngon nhất khi dùng trong bữa; nếu còn dư, bảo quản tủ mát tối đa 24 giờ và làm nóng nhanh trên chảo lửa vừa với 1 muỗng canh nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "4 quả vừa (~480 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau nhỏ để nhanh mềm tiết nước sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (~200 g)",
+      "prepNote": "đập ra tô, đánh tan đều cùng gia vị ướp trứng khoảng 1 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (~20 g, 2 cọng)",
+      "prepNote": "rửa sạch, thái nhỏ phần đầu trắng và lá xanh riêng nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 25 ml chiên tơi trứng gà, 10 ml xào mềm cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.59,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "3 ml (~1/2 muỗng cà phê)",
+      "prepNote": "đánh chung vào trứng tạo hương thơm dịu và khử mùi tanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "ml",
+      "grossGrams": 2.76,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.76,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "đánh vào trứng để tăng độ xốp nhẹ và thơm đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.95,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm vào tô trứng đánh tan",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "chia 1,5 g nêm vào trứng, 2,5 g nêm khi xào cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua tự nhiên của cà chua chín",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~1/4 chén)",
+      "prepNote": "tạo lượng nước sốt vừa đủ ôm đều miếng trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cà chua và hành lá",
+      "instruction": "Rửa sạch 4 quả cà chua chín đỏ, khoét bỏ phần cuống cứng rồi bổ thành những múi cau nhỏ đều nhau để cà chua nhanh mềm và tiết nước khi xào. Hành lá tươi rửa sạch, thái nhỏ toàn bộ để riêng.",
+      "tip": "Chọn cà chua chín đỏ mọng nhưng còn chắc tay sẽ cho nước sốt đậm màu đẹp và vị ngọt tự nhiên hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà với gia vị",
+      "instruction": "Đập 4 quả trứng gà tươi vào tô, thêm 1,5 g muối ăn, 1 g tiêu trắng xay, 3 ml dầu mè thơm và 5 ml rượu Thiệu Hưng. Dùng đũa đánh đều tay khoảng 1 phút cho lòng trắng và lòng đỏ hòa quyện hơi nổi bọt nhẹ.",
+      "tip": "Nêm rượu Thiệu Hưng và dầu mè ngay vào tô trứng giúp trứng dậy mùi thơm, khử tanh và chiên lên xốp mềm hơn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên xốp trứng gà trên chảo nóng",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa lớn đến khi bề mặt hơi bốc khói nhẹ, rót 25 ml dầu ăn thực vật tráng đều lòng chảo. Đổ hỗn hợp trứng gà vào, dùng sạn gỗ đẩy nhẹ từ ngoài vào trong tạo thành từng mảng trứng mềm xốp. Khi trứng vừa đông khoảng 85–90% nhưng bề mặt vẫn còn hơi ẩm bóng thì lập tức xúc ra đĩa riêng.",
+      "tip": "Không chiên trứng quá khô vì trứng sẽ còn được đảo tiếp trong sốt cà chua ở bước sau.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào cà chua với hành lá",
+      "instruction": "Thêm 10 ml dầu ăn thực vật còn lại vào chảo, bật lửa lớn, cho toàn bộ cà chua múi cau và một nửa lượng hành lá thái nhỏ vào đảo nhanh tay trong 1 phút cho cà chua bắt đầu xém cạnh và thơm nhẹ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om mềm cà chua tạo sốt chua ngọt",
+      "instruction": "Thêm 8 g đường cát trắng, 2,5 g muối ăn còn lại cùng 60 ml nước lọc vào chảo cà chua, đảo nhẹ rồi cho phần trứng gà đã chiên trở lại chảo. Đậy nắp vung, hạ lửa vừa và om khoảng 2 phút cho cà chua mềm nhừ, tiết nước sốt đỏ sánh quyện vào trứng.",
+      "tip": "Đậy nắp giúp cà chua chín mềm ra nước nhanh mà không cần dùng nhiều dầu ăn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện và trình bày nóng",
+      "instruction": "Mở nắp, dùng sạn đảo nhẹ 20–30 giây cho sốt cà chua áo đều từng miếng trứng vàng mềm, nêm lại muối và đường nếu cần rồi rắc nốt phần hành lá thái nhỏ còn lại lên trên. Tắt bếp, trút ra đĩa sâu lòng và dùng nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 339,
+    "energyKcal": 338.9,
+    "energyKj": 1417,
+    "proteinG": 13.4,
+    "fatG": 25.6,
+    "saturatedFatG": 5.2,
+    "carbG": 15.1,
+    "fiberG": 3.3,
+    "sugarG": 10.9,
+    "sodiumMg": 914,
+    "saltG": 2.29,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/tomato-egg-stir-fry.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c0f76c1cb5240e6fa59947ecfb566f725eb14c76a63f94895cc6e0bb528ed5d6",
+    "researchedFromV2Sha256": "90009ddd3488d3e5aabf2acdb087499fd949491c0abad7f40d2224cdd082d932"
+  }
+}

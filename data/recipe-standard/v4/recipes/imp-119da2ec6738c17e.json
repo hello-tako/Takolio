@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-119da2ec6738c17e",
+    "slug": "ga-hap-chanh-sa",
+    "title": "Gà hấp chanh sả kiểu Thái",
+    "subtitle": "Đùi gà ta ướp sả, riềng, lá chanh Kaffir và húng quế hấp mềm mọng nước, chấm nước mắm chanh tỏi ớt pha nước ngọt tiết từ đĩa hấp"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Gà hấp",
+      "Sả chanh",
+      "Ẩm thực Thái",
+      "Thanh đạm",
+      "Cơm gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà hấp chanh sả kiểu Thái thơm dịu và mọng ngọt với từng miếng thịt đùi gà ướp kỹ cùng sả, riềng, lá chanh Kaffir và rễ ngò xay nhuyễn, hấp chín mềm cùng lá húng quế Thái, chấm kèm nước mắm chanh tỏi ớt hòa chút nước ngọt gà hấp đậm đà.",
+    "servingSuggestion": "Bày gà hấp nóng ra đĩa, rưới nhẹ ít nước hấp và rắc hành lá thái nhỏ lên mặt; chấm kèm chén nước chấm chanh tỏi ớt và dùng với cơm trắng nóng.",
+    "storageAndReheat": "Gà hấp ngon nhất khi ăn nóng; nếu còn dư, bảo quản kín cùng phần nước hấp trong ngăn mát tối đa 48 giờ, hấp lại 6–8 phút cho nóng mềm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà góc tư (có da, có xương)",
+      "culinaryMeasure": "750 g (4 đùi)",
+      "prepNote": "rửa sạch với chút muối loãng khử mùi rồi thấm ráo, chặt làm đôi hoặc khứa sâu vài đường cho nhanh chín",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 615,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "5 cây (100 g)",
+      "prepNote": "cắt bỏ lá già, lấy phần thân non đập dập và thái khoanh mỏng để xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GALANGAL",
+      "name": "Củ riềng tươi",
+      "culinaryMeasure": "35 g",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát mỏng để xay nhuyễn cùng sả",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 30.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Kaffir tươi",
+      "culinaryMeasure": "5 g (khoảng 8–10 lá)",
+      "prepNote": "rửa sạch, bỏ gân giữa, xé nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 4.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CILANTRO",
+      "name": "Rễ ngò rí và lá ngò rí",
+      "culinaryMeasure": "25 g (15 g rễ + 10 g lá)",
+      "prepNote": "rễ cạo rửa sạch thái nhỏ để xay ướp gà; phần lá thái nhỏ thả vào chén nước chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái tươi",
+      "culinaryMeasure": "20 g",
+      "prepNote": "nhặt lấy ngọn và lá non, rửa sạch, để ráo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "ướp thịt gà giúp da bóng đẹp và thịt đậm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30.5,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "kết hợp với dầu hào ướp thấm thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 18.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "dùng 2 g chà khử mùi gà rồi xả sạch, 1 g còn lại ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 1.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt pha nước chấm)",
+      "culinaryMeasure": "3 quả (135 g)",
+      "prepNote": "vắt lấy khoảng 90 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 135,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 67.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "làm nền pha nước chấm chanh tỏi ớt kiểu Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 30.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "30 g (khoảng 2 muỗng canh)",
+      "prepNote": "cân bằng vị chua mặn trong nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "6 quả (30 g)",
+      "prepNote": "bỏ cuống, rửa sạch, giã nhuyễn cùng tỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1,5 củ (37,5 g, ~12 tép)",
+      "prepNote": "bóc vỏ, giã nhuyễn làm nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt gà khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha nước chấm)",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "dùng làm dịu độ đậm của nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đùi gà và xay nhuyễn hỗn hợp thảo mộc",
+      "instruction": "Chà xát 750 g đùi gà với 2 g muối ăn rồi rửa sạch lại nước lạnh, thấm ráo và chặt miếng vừa ăn hoặc khứa sâu 2 đường. Cho sả thái lát, củ riềng tươi, lá chanh Kaffir và 15 g phần rễ ngò rí vào cối xay hoặc giã nhuyễn thành hỗn hợp thảo mộc thơm mịn.",
+      "tip": "Khứa nhẹ vài đường trên mặt thịt đùi gà giúp hỗn hợp thảo mộc thấm sâu và gà chín đều nhanh hơn khi hấp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp gà đậm đà với thảo mộc và gia vị",
+      "instruction": "Cho thịt gà vào tô lớn cùng hỗn hợp thảo mộc vừa xay, 25 ml dầu hào, 20 ml xì dầu và 1 g muối ăn còn lại. Dùng tay bóp trộn kỹ cho gia vị thấm sâu vào từng thớ thịt, đậy kín ướp ít nhất 15–20 phút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp gà vào đĩa sâu lòng và hấp cách thủy",
+      "instruction": "Xếp gà đã ướp cùng phần sốt vào đĩa sâu lòng có thành cao để hứng trọn phần nước ngọt tiết ra. Đun sôi nước trong xửng, đặt đĩa gà vào hấp lửa vừa khoảng 15 phút cho thịt bắt đầu săn lại và tỏa hương thơm.",
+      "tip": "Dùng đĩa sâu lòng hứng phần nước ngọt tiết ra khi hấp để hòa vào nước chấm giúp hương vị đậm đà hơn hẳn.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm lá húng quế Thái và hấp chín mềm hoàn toàn",
+      "instruction": "Ở phút thứ 15, mở nắp xửng rải nhanh 20 g lá húng quế Thái lên mặt gà rồi đậy kín hấp tiếp thêm 25 phút trên lửa vừa đến khi xăm đũa vào phần thịt dày nhất thấy nước chảy ra trong suốt không còn đỏ hồng.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Giã tỏi ớt và pha nước chấm chanh Thái",
+      "instruction": "Trong lúc chờ gà chín, cho tỏi bóc vỏ và ớt hiểm vào cối giã nhuyễn. Trút ra chén, thêm nước cốt của 3 quả chanh tươi, 30 ml nước mắm, 30 g đường cát trắng và 60 ml nước lọc, khuấy tan hết đường rồi thả 10 g lá ngò rí thái nhỏ vào.",
+      "tip": "Cân chỉnh độ chua cay mặn ngọt của chén nước chấm theo khẩu vị, giữ độ hơi đậm để khi hòa thêm nước hấp gà sẽ vừa miệng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hòa nước hấp gà vào nước chấm và trình bày",
+      "instruction": "Nhấc đĩa gà hấp chín ra khỏi xửng, múc khoảng 3–4 muỗng canh nước ngọt trong đĩa hấp hòa vào chén nước chấm cho dậy vị béo thơm, phần còn lại rưới lên gà, rắc hành lá thái nhỏ rồi dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 358,
+    "energyKcal": 357.7,
+    "energyKj": 1497,
+    "proteinG": 32.1,
+    "fatG": 16.5,
+    "saturatedFatG": 4.5,
+    "carbG": 20.5,
+    "fiberG": 1.4,
+    "sugarG": 9.3,
+    "sodiumMg": 1263,
+    "saltG": 3.16,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA / SE Asian Galangal Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 172185",
+      "USDA FDC 172232",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "98d09035df2de0005658be94bceeeae55a27b6794baaf18369857914b267ac7d",
+    "researchedFromV2Sha256": "f9b77a983ab0069c8e1820a36f47d29884fbcebee432a045577ae71154a313bf"
+  }
+}

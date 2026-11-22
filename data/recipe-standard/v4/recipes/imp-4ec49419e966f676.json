@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4ec49419e966f676",
+    "slug": "ca-nuong-muoi-sa",
+    "title": "Cá diêu hồng nướng muối sả kiểu Thái",
+    "subtitle": "Cá nguyên con giữ vảy nhồi sả và lá chanh Kaffir bọc muối hạt nướng thơm, thịt trắng mọng chấm sốt hải sản xanh cay nồng"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Món nướng",
+      "Cá diêu hồng",
+      "Ẩm thực Thái",
+      "Nướng muối",
+      "Tiệc gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá diêu hồng nướng muối sả kiểu Thái (Pla Pao) giữ nguyên lớp vảy cá bọc muối hạt mịn giúp khóa trọn độ ẩm và vị ngọt tự nhiên của thớ thịt cá trắng bên trong, thơm dịu mùi sả và lá chanh Kaffir, chấm cùng sốt chanh tỏi ớt chua cay đặc trưng.",
+    "servingSuggestion": "Lột bỏ lớp da bọc muối khi ăn, dọn phần thịt cá trắng nóng hổi kèm bún tươi, rau xà lách và chén sốt chấm chanh tỏi ớt hải sản.",
+    "storageAndReheat": "Nên ăn hết khi cá còn ấm nóng; phần thịt cá gỡ sẵn có thể bọc kín bảo quản ngăn mát tối đa 24 giờ, làm nóng lại bằng nồi chiên không dầu hoặc áp chảo 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá diêu hồng nguyên con (giữ vảy, bỏ ruột qua mang)",
+      "culinaryMeasure": "1000 g (2 con vừa)",
+      "prepNote": "nhờ làm ruột qua đường mang, không rạch bụng và giữ nguyên vảy cá, rửa sạch rồi thấm thật khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "g",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 780,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "5 cây (100 g)",
+      "prepNote": "cắt bỏ gốc già, đập dập phần thân trắng cho tỏa tinh dầu rồi gập đôi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Kaffir tươi",
+      "culinaryMeasure": "10 g (khoảng 18–20 lá)",
+      "prepNote": "rửa sạch, vò nhẹ hoặc xé đôi bỏ gân giữa cho thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SALT",
+      "name": "Muối biển hạt (trát vỏ cá và giã sốt)",
+      "culinaryMeasure": "253 g (250 g trát vỏ cá, 3 g giã sốt)",
+      "prepNote": "dùng 250 g trộn bột mì để trát kín lớp vảy cá bên ngoài, và 3 g giã cùng tỏi ớt làm sốt chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 253,
+      "unit": "g",
+      "grossGrams": 253,
+      "edibleRetentionRatio": 0.02,
+      "edibleGrams": 5.06,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "16 g (2 muỗng canh)",
+      "prepNote": "trộn cùng 250 g muối hạt và 15 ml nước lọc để muối kết dính tốt lên da cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 0.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (lấy nước cốt pha sốt)",
+      "culinaryMeasure": "2 quả (90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 60–70 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng pha sốt chấm hải sản chua cay kiểu Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "giúp làm dịu độ gắt của chanh và nước mắm trong sốt chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1,5 củ (khoảng 38 g, ~12–15 tép)",
+      "prepNote": "bóc sạch vỏ, để nguyên tép cho vào cối giã làm sốt chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "10 quả (50 g)",
+      "prepNote": "bỏ cuống, rửa sạch, giã cùng tỏi và muối (giảm còn 4–5 quả nếu ăn cay vừa)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "chia 15 ml trộn hỗn hợp muối bột mì và 45 ml pha loãng sốt chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch cá giữ nguyên vảy và thấm thật khô",
+      "instruction": "Giữ nguyên lớp vảy ngoài của 2 con cá diêu hồng và chỉ móc bỏ ruột, mang qua đường mang cá để bụng cá kín hoàn toàn. Rửa sạch máu đọng bên trong dưới vòi nước lạnh rồi dùng khăn giấy thấm thật khô cả trong bụng lẫn ngoài da cá.",
+      "tip": "Việc giữ nguyên vảy và không mổ phanh bụng giúp lớp muối không thấm mặn vào thịt cá mà chỉ tạo lớp vỏ giữ ẩm kín hơi khi nướng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Nhồi sả và lá chanh Kaffir vào bụng cá",
+      "instruction": "Dùng sống dao đập dập 5 cây sả tươi cho dập tơi sợi, gập đôi lại. Vò nhẹ 10 g lá chanh Kaffir cho dậy tinh dầu thơm rồi nhồi đều sả và lá chanh qua miệng vào bên trong bụng cả 2 con cá, nhồi vừa tay tránh làm rách thịt cá."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Trộn vữa muối bột mì và trát kín thân cá",
+      "instruction": "Cho 250 g muối hạt vào tô lớn cùng 16 g bột mì đa dụng và 15 ml nước lọc, bóp trộn đều đến khi muối hơi ẩm kết dính như cát ướt. Đặt từng con cá lên mặt phẳng rồi dùng tay trát và miết đều hỗn hợp muối phủ kín hai mặt thân cá từ đầu đến đuôi.",
+      "tip": "Bột mì và một chút nước giúp các hạt muối bám chắc thành lớp áo dày, không bị rơi rụng khi lật cá trên vỉ nướng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng cá trên lửa than hồng hoặc lò nướng 200°C",
+      "instruction": "Nhóm bếp than hoa lửa vừa ổn định (hoặc làm nóng trước lò nướng/nồi chiên ở 200°C). Đặt cá lên vỉ nướng khoảng 20 phút cho mặt dưới se khô hẳn lớp muối rồi nhẹ nhàng lật sang mặt còn lại nướng thêm 20 phút đến khi lớp vỏ muối khô cứng ngả vàng xém và thịt cá chín trắng hoàn toàn tận xương.",
+      "tip": "Nên đợi ít nhất 15–20 phút cho lớp vỏ muối mặt dưới khô cứng hẳn mới lật để tránh da cá dính vào vỉ gây rách lớp muối.",
+      "timerMinutes": 40
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Giã tỏi ớt và pha sốt chấm hải sản Thái",
+      "instruction": "Trong lúc chờ cá chín, cho 3 g muối còn lại cùng tỏi bóc vỏ và ớt hiểm vào cối giã nhuyễn vừa. Trút ra chén, thêm nước cốt của 2 quả chanh tươi, 30 ml nước mắm, 12 g đường cát trắng và 45 ml nước lọc, khuấy tan đường để có chén sốt chua cay mặn ngọt hài hòa.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Lột bỏ vỏ muối và dọn cá nóng cùng sốt chấm",
+      "instruction": "Gắp cá nướng muối sả ra đĩa lớn, dùng mũi dao rạch nhẹ một đường dọc sống lưng rồi nhẹ nhàng lật bỏ toàn bộ lớp da bọc muối cứng bên ngoài để lộ phần thịt cá trắng mọng bốc khói thơm lừng mùi sả lá chanh. Dọn ăn nóng ngay kèm chén sốt chấm hải sản."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 245,
+    "energyKcal": 245.4,
+    "energyKj": 1026,
+    "proteinG": 39.4,
+    "fatG": 4.8,
+    "saturatedFatG": 1.3,
+    "carbG": 9.7,
+    "fiberG": 0.7,
+    "sugarG": 4.2,
+    "sodiumMg": 1301,
+    "saltG": 3.25,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169761",
+      "USDA FDC 170106",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175176"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d62c1eb63358727dc5dab4f8ddaedc748d1dae72a89c48b21cd6d4731e3518ec",
+    "researchedFromV2Sha256": "71a03252d0e0dbc64f25c251b6471e679362bbbe35f4c2b0436618d878f73058"
+  }
+}

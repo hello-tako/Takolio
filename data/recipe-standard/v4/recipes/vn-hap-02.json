@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-hap-02",
+    "slug": "thit-ba-chi-luoc-mam-tom",
+    "title": "Thịt ba chỉ luộc chấm mắm tôm cà pháo",
+    "subtitle": "Thịt ba chỉ rút sườn luộc trắng giòn, thái lát mỏng đều chấm mắm tôm đánh sủi bọt bông cùng cà pháo muối chua giòn"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món luộc",
+      "Cơm nhà",
+      "Món Bắc",
+      "Thanh đạm",
+      "Kinh điển"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "pork",
+      "shrimp",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Thịt ba chỉ rút sườn nạc mỡ đan xen luộc chín tới giữ được độ trắng ngần và giòn sần sật phần bì, ăn kèm cà pháo muối giòn tan, rau sống mát lành và bát mắm tôm chanh ớt đánh bông thơm lừng.",
+    "servingSuggestion": "Xếp thịt ba chỉ thái mỏng ra đĩa hoặc mẹt lót lá chuối, dọn cạnh đĩa cà pháo muối, đĩa rau thơm dưa leo và bát mắm tôm sủi bọt ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Thịt luộc bảo quản nguyên khối trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn chỉ thái lát vừa dùng hoặc trụng nhanh qua nước sôi nóng 1 phút cho mềm ẩm rồi thái."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ rút sườn liền khối",
+      "culinaryMeasure": "500 g",
+      "prepNote": "cạo sạch lông ở bì, chà muối rửa sạch, có thể buộc dây nhẹ để miếng thịt tròn đều",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 440,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, rửa sạch, đập dập cho vào nồi nước luộc khử mùi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, thái lát mỏng thả vào nồi nước luộc thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo trắng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "cho vào nước luộc giúp thịt heo trắng phau và thơm sạch",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.2,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 2.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (1 muỗng cà phê)",
+      "prepNote": "dùng chà rửa thịt và nêm nhẹ vào nồi nước chần, nước luộc",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHRIMP_PASTE",
+      "name": "Mắm tôm ngon",
+      "culinaryMeasure": "45 g (khoảng 2 muỗng canh)",
+      "prepNote": "chọn loại mắm tôm Bắc sánh mịn, thơm dịu để pha nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn đậm của mắm tôm và tạo độ sủi bọt khi đánh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 8.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu trắng nấu ăn",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "hòa vào mắm tôm giúp khử mùi gắt và làm mắm dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 3.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "vắt lấy nước cốt đánh bông mắm tôm; giữ ít vỏ hoặc lát chanh trang trí",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (khoảng 12,5 g, 3–4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn vào bát mắm tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát hoặc băm nhỏ cho vào mắm tôm theo độ cay mong muốn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (đun sôi rưới mắm tôm)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "đun nóng già rồi rưới vào bát mắm tôm để mắm chín thơm và bông xốp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 9.66,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "EGGPLANT",
+      "name": "Cà pháo muối giòn",
+      "culinaryMeasure": "150 g",
+      "prepNote": "vớt ráo nước muối, cắt bỏ cuống nếu còn, bổ đôi nếu quả to",
+      "componentGroup": "garnish",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "1 quả (khoảng 150 g)",
+      "prepNote": "rửa sạch với nước muối loãng, gọt bớt vỏ xanh hoặc để nguyên, thái lát vát",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "LETTUCE",
+      "name": "Rau sống ăn kèm (xà lách, kinh giới, húng quế)",
+      "culinaryMeasure": "120 g",
+      "prepNote": "nhặt bỏ lá úa, rửa sạch nhiều lần, ngâm nước muối loãng rồi vẩy ráo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần và luộc thịt)",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "chia 600 ml chần sơ thịt rồi đổ bỏ, 900 ml để luộc chín thịt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế và chần khử mùi thịt ba chỉ",
+      "instruction": "Cạo sạch lông trên bì miếng thịt ba chỉ rút sườn, xát nhẹ 3 g muối hạt khắp miếng thịt rồi rửa sạch. Đun sôi 600 ml nước lọc với 3 g muối còn lại, thả thịt vào chần nhanh 2 phút để loại bỏ bọt bẩn, sau đó vớt ra xả sạch dưới vòi nước mát và thấm ráo.",
+      "tip": "Chần sơ thịt rồi rửa lại giúp nước luộc thứ hai trong veo và miếng thịt luộc trắng sạch, không có mùi hôi.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc thịt ba chỉ trắng thơm chín tới",
+      "instruction": "Đặt thịt vào nồi sạch, đổ 900 ml nước lọc lạnh ngập mặt thịt cùng 30 g hành tím đập dập, 20 g gừng thái lát và 15 ml giấm gạo trắng. Đun lửa lớn đến khi nước sôi bùng thì hớt sạch bọt, hạ xuống lửa vừa để sôi lăn tăn và luộc tiếp 20 phút cho thịt chín mềm.",
+      "tip": "Cho thịt vào từ nước lạnh giúp thịt chín đều từ ngoài vào trong và giữ phần nạc mềm ngọt, không bị co rút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Ủ thịt và ngâm nước lạnh giúp giòn bì",
+      "instruction": "Dùng đũa xiên qua phần thịt dày nhất, thấy nước ứa ra trong suốt không còn đỏ hồng là thịt đã chín. Tắt bếp và đậy nắp ngâm thịt thêm 5 phút trong nồi, sau đó vớt ngay ra thau nước lạnh sạch ngâm 5 phút cho thịt săn lại, bì giòn và không bị thâm mặt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha mắm tôm đánh bông với dầu nóng",
+      "instruction": "Cho 45 g mắm tôm, 12 g đường cát trắng và 5 ml rượu trắng nấu ăn vào chén, vắt nước cốt 1 quả chanh tươi rồi dùng đũa đánh mạnh tay đến khi nổi bọt trắng mịn. Đun thật nóng 15 ml dầu ăn trên chảo nhỏ rồi rưới trực tiếp vào chén mắm tôm, khuấy đều và thêm tỏi băm nhuyễn cùng ớt hiểm thái lát.",
+      "tip": "Rưới dầu ăn đang sôi vào mắm tôm vừa giúp tiệt trùng an toàn, vừa khử bớt mùi nồng và làm bọt mắm bông xốp hấp dẫn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Chuẩn bị cà pháo muối, dưa leo và rau sống",
+      "instruction": "Vớt 150 g cà pháo muối giòn ra để ráo nước rồi xếp ra đĩa nhỏ. Dưa leo rửa sạch thái lát chéo vừa ăn; các loại rau sống nhặt rửa sạch để thật ráo nước rồi bày ra đĩa riêng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thái lát thịt mỏng và hoàn thiện mâm cơm",
+      "instruction": "Thấm thật khô miếng thịt ba chỉ đã nguội, dùng dao bản rộng thật sắc thái ngang thớ thành từng lát mỏng đều từ 2–3 mm để thịt không bị dai. Xếp thịt xen lớp đẹp mắt ra đĩa, đặt cạnh đĩa cà pháo muối, rau sống, dưa leo và chén mắm tôm sủi bọt để thưởng thức ngay với cơm nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 635,
+    "energyKcal": 635.2,
+    "energyKj": 2658,
+    "proteinG": 12.9,
+    "fatG": 61,
+    "saturatedFatG": 21.7,
+    "carbG": 8.8,
+    "fiberG": 2,
+    "sugarG": 4.7,
+    "sodiumMg": 784,
+    "saltG": 1.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Asian Shrimp Paste Ref",
+      "USDA FDC 167820",
+      "USDA FDC 168155",
+      "USDA FDC 168409",
+      "USDA FDC 169228",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169247",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "23eecb1e63a74a9cfa9ca4beca1c68dc8fdf9bbf4946326c518500a07703fa12",
+    "researchedFromV2Sha256": "23fb1a29a07a3d1e2e7b859914536aeda85c98878f0e251bdd0c10fd06366431"
+  }
+}

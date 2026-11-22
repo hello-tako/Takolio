@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4095c816782acd82",
+    "slug": "salad-ca-chua-cay-thai",
+    "title": "Salad cà chua trộn cay kiểu Thái",
+    "subtitle": "Cà chua chín mọng bổ múi cau trộn nước mắm chanh tỏi ớt chua cay mặn ngọt, rắc tôm khô và đậu phộng rang giòn bùi mát lành"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 3,
+    "servings": 3,
+    "tags": [
+      "Salad Thái",
+      "Cà chua",
+      "Chua cay",
+      "Khai vị",
+      "Mát lành"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "peanut",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món salad cà chua cay kiểu Thái (Yum Makhuea Thet) thanh mát đầy sức sống với từng múi cà chua chín đỏ mọng nước thấm sốt mắm chanh đường thốt nốt, điểm xuyết vị giòn bùi của đậu phộng rang và tôm khô đậm đà.",
+    "servingSuggestion": "Múc salad cà chua ra đĩa sâu lòng cùng phần nước sốt chua cay tự nhiên, rắc hành lá, ngò rí và đậu phộng rang giã dập lên trên; dùng mát làm món khai vị hoặc ăn kèm đồ nướng.",
+    "storageAndReheat": "Salad cà chua ngon nhất khi trộn và dùng trong vòng 1–2 giờ; nếu ướp lạnh trong tủ mát, chỉ rắc đậu phộng rang và rau thơm ngay trước khi dọn để giữ độ giòn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ còn chắc quả",
+      "culinaryMeasure": "4 quả (khoảng 480 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ 6 múi cau đều nhau cho đẹp mắt",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng (lạc) rang chín",
+      "culinaryMeasure": "35 g (khoảng 2,5 muỗng canh)",
+      "prepNote": "rang vàng thơm không dầu, xát bỏ vỏ lụa rồi giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DRIED_SHRIMP",
+      "name": "Tôm khô nhỏ",
+      "culinaryMeasure": "15 g (khoảng 1 muỗng canh đầy)",
+      "prepNote": "rửa sạch bụi, ngâm nước ấm 5 phút cho mềm rồi vớt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 45 ml nước cốt bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm đà đặc trưng cho nước trộn salad Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt (hoặc đường cát)",
+      "culinaryMeasure": "15 g (khoảng 1 muỗng canh)",
+      "prepNote": "băm nhỏ cho dễ hòa tan, mang lại vị ngọt thanh dịu cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, giã hoặc băm thật nhuyễn để dậy mùi nước trộn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái lát mỏng hoặc giã dập tùy độ cay mong muốn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái lát vát xéo mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, để ráo, thái khúc ngắn 1,5 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cà chua, tôm khô và giã đậu phộng rang",
+      "instruction": "Cà chua chín rửa sạch, dùng khăn thấm ráo, bỏ cuống rồi bổ 6 múi cau vừa ăn xếp vào âu trộn lớn. Tôm khô ngâm nước ấm 5 phút cho mềm rồi vớt để ráo. Làm nóng chảo khô ở lửa nhỏ, đảo đều 35 g đậu phộng trong 3 phút đến khi vàng giòn thơm, để nguội xát sạch vỏ lụa rồi giã dập thô.",
+      "tip": "Chọn cà chua vừa chín tới, cầm chắc tay để khi trộn múi cà chua không bị nát bấy và giữ được độ giòn mọng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi, ớt hiểm và rau thơm",
+      "instruction": "Bóc vỏ tỏi khô rồi giã hoặc băm thật nhuyễn. Ớt hiểm đỏ thái lát mỏng (có thể bỏ bớt hạt nếu muốn giảm độ cay). Rửa sạch hành lá và ngò rí, để ráo nước rồi thái lát vát mỏng phần hành lá và cắt khúc ngắn ngò rí. Vắt 2 quả chanh tươi lấy khoảng 45 ml nước cốt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn salad chua cay mặn ngọt Thái",
+      "instruction": "Cho 15 g đường thốt nốt, 30 ml nước mắm ngon và 45 ml nước cốt chanh tươi vào chén nhỏ, khuấy kỹ đến khi đường tan hoàn toàn. Thêm tỏi băm và ớt hiểm thái lát vào khuấy đều, nếm thử để chắc chắn vị chua, cay, mặn, ngọt hơi đậm một chút vì cà chua sẽ tiết thêm nước.",
+      "tip": "Dùng đường thốt nốt giúp nước trộn có độ sánh mượt nhẹ và vị ngọt hậu thanh hơn đường trắng thông thường."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "finish",
+      "title": "Trộn nhẹ tay cà chua và tôm khô với nước sốt",
+      "instruction": "Rắc tôm khô mềm lên âu cà chua rồi rưới đều toàn bộ chén nước trộn lên trên. Dùng hai chiếc muỗng lớn hất trộn nhẹ tay 4–5 lượt cho nước sốt áo đều từng múi cà chua mà không làm dập ruột.",
+      "tip": "Dùng hai chiếc muỗng lớn hất trộn từ dưới lên thay vì khuấy vòng tròn giúp các múi cà chua nguyên vẹn và thấm đều nước trộn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Ướp thấm vị ngắn trước khi bày đĩa",
+      "instruction": "Để âu salad cà chua nghỉ khoảng 5 phút ở nhiệt độ phòng (hoặc 10 phút trong ngăn mát tủ lạnh) cho cà chua tiết ra nước ngọt tự nhiên hòa quyện vào sốt chua cay.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ngò rí và đậu phộng rang thưởng thức",
+      "instruction": "Trút salad cà chua cùng nước sốt ra đĩa sâu lòng, rắc hành lá, ngò rí và đậu phộng rang giã dập lên trên cùng rồi dùng mát ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 148,
+    "energyKcal": 148,
+    "energyKj": 618,
+    "proteinG": 8.8,
+    "fatG": 6.3,
+    "saturatedFatG": 0.8,
+    "carbG": 17.2,
+    "fiberG": 3.8,
+    "sugarG": 10.5,
+    "sodiumMg": 1071,
+    "saltG": 2.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Asian Dried Shrimp Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 172185",
+      "USDA FDC 172430",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "209f986debc39e6a6190cb1cd1a80eb02f8f7d9d2fa9f8a36bd7b9493bad3fc7",
+    "researchedFromV2Sha256": "e540fabf7847365d2b1cfb91e8b03cecbab6d93a810507c363b1337f918bbeb6"
+  }
+}

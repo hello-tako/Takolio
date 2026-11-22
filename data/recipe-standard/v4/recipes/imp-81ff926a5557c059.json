@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-81ff926a5557c059",
+    "slug": "ca-hoi-nuong-miso",
+    "title": "Cá hồi nướng Miso",
+    "subtitle": "Phi lê cá hồi ướp tương Miso trắng hòa quyện Sake, Mirin và xì dầu nướng vàng xém cạnh, mềm béo đậm đà kiểu Saikyo Yaki"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Cá hồi",
+      "Tương Miso",
+      "Món nướng",
+      "Ẩm thực Nhật",
+      "Cơm tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá hồi nướng Miso (Saikyo Yaki) là món cá nướng tinh tế nổi tiếng của Nhật Bản, dùng tương Miso trắng ngọt dịu kết hợp rượu Sake, Mirin và chút dầu mè ướp thấm nhẹ vào từng thớ cá hồi béo ngậy rồi nướng lửa trên vàng xém thơm lừng.",
+    "servingSuggestion": "Bày từng miếng cá hồi nướng Miso mặt da úp xuống hoặc ngửa tùy thích ra đĩa, rắc thêm hạt mè rang và hành lá thái xéo lên trên, ăn nóng kèm cơm trắng và củ cải bào.",
+    "storageAndReheat": "Bảo quản cá hồi nướng Miso trong hộp kín ở ngăn mát tủ lạnh tối đa 3 ngày; khi dùng làm nóng lại bằng lò nướng hoặc nồi chiên không dầu ở 160°C trong 3–4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê còn da",
+      "culinaryMeasure": "510 g (3 miếng khoảng 170 g/miếng)",
+      "prepNote": "rút sạch xương dăm, cạo sạch vảy trên mặt da rồi thấm khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 510,
+      "unit": "g",
+      "grossGrams": 510,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "MISO",
+      "name": "Tương Miso trắng Nhật",
+      "culinaryMeasure": "50 g (khoảng 3 muỗng canh)",
+      "prepNote": "chọn loại Miso trắng vị ngọt thanh để ướp không bị mặn gắt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 42.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "hòa tan với tương Miso giúp khử mùi tanh cá và làm sốt sánh mượt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 24.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 21.08,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu và giúp mặt cá lên màu vàng caramel đẹp khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 28.7,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tăng vị umami mặn dịu cho hỗn hợp ướp cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 20.06,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo hương thơm béo nhẹ quyện vào thớ cá hồi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 3.91,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "phết mỏng lên giấy bạc lót khay nướng chống dính da cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 2.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "rắc lên mặt cá hồi khi trình bày cho thơm bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng để rắc trang trí lên cá nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế và chia phần cá hồi phi lê",
+      "instruction": "Dùng tay miết dọc thớ thịt 510 g cá hồi phi lê để tìm xương dăm và nhổ sạch bằng nhíp, cạo sạch vảy còn sót trên mặt da rồi rửa nhanh và thấm thật khô. Chia cá thành 3 miếng đều nhau khoảng 170 g/miếng để cá chín đồng đều.",
+      "tip": "Giữ nguyên lớp da cá giúp miếng cá giữ dáng đẹp khi nướng và phần thịt sát da thêm béo mềm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Trộn hỗn hợp sốt ướp tương Miso trắng",
+      "instruction": "Cho 50 g tương Miso trắng Nhật, 25 ml rượu Sake nấu ăn, 25 ml rượu Mirin, 20 ml xì dầu Nhật và 5 ml dầu mè rang vào tô nông, khuấy thật đều tay đến khi tương Miso tan mịn hoàn toàn thành hỗn hợp sốt sệt đồng nhất."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Phết sốt Miso và ướp lạnh cá hồi",
+      "instruction": "Đặt 3 miếng cá hồi vào khay nông, phết đều hỗn hợp sốt Miso phủ kín cả mặt thịt, hai bên cạnh và mặt da cá. Bọc kín khay bằng màng bọc thực phẩm và ướp trong ngăn mát tủ lạnh từ 1 đến 2 giờ cho thịt cá thấm vị dịu nhẹ.",
+      "tip": "Không nên ướp cá hồi với Miso quá 3 giờ hoặc qua đêm vì độ mặn của tương Miso sẽ làm thịt cá bị gắt và ra nước.",
+      "timerMinutes": 90
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Làm nóng lò nướng và gạt sạch sốt Miso thừa",
+      "instruction": "Bật lò nướng chế độ lửa trên ở mức 220°C (hoặc làm nóng nồi chiên không dầu 200°C) trước 5 phút, lót giấy bạc lên khay và phết đều 5 ml dầu ăn thực vật chống dính. Lấy cá hồi ra khỏi tủ lạnh, dùng phới dẹt gạt sạch toàn bộ lớp sốt Miso bám trên mặt cá chỉ giữ lại hương vị đã thấm.",
+      "tip": "Gạt sạch sốt Miso thừa trước khi nướng là bước then chốt giúp mặt cá vàng xém hấp dẫn mà không bị cháy đen đắng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng cá hồi vàng xém cạnh và chín mọng",
+      "instruction": "Xếp cá hồi lên khay nướng với mặt da úp xuống dưới, đặt khay ở rãnh giữa lò và nướng khoảng 10–12 phút (không cần lật mặt) đến khi thịt cá chuyển màu hồng đục hoàn toàn, mặt trên vàng xém nhẹ và dùng nĩa tách thớ dễ dàng.",
+      "tip": "Cá hồi chín tới sẽ giữ được độ béo mọng bên trong; tránh nướng quá lâu làm thớ cá bị khô xác.",
+      "timerMinutes": 11
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày cá hồi nướng Miso cùng mè rang và hành lá",
+      "instruction": "Dùng xẻng nhẹ nhàng gắp cá hồi ra đĩa, rắc hạt mè trắng rang và hành lá thái lát xéo mỏng lên trên, thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 440,
+    "energyKcal": 440.1,
+    "energyKj": 1841,
+    "proteinG": 37.3,
+    "fatG": 26.4,
+    "saturatedFatG": 5.7,
+    "carbG": 8.7,
+    "fiberG": 1.1,
+    "sugarG": 4.2,
+    "sodiumMg": 998,
+    "saltG": 2.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172446",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8a22be9422c20b4556546a10e625a2722251e8d911642f0128bde4a81e44e01d",
+    "researchedFromV2Sha256": "ed329b8e33f4240fd9256b22c0e484b03e0cf25b4ab0ad79efe5d9c9f0032e47"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-5ed977305ac677b6",
+    "slug": "com-bo-hanh-nhat",
+    "title": "Cơm bơ xì dầu hành lá Nhật Bản",
+    "subtitle": "Cơm trắng hạt ngắn nóng hổi trộn bơ lạt tan chảy, xì dầu Nhật thơm dịu, hành lá xanh tươi cùng cá bào và rong biển Nori béo ngậy khó cưỡng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 5,
+    "servings": 2,
+    "tags": [
+      "Cơm bơ Nhật",
+      "Bữa sáng nhanh",
+      "Nhật Bản",
+      "Đơn giản",
+      "Tiện lợi"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "assemble",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cơm trộn Butter Shoyu Gohan kinh điển của Nhật Bản: hơi nóng từ cơm mới nấu làm viên bơ lạt tan chảy, hòa quyện vị mặn thanh của xì dầu Nhật, hành lá tươi, cá bào Katsuobushi và rong biển Nori giòn thơm.",
+    "servingSuggestion": "Dùng ngay khi cơm còn nóng bốc hơi, trộn đều tay để bơ và xì dầu phủ bóng từng hạt cơm; có thể ăn kèm một quả trứng ốp la lòng đào hoặc súp Miso nóng.",
+    "storageAndReheat": "Nên chế biến và ăn ngay từng phần vì cơm bơ để nguội sẽ đông bơ và mất độ thơm béo; không khuyến khích bảo quản lại món đã trộn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng hạt ngắn Nhật nấu chín nóng",
+      "culinaryMeasure": "360 g (2 chén cơm đầy nóng hổi)",
+      "prepNote": "xới tơi khi cơm còn thật nóng, tạo một hõm nhỏ giữa chén",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "28 g (2 lát vuông, mỗi phần 14 g)",
+      "prepNote": "cắt thành 2 viên đều nhau đặt vào giữa mỗi chén cơm nóng",
+      "componentGroup": "main",
+      "requiredQuantity": 28,
+      "unit": "g",
+      "grossGrams": 28,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia đều mỗi chén khoảng 7,5 ml rưới trực tiếp lên phần bơ đang chảy",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thấm khô rồi thái khoanh thật mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô Katsuobushi",
+      "culinaryMeasure": "6 g (1 nắm nhỏ)",
+      "prepNote": "bóp tơi nhẹ để rắc phủ đều mặt cơm nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển lá khô Nori",
+      "culinaryMeasure": "3 g (~1 lá cắt sợi mỏng)",
+      "prepNote": "dùng kéo cắt sợi thật mảnh hoặc xé vụn giòn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "rắc mặt tăng độ bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ nếu thích hương cay nồng ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị hành lá và các loại topping",
+      "instruction": "Rửa sạch hành lá tươi, thấm thật khô rồi thái khoanh mỏng. Cắt rong biển lá khô Nori thành sợi mảnh, bóp tơi nhẹ cá bào khô Katsuobushi và chuẩn bị sẵn hạt mè trắng rang cùng 2 viên bơ lạt (14 g mỗi viên)."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Xới cơm thật nóng ra hai tô",
+      "instruction": "Đảm bảo cơm trắng hạt ngắn Nhật vừa nấu chín hoặc đã hâm nóng bốc hơi. Xới đều 360 g cơm ra 2 tô (180 g/tô), dùng muỗng ấn nhẹ tạo một hõm nhỏ ở chính giữa mỗi tô cơm.",
+      "tip": "Cơm phải đủ nóng bốc hơi mới giúp viên bơ tan chảy hoàn toàn và giải phóng hương thơm đặc trưng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đặt bơ lạt vào hõm cơm để tan chảy",
+      "instruction": "Đặt mỗi tô cơm một viên bơ lạt 14 g vào giữa hõm cơm nóng, chờ khoảng 1 phút cho hơi nóng làm bơ mềm và bắt đầu tan chảy thấm xuống lớp cơm bên dưới.",
+      "tip": "Có thể phủ nhẹ một lớp cơm mỏng lên viên bơ trong 30 giây đầu để giữ nhiệt giúp bơ chảy đều nhanh hơn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Rưới xì dầu Nhật Bản quanh viên bơ",
+      "instruction": "Rưới từ từ 7,5 ml xì dầu Nhật Bản lên phần bơ đang tan của mỗi tô (tổng 15 ml cho 2 tô). Không rưới quá nhiều một lúc để giữ cân bằng vị béo của bơ và vị mặn thanh của xì dầu.",
+      "tip": "Nên giữ tỷ lệ vừa phải giữa bơ và xì dầu để món cơm không bị mặn gắt mà vẫn nổi bật mùi thơm bơ sữa."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Rắc hành lá, cá bào, rong biển và mè rang",
+      "instruction": "Rắc đều hành lá thái mỏng, cá bào khô Katsuobushi, rong biển lá khô Nori cắt sợi, hạt mè trắng rang và một ít tiêu đen xay lên mặt mỗi tô cơm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều cơm bơ xì dầu và thưởng thức nóng",
+      "instruction": "Dùng đũa trộn thật đều khoảng 1 phút ngay trước khi ăn cho từng hạt cơm áo bóng bơ lạt tan chảy, xì dầu Nhật Bản và các loại topping thơm lừng, dùng nóng ngay.",
+      "timerMinutes": 1
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 372,
+    "energyKcal": 371.5,
+    "energyKj": 1555,
+    "proteinG": 8.8,
+    "fatG": 13.5,
+    "saturatedFatG": 7.6,
+    "carbG": 52.9,
+    "fiberG": 1.5,
+    "sugarG": 0.4,
+    "sodiumMg": 496,
+    "saltG": 1.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Katsuobushi 10099",
+      "USDA FDC 168456",
+      "USDA FDC 168878",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 173430",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "db7b6bb9c0e1bc9f1be0082caa3063063e1efdca7d0b78c1213057eeeed06d1f",
+    "researchedFromV2Sha256": "6ec168fb522896395cd4b379763a4378efd79e6d5cd3cfc00b40ebab02a2fa86"
+  }
+}

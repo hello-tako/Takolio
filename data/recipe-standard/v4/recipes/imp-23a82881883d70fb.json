@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-23a82881883d70fb",
+    "slug": "mi-udon-nam-dau",
+    "title": "Mì Udon nấm đậu",
+    "subtitle": "Nước dùng Dashi chay ninh từ tảo bẹ Kombu và nấm hương khô ngọt thanh, ăn cùng mì Udon dai, nấm đùi gà và đậu phụ chiên"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Mì Udon",
+      "Đậu phụ",
+      "Nấm đùi gà",
+      "Món chay",
+      "Ẩm thực Nhật"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Udon nấm đậu là tô mì chay thanh tịnh chuẩn vị Nhật Bản, lấy vị ngọt tự nhiên từ tảo bẹ Kombu và nấm hương khô nấu Dashi, kết hợp sợi mì Udon dày dai, đậu phụ chiên vàng mềm béo và nấm đùi gà giòn ngọt.",
+    "servingSuggestion": "Chia mì Udon ra 3 tô lớn, xếp nấm đùi gà, nấm hương thái lát và đậu phụ chiên lên trên, chan ngập nước dùng Dashi nấm nóng hổi rồi rắc hành lá thái khoanh.",
+    "storageAndReheat": "Bảo quản riêng phần nước dùng nấm đậu và mì Udon chưa trụng trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn đun sôi lại nước dùng rồi trụng nóng mì sau cùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "UDON_WHEAT",
+      "name": "Mì Udon tươi hoặc đông lạnh",
+      "culinaryMeasure": "3 gói (600 g)",
+      "prepNote": "tách rời nhẹ trước khi luộc để sợi mì tơi bóng",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "pack",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "FRIED_TOFU",
+      "name": "Đậu phụ chiên sẵn (Atsuage)",
+      "culinaryMeasure": "130 g",
+      "prepNote": "trụng nhanh qua nước sôi để bớt dầu thừa rồi thái miếng vừa ăn dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 130,
+      "unit": "g",
+      "grossGrams": 130,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 130,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc cứng rồi thái lát dày 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô",
+      "culinaryMeasure": "25 g (khoảng 6–7 tai)",
+      "prepNote": "rửa nhanh qua nước cho sạch bụi rồi dùng ngâm nấu Dashi",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ Kombu khô",
+      "culinaryMeasure": "6 g (1 miếng nhỏ)",
+      "prepNote": "lau nhẹ lớp phấn trắng bằng khăn khô, không rửa mất vị ngọt umami",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để rắc lên tô mì nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "22 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "nêm vào nồi nước dùng Dashi chay cho màu đẹp và vị đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "22 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu tròn vị cho nước dùng chay",
+      "componentGroup": "broth",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 25.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn thanh của nước dùng Dashi",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "nêm nhẹ cho nồi nước dùng dậy vị ngọt tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu Dashi và luộc mì",
+      "culinaryMeasure": "1500 ml",
+      "prepNote": "chia 900 ml để ngâm nấu Dashi chay, 600 ml còn lại dùng luộc mì Udon",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 900,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm tảo bẹ Kombu và nấm hương khô lấy vị Dashi",
+      "instruction": "Lau nhẹ 6 g tảo bẹ Kombu khô bằng khăn ẩm sạch, rửa nhanh 25 g nấm hương khô rồi cho cả hai vào nồi với 900 ml nước lọc lạnh, ngâm tối thiểu 30 phút để Kombu và nấm hương tiết ra vị ngọt umami tự nhiên.",
+      "tip": "Ngâm lạnh trước khi đun giúp tảo bẹ Kombu tiết tối đa vị ngọt thanh mà không cần nấu sôi lâu.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu nước dùng Dashi chay và vớt tảo bẹ Kombu",
+      "instruction": "Bắc nồi nước ngâm lên bếp lửa vừa, canh ngay khi mặt nước bắt đầu sủi tăm nhẹ chuẩn bị sôi thì vớt bỏ miếng tảo bẹ Kombu ra ngoài. Tiếp tục đun sôi liu riu trên lửa nhỏ 10 phút cho nấm hương mềm ngọt, sau đó vớt nấm hương ra thái lát mỏng để lại vào tô.",
+      "tip": "Vớt tảo bẹ Kombu trước khi nước sôi bùng giúp nước dùng Dashi trong veo và không bị nhớt hoặc đắng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, đậu phụ chiên và hành lá",
+      "instruction": "Trong lúc nấu nước dùng, lau sạch 200 g nấm đùi gà tươi rồi thái lát dày 5 mm. Đậu phụ chiên sẵn cắt miếng vuông vừa ăn dày 1,5 cm (có thể dội qua chút nước sôi cho bớt dầu); hành lá thái khoanh mỏng để riêng.",
+      "tip": "Thái lát nấm đùi gà dày 5 mm giúp nấm giữ được độ giòn ngọt sần sật khi nấu trong nước dùng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm nước dùng Dashi chay và nấu nấm đùi gà, đậu phụ",
+      "instruction": "Nêm vào nồi nước dùng 22 ml xì dầu Nhật, 22 ml rượu Mirin, 6 g đường cát trắng và 2 g muối ăn, khuấy tan rồi nếm lại vừa miệng. Thả nấm đùi gà và đậu phụ chiên vào nồi nước dùng sôi nhẹ, nấu lửa vừa 4 phút cho nấm chín mềm và đậu phụ thấm vị ngọt thanh.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Luộc riêng mì Udon trong nước sôi",
+      "instruction": "Đun sôi 600 ml nước lọc còn lại trong một nồi riêng trên lửa lớn, thả 3 gói mì Udon vào luộc khoảng 2–3 phút, dùng đũa khuấy nhẹ cho sợi mì tơi rời, trong dai rồi vớt ra xả nhanh qua nước ấm và xóc thật ráo nước.",
+      "tip": "Luôn luộc mì Udon ở nồi riêng thay vì luộc thẳng vào nước dùng để nước Dashi chay giữ được độ trong thanh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày tô mì Udon nấm đậu nóng hổi",
+      "instruction": "Chia mì Udon đã ráo nước ra 3 tô lớn, xếp nấm hương thái lát, nấm đùi gà và đậu phụ chiên lên mặt mì, chan ngập nước dùng Dashi đang nóng sôi rồi rắc hành lá thái khoanh lên trên và dùng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 412,
+    "energyKcal": 411.7,
+    "energyKj": 1722,
+    "proteinG": 16.6,
+    "fatG": 10,
+    "saturatedFatG": 1.6,
+    "carbG": 65.3,
+    "fiberG": 6.2,
+    "sugarG": 7.2,
+    "sodiumMg": 999,
+    "saltG": 2.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Boiled/Fresh Udon",
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168436",
+      "USDA FDC 168457",
+      "USDA FDC 168580",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 172472",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f7fa032e5a288b2e3fb25898e2556eefdd50eb94d7b92c6f11dcbfcc4d9c2287",
+    "researchedFromV2Sha256": "f2bac8ed52eeccbd94abf5a0a3bed4d5782a7c7c5631fcef09ea29a90acdb2cd"
+  }
+}

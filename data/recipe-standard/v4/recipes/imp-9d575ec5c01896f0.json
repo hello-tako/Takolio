@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9d575ec5c01896f0",
+    "slug": "mi-y-sot-kem-ca-hoi-rau-bina",
+    "title": "Mì Ý sốt kem cá hồi rau bina",
+    "subtitle": "Spaghetti dai mềm quyện sốt kem tươi béo ngậy cùng phi lê cá hồi áp chảo vàng thơm, rau bina xanh non và hương chanh vàng thanh mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Cá hồi",
+      "Rau bina",
+      "Sốt kem"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "salmon",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý sốt kem cá hồi rau bina mang đến sự cân bằng tinh tế giữa phi lê cá hồi áp chảo béo ngọt, sốt kem tươi sánh mịn thơm mùi phô mai Parmesan và rau bina tươi mát cùng chút vỏ và nước cốt chanh vàng dịu nhẹ.",
+    "servingSuggestion": "Gắp mì ra 3 đĩa sâu lòng khi còn nóng, xếp đều các miếng cá hồi lên trên, rắc thêm ngò tây tươi thái nhỏ, tiêu đen xay và chút phô mai Parmesan bào.",
+    "storageAndReheat": "Món mì sốt kem hải sản ngon nhất khi ăn nóng ngay; nếu còn dư bảo quản hộp kín ngăn mát tối đa 24 giờ và hâm nhẹ trên chảo lửa nhỏ với chút kem tươi hoặc nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "270 g",
+      "prepNote": "luộc đến độ al dente trong nồi nước sôi có muối",
+      "componentGroup": "main",
+      "requiredQuantity": 270,
+      "unit": "g",
+      "grossGrams": 270,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "thấm khô hoàn toàn bằng khăn giấy, cắt miếng vuông vừa ăn 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "150 g",
+      "prepNote": "nhặt bỏ cuống già, rửa sạch và để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi nấu ăn",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "đun liu riu lửa nhỏ tạo độ sánh béo mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 148.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 148.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "15 g",
+      "prepNote": "dùng để xào thơm hành tây và tỏi làm nền sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để áp chảo cá hồi trên lửa vừa-cao",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (~70 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2/5 củ (3–4 tép, ~10 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "45 g",
+      "prepNote": "bào mịn để làm sánh và dậy vị umami cho sốt kem",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1/2 quả (~50 g)",
+      "prepNote": "bào lấy vỏ vàng thơm (tránh phần trắng đắng) và vắt lấy nước cốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 27.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, thái nhỏ để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt vảy khô",
+      "culinaryMeasure": "0,5 g (1 nhúm nhỏ)",
+      "prepNote": "thêm vào sốt để tăng vị ấm nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 9 g pha nước luộc mì và 3 g ướp cá, nêm sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 3.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đều ướp cá hồi và nêm sốt kem",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và giữ lại 100 ml làm bóng sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cá hồi và rau củ gia vị",
+      "instruction": "Thấm thật khô 300 g phi lê cá hồi tươi bằng giấy bếp rồi cắt miếng vuông 3–4 cm, ướp đều với 1 g muối ăn, 1 g tiêu đen xay và vài giọt nước cốt chanh vàng. Thái hạt lựu hành tây, băm nhuyễn tỏi tươi, rửa sạch để ráo rau bina, bào vỏ vàng chanh và thái nhỏ ngò tây.",
+      "tip": "Thấm thật khô bề mặt cá hồi trước khi áp chảo giúp miếng cá vàng giòn mà không bị bắn dầu hay nát thịt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti giữ nước tinh bột",
+      "instruction": "Đun sôi nồi lớn với 2,5 lít nước lọc cùng 9 g muối ăn, cho 270 g mì Ý Spaghetti khô vào luộc khoảng 8–9 phút đến khi vừa chín tới (al dente). Trước khi vớt mì ra rổ, múc giữ lại 100 ml nước luộc mì.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo cá hồi chín vàng đều các mặt",
+      "instruction": "Đun nóng chảo lớn trên lửa vừa-cao với 15 ml dầu ô liu. Xếp các miếng cá hồi vào chảo không chồng lên nhau, áp chảo khoảng 3–4 phút mỗi mặt đến khi vàng đều và thịt cá chín chắc hoàn toàn bên trong rồi gắp ra đĩa riêng.",
+      "tip": "Không áp chảo cá hồi quá lâu để tránh thịt cá bị khô; cá sẽ được đảo nhẹ lại cùng sốt ở bước cuối.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Xào thơm hành tỏi và làm xẹp rau bina",
+      "instruction": "Hạ chảo vừa áp chảo cá xuống lửa vừa, cho 15 g bơ lạt vào đun tan. Cho hành tây vào xào 3 phút cho mềm trong rồi thêm tỏi băm phi thơm 30 giây. Thả toàn bộ 150 g rau bina tươi vào đảo nhanh 1–2 phút đến khi lá vừa héo mềm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nấu sốt kem tươi và phô mai Parmesan",
+      "instruction": "Rót 150 ml kem tươi vào chảo, khuấy đều và đun liu riu 3 phút trên lửa nhỏ cho sốt hơi sánh lại (không để sôi bùng). Hạ lửa thật nhỏ, cho 45 g phô mai Parmesan bào vào khuấy tan hoàn toàn cùng vỏ chanh bào, phần nước cốt chanh vàng còn lại, ớt vảy khô (nếu dùng), 2 g muối ăn và 1 g tiêu đen xay.",
+      "tip": "Vỏ và nước cốt chanh vàng giúp cân bằng độ béo ngậy của kem tươi và cá hồi rất hiệu quả.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn mì Ý với cá hồi và trình bày nóng",
+      "instruction": "Cho mì Ý Spaghetti vào chảo sốt đảo đều tay 1 phút, thêm từng chút nước luộc mì nếu sốt đặc. Thả cá hồi áp chảo vào đảo thật nhẹ để miếng cá không nát, tắt bếp, dọn ra 3 đĩa sâu lòng và rắc ngò tây tươi lên trên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 881,
+    "energyKcal": 881.2,
+    "energyKj": 3686,
+    "proteinG": 41.5,
+    "fatG": 45.9,
+    "saturatedFatG": 20.6,
+    "carbG": 75.5,
+    "fiberG": 5,
+    "sugarG": 5.4,
+    "sodiumMg": 818,
+    "saltG": 2.05,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168462",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2015c780b485afef6808301caea8896920d7b82d737ecf8e84849b221c02dab2",
+    "researchedFromV2Sha256": "1eddfa104b39f9159a0a8bbab15919f5a4d2a518a7dae5ae920c994bea009c5c"
+  }
+}

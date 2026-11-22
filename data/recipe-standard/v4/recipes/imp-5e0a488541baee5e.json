@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-5e0a488541baee5e",
+    "slug": "trung-chien-kai-jeow",
+    "title": "Trứng chiên giòn phồng kiểu Thái (Kai Jeow)",
+    "subtitle": "Trứng gà đánh sủi bọt cùng nước mắm và hành lá chiên ngập dầu nóng già tạo lớp viền xốp giòn vàng rụm, bên trong mềm béo đậm đà"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Thái Lan",
+      "Trứng chiên",
+      "Món chiên",
+      "Nhanh gọn",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Kai Jeow là món trứng chiên đường phố nổi tiếng của Thái Lan với kỹ thuật rót trứng từ trên cao vào chảo dầu thật nóng, tạo lớp vỏ ngoài phồng xốp giòn tan mà ruột trứng vẫn giữ độ ẩm mềm.",
+    "servingSuggestion": "Đặt miếng trứng chiên Kai Jeow phồng giòn lên đĩa cơm trắng nóng, rắc lá ngò rí và dọn kèm chén tương ớt chua ngọt hoặc nước mắm ớt chanh.",
+    "storageAndReheat": "Món trứng chiên phồng ngon nhất khi dùng nóng ngay vừa vớt ra; nếu để nguội trứng sẽ xẹp bớt nhưng vẫn bảo quản tủ mát trong ngày và áp chảo nóng lại không dầu 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "3 quả",
+      "prepNote": "đập ra tô, đánh đều mạnh tay đến khi nổi bọt nhẹ để trứng phồng xốp khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "đánh tan cùng trứng tạo vị mặn thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy vài giọt nước cốt)",
+      "culinaryMeasure": "1/2 quả (khoảng 3 ml nước cốt)",
+      "prepNote": "vài giọt nước cốt chanh giúp trứng phồng xốp và khử tanh nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 7.87,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ cả phần đầu trắng và lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "rửa sạch, thái lát mỏng để trộn cùng trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "10 g (vài nhánh nhỏ)",
+      "prepNote": "rửa sạch, nhặt lá rắc lên mặt đĩa trứng chiên",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt chấm kèm",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "rót ra chén nhỏ dọn kèm khi thưởng thức",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật chịu nhiệt",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "chiên trong chảo nhỏ sâu lòng để tạo mép phồng giòn rồi thấm ráo phần dầu dư",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 92,
+      "edibleRetentionRatio": 0.22,
+      "edibleGrams": 20.24,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái hành lá, ớt hiểm và chuẩn bị giấy thấm dầu",
+      "instruction": "Thái nhỏ 3/4 bó hành lá gồm cả đầu trắng và lá xanh, thái lát mỏng 2 quả ớt hiểm đỏ và nhặt rửa sạch 10 g lá ngò rí để ráo. Lót sẵn 2 lớp giấy thấm dầu lên đĩa rộng và rót 20 ml tương ớt ra chén chấm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh bông nhẹ trứng gà với nước mắm và chanh",
+      "instruction": "Đập 3 quả trứng gà vào tô vừa, thêm 10 ml nước mắm ngon cùng vài giọt nước cốt từ 1/2 quả chanh tươi. Dùng nĩa hoặc phới đánh mạnh tay khoảng 1 phút cho lòng trắng và lòng đỏ hòa đều và nổi lớp bọt mịn trên mặt, sau đó khuấy hành lá cùng ớt hiểm thái lát vào.",
+      "tip": "Đánh trứng nổi bọt khí và thêm vài giọt chanh giúp cấu trúc trứng nhẹ xốp, phồng cao ngay khi gặp dầu nóng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun nóng già dầu ăn trong chảo nhỏ sâu lòng",
+      "instruction": "Đổ 100 ml dầu ăn vào chảo nhỏ sâu lòng hoặc nồi nhỏ đáy dày, đun trên lửa vừa lớn khoảng 2 phút đến khi dầu thật nóng già, lăn tăn gợn sóng. Nhỏ thử 1 giọt trứng vào kiểm tra: nếu trứng sủi bọt và nổi phồng ngay lập tức là đạt nhiệt độ chuẩn.",
+      "tip": "Dùng chảo đường kính nhỏ (~18 cm) giúp lượng dầu sâu hơn và gom miếng trứng dày phồng đẹp mắt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rót trứng từ trên cao và chiên giòn mặt dưới",
+      "instruction": "Khuấy nhanh lại tô trứng rồi rót từ độ cao khoảng 15–20 cm theo vòng xoắn ốc vào giữa chảo dầu nóng để trứng tự sủi bọt tạo lớp ren viền giòn xốp. Giữ lửa vừa lớn và chiên yên khoảng 1–2 phút đến khi mặt dưới chuyển vàng nâu giòn rụm và mép trứng phồng giòn.",
+      "tip": "Rót trứng từ trên cao theo dòng nhỏ giúp không khí hòa vào dầu sôi, tạo viền trứng xốp giòn đặc trưng kiểu Thái.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lật mặt chiên vàng đều cả hai bên",
+      "instruction": "Dùng xẻng bản rộng nhẹ nhàng lật ngửa miếng trứng sang mặt còn lại, chiên tiếp khoảng 30–45 giây cho mặt kia vàng giòn đều mà phần lõi bên trong vẫn giữ được độ mềm béo ẩm mượt."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thấm ráo dầu thừa và dọn nóng với tương ớt",
+      "instruction": "Vớt trứng ra đĩa đã lót sẵn giấy thấm dầu, chấm nhẹ mặt trên để hút bớt dầu thừa rồi chuyển sang đĩa sạch, rắc lá ngò rí tươi lên mặt và dọn nóng cùng chén tương ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 205,
+    "energyKcal": 205.1,
+    "energyKj": 858,
+    "proteinG": 9.3,
+    "fatG": 16.6,
+    "saturatedFatG": 3.6,
+    "carbG": 4.9,
+    "fiberG": 0.8,
+    "sugarG": 2.9,
+    "sodiumMg": 805,
+    "saltG": 2.01,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "87fc527a1de83deba08fca26f9555cfb20f207212220e36ad164efdcdc4f81cb",
+    "researchedFromV2Sha256": "bfceef1163d35155a92027c58c182fddf201296e076147b0678dd45fc74d1f80"
+  }
+}

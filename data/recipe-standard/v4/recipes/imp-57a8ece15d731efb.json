@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-57a8ece15d731efb",
+    "slug": "sup-miso-bap-cai",
+    "title": "Súp Miso bắp cải",
+    "subtitle": "Nước dùng Dashi thanh ngọt nấu mềm bắp cải xanh, nấm đùi gà giòn ngọt và rong biển Wakame, hòa tương Miso thơm dịu"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Súp Miso",
+      "Bắp cải",
+      "Nấm đùi gà",
+      "Ẩm thực Nhật",
+      "Món canh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Súp Miso bắp cải là món canh hằng ngày thanh đạm của người Nhật, kết hợp vị ngọt tự nhiên từ bắp cải xanh và nấm đùi gà nấu vừa chín tới trong nước dùng Dashi, hòa tan tương Miso sau khi tắt bếp để giữ trọn hương thơm lên men dịu nhẹ.",
+    "servingSuggestion": "Múc súp Miso bắp cải nấm nóng ra 3 bát gỗ hoặc bát sứ sâu lòng, rắc hành lá thái xéo mỏng lên trên và thưởng thức nóng đầu bữa cơm.",
+    "storageAndReheat": "Súp Miso ngon nhất khi dùng nóng ngay sau khi nấu; nếu còn dư, bảo quản ngăn mát tối đa 2 ngày và chỉ hâm nóng lại trên lửa nhỏ đến khi vừa bốc hơi, tuyệt đối không đun sôi bùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh",
+      "culinaryMeasure": "0,3 bắp (khoảng 240 g)",
+      "prepNote": "tách bỏ lõi cứng, cắt miếng vuông vừa ăn cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 204,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "120 g",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc cứng rồi thái lát dày 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 114,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MISO",
+      "name": "Tương Miso Nhật",
+      "culinaryMeasure": "55 g (khoảng 3 muỗng canh)",
+      "prepNote": "hòa tan qua rây với nước dùng nóng sau khi tắt bếp để giữ trọn hương thơm",
+      "componentGroup": "broth",
+      "requiredQuantity": 55,
+      "unit": "g",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "650 ml",
+      "prepNote": "đun sôi nhẹ làm nền nước canh thanh ngọt chuẩn vị Nhật",
+      "componentGroup": "broth",
+      "requiredQuantity": 650,
+      "unit": "ml",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 650,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "WAKAME_SEAWEED",
+      "name": "Rong biển Wakame khô",
+      "culinaryMeasure": "8 g (khoảng 2 muỗng canh)",
+      "prepNote": "ngâm nước lạnh 5 phút cho nở mềm rồi vắt nhẹ cho ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng để rắc lên bát súp trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ ở bước cuối nếu muốn tăng vị umami đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "nhỏ vài giọt lên mặt súp khi dùng để tăng hương thơm béo dịu",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, nấm đùi gà và ngâm rong biển Wakame",
+      "instruction": "Rửa sạch 240 g bắp cải xanh, bỏ phần lõi cứng và cắt thành miếng vuông cỡ 2 cm (để riêng phần cọng dày nếu có). Nấm đùi gà lau sạch, cắt lát dày 5 mm; rong biển Wakame khô ngâm nước lạnh 5 phút cho nở mềm rồi vắt ráo; hành lá thái lát xéo mỏng.",
+      "tip": "Tách riêng phần cọng bắp cải dày để cho vào nồi trước giúp cả cọng và lá chín mềm đồng đều.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng Dashi và nấu mềm bắp cải cùng nấm",
+      "instruction": "Đổ 650 ml nước dùng Dashi vào nồi vừa, đậy nắp đun sôi trên lửa vừa. Khi nước vừa sôi lăn tăn, hạ lửa vừa nhỏ rồi thả bắp cải (cho phần cọng vào trước 1 phút) và nấm đùi gà vào nồi, đậy nắp nấu liu riu khoảng 4–5 phút cho đến khi bắp cải chín mềm ngọt và nấm chín đều.",
+      "tip": "Nấu bắp cải và nấm ở mức sôi liu riu giữ cho nước dùng trong veo và rau củ giữ trọn vị ngọt tự nhiên.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Thả rong biển Wakame vào nồi canh",
+      "instruction": "Mở nắp nồi, thả phần rong biển Wakame đã ngâm nở vào khuấy nhẹ khoảng 30 giây cho rong biển nóng đều rồi tắt bếp ngay.",
+      "tip": "Không đun rong biển Wakame quá lâu trên lửa để tránh rong biển bị nhũn và mất màu xanh đẹp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Hòa tan tương Miso sau khi tắt bếp",
+      "instruction": "Đặt rây lọc nhỏ (hoặc vá múc canh) chạm mặt nước dùng đang nóng trong nồi, cho 55 g tương Miso Nhật vào và dùng đũa hoặc thìa tán nhẹ cho tương Miso tan mịn hoàn toàn vào nước canh mà không bị vón cục.",
+      "tip": "Luôn tắt bếp trước khi hòa tương Miso và không đun sôi lại nồi súp để giữ nguyên lợi khuẩn và hương thơm tinh tế của Miso."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nếm chỉnh vị canh với xì dầu Nhật",
+      "instruction": "Khuấy nhẹ nồi súp Miso rồi nếm thử; nếu thích vị đậm đà hơn có thể thêm 5 ml xì dầu Nhật (tránh nêm mặn quá vì tương Miso vốn đã có vị mặn dịu)."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc súp Miso ra bát và hoàn thiện",
+      "instruction": "Múc súp Miso bắp cải nấm ra 3 bát, rắc hành lá thái lát xéo lên trên và nhỏ nhẹ 5 ml dầu mè thơm chia đều vào các bát, dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 95,
+    "energyKcal": 94.6,
+    "energyKj": 396,
+    "proteinG": 6.4,
+    "fatG": 2.9,
+    "saturatedFatG": 0.4,
+    "carbG": 12.8,
+    "fiberG": 3.8,
+    "sugarG": 3.9,
+    "sodiumMg": 1528,
+    "saltG": 3.82,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Ichiban Dashi Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170496",
+      "USDA FDC 171028",
+      "USDA FDC 172446",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "40be28752f0d9685725f27634af4b19ac64235e05c3152f64401896d97e998cb",
+    "researchedFromV2Sha256": "c9e0fe0d0dd73be09341851647e5d11815fd19bbc21a3f7b3b2666ba2a5b76ff"
+  }
+}

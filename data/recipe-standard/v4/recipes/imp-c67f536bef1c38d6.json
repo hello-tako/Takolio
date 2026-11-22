@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c67f536bef1c38d6",
+    "slug": "bap-cai-kho-nam-chay",
+    "title": "Bắp cải kho nấm đùi gà chay",
+    "subtitle": "Bắp cải kho mềm ngọt cùng nấm đùi gà, cà rốt và đậu phụ chiên thấm đượm nước tương sánh đậm bữa cơm ngày rằm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món kho",
+      "Bắp cải",
+      "Nấm đùi gà",
+      "Ngày rằm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món kho chay ấm áp đưa cơm với từng miếng bắp cải mềm ngọt mà vẫn giữ được thớ lá, hòa quyện nấm đùi gà giòn sần sật, cà rốt và đậu phụ chiên ngấm đẫm nước sốt tương sánh nhẹ thơm mùi hành boa-rô và tiêu xay.",
+    "servingSuggestion": "Múc bắp cải kho nấm ra đĩa sâu lòng khi còn nóng, rưới phần nước kho sánh lên mặt rồi rắc hành lá và tiêu đen xay; dùng kèm cơm trắng nóng.",
+    "storageAndReheat": "Để nguội rồi bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày; khi ăn hâm nóng lại trên lửa nhỏ 4–5 phút và thêm chút nước nếu cạn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/2 bắp (khoảng 400 g)",
+      "prepNote": "tách lá, bỏ gân cứng, ngâm nước muối loãng rồi rửa sạch cắt miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "150 g",
+      "prepNote": "cắt bỏ gốc, rửa nhanh nước muối loãng, xả sạch rồi thái lát dày 0,6 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái khoanh vừa ăn hoặc tỉa hoa dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRIED_TOFU",
+      "name": "Đậu phụ chiên sẵn",
+      "culinaryMeasure": "120 g (1 miếng lớn)",
+      "prepNote": "rửa sơ nước ấm cho sạch dầu cũ, để ráo rồi cắt miếng vuông cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LEEK",
+      "name": "Hành boa-rô tươi",
+      "culinaryMeasure": "25 g (1 khúc phần đầu trắng)",
+      "prepNote": "rửa sạch, băm nhuyễn phi thơm nồi kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 21.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm đặc trưng cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của nước tương và giúp nước kho bóng đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "hòa tan trong nước kho tăng vị ngọt thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (1/3 muỗng cà phê)",
+      "prepNote": "nêm nhẹ làm nền cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm lên nồi kho khi hoàn thành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi thơm hành boa-rô và xào săn nấm đùi gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "200 ml (~1 chén)",
+      "prepNote": "ninh mềm thấm bắp cải, cà rốt và đậu phụ chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 200,
+      "unit": "ml",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, nấm đùi gà, cà rốt và đậu phụ chiên",
+      "instruction": "Bắp cải tách lá, bỏ phần gân quá cứng, rửa sạch rồi cắt miếng vuông khoảng 4 cm và để ráo. Nấm đùi gà cắt gốc, rửa nhanh trong nước sạch để ráo rồi thái lát dày 0,6 cm. Cà rốt gọt vỏ thái khoanh dày 0,5 cm; đậu phụ chiên sẵn cắt miếng vuông cạnh 2,5 cm; hành boa-rô băm nhuyễn; hành lá thái nhỏ.",
+      "tip": "Cắt bắp cải miếng hơi to vừa phải để sau khi kho chín mềm lá cải vẫn giữ hình dáng đẹp mà không bị nhũn nát."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành boa-rô và xào săn nấm đùi gà",
+      "instruction": "Làm nóng nồi đáy dày với 15 ml dầu ăn trên lửa vừa, thả hành boa-rô băm vào phi khoảng 40 giây cho dậy hương thơm. Trút nấm đùi gà vào xào nhanh tay 2 phút đến khi lát nấm săn lại.",
+      "tip": "Xào săn nấm trước khi cho rau củ và nước giúp nấm đậm đà và không tiết nhiều nước làm loãng vị kho.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Trộn bắp cải, cà rốt, đậu phụ với sốt nước tương",
+      "instruction": "Cho bắp cải, cà rốt và đậu phụ chiên sẵn vào nồi nấm. Nêm 45 ml nước tương, 12 g đường cát trắng, 4 g hạt nêm chay, 2 g muối ăn và rót 200 ml nước lọc vào nồi, đảo nhẹ tay cho gia vị hòa tan đều."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Kho nhỏ lửa cho bắp cải mềm và thấm đều gia vị",
+      "instruction": "Đun sôi nồi kho trên lửa lớn rồi hạ xuống lửa vừa nhỏ, đậy nắp kho trong 15 phút cho bắp cải và cà rốt chín mềm, nước kho rút bớt thấm sâu vào đậu phụ chiên và nấm.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Mở nắp rim nhẹ cho nước kho sánh lại",
+      "instruction": "Mở nắp nồi, tiếp tục kho thêm 4 phút trên lửa vừa để nước kho hơi sánh lại, thỉnh thoảng lắc nhẹ quai nồi cho gia vị phủ đều mà không dùng đũa khuấy mạnh làm nát đậu và cải.",
+      "tip": "Lắc nhẹ nồi thay vì dùng đũa đảo giúp giữ trọn miếng bắp cải mềm nguyên và đậu phụ không bị vỡ.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện món bắp cải kho nấm nóng hổi",
+      "instruction": "Nêm nếm lại nước kho cho vừa khẩu vị ăn cơm, tắt bếp rồi rắc hành lá thái nhỏ và 1,5 g tiêu đen xay lên mặt nồi. Múc ra đĩa sâu lòng và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 239,
+    "energyKcal": 239.4,
+    "energyKj": 1002,
+    "proteinG": 12,
+    "fatG": 13,
+    "saturatedFatG": 2,
+    "carbG": 24,
+    "fiberG": 6.4,
+    "sugarG": 10.6,
+    "sodiumMg": 1494,
+    "saltG": 3.73,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169246",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172472",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "43fab93218dc01021504e654d0141e3abeaebb34a7a6274fc61507f140afc2f1",
+    "researchedFromV2Sha256": "52a4bc8a9060a3b75028490dd3b3feb0c263c179611919f7a5ba0a29c6936ae6"
+  }
+}

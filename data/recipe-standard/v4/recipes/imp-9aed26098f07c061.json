@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9aed26098f07c061",
+    "slug": "trung-duc-thit-bam",
+    "title": "Trứng đúc thịt bằm",
+    "subtitle": "Trứng gà đánh bông chiên lửa nhỏ cùng thịt heo xay, hành tím và hành lá chín vàng xốp mềm đậm đà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Trứng đúc thịt",
+      "Cơm nhà",
+      "Nhanh gọn",
+      "Giàu đạm",
+      "Bé thích"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng đúc thịt bằm dân dã quen thuộc trong mọi mâm cơm Việt với lớp vỏ ngoài vàng ươm thơm phức, phần nhân bên trong bông mềm ẩm mượt quyện thịt heo nạc vai xay, hành tím phi và hành lá xanh tươi.",
+    "servingSuggestion": "Cắt trứng đúc thịt thành từng miếng tam giác hoặc miếng vuông vừa ăn, bày lên đĩa nóng cùng rau sống dưa leo và thưởng thức với cơm trắng nóng chấm tương ớt.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay sau khi chiên. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 2 ngày và hâm nóng lại bằng chảo đậy nắp 3 phút trên lửa nhỏ hoặc lò vi sóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "6 quả (khoảng 300 g)",
+      "prepNote": "đập ra tô lớn, đánh tan vừa đủ cho lòng trắng và lòng đỏ hòa đều",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 264,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo nạc vai xay",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chọn phần nạc vai có chút mỡ giúp nhân thịt mềm ẩm không bị khô xác",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "nhặt rửa sạch, thái nhuyễn phần đầu trắng và lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (~2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm xào thịt băm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp thịt heo xay, 10 ml nêm vào tô trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp thịt, 2 g đánh cùng trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "hòa tan vào trứng giúp đậm vị đều",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt băm, 1 g trộn trứng và rắc mặt hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng 10 ml xào sơ thịt băm, 15 ml chiên vàng hai mặt trứng đúc thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Sơ chế hành lá, hành tím và ướp thịt heo xay",
+      "instruction": "Băm nhuyễn 20 g hành tím khô; rửa sạch hành lá rồi thái thật nhỏ. Cho 200 g thịt heo nạc vai xay vào tô, ướp với một nửa lượng hành tím băm, 5 ml nước mắm ngon, 2 g hạt nêm và 1 g tiêu đen xay, trộn đều và để nghỉ 10 phút cho thịt ngấm vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào chín tơi thịt heo xay với hành tím",
+      "instruction": "Làm nóng 10 ml dầu ăn trong chảo chống dính trên lửa vừa, cho phần hành tím băm còn lại vào phi thơm. Trút toàn bộ thịt heo xay đã ướp vào đảo tơi đều tay khoảng 4 phút đến khi thịt săn chín hoàn toàn và tơi rời không vón cục, tắt bếp để nguội bớt rồi chắt bỏ nước mỡ thừa nếu có.",
+      "tip": "Xào chín thịt băm trước khi trộn với trứng giúp nhân thịt chín kỹ 100%, thơm hơn và không bị ra nước làm nhão khối trứng khi chiên.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà và trộn đều nhân thịt hành lá",
+      "instruction": "Đập 6 quả trứng gà vào tô lớn, thêm 10 ml nước mắm ngon còn lại, 2 g hạt nêm, 2 g muối ăn và 0,5 g tiêu đen xay, dùng phới hoặc đũa đánh tan nhẹ nhàng cho hòa quyện. Trút phần thịt xay đã nguội bớt và toàn bộ hành lá thái nhỏ vào tô trứng, khuấy đều.",
+      "tip": "Để thịt xào nguội bớt trước khi cho vào tô trứng để tránh làm trứng bị chín lợn cợn ngay trong tô."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên đúc mặt dưới ở lửa nhỏ có nắp đậy",
+      "instruction": "Bắc chảo chống dính đáy dày (đường kính khoảng 20–22 cm) lên bếp với 15 ml dầu ăn còn lại, láng đều mặt chảo trên lửa vừa rồi hạ xuống lửa nhỏ nhất. Đổ toàn bộ hỗn hợp trứng thịt vào chảo, dàn đều nhân thịt, đậy kín nắp và chiên liu riu khoảng 6 phút cho mặt dưới vàng thơm và phần mặt trên gần đông đặc.",
+      "tip": "Giữ lửa thật nhỏ và đậy kín nắp giúp khối trứng dày chín đều từ dưới lên trên mà mặt đáy không bị cháy sém.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Úp lật và chiên vàng mặt còn lại",
+      "instruction": "Khi mặt trên trứng đã se đặc, đặt một chiếc đĩa phẳng to hơn miệng chảo lên trên, dứt khoát lật ngược chảo để trút miếng trứng ra đĩa rồi nhẹ nhàng trượt mặt còn lại xuống chảo. Chiên tiếp không đậy nắp trên lửa nhỏ thêm 3 phút cho mặt kia vàng đều và chín chắc hoàn toàn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt miếng vừa ăn và thưởng thức nóng",
+      "instruction": "Trút miếng trứng đúc thịt ra thớt hoặc đĩa lớn, rắc nốt 0,5 g tiêu đen xay còn lại lên mặt rồi dùng dao sắc cắt thành 8 miếng tam giác hoặc miếng vuông gọn đẹp. Dọn ăn ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 280,
+    "energyKcal": 280.1,
+    "energyKj": 1172,
+    "proteinG": 17.4,
+    "fatG": 21.8,
+    "saturatedFatG": 6.7,
+    "carbG": 2.8,
+    "fiberG": 0.5,
+    "sugarG": 1.1,
+    "sodiumMg": 836,
+    "saltG": 2.09,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a10da70bc157094694b8aca694528fb66ef3fd150c707af96c73160dd6f4e095",
+    "researchedFromV2Sha256": "3af9544b49dfab4c3f221abbc0f1d8dddc52d02a7f87baa8c09a1d3a837aa652"
+  }
+}

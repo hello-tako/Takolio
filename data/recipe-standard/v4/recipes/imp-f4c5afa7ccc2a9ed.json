@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f4c5afa7ccc2a9ed",
+    "slug": "ca-chua-nhoi-thit-nuong",
+    "title": "Cà chua nhồi thịt nướng lò kiểu Ý",
+    "subtitle": "Trái cà chua chín mọng ôm trọn nhân thịt heo xay trộn vụn bánh mì, trứng gà và phô mai Parmesan nướng thơm lừng"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Cà chua nhồi thịt",
+      "Ẩm thực Ý",
+      "Nướng lò",
+      "Chiêu đãi",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "assemble",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "pork",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món Pomodori Ripieni truyền thống đẹp mắt với từng trái cà chua chín chắc tay nhồi đầy nhân thịt heo xay mềm ẩm quyện ruột cà chua băm, trứng gà, bột chiên xù, tỏi thơm và phô mai Parmesan nướng vàng.",
+    "servingSuggestion": "Dọn ra đĩa trang trí vài lá húng quế Tây tươi; ăn nóng cùng bánh mì giòn chấm nước sốt cà chua tươm ra trong khay hoặc dùng ở nhiệt độ phòng đều ngon.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn làm ấm lại bằng lò nướng 170°C khoảng 10 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín quả to chắc tay",
+      "culinaryMeasure": "6 quả (khoảng 720 g)",
+      "prepNote": "rửa sạch, cắt nắp trên giữ lại, khoét rỗng ruột để ráo và băm nhỏ phần ruột trộn nhân",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 720,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 648,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "300 g",
+      "prepNote": "chọn thịt nạc vai có chút mỡ dắt để nhân mềm ngọt không bị khô",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "1 quả (~50 g)",
+      "prepNote": "trộn vào nhân giúp thịt kết dính mềm mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên xù (hoặc vụn bánh mì)",
+      "culinaryMeasure": "50 g",
+      "prepNote": "hút ẩm từ ruột cà chua giúp phần nhân tơi xốp",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "40 g",
+      "prepNote": "chia 25 g trộn vào nhân thịt và 15 g rắc mặt trước khi nướng",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, nhặt lá băm thật nhuyễn trộn vào nhân",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "5 g",
+      "prepNote": "rửa sạch, để ráo trang trí đĩa khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "phết 15 ml lên khay nướng và rưới 25 ml lên mặt các quả cà chua",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 34.58,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "rắc 2 g bên trong lòng cà chua để ráo nước (chắt bỏ), dùng 4 g nêm nhân thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn đều vào nhân thịt heo xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm nóng lò, khoét ruột và làm ráo cà chua",
+      "instruction": "Bật lò nướng làm nóng trước ở 180°C chế độ hai lửa trên-dưới và phết 15 ml dầu ô liu đều xuống đáy khay nướng. Rửa sạch 6 quả cà chua chín to chắc tay, lau khô, cắt ngang phần chóp trên làm nắp đậy. Dùng thìa nhỏ cẩn thận nạo sạch ruột cà chua ra bát riêng sao cho không làm rách vỏ. Rắc 2 g muối ăn vào lòng từng quả cà chua rồi úp ngược xuống rổ 10 phút để chảy bớt nước.",
+      "tip": "Rắc chút muối và úp ngược vỏ cà chua trong 10 phút giúp rút bớt lượng nước thừa, giữ thành quả cà chua chắc chắn và nhân thịt không bị nhão khi nướng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Băm nhỏ nguyên liệu thơm và phần ruột cà chua",
+      "instruction": "Bóc vỏ băm thật nhuyễn 2–3 tép tỏi khô và băm nhuyễn 15 g ngò tây tươi. Chắt bỏ bớt hạt và nước loãng trong bát ruột cà chua, cắt nhỏ phần thịt ruột cà chua để trộn nhân."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Trộn nhân thịt heo xay cùng phô mai và gia vị",
+      "instruction": "Cho 300 g thịt heo xay vào tô lớn cùng 1 quả trứng gà, 50 g bột chiên xù, 25 g phô mai Parmesan bào mịn, tỏi băm, ngò tây băm, phần ruột cà chua cắt nhỏ, 4 g muối ăn còn lại và 1,5 g tiêu đen xay. Trộn thật đều tay đến khi hỗn hợp nhân thịt hòa quyện dẻo mịn.",
+      "tip": "Trộn phần ruột cà chua cùng bột chiên xù giúp nhân giữ được độ mọng ẩm tự nhiên suốt quá trình nướng lò mà không bị khô cứng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nhồi nhân vào cà chua và xếp lên khay",
+      "instruction": "Dùng giấy thấm khô bên trong lòng 6 quả cà chua đã ráo nước. Múc nhân thịt nhồi đầy vào từng quả (chỉ ấn nhẹ vừa tay, không nén quá chặt để nhân còn độ nở tơi), rắc nốt 15 g phô mai Parmesan bào mịn lên mặt nhân rồi đậy nắp cà chua lên trên. Xếp đứng gọn các quả vào khay nướng đã phết dầu và rưới đều 25 ml dầu ô liu còn lại lên bề mặt."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng cà chua ở 180°C đến khi nhân chín hẳn",
+      "instruction": "Đặt khay vào ngăn giữa lò nướng ở 180°C trong khoảng 30–35 phút đến khi thịt heo bên trong chín hoàn toàn (xiên tăm vào tâm nhân thấy nước chảy ra trong, không còn màu hồng), vỏ cà chua mềm nhăn nhẹ mà vẫn giữ nguyên dáng và phô mai hơi xém vàng.",
+      "tip": "Nếu phần nắp cà chua có dấu hiệu sậm màu nhanh ở 10 phút cuối, có thể phủ hờ một tờ giấy bạc lên trên để nhân bên trong chín kỹ hoàn toàn.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Để nghỉ định hình và trình bày ra đĩa",
+      "instruction": "Lấy khay cà chua ra khỏi lò và để nghỉ 5 phút cho phần nhân ổn định kết cấu. Chuyển cà chua ra đĩa sâu lòng, rưới phần nước sốt tiết ra dưới đáy khay, trang trí thêm vài lá húng quế Tây tươi lên trên và dùng nóng hoặc ấm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 413,
+    "energyKcal": 412.9,
+    "energyKj": 1727,
+    "proteinG": 20.8,
+    "fatG": 29,
+    "saturatedFatG": 9.3,
+    "carbG": 17.7,
+    "fiberG": 2.5,
+    "sugarG": 4.7,
+    "sodiumMg": 735,
+    "saltG": 1.84,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 167902",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3443de2cc2f1809db8908c0f4822c70468b07db86f1cd227dda9f041fff43f38",
+    "researchedFromV2Sha256": "65302bfa776f10d23f53949baaf6d963a34bbfedfbe42c75e3c6004ab766a561"
+  }
+}

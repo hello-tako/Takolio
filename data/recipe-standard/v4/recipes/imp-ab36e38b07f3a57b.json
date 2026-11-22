@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ab36e38b07f3a57b",
+    "slug": "suon-non-kho-dua-chua-ngot-dam-vi",
+    "title": "Sườn non kho dứa chua ngọt",
+    "subtitle": "Sườn non heo kho mềm cùng dứa chín vàng thơm, nước kho sánh màu cánh gián chua ngọt hài hòa chuẩn vị cơm nhà Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Sườn non",
+      "Nam Bộ",
+      "Chua ngọt",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Từng dẻ sườn non thấm đẫm nước cốt dứa tự nhiên giúp thịt nhanh mềm ngọt, kết hợp cùng miếng dứa xào chín dịu vị chua và nước sốt kho cánh gián sánh bóng.",
+    "servingSuggestion": "Múc sườn kho dứa ra đĩa sâu lòng, rắc hành lá và tiêu đen xay lên mặt, dùng nóng với cơm trắng và đĩa dưa leo thái lát.",
+    "storageAndReheat": "Để nguội hoàn toàn và bảo quản trong hộp kín ở ngăn mát tối đa 3 ngày; khi ăn đun nóng lại trên lửa nhỏ với 1–2 muỗng nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt khúc",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch với nước muối loãng, chần sơ nước sôi rồi chặt khúc dài 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín vừa",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g cả vỏ)",
+      "prepNote": "gọt vỏ bỏ mắt, 1/2 thái miếng vừa ăn và 1/2 băm vắt lấy nước cốt ướp sườn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để xào dứa và xào sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4–5 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để xào dứa và xào sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "chia 35 ml ướp sườn và 10 ml nêm lại khi kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "chia 10 g thắng nước màu, 10 g ướp sườn và 5 g xào dứa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "6 g",
+      "prepNote": "dùng 4 g rửa và chần sườn rồi xả bỏ, 2 g ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp sườn và rắc mặt khi hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml xào dứa và 15 ml thắng nước màu, xào sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nóng",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "dùng 30 ml hãm nước màu và 220 ml chế kho sườn",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 225,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sơ sườn non và vắt nước cốt dứa",
+      "instruction": "Rửa sạch 600 g sườn non với 2 g muối, chặt miếng 3–4 cm rồi chần trong nồi nước sôi có 2 g muối khoảng 3 phút cho ra bọt bẩn, vớt ra rửa lại nước sạch và để ráo. Gọt vỏ bỏ mắt dứa; một nửa thái miếng tam giác vừa ăn, nửa còn lại giã hoặc băm nhuyễn vắt lấy nước cốt.",
+      "tip": "Ướp sườn với nước cốt dứa tươi không chỉ tạo vị chua ngọt thanh mà enzyme tự nhiên trong dứa còn giúp thớ thịt mềm nhanh hơn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp sườn non thấm gia vị và nước cốt dứa",
+      "instruction": "Cho sườn vào tô lớn, ướp với toàn bộ nước cốt dứa, 35 ml nước mắm ngon, 10 g đường cát trắng, 2 g muối và 1 g tiêu đen xay. Trộn đều rồi ướp trong 25 phút cho sườn ngấm gia vị.",
+      "tip": "Không nên ướp sườn với nước cốt dứa quá 45 phút vì enzyme bromelain có thể làm bề mặt thịt bị bở quá mức.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào sơ dứa cho dịu vị chua",
+      "instruction": "Làm nóng chảo với 10 ml dầu ăn trên lửa vừa, phi thơm một nửa lượng hành tím và tỏi băm. Cho phần dứa cắt miếng cùng 5 g đường cát trắng vào đảo nhanh 4 phút cho dứa bóng mượt và dịu bớt độ chua gắt, trút ra đĩa riêng.",
+      "tip": "Xào trước và chỉ thả dứa vào nồi ở giai đoạn cuối giúp miếng dứa giữ được độ giòn ngọt, không bị nát vụn khi kho.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Thắng nước màu và xào săn sườn non",
+      "instruction": "Dùng nồi đáy dày làm nóng 15 ml dầu ăn và 10 g đường cát trắng còn lại trên lửa nhỏ đến khi đường chuyển màu nâu cánh gián, rót nhanh 30 ml nước nóng khuấy đều rồi cho phần hành tím và tỏi băm còn lại vào phi thơm. Trút sườn đã ướp vào đảo săn trên lửa vừa 6 phút cho từng miếng sườn lên màu đẹp.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho nhỏ lửa cho sườn non chín mềm",
+      "instruction": "Đổ 220 ml nước lọc nóng vào xâm xấp mặt sườn, đun sôi rồi hạ lửa nhỏ, đậy hé vung kho liu riu 25 phút cho thịt sườn chín mềm và nước kho bắt đầu sánh nhẹ.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Kho cùng dứa, nêm lại và trình bày",
+      "instruction": "Cho phần dứa đã xào, 10 ml nước mắm còn lại và ớt sừng thái lát vào nồi, đảo nhẹ và kho mở nắp thêm 5 phút trên lửa vừa đến khi nước sốt sánh kẹo bám đều quanh sườn và dứa. Tắt bếp, múc ra đĩa, rắc hành lá cắt nhỏ và 1 g tiêu đen xay còn lại lên trên.",
+      "timerMinutes": 5
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 378,
+    "energyKcal": 378.4,
+    "energyKj": 1583,
+    "proteinG": 16.6,
+    "fatG": 28,
+    "saturatedFatG": 9.2,
+    "carbG": 15.2,
+    "fiberG": 1.1,
+    "sugarG": 11.8,
+    "sodiumMg": 1340,
+    "saltG": 3.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "034d85de96b214769eed94699a2a243c719d673a409f026f3bd2f487bdb9086f",
+    "researchedFromV2Sha256": "d0f7485cdbb43ce2dc5613af94e477cffb777a6d3ad1a8a67fe20255d5355595"
+  }
+}

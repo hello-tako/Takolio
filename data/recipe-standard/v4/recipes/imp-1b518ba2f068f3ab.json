@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-1b518ba2f068f3ab",
+    "slug": "nom-dua-chua-cay",
+    "title": "Nộm dứa chua cay giòn mát",
+    "subtitle": "Dứa chín vàng thái lát quyện cà rốt ngâm đá giòn sần sật, hành lá xanh tươi và đậu phộng rang trong nước trộn chanh ớt hiểm chua cay thanh mát"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_cuon_nom",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Nộm dứa",
+      "Chua cay",
+      "Khai vị",
+      "Thanh mát",
+      "Nhiệt đới"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "peanut"
+    ]
+  },
+  "overview": {
+    "description": "Nộm dứa chua cay mang hương vị nhiệt đới tươi mới với từng lát dứa chín vàng mọng nước, cà rốt bào sợi ngâm đá giòn sần sật, hành lá xanh mát và nước mắm giấm chanh tỏi ớt hài hòa, điểm đậu phộng rang thơm bùi.",
+    "servingSuggestion": "Bày nộm ra đĩa sâu lòng, rắc đậu phộng rang giã dập và vài lát ớt hiểm lên trên; dùng ngay làm món khai vị giải ngấy.",
+    "storageAndReheat": "Nộm dứa nên trộn trước khi ăn khoảng 10 phút và dùng hết trong ngày; nếu chuẩn bị trước, giữ riêng dứa thái lát, cà rốt ráo nước và bát nước trộn trong ngăn mát tủ lạnh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa chín (thơm)",
+      "culinaryMeasure": "1 quả nhỏ (khoảng 600 g)",
+      "prepNote": "gọt sạch vỏ và mắt, rửa ráo rồi thái lát dày 0,5 cm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1.5 củ (khoảng 165 g)",
+      "prepNote": "gọt vỏ, bào sợi dài mảnh ngâm đá cho giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 165,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 146.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "vắt lấy nước cốt, bỏ hạt pha nước trộn nộm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "1 quả thái lát băm nhỏ pha nước trộn, 1 quả thái vát trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, để ráo và cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml",
+      "prepNote": "nền vị mặn thơm cho nước trộn nộm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị chua dịu thanh cho nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 22.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "cân bằng vị chua cay từ dứa, giấm và chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước trộn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang giã dập",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rang chín vàng thơm, xát vỏ lụa và giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "nêm nhẹ chỉnh vị mặn nếu cần",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "pha loãng nước trộn nộm chua ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Gọt thái dứa chín và ngâm đá giòn cà rốt",
+      "instruction": "Gọt sạch vỏ và mắt quả dứa chín vàng, rửa sơ để ráo rồi thái miếng dày khoảng 0,5 cm, dài 3–4 cm vừa gắp. Cà rốt gọt vỏ bào sợi mảnh, ngâm vào tô nước đá lạnh trong 10 phút cho sợi giòn cứng rồi vớt ra để thật ráo nước.",
+      "tip": "Chọn quả dứa chín vàng đều, mùi thơm ngọt dịu để nộm đậm hương vị tự nhiên mà không bị gắt chua.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Rang giã đậu phộng và sơ chế rau gia vị",
+      "instruction": "Cho đậu phộng vào chảo rang trên lửa nhỏ khoảng 8 phút đến khi chín vàng thơm đều, để nguội xát sạch vỏ lụa và giã dập vừa giữ độ giòn bùi. Rửa sạch hành lá cắt khúc 3 cm; băm thật nhuyễn tỏi khô và 1 quả ớt hiểm, quả ớt còn lại thái vát mỏng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn nộm chua cay hài hòa",
+      "instruction": "Hòa tan 35 ml nước mắm ngon, 25 g đường cát trắng, 22 ml giấm gạo và 60 ml nước lọc trong chén đến khi đường tan hết. Thêm nước cốt 2 quả chanh tươi, tỏi băm và ớt hiểm băm vào khuấy đều, nêm thêm 2 g muối ăn nếu thích đậm vị hơn.",
+      "tip": "Cho tỏi ớt vào sau khi đường đã tan hết giúp hương thơm dậy đều và màu sắc bát nước trộn bắt mắt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Trộn thấm dứa và cà rốt lượt đầu",
+      "instruction": "Cho dứa thái lát và cà rốt bào sợi đã ráo nước vào âu lớn. Rưới 2/3 lượng nước trộn nộm vào, đảo nhẹ nhàng cho miếng dứa không bị dập nát rồi để yên khoảng 8 phút cho ngấm vị.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Trộn hành lá và điều chỉnh vị cuối",
+      "instruction": "Cho hành lá cắt khúc vào âu nộm cùng 1/3 lượng nước trộn còn lại, đảo đều nhẹ tay thêm một lượt để hành lá giữ nguyên màu xanh tươi và độ giòn."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc đậu phộng và thưởng thức mát",
+      "instruction": "Gắp nộm dứa ra đĩa sâu lòng, rắc toàn bộ đậu phộng rang giã dập và vài lát ớt hiểm lên trên mặt. Dọn thưởng thức ngay khi nộm còn tươi giòn và mát lành.",
+      "tip": "Chỉ rắc đậu phộng rang ngay trước khi ăn để hạt đậu giữ được độ giòn bùi, không bị ỉu do hút ẩm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 227,
+    "energyKcal": 227.1,
+    "energyKj": 950,
+    "proteinG": 6.7,
+    "fatG": 8.5,
+    "saturatedFatG": 1.1,
+    "carbG": 35.7,
+    "fiberG": 5.2,
+    "sugarG": 24.4,
+    "sodiumMg": 1398,
+    "saltG": 3.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "18f406ea5773b5641570768b74aac904c26d0ca7d62c97924316dcb9c78fee8c",
+    "researchedFromV2Sha256": "a3146e5270cb2448072a6830dc66c1881a0fdce213b2f071c4eb2045f82bdcb5"
+  }
+}

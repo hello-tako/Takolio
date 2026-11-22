@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2ae4c4cdd97c5d02",
+    "slug": "com-bo-hanh-tay",
+    "title": "Cơm bò hành tây",
+    "subtitle": "Thịt bò thăn xào lửa lớn mềm ngọt cùng hành tây giòn thơm sốt xì dầu, dầu hào, chan lên đĩa cơm trắng nóng dẻo"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Cơm bò",
+      "Xào nhanh",
+      "Dưới 20 phút",
+      "Cơm văn phòng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bữa cơm bò hành tây nhanh gọn chỉ trong 20 phút với thịt bò thăn xào tái chín mềm mọng đậm vị xì dầu, dầu hào, từng múi hành tây chín tới giòn ngọt tự nhiên và phần nước sốt sánh thơm rưới đẫm cơm trắng nóng hổi.",
+    "servingSuggestion": "Xới cơm trắng nóng ra đĩa sâu lòng, múc phần bò xào hành tây và nước sốt rưới lên trên, rắc hành lá cùng tiêu đen xay và ăn kèm dưa leo hoặc cà chua.",
+    "storageAndReheat": "Thịt bò xào hành tây ngon nhất khi ăn nóng ngay. Nếu còn dư, bảo quản riêng phần bò xào trong ngăn mát tối đa 24 giờ và đảo nóng lại thật nhanh trên chảo lửa vừa để thịt không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nấu chín nóng dẻo",
+      "culinaryMeasure": "540 g (khoảng 3 chén đầy)",
+      "prepNote": "giữ nóng để chan thịt bò xào hành tây lên trên",
+      "componentGroup": "main",
+      "requiredQuantity": 540,
+      "unit": "g",
+      "grossGrams": 540,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn (hoặc bắp bò mềm)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "thấm khô hoàn toàn, thái lát mỏng ngang thớ cho mềm ngọt",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1,5 củ vừa (khoảng 210 g)",
+      "prepNote": "bóc vỏ, bổ múi cau mỏng vừa ăn, tách nhẹ các lớp hành",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia 1/2 ướp bò, 1/2 phi thơm xào)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm thật nhuyễn ướp bò cho thơm và khử mùi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp thịt bò, 10 ml nêm lúc xào hành tây",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "ướp thịt bò tạo độ sánh bóng đậm vị cho nước sốt chan cơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp bò, 2 g nêm hành tây",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của xì dầu và dầu hào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt bò, 1 g rắc mặt đĩa cơm bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 5 ml ướp giữ ẩm thịt bò, 10 ml xào bò, 10 ml xào hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái lát mỏng và ướp mềm thịt bò thăn",
+      "instruction": "Thấm khô 300 g thịt bò thăn bằng khăn giấy rồi thái lát mỏng ngang thớ. Cho bò vào tô, ướp với 15 ml xì dầu, 15 ml dầu hào, 2 g hạt nêm, 3 g đường cát trắng, 1 g tiêu đen xay, 1/2 lượng tỏi băm, 10 g gừng băm nhuyễn và 5 ml dầu ăn trong 12 phút cho thấm đều.",
+      "tip": "Thêm 5 ml dầu ăn khi ướp giúp lát thịt bò khóa ẩm, khi xào trên lửa lớn sẽ mềm mượt mà không bị ra nước.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế hành tây, hành lá và chuẩn bị cơm nóng",
+      "instruction": "Bóc vỏ 1,5 củ hành tây, bổ múi cau mỏng vừa ăn và tách rời từng cánh hành. Rửa sạch hành lá, cắt khúc dài 3 cm. Chuẩn bị sẵn 540 g cơm trắng nấu chín còn nóng hổi."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhanh thịt bò chín tái trên lửa lớn",
+      "instruction": "Làm nóng 10 ml dầu ăn trong chảo lớn trên lửa lớn, phi thơm một nửa phần tỏi băm còn lại. Trút toàn bộ thịt bò đã ướp vào trải đều mặt chảo, đảo nhanh tay khoảng 90 giây đến khi thịt bò vừa chuyển màu chín tái 80% thì trút ngay ra đĩa riêng (kèm phần nước tiết ngọt).",
+      "tip": "Chỉ xào bò vừa chín tái ở bước đầu để khi trộn chung với hành tây ở bước cuối thịt chín tới hoàn toàn mà vẫn mềm mọng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào hành tây giữ độ giòn ngọt tự nhiên",
+      "instruction": "Cho 10 ml dầu ăn còn lại vào chảo nóng, phi thơm phần tỏi băm còn lại rồi cho hành tây bổ múi cau vào đảo nhanh trên lửa lớn khoảng 2 phút. Nêm 10 ml xì dầu còn lại và 2 g hạt nêm để hành tây vừa trong cạnh, ngọt thanh mà vẫn còn độ giòn.",
+      "tip": "Xào hành tây trên lửa lớn trong 2 phút giúp hành bớt hăng mà không bị mềm nhũn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn thịt bò, hành lá vào chảo cho quyện sốt",
+      "instruction": "Trút đĩa thịt bò xào (cùng phần nước sốt ngọt) và hành lá cắt khúc vào chảo hành tây, đảo nhanh tay thêm 30 giây trên lửa lớn cho thịt bò chín hoàn toàn và nước sốt sánh nhẹ rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chan bò xào hành tây lên cơm trắng và dùng nóng",
+      "instruction": "Xới cơm trắng nóng ra 3 đĩa, múc đều thịt bò xào hành tây kèm nước sốt đậm đà chan lên mặt cơm, rắc 1 g tiêu đen xay còn lại và thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 535,
+    "energyKcal": 535,
+    "energyKj": 2239,
+    "proteinG": 27.8,
+    "fatG": 18.3,
+    "saturatedFatG": 5.3,
+    "carbG": 63.1,
+    "fiberG": 2.4,
+    "sugarG": 4.7,
+    "sodiumMg": 990,
+    "saltG": 2.48,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "906220caa1a39c810ca2add2cd6437cec447586af26c6ff77b2d2e30315ee415",
+    "researchedFromV2Sha256": "477bdb303d022c54561f8cf03a73009eff5f958a26961609b21196c65c713294"
+  }
+}

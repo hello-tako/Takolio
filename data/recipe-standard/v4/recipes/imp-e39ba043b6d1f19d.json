@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e39ba043b6d1f19d",
+    "slug": "rau-cu-nuong-y",
+    "title": "Rau củ nướng dầu ô liu kiểu Ý",
+    "subtitle": "Bông cải xanh, cà rốt và hành tây nướng chín tới xém cạnh caramel ngọt bùi quyện sốt dầu ô liu tỏi thơm"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Rau củ nướng",
+      "Món chay",
+      "Ẩm thực Ý",
+      "Món phụ",
+      "Thanh nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Khay rau củ nướng vàng xém cạnh với bông cải xanh giòn ngọt, cà rốt bùi bở và hành tây thơm lừng mùi tỏi nướng caramel hóa, quyện dầu ô liu nguyên chất, giấm Balsamic Ý chua ngọt dịu và thảo mộc Oregano Địa Trung Hải.",
+    "servingSuggestion": "Dọn nóng hoặc ở nhiệt độ phòng như món ăn kèm lý tưởng cho gà nướng, bít tết bò hay cá áp chảo, hoặc dùng kèm cơm trắng đều ngon.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 3 ngày; khi dùng hâm nóng lại bằng nồi chiên không dầu hoặc lò nướng 180°C khoảng 5–6 phút để rau giòn cạnh trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "1,5 cây (khoảng 450 g)",
+      "prepNote": "tách nhánh vừa ăn cỡ 3–4 cm, giữ phần cuống non thái lát, rửa sạch để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 369,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2,5 củ (khoảng 275 g)",
+      "prepNote": "gọt vỏ, thái khoanh chéo dày đều khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 275,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 244.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, bổ múi cau dày giữ nguyên phần gốc để không bị rời",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, đập dập nhẹ nguyên tép để nướng không bị cháy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "trộn đều áo lên rau củ giúp nướng xém cạnh đẹp mắt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BALSAMIC_VINEGAR",
+      "name": "Giấm Balsamic Ý",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp rau trước khi nướng, 5 ml rưới tăng hương chua ngọt thanh sau nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 21.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 20.14,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Lá Oregano và hương thảo khô",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "trộn ướp cùng rau củ tạo hương thảo mộc Ý đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4,5 g (~3/4 muỗng cà phê)",
+      "prepNote": "rắc đều ướp rau củ trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4.5,
+      "unit": "g",
+      "grossGrams": 4.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc đều tạo vị cay ấm cho rau củ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm nóng lò và sơ chế bông cải xanh",
+      "instruction": "Làm nóng lò nướng trước ở 200°C chế độ hai lửa trên-dưới trong 10 phút và lót giấy nến lên khay nướng rộng. Bông cải xanh tách thành từng bông vừa ăn cỡ 3–4 cm, giữ phần cuống non gọt sơ vỏ xơ rồi thái lát vừa; rửa sạch và vẩy thật ráo nước trên rổ.",
+      "tip": "Bông cải xanh cần thật ráo nước trước khi trộn dầu; rau còn ướt sẽ bị hấp mềm trong lò thay vì nướng xém cạnh caramel.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái cà rốt, hành tây và chuẩn bị tỏi",
+      "instruction": "Cà rốt tươi gọt vỏ, thái khoanh chéo dày đều khoảng 1 cm để chín đồng bộ cùng bông cải. Hành tây bóc vỏ, bổ múi cau dày giữ nguyên chút gốc cho đỡ rời cánh; bóc vỏ 3–4 tép tỏi khô và đập dập nhẹ.",
+      "tip": "Để nguyên tép tỏi đập dập thay vì băm nhuyễn giúp tỏi nướng chín mềm ngọt dịu mà không bị cháy khét ở nhiệt độ cao."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Pha sốt dầu ô liu giấm Balsamic thảo mộc và trộn rau",
+      "instruction": "Trong chén nhỏ, khuấy đều 45 ml dầu ô liu, 15 ml giấm Balsamic Ý, 3 g lá Oregano và hương thảo khô, 4,5 g muối ăn và 1 g tiêu đen xay. Cho toàn bộ bông cải xanh, cà rốt, hành tây và tỏi vào âu lớn, rưới sốt lên rồi dùng tay trộn đều để gia vị bám đều khắp các mặt rau củ."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp rau một lớp đều trên khay nướng",
+      "instruction": "Trút toàn bộ rau củ đã trộn sốt ra khay có lót giấy nến, dàn đều thành một lớp duy nhất với khoảng cách thoáng giữa các miếng rau để hơi nóng lưu thông dễ dàng.",
+      "tip": "Không xếp rau chồng chéo lên nhau vì hơi nước tích tụ sẽ làm rau bị sũng nước thay vì chín xém giòn cạnh."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng rau ở 200°C và đảo mặt giữa chừng",
+      "instruction": "Đặt khay vào ngăn giữa lò nướng ở 200°C trong khoảng 25–30 phút. Sau 15 phút đầu, kéo khay ra đảo nhẹ một lượt để các mặt rau vàng đều rồi nướng tiếp đến khi cà rốt mềm bùi, hành tây ngọt trong và viền bông cải xém caramel.",
+      "timerMinutes": 28
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới giấm Balsamic cuối và dọn nóng",
+      "instruction": "Lấy khay rau nướng ra, rưới nốt 5 ml giấm Balsamic Ý còn lại lên rau khi còn nóng hổi để dậy hương chua ngọt dịu thanh, gắp rau củ ra đĩa và dọn dùng nóng hoặc ấm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 166,
+    "energyKcal": 166.2,
+    "energyKj": 695,
+    "proteinG": 3.8,
+    "fatG": 10.3,
+    "saturatedFatG": 1.4,
+    "carbG": 17.4,
+    "fiberG": 5.1,
+    "sugarG": 6.6,
+    "sodiumMg": 512,
+    "saltG": 1.28,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170379",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173470",
+      "USDA FDC 173475"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "33be6358a761e86705eed5ac4e47452fe48e0161ef4392c680b766665e402862",
+    "researchedFromV2Sha256": "9b6625345de0bb5b2ab0801f3a2431177ff79a7c1ab1c80d5bf95e54f216d753"
+  }
+}

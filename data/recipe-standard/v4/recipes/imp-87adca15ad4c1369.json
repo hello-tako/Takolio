@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-87adca15ad4c1369",
+    "slug": "ga-ham-nikujaga-ca-rot",
+    "title": "Gà hầm Nikujaga cà rốt",
+    "subtitle": "Đùi gà, khoai tây, cà rốt và hành tây hầm mềm thấm đẫm nước dùng Dashi xì dầu Mirin ngọt mặn đậm cơm nhà Nhật"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Nikujaga",
+      "Thịt gà hầm",
+      "Ẩm thực Nhật",
+      "Cơm nhà",
+      "Mùa lạnh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "braise"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà hầm Nikujaga biến tấu thanh nhẹ từ món hầm truyền thống Nhật Bản với thịt đùi gà mềm ngọt thay cho thịt bò, hầm cùng khoai tây bở bùi, cà rốt và hành tây trong nước dùng Dashi hòa quyện xì dầu, rượu Sake và Mirin.",
+    "servingSuggestion": "Múc gà hầm Nikujaga cùng khoai tây, cà rốt và ít nước hầm nóng ra bát sâu lòng, rắc hành lá thái nhỏ lên trên rồi dùng nóng với cơm trắng.",
+    "storageAndReheat": "Để nguội hoàn toàn rồi cất trong hộp kín ở ngăn mát tủ lạnh tối đa 3 ngày; hôm sau hâm nóng lại trên lửa nhỏ món hầm càng ngấm vị đậm đà (không nên cấp đông vì khoai tây dễ bị bở)."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà lọc xương còn da",
+      "culinaryMeasure": "350 g",
+      "prepNote": "rửa sạch, thấm khô rồi cắt miếng vừa ăn cỡ 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "POTATO",
+      "name": "Khoai tây",
+      "culinaryMeasure": "350 g (khoảng 2 củ vừa)",
+      "prepNote": "gọt vỏ, cắt khối 3–4 cm, gọt nhẹ cạnh sắc rồi ngâm nước lạnh 10 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 297.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1,25 củ (khoảng 138 g)",
+      "prepNote": "gọt vỏ, cắt vát xoay kiểu Nhật để miếng cà rốt nhanh chín và giữ dáng",
+      "componentGroup": "main",
+      "requiredQuantity": 1.25,
+      "unit": "piece",
+      "grossGrams": 137.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 122.38,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1,5 củ (khoảng 210 g)",
+      "prepNote": "bóc vỏ, bổ múi cau vừa ăn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "tạo nền vị umami ngọt thanh cho nồi rau củ và thịt gà hầm",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "tạo màu nâu cánh gián đẹp mắt và vị mặn đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 70.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ bóng và vị ngọt dịu tự nhiên cho nước hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "làm mềm thịt gà và giúp gia vị thấm sâu vào khoai cà rốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn ngọt hài hòa đúng kiểu Nikujaga Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng xào sơ thịt gà và hành tây cho dậy mùi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên bát Nikujaga",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế khoai tây, cà rốt, hành tây và đùi gà",
+      "instruction": "Khoai tây gọt vỏ, cắt khối cỡ 3–4 cm và tỉa sơ cạnh sắc rồi ngâm ngay vào thau nước lạnh 10 phút cho ra bớt tinh bột, sau đó vớt ráo. Cà rốt cắt vát xoay thành miếng vừa ăn; hành tây bổ múi cau; đùi gà lọc xương còn da cắt miếng cỡ 3–4 cm và hành lá thái nhỏ.",
+      "tip": "Gọt sơ các cạnh sắc của khoai tây (kỹ thuật Mentori) giúp khoai không bị vỡ nát cạnh trong quá trình ninh hầm.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào sơ thịt gà với dầu ăn cho săn thơm",
+      "instruction": "Làm nóng nồi rộng đáy dày trên lửa vừa với 10 ml dầu ăn thực vật, cho 350 g đùi gà vào xào khoảng 3 phút đến khi mặt da hơi xém vàng nhẹ và thịt gà săn bên ngoài thì gắp tạm ra đĩa.",
+      "tip": "Xào áp mặt da gà trước giúp tiết bớt mỡ thơm và giữ thịt gà không bị nát khi hầm chung rau củ.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp rau củ và đun sôi nước hầm Dashi gia vị",
+      "instruction": "Xếp hành tây xuống đáy nồi, tiếp đến là cà rốt và cuối cùng đặt khoai tây lên trên cùng. Đổ 500 ml nước dùng Dashi vào nồi cùng 60 ml xì dầu Nhật, 30 ml rượu Mirin, 30 ml rượu Sake nấu ăn và 12 g đường cát trắng, bật lửa lớn đun đến khi nước sôi bùng.",
+      "tip": "Xếp hành tây và cà rốt ở dưới, khoai tây ở lớp trên giúp khoai ít bị va đập và giữ nguyên hình dáng đẹp mắt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm rau củ mềm thấm bằng nắp thả",
+      "instruction": "Khi nước dùng sôi, hớt sạch bọt nổi, hạ lửa xuống mức vừa nhỏ, đặt một tờ giấy bạc chọc vài lỗ nhỏ lên sát mặt nguyên liệu (làm nắp thả Otoshibuta) rồi đậy hờ nắp nồi, hầm liu riu 15 phút cho khoai tây và cà rốt gần chín mềm.",
+      "tip": "Nắp thả giúp nước hầm sôi tuần hoàn phủ đều lên bề mặt khoai tây dù lượng nước không quá ngập.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cho gà vào hầm chín kỹ và ủ thấm vị",
+      "instruction": "Nhấc nắp thả ra, xếp phần đùi gà đã xào sơ vào nồi, rưới nước hầm lên trên và tiếp tục đun liu riu thêm 6–8 phút đến khi thịt gà chín hoàn toàn (không còn màu hồng bên trong) và xiên đũa xuyên qua khoai tây dễ dàng. Tắt bếp, đậy nắp để nồi nghỉ 15 phút cho khoai và thịt thấm sâu gia vị.",
+      "tip": "Để nồi Nikujaga nghỉ nguội bớt 15–20 phút sau khi tắt bếp là bí quyết giúp khoai tây hút trọn vị ngọt mặn từ nước hầm.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày bát Nikujaga gà nóng cùng cơm trắng",
+      "instruction": "Múc gà hầm cùng khoai tây, cà rốt, hành tây và một ít nước hầm sánh ngọt ra bát sâu lòng, rắc hành lá thái nhỏ lên trên rồi dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 319,
+    "energyKcal": 319,
+    "energyKj": 1335,
+    "proteinG": 21.8,
+    "fatG": 11.6,
+    "saturatedFatG": 2.9,
+    "carbG": 29.1,
+    "fiberG": 3.6,
+    "sugarG": 10.6,
+    "sodiumMg": 1474,
+    "saltG": 3.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170026",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c68561034947f0834ba0ad946c3bd8f06fdca4bf640916219b4733f43e66ff72",
+    "researchedFromV2Sha256": "328703ae0476424335d86cb1355de6f7db7826ea7bb93fc531f81957cdda264b"
+  }
+}

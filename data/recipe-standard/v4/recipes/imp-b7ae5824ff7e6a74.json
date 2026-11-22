@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b7ae5824ff7e6a74",
+    "slug": "su-su-xao-toi",
+    "title": "Su su xào tỏi",
+    "subtitle": "Su su non thái lát mỏng giòn sần sật xào lửa lớn cùng tỏi ta đập dập thơm nồng và hành lá xanh mướt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau củ",
+      "Thanh đạm",
+      "Dưới 20 phút",
+      "Miền Trung"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Su su xào tỏi là món rau xào thanh mát, mộc mạc mà đưa cơm với những lát su su non giòn ngọt không hề bị nhựa hay nhũn, quyện hương thơm nồng nàn của tỏi đập dập phi vàng và chút vị đậm đà từ nước mắm ngon.",
+    "servingSuggestion": "Gắp su su xào tỏi ra đĩa khi còn nóng, rắc thêm chút tiêu đen xay; dùng kèm cơm trắng và các món kho mặn.",
+    "storageAndReheat": "Món rau xào nên ăn ngay trong bữa khi còn nóng để cảm nhận trọn vẹn độ giòn ngọt tự nhiên."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHAYOTE",
+      "name": "Quả su su non",
+      "culinaryMeasure": "3 quả (khoảng 660 g)",
+      "prepNote": "ngâm nước cho ra bớt nhựa rồi gọt vỏ, bỏ hạt non, thái lát mỏng dày 0,3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 660,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 580.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ; chia đôi để phi thơm ban đầu và đảo cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, bỏ hạt, thái lát mỏng để tạo điểm nhấn màu sắc",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi và xào nhanh su su trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 ml)",
+      "prepNote": "rưới vào chảo khi su su gần chín để dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "nêm khi đảo su su trên lửa lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2/3 muỗng cà phê (4 g)",
+      "prepNote": "dùng 2 g pha nước ngâm su su hết nhựa và 2 g nêm khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 2.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "rắc hoàn thiện khi bày ra đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Gọt vỏ và ngâm nước muối loại bỏ nhựa su su",
+      "instruction": "Ngâm 3 quả su su non trong nước sạch 2 phút hoặc gọt vỏ trực tiếp dưới vòi nước để không bị dính nhựa. Chẻ đôi bỏ hạt rồi thái lát mỏng vừa ăn dày khoảng 0,3 cm. Ngâm lát su su trong thau nước pha 2 g muối ăn khoảng 5 phút để sạch nhựa và giữ sắc xanh rồi xả sạch, để thật ráo.",
+      "tip": "Ngâm nhanh qua nước muối loãng rồi để ráo giúp lát su su giòn thanh và không bị thâm sẫm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi đập dập, hành lá và ớt",
+      "instruction": "Tỏi khô bóc vỏ, đập dập rồi băm nhỏ, chia thành hai phần bằng nhau. Hành lá rửa sạch cắt khúc 3 cm; ớt sừng đỏ thái lát xéo mỏng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm phần tỏi ban đầu",
+      "instruction": "Làm nóng 25 ml dầu ăn trong chảo trên lửa vừa, cho một nửa lượng tỏi băm vào phi đều tay khoảng 30–40 giây đến khi tỏi ngả vàng nhẹ và tỏa hương thơm nồng.",
+      "tip": "Không phi tỏi quá sẫm màu vì tỏi cháy sẽ tạo vị đắng cho đĩa rau thanh nhẹ."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh su su trên lửa lớn",
+      "instruction": "Tăng bếp lên lửa lớn, trút toàn bộ su su đã để ráo vào chảo dầu tỏi và đảo nhanh tay liên tục khoảng 3 phút. Nêm 5 g hạt nêm, 2 g muối ăn còn lại và 8 ml nước mắm ngon, đảo đều thêm 1,5 phút cho lát su su hơi trong và chín giòn.",
+      "tip": "Giữ lửa lớn suốt quá trình xào giúp su su chín nhanh bên ngoài mà vẫn giòn sần sật, không bị ra nhiều nước.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm phần tỏi cuối, hành lá và ớt lát",
+      "instruction": "Khi su su vừa chín tới, rắc nốt một nửa lượng tỏi băm còn lại cùng hành lá cắt khúc và ớt sừng đỏ thái lát vào chảo, đảo đều thêm 30 giây cho dậy mùi tỏi tươi rồi tắt bếp ngay."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Bày su su xào tỏi ra đĩa, rắc 1,5 g tiêu đen xay lên trên và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 117,
+    "energyKcal": 117,
+    "energyKj": 489,
+    "proteinG": 2.5,
+    "fatG": 7.3,
+    "saturatedFatG": 1.1,
+    "carbG": 12.8,
+    "fiberG": 3.8,
+    "sugarG": 3.8,
+    "sodiumMg": 894,
+    "saltG": 2.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169990",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d0eaf2f55f7a75f6db36fd46dc144e184959e027614892eb64c71b96b3cdbd1f",
+    "researchedFromV2Sha256": "f00fefbae95ff59358f94768a9b9619056906ff5f528fec27a7c0a4ff6b1e7a3"
+  }
+}

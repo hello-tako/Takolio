@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2b514b564c702ff1",
+    "slug": "tom-nuong-chanh-ot",
+    "title": "Tôm nướng chanh ớt kiểu Thái",
+    "subtitle": "Xiên tôm sú tươi nướng lửa lớn chín mọng xém cạnh, áo sốt chanh tươi, nước mắm và ớt tỏi chua cay mặn ngọt đậm đà"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Tôm nướng",
+      "Chanh ớt",
+      "Ẩm thực Thái",
+      "Hải sản",
+      "Món tiệc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm nướng chanh ớt kiểu Thái mang hương vị biển tươi mát với từng con tôm sú chắc thịt nướng cháy cạnh thơm lừng, được phết đẫm lớp sốt chanh tươi, nước mắm, đường và ớt tỏi băm đậm vị ngay khi còn nóng.",
+    "servingSuggestion": "Dọn xiên tôm nướng nóng hổi ra đĩa, rắc thêm hành lá; dùng làm món khai vị tiệc gia đình hoặc ăn kèm rau sống, dưa leo và cơm trắng.",
+    "storageAndReheat": "Tôm nướng ngon nhất ngay khi vừa nhấc khỏi vỉ; nếu còn dư, gỡ xiên bảo quản hộp kín ngăn mát tối đa 24 giờ và làm nóng nhanh 2 phút bằng nồi chiên không dầu ở 170°C."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi cỡ lớn (bóc vỏ giữ đuôi)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa sạch, bóc vỏ thân giữ lại phần đuôi cho đẹp, rạch nhẹ sống lưng rút chỉ đen rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt)",
+      "culinaryMeasure": "2 quả (90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 50–60 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "3 quả (15 g)",
+      "prepNote": "bỏ cuống, rửa sạch, băm thật nhuyễn để pha sốt phết tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (12–13 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "pha cùng nước cốt chanh và đường tạo độ mặn thơm cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (1 muỗng canh)",
+      "prepNote": "hòa tan tạo vị ngọt dịu giúp sốt sánh bóng khi nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc ướp nhẹ lên mình tôm trước khi phết sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt đĩa tôm nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia 15 ml trộn áo tôm chống dính vỉ và 5 ml quét lên vỉ nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm xiên tre, làm sạch tôm và ướp muối nhẹ",
+      "instruction": "Ngâm 6–8 que xiên tre vào nước lạnh ít nhất 20 phút để không bị cháy khi nướng. Làm sạch 500 g tôm tươi, bóc vỏ thân giữ lại đuôi, rút chỉ đen và thấm thật khô bằng khăn giấy. Rắc đều 2 g muối ăn và 15 ml dầu ăn vào tôm trộn đều.",
+      "tip": "Ngâm xiên tre trước giúp que không bị cháy đen và thấm khô tôm giúp lớp sốt phết bám đều lên thịt tôm.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha chén sốt chanh tỏi ớt chua cay đậm đà",
+      "instruction": "Trong chén nhỏ, hòa tan 15 g đường cát trắng với 35 ml nước mắm và toàn bộ nước cốt của 2 quả chanh tươi đến khi đường tan hết. Thêm tỏi băm nhuyễn và ớt hiểm băm nhỏ vào khuấy đều."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Phết lớp sốt mỏng lên tôm và xiên que",
+      "instruction": "Múc 1/3 lượng sốt chanh ớt vừa pha rưới nhẹ trộn đều với tôm, để thấm khoảng 10 phút (giữ lại 2/3 phần sốt còn lại để phết khi nướng và lúc dọn). Lần lượt xiên 4–5 con tôm vào mỗi que tre theo chiều dọc thân tôm.",
+      "tip": "Không ướp tôm với nước cốt chanh quá 15 phút vì axit trong chanh sẽ làm chín tái bề mặt khiến thịt tôm bị bở khi nướng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng và phết lớp dầu chống dính",
+      "instruction": "Làm nóng bếp than hoa hoặc chảo gang rãnh nướng ở lửa lớn đến khi vỉ thật nóng, dùng cọ quét 5 ml dầu ăn còn lại lên mặt vỉ để tôm không bị dính sát."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng tôm lửa lớn hai mặt và phết sốt bóng đẹp",
+      "instruction": "Đặt các xiên tôm lên vỉ nóng, nướng khoảng 2–3 phút cho mặt dưới chuyển đỏ hồng xém nhẹ thì lật mặt. Phết thêm 1/3 lượng sốt lên mặt tôm đã lật và nướng tiếp 2–3 phút cho đến khi tôm săn cong hoàn toàn và hai mặt hơi cháy cạnh thơm lừng.",
+      "tip": "Nướng nhanh trên lửa lớn trong 4–6 phút giúp tôm vừa chín tới mọng nước, tránh nướng lâu làm thịt tôm khô xác.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Phết nốt phần sốt tươi, rắc hành lá và thưởng thức",
+      "instruction": "Gắp các xiên tôm nướng ra đĩa lớn, dùng cọ phết nốt 1/3 lượng sốt chanh ớt tươi còn lại lên trên khi tôm đang nóng hổi để tạo lớp áo bóng thơm. Rắc hành lá thái nhỏ lên mặt và dọn ăn ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 207,
+    "energyKcal": 207.1,
+    "energyKj": 867,
+    "proteinG": 29.7,
+    "fatG": 6.3,
+    "saturatedFatG": 1,
+    "carbG": 9.1,
+    "fiberG": 0.7,
+    "sugarG": 6.2,
+    "sodiumMg": 1528,
+    "saltG": 3.82,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "830ba8f43b79773724e783fdf219432c6834b434d61c84adc62894ac0ba7b7f1",
+    "researchedFromV2Sha256": "59d167a189cd8962b2c2157b4dd5c86b5d41381aea57c0b1cfc04a0b6b419fb8"
+  }
+}

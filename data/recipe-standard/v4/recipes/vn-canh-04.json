@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-canh-04",
+    "slug": "canh-suon-bi-dao",
+    "title": "Canh sườn hầm bí đao ngọt thanh",
+    "subtitle": "Sườn non heo ninh mềm róc xương hòa quyện vị ngọt mát tự nhiên của bí đao xanh, thơm mùi hành lá và ngò gai"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Cơm nhà",
+      "Bổ dưỡng",
+      "Thanh mát",
+      "Dễ nấu"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Món canh gia đình quen thuộc với nước hầm sườn non trong veo, thịt sườn mềm tơi thấm vị, kết hợp bí đao chín tới trong mướt, giữ trọn vị ngọt mát và thanh nhẹ.",
+    "servingSuggestion": "Múc canh sườn bí đao ra tô lớn khi còn nóng, rắc hành lá, ngò gai và chút tiêu xay; dọn cùng cơm trắng và các món mặn như thịt kho hoặc cá chiên.",
+    "storageAndReheat": "Canh sườn bí đao bảo quản trong hộp kín ở ngăn mát tủ lạnh được 1–2 ngày; khi ăn lại chỉ cần đun sôi lăn tăn vừa đủ nóng để bí không bị nhũn nát."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt khúc",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rửa sạch, chặt khúc 3–4 cm, chần sơ nước sôi rồi rửa lại cho sạch bọt bẩn",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 292.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "WINTER_MELON",
+      "name": "Bí đao (bí xanh)",
+      "culinaryMeasure": "1 quả nhỏ (~500 g)",
+      "prepNote": "gọt sạch vỏ xanh, bỏ phần ruột xốp và hạt, rửa sạch rồi cắt miếng dày khoảng 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm xào săn sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, đập dập nhẹ cho vào nồi ninh sườn để khử mùi hôi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 3 nhánh)",
+      "prepNote": "rửa sạch, phần đầu hành đập dập, phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "10 g (5–6 lá)",
+      "prepNote": "rửa sạch, thái sợi hoặc cắt nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím và xào săn sườn non",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml ướp sườn non và 15 ml nêm hoàn thiện nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "chia 5 g ướp sườn và 5 g nêm nước hầm",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 3 g cho vào nước chần sườn và 3 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp sườn, nửa còn lại rắc lên tô canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng hầm sườn non và nấu chín bí đao",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sạch sườn non khử mùi hôi",
+      "instruction": "Rửa sạch 450 g sườn non đã chặt khúc 3–4 cm. Đun sôi một nồi nước riêng với 3 g muối ăn, thả sườn vào chần nhanh 2–3 phút trên lửa lớn để đẩy hết máu thừa và tạp chất. Vớt sườn ra rổ, xả sạch lại dưới vòi nước lạnh rồi để thật ráo.",
+      "tip": "Chần sơ sườn với chút muối và xả sạch lại giúp nước canh sau khi ninh trong veo, không bị đục hay có mùi hôi.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp sườn non và sơ chế bí đao",
+      "instruction": "Ướp sườn đã ráo với 10 ml nước mắm ngon, 5 g hạt nêm và 1 g tiêu đen xay trong 10–15 phút. Trong lúc chờ, gọt bỏ vỏ xanh của 1 quả bí đao, bổ dọc bỏ hết phần ruột xốp và hạt, rửa sạch rồi cắt khúc dày khoảng 2 cm để khi nấu không bị nát. Băm nhỏ 20 g hành tím, đập dập 10 g gừng, thái nhỏ hành lá và ngò gai.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào săn sườn non",
+      "instruction": "Làm nóng nồi đáy dày với 15 ml dầu ăn trên lửa vừa, cho đầu hành đập dập và hành tím băm vào phi thơm 30 giây. Trút sườn non đã ướp vào đảo đều khoảng 3–4 phút cho miếng sườn săn chắc các mặt và dậy mùi thơm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm sườn non lấy nước dùng ngọt trong",
+      "instruction": "Đổ 1,5 lít nước lọc vào nồi sườn, bật lửa lớn đun sôi bùng rồi hớt sạch lớp bọt nổi trên mặt. Thả lát gừng đập dập vào nồi, hạ xuống lửa nhỏ liu riu và hầm khoảng 25 phút cho đến khi thịt sườn chín mềm, dễ dàng xiên đũa qua.",
+      "tip": "Hầm sườn ở lửa nhỏ liu riu và mở hé nắp giúp chất ngọt tiết ra từ từ mà nước dùng vẫn giữ được độ trong suốt.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu bí đao chín tới giữ độ ngọt mát",
+      "instruction": "Khi sườn đã mềm, thả toàn bộ bí đao cắt miếng vào nồi, tăng nhẹ lên lửa vừa để nước sôi trở lại rồi nấu khoảng 5–6 phút cho đến khi thịt bí chuyển màu trắng trong mờ, xiên nhẹ thấy mềm nhưng vẫn giữ nguyên góc cạnh.",
+      "tip": "Bí đao chín rất nhanh, không nên nấu quá 7 phút kẻo bí nhũn nát và mất đi hương vị thanh mát.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm gia vị và rắc rau thơm hoàn thiện",
+      "instruction": "Nêm thêm 15 ml nước mắm ngon, 5 g hạt nêm và 3 g muối còn lại, khuấy nhẹ tránh làm nát bí rồi nếm lại vừa miệng. Tắt bếp, thả hành lá và ngò gai thái nhỏ cùng 1 g tiêu đen xay lên mặt nồi rồi múc ra tô dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 260,
+    "energyKcal": 260.4,
+    "energyKj": 1089,
+    "proteinG": 12.7,
+    "fatG": 20.6,
+    "saturatedFatG": 6.8,
+    "carbG": 6.1,
+    "fiberG": 3.3,
+    "sugarG": 2.3,
+    "sodiumMg": 1458,
+    "saltG": 3.65,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169214",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN Culinary Herb Ref",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8241f864d7db77000fc64fe6c0c64fedbada174536a0cc6c4b3173bc74311c55",
+    "researchedFromV2Sha256": "93d56a3a6a6c3b3e6f53f0df50d388ba59e9795201ef2abb5db486c50f44aee3"
+  }
+}

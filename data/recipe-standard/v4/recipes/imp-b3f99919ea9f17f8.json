@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b3f99919ea9f17f8",
+    "slug": "canh-bi-dao-thit-bam-kieu-hoa",
+    "title": "Canh bí đao thịt bằm viên kiểu Hoa",
+    "subtitle": "Nước dùng gà thanh ngọt ninh cùng bí đao trong mướt và những viên thịt heo quết tay dai giòn thơm mùi gừng hành"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Thanh mát",
+      "Trung Hoa",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Canh bí đao thịt bằm viên kiểu Hoa mang vị thanh tao, nước dùng trong ngọt từ nước dùng gà hòa quyện bí đao mềm mọng và viên thịt heo quết một chiều dai ngọt tự nhiên.",
+    "servingSuggestion": "Múc canh ra tô lớn khi còn nóng hổi, rắc thêm lá hành xanh, ngò rí và chút tiêu trắng xay; dùng kèm cơm trắng và các món mặn.",
+    "storageAndReheat": "Ngon nhất khi dùng trong ngày để bí đao không bị bở. Nếu bảo quản tủ mát tối đa 24 giờ, đun sôi nhẹ lại trên lửa vừa trong 3–5 phút trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "300 g",
+      "prepNote": "chọn thịt nạc vai lẫn chút mỡ để viên thịt mềm ngọt, không khô xác",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "WINTER_MELON",
+      "name": "Bí đao tươi",
+      "culinaryMeasure": "1,2 quả nhỏ (~600 g nguyên vỏ)",
+      "prepNote": "gọt bỏ vỏ xanh, nạo sạch ruột và hạt, thái miếng con chì dày 0,6 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1.2,
+      "unit": "piece",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 468,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi (lấy lòng trắng)",
+      "culinaryMeasure": "1 quả (~50 g)",
+      "prepNote": "tách lấy phần lòng trắng trứng để tạo độ kết dính dai giòn cho thịt viên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 32.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê băm)",
+      "prepNote": "gọt vỏ, băm thật nhuyễn để trộn khử mùi thịt viên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (~40 g, 2–3 cây)",
+      "prepNote": "1/2 băm nhỏ trộn thịt viên; 1/2 còn lại tách đầu trắng xào thơm và lá xanh thái nhỏ rắc canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, cắt khúc ngắn để trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng ướp tạo vị đậm đà cho thịt viên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "trộn vào thịt viên giúp dậy mùi thơm và khử mùi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 19.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 19.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "dùng phi thơm đầu hành trắng trước khi đổ nước dùng nấu canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "chia 3 ml trộn thịt viên, 2 ml nêm nước canh sau cùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (~3/4 muỗng cà phê)",
+      "prepNote": "chia 2/3 trộn thịt viên, 1/3 nêm vào nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn vào thịt viên cân bằng vị mặn của xì dầu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 1,5 g trộn thịt viên, 3,5 g nêm nước canh tùy độ mặn của nước dùng gà",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "650 ml",
+      "prepNote": "kết hợp nước lọc tạo nền canh ngọt thanh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 650,
+      "unit": "ml",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 650,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "370 ml",
+      "prepNote": "chia 20 ml trộn vào thịt xay cho mọng, 350 ml pha cùng nước dùng gà nấu canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 370,
+      "unit": "ml",
+      "grossGrams": 370,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 333,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bí đao và rau thơm",
+      "instruction": "Gọt sạch vỏ xanh của bí đao tươi, nạo bỏ phần ruột xốp và hạt, rửa sạch rồi cắt thành từng miếng con chì dày khoảng 0,6 cm đều nhau để bí chín tới cùng lúc. Gừng tươi băm nhuyễn; hành lá tươi tách phần băm trộn thịt, phần đầu hành trắng để phi và lá xanh thái nhỏ; ngò rí tươi cắt khúc ngắn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp và quết thịt heo viên dai giòn",
+      "instruction": "Cho 300 g thịt heo xay vào tô lớn cùng 25 ml xì dầu nhạt, 20 ml rượu Thiệu Hưng, 3 ml dầu mè thơm, 2/3 lượng tiêu trắng xay, 2 g đường cát trắng, 1,5 g muối ăn, lòng trắng của 1 quả trứng gà, 10 g gừng băm, 1/2 phần hành lá băm và 20 ml nước lọc. Dùng đũa quết mạnh tay theo đúng một chiều trong 8–10 phút đến khi thịt dẻo quánh, bám dính thành khối.",
+      "tip": "Quết thịt theo một chiều và thêm chút nước lọc giúp sợi thịt ngậm nước và liên kết đàn hồi, cho viên thịt mềm mọng mà vẫn giòn dai.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Vo viên thịt gọn đẹp",
+      "instruction": "Thoa một lớp dầu mỏng vào lòng bàn tay hoặc dùng muỗng nhúng dầu, chia hỗn hợp thịt thành 12–16 viên tròn đường kính khoảng 2,5–3 cm rồi xếp lên đĩa phẳng, giữ mát trong khi nấu nước dùng để viên thịt giữ dáng chắc đẹp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm đầu hành và nấu mềm bí đao",
+      "instruction": "Làm nóng 10 ml dầu ăn thực vật trong nồi canh trên lửa vừa, thả phần đầu hành trắng vào xào thơm 1 phút cho dậy mùi. Đổ 650 ml nước dùng gà và 350 ml nước lọc vào nồi, thả bí đao vào đun sôi rồi hạ lửa vừa, nấu liu riu 8–10 phút đến khi miếng bí đao bắt đầu chuyển trong.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả thịt viên và nấu chín tới",
+      "instruction": "Khi nước canh đang sôi nhẹ, nhẹ nhàng thả từng viên thịt vào nồi để viên thịt se mặt ngay và không bị vỡ nát. Hớt sạch bọt nổi trên mặt nước, đun liu riu thêm 4 phút đến khi toàn bộ thịt viên nổi hẳn lên mặt nước và chín chắc hoàn toàn bên trong, bí đao vừa trong mướt mà không bị nát bở.",
+      "tip": "Giữ lửa ở mức sôi lăn tăn sau khi thả viên giúp nước canh trong veo và viên thịt chín đều từ ngoài vào trong.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm gia vị và hoàn thiện tô canh",
+      "instruction": "Nêm vào nồi canh 3,5 g muối ăn còn lại (điều chỉnh theo độ mặn nước dùng), 1/3 lượng tiêu trắng xay còn lại và 2 ml dầu mè thơm, khuấy nhẹ rồi tắt bếp. Múc canh ra tô lớn, rắc lá hành xanh và ngò rí tươi lên mặt, dùng nóng ngay.",
+      "tip": "Rưới dầu mè thơm và tiêu trắng sau khi tắt bếp giúp giữ trọn hương thơm dịu mà không bị đắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 296,
+    "energyKcal": 295.7,
+    "energyKj": 1237,
+    "proteinG": 17.3,
+    "fatG": 21.3,
+    "saturatedFatG": 6.9,
+    "carbG": 7.5,
+    "fiberG": 3.9,
+    "sugarG": 3,
+    "sodiumMg": 1481,
+    "saltG": 3.7,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 167902",
+      "USDA FDC 169214",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "86156f50b6791659643318468b57950c2eabb8586584821eadee63a4fabfa2ca",
+    "researchedFromV2Sha256": "fb64d6cadd97a28f86ff9ab80ac32c21425ead3655ecd384baf2462c6b598ed9"
+  }
+}

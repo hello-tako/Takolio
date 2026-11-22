@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-62ebe8dd18b15b5e",
+    "slug": "muc-xao-gung-hanh",
+    "title": "Mực xào gừng hành",
+    "subtitle": "Mực ống khía hoa giòn ngọt chần nhanh rồi xào lửa lớn với gừng sợi, hành lá và sốt dầu hào thơm lừng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Mực tươi",
+      "Quảng Đông",
+      "Nhanh gọn",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mực xào gừng hành kiểu Quảng Đông giữ được độ giòn sần sật tự nhiên của từng miếng mực khía hoa nhờ kỹ thuật chần nhanh với gừng và xào đảo tốc độ trên lửa lớn.",
+    "servingSuggestion": "Trút ngay ra đĩa khi vừa tắt bếp để mực giữ độ giòn ngọt, rắc thêm chút tiêu xay và ăn nóng kèm cơm trắng.",
+    "storageAndReheat": "Mực xào ngon nhất khi ăn ngay lúc nóng; nếu cần bảo quản ngăn mát tối đa 24 giờ, khi hâm lại chỉ đảo thật nhanh trên chảo nóng trong 30 giây để tránh mực bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rút bỏ đầu, nội tạng, mắt, răng và lột sạch lớp màng tím; khía hoa mặt trong rồi cắt miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g (1 nhánh vừa)",
+      "prepNote": "chia 10 g thái lát để thả vào nước chần mực khử tanh (bỏ bã sau chần), 20 g còn lại thái sợi mỏng để xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 19.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 4 cây)",
+      "prepNote": "rửa sạch, cắt khúc 4 cm, tách riêng phần gốc trắng phi thơm và phần lá xanh cho vào cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "3/4 củ (khoảng 80 g)",
+      "prepNote": "tùy chọn gọt vỏ, thái sợi mỏng hoặc tỉa hoa tạo màu sắc hài hòa",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 82.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 73.43,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "hòa vào chén nước sốt giúp khử tanh mực và dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 21.8,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 15.26,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh cho sốt xào mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "giúp nước sốt đậm vị umami và bóng đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "tạo màu nâu hổ phách nhẹ bám đều lên miếng mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của xì dầu và dầu hào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2,3 g (~1 muỗng cà phê)",
+      "prepNote": "tạo vị cay ấm nổi bật cho món mực xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.3,
+      "unit": "g",
+      "grossGrams": 2.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "hòa vào chén sốt để làm sánh nhanh khi đổ vào chảo nóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng để phi thơm gừng tỏi và xào nhanh mực trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "tùy chọn thêm vào sốt để tăng vị ngọt đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "tùy chọn nêm chỉnh lại nếu muốn vị đậm hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "hòa tan bột bắp và các gia vị trong chén nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, khía hoa mực và sơ chế gừng hành",
+      "instruction": "Rút bỏ phần đầu, túi mực, mắt, răng và lột sạch lớp màng tím ngoài ống mực ống tươi rồi rửa sạch. Mở phẳng thân mực, dùng dao nghiêng lưỡi khía ca-rô mặt trong không đứt da rồi cắt miếng chữ nhật 3x4 cm; phần râu cắt khúc vừa ăn. Gừng chia 10 g thái lát, 20 g thái sợi; hành lá cắt khúc tách trắng và xanh; tỏi băm nhỏ; cà rốt thái sợi nếu dùng.",
+      "tip": "Lột sạch lớp màng tím giúp mực sau khi xào trắng đẹp, giòn ngọt và hoàn toàn không bị tanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần sơ mực với nước gừng sôi để giữ độ giòn",
+      "instruction": "Đun sôi một nồi nước nhỏ, thả 10 g gừng thái lát vào trước rồi trút toàn bộ mực vào chần nhanh đúng 15–20 giây đến khi từng miếng mực vừa cuộn cong lại. Vớt ngay mực ra ngâm nhanh vào nước lạnh hoặc để ráo hoàn toàn trên rổ.",
+      "tip": "Chỉ chần mực thật nhanh để mực cuộn hoa và rút bớt nước, tránh chần lâu khiến mực bị ra nước và dai khi xào tiếp.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sẵn chén nước sốt dầu hào bột bắp",
+      "instruction": "Trộn đều 22 ml rượu Thiệu Hưng, 22 ml xì dầu nhạt, 22 ml dầu hào, 5 ml xì dầu đặc, 6 g đường cát trắng, 2,3 g tiêu đen xay, 5 g bột bắp và 25 ml nước lọc (thêm 4 g hạt nêm và 1,5 g muối ăn nếu muốn đậm vị). Khuấy kỹ đến khi đường và bột bắp tan hoàn toàn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm gừng sợi, tỏi và xào nhanh rau củ",
+      "instruction": "Đặt chảo sâu lòng lên bếp lửa lớn nhất, đổ 30 ml dầu ăn vào đun đến khi dầu nóng già hơi bốc khói nhẹ. Thả 20 g gừng thái sợi, tỏi băm và phần đầu hành trắng vào phi thơm khoảng 20 giây, tiếp tục cho cà rốt thái sợi (nếu dùng) vào đảo nhanh 1 phút cho vừa chín giòn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào nhanh mực trên lửa lớn với nước sốt",
+      "instruction": "Trút mực đã ráo nước vào chảo, đảo đều tay trên lửa lớn nhất khoảng 45–60 giây cho đến khi thịt mực săn trắng hoàn toàn và chín đều. Khuấy đều lại chén sốt rồi rưới thẳng vào chảo, đảo liên tục trong 20 giây cho đến khi sốt sánh bóng bám đều lên từng miếng mực.",
+      "tip": "Luôn giữ lửa lớn và khuấy lại chén sốt ngay trước khi rưới để bột bắp không bị lắng cặn dưới đáy chén.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm phần xanh hành lá và dọn nóng",
+      "instruction": "Thả phần lá xanh hành lá vào chảo, đảo nhanh thêm 10 giây cho hành vừa chín tái giữ màu xanh mướt rồi tắt bếp ngay. Trút mực xào gừng hành ra đĩa và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 264,
+    "energyKcal": 263.9,
+    "energyKj": 1104,
+    "proteinG": 24.1,
+    "fatG": 10.5,
+    "saturatedFatG": 1.8,
+    "carbG": 16.6,
+    "fiberG": 1.5,
+    "sugarG": 4.9,
+    "sodiumMg": 1335,
+    "saltG": 3.34,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2708bd3ceb39a2a7ae6429c87b9b6ee7c18ca458e149ceb9b2ebc16985196a1e",
+    "researchedFromV2Sha256": "a5e45bca6d64ea7a6fc3f6d715c78d94e1b88074792c2270188c09308d231278"
+  }
+}

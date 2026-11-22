@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cd86ce166f002f60",
+    "slug": "suon-ham-tuong-dau",
+    "title": "Sườn non hầm tương đậu đen",
+    "subtitle": "Sườn non áp chảo vàng cạnh hầm liu riu cùng đậu tương đen lên men tàu xì, xì dầu và gừng tỏi cho đến khi mềm rục tách xương"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 65,
+    "servings": 4,
+    "tags": [
+      "Món hầm",
+      "Sườn non",
+      "Tàu xì",
+      "Đậm đà",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món hầm truyền thống Trung Hoa nổi bật với hương vị bùi mặn đặc trưng của đậu tương đen lên men (tàu xì) quyện cùng xì dầu, rượu Thiệu Hưng và gừng tỏi thơm nồng, thấm sâu vào từng miếng sườn non mềm rục.",
+    "servingSuggestion": "Múc sườn hầm cùng nước sốt đen bóng sánh đặc ra đĩa sâu lòng, rắc hành lá xanh thái nhỏ và ăn nóng với cơm trắng dẻo.",
+    "storageAndReheat": "Để nguội hoàn toàn và bảo quản hộp kín trong ngăn mát tối đa 3 ngày; khi ăn hâm lại trên lửa nhỏ với 2 muỗng canh nước lọc để sốt không bị khét."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo",
+      "culinaryMeasure": "800 g (chặt miếng dài 3 cm)",
+      "prepNote": "rửa sạch với nước lạnh, chần sơ 2 phút nếu cần rồi thấm thật khô trước khi áp chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "FERMENTED_BLACK_BEAN",
+      "name": "Đậu tương đen lên men (tàu xì)",
+      "culinaryMeasure": "20 g (~2 muỗng canh)",
+      "prepNote": "rửa nhanh dưới vòi nước cho bớt lớp muối gắt bên ngoài, để ráo rồi băm thô",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (~12 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g",
+      "prepNote": "cạo vỏ, băm nhỏ hoặc thái sợi thật mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu hài hòa với tàu xì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo màu nâu cánh gián bóng đẹp cho sườn hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 37.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "dằn dịu vị mặn nồng của đậu đen lên men",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "khử mùi thịt và làm dậy hương món hầm Trung Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (~20 g, khoảng 2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ (chia đôi để xào thơm và rắc hoàn thiện)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để áp chảo xém cạnh sườn và xào thơm gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "chỉ thêm ở bước cuối nếu nếm thấy nhạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "đổ xâm xấp mặt sườn để hầm mềm và rút nước thành sốt sánh",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rửa sạch tàu xì và thấm khô sườn non",
+      "instruction": "Rửa nhanh 20 g đậu tương đen lên men dưới vòi nước sạch để loại bỏ bớt muối mặn bên ngoài, vớt ra để ráo rồi băm thô. Sườn non rửa sạch, chặt miếng vừa ăn 3 cm rồi dùng khăn giấy thấm thật khô từng miếng; băm nhỏ tỏi, gừng tươi và thái nhỏ hành lá.",
+      "tip": "Đậu tương đen lên men (tàu xì) có lớp muối bảo quản khá gắt nên cần xả nhanh qua nước sạch rồi băm thô để dậy mùi đều."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo xém vàng hai mặt sườn",
+      "instruction": "Đun nóng 25 ml dầu ăn trong nồi đáy dày trên lửa lớn, xếp sườn non vào áp chảo 5 phút, lật đều các mặt cho thịt săn lại và xém vàng cạnh để giữ trọn vị ngọt bên trong rồi gắp sườn ra đĩa riêng.",
+      "tip": "Áp chảo khô mặt sườn trước giúp món hầm dậy mùi thơm và nước sốt không bị đục.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm đậu đen lên men cùng gừng tỏi",
+      "instruction": "Hạ xuống lửa vừa, tận dụng phần dầu nóng trong nồi cho tỏi băm, gừng băm, đậu tương đen lên men băm thô và một nửa phần hành lá vào đảo đều 1 phút cho dậy hương thơm đặc trưng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Hòa xì dầu và áo sốt lên sườn",
+      "instruction": "Khuấy đều 15 ml xì dầu nhạt, 30 ml xì dầu đặc với 5 g đường cát trắng trong chén nhỏ rồi đổ vào nồi gia vị, đảo nhanh 15 giây cho quyện mùi. Trút đĩa sườn đã áp chảo trở lại nồi, xóc đều cho sườn áo lớp sốt đen bóng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hầm lửa nhỏ cho sườn mềm tách xương",
+      "instruction": "Rưới 30 ml rượu Thiệu Hưng quanh thành nồi rồi đổ 300 ml nước lọc xâm xấp mặt sườn. Đun sôi bùng lên thì hạ lửa nhỏ liu riu, đậy nắp kín và hầm 50 phút; thỉnh thoảng mở nắp đảo nhẹ để sườn ngấm đều và không bén đáy.",
+      "tip": "Nếu nước cạn trước khi sườn mềm, hãy châm thêm từng chút nước sôi để giữ nhiệt độ nồi ổn định.",
+      "timerMinutes": 50
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cô sánh sốt và hoàn thiện món hầm",
+      "instruction": "Khi sườn đã mềm tơi dễ tách xương, mở nắp tăng lên lửa vừa đun thêm 5 phút đến khi nước sốt sánh lại ôm trọn từng khúc sườn. Nếm thử vị mặn ngọt, chỉ bổ sung muối ăn nếu thấy nhạt rồi tắt bếp, rắc phần hành lá còn lại lên trên và dọn nóng.",
+      "timerMinutes": 5
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 450,
+    "energyKcal": 450.3,
+    "energyKj": 1884,
+    "proteinG": 22.6,
+    "fatG": 35.7,
+    "saturatedFatG": 12,
+    "carbG": 6.9,
+    "fiberG": 0.8,
+    "sugarG": 2.9,
+    "sodiumMg": 1242,
+    "saltG": 3.11,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Douchi Reference",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167861",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2ad9f16afa492acfbdf199db9e6ccabeb271bc27a7a5351ea2bce2d023c6ae38",
+    "researchedFromV2Sha256": "578407ad83eb01054e0969f099e3a8ef8a4187c26b27934546fd944520418774"
+  }
+}

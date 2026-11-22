@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-296b724137581830",
+    "slug": "dau-phu-kho-tieu",
+    "title": "Đậu phụ kho tiêu",
+    "subtitle": "Đậu phụ trắng chiên vàng giòn hai mặt kho liu riu trong sốt nước tương sánh keo thơm nồng tiêu đen, món chay mặn đều dùng được cực đưa cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Đậu phụ",
+      "Món chay",
+      "Nhanh gọn",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng đậu phụ vàng ruộm bên ngoài, mềm béo bên trong thấm đẫm sốt nước tương ngọt mặn hài hòa quyện vị cay ấm của tiêu đen xay và hương tỏi phi.",
+    "servingSuggestion": "Xếp đậu phụ kho tiêu ra đĩa sâu lòng, rưới sốt sánh bóng và rắc hành lá, ớt lát cùng tiêu xay; ăn nóng với cơm trắng và rau luộc.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn hâm nóng lại trên chảo lửa nhỏ với 1 muỗng canh nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng tươi",
+      "culinaryMeasure": "4 bìa (480 g)",
+      "prepNote": "thấm khô nước rồi cắt miếng vuông vừa ăn cỡ 3x3 cm, dày khoảng 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh và màu nâu đẹp cho nước kho đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "giúp nước kho đậm đà vị ngọt thanh tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu và giúp sốt sánh bóng khi kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2.5 g (~1 muỗng cà phê)",
+      "prepNote": "chia đôi để hòa vào sốt kho và rắc mặt sau cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "g",
+      "grossGrams": 2.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (10 g, ~3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát chéo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng 25 ml chiên vàng đậu phụ (giữ lại lượng bám khoảng 70%) và 10 ml phi tỏi",
+      "componentGroup": "process",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 25.12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "80 ml",
+      "prepNote": "pha tan hỗn hợp nước sốt kho đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 80,
+      "unit": "ml",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 72,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô, cắt miếng đậu phụ và băm tỏi",
+      "instruction": "Rửa nhẹ 4 bìa đậu phụ trắng qua nước sạch, thấm thật ráo rồi cắt thành các miếng vuông vừa ăn cỡ 3x3 cm. Bóc vỏ tỏi khô băm nhuyễn; hành lá rửa sạch thái nhỏ; ớt tươi thái lát mỏng.",
+      "tip": "Thấm thật khô đậu phụ trước khi cho vào chảo dầu nóng giúp đậu nhanh vàng giòn, không bị bắn dầu và không dính chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng đều hai mặt đậu phụ",
+      "instruction": "Làm nóng chảo chống dính với 25 ml dầu ăn trên lửa vừa, xếp từng miếng đậu phụ vào chiên khoảng 4 phút mỗi mặt đến khi lớp vỏ ngoài phồng nhẹ và vàng đều các mặt thì gắp ra đĩa có lót giấy thấm dầu.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha chén sốt nước tương tiêu đen",
+      "instruction": "Trong chén riêng, khuấy tan 35 ml nước tương, 12 g đường cát trắng, 4 g hạt nêm chay nấm hương, 1 g tiêu đen xay và 80 ml nước lọc cho đến khi đường và hạt nêm tan hoàn toàn.",
+      "tip": "Pha tan trước hỗn hợp gia vị trong chén giúp khi đổ vào chảo nóng không bị vón cục và thấm đều từng miếng đậu."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi băm và đun sôi sốt kho",
+      "instruction": "Chắt bớt dầu thừa trong chảo, giữ lại khoảng 10 ml dầu ăn phi thơm tỏi băm trên lửa vừa khoảng 1 phút đến khi vừa ngả vàng thơm. Đổ chén nước sốt nước tương vào chảo đun sôi nhẹ 1 phút cho gia vị hòa quyện."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho nhỏ lửa cho đậu phụ ngấm sốt sánh keo",
+      "instruction": "Xếp nhẹ nhàng đậu phụ đã chiên vàng vào chảo sốt, hạ lửa nhỏ kho liu riu trong 8 phút. Thỉnh thoảng lắc nhẹ chảo hoặc lật mặt từng miếng đậu thật nhẹ tay để đậu thấm đều gia vị và nước kho rút sánh keo lại.",
+      "tip": "Hạn chế dùng đũa khuấy mạnh để giữ nguyên vẹn các miếng đậu vàng giòn ngấm sốt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc tiêu đen, hành lá và dọn nóng",
+      "instruction": "Khi nước kho đã sệt sánh bóng quanh miếng đậu, rắc 1,5 g tiêu đen xay còn lại, hành lá thái nhỏ và ớt tươi cắt lát vào đảo nhẹ rồi tắt bếp. Bày đậu phụ kho tiêu ra đĩa và ăn nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 241,
+    "energyKcal": 241.2,
+    "energyKj": 1009,
+    "proteinG": 17.6,
+    "fatG": 16.9,
+    "saturatedFatG": 2.5,
+    "carbG": 9.2,
+    "fiberG": 2,
+    "sugarG": 5.1,
+    "sodiumMg": 973,
+    "saltG": 2.43,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4a5d3eb680c7cae2a8092da8be8828d5949b1de5113b795c165642c141221231",
+    "researchedFromV2Sha256": "fa7e8cb7fea67d891c6c15749cc75cdf9a018e82818e6f087ca831258c3d3552"
+  }
+}

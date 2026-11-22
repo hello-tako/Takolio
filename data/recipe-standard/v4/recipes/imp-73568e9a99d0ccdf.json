@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-73568e9a99d0ccdf",
+    "slug": "trung-xao-hanh-tay",
+    "title": "Trứng xào hành tây mềm thơm kiểu Trung",
+    "subtitle": "Những mảng trứng bông xốp ẩm mượt kết hợp hành tây xào chín mềm ngọt thanh, nêm hạt nêm gà và tiêu đen dậy vị đưa cơm"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Trứng xào",
+      "Hành tây",
+      "Nhanh gọn",
+      "Cơm nhà",
+      "Bữa sáng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Món xào gia đình quen thuộc của bếp Trung Hoa hoàn thành chỉ trong 15 phút: trứng gà đánh cùng chút sữa tươi và mayonnaise nên cực kỳ mềm xốp, quyện cùng hành tây xào ẩm với nước lọc giữ trọn vị ngọt tự nhiên.",
+    "servingSuggestion": "Trút trứng xào hành tây nóng hổi ra đĩa nông, ăn ngay cùng cơm trắng nóng hoặc cháo trắng vào bữa sáng đều rất hợp vị.",
+    "storageAndReheat": "Món ngon nhất khi dùng nóng ngay sau khi xào; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và đảo nóng nhẹ trên chảo chống dính."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (~200 g)",
+      "prepNote": "đập ra tô lớn, đánh tan đều cùng sữa tươi và mayonnaise",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (~70 g)",
+      "prepNote": "lột vỏ, thái sợi thô dày 0,5 cm hoặc múi mỏng rồi tách rời các lớp",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 20 ml xào bông trứng, 15 ml xào chín ngọt hành tây",
+      "componentGroup": "main",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 28.98,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nhẹ 1 g đánh cùng trứng, 2 g nêm vào hành tây",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm gà",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt đậm dịu cho món xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo hương thơm nồng ấm kích thích vị giác",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "thêm khi xào hành tây giúp hành mềm trong ngọt mà không bị cháy cạnh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 7,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn vào trứng giúp kết cấu trứng mềm mịn, bông ẩm hơn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "MAYONNAISE",
+      "name": "Sốt Mayonnaise",
+      "culinaryMeasure": "7 g (~1/2 muỗng canh)",
+      "prepNote": "giúp trứng béo mượt và tơi xốp khi xào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 7,
+      "unit": "g",
+      "grossGrams": 7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (~20 g, khoảng 1–2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc cuối cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế hành tây và đánh bông trứng gà",
+      "instruction": "Hành tây lột vỏ, thái sợi thô 0,5 cm rồi tách rời các múi để hành chín đồng đều; hành lá rửa sạch thái nhỏ. Đập 4 quả trứng gà vào tô lớn, thêm 15 ml sữa tươi không đường, 7 g sốt Mayonnaise và 1 g muối ăn rồi đánh tan đều tay đến khi hỗn hợp mịn mượt đồng nhất.",
+      "tip": "Thêm một chút sữa tươi và mayonnaise vào trứng trước khi đánh giúp thành phẩm cực kỳ mềm ẩm, xốp mịn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào bông mềm trứng gà trước rồi vớt riêng",
+      "instruction": "Đặt chảo chống dính lên bếp lửa vừa lớn với 20 ml dầu ăn, khi dầu nóng già thì đổ hỗn hợp trứng vào. Chờ 10 giây cho rìa trứng bắt đầu đông lại rồi dùng xẻng nhẹ nhàng đẩy thành từng mảng lớn còn hơi ẩm bóng (khoảng 2 phút), lập tức trút ra đĩa riêng.",
+      "tip": "Xào trứng vừa chín tới 80% rồi trút ra ngay giúp trứng giữ độ ẩm mềm, không bị khô xác khi đảo lại cùng hành.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín trong và làm mềm ngọt hành tây",
+      "instruction": "Dùng chính chảo đó, thêm 15 ml dầu ăn còn lại rồi cho hành tây vào xào đều tay 2 phút trên lửa lớn. Khi hành bắt đầu chuyển trong, rưới 30 ml nước lọc vào đảo thêm 1 phút để hành chín mềm ngọt mà không bị cháy xém.",
+      "tip": "Thêm 2 muỗng canh nước lọc giúp hơi nước làm hành tây chín mọng và giữ độ ẩm mượt cho toàn bộ đĩa trứng xào.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm gia vị vào phần hành tây",
+      "instruction": "Rắc 2 g muối ăn còn lại, 3 g hạt nêm gà và 1 g tiêu đen xay vào chảo hành tây, đảo đều 20 giây cho gia vị tan đều và thấm vào hành trước khi cho trứng vào."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn nhẹ trứng gà trở lại chảo hành",
+      "instruction": "Trút đĩa trứng gà đã xào vào chảo hành tây, dùng xẻng đảo nhẹ tay 1 phút trên lửa vừa để các mảng trứng nóng lại và quyện đều gia vị với hành mà không bị nát vụn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá và dọn nóng với cơm",
+      "instruction": "Rắc phần hành lá thái nhỏ vào chảo, đảo thêm 15 giây cho dậy hương rồi tắt bếp ngay. Múc trứng xào hành tây ra đĩa và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 302,
+    "energyKcal": 302.4,
+    "energyKj": 1265,
+    "proteinG": 12,
+    "fatG": 25.8,
+    "saturatedFatG": 5.4,
+    "carbG": 5.5,
+    "fiberG": 0.9,
+    "sugarG": 2.5,
+    "sodiumMg": 982,
+    "saltG": 2.46,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171009",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "37741dd046f1fb28cbbc9bcf93cdfc50562c65cdef83519a56b4a261c84707bd",
+    "researchedFromV2Sha256": "63e1081999ca586931e30afeef95dce771add397458ce0f173f69bcf504b4dcd"
+  }
+}

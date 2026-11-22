@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c398c169dc196c4e",
+    "slug": "tom-nuong-toi-chanh-y",
+    "title": "Tôm nướng tỏi chanh vàng kiểu Ý",
+    "subtitle": "Tôm tươi nguyên vỏ ướp dầu ô liu, tỏi băm, chanh vàng và ngò tây nướng chín tới giữ trọn độ giòn ngọt mọng nước"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Tôm nướng",
+      "Ẩm thực Ý",
+      "Chanh vàng",
+      "Khai vị",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món khai vị hải sản kiểu Ý đầy cuốn hút với những con tôm tươi nguyên vỏ nướng nhanh trên lửa lớn, thịt tôm chắc ngọt thơm lừng hương dầu ô liu, tỏi băm, vỏ chanh vàng và ngò tây tươi.",
+    "servingSuggestion": "Dọn nóng ngay ra đĩa, rưới thêm phần nước sốt dầu tỏi chanh sạch lên trên, rắc ngò tây băm và bày kèm vài múi chanh vàng để vắt thêm.",
+    "storageAndReheat": "Món tôm nướng ngon nhất khi thưởng thức nóng ngay sau khi nướng; nếu còn dư bảo quản ngăn mát tối đa 24 giờ và làm ấm lại nhanh trong lò 170°C khoảng 3–4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú hoặc tôm thẻ lớn nguyên vỏ",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch, giữ nguyên vỏ để bảo vệ thịt, dùng kéo rạch lưng rút chỉ đen",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 468,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "chia 35 ml pha hỗn hợp ướp tôm, 10 ml phết vỉ nướng và 15 ml làm sốt rưới cuối",
+      "componentGroup": "marinade",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 54.6,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 43.68,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1,5 quả",
+      "prepNote": "bào vỏ vàng và vắt nước cốt 1 quả pha sốt ướp; 1/2 quả cắt múi bày kèm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 82.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g",
+      "prepNote": "rửa sạch, để ráo và băm nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả",
+      "prepNote": "rửa sạch, bỏ hạt và băm nhỏ tạo vị cay nhẹ cho sốt ướp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan vào hỗn hợp dầu ô liu chanh tỏi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "khuấy vào hỗn hợp nước ướp và rắc thêm khi hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rạch lưng rút chỉ tôm và sơ chế gia vị",
+      "instruction": "Rửa sạch 600 g tôm sú hoặc tôm thẻ lớn dưới vòi nước lạnh, giữ nguyên vỏ để chống khô thịt khi nướng. Dùng kéo hoặc mũi dao nhọn xẻ một đường dọc sống lưng vỏ tôm, rút bỏ chỉ đen rồi thấm khô. Băm thật nhuyễn 2–3 tép tỏi khô, băm nhỏ 12 g ngò tây tươi và 1 quả ớt tươi bỏ hạt; bào lấy phần vỏ vàng thơm của 1 quả chanh vàng rồi vắt lấy nước cốt, 1/2 quả còn lại cắt múi.",
+      "tip": "Giữ nguyên lớp vỏ ngoài của tôm khi nướng trên lửa lớn giúp giữ trọn độ ẩm ngọt bên trong và tránh thịt tôm bị cháy sém."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Pha sốt dầu chanh tỏi và chia hai phần",
+      "instruction": "Trong tô nhỏ, đánh đều 50 ml dầu ô liu, nước cốt và vỏ bào của 1 quả chanh vàng, tỏi băm, 8 g ngò tây băm, ớt tươi băm, 5 g muối ăn và 1,5 g tiêu đen xay. Trích riêng khoảng 2 muỗng canh hỗn hợp sạch này sang chén nhỏ để làm sốt rưới hoàn thiện."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp thấm gia vị trong thời gian ngắn",
+      "instruction": "Cho tôm đã thấm khô vào tô phần sốt ướp còn lại, xóc đều cho gia vị bám vào khe lưng và lớp vỏ tôm. Đậy kín và ướp trong ngăn mát tủ lạnh khoảng 20 phút.",
+      "tip": "Không ướp tôm cùng nước cốt chanh quá 30 phút vì axit chanh sẽ làm biến tính thịt tôm sống khiến tôm mất độ giòn sần.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Làm nóng vỉ nướng hoặc chảo gang rãnh",
+      "instruction": "Làm nóng vỉ nướng hoặc chảo gang rãnh trên lửa lớn đến khi thật nóng rồi dùng cọ phết 10 ml dầu ô liu còn lại lên bề mặt vỉ để chống dính."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng tôm nhanh trên lửa lớn hai mặt",
+      "instruction": "Xếp đều tôm lên vỉ hoặc chảo nóng, nướng mỗi mặt khoảng 3–4 phút trên lửa lớn đến khi vỏ tôm chuyển màu cam hồng rực, hơi xém cạnh thơm lừng, phần thịt bên trong chuyển trắng đục hoàn toàn và thân tôm uốn cong hình chữ C.",
+      "tip": "Tránh nướng quá lâu đến khi thân tôm cuộn tròn thành hình chữ O vì lúc đó thịt tôm đã quá chín và bị dai xác.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới sốt chanh tỏi sạch và dọn nóng",
+      "instruction": "Gắp tôm ra đĩa rộng khi còn nóng hổi, rưới đều chén sốt dầu ô liu chanh tỏi sạch đã trích riêng lên trên, rắc nốt 4 g ngò tây băm cùng vài múi chanh vàng tươi bên cạnh và dùng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 278,
+    "energyKcal": 277.8,
+    "energyKj": 1163,
+    "proteinG": 32.1,
+    "fatG": 15.5,
+    "saturatedFatG": 2.2,
+    "carbG": 4.4,
+    "fiberG": 1.1,
+    "sugarG": 0.8,
+    "sodiumMg": 771,
+    "saltG": 1.93,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8cbc45ccac28adaf3dee1907555bd81e9da69d1c10f41ceca52b8c1d3abbfcd5",
+    "researchedFromV2Sha256": "4b08b02f32633da516f00f24591e5c1d7782d8ecaf69245fe0548456e33fef30"
+  }
+}

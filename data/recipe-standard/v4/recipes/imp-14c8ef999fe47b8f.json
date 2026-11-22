@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-14c8ef999fe47b8f",
+    "slug": "trung-cuon-tamagoyaki",
+    "title": "Trứng cuộn Nhật Bản Tamagoyaki",
+    "subtitle": "Khối trứng cuộn nhiều lớp vàng ươm vuông vức, ruột mềm ẩm béo nhẹ vị sữa tươi và hành lá, món trứng chuẩn hộp cơm bento Nhật"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "medium",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Tamagoyaki",
+      "Trứng cuộn",
+      "Bữa sáng",
+      "Hộp cơm"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tamagoyaki là món trứng cuộn nhiều lớp kinh điển của bữa sáng và hộp cơm bento Nhật Bản. Hỗn hợp trứng gà, chút sữa tươi, xì dầu, rượu mirin và hành lá được tráng thành từng lớp mỏng rồi cuộn chồng khéo léo tạo nên khối trứng mềm ẩm thơm dịu.",
+    "servingSuggestion": "Thái khối trứng Tamagoyaki thành 6–8 khoanh dày khoảng 2 cm, xếp gọn ra đĩa dùng nóng với cơm trắng hoặc cho vào hộp cơm bento.",
+    "storageAndReheat": "Có thể bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày; khi ăn dùng ở nhiệt độ phòng kiểu bento hoặc quay lò vi sóng nhẹ 20 giây cho ấm mềm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (200 g)",
+      "prepNote": "để ở nhiệt độ phòng, khuấy nhẹ tay theo đường zíc zắc rồi lọc qua rây",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "giúp từng lớp trứng cuộn mềm ẩm và không bị khô",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, vẩy thật ráo nước rồi thái nhỏ mịn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "nêm tạo hương thơm mặn dịu hài hòa cho trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tăng vị ngọt thanh đặc trưng kiểu Tamagoyaki Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (1,5 muỗng cà phê)",
+      "prepNote": "khuấy tan hoàn toàn vào hỗn hợp trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (1 nhúm nhỏ)",
+      "prepNote": "làm nổi bật vị ngọt béo tự nhiên của trứng gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng khăn giấy thấm thoa lớp thật mỏng lên chảo giữa mỗi lần tráng trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 6.44,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Đánh nhẹ hỗn hợp trứng sữa gia vị và lọc rây",
+      "instruction": "Thái nhỏ mịn 0,5 bó hành lá tươi. Đập 4 quả trứng gà vào bát lớn, thêm 20 ml sữa tươi không đường, 10 ml nước tương Nhật, 10 ml rượu ngọt Mirin, 6 g đường cát trắng và 1 g muối ăn. Dùng đũa khuấy nhẹ tay theo đường zíc zắc để đường tan và trứng quyện đều mà không tạo bọt, lọc qua rây mịn rồi trộn hành lá vào.",
+      "tip": "Khuấy trứng bằng đũa theo đường zíc zắc thay vì đánh bông giúp cắt đứt dây lòng trắng mà không tạo bọt khí gây rỗ mặt cuộn trứng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm nóng chảo và tráng cuộn lớp trứng đầu tiên",
+      "instruction": "Đặt chảo chữ nhật chuyên dụng (hoặc chảo chống dính nhỏ 18 cm) lên bếp lửa vừa nhỏ, dùng khăn giấy thấm dầu ăn trung tính thoa một lớp thật mỏng đều mặt chảo. Đổ 1/3 bát trứng vào tráng mỏng khắp chảo, đun khoảng 2 phút đến khi mặt trứng vừa se lại nhưng vẫn còn hơi ẩm ướt thì dùng đũa và xẻng cuộn tròn từ mép xa về sát mép gần rồi đẩy cuộn trứng về góc xa.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Tráng và cuộn nối tiếp lớp trứng thứ hai",
+      "instruction": "Thấm thêm một lớp dầu ăn trung tính thật mỏng vào khoảng trống trên mặt chảo, đổ tiếp 1/3 hỗn hợp trứng thứ hai vào, dùng đũa khẽ nhấc cuộn trứng lên cho trứng mới chảy đều xuống dưới đáy cuộn. Chờ khoảng 2 phút cho mặt trứng se chín còn hơi ẩm rồi cuộn ngược chồng tiếp lên lớp cũ và đẩy về mép chảo.",
+      "tip": "Cuộn ngay khi mặt trên trứng vừa se nhưng còn độ ẩm dính nhẹ sẽ giúp các lớp kết nối liền mạch không bị tách rời khi cắt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hoàn tất lớp trứng thứ ba và ép vuông khối trứng",
+      "instruction": "Thoa dầu ăn mỏng lên chảo một lần nữa, rót nốt 1/3 hỗn hợp trứng cuối cùng vào nâng nhẹ cuộn trứng cho chảy đều xuống dưới. Đun thêm 2 phút trên lửa vừa nhỏ cho chín đều, cuộn tròn lại rồi dùng xẻng ép nhẹ các cạnh sát thành chảo khoảng 20 giây để khối trứng định hình vuông vức vàng đều.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Để nghỉ định hình khối trứng cuộn",
+      "instruction": "Tắt bếp, nhẹ nhàng gắp cuộn trứng ra thớt hoặc cuộn chặt trong mành tre sạch để nghỉ khoảng 4 phút cho khối trứng nguội bớt, săn chắc và giữ nguyên phom chữ nhật đẹp mắt.",
+      "tip": "Chờ trứng nghỉ vài phút cho se mặt trước khi cắt sẽ giúp khoanh trứng phẳng mịn, không bị chảy xô lệch giữa các lớp.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt khoanh Tamagoyaki vừa ăn và trình bày",
+      "instruction": "Dùng dao sắc cắt cuộn trứng thành 6–8 khoanh dày khoảng 2 cm lộ rõ từng vòng xoắn vàng ươm xen sắc xanh hành lá, xếp ra đĩa và thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 192,
+    "energyKcal": 192.1,
+    "energyKj": 804,
+    "proteinG": 12,
+    "fatG": 12,
+    "saturatedFatG": 3.4,
+    "carbG": 7.6,
+    "fiberG": 0.3,
+    "sugarG": 6.3,
+    "sodiumMg": 650,
+    "saltG": 1.62,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "65a83094ac9b0049e0086dfa0581f2f4acdbb862349b136f8dbe992818678c59",
+    "researchedFromV2Sha256": "6538b3c7c9f54057148be93d16a3aa4f6d2a30e5f179532d0b333c3e381eed73"
+  }
+}

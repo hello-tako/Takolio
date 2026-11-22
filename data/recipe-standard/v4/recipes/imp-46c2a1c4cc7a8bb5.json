@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-46c2a1c4cc7a8bb5",
+    "slug": "mi-udon-bo-hanh",
+    "title": "Mì Udon bò hành",
+    "subtitle": "Sợi mì Udon trắng dày dai mướt trong nước dùng Dashi thanh ngọt, phủ thịt bò xào hành tây đậm vị kiểu Nhật"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Mì Udon",
+      "Ẩm thực Nhật",
+      "Thịt bò",
+      "Mì nước",
+      "Bữa trưa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "assemble"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Udon bò hành (Niku Udon) kết hợp sợi Udon mềm dai cùng nước dùng Dashi trong thanh, ngọt dịu từ xì dầu và Mirin, điểm xuyết thịt bò thái lát mỏng xào nhanh với hành tây và gừng thơm nồng ấm bụng.",
+    "servingSuggestion": "Chia mì Udon ra tô sâu lòng, chan ngập nước dùng Dashi nóng hổi, xếp thịt bò xào hành tây lên trên và rắc hành lá thái xéo cùng chút bột ớt 7 vị Shichimi.",
+    "storageAndReheat": "Bảo quản riêng phần nước dùng, thịt bò xào và mì Udon chưa trụng trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn đun sôi lại nước dùng và thịt bò trước rồi mới trụng mì."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "UDON_WHEAT",
+      "name": "Mì Udon tươi hoặc đông lạnh",
+      "culinaryMeasure": "3 gói (600 g)",
+      "prepNote": "gỡ nhẹ từng vắt trước khi trụng trong nước sôi để sợi mì tơi đều",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "pack",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thái lát mỏng",
+      "culinaryMeasure": "300 g",
+      "prepNote": "cắt khúc dài 4–5 cm vừa gắp để khi xào chín nhanh và mềm mọng",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái múi mỏng dọc theo thớ củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g",
+      "prepNote": "cạo vỏ, thái sợi mảnh để xào thơm cùng hành tây và thịt bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng để rắc lên tô mì nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "pha cùng 300 ml nước lọc làm nền nước dùng thanh ngọt hài hòa, tránh quá mặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "55 ml",
+      "prepNote": "chia 30 ml để xào thấm thịt bò và 25 ml nêm nồi nước dùng Dashi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 64.9,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 55.17,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "chia 30 ml xào thịt bò cho bóng dịu và 20 ml nêm nước dùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 57.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 51.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng khi xào thịt bò giúp thịt mềm thơm và khử mùi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 40.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g",
+      "prepNote": "chia 14 g để xào thịt bò đậm đà và 6 g cân bằng vị nước dùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng láng chảo áp nhanh thịt bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SHICHIMI",
+      "name": "Bột ớt 7 vị Nhật Shichimi",
+      "culinaryMeasure": "2 g (khoảng 1/2 muỗng cà phê)",
+      "prepNote": "rắc lên mặt tô mì khi ăn để tăng hương thơm cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc pha nước dùng, xào bò và trụng mì",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "chia 300 ml pha dịu nước dùng Dashi, 45 ml xào thịt bò và phần còn lại dùng trụng mì Udon",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 280,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt bò, hành tây, gừng và hành lá",
+      "instruction": "Thịt bò thái lát mỏng cắt miếng dài 4–5 cm vừa gắp. Hành tây bóc vỏ thái lát mỏng dọc củ, gừng tươi thái sợi mảnh, hành lá rửa sạch thái xéo mỏng để riêng.",
+      "tip": "Thịt bò thái lát mỏng ngang thớ hoặc dùng loại thịt bò nhúng lẩu sẽ giúp thịt mềm ngọt, không bị dai khi nấu nhanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu và nêm nồi nước dùng Dashi nóng",
+      "instruction": "Đổ 600 ml nước dùng Dashi cùng 300 ml nước lọc vào nồi, đun sôi nhẹ trên lửa vừa rồi nêm 25 ml xì dầu Nhật, 20 ml rượu Mirin và 6 g đường cát trắng. Khuấy tan hoàn toàn, nếm thử vị mặn ngọt thanh vừa miệng rồi tắt bếp, đậy nắp giữ nóng.",
+      "tip": "Pha thêm nước lọc giúp nước dùng Dashi vừa vị thanh tao khi kết hợp cùng xì dầu mà không bị mặn gắt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo thịt bò với gừng và hành tây",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 10 ml dầu ăn thực vật, dàn đều 300 g thịt bò thành một lớp mỏng và đảo nhanh khoảng 1–2 phút đến khi thịt vừa chuyển màu hết đỏ tái. Thêm gừng thái sợi và hành tây vào đảo chung thêm 2 phút cho hành mềm trong và dậy mùi thơm.",
+      "tip": "Dùng chảo rộng để thịt bò áp chảo nhanh thay vì bị ra nước hấp hơi, giữ được độ mềm ngọt tự nhiên.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Rim thịt bò thấm sốt mặn ngọt kiểu Nhật",
+      "instruction": "Cho 30 ml xì dầu Nhật còn lại, 30 ml rượu Mirin còn lại, 45 ml rượu Sake nấu ăn, 14 g đường cát trắng còn lại và 45 ml nước lọc vào chảo thịt bò, đảo đều trên lửa vừa khoảng 2–3 phút đến khi nước sốt sôi lăn tăn, hơi sánh lại và bám đều quanh từng lát thịt bò thì tắt bếp.",
+      "tip": "Không nấu thịt bò quá lâu sau khi thịt đã chín tới để tránh làm thịt bị khô xơ.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trụng mì Udon trong nước sôi",
+      "instruction": "Đun sôi một nồi nước riêng trên lửa lớn, thả 3 gói mì Udon vào trụng nhanh khoảng 1–2 phút, dùng đũa khuấy nhẹ cho từng sợi mì tơi rời, trong bóng và mềm dai thì vớt ngay ra rổ, xóc thật ráo nước.",
+      "tip": "Trụng mì Udon thật ráo nước giúp tô nước dùng không bị loãng và giữ trọn vị đậm đà của Dashi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày tô mì Udon bò hành nóng hổi",
+      "instruction": "Chia mì Udon đã ráo nước vào 3 tô lớn, đun sôi lại nồi nước dùng Dashi rồi chan ngập mặt mì. Xếp phần thịt bò xào hành tây cùng chút nước sốt lên trên, rắc hành lá thái xéo và thêm bột ớt 7 vị Nhật Shichimi tùy thích rồi dùng ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 540,
+    "energyKcal": 539.7,
+    "energyKj": 2258,
+    "proteinG": 29.6,
+    "fatG": 14.5,
+    "saturatedFatG": 4.7,
+    "carbG": 64.6,
+    "fiberG": 3.6,
+    "sugarG": 15.1,
+    "sodiumMg": 1858,
+    "saltG": 4.65,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Boiled/Fresh Udon",
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "MEXT Spice Ref",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "90965f2cfa23deb65a626b4225d438607927280eb0bb57fe58ff888bdcb30471",
+    "researchedFromV2Sha256": "ba027095e1e55e6f7352dcf61d557bfe4e5db9828f0684152d22818166c1586d"
+  }
+}

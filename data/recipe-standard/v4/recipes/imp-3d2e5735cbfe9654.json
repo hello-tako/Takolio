@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3d2e5735cbfe9654",
+    "slug": "tom-rang-muoi-tieu",
+    "title": "Tôm rang muối tiêu ớt kiểu Hồng Kông",
+    "subtitle": "Tôm tươi nguyên vỏ áo bột bắp chiên giòn rụm ăn được cả vỏ, xóc đều tỏi phi vàng, ớt hiểm và bột muối tiêu Tứ Xuyên thơm nồng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Tôm rang",
+      "Muối tiêu",
+      "Hồng Kông",
+      "Giòn rụm",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm rang muối tiêu trứ danh của ẩm thực Hồng Kông với từng con tôm nguyên vỏ áo bột bắp mỏng chiên giòn tan đến mức ăn được cả vỏ, xóc nhanh cùng bột tiêu Tứ Xuyên rang muối biển thơm lừng, tỏi phi vàng giòn và ớt hiểm cay nồng.",
+    "servingSuggestion": "Bày tôm ra đĩa khi vừa tắt bếp, rắc thêm phần bột muối tiêu còn lại lên trên và dùng nóng ngay để tận hưởng trọn vẹn độ giòn của vỏ tôm.",
+    "storageAndReheat": "Tôm rang muối tiêu ngon nhất khi thưởng thức ngay lúc nóng giòn; hạn chế để qua đêm vì vỏ tôm sẽ hút ẩm và mất độ giòn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi cỡ lớn nguyên vỏ",
+      "culinaryMeasure": "350 g",
+      "prepNote": "cắt bỏ râu và chân nhọn, rạch lưng lấy chỉ đen giữ nguyên vỏ, rửa sạch rồi thấm thật khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 273,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SICHUAN_PEPPER",
+      "name": "Tiêu Tứ Xuyên nguyên hạt (hoa tiêu)",
+      "culinaryMeasure": "6 g (~1 muỗng canh)",
+      "prepNote": "rang thơm trên chảo khô rồi giã mịn làm bột muối tiêu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SALT",
+      "name": "Muối biển hạt mịn",
+      "culinaryMeasure": "9 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 3 g ướp tôm, 6 g rang cùng chảo khô trộn với tiêu làm bột muối tiêu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 9,
+      "unit": "g",
+      "grossGrams": 9,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 6.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "25 g (~3 muỗng canh)",
+      "prepNote": "rây đều để áo lớp thật mỏng quanh thân tôm trước khi chiên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "đun nóng để chiên giòn tôm từng mẻ nhỏ, chừa ít phi tỏi",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 138,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (~18 g, khoảng 5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi vàng thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "4 quả (~20 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái lát chéo mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2–3 cây)",
+      "prepNote": "rửa sạch, thái khúc ngắn 2 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "đập dập để ướp khử tanh tôm trong 15 phút rồi gạt bỏ trước khi lăn bột",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 2.25,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rang và giã bột muối tiêu Tứ Xuyên",
+      "instruction": "Cho 6 g hạt tiêu Tứ Xuyên vào chảo khô rang trên lửa vừa nhỏ 3 phút đến khi dậy mùi thơm nồng (tránh để cháy đắng), trút ra cối để nguội hoàn toàn rồi giã thành bột mịn. Tiếp tục cho 6 g muối biển vào chảo khô rang 2 phút đến khi hạt muối khô ráo hơi ngả vàng, trộn đều với bột tiêu để được hỗn hợp bột muối tiêu.",
+      "tip": "Rang riêng tiêu và muối trên chảo khô giúp bột muối tiêu thơm nồng và không bị vón ẩm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Làm sạch, ướp gừng và áo bột bắp cho tôm",
+      "instruction": "Tôm cắt râu, giữ nguyên vỏ, rút sạch chỉ lưng rồi thấm thật khô. Ướp tôm với 3 g muối biển và 15 g gừng tươi đập dập trong 15 phút cho ngấm vị, sau đó gạt bỏ hết xác gừng và thấm lại nếu tôm còn ẩm. Lăn từng con tôm qua 25 g bột bắp, giũ thật kỹ cho rơi hết bột thừa để chỉ còn một lớp áo mỏng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên giòn vàng từng mẻ tôm nguyên vỏ",
+      "instruction": "Đun nóng 150 ml dầu ăn trong chảo sâu lòng trên lửa vừa lớn đến khi mặt dầu gợn sóng nóng già (khoảng 180°C). Chia tôm thành 2–3 mẻ nhỏ chiên mỗi mặt khoảng 1–1,5 phút cho đến khi vỏ tôm phồng giòn rụm, chuyển màu đỏ cam đẹp mắt và thịt tôm bên trong săn chắc, chuyển trắng đục hoàn toàn, sau đó vớt ra giấy thấm dầu và rắc ngay một chút bột muối tiêu lên khi tôm còn nóng.",
+      "tip": "Chiên từng mẻ nhỏ giúp nhiệt độ dầu không bị tụt, nhờ đó vỏ tôm giòn tan mà không hút dầu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi vàng giòn tỏi băm với ít dầu",
+      "instruction": "Chắt bớt dầu chiên ra ngoài, chỉ để lại khoảng 1 muỗng canh dầu trong chảo. Hạ lửa vừa, cho tỏi băm vào phi đều tay 1–2 phút đến khi vừa ngả vàng thơm thì nhanh tay vớt riêng tỏi phi ra giấy thấm dầu để không bị cháy đắng.",
+      "tip": "Nhiệt dư sau khi vớt vẫn làm tỏi tiếp tục sẫm màu, nên hãy vớt ngay khi tỏi vừa chuyển vàng nhạt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc nhanh tôm với tỏi phi, ớt và muối tiêu",
+      "instruction": "Cho ớt hiểm thái lát và hành lá cắt khúc vào chảo đang nóng đảo nhanh 15 giây cho dậy hương. Tắt bếp, trút tỏi phi vàng và toàn bộ tôm chiên giòn vào chảo cùng phần bột muối tiêu vừa miệng (khoảng 2/3 lượng đã làm), xóc nhanh tay 10 giây cho gia vị bám đều khô ráo."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa và thưởng thức nóng giòn",
+      "instruction": "Trút tôm rang muối tiêu ra đĩa rộng, rắc thêm chút bột muối tiêu còn lại lên mặt để tăng hương vị và dùng nóng ngay khi vỏ tôm còn giòn rụm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 176,
+    "energyKcal": 175.7,
+    "energyKj": 735,
+    "proteinG": 19.1,
+    "fatG": 6.1,
+    "saturatedFatG": 0.9,
+    "carbG": 11.6,
+    "fiberG": 0.9,
+    "sugarG": 0.6,
+    "sodiumMg": 926,
+    "saltG": 2.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Spice Reference",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "979adc7095fc9c35e64dda9ead19cdd5b8bea9b3758293e1529e1c8ed3a5e8aa",
+    "researchedFromV2Sha256": "2993bcd05bee6109542a76e4f859e203c023e35878132470bfcfeeb8288b3ace"
+  }
+}

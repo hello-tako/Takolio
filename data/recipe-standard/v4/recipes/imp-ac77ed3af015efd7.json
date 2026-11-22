@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ac77ed3af015efd7",
+    "slug": "canh-bo-bap-cai",
+    "title": "Canh thịt bò nấu bắp cải",
+    "subtitle": "Thịt bò thăn thái mỏng mềm ngọt quyện cùng lá bắp cải giòn ngọt và nước canh trong veo, món canh ấm áp cho bữa tối gia đình"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Thịt bò",
+      "Bắp cải",
+      "Thanh ngọt",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Canh thịt bò nấu bắp cải kết hợp vị ngọt đậm của thịt bò thăn thái lát với độ ngọt mát tự nhiên của bắp cải và cà chua. Nước canh trong trẻo, thơm dịu mùi tỏi phi và ngò rí, cực kỳ dễ ăn.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, rắc hành lá, ngò rí và tiêu đen xay; thưởng thức cùng cơm trắng nóng dẻo và chén nước mắm ớt cắt lát.",
+    "storageAndReheat": "Canh ngon nhất khi ăn nóng ngay lúc mới nấu để bắp cải giòn và thịt bò mềm ngọt; nếu bảo quản tủ mát tối đa 24 giờ, đun sôi nhanh 1–2 phút trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn thái lát mỏng",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, thấm khô rồi thái lát mỏng ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "1/2 bắp nhỏ (khoảng 400 g)",
+      "prepNote": "tách từng lá rửa sạch, bỏ phần sống lá quá cứng rồi cắt miếng vuông 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín",
+      "culinaryMeasure": "1 quả (khoảng 120 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau tạo vị thanh nhẹ và điểm sắc đỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, 4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia đôi để ướp bò và phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, đầu hành băm nhỏ ướp thịt bò, phần lá xanh cắt khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, cắt khúc 2 cm rắc mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi và xào sơ cà chua, thịt bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "18 ml (1 muỗng canh đầy)",
+      "prepNote": "nêm nước canh khi sắp hoàn thiện cho dậy vị đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 18,
+      "unit": "ml",
+      "grossGrams": 21.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp bò và 3 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp thịt bò và 4 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp bò và 0,5 g rắc mặt canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "nấu nước canh cho 4 người ăn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1260,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái lát mỏng và ướp thịt bò thăn",
+      "instruction": "Thấm thật khô 300 g thịt bò thăn bằng khăn giấy rồi thái lát mỏng ngang thớ. Cho thịt bò vào tô, ướp với 1/2 lượng tỏi băm, đầu hành lá băm, 2 g hạt nêm, 2 g muối ăn, 1 g tiêu đen xay và 5 ml dầu ăn trong 15 phút cho thịt ngấm vị và mềm ẩm.",
+      "tip": "Trộn thêm chút dầu ăn vào bước ướp giúp bề mặt lát bò mềm mượt, không bị khô xơ khi gặp nước sôi.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, cà chua và rau thơm",
+      "instruction": "Tách rời từng lá 1/2 bắp cải trắng, rửa sạch dưới vòi nước rồi cắt miếng vuông cạnh 4 cm vừa ăn. Rửa sạch 1 quả cà chua chín, bổ múi cau; nhặt rửa sạch ngò rí và phần lá xanh hành lá rồi cắt khúc 2 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào tái nhanh thịt bò",
+      "instruction": "Làm nóng nồi trên lửa lớn vừa với 10 ml dầu ăn còn lại, phi thơm phần tỏi băm còn lại khoảng 30 giây. Cho thịt bò đã ướp vào đảo nhanh tay 1 phút đến khi thịt vừa chín tái khoảng 70% thì trút ngay ra đĩa riêng.",
+      "tip": "Xào tái nhanh trên lửa lớn rồi vớt ra đĩa riêng giúp thịt bò thơm mùi tỏi phi mà không bị nấu quá lửa gây dai.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu nước dùng bắp cải ngọt thanh",
+      "instruction": "Dùng luôn nồi vừa xào thịt, cho cà chua bổ múi cau vào đảo sơ 1 phút rồi đổ 1400 ml nước lọc vào đun lửa lớn đến khi sôi bùng. Hớt sạch bọt nổi, thả toàn bộ bắp cải vào nấu trên lửa vừa khoảng 6 phút đến khi cọng bắp cải chuyển màu trong và chín mềm ngọt.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và thả thịt bò chín tới",
+      "instruction": "Nêm 18 ml nước mắm ngon, 3 g hạt nêm và 4 g muối ăn vào nồi canh, khuấy nhẹ cho tan đều. Trút đĩa thịt bò xào tái cùng phần nước tiết ra vào nồi, đun sôi trở lại khoảng 30–40 giây cho thịt bò chín hoàn toàn rồi tắt bếp ngay.",
+      "tip": "Đổ cả phần nước ngọt tiết ra trên đĩa thịt bò vào nồi canh sẽ giúp nước dùng tăng thêm độ ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành ngò, tiêu xay và dùng nóng",
+      "instruction": "Thả hành lá và ngò rí cắt khúc vào nồi đảo nhẹ một lượt, múc canh nóng ra tô lớn và rắc 0,5 g tiêu đen xay lên mặt trước khi dọn cơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 205,
+    "energyKcal": 205.4,
+    "energyKj": 860,
+    "proteinG": 17.6,
+    "fatG": 11.5,
+    "saturatedFatG": 3.6,
+    "carbG": 8.6,
+    "fiberG": 2.9,
+    "sugarG": 4.1,
+    "sodiumMg": 1274,
+    "saltG": 3.18,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169975",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1b30dea248be1d603857e8f36a7423549ab7af876f1f6ca762e2221df60173c8",
+    "researchedFromV2Sha256": "5b0f16ff1bea49b7e36b6649b17029e7c940a3eca6bcb3d9865d9b08d95ac04b"
+  }
+}

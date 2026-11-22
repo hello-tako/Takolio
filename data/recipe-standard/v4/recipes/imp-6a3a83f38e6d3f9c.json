@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6a3a83f38e6d3f9c",
+    "slug": "chao-bo-gung",
+    "title": "Cháo bò gừng",
+    "subtitle": "Cháo gạo rang nấu sánh mịn cùng thịt bò thăn thái mỏng chín tới, gừng sợi ấm nồng và hành lá tía tô"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Cháo bò",
+      "Gừng ấm",
+      "Ăn sáng",
+      "Bổ dưỡng",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Tô cháo bò gừng nóng hổi thơm lừng với hạt gạo tẻ kết hợp gạo nếp rang thơm nở bung sánh mịn, lát thịt bò thăn mềm ngọt chín tái tới ngay trong cháo sôi cùng gừng tươi thái chỉ, hành lá và lá tía tô giải cảm ấm người.",
+    "servingSuggestion": "Chan cháo đang sôi sục lên bát thịt bò ướp gừng tỏi đã lót sẵn tía tô và hành lá, rắc tiêu đen xay rồi dùng nóng ngay.",
+    "storageAndReheat": "Nên ăn nóng ngay sau khi chan cháo để thịt bò mềm ngọt không bị dai. Phần cháo trắng nấu sẵn có thể bảo quản ngăn mát tối đa 2 ngày; khi ăn đun sôi lại cháo rồi mới thả thịt bò ướp vào."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm",
+      "culinaryMeasure": "180 g (~1 chén ăn cơm)",
+      "prepNote": "vo sạch qua 2 nước nhẹ tay rồi để thật ráo trước khi rang",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GLUTINOUS_RICE",
+      "name": "Gạo nếp",
+      "culinaryMeasure": "30 g (~2 muỗng canh)",
+      "prepNote": "trộn chung gạo tẻ giúp nồi cháo sánh dẻo tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "thấm khô, thái lát thật mỏng ngang thớ cho thịt mềm ngọt",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "35 g (1 củ nhỏ)",
+      "prepNote": "chia 15 g băm nhuyễn ướp thịt bò, 20 g thái sợi chỉ rắc vào cháo nóng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (~2–3 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát mỏng phi thơm vàng giòn rắc mặt cháo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn để ướp thịt bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PERILLA",
+      "name": "Lá tía tô tươi",
+      "culinaryMeasure": "25 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lá non, rửa sạch, thái sợi nhỏ lót đáy tô",
+      "componentGroup": "garnish",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 5 ml ướp bò, 15 ml nêm nồi cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp thịt bò, 3 g nêm cháo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm nền nồi cháo trắng cho thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp bò, 1 g rắc mặt tô cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 10 ml phi hành tím, 5 ml trộn ướp thịt bò cho mềm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1600 ml (1,6 lít)",
+      "prepNote": "dùng ninh gạo rang thành cháo trắng sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1600,
+      "unit": "ml",
+      "grossGrams": 1600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1360,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rang thơm gạo tẻ và gạo nếp",
+      "instruction": "Trộn 180 g gạo tẻ với 30 g gạo nếp, vo nhẹ 2 nước rồi để thật ráo. Bắc nồi đáy dày lên bếp không dầu, cho gạo vào rang đều tay trên lửa nhỏ khoảng 6 phút đến khi hạt gạo khô ráo, chuyển màu trắng đục và dậy mùi thơm nhẹ.",
+      "tip": "Rang gạo trước khi ninh giúp hạt gạo nở đều thành cháo sánh mượt mà vẫn giữ độ dẻo thơm.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh cháo trắng sánh nhừ trên lửa nhỏ",
+      "instruction": "Đổ 1,6 lít nước lọc sôi vào nồi gạo rang, khuấy đều một lượt rồi đậy hé nắp. Đun sôi bùng sau đó hạ lửa nhỏ ninh khoảng 22 phút, thỉnh thoảng khuấy sát đáy nồi để cháo không bị bén khét.",
+      "timerMinutes": 22
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Thái mỏng và ướp mềm thịt bò thăn",
+      "instruction": "Trong lúc ninh cháo, thái 300 g thịt bò thăn thành lát thật mỏng ngang thớ. Ướp bò với 15 g gừng băm nhuyễn, 1/2 củ tỏi băm, 5 ml nước mắm ngon, 3 g hạt nêm, 1 g tiêu đen xay và 5 ml dầu ăn trong 12 phút để thịt thơm mềm không bị khô.",
+      "tip": "Thái thịt bò thật mỏng ngang thớ và trộn chút dầu ăn giúp thịt chín tái nhanh trong cháo nóng mà vẫn mềm ngọt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi vàng hành tím và sơ chế rau thơm",
+      "instruction": "Làm nóng 10 ml dầu ăn trên chảo nhỏ với lửa vừa, cho 25 g hành tím thái lát mỏng vào phi đều tay khoảng 2 phút đến khi vàng giòn thì vớt ra giấy thấm dầu. Thái sợi chỉ 20 g gừng tươi còn lại; rửa sạch hành lá và lá tía tô rồi thái nhỏ."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm cháo và làm chín tới thịt bò trong nồi",
+      "instruction": "Khi cháo đã nhừ sánh, nêm 15 ml nước mắm ngon còn lại, 3 g hạt nêm và 5 g muối ăn vào nồi khuấy đều. Tăng lửa vừa cho cháo sôi bùng lăn tăn, thả toàn bộ thịt bò đã ướp cùng một nửa lượng gừng thái chỉ vào khuấy nhanh 1 phút cho thịt bò vừa chín hồng đều thì tắt bếp ngay.",
+      "tip": "Chỉ đun thịt bò trong cháo sôi khoảng 1 phút rồi tắt bếp ngay để thịt giữ trọn độ mềm mọng, tránh đun lâu làm bò bị dai."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chan cháo nóng lên lá tía tô và thưởng thức",
+      "instruction": "Lót lá tía tô và hành lá thái nhỏ dưới đáy 4 tô sứ, múc cháo bò nóng hổi chan đều lên trên. Rắc phần gừng thái chỉ còn lại, hành tím phi vàng giòn và 1 g tiêu đen xay rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 379,
+    "energyKcal": 379.4,
+    "energyKj": 1588,
+    "proteinG": 20.2,
+    "fatG": 11.5,
+    "saturatedFatG": 3.7,
+    "carbG": 47.1,
+    "fiberG": 1.8,
+    "sugarG": 1.3,
+    "sodiumMg": 1250,
+    "saltG": 3.13,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Shiso Ref",
+      "USDA FDC 168881",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "958040d9cdab014541f274242c7b737fe2145bf545c1fe7a2918ae239964d027",
+    "researchedFromV2Sha256": "40d5175650b3d9fdee9e671597138882ebb8afd1bd01b6e03a37dc672488c8b4"
+  }
+}

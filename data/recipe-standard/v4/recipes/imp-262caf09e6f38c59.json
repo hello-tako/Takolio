@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-262caf09e6f38c59",
+    "slug": "bong-cai-xanh-xao-toi-kieu-quang-dong",
+    "title": "Bông cải xanh xào tỏi kiểu Quảng Đông",
+    "subtitle": "Bông cải xanh chần nhanh giữ màu xanh ngọc giòn ngọt, xào lửa lớn cùng tỏi gừng thơm lừng và sốt xì dầu sánh bóng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Quảng Đông",
+      "Rau xanh",
+      "Xào tỏi",
+      "Thanh nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bông cải xanh xào tỏi kiểu Quảng Đông giữ trọn độ giòn ngọt tự nhiên và màu xanh mướt nhờ kỹ thuật chần nước sôi trước khi xào nhanh trên lửa lớn cùng tỏi băm, gừng thơm và lớp sốt xì dầu sánh nhẹ.",
+    "servingSuggestion": "Bày ngay ra đĩa khi vừa tắt bếp, dùng nóng làm món rau ăn kèm các món kho, món chiên trong bữa cơm gia đình.",
+    "storageAndReheat": "Món rau xào nên ăn hết trong bữa để giữ độ giòn xanh; nếu bảo quản tủ mát tối đa 24 giờ, làm nóng nhanh trên chảo nóng trong 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "1,5 bông vừa (~450 g)",
+      "prepNote": "tách thành các hoa nhỏ đều nhau, tước bỏ phần xơ cứng ở cuống, rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 369,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (~25 g, khoảng 6–7 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "8 g (~1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "pha sốt tạo vị mặn thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 25.96,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25.96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "3 ml (~1/2 muỗng cà phê)",
+      "prepNote": "pha sốt tạo màu nâu bóng nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "ml",
+      "grossGrams": 3.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "hòa vào sốt giúp vị rau dịu ngọt tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "khuấy vào chén sốt giúp sốt bám đều từng hoa bông cải",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 5 ml vào nồi nước chần rau giữ màu xanh, 20 ml để phi tỏi và xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để giữ hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 2 g hòa nước chần bông cải (bỏ nước), 1 g nêm lại nếu cần",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 1.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1030 ml",
+      "prepNote": "1000 ml đun chần bông cải rồi đổ bỏ, 30 ml dùng pha hỗn hợp sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1030,
+      "unit": "ml",
+      "grossGrams": 1030,
+      "edibleRetentionRatio": 0.03,
+      "edibleGrams": 30.9,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bông cải xanh và hương liệu",
+      "instruction": "Tách 1,5 bông cải xanh thành các nhánh hoa cỡ vừa đồng đều để khi nấu chín cùng lúc; gọt bỏ lớp xơ cứng ở phần thân cọng rồi rửa sạch và để ráo. Tỏi khô băm nhỏ, gừng tươi băm thật nhuyễn.",
+      "tip": "Cắt các nhánh bông cải có kích thước tương đương nhau giúp rau chín đều, không bị chỗ sượng chỗ mềm nhũn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha chén sốt xì dầu bột bắp",
+      "instruction": "Cho vào chén nhỏ 30 ml nước lọc, 22 ml xì dầu nhạt, 3 ml xì dầu đặc, 4 g đường cát trắng, 4 g bột bắp và 1 g muối ăn (tùy khẩu vị). Khuấy đều tay đến khi đường và bột bắp tan hoàn toàn, để sẵn cạnh bếp.",
+      "tip": "Luôn khuấy lại chén sốt ngay trước khi rót vào chảo vì bột bắp rất nhanh lắng xuống đáy."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chần bông cải xanh giữ màu giòn mướt",
+      "instruction": "Đun sôi mạnh 1000 ml nước lọc với 2 g muối ăn và 5 ml dầu ăn thực vật trong nồi lớn. Thả toàn bộ bông cải xanh vào chần đúng 1 phút trên lửa lớn cho rau vừa chuyển màu xanh ngọc rực rỡ, lập tức vớt ra rổ thưa xóc thật ráo nước.",
+      "tip": "Một chút dầu ăn và muối trong nước sôi giúp khóa màu xanh mướt cho bông cải và rút ngắn tối đa thời gian xào trên chảo.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi gừng trên chảo nóng",
+      "instruction": "Đặt chảo sâu lòng lên lửa vừa lớn, làm nóng 20 ml dầu ăn thực vật còn lại. Cho gừng băm và tỏi băm vào đảo nhanh khoảng 30 giây đến khi dậy mùi thơm dịu và tỏi vừa chuyển vàng nhẹ, tuyệt đối không để tỏi cháy sậm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào bông cải với sốt lửa lớn",
+      "instruction": "Trút bông cải xanh đã ráo nước vào chảo, tăng lửa lớn và đảo nhanh tay trong 1 phút. Khuấy đều chén sốt đã pha rồi rót vòng quanh chảo, tiếp tục xóc đảo liên tục thêm 1 phút cho đến khi sốt sôi sệt, trong bóng và bám đều quanh từng nhánh bông cải.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè và hoàn thiện",
+      "instruction": "Tắt bếp ngay khi sốt vừa áo bóng, rưới 5 ml dầu mè thơm lên trên rồi đảo đều một lượt cuối cùng. Gắp bông cải ra đĩa và dùng nóng ngay để cảm nhận trọn vẹn độ giòn ngọt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 142,
+    "energyKcal": 141.7,
+    "energyKj": 593,
+    "proteinG": 4.8,
+    "fatG": 8.6,
+    "saturatedFatG": 1.2,
+    "carbG": 14.2,
+    "fiberG": 3.5,
+    "sugarG": 3.7,
+    "sodiumMg": 731,
+    "saltG": 1.83,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170379",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "554becbc09c4e21bdb4394fea115bdc8b96e50683bd92f8583a1a05b9b27bd87",
+    "researchedFromV2Sha256": "34535a9e60e495fb8e1cfc1efd2e6b854111b536c059879e587ee76d3e0e6c92"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8f6eeb8b34b7cd65",
+    "slug": "com-muc-nuong",
+    "title": "Cơm mực nướng sốt Teriyaki",
+    "subtitle": "Cơm gạo Nhật dẻo thơm ăn cùng mực ống nguyên con áp chảo cháy cạnh áo đẫm sốt xì dầu Sake Mirin gừng mài sánh bóng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 40,
+    "servings": 3,
+    "tags": [
+      "Cơm mực",
+      "Mực nướng",
+      "Teriyaki",
+      "Ẩm thực Nhật",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cơm mực nướng sốt Teriyaki (Ikayaki Don) mang hương vị quán ăn lễ hội Nhật Bản, kết hợp cơm trắng gạo hạt ngắn dẻo ngọt cùng mực ống nguyên con áp chảo xém cạnh thơm lừng, áo lớp sốt xì dầu Sake Mirin gừng tươi sánh bóng đậm đà.",
+    "servingSuggestion": "Xới cơm nóng ra 3 bát, xếp các khoanh mực và phần râu mực áp chảo lên trên, rưới đẫm phần sốt Teriyaki gừng còn lại trong chảo và rắc hành lá thái nhỏ.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay lúc mực vừa nướng xong; nếu còn dư, bảo quản riêng cơm và mực trong hộp kín ở ngăn mát tối đa 24 giờ và làm nóng nhanh trong 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi nguyên con",
+      "culinaryMeasure": "450 g (khoảng 3 con vừa)",
+      "prepNote": "rút sạch nội tạng, bỏ mắt răng và xương sống, thấm thật khô, khứa caro nhẹ mặt ngoài thân",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "RICE",
+      "name": "Gạo hạt ngắn Nhật",
+      "culinaryMeasure": "300 g (khoảng 2 cốc đong)",
+      "prepNote": "vo sạch 2–3 lần nước rồi ngâm 15 phút trước khi nấu cơm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn umami đậm đà cho nước sốt rim mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "khử tanh hải sản và làm dậy hương thơm sốt Teriyaki",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo độ ngọt dịu và lớp sốt bóng đẹp mắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "24 g (2 muỗng canh)",
+      "prepNote": "giúp nước sốt nhanh sánh kẹo và bám đều quanh thân mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 24,
+      "unit": "g",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (khoảng 1 muỗng canh mài)",
+      "prepNote": "cạo vỏ, mài nhuyễn cho vào bát nước sốt để khử tanh mực",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "láng mỏng chảo để áp chảo mực nhanh xém vàng mà không dính",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên bát cơm mực",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu cơm",
+      "culinaryMeasure": "360 ml",
+      "prepNote": "dùng nấu 300 g gạo Nhật cho hạt cơm chín dẻo bóng",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "ml",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 324,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo ngâm gạo và nấu cơm trắng Nhật",
+      "instruction": "Vo nhẹ 300 g gạo hạt ngắn Nhật 2–3 lần cho trong nước rồi cho vào nồi cơm điện cùng 360 ml nước lọc, ngâm 15 phút trước khi bật nấu khoảng 30 phút cho cơm chín dẻo thơm.",
+      "tip": "Nấu cơm trước vì cơm cần thời gian nấu và ủ hơi, trong lúc đó có thể hoàn tất khâu sơ chế và nướng mực.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Làm sạch, khứa vằn thân mực và chuẩn bị sốt",
+      "instruction": "Rút bỏ đầu, râu và nội tạng khỏi thân 450 g mực ống tươi; rút xương sống trong suốt, bỏ mắt và răng cứng ở phần đầu râu rồi rửa sạch dưới vòi nước lạnh. Dùng khăn giấy thấm thật khô cả thân và râu mực, khứa nhẹ các đường song song cách 1 cm lên thân mực mà không cắt đứt. Trộn đều 30 ml xì dầu Nhật, 30 ml rượu Sake nấu ăn, 15 ml rượu Mirin, 24 g đường cát trắng và 10 g gừng tươi mài nhuyễn trong chén nhỏ; thái nhỏ hành lá.",
+      "tip": "Thấm mực thật khô và khứa nhẹ thân mực giúp mực không bị bắn nước khi áp chảo và giữ thân phẳng đẹp."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo thân mực xém cạnh hai mặt",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa lớn với 10 ml dầu ăn thực vật, xếp 3 thân mực vào áp chảo mỗi mặt khoảng 2 phút đến khi thân mực săn phồng, chuyển màu trắng đục và hơi cháy xém cạnh thơm lừng.",
+      "tip": "Áp chảo nhanh trên lửa vừa lớn giúp mực giữ độ giòn ngọt mà không bị dai như cao su.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Áo sốt Teriyaki gừng sánh bóng cho thân mực",
+      "instruction": "Đổ toàn bộ chén nước sốt xì dầu Sake Mirin gừng đã pha vào chảo thân mực, liên tục lật trở mực khoảng 2 phút trên lửa vừa đến khi nước sốt sôi sệt lại, bám bóng đều quanh thân mực thì gắp thân mực ra thớt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo chín phần râu mực với nước sốt còn lại",
+      "instruction": "Thả phần râu mực vào chảo cùng lượng sốt Teriyaki sánh còn lại, đảo nhanh trên lửa vừa khoảng 1–2 phút cho râu mực săn chín hoàn toàn và thấm đẫm sốt thơm ngon rồi tắt bếp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thái khoanh mực, xếp lên cơm nóng và thưởng thức",
+      "instruction": "Thái thân mực thành từng khoanh tròn dày 1,5 cm. Xới cơm nóng ra 3 bát, xếp các khoanh mực và râu mực nướng lên trên, rưới đều phần sốt còn lại trong chảo, rắc hành lá thái nhỏ và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 565,
+    "energyKcal": 565.3,
+    "energyKj": 2365,
+    "proteinG": 27.5,
+    "fatG": 5.2,
+    "saturatedFatG": 1,
+    "carbG": 95.6,
+    "fiberG": 1.6,
+    "sugarG": 10.6,
+    "sodiumMg": 708,
+    "saltG": 1.77,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "38a712c2179e886f41a32b3000c00a6bdcb55aa04a314d94d2180c6652d9ba34",
+    "researchedFromV2Sha256": "85602b430c7d8ede0fb26481b237125881d8fceac182ecda69d48ab3c6ddcdaa"
+  }
+}

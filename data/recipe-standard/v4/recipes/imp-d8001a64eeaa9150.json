@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d8001a64eeaa9150",
+    "slug": "com-tron-trung-tan-nhat",
+    "title": "Cơm trộn trứng Nhật (Tamago Kake Gohan)",
+    "subtitle": "Cơm trắng hạt ngắn nóng bốc hơi trộn trứng gà tươi đánh quyện cùng xì dầu Nhật, cá bào Katsuobushi và rong biển Nori béo mịn chuẩn bữa sáng Nhật"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 5,
+    "servings": 2,
+    "tags": [
+      "Tamago Kake Gohan",
+      "Cơm trộn trứng",
+      "Bữa sáng nhanh",
+      "Nhật Bản",
+      "Tối giản"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "assemble",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cơm trộn trứng Tamago Kake Gohan trứ danh của Nhật Bản: hơi nóng từ cơm mới nấu làm trứng gà tươi tiệt trùng chín nhẹ thành lớp sốt kem vàng óng mịn màng, hòa quyện vị umami của xì dầu Nhật, cá bào Katsuobushi và rong biển Nori.",
+    "servingSuggestion": "Trộn đều mạnh tay ngay khi cơm còn thật nóng cho đến khi trứng nổi bọt mịn bao quanh từng hạt cơm, rắc thêm hành lá và mè rang rồi ăn kèm dưa muối Nhật hoặc súp Miso.",
+    "storageAndReheat": "Món ăn sử dụng trứng tươi đánh với cơm nóng nên phải thưởng thức ngay lập tức sau khi trộn; tuyệt đối không bảo quản lại hay để qua bữa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng hạt ngắn Nhật nóng hổi",
+      "culinaryMeasure": "360 g (2 tô vừa, mỗi tô 180 g)",
+      "prepNote": "nấu mới hoặc hâm thật nóng bốc hơi trước khi trộn trứng",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi tiệt trùng (ăn sống)",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "chọn trứng gà tươi sạch đã tiệt trùng (pasteurized) để đảm bảo an toàn khi trộn cơm nóng",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia đều 10 ml mỗi tô để đánh quyện cùng lòng trắng trứng hoặc rưới sau cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch bằng nước đun sôi để nguội, thấm khô rồi thái khoanh mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô Katsuobushi",
+      "culinaryMeasure": "8 g (1 nắm nhỏ)",
+      "prepNote": "bóp tơi nhẹ giữa các ngón tay để rắc đều lên mặt cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển lá khô Nori",
+      "culinaryMeasure": "3 g (~1 lá cắt sợi mỏng)",
+      "prepNote": "cắt thành sợi mảnh dài khoảng 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc mặt tạo độ bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin (tùy chọn)",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "pha cùng xì dầu nếu thích hậu vị dịu nhẹ hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.8,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị cơm nóng và các topping khô",
+      "instruction": "Chuẩn bị sẵn 360 g cơm trắng hạt ngắn Nhật thật nóng bốc hơi. Rửa sạch hành lá tươi, thấm khô rồi thái khoanh thật mỏng; bóp tơi cá bào khô Katsuobushi và cắt rong biển lá khô Nori thành sợi mảnh.",
+      "tip": "Chỉ sử dụng trứng gà tươi sạch từ nguồn uy tín hoặc trứng đã tiệt trùng để đảm bảo an toàn thực phẩm khi ăn kiểu Tamago Kake Gohan."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Tách riêng lòng trắng và lòng đỏ trứng gà",
+      "instruction": "Đập 2 quả trứng gà tươi, khéo léo tách riêng 2 lòng trắng và 2 lòng đỏ ra từng chén nhỏ để giúp kết cấu cơm trộn bông mịn như sốt kem."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đánh lòng trắng trứng với xì dầu Nhật",
+      "instruction": "Cho 20 ml xì dầu Nhật Bản (và 5 ml rượu ngọt Mirin nếu dùng) vào chén lòng trắng trứng, dùng đũa đánh nhanh tay khoảng 30 giây cho đến khi lòng trắng hơi nổi bọt mịn và hòa đều gia vị.",
+      "tip": "Đánh lòng trắng với xì dầu trước giúp gia vị phân bổ đều khắp hạt cơm và tránh làm lòng trắng còn lợn cợn khi trộn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn lòng trắng trứng vào cơm nóng bốc hơi",
+      "instruction": "Xới cơm trắng nóng ra 2 tô (180 g/tô), tạo một hõm nhỏ ở giữa rồi chia đều hỗn hợp lòng trắng trứng xì dầu đổ vào từng tô. Dùng đũa trộn thật nhanh và đều tay khoảng 1 phút cho hơi nóng làm lòng trắng sánh lại thành lớp kem mịn phủ quanh từng hạt cơm.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Phủ cá bào, rong biển và đặt lòng đỏ lên trên",
+      "instruction": "Rắc đều cá bào khô Katsuobushi, rong biển lá khô Nori cắt sợi, hạt mè trắng rang và hành lá thái mỏng lên mặt hai tô cơm, sau đó nhẹ nhàng đặt 1 lòng đỏ trứng vào chính giữa mỗi tô."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều lần cuối và thưởng thức nóng",
+      "instruction": "Khi ăn, chọc vỡ lòng đỏ và dùng đũa đảo đều mạnh tay khoảng 1 phút đến khi toàn bộ tô cơm chuyển màu vàng óng mượt mà và bùi béo thì dùng nóng ngay.",
+      "tip": "Không cho quá nhiều xì dầu cùng lúc vì vị mặn gắt sẽ át mất hương béo ngọt tự nhiên của lòng đỏ trứng gà.",
+      "timerMinutes": 1
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 342,
+    "energyKcal": 342,
+    "energyKj": 1431,
+    "proteinG": 15.1,
+    "fatG": 6.1,
+    "saturatedFatG": 1.7,
+    "carbG": 54.2,
+    "fiberG": 1.4,
+    "sugarG": 1.6,
+    "sodiumMg": 721,
+    "saltG": 1.8,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Katsuobushi 10099",
+      "USDA FDC 168456",
+      "USDA FDC 168878",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171287",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "19afc6f619d217d355aeaf9aba798610f71ddc08ac43465453dbb12babde01e3",
+    "researchedFromV2Sha256": "2c9333f162aedf66e0cc8fbce6dc9c30375a9077ba1c4093fc0e3b6de110d151"
+  }
+}

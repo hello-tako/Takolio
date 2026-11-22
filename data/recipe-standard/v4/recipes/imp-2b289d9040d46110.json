@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2b289d9040d46110",
+    "slug": "dau-phu-kho-gung-han",
+    "title": "Đậu phụ kho gừng kiểu Hàn",
+    "subtitle": "Từng miếng đậu phụ chiên vàng hai mặt kho thấm sốt xì dầu gừng băm sánh đậm, thơm dịu dầu mè cho bữa cơm chay thanh đạm"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Đậu phụ",
+      "Món kho",
+      "Gừng tươi",
+      "Hàn Quốc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa đậu phụ kho gừng Hàn Quốc (Dubu Jorim) thơm nức mùi gừng tỏi xào quyện nước tương xì dầu mặn ngọt hài hòa, miếng đậu bên ngoài săn vàng thấm vị mà bên trong vẫn giữ được độ mềm béo thanh tao.",
+    "servingSuggestion": "Xếp các miếng đậu phụ kho ra đĩa, rưới phần sốt sệt còn lại trong chảo lên trên rồi rắc hạt mè trắng rang và hành lá; dùng nóng hoặc nguội với cơm trắng đều rất bắt vị.",
+    "storageAndReheat": "Món đậu kho bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 3 ngày như một món ăn kèm (banchan); có thể ăn nguội trực tiếp hoặc hâm nóng lại với 1 muỗng canh nước lọc trên chảo."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng chắc",
+      "culinaryMeasure": "3,5 miếng (khoảng 420 g)",
+      "prepNote": "thấm khô nước trên khăn giấy, cắt miếng chữ nhật dày 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3.5,
+      "unit": "piece",
+      "grossGrams": 420,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 420,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "18 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, băm nhỏ để dậy hương ấm đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,4 củ (khoảng 10 g, ~3 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái nhỏ chia để xào thơm và rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm đà và màu nâu đẹp cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của xì dầu và làm sốt sánh bóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo màu ấm và cay dịu tùy chọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để áp chảo vàng đều hai mặt đậu phụ",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "12 ml (~2,5 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp giữ trọn hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "ml",
+      "grossGrams": 11,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rắc trang trí mặt đĩa đậu phụ kho",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "120 ml (~1/2 chén)",
+      "prepNote": "dùng tráng đáy chảo và hòa sốt kho thấm đều đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 84,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô, cắt miếng đậu phụ và pha sốt kho",
+      "instruction": "Cắt 420 g đậu phụ trắng thành từng miếng chữ nhật dày khoảng 1 cm, đặt lên khăn giấy sạch thấm khô hai mặt khoảng 5 phút để đậu săn và không bị bắn dầu khi chiên. Băm nhỏ gừng tươi, tỏi khô, thái hạt lựu hành tây và thái nhỏ hành lá. Khuấy tan 35 ml xì dầu, 12 g đường cát trắng, 2 g ớt bột Hàn Quốc (nếu dùng) cùng 60 ml nước lọc.",
+      "tip": "Thấm thật ráo nước trên bề mặt miếng đậu phụ trước khi áp chảo giúp tạo lớp vỏ vàng giòn nhanh mà không bị nát khi lật.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo vàng giòn hai mặt từng miếng đậu phụ",
+      "instruction": "Làm nóng chảo chống dính lớn trên lửa vừa với 25 ml dầu ăn, xếp đậu phụ vào áp chảo mỗi mặt 3–4 phút đến khi hai mặt vàng ươm và săn chắc, sau đó gắp ra đĩa riêng.",
+      "tip": "Chờ mặt dưới đậu phụ vàng cứng hẳn rồi mới lật sẽ giữ được miếng đậu nguyên vẹn, vuông vắn đẹp mắt.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tây, tỏi, gừng tươi và tráng chảo",
+      "instruction": "Vẫn dùng chảo đó với lượng dầu thơm còn lại, cho hành tây, tỏi băm, gừng băm và 2/3 lượng hành lá vào xào đều trên lửa vừa khoảng 1 phút cho dậy mùi thơm nồng. Rót 60 ml nước lọc còn lại vào chảo tráng đều để hòa tan lớp hương thơm bám dưới đáy rồi đổ tiếp bát sốt xì dầu đã pha vào đun sôi nhẹ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Kho thấm đậu phụ và rưới sốt đều hai mặt",
+      "instruction": "Xếp đậu phụ đã chiên trở lại chảo nước sốt đang sôi nhẹ, hạ lửa vừa–nhỏ và kho 3 phút đồng thời dùng muỗng múc sốt rưới liên tục lên mặt trên của từng miếng đậu cho thấm đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lật mặt đậu phụ kho đến khi nước sốt keo sánh",
+      "instruction": "Nhẹ nhàng lật từng miếng đậu sang mặt còn lại và kho tiếp 2 phút nữa đến khi phần nước sốt cạn còn khoảng 1/3, sánh bóng bám quanh từng miếng đậu (giữ lại một ít sốt sệt để chan cơm).",
+      "tip": "Không kho cạn kiệt nước mà giữ lại lớp sốt sánh nhẹ giúp miếng đậu phụ bóng đẹp và đậm đà hơn khi chan cơm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc mè rang và thưởng thức",
+      "instruction": "Tắt bếp ngay, rưới 12 ml dầu mè rang lên khắp mặt chảo và lắc nhẹ cho đều. Xếp đậu phụ kho gừng ra đĩa, rưới hết phần sốt sệt lên trên, rắc 4 g hạt mè trắng rang cùng 1/3 hành lá còn lại rồi dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 259,
+    "energyKcal": 258.7,
+    "energyKj": 1082,
+    "proteinG": 16.1,
+    "fatG": 18.5,
+    "saturatedFatG": 2.7,
+    "carbG": 11.6,
+    "fiberG": 2.5,
+    "sugarG": 5.9,
+    "sodiumMg": 772,
+    "saltG": 1.93,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2bd3f02b85403aa9e7f3f1dbd88b814865d14733a55541bf598acf7ca184fc80",
+    "researchedFromV2Sha256": "5a134208b11c73dcf60cc4847b9a0739b23e05c9405bc9e057fd13eaa4ea3314"
+  }
+}

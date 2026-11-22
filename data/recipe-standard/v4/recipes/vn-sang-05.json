@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-sang-05",
+    "slug": "trung-cuon-rau-cu-han-quoc",
+    "title": "Trứng cuộn rau củ mềm mịn",
+    "subtitle": "Trứng gà đánh tan lọc rây pha sữa tươi, tráng nhiều lớp cuộn tròn cùng cà rốt, hành tây và hành lá đẹp mắt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 8,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Trứng cuộn",
+      "Ăn sáng",
+      "Dưới 20 phút",
+      "Giàu đạm",
+      "Bé thích"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng cuộn rau củ mềm mịn từng lớp, vàng ươm bắt mắt điểm xuyết màu cam tươi của cà rốt, xanh non của hành lá và vị ngọt dịu từ hành tây cùng sữa tươi không đường.",
+    "servingSuggestion": "Xếp từng khoanh trứng cuộn dày dặn ra đĩa, dùng nóng kèm cơm trắng hoặc bánh mì; chấm cùng tương ớt, tương cà hoặc xốt mayonnaise.",
+    "storageAndReheat": "Nên ăn nóng hoặc ấm trong ngày để giữ độ ẩm xốp của trứng. Nếu bảo quản hộp kín trong ngăn mát tối đa 24 giờ, khi dùng có thể hấp cách thủy nhẹ 2 phút cho trứng mềm trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (khoảng 200 g)",
+      "prepNote": "đánh tan đều rồi lọc qua rây cho mịn mượt không bọt khí",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ nhỏ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, băm hạt lựu thật nhỏ li ti để nhanh chín",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ nhỏ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, băm hạt lựu nhỏ đều như cà rốt để không làm rách lớp trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, chỉ lấy phần lá xanh và đầu hành thái thật nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "trộn chung với trứng giúp kết cấu mềm ẩm, tơi xốp",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn tráng chảo",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng cọ hoặc giấy ăn phết lớp dầu thật mỏng lên mặt chảo mỗi lượt tráng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 11.73,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "giúp trứng dậy hương thơm đậm đà kiểu Việt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "hòa tan trực tiếp vào hỗn hợp trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "giúp lòng trắng và lòng đỏ nhanh tan và cân bằng vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "trộn vào hỗn hợp trứng giúp khử mùi tanh nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Băm hạt lựu thật nhỏ rau củ",
+      "instruction": "Gọt vỏ cà rốt, rửa sạch rồi băm hạt lựu thật nhỏ li ti khoảng 2 mm. Hành tây bóc vỏ, băm hạt lựu nhỏ tương tự cà rốt. Rửa sạch hành lá và thái nhuyễn đều để khi tráng không làm cộm hay rách lớp trứng mỏng.",
+      "tip": "Cắt rau củ càng nhỏ mịn thì trứng càng dễ cuộn chặt tay và rau củ kịp chín mềm ngọt ngay trong lúc tráng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh tan trứng với sữa tươi và lọc qua rây",
+      "instruction": "Đập 4 quả trứng gà vào tô lớn, đổ vào 30 ml sữa tươi không đường, 5 ml nước mắm ngon, 2 g hạt nêm và 2 g muối ăn. Dùng đũa khuấy tan nhẹ nhàng một chiều đến khi lòng trắng và lòng đỏ quyện đều hoàn toàn, sau đó lọc hỗn hợp qua rây mịn vào tô sạch để loại bỏ lợn cợn.",
+      "tip": "Bước lọc qua rây giúp loại bỏ phần lòng trắng còn dai và bọt khí, tạo bề mặt trứng cuộn mịn mượt không rỗ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Trộn rau củ vào hỗn hợp trứng lọc",
+      "instruction": "Trút toàn bộ cà rốt, hành tây băm hạt lựu, hành lá thái nhỏ và 1 g tiêu đen xay vào tô trứng đã lọc, khuấy nhẹ cho rau củ phân bố đều khắp hỗn hợp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Tráng lớp trứng mỏng đầu tiên và cuộn tròn",
+      "instruction": "Làm nóng chảo chống dính trên lửa vừa rồi hạ xuống lửa nhỏ, dùng giấy thấm phết một lớp dầu ăn thật mỏng đều đáy chảo. Khuấy nhẹ tô trứng để lấy cả rau củ, múc 1 vá canh đổ vào lắc nhẹ cho tráng đều đáy. Khi mặt trứng vừa se ẩm khoảng 70% trong 1 phút, dùng xẻng nhẹ nhàng cuộn tròn từ mép xa về một phía thành chảo.",
+      "tip": "Cuộn ngay khi mặt trên trứng còn hơi ướt ẩm sẽ giúp các vòng cuộn kết dính chặt với nhau mà không bị gãy nứt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nối tiếp các lớp trứng đến khi hết hỗn hợp",
+      "instruction": "Phết thêm chút dầu ăn vào phần đáy chảo trống, múc tiếp 1 vá hỗn hợp trứng đổ vào và nâng nhẹ mép cuộn trứng lên cho trứng mới chảy lót xuống bên dưới. Chờ khoảng 1 phút cho lớp mới se mặt rồi cuộn nối tiếp vòng, lặp lại đều đặn 3–4 lượt trong khoảng 5 phút đến khi hết phần trứng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Áp vàng nhẹ hai mặt và cắt khoanh tròn",
+      "instruction": "Khi cuộn hết trứng, giữ cuốn trứng trên chảo thêm 30 giây mỗi mặt trên lửa nhỏ để chín hoàn toàn từ trong ra ngoài và tạo màu vàng đẹp. Gắp cuộn trứng ra thớt nghỉ 2 phút cho định hình chắc tay rồi dùng dao bén cắt thành từng khoanh dày 2 cm xếp ra đĩa, ăn nóng.",
+      "tip": "Chờ trứng nguội bớt 2 phút trước khi cắt giúp lát cắt sắc nét, rau củ bên trong không bị xô lệch."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 217,
+    "energyKcal": 217.1,
+    "energyKj": 908,
+    "proteinG": 12.6,
+    "fatG": 14.9,
+    "saturatedFatG": 3.9,
+    "carbG": 8.2,
+    "fiberG": 1.6,
+    "sugarG": 4,
+    "sodiumMg": 939,
+    "saltG": 2.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "535e7a632d705e9345d785766560c07be579229d1d4b82008948f5e3dd01e37f",
+    "researchedFromV2Sha256": "5a4cfbfe4cf87a4bfbe852f66959131412933dae5f09e0867e4e6ab76db91a84"
+  }
+}

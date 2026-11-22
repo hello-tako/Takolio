@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2b5b79ba1b622db1",
+    "slug": "canh-cai-thao-tom",
+    "title": "Canh cải thảo nấu tôm",
+    "subtitle": "Canh cải thảo mềm ngọt nấu cùng tôm khô đậm đà, nước dùng gà thanh trong và gừng hành ấm áp"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 18,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Cải thảo",
+      "Tôm khô",
+      "Trung Hoa",
+      "Thanh ngọt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món canh cải thảo nấu tôm mang vị ngọt thanh tự nhiên từ tôm khô ninh kỹ hòa quyện cùng nước dùng gà trong veo, lá cải thảo mềm mọng và hương thơm ấm áp của gừng tươi.",
+    "servingSuggestion": "Múc canh nóng hổi ra tô lớn, nhỏ vài giọt dầu mè thơm và rắc hành lá thái nhỏ; dùng kèm cơm trắng trong bữa ăn hằng ngày.",
+    "storageAndReheat": "Ngon nhất khi dùng hết trong ngày; nếu bảo quản ngăn mát tối đa 24 giờ, đun sôi nhẹ lại 2–3 phút trên lửa vừa trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "NAPA_CABBAGE",
+      "name": "Cải thảo tươi",
+      "culinaryMeasure": "600 g",
+      "prepNote": "tách bẹ, rửa sạch, cắt khúc dài 5–6 cm, để riêng phần bẹ trắng và lá xanh",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DRIED_SHRIMP",
+      "name": "Tôm khô",
+      "culinaryMeasure": "45 g",
+      "prepNote": "rửa sạch bụi, ngâm trong nước ấm khoảng 15 phút cho nở mềm rồi vớt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "kết hợp cùng nước lọc làm nền nước canh ngọt dịu đậm vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 475,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "xào sơ gừng và tôm khô cho dậy mùi thơm trước khi đổ nước canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng trước khi tắt bếp để tô canh dậy hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (khoảng 3–4 lát mỏng)",
+      "prepNote": "gọt vỏ, thái lát mỏng giúp khử mùi tanh và làm ấm nước canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc lên mặt tô canh khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "rắc nhẹ tạo hương thơm cay ấm dịu cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "nêm chỉnh độ mặn ở bước cuối vì tôm khô và nước dùng đã có vị mặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "nấu cùng nước dùng gà để tạo đủ 1 lít nước canh thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm mềm tôm khô và sơ chế cải thảo, gừng hành",
+      "instruction": "Rửa sạch 45 g tôm khô qua nước lạnh rồi ngâm trong nước ấm khoảng 15 phút cho tôm nở mềm, vớt ra để ráo. Cải thảo tách từng bẹ, rửa sạch, cắt khúc dài 5–6 cm và để riêng phần bẹ trắng cứng với phần lá xanh mềm. Gừng tươi thái lát mỏng; hành lá thái nhỏ.",
+      "tip": "Ngâm tôm khô trước giúp tôm nhanh tiết vị ngọt umami vào nước dùng và thịt tôm mềm ngọt dễ ăn hơn.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm gừng và tôm khô làm nền nước canh",
+      "instruction": "Đặt nồi lên bếp lửa vừa, làm nóng 10 ml dầu ăn rồi cho gừng tươi thái lát và tôm khô đã ngâm vào đảo đều khoảng 1 phút cho dậy mùi thơm đặc trưng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Ninh ngọt nước dùng gà với tôm khô",
+      "instruction": "Đổ 500 ml nước dùng gà và 500 ml nước lọc vào nồi tôm khô, bật lửa lớn đun sôi rồi hớt sạch bọt nổi. Hạ xuống lửa vừa, đậy hé nắp và nấu liu riu khoảng 8–10 phút cho tôm khô tiết trọn vị ngọt tự nhiên.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu mềm phần bẹ trắng cải thảo",
+      "instruction": "Thả phần bẹ trắng cải thảo vào nồi nước dùng đang sôi, nấu trên lửa vừa khoảng 5 phút cho bẹ cải vừa chín mềm trong nhẹ.",
+      "tip": "Cho phần bẹ trắng vào nấu trước 5 phút giúp bẹ và lá chín đồng đều, không bị tình trạng lá nhũn nát mà bẹ vẫn sượng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín phần lá xanh và nêm gia vị vừa miệng",
+      "instruction": "Tiếp tục cho phần lá xanh cải thảo vào nồi, nấu thêm 2–3 phút đến khi lá vừa chín mềm vẫn giữ màu xanh tươi. Nêm 4 g muối ăn và 1 g tiêu trắng xay vào khuấy nhẹ cho tan đều rồi nếm thử điều chỉnh.",
+      "tip": "Luôn nêm muối ở bước cuối để dễ kiểm soát độ mặn vì tôm khô đã có sẵn vị mặn tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc hành lá và dọn nóng",
+      "instruction": "Tắt bếp ngay sau khi nêm vừa miệng, rưới 5 ml dầu mè thơm và rắc hành lá thái nhỏ lên mặt nồi canh. Múc canh ra tô lớn và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 101,
+    "energyKcal": 100.8,
+    "energyKj": 422,
+    "proteinG": 10.3,
+    "fatG": 4.7,
+    "saturatedFatG": 0.8,
+    "carbG": 5.2,
+    "fiberG": 1.9,
+    "sugarG": 2.5,
+    "sodiumMg": 941,
+    "saltG": 2.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Asian Dried Shrimp Ref",
+      "USDA FDC 169231",
+      "USDA FDC 169977",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e795e4571c666ebca4c9e249a54173f37f36d90fb1913467061421c26c663e21",
+    "researchedFromV2Sha256": "08e0a3d965682e68c00c2b527fca229cfed88451a62427450f7f71a289c77f3e"
+  }
+}

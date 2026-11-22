@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b6496331f7aa0ee9",
+    "slug": "mi-y-tom-kem-chanh",
+    "title": "Mì Ý tôm tươi sốt kem chanh",
+    "subtitle": "Tôm tươi giòn ngọt nấu cùng sốt kem béo mượt thơm nồng tỏi bơ, rượu vang trắng, phô mai Parmesan và hương chanh vàng thanh mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Tôm tươi",
+      "Sốt kem chanh",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "milk",
+      "shrimp",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý tôm tươi sốt kem chanh là món pasta hải sản sang trọng nhưng chế biến gọn nhẹ. Vị ngọt tự nhiên của tôm tươi hòa cùng sốt kem tươi sánh mịn, phô mai Parmesan và vị chua dịu từ vỏ, nước cốt chanh vàng giúp món ăn béo mà không hề ngán.",
+    "servingSuggestion": "Gắp mì và tôm ra 3 đĩa sâu lòng khi còn nóng, rưới đều sốt kem chanh lên trên, rắc ngò tây tươi thái nhỏ và chút phô mai Parmesan bào mịn.",
+    "storageAndReheat": "Món mì hải sản sốt kem ngon nhất khi dùng ngay lúc nóng; nếu còn dư bảo quản ngăn mát tối đa 2 ngày và hâm nóng nhẹ trên chảo lửa nhỏ với chút kem tươi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "200 g",
+      "prepNote": "luộc đến độ al dente trong nồi nước sôi có muối",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên vỏ",
+      "culinaryMeasure": "400 g",
+      "prepNote": "bóc vỏ, rút sạch chỉ đen trên lưng, rửa sạch và thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 312,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi nấu ăn",
+      "culinaryMeasure": "180 ml",
+      "prepNote": "dùng kem béo trên 30% để không bị tách khi gặp vị chua chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 180,
+      "unit": "ml",
+      "grossGrams": 178.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 178.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (~100 g)",
+      "prepNote": "bào lấy vỏ vàng thơm và vắt lấy khoảng 30 ml nước cốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "30 g",
+      "prepNote": "đun chảy làm nền sốt kem chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2/5 củ (4 tép, ~10 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "90 ml",
+      "prepNote": "đun cùng kem và tỏi giúp dậy mùi hải sản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 89.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 89.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc từng ít vào sốt để tạo độ sánh mịn ổn định",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "60 g",
+      "prepNote": "bào mịn từ khối để tan đều vào sốt kem",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "6 g (~1 muỗng canh băm)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 9 g pha nước luộc mì và 3 g nêm sốt tôm",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 3.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm thơm phần sốt kem chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 60 ml làm bóng sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, chanh vàng và tỏi băm",
+      "instruction": "Bóc vỏ 400 g tôm tươi, rút sạch chỉ đen dọc sống lưng, rửa nhanh nước lạnh rồi thấm thật khô bằng giấy bếp. Bào lấy vỏ vàng của 1 quả chanh vàng tươi và vắt lấy khoảng 30 ml nước cốt; băm nhuyễn tỏi tươi, thái nhỏ ngò tây và bào sẵn 60 g phô mai Parmesan.",
+      "tip": "Thấm thật ráo nước trên thân tôm giúp nước sốt kem chanh không bị loãng khi nấu tôm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti và giữ nước tinh bột",
+      "instruction": "Đun sôi mạnh nồi lớn với 2,5 lít nước lọc cùng 9 g muối ăn. Cho 200 g mì Ý Spaghetti khô vào luộc khoảng 8–9 phút cho đến độ al dente. Múc giữ lại 60 ml nước luộc mì rồi vớt mì ra.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Nấu nền sốt kem bơ chanh và rượu vang",
+      "instruction": "Trong lúc luộc mì, đặt chảo lớn lên bếp lửa vừa, cho 30 g bơ lạt vào đun tan. Thêm tỏi băm, vỏ chanh vàng bào, nước cốt chanh, 90 ml rượu vang trắng khô và 180 ml kem tươi vào khuấy đều, đun sôi lăn tăn khoảng 4 phút cho rượu bay bớt mùi cồn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Làm sánh sốt với bột mì và phô mai Parmesan",
+      "instruction": "Rắc từ từ 5 g bột mì đa dụng vào chảo, vừa rắc vừa khuấy liên tục bằng phới để sốt sánh mịn không vón cục. Tiếp tục cho 60 g phô mai Parmesan bào vào khuấy tan hoàn toàn, nêm 3 g muối ăn và 1,5 g tiêu đen xay.",
+      "tip": "Khuấy liên tục khi cho bột mì và phô mai ở lửa nhỏ giúp sốt kem mịn mượt và không bị tách dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín tôm tươi trong sốt kem chanh",
+      "instruction": "Thả tôm tươi đã sơ chế vào chảo sốt đang sôi liu riu, đảo đều và nấu khoảng 4–5 phút đến khi tôm chuyển màu hồng cam, cong tròn săn chắc và chín hoàn toàn bên trong. Không nấu quá lâu để giữ thịt tôm giòn ngọt.",
+      "tip": "Chỉ nấu tôm vừa chuyển hồng cam và săn lại trong 4–5 phút để thịt tôm ngọt giòn mà không bị bở hay dai.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn mì Ý với sốt tôm và dọn nóng",
+      "instruction": "Cho mì Ý Spaghetti vào chảo sốt tôm cùng 1–2 muỗng canh nước luộc mì đã giữ lại, đảo đều tay 1 phút cho từng sợi mì phủ đều sốt. Tắt bếp, chia ra 3 đĩa sâu lòng, rắc ngò tây tươi (nếu dùng) lên trên và thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 738,
+    "energyKcal": 737.6,
+    "energyKj": 3086,
+    "proteinG": 39.7,
+    "fatG": 36.9,
+    "saturatedFatG": 22.6,
+    "carbG": 57.4,
+    "fiberG": 2.9,
+    "sugarG": 4.5,
+    "sodiumMg": 919,
+    "saltG": 2.3,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 169761",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "908df6c3d9f0a408f77cba18541171b7c9e3fc95f12181404a15c1a2456f9286",
+    "researchedFromV2Sha256": "8f8a6613387bbb561438f4dbc4cb19bae311b751917c0c04adb2f0c436f03485"
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-35164fb31de89c5f",
+    "slug": "goi-ga-bap-cai-chanh",
+    "title": "Gỏi gà bắp cải chanh",
+    "subtitle": "Ức gà luộc xé phay mềm ngọt trộn bắp cải, cà rốt bào giòn cùng nước mắm chanh tỏi ớt chua ngọt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Gỏi gà",
+      "Thanh mát",
+      "Ít dầu mỡ",
+      "Khai vị",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "peanut"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa gỏi gà bắp cải thanh mát với thịt ức gà ta luộc chín mềm không khô, sợi bắp cải trắng và cà rốt giòn sần sật, hành tây bớt hăng quyện cùng rau răm thơm nồng và nước mắm chanh tỏi ớt chua cay mặn ngọt.",
+    "servingSuggestion": "Xếp gỏi gà bắp cải ra đĩa, rắc đậu phộng rang giã dập và ít tiêu xay lên mặt; ăn kèm bánh phồng tôm hoặc cơm nóng, cháo gà đều rất hợp.",
+    "storageAndReheat": "Nên trộn gỏi ngay trước khi ăn để bắp cải giữ độ giòn rụm không bị chảy nước. Có thể sơ chế sẵn gà xé, rau củ cắt sợi và pha riêng nước mắm trộn bảo quản ngăn mát tối đa 24 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà ta tươi (phi lê không xương)",
+      "culinaryMeasure": "400 g",
+      "prepNote": "rửa sạch với chút muối loãng, luộc chín tới rồi xé sợi dọc thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/3 bắp vừa (khoảng 280 g)",
+      "prepNote": "tách lá rửa sạch, bào sợi thật mỏng, ngâm nước đá lạnh 5 phút rồi vẩy thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.35,
+      "unit": "piece",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 238,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ vừa (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, bào sợi mỏng dài",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng rồi ngâm nước đá lạnh 10 phút cho giòn và hết hăng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "25 g (1 nắm vừa)",
+      "prepNote": "nhặt lấy lá non, rửa sạch, để ráo rồi thái rối to bản",
+      "componentGroup": "garnish",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "lấy phần đầu hành đập dập thả luộc gà cho thơm, phần lá chẻ sợi ngâm đá trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1,5 quả (khoảng 68 g, ~35 ml nước cốt)",
+      "prepNote": "vắt lấy nước cốt, bỏ hạt để pha nước mắm trộn gỏi chua thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, 1 quả băm nhuyễn pha nước trộn, 1 quả thái lát trang trí",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để pha nước mắm trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "khuấy tan cùng đường và nước cốt chanh làm sốt trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "chia 5 g ngâm hành tây giảm hăng, 20 g pha nước mắm trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "dùng 2 g luộc gà, 2 g xóc nhẹ bắp cải cà rốt rồi vắt ráo nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn nhẹ vào thịt ức gà xé cho dậy mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang giòn",
+      "culinaryMeasure": "30 g",
+      "prepNote": "xát sạch vỏ lụa, giã dập vừa phải để rắc mặt đĩa gỏi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc gà)",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "đun luộc chín ức gà rồi chắt bỏ hoặc tận dụng nấu canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "cook",
+      "title": "Luộc chín mềm ức gà ta và xé sợi",
+      "instruction": "Cho 400 g ức gà vào nồi với 1 lít nước lọc, phần đầu hành lá đập dập và 2 g muối ăn. Đun sôi trên lửa vừa rồi hạ lửa nhỏ luộc khoảng 12 phút đến khi thịt gà chín trắng hoàn toàn, tắt bếp đậy nắp ủ thêm 5 phút cho ngọt thịt. Vớt gà ngâm nước nguội 2 phút cho săn trắng rồi xé sợi dọc thớ, trộn nhẹ với 1,5 g tiêu đen xay.",
+      "tip": "Ủ thêm 5 phút sau khi tắt bếp giúp miếng ức gà chín đều tận lõi mà thớ thịt vẫn ẩm mềm, không bị khô bã.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, cà rốt và hành tây giòn mát",
+      "instruction": "Bào sợi thật mỏng 280 g bắp cải trắng và 110 g cà rốt, xóc nhẹ với 2 g muối ăn để 5 phút rồi rửa nhanh qua nước lọc lạnh và vắt thật ráo nước. Thái lát mỏng 70 g hành tây, ngâm vào tô nước đá lạnh pha 5 g đường cát trắng trong 10 phút cho hết hăng rồi vớt ra để thật ráo cùng hành lá chẻ sợi và rau răm thái rối.",
+      "tip": "Vắt thật ráo rau củ sau khi ngâm nước đá giúp đĩa gỏi khô ráo giòn ngon, nước sốt bám đều mà không bị loãng vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước mắm chanh tỏi ớt chua ngọt",
+      "instruction": "Vắt 1,5 quả chanh tươi lấy nước cốt bỏ hạt. Cho 30 ml nước mắm ngon, 20 g đường cát trắng còn lại và nước cốt chanh vào chén, khuấy tan hoàn toàn đường rồi mới cho tỏi băm nhuyễn và 1 quả ớt hiểm băm nhỏ vào để tỏi ớt nổi đẹp trên mặt sốt.",
+      "tip": "Khuấy tan hoàn toàn đường với nước mắm và chanh trước khi thả tỏi ớt băm giúp phần tỏi ớt nổi đẹp mà không chìm đáy."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn sơ gà xé với một phần nước sốt",
+      "instruction": "Cho thịt ức gà xé sợi vào thau lớn, rưới 1/3 lượng nước mắm chanh tỏi ớt đã pha vào trộn nhẹ cho thịt gà ngấm trước vị chua ngọt đậm đà."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn đều bắp cải, cà rốt, hành tây và rau răm",
+      "instruction": "Cho bắp cải, cà rốt bào sợi, hành tây ngâm ráo, rau răm và hành lá chẻ sợi vào thau thịt gà. Rưới phần nước mắm chanh còn lại lên trên rồi dùng tay sạch (đeo găng) trộn nhẹ nhàng từ dưới lên để các sợi rau không bị dập nát mà vẫn thấm đều gia vị."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa gỏi gà và rắc đậu phộng rang",
+      "instruction": "Gắp gỏi gà bắp cải xếp gọn gàng lên đĩa, trang trí thêm vài lát ớt hiểm đỏ và rắc toàn bộ 30 g đậu phộng rang giã dập lên trên cùng. Thưởng thức ngay khi rau còn giòn mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 233,
+    "energyKcal": 232.6,
+    "energyKj": 973,
+    "proteinG": 26.6,
+    "fatG": 6.5,
+    "saturatedFatG": 1.1,
+    "carbG": 17.9,
+    "fiberG": 3.8,
+    "sugarG": 11.1,
+    "sodiumMg": 978,
+    "saltG": 2.45,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171477",
+      "USDA FDC 172185",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN Rau Ram Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ef34c129df5b08e456e7404d5164803cfa29d3626747248ae87d9654f76f8abf",
+    "researchedFromV2Sha256": "cb52d2be92ec4d3ca11fb48904cab272e9ac1ecdaeee881476bd4ff03c77ec6d"
+  }
+}

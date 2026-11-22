@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9ae951bec7fbf21b",
+    "slug": "hu-tieu-xao-tom-gia-he-kieu-sai-gon",
+    "title": "Hủ tiếu xào tôm giá hẹ kiểu Sài Gòn",
+    "subtitle": "Sợi hủ tiếu dai mềm thấm đẫm xì dầu và dầu hào thơm lừng, xào nhanh trên lửa lớn cùng tôm tươi giòn ngọt, giá đỗ và lá hẹ xanh mướt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_bun_pho",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Hủ tiếu xào",
+      "Sài Gòn",
+      "Món nhanh",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil",
+      "assemble"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "molluscs",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món hủ tiếu xào tôm giá hẹ mang đậm phong vị quán ăn Sài Gòn với sợi hủ tiếu tơi mềm không bết dính, áo màu nâu cánh gián bóng bẩy từ nước tương và dầu hào, kết hợp tôm sú giòn ngọt cùng giá hẹ tươi mát.",
+    "servingSuggestion": "Bày hủ tiếu xào ra đĩa nóng, điểm ngò rí và ớt tươi thái lát lên trên; dọn ăn ngay kèm nước tương ớt xắt hoặc tương ớt.",
+    "storageAndReheat": "Món xào ngon nhất khi ăn nóng ngay sau khi nấu để giữ độ giòn của giá hẹ; nếu còn dư bảo quản ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo chống dính với chút nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PAD_THAI_NOODLE",
+      "name": "Hủ tiếu khô sợi dai",
+      "culinaryMeasure": "250 g",
+      "prepNote": "ngâm nước lạnh 8 phút rồi trụng nhanh nước nóng 80°C khoảng 2 phút, để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm thẻ hoặc tôm sú)",
+      "culinaryMeasure": "250 g",
+      "prepNote": "lột vỏ chừa đuôi, rạch lưng rút sạch chỉ đen, thấm ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "150 g",
+      "prepNote": "nhặt sạch vỏ đậu, rửa nhẹ tay rồi để ráo nước hoàn toàn",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHIVES",
+      "name": "Hẹ lá tươi",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rửa sạch, cắt khúc dài khoảng 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 46,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn chia làm hai phần ướp tôm và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (~2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ dùng ướp tôm và phi xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới xào tạo màu vàng nâu bóng đẹp và hương thơm cho sợi hủ tiếu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml ướp tôm và 10 ml nêm khi xào hủ tiếu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia đều ướp tôm và nêm hủ tiếu xào cho hài hòa vị mặn ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia đôi ướp tôm và nêm sợi hủ tiếu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp khử tanh tôm và rắc thơm khi hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "10 ml trộn sợi hủ tiếu chống dính; 30 ml chia hai lần xào tôm và xào hủ tiếu",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 34.96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, nhặt cọng non trang trí đĩa hủ tiếu xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả",
+      "prepNote": "rửa sạch, thái lát mỏng trang trí và ăn kèm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "dùng ngâm và trụng mềm hủ tiếu khô rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm và trụng hủ tiếu khô tơi sợi",
+      "instruction": "Ngâm hủ tiếu khô trong nước lọc mát khoảng 8 phút cho sợi hơi mềm, sau đó đun nóng 1 lít nước lọc khoảng 80°C rồi trụng hủ tiếu nhanh 2 phút. Vớt ra rổ xóc ráo hoàn toàn, trộn ngay với 10 ml dầu ăn để sợi hủ tiếu tơi rời, không dính bết khi xào.",
+      "tip": "Không luộc hủ tiếu bằng nước sôi quá lâu vì sợi sẽ mềm nhão và dễ nát vụn khi đảo trên chảo.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp tôm tươi thấm vị",
+      "instruction": "Tôm tươi bóc vỏ chừa đuôi, rút bỏ chỉ đen, rửa sạch thấm khô. Ướp tôm với 10 ml dầu hào, 2,5 g hạt nêm, 2,5 g đường cát trắng, 1 g tiêu đen xay cùng một nửa phần tỏi khô và hành tím khô băm nhuyễn, để ngấm 10 phút.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chuẩn bị giá đỗ, hẹ lá và rau trang trí",
+      "instruction": "Rửa sạch giá đỗ, để thật ráo nước để khi xào không ra nước; hẹ lá cắt khúc 3–4 cm; ngò rí rửa sạch và ớt tươi thái lát mỏng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào chín săn tôm tươi trên lửa lớn",
+      "instruction": "Bắc chảo rộng lên bếp lửa lớn với 15 ml dầu ăn, phi thơm phần tỏi và hành tím băm còn lại rồi trút tôm đã ướp vào đảo nhanh tay khoảng 2–3 phút đến khi tôm chuyển màu hồng cam đậm, thịt săn chín hoàn toàn thì trút ra đĩa riêng.",
+      "tip": "Xào tôm riêng ở lửa lớn giúp tôm giữ độ giòn ngọt và không ra nước làm ướt sợi hủ tiếu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào hủ tiếu thấm xì dầu với giá hẹ",
+      "instruction": "Làm nóng chảo vừa dùng với 15 ml dầu ăn còn lại, thả giá đỗ và hẹ lá vào đảo nhanh 45 giây trên lửa lớn cho vừa chín tới. Trút sợi hủ tiếu đã trộn dầu vào, rưới đều 25 ml xì dầu, 10 ml dầu hào còn lại, 2,5 g hạt nêm và 2,5 g đường cát trắng, xóc đảo liên tục 2 phút cho sợi hủ tiếu ráo bóng, lên màu vàng nâu hấp dẫn.",
+      "tip": "Đảo nhanh tay trên lửa lớn giúp sợi hủ tiếu dậy mùi thơm áp chảo mà giá hẹ vẫn giòn xanh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều tôm và bày đĩa thưởng thức",
+      "instruction": "Trút phần tôm đã xào vào chảo hủ tiếu, đảo đều thêm 30 giây cho quyện vị rồi tắt bếp. Bày ra 3 đĩa, rắc thêm 1 g tiêu đen xay còn lại, điểm ngò rí và ớt tươi thái lát để thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 515,
+    "energyKcal": 515.4,
+    "energyKj": 2157,
+    "proteinG": 21.7,
+    "fatG": 12.8,
+    "saturatedFatG": 2,
+    "carbG": 77.5,
+    "fiberG": 3.5,
+    "sugarG": 5.9,
+    "sodiumMg": 1273,
+    "saltG": 3.18,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169745",
+      "USDA FDC 169963",
+      "USDA FDC 169994",
+      "USDA FDC 169997",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "822622d83aef402c57ad1616c1f04130d359be90f90d81c3090e6954eeddfba3",
+    "researchedFromV2Sha256": "3d6ab2c517d1d5df65ae2617e3ea1411c40abf798672f6eb5f19fe44a8c66bc3"
+  }
+}

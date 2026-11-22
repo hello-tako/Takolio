@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d88e008b28a31151",
+    "slug": "muc-xao-kimchi",
+    "title": "Mực xào kim chi cay đậm kiểu Hàn",
+    "subtitle": "Mực tươi khứa caro giòn sần sật xào lửa lớn cùng kim chi chua, hành tây và sốt tương ớt Gochujang đỏ bóng"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Mực xào",
+      "Kim chi",
+      "Hàn Quốc",
+      "Cay đậm",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "sesame",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mực xào kim chi (Ojingeo Kimchi Bokkeum) kết hợp độ giòn ngọt tự nhiên của mực tươi khứa caro với vị chua cay đậm đà từ kim chi cải thảo chín kỹ và tương ớt Gochujang. Kỹ thuật xào nhanh lửa lớn giữ cho mực không ra nước và sốt áo bóng đều từng miếng.",
+    "servingSuggestion": "Dọn nóng ra đĩa sâu lòng, rắc mè trắng rang lên trên; ăn ngay cùng cơm trắng nóng dẻo hoặc xúc trực tiếp lên cơm như món cơm trộn.",
+    "storageAndReheat": "Mực xào ngon nhất khi ăn ngay lúc vừa tắt bếp để giữ độ giòn; nếu bảo quản tủ mát tối đa 24 giờ, nên đảo nhanh lại trên chảo nóng lửa vừa 1–2 phút, tránh hâm quá lâu làm mực dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi (đã làm sạch)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rút mai, bỏ nội tạng và mắt, rửa sạch, thấm thật khô; mặt trong thân mực khứa caro nông rồi thái miếng vừa ăn, râu mực cắt khúc 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chín kỹ",
+      "culinaryMeasure": "200 g",
+      "prepNote": "vắt nhẹ bớt nước thừa, thái khúc nhỏ khoảng 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng khoảng 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, thái lát vát mỏng 0,3 cm cho chín nhanh và đẹp mắt",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4–5 cm (để riêng phần đầu trắng phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn vào sốt cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "45 g (~2,5 muỗng canh)",
+      "prepNote": "làm nền sốt sánh đỏ đậm vị cay ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "15 g (~2 muỗng canh)",
+      "prepNote": "tăng độ cay nồng và màu đỏ đẹp cho món xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị mặn umami cho hỗn hợp sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "rắc trực tiếp lên mực khi xào trước khi cho sốt để mực thấm ngọt và không bị co dai",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~3/4 muỗng cà phê)",
+      "prepNote": "trộn chung vào chén sốt cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để phi hành và xào mực trên lửa lớn",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới sau khi tắt bếp để giữ trọn mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "rắc hoàn thiện bề mặt đĩa mực xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, khứa caro và thấm khô mực",
+      "instruction": "Tách đầu mực khỏi thân, bỏ túi nội tạng, mắt, mỏ cứng và rút thanh mai trong suốt. Rửa sạch mực dưới vòi nước lạnh rồi dùng khăn giấy thấm thật khô. Khứa mặt trong thân mực theo đường caro nông, thái miếng vừa ăn và cắt râu thành khúc 4 cm.",
+      "tip": "Khứa caro giúp mực cong đẹp mắt, nhanh chín và thấm đều sốt cay; thấm thật khô để mực không tiết nhiều nước khi vào chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Sơ chế rau củ và pha sẵn sốt cay",
+      "instruction": "Thái nhỏ 200 g kim chi cải thảo, thái múi cau hành tây, thái lát mỏng cà rốt và cắt khúc hành lá. Trong chén nhỏ, khuấy đều 45 g tương ớt Hàn Quốc, 15 g ớt bột Hàn Quốc, 35 ml nước tương, tỏi băm nhuyễn và 2 g tiêu đen xay thành hỗn hợp sốt sệt.",
+      "tip": "Chuẩn bị sẵn toàn bộ nguyên liệu và sốt trước khi bật bếp vì món xào lửa lớn diễn ra liên tục chỉ trong vài phút."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành lá và xào sơ rau củ",
+      "instruction": "Làm nóng chảo lớn trên lửa lớn với 30 ml dầu ăn thực vật, cho đầu hành lá vào đảo khoảng 45 giây đến khi thơm và hơi xém cạnh. Thêm hành tây và cà rốt vào xào nhanh 1 phút cho rau vừa dịu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn kim chi cho dậy hương",
+      "instruction": "Thả kim chi cải thảo đã thái nhỏ vào chảo, đảo đều trên lửa lớn trong 2 phút cho kim chi săn lại, quyện dầu hành và tỏa mùi thơm cay nồng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào mực với đường và cô đặc sốt một góc chảo",
+      "instruction": "Cho toàn bộ mực vào chảo, rắc đều 15 g đường cát trắng lên trên và đảo nhanh tay khoảng 1 phút đến khi mực bắt đầu cong lại và chuyển màu trắng đục. Gạt mực và rau sang một bên chảo, đổ chén sốt cay vào khoảng trống còn lại, đun sôi sùng sục 30 giây cho sốt hơi sánh lại.",
+      "tip": "Rắc đường lên mực trước khi gặp nước tương mặn giúp mực giữ được độ mềm ngọt, đồng thời cô sốt riêng một góc giúp tránh loãng nước.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều áo sốt và rưới dầu mè hoàn thiện",
+      "instruction": "Đảo đều toàn bộ mực, kim chi và phần lá xanh hành lá với sốt thêm khoảng 30 giây trên lửa lớn đến khi mực chín đều, săn giòn và áo sốt đỏ bóng. Tắt bếp ngay, rưới 10 ml dầu mè rang, rắc hạt mè trắng rang lên trên rồi trút ra đĩa thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 372,
+    "energyKcal": 371.9,
+    "energyKj": 1556,
+    "proteinG": 27.2,
+    "fatG": 16.4,
+    "saturatedFatG": 2.6,
+    "carbG": 30.7,
+    "fiberG": 5.4,
+    "sugarG": 12.2,
+    "sodiumMg": 1532,
+    "saltG": 3.83,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170393",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 174223",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "914ac0652c1c90430c8b66cb9a41f56b254b99410ddd64e6cc36f0f3f8ae07d9",
+    "researchedFromV2Sha256": "4b31e0118588497dda4c46ac857dc5179ba269975428cc6aa14dcf1437341edc"
+  }
+}

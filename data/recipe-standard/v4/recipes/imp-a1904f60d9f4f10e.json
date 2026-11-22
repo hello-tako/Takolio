@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a1904f60d9f4f10e",
+    "slug": "mi-y-bo-toi",
+    "title": "Mì Ý sốt bơ tỏi (Burro e Aglio)",
+    "subtitle": "Sợi mì Spaghetti dai vừa quyện sốt nhũ hóa từ bơ lạt béo thơm, tỏi phi lát mỏng và phô mai Parmesan bào mịn"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 8,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì Ý bơ tỏi",
+      "Ẩm thực Ý",
+      "Nhanh gọn",
+      "Spaghetti",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì Ý bơ tỏi tối giản mà tinh tế với từng sợi Spaghetti dai mượt bao phủ bởi lớp sốt nhũ hóa óng ả từ bơ lạt, nước luộc mì giàu tinh bột, tỏi phi lát vàng dịu và phô mai Parmesan.",
+    "servingSuggestion": "Chia mì ra đĩa sâu lòng ngay khi vừa tắt bếp, rắc thêm phô mai Parmesan bào và ngò tây tươi thái nhỏ; ăn nóng để cảm nhận trọn vị béo mịn.",
+    "storageAndReheat": "Món này ngon nhất khi thưởng thức ngay lúc còn nóng; nếu còn dư có thể cất ngăn mát tối đa 24 giờ và áp chảo lại cùng chút nước ấm hoặc bơ lạt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "300 g",
+      "prepNote": "luộc trong nước muối sôi bùng ít hơn thời gian bao bì 1 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "70 g (~5 muỗng canh)",
+      "prepNote": "chia đôi 35 g để phi tỏi và 35 g còn lại đánh bóng sốt ở bước cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 70,
+      "unit": "g",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (~25 g, khoảng 7–8 tép)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng đều nhau để không bị cháy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "35 g",
+      "prepNote": "trộn 25 g vào chảo sốt khi tắt bếp, giữ 10 g rắc mặt đĩa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g (~2 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ phần lá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt vảy khô (hoặc ớt bột)",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo vị cay ấm nhẹ cân bằng độ béo của bơ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "18 g (15 g luộc mì, 3 g nêm sốt)",
+      "prepNote": "hòa 15 g vào nước luộc mì (đổ bỏ phần lớn), dùng 3 g nêm lại sốt nếu cần",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc trộn vào mì khi hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì và làm sốt)",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 120 ml nước luộc giàu tinh bột để nhũ hóa sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi thái lát, ngò tây và phô mai",
+      "instruction": "Bóc vỏ 1 củ tỏi khô rồi thái thành các lát mỏng đều nhau. Rửa sạch 12 g ngò tây tươi, thấm khô và thái nhỏ phần lá. Bào mịn sẵn 35 g phô mai Parmesan và chuẩn bị sẵn 70 g bơ lạt chia làm hai phần bằng nhau.",
+      "tip": "Thái tỏi thành lát mỏng đều giúp tỏi tiết hương thơm ngọt từ từ trong bơ mà không dễ bị cháy xém như tỏi băm nhuyễn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun nước muối sôi và luộc mì Spaghetti",
+      "instruction": "Đun sôi mạnh 2500 ml nước lọc trong nồi lớn, hòa tan 15 g muối ăn rồi thả 300 g mì Ý Spaghetti khô vào luộc khoảng 8 phút (ít hơn 1 phút so với hướng dẫn bao bì để mì còn độ dai al dente). Trước khi vớt mì, múc giữ lại khoảng 120 ml nước luộc mì.",
+      "tip": "Không nên dùng quá nhiều nước khi luộc mì để giữ nồng độ tinh bột cao trong nước luộc, giúp sốt bơ nhanh chóng sánh bóng khi nhũ hóa.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi lát và ớt vảy trong bơ lạt",
+      "instruction": "Trong lúc luộc mì, đặt chảo lớn lên bếp ở lửa nhỏ, cho 35 g bơ lạt vào đun tan chảy nhẹ. Thả tỏi thái lát cùng 1 g ớt vảy khô vào đảo đều khoảng 1 phút đến khi tỏi sủi bọt nhẹ, dậy mùi thơm và vừa ngả vàng nhạt.",
+      "tip": "Tuyệt đối giữ lửa nhỏ để tỏi chỉ ngả vàng nhạt; nếu để tỏi chuyển nâu sậm, vị đắng sẽ làm hỏng cả chảo sốt bơ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nhũ hóa mì cùng bơ và nước luộc mì",
+      "instruction": "Dùng kẹp gắp trực tiếp mì Spaghetti vừa luộc sang chảo bơ tỏi, rót vào khoảng 60 ml nước luộc mì giữ lại. Bật lửa vừa, đảo và xóc chảo liên tục trong 1–2 phút cho tinh bột trong nước luộc quyện cùng bơ thành lớp sốt sánh bóng bám đều sợi mì; thêm chút nước luộc nếu thấy khô.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Đánh bóng bơ lạnh và trộn phô mai Parmesan",
+      "instruction": "Cho nốt 35 g bơ lạt còn lại vào chảo đảo tan đều, sau đó tắt hẳn bếp và nhấc chảo khỏi nguồn nhiệt. Thêm 25 g phô mai Parmesan bào mịn, 3 g muối ăn (nêm từ từ theo khẩu vị), 1 g tiêu đen xay và 2/3 lượng ngò tây tươi thái nhỏ, đảo nhanh tay cho phô mai tan quyện mượt mà.",
+      "tip": "Luôn tắt bếp trước khi cho phô mai Parmesan để nhiệt độ dịu xuống, giúp phô mai tan quyện thành kem mịn mà không bị vón cục tách dầu."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Gắp mì xoắn gọn ra 3 đĩa sâu lòng khi còn nóng hổi, rưới hết phần sốt bơ tỏi trong chảo lên trên rồi rắc nốt 10 g phô mai Parmesan bào cùng phần ngò tây tươi còn lại."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 603,
+    "energyKcal": 602.5,
+    "energyKj": 2520,
+    "proteinG": 18.4,
+    "fatG": 23.9,
+    "saturatedFatG": 14.3,
+    "carbG": 78.2,
+    "fiberG": 3.7,
+    "sugarG": 2.9,
+    "sodiumMg": 777,
+    "saltG": 1.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9a44f796e208519a3d8b62f70881c7ee366e8e7681f29a65f8a83e9f75871dd8",
+    "researchedFromV2Sha256": "645c84f12179a5302b97c69dc602cbb972c31991b36bf905e692fa3d05d5e70a"
+  }
+}

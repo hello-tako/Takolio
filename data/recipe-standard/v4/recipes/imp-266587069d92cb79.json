@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-266587069d92cb79",
+    "slug": "cua-hap-gung",
+    "title": "Cua biển hấp gừng chấm giấm đen",
+    "subtitle": "Cua biển tươi hấp chín giữ trọn vị ngọt thịt trên lớp gừng thơm, dùng kèm nước chấm giấm đen Trấn Giang gừng băm hài hòa"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_hap_luoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Cua biển",
+      "Hải sản",
+      "Gừng tươi",
+      "Thanh tao"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cua hấp gừng thanh tao kiểu Trung Hoa tôn vinh trọn vẹn độ ngọt tự nhiên và thớ thịt săn chắc của cua biển tươi, kết hợp cùng bát nước chấm giấm đen Trấn Giang pha gừng băm dịu vị ấm bụng.",
+    "servingSuggestion": "Bày cua hấp đỏ au ra đĩa lớn, dọn nóng ngay cùng bát nước chấm giấm đen gừng hành và kẹp càng cua để tách vỏ dễ dàng.",
+    "storageAndReheat": "Cua hấp ngon nhất khi thưởng thức nóng ngay sau khi lấy khỏi xửng; nếu còn dư có thể gỡ lấy thịt cua bảo quản ngăn mát tối đa 24 giờ và hấp lại 3–4 phút trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Cua biển sống nguyên con",
+      "culinaryMeasure": "1000 g (khoảng 3–4 con vừa)",
+      "prepNote": "chà sạch mai và kẽ chân dưới vòi nước lạnh, giữ nguyên dây buộc đến khi xếp xửng",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "g",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 650,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "35 g (1 nhánh vừa)",
+      "prepNote": "cạo vỏ, chia một nửa thái lát lót đáy xửng hấp và một nửa băm nhuyễn pha nước chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 24.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BLACK_VINEGAR",
+      "name": "Giấm đen Trấn Giang",
+      "culinaryMeasure": "50 ml (~3,5 muỗng canh)",
+      "prepNote": "tạo vị chua thanh dịu và hương thơm đặc trưng cho nước chấm cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 51.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "kết hợp giúp nước chấm thanh thoát không bị gắt màu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm đà cân bằng với giấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua mặn trong bát nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc vào nước chấm và trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới nhẹ lên mình cua trước khi hấp giúp khử tanh hiệu quả",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 7.43,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "dùng 770 ml đun tạo hơi nước hấp cua và 30 ml pha dịu nước chấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch vỏ cua biển và sơ chế gừng hành",
+      "instruction": "Làm lạnh cua sống trong ngăn mát 10 phút cho dịu lại rồi dùng bàn chải chà sạch đất cát ở mai, càng và các kẽ chân dưới vòi nước lạnh chảy, để ráo. Gừng tươi thái lát mỏng một nửa lượng (khoảng 18 g) để lót hấp, phần còn lại băm thật nhuyễn; hành lá thái nhỏ để riêng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha nước chấm giấm đen Trấn Giang gừng băm",
+      "instruction": "Trong bát vừa, khuấy tan hoàn toàn 10 g đường nâu với 50 ml giấm đen Trấn Giang, 30 ml giấm gạo, 30 ml xì dầu nhạt và 30 ml nước lọc. Sau đó cho toàn bộ gừng băm nhuyễn và một nửa lượng hành lá thái nhỏ vào trộn đều.",
+      "tip": "Pha nước chấm trước giúp hương thơm của gừng tươi kịp tiết ra hòa quyện vào giấm đen và đường nâu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Lót gừng và xếp cua vào xửng hấp",
+      "instruction": "Đổ khoảng 770 ml nước lọc vào đáy nồi hấp (mực nước thấp hơn vỉ xửng), đun sôi mạnh trên lửa lớn. Xếp các lát gừng tươi phủ lên mặt vỉ hấp rồi đặt cua lên trên theo tư thế ngửa bụng lên (mai úp xuống) để giữ trọn nước ngọt và gạch cua, rưới đều 15 ml rượu Thiệu Hưng lên mình cua.",
+      "tip": "Đặt cua ngửa bụng khi hấp giúp nước ngọt tự nhiên và gạch béo bên trong mai không bị chảy xuống nước nồi."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp cua trên lửa lớn đến khi chín đỏ",
+      "instruction": "Đậy kín nắp nồi, hấp liên tục trên lửa lớn trong khoảng 9 đến 10 phút tính từ lúc nước sôi mạnh (với cua cỡ 250–350 g/con). Quan sát thấy vỏ mai cua chuyển đỏ cam rực rỡ, thân cua chín săn và phần thịt càng chuyển trắng đục hoàn toàn là cua đã chín.",
+      "tip": "Không mở nắp xửng nhiều lần trong lúc hấp để giữ áp suất hơi nóng ổn định giúp cua chín đều và giữ trọn vị ngọt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Để ráo hơi nước trên mặt cua",
+      "instruction": "Tắt bếp, mở hé nắp cho hơi nóng thoát bớt rồi nhấc cua ra đĩa rộng, để nghỉ khoảng 2 phút cho bề mặt vỏ ráo nước và nguội bớt dễ cầm tay hơn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa cua hấp và thưởng thức nóng",
+      "instruction": "Rắc phần hành lá thái nhỏ còn lại lên đĩa cua cho đẹp mắt, dọn nóng ngay kèm bát nước chấm giấm đen gừng hành. Khi ăn gỡ bỏ yếm và mang xám hai bên mai, chấm thịt cua vào nước chấm chua ngọt ấm vị gừng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 169,
+    "energyKcal": 169.4,
+    "energyKj": 709,
+    "proteinG": 30.3,
+    "fatG": 1.8,
+    "saturatedFatG": 0.4,
+    "carbG": 5.2,
+    "fiberG": 0.3,
+    "sugarG": 3,
+    "sodiumMg": 1006,
+    "saltG": 2.52,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Chinkiang Black Vinegar Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 168833",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 172238",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d57fa7aeb0a56ff85083e9fdb538ded0d83876700c38c52de73f1bc4a5c7bd39",
+    "researchedFromV2Sha256": "ea1b6ad3a7b78205e785d7b1ef610a762fac3a3abd2daf3bd88d5a415ce0abff"
+  }
+}

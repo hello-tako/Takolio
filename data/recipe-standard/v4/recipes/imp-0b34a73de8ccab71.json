@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0b34a73de8ccab71",
+    "slug": "goi-dau-phu-dua-leo",
+    "title": "Gỏi đậu phụ dưa leo chay thanh mát",
+    "subtitle": "Đậu phụ chiên vàng giòn thái sợi trộn dưa leo bỏ ruột giòn mát, cà rốt, rau răm, húng quế và đậu phộng rang trong nước mắm chay chanh tỏi ớt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_cuon_nom",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Gỏi chay",
+      "Đậu phụ",
+      "Dưa leo",
+      "Thanh đạm",
+      "Mát lành"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "peanut",
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi đậu phụ dưa leo là món khai vị chay thanh đạm mà đậm vị với từng miếng đậu phụ chiên vàng giòn bên ngoài mềm béo bên trong, quyện cùng dưa leo và cà rốt bóp muối vắt khô giòn sần sật, rau thơm và đậu phộng rang bùi thơm.",
+    "servingSuggestion": "Bày gỏi ra đĩa, rắc hành lá cắt nhỏ và phần đậu phộng rang giã dập còn lại lên mặt; ăn kèm bánh đa nướng hoặc bánh phồng chay giòn rụm.",
+    "storageAndReheat": "Đậu phụ chiên nên trộn ngay trước bữa ăn để giữ lớp vỏ giòn; bảo quản riêng dưa leo cà rốt đã vắt ráo và nước mắm chay trong ngăn mát tủ lạnh tối đa 12 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa sạch, thấm thật khô trước khi chiên vàng đều rồi thái lát mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "2.5 quả (khoảng 375 g)",
+      "prepNote": "gọt bớt vỏ, bỏ ruột hạt, thái lát mỏng bóp muối vắt khô",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 375,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 356.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "cạo vỏ, thái lát mỏng hoặc bào sợi bóp muối cùng dưa leo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1.5 quả (khoảng 68 g)",
+      "prepNote": "vắt lấy nước cốt, bỏ hạt pha nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "1 quả băm nhỏ pha nước trộn, 1 quả thái lát rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước trộn gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_FISH_SAUCE",
+      "name": "Nước mắm chay",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm thuần chay cho nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g",
+      "prepNote": "hòa tan cùng nước mắm chay và chanh tạo vị chua ngọt dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang giã dập",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rang chín vàng thơm, xát vỏ lụa rồi giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "nhặt lá non, rửa sạch, để ráo rồi thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "THAI_BASIL",
+      "name": "Rau húng quế",
+      "culinaryMeasure": "15 g",
+      "prepNote": "nhặt lá non, rửa sạch, để ráo và thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt nhỏ rắc mặt gỏi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "dùng bóp ra nước dưa leo cà rốt rồi vắt ráo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 1.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên đậu phụ)",
+      "culinaryMeasure": "40 ml",
+      "prepNote": "chiên vàng giòn đều các mặt đậu phụ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Bóp muối vắt khô dưa leo và cà rốt",
+      "instruction": "Rửa sạch dưa leo, gọt vỏ, xẻ dọc bỏ hết phần ruột hạt rồi thái lát mỏng vừa ăn. Cà rốt cạo vỏ, thái lát mỏng tương tự. Trộn dưa leo và cà rốt với 5 g muối ăn, để yên 5 phút cho ra nước rồi dùng khăn sạch vắt thật khô ráo.",
+      "tip": "Thấm và vắt thật khô dưa leo cà rốt trước khi trộn sẽ giúp món gỏi giữ được độ giòn và không làm ỉu đậu phụ chiên.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng giòn đậu phụ rồi thái miếng vừa ăn",
+      "instruction": "Thấm thật ráo nước bề mặt 3 bìa đậu phụ trắng. Làm nóng chảo trên lửa vừa với 40 ml dầu ăn, thả đậu vào chiên khoảng 6 phút, lật đều các mặt đến khi lớp vỏ chuyển vàng giòn ruộm thì vớt ra giấy thấm dầu, để nguội bớt rồi thái lát mỏng hoặc sợi to vừa gắp.",
+      "tip": "Chiên nguyên bìa đậu phụ cho vàng giòn trước rồi mới thái mỏng giúp miếng đậu giữ form đẹp và không bị vỡ nát khi trộn.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang giã đậu phộng và sơ chế rau thơm",
+      "instruction": "Rang chín vàng đậu phộng trên lửa nhỏ trong 5 phút, để nguội xát sạch vỏ lụa rồi giã dập vừa. Nhặt rửa sạch rau răm, rau húng quế và hành lá, để ráo rồi thái nhỏ. Băm nhuyễn tỏi khô, 1 quả ớt hiểm băm nhỏ và 1 quả thái lát.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước mắm chay chua ngọt",
+      "instruction": "Cho 30 ml nước mắm chay, 20 g đường cát trắng và nước cốt 1,5 quả chanh tươi vào bát, khuấy kỹ cho đường tan hết rồi thêm tỏi băm và ớt hiểm băm nhuyễn vào đảo đều."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Trộn thấm dưa leo, cà rốt và đậu phụ chiên",
+      "instruction": "Cho dưa leo, cà rốt đã vắt khô cùng đậu phụ chiên thái mỏng vào tô lớn, rưới đều bát nước mắm chay lên trên, trộn thật nhẹ tay để đậu phụ không nát và để nghỉ 5 phút cho ngấm vị.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm rau thơm, đậu phộng và bày đĩa",
+      "instruction": "Cho rau răm, rau húng quế thái nhỏ cùng một nửa lượng đậu phộng rang giã dập vào tô gỏi, đảo nhẹ lần cuối. Bày gỏi ra đĩa, rắc hành lá cắt nhỏ, phần đậu phộng còn lại và vài lát ớt hiểm lên trên rồi thưởng thức ngay.",
+      "tip": "Chỉ rắc phần đậu phộng rang còn lại và hành lá lên trên ngay khi chuẩn bị dọn để đậu không bị mềm ỉu."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 312,
+    "energyKcal": 312.3,
+    "energyKj": 1307,
+    "proteinG": 18.3,
+    "fatG": 20.3,
+    "saturatedFatG": 2.8,
+    "carbG": 21,
+    "fiberG": 4.3,
+    "sugarG": 12,
+    "sodiumMg": 923,
+    "saltG": 2.31,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168409",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 172430",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "VN Rau Ram Ref",
+      "Vegetarian Fish Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "27be4748d81d03c872673d58e7fd65ac82255ea1daad0f4cfaa7418b1b2e7f91",
+    "researchedFromV2Sha256": "066f6f2866b780544e0dff65718ff85a2806c0a0d6394b4e5c6a83e707605173"
+  }
+}

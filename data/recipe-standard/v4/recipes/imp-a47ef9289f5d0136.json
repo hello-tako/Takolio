@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a47ef9289f5d0136",
+    "slug": "ca-rot-xao-trung",
+    "title": "Cà rốt xào trứng gà",
+    "subtitle": "Cà rốt thái sợi mềm ngọt tự nhiên quyện cùng trứng gà đánh bông tơi vàng ươm và hương thơm dịu của ngò rí"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau củ",
+      "Trứng",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Cà rốt xào trứng gà là món ăn bình dị, giàu dinh dưỡng với sợi cà rốt mềm ngọt tự nhiên ôm quyện lấy từng mảng trứng gà vàng óng béo nhẹ, thơm mùi nước mắm, tiêu xay và rau ngò rí.",
+    "servingSuggestion": "Dọn cà rốt xào trứng ra đĩa khi còn nóng hổi, rắc thêm ngò rí và tiêu xay; ăn kèm cơm trắng hoặc kẹp bánh mì đều rất hợp.",
+    "storageAndReheat": "Nên dùng hết ngay trong bữa để trứng giữ độ bông mềm và thơm ngon; không nên để qua đêm hoặc hâm lại nhiều lần."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2 củ vừa (khoảng 220 g)",
+      "prepNote": "gọt vỏ, rửa sạch, bào hoặc thái thành sợi nhỏ đều nhau dày 0,3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đập ra tô, đánh tan cùng gia vị và một nửa lượng ngò rí",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (2–3 nhánh)",
+      "prepNote": "nhặt rửa sạch, thái nhỏ; chia đôi để trộn vào trứng và rắc mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, phần đầu hành băm nhỏ phi thơm, phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "1,5 muỗng canh (20 ml)",
+      "prepNote": "chia 10 ml xào mềm cà rốt và 10 ml chiên đảo trứng gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1 muỗng cà phê (5 ml)",
+      "prepNote": "đánh chung vào tô trứng gà giúp trứng thơm dịu không bị tanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "chia 2 g xào cà rốt và 3 g đánh cùng trứng gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MSG",
+      "name": "Bột ngọt (mì chính)",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "đánh tan cùng trứng gà để tăng vị ngọt hậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "chia một nửa đánh vào trứng và một nửa rắc khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "thêm vào chảo lúc xào giúp sợi cà rốt nhanh chín mềm mà không bị khô cháy",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 21,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái sợi cà rốt và chuẩn bị ngò rí, hành lá",
+      "instruction": "Cà rốt gọt vỏ, rửa sạch rồi cắt khúc dài 5 cm và thái sợi nhỏ đều nhau dày khoảng 0,3 cm. Ngò rí và hành lá rửa sạch, thái nhỏ; tách riêng phần đầu hành trắng băm nhỏ, còn ngò rí chia làm hai phần.",
+      "tip": "Thái sợi cà rốt đều tay giúp cà rốt chín đồng đều và dễ quyện bám lấy từng mảng trứng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà với gia vị",
+      "instruction": "Đập 3 quả trứng gà ta vào tô lớn, thêm 5 ml nước mắm ngon, 3 g hạt nêm, 2 g bột ngọt, một nửa lượng tiêu đen xay và 1/2 phần ngò rí thái nhỏ. Dùng đũa đánh bông đều cho lòng đỏ và lòng trắng hòa quyện hoàn toàn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín mềm sợi cà rốt",
+      "instruction": "Làm nóng 10 ml dầu ăn trên chảo lửa vừa, cho đầu hành lá băm vào phi thơm 20 giây. Trút cà rốt thái sợi vào đảo đều, thêm 2 g hạt nêm còn lại và 30 ml nước lọc rồi xào khoảng 4–5 phút đến khi nước cạn ráo và sợi cà rốt chín mềm ngọt thì múc ra tô riêng.",
+      "tip": "Xào riêng cà rốt với một chút nước giúp cà rốt chín mềm hoàn toàn và giải phóng vị ngọt tự nhiên.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên đảo tơi trứng gà trên lửa vừa",
+      "instruction": "Lau sạch chảo rồi đun nóng 10 ml dầu ăn còn lại ở lửa vừa-nhỏ. Rót tô trứng gà đã đánh vào chảo, chờ 20 giây cho mặt dưới hơi se lại rồi dùng đũa khuấy nhẹ tạo thành từng mảng trứng chín mềm ẩm khoảng 1,5–2 phút.",
+      "tip": "Giữ lửa vừa-nhỏ khi chiên trứng để trứng chín bông mềm, không bị khô xác.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn đều cà rốt với trứng và hành lá",
+      "instruction": "Trút toàn bộ cà rốt đã xào chín trở lại chảo trứng, đảo đều nhẹ tay khoảng 1 phút cho cà rốt và trứng quyện vào nhau đều màu. Cho phần hành lá thái nhỏ vào đảo thêm 15 giây rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện hương ngò rí và dọn nóng",
+      "instruction": "Bày cà rốt xào trứng gà ra đĩa, rắc phần ngò rí thái nhỏ và tiêu đen xay còn lại lên trên. Dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 147,
+    "energyKcal": 146.6,
+    "energyKj": 613,
+    "proteinG": 6.6,
+    "fatG": 9.9,
+    "saturatedFatG": 2.2,
+    "carbG": 8.2,
+    "fiberG": 2.2,
+    "sugarG": 3.7,
+    "sodiumMg": 624,
+    "saltG": 1.56,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC Monosodium Glutamate",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5986303c355f339928d247962ef21ab22cdd836df68149766994bb2aea0546ac",
+    "researchedFromV2Sha256": "7103aa4dc5dd34c5841a1ccd7ef09ef5c08074ae771ba3d5464562ab0e0d982c"
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-20d3992a65cb17fd",
+    "slug": "mi-y-ga-nam",
+    "title": "Mì Ý gà nấm sốt cà chua",
+    "subtitle": "Ức gà áp chảo vàng cạnh cùng nấm đùi gà giòn ngọt và cà chua chín mọng ôm trọn từng sợi mì spaghetti"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Mì Ý",
+      "Ức gà",
+      "Nấm đùi gà",
+      "Cà chua",
+      "Bữa tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì Ý đầy đặn dinh dưỡng cho bữa tối gia đình với ức gà mềm mọng thấm gia vị, nấm đùi gà xào lửa lớn giữ trọn độ giòn ngọt và vị chua thanh nhẹ tự nhiên từ cà chua chín tươi.",
+    "servingSuggestion": "Múc mì ra đĩa sâu lòng khi còn nóng, rắc phô mai Parmesan bào mịn cùng chút tiêu đen xay mới và thưởng thức ngay.",
+    "storageAndReheat": "Nếu chưa dùng hết, cất hộp kín trong ngăn mát tối đa 2 ngày. Hâm nóng trên chảo với 2 muỗng canh nước lọc trên lửa vừa trong 3–4 phút cho mì mềm tơi trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý sợi dài (spaghetti)",
+      "culinaryMeasure": "320 g",
+      "prepNote": "luộc chín vừa dai (al dente), giữ lại 120 ml nước luộc mì",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê",
+      "culinaryMeasure": "400 g",
+      "prepNote": "rửa sạch, thấm khô rồi thái miếng vuông vừa ăn cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "cắt bỏ chân nấm già, lau sạch rồi thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 237.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả vừa (~240 g)",
+      "prepNote": "rửa sạch, bỏ cuống rồi thái hạt lựu hoặc bổ múi nhỏ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/2 củ (~12,5 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và băm nhỏ để trộn hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 15 ml áp chảo ức gà và 20 ml xào nấm cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "30 g",
+      "prepNote": "rắc mặt mì khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "chia 6 g pha nước luộc mì (đổ bỏ), 2 g ướp ức gà và 2 g nêm sốt nấm cà chua",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp gà và 1 g nêm sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đun sôi luộc mì Ý và giữ lại 120 ml làm sánh sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Sơ chế nguyên liệu và ướp ức gà",
+      "instruction": "Ức gà phi lê rửa sạch, thấm khô, cắt miếng vuông cỡ 2 cm rồi ướp với 2 g muối ăn và 1 g tiêu đen xay trong 10 phút. Nấm đùi gà thái lát dày 0,5 cm, cà chua chín thái miếng nhỏ, tỏi tươi băm nhuyễn và ngò tây tươi băm nhỏ.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo vàng đều miếng ức gà",
+      "instruction": "Làm nóng 15 ml dầu ô liu nguyên chất trong chảo lớn trên lửa vừa-lớn. Dàn đều thịt ức gà thành một lớp, áp chảo khoảng 6 phút cho đến khi thịt vàng đều các mặt và chín tới hoàn toàn bên trong, rồi gắp gà ra đĩa riêng.",
+      "tip": "Không xếp thịt gà quá dày một lượt trong chảo để thịt không bị ra nước mà giữ được độ xém thơm mềm mọng.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nấm đùi gà lửa lớn và nấu sốt cà chua",
+      "instruction": "Vẫn chiếc chảo đó, thêm 20 ml dầu ô liu nguyên chất vào phi thơm tỏi băm trong 45 giây trên lửa vừa. Tăng lửa lớn, cho nấm đùi gà vào xào 5 phút đến khi nấm săn ráo và xém vàng nhẹ cạnh, nêm 2 g muối ăn và 1 g tiêu đen xay. Tiếp tục thả cà chua chín vào đảo 3 phút cho cà chua mềm tiết nước tạo sốt.",
+      "tip": "Xào nấm ở lửa lớn giúp nước nấm bay hơi nhanh, giữ được độ giòn ngọt và hương thơm đặc trưng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Luộc mì Ý trong nồi nước muối sôi già",
+      "instruction": "Trong lúc xào nấm và cà chua, đun sôi 2 lít nước lọc với 6 g muối ăn. Cho 320 g mì Ý spaghetti vào luộc khoảng 8–9 phút đến độ chín al dente, trước khi vớt nhớ múc giữ lại 120 ml nước luộc mì nóng.",
+      "tip": "Luộc mì ít hơn hướng dẫn bao bì 1 phút để sợi mì còn độ dai vừa phải khi đảo tiếp cùng sốt trên chảo.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì Ý cùng thịt gà, nấm và nước luộc mì",
+      "instruction": "Trút thịt ức gà đã áp chảo trở lại chảo sốt nấm cà chua, cho tiếp mì Ý vừa vớt ráo và khoảng 80–120 ml nước luộc mì vào. Xóc đảo đều tay trên lửa vừa-lớn trong 2 phút để tinh bột quyện sốt thành lớp áo bóng mượt bám quanh từng sợi mì.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc ngò tây, phô mai Parmesan và dùng nóng",
+      "instruction": "Tắt bếp, cho phần ngò tây tươi băm nhỏ vào đảo nhanh một lượt cho giữ màu và hương thơm tươi mát. Chia mì gà nấm ra 4 đĩa sâu lòng, rắc phô mai Parmesan bào (tùy thích) lên mặt rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 553,
+    "energyKcal": 553.1,
+    "energyKj": 2314,
+    "proteinG": 38.6,
+    "fatG": 14,
+    "saturatedFatG": 3.2,
+    "carbG": 67.5,
+    "fiberG": 4.9,
+    "sugarG": 4.5,
+    "sodiumMg": 568,
+    "saltG": 1.42,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a3a79f3d9fea651a5f605b1c6e3583acd9bc06c861d78b547384b2bc7be4b85e",
+    "researchedFromV2Sha256": "119f7667d3e2058ed0f50eb80457a71b0316772ff4de2c1904a407d035865648"
+  }
+}

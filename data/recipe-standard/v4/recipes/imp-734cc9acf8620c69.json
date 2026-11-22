@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-734cc9acf8620c69",
+    "slug": "canh-dau-phu-ca-chua-trung",
+    "title": "Canh đậu phụ cà chua trứng",
+    "subtitle": "Món canh thanh nhẹ với đậu phụ non mềm mịn, cà chua chín đỏ au và vân trứng gà tơ vàng ươm đẹp mắt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Đậu phụ",
+      "Thanh đạm",
+      "Nấu nhanh",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Canh đậu phụ cà chua trứng có nước dùng đỏ cam tự nhiên, vị chua dịu hài hòa từ cà chua chín, miếng đậu phụ non béo mềm tan nhẹ cùng những sợi vân trứng gà vàng mịn thơm lừng.",
+    "servingSuggestion": "Múc canh ra tô lớn khi còn nóng hổi, rắc thêm hành lá, ngò rí và chút tiêu xay; dùng kèm cơm trắng và các món mặn như cá kho hay thịt rang cháy cạnh.",
+    "storageAndReheat": "Canh ngon nhất khi ăn nóng ngay sau khi nấu; nếu còn dư, đậy kín bảo quản ngăn mát tối đa 24 giờ và hâm lại trên lửa vừa, tránh khuấy mạnh làm nát đậu phụ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non",
+      "culinaryMeasure": "300 g (1 hộp)",
+      "prepNote": "rửa nhẹ tay dưới vòi nước nhỏ, để ráo rồi cắt khối vuông 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau (chia 2 phần: 1 quả băm sơ lấy màu, 1 quả giữ nguyên múi)",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra bát, đánh tan đều lòng trắng và lòng đỏ cùng chút tiêu xay",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ vừa)",
+      "prepNote": "bóc vỏ, rửa sạch, thái lát mỏng hoặc băm nhỏ để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, phần đầu hành trắng băm nhỏ, phần lá xanh thái khúc 1 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi)",
+      "culinaryMeasure": "10 g (2–3 nhánh)",
+      "prepNote": "nhặt bỏ rễ và lá úa, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tím và xào mềm cà chua tạo màu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm vào nước canh khi gần tắt bếp để dậy mùi thơm đặc trưng",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "nêm nền ngọt dịu cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm cùng cà chua lúc xào giúp cà nhanh mềm tiết nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "cân bằng độ chua thanh tự nhiên của cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (1/2 muỗng cà phê)",
+      "prepNote": "chia đôi: một nửa đánh cùng trứng khử tanh, một nửa rắc lên tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "dùng nấu nước canh cho 4 người ăn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1080,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đậu phụ non, cà chua và rau thơm",
+      "instruction": "Nhẹ nhàng lấy 300 g đậu phụ non ra khỏi hộp, tráng qua nước lọc cho ráo rồi cắt khối vuông cạnh khoảng 2 cm. Rửa sạch 2 quả cà chua chín đỏ, bỏ cuống, cắt múi cau (giữ 1 quả thái miếng vừa ăn, 1 quả cắt hạt lựu nhỏ để xào nhanh tạo màu). Bóc vỏ và băm nhỏ 20 g hành tím; rửa sạch 1/2 bó hành lá và 10 g ngò rí rồi thái nhỏ.",
+      "tip": "Đậu phụ non rất mềm và dễ vỡ, nên đặt trên thớt phẳng dùng dao sắc cắt dứt khoát và giữ nguyên trên thớt hoặc đĩa đến khi cho vào nồi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà với chút tiêu",
+      "instruction": "Đập 2 quả trứng gà ta vào bát sạch, thêm khoảng 0,5 g tiêu đen xay rồi dùng đũa đánh đều tay khoảng 30 giây cho lòng đỏ và lòng trắng hòa quyện hoàn toàn, không còn vón sợi đặc."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào cà chua tạo màu",
+      "instruction": "Đặt nồi lên bếp ở lửa vừa, cho 15 ml dầu ăn vào làm nóng rồi thả hành tím băm và phần đầu hành lá vào phi khoảng 1 phút đến khi dậy mùi thơm vàng nhẹ. Cho phần cà chua cắt hạt lựu cùng 3 g muối ăn vào xào đều tay 3 phút đến khi cà chua nhuyễn mềm, tiết nước sốt đỏ cam óng ả.",
+      "tip": "Thêm muối khi xào giúp cà chua nhanh ra nước và lên màu đỏ đẹp hơn mà không bị khô cháy.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng và nêm gia vị",
+      "instruction": "Đổ 1200 ml nước lọc vào nồi cà chua xào, tăng lên lửa lớn đun sôi bùng khoảng 4 phút rồi dùng muỗng hớt sạch bọt nổi để nước canh trong. Cho phần cà chua bổ múi cau còn lại vào, nêm 5 g hạt nêm, 3 g đường cát trắng và 15 ml nước mắm ngon, khuấy nhẹ cho gia vị tan đều.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả đậu phụ non và rưới trứng tạo vân hoa",
+      "instruction": "Hạ xuống lửa nhỏ để nước chỉ sôi lăn tăn, trượt nhẹ từng miếng đậu phụ non vào nồi nấu 3 phút cho đậu nóng đều và thấm vị. Giữ nước sôi nhẹ, khuấy nước canh theo một chiều tạo xoáy nhẹ rồi từ từ rót bát trứng gà đã đánh tan qua đầu đũa theo vòng tròn, đợi 1 phút cho sợi trứng chín nổi bồng bềnh thành vân hoa vàng.",
+      "tip": "Rót trứng từ từ theo dòng nhỏ trong khi nước đang sôi lăn tăn và khuấy nhẹ một chiều sẽ tạo sợi vân trứng tơ mịn, không bị vón cục hay đục nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành ngò và hoàn thiện món canh",
+      "instruction": "Kiểm tra trứng gà và đậu phụ đã chín nóng hoàn toàn thì tắt bếp ngay, rắc phần hành lá thái nhỏ và ngò rí vào nồi rồi lắc nhẹ nồi thay vì khuấy mạnh. Múc canh ra tô lớn, rắc thêm 1 g tiêu đen xay còn lại lên mặt để dậy hương thơm trước khi dọn cơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 126,
+    "energyKcal": 125.7,
+    "energyKj": 526,
+    "proteinG": 7.5,
+    "fatG": 7.6,
+    "saturatedFatG": 1.5,
+    "carbG": 7.5,
+    "fiberG": 1.3,
+    "sugarG": 3.8,
+    "sodiumMg": 914,
+    "saltG": 2.28,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172476",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "404ca5dfff64e388c6f15c91ed6b3a6f6000a30026a85fe2ec53de241654398b",
+    "researchedFromV2Sha256": "5b8312c83eef8c43ec0141f56e70e627883821f908fc5ab6dbd22f99c8b0c21f"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chay-02",
+    "slug": "canh-nam-hat-sen-tao-do",
+    "title": "Canh nấm hạt sen táo đỏ thanh lọc",
+    "subtitle": "Nước canh trong ngọt thanh từ củ sen, bắp ngọt, hạt sen bở bùi, táo đỏ, kỷ tử và hai loại nấm tươi giòn ngọt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Món chay",
+      "Món canh",
+      "Thanh lọc",
+      "Hạt sen",
+      "Bổ dưỡng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": []
+  },
+  "overview": {
+    "description": "Bát canh chay thanh mát giàu dưỡng chất với nước dùng trong veo ngọt dịu tự nhiên từ củ sen giòn bùi, bắp ngọt, cà rốt và táo đỏ, kết hợp hạt sen ninh mềm tơi cùng nấm đùi gà và nấm kim châm giòn sần sật.",
+    "servingSuggestion": "Múc canh ra tô lớn khi còn nóng hổi, rắc mùi tàu thái nhỏ và lá boa-rô xanh; thưởng thức cùng cơm trắng hoặc ăn riêng như món canh bồi bổ.",
+    "storageAndReheat": "Dùng hết trong ngày để nấm kim châm giữ độ giòn ngọt; nếu bảo quản tủ mát tối đa 24 giờ, đun sôi lại trên lửa vừa 3–5 phút trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "LOTUS_SEED",
+      "name": "Hạt sen khô (bỏ tâm)",
+      "culinaryMeasure": "150 g",
+      "prepNote": "ngâm nước ấm 30 phút cho mềm, tách bỏ tim sen để canh không bị đắng",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LOTUS_ROOT",
+      "name": "Củ sen tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "gọt vỏ, rửa sạch, thái khoanh dày 0,6 cm rồi ngâm nước muối loãng chống thâm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 212.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, tỉa hoa thái khoanh dày 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SWEET_CORN",
+      "name": "Bắp ngọt tách hạt (hoặc cắt khúc)",
+      "culinaryMeasure": "100 g (khoảng 1/2 trái)",
+      "prepNote": "rửa sạch, cắt khúc ngắn hoặc tách hạt để hầm lấy nước ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "JUJUBE_GOJI",
+      "name": "Táo đỏ và kỷ tử khô",
+      "culinaryMeasure": "55 g (45 g táo đỏ + 10 g kỷ tử)",
+      "prepNote": "rửa nhanh qua nước, ngâm nước ấm 10 phút cho nở mềm rồi để ráo",
+      "componentGroup": "broth",
+      "requiredQuantity": 55,
+      "unit": "g",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "100 g",
+      "prepNote": "cắt bỏ gốc, rửa nhanh, thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ENOKI_MUSHROOM",
+      "name": "Nấm kim châm tươi",
+      "culinaryMeasure": "100 g",
+      "prepNote": "cắt gốc, tách chùm vừa ăn, rửa nhẹ tay và để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LEEK",
+      "name": "Hành boa-rô tươi",
+      "culinaryMeasure": "50 g (1/2 cây)",
+      "prepNote": "chia phần đầu trắng thái lát để phi thơm và phần lá xanh cắt nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CULANTRO",
+      "name": "Mùi tàu (ngò gai)",
+      "culinaryMeasure": "15 g (4–5 lá)",
+      "prepNote": "rửa sạch, thái khúc ngắn 0,5–1 cm rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 14.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối hột (hoặc muối biển)",
+      "culinaryMeasure": "10 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 3 g pha nước ngâm củ sen rồi xả bỏ, 7 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "chia 5 g xào sơ rau củ và 5 g nêm hoàn thiện nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi thơm đầu boa-rô và xào sơ nguyên liệu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "ninh củ sen, hạt sen thành nước dùng thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1350,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm mềm hạt sen, táo đỏ và kỷ tử",
+      "instruction": "Ngâm 150 g hạt sen khô trong nước ấm khoảng 30 phút cho mềm, kiểm tra và tách bỏ hết phần tim sen nếu còn để nước canh không bị đắng. Táo đỏ và kỷ tử khô rửa sạch bụi, ngâm nước ấm riêng trong 10 phút cho nở mềm rồi vớt ra để ráo.",
+      "tip": "Ngâm hạt sen trước giúp khi hầm nhanh bở tơi mà không bị sượng lõi bên trong.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế củ sen, cà rốt, bắp ngọt và hai loại nấm",
+      "instruction": "Củ sen gọt vỏ, thái khoanh dày 0,6 cm và ngâm ngay vào thau nước pha 3 g muối hột trong 5 phút cho khỏi thâm, sau đó rửa lại để ráo. Cà rốt gọt vỏ, tỉa hoa cắt khoanh 0,8 cm; bắp ngọt rửa sạch. Nấm đùi gà cắt bỏ gốc, thái lát 0,5 cm; nấm kim châm cắt gốc, tách chùm vừa ăn. Hành boa-rô thái riêng đầu trắng và lá xanh; mùi tàu thái nhỏ.",
+      "tip": "Ngâm củ sen trong nước muối loãng ngay sau khi thái giữ cho lát sen trắng giòn và đẹp mắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành boa-rô và xào sơ củ quả lấy ngọt",
+      "instruction": "Đun nóng 15 ml dầu ăn trong nồi sâu lòng trên lửa vừa, phi thơm phần đầu trắng hành boa-rô trong 30 giây. Cho nấm đùi gà, củ sen, cà rốt, bắp ngọt và hạt sen vào đảo đều 2 phút cùng 4 g muối hột và 5 g hạt nêm chay cho nguyên liệu ngấm vị.",
+      "tip": "Xào sơ củ quả và nấm với chút gia vị trước khi đổ nước giúp nước canh ngọt đậm và thơm hơn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm mềm hạt sen, củ sen và táo đỏ",
+      "instruction": "Đổ 1500 ml nước lọc vào nồi, bật lửa lớn đun sôi rồi hạ về lửa nhỏ, mở hé vung hầm 15 phút và hớt sạch bọt nổi để nước canh trong veo. Tiếp theo cho táo đỏ vào hầm thêm 10 phút cho hạt sen chín bở, củ sen mềm giòn và táo tiết vị ngọt dịu.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín nấm kim châm và kỷ tử",
+      "instruction": "Thả nấm kim châm và kỷ tử vào nồi canh, nêm thêm 3 g muối hột cùng 5 g hạt nêm chay còn lại. Đun sôi lăn tăn trên lửa vừa trong 3 phút cho nấm kim châm vừa chín tới, giữ được độ giòn ngọt tự nhiên.",
+      "tip": "Nấm kim châm chín rất nhanh, chỉ nên nấu 3 phút để không bị dai và mất vị ngọt thanh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện tô canh chay thanh mát",
+      "instruction": "Nêm nếm lại độ mặn ngọt hài hòa của nước canh rồi tắt bếp, thả phần lá xanh hành boa-rô và mùi tàu thái nhỏ vào khuấy nhẹ. Múc canh nấm hạt sen táo đỏ ra tô lớn và thưởng thức ngay khi còn nóng ấm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 201,
+    "energyKcal": 200.7,
+    "energyKj": 840,
+    "proteinG": 6.2,
+    "fatG": 4.3,
+    "saturatedFatG": 0.6,
+    "carbG": 38.6,
+    "fiberG": 6.8,
+    "sugarG": 11.3,
+    "sodiumMg": 1110,
+    "saltG": 2.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169246",
+      "USDA FDC 169248",
+      "USDA FDC 169253",
+      "USDA FDC 169998",
+      "USDA FDC 170148 Fresh",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC Jujube Ref",
+      "VN Culinary Herb Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3df5b97c8d14f1651b80f2c55ab5ae11932558eb3defedb367cc5c36de2e38c2",
+    "researchedFromV2Sha256": "5b7aeb5a623cff7471d8b6c2d9766918dcd70545127f4aaf5dcd79475aa9e284"
+  }
+}

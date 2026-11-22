@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4ec35a6c12daa33d",
+    "slug": "muc-kho-tieu",
+    "title": "Mực kho tiêu",
+    "subtitle": "Mực tươi cắt khoanh khứa vảy rồng giòn ngọt kho tiêu đen cay nồng, nước sốt nâu cánh gián sánh đậm cực bắt cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Mực tươi",
+      "Tiêu đen",
+      "Nam Bộ",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Những khoanh mực tươi trụng sơ giữ nguyên độ giòn sần sật, thấm đẫm nước kho mặn ngọt màu cánh gián quyện mùi hành tỏi phi thơm và tiêu đen xay cay nồng.",
+    "servingSuggestion": "Múc mực kho tiêu ra đĩa sâu lòng, rắc thêm tiêu đen xay và hành lá cắt khúc; ăn nóng với cơm trắng và dưa leo thái lát.",
+    "storageAndReheat": "Ngon nhất khi dùng hết trong ngày để giữ độ giòn của mực; nếu bảo quản ngăn mát tối đa 24 giờ, làm nóng nhanh trên chảo lửa nhỏ khoảng 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực lá hoặc mực ống tươi",
+      "culinaryMeasure": "450 g",
+      "prepNote": "làm sạch túi mực, nội tạng và răng mắt, khứa caro nhẹ rồi cắt khoanh hoặc miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (10 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "15 g (1–2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 2,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu trắng nấu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha nước ngâm khử mùi tanh mực rồi xả bỏ",
+      "componentGroup": "process",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 1.49,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để ướp mực tạo vị mặn thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "chia 8 g thắng nước màu cánh gián và 4 g ướp mực",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp mực",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp mực và rắc mặt lúc hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng thắng nước màu và phi thơm hành tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "dùng 20 ml hãm nước màu và 30 ml hỗ trợ kho mực",
+      "componentGroup": "broth",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử tanh và trụng sơ mực tươi",
+      "instruction": "Rút bỏ túi mực, nội tạng, mắt và răng ở đầu 450 g mực tươi, lột bỏ lớp da ngoài nếu thích rồi ngâm mực với nước pha 15 ml rượu trắng trong 8 phút để khử mùi tanh, rửa sạch và khứa vảy rồng, cắt miếng vừa ăn. Trụng nhanh mực qua nồi nước sôi 1 phút rồi vớt ra để thật ráo.",
+      "tip": "Trụng nhanh qua nước sôi giúp mực săn giòn và hạn chế tiết quá nhiều nước loãng khi kho.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp mực cùng nước mắm và tiêu đen xay",
+      "instruction": "Cho mực đã ráo vào tô, ướp với 25 ml nước mắm ngon, 4 g đường cát trắng, 4 g hạt nêm, 1,5 g tiêu đen xay và 1 quả ớt hiểm thái lát. Trộn đều và để 15 phút cho mực thấm gia vị.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Thắng nước màu và phi thơm hành tỏi",
+      "instruction": "Làm nóng nồi đất hoặc chảo với 30 ml dầu ăn và 8 g đường cát trắng còn lại trên lửa nhỏ đến khi đường tan và chuyển màu nâu cánh gián. Rót nhanh 20 ml nước lọc khuấy đều rồi cho hành tím và tỏi băm vào phi thơm 1 phút.",
+      "tip": "Phi hành tỏi trên lửa nhỏ sau khi hãm nước màu để hành tỏi thơm vàng mà không bị cháy đắng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đảo săn mực trên lửa lớn",
+      "instruction": "Vặn lửa lớn, trút toàn bộ mực đã ướp vào nồi đảo nhanh tay trong 3 phút cho bề mặt mực săn lại và áo đều nước màu cánh gián.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu đến khi nước sốt sánh sệt",
+      "instruction": "Thêm 30 ml nước lọc còn lại vào nồi, hạ lửa nhỏ kho liu riu không đậy nắp trong 7 phút cho đến khi mực chín trắng đục hoàn toàn và nước kho rút cạn sánh bóng bám quanh từng miếng mực.",
+      "tip": "Không kho mực quá 10 phút vì thịt mực sẽ bị teo nhỏ, dai cứng và mất đi độ giòn ngọt tự nhiên.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu đen và dọn dùng nóng",
+      "instruction": "Nêm lại vừa miệng, thả hành lá cắt khúc, quả ớt hiểm thái lát còn lại và 1,5 g tiêu đen xay vào đảo nhẹ rồi tắt bếp. Múc mực kho tiêu ra đĩa và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 226,
+    "energyKcal": 225.9,
+    "energyKj": 945,
+    "proteinG": 21,
+    "fatG": 10.2,
+    "saturatedFatG": 1.7,
+    "carbG": 11.9,
+    "fiberG": 0.7,
+    "sugarG": 5.2,
+    "sodiumMg": 1064,
+    "saltG": 2.66,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "000d2fdcd3a68e9d187c99b3c3027b2f5993f9ded508ceb88f47557d6272b6c7",
+    "researchedFromV2Sha256": "ef4f133991164537581e78d5684e547d87bbaa727a2865ec4d7403401d638d9f"
+  }
+}

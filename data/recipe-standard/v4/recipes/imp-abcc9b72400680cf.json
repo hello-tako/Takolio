@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-abcc9b72400680cf",
+    "slug": "trung-cuon-hanh-la-trung",
+    "title": "Trứng cuộn hành lá áp chảo kiểu Trung",
+    "subtitle": "Những cuộn trứng mỏng mềm xốp mịn thơm lừng hành lá và tiêu trắng, rưới nhẹ xì dầu nhạt đậm đà cho bữa sáng hoặc món khai vị"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Trứng cuộn",
+      "Nhanh gọn",
+      "Khai vị",
+      "Bữa sáng",
+      "Trung Hoa"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng cuộn hành lá đơn giản nhưng tinh tế của bếp Hoa, tráng từng lớp mỏng trên chảo chống dính với chút bột bắp và rượu Thiệu Hưng giúp trứng xốp mềm ẩm mượt, cuộn tròn cắt khúc gọn đẹp rồi rưới xì dầu nhạt thơm dịu.",
+    "servingSuggestion": "Xếp các khúc trứng cuộn ra đĩa, rưới đều xì dầu nhạt lên mặt hoặc chấm riêng, ăn nóng với cơm trắng hoặc cháo trắng rất bắt vị.",
+    "storageAndReheat": "Món ngon nhất khi thưởng thức nóng ngay sau khi cuộn; nếu dư, bọc kín để ngăn mát tối đa 24 giờ và áp chảo lại 1 phút trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "5 quả (~250 g)",
+      "prepNote": "đập ra tô lớn ở nhiệt độ phòng để đánh quyện mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (~40 g, khoảng 3 cây)",
+      "prepNote": "rửa sạch, thấm thật khô rồi thái thật nhỏ cả phần đầu trắng và lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm vừa vào hỗn hợp trứng ngay trước khi tráng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo hương thơm ấm dịu và khử mùi tanh trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "giúp cân bằng vị và giúp trứng lên màu vàng dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan với rượu trước khi trộn vào trứng giúp miếng trứng mềm xốp hơn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "hòa tan bột bắp và giúp trứng dậy mùi thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới trực tiếp lên trứng cuộn khi dọn hoặc dùng làm nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia đều để tráng mỏng mặt chảo chống dính qua từng mẻ trứng",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái hành lá và đánh mịn hỗn hợp trứng",
+      "instruction": "Hành lá rửa sạch, thấm khô rồi thái thật nhỏ. Đập 5 quả trứng gà vào tô lớn, thêm 4 g muối ăn, 1 g tiêu trắng xay và 2 g đường cát trắng. Hòa 3 g bột bắp với 10 ml rượu Thiệu Hưng cho tan mịn rồi đổ vào tô cùng hành lá, dùng đũa đánh đều tay đến khi lòng trắng và lòng đỏ quyện hoàn toàn.",
+      "tip": "Sau khi nêm muối vào trứng nên đem tráng ngay, tránh để lâu khiến trứng bị tách nước và kém xốp mịn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm nóng chảo và tráng lớp trứng mỏng",
+      "instruction": "Đặt chảo chống dính lên bếp lửa vừa, tráng một lớp mỏng dầu ăn (khoảng 1/3 lượng dầu) khắp lòng chảo. Múc 1/3 lượng hỗn hợp trứng đổ vào chảo, nghiêng nhẹ chảo xoay tròn để trứng trải thành lớp mỏng đều.",
+      "tip": "Sử dụng chảo chống dính phẳng đáy giúp lớp trứng mỏng đều và không bị rách mép khi cuộn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên chín tới và cuộn trứng khi còn nóng",
+      "instruction": "Hạ xuống lửa vừa nhỏ, chiên khoảng 2 phút đến khi mặt dưới chín vàng nhạt và mặt trên vừa se lại nhưng vẫn còn hơi ẩm bóng. Dùng xẻng mềm hoặc đũa cuộn tròn tấm trứng từ mép ngoài vào trong ngay trên chảo, nhẹ nhàng gắp cuộn trứng ra đĩa.",
+      "tip": "Không chiên khô quá vì mặt trứng hơi ẩm sẽ giúp các lớp cuộn dính chặt vào nhau và không bị nứt gãy.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Tráng và cuộn nốt hai mẻ trứng còn lại",
+      "instruction": "Dùng giấy thấm dầu hoặc cọ tráng thêm một lớp mỏng dầu ăn lên chảo giữa mỗi mẻ, tiếp tục đổ 2 phần trứng còn lại tráng và cuộn tương tự cho đến khi hết hỗn hợp.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Để định hình và cắt khoanh vừa ăn",
+      "instruction": "Để các cuộn trứng nghỉ trên thớt sạch khoảng 2 phút cho bớt nóng và định hình chắc tay, rồi dùng dao sắc cắt thành từng khúc dài khoảng 3–4 cm thật gọn đẹp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới xì dầu nhạt và dọn nóng",
+      "instruction": "Xếp các khúc trứng cuộn hành lá ra đĩa phẳng, rưới đều 15 ml xì dầu nhạt lên bề mặt (hoặc chừa lại ra chén nhỏ làm nước chấm) và thưởng thức ngay khi trứng còn nóng mềm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 271,
+    "energyKcal": 270.6,
+    "energyKj": 1132,
+    "proteinG": 14.9,
+    "fatG": 20.3,
+    "saturatedFatG": 4.9,
+    "carbG": 5.5,
+    "fiberG": 0.7,
+    "sugarG": 1.9,
+    "sodiumMg": 1439,
+    "saltG": 3.6,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "943b96147f67772de3ee35f57398dfc50e1879b102de1d654bbc464785b91fd9",
+    "researchedFromV2Sha256": "0ae67a8d69b3b9edd1741d99006f9d949343067d3d683cfc07468b58d9f482f5"
+  }
+}

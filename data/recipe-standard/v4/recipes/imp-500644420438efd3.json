@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-500644420438efd3",
+    "slug": "dau-phu-hap-sa",
+    "title": "Đậu phụ hấp sả xì dầu thanh đạm",
+    "subtitle": "Đậu phụ trắng mềm mịn hấp cùng sả băm xào thơm và xì dầu đậm đà, điểm hành lá dầu mè nhẹ bụng cho bữa tối"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Đậu phụ",
+      "Thanh đạm",
+      "Dễ nấu",
+      "Món chay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ non mịn hấp cách thủy cùng nước sốt xì dầu đậm dịu và sả xào vàng thơm lừng, giữ trọn vị béo bùi tự nhiên của đậu nành, ít dầu mỡ và rất dễ tiêu hóa.",
+    "servingSuggestion": "Dọn nóng nguyên đĩa đậu phụ hấp sả ra bàn, rưới thêm chút xì dầu pha ớt nếu thích đậm vị, ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Món đậu phụ hấp ngon nhất khi dùng nóng ngay trong bữa để đậu mềm mọng không bị xốp rỗ; nếu còn dư, bảo quản ngăn mát tối đa 24 giờ rồi hấp lại 4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng tươi",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "chọn bìa đậu trắng ngà mịn màng, rửa nhẹ rồi cắt miếng vuông dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc lớp vỏ già; 2 cây băm nhuyễn để xào thơm, 1 cây đập dập cắt khúc lót và phủ mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh rắc lên mặt đậu sau khi hấp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát mỏng rải lên mặt đậu phụ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "rưới ướp lên đậu phụ để tạo vị mặn thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "6 g (1,5 muỗng cà phê)",
+      "prepNote": "rắc đều lên mặt đậu phụ cùng xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "hòa cùng xì dầu giúp vị nước hấp dịu thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi xào thơm phần sả băm trước khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới nhẹ lên đĩa đậu hấp ngay trước khi dọn để tăng hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (hấp cách thủy)",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "đổ đáy nồi hấp đun sôi",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đậu phụ trắng, sả, hành lá và ớt",
+      "instruction": "Rửa nhẹ 3 bìa đậu phụ dưới vòi nước mát, để thật ráo rồi cắt thành từng miếng vuông dày khoảng 1,5 cm. Bóc vỏ già 3 cây sả: băm nhuyễn 2 cây, đập dập cắt khúc 4 cm với 1 cây còn lại. Rửa sạch hành lá thái nhỏ và thái lát mỏng 2 quả ớt tươi.",
+      "tip": "Chọn bìa đậu phụ mới làm có mùi thơm nhẹ, cầm mềm mại và đàn hồi để khi hấp đậu giữ được vị béo mịn tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp đậu phụ với xì dầu, đường và hạt nêm chay",
+      "instruction": "Xếp các miếng đậu phụ vào đĩa sâu lòng chịu nhiệt (lót sả đập dập bên dưới). Hòa tan 25 ml xì dầu, 6 g hạt nêm chay nấm hương và 3 g đường cát trắng rồi rưới đều lên mặt các miếng đậu, để nghỉ 10 phút cho gia vị thấm nhẹ vào thớ đậu.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào sả băm dậy mùi thơm vàng nhẹ",
+      "instruction": "Làm nóng 15 ml dầu ăn trên chảo nhỏ ở lửa vừa, cho phần sả băm nhuyễn vào đảo đều tay khoảng 2 phút đến khi sả săn lại, ngả vàng nhẹ và dậy mùi thơm nồng thì tắt bếp.",
+      "tip": "Xào chín thơm sả băm trước khi hấp giúp tinh dầu sả tiết ra quyện vào nước xì dầu, khử bớt vị hăng sống của sả.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp cách thủy đậu phụ thấm hương sả ớt",
+      "instruction": "Rải đều phần sả băm đã xào thơm cùng ớt tươi thái lát lên mặt từng miếng đậu phụ. Đun sôi 500 ml nước lọc trong nồi hấp, đặt đĩa đậu vào xửng, đậy kín nắp và hấp ở lửa vừa trong 12 phút cho đậu nóng mềm và thấm đẫm hương sả.",
+      "tip": "Không hấp đậu phụ ở lửa quá lớn quá lâu vì hơi nước sôi mạnh dễ làm mặt đậu bị rỗ bọt khí.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rắc hành lá giữ sắc xanh tươi",
+      "instruction": "Mở nắp nồi hấp, rắc đều phần hành lá thái nhỏ lên trên mặt các miếng đậu phụ rồi đậy nắp hấp thêm khoảng 30 giây cho hành vừa chín tái xanh mướt, sau đó tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè thơm và dọn dùng nóng",
+      "instruction": "Nhấc đĩa đậu phụ ra khỏi xửng hấp cẩn thận, rưới đều 5 ml dầu mè thơm lên trên mặt đĩa cho dậy mùi và bóng đẹp, dọn ăn nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 179,
+    "energyKcal": 178.8,
+    "energyKj": 748,
+    "proteinG": 13.3,
+    "fatG": 12.4,
+    "saturatedFatG": 1.8,
+    "carbG": 7.2,
+    "fiberG": 1.5,
+    "sugarG": 2.1,
+    "sodiumMg": 856,
+    "saltG": 2.14,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c65c15a06decc2ab7f448d9daca352fcf5f5dfa58a23741b7709fe2e9e645941",
+    "researchedFromV2Sha256": "b791bcdf2b9a34e5a54b2300d4e171e02d11665f245d578d5234ad7acc1b4a69"
+  }
+}

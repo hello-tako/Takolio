@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a24e0f07380bfdc2",
+    "slug": "suon-ham-galbi-han",
+    "title": "Sườn bò hầm kiểu Hàn (Galbi Jjim)",
+    "subtitle": "Sườn bò hầm mềm róc xương quyện sốt tương ngọt bóng, thấm vị củ cải, cà rốt, nấm hương và táo đỏ sang trọng"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_lau_tiec",
+    "difficulty": "hard",
+    "prepTimeMinutes": 45,
+    "cookTimeMinutes": 110,
+    "servings": 5,
+    "tags": [
+      "Galbi jjim",
+      "Sườn bò",
+      "Món tiệc",
+      "Hàn Quốc",
+      "Hầm mềm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "braise"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Sườn bò hầm Galbi Jjim là món ăn truyền thống trong các dịp lễ tiệc của Hàn Quốc. Từng dẻ sườn bò được ngâm chần kỹ để sạch tạp chất rồi hầm liu riu với nước ngâm nấm hương, nước tương và rượu mirin đến khi thịt mềm róc xương, phủ lớp sốt nâu bóng óng ánh.",
+    "servingSuggestion": "Bày sườn và rau củ ra đĩa sâu lòng hoặc thố giữ nhiệt, rắc hành lá cắt khúc lên trên, ăn nóng kèm cơm trắng và kim chi cải thảo.",
+    "storageAndReheat": "Có thể bảo quản ngăn mát tủ lạnh tới 3 ngày trong hộp kín (vớt bỏ lớp mỡ đông trên mặt trước khi hâm). Hâm nóng trên bếp lửa nhỏ với 2–3 muỗng canh nước trong 8–10 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_RIB_BONE",
+      "name": "Sườn bò cắt khúc dày (Beef short ribs)",
+      "culinaryMeasure": "1100 g",
+      "prepNote": "lọc bớt phần mỡ dày bên ngoài, chặt khúc dài khoảng 5 cm, ngâm nước lạnh 30 phút cho ra bớt máu",
+      "componentGroup": "main",
+      "requiredQuantity": 1100,
+      "unit": "g",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 495,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô",
+      "culinaryMeasure": "35 g (~5 tai lớn)",
+      "prepNote": "rửa sơ bụi, ngâm trong 500 ml nước lạnh 30–60 phút cho nở mềm; lọc giữ lại 450 ml nước ngâm nấm và cắt bỏ chân nấm",
+      "componentGroup": "main",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DAIKON",
+      "name": "Củ cải trắng",
+      "culinaryMeasure": "300 g",
+      "prepNote": "gọt vỏ, cắt khối vuông cạnh 3,5–4 cm, tỉa nhẹ các góc cạnh để không bị nát khi hầm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 255,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "2 củ vừa (khoảng 220 g)",
+      "prepNote": "gọt vỏ, cắt khúc dày 3–4 cm và gọt tròn nhẹ các cạnh",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ lớn (khoảng 140 g)",
+      "prepNote": "bóc vỏ, chia đôi: một nửa xay nhuyễn pha sốt hầm, nửa còn lại bổ múi cau lớn hầm cùng sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "JUJUBE_GOJI",
+      "name": "Táo đỏ khô (táo tàu)",
+      "culinaryMeasure": "30 g (~8–10 quả)",
+      "prepNote": "rửa sạch, bổ đôi bỏ hạt để cho vào ở giai đoạn cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1,5 củ (khoảng 37,5 g, ~10 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để pha sốt hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "cạo vỏ, băm hoặc giã nhuyễn để khử mùi bò và tăng hương ấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4 cm cho vào cuối cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Hàn Quốc (Xì dầu)",
+      "culinaryMeasure": "90 ml (6 muỗng canh)",
+      "prepNote": "dùng làm nền mặn thơm cho sốt hầm sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 106.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 106.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin Nhật",
+      "culinaryMeasure": "120 ml (1/2 cốc)",
+      "prepNote": "làm mềm thớ thịt bò và tạo độ ngọt thanh cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 138,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 138,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "50 g (~4 muỗng canh)",
+      "prepNote": "hòa tan cùng nước tương tạo vị mặn ngọt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CORN_SYRUP",
+      "name": "Siro gạo / Siro ngô Hàn Quốc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "cho vào ở bước cuối để tạo độ sánh bóng đẹp mắt cho sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~3/4 muỗng cà phê)",
+      "prepNote": "trộn trực tiếp vào hỗn hợp sốt hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới sau khi tắt bếp để giữ trọn hương mè thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng 500 ml ngâm nấm hương giữ lại nước, 1000 ml để chần sườn và châm thêm khi hầm nếu cần",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 375,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nấm hương và ngâm sườn loại bỏ máu thừa",
+      "instruction": "Ngâm 35 g nấm hương khô vào 500 ml nước lọc lạnh khoảng 40 phút cho nở mềm; vớt nấm ra cắt bỏ chân và thái miếng vừa ăn, lọc giữ lại phần nước ngâm nấm trong sạch. Rửa sườn bò, ngâm trong nước lạnh 30 phút và thay nước 2 lần cho ra hết máu thừa.",
+      "tip": "Ngâm sườn đủ thời gian giúp loại bỏ mùi hôi của bò và giữ cho nước sốt hầm sau này thật trong, thanh vị.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần sơ sườn bò cho sạch tạp chất",
+      "instruction": "Đun sôi 1000 ml nước lọc trong nồi lớn trên lửa lớn, thả toàn bộ sườn bò vào chần trong 5 phút, đảo nhẹ để tiết bọt bẩn. Vớt sườn ra rửa lại kỹ dưới vòi nước lạnh cho sạch cặn vụn xương rồi rửa sạch lòng nồi.",
+      "tip": "Rửa sạch nồi sau khi chần giúp nước hầm không bị đục và không bám cặn đen vào mặt thịt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sốt hầm sườn và sơ chế rau củ",
+      "instruction": "Xay nhuyễn 1/2 củ hành tây rồi trộn đều với 90 ml nước tương Hàn Quốc, 120 ml rượu ngọt Mirin Nhật, 50 g đường cát trắng, tỏi băm, gừng băm, 2 g tiêu đen xay và 450 ml nước ngâm nấm hương cho tan đường. Gọt vỏ củ cải trắng và cà rốt, cắt khối 3,5–4 cm và tỉa tròn nhẹ góc cạnh; bổ múi cau nửa hành tây còn lại; bổ đôi táo đỏ khô bỏ hạt; cắt khúc hành lá.",
+      "tip": "Tỉa tròn góc cạnh củ cải và cà rốt giúp rau củ giữ nguyên khối đẹp mắt, không bị sứt vỡ khi hầm lâu."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm sườn giai đoạn đầu trên lửa vừa",
+      "instruction": "Xếp sườn bò đã chần vào nồi sạch, đổ toàn bộ hỗn hợp sốt vừa pha cùng nửa củ hành tây bổ múi cau vào, đậy nắp kín và đun lửa vừa trong 20 phút cho sườn thấm đều gia vị và bắt đầu mềm thớ.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hầm tiếp cùng củ cải, cà rốt và nấm hương",
+      "instruction": "Cho nấm hương, củ cải trắng và cà rốt vào nồi, đảo nhẹ để rau củ ngập trong nước sốt. Đậy nắp, hạ xuống lửa nhỏ và hầm liu riu thêm 55 phút, thỉnh thoảng mở nắp múc sốt rưới lên trên và kiểm tra lượng nước để không bị bén đáy.",
+      "tip": "Nếu nước cạn nhanh trong lúc hầm, châm thêm 100–150 ml nước lọc nóng và giữ lửa nhỏ liu riu.",
+      "timerMinutes": 55
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Thêm táo đỏ, siro gạo và làm bóng sốt",
+      "instruction": "Khi dùng xiên tre xiên qua thịt sườn thấy mềm dễ dàng, cho táo đỏ khô và 30 ml siro gạo vào đảo nhẹ, đậy nắp rim lửa nhỏ thêm 10 phút. Sau đó mở nắp, tăng lửa vừa-lớn khoảng 5 phút, liên tục múc nước sốt dưới đáy rưới đều lên thịt và rau củ đến khi sốt sánh quyện bóng đẹp.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Hoàn thiện hương mè và hành lá trước khi dọn",
+      "instruction": "Tắt bếp, rưới đều 15 ml dầu mè rang Hàn Quốc và thả hành lá cắt khúc vào đảo nhẹ một lượt rồi dọn sườn cùng rau củ ra đĩa sâu lòng thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 488,
+    "energyKcal": 488.2,
+    "energyKj": 2042,
+    "proteinG": 21.6,
+    "fatG": 21.6,
+    "saturatedFatG": 8.2,
+    "carbG": 50.1,
+    "fiberG": 4.1,
+    "sugarG": 34.3,
+    "sodiumMg": 1279,
+    "saltG": 3.2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA Beef Rib / Bone Ref",
+      "USDA FDC 168436",
+      "USDA FDC 168452",
+      "USDA FDC 168836",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Jujube Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "aa467d2cc877f2a3ddf087b28e2690154db2d38f95a39da67f4dc408d17cd3b5",
+    "researchedFromV2Sha256": "a83ddd95ace30fcbfa0926b79e0653fbba6864ebb53c859f729160446d1adfe0"
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-59015074541ba061",
+    "slug": "canh-kho-qua-nhoi-tom",
+    "title": "Canh khổ qua nhồi tôm thịt",
+    "subtitle": "Từng khoanh khổ qua xanh mềm dịu vị đắng ôm trọn nhân tôm tươi và thịt heo băm dai ngọt quyện nấm hương thơm lừng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Nam Bộ",
+      "Thanh nhiệt",
+      "Hải sản",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "pork",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Phiên bản nâng tầm của canh khổ qua nhồi truyền thống với phần nhân kết hợp thịt heo xay béo mềm và tôm tươi băm dai ngọt, điểm xuyết nấm hương thơm bùi trong nước canh thanh trong.",
+    "servingSuggestion": "Múc các khoanh khổ qua nhồi tôm thịt vào tô lớn, chan ngập nước dùng nóng trong, rắc hành lá và chút tiêu xay; ăn kèm cơm trắng hoặc chấm cùng nước mắm ớt.",
+    "storageAndReheat": "Mở hé vung cho canh nguội tự nhiên trước khi cất tủ mát để tránh đọng hơi nước làm canh chua; bảo quản tối đa 24 giờ và đun sôi lại kỹ trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BITTER_MELON",
+      "name": "Khổ qua (mướp đắng) xanh tươi",
+      "culinaryMeasure": "4 trái (~640 g)",
+      "prepNote": "rửa sạch, cắt khoanh dày 3 cm rồi dùng cán muỗng nạo sạch ruột và màng trắng bên trong",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 640,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 524.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bóc vỏ, rút chỉ đen; lấy 180 g băm nhuyễn trộn nhân, giữ lại 8 con chừa đuôi cắm trang trí lên mặt khoanh khổ qua",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 212.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chọn phần nạc vai có chút mỡ để nhân tôm thịt mềm mượt không bị khô",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô (đông cô khô)",
+      "culinaryMeasure": "15 g",
+      "prepNote": "ngâm nước ấm 20 phút cho nở mềm, rửa sạch, cắt bỏ chân nấm cứng rồi băm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0.5 củ (~55 g)",
+      "prepNote": "gọt vỏ, một nửa băm nhỏ trộn nhân tạo màu đẹp, nửa còn lại tỉa hoa thái lát thả vào nước canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2–3 củ)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp nhân tôm thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 cây)",
+      "prepNote": "phần đầu hành trắng băm nhuyễn trộn nhân, phần lá xanh cắt khúc 2 cm rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 6 ml ướp nhân tôm thịt và 14 ml nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "chia 5 g ướp nhân và 5 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ vào nhân để cân vị mặn ngọt dịu dàng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 4 g pha nước chần khổ qua khử đắng và 2 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 2.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp nhân tôm thịt, nửa rắc lên tô canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "nấu nước dùng hầm chín khổ qua và nhân tôm thịt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nấm hương và chần khổ qua giảm đắng",
+      "instruction": "Ngâm 15 g nấm hương khô trong nước ấm 20 phút cho nở mềm hoàn toàn, rửa sạch, bỏ chân cứng rồi băm nhỏ. Rửa sạch 4 trái khổ qua, cắt khoanh tròn dày khoảng 3 cm, dùng cán muỗng nạo thật sạch ruột và lớp màng trắng. Đun sôi nồi nước pha 4 g muối ăn, chần sơ các khoanh khổ qua 2 phút rồi vớt ngay vào nước lạnh, để ráo.",
+      "tip": "Nạo sạch màng trắng và chần sơ qua nước muối rồi ngâm lạnh giúp khoanh khổ qua bớt hẳn vị đắng gắt mà vẫn xanh giòn.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Băm tôm, cà rốt và chuẩn bị hành lá",
+      "instruction": "Lột vỏ 250 g tôm sú và rút sạch chỉ đen. Giữ lại 8 con chừa phần chóp đuôi để cắm trang trí; 180 g tôm còn lại băm hoặc quết nhuyễn. Cà rốt gọt vỏ, băm nhỏ một nửa để trộn nhân và thái lát hoa một nửa. Băm nhuyễn 25 g hành tím cùng đầu trắng của hành lá; phần lá hành xanh cắt khúc 2 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Quết dẻo và ướp nhân tôm thịt",
+      "instruction": "Trộn đều tôm băm nhuyễn, 200 g thịt heo xay, nấm hương băm, cà rốt băm, hành tím và đầu hành lá băm trong tô lớn cùng 6 ml nước mắm, 5 g hạt nêm, 5 g đường và 1 g tiêu đen xay. Quết liên tục theo một chiều 2 phút cho khối nhân dẻo dai rồi ướp 15 phút cho thấm gia vị.",
+      "tip": "Quết nhân kỹ giúp thịt heo và tôm kết dính chặt chẽ, không bị rời rạc hay rã nhân trong nước canh.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Nhồi nhân vào khoanh khổ qua và gắn đuôi tôm",
+      "instruction": "Múc từng lượng nhân tôm thịt nhồi vừa khít vào lòng từng khoanh khổ qua, ấn nhẹ cho mặt nhân phẳng mịn nhưng không nén quá chặt để chừa chỗ nhân nở khi chín. Cắm nhẹ một con tôm nguyên chừa đuôi lên giữa mặt mỗi khoanh khổ qua cho đẹp mắt."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hầm khổ qua nhồi tôm thịt mở nắp cho nước trong",
+      "instruction": "Đun sôi 1,5 lít nước lọc trong nồi rộng đáy, nêm 14 ml nước mắm còn lại, 5 g hạt nêm và 2 g muối ăn. Khi nước sôi đều, nhẹ nhàng xếp từng khoanh khổ qua nhồi và cà rốt thái hoa vào nồi, hạ xuống lửa vừa và nấu mở nắp hoàn toàn trong 20 phút, thỉnh thoảng hớt bọt nổi cho đến khi khổ qua chín mềm và nhân tôm thịt chín chắc hoàn toàn.",
+      "tip": "Không đậy nắp nồi trong suốt lúc hầm để giữ màu xanh tươi cho vỏ khổ qua và giúp nước canh trong vắt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện tô canh khổ qua nhồi tôm",
+      "instruction": "Nếm lại nước canh cho vừa miệng rồi tắt bếp, thả hành lá cắt khúc vào. Nhẹ nhàng gắp các khoanh khổ qua nhồi tôm và cà rốt xếp vào tô, chan nước dùng nóng hổi lên trên, rắc 1 g tiêu đen xay còn lại và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 235,
+    "energyKcal": 234.7,
+    "energyKj": 982,
+    "proteinG": 21.7,
+    "fatG": 11.3,
+    "saturatedFatG": 4.1,
+    "carbG": 13,
+    "fiberG": 4.9,
+    "sugarG": 4.3,
+    "sodiumMg": 1254,
+    "saltG": 3.14,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168393",
+      "USDA FDC 168436",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "cd6a707d509ba6b034868a87d41e07d9fcb9b3445da0c291d6b82fd534736e8d",
+    "researchedFromV2Sha256": "9ca216dce2b47a369237747ce4f653b832212a6d5a81e0f4a0ba7af9265342b3"
+  }
+}

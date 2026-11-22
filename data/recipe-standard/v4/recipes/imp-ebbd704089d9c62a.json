@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ebbd704089d9c62a",
+    "slug": "ga-xao-hanh-tay",
+    "title": "Gà xào hành tây sốt dầu hào",
+    "subtitle": "Thịt đùi gà săn mềm om thấm sốt dầu hào nước tương đậm vị, kết hợp hành tây giòn ngọt và hương sả tỏi thơm lừng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt gà",
+      "Hành tây",
+      "Đậm đà",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà xào hành tây sốt dầu hào có lớp thịt đùi gà mềm mọng không bị khô, thấm đẫm hương sả, hành tím và tỏi phi quyện trong nước sốt mặn ngọt hài hòa cùng những múi hành tây chín tới giòn ngọt thanh.",
+    "servingSuggestion": "Múc gà xào hành tây ra đĩa sâu lòng cùng phần nước sốt nâu óng, rắc thêm chút tiêu đen xay; dùng nóng kèm cơm trắng hoặc bánh mì đều rất ngon.",
+    "storageAndReheat": "Cất hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày; khi dùng hâm nóng trên chảo lửa vừa với 1 muỗng canh nước lọc khoảng 3 phút cho gà và sốt nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà rút xương",
+      "culinaryMeasure": "450 g",
+      "prepNote": "chà muối rửa sạch, thấm khô rồi cắt miếng vừa ăn dày khoảng 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1,5 củ (khoảng 210 g)",
+      "prepNote": "bóc vỏ, rửa sạch, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "1,5 cây (khoảng 30 g)",
+      "prepNote": "bóc bỏ bẹ già, rửa sạch rồi băm thật nhuyễn để ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (khoảng 3 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ để ướp thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp thịt gà và phi thơm lúc xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi và xào săn thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "dùng ướp gà giúp thịt bóng mềm và đậm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "dùng ướp thịt gà dậy mùi thơm truyền thống",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "ướp cùng dầu hào để sốt gà có màu nâu đẹp mắt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 muỗng cà phê (10 g)",
+      "prepNote": "cân bằng vị mặn của nước mắm và xì dầu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (6 g)",
+      "prepNote": "ướp thịt gà thấm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 g)",
+      "prepNote": "nêm bổ sung cho thịt gà đậm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "chia 1 g ướp gà và 1 g rắc mặt đĩa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng om chín kỹ thịt đùi gà trước khi cho hành tây",
+      "componentGroup": "broth",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt đùi gà và các loại hành, sả, tỏi",
+      "instruction": "Thịt đùi gà rút xương rửa sạch, thấm khô rồi cắt miếng vừa ăn dày khoảng 2 cm. Hành tây bóc vỏ, cắt múi cau; sả tươi và hành tím khô băm thật nhuyễn; tỏi khô băm nhỏ và chia làm hai phần."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt đùi gà thấm sốt dầu hào sả tỏi",
+      "instruction": "Cho thịt đùi gà vào tô cùng sả băm, hành tím băm, một nửa lượng tỏi băm, 15 ml dầu hào, 10 ml nước mắm ngon, 10 ml nước tương (xì dầu), 10 g đường cát trắng, 6 g hạt nêm, 3 g muối ăn và 1 g tiêu đen xay. Trộn thật đều và ướp 20–25 phút cho gà ngấm sâu gia vị.",
+      "tip": "Ướp đủ thời gian giúp sả, dầu hào và nước tương thấm vào từng thớ thịt đùi gà mềm ngọt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào săn thịt gà",
+      "instruction": "Đặt chảo lên bếp lửa lớn, đun nóng 25 ml dầu ăn rồi cho phần tỏi băm còn lại vào phi thơm vàng nhẹ. Trút toàn bộ thịt đùi gà đã ướp vào đảo nhanh tay trong 4 phút đến khi thịt săn chắc và vàng cạnh.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om chín kỹ thịt đùi gà với nước lọc",
+      "instruction": "Hạ xuống lửa vừa-nhỏ, rót 40 ml nước lọc vào chảo rồi đậy nắp om khoảng 8 phút cho thịt đùi gà chín hoàn toàn tận lõi (không còn dịch hồng bên trong) và phần sốt hơi sánh lại.",
+      "tip": "Om với lượng nước nhỏ giúp thịt đùi gà chín mềm mọng nước mà gia vị không bị cháy đáy chảo.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào nhanh hành tây giữ độ giòn ngọt",
+      "instruction": "Mở nắp, tăng lên lửa lớn và thả toàn bộ hành tây cắt múi cau vào đảo đều tay trong khoảng 2–3 phút đến khi hành tây vừa chín tới, chuyển màu hơi trong nhưng vẫn giữ được độ giòn ngọt.",
+      "tip": "Chỉ cho hành tây vào sau khi gà đã chín kỹ để hành không bị nhũn nát và vẫn giữ vị ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại và dọn nóng",
+      "instruction": "Nêm nếm lại sốt cho vừa khẩu vị rồi tắt bếp. Bày gà xào hành tây sốt dầu hào ra đĩa, rắc 1 g tiêu đen xay còn lại lên trên và dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 399,
+    "energyKcal": 398.9,
+    "energyKj": 1669,
+    "proteinG": 31.2,
+    "fatG": 22.9,
+    "saturatedFatG": 5.4,
+    "carbG": 16.6,
+    "fiberG": 1.7,
+    "sugarG": 7.7,
+    "sodiumMg": 1543,
+    "saltG": 3.86,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "58242de04412affdc6fe7a3a3d56fa77c0cbf081e22c2ead18e3f27ff92afb4f",
+    "researchedFromV2Sha256": "218863f835479482e8712b3da375608d1c980348acc90ca9272c6458b5724562"
+  }
+}

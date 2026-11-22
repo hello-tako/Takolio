@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-835a527c81a79e9c",
+    "slug": "sup-bap-cai-thit-bam",
+    "title": "Súp cải thảo thịt bằm kiểu Trung",
+    "subtitle": "Nước dùng gà trong ngọt nấu cùng cải thảo mềm thanh, thịt heo bằm xào thơm và gừng ấm bụng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Cải thảo",
+      "Thịt bằm",
+      "Trung Hoa",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món canh súp cải thảo thịt bằm kiểu Trung Hoa có nước dùng trong veo ngọt dịu từ gà và rau củ, thịt heo bằm ướp mềm đậm vị kết hợp cùng cọng cải thảo chín tới ấm lòng cho bữa cơm tối.",
+    "servingSuggestion": "Múc canh ra tô sứ lớn, nhỏ vài giọt dầu mè thơm và rắc hành lá thái nhỏ lên mặt; ăn nóng cùng cơm trắng.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn đun sôi lại trên lửa vừa 3–4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "NAPA_CABBAGE",
+      "name": "Cải thảo tươi",
+      "culinaryMeasure": "500 g",
+      "prepNote": "tách lá, rửa sạch, cắt khúc 3–4 cm, để riêng phần cọng trắng và phần lá xanh",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "250 g",
+      "prepNote": "chọn thịt nạc vai có chút mỡ để thịt bằm mềm ngọt không bị khô",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, chia một nửa băm nhỏ ướp thịt và một nửa thái lát mỏng phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 3 cây)",
+      "prepNote": "rửa sạch, thái nhỏ, tách riêng phần đầu trắng phi thơm và lá xanh rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "pha cùng nước lọc làm nền nước canh ngọt thanh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 475,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (~4 muỗng cà phê)",
+      "prepNote": "chia 5 ml ướp thịt heo xay và 15 ml nêm vào nước canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp thịt bằm và 4 g nêm chỉnh nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "0,6 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp khử mùi và tạo hương thơm cay ấm cho thịt bằm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.6,
+      "unit": "g",
+      "grossGrams": 0.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "trộn ướp cùng thịt xay giúp thịt mềm mịn, không bị bở",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "ướp thịt heo xay để khử mùi và dậy hương thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 10.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng để phi thơm gừng hành và xào săn thịt bằm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "tùy chọn nhỏ vào tô canh trước khi tắt bếp để tăng hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "tùy chọn gọt vỏ, thái lát mỏng nấu cùng cọng cải thảo cho nước ngọt và đẹp màu",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "515 ml",
+      "prepNote": "chia 15 ml trộn ướp giúp thịt bằm mềm dẻo và 500 ml hòa cùng nước dùng gà",
+      "componentGroup": "broth",
+      "requiredQuantity": 515,
+      "unit": "ml",
+      "grossGrams": 515,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 463.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cải thảo, cà rốt, gừng và hành lá",
+      "instruction": "Tách từng lá cải thảo rửa sạch, để ráo rồi cắt khúc dài 3–4 cm, tách riêng phần cọng trắng cứng và phần lá xanh mềm ra hai rổ. Gọt vỏ cà rốt thái lát mỏng (nếu dùng). Gừng tươi chia một nửa băm nhỏ, một nửa thái lát mỏng; hành lá thái nhỏ tách riêng đầu trắng và lá xanh.",
+      "tip": "Tách riêng cọng trắng và lá xanh cải thảo vì phần cọng cần nấu lâu hơn, giúp cả hai phần chín đồng đều mà lá không bị nhũn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp và quết dẻo thịt heo xay",
+      "instruction": "Cho 250 g thịt heo xay vào tô cùng gừng băm, 5 ml xì dầu nhạt, 2 g muối ăn, 0,6 g tiêu trắng xay, 3 g bột bắp, 15 ml rượu Thiệu Hưng và 15 ml nước lọc. Dùng đũa khuấy đều theo một chiều khoảng 1 phút cho thịt ngấm nước và dẻo mịn, để nghỉ 10 phút.",
+      "tip": "Quết thịt heo xay theo một chiều với chút nước lọc và bột bắp giúp thịt mềm ẩm, không bị khô xác khi nấu canh.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm gừng hành và xào săn thịt bằm",
+      "instruction": "Đặt nồi lên bếp lửa vừa, làm nóng 15 ml dầu ăn rồi cho gừng thái lát và đầu hành trắng vào phi thơm 30 giây. Trút thịt heo xay đã ướp vào, dùng đũa đảo tơi liên tục khoảng 3–4 phút đến khi thịt săn rời hoàn toàn và không còn màu hồng sống.",
+      "tip": "Xào săn thịt trước giúp nước canh thơm đậm đà và giữ được độ trong, ít bọt hơn so với thả thịt sống vào nước.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu sôi nước dùng gà và hầm phần cọng cải thảo",
+      "instruction": "Đổ 500 ml nước dùng gà và 500 ml nước lọc còn lại vào nồi thịt, bật lửa lớn đun sôi rồi hớt sạch bọt nổi. Thả phần cọng trắng cải thảo (và cà rốt thái lát nếu dùng) vào, hạ lửa vừa nấu khoảng 5 phút cho cọng cải vừa mềm ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu phần lá cải thảo và nêm gia vị",
+      "instruction": "Cho phần lá xanh cải thảo vào nồi, nấu thêm 3 phút trên lửa vừa đến khi lá vừa chín tới và giữ được màu xanh tươi. Nêm 15 ml xì dầu nhạt còn lại và 4 g muối ăn vào khuấy đều, nếm thử và điều chỉnh cho vừa khẩu vị.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc hành lá và dọn nóng",
+      "instruction": "Tắt bếp ngay để lá cải thảo không bị quá mềm. Nhỏ 5 ml dầu mè thơm (nếu dùng) và rắc phần lá xanh hành lá lên mặt nồi canh, múc ra tô lớn và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 254,
+    "energyKcal": 254.1,
+    "energyKj": 1063,
+    "proteinG": 14.3,
+    "fatG": 18.7,
+    "saturatedFatG": 5.8,
+    "carbG": 7,
+    "fiberG": 2,
+    "sugarG": 2.9,
+    "sodiumMg": 1260,
+    "saltG": 3.15,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 167902",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 169977",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "48b2cc76fc304e9b77943b86b25cafb865295aacd4f57738ddcbe0b64dedb821",
+    "researchedFromV2Sha256": "aed14aa421063f7fc2323b437e1234ea8a99b7f5ac13b5fcffa92b91443ef66f"
+  }
+}

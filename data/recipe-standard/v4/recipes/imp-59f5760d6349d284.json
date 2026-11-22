@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-59f5760d6349d284",
+    "slug": "nam-nhoi-thit-hap",
+    "title": "Nấm đùi gà nhồi thịt hấp xì dầu",
+    "subtitle": "Nấm đùi gà thớ chắc nhồi nhân thịt heo xay quết dẻo cùng trứng gà, hấp chín mọng ngọt rồi rưới sốt dầu hào xì dầu sánh bóng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_hap_luoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Nấm đùi gà",
+      "Thịt băm",
+      "Khéo tay",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "molluscs",
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng nấm đùi gà giòn ngọt tự nhiên ôm lấy phần nhân thịt heo xay mềm dẻo đậm hương gừng hành và dầu hào, hấp chín tới giữ trọn nước ngọt rồi phủ lớp sốt sánh bóng thơm mùi dầu mè.",
+    "servingSuggestion": "Xếp nấm nhồi thịt ra đĩa nóng, rưới sốt dầu hào sánh mịn và rắc hành lá xanh thái nhỏ; dùng ngay cùng cơm trắng nóng.",
+    "storageAndReheat": "Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 2 ngày; khi ăn hấp cách thủy 5–7 phút cho nóng đều và giữ nguyên độ ẩm của nhân thịt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "450 g (khoảng 6–7 cây vừa)",
+      "prepNote": "rửa sạch, bỏ gốc già, bổ đôi theo chiều dọc rồi khía caro nhẹ mặt trong",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 427.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "400 g (chọn loại có chút mỡ cho mềm)",
+      "prepNote": "trộn quết đều một chiều với gia vị cho dẻo dính",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà",
+      "culinaryMeasure": "1 quả (khoảng 50 g)",
+      "prepNote": "đánh tan trộn vào nhân giúp thịt mềm kết dính",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, thái nhỏ chia để trộn nhân và rắc mặt sau khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm thật nhuyễn để khử mùi thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml trộn nhân thịt và 10 ml nấu nước sốt rưới",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml ướp nhân và 15 ml nấu nước sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "ướp nhân giúp thịt thơm và khử mùi hôi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "12 g (~1,5 muỗng canh)",
+      "prepNote": "chia 6 g trộn nhân, 2 g phủ mặt nấm và 4 g làm sánh sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "trộn sau cùng vào nhân thịt cho thơm béo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "chia đều 4 g ướp nhân và 4 g pha sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vừa vị cho nhân thịt heo xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo vị cay thơm nhẹ cho nhân thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "thêm vào nước sốt giúp hậu vị thanh nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.05,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.05,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "kết hợp nước ngọt tiết ra từ đĩa hấp để nấu sốt sánh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế và khía mặt nấm đùi gà",
+      "instruction": "Rửa sạch 450 g nấm đùi gà tươi, cắt bỏ phần gốc già rồi bổ đôi từng cây theo chiều dọc, dùng mũi dao khía nhẹ hình caro lên mặt cắt bên trong và thấm thật khô bằng khăn giấy. Hành lá tươi thái nhỏ (chừa lại ít lá xanh để rắc mặt), gừng tươi băm nhuyễn.",
+      "tip": "Khía nhẹ mặt cắt của nấm và thấm khô hoàn toàn giúp lớp bột bắp và nhân thịt bám chặt, không bị bung rời khi hấp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Quết dẻo nhân thịt heo xay với gia vị",
+      "instruction": "Cho 400 g thịt heo xay vào tô lớn cùng trứng gà đánh tan, gừng băm, hành lá thái nhỏ, 15 ml xì dầu nhạt, 15 ml dầu hào, 15 ml rượu Thiệu Hưng, 6 g bột bắp, 5 ml dầu mè thơm, 4 g đường cát trắng, 3 g muối ăn và 1,5 g tiêu trắng xay. Dùng thìa quết mạnh theo một chiều đến khi nhân thành khối dẻo mịn rồi để nghỉ 10 phút.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Áo bột bắp và nhồi nhân lên miếng nấm",
+      "instruction": "Rắc mỏng khoảng 2 g bột bắp lên mặt khía của từng miếng nấm đùi gà, sau đó múc từng phần nhân thịt đặt lên trên, dùng thìa ấn và miết nhẹ quanh mép để nhân ôm sát vào thớ nấm. Xếp nấm nhồi vào đĩa sâu lòng chịu nhiệt, hướng mặt nhân lên trên.",
+      "tip": "Lớp bột bắp mỏng đóng vai trò như chất kết dính tự nhiên giữa bề mặt nấm trơn và khối nhân thịt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp chín nấm nhồi thịt trên lửa lớn",
+      "instruction": "Đun sôi mạnh nước trong nồi xửng, đặt đĩa nấm vào hấp ở lửa lớn trong 15 phút. Kiểm tra bằng cách xiên nhẹ tăm vào phần nhân dày nhất: thấy nước chảy ra trong suốt, thịt chín trắng chắc hoàn toàn không còn màu hồng sống và nấm mềm ngọt là đạt.",
+      "tip": "Xếp các miếng nấm hơi thưa nhau để hơi nước lưu thông đều, giúp nhân thịt chín đồng nhất mà nấm không bị nhũn nước.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Tận dụng nước hấp nấu sốt dầu hào sánh mịn",
+      "instruction": "Nhấc đĩa nấm ra khỏi xửng, chắt toàn bộ phần nước ngọt tiết ra trên đĩa vào chảo nhỏ và đậy nắp giữ ấm đĩa nấm. Thêm phần nước lọc còn lại (chừa 15 ml hòa tan 4 g bột bắp) sao cho đủ khoảng 100 ml lỏng, cho tiếp 10 ml xì dầu nhạt, 15 ml dầu hào, 4 g đường cát trắng và 5 ml giấm gạo vào đun sôi nhẹ trên lửa nhỏ rồi rót nước bột bắp vào khuấy khoảng 2 phút đến khi sốt sánh bóng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới sốt nóng và hoàn thiện đĩa nấm hấp",
+      "instruction": "Rưới đều phần nước sốt dầu hào xì dầu còn nóng hổi lên từng miếng nấm nhồi thịt, rắc nốt phần hành lá xanh thái nhỏ lên trên và dọn ăn ngay khi còn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 362,
+    "energyKcal": 361.9,
+    "energyKj": 1514,
+    "proteinG": 22.8,
+    "fatG": 23.9,
+    "saturatedFatG": 8.5,
+    "carbG": 14.2,
+    "fiberG": 2.9,
+    "sugarG": 4.3,
+    "sodiumMg": 1054,
+    "saltG": 2.64,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 167902",
+      "USDA FDC 168580",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a894daa684785b91de51c6a01b4de176a4c4dadd24c12ea80e110825f03edbb1",
+    "researchedFromV2Sha256": "2a6ced45abecb9459f3d941c6f8809601f34f96a9daa8ad54faa914ee5fbd4b1"
+  }
+}

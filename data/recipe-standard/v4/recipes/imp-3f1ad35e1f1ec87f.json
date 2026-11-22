@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3f1ad35e1f1ec87f",
+    "slug": "muc-rim-dua-mien-trung",
+    "title": "Mực rim dứa miền Trung",
+    "subtitle": "Mực khô nướng thơm đập mềm xé sợi rim cùng nước cốt dứa chín, tương ớt, dầu hào và mè rang đậm vị cay ngọt miền Trung"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "trung",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món rim",
+      "Miền Trung",
+      "Hải sản",
+      "Mực khô",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đặc sản miền Trung với từng thớ mực khô nướng thơm đập mềm thấm đẫm sốt dứa chín chua ngọt quyện tương ớt cay nồng, dầu hào đậm đà và mè rang bùi béo.",
+    "servingSuggestion": "Xếp mực rim dứa ra đĩa, rắc thêm chút tiêu xay, ăn nóng với cơm trắng kèm dưa leo thái lát hoặc nhâm nhi cùng bánh tráng nướng.",
+    "storageAndReheat": "Để nguội hoàn toàn rồi cho vào hũ thủy tinh đậy kín, bảo quản ngăn mát tối đa 7 ngày; có thể ăn nguội trực tiếp hoặc đảo nhanh trên chảo ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "DRIED_SQUID",
+      "name": "Mực khô nguyên con",
+      "culinaryMeasure": "280 g",
+      "prepNote": "nướng thơm vừa chín trên lửa nhỏ, đập mềm loại bỏ phần cháy xém rồi xé sợi vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 280,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g cả vỏ)",
+      "prepNote": "gọt vỏ, bỏ mắt, băm nhuyễn hoặc ép vắt lấy nước cốt dứa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.6 củ (15 g, ~5 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 13.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (15 g)",
+      "prepNote": "rửa sạch, bỏ cuống rồi băm thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột khô",
+      "culinaryMeasure": "2 g (1 muỗng cà phê)",
+      "prepNote": "trộn vào chảo mực lúc hoàn thành để tăng vị cay và màu đỏ đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè (vừng) trắng",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rang khô trên lửa nhỏ đến khi vàng thơm, nổ lách tách",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để pha nước sốt rim dứa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt đậm và độ sánh bóng cho sốt rim",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo màu đỏ cam hài hòa và vị chua dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị cay ngọt sánh mịn đặc trưng miền Trung",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "hòa tan cùng nước cốt dứa và gia vị sốt rim",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lúc tắt bếp cho dậy mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi và hành tím băm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "40 ml",
+      "prepNote": "tráng chén nước sốt và hỗ trợ rim mềm mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nướng thơm, đập mềm và xé sợi mực khô",
+      "instruction": "Kẹp 280 g mực khô vào vỉ, nướng trên bếp lửa nhỏ hoặc nồi chiên không dầu ở 180°C khoảng 3–4 phút cho mực vừa cong thơm đều hai mặt, tránh nướng quá lâu làm mực khô cứng. Bọc mực nóng trong giấy sạch dùng chày đập nhẹ cho mềm tơi, rũ sạch vụn cháy rồi xé sợi bản rộng cỡ 1 cm.",
+      "tip": "Đập mềm mực ngay khi còn nóng giúp các thớ thịt tơi mềm và dễ thấm đều nước sốt dứa khi rim.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Vắt nước cốt dứa và rang vàng mè trắng",
+      "instruction": "Gọt vỏ bỏ mắt 1/2 quả dứa chín, băm nhuyễn hoặc giã nát rồi vắt qua rây thu lấy phần nước cốt dứa thơm ngọt, bỏ bã. Rang khô 15 g hạt mè trắng trên chảo lửa nhỏ khoảng 2 phút đến khi vàng thơm rồi trút ra chén riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp nước sốt dứa chua cay mặn ngọt",
+      "instruction": "Cho toàn bộ nước cốt dứa vào tô lớn, thêm 25 ml nước mắm ngon, 20 ml dầu hào, 20 ml tương cà, 20 ml tương ớt, 20 g đường cát trắng, 40 ml nước lọc và 3 quả ớt hiểm băm nhỏ. Khuấy đều đến khi đường tan hoàn toàn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và đun sôi hỗn hợp sốt",
+      "instruction": "Làm nóng chảo rộng với 25 ml dầu ăn trên lửa vừa, phi thơm hành tím và tỏi băm khoảng 1 phút đến khi vừa ngả vàng. Đổ chén nước sốt dứa vào chảo đun sôi nhẹ trong 2 phút cho sốt hòa quyện và nếm chỉnh độ chua cay ngọt vừa miệng.",
+      "tip": "Nêm nếm độ chua ngọt ngay khi sốt đang sôi nhẹ trước khi thả mực vào sẽ giúp điều chỉnh hương vị chuẩn xác hơn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim nhỏ lửa cho mực thấm kẹo nước sốt",
+      "instruction": "Trút toàn bộ mực khô xé sợi vào chảo sốt, đảo đều rồi hạ lửa nhỏ nhất, rim liu riu trong 10 phút và đảo liên tục để từng sợi mực hút cạn nước sốt, chuyển màu đỏ nâu sánh bóng dẻo ngon.",
+      "tip": "Luôn giữ lửa nhỏ khi rim để đường và tương ớt không bị cháy khét đáy chảo trước khi mực kịp ngấm đều.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn ớt bột, mè rang và hoàn thiện",
+      "instruction": "Khi nước sốt đã keo đặc bám trọn quanh miếng mực, rắc 2 g ớt bột khô và 15 g mè trắng rang vàng vào đảo đều 30 giây rồi tắt bếp. Để mực nguội bớt trước khi gắp ra đĩa và rắc thêm 1,5 g tiêu đen xay lên trên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 372,
+    "energyKcal": 372.1,
+    "energyKj": 1557,
+    "proteinG": 50.5,
+    "fatG": 10.3,
+    "saturatedFatG": 1.7,
+    "carbG": 18.6,
+    "fiberG": 1.7,
+    "sugarG": 13,
+    "sodiumMg": 1552,
+    "saltG": 3.88,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Surume Ref",
+      "USDA FDC 169076",
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "122078d83d8a839c7cd8216001bdbec1a01821c8b9d387b345ad32e5767ad63c",
+    "researchedFromV2Sha256": "0524b625beac80e3f6c253accc98c11f89e79231eb080adbe39996f5c8f85acd"
+  }
+}

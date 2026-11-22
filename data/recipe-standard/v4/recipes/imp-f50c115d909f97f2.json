@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f50c115d909f97f2",
+    "slug": "canh-nam-ca-chua-chua-nhe",
+    "title": "Canh nấm cà chua chua nhẹ",
+    "subtitle": "Món canh thanh đạm kết hợp nấm đùi gà giòn ngọt và cà chua chín đỏ au, nấu nhanh gọn chỉ trong 20 phút"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Nấm đùi gà",
+      "Cà chua",
+      "Thanh đạm",
+      "Nấu nhanh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Canh nấm cà chua chua nhẹ không dùng thịt nhưng vẫn ngọt thanh nhờ sự kết hợp giữa nấm đùi gà, nấm rơm hoặc nấm hương tươi cùng vị chua dịu từ cà chua chín và hương thơm ấm nhẹ của gừng, hành tỏi.",
+    "servingSuggestion": "Múc canh ra tô lớn khi còn nóng, rắc hành lá và chút tiêu đen xay; dùng kèm cơm trắng và đậu phụ chiên sả ớt hoặc cá kho.",
+    "storageAndReheat": "Canh nấm ngon nhất khi dùng hết trong bữa; nếu bảo quản ngăn mát tủ lạnh tối đa 24 giờ, chỉ đun sôi lại 2 phút trên lửa vừa để nấm giữ độ giòn ngọt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "cắt bỏ phần gốc bám đất, rửa nhanh với nước muối loãng rồi thái lát xéo dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm rơm hoặc nấm hương tươi",
+      "culinaryMeasure": "150 g",
+      "prepNote": "gọt sạch chân nấm, ngâm nước muối loãng 3 phút, rửa sạch để ráo rồi bổ đôi",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (khoảng 360 g)",
+      "prepNote": "rửa sạch, bỏ cuống, 1 quả cắt hạt lựu để xào tạo màu, 2 quả bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "15 g (1–2 củ)",
+      "prepNote": "bóc vỏ, băm nhuyễn để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, 4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (3–4 lát mỏng)",
+      "prepNote": "cạo vỏ, thái sợi mảnh giúp khử mùi hăng nấm và làm ấm bụng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 20 g)",
+      "prepNote": "rửa sạch, đầu hành băm nhỏ, phần lá xanh cắt khúc 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tỏi và xào mềm cà chua, nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "25 ml (1,5 muỗng canh)",
+      "prepNote": "nêm cuối để dậy mùi thơm đậm đà cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "thêm nhẹ nếu cà chua chưa đủ độ chua thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.05,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.05,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua của cà chua và tôn vị ngọt nấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng 2 g pha loãng rửa nấm rồi xả bỏ, 3 g còn lại nêm canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/3 muỗng cà phê)",
+      "prepNote": "rắc lên mặt canh khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1300 ml (1,3 lít)",
+      "prepNote": "nấu nước canh cho 4 người ăn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1300,
+      "unit": "ml",
+      "grossGrams": 1300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1170,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và cắt thái hai loại nấm tươi",
+      "instruction": "Cắt bỏ phần gốc bám đất của 200 g nấm đùi gà tươi và 150 g nấm rơm, ngâm nhanh trong thau nước pha 2 g muối ăn khoảng 3 phút rồi rửa lại nước sạch và vắt nhẹ cho ráo. Thái lát xéo nấm đùi gà dày 0,5 cm, bổ đôi nấm rơm để khi nấu giữ độ giòn sần sật.",
+      "tip": "Không ngâm nấm quá lâu trong nước vì nấm sẽ hút nhiều nước, bị nhũn và mất đi vị ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế cà chua và các gia vị thơm",
+      "instruction": "Rửa sạch 3 quả cà chua chín đỏ, bỏ cuống; thái hạt lựu 1 quả để xào lấy màu đỏ cam, 2 quả còn lại bổ múi cau. Bóc vỏ và băm nhỏ 15 g hành tím, 1/2 củ tỏi khô; thái sợi mỏng 10 g gừng tươi và cắt khúc 1,5 cm 1/2 bó hành lá (riêng đầu hành băm nhỏ)."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào cà chua tạo màu",
+      "instruction": "Làm nóng nồi trên lửa vừa với 25 ml dầu ăn, cho hành tím, tỏi khô, đầu hành băm và gừng thái sợi vào phi thơm khoảng 1 phút. Trút phần cà chua thái hạt lựu cùng 1 g muối ăn vào xào đều 3 phút đến khi cà chua mềm nhuyễn, tiết nước sốt màu đỏ cam sánh nhẹ.",
+      "tip": "Xào kỹ phần cà chua băm trước giúp nước canh có màu đỏ tự nhiên bắt mắt mà vẫn giữ được những múi cà chua nguyên đẹp thả vào sau.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn nấm tươi dậy hương ngọt",
+      "instruction": "Tăng nhẹ lên lửa vừa lớn, cho toàn bộ nấm đùi gà và nấm rơm vào nồi đảo đều tay khoảng 2 phút cùng cà chua xào để nấm săn bề mặt và dậy mùi thơm đặc trưng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đổ nước nấu sôi và nêm vị chua thanh",
+      "instruction": "Đổ 1300 ml nước lọc vào nồi, đun lửa lớn đến khi sôi bùng rồi hạ lửa vừa, hớt sạch bọt nổi. Thả 2 quả cà chua bổ múi cau vào nấu thêm 3 phút cho nấm chín ngọt hoàn toàn. Nêm 25 ml nước mắm ngon, 2 g muối ăn còn lại, 8 g đường cát trắng và 5 ml giấm gạo cho đạt vị chua thanh ngọt dịu.",
+      "tip": "Nếu muốn dùng làm món canh chay thuần, bạn có thể thay nước mắm bằng nước tương ngon hoặc nước mắm chay với lượng tương đương.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và dùng nóng",
+      "instruction": "Khi cà chua múi cau vừa chín mềm không bị nát, tắt bếp ngay và thả hành lá cắt khúc vào nồi đảo nhẹ. Múc canh ra tô lớn, rắc 1 g tiêu đen xay lên mặt rồi dọn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 111,
+    "energyKcal": 111.2,
+    "energyKj": 465,
+    "proteinG": 4.1,
+    "fatG": 6,
+    "saturatedFatG": 0.9,
+    "carbG": 12.7,
+    "fiberG": 3.2,
+    "sugarG": 6.3,
+    "sodiumMg": 898,
+    "saltG": 2.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169251",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b818d9b40063743456f446c8fd1625c5bdfa0c0cd991ffa750e434b229ebf551",
+    "researchedFromV2Sha256": "ec3c7de7874a6f46f8328839e88092ea9c733ff5c1298d77262cbaa98534695e"
+  }
+}

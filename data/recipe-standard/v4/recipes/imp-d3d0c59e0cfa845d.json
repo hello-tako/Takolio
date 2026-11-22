@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d3d0c59e0cfa845d",
+    "slug": "banh-kim-chi-chien-kimchi-jeon-gion-rum",
+    "title": "Bánh kim chi chiên giòn (Kimchi Jeon)",
+    "subtitle": "Bánh xèo kim chi cải thảo chiên áp chảo vàng rụm hai mặt, viền giòn tan kết hợp nước chấm xì dầu giấm gạo chua ngọt thanh dịu"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 2,
+    "tags": [
+      "Hàn Quốc",
+      "Món chiên",
+      "Kim chi",
+      "Ăn vặt",
+      "Giòn rụm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bánh kim chi chiên giòn (Kimchi Jeon) là món bánh dân dã nhưng cực kỳ bắt miệng của Hàn Quốc với lớp bột pha nước lạnh giòn rụm bên ngoài, bên trong đậm vị chua cay của kim chi cải thảo chín, hành tây và hành lá thơm nồng.",
+    "servingSuggestion": "Cắt bánh thành từng miếng tam giác vừa ăn khi còn nóng giòn, chấm kèm chén nước tương pha giấm gạo và hạt mè trắng rang.",
+    "storageAndReheat": "Nên thưởng thức ngay khi vừa chiên xong để giữ độ giòn. Nếu còn dư, bọc kín cất ngăn mát tối đa 24 giờ và áp chảo lại trên chảo không dầu ở lửa vừa 3–4 phút cho giòn lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chín",
+      "culinaryMeasure": "180 g (kèm khoảng 45 ml nước kim chi)",
+      "prepNote": "vắt nhẹ lấy 45 ml nước kim chi để pha bột, phần cái thái nhỏ cỡ 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "140 g (~1 chén đầy)",
+      "prepNote": "rây mịn trước khi pha để bột bánh không bị vón cục",
+      "componentGroup": "main",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 140,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp (tăng độ giòn)",
+      "culinaryMeasure": "20 g (~2 muỗng canh)",
+      "prepNote": "trộn chung với bột mì giúp vỏ bánh giòn lâu hơn",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "1 quả (~50 g)",
+      "prepNote": "đánh tan nhẹ để tạo độ kết dính và màu vàng đẹp cho bánh",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,25 củ (~35 g)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "trộn vào bột tạo màu cam đỏ đẹp mắt và vị cay ấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật (chiên áp chảo)",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "chia làm 2 lần chiên bánh giúp viền bánh giòn rụm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 31.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu pha nước chấm)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "pha cùng giấm gạo, đường và mè rang làm nước chấm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo (pha nước chấm)",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo vị chua dịu cân bằng độ béo của bánh chiên",
+      "componentGroup": "dipping",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 10.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng (pha nước chấm)",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "hòa tan vào chén nước chấm xì dầu giấm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang (pha nước chấm)",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc vào chén nước chấm cho thơm bùi",
+      "componentGroup": "dipping",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc lạnh (pha bột bánh)",
+      "culinaryMeasure": "220 ml",
+      "prepNote": "dùng nước thật lạnh để vỏ bánh chiên giòn hơn",
+      "componentGroup": "process",
+      "requiredQuantity": 220,
+      "unit": "ml",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 187,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái kim chi và pha nước chấm xì dầu giấm",
+      "instruction": "Vắt nhẹ 180 g kim chi cải thảo chín lấy khoảng 45 ml nước kim chi để riêng, phần cái thái nhỏ cỡ 1 cm. Thái mỏng hành tây và cắt khúc 3 cm hành lá tươi. Trong chén nhỏ, khuấy tan 20 ml nước tương, 10 ml giấm gạo, 3 g đường cát trắng và 3 g hạt mè trắng rang làm nước chấm.",
+      "tip": "Dùng kim chi đã ủ chua kỹ sẽ cho hương vị đậm đà và độ giòn sần sật hấp dẫn nhất khi chiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Trộn bột bánh với nước lạnh và kim chi",
+      "instruction": "Trộn đều 140 g bột mì đa dụng, 20 g bột bắp và 3 g ớt bột Hàn Quốc (Gochugaru) trong tô lớn. Rót từ từ 220 ml nước lọc lạnh cùng 45 ml nước kim chi vào, đánh nhẹ vừa đủ tan hết bột khô rồi cho 1 quả trứng gà tươi, kim chi thái nhỏ, hành tây và hành lá vào trộn đều thành hỗn hợp bột hơi sánh.",
+      "tip": "Dùng nước lọc thật lạnh và không khuấy bột quá kỹ giúp bánh chiên lên giòn xốp, không bị dai."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên bánh mẻ thứ nhất đến khi giòn cạnh",
+      "instruction": "Làm nóng chảo chống dính đường kính 22–24 cm trên lửa vừa-lớn với 22 ml dầu thực vật, múc một nửa lượng bột dàn thành lớp mỏng đều khắp mặt chảo. Chiên khoảng 4 phút đến khi phần viền vàng giòn rụm và mặt bột bên trên se lại.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt và chiên vàng giòn hoàn toàn",
+      "instruction": "Lật khéo chiếc bánh lại, ấn nhẹ bằng xẻng chiên cho bánh áp sát mặt chảo và chiên tiếp 3 phút trên lửa vừa đến khi cả hai mặt vàng ruộm, dậy mùi thơm lừng rồi gắp ra đĩa lót giấy thấm dầu.",
+      "tip": "Ấn nhẹ mặt bánh sau khi lật giúp hơi nước thoát nhanh, mặt bánh phẳng và giòn đều từ tâm ra viền.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên nốt mẻ bánh kim chi thứ hai",
+      "instruction": "Cho 23 ml dầu thực vật còn lại vào chảo, trút hết phần bột kim chi còn lại dàn mỏng đều và lặp lại quy trình chiên mỗi mặt 3–4 phút cho đến khi bánh chín vàng giòn đều hai mặt.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt miếng tam giác và thưởng thức nóng",
+      "instruction": "Đặt bánh kim chi chiên giòn lên thớt sạch, cắt thành từng miếng tam giác hoặc ô vuông vừa ăn, xếp ra đĩa và dọn nóng kèm chén nước chấm xì dầu giấm gạo mè rang."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 512,
+    "energyKcal": 512.2,
+    "energyKj": 2143,
+    "proteinG": 12.8,
+    "fatG": 19.8,
+    "saturatedFatG": 3.3,
+    "carbG": 70.6,
+    "fiberG": 4.7,
+    "sugarG": 3.9,
+    "sodiumMg": 1134,
+    "saltG": 2.84,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 169761",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ba1dd3f2abbc5a1436721aefd4fc1807c0c596d67cc4dbefeb27841548f535be",
+    "researchedFromV2Sha256": "40073301c2b41c95bf8952a73bd33ff5bc68950a3cb369d99dac7fb8a44af743"
+  }
+}

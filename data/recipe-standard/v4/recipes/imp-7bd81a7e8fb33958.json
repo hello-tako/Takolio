@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7bd81a7e8fb33958",
+    "slug": "muc-om-sa-thai",
+    "title": "Mực hấp om sả chanh kiểu Thái",
+    "subtitle": "Mực ống tươi khứa vảy rồng hấp om cùng sả thơm nồng, rưới nước sốt mắm chanh tỏi ớt chua cay mặn ngọt đậm vị biển"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Mực hấp",
+      "Sả chanh",
+      "Hải sản Thái",
+      "Chua cay",
+      "Ít dầu mỡ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Món mực om sả kiểu Thái kết hợp kỹ thuật hấp nhanh giữ trọn độ giòn ngọt tự nhiên của mực ống tươi cùng hương tinh dầu sả nồng nàn, hòa quyện với nước sốt hải sản Nam Jim chua cay mặn ngọt bùng vị.",
+    "servingSuggestion": "Dọn đĩa mực hấp nóng hổi ngay khi vừa rưới sốt, rắc thêm ngò rí và hành lá; ăn kèm cơm trắng nóng hoặc rau sống dưa leo giải ngấy.",
+    "storageAndReheat": "Mực hấp ngon nhất khi ăn nóng ngay lúc vừa chế biến; nếu dư, bảo quản tủ mát tối đa 24 giờ và hấp cách thủy lại 2–3 phút trên lửa lớn để mực nóng mà không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi làm sạch",
+      "culinaryMeasure": "500 g (khoảng 2–3 con mực ống vừa)",
+      "prepNote": "rút bỏ mai mực, túi mực và mắt, rửa sạch rồi thấm thật khô, khứa vảy rồng và cắt miếng 3×5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "4 cây (khoảng 80 g)",
+      "prepNote": "bóc vỏ già ngoài, đập dập; dùng 2 cây thái lát lót đáy đĩa hấp, 2 cây băm nhuyễn pha sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2,5 quả (khoảng 112 g)",
+      "prepNote": "vắt lấy khoảng 50 ml nước cốt, lọc sạch hạt để pha sốt rưới mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 56.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp hấp cùng mực, 20 ml pha nước sốt chanh ớt rưới sau cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "22 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia 7 g hòa nước hấp mực, 15 g khuấy tan vào sốt chua cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "g",
+      "grossGrams": 22,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, bỏ cuống, băm nhỏ (gia giảm tùy khẩu vị cay)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để pha sốt hải sản Thái",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc ngắn 2 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "20 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, băm nhỏ một ít vào sốt, phần lá cắt khúc rắc mặt đĩa mực",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "180 ml",
+      "prepNote": "hòa 15 ml nước mắm và 7 g đường rưới đĩa mực tạo nước om khi hấp",
+      "componentGroup": "broth",
+      "requiredQuantity": 180,
+      "unit": "ml",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 117,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và khứa vảy rồng mực tươi",
+      "instruction": "Mực ống tươi rút bỏ nội tạng, mai cứng, mắt và miệng mực; rửa sạch dưới vòi nước lạnh rồi dùng khăn giấy thấm thật khô cả mặt trong lẫn mặt ngoài. Dùng dao sắc khứa nhẹ mặt trong thân mực theo đường chéo đan lưới rồi cắt miếng cỡ 3×5 cm, râu mực cắt khúc vừa ăn.",
+      "tip": "Thấm thật khô thân mực trước khi hấp giúp mực không tiết ra quá nhiều nước làm nhạt vị sốt và giữ độ giòn ngọt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế sả, tỏi ớt và rau thơm",
+      "instruction": "Đập dập 4 cây sả tươi: lấy 2 cây thái lát chéo dày 0,3 cm lót kín đáy đĩa sâu lòng chịu nhiệt, 2 cây còn lại băm thật nhuyễn. Tỏi khô và 4 quả ớt hiểm đỏ băm nhỏ. Hành lá và ngò rí rửa sạch, để ráo, cắt khúc 2 cm (chừa lại ít gốc ngò băm nhỏ). Vắt chanh tươi lấy 50 ml nước cốt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước om hấp và nước sốt chanh ớt Thái",
+      "instruction": "Hòa tan 15 ml nước mắm ngon, 7 g đường cát trắng và 180 ml nước lọc để làm nước om, rưới đều lên mực đã xếp trên lớp sả trong đĩa. Trong chén riêng, khuấy tan 20 ml nước mắm ngon còn lại với 15 g đường cát trắng và 50 ml nước cốt chanh tươi, sau đó thêm sả băm, tỏi băm, ớt hiểm băm và gốc ngò băm vào trộn đều thành nước sốt Nam Jim.",
+      "tip": "Nếm thử chén sốt sao cho vị chua, cay, mặn, ngọt cân bằng rõ nét; nếu thích vị dịu hơn có thể thêm nửa muỗng cà phê đường.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp om mực trên lửa lớn đúng thời gian",
+      "instruction": "Đun sôi mạnh nước trong nồi hấp rồi đặt đĩa mực vào xửng, đậy kín nắp và hấp lửa lớn trong 4–5 phút. Quan sát thấy các miếng mực cuộn cong đẹp mắt, thịt chuyển trắng đục và săn chắc hoàn toàn là đạt.",
+      "tip": "Tuyệt đối không hấp mực quá 6 phút vì nhiệt cao kéo dài sẽ làm mực tiết hết nước ngọt và trở nên dai cứng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Chắt bớt nước hấp và rưới sốt nóng hổi",
+      "instruction": "Nhấc đĩa mực ra khỏi nồi hấp (cẩn thận hơi nóng), chắt bỏ bớt khoảng một nửa phần nước tiết ra trong đĩa để giữ lại độ đậm đà vừa phải, rồi rưới đều toàn bộ chén nước sốt chanh tỏi ớt lên khắp bề mặt mực khi còn đang bốc khói."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành ngò và thưởng thức ngay",
+      "instruction": "Rắc hành lá và ngò rí cắt khúc lên trên đĩa mực hấp om sả, trộn nhẹ một lượt rồi dọn dùng nóng ngay với cơm trắng hoặc rau sống."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 198,
+    "energyKcal": 197.7,
+    "energyKj": 827,
+    "proteinG": 23.9,
+    "fatG": 2.2,
+    "saturatedFatG": 0.5,
+    "carbG": 20.8,
+    "fiberG": 1.1,
+    "sugarG": 8.7,
+    "sodiumMg": 1168,
+    "saltG": 2.92,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174223"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d26f0c3659d61c5f0569245da29c2dd0afc20b9d99cb87ac0e7d6b51c0bc8b09",
+    "researchedFromV2Sha256": "1754c7e2d23dd9a7fe88b2900a6a790dcd5437e81e3c82f25ebf4cf1457bcbab"
+  }
+}

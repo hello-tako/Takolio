@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6c20dba60d77bdfd",
+    "slug": "canh-suon-su-su-non",
+    "title": "Canh sườn hầm su su non",
+    "subtitle": "Sườn non heo ninh mềm róc xương cho nước dùng trong ngọt đậm đà, kết hợp su su non giòn mát và cà rốt cho bữa cơm ấm áp cả nhà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 5,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Sườn",
+      "Bổ dưỡng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Nồi canh ấm nóng quen thuộc với phần nước hầm sườn non trong veo, thịt sườn mềm ngọt róc xương quyện cùng su su non giòn mát và sắc cam dịu của cà rốt.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, rắc hành lá, ngò rí và chút tiêu xay lên mặt; dọn kèm cơm trắng và đĩa rau xào hoặc thịt kho đều rất tròn vị.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 24 giờ sau khi canh nguội hẳn; đun sôi lại ở lửa vừa vừa đủ nóng để su su không bị nhũn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt khúc",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa sạch, chặt khúc 3–4 cm, chần nước sôi pha muối cho hết bọt bẩn rồi xả sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 325,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHAYOTE",
+      "name": "Su su non tươi",
+      "culinaryMeasure": "3 quả (~660 g)",
+      "prepNote": "gọt vỏ dưới vòi nước chảy cho hết nhựa, bổ miếng vừa ăn rồi ngâm nước muối loãng cho trắng giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 660,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 580.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0.75 củ (~82,5 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát dày 1 cm hoặc tỉa hoa tăng màu sắc",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 82.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 73.43,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô (hành khô)",
+      "culinaryMeasure": "20 g (1–2 củ)",
+      "prepNote": "bóc vỏ ngoài, đập dập nhẹ cho vào hầm cùng sườn lấy hương thơm rồi vớt bỏ xác",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 nhánh)",
+      "prepNote": "rửa sạch, thái khúc nhỏ 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nhúm nhỏ)",
+      "prepNote": "nhặt bỏ gốc, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm ở bước cuối trước khi tắt bếp cho nước canh dậy hương thơm",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "nêm sau khi thả rau củ giúp giữ trọn vị ngọt thanh của sườn và su su",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 3 g pha nước chần sườn, 2 g ngâm su su và 3 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 3.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm lên mặt tô canh khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "ninh mềm sườn non và nấu chín su su non",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 1148,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sạch sườn non khử mùi hôi",
+      "instruction": "Rửa sạch 500 g sườn non đã chặt khúc dài 3–4 cm. Đun sôi một nồi nước riêng pha 3 g muối ăn, thả sườn vào chần khoảng 3 phút trên lửa lớn cho ra hết bọt bẩn và tạp chất, sau đó vớt ra xả sạch lại dưới vòi nước lạnh, để ráo.",
+      "tip": "Chần sơ sườn với chút muối rồi rửa sạch lại là bí quyết giúp nước canh sau khi ninh trong veo và thơm ngọt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh sườn non cùng hành khô cho mềm ngọt",
+      "instruction": "Cho sườn non đã chần vào nồi cùng 1,4 lít nước lọc và 20 g hành tím khô đập dập. Đun sôi trên lửa lớn, hớt sạch lớp bọt nổi trên mặt rồi hạ xuống lửa nhỏ liu riu, mở hé nắp và hầm trong 32–35 phút cho đến khi thịt sườn mềm róc xương và nước dùng ngọt đậm; dùng vá vớt bỏ xác hành tím khô.",
+      "tip": "Hầm sườn ở lửa nhỏ liu riu và không nêm mắm muối quá sớm giúp thịt sườn mềm tơi và nước hầm thật trong.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế su su non, cà rốt và rau thơm",
+      "instruction": "Trong lúc hầm sườn, gọt vỏ 3 quả su su non dưới vòi nước chảy nhẹ cho trôi sạch nhựa mủ không dính tay, bổ miếng cau vừa ăn rồi ngâm ngay vào chậu nước pha 2 g muối ăn khoảng 5 phút cho su su trắng giòn, sau đó vớt ra để ráo. Gọt vỏ 0,75 củ cà rốt thái miếng dày 1 cm; rửa sạch hành lá và ngò rí rồi thái nhỏ."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu chín cà rốt và su su non giòn ngọt",
+      "instruction": "Vặn lửa vừa cho nồi nước hầm sườn sôi lại, thả cà rốt vào nấu trước 3 phút. Tiếp theo thả toàn bộ su su non vào nồi và nấu thêm 5 phút đến khi su su và cà rốt vừa chín tới, xiên nhẹ thấy mềm nhưng miếng su su vẫn giữ nguyên dáng và độ giòn ngọt.",
+      "tip": "Không nấu su su quá lâu kẻo rau bị nhũn nát và mất đi vị thanh mát tự nhiên.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và nước mắm sau cùng",
+      "instruction": "Nêm 3 g muối ăn còn lại và 10 g hạt nêm vào nồi canh, khuấy nhẹ cho tan đều rồi nếm thử lại cho vừa miệng. Cuối cùng rưới 15 ml nước mắm ngon vào khuấy nhẹ một lượt cho dậy mùi thơm rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành ngò, tiêu xay và dọn nóng",
+      "instruction": "Thả hành lá và ngò rí thái nhỏ vào nồi canh đang nóng, múc ra tô lớn, rắc 2 g tiêu đen xay lên mặt và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 217,
+    "energyKcal": 217.4,
+    "energyKj": 909,
+    "proteinG": 11.8,
+    "fatG": 15.4,
+    "saturatedFatG": 5.7,
+    "carbG": 8.4,
+    "fiberG": 2.7,
+    "sugarG": 3.2,
+    "sodiumMg": 955,
+    "saltG": 2.39,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169990",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "63937bff019916ca3a26ac40fca38f3dc842e06ddab00ceab14eb4d6c1214fd5",
+    "researchedFromV2Sha256": "487849306d18ba65862c23c5e539cf677983581b7255c2482f662c51a992a8ec"
+  }
+}

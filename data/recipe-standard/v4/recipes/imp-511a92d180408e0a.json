@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-511a92d180408e0a",
+    "slug": "trung-hap-thit-bam-nam-huong-mem-min",
+    "title": "Trứng hấp thịt bằm nấm hương mềm mịn",
+    "subtitle": "Trứng gà đánh tan lọc mịn hấp cách thủy cùng thịt heo xay và nấm hương thơm dịu, mềm mượt như tàu hũ non"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 22,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Trẻ em thích",
+      "Thanh đạm",
+      "Cơm nhà",
+      "Dễ nấu"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng hấp thịt bằm nấm hương béo bùi nhưng thanh nhẹ, bề mặt mịn mượt không bị rỗ nhờ lọc rây kỹ và hấp lửa nhỏ, kết hợp vị ngọt đậm của thịt heo xay cùng hương nấm đông cô đặc trưng.",
+    "servingSuggestion": "Dọn nóng nguyên tô trứng hấp ra bàn, rắc thêm hành lá xanh và tiêu xay, ăn kèm cơm trắng nóng rất hợp cho cả trẻ nhỏ và người lớn tuổi.",
+    "storageAndReheat": "Món ngon nhất khi dùng nóng ngay sau khi hấp. Nếu còn dư, đậy kín bảo quản ngăn mát tối đa 24 giờ và hấp cách thủy lại 5 phút ở lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (khoảng 200 g)",
+      "prepNote": "đập ra tô, đánh nhẹ đều tay rồi lọc qua rây cho mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc vai)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chọn thịt có lẫn chút mỡ để nhân mềm ngọt không bị khô xác",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô (đông cô)",
+      "culinaryMeasure": "20 g (khoảng 6–7 tai nấm)",
+      "prepNote": "ngâm nước ấm 20 phút cho nở mềm, cắt bỏ chân cứng rồi băm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "15 g (1 củ)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp thơm phần thịt bằm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ; chia 2/3 trộn vào trứng và 1/3 rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp thịt và 10 ml pha vào hỗn hợp trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "chia 2,5 g ướp thịt bằm và 2,5 g nêm vào tô trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm vào hỗn hợp trứng giúp dịu vị mặn và tăng hậu ngọt thanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "ướp nhẹ vào thịt heo xay cho săn đậm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp thịt bằm, phần còn lại rắc mặt sau khi hấp chín",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới nhẹ lên mặt tô trứng sau khi hấp chín để tăng mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha trứng và hấp cách thủy)",
+      "culinaryMeasure": "720 ml",
+      "prepNote": "dùng 120 ml nước lọc nguội hòa tan vào trứng cho mềm mịn và 600 ml đổ đáy nồi hấp",
+      "componentGroup": "broth",
+      "requiredQuantity": 720,
+      "unit": "ml",
+      "grossGrams": 720,
+      "edibleRetentionRatio": 0.17,
+      "edibleGrams": 122.4,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nấm hương và sơ chế hành tím, hành lá",
+      "instruction": "Ngâm 20 g nấm hương khô trong nước ấm khoảng 20 phút cho nở mềm hoàn toàn, vớt ra vắt nhẹ nước, cắt bỏ chân nấm cứng rồi băm nhỏ. Bóc vỏ 15 g hành tím băm nhuyễn; rửa sạch hành lá thái nhỏ và để riêng 1/3 phần lá xanh dùng rắc mặt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt heo xay cùng nấm hương và gia vị",
+      "instruction": "Cho 200 g thịt heo xay vào tô cùng nấm hương băm nhỏ, hành tím băm, 5 ml nước mắm, 2,5 g hạt nêm, 2 g muối ăn và 1 g tiêu đen xay. Trộn thật đều tay rồi để nghỉ 10 phút cho thịt ngấm vị và không bị vón cục khi hòa cùng trứng.",
+      "tip": "Ướp thịt heo xay trước khi trộn vào trứng giúp thịt tơi mềm, đậm đà và không bị nhạt vị so với phần trứng xung quanh.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà và lọc qua rây mịn",
+      "instruction": "Đập 4 quả trứng gà vào tô lớn, thêm 120 ml nước lọc nguội, 10 ml nước mắm còn lại, 2,5 g hạt nêm và 3 g đường cát trắng. Dùng đũa khuấy nhẹ đều theo một chiều cho tan gia vị mà không tạo nhiều bọt khí, sau đó lọc hỗn hợp qua rây mịn vào tô sứ chịu nhiệt.",
+      "tip": "Khuấy nhẹ tay theo một chiều và lọc qua rây giúp loại bỏ lợn cợn lòng trắng và bọt khí, mặt trứng sau khi hấp sẽ láng mịn như gương."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Trộn đều nhân thịt nấm và bọc kín miệng tô",
+      "instruction": "Cho phần thịt heo xay đã ướp cùng 2/3 lượng hành lá thái nhỏ vào tô trứng đã lọc, khuấy nhẹ cho thịt tơi đều không lắng đọng cục ở đáy. Dùng màng bọc thực phẩm chịu nhiệt bọc kín miệng tô (hoặc đậy đĩa sứ vừa khít) để hơi nước không nhỏ giọt làm rỗ mặt trứng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp cách thủy lửa nhỏ cho trứng đông mịn",
+      "instruction": "Đun sôi 600 ml nước lọc trong nồi hấp, đặt tô trứng lên xửng rồi hạ xuống lửa nhỏ liu riu, đậy nắp và hấp cách thủy trong 20 phút. Nếu dùng nắp vung thường không bọc màng thực phẩm, nên lót thêm chiếc khăn sạch dưới nắp nồi để thấm hơi nước.",
+      "tip": "Luôn giữ lửa nhỏ liu riu trong suốt quá trình hấp; nhiệt quá mạnh sẽ làm nước sôi trào khiến trứng bị rỗ tổ ong và tách nước.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Kiểm tra độ chín và hoàn thiện tô trứng hấp",
+      "instruction": "Mở màng bọc, dùng tăm xiên nhẹ vào chính giữa tô trứng, rút ra thấy tăm sạch không dính dịch trứng ướt và phần thịt bên trong đã chín trắng hoàn toàn là đạt. Rắc phần hành lá thái nhỏ và 1 g tiêu đen xay còn lại lên mặt, rưới thêm 5 ml dầu mè thơm và dùng nóng ngay với cơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 309,
+    "energyKcal": 308.8,
+    "energyKj": 1291,
+    "proteinG": 20,
+    "fatG": 21.4,
+    "saturatedFatG": 7.3,
+    "carbG": 8.9,
+    "fiberG": 1.2,
+    "sugarG": 2.3,
+    "sodiumMg": 1128,
+    "saltG": 2.82,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168436",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d91ad3e96b3d5fe9b53589eef07b7461230ac22c3d3722b2e571b3c1957cb739",
+    "researchedFromV2Sha256": "14a6a69bf67a386f1edf0b02f4dd265e9fed98ad082555288d2e3e415c23af6f"
+  }
+}

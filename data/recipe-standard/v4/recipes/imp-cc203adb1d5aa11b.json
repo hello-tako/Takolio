@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cc203adb1d5aa11b",
+    "slug": "canh-ca-sa-ca-chua",
+    "title": "Canh cá nấu sả cà chua kiểu Thái",
+    "subtitle": "Canh cá nước trong ngọt thanh nấu cùng sả đập dập và cà chua chín mọng, hậu chua dịu từ nước cốt chanh tươi rất dễ ăn"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Canh cá",
+      "Sả cà chua",
+      "Nước trong",
+      "Thái Lan",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh cá sả cà chua kiểu Thái có phần nước dùng trong veo, thơm dịu tinh dầu sả tươi, hòa quyện cùng thịt cá trắng ngọt chắc, vị chua nhẹ từ cà chua chín và chanh tươi giúp bữa cơm thêm nhẹ bụng, ấm áp.",
+    "servingSuggestion": "Múc canh cá ra tô lớn khi còn nóng hổi, rắc hành lá và ngò rí lên trên; dùng cùng cơm trắng và chén nước mắm ớt để chấm thịt cá.",
+    "storageAndReheat": "Nên dùng hết trong ngày để thịt cá giữ nguyên độ ngọt chắc; nếu bảo quản tủ mát tối đa 24 giờ, đun sôi nhẹ lại trên lửa nhỏ mà không khuấy mạnh để tránh làm nát cá."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá điêu hồng hoặc cá lóc cắt khúc",
+      "culinaryMeasure": "600 g (khoảng 4–5 khúc vừa)",
+      "prepNote": "đánh vảy, bỏ mang, chà muối khử nhớt rửa sạch, thấm khô ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 468,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (khoảng 360 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ 6 múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc bẹ già ngoài, đập dập phần gốc, cắt khúc 6 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 40 ml nước cốt, lọc bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, đập dập nhẹ hoặc thái lát tùy mức cay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "nêm nước dùng đậm đà thơm ngọt tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua của cà chua và nước cốt chanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "dùng 4 g chà xát khử tanh cá rồi rửa bỏ, 4 g nêm vào nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (khoảng 2 muỗng cà phê)",
+      "prepNote": "xào sơ một nửa lượng cà chua tạo màu cam đỏ đẹp mắt cho nước canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, phần đầu trắng đập dập, phần lá xanh thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái khúc ngắn 2 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "nấu nước dùng canh cá thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1260,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Khử nhớt cá và sơ chế sả, cà chua",
+      "instruction": "Cá tươi đánh sạch vảy, bỏ mang và màng đen trong bụng, xát đều 4 g muối ăn lên mình cá trong 1 phút rồi rửa lại thật sạch bằng nước lạnh, để ráo và cắt khúc dày 2,5 cm. Sả tươi bóc vỏ già, đập dập rồi cắt khúc 6 cm. Cà chua bỏ cuống, bổ 6 múi cau; chanh tươi vắt lấy 40 ml nước cốt; hành lá tách riêng đầu hành đập dập và lá xanh cắt khúc 2 cm, ngò rí cắt khúc.",
+      "tip": "Rửa sạch màng đen trong bụng cá và thấm khô giúp nước canh trong veo, không có mùi tanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào sơ cà chua và ninh nước sả thơm",
+      "instruction": "Đun nóng 10 ml dầu ăn thực vật trong nồi ở lửa vừa, thả đầu hành lá và 1 nửa lượng cà chua vào đảo nhanh 2 phút cho cà chua hơi mềm tiết màu tự nhiên. Chế 1400 ml nước lọc vào cùng 3 cây sả đập dập, bật lửa lớn đun sôi rồi hạ lửa vừa nấu 5 phút cho nước dậy mùi sả thơm nồng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nêm nước dùng và nấu chín cá",
+      "instruction": "Nêm vào nồi nước sả 35 ml nước mắm ngon, 4 g muối ăn còn lại và 8 g đường cát trắng, khuấy tan. Khi nước đang sôi lăn riu ở lửa vừa, nhẹ nhàng thả từng khúc cá vào nấu khoảng 4 phút cho thịt cá se chắc lại, thường xuyên hớt sạch bọt nổi để nước canh trong.",
+      "tip": "Chỉ thả cá khi nước đang sôi và giữ lửa vừa sôi lăn riu, không dùng đũa đảo mạnh để khúc cá không bị nát.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm cà chua còn lại và nấu chín hoàn toàn",
+      "instruction": "Cho nốt phần cà chua múi cau còn lại và ớt hiểm đỏ vào nồi nấu thêm 3–4 phút cho đến khi cà chua vừa mềm giữ nguyên vỏ và thịt cá chín trắng đục hoàn toàn, dễ tách khỏi xương.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp nêm nước cốt chanh tươi",
+      "instruction": "Tắt bếp rồi từ từ rót 40 ml nước cốt chanh tươi vào nồi, lắc nhẹ hoặc khuấy một vòng thật khẽ để giữ hương thơm thanh mát của chanh không bị bay hơi hay đắng.",
+      "tip": "Cho nước cốt chanh tươi sau khi tắt bếp giữ trọn hương thơm thanh mát và tránh làm nước canh bị đắng do tinh dầu vỏ chanh gặp nhiệt cao."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc rau thơm và dọn canh nóng",
+      "instruction": "Thả hành lá thái khúc và ngò rí vào nồi canh, múc cá và nước dùng ra tô lớn (có thể gắp bỏ bớt khúc sả già) rồi thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 180,
+    "energyKcal": 180,
+    "energyKj": 752,
+    "proteinG": 24.5,
+    "fatG": 5.3,
+    "saturatedFatG": 1.1,
+    "carbG": 8.6,
+    "fiberG": 1.8,
+    "sugarG": 5.3,
+    "sodiumMg": 1281,
+    "saltG": 3.2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175176"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "08d84085f6302a125cb88a34241535158f0ff1f489fd7efcd120233f38569282",
+    "researchedFromV2Sha256": "f7b0b89ead643070fa29ea5146ff56c8a248e47d30b8b332a575dbdcd7e8278b"
+  }
+}

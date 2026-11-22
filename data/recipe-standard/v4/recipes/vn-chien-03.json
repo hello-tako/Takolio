@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chien-03",
+    "slug": "canh-ga-chien-nuoc-mam",
+    "title": "Cánh gà chiên nước mắm tỏi ớt",
+    "subtitle": "Cánh gà chiên ngập dầu da giòn rụm thịt mọng nước, áo đều sốt nước mắm tỏi ớt chua ngọt óng ánh"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Cánh gà",
+      "Món nhậu",
+      "Trẻ em thích",
+      "Đậm đà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cánh gà chiên nước mắm tỏi ớt là món khoái khẩu của cả trẻ nhỏ lẫn người lớn nhờ lớp da vàng giòn rụm bên ngoài, thịt gà bên trong vẫn giữ độ mọng mềm không khô bã, quyện sốt nước mắm tỏi ớt cân bằng vị mặn, ngọt, cay nhẹ rất bắt cơm.",
+    "servingSuggestion": "Xếp cánh gà ra đĩa lót xà lách và cà chua thái lát, rưới phần tỏi ớt phi thơm còn lại trong chảo lên trên, ăn nóng cùng cơm trắng hoặc bánh mì.",
+    "storageAndReheat": "Nên ăn nóng ngay sau khi xóc sốt để giữ độ giòn của da gà. Nếu bảo quản tủ lạnh tối đa 2 ngày, làm nóng lại bằng nồi chiên không dầu ở 180°C trong 4–5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_WING",
+      "name": "Cánh gà khúc giữa tươi",
+      "culinaryMeasure": "800 g (khoảng 10–12 chiếc)",
+      "prepNote": "rửa sạch với muối chanh khử mùi, chặt đôi theo khớp hoặc khía nhẹ 2 đường mặt trong",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên giòn khô",
+      "culinaryMeasure": "60 g (~4 muỗng canh)",
+      "prepNote": "áo một lớp mỏng khô bên ngoài cánh gà trước khi chiên giúp giữ độ giòn và hạn chế bắn dầu",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 51,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi ta",
+      "culinaryMeasure": "1,5 củ (khoảng 37,5 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm làm sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "bỏ bớt hạt nếu ăn cay vừa, băm nhuyễn cùng tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "25 g (~2 củ)",
+      "prepNote": "10 g đập dập cho vào nước trụng gà, 15 g băm nhỏ phi thơm làm sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "rửa sạch, đập dập cho vào nồi nước trụng khử mùi hôi gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1/2 quả",
+      "prepNote": "chà xát cùng muối lên da cánh gà để khử tanh rồi rửa sạch",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 2.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "5 g chà xát khử mùi cánh gà rồi xả sạch, 5 g hòa vào nước trụng gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm truyền thống",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "pha hỗn hợp sốt mắm tỏi ớt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt hài hòa và độ sánh bóng cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo màu đỏ cam đẹp mắt và vị cay ngọt sánh dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "cho 10 ml vào nước trụng gà giúp thịt săn trắng, 5 ml vào sốt tạo vị chua dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.2,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 6.08,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "khuấy vào sốt và rắc hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên ngập dầu và phi tỏi)",
+      "culinaryMeasure": "400 ml",
+      "prepNote": "dùng 385 ml chiên ngập cánh gà, chừa 15 ml phi thơm tỏi ớt",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 368,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 44.16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml",
+      "prepNote": "dùng 950 ml trụng sơ cánh gà rồi đổ bỏ, 50 ml hòa tan sốt nước mắm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và trụng sơ khử mùi cánh gà",
+      "instruction": "Chà xát kỹ cánh gà với 5 g muối hạt và 1/2 quả chanh tươi trong 2 phút, rửa sạch lại nhiều lần rồi khía nhẹ 2 đường mặt trong để thịt nhanh chín. Đun sôi 950 ml nước lọc cùng 5 g muối hạt, 10 ml giấm gạo, gừng tươi đập dập và 10 g hành tím đập dập, thả cánh gà vào trụng 4 phút rồi vớt ra để thật ráo nước.",
+      "tip": "Trụng sơ giúp loại bỏ tạp chất, làm da gà săn lại nên khi chiên sẽ ít bắn dầu và thịt bên trong giữ được độ ẩm ngọt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thấm khô, áo bột và băm nhuyễn tỏi ớt",
+      "instruction": "Dùng khăn giấy sạch thấm khô hoàn toàn từng chiếc cánh gà. Nếu dùng bột chiên giòn, cho cánh gà vào tô xóc đều với 60 g bột chiên giòn khô rồi giũ bỏ bột thừa để chỉ còn một lớp áo mỏng. Băm nhuyễn tỏi ta, ớt sừng đỏ và 15 g hành tím còn lại để riêng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên cánh gà ngập dầu đến khi vàng giòn",
+      "instruction": "Đổ 385 ml dầu ăn vào chảo sâu lòng, đun nóng già ở lửa vừa đến khi đầu đũa sủi bọt mạnh. Thả cánh gà vào chiên ngập mặt dầu khoảng 10–12 phút, trở đều các mặt cho đến khi lớp da vàng ruộm, giòn rụm và thịt sát xương chín hoàn toàn không còn nước hồng. Vớt gà ra rây hoặc giấy thấm dầu cho ráo.",
+      "tip": "Không xếp quá nhiều cánh gà trong một mẻ để giữ nhiệt độ dầu ổn định, giúp da gà giòn lâu và không bị ngấm dầu.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt nước mắm chua ngọt",
+      "instruction": "Trong chén nhỏ, hòa tan hoàn toàn 35 ml nước mắm truyền thống, 20 g đường cát trắng, 20 ml tương ớt, 5 ml giấm gạo, 50 ml nước lọc và 1 g tiêu đen xay cho đến khi đường tan hết."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi ớt và nấu sánh keo sốt mắm",
+      "instruction": "Đặt một chảo sạch lên bếp, cho 15 ml dầu ăn vào đun nóng ở lửa vừa rồi phi thơm hành tím băm, tỏi băm và ớt băm trong 1 phút. Đổ chén sốt nước mắm đã pha vào chảo, hạ lửa nhỏ và khuấy đều khoảng 3 phút đến khi sốt sôi sủi bọt và sánh kẹo lại.",
+      "tip": "Phải nấu cho sốt thật sánh kẹo trước khi cho gà vào; nếu sốt còn loãng sẽ làm lớp da gà bị ỉu mềm ngay lập tức.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo cánh gà áo sốt và dọn nóng",
+      "instruction": "Trút toàn bộ cánh gà đã chiên giòn vào chảo sốt, bật lửa vừa và xóc đảo nhanh tay khoảng 1–2 phút cho sốt mắm tỏi ớt bóng đẹp bám đều quanh từng chiếc cánh gà. Tắt bếp, rắc 1 g tiêu đen xay còn lại, xếp ra đĩa và thưởng thức ngay khi còn nóng giòn.",
+      "timerMinutes": 2
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 478,
+    "energyKcal": 478.3,
+    "energyKj": 2001,
+    "proteinG": 26.4,
+    "fatG": 32,
+    "saturatedFatG": 7.5,
+    "carbG": 20.2,
+    "fiberG": 0.9,
+    "sugarG": 7.1,
+    "sodiumMg": 1215,
+    "saltG": 3.04,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171080",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9e56f9cba2cbfe234ef7c625290e674d086dbd8fa9857aaff882a4e39806aadf",
+    "researchedFromV2Sha256": "dea084be57237c16209dea3708cc6402438f6f54a65438a19b8f5ad5565199c8"
+  }
+}

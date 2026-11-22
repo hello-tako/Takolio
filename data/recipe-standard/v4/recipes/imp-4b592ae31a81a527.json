@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4b592ae31a81a527",
+    "slug": "bo-kho-tuong-han",
+    "title": "Thịt bò kho tương Hàn Quốc",
+    "subtitle": "Thịt bò hầm mềm tơi xé dọc thớ thấm đẫm nước tương mặn ngọt cùng tỏi nguyên tép và ớt sừng thơm lừng chuẩn món Jangjorim"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 75,
+    "servings": 5,
+    "tags": [
+      "Món kho",
+      "Thịt bò",
+      "Nước tương",
+      "Hàn Quốc",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "braise"
+    ],
+    "allergenTags": [
+      "beef",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món thịt bò kho tương Hàn Quốc (Jangjorim) mang hương vị mặn ngọt đậm đà đặc trưng: thịt thăn bò được hầm mềm rồi xé dọc thớ thấm vị xì dầu, ăn kèm tỏi kho bùi béo và ớt sừng cay dịu rất bắt cơm.",
+    "servingSuggestion": "Xếp các thớ thịt bò xé ra đĩa sâu lòng cùng tỏi kho và ớt sừng, rưới nước kho sánh đậm lên trên; ăn nóng hoặc nguội cùng cơm trắng dẻo.",
+    "storageAndReheat": "Món kho mặn giúp bảo quản rất tốt trong hộp kín ở ngăn mát tủ lạnh đến 5–7 ngày; khi ăn chỉ cần gắp lượng vừa đủ hâm nóng lại cho tan mỡ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn hoặc bắp bò",
+      "culinaryMeasure": "550 g",
+      "prepNote": "thấm khô máu thừa, cắt khối vuông cỡ 5x5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 550,
+      "unit": "g",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 550,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "110 ml (~7,5 muỗng canh)",
+      "prepNote": "dùng loại xì dầu thường để giữ vị mặn chuẩn giúp bảo quản lâu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 110,
+      "unit": "ml",
+      "grossGrams": 129.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 129.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "28 g (~2 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của xì dầu tạo nước kho dịu ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 28,
+      "unit": "g",
+      "grossGrams": 28,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "2 củ (khoảng 50 g, ~16 tép)",
+      "prepNote": "bóc vỏ giữ nguyên tép; chia 20 g hầm khử mùi rồi vớt bỏ, 30 g kho sau",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "cắt khúc lớn để hầm tạo mùi thơm nền rồi vớt bỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "thái lát mỏng hầm cùng thịt khử mùi gây rồi vớt bỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng tươi",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, bỏ cuống, cắt khúc 2 cm cho vào kho 3 phút cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc tạo hương ấm nhẹ khi hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "dùng hầm mềm khối thịt bò và làm nền nước kho",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm sạch thịt bò và sơ chế nguyên liệu thơm",
+      "instruction": "Dùng khăn giấy lau sạch phần nước đỏ trên bề mặt 550 g thịt bò rồi cắt thành khối vuông lớn cỡ 5x5 cm để thịt giữ được thớ dài đẹp mắt sau khi hầm. Bóc vỏ giữ nguyên tép tỏi khô (chia riêng 20 g để hầm nước đầu và 30 g để kho sau), cắt khúc hành lá, thái lát gừng tươi và cắt khúc 2 cm ớt sừng tươi.",
+      "tip": "Cắt thịt bò thành khối lớn trước khi hầm giúp các thớ thịt dài đều, khi xé tay sẽ mềm tơi và không bị vụn nát."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Hầm mềm thịt bò với hành lá, gừng và tỏi khử mùi",
+      "instruction": "Cho thịt bò và 1.000 ml nước lọc vào nồi sâu lòng, đun lửa lớn 4 phút đến khi sôi mạnh rồi hớt sạch bọt nổi. Hạ xuống lửa vừa, thả hành lá, gừng tươi và 20 g tỏi khô vào hầm đậy nắp 30 phút cho thịt chín mềm. Vớt bỏ toàn bộ hành lá, gừng và 20 g tỏi đã hầm để nước dùng thật trong.",
+      "tip": "Vớt bỏ phần rau củ hầm nước đầu giúp nước kho thanh vị, không bị đắng hay đục khi cô đặc ở bước sau.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Kho thịt bò với xì dầu và đường đến khi cạn một nửa",
+      "instruction": "Rót 110 ml xì dầu và cho 28 g đường cát trắng vào nồi thịt bò đang sôi, khuấy nhẹ cho đường tan hết. Tiếp tục kho trên lửa vừa–nhỏ không đậy nắp trong 30 phút đến khi nước kho cạn còn khoảng một nửa và khối thịt ngấm màu nâu đậm đẹp mắt.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Kho tỏi nguyên tép bùi thơm và ớt sừng tươi",
+      "instruction": "Thả 30 g tỏi nguyên tép còn lại vào nồi kho thêm 10 phút cho tỏi chín bùi thấm vị tương. Cuối cùng cho ớt sừng tươi cắt khúc và 1 g tiêu đen xay vào đun thêm 3 phút cho dậy hương cay nhẹ rồi tắt bếp.",
+      "timerMinutes": 13
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Vớt thịt bò xé dọc thớ và chan nước kho",
+      "instruction": "Gắp các khối thịt bò ra đĩa đợi nguội bớt khoảng 5 phút rồi dùng tay xé dọc theo thớ thịt thành từng miếng dày cỡ 1 cm.",
+      "tip": "Xé thịt dọc theo chiều thớ tự nhiên giúp thịt bò kho giữ được độ mềm dai hấp dẫn và dễ thấm nước tương khi chấm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa thịt bò kho tương Hàn Quốc",
+      "instruction": "Xếp thịt bò xé lên đĩa sâu lòng, gắp tỏi kho và ớt sừng bày xung quanh rồi rưới ngập nước kho xì dầu đậm đà lên trên. Dọn ăn cùng cơm trắng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 248,
+    "energyKcal": 248.3,
+    "energyKj": 1039,
+    "proteinG": 25.3,
+    "fatG": 11.9,
+    "saturatedFatG": 4.5,
+    "carbG": 9.5,
+    "fiberG": 0.5,
+    "sugarG": 6,
+    "sodiumMg": 1489,
+    "saltG": 3.72,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0716880b968e8f3486ee16ac356efc7294374b8f322929723e2a32459b3ed90f",
+    "researchedFromV2Sha256": "1def3af2778313e504838c2fd330838750b0dd3ac3838098d5416eeb9da2b2a4"
+  }
+}

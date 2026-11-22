@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6118e8aa010584af",
+    "slug": "trung-hap-tom-chung",
+    "title": "Trứng hấp tôm chưng mềm mượt",
+    "subtitle": "Trứng gà lọc mịn hấp cách thủy cùng tôm tươi băm ngọt thanh, mặt trứng láng mịn như gương nhẹ bụng dễ tiêu"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Trứng",
+      "Thanh đạm",
+      "Dễ nấu",
+      "Nhẹ bụng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "fish",
+      "sesame",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng hấp tôm chưng mềm mịn như đậu hũ non, mặt trứng bóng mượt không một vết rỗ hòa quyện vị ngọt tự nhiên của tôm tươi bóc vỏ và hương thơm dịu từ hành lá, dầu mè.",
+    "servingSuggestion": "Dùng muỗng múc từng phần trứng hấp tôm nóng hổi ăn kèm cơm trắng, rất phù hợp cho bữa tối thanh nhẹ hoặc thực đơn trẻ nhỏ.",
+    "storageAndReheat": "Món ăn ngon nhất khi dùng nóng ngay sau khi hấp; không nên để qua ngày vì trứng và tôm hấp lại dễ bị tách nước."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (khoảng 200 g)",
+      "prepNote": "đập ra tô, khuấy nhẹ cho tan đều lòng đỏ và lòng trắng",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "180 g",
+      "prepNote": "bóc vỏ, bỏ đầu và chỉ đen lưng, rửa sạch rồi băm nhỏ hoặc thái hạt lựu",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 140.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, một phần thái nhỏ hoặc chẻ sợi cong ngâm nước lạnh để trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "chia 4 ml ướp tôm tươi và 6 ml nêm vào hỗn hợp trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "hòa tan vào hỗn hợp trứng và nước lọc",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp tôm, nửa còn lại rắc mặt trứng khi chín",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới nhẹ lên mặt tô trứng chưng tôm sau khi hấp xong",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nguội (hòa trứng và hấp)",
+      "culinaryMeasure": "840 ml",
+      "prepNote": "dùng 240 ml nước lọc nguội đánh cùng trứng (tỉ lệ 1,5 phần nước : 1 phần trứng) và 600 ml đổ đáy nồi hấp",
+      "componentGroup": "broth",
+      "requiredQuantity": 840,
+      "unit": "ml",
+      "grossGrams": 840,
+      "edibleRetentionRatio": 0.29,
+      "edibleGrams": 243.6,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch và ướp tôm tươi thái hạt lựu",
+      "instruction": "Tôm tươi bóc sạch vỏ, bỏ đầu và rút chỉ đen dọc lưng, rửa qua nước muối loãng rồi thấm thật ráo. Thái tôm thành hạt lựu nhỏ (hoặc băm thô) để giữ độ giòn ngọt, ướp tôm với 4 ml nước mắm và 1 g tiêu đen xay trong 10 phút cho thấm vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh nhẹ trứng gà với nước lọc theo tỉ lệ chuẩn",
+      "instruction": "Đập 4 quả trứng gà vào tô sạch, thêm 240 ml nước lọc nguội, 6 ml nước mắm còn lại và 4 g hạt nêm. Dùng đũa khuấy thật nhẹ nhàng theo một chiều cho gia vị tan đều mà không đánh nổi bọt khí quá nhiều.",
+      "tip": "Tỉ lệ khoảng 1,5 phần nước nguội so với 1 phần ruột trứng là bí quyết giúp món trứng hấp mềm rung rinh như tàu hũ non."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Lọc rây trứng và dàn tôm lên mặt tô",
+      "instruction": "Rót hỗn hợp trứng qua rây lưới mịn vào đĩa sâu lòng hoặc tô sứ chịu nhiệt để loại bỏ lợn cợn và bọt khí, dùng thìa hớt sạch phần bọt nhỏ nếu còn sót trên bề mặt. Nhẹ nhàng rải đều phần tôm đã ướp lên mặt trứng rồi bọc kín miệng tô bằng màng bọc thực phẩm chịu nhiệt (hoặc đậy đĩa vừa khít).",
+      "tip": "Bọc kín miệng tô bằng màng bọc chịu nhiệt giúp hơi nước ngưng tụ từ nắp nồi không nhỏ giọt làm rỗ bề mặt trứng hấp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp cách thủy lửa nhỏ cho trứng mịn mượt",
+      "instruction": "Đun sôi 600 ml nước lọc trong nồi hấp rồi hạ ngay xuống lửa nhỏ liu riu, đặt tô trứng vào xửng và đậy nắp hấp khoảng 16 phút. Hơi nóng dịu nhẹ sẽ làm trứng đông mịn dần và thịt tôm chín đỏ au nổi đẹp trên bề mặt.",
+      "tip": "Không để nước sôi quá mạnh hoặc đậy nắp kín hoàn toàn không thoát hơi khi không dùng màng bọc, vì hơi nước mạnh sẽ làm mặt trứng bị rỗ.",
+      "timerMinutes": 16
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Chẻ hành lá trang trí tạo độ tươi xanh",
+      "instruction": "Trong lúc chờ trứng chín, rửa sạch hành lá tươi, thái nhỏ một nửa và chẻ sợi phần còn lại ngâm nhanh vào chén nước mát cho xoăn nhẹ rồi vớt ra để ráo."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Kiểm tra độ chín và hoàn thiện món ăn",
+      "instruction": "Thử xiên tăm vào giữa tô trứng thấy tăm khô sạch không dính dịch lỏng và tôm đã chuyển đỏ hoàn toàn là đạt. Nhấc tô trứng ra, rắc hành lá tươi, 1 g tiêu đen xay còn lại và rưới 5 ml dầu mè thơm lên trên rồi thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 146,
+    "energyKcal": 146,
+    "energyKj": 611,
+    "proteinG": 17.3,
+    "fatG": 7.4,
+    "saturatedFatG": 2.1,
+    "carbG": 2.2,
+    "fiberG": 0.4,
+    "sugarG": 0.7,
+    "sodiumMg": 675,
+    "saltG": 1.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8b0dfbd74796209e49da7453aeae34c49d919569c130be2adadb3fe4db32522c",
+    "researchedFromV2Sha256": "651c1b527562ea400c13980e0f0fda9be64d7b2a67c73993e86b0c321242c67d"
+  }
+}

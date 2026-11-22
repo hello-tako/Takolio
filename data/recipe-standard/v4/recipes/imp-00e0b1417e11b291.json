@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-00e0b1417e11b291",
+    "slug": "dau-phu-xao-hanh-tay",
+    "title": "Đậu phụ chiên giòn xào hành tây",
+    "subtitle": "Đậu phụ cứng áo bột bắp chiên vàng giòn, xào cùng hành tây thái mỏng và gừng tỏi trong nước sốt xì dầu rượu Thiệu Hưng sánh bóng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Đậu phụ",
+      "Xào",
+      "Hành tây",
+      "Chay",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng đậu phụ cứng thấm khô áo lớp bột bắp mỏng chiên vàng giòn rụm hai mặt, sau đó đảo nhanh trên chảo nóng cùng hành tây ngọt thanh, gừng tỏi phi thơm và nước sốt xì dầu đậm – nhạt quyện vị dịu của rượu Thiệu Hưng và đường nâu.",
+    "servingSuggestion": "Trút đậu phụ xào hành tây lên đĩa hoặc phủ trực tiếp lên bát cơm trắng nóng, rắc thêm hành lá xanh và hạt mè trắng rang cho dậy hương thơm.",
+    "storageAndReheat": "Món ngon nhất khi dùng nóng để cảm nhận vỏ đậu giòn ráo; nếu còn dư, bảo quản hộp kín ngăn mát tối đa 2 ngày và áp chảo lại 3 phút trên lửa vừa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ cứng",
+      "culinaryMeasure": "3,5 bìa (~420 g)",
+      "prepNote": "bọc khăn giấy thấm thật khô nước, cắt khối vuông 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3.5,
+      "unit": "piece",
+      "grossGrams": 420,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 420,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "45 g (~1/3 chén)",
+      "prepNote": "chia 38 g để lăn áo đậu phụ trước khi chiên, 7 g pha với nước làm sánh sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "75 ml (~5 muỗng canh)",
+      "prepNote": "dùng chiên vàng giòn các mặt đậu phụ trong chảo rộng",
+      "componentGroup": "main",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 69,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 31.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê gừng nạo)",
+      "prepNote": "cạo vỏ, băm hoặc nạo thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (~12,5 g, 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "lột vỏ, cắt đôi rồi thái lát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo hương thơm nồng ấm đặc trưng ẩm thực Hoa cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 19.8,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 13.86,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "làm nền mặn thanh cho nước sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo màu nâu óng hấp dẫn cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "16 g (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt caramel nhẹ hài hòa với hành tây",
+      "componentGroup": "sauce",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "hòa vào nước sốt cho mùi thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "dùng để hòa tan phần bột bắp làm sánh sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 12,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (~20 g, khoảng 1–2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ để hoàn thiện món xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "rắc mặt trang trí và tăng độ bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô và lăn bột bắp cho đậu phụ",
+      "instruction": "Dùng khăn giấy sạch thấm thật khô bề mặt 3,5 bìa đậu phụ cứng rồi cắt thành khối vuông 2,5 cm. Cho 38 g bột bắp ra đĩa rộng, lăn nhẹ từng miếng đậu cho bột bám một lớp áo mỏng đều xung quanh; hòa tan 7 g bột bắp còn lại với 120 ml nước lọc ấm trong chén nhỏ để sẵn.",
+      "tip": "Thấm thật ráo nước và chỉ áo lớp bột mỏng giúp đậu chiên giòn lâu mà không bị bết bột."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng giòn các mặt đậu phụ",
+      "instruction": "Đun nóng 75 ml dầu ăn trong chảo chống dính hoặc chảo gang trên lửa vừa. Xếp từng miếng đậu phụ cách nhau vào chảo, chiên 8 phút kết hợp lật đều đến khi tất cả các mặt vàng giòn thì vớt ra đĩa riêng.",
+      "tip": "Xếp các khối đậu có khoảng hở đều nhau để hơi nóng lưu thông, tránh các mặt đậu dính chặt vào nhau khi chiên.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm gừng tỏi và xào mềm hành tây",
+      "instruction": "Chắt bớt dầu thừa trong chảo chỉ chừa lại khoảng 1 muỗng canh. Băm nhỏ tỏi khô rồi cho cùng gừng tươi nạo nhuyễn vào phi thơm 1 phút trên lửa vừa, sau đó thả hành tây thái lát vào xào đều 3 phút đến khi hành chuyển trong mềm mà vẫn giữ độ giòn ngọt tự nhiên.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu sôi hỗn hợp gia vị sốt",
+      "instruction": "Rót 20 ml rượu Thiệu Hưng quanh thành chảo cho dậy mùi thơm, tiếp tục thêm 30 ml xì dầu nhạt, 10 ml xì dầu đặc, 16 g đường nâu và 5 ml dầu mè thơm trực tiếp vào chảo hành tây, đảo đều và đun sôi lăn tăn 2 phút cho đường tan hết.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áo sốt sánh mịn quanh đậu phụ",
+      "instruction": "Khuấy đều lại chén nước bột bắp rồi rót vào chảo cùng toàn bộ đậu phụ đã chiên giòn. Dùng xẻng nhẹ tay đảo đều 1 phút trên lửa vừa cho nước sốt sánh lại, bám bóng mượt quanh từng khối đậu mà không làm vỡ miếng đậu.",
+      "tip": "Đảo hất nhẹ từ đáy chảo lên thay vì dầm trực tiếp vào miếng đậu phụ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá và mè rang",
+      "instruction": "Rắc hành lá thái nhỏ vào chảo đảo thêm vài giây cho dậy hương rồi tắt bếp. Dọn đậu phụ xào hành tây nóng hổi ra đĩa, rắc thêm hạt mè trắng rang lên mặt và dùng kèm cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 349,
+    "energyKcal": 348.7,
+    "energyKj": 1458,
+    "proteinG": 16.4,
+    "fatG": 20.2,
+    "saturatedFatG": 2.9,
+    "carbG": 28.3,
+    "fiberG": 2.7,
+    "sugarG": 8.3,
+    "sodiumMg": 891,
+    "saltG": 2.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5f18d5d029a71946a591caa14d7d088b4b6b6636bf1e26ce342864ef214e2fea",
+    "researchedFromV2Sha256": "4b8e5e93523695d72fe13d5945c92aa368f924e21290d90f0af9cedaca79a4dc"
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-49ca1819d60ffec8",
+    "slug": "mi-hanh-dau",
+    "title": "Mì trộn dầu hành kiểu Quảng Đông",
+    "subtitle": "Sợi mì dai mượt trộn quyện dầu hành phi vàng thơm nức và sốt xì dầu hai vị mặn ngọt bóng bẩy"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 12,
+    "servings": 2,
+    "tags": [
+      "Mì trộn",
+      "Dầu hành",
+      "Quảng Đông",
+      "Món nhanh",
+      "Giản dị"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì trộn dầu hành nổi tiếng với hương thơm quyến rũ từ hành lá phi chậm trong dầu nguội hòa quyện cùng xì dầu nhạt, xì dầu đặc và đường cát tạo nên lớp sốt nâu bóng áo đều từng sợi mì dai ngon.",
+    "servingSuggestion": "Chia mì ra tô sâu lòng, rắc hành lá phi giòn và hạt mè rang lên mặt; có thể ăn kèm trứng ốp la hoặc cải thìa chần.",
+    "storageAndReheat": "Mì ngon nhất khi trộn và ăn ngay lúc nóng; riêng phần sốt dầu hành có thể làm sẵn để hũ thủy tinh kín trong ngăn mát dùng dần trong 2 tuần."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì trứng sợi khô",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chuẩn bị sẵn, không bẻ vụn sợi mì để khi trộn giữ độ dai dài đẹp mắt",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,75 bó (khoảng 70 g, ~6–7 cây)",
+      "prepNote": "rửa sạch, thấm thật khô bằng khăn giấy, cắt khúc dài 5 cm và chẻ đôi phần gốc trắng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.75,
+      "unit": "bunch",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 66.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật trung tính",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng phi chậm hành lá từ lúc dầu còn nguội để chiết xuất trọn vẹn hương thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh và hương umami cho sốt dầu hành",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo màu nâu cánh gián bóng đẹp và vị ngọt hậu nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của hai loại xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "hòa vào nồi nước sôi để luộc mì đậm đà hơn (phần lớn nước luộc sẽ chắt bỏ)",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 0.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "tùy chọn rắc lên mặt tô mì khi hoàn thiện để tăng hương bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "dùng để đun sôi luộc chín sợi mì trứng rồi chắt ráo nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm khô và cắt khúc dài hành lá",
+      "instruction": "Rửa sạch hành lá tươi, dùng khăn giấy thấm thật khô từng cọng hành để khi phi không bị bắn dầu. Cắt bỏ rễ, cắt hành thành từng khúc dài khoảng 5 cm và chẻ đôi phần gốc trắng theo chiều dọc.",
+      "tip": "Không nên thái hành quá nhỏ và phải thấm thật khô để hành không bị cháy nhanh trước khi kịp tiết hết tinh dầu thơm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi chậm hành lá từ dầu nguội cho vàng thơm",
+      "instruction": "Cho 30 ml dầu ăn và toàn bộ hành lá vào chảo từ lúc dầu còn nguội, sau đó mới bật lửa nhỏ. Đảo nhẹ và đều tay khoảng 6 phút đến khi phần gốc hành chuyển màu vàng nâu đẹp mắt, giòn thơm thì vớt hết xác hành ra đĩa để riêng, giữ lại toàn bộ phần dầu hành trong chảo.",
+      "tip": "Bắt đầu phi từ dầu nguội giúp tinh dầu hành chiết xuất chậm và sâu hơn, đồng thời kiểm soát nhiệt độ tránh làm hành bị cháy đắng.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Nấu hòa tan hỗn hợp sốt xì dầu dầu hành",
+      "instruction": "Tắt bếp, chờ dầu hành nguội bớt khoảng 1 phút rồi đổ 15 ml xì dầu nhạt, 15 ml xì dầu đặc và 4 g đường cát trắng vào chảo. Khuấy đều đến khi hỗn hợp sủi lăn tăn nhẹ từ nhiệt dư và đường tan hoàn toàn; nếu dầu nguội quá, bật lại lửa nhỏ khoảng 20 giây cho sốt hòa quyện."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sôi nước và luộc chín sợi mì trứng",
+      "instruction": "Đun sôi 1 lít nước lọc trong nồi lớn cùng 6 g muối ăn. Thả 200 g mì trứng sợi khô vào luộc theo hướng dẫn trên bao bì khoảng 4–5 phút đến khi sợi mì chín mềm nhưng vẫn giữ được độ dai nhẹ ở lõi.",
+      "tip": "Có thể luộc mì song song trong lúc phi hành để hoàn thành món ăn chỉ trong vòng 10–12 phút.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Vớt ráo mì và trộn đều cùng sốt dầu hành ấm",
+      "instruction": "Vớt mì ra rổ, xóc thật kỹ cho ráo hết nước rồi trút ngay vào chảo sốt dầu hành còn ấm. Dùng đũa trộn đều nhẹ tay khoảng 1 phút cho từng sợi mì áo đều lớp sốt nâu bóng thơm lừng.",
+      "tip": "Mì phải thật ráo nước để lớp sốt dầu hành bám chặt quanh sợi mì mà không bị loãng nhạt."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày tô mì, rắc hành phi giòn và thưởng thức",
+      "instruction": "Gắp mì ra hai tô vừa, rưới thêm phần sốt còn đọng dưới chảo lên trên. Xếp phần hành lá phi vàng giòn lên mặt, rắc thêm 5 g hạt mè trắng rang (nếu dùng) và thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 520,
+    "energyKcal": 520.4,
+    "energyKj": 2178,
+    "proteinG": 14.6,
+    "fatG": 18,
+    "saturatedFatG": 2.9,
+    "carbG": 75.6,
+    "fiberG": 3.9,
+    "sugarG": 5.1,
+    "sodiumMg": 1498,
+    "saltG": 3.74,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "16283652a9c8fca1ecee7dc8010224e2120bd491035e7de7c9bb3b1a9f3cf5d8",
+    "researchedFromV2Sha256": "61378ba5b3d5cc4ba73423db15bbf86a834014778fee75789684dcfde5d16007"
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-12",
+    "slug": "chinese-tomato-egg",
+    "title": "Trứng xào cà chua sốt tương kiểu Quảng Đông",
+    "subtitle": "Biến tấu kiểu quán cơm Hồng Kông với trứng đánh sữa tươi béo mượt, cà chua hai kiểu cắt hòa quyện tương cà, xì dầu và dầu hào"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 2,
+    "tags": [
+      "Quảng Đông",
+      "Nhanh gọn",
+      "Cà chua trứng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Khác với phiên bản truyền thống dùng muối và rượu Thiệu Hưng, trứng xào cà chua kiểu Quảng Đông kết hợp sữa tươi giúp miếng trứng mềm mịn như kem, quyện cùng nước sốt đậm vị từ tương cà, xì dầu nhạt, dầu hào và gừng thơm.",
+    "servingSuggestion": "Dọn nóng ra đĩa hoặc chan trực tiếp lên tô cơm trắng nóng hổi, rắc hành lá thái nhỏ lên mặt.",
+    "storageAndReheat": "Nên dùng ngay trong bữa để giữ độ mềm mịn của trứng; nếu bảo quản tủ mát tối đa 24 giờ, hâm lại nhẹ nhàng trên chảo lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3,5 quả (~420 g)",
+      "prepNote": "rửa sạch; 2,5 quả bổ múi cau giữ miếng, 1 quả thái hạt lựu nhỏ để nhanh tạo sốt sánh",
+      "componentGroup": "main",
+      "requiredQuantity": 3.5,
+      "unit": "piece",
+      "grossGrams": 420,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 420,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (~150 g)",
+      "prepNote": "đập ra tô, đánh tan nhẹ cùng sữa tươi",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "trộn vào trứng giúp miếng trứng chiên mềm mượt và béo nhẹ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "6 g (~2 lát mỏng)",
+      "prepNote": "gọt vỏ, thái lát mỏng để phi thơm tạo hương nền cho sốt cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (~20 g, 2 cọng)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà chua",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "tạo màu đỏ bóng và vị chua ngọt hài hòa cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu đặc trưng kiểu Quảng Đông",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "8 ml (~1/2 muỗng canh)",
+      "prepNote": "tăng độ sánh bóng và vị ngọt hậu cho sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.76,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.76,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua ngọt trong sốt tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo hương cay ấm nhẹ cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 20 ml chiên trứng, 10 ml phi gừng và xào cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 26.22,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cà chua hai kiểu cắt và gia vị",
+      "instruction": "Rửa sạch 3,5 quả cà chua chín đỏ: 2,5 quả bổ múi cau để giữ kết cấu miếng khi ăn, 1 quả thái hạt lựu nhỏ để nhanh tiết nước làm sốt sánh. Gọt vỏ 6 g gừng tươi, thái lát mỏng; hành lá tươi rửa sạch, thái nhỏ.",
+      "tip": "Kết hợp cà chua thái hạt lựu và cà chua bổ múi cau giúp phần sốt sánh nhanh mà vẫn giữ được miếng cà chua đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh trứng gà với sữa tươi",
+      "instruction": "Đập 3 quả trứng gà tươi vào tô, rót vào 20 ml sữa tươi không đường rồi dùng đũa đánh đều nhẹ tay đến khi hỗn hợp đồng nhất, mịn mượt.",
+      "tip": "Thêm một ít sữa tươi vào trứng là bí quyết giúp trứng sau khi xào có độ bồng mềm, béo mượt như trứng chần kiểu Hồng Kông."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên mềm trứng gà trên lửa vừa lớn",
+      "instruction": "Làm nóng chảo chống dính hoặc chảo lòng sâu với 20 ml dầu ăn trung tính trên lửa vừa lớn. Đổ tô trứng đánh sữa vào, đợi mép trứng vừa se lại thì đẩy nhẹ từ rìa vào giữa tạo các lớp gợn sóng mềm. Khi trứng vừa đông khoảng 80% và vẫn còn ẩm bóng, lập tức trút ra đĩa riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi gừng thơm và xào nhừ cà chua",
+      "instruction": "Thêm 10 ml dầu ăn trung tính còn lại vào chảo, hạ lửa vừa rồi cho các lát gừng tươi vào phi thơm khoảng 1 phút. Tiếp theo, thả cà chua thái hạt lựu vào đảo 2 phút cho mềm nhuyễn ra nước, rồi cho tiếp phần cà chua bổ múi cau vào xào thêm 3 phút đến khi cà chua mềm mọng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nêm sốt tương cà, xì dầu và dầu hào",
+      "instruction": "Hạ lửa vừa nhỏ, nêm vào chảo cà chua 30 ml tương cà chua, 15 ml xì dầu nhạt, 8 ml dầu hào, 5 g đường cát trắng và 1 g tiêu trắng xay. Đảo đều nhẹ tay khoảng 1 phút để các gia vị tan hoàn toàn, tạo thành phần sốt đỏ cam sánh mịn.",
+      "tip": "Nếm thử độ đậm của sốt trước khi cho trứng vào để dễ điều chỉnh cân bằng giữa vị chua ngọt của tương cà và vị mặn dịu của xì dầu."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo quyện trứng với sốt và hoàn thiện",
+      "instruction": "Trút toàn bộ trứng gà chiên mềm trở lại chảo sốt cà chua, đảo nhẹ tay 30 giây theo chuyển động hất nhẹ từ dưới lên để sốt áo đều quanh từng mảng trứng mà không làm nát trứng. Tắt bếp, rắc hành lá tươi thái nhỏ lên trên và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 297,
+    "energyKcal": 297.1,
+    "energyKj": 1242,
+    "proteinG": 11.8,
+    "fatG": 20.3,
+    "saturatedFatG": 4.2,
+    "carbG": 18.8,
+    "fiberG": 3,
+    "sugarG": 13.2,
+    "sodiumMg": 905,
+    "saltG": 2.26,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169076",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170933",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/vietnam/dau-phu-sot-ca-chua.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ea7e0eb62b2be5003789bf95bb399eda7a64a0201cc45979960aa74031eccece",
+    "researchedFromV2Sha256": "94473a9416d77bfe679402fc255ff3b3427400e6d20b78e6e88d8608dca1f003"
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-01ae566db4a7feab",
+    "slug": "sup-bo-nam-trung",
+    "title": "Súp thịt bò nấm đùi gà kiểu Hoa",
+    "subtitle": "Súp bò nấm thanh ngọt từ nước hầm bò cùng thịt thăn bò mềm mọng, nấm đùi gà giòn sần sật, gừng ấm và tiêu trắng dậy hương"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món súp",
+      "Thịt bò",
+      "Nấm đùi gà",
+      "Thanh ngọt",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tô súp thịt bò nấm đùi gà kiểu Hoa ấm nóng với nước dùng trong ngọt thanh vị nấm và gừng, những lát thịt bò chín tới mềm ngọt quyện chút sánh mịn nhẹ dịu và hương dầu mè tiêu trắng.",
+    "servingSuggestion": "Múc súp nóng ra tô sâu lòng, rắc hành lá tươi và thêm chút tiêu trắng xay; dùng làm món khai vị hoặc ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Ngon nhất khi thưởng thức ngay lúc nóng để thịt bò không bị dai; phần súp dư bảo quản ngăn mát tối đa 24 giờ và đun sôi lăn tăn lại trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò thái lát mỏng",
+      "culinaryMeasure": "400 g",
+      "prepNote": "thấm khô, thái lát mỏng 2–3 mm ngang thớ cho mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "300 g (khoảng 3–4 cây)",
+      "prepNote": "rửa sạch, cắt bỏ phần gốc già, thái lát dọc dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, thái lát mỏng để nấu thơm nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 14,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, đầu hành trắng đập dập nấu nước dùng, lá xanh thái nhỏ rắc mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 32,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, đập dập hoặc băm nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BEEF_BROTH",
+      "name": "Nước dùng bò",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "dùng làm nền súp ngọt thanh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 900,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "pha loãng nước dùng bò và hòa bột bắp",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp thịt bò và 10 ml nêm nước súp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vừa vị thanh cho nước súp sau khi nấu",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp thịt bò, một nửa nêm súp sau cùng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "ướp giúp thịt bò mềm mượt và dậy mùi thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "12 g (~1,5 muỗng canh)",
+      "prepNote": "hòa tan với 40 ml nước lạnh để tạo độ sánh nhẹ cho súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái ngang thớ và ướp mềm thịt bò",
+      "instruction": "Thấm khô 400 g thịt thăn bò bằng khăn giấy, thái lát mỏng 2 đến 3 mm theo chiều ngang thớ để thịt không bị dai. Cho bò vào tô ướp cùng 15 ml xì dầu nhạt, 5 ml dầu mè thơm và 1 g tiêu trắng xay, trộn đều rồi để thấm trong 15 phút.",
+      "tip": "Không cho muối vào lúc ướp thịt bò sống vì muối làm thịt tiết nước và bị săn cứng khi nấu nhanh.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà và các nguyên liệu thơm",
+      "instruction": "Rửa sạch nấm đùi gà tươi, cắt bỏ gốc già rồi thái lát dọc dày khoảng 0,5 cm vừa ăn. Gừng tươi thái lát mỏng, tỏi khô đập dập; hành lá tách phần đầu trắng đập dập để nấu nước dùng, còn phần lá xanh thái nhỏ để riêng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu nước dùng bò thơm gừng hành",
+      "instruction": "Cho 1000 ml nước dùng bò cùng 260 ml nước lọc vào nồi sâu lòng, thả gừng thái lát, tỏi đập dập và đầu hành trắng vào đun sôi trên lửa lớn. Khi nước sôi bùng, hạ xuống lửa vừa đun thêm 5 phút cho nước dùng dậy hương thơm rồi vớt bỏ bã gừng tỏi và đầu hành để nước súp trong đẹp.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu chín nấm đùi gà ngọt nước",
+      "instruction": "Cho toàn bộ nấm đùi gà thái lát vào nồi nước dùng đang sôi nhẹ trên lửa vừa, nấu khoảng 8 phút đến khi nấm chín mềm, ngấm vị và tiết ra độ ngọt tự nhiên cho nước súp. Hớt sạch bọt nổi nếu có.",
+      "tip": "Nấu nấm trước giúp nước súp ngọt thanh mà không làm thịt bò bị chín quá kỹ.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trụng nhanh thịt bò và nêm gia vị",
+      "instruction": "Giữ nồi súp sôi lăn tăn ở lửa vừa, thả từng lượt thịt bò đã ướp vào khuấy nhẹ cho tơi miếng, nấu khoảng 2 đến 3 phút đến khi thịt bò vừa chín đều không còn sắc đỏ sống. Nêm thêm 10 ml xì dầu nhạt còn lại, 5 g muối ăn và 1 g tiêu trắng xay cho vừa miệng.",
+      "tip": "Không đun sôi sục quá lâu sau khi thả bò để lát thịt giữ được độ mềm mọng và ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tạo độ sánh nhẹ và hoàn thiện tô súp",
+      "instruction": "Hòa tan 12 g bột bắp với 40 ml nước lọc còn lại, vừa khuấy nhẹ nồi súp theo một chiều vừa rót từ từ nước bột bắp vào đến khi nước súp có độ sánh mượt nhẹ rồi đun thêm 30 giây cho chín bột. Tắt bếp, múc súp ra tô, rắc hành lá xanh thái nhỏ và dùng ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 281,
+    "energyKcal": 281.2,
+    "energyKj": 1176,
+    "proteinG": 28,
+    "fatG": 13.5,
+    "saturatedFatG": 4.9,
+    "carbG": 11.9,
+    "fiberG": 2.2,
+    "sugarG": 1.8,
+    "sodiumMg": 1539,
+    "saltG": 3.85,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171593",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d73e1f4d5f99fb0007ce1d7705ed4224e17d386fd09cbc7807df50f79604dc1e",
+    "researchedFromV2Sha256": "6ccfad13d727887f71c5089388a6ce13c710f6d182ef9b787fe571e89a04523c"
+  }
+}

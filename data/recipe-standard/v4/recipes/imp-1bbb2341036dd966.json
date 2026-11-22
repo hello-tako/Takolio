@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-1bbb2341036dd966",
+    "slug": "bong-cai-tron-me-nhat",
+    "title": "Bông cải xanh trộn mè Nhật (Goma-ae)",
+    "subtitle": "Bông cải xanh chần giòn giữ màu xanh mướt trộn sốt hạt mè trắng rang giã dập, xì dầu và mật ong thanh dịu chuẩn vị món phụ Nhật Bản"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Goma-ae",
+      "Bông cải xanh",
+      "Món phụ Nhật",
+      "Thanh đạm",
+      "Mè rang"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món rau phụ Goma-ae truyền thống của Nhật Bản với bông cải xanh chần vừa chín tới giòn ngọt tự nhiên, quyện lớp sốt bùi béo từ mè trắng rang giã dập hòa cùng xì dầu Nhật, Sake, Dashi và mật ong.",
+    "servingSuggestion": "Bày bông cải trộn mè ra đĩa sâu lòng nhỏ, rắc thêm phần mè nguyên hạt và hành lá thái nhỏ lên mặt; dùng nguội mát hoặc ở nhiệt độ phòng như món rau phụ cân bằng bữa cơm Nhật.",
+    "storageAndReheat": "Món Goma-ae ngon nhất khi dùng trong ngày để giữ độ giòn và mùi mè rang; có thể bảo quản ngăn mát tủ lạnh trong hộp kín tối đa 2 ngày và ăn nguội trực tiếp, không hâm nóng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "1 bông vừa (khoảng 300 g)",
+      "prepNote": "tách thành các nhánh nhỏ đều nhau cỡ 3–4 cm, gọt bớt lớp vỏ xơ ở phần cuống non",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 246,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng",
+      "culinaryMeasure": "27 g (~3 muỗng canh)",
+      "prepNote": "rang thơm trên chảo khô, giã dập 2/3 lượng mè và giữ lại 1/3 nguyên hạt rắc mặt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 27,
+      "unit": "g",
+      "grossGrams": 27,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "24 ml (~1,5 muỗng canh)",
+      "prepNote": "hòa cùng sốt mè tạo vị mặn umami",
+      "componentGroup": "sauce",
+      "requiredQuantity": 24,
+      "unit": "ml",
+      "grossGrams": 28.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "đun bay cồn nhẹ hoặc khuấy trực tiếp cùng nước dùng Dashi giúp sốt thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt dịu sánh nhẹ cho sốt trộn mè",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 11.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "giúp hòa tan sốt mè sánh mịn và tăng chiều sâu vị umami",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh thật nhỏ để rắc trang trí mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (chần rau)",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "hòa vào nước luộc giúp bông cải giữ màu xanh tươi (phần lớn bỏ theo nước luộc)",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần bông cải)",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "đun sôi để luộc nhanh bông cải rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bông cải xanh và hành lá",
+      "instruction": "Rửa sạch bông cải xanh dưới vòi nước, tách thành các nhánh nhỏ đều cỡ 3–4 cm và gọt bỏ phần xơ cứng quanh cuống để rau chín đồng đều. Rửa sạch hành lá tươi, thấm khô và thái khoanh thật nhỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Rang thơm và giã dập hạt mè trắng",
+      "instruction": "Cho 27 g hạt mè trắng vào chảo khô, rang trên lửa nhỏ khoảng 3 phút và đảo liên tục đến khi mè chuyển vàng nhạt, dậy mùi thơm bùi thì trút ra ngay kẻo cháy. Đợi nguội bớt, cho 2/3 lượng mè vào cối giã dập cho tiết dầu thơm, giữ lại 1/3 nguyên hạt để rắc mặt.",
+      "tip": "Giã dập 2/3 lượng mè giúp tinh dầu mè tiết ra quyện sốt béo ngậy, trong khi phần mè nguyên hạt tạo điểm nhấn giòn bùi khi ăn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Luộc nhanh bông cải xanh giữ độ giòn",
+      "instruction": "Đun sôi 1000 ml nước lọc với 5 g muối ăn trên lửa lớn. Thả các nhánh bông cải xanh vào luộc khoảng 2–3 phút đến khi rau vừa chín tới, cuống còn giòn nhẹ và giữ nguyên màu xanh ngọc tươi sáng.",
+      "tip": "Không luộc bông cải quá mềm nhũn vì rau sẽ ngậm nhiều nước, làm loãng sốt mè và mất độ giòn đặc trưng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Xả nguội và vắt thật ráo bông cải",
+      "instruction": "Vớt bông cải xanh ra rổ ngay khi đạt độ chín, xả nhanh qua nước lọc mát (hoặc quạt nguội trên mâm thưa) để chặn nhiệt giữ màu xanh, sau đó để thật ráo nước và dùng khăn sạch thấm nhẹ cho bề mặt rau khô ráo hoàn toàn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Khuấy sốt mè trộn kiểu Nhật",
+      "instruction": "Trong tô trộn lớn, khuấy đều 24 ml xì dầu Nhật Bản, 15 ml rượu Sake, 8 ml mật ong nguyên chất và 30 ml nước dùng Dashi đến khi mật ong tan hoàn toàn, sau đó cho toàn bộ phần hạt mè trắng đã giã dập vào trộn sánh mịn.",
+      "tip": "Nếm nhẹ phần sốt trước khi trộn rau; nếu thích vị ngọt dịu hơn có thể thêm vài giọt mật ong, thích đậm hơn thêm chút xì dầu."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều bông cải với sốt mè và hoàn thiện",
+      "instruction": "Cho bông cải xanh đã ráo nước vào tô sốt mè, dùng đũa hoặc phới trộn nhẹ tay từ dưới lên cho sốt áo đều từng nhánh rau, để yên 2 phút cho thấm. Bày ra đĩa, rắc phần mè trắng nguyên hạt còn lại cùng hành lá thái nhỏ lên trên và thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 104,
+    "energyKcal": 103.6,
+    "energyKj": 433,
+    "proteinG": 4.9,
+    "fatG": 4.8,
+    "saturatedFatG": 0.7,
+    "carbG": 11.9,
+    "fiberG": 3.4,
+    "sugarG": 4.8,
+    "sodiumMg": 676,
+    "saltG": 1.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 169640",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170379",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "057a11cd7573ac6086cc5152aaff443689bea95ecab16ba70bfc159a78f4705c",
+    "researchedFromV2Sha256": "fc1bec01a6f290f407856d926baddf2f83d8842c2f279cb025fef5628ebe8057"
+  }
+}

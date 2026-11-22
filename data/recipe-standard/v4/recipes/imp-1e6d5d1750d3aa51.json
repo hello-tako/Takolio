@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-1e6d5d1750d3aa51",
+    "slug": "ga-xao-ca-chua",
+    "title": "Gà xào cà chua",
+    "subtitle": "Thịt đùi gà áp chảo vàng mềm om thấm sốt cà chua đỏ sánh đậm vị xì dầu, ăn kèm hành tây giòn ngọt cực hao cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 18,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt gà",
+      "Cà chua",
+      "Đậm đà",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà xào cà chua mang hương vị cơm nhà ấm cúng với từng miếng thịt đùi gà săn mềm mọng nước, thấm đẫm phần sốt cà chua chín nhừ đỏ au quyện xì dầu mặn ngọt dịu nhẹ và hành tây giòn thơm.",
+    "servingSuggestion": "Trút gà xào cà chua ra đĩa sâu lòng, rưới đều nước sốt sánh lên trên cùng hành lá và tiêu đen xay; dùng nóng với cơm trắng hoặc bún tươi.",
+    "storageAndReheat": "Bảo quản trong hộp kín ngăn mát tối đa 2 ngày; khi ăn hâm nóng lại trên chảo lửa vừa khoảng 3–4 phút cho sốt sôi đều trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương",
+      "culinaryMeasure": "480 g",
+      "prepNote": "rửa nước muối loãng rồi xả sạch, thấm khô và cắt miếng vừa ăn dày 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 480,
+      "unit": "g",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (khoảng 360 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ 6–8 múi cau mỗi quả",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ vừa (khoảng 140 g)",
+      "prepNote": "bóc vỏ, rửa sạch, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, phần đầu hành trắng băm nhỏ phi thơm, phần lá xanh cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp gà và phi thơm lúc xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm đầu hành tỏi và áp chảo săn thịt đùi gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp gà và 5 ml điều chỉnh sốt lúc cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1 muỗng cà phê (5 ml)",
+      "prepNote": "nêm vào sốt cà chua giúp món ăn dậy hương thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 g)",
+      "prepNote": "dùng ướp thịt đùi gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "1,5 muỗng cà phê (6 g)",
+      "prepNote": "chia 3 g ướp gà và 3 g cân bằng vị chua của sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "chia một nửa ướp gà và một nửa rắc khi tắt bếp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng om chín mềm thịt gà cùng cà chua thành sốt sánh đỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 80,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp thịt đùi gà với xì dầu",
+      "instruction": "Thịt đùi gà lọc xương rửa sạch, thấm khô rồi cắt miếng vuông dày khoảng 2 cm. Cho thịt gà vào tô ướp cùng một nửa lượng tỏi băm, 15 ml nước tương (xì dầu), 3 g muối ăn, 3 g đường cát trắng và một nửa lượng tiêu đen xay, trộn đều và để thấm 15 phút.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Bổ múi cà chua, hành tây và cắt hành lá",
+      "instruction": "Cà chua chín rửa sạch, bỏ cuống rồi bổ mỗi quả thành 6–8 múi cau. Hành tây bóc vỏ cắt múi cau vừa ăn. Hành lá rửa sạch, tách đầu hành trắng băm nhỏ, phần lá xanh cắt khúc 3 cm; phần tỏi còn lại băm nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo săn vàng thịt đùi gà",
+      "instruction": "Đun nóng 25 ml dầu ăn trong chảo rộng trên lửa vừa, phi thơm đầu hành trắng và phần tỏi băm còn lại. Trút thịt gà đã ướp vào dàn đều một lớp, tăng lên lửa lớn và xào khoảng 4–5 phút đến khi các miếng gà săn chắc và xém vàng hai mặt.",
+      "tip": "Dàn đều thịt gà thành một lớp để miếng gà xém vàng thơm mà không bị tiết nước hấp luộc.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om thịt gà chín kỹ cùng sốt cà chua",
+      "instruction": "Hạ xuống lửa vừa, cho toàn bộ cà chua bổ múi vào chảo đảo nhẹ 1 phút. Rót 100 ml nước lọc và 5 ml nước mắm ngon vào, đậy vung om khoảng 9–10 phút cho đến khi cà chua mềm nhừ tạo thành sốt đỏ sánh và thịt gà chín hoàn toàn tận lõi (không còn màu hồng).",
+      "tip": "Không om quá 12 phút để thịt đùi gà giữ độ mọng mềm và múi cà chua vẫn còn giữ dáng đẹp mắt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm hành tây giòn ngọt và cân chỉnh sốt",
+      "instruction": "Mở vung, thả hành tây cắt múi cau vào đảo đều trên lửa vừa-lớn khoảng 2 phút cho hành vừa chín tái giòn ngọt. Nêm thêm 5 ml nước tương (xì dầu) và 3 g đường cát trắng còn lại sao cho sốt đạt vị chua dịu, mặn ngọt hài hòa.",
+      "tip": "Cho hành tây vào bước cuối giúp hành giữ được độ giòn ngọt và màu sắc tươi sáng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá và dọn nóng",
+      "instruction": "Thả hành lá cắt khúc và phần tiêu đen xay còn lại vào chảo, đảo nhanh tay 15 giây rồi tắt bếp. Bày gà xào cà chua ra đĩa sâu lòng, rưới sốt lên trên và ăn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 408,
+    "energyKcal": 407.5,
+    "energyKj": 1705,
+    "proteinG": 33.7,
+    "fatG": 24.1,
+    "saturatedFatG": 5.7,
+    "carbG": 13.8,
+    "fiberG": 2.7,
+    "sugarG": 7.3,
+    "sodiumMg": 1118,
+    "saltG": 2.8,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "aaa534a0854a57f9b3e281f066dfbb5a1ab909ccf8c045fe3bd9e7e1ad8448ee",
+    "researchedFromV2Sha256": "6ebf6906a5c23a7c5d4b27bba43a68fdc70d645e17c7648a8d763a1f3ed833ce"
+  }
+}

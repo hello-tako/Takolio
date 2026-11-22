@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2865ee57783628d7",
+    "slug": "salad-mi-y-nguoi",
+    "title": "Salad mì Ý trộn nguội phô mai Feta",
+    "subtitle": "Mì xoắn Fusilli dai nhẹ hòa quyện cà chua bi, dưa leo giòn mát, phô mai Feta mặn béo và sốt chanh dầu ô liu"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Salad mì Ý",
+      "Ẩm thực Ý",
+      "Món mát",
+      "Bữa trưa",
+      "Feta"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa salad mì Ý thanh mát mang phong vị Địa Trung Hải với những xoắn mì Fusilli chín vừa al dente quyện sốt dầu ô liu chanh vàng, cà chua mọng nước, dưa leo giòn ngọt và phô mai Feta béo mặn.",
+    "servingSuggestion": "Dọn lạnh trực tiếp sau khi ủ mát 30 phút, rắc thêm lá húng quế tươi; rất hợp làm món chính nhẹ nhàng cho bữa trưa hoặc món khai vị cho tiệc nướng.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; trước khi ăn đảo nhẹ lại một lượt cho sốt hòa đều mà không cần hâm nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ITALIAN_PASTA_SHORT",
+      "name": "Mì Ý xoắn (Fusilli)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "luộc trong nước muối sôi chín vừa al dente rồi xả lạnh để ráo hoàn toàn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua bi hoặc cà chua chín",
+      "culinaryMeasure": "1 quả (~120 g)",
+      "prepNote": "rửa sạch, bổ đôi nếu dùng cà chua bi hoặc cắt hạt lựu 1,5 cm nếu dùng quả lớn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "3/4 quả (~112 g)",
+      "prepNote": "rửa sạch, bổ dọc bỏ phần ruột hạt rồi thái hạt lựu cỡ 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 95.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "RICOTTA_CHEESE",
+      "name": "Phô mai Feta",
+      "culinaryMeasure": "150 g",
+      "prepNote": "cắt khối vuông khoảng 1,5 cm, thao tác nhẹ tay để không bị nát",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "RED_ONION",
+      "name": "Hành tây tím",
+      "culinaryMeasure": "40 g (khoảng 1/3 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát mỏng theo khoanh để giảm độ hăng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, lau khô và xé nhỏ bằng tay",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "đánh quyện cùng nước cốt chanh làm sốt trộn salad",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1/2 quả (lấy nước cốt)",
+      "prepNote": "vắt lấy khoảng 15–20 ml nước cốt, lọc bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 27.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Lá Oregano khô",
+      "culinaryMeasure": "2 g (~1,5 muỗng cà phê)",
+      "prepNote": "trộn vào nước sốt dầu chanh để tăng hương thảo mộc Ý",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "15 g (12 g luộc mì, 3 g pha sốt)",
+      "prepNote": "dùng 12 g pha vào nước luộc mì (đổ bỏ), 3 g nêm vào phần nước sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 3.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "khuấy vào hỗn hợp nước sốt trộn salad",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đun sôi mạnh với 12 g muối để luộc mì rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "cook",
+      "title": "Luộc mì xoắn Fusilli chín tới và làm nguội",
+      "instruction": "Đun sôi mạnh 2000 ml nước lọc cùng 12 g muối ăn, thả 200 g mì Ý xoắn vào luộc khoảng 8–9 phút theo hướng dẫn bao bì để sợi mì đạt độ chín vừa tới (al dente). Vớt mì ra rổ, xả ngay dưới vòi nước lạnh cho nguội hoàn toàn và để ráo nước trong 5 phút.",
+      "tip": "Không luộc mì quá mềm vì sau khi trộn nước sốt mì sẽ tiếp tục hút ẩm; phải để mì thật ráo nước để nước sốt không bị loãng nhạt.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế rau củ và phô mai Feta",
+      "instruction": "Cà chua rửa sạch, bổ đôi hoặc cắt miếng hạt lựu; dưa leo tươi bổ dọc, dùng thìa nạo bỏ phần ruột mềm để salad không bị chảy nước rồi cắt hạt lựu 1 cm. Hành tây tím thái lát thật mỏng, lá húng quế Tây xé nhỏ và phô mai Feta cắt khối vuông 1,5 cm.",
+      "tip": "Nạo bỏ ruột dưa leo và thái hành tây tím thật mỏng giúp món salad giữ được độ giòn tươi lâu và không bị hăng gắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước sốt dầu ô liu chanh vàng",
+      "instruction": "Cho 25 ml dầu ô liu, nước cốt 1/2 quả chanh vàng, 2 g lá Oregano khô, 3 g muối ăn còn lại và 1 g tiêu đen xay vào chén nhỏ. Dùng nĩa hoặc phới lồng nhỏ đánh đều tay khoảng 30 giây đến khi hỗn hợp hơi sánh quyện."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "finish",
+      "title": "Trộn mì với nước sốt và rau củ",
+      "instruction": "Cho toàn bộ mì Ý xoắn đã ráo hẳn nước vào tô trộn lớn, rưới đều nước sốt dầu ô liu chanh vàng lên trên và trộn kỹ để từng vòng xoắn mì áo đều gia vị. Tiếp tục cho cà chua, dưa leo tươi và hành tây tím vào đảo nhẹ nhàng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Thêm phô mai Feta và ủ mát",
+      "instruction": "Nhẹ tay cho 150 g phô mai Feta cắt khối cùng một nửa lượng lá húng quế Tây (5 g) vào tô, đảo thật nhẹ để khối phô mai giữ nguyên hình dáng. Đậy kín tô và đặt vào ngăn mát tủ lạnh khoảng 30 phút cho salad thấm vị mát lạnh.",
+      "tip": "Phô mai Feta vốn có vị mặn sẵn nên hãy nếm thử sau khi trộn rồi mới điều chỉnh thêm muối hoặc nước cốt chanh nếu cần.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức lạnh",
+      "instruction": "Lấy tô salad ra khỏi tủ lạnh, đảo nhẹ lại một lượt, chia ra đĩa và rắc nốt 5 g lá húng quế Tây còn lại lên trên mặt trước khi dọn lạnh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 420,
+    "energyKcal": 420.3,
+    "energyKj": 1758,
+    "proteinG": 14.9,
+    "fatG": 15.3,
+    "saturatedFatG": 5.4,
+    "carbG": 56.3,
+    "fiberG": 3.5,
+    "sugarG": 4.2,
+    "sodiumMg": 534,
+    "saltG": 1.34,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168409",
+      "USDA FDC 168927",
+      "USDA FDC 170000",
+      "USDA FDC 170457",
+      "USDA FDC 170853",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC 173475",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4e6b611f9dcacb098e16d2f5ee35f835f2d6ea8b5610a77b9e3063647c4ac217",
+    "researchedFromV2Sha256": "18f78b8144f2cb92bddda87b7bb5a09e6ce254cf4de5557b5584a959d5d7221e"
+  }
+}

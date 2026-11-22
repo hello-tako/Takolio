@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4a712c9f5f9913be",
+    "slug": "mi-tom-nong",
+    "title": "Mì nước tôm tươi gừng hành",
+    "subtitle": "Tô mì trứng dai ngon chan nước dùng gà trong ngọt thanh, thơm gừng tỏi phi với tôm tươi săn ngọt, cải thìa và nấm giòn tươi"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì nước",
+      "Tôm tươi",
+      "Bữa sáng",
+      "Thanh ngọt",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tô mì nước nóng hổi kiểu Hoa với nước dùng gà thanh ngọt quyện hương gừng tỏi phi dịu nhẹ, sợi mì trứng dai mềm ăn kèm tôm tươi săn giòn, cải thìa xanh mướt và nấm thái lát.",
+    "servingSuggestion": "Múc mì, tôm và rau ra tô sâu lòng, chan ngập nước dùng nóng hổi, rưới chút dầu mè thơm và rắc hành lá tươi; dùng ngay khi còn nóng.",
+    "storageAndReheat": "Nên nấu và dùng ngay để mì không bị trương nở và tôm giữ độ giòn ngọt; nếu bảo quản tủ mát tối đa 24 giờ, nên để riêng mì với nước dùng rồi đun sôi lại phần nước dùng trước khi chan."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (bóc vỏ, rút chỉ lưng)",
+      "culinaryMeasure": "340 g",
+      "prepNote": "rửa sạch, bóc vỏ bỏ đầu, rút chỉ đen ở lưng rồi thấm ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 340,
+      "unit": "g",
+      "grossGrams": 340,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 289,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì trứng khô",
+      "culinaryMeasure": "180 g",
+      "prepNote": "nấu chín trực tiếp hoặc trụng vừa mềm tới theo hướng dẫn bao bì",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BOK_CHOY",
+      "name": "Cải thìa tươi",
+      "culinaryMeasure": "120 g (khoảng 2–3 cây nhỏ)",
+      "prepNote": "tách lá rửa sạch, cắt khúc vừa ăn khoảng 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm mỡ trắng (hoặc nấm hương tươi)",
+      "culinaryMeasure": "60 g",
+      "prepNote": "rửa sạch nhẹ tay, cắt bỏ chân nấm rồi thái lát mỏng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm thật nhỏ để phi thơm nấu nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc mặt tô mì",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "kết hợp nước lọc tạo nền nước dùng ngọt thanh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 630,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "pha cân bằng độ thanh nhẹ cho nước dùng gà",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 630,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm vị mặn đậm đà và màu vàng trong nhẹ cho nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "phi thơm gừng tỏi và xào sơ tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng lên tô mì cho dậy hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân chỉnh vị mặn vừa ăn ở bước cuối",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "tạo hậu cay ấm dịu cho tô mì nóng",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, cải thìa và nấm",
+      "instruction": "Rửa sạch 340 g tôm tươi, bóc vỏ bỏ đầu, rút sạch chỉ đen dọc sống lưng rồi thấm ráo nước. Cải thìa tươi rửa sạch cắt khúc 4 cm, nấm mỡ trắng thái lát mỏng 0,5 cm, gừng tươi và tỏi khô băm nhuyễn, còn hành lá tươi thái nhỏ để riêng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm gừng tỏi và xào săn tôm",
+      "instruction": "Làm nóng nồi sâu lòng với 10 ml dầu ăn thực vật trên lửa vừa, cho gừng băm và tỏi băm vào phi thơm khoảng 40 giây đến khi dậy mùi mà không cháy xém. Tăng lên lửa lớn, thả tôm vào đảo nhanh khoảng 2 phút đến khi tôm chuyển màu hồng cam săn nhẹ thì gắp riêng ra đĩa.",
+      "tip": "Xào sơ tôm rồi vớt ra giúp tôm thơm mùi gừng tỏi mà không bị nấu quá lâu thành dai cứng trong lúc luộc mì.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng gà và luộc mì trứng",
+      "instruction": "Đổ 700 ml nước dùng gà, 700 ml nước lọc cùng 25 ml xì dầu vào nồi vừa xào tôm, đun sôi bùng trên lửa lớn. Khi nước dùng sôi mạnh, thả 180 g mì trứng khô vào nấu khoảng 5 phút, thỉnh thoảng khuấy nhẹ để các sợi mì tơi đều và vừa chín mềm tới.",
+      "tip": "Chỉ luộc mì đến độ dai vừa phải vì mì sẽ tiếp tục hút thêm nước dùng nóng khi nấu tiếp cùng rau và tôm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu chín cải thìa và nấm thái lát",
+      "instruction": "Thả cải thìa tươi và nấm thái lát vào nồi nước dùng, đun tiếp ở lửa vừa-lớn khoảng 2 phút đến khi cọng cải vừa chín tới xanh mướt và nấm chín mềm ngọt.",
+      "tip": "Cho cải thìa vào sau cùng gần lúc tắt bếp giúp rau giữ màu xanh đẹp mắt và độ giòn thanh tự nhiên.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả tôm trở lại và nêm nước dùng",
+      "instruction": "Trút toàn bộ phần tôm đã xào trở lại nồi đun thêm 1 phút cho tôm nóng đều, chín chắc hoàn toàn bên trong và hòa quyện vị ngọt vào nước dùng. Nêm 3 g muối ăn và 1 g tiêu trắng xay, nếm thử và điều chỉnh lại cho vừa khẩu vị.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc mì ra tô, rưới dầu mè và dùng nóng",
+      "instruction": "Chia đều mì trứng, tôm tươi, cải thìa và nấm ra 3 tô lớn, chan ngập nước dùng gà nóng hổi lên trên. Rưới 5 ml dầu mè thơm và rắc hành lá tươi thái nhỏ lên mặt tô mì rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 393,
+    "energyKcal": 393.3,
+    "energyKj": 1646,
+    "proteinG": 32,
+    "fatG": 8.3,
+    "saturatedFatG": 1.5,
+    "carbG": 47.8,
+    "fiberG": 2.9,
+    "sugarG": 2.8,
+    "sodiumMg": 1826,
+    "saltG": 4.57,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169251",
+      "USDA FDC 170005",
+      "USDA FDC 170390",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "77dfdf08c281b1e059a2f0efb33b0e5de7af05b5b06ee6880b516b5947da74aa",
+    "researchedFromV2Sha256": "9112bf61989ba5f5c8413a0bfd440dad5c25784e59b73e9429b94a93a86098f0"
+  }
+}

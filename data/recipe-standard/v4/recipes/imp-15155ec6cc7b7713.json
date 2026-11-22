@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-15155ec6cc7b7713",
+    "slug": "ba-chi-nuong-sa-mat-ong",
+    "title": "Ba chỉ nướng sả mật ong",
+    "subtitle": "Thịt ba chỉ thái dải ướp sả băm, tỏi gừng và mật ong nướng vàng xém cạnh thơm lừng, ăn kèm nước mắm chua ngọt đậm vị"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Ba chỉ nướng",
+      "Mật ong",
+      "Sả ớt",
+      "Cuối tuần",
+      "Cuốn bánh tráng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Những dải thịt ba chỉ nạc mỡ hài hòa thấm đẫm hương thơm sả băm, hành tỏi gừng và vị ngọt dịu của mật ong, nướng chín vàng ruộm xém cạnh bên ngoài mà vẫn mềm mọng bên trong.",
+    "servingSuggestion": "Thái lát vừa ăn, vắt nhẹ chanh tươi nếu thích và dọn nóng cùng chén nước mắm chua ngọt tỏi ớt, bún tươi, rau sống hoặc bánh tráng cuốn.",
+    "storageAndReheat": "Thịt đã nướng bọc kín bảo quản ngăn mát tối đa 2 ngày; khi ăn nướng lại bằng nồi chiên không dầu ở 180°C khoảng 4–5 phút cho nóng giòn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa nước muối loãng, thấm khô rồi thái dải dày 1–1,5 cm và dài khoảng 5–6 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "4 cây (80 g)",
+      "prepNote": "bóc lớp vỏ già, rửa sạch, đập dập rồi băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4–5 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn; chia 3/4 ướp thịt và 1/4 pha nước chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, rửa sạch, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, băm nhỏ; dùng 1 quả ướp thịt và 1 quả pha nước chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng trong hỗn hợp ướp giúp thịt mềm mọng và lên màu cánh gián đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 42.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "chia 30 ml ướp thịt và 15 ml pha nước chấm chua ngọt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng pha chén nước mắm chua ngọt ăn kèm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (45 g)",
+      "prepNote": "vắt lấy nước cốt để rưới nhẹ lên thịt sau khi nướng hoặc thêm vào nước chấm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "chia 5 g ướp thịt và 10 g pha nước chấm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g",
+      "prepNote": "dùng 4 g rửa thịt rồi xả bỏ, 2 g ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn vào hỗn hợp ướp giúp thịt không bị khô khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng pha nước mắm chấm chua ngọt",
+      "componentGroup": "dipping",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và thái dải thịt ba chỉ",
+      "instruction": "Rửa sạch 500 g thịt ba chỉ với nước pha 4 g muối để khử mùi, rửa lại nước sạch và thấm thật khô. Thái thịt thành các dải dày 1–1,5 cm, dài khoảng 5–6 cm để khi nướng thịt chín đều mà vẫn giữ được độ mọng nước.",
+      "tip": "Thấm thật khô thịt trước khi ướp giúp gia vị bám chắc vào bề mặt và không bị chảy nước loãng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Băm nhuyễn sả, hành tím, tỏi, gừng và ớt",
+      "instruction": "Đập dập rồi băm thật nhuyễn 4 cây sả tươi, 30 g hành tím, 15 g gừng, tỏi và ớt hiểm. Giữ lại 1/4 lượng tỏi và 1 quả ớt hiểm băm riêng để pha nước chấm, phần còn lại dùng để ướp thịt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Trộn sốt ướp sả mật ong và ướp thịt",
+      "instruction": "Trộn đều sả, hành tím, gừng, 3/4 tỏi và 1 quả ớt băm với 30 ml nước mắm, 30 ml mật ong, 15 ml dầu ăn, 5 g đường cát trắng, 2 g muối và 2 g tiêu đen xay. Xoa đều hỗn hợp lên từng dải thịt ba chỉ, bọc kín và ướp ít nhất 45 phút trong ngăn mát tủ lạnh.",
+      "tip": "Gạt bớt phần xác sả tỏi quá dày trên bề mặt thịt trước khi đặt lên vỉ để tránh bị cháy khét trong lúc nướng mật ong.",
+      "timerMinutes": 45
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước mắm chua ngọt tỏi ớt ăn kèm",
+      "instruction": "Trong lúc chờ thịt ngấm, hòa tan 10 g đường cát trắng với 45 ml nước lọc ấm và 15 ml giấm gạo, sau đó cho 15 ml nước mắm ngon vào khuấy đều. Cuối cùng thả phần tỏi và ớt hiểm băm còn lại vào để tỏi ớt nổi đẹp trên mặt chén nước chấm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Làm nóng lò và nướng vàng mặt thứ nhất",
+      "instruction": "Lấy thịt ra khỏi tủ lạnh trước 10 phút cho bớt lạnh. Làm nóng lò nướng (hoặc nồi chiên không dầu) ở 190°C trong 10 phút, xếp dải thịt lên vỉ có khay hứng mỡ bên dưới và nướng mặt đầu tiên trong 15 phút.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Lật mặt, phết nước ướp và nướng cháy cạnh",
+      "instruction": "Lật mặt miếng thịt, phết thêm một lớp mỏng phần nước ướp còn dư rồi tiếp tục nướng thêm 12–15 phút ở 190°C đến khi hai mặt thịt vàng ruộm, xém cạnh thơm lừng và nước thịt chảy ra trong hoàn toàn không còn màu hồng.",
+      "tip": "Mật ong rất nhanh lên màu nên cần canh lửa vừa khoảng 180–190°C và quan sát ở 5 phút cuối để thịt vàng bóng mà không bị đắng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Thái miếng, vắt chanh tươi và dọn thưởng thức",
+      "instruction": "Gắp thịt ba chỉ nướng ra thớt để nghỉ 5 phút cho nước thịt ổn định, sau đó thái lát mỏng vừa ăn. Xếp ra đĩa, vắt vài giọt nước cốt chanh tươi lên trên để cân bằng vị béo và dùng nóng kèm nước mắm chua ngọt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 660,
+    "energyKcal": 660.3,
+    "energyKj": 2762,
+    "proteinG": 11.4,
+    "fatG": 59.6,
+    "saturatedFatG": 21,
+    "carbG": 20.5,
+    "fiberG": 0.7,
+    "sugarG": 13.8,
+    "sodiumMg": 1301,
+    "saltG": 3.25,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169640",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5d4fa93e9ad4ad601567f3e450b6db19d04d5e3df8ba87dfa6beba1089086a56",
+    "researchedFromV2Sha256": "ea679e4e8013caa8b81e35017469ddbf35ea3785225c41562b8223aeda4e24bc"
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-81fc284c0bafa826",
+    "slug": "tom-xao-sa-ot-thai",
+    "title": "Tôm tươi xào sả ớt lá chanh kiểu Thái",
+    "subtitle": "Tôm tươi săn ngọt xào lửa lớn cùng sả băm, tỏi, ớt hiểm và lá chanh Thái thơm nồng, áo đều sốt dầu hào xì dầu đường thốt nốt óng mượt"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Món xào",
+      "Tôm tươi",
+      "Sả ớt",
+      "Đậm đà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "molluscs",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm xào sả ớt kiểu Thái nổi bật nhờ sự kết hợp giữa sả băm, tỏi, ớt hiểm và lá chanh Kaffir thơm nồng đặc trưng, quyện cùng nước sốt xào sánh bóng từ dầu hào, xì dầu và đường thốt nốt.",
+    "servingSuggestion": "Bày tôm xào sả ớt nóng hổi ra đĩa, rưới phần sốt sánh thơm trong chảo lên trên và dọn ăn ngay với cơm trắng dẻo.",
+    "storageAndReheat": "Tôm xào ngon nhất khi ăn nóng ngay lúc thịt còn giòn ngọt; nếu còn dư bảo quản ngăn mát 24 giờ và làm nóng nhanh trên chảo lửa vừa khoảng 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "400 g",
+      "prepNote": "bóc vỏ chừa đuôi, chẻ nhẹ sống lưng rút chỉ đen, rửa sạch thấm khô",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (phần gốc non)",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "lột bỏ bẹ già, băm thật nhuyễn để bám đều quanh con tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "5 quả",
+      "prepNote": "rửa sạch, băm nhỏ 3 quả để phi thơm và thái lát 2 quả xào cùng tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 6 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (Kaffir)",
+      "culinaryMeasure": "4 g (4–5 lá)",
+      "prepNote": "rửa sạch, tước bỏ gân giữa rồi xé đôi hoặc thái sợi chỉ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 3.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "TURMERIC",
+      "name": "Bột nghệ vàng",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "tạo sắc vàng ấm bắt mắt và hương thơm dịu nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "10 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "băm nhỏ để khuấy tan hoàn toàn trong chén sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "khuấy chung trong hỗn hợp sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đen đặc Thái",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo màu cánh gián bóng đẹp cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.25,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "giúp sốt có độ sánh bóng bám đều vào tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "6 ml (1 muỗng cà phê)",
+      "prepNote": "tăng hậu vị đậm đà chuẩn vị Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "ml",
+      "grossGrams": 7.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm sả, tỏi, ớt và xào chín tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha sốt xào)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "giúp hòa tan đường thốt nốt và làm dịu độ mặn của sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm, băm sả tỏi ớt và thái lá chanh",
+      "instruction": "Thấm thật khô 400 g tôm tươi đã bóc vỏ chừa đuôi rút chỉ lưng. Băm thật nhuyễn phần gốc non của 3 cây sả cùng 3/4 củ tỏi khô; băm nhỏ 3 quả ớt hiểm và thái lát xéo 2 quả còn lại; tước bỏ gân giữa 4 g lá chanh Thái rồi thái sợi.",
+      "tip": "Băm sả thật nhỏ và thấm khô tôm trước khi xào giúp sả bám chặt lên thân tôm mà không bị bắn dầu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn nước sốt dầu hào đường thốt nốt",
+      "instruction": "Khuấy tan hoàn toàn trong chén nhỏ gồm 10 g đường thốt nốt băm nhỏ, 20 ml xì dầu nhạt, 5 ml xì dầu đen đặc Thái, 25 ml dầu hào, 6 ml nước mắm ngon và 30 ml nước lọc để sẵn cạnh bếp."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm sả, tỏi, ớt hiểm cùng bột nghệ",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa với 25 ml dầu ăn, cho sả băm, tỏi băm và ớt hiểm băm vào đảo đều 2 phút đến khi sả tỏi dậy hương thơm nồng và hơi vàng cạnh. Tiếp tục thêm lá chanh Thái và 2 g bột nghệ vàng vào đảo nhanh 30 giây.",
+      "tip": "Phi sả trên lửa vừa trước để sả chín thơm và dịu mùi hăng mà không làm cháy khét tỏi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào tôm lửa lớn vừa chuyển hồng săn",
+      "instruction": "Tăng lên lửa lớn, trút toàn bộ 400 g tôm tươi cùng ớt hiểm thái lát vào chảo, đảo đều tay khoảng 2 phút đến khi tôm bắt đầu chuyển màu đỏ cam và săn chắc các cạnh.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rưới nước sốt và đảo keo bóng quanh tôm",
+      "instruction": "Khuấy đều chén sốt đã pha rồi rưới hết vào chảo tôm, tiếp tục đảo nhanh tay trên lửa lớn thêm 1–2 phút đến khi tôm cuộn cong chín hoàn toàn bên trong và nước sốt sôi sệt lại, áo bóng đều quanh từng con tôm cùng sả ớt.",
+      "tip": "Chỉ xào tôm tổng cộng khoảng 3–4 phút trên lửa lớn để thịt tôm giòn ngọt mà không bị khô bở."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nếm chỉnh vị và trình bày ra đĩa nóng",
+      "instruction": "Nếm lại nước sốt cho vừa khẩu vị mặn ngọt cay thơm rồi tắt bếp, gắp tôm ra đĩa, rưới toàn bộ phần sốt sả ớt trong chảo lên trên và dọn nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 216,
+    "energyKcal": 216.3,
+    "energyKj": 905,
+    "proteinG": 26,
+    "fatG": 7.7,
+    "saturatedFatG": 1.2,
+    "carbG": 11.9,
+    "fiberG": 0.5,
+    "sugarG": 4.7,
+    "sodiumMg": 1162,
+    "saltG": 2.91,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172231",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3406ef52ca5a61b090f2ccf657369cae798eec75309e291f53d60fd6256c7f18",
+    "researchedFromV2Sha256": "a95fef2099fccbbc1c12a966d1bf90f86f85f18f64d2c32ec32b17ea9badd496"
+  }
+}

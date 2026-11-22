@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e28e249efceacac7",
+    "slug": "larb-heo-chua-cay",
+    "title": "Gỏi thịt heo bằm chua cay kiểu Thái (Larb Moo)",
+    "subtitle": "Thịt heo bằm xào chín tơi trộn nước cốt chanh chua sáng, nước mắm, ớt khô cay nồng, thính gạo rang thơm lừng và rau thơm mát"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Gỏi trộn",
+      "Chua cay",
+      "Thịt heo bằm",
+      "Ít dầu mỡ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Larb Moo là món gỏi thịt bằm đặc sản vùng Isan Thái Lan với vị chua thanh từ chanh tươi, mặn ngọt hài hòa, cay tê của ớt bột và hương thơm bùi đặc trưng từ thính gạo rang cùng húng lủi.",
+    "servingSuggestion": "Bày gỏi thịt heo bằm ra đĩa sâu lòng, xếp bắp cải tách lá và dưa leo thái lát bên cạnh để cuốn hoặc ăn kèm xôi nếp nóng hay cơm trắng.",
+    "storageAndReheat": "Nên trộn và ăn ngay trong ngày khi thính gạo còn thơm và rau sống giòn tươi; tránh để qua đêm vì nước chanh làm thịt sẫm màu và rau bị héo."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc vai có chút mỡ)",
+      "culinaryMeasure": "320 g",
+      "prepNote": "để ráo, dùng nĩa trộn tơi với chút nước mắm trước khi làm chín",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ROASTED_RICE_POWDER",
+      "name": "Thính gạo rang (Khao Khua)",
+      "culinaryMeasure": "20 g (khoảng 2 muỗng canh)",
+      "prepNote": "giã thô cỡ hạt cát để tạo mùi thơm gạo rang và độ sánh bám cho gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím tươi",
+      "culinaryMeasure": "40 g (khoảng 2–3 củ)",
+      "prepNote": "bóc vỏ, bào hoặc thái lát thật mỏng theo chiều dọc",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 35.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 45 ml nước cốt)",
+      "prepNote": "vắt lọc bỏ hạt để trộn gỏi ngay khi thịt vừa nguội bớt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 10 ml trộn ướp thịt xay và 20 ml nêm trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột / Ớt khô xay thô",
+      "culinaryMeasure": "3 g (1 muỗng cà phê)",
+      "prepNote": "tăng giảm tùy độ cay mong muốn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "làm dịu nhẹ vị chua gắt của nước cốt chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá húng lủi (bạc hà tươi)",
+      "culinaryMeasure": "15 g (1 nắm vừa)",
+      "prepNote": "nhặt lấy lá non, rửa sạch và để thật ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái khúc khoảng 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (Kaffir)",
+      "culinaryMeasure": "3 g (2–3 lá)",
+      "prepNote": "tước bỏ gân giữa, thái sợi chỉ thật mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 2.85,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng ăn kèm",
+      "culinaryMeasure": "1/4 bắp (khoảng 200 g)",
+      "prepNote": "tách lá, rửa sạch ngâm nước lạnh cho giòn, cắt miếng vừa cuốn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi ăn kèm",
+      "culinaryMeasure": "1 quả (khoảng 150 g)",
+      "prepNote": "rửa sạch, thái lát vát xéo dày 0,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (xào chín thịt heo)",
+      "culinaryMeasure": "40 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "giúp chần chín tơi thịt heo băm mà không cần dùng dầu ăn",
+      "componentGroup": "broth",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau thơm, hành tím và rau ăn kèm",
+      "instruction": "Thái lát mỏng 40 g hành tím tươi, thái chỉ thật mảnh 3 g lá chanh Thái bỏ gân, nhặt rửa ráo 15 g lá húng lủi, thái khúc 15 g ngò rí và thái nhỏ 1/2 bó hành lá. Tách lá 1/4 bắp cải trắng và thái lát 1 quả dưa leo xếp sẵn ra đĩa. Vắt 2 quả chanh tươi lọc bỏ hạt.",
+      "tip": "Ngâm bắp cải và dưa leo trong nước lạnh vài phút rồi vẩy ráo giúp rau sống giòn ngọt khi ăn kèm thịt bằm chua cay."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Đánh tơi thịt heo xay với nước mắm",
+      "instruction": "Cho 320 g thịt heo xay vào tô, rưới 10 ml nước mắm ngon rồi dùng nĩa trộn bóp nhẹ để các thớ thịt tơi rời hẳn, không bị dính thành mảng dài khi nấu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín mềm thịt heo bằm không dầu mỡ",
+      "instruction": "Đun sôi lăn tăn 40 ml nước lọc trong nồi hoặc chảo sâu lòng trên lửa vừa, trút toàn bộ thịt heo xay vào đảo và dằm liên tục khoảng 4 phút đến khi thịt chín trắng hoàn toàn, không còn màu hồng và nước trong thịt tiết ra vừa cạn sánh thì tắt bếp.",
+      "tip": "Nấu chín thịt heo với chút nước lọc thay vì xào dầu giúp món Larb giữ độ ẩm ngọt thanh nhẹ và đậm nước thịt tự nhiên.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Trộn hành tím và lá chanh khi thịt còn ấm",
+      "instruction": "Ngay khi vừa tắt bếp lúc thịt còn ấm nóng, cho toàn bộ hành tím thái lát và lá chanh Thái thái chỉ vào đảo đều 1 phút để hơi nóng làm hành tím dịu vị hăng và tỏa hương thơm dịu.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nêm nước cốt chanh, ớt bột và thính gạo rang",
+      "instruction": "Chờ thêm 2 phút cho thịt nguội bớt không còn bốc hơi nóng gắt rồi rưới 20 ml nước mắm còn lại, nước cốt 2 quả chanh, 3 g đường cát trắng, 3 g ớt bột và 20 g thính gạo rang vào trộn đều tay cho gia vị quyện sánh.",
+      "tip": "Cho nước cốt chanh và thính gạo vào lúc thịt chỉ còn ấm vừa giúp thính không bị vón nhão và giữ vị chua sáng tươi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn rau thơm và dọn kèm rau sống giòn",
+      "instruction": "Nếm lại cho vừa vị chua cay mặn ngọt hài hòa rồi thả lá húng lủi, ngò rí và hành lá vào trộn nhẹ tay cho rau không bị dập. Múc gỏi thịt heo bằm ra đĩa, ăn kèm bắp cải tách lá và dưa leo thái lát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 355,
+    "energyKcal": 355.1,
+    "energyKj": 1485,
+    "proteinG": 21,
+    "fatG": 23,
+    "saturatedFatG": 8.5,
+    "carbG": 16.9,
+    "fiberG": 3.5,
+    "sugarG": 5.5,
+    "sodiumMg": 1036,
+    "saltG": 2.59,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "Toasted Rice Powder Ref",
+      "USDA FDC 167902",
+      "USDA FDC 168155",
+      "USDA FDC 168409",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 171319",
+      "USDA FDC 172185",
+      "USDA FDC 173474",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "883d9e49ee240c89cf71167a026e8d0ff00f484520b0c408233c02451062b1b0",
+    "researchedFromV2Sha256": "d11819602e1065c4f805f180333092f5e77f1bd61013fa2f111081da3d13b809"
+  }
+}

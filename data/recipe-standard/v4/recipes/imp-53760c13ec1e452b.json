@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-53760c13ec1e452b",
+    "slug": "tom-xao-gia-do",
+    "title": "Tôm xào giá đỗ thanh ngọt",
+    "subtitle": "Giá đỗ trắng mập giòn mọng xào nhanh trên lửa lớn cùng tôm tươi săn ngọt và hương hành lá thơm dịu"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Hải sản",
+      "Thanh đạm",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm xào giá đỗ là món ăn thanh nhẹ giải ngấy cực nhanh gọn cho bữa cơm hằng ngày. Từng con tôm đỏ cam săn chắc quyện cùng cọng giá đỗ chín tới giòn tan, mọng nước ngọt tự nhiên mà không hề bị nát hay chảy nước.",
+    "servingSuggestion": "Gắp tôm xào giá đỗ ra đĩa khi vừa tắt bếp, rắc thêm tiêu đen xay; dùng nóng ngay cùng cơm trắng và chén nước mắm ớt.",
+    "storageAndReheat": "Món giá đỗ xào nên ăn hết ngay trong bữa để giữ độ giòn tươi và tránh giá bị chảy nước thâm sẫm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm sú hoặc tôm thẻ)",
+      "culinaryMeasure": "280 g",
+      "prepNote": "lột vỏ, bỏ đầu, rạch lưng rút chỉ đen, rửa sạch rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 218.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "nhặt bỏ rễ và vỏ đậu, rửa nhẹ tay nhiều lần rồi vẩy thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "nhặt bỏ gốc già, rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 13 g)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (khoảng 2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "1,5 muỗng canh (20 ml)",
+      "prepNote": "dùng phi thơm hành tỏi và xào nhanh tôm giá đỗ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "rưới vào chảo khi xào giá đỗ để món ăn dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "chia đôi: 2,5 g ướp tôm và 2,5 g nêm giá đỗ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2/3 muỗng cà phê (4 g)",
+      "prepNote": "chia 2 g ướp tôm và 2 g nêm khi xào giá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "chia một nửa ướp tôm và một nửa rắc mặt đĩa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch và ướp tôm tươi",
+      "instruction": "Tôm tươi bóc vỏ, bỏ đầu, rạch lưng rút bỏ chỉ đen rồi rửa sạch, thấm ráo nước. Cho tôm vào tô ướp với 2,5 g hạt nêm, 2 g muối ăn và một nửa lượng tiêu đen xay, trộn đều để thấm trong 10 phút.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Nhặt giá đỗ và chuẩn bị hành tỏi",
+      "instruction": "Giá đỗ nhặt bỏ rễ và vỏ đậu nếu có, rửa nhẹ nhàng 2 lần nước rồi vẩy thật ráo để khi xào không ra nước. Hành tím khô và tỏi khô bóc vỏ băm nhỏ; hành lá rửa sạch cắt khúc dài 4 cm.",
+      "tip": "Để giá đỗ thật ráo nước trước khi cho vào chảo là yếu tố quyết định giúp món xào giòn khô, không bị sũng nước."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào chín tôm",
+      "instruction": "Làm nóng 20 ml dầu ăn trong chảo rộng trên lửa vừa-lớn, cho hành tím và tỏi băm vào phi thơm 30 giây. Tăng lên lửa lớn, trút tôm đã ướp vào đảo nhanh tay khoảng 2 phút đến khi tôm chuyển màu đỏ cam đều, thân cong săn chắc và chín hoàn toàn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh giá đỗ lửa lớn giữ độ giòn",
+      "instruction": "Giữ nguyên lửa lớn nhất, trút toàn bộ giá đỗ vào chảo tôm và đảo đều tay liên tục. Rưới 10 ml nước mắm ngon, thêm 2,5 g hạt nêm và 2 g muối ăn còn lại, xào nhanh trong khoảng 1,5 phút cho giá vừa chín tới mà vẫn giòn mọng.",
+      "tip": "Chỉ xào giá đỗ trong 1,5–2 phút trên lửa lớn để giá không bị nhũn mềm và mất nước."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm hành lá và tắt bếp ngay",
+      "instruction": "Thả hành lá cắt khúc vào chảo, đảo nhanh tay thêm 15–20 giây cho hành vừa chín xanh và nêm nếm lại cho vừa khẩu vị rồi tắt bếp ngay.",
+      "tip": "Tắt bếp ngay sau khi cho hành lá vì nhiệt dư trong chảo vẫn tiếp tục làm giá chín thêm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Gắp tôm xào giá đỗ ra đĩa, rắc phần tiêu đen xay còn lại lên trên và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 154,
+    "energyKcal": 154.4,
+    "energyKj": 647,
+    "proteinG": 18.1,
+    "fatG": 6.1,
+    "saturatedFatG": 0.9,
+    "carbG": 8.9,
+    "fiberG": 2.1,
+    "sugarG": 4.5,
+    "sodiumMg": 1200,
+    "saltG": 3,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8907853cfd0dbee39d952ef18167bc660d1cd3c82ce605930268727753b3ccaf",
+    "researchedFromV2Sha256": "39fa681738390b5cd63a4fa030cdf3dafd52efd127f2f291325594f4938dacbf"
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f5abd36e99d48d94",
+    "slug": "dau-phu-mapo-tu-xuyen",
+    "title": "Đậu phụ Mapo Tứ Xuyên",
+    "subtitle": "Đậu phụ non om trong lớp dầu ớt tự phi thơm nồng từ ớt tươi và ớt khô cùng thịt heo xay, tương đậu cay và hoa tiêu tê đầu lưỡi"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Tứ Xuyên",
+      "Cay tê",
+      "Đậu phụ",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ Mapo Tứ Xuyên phiên bản tự phi dầu ớt tươi và ớt khô trực tiếp tại bếp mang đến hương cay thơm bùng nổ, kết hợp thịt heo xay tơi đậm vị tương ớt đậu bản và đậu phụ non mềm tan.",
+    "servingSuggestion": "Múc ra đĩa sâu lòng khi sốt đang sôi liu riu, rắc thêm bột hoa tiêu và hành lá xanh; món ăn sinh ra để ăn nóng với cơm trắng.",
+    "storageAndReheat": "Dùng ngon nhất ngay sau khi nấu. Nếu bảo quản tủ mát tối đa 2 ngày, hâm lại nhẹ tay trên chảo lửa nhỏ cùng 1–2 muỗng canh nước dùng hoặc nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non",
+      "culinaryMeasure": "350 g",
+      "prepNote": "cắt miếng vuông đều cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "170 g",
+      "prepNote": "giữ nguyên độ tơi để xào săn trực tiếp trong dầu thơm",
+      "componentGroup": "main",
+      "requiredQuantity": 170,
+      "unit": "g",
+      "grossGrams": 170,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DOUBANJIANG",
+      "name": "Tương ớt đậu bản Doubanjiang",
+      "culinaryMeasure": "28 g (~1,5 muỗng canh)",
+      "prepNote": "băm nhuyễn phần hạt tương để dễ hòa tan vào sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 28,
+      "unit": "g",
+      "grossGrams": 28,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SICHUAN_PEPPER",
+      "name": "Bột hoa tiêu Tứ Xuyên",
+      "culinaryMeasure": "4 g (~2 muỗng cà phê)",
+      "prepNote": "rang thơm rồi xay mịn; giữ riêng 1/2 muỗng cà phê rắc mặt khi dọn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi và ớt khô đỏ",
+      "culinaryMeasure": "4 quả (~20 g hỗn hợp)",
+      "prepNote": "ớt hiểm tươi thái lát mỏng, ớt khô cắt khúc ngắn để phi dầu ớt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (~18,5 g, 5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (~2 muỗng canh băm)",
+      "prepNote": "gọt vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (~20 g, 1–2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "chia 30 ml để phi dầu ớt, 30 ml để xào gừng tỏi và thịt heo xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 55.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 52.44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "3 ml (~1/2 muỗng cà phê)",
+      "prepNote": "rưới ở bước hoàn thiện tăng hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "ml",
+      "grossGrams": 2.76,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.76,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị cay mặn của tương đậu bản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "hòa tan với 45 ml nước lọc để làm sánh nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "120 ml (~1/2 chén)",
+      "prepNote": "dùng loại ít muối giúp sốt đậm vị mà không bị mặn gắt",
+      "componentGroup": "broth",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "hòa tan bột bắp trước khi rót vào nồi sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 40.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nguyên liệu và pha bột bắp",
+      "instruction": "Cắt 350 g đậu phụ non thành từng khối vuông cạnh 2,5 cm thật gọn. Băm nhuyễn 20 g gừng tươi và 0,75 củ tỏi khô; thái nhỏ 0,5 bó hành lá tươi; cắt khúc ớt khô đỏ và thái lát mỏng ớt hiểm tươi. Hòa tan 5 g bột bắp với 45 ml nước lọc trong chén nhỏ; giữ riêng 1/2 muỗng cà phê bột hoa tiêu Tứ Xuyên để trang trí."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi dầu ớt thơm từ ớt tươi và ớt khô",
+      "instruction": "Đặt chảo sâu lòng lên lửa nhỏ, làm nóng 30 ml dầu ăn thực vật rồi cho hỗn hợp ớt hiểm tươi thái lát và ớt khô đỏ cắt khúc vào đảo đều trong 4–5 phút đến khi dầu thấm màu cam đỏ và dậy mùi cay thơm nhưng ớt tuyệt đối không bị cháy đen. Tắt bếp và trút toàn bộ dầu lẫn ớt ra chén riêng.",
+      "tip": "Phi dầu ớt trên lửa nhỏ giúp chiết xuất tinh dầu cay thơm mà không làm ớt bị khét đắng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi gừng tỏi và xào săn thịt heo xay",
+      "instruction": "Cho 30 ml dầu ăn thực vật còn lại vào chảo, bật lửa vừa, phi thơm gừng băm 1 phút rồi cho tỏi băm vào đảo thêm 1 phút. Tăng lửa lớn, trút 170 g thịt heo xay vào dùng sạn dằm tơi và xào đều khoảng 3 phút cho thịt săn ráo và chín hoàn toàn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào hoa tiêu, tương đậu bản và nấu sốt",
+      "instruction": "Hạ lửa vừa, cho phần bột hoa tiêu Tứ Xuyên còn lại vào đảo nhanh 20 giây cho dậy mùi tê thơm, rồi thêm 28 g tương ớt đậu bản Doubanjiang vào xào đều 1 phút đến khi thịt quyện màu đỏ đẹp. Đổ 120 ml nước dùng gà vào, khuấy đều và đun sôi liu riu 1 phút.",
+      "tip": "Cho bột hoa tiêu vào sau khi thịt đã chín săn giúp gia vị thơm nồng mà không bị cháy đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Sánh sốt và om đậu phụ thấm dầu ớt",
+      "instruction": "Khuấy lại chén bột bắp rồi rót vào chảo, đảo đều 1–2 phút đến khi sốt sánh mượt vừa phải để bám miếng đậu. Tiếp theo, trút phần dầu ớt đã phi cùng đậu phụ non vào chảo, dùng lưng sạn hất đẩy nhẹ nhàng để sốt bao đều từng khối đậu và om mở nắp 4 phút cho đậu ngấm đẫm gia vị.",
+      "tip": "Sốt cần đủ sánh để bám đều mặt đậu phụ non nhưng vẫn giữ chút nước sốt đỏ để chan cơm nóng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, hành lá và hoàn thiện",
+      "instruction": "Thêm 3 ml dầu mè thơm, 2 g đường cát trắng (nếu dùng) và hành lá thái nhỏ vào, đẩy nhẹ 30 giây đến khi hành vừa héo xanh. Tắt bếp, trút ra đĩa sâu lòng, rắc phần bột hoa tiêu Tứ Xuyên giữ riêng lên mặt và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 420,
+    "energyKcal": 420.4,
+    "energyKj": 1759,
+    "proteinG": 17,
+    "fatG": 34.3,
+    "saturatedFatG": 7.7,
+    "carbG": 11.5,
+    "fiberG": 1.4,
+    "sugarG": 2.7,
+    "sodiumMg": 715,
+    "saltG": 1.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Pixian Doubanjiang Ref",
+      "Spice Reference",
+      "USDA FDC 167902",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172476",
+      "USDA FDC 172883",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0b6289ca7e53e45e179a8730a203545a43599bf926bb13e3e6a2f52fd6ad4e14",
+    "researchedFromV2Sha256": "aec18eb9aceaab44ffef33245d8cfff033ea709f4de886b0c788b770671f27dd"
+  }
+}

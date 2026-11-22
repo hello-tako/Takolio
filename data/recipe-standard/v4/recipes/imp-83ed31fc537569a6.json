@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-83ed31fc537569a6",
+    "slug": "bo-cuon-rau-bina-y",
+    "title": "Bò cuộn rau bina phô mai kiểu Ý",
+    "subtitle": "Thịt bò lát mỏng dần mềm cuộn nhân rau bina xào bơ và phô mai béo ngậy, áp chảo vàng rồi om sốt rượu vang trắng"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Involtini",
+      "Bò cuộn",
+      "Rau bina",
+      "Phô mai",
+      "Ẩm thực Ý"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "beef",
+      "milk",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Những cuộn thịt bò involtini khéo léo ôm trọn phần nhân rau bina xanh mướt xào bơ tỏi, phô mai Mozzarella tan chảy và cà rốt ngọt thanh, áp chảo xém cạnh rồi om mềm cùng cà chua và rượu vang trắng.",
+    "servingSuggestion": "Rút bỏ dây buộc hoặc tăm cố định, cắt đôi cuộn thịt bò theo lát chéo để lộ lớp nhân xanh vàng đẹp mắt, rưới sốt om nóng lên trên và dùng kèm khoai tây nghiền hoặc mì Ý.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày. Khi dùng, hâm lại cùng nước sốt trên chảo lửa nhỏ đậy nắp khoảng 5–6 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thái lát mỏng",
+      "culinaryMeasure": "640 g (8 lát bản lớn)",
+      "prepNote": "dùng búa dần thịt đập nhẹ hai mặt cho thịt mỏng đều và mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 640,
+      "unit": "g",
+      "grossGrams": 640,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 640,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "350 g",
+      "prepNote": "chần sơ nước sôi rồi vắt thật kiệt nước, chia làm phần xào nhân và phần cho vào sốt cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 315,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MOZZARELLA_CHEESE",
+      "name": "Phô mai Mozzarella thái lát",
+      "culinaryMeasure": "140 g (8 lát mỏng)",
+      "prepNote": "cắt thành 8 lát mỏng vừa kích thước cuộn bò",
+      "componentGroup": "main",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 140,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2 củ vừa (~220 g)",
+      "prepNote": "gọt vỏ, chia 1/3 băm nhỏ trộn nhân, 2/3 thái hạt lựu vừa cho vào sốt om",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (hẹ tây)",
+      "culinaryMeasure": "50 g",
+      "prepNote": "bóc vỏ, băm nhỏ để nấu nền sốt om",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín tươi",
+      "culinaryMeasure": "1,5 quả vừa (~180 g)",
+      "prepNote": "bỏ cuống, thái hạt lựu nhỏ để om sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "80 ml",
+      "prepNote": "dùng để khử đáy chảo sau khi áp chảo vàng các cuộn bò",
+      "componentGroup": "sauce",
+      "requiredQuantity": 80,
+      "unit": "ml",
+      "grossGrams": 79.2,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 55.44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "40 g",
+      "prepNote": "chia 15 g xào nhân rau bina và 25 g áp chảo cuộn thịt bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 15 ml xào rau bina và 20 ml kết hợp bơ để áp chảo cuộn thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, băm nhỏ phi thơm cùng rau bina",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g nêm nhân rau bina và 3 g nêm sốt om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nêm nhân rau bina và nước sốt om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần rau bina)",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "đun sôi để chần sơ rau bina rồi vắt kiệt nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần vắt rau bina và xào nhân thơm bơ tỏi",
+      "instruction": "Đun sôi 1 lít nước lọc, chần sơ 350 g rau bina tươi trong 1–2 phút rồi vớt ra để nguội và vắt thật kiệt nước. Làm nóng 15 ml dầu ô liu nguyên chất và 15 g bơ lạt trong chảo trên lửa vừa, phi thơm tỏi tươi băm nhỏ, cho 2/3 lượng rau bina đã vắt vào xào 3 phút cùng 2 g muối ăn và 1 g tiêu đen xay rồi trút ra đĩa.",
+      "tip": "Vắt thật khô rau bina sau khi chần giúp phần nhân không bị ra nước làm bung cuộn thịt bò khi áp chảo.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế rau củ và dần mỏng thịt bò",
+      "instruction": "Thái hạt lựu cà chua chín tươi, băm nhỏ hành tím; cà rốt tươi chia 1/3 băm nhỏ và 2/3 thái hạt lựu vừa. Trải 8 lát thịt bò thái lát mỏng lên thớt, dùng búa dần nhẹ cho thịt phẳng đều; đặt lên mỗi lát 1 lát phô mai Mozzarella, một ít cà rốt băm nhỏ và phần rau bina đã xào."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Cuộn chặt và cố định cuộn bò involtini",
+      "instruction": "Gập nhẹ hai mép bên của lát thịt bò vào trong rồi cuộn tròn thật chắc tay, dùng chỉ nấu ăn buộc gọn hoặc ghim cố định bằng tăm nhọn để nhân phô mai không chảy tràn ra ngoài.",
+      "tip": "Gập hai mép ngang vào trước khi cuộn giúp giữ kín phô mai Mozzarella bên trong khi áp chảo và om."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo vàng các mặt cuộn bò và khử vang trắng",
+      "instruction": "Đun chảy 25 g bơ lạt còn lại cùng 20 ml dầu ô liu nguyên chất trong chảo sâu lòng trên lửa vừa-lớn. Xếp các cuộn thịt bò vào áp chảo khoảng 7 phút, trở đều các mặt cho vàng thơm. Rót 80 ml rượu vang trắng khô vào đun sôi 2 phút cho cồn bay hơi hoàn toàn.",
+      "tip": "Áp chảo phần mép gấp xuống mặt chảo trước tiên giúp khóa kín cuộn thịt bò gọn đẹp.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om cuộn bò với cà chua, hành tím và cà rốt",
+      "instruction": "Thả hành tím băm và cà chua chín tươi thái hạt lựu vào chảo cùng 3 g muối ăn và 1 g tiêu đen xay còn lại. Đậy nắp, hạ xuống lửa nhỏ và om liu riu 15 phút. Sau đó thêm phần cà rốt thái hạt lựu vào om tiếp 5 phút, rồi thả 1/3 lượng rau bina còn lại vào nấu thêm 3 phút cho sốt sánh đậm và rau chín quyện.",
+      "timerMinutes": 23
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tháo dây buộc, cắt khoanh và dọn nóng",
+      "instruction": "Tắt bếp, gắp các cuộn thịt bò ra thớt tháo bỏ dây buộc hoặc tăm, cắt vát làm đôi nếu thích rồi xếp ra đĩa sâu lòng. Chan phần nước sốt cà chua rau củ nóng hổi lên trên và dùng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 600,
+    "energyKcal": 599.6,
+    "energyKj": 2509,
+    "proteinG": 46.3,
+    "fatG": 39.2,
+    "saturatedFatG": 16.6,
+    "carbG": 13.7,
+    "fiberG": 4.2,
+    "sugarG": 5.2,
+    "sodiumMg": 896,
+    "saltG": 2.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168462",
+      "USDA FDC 169230",
+      "USDA FDC 170187",
+      "USDA FDC 170393",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170845",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4713e8616370e5cf8671c51937c12ff5182fef4cfb89909d18557b96cd4cc316",
+    "researchedFromV2Sha256": "47cc012efdf360aea669448a002b166bc6887d580d48f3fb865de6e9eab290ca"
+  }
+}

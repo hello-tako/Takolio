@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8fdcddab058d5f65",
+    "slug": "mi-y-sot-ca-chua-tuoi",
+    "title": "Mì Ý sốt cà chua tươi (Pomodoro)",
+    "subtitle": "Sợi mì Spaghetti al dente quyện sốt cà chua tươi nấu nhanh giữ trọn vị ngọt thanh cùng húng quế Tây thơm mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Mì Ý Pomodoro",
+      "Cà chua tươi",
+      "Ẩm thực Ý",
+      "Nhanh gọn",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì Ý sốt cà chua tươi Pomodoro thanh vị với cà chua chín mọng nấu nhanh cùng tỏi phi dầu ô liu, thêm chút cà chua cô đặc tạo màu đỏ au đẹp mắt và hương thơm dịu của lá húng quế Tây.",
+    "servingSuggestion": "Dọn mì nóng ra đĩa sâu lòng, rắc lá húng quế Tây xé nhỏ và thêm ít phô mai Parmesan bào mịn tùy khẩu vị.",
+    "storageAndReheat": "Món mì sốt cà chua tươi ngon nhất khi dùng ngay lúc nóng; phần sốt nấu dư có thể bảo quản ngăn mát 2 ngày và hâm nóng lại với ít nước trước khi trộn mì."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "260 g",
+      "prepNote": "luộc ít hơn bao bì 1 phút, giữ lại 100 ml nước luộc mì",
+      "componentGroup": "main",
+      "requiredQuantity": 260,
+      "unit": "g",
+      "grossGrams": 260,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 260,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín mọng",
+      "culinaryMeasure": "3,5 quả (khoảng 420 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái hạt lựu hoặc bổ múi nhỏ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3.5,
+      "unit": "piece",
+      "grossGrams": 420,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 420,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO_PASTE",
+      "name": "Cà chua cô đặc (Tomato paste)",
+      "culinaryMeasure": "10 g (~1,5 muỗng cà phê)",
+      "prepNote": "giúp sốt cà chua tươi lên màu đỏ đẹp và đậm vị nhanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, đập dập nhẹ để phi thơm dịu trong dầu ô liu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng phi tỏi và tạo độ bóng mượt cho sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 31.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "8 g (~6–8 lá)",
+      "prepNote": "rửa sạch, để ráo và xé tay cho vào sốt lúc cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 7.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "25 g",
+      "prepNote": "rắc lên mặt đĩa mì khi dọn nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "18 g (14 g luộc mì, 4 g nêm sốt)",
+      "prepNote": "hòa 14 g vào nước luộc mì (đổ bỏ), 4 g nêm trực tiếp vào sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 6.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm nhẹ tạo hậu vị ấm cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 100 ml nước luộc",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cà chua tươi, tỏi và húng quế Tây",
+      "instruction": "Rửa sạch 3,5 quả cà chua chín mọng, bỏ cuống rồi cắt miếng nhỏ cỡ 1,5 cm (nếu dùng cà chua bi chỉ cần bổ đôi). Bóc vỏ và đập dập 2–3 tép tỏi khô; rửa nhẹ 8 g lá húng quế Tây để thật ráo nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý đạt độ dai al dente",
+      "instruction": "Đun sôi mạnh 2500 ml nước lọc cùng 14 g muối ăn, thả 260 g mì Ý Spaghetti vào luộc khoảng 8 phút (ít hơn hướng dẫn bao bì 1 phút) để sợi mì giữ lõi hơi dai. Trước khi vớt mì, múc giữ lại 100 ml nước luộc mì.",
+      "tip": "Luộc mì ít hơn hướng dẫn bao bì 1 phút vì sợi mì còn tiếp tục chín trong chảo sốt nóng, giữ được độ dai chuẩn al dente.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi và xào cà chua tươi",
+      "instruction": "Đun nóng 35 ml dầu ô liu trong chảo lớn ở lửa vừa-nhỏ, cho tỏi đập dập vào phi thơm khoảng 1–2 phút mà không để tỏi chuyển nâu. Tăng lên lửa lớn, trút toàn bộ cà chua cắt nhỏ cùng 4 g muối ăn vào đảo đều 4 phút cho cà chua mềm xẹp và tiết nước ngọt.",
+      "tip": "Xào nhanh cà chua tươi trên lửa lớn giúp giữ trọn hương vị tươi mát và độ ngọt thanh tự nhiên, không bị nhừ nát quá mức.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu sánh sốt cùng cà chua cô đặc và húng quế",
+      "instruction": "Thêm 10 g cà chua cô đặc vào chảo đảo tan đều, hạ lửa vừa và đun liu riu thêm 5 phút đến khi nước sốt hơi sánh quyện. Tắt bếp, xé nhỏ 5 g lá húng quế Tây cho vào cùng 1 g tiêu đen xay rồi đảo đều (có thể gắp bỏ xác tỏi nếu thích vị nhẹ).",
+      "tip": "Thêm lá húng quế Tây vào giai đoạn cuối giúp giữ nguyên mùi thơm dịu đặc trưng không bị bay hơi.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì trực tiếp trong chảo sốt",
+      "instruction": "Bật bếp lại ở lửa vừa, gắp mì Spaghetti vừa luộc vào thẳng chảo sốt cà chua. Đảo và xóc đều tay khoảng 1 phút, thêm từng chút nước luộc mì giữ lại nếu thấy khô để sốt bám bóng mượt vào từng sợi mì.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và dọn nóng",
+      "instruction": "Gắp mì ra 3 đĩa sâu lòng khi còn nóng hổi, rắc nốt 3 g lá húng quế Tây xé nhỏ và 25 g phô mai Parmesan bào mịn lên trên trước khi thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 486,
+    "energyKcal": 486.2,
+    "energyKj": 2034,
+    "proteinG": 16.2,
+    "fatG": 14.7,
+    "saturatedFatG": 3.2,
+    "carbG": 72.6,
+    "fiberG": 4.8,
+    "sugarG": 6.5,
+    "sodiumMg": 956,
+    "saltG": 2.39,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170457",
+      "USDA FDC 170460",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "bce6a9b293974e2c8a080c44320e973a2adbc952970502ef95fc89cfb058aca3",
+    "researchedFromV2Sha256": "31e287d274df6ccc5f3558a3ead27a7b702c23078f04f03dcbce3c9e7f017ec6"
+  }
+}

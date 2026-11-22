@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a4ff266c02427746",
+    "slug": "bong-cai-xao-toi",
+    "title": "Bông cải xanh xào tỏi",
+    "subtitle": "Bông cải xanh chần sốc lạnh giòn ngọt sần sật xào nhanh trên lửa lớn cùng tỏi phi vàng và chút nước tương thơm dịu"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau xanh",
+      "Tỏi",
+      "Thanh đạm",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bông cải xanh xào tỏi là món rau xanh thanh mát, giữ nguyên sắc xanh ngọc bích và độ giòn ngọt tự nhiên của từng bông súp lơ nhờ kỹ thuật chần sốc nhiệt, quyện hương tỏi phi vàng thơm lừng và vị mặn dịu của nước tương.",
+    "servingSuggestion": "Gắp bông cải xanh xào tỏi ra đĩa phẳng khi vừa tắt bếp để giữ độ giòn xanh; dùng nóng kèm cơm trắng và các món mặn.",
+    "storageAndReheat": "Món rau xào nên ăn hết trong bữa để giữ trọn màu xanh và độ giòn tự nhiên."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh",
+      "culinaryMeasure": "1,3 bông vừa (khoảng 400 g)",
+      "prepNote": "tách nhánh nhỏ vừa ăn, gọt bớt phần vỏ xơ cuống, ngâm nước muối loãng rồi rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 1.33,
+      "unit": "piece",
+      "grossGrams": 399,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 327.18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "dùng phi thơm tỏi và áo bóng bông cải xanh khi xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "nêm đều khi xào bông cải xanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 ml)",
+      "prepNote": "rưới vào chảo giúp món rau dậy hương thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.44,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "MSG",
+      "name": "Bột ngọt (mì chính)",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "tùy chọn thêm để tăng vị ngọt dịu tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "dùng 6 g pha nước sôi chần bông cải và 2 g nêm lúc xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "rưới vào chảo giúp hòa tan gia vị bám đều quanh bông cải xanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 48,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bông cải xanh và băm nhuyễn tỏi",
+      "instruction": "Tách bông cải xanh thành các nhánh nhỏ vừa ăn, gọt bỏ lớp vỏ xơ ở phần cuống rồi ngâm nước muối loãng 5 phút và rửa sạch 2–3 lần nước, để ráo. Tỏi khô bóc vỏ, đập dập và băm nhuyễn.",
+      "tip": "Cắt các nhánh bông cải xanh đều kích thước để khi chần và xào chín đồng đều cùng lúc."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần bông cải xanh và ngâm nước đá lạnh",
+      "instruction": "Đun sôi nồi nước trên lửa lớn với 6 g muối ăn, thả bông cải xanh vào chần khoảng 1,5–2 phút cho đến khi bông cải vừa chuyển màu xanh ngọc tươi thì vớt ngay ra ngâm vào tô nước đá lạnh 3 phút, sau đó vớt ra rổ để thật ráo nước.",
+      "tip": "Sốc nhiệt bằng nước đá lạnh sau khi chần giữ bông cải giòn sần sật và không bị ngả vàng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm vàng tỏi băm",
+      "instruction": "Làm nóng 30 ml dầu ăn trong chảo trên lửa vừa, cho toàn bộ tỏi băm vào phi đều tay khoảng 30–40 giây đến khi tỏi chuyển vàng nhẹ và tỏa mùi thơm nức.",
+      "tip": "Đảo liên tục khi phi tỏi để tỏi vàng đều mà không bị cháy đắng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào bông cải xanh thấm dầu tỏi",
+      "instruction": "Tăng lên lửa lớn, trút bông cải xanh đã để ráo vào chảo dầu tỏi và đảo đều tay khoảng 1 phút cho các nhánh bông cải áo lớp dầu bóng mịn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và đảo nhanh cho thấm đều",
+      "instruction": "Rắc 8 g hạt nêm, 2 g muối ăn còn lại, 2 g bột ngọt, rưới 8 ml nước tương (xì dầu) và 60 ml nước lọc vào chảo. Tiếp tục đảo đều trên lửa lớn khoảng 1,5–2 phút cho nước gia vị cạn bám đều quanh bông cải xanh mà rau vẫn giòn ngọt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại và dọn nóng",
+      "instruction": "Nêm nếm lại cho vừa khẩu vị rồi tắt bếp ngay. Gắp bông cải xanh xào tỏi ra đĩa phẳng, thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 128,
+    "energyKcal": 128.3,
+    "energyKj": 537,
+    "proteinG": 4,
+    "fatG": 8.8,
+    "saturatedFatG": 1.3,
+    "carbG": 10.8,
+    "fiberG": 3,
+    "sugarG": 2.3,
+    "sodiumMg": 1042,
+    "saltG": 2.61,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170379",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Monosodium Glutamate",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4322ba7a2ea89c286d85e6455c994f831c0c0423eed749a6db1142e23ba89a53",
+    "researchedFromV2Sha256": "829e68521a10ad294a2589ff9a571a0c3f3f37d5e32e6838e28a25bc3ab4cdae"
+  }
+}

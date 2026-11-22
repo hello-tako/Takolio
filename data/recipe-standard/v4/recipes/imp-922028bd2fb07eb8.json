@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-922028bd2fb07eb8",
+    "slug": "dau-phu-chien-tuong-han",
+    "title": "Đậu phụ chiên sốt tương hành kiểu Hàn (Dubu Buchim)",
+    "subtitle": "Đậu phụ chiên áp chảo vàng giòn hai mặt, rim nhanh cùng sốt tương tỏi hành siro ngô sánh bóng đậm đà"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Dubu buchim",
+      "Đậu phụ",
+      "Banchan",
+      "Hàn Quốc",
+      "Chiên sốt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ chiên sốt tương hành (Dubu Jorim / Dubu Buchim) là món banchan truyền thống có mặt trong hầu hết bữa cơm Hàn Quốc. Miếng đậu phụ chắc được thấm khô và áp chảo vàng đều hai mặt rồi rim nhẹ trong nước tương, siro ngô, tỏi băm và ớt bột tạo nên lớp áo bóng mặn ngọt hài hòa.",
+    "servingSuggestion": "Xếp đậu phụ ra đĩa, chan phần sốt tương hành sánh bóng lên trên và rắc mè trắng rang; dùng nóng hay nguội cùng cơm trắng đều rất ngon.",
+    "storageAndReheat": "Có thể bảo quản ngăn mát tủ lạnh tới 3 ngày trong hộp kín; món này ăn nguội kiểu banchan vẫn đậm đà hoặc hâm nóng nhẹ bằng chảo 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ chắc (đậu hũ trắng cứng)",
+      "culinaryMeasure": "4 miếng (khoảng 480 g)",
+      "prepNote": "thấm thật khô hai mặt bằng khăn giấy rồi thái lát chữ nhật dày khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần đầu trắng và phần lá xanh để cho vào sốt rim",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Hàn Quốc (Xì dầu)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "pha loãng cùng nước lọc và siro ngô làm sốt rim đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CORN_SYRUP",
+      "name": "Siro ngô / Siro gạo Hàn Quốc",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị ngọt thanh và độ sánh bóng caramel hóa cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 20.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ cam bắt mắt và vị cay ấm nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tráng chảo áp chảo vàng đều hai mặt đậu phụ",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới sau khi tắt bếp để dậy mùi thơm bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện đĩa đậu phụ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha loãng sốt tương giúp đậu thấm đều và không bị cháy khét khi rim",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 21,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô, cắt lát đậu phụ và pha sốt tương",
+      "instruction": "Dùng khăn giấy thấm thật khô 4 miếng đậu phụ chắc rồi thái lát chữ nhật dày khoảng 1 cm. Thái nhỏ hành lá và băm nhuyễn tỏi. Trong chén nhỏ, hòa đều 35 ml nước tương Hàn Quốc, 15 ml siro ngô, 4 g ớt bột Hàn Quốc và 30 ml nước lọc.",
+      "tip": "Thấm khô đậu phụ kỹ trước khi chiên giúp mặt đậu nhanh vàng giòn, không bị bắn dầu và không vỡ nát khi lật."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo mặt đầu đậu phụ vàng đều",
+      "instruction": "Làm nóng chảo chống dính với 30 ml dầu ăn thực vật trên lửa vừa-nhỏ, xếp từng miếng đậu phụ vào chảo sao cho không chồng lên nhau. Áp chảo yên trong 5 phút đến khi mặt dưới chuyển vàng nâu và cứng cạnh.",
+      "tip": "Không lật đậu sớm khi mặt dưới chưa vàng giòn vì miếng đậu mềm dễ bị dính và vỡ.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Lật nhẹ tay chiên vàng mặt còn lại",
+      "instruction": "Dùng xẻng mỏng lật nhẹ từng miếng đậu phụ sang mặt còn lại, tiếp tục áp chảo thêm 4 phút trên lửa vừa-nhỏ cho hai mặt vàng giòn đều nhau.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi trực tiếp trong chảo đậu",
+      "instruction": "Gạt nhẹ các miếng đậu sang xung quanh, cho tỏi băm vào khoảng trống giữa chảo và đảo nhanh 30 giây trên lửa nhỏ cho tỏi dậy mùi thơm vàng nhẹ mà không bị cháy đắng.",
+      "tip": "Cho tỏi vào sau khi đậu đã chiên vàng giúp tỏi thơm dậy mùi mà không bị cháy khét suốt thời gian áp chảo đậu."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rưới sốt tương và rim sánh bóng",
+      "instruction": "Rưới đều chén sốt tương đã pha lên khắp mặt đậu phụ, lắc nhẹ chảo cho sốt tràn đều dưới đáy. Hạ lửa vừa-nhỏ rim khoảng 3 phút, thả hành lá thái nhỏ vào đảo nhẹ cho hành mềm dịu và sốt sánh quyện bám quanh từng lát đậu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè và rắc mè rang hoàn thiện",
+      "instruction": "Tắt bếp, rưới 10 ml dầu mè rang Hàn Quốc lên mặt đậu, gắp xếp gọn gàng ra đĩa, chan phần nước sốt hành còn trong chảo và rắc hạt mè trắng rang lên trên rồi thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 271,
+    "energyKcal": 271.1,
+    "energyKj": 1134,
+    "proteinG": 18,
+    "fatG": 19.5,
+    "saturatedFatG": 2.8,
+    "carbG": 11.2,
+    "fiberG": 2.5,
+    "sugarG": 6.5,
+    "sodiumMg": 778,
+    "saltG": 1.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 168836",
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a839b902adbcad5a246ed11c992832f14ef29813cca345f524911f5704f15940",
+    "researchedFromV2Sha256": "c8ea81420518f570a85813b6274d46ea9ba593d18afbd9bc8d4578377720bd29"
+  }
+}

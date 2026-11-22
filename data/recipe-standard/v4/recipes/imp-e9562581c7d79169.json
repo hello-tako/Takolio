@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e9562581c7d79169",
+    "slug": "com-cua-kanimeshi",
+    "title": "Cơm cua Kanimeshi",
+    "subtitle": "Gạo Nhật nấu thấm vị xì dầu Sake hạt nêm gà, trộn thịt cua tươi ngọt thơm, hành lá, dầu mè và trứng gà hấp chín mềm tơi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 3,
+    "tags": [
+      "Kanimeshi",
+      "Cơm cua",
+      "Nồi cơm điện",
+      "Ẩm thực Nhật",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "steam"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cơm cua Kanimeshi nấu bằng nồi cơm điện tiện lợi nhưng vẫn đậm đà hương vị biển kiểu Hokkaido, kết hợp cơm gạo Nhật dẻo thơm vị xì dầu và rượu Sake, hòa quyện thịt cua tươi ngọt chắc, dầu mè thơm và lớp trứng đánh hấp tơi béo.",
+    "servingSuggestion": "Xới cơm cua Kanimeshi ra bát sứ nóng, rắc thêm chút hành lá thái nhỏ và tiêu đen xay lên trên, ăn nóng trực tiếp hoặc kèm súp Miso thanh nhẹ.",
+    "storageAndReheat": "Để nguội rồi bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày; khi ăn rưới thêm một thìa nhỏ nước lọc và hâm nóng lại trong lò vi sóng 1–2 phút cho cơm mềm ẩm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo hạt ngắn Nhật",
+      "culinaryMeasure": "300 g (khoảng 2 cốc đong)",
+      "prepNote": "vo nhẹ 2–3 lần cho sạch cám rồi để ráo trước khi nấu",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Thịt cua tươi bóc sẵn",
+      "culinaryMeasure": "200 g",
+      "prepNote": "kiểm tra nhặt sạch mảnh vỏ cứng còn sót và xé tơi nhẹ thớ thịt cua",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra bát, đánh tan đều cùng sốt Mayonnaise",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MAYONNAISE",
+      "name": "Sốt Mayonnaise",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "đánh chung với trứng gà giúp trứng chín tơi mềm và không bị khô",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ để trộn vào cơm và rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "18 ml (khoảng 1 muỗng canh)",
+      "prepNote": "nêm vào nước nấu cơm giúp từng hạt cơm thơm đậm vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 18,
+      "unit": "ml",
+      "grossGrams": 21.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp cơm nấu dậy mùi thơm thanh và khử mùi tanh của cua",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm gà",
+      "culinaryMeasure": "5 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "hòa tan vào nước nấu cơm tạo vị ngọt umami dịu",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "12 ml (khoảng 2,5 muỗng cà phê)",
+      "prepNote": "trộn vào cơm nóng cùng thịt cua cho bóng dẻo thơm lừng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "ml",
+      "grossGrams": 11,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "nêm hoàn chỉnh hương vị khi xới cơm chín",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "0,5 g (một nhúm nhỏ)",
+      "prepNote": "rắc nhẹ khi trộn cơm giúp tăng hương ấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu cơm",
+      "culinaryMeasure": "360 ml",
+      "prepNote": "kết hợp cùng xì dầu và rượu Sake cho đủ lượng nước nấu 300 g gạo",
+      "componentGroup": "broth",
+      "requiredQuantity": 360,
+      "unit": "ml",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 324,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo gạo và pha nước gia vị nấu cơm Nhật",
+      "instruction": "Vo nhẹ 300 g gạo hạt ngắn Nhật 2–3 lần nước cho sạch rồi để ráo, cho vào lòng nồi cơm điện. Đổ 360 ml nước lọc cùng 18 ml xì dầu Nhật, 15 ml rượu Sake nấu ăn và 5 g hạt nêm gà vào khuấy nhẹ cho gia vị tan đều, ngâm 15 phút.",
+      "tip": "Bớt nhẹ một chút nước lọc so với nấu cơm trắng thông thường vì đã có thêm xì dầu và rượu Sake, giúp hạt cơm chín tơi ráo.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Bật nấu cơm chín dẻo thơm vị nước dùng",
+      "instruction": "Đậy nắp nồi cơm điện, bật chế độ nấu cơm tiêu chuẩn và nấu khoảng 30–35 phút cho đến khi nồi chuyển sang chế độ giữ ấm.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Xé tơi thịt cua, thái hành lá và đánh trứng Mayonnaise",
+      "instruction": "Trong lúc chờ cơm chín, kiểm tra nhặt sạch mảnh vỏ cứng còn sót trong 200 g thịt cua tươi và xé tơi nhẹ dọc thớ thịt, rửa sạch và thái nhỏ hành lá. Đập 2 quả trứng gà ra bát, cho 8 g sốt Mayonnaise vào đánh tan đều cho đến khi hòa quyện mịn.",
+      "tip": "Trộn thêm chút sốt Mayonnaise vào trứng giúp trứng khi hấp trên cơm nóng sẽ bông xốp và giữ độ mềm ẩm rất ngon."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn thịt cua, hành lá và dầu mè vào cơm nóng",
+      "instruction": "Ngay khi cơm vừa chín tới còn đang bốc hơi nóng, mở nắp nồi và rải toàn bộ thịt cua tươi, 2/3 lượng hành lá thái nhỏ cùng 12 ml dầu mè thơm vào, dùng muôi xới nhẹ từ dưới lên cho đều.",
+      "tip": "Thực hiện thao tác nhanh tay để giữ nhiệt độ nóng hổi trong nồi cho bước hấp chín hoàn toàn thịt cua và trứng tiếp theo."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp chín kỹ thịt cua và hỗn hợp trứng gà",
+      "instruction": "Rưới đều bát trứng gà đánh Mayonnaise phủ khắp bề mặt cơm và cua đang nóng, lập tức đậy kín nắp nồi và bật lại chế độ nấu thêm 3 phút rồi để ủ kín thêm 4–5 phút cho đến khi thịt cua chín thơm nóng đều và trứng chín hẳn, đông tơi mềm mịn.",
+      "tip": "Đảm bảo thịt cua và trứng gà được hấp chín kỹ hoàn toàn bằng hơi nóng trước khi mở nắp trộn cơm.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm muối tiêu, xới tơi và dọn cơm cua Kanimeshi",
+      "instruction": "Mở nắp nồi, rắc 2 g muối ăn và 0,5 g tiêu đen xay vào rồi xới tơi nhẹ nhàng cho cơm, thịt cua và trứng chín quyện đều. Múc ra 3 bát, rắc nốt phần hành lá thái nhỏ còn lại lên trên và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 523,
+    "energyKcal": 523.2,
+    "energyKj": 2189,
+    "proteinG": 23.1,
+    "fatG": 9.9,
+    "saturatedFatG": 2.1,
+    "carbG": 81.2,
+    "fiberG": 1.6,
+    "sugarG": 0.7,
+    "sodiumMg": 1178,
+    "saltG": 2.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171009",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9ff61d83a5cea5f490e73dfb955a3848156502d5751a13b1b1a680b492f2f5e3",
+    "researchedFromV2Sha256": "3acc6e3cf352eeb5d612addb95a1989535317f9b23b7787cc5afb2eaef7b1928"
+  }
+}

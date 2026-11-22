@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-750cef719bf5f2f6",
+    "slug": "chao-kimchi-han",
+    "title": "Cháo kim chi trứng kiểu Hàn (Kimchi Juk)",
+    "subtitle": "Tô cháo kim chi sánh mịn đậm vị chua cay ấm bụng với trứng gà đánh ủ mềm, dầu mè thơm và rong biển vụn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Kimchi juk",
+      "Cháo Hàn",
+      "Bữa sáng",
+      "Cay ấm",
+      "Trứng gà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cháo kim chi Hàn Quốc (Kimchi Juk) là món cháo nóng hổi thanh nhẹ nhưng giàu hương vị nhờ bước xào kim chi chua cùng dầu mè và ép nhẹ cơm cho thơm béo trước khi ninh. Trứng gà được ủ chín mềm trong cháo nóng, kết hợp cùng rong biển vụn và hành lá tạo nên tô cháo ấm bụng cho bữa sáng hoặc ngày se lạnh.",
+    "servingSuggestion": "Múc cháo nóng ra tô sâu lòng, rắc hành lá, rong biển khô cắt vụn, chút ớt bột Hàn và mè trắng rang lên trên; thưởng thức ngay khi còn nóng.",
+    "storageAndReheat": "Cháo ngon nhất khi ăn ngay lúc vừa nấu xong; nếu để nguội sẽ đặc lại, khi hâm nóng chỉ cần thêm 50–100 ml nước lọc và khuấy đều trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm (hoặc 350 g cơm trắng nấu chín)",
+      "culinaryMeasure": "150 g gạo khô",
+      "prepNote": "vo sạch gạo, ngâm nước 15 phút cho nhanh nhừ (hoặc dùng 350 g cơm nguội)",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chín chua (kèm 50 g nước kim chi)",
+      "culinaryMeasure": "220 g",
+      "prepNote": "băm nhỏ phần cải kim chi cỡ 1 cm, giữ lại phần nước kim chi để xào tạo hương vị",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đập ra chén để rưới tạo vân hoặc ủ chín mềm trong nồi cháo",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ; chia 1/2 nấu cùng cháo và 1/2 rắc mặt tô cháo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng kim chi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm cùng nước mắm cho cháo đậm đà hài hòa",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "chia đôi: 5 ml xào kim chi và 5 ml nêm cuối tạo vị ngọt hậu",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "dịu vị chua gắt của kim chi khi xào",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện cho màu đỏ đẹp và cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng 15 ml xào kim chi từ nồi nguội cho khỏi khét, 5 ml rưới khi dọn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển khô cắt vụn (Nori)",
+      "culinaryMeasure": "5 g",
+      "prepNote": "cắt hoặc bóp vụn rắc lên mặt tô cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc trang trí cùng rong biển và hành lá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1100 ml (1,1 lít)",
+      "prepNote": "dùng để ninh nở nhừ hạt gạo thành cháo sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1100,
+      "unit": "ml",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 935,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo gạo và chuẩn bị kim chi, hành tỏi",
+      "instruction": "Vo sạch 150 g gạo tẻ thơm, ngâm nước lạnh 15 phút rồi vớt ra để ráo. Thái nhỏ 170 g cải kim chi cỡ 1 cm, giữ lại 50 g nước kim chi. Băm nhỏ tỏi và thái nhỏ hành lá."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào mềm kim chi với dầu mè và tỏi",
+      "instruction": "Cho 15 ml dầu mè rang vào nồi đáy dày khi bếp còn nguội, thêm tỏi băm, cải kim chi, nước kim chi, 10 g đường cát trắng và 5 ml nước mắm. Bật lửa vừa, đảo đều trong 4 phút đến khi kim chi mềm thấm gia vị và dậy mùi thơm.",
+      "tip": "Cho dầu mè vào từ lúc nồi còn nguội rồi mới bật lửa vừa giúp dầu mè không bị cháy khét hay mất mùi thơm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang sơ gạo và đổ nước ninh cháo sánh mịn",
+      "instruction": "Trút gạo đã ngâm ráo vào nồi đảo cùng kim chi 1 phút cho hạt gạo áo dầu thơm. Đổ 1100 ml nước lọc vào, bật lửa lớn đun sôi bùng rồi hạ về lửa nhỏ, đậy hờ nắp ninh liu riu 18 phút, thỉnh thoảng khuấy nhẹ đáy nồi để hạt gạo nở bung sánh mịn và không bén đáy.",
+      "tip": "Nếu thích cháo loãng hơn hoặc cháo đặc nhanh khi gần chín, có thể châm thêm 50–100 ml nước nóng.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm vị cháo và thả một nửa hành lá",
+      "instruction": "Nêm 15 ml nước tương, 5 ml nước mắm còn lại cùng 1/2 lượng hành lá thái nhỏ vào nồi cháo, khuấy đều và nếm lại sao cho đạt vị chua dịu, mặn ngọt hài hòa."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cho trứng gà vào ủ chín mềm trong nồi cháo",
+      "instruction": "Hạ lửa thật nhỏ, đập nhẹ 3 quả trứng gà vào bề mặt nồi cháo (hoặc đánh tan rưới vòng tròn nếu thích dạng vân trứng), đậy kín nắp ủ khoảng 3 phút cho lòng trắng đông chín hoàn toàn và lòng đỏ chín mềm theo ý muốn.",
+      "tip": "Ủ đúng 3 phút trên lửa nhỏ giúp trứng chín mềm mịn mà không bị khô xác hay làm đục màu cháo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc cháo ra tô và rắc rong biển hoàn thiện",
+      "instruction": "Tắt bếp, múc cháo nóng cùng trứng ra tô. Rưới nốt 5 ml dầu mè rang, rắc phần hành lá còn lại, rong biển khô cắt vụn, 4 g ớt bột Hàn Quốc và hạt mè trắng rang lên mặt rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 348,
+    "energyKcal": 348.3,
+    "energyKj": 1457,
+    "proteinG": 11.3,
+    "fatG": 12,
+    "saturatedFatG": 2.5,
+    "carbG": 48.7,
+    "fiberG": 2.8,
+    "sugarG": 5,
+    "sodiumMg": 1071,
+    "saltG": 2.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 168456",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "11a9c6dd0fc07d67694f982adf43440118425cc408550deb1590185444ac8f34",
+    "researchedFromV2Sha256": "491c49589409ae0be299c27cd02c5e7ebc1d99c71cf2b8be4045114692d2a303"
+  }
+}

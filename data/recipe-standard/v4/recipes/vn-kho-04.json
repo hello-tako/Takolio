@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-04",
+    "slug": "suon-heo-xao-chua-ngot",
+    "title": "Sườn heo xào chua ngọt",
+    "subtitle": "Sườn non chiên vàng giòn bên ngoài, mềm róc xương bên trong, áo đẫm nước sốt cà chua giấm đường sánh bóng đậm vị"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Sườn non",
+      "Chua ngọt",
+      "Bắc Bộ",
+      "Đưa cơm",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "pan_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Từng dẻ sườn non chiên xém vàng quyện lớp sốt đỏ cam sánh mịn có vị chua thanh từ giấm gạo, ngọt dịu từ đường và cà chua chín, thịt mềm ngọt dễ tách xương.",
+    "servingSuggestion": "Bày sườn ra đĩa lớn, rưới đều sốt chua ngọt và rắc hành lá thái nhỏ cùng tiêu xay; ăn nóng với cơm trắng và canh rau ngót.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tối đa 2 ngày; khi ăn cho thêm 1–2 muỗng canh nước lọc và đảo lại trên chảo lửa nhỏ cho sốt sánh nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt miếng",
+      "culinaryMeasure": "550 g",
+      "prepNote": "rửa sạch với muối, chần nước sôi rồi chặt khúc dài 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 550,
+      "unit": "g",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 357.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (240 g)",
+      "prepNote": "rửa sạch, bỏ cuống và hạt rồi thái hạt lựu hoặc băm nhỏ để tạo sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0.5 củ (70 g)",
+      "prepNote": "bóc vỏ, rửa sạch rồi thái múi cau mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4–5 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml ướp sườn và 15 ml pha nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để pha sốt chua ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo màu đỏ bóng đẹp và vị chua ngọt hài hòa cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "35 g (~2,5 muỗng canh)",
+      "prepNote": "chia 10 g ướp sườn và 25 g pha nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp sườn và 3 g pha nước sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g",
+      "prepNote": "dùng 4 g chần sườn rồi xả bỏ và 2 g ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp sườn và rắc mặt khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "chiên vàng sườn (giữ lại lượng bám khoảng 70%) và xào sốt cà chua",
+      "componentGroup": "main",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 28.98,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng để pha sốt và rim mềm sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sơ sườn non và sơ chế rau củ",
+      "instruction": "Chặt 550 g sườn non thành miếng dài 3–4 cm. Đun sôi nồi nước với 4 g muối ăn, thả sườn vào chần nhanh 3 phút để sạch bọt bẩn rồi vớt ra rửa lại nước mát, thấm thật khô ráo. Cà chua bỏ cuống thái hạt lựu, hành tây thái múi cau mỏng, tỏi và hành tím băm nhuyễn, hành lá thái nhỏ.",
+      "tip": "Không luộc sườn quá lâu ở bước chần để tránh làm thịt mất chất ngọt và bị khô xác khi chiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp sườn non và pha chén sốt chua ngọt",
+      "instruction": "Ướp sườn với 15 ml nước mắm, 10 g đường cát trắng, 3 g hạt nêm, 2 g muối, 1 g tiêu đen xay và một nửa hành tím băm trong 20 phút. Trong chén riêng, khuấy tan 15 ml nước mắm còn lại, 30 ml giấm gạo, 20 ml tương cà, 25 g đường, 3 g hạt nêm và 100 ml nước lọc.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên sườn vàng xém hai mặt",
+      "instruction": "Làm nóng chảo với 35 ml dầu ăn trên lửa vừa, gạt bớt hành băm bám trên miếng sườn rồi xếp từng dẻ sườn vào chiên khoảng 8 phút đến khi bề mặt sườn vàng ruộm và xém cạnh đều hai mặt. Gắp sườn ra đĩa có lót giấy thấm dầu, chắt bớt dầu thừa trong chảo.",
+      "tip": "Thấm thật khô sườn trước khi chiên và giữ lửa vừa giúp sườn không bị bắn dầu và không cháy xém phần đường ướp.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhuyễn sốt cà chua và đun sôi gia vị",
+      "instruction": "Dùng lại chảo với 10 ml dầu ăn còn lại, phi thơm phần hành tím và tỏi băm trên lửa vừa trong 1 phút. Cho cà chua thái hạt lựu vào đảo đều 4 phút đến khi cà chua chín nhuyễn ra sốt đỏ đẹp, rồi đổ chén nước sốt chua ngọt đã pha vào đun sôi lăn tăn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim sườn thấm đẫm sốt chua ngọt",
+      "instruction": "Trút toàn bộ sườn đã chiên vàng vào chảo sốt, đảo đều rồi hạ lửa nhỏ, đậy nắp rim trong 10 phút cho thịt sườn mềm róc xương và thấm sâu vị chua ngọt. Mở nắp, thả hành tây vào đảo thêm 2 phút trên lửa vừa đến khi sốt sánh bóng áo đều quanh từng miếng sườn.",
+      "tip": "Cho hành tây vào giai đoạn cuối để hành vừa chín tới, giữ được độ giòn ngọt mà không bị nhũn nát.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại sốt và trình bày ra đĩa",
+      "instruction": "Nếm thử phần sốt xem độ chua ngọt đã cân bằng vừa ý chưa rồi tắt bếp. Xếp sườn ra đĩa, rưới phần sốt sánh còn lại lên trên, rắc hành lá thái nhỏ và 1 g tiêu đen xay còn lại để dậy mùi thơm rồi dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 387,
+    "energyKcal": 387.4,
+    "energyKj": 1621,
+    "proteinG": 15.8,
+    "fatG": 28.3,
+    "saturatedFatG": 8.8,
+    "carbG": 17.6,
+    "fiberG": 1.5,
+    "sugarG": 13.3,
+    "sodiumMg": 1283,
+    "saltG": 3.21,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169076",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "98d6bef98544fab9ed73df043e58483dde6947c373466e03cb335dec25902c81",
+    "researchedFromV2Sha256": "c9f7886eed78dfa0d9f31cd5eb7c0de60c616a80cf29aee453bdba55b2e885e6"
+  }
+}

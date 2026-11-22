@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chien-01",
+    "slug": "dau-phu-sot-ca-chua",
+    "title": "Đậu phụ lướt ván sốt cà chua",
+    "subtitle": "Đậu phụ chiên vàng vỏ ngoài mềm núng nính bên trong, quyện sốt cà chua đỏ sánh thơm hành lá"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Đậu phụ",
+      "Cơm nhà",
+      "Tiết kiệm",
+      "Dưới 30 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ lướt ván sốt cà chua là món cơm nhà dân dã quen thuộc khắp ba miền. Miếng đậu phụ trắng được thấm khô và chiên nhanh lửa vừa để lớp vỏ vàng mỏng giòn nhẹ, ruột vẫn mềm béo, sau đó om dịu trong sốt cà chua chín đỏ đậm vị nước mắm và hành lá.",
+    "servingSuggestion": "Dọn nóng ra đĩa sâu lòng, rưới phần sốt cà chua sánh mịn lên mặt đậu, rắc tiêu xay và ăn kèm cơm trắng nóng cùng rau muống luộc.",
+    "storageAndReheat": "Món ngon nhất khi dùng ngay trong bữa; nếu còn dư, cất hộp kín trong ngăn mát tủ lạnh tối đa 24 giờ và hâm lại trên chảo lửa nhỏ với chút nước lọc để sốt không khô cháy."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng tươi",
+      "culinaryMeasure": "4 miếng (khoảng 480 g)",
+      "prepNote": "rửa nhẹ tay, để ráo và thấm thật khô bằng khăn giấy, cắt miếng vuông vừa ăn dày 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (khoảng 360 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái hạt lựu nhỏ (hoặc bổ múi cau mỏng) để nhanh nhừ ra sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (hành khô)",
+      "culinaryMeasure": "30 g (khoảng 2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng hoặc băm nhỏ để phi thơm nền sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, phần đầu hành trắng băm nhỏ, phần lá xanh cắt khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "16 g (~2 muỗng canh)",
+      "prepNote": "dùng 12 g áo mỏng mặt đậu trước khi chiên (tùy chọn), 4 g hòa nước tạo độ sánh cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 14.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm tạo vị mặn thơm đặc trưng cho sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp sốt cà chua bóng đẹp và đậm đà vị ngọt dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua tự nhiên của cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 2 g xào nhanh cà chua cho mềm, 4 g nêm hoàn thiện sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc lên mặt đĩa đậu trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên đậu và làm sốt)",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "dùng 135–140 ml chiên lướt ván đậu phụ, giữ lại khoảng 10–12 ml phi thơm hành xào cà chua",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 138,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng 80 ml nấu mềm sốt cà chua và 20 ml hòa tan bột năng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô đậu phụ và cắt miếng vừa ăn",
+      "instruction": "Rửa nhẹ đậu phụ trắng dưới vòi nước lạnh cho sạch, đặt lên khăn giấy sạch thấm thật khô hai mặt rồi cắt thành miếng vuông dày khoảng 2 cm. Nếu thích lớp vỏ xốp giòn, lăn nhẹ các miếng đậu qua 12 g bột năng rồi giũ bỏ bột thừa; còn để giữ đúng độ mềm mướt kiểu lướt ván thì chiên trực tiếp.",
+      "tip": "Thấm khô bề mặt đậu phụ là bí quyết quan trọng nhất để khi thả vào chảo dầu không bị bắn và miếng đậu lên màu vàng đều."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế cà chua và các loại hành thơm",
+      "instruction": "Cà chua chín đỏ rửa sạch, bỏ cuống, thái hạt lựu nhỏ để khi xào nhanh nhừ thành sốt mịn. Hành tím bóc vỏ, thái lát mỏng hoặc băm nhỏ. Hành lá rửa sạch, tách riêng phần đầu hành trắng băm nhỏ và phần lá xanh cắt khúc dài 2 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên lướt ván đậu phụ vàng đều hai mặt",
+      "instruction": "Đặt chảo chống dính lên bếp, cho 125 ml dầu ăn vào đun trên lửa vừa đến khi đầu đũa chạm đáy chảo sủi tăm nhẹ. Thả từng miếng đậu phụ vào chiên khoảng 3 phút mỗi mặt đến khi lớp vỏ bên ngoài vừa se vàng nhạt nhưng bên trong vẫn mềm núng nính thì vớt ra đĩa có giấy thấm dầu.",
+      "tip": "Không chiên quá lâu ở lửa lớn khiến vỏ đậu bị cứng và ruột bị rỗ khô; đậu vừa vàng xém nhẹ hai mặt là đạt.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Phi thơm hành tím và xào nhừ cà chua",
+      "instruction": "Chắt bớt dầu thừa trong chảo, giữ lại khoảng 10–12 ml dầu ăn, đun nóng trên lửa vừa rồi cho hành tím và đầu hành lá vào phi thơm 1 phút. Trút toàn bộ cà chua vào xào cùng 2 g hạt nêm, đậy nắp chảo nấu 3 phút cho cà chua mềm nát và tiết màu đỏ cam.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nêm gia vị và nấu sánh sốt cà chua",
+      "instruction": "Mở nắp, dùng muôi dằm nhẹ phần cà chua cho nhuyễn mịn rồi đổ 80 ml nước lọc vào khuấy đều. Nêm 25 ml nước mắm ngon, 15 ml dầu hào (nếu dùng), 6 g đường cát trắng và 4 g hạt nêm còn lại, nấu sôi nhẹ 2 phút. Hòa 4 g bột năng với 20 ml nước lọc rồi rót từ từ vào chảo khuấy đều cho sốt sánh bóng.",
+      "tip": "Dầu hào và đường giúp làm dịu vị chua gắt của cà chua, tạo độ sánh mượt tự nhiên cho phần sốt rưới cơm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Om đậu thấm sốt và hoàn thiện món ăn",
+      "instruction": "Hạ lửa nhỏ, nhẹ nhàng xếp từng miếng đậu phụ đã chiên vào chảo sốt cà chua, dùng thìa rưới đều sốt lên mặt đậu và rim khoảng 3 phút cho sốt thấm quanh miếng đậu mà không bị vỡ. Rắc hành lá cắt khúc vào đảo nhẹ rồi tắt bếp, gắp ra đĩa và rắc thêm tiêu đen xay lên trên.",
+      "timerMinutes": 3
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 262,
+    "energyKcal": 262.1,
+    "energyKj": 1096,
+    "proteinG": 18.3,
+    "fatG": 15.7,
+    "saturatedFatG": 2.3,
+    "carbG": 17.2,
+    "fiberG": 3.6,
+    "sugarG": 8,
+    "sodiumMg": 1303,
+    "saltG": 3.26,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "68e886d5f176160904065430a905bc5a59aef0804e273b6a1b3b4519afeec8d9",
+    "researchedFromV2Sha256": "0a896a530add4f15a1a418658443afe13f916473040e45928bb272f7aa391880"
+  }
+}

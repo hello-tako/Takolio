@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b8731e057182331b",
+    "slug": "bap-cai-tron-me-nhat",
+    "title": "Bắp cải trộn mè rang kiểu Nhật",
+    "subtitle": "Bắp cải thái sợi bóp muối vắt ráo giòn mát trộn cùng hạt mè trắng rang giã dập, xì dầu Nhật, dầu mè, giấm gạo và hành lá thanh vị"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Món trộn Nhật",
+      "Bắp cải",
+      "Mè rang",
+      "Rau phụ",
+      "Giòn mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món rau phụ bắp cải trộn mè kiểu Nhật thanh mát và giòn sần sật: bắp cải thái sợi được ủ nhẹ với muối cho mềm giòn tự nhiên rồi trộn đều trong hỗn hợp mè trắng rang giã dập quyện xì dầu Nhật, đường, dầu mè thơm và giấm gạo.",
+    "servingSuggestion": "Bày bắp cải trộn mè ra đĩa nhỏ, rắc thêm chút mè nguyên hạt lên mặt; dùng mát làm món rau phụ giải ngấy rất hợp bên cạnh thịt nướng, cá chiên hoặc cơm cà ri.",
+    "storageAndReheat": "Món trộn ngon nhất khi dùng trong ngày để giữ độ giòn tươi của bắp cải; có thể bảo quản ngăn mát tối đa 1–2 ngày trong hộp kín và chắt bớt nước tiết ra nếu có trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải tươi",
+      "culinaryMeasure": "3/5 bắp nhỏ (khoảng 480 g)",
+      "prepNote": "bỏ lá già và lõi cứng, thái sợi mỏng khoảng 0,5 cm rồi rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 408,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng",
+      "culinaryMeasure": "18 g (~2 muỗng canh)",
+      "prepNote": "rang vàng thơm trên chảo khô, giã dập 2/3 lượng mè và giữ lại 1/3 nguyên hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "hòa quyện cùng mè giã dập tạo vị mặn umami",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt dịu hài hòa cho sốt trộn mè",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch bằng nước đun sôi để nguội, thấm khô rồi thái khoanh mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (bóp bắp cải)",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "bóp nhẹ giúp bắp cải tiết bớt nước hăng rồi vắt ráo nước bỏ đi",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 0.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "giúp sợi bắp cải bóng mượt và tăng mùi thơm béo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo Nhật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo chút vị chua thanh giúp món rau thêm bắt miệng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 10.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10.1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái sợi bắp cải và hành lá",
+      "instruction": "Tách bỏ lá già bên ngoài của 480 g bắp cải tươi, bổ tư cắt bỏ lõi cứng rồi thái thành sợi mỏng đều khoảng 0,5 cm, rửa sạch và vẩy thật ráo. Rửa sạch hành lá tươi, thấm khô và thái khoanh mỏng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Bóp muối nhẹ cho bắp cải dịu giòn và vắt ráo",
+      "instruction": "Cho bắp cải thái sợi vào tô lớn, rắc 2 g muối ăn rồi dùng tay bóp nhẹ nhàng khoảng 1 phút cho muối bám đều, để yên 5 phút cho bắp cải ra bớt nước hăng. Sau đó dùng tay vắt nhẹ cho ráo nước nhưng không vắt quá kiệt để bắp cải vẫn giữ độ giòn mát.",
+      "tip": "Vắt bắp cải vừa ráo tay giúp sợi rau giòn ngọt và thấm sốt đậm đà mà không bị dai hay làm loãng sốt trộn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Rang thơm và giã dập hạt mè trắng",
+      "instruction": "Cho 18 g hạt mè trắng vào chảo khô, rang trên lửa nhỏ khoảng 3 phút và đảo đều tay đến khi mè vàng nhạt dậy mùi thơm bùi thì trút ra đĩa cho nguội bớt. Cho 2/3 lượng mè vào cối giã dập thơm dầu, giữ lại 1/3 nguyên hạt để rắc mặt.",
+      "tip": "Đảo liên tục trên lửa nhỏ khi rang vì hạt mè rất nhỏ và dễ cháy khét nếu để chảo quá nóng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha sốt trộn mè xì dầu giấm gạo",
+      "instruction": "Trong tô nhỏ, trộn đều phần hạt mè trắng đã giã dập với 15 ml xì dầu Nhật Bản, 10 g đường cát trắng, 8 ml dầu mè thơm và 10 ml giấm gạo Nhật đến khi đường tan hết tạo thành hỗn hợp sốt sánh thơm.",
+      "tip": "Khuấy kỹ đến khi đường tan hoàn toàn để khi trộn gia vị bám đều lên từng sợi bắp cải."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Trộn đều bắp cải với hành lá và sốt mè",
+      "instruction": "Cho bắp cải đã vắt ráo và hành lá thái mỏng vào tô lớn, rưới đều toàn bộ sốt mè lên trên và trộn đều tay cho sốt phủ kín từng sợi rau."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Ủ thấm vị, rắc mè nguyên hạt và bày đĩa",
+      "instruction": "Để bắp cải trộn nghỉ khoảng 3 phút cho gia vị thấm sâu rồi đảo nhẹ lại lần cuối, bày ra đĩa, rắc nốt phần hạt mè trắng nguyên hạt lên trên và thưởng thức mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 109,
+    "energyKcal": 108.8,
+    "energyKj": 456,
+    "proteinG": 3.4,
+    "fatG": 5.6,
+    "saturatedFatG": 0.8,
+    "carbG": 13.4,
+    "fiberG": 4.3,
+    "sugarG": 7.9,
+    "sodiumMg": 428,
+    "saltG": 1.07,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2224bcbe84f1f5d3b9be274976e4a2b31b7f312643beafadfb4e833491a08a32",
+    "researchedFromV2Sha256": "a27cf0b9a5c4235a5918ce66936cce8739d838d7442dfa01dd6209b498e25ec8"
+  }
+}

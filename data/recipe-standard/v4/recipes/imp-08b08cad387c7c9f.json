@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-08b08cad387c7c9f",
+    "slug": "dau-phu-chien-toi",
+    "title": "Đậu phụ chiên giòn sốt tỏi",
+    "subtitle": "Đậu phụ trắng áo bột bắp chiên vàng giòn rụm, rưới sốt tỏi phi dầu nóng cùng xì dầu nhạt và dầu hào chay đậm đà đưa cơm"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Đậu phụ",
+      "Món chay",
+      "Sốt tỏi",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ cứng chiên áp chảo giòn rụm lớp vỏ ngoài nhờ phủ bột bắp, bên trong vẫn béo mềm, quyện cùng bát sốt tỏi hành lá xèo thơm trong dầu nóng pha xì dầu và dầu hào chay.",
+    "servingSuggestion": "Xếp đậu phụ chiên còn nóng giòn ra đĩa, rưới đều sốt tỏi lên mặt rồi rắc hạt mè trắng rang và ớt sừng đỏ thái lát; dùng ngay cùng cơm trắng nóng.",
+    "storageAndReheat": "Món chiên rưới sốt ngon nhất khi ăn ngay lúc vừa làm xong; nếu cần để riêng phần đậu chiên và sốt trong ngăn mát tối đa 2 ngày, khi ăn áp chảo lại đậu cho giòn rồi mới rưới sốt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng (loại cứng)",
+      "culinaryMeasure": "3,5 bìa (420 g)",
+      "prepNote": "cắt miếng vuông dày 2 cm, rắc muối rút nước rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 3.5,
+      "unit": "piece",
+      "grossGrams": 420,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 420,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "rắc đều mặt đậu rút bớt nước trong 5 phút rồi lau sạch bỏ bớt",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "25 g (~2,5 muỗng canh)",
+      "prepNote": "lăn áo một lớp mỏng quanh các miếng đậu phụ trước khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "80 ml (~5,5 muỗng canh)",
+      "prepNote": "chia 45 ml chiên vàng đậu phụ và 35 ml đun nóng già rưới vào bát tỏi sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "ml",
+      "grossGrams": 73.6,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 58.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 18,8 g, ~6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn cho vào bát chịu nhiệt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "pha cùng dầu hào chay tạo vị đậm đà cho sốt tỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ sánh và vị ngọt umami thuần chay cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn dịu của xì dầu và dầu hào chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái nhỏ trộn cùng tỏi băm trong bát sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "8 g (~1 muỗng canh)",
+      "prepNote": "rắc lên mặt món ăn tăng hương bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát vát trang trí và tạo vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rút nước muối và thấm khô đậu phụ",
+      "instruction": "Cắt 3,5 bìa đậu phụ trắng thành các miếng chữ nhật hoặc vuông dày khoảng 2 cm xếp ra khay. Rắc đều 5 g muối ăn lên các mặt đậu, để yên 5 phút cho muối rút bớt ẩm, sau đó dùng khăn giấy lau sạch muối thừa và thấm thật khô từng miếng đậu phụ.",
+      "tip": "Đậu phụ được rút bớt nước và lau sạch muối sẽ ít bắn dầu khi chiên và tạo được lớp vỏ giòn lâu hơn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Áo lớp bột bắp mỏng và chuẩn bị tỏi hành",
+      "instruction": "Đổ 25 g bột bắp ra đĩa rộng, lăn nhẹ từng miếng đậu phụ cho bột phủ kín một lớp mỏng đều rồi giũ nhẹ phần bột thừa. Băm nhuyễn 6 tép tỏi khô, thái nhỏ hành lá tươi và thái lát mỏng 1 quả ớt sừng đỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Dội dầu nóng làm sốt tỏi dầu hào chay",
+      "instruction": "Cho tỏi băm nhuyễn, hành lá thái nhỏ và 15 g đường cát trắng vào bát sứ chịu nhiệt. Đun nóng 35 ml dầu ăn thực vật trong chảo nhỏ trên lửa lớn đến khi mặt dầu hơi gợn sóng và bốc khói nhẹ thì tắt bếp, lập tức rưới dầu nóng vào bát tỏi nghe tiếng xèo thơm lừng, khuấy đều rồi thêm 20 ml xì dầu nhạt và 30 ml dầu hào chay nấm đông cô trộn tan thành sốt sánh.",
+      "tip": "Dầu phải thật nóng mới làm chín thơm tỏi băm tức thì; dùng bát sứ hoặc thủy tinh chịu nhiệt để đảm bảo an toàn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên vàng giòn mặt đầu tiên của đậu phụ",
+      "instruction": "Làm nóng chảo chống dính với 45 ml dầu ăn thực vật còn lại trên lửa vừa-lớn, xếp các miếng đậu phụ đã áo bột vào thành một lớp thoáng. Chiên yên khoảng 4 phút đến khi mặt dưới chuyển vàng nâu giòn rụm rồi mới nhẹ nhàng trở mặt.",
+      "tip": "Không xếp đậu phụ quá chật và không đảo liên tục trong 3 phút đầu để lớp bột bắp không bị dính vỡ.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên giòn các mặt còn lại và thấm dầu",
+      "instruction": "Tiếp tục chiên mặt còn lại thêm 4 phút nữa trên lửa vừa đến khi tất cả các mặt miếng đậu đều vàng giòn đều mắt. Gắp đậu phụ ra đĩa có lót sẵn khăn giấy thấm bớt dầu thừa.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới sốt tỏi nóng và trang trí",
+      "instruction": "Xếp đậu phụ chiên giòn ra đĩa sạch, khuấy đều lại bát sốt tỏi rồi rưới phủ lên từng miếng đậu nóng. Rắc hạt mè trắng rang và ớt sừng đỏ thái lát lên trên rồi dùng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 376,
+    "energyKcal": 375.9,
+    "energyKj": 1572,
+    "proteinG": 15.8,
+    "fatG": 28.4,
+    "saturatedFatG": 4.1,
+    "carbG": 18.8,
+    "fiberG": 2.1,
+    "sugarG": 7.1,
+    "sodiumMg": 880,
+    "saltG": 2.2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7b2fa3d5c6ad975fad0a6cbed39a4c20257bc5479c5d31fe47233dd41ca31e4f",
+    "researchedFromV2Sha256": "4bb1262db0bfbf4d8e10b4be78968c89e77a47fc8352d7ceae9b52d90d8f823d"
+  }
+}

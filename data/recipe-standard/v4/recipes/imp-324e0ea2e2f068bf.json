@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-324e0ea2e2f068bf",
+    "slug": "canh-miso-dau-phu-nam",
+    "title": "Canh Miso đậu phụ non và nấm",
+    "subtitle": "Bát canh Miso ấm nóng nấu từ nước dùng dashi tảo bẹ thanh ngọt, đậu phụ non mềm mịn, nấm tươi giòn và rong biển wakame"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Nhật Bản",
+      "Món canh",
+      "Canh Miso",
+      "Thanh đạm",
+      "Bữa sáng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Canh Miso là món canh truyền thống không thể thiếu trong bữa cơm Nhật Bản. Nước dùng thanh ngọt từ tảo bẹ kombu hòa cùng tương miso thơm dịu, đậu phụ non cắt khối và nấm tươi tạo nên vị umami nhẹ nhàng ấm bụng.",
+    "servingSuggestion": "Múc canh nóng ra từng chén sứ nhỏ có nắp, rắc hành lá thái khoanh lên trên và dùng nóng ngay trước hoặc trong bữa cơm cùng cá nướng và cơm trắng.",
+    "storageAndReheat": "Canh miso ngon nhất khi dùng ngay lúc mới nấu; nếu bảo quản tủ mát tối đa 1 ngày, chỉ hâm nóng tới khoảng 75–80°C trên lửa nhỏ, tuyệt đối không đun sôi bùng để tránh mất mùi thơm của tương miso."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non (Silken tofu)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "rửa nhẹ, cắt khối vuông nhỏ cạnh 1,5–2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm đùi gà tươi (hoặc nấm hương tươi)",
+      "culinaryMeasure": "120 g",
+      "prepNote": "rửa sạch, thái lát mỏng dày 3–4 mm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MISO",
+      "name": "Tương Miso Nhật",
+      "culinaryMeasure": "60 g (~3,5 muỗng canh)",
+      "prepNote": "múc nước dùng nóng hòa tan hoàn toàn ngoài bát trước khi đổ vào nồi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "750 ml",
+      "prepNote": "nấu cùng tảo bẹ kombu để lấy nền nước dùng Dashi vị ngọt umami thanh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 750,
+      "unit": "ml",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 675,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 4,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ Kombu khô",
+      "culinaryMeasure": "8 g (1 mảnh nhỏ)",
+      "prepNote": "lau sạch bụi trắng nhẹ nhàng, ngâm nước dùng trước khi nấu và vớt bỏ trước khi sôi",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WAKAME_SEAWEED",
+      "name": "Rong biển Wakame khô",
+      "culinaryMeasure": "5 g (1 muỗng canh)",
+      "prepNote": "ngâm nước mát 5 phút cho nở mềm hoàn toàn rồi vắt ráo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng rắc trang trí mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm tảo bẹ Kombu lấy nền nước dùng Dashi",
+      "instruction": "Dùng khăn ẩm lau nhẹ lớp phấn trắng tự nhiên trên 8 g tảo bẹ Kombu khô (không rửa trôi vị ngọt), cho vào nồi cùng 750 ml nước lọc lạnh ngâm khoảng 20 phút để tảo tiết hết vị thanh ngọt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Ngâm nở rong biển Wakame và thái đậu phụ, nấm",
+      "instruction": "Ngâm 5 g rong biển Wakame khô trong bát nước mát khoảng 5 phút cho nở mềm hoàn toàn rồi vớt ra vắt nhẹ. Thái lát mỏng 120 g nấm đùi gà tươi; nhẹ tay cắt 200 g đậu phụ non thành khối vuông 2 cm và thái khoanh mỏng 1/2 bó hành lá tươi.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun nước dùng Kombu và nấu chín mềm nấm",
+      "instruction": "Đặt nồi nước ngâm tảo bẹ lên bếp lửa vừa, khi đáy nồi vừa xuất hiện bọt lăn tăn chuẩn bị sôi thì lập tức vớt bỏ lá tảo bẹ Kombu ra ngoài. Thả toàn bộ nấm thái lát vào nồi nấu khoảng 3–4 phút trên lửa vừa cho nấm chín mềm và ra vị ngọt.",
+      "tip": "Vớt tảo bẹ Kombu ngay trước lúc nước sôi bùng giúp nước canh trong veo, thơm thanh mà không bị đắng chát hay nhớt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả đậu phụ non và rong biển Wakame làm nóng",
+      "instruction": "Nhẹ nhàng trượt 200 g đậu phụ non cắt khối cùng rong biển Wakame đã vắt ráo vào nồi canh. Đun thêm 1–2 phút trên lửa nhỏ cho đậu phụ nóng đều từ trong ra ngoài, chỉ lắc nhẹ nồi chứ không dùng muôi khuấy mạnh làm vỡ đậu, sau đó tắt bếp hoàn toàn.",
+      "tip": "Chỉ đun lửa nhỏ làm nóng đậu phụ trong 1–2 phút giúp miếng đậu giữ nguyên khối vuông đẹp mắt và không bị rỗ xốp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Hòa tan tương Miso khi nồi đã tắt bếp",
+      "instruction": "Múc một muôi nước canh nóng ra bát nhỏ, cho 60 g tương Miso Nhật vào dùng đũa hoặc phới lồng khuấy tan mịn hoàn toàn rồi từ từ rót trở lại vào nồi canh, khuấy nhẹ cho đồng nhất và tuyệt đối không bật bếp đun sôi lại.",
+      "tip": "Tắt bếp rồi mới hòa tan tương Miso giúp giữ trọn vẹn hương thơm đậu nành lên men tinh tế và bảo toàn lợi khuẩn tự nhiên."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc canh ra chén, rắc hành lá và dùng nóng",
+      "instruction": "Múc canh Miso chia đều vào 3 chén nhỏ sao cho mỗi chén có đủ đậu phụ non, nấm và rong biển, rắc hành lá thái khoanh lên trên và thưởng thức ngay khi canh còn ấm nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 90,
+    "energyKcal": 90.2,
+    "energyKj": 377,
+    "proteinG": 6.7,
+    "fatG": 3.2,
+    "saturatedFatG": 0.5,
+    "carbG": 9.7,
+    "fiberG": 2.1,
+    "sugarG": 2.6,
+    "sodiumMg": 789,
+    "saltG": 1.97,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168457",
+      "USDA FDC 169251",
+      "USDA FDC 170005",
+      "USDA FDC 170496",
+      "USDA FDC 172446",
+      "USDA FDC 172476",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "80f1b740c56e069805b0b9f9831f9b03ed4993cd2f80e7f7dfc92af1bb9f5815",
+    "researchedFromV2Sha256": "e8d7e15b85a402aa4f336e48838f63e4108f9459b879680f4582b5597069a2c2"
+  }
+}

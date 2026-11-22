@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9e4ad3e4074d2a1c",
+    "slug": "salad-bap-cai-tom-nhat",
+    "title": "Salad bắp cải tôm Nhật",
+    "subtitle": "Bắp cải, cà rốt và hành tây thái sợi giòn mát trộn tôm sú luộc ngọt thịt, quyện sốt Mayonnaise mật ong giấm chanh dịu nhẹ"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Salad Nhật",
+      "Bắp cải",
+      "Tôm tươi",
+      "Món trộn",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Salad bắp cải tôm kiểu Nhật kết hợp bắp cải thái sợi mỏng, cà rốt giòn ngọt và hành tây ngâm lạnh hết hăng cùng tôm sú luộc đỏ au săn chắc, áo đều lớp sốt Mayonnaise pha mật ong, giấm gạo, chanh tươi và chút xì dầu thanh dịu.",
+    "servingSuggestion": "Bày salad bắp cải tôm đã làm mát ra đĩa sâu lòng, rắc hành lá thái nhỏ lên trên để tạo màu sắc tươi tắn và dùng lạnh như món khai vị hoặc ăn kèm đồ chiên nướng.",
+    "storageAndReheat": "Nên trộn sốt ngay trước khi ăn hoặc bảo quản trong ngăn mát tối đa 24 giờ; nếu chuẩn bị trước, để riêng phần sốt và rau tôm để giữ độ giòn tươi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh",
+      "culinaryMeasure": "1/4 bắp (khoảng 200 g)",
+      "prepNote": "bỏ lá già và lõi cứng, rửa sạch, thái sợi thật mỏng rồi ngâm nước mát 5 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi",
+      "culinaryMeasure": "250 g (khoảng 8–9 con lớn)",
+      "prepNote": "bóc vỏ, rút chỉ đen, rửa nước muối loãng rồi để ráo trước khi luộc",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,3 củ (khoảng 42 g)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng, ngâm nước lạnh 8 phút cho bớt hăng rồi vắt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 37.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0,4 củ (khoảng 44 g)",
+      "prepNote": "gọt vỏ, bào hoặc thái sợi thật mảnh",
+      "componentGroup": "main",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 44,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 39.16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MAYONNAISE",
+      "name": "Sốt Mayonnaise",
+      "culinaryMeasure": "45 g (khoảng 3 muỗng canh)",
+      "prepNote": "tạo độ béo mịn đặc trưng cho phần sốt trộn salad kiểu Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "12 ml (khoảng 2,5 muỗng cà phê)",
+      "prepNote": "giúp sốt Mayonnaise thanh nhẹ, không bị ngấy béo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "ml",
+      "grossGrams": 12.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1/2 quả (vắt lấy khoảng 12 ml nước cốt)",
+      "prepNote": "mang lại hương thơm chua tươi dịu cho món salad hải sản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "HONEY",
+      "name": "Mật ong",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị ngọt thanh dịu hài hòa với nước cốt chanh và giấm gạo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 21.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo hậu vị umami nhẹ nhàng đặc trưng phong cách Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên bề mặt đĩa salad",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "dùng pha loãng rửa sạch tôm và nêm nhẹ nước luộc tôm",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc luộc tôm và ngâm rau",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "chia 350 ml để luộc tôm chín tới và 250 ml ngâm hành tây bắp cải",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm sú và luộc chín giữ độ giòn ngọt",
+      "instruction": "Bóc vỏ, bỏ đầu, rạch nhẹ lưng rút chỉ đen 250 g tôm sú tươi rồi rửa nhanh với 1 g muối ăn và xả lại nước lạnh. Đun sôi 350 ml nước lọc cùng 1 g muối ăn còn lại, thả tôm vào luộc khoảng 2–3 phút đến khi tôm cong tròn, chuyển màu hồng đỏ đục và chín hoàn toàn thì vớt ra để nguội, cắt miếng vừa ăn.",
+      "tip": "Không luộc tôm quá 3 phút để thịt tôm giữ được độ giòn ngọt mà không bị khô bở.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái sợi bắp cải, cà rốt và ngâm hành tây hết hăng",
+      "instruction": "Bắp cải xanh thái sợi thật mỏng, cà rốt gọt vỏ thái sợi mảnh. Hành tây thái lát thật mỏng, cho vào tô 250 ml nước lọc lạnh ngâm khoảng 8 phút (có thể thả bắp cải vào ngâm cùng 3 phút cuối cho giòn) rồi vớt tất cả ra rổ, vắt và vẩy thật ráo nước.",
+      "tip": "Ngâm hành tây trong nước lạnh giúp khử vị hăng nồng và giữ độ giòn, nhớ vẩy thật ráo nước để sốt không bị loãng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sốt Mayonnaise mật ong giấm chanh hài hòa",
+      "instruction": "Cho 45 g sốt Mayonnaise, 15 ml mật ong, 12 ml giấm gạo, nước cốt của nửa quả chanh tươi và 5 ml xì dầu Nhật vào chén, dùng phới lồng nhỏ khuấy đều đến khi hỗn hợp sốt quyện mịn bóng mượt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn nhẹ tay rau củ và tôm với nước sốt",
+      "instruction": "Cho bắp cải, cà rốt, hành tây đã ráo nước cùng tôm sú luộc cắt miếng vào tô trộn lớn. Rưới đều phần sốt đã pha lên trên và dùng hai chiếc thìa lớn đảo nhẹ tay để sốt áo mỏng đều mà không làm nát tôm.",
+      "tip": "Trộn salad ngay sau khi ráo nước giúp phần sốt Mayonnaise bám đều từng sợi bắp cải."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Làm mát salad trong tủ lạnh trước khi dọn",
+      "instruction": "Bọc kín tô salad và cho vào ngăn mát tủ lạnh khoảng 15 phút cho các nguyên liệu mát giòn và quyện vị thơm ngon hơn.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa salad bắp cải tôm Nhật mát lạnh",
+      "instruction": "Múc salad bắp cải tôm ra đĩa sâu lòng, rắc hành lá thái nhỏ lên trên để tăng màu sắc tươi mát rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 208,
+    "energyKcal": 208.2,
+    "energyKj": 872,
+    "proteinG": 14.5,
+    "fatG": 11.7,
+    "saturatedFatG": 1.9,
+    "carbG": 12.6,
+    "fiberG": 2.3,
+    "sugarG": 9.1,
+    "sodiumMg": 431,
+    "saltG": 1.08,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169640",
+      "USDA FDC 169975",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 171009",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "82be1318d6db17c16ed33d24e68463949dfb0cda5d0fcbb617f48d35a8065cfa",
+    "researchedFromV2Sha256": "c971312346e978f1ef35dd12e8c724906a24d0f92568bc751b51751f0873a8a5"
+  }
+}

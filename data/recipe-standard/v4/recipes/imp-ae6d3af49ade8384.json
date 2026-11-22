@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ae6d3af49ade8384",
+    "slug": "cua-xao-gung-hanh",
+    "title": "Cua biển xào gừng hành kiểu Quảng Đông",
+    "subtitle": "Cua biển tươi chặt miếng chiên sơ khóa vị ngọt, xào nhanh cùng gừng lát, hành lá và sốt dầu hào sánh đậm chuẩn vị Quảng Đông"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món xào",
+      "Cua biển",
+      "Quảng Đông",
+      "Hải sản",
+      "Tiệc gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cua xào gừng hành kiểu Quảng Đông nổi bật với thịt cua săn ngọt, lớp vỏ thấm đẫm nước sốt dầu hào sánh nhẹ thơm nức mùi gừng phi, tỏi và hành lá tươi.",
+    "servingSuggestion": "Dọn cua nóng ra đĩa sâu lòng, rưới hết phần sốt gừng hành lên mặt; thưởng thức ngay cùng cơm trắng nóng, chuẩn bị kẹp càng cua và khăn ướt.",
+    "storageAndReheat": "Món hải sản ngon nhất khi dùng ngay trong bữa; nếu còn dư, đậy kín bảo quản ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo lửa vừa với chút nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Cua biển tươi nguyên con (chặt miếng)",
+      "culinaryMeasure": "800 g (khoảng 2 con cỡ vừa)",
+      "prepNote": "làm sạch, bỏ yếm và mang, chặt miếng vừa ăn, đập giập nhẹ vỏ càng",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g (1 nhánh vừa)",
+      "prepNote": "cạo vỏ, rửa sạch, thái lát mỏng vừa ăn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, cắt khúc 5 cm, tách riêng phần đầu trắng và phần lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "30 g (~3 muỗng canh)",
+      "prepNote": "chia 25 g áo khô miếng cua trước khi chiên và 5 g hòa nước làm sánh sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng pha nước sốt xào cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "nêm vị mặn thanh cho phần sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới quanh chảo khi xào để khử tanh hải sản và dậy hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn dịu trong nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "tạo vị cay ấm nhẹ đặc trưng kiểu Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "trộn vào chén sốt để tăng hương béo thơm cuối món",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "400 ml (chiên sơ cua và xào)",
+      "prepNote": "dùng 385 ml chiên ngập dầu khóa ngọt thịt cua rồi chắt ra, chừa 15 ml để xào gừng hành",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 368,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "90 ml (~6 muỗng canh)",
+      "prepNote": "hòa tan bột bắp và gia vị thành chén sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm lạnh và sơ chế sạch cua biển",
+      "instruction": "Cho cua biển tươi vào ngăn mát tủ lạnh khoảng 10 phút cho cua chậm lại dễ cầm, tháo dây buộc rồi lật ngửa bóc bỏ yếm. Tách phần mai, bỏ sạch mang xám hai bên và túi dạ dày sau miệng, rửa kỹ dưới vòi nước lạnh cho hết cát rồi chặt thân cua thành 4 đến 6 miếng, bổ đôi mai và dùng sống dao đập nhẹ vỏ càng cho dễ ngấm vị.",
+      "tip": "Thấm thật khô từng miếng cua bằng khăn giấy trước khi áo bột để cua không bị bắn dầu khi chiên và giữ được độ ngọt tự nhiên bên trong.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái gừng hành và pha sẵn chén sốt",
+      "instruction": "Thái lát mỏng 30 g gừng tươi, băm nhỏ 4 tép tỏi khô và cắt khúc 5 cm phần hành lá tươi, tách riêng đầu hành trắng với phần lá xanh. Trong một chén nhỏ, khuấy tan 15 ml dầu hào, 10 ml xì dầu nhạt, 4 g đường cát trắng, 1 g tiêu trắng xay, 5 ml dầu mè thơm, 5 g bột bắp và 90 ml nước lọc rồi đặt sẵn cạnh bếp.",
+      "tip": "Pha sẵn nước sốt trước khi bật bếp giúp thao tác ở giai đoạn xào lửa lớn diễn ra liên tục, tránh làm cua bị chín quá mất độ mọng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áo bột bắp và chiên sơ cua khóa ngọt",
+      "instruction": "Cho cua đã thấm khô vào tô lớn, rắc đều 25 g bột bắp còn lại vào xóc nhẹ tạo lớp áo mỏng quanh mặt thịt. Đun nóng khoảng 400 ml dầu ăn thực vật trong chảo sâu lòng trên lửa vừa đến khi đầu đũa sủi tăm mạnh, thả từng mẻ cua vào chiên khoảng 3 phút đến khi vỏ cua vừa chuyển màu đỏ cam thì vớt ra rổ để ráo dầu.",
+      "tip": "Chỉ chiên cua vừa chuyển đỏ rồi vớt ra ngay, không chiên quá lâu vì thịt cua còn được đảo tiếp với sốt sẽ dễ bị khô bã.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm gừng, tỏi và đầu hành trắng",
+      "instruction": "Chắt bớt phần dầu chiên ra hũ riêng, chỉ giữ lại khoảng 15 ml dầu ăn trong chảo. Bật lửa vừa, cho gừng thái lát vào đảo khoảng 30 giây đến khi cạnh gừng hơi săn thơm, tiếp tục thêm tỏi băm và phần đầu hành lá trắng vào phi thêm 20 giây cho dậy mùi thơm nồng mà không cháy xém."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào cua với rượu Thiệu Hưng và sốt dầu hào",
+      "instruction": "Tăng lên lửa lớn, trút toàn bộ cua đã chiên vào chảo đảo nhanh vài lượt cho áo đều dầu gừng. Rưới 15 ml rượu Thiệu Hưng quanh thành chảo cho bốc hơi thơm lừng, khuấy lại chén sốt bột bắp cho không lắng đáy rồi rưới đều lên cua, đảo liên tục khoảng 2 phút đến khi thịt cua chín trắng hoàn toàn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá xanh và hoàn thiện đĩa cua",
+      "instruction": "Khi nước sốt sôi nhẹ và bắt đầu sánh bóng bám đều quanh từng miếng cua, cho toàn bộ phần lá xanh của hành lá vào đảo đều thêm 30 giây cho hành vừa chín tái xanh mướt rồi tắt bếp. Xếp cua ra đĩa lớn, rưới phần sốt gừng hành còn lại trong chảo lên trên và dọn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 257,
+    "energyKcal": 256.6,
+    "energyKj": 1074,
+    "proteinG": 24.4,
+    "fatG": 11.9,
+    "saturatedFatG": 1.8,
+    "carbG": 11.3,
+    "fiberG": 0.7,
+    "sugarG": 1.9,
+    "sodiumMg": 679,
+    "saltG": 1.7,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "787b213b0bba2c4d41efb57a99d25f04049a966577f0911857d7c1fbe56358f7",
+    "researchedFromV2Sha256": "6e067df5cb5b30d7794d05ac0d87b94ff6635c26e94fb84cc91475da858b5d2e"
+  }
+}

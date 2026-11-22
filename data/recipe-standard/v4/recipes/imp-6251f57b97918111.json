@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6251f57b97918111",
+    "slug": "tom-kho-tuong-dam",
+    "title": "Tôm kho nước tương đậm vị",
+    "subtitle": "Tôm tươi thịt chắc kho sánh cùng nước tương, dầu hào, rượu nấu ăn và dầu điều đỏ đẹp, món mặn nhanh gọn 15 phút cho bữa cơm tối"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Tôm tươi",
+      "Nước tương",
+      "Nhanh gọn",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "molluscs",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tôm tươi rút chỉ lưng thấm đẫm nước sốt nước tương và dầu hào sánh bóng, lên màu đỏ cam bắt mắt từ dầu điều, thơm lừng mùi hành tỏi phi và tiêu đen cay nhẹ.",
+    "servingSuggestion": "Gắp tôm kho ra đĩa sâu lòng, rưới phần sốt sánh đậm và rắc hành lá cùng tiêu đen xay; ăn nóng với cơm trắng và rau luộc.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng trong bữa; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và làm nóng nhanh trên chảo lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm càng hoặc tôm sú)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "cắt bớt râu và chân, rút chỉ đen trên lưng, tách riêng gạch đầu tôm nếu dùng tôm càng rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.8 củ (20 g, ~6–7 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn; chia đôi để ướp và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.8,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 17.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (1–2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng pha nước sốt kho tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo độ sánh bóng và vị ngọt umami cho sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng ướp tôm giúp dậy hương thơm đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SAKE",
+      "name": "Rượu nấu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "trộn vào sốt giúp khử mùi tanh và tăng hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 19.8,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 15.84,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "ANNATTO_OIL",
+      "name": "Dầu màu điều",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ cam óng ả cho món tôm kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn ngọt trong nước sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp tôm và rắc mặt sau cùng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tỏi và đảo săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "40 ml",
+      "prepNote": "chế thêm khi kho để tôm thấm sốt không bị cháy đáy nồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm tươi và băm nhuyễn hành tỏi",
+      "instruction": "Rửa sạch 500 g tôm tươi, cắt bỏ râu và chân, dùng tăm rút sạch chỉ đen dọc sống lưng (nếu dùng tôm càng có thể tách riêng phần gạch đầu tôm để chưng riêng) rồi để thật ráo nước. Hành tím và tỏi khô băm nhuyễn chia làm hai phần; hành lá rửa sạch thái nhỏ.",
+      "tip": "Để tôm thật ráo nước sau khi rửa giúp phần nước sốt bám chặt vào vỏ tôm khi đảo trên lửa lớn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha nước sốt nước tương và ướp tôm",
+      "instruction": "Trong chén riêng, khuấy tan 25 ml nước tương, 20 ml dầu hào, 10 g đường cát trắng và 20 ml rượu nấu ăn. Trộn tôm trong tô với một nửa phần hành tím tỏi băm, 15 ml nước mắm ngon, nửa lượng tiêu đen xay và hỗn hợp nước sốt vừa pha, ướp 15 phút cho thấm vị.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi với dầu ăn và dầu màu điều",
+      "instruction": "Làm nóng nồi đất hoặc chảo với 20 ml dầu ăn và 10 ml dầu màu điều trên lửa vừa, cho phần hành tím và tỏi băm còn lại vào phi thơm khoảng 1 phút cho dậy mùi và lên màu đỏ cam đẹp mắt.",
+      "tip": "Nếu dùng tôm càng có gạch, có thể xào nhanh phần gạch tôm với chút hành tỏi phi trước rồi múc riêng ra chén để rưới lên mặt khi hoàn thành."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đảo săn tôm trên lửa vừa lớn",
+      "instruction": "Trút toàn bộ tôm cùng phần nước ướp vào nồi, tăng lên lửa vừa lớn và đảo đều tay trong 3 phút cho đến khi vỏ tôm chuyển màu đỏ cam rực rỡ và thân tôm săn cong lại.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu cho tôm thấm đẫm sốt sánh",
+      "instruction": "Rót 40 ml nước lọc vào nồi, hạ lửa nhỏ kho mở nắp liu riu trong 6–7 phút, lật nhẹ hai mặt tôm cho chín đều hoàn toàn và nước sốt rút sánh bóng ôm quanh từng con tôm.",
+      "tip": "Chừa lại một lượng nước sốt sánh sệt vừa đủ dưới đáy nồi để chan cùng cơm nóng sẽ rất đậm vị.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu đen và thưởng thức",
+      "instruction": "Nêm nếm lại vừa khẩu vị rồi tắt bếp. Gắp tôm kho nước tương ra đĩa, rưới phần sốt sánh cùng hành lá thái nhỏ và nửa lượng tiêu đen xay còn lại lên trên rồi dọn ăn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 230,
+    "energyKcal": 229.6,
+    "energyKj": 961,
+    "proteinG": 28,
+    "fatG": 9.1,
+    "saturatedFatG": 1.4,
+    "carbG": 8.9,
+    "fiberG": 0.7,
+    "sugarG": 5,
+    "sodiumMg": 1391,
+    "saltG": 3.48,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Annatto Infused Oil Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0cccab87392e7c1d147e58186be395ac696e303685bacb16cc5528eb44254ee4",
+    "researchedFromV2Sha256": "8942ad36bd6f05b4bd02d44c54c4067c7813a7fd3bc70506fb809e56ecce90b8"
+  }
+}

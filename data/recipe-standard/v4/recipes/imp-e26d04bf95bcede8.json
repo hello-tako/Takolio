@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e26d04bf95bcede8",
+    "slug": "mi-ramen-heo-trung",
+    "title": "Mì Ramen thịt xá xíu Chashu và trứng lòng đào",
+    "subtitle": "Tô mì Shoyu Ramen chuẩn vị Nhật với nước dùng hầm xương heo đậm ngọt, sợi mì dai ngon, thịt ba chỉ cuộn Chashu mềm tan và trứng ngâm tương Ajitama"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "hard",
+    "prepTimeMinutes": 30,
+    "cookTimeMinutes": 180,
+    "servings": 4,
+    "tags": [
+      "Nhật Bản",
+      "Mì Ramen",
+      "Chashu",
+      "Trứng lòng đào",
+      "Bữa tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "braise",
+      "boil"
+    ],
+    "allergenTags": [
+      "egg",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Shoyu Ramen là món mì nước biểu tượng của Nhật Bản với nước dùng trong ngọt từ xương ống heo và rau củ thơm, kết hợp cùng nước sốt shoyu tare cô từ nước om thịt ba chỉ cuộn Chashu mềm béo và trứng lòng đào ngâm tương Ajitama.",
+    "servingSuggestion": "Chan nước dùng nóng hổi vào tô đã lót sẵn shoyu tare, xếp gọn mì ramen trụng dai vừa, vài lát thịt Chashu béo mềm, nửa quả trứng lòng đào, hành lá thái nhỏ và lá rong biển Nori.",
+    "storageAndReheat": "Nước dùng, thịt Chashu cuộn và nước sốt tare nguội có thể trữ hộp kín ngăn mát 3–4 ngày; khi ăn thái lát Chashu lạnh rồi thả vào tô nước dùng đang sôi nóng và luộc mì ramen mới ngay trước lúc dọn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì Ramen khô (Chukamen)",
+      "culinaryMeasure": "320 g (4 vắt mì khô)",
+      "prepNote": "thả vào nước sôi mạnh luộc khoảng 3 phút cho vừa chín dai rồi vẩy thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo nguyên tảng",
+      "culinaryMeasure": "450 g",
+      "prepNote": "buộc chặt bằng dây dù thực phẩm giữ phom tròn để hầm và om Chashu",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 292.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PORK_BONE",
+      "name": "Xương ống heo",
+      "culinaryMeasure": "400 g",
+      "prepNote": "rửa sạch chần sơ hoặc hầm trực tiếp vớt kỹ bọt để lấy vị ngọt cho nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi (làm trứng Ajitama)",
+      "culinaryMeasure": "4 quả (200 g)",
+      "prepNote": "luộc 7 phút cho lòng đào, ngâm nước đá bóc vỏ rồi ngâm nước tương",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "200 ml",
+      "prepNote": "dùng 155 ml nấu sốt om Chashu làm Shoyu Tare và 45 ml làm nước ngâm trứng Ajitama (lượng sốt dư không dùng hết)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 200,
+      "unit": "ml",
+      "grossGrams": 236,
+      "edibleRetentionRatio": 0.32,
+      "edibleGrams": 75.52,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "75 ml (5 muỗng canh)",
+      "prepNote": "dùng 30 ml cho sốt om Chashu và 45 ml cho sốt ngâm trứng Ajitama",
+      "componentGroup": "sauce",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 74.25,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 25.99,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "chia đôi: 30 ml om thịt Chashu và 30 ml ngâm trứng Ajitama",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 69,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 24.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "hòa tan vào hỗn hợp sốt ngâm trứng lòng đào Ajitama",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LARD",
+      "name": "Mỡ heo thắng (hoặc dầu gà)",
+      "culinaryMeasure": "30 g (2 muỗng canh)",
+      "prepNote": "cho vào nước dùng tạo lớp béo thơm giữ nhiệt cho tô mì Ramen",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0.5 củ (70 g)",
+      "prepNote": "cắt bỏ rễ, để nguyên vỏ rửa sạch giúp nước dùng thơm ngọt và có màu vàng hổ phách",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 14,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4 tép)",
+      "prepNote": "để nguyên vỏ rửa sạch thả vào nồi hầm xương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1/2 củ)",
+      "prepNote": "rửa sạch để cả vỏ thái lát dày cho vào nồi nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1.5 bó (60 g)",
+      "prepNote": "lá xanh hầm cùng nước dùng, phần thân trắng và lá thái nhỏ rắc mặt tô mì",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển khô Nori",
+      "culinaryMeasure": "6 g (2 lá cắt đôi)",
+      "prepNote": "cắm dựng bên thành tô mì khi trình bày",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (hầm nước dùng)",
+      "culinaryMeasure": "3500 ml (3,5 lít)",
+      "prepNote": "hầm cô đặc còn khoảng 1,5 lít nước dùng đậm đà cho 4 tô",
+      "componentGroup": "broth",
+      "requiredQuantity": 3500,
+      "unit": "ml",
+      "grossGrams": 3500,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 1575,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "cook",
+      "title": "Hầm nước dùng xương heo và rau củ thơm",
+      "instruction": "Cho 400 g xương ống heo, 3500 ml nước lọc, 0,5 củ hành tây, 0,5 củ tỏi khô nguyên vỏ và 25 g gừng tươi thái lát vào nồi cao lớn. Đun sôi trên lửa lớn không đậy nắp, dùng vợt lưới mịn hớt thật sạch toàn bộ bọt và váng bẩn nổi lên rồi buộc chặt 450 g thịt ba chỉ heo bằng dây dù thực phẩm thả vào hầm chung.",
+      "tip": "Hớt bọt thật kỹ trong 20 phút đầu sôi là chìa khóa giúp nước dùng Ramen trong veo, thơm thanh mà không có mùi hôi xương.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh mềm thịt ba chỉ và thêm mỡ béo vào nước dùng",
+      "instruction": "Tiếp tục đun sôi lăn tăn mở nắp khoảng 90 phút cho thịt ba chỉ chín mềm. Múc khoảng 240 ml nước dùng nóng sang nồi nhỏ để chuẩn bị om Chashu; đồng thời thả 30 g mỡ heo thắng cùng phần lá xanh của 1,5 bó hành lá tươi vào nồi nước dùng chính tiếp tục ninh lửa vừa nhỏ thêm 60 phút cho ngọt sâu.",
+      "timerMinutes": 90
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Om thịt ba chỉ Chashu và cô nước sốt Shoyu Tare",
+      "instruction": "Pha vào nồi nhỏ chứa 240 ml nước dùng nóng: 155 ml nước tương Nhật, 30 ml rượu Sake nấu ăn và 30 ml rượu ngọt Mirin. Vớt tảng thịt ba chỉ từ nồi xương sang nồi sốt này, phủ giấy nến khoét lỗ sát mặt thịt và om liu riu lửa nhỏ khoảng 60 phút, thỉnh thoảng rưới sốt lên mặt thịt. Sau đó vớt thịt ra để nguội hẳn rồi bọc kín ướp lạnh cho săn chắc để dễ thái lát mỏng 3 mm; phần nước sốt lọc sạch mỡ chính là Shoyu Tare.",
+      "tip": "Làm lạnh thịt Chashu trước khi cắt giúp lát thịt tròn đẹp, mỡ kết dính không bị nát vụn.",
+      "timerMinutes": 60
+    },
+    {
+      "stepNumber": 4,
+      "phase": "marinate",
+      "title": "Luộc trứng lòng đào và ngâm tương Ajitama",
+      "instruction": "Đun sôi nồi nước nhỏ, thả 4 quả trứng gà lạnh từ tủ mát vào luộc đúng 7 phút rồi vớt ngay sang tô nước đá 15 phút và bóc sạch vỏ. Đun sôi nhẹ 45 ml nước tương Nhật, 45 ml rượu Sake nấu ăn, 30 ml rượu ngọt Mirin và 12 g đường cát trắng trong 1 phút cho tan đường rồi để nguội hẳn, cho trứng vào ngâm kín trong tủ mát ít nhất 2 giờ cho ngấm màu nâu đẹp.",
+      "tip": "Luộc trứng ngay từ lúc lấy ở tủ mát rồi ngâm nước đá lạnh giúp lòng trắng săn mịn, dễ bóc vỏ và lòng đỏ dẻo sánh.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lọc trong nước dùng và luộc nhanh mì Ramen",
+      "instruction": "Lọc bỏ hết xương ống và xác rau củ khỏi nồi nước dùng chính, đun nóng sôi lăn tăn trở lại. Chuẩn bị sẵn thịt ba chỉ Chashu thái lát 3 mm, trứng lòng đào cắt đôi và hành lá thái nhỏ. Đun sôi mạnh một nồi nước lớn khác, thả 320 g mì Ramen khô vào khuấy tơi luộc khoảng 3 phút cho sợi vừa chín dai rồi vớt ra rổ lắc thật ráo nước.",
+      "tip": "Vẩy thật kiệt nước sau khi luộc mì để không làm loãng hương vị đậm đà của tô nước dùng Ramen.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện tô Shoyu Ramen nóng hổi và thưởng thức",
+      "instruction": "Cho vào mỗi tô 1,5 muỗng canh nước sốt Shoyu Tare và chút hành lá thái nhỏ, chan 350 ml nước dùng đang sôi nóng vào, thả mì Ramen vào gắp gọn sang một bên. Xếp vài lát thịt Chashu, hai nửa trứng lòng đào Ajitama, hành lá thái nhỏ và cắm miếng rong biển khô Nori bên thành tô rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 837,
+    "energyKcal": 836.7,
+    "energyKj": 3501,
+    "proteinG": 27.6,
+    "fatG": 51.6,
+    "saturatedFatG": 18.5,
+    "carbG": 61.5,
+    "fiberG": 2.6,
+    "sugarG": 5,
+    "sodiumMg": 1478,
+    "saltG": 3.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "Pork Bone Stock Extraction Ref",
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 167820",
+      "USDA FDC 168456",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 171287",
+      "USDA FDC 171401",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "dab2229616c9f004379a9b49cbf3d06d482bbe38f477853a55ac8cf704d31896",
+    "researchedFromV2Sha256": "4029f97b221fa950e52521203eab8bd16e75ef1fbf2100cd07da885f8a2fe42c"
+  }
+}

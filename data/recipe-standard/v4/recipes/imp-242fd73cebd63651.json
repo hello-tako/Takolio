@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-242fd73cebd63651",
+    "slug": "suon-chua-ngot-quang-dong",
+    "title": "Sườn om chua ngọt Quảng Đông",
+    "subtitle": "Sườn non heo áp xém vàng om mềm trong sốt tương cà, giấm gạo, đường phèn và dứa cà chua sánh bóng đậm đà"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Quảng Đông",
+      "Chua ngọt",
+      "Sườn heo",
+      "Tiệc nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Sườn om chua ngọt Quảng Đông là món mặn trứ danh với từng khúc sườn non mềm róc xương, quyện lớp sốt đỏ bóng chua thanh của giấm gạo và tương cà, hòa cùng vị ngọt tươi từ dứa chín và cà chua.",
+    "servingSuggestion": "Bày sườn và dứa cà chua ra đĩa lớn, rưới nước sốt sánh keo lên trên; ăn nóng kèm cơm trắng dẻo thơm.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tối đa 3 ngày; khi dùng hâm nóng trên chảo lửa nhỏ đến vừa với 2 muỗng canh nước lọc trong 5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch với chút muối, chặt khúc vừa ăn dài khoảng 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa chín",
+      "culinaryMeasure": "1/4 quả (~150 g thịt dứa)",
+      "prepNote": "gọt vỏ bỏ mắt, cắt miếng tam giác dày khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (~240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (~12,5 g, 3 tép)",
+      "prepNote": "bóc vỏ, đập dập băm vừa",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "12 g (~6 lát mỏng)",
+      "prepNote": "gọt vỏ, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà chua",
+      "culinaryMeasure": "40 ml (~3 muỗng canh)",
+      "prepNote": "tạo màu đỏ bóng và vị chua ngọt hài hòa cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 46,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 46,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo trắng",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "tạo vị chua thanh dịu cân bằng độ béo của sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo nền vị mặn dịu cho sốt om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "tăng độ đậm màu nâu đỏ cho miếng sườn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "khử mùi và làm mềm thơm sườn khi om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "kết hợp giấm gạo tạo độ keo bóng cho sốt chua ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm điều chỉnh vị sau cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi gừng và áp xém sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1100 ml",
+      "prepNote": "800 ml đun chần sơ sườn rồi đổ bỏ, 300 ml pha sốt om sườn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1100,
+      "unit": "ml",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 165,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sạch sườn non heo và sơ chế rau quả",
+      "instruction": "Đun sôi 800 ml nước lọc trong nồi, thả 600 g sườn non heo chặt khúc vào chần 6–8 phút cho tiết hết bọt bẩn, vớt ra xả sạch dưới vòi nước lạnh rồi để ráo. Dứa chín cắt miếng tam giác vừa ăn; cà chua chín bổ múi cau; tỏi khô đập dập; gừng tươi thái lát mỏng.",
+      "tip": "Chần sườn qua nước sôi và rửa sạch lại giúp nước sốt om trong bóng và loại bỏ hoàn toàn mùi hôi.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt chua ngọt",
+      "instruction": "Cho vào tô lớn 40 ml tương cà chua, 30 ml giấm gạo trắng, 20 g đường cát trắng, 15 ml xì dầu nhạt, 5 ml xì dầu đặc, 15 ml rượu Thiệu Hưng và 300 ml nước lọc còn lại. Khuấy đều tay đến khi đường tan hết."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm gừng tỏi và áp xém sườn non",
+      "instruction": "Đun nóng 15 ml dầu ăn thực vật trong nồi đáy dày hoặc chảo sâu lòng trên lửa vừa, cho tỏi đập dập và gừng thái lát vào phi thơm 30 giây. Trút sườn non đã ráo vào áp xém các mặt khoảng 5 phút cho bề mặt sườn săn vàng thơm.",
+      "tip": "Áp xém sườn trước khi om giúp miếng thịt giữ nước ngọt bên trong và dễ bám sốt đẹp mắt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om mềm sườn trong nước sốt",
+      "instruction": "Đổ toàn bộ tô nước sốt chua ngọt đã pha vào nồi ngập sườn, đun sôi bùng trên lửa lớn rồi hạ lửa nhỏ nhất, đậy nắp kín om liu riu trong 25–30 phút đến khi thịt sườn mềm róc xương và ngấm vị; cứ mỗi 10 phút mở nắp đảo một lần cho đều màu.",
+      "timerMinutes": 28
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả dứa cà chua và cô sánh nước sốt",
+      "instruction": "Mở nắp nồi, cho dứa chín và cà chua bổ múi cau vào nấu trên lửa vừa 4 phút cho dứa cà vừa chín mềm mà vẫn giữ hình dáng. Tiếp tục tăng lửa lớn, mở nắp hoàn toàn và đảo liên tục khoảng 3 phút cho nước sốt cô cạn sánh keo, ôm bóng quanh từng khúc sườn.",
+      "tip": "Cho dứa và cà chua vào giai đoạn cuối giúp giữ độ tươi ngon và vị chua ngọt thanh sáng cho món ăn.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm muối cân vị và hoàn thiện",
+      "instruction": "Nêm thêm 3 g muối ăn (tùy khẩu vị) để cân bằng vị chua ngọt, đảo nhẹ một vòng cho đều vị rồi tắt bếp. Bày sườn cùng dứa cà chua ra đĩa lớn, rưới hết phần sốt keo bóng lên mặt và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 376,
+    "energyKcal": 376.1,
+    "energyKj": 1574,
+    "proteinG": 16.8,
+    "fatG": 26.2,
+    "saturatedFatG": 8.9,
+    "carbG": 17.5,
+    "fiberG": 1.4,
+    "sugarG": 13.1,
+    "sodiumMg": 801,
+    "saltG": 2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167861",
+      "USDA FDC 169076",
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170457",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8df6f265ce1c06e3b2e795cccbec62f961f6b3262a336faa16d08668b52db728",
+    "researchedFromV2Sha256": "ff61b09a51b656b02cc77adcfff057eab33da2779d132862563bfebafb6d753e"
+  }
+}

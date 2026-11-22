@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-327ffa644fbe1a7d",
+    "slug": "chao-tom-nam-nong",
+    "title": "Cháo tôm nấm đùi gà nóng",
+    "subtitle": "Cháo gạo rang sánh mịn ngọt tự nhiên từ tôm tươi và nấm đùi gà xào thơm, điểm gừng sợi và hành lá ấm bụng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 28,
+    "servings": 4,
+    "tags": [
+      "Cháo tôm",
+      "Nấm đùi gà",
+      "Ăn sáng",
+      "Thanh ngọt",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tô cháo tôm nấm nóng hổi sánh mượt với gạo tẻ kết hợp chút gạo nếp rang thơm, thịt tôm tươi săn ngọt đậm đà cùng nấm đùi gà giòn sần sật, gừng tươi thái chỉ và hành lá thơm dịu.",
+    "servingSuggestion": "Múc cháo nóng ra tô, xếp phần tôm và nấm đùi gà xào lên mặt cùng hành lá, ngò rí, gừng thái sợi và tiêu đen xay rồi dùng ngay.",
+    "storageAndReheat": "Nên thưởng thức ngay khi còn nóng. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ; khi hâm lại trên lửa nhỏ cần thêm chút nước sôi và khuấy đều tránh cháy đáy."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm",
+      "culinaryMeasure": "150 g (~3/4 chén ăn cơm)",
+      "prepNote": "vo nhẹ cho sạch bụi cám rồi để thật ráo trước khi rang",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GLUTINOUS_RICE",
+      "name": "Gạo nếp",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "trộn cùng gạo tẻ giúp cháo sánh mượt tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "220 g",
+      "prepNote": "bóc vỏ (có thể giữ đầu vỏ ninh lấy nước ngọt nếu thích), rút chỉ đen, thái hạt lựu lớn hoặc để nguyên con nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 171.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "150 g (2–3 cây nấm vừa)",
+      "prepNote": "cạo sạch gốc, rửa nhanh nước muối loãng, thấm ráo rồi thái hạt lựu hoặc lát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, rửa sạch, thái sợi chỉ thật mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (~2–3 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ để ướp tôm và phi thơm xào nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi",
+      "culinaryMeasure": "10 g (vài nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ trang trí mặt tô cháo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím xào tôm và nấm đùi gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp tôm, 10 ml nêm nồi cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g xào nấm tôm, 3 g nêm nước cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm nền nồi cháo trắng cho thanh vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1/2 ướp tôm, 1/2 rắc mặt tô cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng ninh gạo rang thành cháo sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rang thơm gạo tẻ và gạo nếp",
+      "instruction": "Vo sạch 150 g gạo tẻ và 25 g gạo nếp qua 2 nước, chắt thật ráo. Làm nóng nồi đáy dày không dầu trên lửa nhỏ, cho hỗn hợp gạo vào rang đều tay khoảng 6 phút đến khi hạt gạo khô ráo, chuyển màu trắng đục và thoảng mùi thơm nhẹ.",
+      "tip": "Rang gạo trước khi nấu giúp hạt gạo săn nở đều, tạo độ sánh tự nhiên mà không bị vữa nước.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh cháo nở bung sánh mịn",
+      "instruction": "Đổ 1,5 lít nước lọc sôi vào nồi gạo vừa rang, khuấy đều đáy nồi rồi đậy hé nắp. Đun sôi bùng sau đó hạ lửa nhỏ ninh khoảng 22 phút, thỉnh thoảng khuấy sát đáy nồi để cháo sánh mịn không bị bén khét.",
+      "timerMinutes": 22
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Sơ chế, ướp tôm tươi và thái nấm đùi gà",
+      "instruction": "Trong lúc ninh cháo, bóc vỏ 220 g tôm tươi, rút sạch chỉ lưng rồi cắt miếng nhỏ vừa ăn; ướp tôm với một nửa lượng hành tím băm, 5 ml nước mắm ngon và một nửa lượng tiêu đen xay trong 10 phút. Nấm đùi gà làm sạch, thái hạt lựu vừa; gừng tươi thái sợi chỉ; hành lá và ngò rí thái nhỏ.",
+      "tip": "Thái tôm và nấm đùi gà kích thước nhỏ tương đương nhau giúp từng muỗng cháo đều có đủ cả tôm ngọt và nấm giòn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào chín tôm nấm",
+      "instruction": "Làm nóng 15 ml dầu ăn trong chảo trên lửa vừa, phi thơm phần hành tím băm còn lại. Cho tôm vào xào nhanh 2 phút đến khi tôm chuyển màu đỏ hồng săn chắc thì trút nấm đùi gà cùng 2 g hạt nêm vào đảo chung thêm 2 phút trên lửa lớn cho nấm chín ngọt mà không ra nhiều nước.",
+      "tip": "Xào nấm trên lửa lớn trong thời gian ngắn giúp nấm đùi gà giữ độ giòn sần sật và không tiết nhiều nước loãng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và hòa quyện tôm nấm vào nồi cháo",
+      "instruction": "Nêm 10 ml nước mắm ngon còn lại, 3 g hạt nêm và 3 g muối ăn vào nồi cháo đã nhừ, khuấy đều. Trút khoảng 2/3 phần tôm nấm xào và một nửa lượng gừng thái chỉ vào nồi cháo, đun sôi lăn tăn thêm 2 phút cho vị ngọt tiết ra quyện đều rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc cháo ra tô và trang trí nóng",
+      "instruction": "Múc cháo tôm nấm nóng hổi ra 4 tô, xếp phần tôm nấm xào còn lại lên mặt cùng hành lá, ngò rí, phần gừng tươi thái chỉ còn lại và tiêu đen xay. Thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 245,
+    "energyKcal": 245.2,
+    "energyKj": 1026,
+    "proteinG": 13.1,
+    "fatG": 3.8,
+    "saturatedFatG": 0.6,
+    "carbG": 39.3,
+    "fiberG": 1.8,
+    "sugarG": 1.7,
+    "sodiumMg": 908,
+    "saltG": 2.27,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168881",
+      "USDA FDC 169231",
+      "USDA FDC 169251",
+      "USDA FDC 169756",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "488d7220d7809772762d5ca6740c06e91451c4229bfdd573b4c31ce5c0dc034d",
+    "researchedFromV2Sha256": "d4d55596ad7651e07cef5a3ea0cb1d93f74be009008ece862ed455e110c1edc4"
+  }
+}

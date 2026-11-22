@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4f398ac575200416",
+    "slug": "mi-udon-ca-ri",
+    "title": "Mì Udon cà ri gà Nhật Bản",
+    "subtitle": "Sợi mì Udon dai mượt chan nước sốt cà ri Nhật sánh đậm từ viên cà ri, nước dùng Dashi, đùi gà mềm ngọt, cà rốt và hành tây ấm nồng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Mì Udon",
+      "Cà ri Nhật",
+      "Đùi gà",
+      "Món nước ấm",
+      "Nhật Bản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "boil"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tô mì Udon cà ri gà chuẩn vị Nhật Bản kết hợp sợi mì lúa mì bản to dai mềm với phần nước dùng cà ri sánh mượt đậm đà từ nước dùng Dashi, viên cà ri Nhật, xì dầu, rượu Sake cùng thịt đùi gà và rau củ ngọt thanh.",
+    "servingSuggestion": "Xếp mì Udon vừa trụng nóng vào 3 tô sâu lòng, chan ngập nước cà ri gà nóng hổi lên trên, rắc hành lá xanh thái khoanh; có thể ăn kèm một ít ớt bột 7 vị nếu thích vị cay ấm.",
+    "storageAndReheat": "Mì Udon nên luộc và dùng ngay để sợi giữ độ dai; phần nước cà ri gà thừa có thể bảo quản hộp kín ngăn mát tối đa 3 ngày, khi ăn hâm nóng lại với ít nước lọc và trụng mì mới."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "UDON_WHEAT",
+      "name": "Mì Udon lúa mì",
+      "culinaryMeasure": "3 gói (600 g mì tươi hoặc đông lạnh)",
+      "prepNote": "trụng riêng trong nồi nước sôi rồi để ráo trước khi chan nước cà ri",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "pack",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà rút xương không da",
+      "culinaryMeasure": "360 g thịt đùi gà",
+      "prepNote": "rửa sạch, thấm khô rồi cắt miếng vuông vừa ăn cỡ 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ vừa (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng theo chiều dọc",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1 củ vừa (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch và thái lát mỏng hình bán nguyệt dày 0,4 cm cho nhanh mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CURRY_ROUX_BLOCK",
+      "name": "Viên cà ri Nhật",
+      "culinaryMeasure": "75 g (khoảng 3 viên vừa)",
+      "prepNote": "bẻ hoặc thái nhỏ để nhanh tan hoàn toàn trong nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 75,
+      "unit": "g",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "pha cùng 600 ml nước lọc để làm nền súp thanh ngọt vừa vị khi hòa viên cà ri",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 255,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "xào cùng thịt gà giúp khử mùi và tăng vị ngọt thơm",
+      "componentGroup": "broth",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 21.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 18.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo hương vị umami đặc trưng của nước cà ri Udon",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "xào hành tây và thịt đùi gà trước khi nấu nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng rắc mặt tô mì",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp (tạo sánh thêm, tùy chọn)",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "hòa tan với 20 ml nước lọc nếu muốn nước cà ri sánh đặc hơn",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha Dashi, trụng mì và hòa bột)",
+      "culinaryMeasure": "1600 ml",
+      "prepNote": "600 ml pha cùng nước dùng Dashi nấu súp cà ri, 980 ml trụng mì Udon và 20 ml hòa bột bắp",
+      "componentGroup": "main",
+      "requiredQuantity": 1600,
+      "unit": "ml",
+      "grossGrams": 1600,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 560,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đùi gà, rau củ và bẻ nhỏ viên cà ri",
+      "instruction": "Cắt 360 g thịt đùi gà rút xương thành miếng vừa ăn khoảng 2,5 cm. Bóc vỏ hành tây thái lát mỏng, gọt vỏ cà rốt thái lát hình bán nguyệt dày 0,4 cm, rửa sạch hành lá tươi thái khoanh nhỏ và bẻ nhỏ 75 g viên cà ri Nhật để sẵn. Bắc một nồi lớn chứa khoảng 980 ml nước lọc lên bếp chuẩn bị trụng mì."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm hành tây và thịt đùi gà",
+      "instruction": "Làm nóng nồi đáy dày trên lửa vừa với 20 ml dầu ăn thực vật, cho hành tây thái lát vào xào khoảng 3 phút cho đến khi hành mềm trong và dậy mùi ngọt. Tiếp tục cho thịt đùi gà vào đảo đều đến khi mặt ngoài thịt săn trắng thì rưới 22 ml rượu Sake Nhật Bản vào xào thêm 1 phút.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Ninh cà rốt và đùi gà với nước dùng Dashi",
+      "instruction": "Đổ 300 ml nước dùng Dashi, 600 ml nước lọc cùng cà rốt thái lát vào nồi thịt gà, đun sôi rồi hạ lửa vừa nhỏ, đậy nắp nấu khoảng 7 phút cho đến khi thịt gà chín hoàn toàn tận lõi và cà rốt mềm vừa ăn; hớt sạch bọt nổi nếu có.",
+      "tip": "Pha loãng Dashi với nước lọc và hớt bọt giúp nước cà ri Udon thanh mượt, vừa vị khi hòa cùng viên cà ri Nhật.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trụng chín sợi mì Udon riêng",
+      "instruction": "Trong lúc ninh nước dùng, đun sôi nồi nước lọc đã chuẩn bị và thả 3 gói mì Udon lúa mì vào trụng khoảng 2 phút (hoặc theo đúng hướng dẫn trên bao bì) cho sợi mì tơi mềm và nóng đều, sau đó vớt ra để ráo nước và chia vào 3 tô.",
+      "tip": "Trụng mì Udon ở nồi riêng thay vì thả trực tiếp vào nồi cà ri giúp sợi mì không bị nát và giữ độ dai mượt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Hòa tan viên cà ri Nhật và nêm xì dầu",
+      "instruction": "Tắt bếp hoặc hạ xuống mức lửa nhỏ nhất ở nồi nước dùng, cho 75 g viên cà ri Nhật vào vá múc canh, khuấy tan dần với nước dùng nóng cho tan mịn hoàn toàn rồi hòa đều vào nồi. Bật lại lửa nhỏ, thêm 10 ml xì dầu Nhật Bản, khuấy đều 2 phút đến khi nước cà ri sánh mịn; nếu muốn sánh hơn có thể hòa tan 10 g bột bắp với 20 ml nước lọc rót từ từ vào khuấy nhẹ.",
+      "tip": "Hòa tan viên cà ri khi nước không sôi mạnh giúp ngăn roux chìm xuống đáy nồi và cháy khét.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chan nước cà ri lên mì Udon và thưởng thức nóng",
+      "instruction": "Chan đều nước sốt cà ri gà nóng hổi kèm thịt và cà rốt phủ ngập mì Udon trong từng tô, rắc hành lá thái nhỏ lên mặt và dùng ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 654,
+    "energyKcal": 653.5,
+    "energyKj": 2734,
+    "proteinG": 31.9,
+    "fatG": 27.7,
+    "saturatedFatG": 8.5,
+    "carbG": 64.6,
+    "fiberG": 5.1,
+    "sugarG": 6.6,
+    "sodiumMg": 1827,
+    "saltG": 4.57,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Boiled/Fresh Udon",
+      "MEXT Curry Roux Ref",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 169698",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "029fd3635ce1534f94d1d3cbb7de905d4cd98c429ae0a9d02e68f2fae2076b7d",
+    "researchedFromV2Sha256": "77a607c294bce2aff865c1ed6488ac5264ed289ddd06d63cd2c0dbe4802aa0a1"
+  }
+}

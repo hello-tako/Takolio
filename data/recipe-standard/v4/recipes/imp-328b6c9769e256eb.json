@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-328b6c9769e256eb",
+    "slug": "tom-nuong-muoi-ot-han",
+    "title": "Tôm nướng muối hạt kiểu Hàn (Saeu Sogeum Gui)",
+    "subtitle": "Tôm tươi nguyên vỏ nướng chín trên lớp muối biển hạt to thơm lừng, bóc vỏ chấm sốt Gochujang chanh mật ong cay chua hài hòa"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Tôm nướng muối",
+      "Hàn Quốc",
+      "Món nhậu",
+      "Hải sản",
+      "Chấm Gochujang"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tôm nướng muối hạt (Saeu Sogeum Gui) là món ăn mùa thu rất được yêu thích tại Hàn Quốc nhờ cách chế biến mộc mạc giúp giữ trọn độ ngọt tự nhiên của tôm tươi. Tôm nguyên vỏ được nướng áp nhiệt gián tiếp trên lớp muối biển hạt to nóng già nên chín đều, vỏ giòn thơm mà thịt bên trong vẫn mọng nước, chấm kèm sốt tương ớt Gochujang pha chanh mật ong.",
+    "servingSuggestion": "Gắp tôm nóng ra đĩa, gạt nhẹ hạt muối bám ngoài vỏ, rắc hành lá thái nhỏ và hạt mè trắng rang; bóc vỏ tại bàn và chấm ngập bát sốt Gochujang tỏi ớt chanh.",
+    "storageAndReheat": "Món tôm nướng muối ngon nhất khi ăn nóng ngay tại bàn vì tôm để nguội sẽ bớt độ ngọt và dai; không khuyến khích bảo quản qua ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên vỏ (tôm sú hoặc tôm thẻ lớn)",
+      "culinaryMeasure": "500 g (~12 con lớn)",
+      "prepNote": "cắt bớt râu và chóp nhọn đầu tôm, dùng tăm khều bỏ chỉ đen dọc lưng, rửa nước sạch rồi thấm thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối biển hạt to (lót đáy chảo nướng)",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bắt buộc dùng muối hạt to rải lớp dày lót đáy chảo để truyền nhiệt khô, không ăn phần muối lót này",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.015,
+      "edibleGrams": 3.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "54 g (~3 muỗng canh)",
+      "prepNote": "làm nền pha nước chấm chua cay ngọt ăn kèm tôm nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 54,
+      "unit": "g",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "vắt lấy nước cốt pha vào chén nước chấm Gochujang tạo vị chua thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua cay trong bát nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 14.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, băm nhỏ trộn vào chén nước chấm tăng độ cay thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha vào chén nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái thật nhỏ để rắc mặt tôm và pha cùng dầu mè chấm nếu thích",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "trộn cùng một ít hành lá thái nhỏ làm chén dầu mè thơm chấm phụ hoặc rưới nhẹ lên tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện vào chén sốt chấm và lên đĩa tôm nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch chỉ lưng tôm và thấm thật ráo vỏ",
+      "instruction": "Dùng kéo cắt gọn râu, chân và phần gai nhọn đầu 500 g tôm tươi nguyên vỏ. Dùng tăm xiên qua đốt lưng thứ 2–3 khều bỏ sạch chỉ đen, rửa nhanh rồi dùng khăn giấy thấm thật khô lớp vỏ ngoài để muối không bám dính gây mặn gắt.",
+      "tip": "Thấm thật khô vỏ tôm là bước rất quan trọng giúp muối hạt chỉ truyền nhiệt khô mà không tan chảy thấm mặn vào thịt tôm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sốt Gochujang chanh tỏi ớt và chén dầu mè hành",
+      "instruction": "Trong chén thứ nhất, khuấy tan 54 g tương ớt Hàn Quốc với nước cốt 1 quả chanh tươi, 10 ml mật ong, tỏi băm nhuyễn, ớt hiểm đỏ băm nhỏ và một nửa hạt mè trắng rang cho đạt vị chua cay ngọt hài hòa. Ở chén nhỏ còn lại, pha 10 ml dầu mè rang với một ít hành lá thái nhỏ để chấm thêm cho béo thơm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Lót giấy bạc, rải muối hạt to và làm nóng chảo",
+      "instruction": "Lót một lớp giấy bạc chịu nhiệt vào lòng chảo đáy dày (chọn chảo cũ hoặc chảo gang), đổ 250 g muối biển hạt to dàn thành lớp phẳng dày đều khắp đáy chảo. Đậy nắp và đun lửa vừa-nhỏ khoảng 5 phút cho lớp muối nóng đều.",
+      "tip": "Bắt buộc dùng muối biển hạt to thay cho muối tinh mịn vì muối mịn sẽ bám chặt vào vỏ khiến thịt tôm bị mặn chát.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng tôm mặt thứ nhất trên lớp muối nóng",
+      "instruction": "Mở nắp, nhanh tay xếp tôm thành một lớp rời nhau lên trên mặt muối đang nóng (không xếp chồng lên nhau). Đậy kín nắp chảo và giữ lửa vừa-nhỏ nướng trong 5 phút cho hơi nóng muối làm chín đều mặt dưới.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trở mặt nướng chín đỏ giòn vỏ tôm",
+      "instruction": "Mở nắp, dùng kẹp trở lật toàn bộ tôm sang mặt còn lại, đậy nắp nướng thêm 3 phút đến khi vỏ tôm chuyển đỏ rực, hơi giòn cạnh, thân tôm uốn cong săn chắc và chín hoàn toàn bên trong.",
+      "tip": "Tổng thời gian nướng khoảng 8 phút tùy kích cỡ tôm; thấy thân tôm chuyển đục săn chắc và vỏ đỏ thơm là đạt, không nướng quá lâu làm tôm bị khô bở.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Gạt sạch muối và thưởng thức nóng cùng hai loại sốt",
+      "instruction": "Gắp tôm ra đĩa (gạt nhẹ những hạt muối còn bám trên vỏ), rắc phần hành lá thái nhỏ và hạt mè trắng rang còn lại lên trên rồi dọn ăn nóng ngay cùng bát nước chấm gochujang chanh ớt và chén dầu mè hành."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 207,
+    "energyKcal": 206.9,
+    "energyKj": 866,
+    "proteinG": 27.6,
+    "fatG": 4.6,
+    "saturatedFatG": 0.7,
+    "carbG": 14.9,
+    "fiberG": 1.3,
+    "sugarG": 8.3,
+    "sodiumMg": 1073,
+    "saltG": 2.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169640",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "99d26f6363d9e612d6b2c157a4e52ae399972c62106d9c9320fcc3b91b8472b2",
+    "researchedFromV2Sha256": "5df66d2a83118752d3aaf7c6e92c9e53c239509c848fa3a94c33daf503818d0b"
+  }
+}

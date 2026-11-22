@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-61eac17e8f3042a9",
+    "slug": "canh-su-su-bam-thit",
+    "title": "Canh su su nấu thịt bằm",
+    "subtitle": "Su su non giòn ngọt tự nhiên nấu cùng thịt heo băm xào tơi đậm đà, món canh mộc mạc thanh mát cho mâm cơm gia đình"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Trung",
+      "Dễ nấu",
+      "Thanh mát",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh su su băm thịt dân dã có nước dùng ngọt trong, thịt heo băm tơi thơm mùi hành phi hòa quyện cùng từng miếng su su non chín tới giữ nguyên độ giòn ngọt mát lành.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, rắc hành lá, ngò rí và tiêu xay; dùng kèm cơm trắng cùng các món cá kho nghệ hoặc thịt rang sả ớt.",
+    "storageAndReheat": "Canh su su nên ăn hết trong ngày; nếu bảo quản tủ mát tối đa 24 giờ, đun sôi lại nhanh trên lửa vừa để su su không bị mềm nhũn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHAYOTE",
+      "name": "Su su non tươi",
+      "culinaryMeasure": "2 quả (~440 g)",
+      "prepNote": "gọt vỏ dưới vòi nước chảy cho hết nhựa, bổ đôi bỏ hạt rồi thái lát vát mỏng khoảng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 440,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 387.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc vai)",
+      "culinaryMeasure": "220 g",
+      "prepNote": "chọn thịt nạc vai xay nhuyễn có chút mỡ dắt giúp thịt mềm ngọt",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia đôi để ướp thịt và phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 2–3 nhánh)",
+      "prepNote": "rửa sạch, thái khúc ngắn 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nhúm nhỏ)",
+      "prepNote": "nhặt bỏ gốc, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím và xào tơi thịt băm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp thịt và 10 ml nêm hoàn thiện nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 4 g ướp thịt băm và 4 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp thịt và 3 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp thịt băm, nửa rắc khi dọn canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "lượng nước dùng vừa đủ nấu chín su su giữ vị ngọt thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 1056,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Gọt su su sạch mủ và cắt miếng vừa ăn",
+      "instruction": "Cắt bỏ hai đầu của 2 quả su su non, ngâm hoặc gọt vỏ trực tiếp dưới vòi nước lạnh chảy nhẹ để mủ su su trôi sạch không làm dính và rít da tay. Bổ đôi su su, khoét bỏ phần hạt non rồi thái lát vát dày khoảng 0,5 cm, rửa lại nước sạch và để ráo.",
+      "tip": "Gọt vỏ su su dưới nước hoặc ngâm qua nước muối loãng giúp loại bỏ hoàn toàn nhựa mủ và giữ miếng su su trắng xanh đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt heo xay và băm hành tím, rau thơm",
+      "instruction": "Băm nhuyễn 20 g hành tím khô, thái nhỏ hành lá và ngò rí. Cho 220 g thịt heo xay vào tô, ướp cùng một nửa lượng hành tím băm, 5 ml nước mắm, 4 g hạt nêm, 2 g muối ăn và 1 g tiêu đen xay, trộn đều để thấm gia vị trong 10 phút.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào tơi thịt heo băm",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, cho nửa phần hành tím băm còn lại vào phi thơm vàng nhạt. Trút thịt heo xay đã ướp vào đảo nhanh và dằm nhẹ cho thịt tơi rời, xào khoảng 3 phút cho thịt săn lại và chín đều.",
+      "tip": "Dùng đũa đảo tơi liên tục khi thịt mới vào nồi nóng giúp thịt băm rời đều và không bị vón thành từng cục lớn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng và hớt sạch bọt",
+      "instruction": "Đổ 1,2 lít nước lọc vào nồi thịt xào, tăng lên lửa lớn đun sôi bùng rồi dùng vá hớt sạch phần bọt nổi trên mặt để nước canh trong vắt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu su su chín tới và nêm nếm vị thanh ngọt",
+      "instruction": "Thả toàn bộ su su thái lát vào nồi nước đang sôi, nấu trên lửa vừa khoảng 4–5 phút đến khi su su chuyển màu xanh trong nhẹ và vẫn còn độ giòn ngọt (tránh nấu nhũn). Nêm 3 g muối còn lại, 4 g hạt nêm và 10 ml nước mắm vào khuấy nhẹ rồi nếm lại vừa miệng.",
+      "tip": "Su su thái lát mỏng chín rất nhanh; tắt bếp ngay khi su su vừa chuyển trong sẽ giữ được độ giòn ngọt và màu xanh tươi.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá, ngò rí và tiêu xay",
+      "instruction": "Tắt bếp, thả hành lá và ngò rí thái nhỏ vào nồi canh, rắc 1 g tiêu đen xay còn lại rồi múc ra tô dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 204,
+    "energyKcal": 204.2,
+    "energyKj": 854,
+    "proteinG": 10.8,
+    "fatG": 15.1,
+    "saturatedFatG": 4.9,
+    "carbG": 6.8,
+    "fiberG": 2.1,
+    "sugarG": 2.5,
+    "sodiumMg": 1203,
+    "saltG": 3.01,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 169990",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f614fbeb3f31e559cca501cf2c64e9cec0fe8401fb993d192ae6a5186608b49d",
+    "researchedFromV2Sha256": "20370ef46f6858601c425e141b855d94d0bee2d4be451dee473b5320b3fedd14"
+  }
+}

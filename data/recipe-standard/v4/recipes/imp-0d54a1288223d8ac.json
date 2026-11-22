@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0d54a1288223d8ac",
+    "slug": "ga-nuong-bo-toi-y",
+    "title": "Gà nướng bơ tỏi kiểu Ý",
+    "subtitle": "Đùi gà nướng lò da vàng giòn rụm, thịt mềm mọng đẫm vị bơ tỏi thơm lừng thảo mộc Ý"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Nướng lò",
+      "Đùi gà",
+      "Bơ tỏi",
+      "Ẩm thực Ý",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Đùi gà có xương nướng lò ở nhiệt độ cao giúp lớp da ngoài vàng giòn bắt mắt trong khi thớ thịt bên trong vẫn giữ trọn độ ngọt mọng, hòa quyện hương bơ lạt, tỏi phi dịu và thảo mộc Ý.",
+    "servingSuggestion": "Xếp gà nướng ra đĩa lớn, rưới nước bơ tỏi từ khay và rắc ngò tây tươi thái nhỏ; ăn nóng cùng khoai tây nghiền, bánh mì giòn hoặc salad trộn dầu giấm.",
+    "storageAndReheat": "Bảo quản thịt gà nguội trong hộp kín ở ngăn mát tủ lạnh tối đa 3 ngày. Khi dùng, làm nóng lại bằng lò nướng hoặc nồi chiên không dầu ở 180°C khoảng 8–10 phút để da giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà có da có xương",
+      "culinaryMeasure": "900 g (khoảng 6–8 cái)",
+      "prepNote": "rửa sạch, dùng khăn giấy thấm thật khô cả hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 900,
+      "unit": "g",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 738,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "45 g (khoảng 3 muỗng canh)",
+      "prepNote": "đun chảy nhẹ cùng tỏi băm để phết lên gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1 củ vừa (~25 g, khoảng 6–8 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn để phi thơm với bơ lạt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC_POWDER",
+      "name": "Bột tỏi",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "trộn vào hỗn hợp gia vị khô xát mặt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột paprika ngọt",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ cam đẹp và mùi thơm dịu cho da gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Thảo mộc Ý khô (oregano, hương thảo)",
+      "culinaryMeasure": "2 g (~1 muỗng cà phê)",
+      "prepNote": "trộn đều cùng gia vị khô để ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia đều xát lên toàn bộ bề mặt đùi gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn cùng muối và bột tỏi để xát gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ phần lá để rắc mặt khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm nóng lò và thấm khô đùi gà",
+      "instruction": "Làm nóng lò nướng ở 200°C trước 15 phút và lót giấy nến lên khay nướng. Rửa sạch 900 g đùi gà dưới vòi nước lạnh, sau đó dùng khăn giấy thấm thật khô cả mặt da lẫn mặt thịt để khi nướng da lên màu vàng giòn đều.",
+      "tip": "Da gà càng ráo nước thì khi gặp nhiệt cao càng nhanh giòn rụm và không bị ra nước hấp hơi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Xát hỗn hợp gia vị khô lên thịt gà",
+      "instruction": "Trộn đều 3 g bột tỏi, 3 g ớt bột paprika ngọt, 2 g thảo mộc Ý khô, 6 g muối ăn và 2 g tiêu đen xay trong chén nhỏ. Xát đều hỗn hợp gia vị này lên cả hai mặt của từng chiếc đùi gà, ấn nhẹ để gia vị bám chắc vào da và thịt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đun chảy bơ lạt và phi thơm tỏi tươi",
+      "instruction": "Đặt chảo nhỏ lên lửa nhỏ, cho 45 g bơ lạt vào đun tan chảy hoàn toàn rồi cho toàn bộ tỏi tươi băm nhuyễn vào đảo nhanh tay khoảng 45 giây đến khi dậy mùi thơm dịu thì tắt bếp ngay, giữ cho tỏi không bị chuyển nâu.",
+      "tip": "Chỉ đun tỏi vừa dậy hương trên lửa nhỏ rồi nhấc chảo ra khỏi bếp để tỏi không bị cháy đắng khi vào lò nướng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "marinate",
+      "title": "Phết sốt bơ tỏi và xếp gà lên khay",
+      "instruction": "Xếp các miếng đùi gà lên khay nướng đã lót giấy nến sao cho mặt da hướng lên trên và các miếng cách nhau khoảng 2 cm. Dùng cọ phết đều phần lớn hỗn hợp bơ tỏi lên mặt gà, phần bơ còn lại rưới nhẹ quanh khay để thịt luôn ẩm mềm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng gà ở 200°C và rưới bơ giữa chừng",
+      "instruction": "Đưa khay gà vào rãnh giữa của lò nướng ở 200°C trong 35 phút. Đến phút thứ 20, mở lò kéo nhẹ khay ra và dùng muỗng múc phần nước bơ tỏi chảy ra dưới khay rưới đều lại một lượt lên mặt da gà rồi nướng tiếp.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Tăng nhiệt làm giòn da và kiểm tra độ chín",
+      "instruction": "Tăng nhiệt lò lên 220°C hoặc bật chế độ lửa trên nướng thêm 4–5 phút đến khi da gà vàng giòn và hơi xém cạnh đẹp mắt. Dùng que xiên vào phần thịt sát xương không thấy nước hồng chảy ra (nhiệt độ lõi đạt ít nhất 75°C) là gà chín hoàn toàn.",
+      "tip": "Quan sát kỹ 2 phút cuối khi bật lửa trên vì gia vị paprika và tỏi có thể sậm màu nhanh ở nhiệt cao.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Nghỉ thịt, rắc ngò tây và dọn nóng",
+      "instruction": "Lấy khay gà ra khỏi lò, để thịt nghỉ 5 phút cho nước ngọt ổn định bên trong thớ thịt. Xếp đùi gà ra đĩa, rưới thêm nước sốt bơ tỏi từ khay và rắc ngò tây tươi thái nhỏ lên trên rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 424,
+    "energyKcal": 424,
+    "energyKj": 1775,
+    "proteinG": 36.5,
+    "fatG": 28.7,
+    "saturatedFatG": 11.2,
+    "carbG": 3.7,
+    "fiberG": 0.9,
+    "sugarG": 0.2,
+    "sodiumMg": 692,
+    "saltG": 1.73,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 171325",
+      "USDA FDC 172385",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173475"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9d32c22e15ac7c286d851f36e1140eedcf041e4a4a80bc081be5e71c5f5a336c",
+    "researchedFromV2Sha256": "212e260c9a7ec1399b97869c21565fce040c2afe6e2f8191de94392eeb19db60"
+  }
+}

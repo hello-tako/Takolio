@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b55451e6e46a4c13",
+    "slug": "bap-cai-cuon-hap-thit",
+    "title": "Bắp cải cuộn thịt hấp thanh ngọt",
+    "subtitle": "Lá bắp cải chần mềm cuộn nhân thịt heo xay, mộc nhĩ và cà rốt hấp chín tới ngọt thanh đẹp mắt chuẩn vị Bắc Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Bắp cải",
+      "Khéo tay",
+      "Món Bắc",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Những cuộn bắp cải xanh mướt căng tròn ôm lấy phần nhân thịt heo xay quyện mộc nhĩ giòn sần sật và cà rốt ngọt dịu, buộc cố định bằng cọng hành lá chần mềm; hấp cách thủy giữ trọn vị ngọt tự nhiên.",
+    "servingSuggestion": "Xếp các cuộn bắp cải hấp nóng hổi ra đĩa sâu lòng, rưới ít nước ngọt tiết ra khi hấp cùng tiêu xay; ăn kèm cơm nóng và chấm nước tương ớt hoặc nước mắm tỏi ớt.",
+    "storageAndReheat": "Có thể bảo quản cuộn bắp cải đã hấp chín trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn hấp lại 6–8 phút đến khi phần nhân thịt nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh tươi",
+      "culinaryMeasure": "0.5 bắp (khoảng 400 g, chọn 10–12 lá lớn)",
+      "prepNote": "tách cẩn thận từng lá nguyên không rách, gọt bớt phần sống gân cứng để dễ cuộn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc vai)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "chọn phần nạc vai có chút mỡ dắt giúp nhân thịt mềm ngọt",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "0.5 củ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, băm hạt lựu thật nhỏ để trộn nhân",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "WOOD_EAR_MUSHROOM",
+      "name": "Mộc nhĩ khô (nấm mèo)",
+      "culinaryMeasure": "15 g",
+      "prepNote": "ngâm nước ấm 15 phút cho nở mềm, cắt bỏ chân cứng rồi rửa sạch băm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch; giữ 10–12 cọng dài chần mềm để buộc cuộn bắp cải, phần còn lại thái nhỏ trộn nhân",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (khoảng 12,5 g, 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn trộn vào nhân thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng ướp phần nhân thịt heo xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "trộn đều vào nhân thịt cho đậm đà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "chia 1,5 g trộn nhân và 0,5 g rắc mặt sau khi hấp chín",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (khoảng 2/3 muỗng cà phê)",
+      "prepNote": "cho vào nước sôi chần lá bắp cải để giữ màu xanh tươi",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần lá và hấp)",
+      "culinaryMeasure": "1400 ml",
+      "prepNote": "dùng 800 ml đun sôi chần lá bắp cải cùng hành lá và 600 ml đổ đáy nồi hấp",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm mộc nhĩ và sơ chế cà rốt, tỏi, hành lá",
+      "instruction": "Ngâm 15 g mộc nhĩ khô trong nước ấm khoảng 15 phút cho nở mềm, cắt bỏ chân cứng, rửa sạch rồi băm nhỏ. Gọt vỏ 1/2 củ cà rốt băm hạt lựu thật nhỏ; bóc vỏ tỏi băm nhuyễn. Rửa sạch hành lá, chọn riêng 10–12 cọng lá xanh dài để buộc cuộn, phần đầu và lá còn lại thái nhỏ.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Trộn và ướp dẻo nhân thịt heo xay",
+      "instruction": "Cho 300 g thịt heo xay vào tô lớn cùng mộc nhĩ băm, cà rốt băm nhỏ, tỏi băm và phần hành lá thái nhỏ. Nêm 15 ml nước mắm, 4 g hạt nêm và 1,5 g tiêu đen xay, trộn quết đều tay 2 phút cho hỗn hợp dẻo quyện rồi để ướp 15 phút.",
+      "tip": "Quết nhân thịt kỹ một chiều khoảng 2 phút giúp thịt kết dính dẻo dai, không bị rời rạc hay chảy nhiều nước khi hấp.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chần mềm lá bắp cải và cọng hành buộc",
+      "instruction": "Tách nhẹ 10–12 lá bắp cải nguyên vẹn, rửa sạch rồi dùng dao lạng mỏng bớt phần sống gân trắng cứng ở gốc lá. Đun sôi 800 ml nước lọc với 4 g muối ăn, thả từng lá bắp cải vào chần nhanh 1 phút cho vừa mềm dẻo rồi vớt ngay ra thau nước mát để giữ màu xanh; tiếp tục chần cọng hành lá khoảng 20 giây rồi vớt ra để ráo.",
+      "tip": "Lạng mỏng phần sống gân dày và nhúng ngay lá qua nước lạnh sau khi chần giúp lá bắp cải dẻo dai, dễ cuộn chặt mà không bị rách hay ngả màu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Gói cuộn bắp cải nhân thịt chắc tay",
+      "instruction": "Trải phẳng từng lá bắp cải lên thớt sạch, đặt khoảng 1 muỗng canh đầy nhân thịt vào phần đầu lá gần gốc. Gấp hai mép lá hai bên vào trong rồi cuộn tròn đều tay như cuốn nem, dùng một cọng hành lá đã chần buộc nhẹ quanh thân cuộn để cố định."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp cách thủy bắp cải cuộn thịt chín đều",
+      "instruction": "Đổ 600 ml nước lọc vào đáy nồi hấp, đun sôi mạnh. Xếp các cuộn bắp cải ngay ngắn vào đĩa sâu lòng hoặc trực tiếp lên xửng hấp sao cho không chồng đè quá dày, đậy kín nắp và hấp trên lửa vừa khoảng 20 phút đến khi lá bắp cải chín mềm và nhân thịt bên trong chín hẳn, không còn màu hồng.",
+      "tip": "Xếp cuộn bắp cải với mép gấp úp xuống dưới giúp các cuộn giữ dáng tròn đẹp mà không bị bung khi gặp hơi nóng.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và dọn ăn nóng với nước chấm",
+      "instruction": "Gắp các cuộn bắp cải hấp ra đĩa lớn, rưới thêm vài muỗng nước ngọt thanh tiết ra trong đĩa hấp lên trên và rắc 0,5 g tiêu đen xay còn lại; dọn dùng nóng kèm cơm trắng và chén nước tương ớt hoặc nước mắm chanh tỏi ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 246,
+    "energyKcal": 246.1,
+    "energyKj": 1030,
+    "proteinG": 14.9,
+    "fatG": 16.1,
+    "saturatedFatG": 6,
+    "carbG": 11.3,
+    "fiberG": 5.5,
+    "sugarG": 3.8,
+    "sodiumMg": 665,
+    "saltG": 1.66,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168437",
+      "USDA FDC 169230",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "59821506f7edc893591174184c94561c8664ef657df563707620d80a1cdb5ea2",
+    "researchedFromV2Sha256": "b5cc87c231c52e0bb60b2639514978ee14bd932f3c0c419bffeca00442d344de"
+  }
+}

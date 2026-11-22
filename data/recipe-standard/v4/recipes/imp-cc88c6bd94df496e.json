@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cc88c6bd94df496e",
+    "slug": "canh-cua-nam-nhat",
+    "title": "Canh trong cua thịt nấm đùi gà kiểu Nhật",
+    "subtitle": "Nước dùng Dashi thanh trong nấu cùng thịt cua hấp gỡ sợi ngọt biển, nấm đùi gà lát mỏng, rượu Sake và hành lá kiểu Osuimono trang nhã"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Canh trong Nhật",
+      "Thịt cua",
+      "Nấm đùi gà",
+      "Umami",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món canh trong Osuimono trang nhã của Nhật Bản: nền nước dùng Dashi kết hợp vị ngọt thanh của nấm đùi gà và từng thớ thịt cua biển tươi ngọt, nêm nhẹ với xì dầu nhạt để giữ nước canh trong vắt mà đậm đà hương vị umami.",
+    "servingSuggestion": "Múc canh nóng ra 3 bát có nắp hoặc tô sứ nhỏ, chia đều thịt cua và nấm đùi gà, rắc hành lá thái khoanh lên mặt; dùng làm món canh khai vị hoặc dùng kèm bữa cơm gia đình thanh nhẹ.",
+    "storageAndReheat": "Canh ngon nhất khi thưởng thức nóng ngay sau khi nấu để giữ trọn mùi thơm và độ ngọt của thịt cua; nếu còn dư, đậy kín để ngăn mát tối đa 1 ngày và hâm nóng nhẹ lửa vừa đến khi vừa sôi lăn tăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Thịt cua hấp chín gỡ sẵn",
+      "culinaryMeasure": "200 g thịt cua",
+      "prepNote": "nhặt kiểm tra kỹ xem còn sót mảnh vỏ cứng nào không, xé nhẹ thành thớ vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "150 g (khoảng 2 cây vừa)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc cứng rồi thái lát mỏng dài khoảng 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "kết hợp với nước lọc tạo nền nước canh trong đậm vị umami",
+      "componentGroup": "broth",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp khử nhẹ mùi tanh hải sản và dậy hương thơm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.9,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.67,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt Nhật Bản",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm màu nhạt để nước canh giữ được sắc vàng trong thanh tao",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm từ từ theo khẩu vị sau khi cho xì dầu nhạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2.5,
+      "unit": "g",
+      "grossGrams": 2.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh thật nhỏ để thả vào sau khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "hòa cùng nước dùng Dashi nấu canh cho 3 bát",
+      "componentGroup": "broth",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 405,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt cua, nấm đùi gà và hành lá",
+      "instruction": "Kiểm tra và nhặt sạch vụn vỏ nếu có trong 200 g thịt cua hấp chín gỡ sẵn, tách nhẹ thành thớ vừa ăn. Lau sạch 150 g nấm đùi gà tươi, bỏ gốc rồi thái lát mỏng dài 3 cm; rửa sạch hành lá tươi và thái khoanh mỏng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun sôi nhẹ nước dùng Dashi",
+      "instruction": "Đổ 450 ml nước lọc và 150 ml nước dùng Dashi vào nồi, đun trên lửa vừa đến khi nước dùng sôi lăn tăn nhẹ nhàng.",
+      "tip": "Không đun sôi bùng quá mạnh để giữ hương thơm tinh tế của Dashi và giúp nước canh trong vắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu chín mềm nấm đùi gà",
+      "instruction": "Thả toàn bộ nấm đùi gà thái lát vào nồi nước dùng, hạ lửa vừa nhỏ và nấu khoảng 3 phút cho đến khi nấm chín mềm và tiết vị ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm Sake, xì dầu nhạt và muối thanh nhẹ",
+      "instruction": "Thêm 15 ml rượu Sake Nhật Bản, 10 ml xì dầu nhạt Nhật Bản và 2,5 g muối ăn vào nồi canh, khuấy nhẹ cho tan đều rồi nếm thử để điều chỉnh độ mặn thanh hài hòa.",
+      "tip": "Canh trong kiểu Nhật đề cao vị thanh dịu tự nhiên nên chỉ nêm xì dầu nhạt vừa đủ dậy hương, tránh làm sẫm màu nước canh."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả thịt cua làm nóng nhanh và hớt bọt",
+      "instruction": "Nhẹ nhàng cho 200 g thịt cua vào nồi canh, đun lửa nhỏ khoảng 2 phút cho nước vừa sôi lăn tăn trở lại và thịt cua nóng đều tận lõi; dùng muôi hớt sạch bọt mỏng nổi trên mặt nếu có.",
+      "tip": "Thịt cua đã hấp chín sẵn nên chỉ nấu nhanh 2 phút để làm nóng và quyện vị, tránh đun lâu làm thịt cua bị bở xác.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tắt bếp, rắc hành lá và dọn nóng",
+      "instruction": "Tắt bếp ngay, múc canh cua nấm ra 3 bát, chia đều thịt cua và nấm đùi gà rồi rắc hành lá thái nhỏ lên mặt để giữ màu xanh tươi và thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 84,
+    "energyKcal": 84.4,
+    "energyKj": 353,
+    "proteinG": 14.4,
+    "fatG": 0.9,
+    "saturatedFatG": 0.2,
+    "carbG": 4,
+    "fiberG": 1.3,
+    "sugarG": 0.7,
+    "sodiumMg": 904,
+    "saltG": 2.26,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 168580",
+      "USDA FDC 170005",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "75edfbb84128d835a1b87c525b1809e692445d8fb38890973bc502a69acafab1",
+    "researchedFromV2Sha256": "37d1e49dbeadf2dc35e07bd90b3ec945cfb7c70534e1e96b62e740bdb96870c9"
+  }
+}

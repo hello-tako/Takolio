@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-26a36c69306143bc",
+    "slug": "tom-xao-bong-cai-xanh-toi-gion-ngot",
+    "title": "Tôm xào bông cải xanh tỏi giòn ngọt",
+    "subtitle": "Tôm tươi săn chắc quyện sốt sánh nhẹ cùng bông cải xanh giòn mướt, thơm lừng tỏi phi và vài giọt dầu mè"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Hải sản",
+      "Rau xanh",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "sesame",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm tươi lột vỏ rút chỉ xào nhanh lửa lớn giữ được độ ngọt giòn săn chắc, kết hợp cùng bông cải xanh chần sốc nhiệt giòn mát và lớp sốt bột bắp óng ả thơm mùi tỏi phi.",
+    "servingSuggestion": "Xếp tôm và bông cải xanh ra đĩa rộng khi còn nóng, rắc tiêu đen xay lên trên; dùng ngay với cơm trắng nóng hổi.",
+    "storageAndReheat": "Món hải sản xào ngon nhất khi ăn nóng trong bữa; nếu bảo quản tủ mát tối đa 24 giờ, hãy đảo nhanh lại trên chảo nóng khoảng 1 phút để tôm không bị khô cứng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (tôm thẻ hoặc tôm sú)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "lột vỏ, bỏ đầu, rạch lưng rút sạch chỉ đen, rửa sạch rồi thấm ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 234,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh",
+      "culinaryMeasure": "1 bông vừa (khoảng 300 g)",
+      "prepNote": "tách nhánh vừa ăn, gọt bỏ phần xơ cứng ở cuống, ngâm nước muối loãng rồi rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 246,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp tôm và phi thơm lúc xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng để tăng độ ngọt tự nhiên cho đĩa xào",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "chia 15 ml xào tôm và 15 ml xào bông cải xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 ml)",
+      "prepNote": "rưới nhẹ vào lúc tắt bếp giúp món xào dậy hương thơm đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "ml",
+      "grossGrams": 2.76,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.76,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "nêm vào giai đoạn đảo chung tôm và bông cải",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "chia 2,5 g ướp tôm và 2,5 g nêm bông cải xanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "1 muỗng cà phê (4 g)",
+      "prepNote": "hòa tan với 30 ml nước lọc để tạo độ sánh bóng nhẹ cho sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "dùng 6 g pha vào nước sôi chần bông cải và 2 g nêm khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "chia 1 g ướp tôm và 1 g rắc mặt đĩa khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng hòa tan bột bắp trước khi rưới vào chảo xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch tôm tươi và ướp gia vị",
+      "instruction": "Tôm tươi bóc sạch vỏ, bỏ đầu, rạch nhẹ sống lưng để rút hết chỉ đen, rửa sạch rồi thấm thật ráo nước. Cho tôm vào tô ướp cùng một nửa lượng tỏi băm, 2,5 g hạt nêm và 1 g tiêu đen xay, trộn đều và để thấm khoảng 10 phút.",
+      "tip": "Thấm khô tôm trước khi ướp và xào giúp tôm lên màu đẹp và không bị bắn dầu.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần sơ và sốc lạnh bông cải xanh",
+      "instruction": "Tách bông cải xanh thành từng miếng vừa ăn, rửa sạch và để ráo. Đun sôi nồi nước với 6 g muối ăn trên lửa lớn, thả bông cải vào chần khoảng 1 phút cho vừa chuyển xanh mướt thì vớt ngay ra ngâm vào tô nước đá lạnh 2 phút, sau đó vớt ra rổ để ráo hoàn toàn. Hòa tan 4 g bột bắp với 30 ml nước lọc trong chén nhỏ.",
+      "tip": "Chần nhanh và ngâm nước đá giúp bông cải giữ độ giòn sần sật và màu xanh tươi mắt sau khi xào.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn tôm trên lửa lớn",
+      "instruction": "Đặt chảo lên bếp lửa lớn, làm nóng 15 ml dầu ăn rồi cho một phần tỏi băm còn lại vào phi thơm. Trút tôm đã ướp vào đảo nhanh tay khoảng 1,5–2 phút đến khi tôm chuyển màu đỏ cam đều, thân cong tròn săn chắc và chín hoàn toàn thì trút ra đĩa riêng.",
+      "tip": "Không xào tôm quá lâu để thịt tôm giữ được độ giòn ngọt, không bị khô bở.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào bông cải xanh và hành tây",
+      "instruction": "Thêm 15 ml dầu ăn còn lại vào chảo, phi thơm nốt phần tỏi băm cùng hành tây thái múi cau trong 45 giây. Cho bông cải xanh đã ráo nước vào đảo đều trên lửa lớn khoảng 2 phút cho rau nóng đều và thấm dầu tỏi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rưới sốt bột bắp và đảo quyện cùng tôm",
+      "instruction": "Trút đĩa tôm đã xào trở lại chảo bông cải xanh, nêm 15 ml nước mắm ngon, 2,5 g hạt nêm và 2 g muối ăn. Khuấy lại chén nước bột bắp cho khỏi lắng rồi rưới đều vào chảo, đảo nhanh tay khoảng 1 phút cho lớp sốt sánh nhẹ áo bóng quanh tôm và bông cải."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện hương dầu mè và dọn nóng",
+      "instruction": "Rưới 3 ml dầu mè thơm vào chảo, đảo đều một lượt rồi tắt bếp ngay. Bày tôm xào bông cải xanh ra đĩa và rắc 1 g tiêu đen xay còn lại lên trên, thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 207,
+    "energyKcal": 207.1,
+    "energyKj": 866,
+    "proteinG": 19.2,
+    "fatG": 10,
+    "saturatedFatG": 1.5,
+    "carbG": 12.3,
+    "fiberG": 2.8,
+    "sugarG": 2.8,
+    "sodiumMg": 1127,
+    "saltG": 2.82,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169698",
+      "USDA FDC 170000",
+      "USDA FDC 170379",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "28ec40c79a59d454b15dcd6ba27af587d645b9bdbfd9884b703c2c1d822f7077",
+    "researchedFromV2Sha256": "887a69516490cf41a247b31b2d0950a397a9a35cf29d4846213bfd402c879b0f"
+  }
+}

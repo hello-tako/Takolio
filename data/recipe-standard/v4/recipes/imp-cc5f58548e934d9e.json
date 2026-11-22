@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cc5f58548e934d9e",
+    "slug": "mi-y-tom-toi-ot",
+    "title": "Mì Ý tôm tỏi ớt (Aglio Olio)",
+    "subtitle": "Sợi mì Ý thấm đẫm sốt dầu ô liu bơ tỏi ớt cay nhẹ quyện thịt tôm tươi ngọt giòn và hương vỏ chanh vàng thanh mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì Ý tôm",
+      "Aglio Olio",
+      "Ẩm thực Ý",
+      "Hải sản",
+      "Cay nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "milk",
+      "shrimp",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì Ý hải sản tinh tế với tôm tươi xào săn ngọt thịt, sợi mì dai mềm quyện sốt dầu ô liu bơ thơm nức mùi tỏi phi, chút cay nồng của ớt tươi và vị tươi mát từ vỏ chanh vàng bào.",
+    "servingSuggestion": "Dọn nóng ngay ra đĩa sâu lòng, rắc thêm ngò tây băm nhỏ và chút phô mai Parmesan bào nếu thích.",
+    "storageAndReheat": "Món mì sốt dầu hải sản ngon nhất khi ăn nóng ngay; nếu cần bảo quản, cất hộp kín ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo với chút nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti hoặc Linguine khô",
+      "culinaryMeasure": "250 g",
+      "prepNote": "luộc ít hơn 1 phút so với hướng dẫn bao bì, giữ lại 120 ml nước luộc",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "400 g",
+      "prepNote": "bóc vỏ, bỏ đầu và rút sạch chỉ đen trên lưng, rửa sạch thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 312,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "1 quả",
+      "prepNote": "rửa sạch, bỏ hạt và thái khoanh mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi ớt và làm nền sốt dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "35 g",
+      "prepNote": "chia 15 g phi cùng dầu ô liu, 20 g đánh bóng sốt lúc tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "15 g",
+      "prepNote": "trộn vào mì sau khi tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, để ráo và băm nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1/2 quả",
+      "prepNote": "rửa sạch vỏ, bào mịn lấy lớp vỏ vàng thơm (tránh phần cùi trắng) và vắt 1 muỗng cà phê nước cốt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 12.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "16 g (15 g luộc mì, 1 g ướp tôm)",
+      "prepNote": "hòa 15 g vào nước luộc mì (bỏ đi), dùng 1 g ướp tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 3.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia nửa ướp tôm và nửa rắc khi hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 120 ml nước luộc",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi và các loại gia vị thơm",
+      "instruction": "Bóc vỏ 400 g tôm tươi, bỏ đầu và rút sạch chỉ đen dọc sống lưng, rửa nhanh rồi thấm thật khô bằng khăn giấy. Ướp nhẹ tôm với 1 g muối ăn và 0,5 g tiêu đen xay. Thái lát mỏng 3–4 tép tỏi khô, bỏ hạt thái lát 1 quả ớt hiểm tươi, băm nhỏ 15 g ngò tây tươi và bào lấy phần vỏ vàng của 1/2 quả chanh vàng.",
+      "tip": "Thấm thật khô thịt tôm giúp tôm khi áp chảo nhanh săn chín, lên mùi thơm mà không bị tiết nước làm loãng dầu ô liu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý trong nước muối sôi già",
+      "instruction": "Đun sôi mạnh 2500 ml nước lọc cùng 15 g muối ăn, cho 250 g mì Ý Spaghetti vào luộc khoảng 8 phút (ít hơn hướng dẫn bao bì 1 phút) để mì vừa đạt độ al dente. Trước khi vớt, múc giữ lại 120 ml nước luộc mì giàu tinh bột.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi tỏi ớt và xào chín nhanh thịt tôm",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 45 ml dầu ô liu và 15 g bơ lạt. Cho tỏi thái lát và ớt hiểm vào phi thơm khoảng 1–2 phút đến khi tỏi vừa ngả vàng nhạt. Tăng lên lửa lớn, thả tôm đã ướp vào đảo đều khoảng 2–3 phút đến khi tôm cong chữ C và chuyển màu hồng đỏ chín hoàn toàn thì trút tôm ra đĩa riêng.",
+      "tip": "Vớt tôm ra ngay khi vừa chuyển hồng chín tới giúp thịt tôm giữ được độ giòn ngọt, không bị khô dai khi đảo chung với mì.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đảo mì cùng nước luộc tạo sốt sánh nhẹ",
+      "instruction": "Hạ chảo về lửa vừa, gắp mì Ý đã luộc cùng thịt tôm trở lại chảo dầu tỏi ớt. Rót thêm khoảng 60 ml nước luộc mì vào, xóc đều tay trong 1–2 phút để nước luộc tinh bột và dầu ô liu nhũ hóa thành lớp sốt sánh nhẹ bám đều từng sợi mì.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Hoàn thiện hương chanh vàng và phô mai",
+      "instruction": "Tắt bếp và nhấc chảo ra ngoài. Thêm 20 g bơ lạt còn lại, 15 g phô mai Parmesan bào mịn, phần vỏ bào cùng vài giọt nước cốt chanh vàng, 15 g ngò tây băm và 0,5 g tiêu đen xay còn lại vào đảo nhanh tay đến khi bơ tan bóng mượt.",
+      "tip": "Bào vỏ chanh vàng chỉ lấy lớp tinh dầu bên ngoài, tránh cùi trắng vì sẽ gây vị đắng; cho vào sau khi tắt bếp giúp giữ trọn hương thơm tươi mát."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày ra đĩa và dùng nóng ngay",
+      "instruction": "Chia mì và tôm ra 3 đĩa sâu lòng khi còn nóng hổi, rưới hết phần sốt dầu tỏi thơm dưới chảo lên trên và thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 633,
+    "energyKcal": 633.2,
+    "energyKj": 2650,
+    "proteinG": 34.3,
+    "fatG": 26.4,
+    "saturatedFatG": 9.1,
+    "carbG": 64.7,
+    "fiberG": 3.1,
+    "sugarG": 2.5,
+    "sodiumMg": 624,
+    "saltG": 1.56,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3f2f377cd7fea7646eae08c84647dcd7c7c7a08b554d463408ea4b311d73ced4",
+    "researchedFromV2Sha256": "4893eaeeecfa2dbbc68228ff9ca9bb810f97241ff8b9a1b3c5c32fc0230e2392"
+  }
+}

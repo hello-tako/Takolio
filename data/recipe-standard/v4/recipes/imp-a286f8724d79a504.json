@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a286f8724d79a504",
+    "slug": "ca-chua-tron-pho-mai",
+    "title": "Cà chua trộn phô mai Mozzarella tươi kiểu Ý",
+    "subtitle": "Cà chua chín mọng xếp xen kẽ phô mai Mozzarella tươi mềm béo, rưới dầu ô liu nguyên chất và giấm Balsamic thanh dịu"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Khai vị",
+      "Cà chua",
+      "Mozzarella",
+      "Salad Ý",
+      "Mát lành"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix",
+      "assemble"
+    ],
+    "allergenTags": [
+      "milk",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Món khai vị lạnh thanh mát chuẩn phong cách Ý tôn vinh nguyên liệu tươi ngon nhất: cà chua chín mọng cắt lát dày quyện phô mai Mozzarella tươi mềm béo, dầu ô liu nguyên chất thơm nồng và lá húng quế Tây tươi mát.",
+    "servingSuggestion": "Bày đĩa cà chua trộn phô mai ngay sau khi hoàn thiện để dùng làm món khai vị hoặc ăn kèm bánh mì nướng giòn chấm phần nước dầu ô liu cà chua tiết ra.",
+    "storageAndReheat": "Món khai vị tươi sống ngon nhất khi ăn ngay lúc vừa trộn; không nên cất tủ lạnh vì nhiệt độ thấp làm cà chua bở và mất hương thơm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín mọng",
+      "culinaryMeasure": "4 quả vừa (~480 g)",
+      "prepNote": "chọn quả chín đỏ thơm cuống ở nhiệt độ phòng, rửa sạch rồi thái lát dày 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "MOZZARELLA_CHEESE",
+      "name": "Phô mai Mozzarella tươi",
+      "culinaryMeasure": "170 g",
+      "prepNote": "vớt khỏi nước ngâm để ráo 5 phút rồi cắt lát dày 0,8 cm hoặc xé miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 170,
+      "unit": "g",
+      "grossGrams": 170,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng loại extra virgin thơm ngon để rưới trực tiếp lên bề mặt món ăn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BALSAMIC_VINEGAR",
+      "name": "Giấm Balsamic Ý",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới nhẹ tạo vị chua ngọt cân bằng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1–2 tép (~6 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để rắc nhẹ tạo hương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "12 g (khoảng 10 lá)",
+      "prepNote": "rửa nhẹ, để ráo và xé nhỏ bằng tay để tránh thâm mép lá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc đều trực tiếp lên các lát cà chua để dậy vị ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "xay mới rắc nhẹ lên trên mặt phô mai và cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chọn và thái lát cà chua chín mọng",
+      "instruction": "Chọn 4 quả cà chua chín mọng để ở nhiệt độ phòng cho giữ trọn mùi thơm, rửa sạch, bỏ phần cuống cứng rồi thái thành các lát tròn ngang dày đều khoảng 0,8 cm.",
+      "tip": "Không dùng cà chua vừa lấy từ tủ lạnh vì hơi lạnh làm cấu trúc thịt cà chua bị bở và giảm hương vị tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Để ráo và cắt lát phô mai Mozzarella tươi",
+      "instruction": "Vớt 170 g phô mai Mozzarella tươi ra khỏi nước ngâm, đặt lên rây hoặc khăn giấy sạch để ráo khoảng 5 phút rồi cắt thành từng lát có độ dày tương đương lát cà chua.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Băm nhuyễn tỏi và xé lá húng quế Tây",
+      "instruction": "Băm thật nhuyễn tỏi tươi và dùng tay xé nhẹ 12 g lá húng quế Tây tươi thành miếng vừa ăn để giữ mùi thơm tinh dầu mà không làm dập thâm lá.",
+      "tip": "Xé lá húng quế bằng tay thay vì thái dao kim loại giúp lá giữ màu xanh tươi lâu hơn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "finish",
+      "title": "Xếp xen kẽ cà chua và phô mai ra đĩa",
+      "instruction": "Xếp xen kẽ từng lát cà chua chín mọng với lát phô mai Mozzarella tươi thành vòng tròn hoặc hàng đều đặn trên đĩa phẳng lớn sao cho các lát hơi gối lên nhau."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Rắc muối, tiêu, tỏi và rưới dầu ô liu",
+      "instruction": "Rắc đều 3 g muối ăn và 1 g tiêu đen xay lên mặt cà chua và phô mai, tiếp tục rắc tỏi tươi băm nhuyễn và lá húng quế Tây tươi lên trên. Rưới đều 40 ml dầu ô liu nguyên chất phủ một lớp mỏng bóng mượt.",
+      "tip": "Nêm muối trực tiếp lên cà chua tươi là bước quan trọng giúp kéo vị ngọt dịu tự nhiên của cà chua hòa quyện với độ béo của phô mai."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với giấm Balsamic và dùng ngay",
+      "instruction": "Rưới thêm 15 ml giấm Balsamic Ý (tùy thích) lên trên mặt đĩa rồi để thấm nhẹ 2–3 phút và thưởng thức ngay ở nhiệt độ phòng.",
+      "timerMinutes": 3
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 304,
+    "energyKcal": 303.9,
+    "energyKj": 1271,
+    "proteinG": 17.3,
+    "fatG": 22.2,
+    "saturatedFatG": 7.9,
+    "carbG": 9.8,
+    "fiberG": 2.1,
+    "sugarG": 5.6,
+    "sodiumMg": 753,
+    "saltG": 1.88,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170457",
+      "USDA FDC 170845",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC 173470"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7cc66d35f236cfcf6afeb064405591c96bf2efaa20b4412f6b0b2e1fea79ab73",
+    "researchedFromV2Sha256": "19680b1799d0cdc621bef1dfe169c386b719ccfe2a2854302b7714b9c33131e8"
+  }
+}

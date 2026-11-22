@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f050984a2c4deb91",
+    "slug": "goi-nam-chua-cay-thai",
+    "title": "Gỏi nấm chua cay kiểu Thái",
+    "subtitle": "Nấm đùi gà, nấm kim châm và nấm mỡ chần giòn trộn hành tây tím, cà chua bi cùng nước sốt chanh tỏi ớt chay thanh mát"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Gỏi nấm",
+      "Món chay",
+      "Khai vị",
+      "Ẩm thực Thái",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "celery",
+      "peanut",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi nấm chua cay kiểu Thái kết hợp ba loại nấm chần giòn ngọt là nấm đùi gà, nấm mỡ và nấm kim châm, trộn đều với hành tây tím, cà chua bi, cần tây và nước sốt chanh tỏi ớt chua cay mặn ngọt bùng vị, rắc đậu phộng rang bùi béo.",
+    "servingSuggestion": "Bày gỏi nấm ra đĩa sâu lòng, rắc đậu phộng rang giã dập lên mặt; dùng ngay làm món khai vị thanh mát hoặc ăn kèm cơm trắng, xôi nếp đều hợp.",
+    "storageAndReheat": "Gỏi nên trộn và ăn hết trong vòng 2 giờ để nấm giữ độ giòn và không ra nước; nếu chuẩn bị trước, bảo quản riêng nấm đã chần ráo và chén nước trộn trong ngăn mát tối đa 12 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "rửa sạch, cắt dọc thành miếng dài vừa ăn dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm mỡ tươi (hoặc nấm rơm)",
+      "culinaryMeasure": "100 g",
+      "prepNote": "rửa nhanh qua nước muối loãng, thấm ráo rồi bổ đôi",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ENOKI_MUSHROOM",
+      "name": "Nấm kim châm tươi",
+      "culinaryMeasure": "150 g",
+      "prepNote": "cắt bỏ phần gốc rễ, tách thành từng chùm nhỏ vừa gắp và rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 135,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua bi (hoặc cà chua chín)",
+      "culinaryMeasure": "1 quả (120 g)",
+      "prepNote": "rửa sạch, bổ đôi hoặc thái múi nhỏ vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "RED_ONION",
+      "name": "Hành tây tím",
+      "culinaryMeasure": "70 g (1 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng theo chiều ngang",
+      "componentGroup": "main",
+      "requiredQuantity": 70,
+      "unit": "g",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ONION",
+      "name": "Hành tây trắng",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng để ngâm đá bớt hăng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CELERY",
+      "name": "Cần tây tươi",
+      "culinaryMeasure": "30 g",
+      "prepNote": "rửa sạch, nhặt lá non và thái khúc ngắn 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (67,5 g)",
+      "prepNote": "vắt lấy khoảng 45 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "làm nền vị mặn thanh cho nước trộn gỏi chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (1 muỗng canh)",
+      "prepNote": "hòa tan cân bằng vị chua cay trong nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (12–13 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, bỏ cuống, băm nhỏ hoặc thái lát mỏng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang chín",
+      "culinaryMeasure": "55 g",
+      "prepNote": "bỏ vỏ lụa, giã dập thô để rắc lên đĩa gỏi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 55,
+      "unit": "g",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (chần nấm)",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "hòa vào nồi nước sôi để chần nấm sạch và giòn hơn",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 0.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần nấm)",
+      "culinaryMeasure": "1000 ml",
+      "prepNote": "đun sôi để chần từng loại nấm rồi vớt bỏ nước",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế các loại nấm tươi sạch sẽ",
+      "instruction": "Rửa nhanh 200 g nấm đùi gà và 100 g nấm mỡ qua nước muối loãng rồi thấm ráo, cắt dọc nấm đùi gà thành miếng dài vừa ăn và bổ đôi nấm mỡ. Cắt bỏ phần gốc rễ của 150 g nấm kim châm, tách thành từng chùm nhỏ vừa gắp và rửa sạch để ráo.",
+      "tip": "Không ngâm nấm quá lâu trong nước vì nấm sẽ hút ẩm làm giảm độ giòn ngọt khi chần và trộn gỏi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái mỏng rau củ và giã dập đậu phộng rang",
+      "instruction": "Bóc vỏ hành tây tím và hành tây trắng, thái lát thật mỏng theo chiều ngang (có thể ngâm nước đá 5 phút rồi vắt ráo để giảm vị hăng). Rửa sạch cà chua bi bổ đôi, cần tây và hành lá cắt khúc dài 3 cm; giã dập thô 55 g đậu phộng rang."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn gỏi chua cay mặn ngọt",
+      "instruction": "Cho tỏi băm nhuyễn và ớt hiểm băm nhỏ vào chén, thêm 45 ml xì dầu, nước cốt của 1,5 quả chanh tươi và 15 g đường cát trắng. Khuấy đều tay đến khi đường tan hoàn toàn rồi nếm lại để đạt vị chua cay mặn ngọt cân bằng.",
+      "tip": "Nên pha nước trộn đậm đà hơn khẩu vị thường một chút vì nấm và cà chua sẽ tiết thêm chút nước khi trộn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chần chín tới từng loại nấm trong nước muối sôi",
+      "instruction": "Đun sôi 1000 ml nước lọc cùng 5 g muối ăn trên lửa lớn. Lần lượt chần riêng nấm mỡ khoảng 1 phút, tiếp đến nấm đùi gà 1 phút và cuối cùng là nấm kim châm 45 giây cho từng loại vừa chín tới; vớt ngay ra rổ để thật ráo và nguội hẳn.",
+      "tip": "Chần riêng từng loại với thời gian ngắn giúp nấm không bị nhũn nát mà vẫn giữ được độ giòn sần sật và vị ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Vắt nhẹ nấm và trộn cùng rau củ tươi",
+      "instruction": "Khi nấm đã nguội và ráo hẳn nước, dùng tay bóp nhẹ cho hết nước đọng rồi cho vào tô trộn lớn cùng hành tây tím, hành tây trắng, cà chua bi, cần tây và hành lá cắt khúc, đảo sơ cho các nguyên liệu tơi đều.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới nước trộn gỏi, đảo đều và rắc đậu phộng",
+      "instruction": "Rưới từ từ chén nước trộn chua cay vào tô nấm, dùng tay đeo găng hoặc đũa trộn nhẹ nhàng để nguyên liệu thấm đều mà cà chua không bị dập. Bày gỏi ra đĩa, rắc đều 55 g đậu phộng rang giã dập lên trên và thưởng thức ngay.",
+      "tip": "Chỉ rưới nước trộn và đậu phộng ngay trước khi dọn lên bàn ăn để đậu phộng giữ trọn độ giòn bùi và gỏi không bị ra nước."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 217,
+    "energyKcal": 217.4,
+    "energyKj": 909,
+    "proteinG": 11.7,
+    "fatG": 9.8,
+    "saturatedFatG": 1.3,
+    "carbG": 26.8,
+    "fiberG": 7,
+    "sugarG": 10.9,
+    "sodiumMg": 1037,
+    "saltG": 2.59,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169251",
+      "USDA FDC 169253",
+      "USDA FDC 169655",
+      "USDA FDC 169988",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "639dd78768e775b3901c292be6a0245c45f27bd6097d67fc7b72bd4e41e293c2",
+    "researchedFromV2Sha256": "0faa57b2cac9ee2a8a31fc64a3c2fb958b4f2f0a154846be403bc391b7dda3d1"
+  }
+}

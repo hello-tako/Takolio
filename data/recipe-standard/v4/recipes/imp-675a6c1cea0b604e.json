@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-675a6c1cea0b604e",
+    "slug": "com-rang-chay-nam-dau",
+    "title": "Cơm rang chay nấm đậu phụ rau củ",
+    "subtitle": "Hạt cơm rang tơi ráo quyện đều nấm đùi gà, đậu phụ chiên hạt lựu, cà rốt giòn ngọt và nước tương thơm lừng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Cơm rang",
+      "Đậu phụ",
+      "Nấm đùi gà",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa cơm rang chay đầy đủ dưỡng chất và màu sắc bắt mắt với từng hạt cơm nguội rang tơi ráo bóng nhẹ, hòa quyện cùng nấm đùi gà dai ngọt, đậu phụ cắt hạt lựu béo mềm, cà rốt giòn tươi và mùi thơm quyến rũ của tỏi phi, hành lá.",
+    "servingSuggestion": "Múc cơm rang nóng ra đĩa, rắc thêm hành lá và tiêu đen xay; ăn kèm dưa leo thái lát và chén nước tương ớt cắt khoanh.",
+    "storageAndReheat": "Món ăn ngon nhất khi thưởng thức nóng ngay; nếu bảo quản hộp kín trong ngăn mát tối đa 24 giờ, hãy rang nóng lại trên chảo khô lửa vừa 3–4 phút cho hạt cơm tơi lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng để nguội",
+      "culinaryMeasure": "550 g (khoảng 3 chén cơm đầy)",
+      "prepNote": "bóp tơi nhẹ các cục cơm, có thể để ngăn mát 30 phút cho hạt cơm ráo tơi",
+      "componentGroup": "main",
+      "requiredQuantity": 550,
+      "unit": "g",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 550,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "cắt gốc, rửa nhanh sạch đất rồi để ráo, thái hạt lựu cạnh 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "2 bìa (khoảng 240 g)",
+      "prepNote": "thấm khô, thái hạt lựu cạnh 1 cm đều nhau",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái hạt lựu nhỏ 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc thơm khi hoàn thành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới dọc thành chảo khi rang cơm cho thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml xào nấm rau củ và 15 ml rang tơi cơm",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 26.22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm đều vị hạt cơm rang",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm trước khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm phần nhân nấm cà rốt đậu phụ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt nhẹ cho nhân xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cơm nguội và cắt hạt lựu rau củ, đậu nấm",
+      "instruction": "Bóp tơi nhẹ 550 g cơm trắng để nguội cho các hạt cơm rời nhau. Nấm đùi gà cắt gốc, rửa nhanh để ráo rồi thái hạt lựu cạnh 0,8 cm; cà rốt gọt vỏ thái hạt lựu nhỏ 0,5 cm; đậu phụ thấm khô thái hạt lựu cạnh 1 cm; tỏi khô băm nhuyễn; hành lá thái nhỏ.",
+      "tip": "Cơm nguội hong ráo hoặc để ngăn mát 30 phút trước khi rang sẽ giúp từng hạt cơm săn tơi, không bị bết dính."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào chín nấm đùi gà, cà rốt",
+      "instruction": "Làm nóng chảo rộng đáy trên lửa vừa với 15 ml dầu ăn, cho tỏi băm vào phi thơm trong 30 giây. Trút nấm đùi gà và cà rốt thái hạt lựu vào đảo đều 3 phút đến khi cà rốt vừa chín tới và nấm săn ráo nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhẹ đậu phụ cùng nhân nấm cà rốt",
+      "instruction": "Nêm vào chảo nhân 4 g hạt nêm chay và 4 g đường cát trắng, đảo đều. Tiếp theo thả đậu phụ cắt hạt lựu vào đảo nhẹ tay khoảng 2 phút cho đậu se mặt và ngấm gia vị mà không bị vỡ nát, sau đó trút phần nhân ra đĩa riêng.",
+      "tip": "Đảo nhẹ đậu phụ hạt lựu bằng xẻng bản rộng giúp giữ khối vuông đẹp mắt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rang tơi hạt cơm nguội trên chảo nóng",
+      "instruction": "Lau sạch chảo, thêm 15 ml dầu ăn còn lại làm nóng trên lửa vừa rồi đổ cơm nguội vào. Dùng muôi gỗ dàn đều và đảo liên tục trong 4 phút để hạt cơm nóng đều, tách rời từng hạt tơi ráo và hơi săn bóng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn nhân đậu nấm và nêm xì dầu dậy hương",
+      "instruction": "Trút đĩa nhân nấm, cà rốt và đậu phụ trở lại chảo cơm, bật lửa lớn. Rưới 25 ml nước tương dọc theo thành chảo cho dậy mùi thơm cùng 3 g muối ăn, đảo đều tay thêm 3 phút cho hạt cơm thấm vị và quyện đều với phần nhân.",
+      "tip": "Rưới nước tương quanh thành chảo đang nóng giúp nước tương bốc hương thơm lừng mà không làm ướt nhão cơm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá và tiêu đen xay",
+      "instruction": "Nêm lại cho vừa khẩu vị, rắc hành lá thái nhỏ và 1,5 g tiêu đen xay vào đảo nhanh 15 giây rồi tắt bếp. Múc cơm rang ra đĩa và thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 438,
+    "energyKcal": 437.9,
+    "energyKj": 1832,
+    "proteinG": 16.6,
+    "fatG": 13.9,
+    "saturatedFatG": 2.1,
+    "carbG": 63.9,
+    "fiberG": 4.3,
+    "sugarG": 4.3,
+    "sodiumMg": 1174,
+    "saltG": 2.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5cd1edeb2d0fd54275023965b3d144843d7d01eadbfca7ae389ea06cb83b8afb",
+    "researchedFromV2Sha256": "6562f9f2f3939ab489e19ad55a212bd1dad7f524e96d9710c8b5ce23ea675015"
+  }
+}

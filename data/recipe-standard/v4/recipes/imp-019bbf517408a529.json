@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-019bbf517408a529",
+    "slug": "ca-chien-sot-ca-chua",
+    "title": "Cá chiên sốt cà chua",
+    "subtitle": "Cá thu phi lê chiên vàng săn chắc om trong sốt cà chua chín nhuyễn đậm đà mặn ngọt đưa cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 22,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Cá thu",
+      "Sốt cà chua",
+      "Nam Bộ",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá chiên sốt cà chua là món ăn gia đình quen thuộc với khúc cá thịt trắng béo ngọt được chiên vàng đều hai mặt giữ độ săn chắc, sau đó rim nhỏ lửa trong phần sốt cà chua chín đỏ sánh mịn quyện hương thơm hành tím, tỏi và dầu hào.",
+    "servingSuggestion": "Bày từng khúc cá ra đĩa sâu lòng, rưới phần sốt cà chua óng mượt cùng hành lá và tiêu xay lên trên, ăn nóng kèm cơm trắng dẻo và dưa leo thái lát.",
+    "storageAndReheat": "Có thể bảo quản hộp kín trong ngăn mát tủ lạnh tới 2 ngày; khi ăn chỉ cần hâm lại trên chảo lửa nhỏ khoảng 5 phút có thêm 1–2 muỗng canh nước lọc để sốt mềm sánh trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WHITE_FISH_FILLET",
+      "name": "Cá thu tươi (hoặc cá thịt trắng cắt khúc)",
+      "culinaryMeasure": "500 g (4 khúc vừa ăn)",
+      "prepNote": "rửa nhanh qua nước muối loãng, thấm thật khô hoàn toàn trước khi ướp và chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (360 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái hạt lựu hoặc băm nhỏ để nhanh nhừ ra sốt đỏ sánh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "25 g (~2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ phi thơm làm nền sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (12,5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát vát cho vào sau cùng để dậy mùi cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "nêm tạo vị mặn thơm cho sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "tăng độ sánh bóng và hậu ngọt dịu cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị chua dịu của cà chua theo khẩu vị Nam Bộ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "xát đều ướp khúc cá trước khi chiên giúp thịt cá săn chắc",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/3 muỗng cà phê)",
+      "prepNote": "chia nửa ướp cá, nửa rắc hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên cá và xào sốt)",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "dùng 40 ml áp chảo chiên vàng cá, 20 ml phi thơm hành tỏi xào cà chua",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 55.2,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 35.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "120 ml (~1/2 chén)",
+      "prepNote": "nấu loãng sốt để rim cá thấm đều gia vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 84,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thấm khô và ướp khúc cá với muối tiêu",
+      "instruction": "Thấm thật khô 4 khúc cá thu bằng khăn giấy sạch, xoa đều 3 g muối ăn và 0,7 g tiêu đen xay lên các mặt cá rồi để ướp 10 phút cho thịt cá săn chắc và đậm vị hơn khi chiên.",
+      "tip": "Thấm thật khô hai mặt khúc cá bằng khăn giấy trước khi ướp giúp thịt cá săn chắc và không bị nát khi trở mặt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế cà chua, hành tím, tỏi và hành lá",
+      "instruction": "Cà chua chín đỏ rửa sạch, bỏ cuống rồi thái hạt lựu nhỏ để sốt nhanh nhừ mịn. Hành tím và tỏi khô bóc vỏ băm nhỏ; ớt hiểm thái lát; hành lá cắt khúc ngắn 2 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên cá vàng đều hai mặt",
+      "instruction": "Làm nóng 40 ml dầu ăn trong chảo chống dính trên lửa vừa, đặt các khúc cá vào chiên khoảng 4 phút mỗi mặt đến khi hai mặt vàng xém săn chắc và thịt cá gần chín hoàn toàn thì gắp ra đĩa để ráo bớt dầu.",
+      "tip": "Lau cá thật khô và chờ dầu nóng già mới thả cá vào sẽ giúp cá không bị sát chảo và ít bắn dầu.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Phi thơm hành tỏi và xào nhừ sốt cà chua",
+      "instruction": "Chắt bớt dầu cũ, làm nóng 20 ml dầu ăn sạch trong chảo trên lửa vừa rồi phi thơm hành tím băm và tỏi băm 1 phút. Cho toàn bộ cà chua vào xào đảo 3 phút đến khi mềm nhuyễn, rót thêm 120 ml nước lọc vào đun sôi nhẹ và nêm 30 ml nước mắm ngon, 8 ml dầu hào cùng 12 g đường cát trắng khuấy đều.",
+      "tip": "Xào cà chua thật nhừ thành sốt sánh mịn trước khi thả cá vào sẽ giúp màu đỏ đẹp và sốt bám đều quanh từng khúc cá.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim cá thấm sốt cà chua trên lửa nhỏ",
+      "instruction": "Xếp nhẹ nhàng các khúc cá đã chiên vào chảo sốt, hạ lửa nhỏ và rim khoảng 8 phút (có thể lật nhẹ một lần hoặc dùng thìa rưới sốt lên mặt trên) cho sốt sánh sệt lại, thịt cá chín kỹ hoàn toàn và thấm đẫm vị chua ngọt.",
+      "tip": "Rim cá trên lửa nhỏ và chỉ trở nhẹ một lần giúp khúc cá nguyên vẹn, thấm sâu vị sốt cà chua đậm đà.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ớt và dọn dùng nóng",
+      "instruction": "Thả hành lá cắt khúc và ớt hiểm thái lát (nếu ăn cay) vào chảo, đảo nhẹ 30 giây rồi tắt bếp. Gắp cá ra đĩa, rưới đều sốt cà chua lên mặt, rắc nốt phần tiêu đen xay còn lại và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 263,
+    "energyKcal": 263.1,
+    "energyKj": 1101,
+    "proteinG": 27.4,
+    "fatG": 12.7,
+    "saturatedFatG": 2.2,
+    "carbG": 9.8,
+    "fiberG": 1.6,
+    "sugarG": 6.6,
+    "sodiumMg": 1144,
+    "saltG": 2.86,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175148"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a5612ada9305bbc10be9301e59143c24ffcfb4f5ac9c2133e41091f43a5a0aed",
+    "researchedFromV2Sha256": "f45b338d98afb78e1d8b1fbc90983188b11cd15e265ed125194be25e26ed78a7"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a71f6ef791b463ea",
+    "slug": "goi-tom-sa-chanh",
+    "title": "Gỏi tôm sả chanh kiểu Thái",
+    "subtitle": "Tôm sú chần chín giòn ngọt trộn cùng sả non, hành tím, bạc hà và nước mắm chanh ớt cay nồng đặc trưng món gỏi Plaa Goong"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Gỏi Thái",
+      "Tôm sú",
+      "Sả chanh",
+      "Khai vị",
+      "Chua cay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa gỏi tôm sả chanh kiểu Thái mang hương vị tươi mát bùng nổ với thịt tôm sú chần vừa chín tới giòn sần sật, quyện cùng sả thái khoanh mỏng, ngò gai, lá bạc hà và sốt trộn chua cay mặn ngọt hài hòa.",
+    "servingSuggestion": "Bày gỏi tôm ra đĩa sâu lòng, rắc thêm ngò gai và lá bạc hà tươi lên mặt; dùng ngay làm món khai vị hoặc ăn kèm xà lách và bánh phồng tôm giòn.",
+    "storageAndReheat": "Gỏi tôm ngon nhất khi trộn và dùng hết trong vòng 30 phút để tôm giữ độ giòn và rau không ra nước; nếu chuẩn bị trước, nên bảo quản riêng tôm chần và nước sốt trong tủ mát tối đa 12 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi nguyên con",
+      "culinaryMeasure": "500 g (khoảng 15–18 con vừa)",
+      "prepNote": "rửa sạch, bóc vỏ giữ đuôi, rạch lưng rút sạch chỉ đen rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (lấy phần non)",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc vỏ già ngoài, dùng 1 phần đập dập luộc tôm, 2 cây lấy phần gốc non thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 45 ml nước cốt, lọc bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để pha nước trộn gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (khoảng 2 củ vừa)",
+      "prepNote": "bóc vỏ, thái lát mỏng theo chiều ngang, ngâm nước đá 5 phút cho giòn bớt hăng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (khoảng 15 g)",
+      "prepNote": "rửa sạch, bỏ cuống, 2 quả băm nhỏ pha sốt, 1 quả thái sợi trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha nước sốt trộn gỏi tạo vị mặn đậm đà kiểu Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "khuấy tan hoàn toàn làm dịu vị chua cay của sốt gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt Thái",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo độ sánh nhẹ, màu đỏ cam hấp dẫn và vị cay ngọt dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "20 g (1 mớ nhỏ)",
+      "prepNote": "rửa sạch, để thật ráo nước, thái khúc nhỏ 1 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà (húng lủi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lấy lá non, rửa sạch, để ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ để rắc trộn cùng rau thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần tôm và ngâm đá)",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "đun sôi với đầu sả để chần chín tôm, phần còn lại pha đá ngâm tôm giòn",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm và sơ chế rau gia vị",
+      "instruction": "Tôm sú rửa sạch, bóc bỏ đầu và vỏ thân nhưng giữ lại chóp đuôi cho đẹp, dùng dao khía nhẹ sống lưng rút sạch chỉ đen. Bóc vỏ già của 3 cây sả tươi: lấy 1 cây đập dập để nấu nước chần, 2 cây còn lại thái lát vát thật mỏng phần thân trắng non. Bóc vỏ hành tím thái lát mỏng, băm nhuyễn tỏi khô và 2 quả ớt hiểm đỏ; thái sợi 1 quả ớt còn lại. Rửa sạch ngò gai, lá bạc hà và hành lá rồi để thật ráo.",
+      "tip": "Thái sả tươi càng mỏng theo lát chéo thì khi trộn gỏi sẽ thơm dịu, giòn mềm và không bị xơ cứng khi nhai."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần chín tôm với nước sả thơm",
+      "instruction": "Đun sôi 400 ml nước lọc cùng cây sả đập dập trên lửa lớn. Khi nước sôi bùng, thả toàn bộ 500 g tôm sú vào chần trong 2 phút đến khi tôm chuyển màu đỏ cam đều, thân cong tròn và thịt trắng đục chín hoàn toàn.",
+      "tip": "Không luộc tôm quá lâu làm thịt tôm mất nước và bị bở; vừa thấy thân tôm cong săn và chuyển màu đỏ hồng hoàn toàn là vớt ngay.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Ngâm tôm lạnh giữ độ giòn sần sật",
+      "instruction": "Vớt tôm vừa chần chín thả ngay vào tô 200 ml nước lọc lạnh có đá trong 3 phút để hãm nhiệt giúp thịt tôm giòn chắc, đồng thời ngâm chung hành tím thái lát cho bớt vị hăng. Sau đó vớt tôm và hành tím ra rổ, dùng khăn giấy thấm thật ráo nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước sốt trộn gỏi chua cay Thái",
+      "instruction": "Trong chén nhỏ, hòa tan 30 ml nước mắm ngon, 20 g đường cát trắng, 20 ml tương ớt Thái và 45 ml nước cốt chanh tươi đến khi đường tan hết. Cho toàn bộ tỏi băm và 2 quả ớt hiểm băm vào khuấy đều để tạo hỗn hợp sốt sánh thơm đủ vị chua, cay, mặn, ngọt.",
+      "tip": "Nếm thử nước sốt sao cho vị hơi đậm đà một chút vì khi trộn với tôm và rau thơm sẽ dịu lại vừa miệng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn gỏi tôm sả chanh nhẹ tay",
+      "instruction": "Cho tôm đã ráo nước vào âu trộn lớn cùng sả non thái mỏng, hành tím, ngò gai và hành lá. Rưới từ từ nước sốt đã pha lên, đảo nhẹ tay trong 1 phút cho từng con tôm và lát sả áo đều lớp sốt bóng đẹp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với lá bạc hà và thưởng thức ngay",
+      "instruction": "Cho gỏi tôm ra đĩa sâu lòng, rắc lá bạc hà tươi và ớt sợi lên trên cùng để giữ màu xanh tươi mát không bị thâm. Dọn dùng ngay khi gỏi còn mát lạnh và giòn ngọt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 191,
+    "energyKcal": 191.4,
+    "energyKj": 801,
+    "proteinG": 28.4,
+    "fatG": 1,
+    "saturatedFatG": 0.2,
+    "carbG": 19.3,
+    "fiberG": 1.7,
+    "sugarG": 9.7,
+    "sodiumMg": 1263,
+    "saltG": 3.16,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 172185",
+      "USDA FDC 173474",
+      "USDA FDC 175179",
+      "USDA FDC Sriracha Ref",
+      "VN Culinary Herb Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "696a79bd6f35ce2fee46fc0f307b86b6714fc0b676fcc3eaee6a5b3b76971e04",
+    "researchedFromV2Sha256": "6da0457ffafe2201986fe697431d5586d126a62910db5ecf50151926224b2a61"
+  }
+}

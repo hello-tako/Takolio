@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-412960b58d00d211",
+    "slug": "sundubu-tom-cay",
+    "title": "Canh đậu phụ non hải sản cay (Sundubu Jjigae)",
+    "subtitle": "Nồi canh Sundubu Jjigae sôi sùng sục với đậu phụ non mềm tan, tôm tươi ngọt thịt, nấm đùi gà, trứng gà và nước dùng ớt bột Gochugaru cay ấm"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Hàn Quốc",
+      "Món canh",
+      "Hải sản",
+      "Đậu phụ non",
+      "Cay ấm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "fish",
+      "sesame",
+      "shrimp",
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Canh đậu phụ non hải sản cay (Sundubu Jjigae) là món canh nóng nổi tiếng của Hàn Quốc nhờ dầu ớt Gochugaru tự xào thơm lừng hòa trong nước dùng cá cơm tảo bẹ, ôm trọn từng miếng đậu phụ non béo mịn, tôm tươi săn ngọt và trứng gà lòng đào.",
+    "servingSuggestion": "Dọn canh trực tiếp trong nồi đất khi nước còn sôi lăn tăn, rắc hành lá và ớt hiểm đỏ thái lát, thưởng thức cùng cơm trắng nóng.",
+    "storageAndReheat": "Món canh có đậu phụ non và trứng ngon nhất khi ăn ngay trong ngày; nếu cần bảo quản, cất ngăn mát tối đa 24 giờ và hâm sôi nhẹ không khuấy mạnh để tránh vỡ đậu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non Hàn Quốc (Sundubu)",
+      "culinaryMeasure": "600 g (khoảng 2–3 túi/hộp)",
+      "prepNote": "cắt nhẹ hoặc múc từng muỗng lớn giữ khối mềm mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "350 g (~18–20 con)",
+      "prepNote": "bóc vỏ, bỏ đầu và rút chỉ đen lưng, rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 273,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "120 g",
+      "prepNote": "lau sạch, thái lát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 114,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (~150 g)",
+      "prepNote": "để nhiệt độ phòng để thả vào nồi canh lúc cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,5 củ (~70 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ 0,5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, tách riêng đầu trắng băm nhỏ và lá xanh thái khoanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhuyễn",
+      "culinaryMeasure": "0,4 củ (~10 g, 3 tép)",
+      "prepNote": "băm thật nhuyễn để phi thơm tạo dầu ớt nền",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ thái lát",
+      "culinaryMeasure": "2 quả (~10 g)",
+      "prepNote": "rửa sạch, thái lát chéo rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "ANCHOVY_KOMBU_BROTH",
+      "name": "Nước dùng cá cơm tảo bẹ",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "làm nền ngọt thanh tự nhiên cho nồi canh hải sản",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 630,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "24 g (~3 muỗng canh)",
+      "prepNote": "chưng với dầu ở lửa nhỏ để chiết màu đỏ cam và mùi thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 24,
+      "unit": "g",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm cá cơm",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "nêm tạo vị mặn đậm đà và hậu vị umami cho nước dùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chưng cùng dầu thực vật tạo nền thơm đặc trưng của Sundubu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "kết hợp dầu mè rang để làm dầu ớt nền không bị khét",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện giúp dậy hương canh hải sản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, nấm đùi gà và rau gia vị",
+      "instruction": "Bóc vỏ, bỏ đầu và rút sạch chỉ đen lưng 350 g tôm tươi, rửa nhanh nước muối loãng rồi để ráo. Thái hạt lựu nhỏ hành tây, thái lát mỏng nấm đùi gà tươi, băm nhuyễn tỏi khô và đầu hành trắng; phần lá xanh hành lá tươi thái khoanh, ớt hiểm đỏ thái lát chéo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chưng dầu ớt Gochugaru thơm không khét",
+      "instruction": "Làm nóng nồi đất hoặc nồi đáy dày trên lửa nhỏ với 15 ml dầu thực vật và 15 ml dầu mè rang, cho đầu hành trắng, tỏi khô băm nhuyễn và hành tây vào đảo 2 phút cho thơm mềm. Tắt hoặc hạ lửa thật nhỏ, cho 24 g ớt bột Hàn Quốc (Gochugaru) vào đảo đều 1 phút thành hỗn hợp dầu ớt đỏ sẫm thơm lừng.",
+      "tip": "Chưng ớt bột Gochugaru ở lửa thật nhỏ để chiết xuất màu đỏ đẹp mà không bị cháy khét gây vị đắng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào tôm và nấu nước dùng cá cơm tảo bẹ",
+      "instruction": "Tăng lên lửa vừa, cho tôm tươi và nấm đùi gà tươi vào đảo nhanh 1–2 phút cho tôm vừa chuyển sắc hồng nhẹ, sau đó rót 700 ml nước dùng cá cơm tảo bẹ vào nồi. Nêm 30 ml nước mắm cá cơm và 1 g tiêu đen xay, đun sôi trên lửa lớn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả đậu phụ non thành từng khối lớn",
+      "instruction": "Khi nồi canh sôi bùng và tôm đã chín săn chuyển đỏ đều, nhẹ nhàng múc từng muỗng lớn 600 g đậu phụ non Hàn Quốc (Sundubu) thả vào nồi. Hạ lửa vừa-nhỏ, nấu liu riu khoảng 4 phút cho đậu phụ nóng xuyên tâm và ngấm nước dùng cay thơm.",
+      "tip": "Không khuấy mạnh sau khi cho đậu phụ non để giữ từng mảng đậu to mềm mượt, tan nhẹ khi múc.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đập trứng gà tươi trực tiếp vào nồi canh",
+      "instruction": "Đập nhẹ 3 quả trứng gà tươi vào các khoảng trống trên mặt nồi canh, đậy nắp nấu thêm 2 phút trên lửa nhỏ để lòng trắng chín đông còn lòng đỏ sánh lòng đào (hoặc nấu thêm 1 phút nếu muốn trứng chín kỹ hơn).",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ớt hiểm và thưởng thức nóng",
+      "instruction": "Tắt bếp, rắc hành lá tươi thái khoanh cùng ớt hiểm đỏ thái lát lên mặt nồi canh Sundubu Jjigae đang sôi nhẹ; dọn nóng ngay ăn kèm cơm trắng.",
+      "tip": "Khi ăn có thể đánh tan lòng đỏ trứng hòa trực tiếp vào nước canh nóng để tăng độ béo mượt và dịu vị cay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 408,
+    "energyKcal": 408.4,
+    "energyKj": 1709,
+    "proteinG": 39.4,
+    "fatG": 20.2,
+    "saturatedFatG": 3.7,
+    "carbG": 19.1,
+    "fiberG": 4.3,
+    "sugarG": 4.7,
+    "sodiumMg": 1748,
+    "saltG": 4.37,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Anchovy Kelp Stock Ref",
+      "Korean Chili Flake Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172476",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2607daaeacd23f7d74473513968a6883a0a757c228ba9aa03c7382b925a6c13f",
+    "researchedFromV2Sha256": "be5c92bbb65b39c1a1ef82c5db225ae5c6cd61bca849c4077fa75cacbd6b4b09"
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-edac077a60dfa8b5",
+    "slug": "trung-kho-tra-trung-hoa",
+    "title": "Trứng gà kho trà vân đá ngũ vị",
+    "subtitle": "Trứng gà luộc lòng đào rạn vỏ ngâm ủ trong nước kho hoa hồi, quế thanh, nguyệt quế, tiêu Tứ Xuyên và xì dầu tạo hoa văn vân đá đẹp mắt"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Trứng kho trà",
+      "Vân đá",
+      "Ngũ vị",
+      "Ăn vặt",
+      "Trung Hoa"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng kho vân đá truyền thống của ẩm thực đường phố Trung Hoa: những quả trứng gà luộc vừa chín tới được gõ rạn nhẹ lớp vỏ ngoài, rồi ngâm ủ trong nồi nước gia vị đậm hương hoa hồi, quế thanh, lá nguyệt quế, tiêu Tứ Xuyên và xì dầu cho ra đường vân đá nâu sẫm thơm bùi.",
+    "servingSuggestion": "Bóc vỏ trứng kho vân đá, cắt đôi bày ăn kèm tô mì nước, cháo trắng hoặc dùng như món ăn vặt mặn thơm giàu đạm.",
+    "storageAndReheat": "Giữ nguyên trứng chưa bóc vỏ ngâm trong nước kho ở ngăn mát tủ lạnh tối đa 4 ngày; dùng lạnh, ở nhiệt độ phòng hoặc hâm ấm nhẹ đều ngon."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "8 quả (~400 g)",
+      "prepNote": "để ở nhiệt độ phòng 1 giờ trước khi luộc để vỏ không bị nứt vỡ đột ngột",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 352,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (khoảng 2 lát)",
+      "prepNote": "rửa sạch, thái lát mỏng không cần gọt vỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 3.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "STAR_ANISE",
+      "name": "Hoa hồi khô",
+      "culinaryMeasure": "3 g (~2 hoa)",
+      "prepNote": "rửa sạch bụi trước khi nấu nước ngâm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CINNAMON",
+      "name": "Quế thanh khô",
+      "culinaryMeasure": "3 g (~1 đoạn ngắn 4 cm)",
+      "prepNote": "bẻ nhỏ hoặc để nguyên thanh nấu nước kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "1 g (~2 lá)",
+      "prepNote": "rửa sơ, tạo hương thơm dịu cho nước ngâm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SICHUAN_PEPPER",
+      "name": "Tiêu Tứ Xuyên (hoa tiêu)",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "cho nguyên hạt vào nấu nước gia vị",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm dịu cho trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo màu nâu sẫm lên vân đá rõ nét trên lòng trắng trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 9.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn và làm dịu hương gia vị khô",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "giúp vị mặn thấm qua vết nứt vào tận lòng đỏ trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "20 ml (~4 muỗng cà phê)",
+      "prepNote": "tạo hương thơm ấm đặc trưng cho nước kho",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 19.8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 9.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "nấu nước kho ngũ vị và đun luộc trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 140,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "sauce",
+      "title": "Nấu và để nguội nước kho ngũ vị",
+      "instruction": "Cho gừng tươi thái lát, 3 g hoa hồi khô, 3 g quế thanh, 1 g lá nguyệt quế khô, 2 g tiêu Tứ Xuyên, 30 ml xì dầu nhạt, 15 ml xì dầu đặc, 4 g đường cát trắng, 8 g muối ăn, 20 ml rượu Thiệu Hưng và 700 ml nước lọc vào nồi (nếu có sẵn 10 g lá trà đen khô, cho thêm vào túi lọc để tạo hương trà truyền thống). Đun sôi rồi hạ lửa nhỏ đậy nắp om 10 phút cho thảo mộc tiết hương, sau đó tắt bếp mở nắp để nguội hoàn toàn.",
+      "tip": "Để nước kho nguội hẳn trước khi thả trứng vào ngâm sẽ giữ lòng đỏ mềm dẻo mà không bị chín quá cứng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc trứng gà chín lòng đào hoặc chín kỹ",
+      "instruction": "Đun một nồi nước khác cho sôi mạnh, dùng muôi lớn nhẹ nhàng thả 8 quả trứng gà ở nhiệt độ phòng vào nước sôi (tránh va đập vỡ vỏ). Luộc đúng 7 phút cho lòng đỏ dẻo mềm hoặc 9 phút nếu thích lòng đỏ chín bở.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Ngâm nước đá làm nguội trứng nhanh",
+      "instruction": "Vớt trứng ra thả ngay vào thau nước lạnh có đá viên trong 5 phút để dừng quá trình chín và giúp màng trứng dễ bong hơn khi bóc.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Gõ tạo mạng vết nứt vân đá trên vỏ trứng",
+      "instruction": "Dùng lưng muỗng nhỏ gõ nhẹ đều khắp vỏ từng quả trứng để tạo mạng lưới vết nứt mịn đan xen nhau nhưng tuyệt đối không bóc vỏ ra.",
+      "tip": "Gõ lực vừa phải để nước kho thấm qua tạo hoa văn vân đá đều đẹp mà không làm vỡ nát phần lòng trắng mềm bên trong."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "marinate",
+      "title": "Ngâm ủ trứng trong nước kho gia vị",
+      "instruction": "Xếp toàn bộ trứng đã gõ rạn vỏ vào nồi nước kho ngũ vị đã nguội hoàn toàn, đảm bảo nước ngập hết trứng. Đậy kín nắp và đặt vào ngăn mát tủ lạnh ngâm ít nhất 8 giờ cho vân màu đậm nét và thấm sâu vào tận lòng đỏ.",
+      "tip": "Ngâm từ 8 đến 24 giờ trong ngăn mát giúp đường vân đá hiện rõ nét và hương ngũ vị ngấm sâu đều khắp quả trứng.",
+      "timerMinutes": 480
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bóc vỏ lộ vân đá và thưởng thức",
+      "instruction": "Lấy trứng ra bóc nhẹ vỏ dưới vòi nước sạch để lộ hoa văn vân đá nâu óng tự nhiên. Có thể dùng mát trực tiếp, cắt đôi xếp lên bát mì nóng hoặc hâm ấm nhẹ trong nước kho trước khi ăn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 137,
+    "energyKcal": 136.7,
+    "energyKj": 572,
+    "proteinG": 11.6,
+    "fatG": 8.4,
+    "saturatedFatG": 2.8,
+    "carbG": 2.3,
+    "fiberG": 0.2,
+    "sugarG": 1.2,
+    "sodiumMg": 878,
+    "saltG": 2.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "Spice Reference",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170917",
+      "USDA FDC 171287",
+      "USDA FDC 171316",
+      "USDA FDC 171320",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "12ba84fc176a5f79a5839ba435e28c719a0dbb9885f577397e749c9d7621a8bd",
+    "researchedFromV2Sha256": "cd8ba3722cad50501036615d9a6cee44c3920c64e11a5923e092a413faab52b0"
+  }
+}

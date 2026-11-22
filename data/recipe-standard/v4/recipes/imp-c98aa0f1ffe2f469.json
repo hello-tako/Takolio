@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c98aa0f1ffe2f469",
+    "slug": "suon-om-ca-chua-y",
+    "title": "Sườn heo om sốt cà chua kiểu Ý",
+    "subtitle": "Sườn non áp chảo xém vàng om mềm róc xương cùng sốt cà chua đậm đà, rượu vang trắng, ô liu đen và hương thảo"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "hard",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 80,
+    "servings": 5,
+    "tags": [
+      "Sườn heo",
+      "Ragu Ý",
+      "Om cà chua",
+      "Ô liu đen",
+      "Cuối tuần"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "pork",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Món sườn heo om cà chua đậm đà kiểu Ý với dẻ sườn áp chảo xém cạnh thơm phức, hầm liu riu cùng hành tây, rượu vang trắng, cà chua đóng hộp và ô liu đen cho đến khi thịt mềm tơi dễ dàng tách khỏi xương.",
+    "servingSuggestion": "Múc sườn om nóng hổi cùng phần sốt sánh ra đĩa lớn, dùng kèm bánh mì giòn chấm sốt, khoai tây nghiền hoặc trộn cùng mì Ý luộc chín.",
+    "storageAndReheat": "Món sườn om bảo quản hộp kín trong ngăn mát tối đa 3 ngày và hương vị thường đậm ngon hơn vào ngày hôm sau. Hâm nóng lại trên lửa nhỏ, thêm 2–3 muỗng nước nếu sốt đặc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt miếng",
+      "culinaryMeasure": "1300 g",
+      "prepNote": "rửa sạch, chặt dẻ sườn vừa ăn rồi thấm thật khô nước; bỏ phần xương và chắt bớt mỡ thừa tiết ra khi om",
+      "componentGroup": "main",
+      "requiredQuantity": 1300,
+      "unit": "g",
+      "grossGrams": 1300,
+      "edibleRetentionRatio": 0.58,
+      "edibleGrams": 754,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua đóng hộp (pelati hoặc passata)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "nếu dùng quả nguyên lột vỏ thì bóp nát trước khi cho vào nồi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "1,5 củ vừa (~210 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu vừa",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (~110 g)",
+      "prepNote": "gọt vỏ, thái hạt lựu nhỏ để tăng vị ngọt nền cho sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, để nguyên tép đập nhẹ để phi thơm rồi gắp bỏ trước khi cháy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "dùng để tráng đáy nồi sau khi áp chảo sườn và hành",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 118.8,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 83.16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng để phi thảo mộc và áp chảo xém mặt sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OLIVE_BLACK",
+      "name": "Quả ô liu đen bỏ hạt",
+      "culinaryMeasure": "120 g",
+      "prepNote": "để ráo nước ngâm, thái đôi hoặc để nguyên quả cho vào phút cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Thảo mộc Ý khô (hương thảo)",
+      "culinaryMeasure": "3 g (~1 muỗng canh)",
+      "prepNote": "băm nhỏ nhẹ trước khi phi cùng dầu ô liu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "1 g (khoảng 3–4 lá)",
+      "prepNote": "xé nhẹ bằng tay để lá tiết tinh dầu thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm khi cho cà chua và điều chỉnh lại trước khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2,5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vào nồi om cùng muối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "g",
+      "grossGrams": 2.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nóng (châm khi om)",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "châm thêm từng ít nếu sốt cạn trước khi sườn mềm",
+      "componentGroup": "broth",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 105,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô sườn non và sơ chế rau củ",
+      "instruction": "Rửa sạch 1,3 kg sườn non heo, chặt miếng vừa ăn rồi dùng khăn giấy thấm thật khô để sườn dễ xém vàng. Hành tây vàng và cà rốt tươi thái hạt lựu; tỏi tươi bóc vỏ để nguyên tép; lá nguyệt quế khô xé nhẹ bằng tay.",
+      "tip": "Thấm thật ráo nước trên mặt sườn trước khi áp chảo giúp miếng sườn vàng nâu thơm phức thay vì bị hấp hơi ra nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm thảo mộc và áp chảo vàng sườn non",
+      "instruction": "Làm nóng 45 ml dầu ô liu nguyên chất trong nồi đáy dày trên lửa vừa, thả tỏi nguyên tép, thảo mộc Ý khô và lá nguyệt quế khô vào phi khoảng 1 phút cho dậy hương rồi gắp bỏ tỏi ra ngoài. Cho sườn non vào áp chảo khoảng 8 phút, trở đều các mặt đến khi sườn săn vàng đẹp.",
+      "tip": "Gắp tỏi ra trước khi áp chảo thịt lâu giúp nồi sốt không bị ám vị đắng do tỏi cháy.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào mềm hành tây, cà rốt và khử vang trắng",
+      "instruction": "Thêm hành tây và cà rốt thái hạt lựu vào nồi đảo cùng sườn khoảng 10 phút trên lửa vừa không đậy nắp đến khi hành mềm thơm. Rưới 120 ml rượu vang trắng khô vào, vặn lửa lớn đun 4 phút đồng thời cạo nhẹ đáy nồi cho cồn bay hơi hoàn toàn.",
+      "timerMinutes": 14
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om sườn với cà chua đóng hộp 45 phút",
+      "instruction": "Nếu trong nồi còn quá nhiều mỡ tiết ra thì chắt bớt, sau đó đổ 500 g cà chua đóng hộp vào cùng 8 g muối ăn và 2,5 g tiêu đen xay. Đảo đều, hạ xuống lửa nhỏ, đậy nắp kín và om liu riu khoảng 45 phút đến khi thịt sườn chín mềm và dễ dàng tách khỏi xương; thỉnh thoảng đảo và châm chút nước lọc nóng nếu sốt quá đặc.",
+      "tip": "Giữ lửa thật nhỏ và đậy kín nắp giúp hơi nóng tuần hoàn làm sườn mềm róc xương mà sốt cà chua không bị bén cháy đáy nồi.",
+      "timerMinutes": 45
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm quả ô liu đen và sánh sốt",
+      "instruction": "Mở nắp, thả 120 g quả ô liu đen bỏ hạt vào đảo đều và nấu thêm 3 phút trên lửa vừa cho ô liu thấm vị sốt cà chua và nước sốt đạt độ sánh đậm mong muốn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Vớt lá nguyệt quế và thưởng thức nóng",
+      "instruction": "Vớt bỏ lá nguyệt quế khô, nêm lại gia vị cho vừa miệng rồi múc sườn om sốt cà chua ra đĩa sâu lòng để dùng nóng cùng bánh mì giòn hoặc cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 589,
+    "energyKcal": 588.9,
+    "energyKj": 2464,
+    "proteinG": 26.2,
+    "fatG": 45.9,
+    "saturatedFatG": 14.5,
+    "carbG": 15.9,
+    "fiberG": 3.9,
+    "sugarG": 7.1,
+    "sodiumMg": 994,
+    "saltG": 2.48,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169072",
+      "USDA FDC 169094",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170393",
+      "USDA FDC 170917",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173475",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6730c036020532afd7b11ee318883502274aa99b57d16aed626842a7fd93046b",
+    "researchedFromV2Sha256": "012219587ed4d63cfbd5f2040b330ff3c153da37953afe545851c53e75571da2"
+  }
+}

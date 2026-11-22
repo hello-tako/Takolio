@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-977a3409383d743f",
+    "slug": "muc-xao-bong-cai",
+    "title": "Mực xào bông cải xanh",
+    "subtitle": "Khoanh mực tươi giòn sần sật xào lửa lớn cùng bông cải xanh mướt thấm sốt nước tương và hành tím phi thơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Hải sản",
+      "Bông cải",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mực xào bông cải xanh kết hợp giữa những khoanh mực giòn ngọt không hề tanh với bông cải xanh chần sơ xanh mướt, thấm đều gia vị nước tương, hành tím phi thơm và vị cay nhẹ kích thích vị giác.",
+    "servingSuggestion": "Gắp mực xào bông cải xanh ra đĩa nóng, rắc tiêu đen xay và chút ớt bột nếu thích cay; dùng ngay cùng cơm trắng.",
+    "storageAndReheat": "Mực xào ngon nhất khi thưởng thức nóng ngay; nếu bảo quản tủ mát trong ngày, hãy đảo nhanh trên chảo lửa lớn khoảng 1 phút để mực không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rút bỏ túi mực, nang và nội tạng, ngâm rửa giấm muối cho hết tanh rồi thái khoanh tròn",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh",
+      "culinaryMeasure": "1,25 bông vừa (khoảng 375 g)",
+      "prepNote": "tách nhánh vừa ăn, rửa sạch và chần nhanh qua nước sôi có muối",
+      "componentGroup": "main",
+      "requiredQuantity": 1.25,
+      "unit": "piece",
+      "grossGrams": 375,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 307.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (khoảng 3 củ)",
+      "prepNote": "bóc vỏ; chia 20 g thái lát mỏng ướp mực và 10 g băm nhỏ phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khúc ngắn 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tỏi và xào nhanh mực với bông cải xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "rưới vào bước đảo chung mực và bông cải cho thơm đậm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 muỗng cà phê (8 g)",
+      "prepNote": "dùng ướp mực cân bằng vị mặn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "dùng ướp mực đậm đà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "dùng 4 g pha nước chần bông cải và rửa mực, phần 4 g còn lại ướp mực",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 3.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "chia 1 g ướp mực và 1 g rắc mặt đĩa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột",
+      "culinaryMeasure": "1/2 muỗng cà phê (1,5 g)",
+      "prepNote": "tùy chọn rắc nhẹ lúc hoàn thành để tăng hương cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "pha với nước lạnh để ngâm rửa khử tanh mực rồi xả sạch lại nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.15,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 0.76,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử tanh mực bằng giấm gạo",
+      "instruction": "Cắt bỏ mắt, răng, túi mực, nội tạng và rút thanh nang trắng bên trong thân mực ống. Rửa mực qua nước pha 2 g muối ăn, sau đó ngâm 5 phút trong thau nước lạnh có pha 15 ml giấm gạo để khử sạch mùi tanh, xả lại thật sạch dưới vòi nước rồi thái khoanh tròn vừa ăn và để ráo.",
+      "tip": "Ngâm nhanh mực với nước pha giấm gạo giúp khử tanh hiệu quả mà thịt mực vẫn giữ được độ trắng giòn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp mực và sơ chế bông cải xanh",
+      "instruction": "Ướp mực đã ráo nước với 20 g hành tím khô thái lát mỏng, 4 g muối ăn, 8 g đường cát trắng, 5 g hạt nêm và 1 g tiêu đen xay trong 15 phút. Trong lúc chờ, tách bông cải xanh thành từng nhánh vừa ăn, rửa sạch; băm nhỏ 10 g hành tím còn lại cùng tỏi khô; cắt khúc hành lá.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chần sơ bông cải xanh giữ màu tươi",
+      "instruction": "Đun sôi nồi nước với 2 g muối ăn còn lại, thả bông cải xanh vào chần nhanh trong khoảng 1 phút cho vừa chuyển sắc xanh mướt rồi vớt ra rổ để thật ráo nước.",
+      "tip": "Chỉ chần bông cải xanh đúng 1 phút để bông cải giữ độ giòn sần sật khi xào chung với mực."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào nóng bông cải",
+      "instruction": "Làm nóng 25 ml dầu ăn trong chảo rộng trên lửa vừa, phi thơm hành tím băm và tỏi băm. Trút bông cải xanh đã ráo vào đảo đều khoảng 1,5 phút cho thấm dầu tỏi thơm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào lửa lớn cho mực săn giòn quyện xì dầu",
+      "instruction": "Tăng lên lửa lớn nhất, trút toàn bộ mực đã ướp vào chảo bông cải xanh và đảo nhanh tay liên tục khoảng 3 phút cho đến khi khoanh mực săn chắc, chuyển màu trắng đục viền hồng và chín hoàn toàn. Rưới 15 ml nước tương (xì dầu) vào đảo đều thêm 30 giây, nêm nếm lại cho vừa miệng.",
+      "tip": "Giữ lửa lớn khi cho mực vào giúp mực chín nhanh, giữ độ giòn ngọt mà không bị ra nhiều nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá, ớt bột và tiêu",
+      "instruction": "Thả hành lá cắt khúc và 1,5 g ớt bột (nếu thích cay) vào đảo nhanh 15 giây rồi tắt bếp. Bày mực xào bông cải xanh ra đĩa, rắc 1 g tiêu đen xay còn lại lên trên và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 250,
+    "energyKcal": 249.6,
+    "energyKj": 1044,
+    "proteinG": 24.2,
+    "fatG": 9.3,
+    "saturatedFatG": 1.5,
+    "carbG": 18.7,
+    "fiberG": 3.6,
+    "sugarG": 5.6,
+    "sodiumMg": 1114,
+    "saltG": 2.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170379",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171319",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 174223",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "91482137d85714c73db7543b6d2aefa1b39ab9b330888a3f9f4b4b0842b4f7cc",
+    "researchedFromV2Sha256": "3142f42895531c91c833aa31c174f9db96e3960b97d6879e13e8ad853612974b"
+  }
+}

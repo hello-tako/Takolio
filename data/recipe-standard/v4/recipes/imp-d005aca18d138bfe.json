@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d005aca18d138bfe",
+    "slug": "tom-xao-hung-que-thai",
+    "title": "Tôm xào húng quế kiểu Thái",
+    "subtitle": "Tôm tươi xào nhanh lửa lớn cùng tỏi ớt giã thơm nồng, sốt dầu hào đậm đà và lá húng quế Thái dậy vị Pad Krapao trứ danh"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Pad Krapao",
+      "Tôm xào",
+      "Húng quế",
+      "Ẩm thực Thái",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "molluscs",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tôm xào húng quế kiểu Thái (Pad Krapao Tôm) là món ăn đường phố cực kỳ bắt cơm với từng con tôm tươi săn giòn áo lớp sốt dầu hào, nước mắm sánh đậm, hòa cùng vị cay thơm nồng nàn của tỏi ớt giã và lá húng quế Thái đảo nhanh khi tắt bếp.",
+    "servingSuggestion": "Trút tôm xào húng quế ra đĩa, rắc thêm hành lá và thưởng thức ngay với cơm trắng nóng hổi cùng một quả trứng ốp la lòng đào kiểu Thái.",
+    "storageAndReheat": "Món xào tôm ngon nhất khi ăn nóng ngay; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và làm nóng nhanh 1 phút trên chảo nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi (bóc vỏ, rút chỉ đen)",
+      "culinaryMeasure": "350 g",
+      "prepNote": "rửa sạch, bóc vỏ, bỏ đầu, rút sạch chỉ đen dọc sống lưng rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 273,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái tươi",
+      "culinaryMeasure": "30 g (khoảng 1 nắm lớn)",
+      "prepNote": "nhặt lấy lá non, rửa sạch rồi vẩy thật ráo nước",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (18–19 g, ~6 tép)",
+      "prepNote": "bóc vỏ, cho vào cối giã thô cùng ớt hiểm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "6 quả (30 g)",
+      "prepNote": "bỏ cuống, giã thô cùng tỏi (giảm bớt nếu ăn cay vừa)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "bóc vỏ, thái lát múi cau mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha sốt xào tạo độ sánh bóng đậm vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo mùi thơm đậm đà đặc trưng kiểu Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "cân bằng dịu vị mặn cay của sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi ớt giã và xào tôm trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 28.98,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "hòa tan hỗn hợp sốt giúp áo đều quanh tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm, giã tỏi ớt và nhặt lá húng quế",
+      "instruction": "Rửa sạch 350 g tôm tươi, bóc vỏ, bỏ đầu và rút sạch chỉ đen sống lưng, để thật ráo. Giã thô tỏi bóc vỏ cùng ớt hiểm trong cối cho dậy mùi tinh dầu. Nhặt lá húng quế Thái rửa ráo; thái múi cau hành tây và cắt khúc hành lá.",
+      "tip": "Giã thô tỏi và ớt bằng cối đá giúp giải phóng nhiều tinh dầu thơm nồng hơn so với băm nhỏ bằng dao."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn chén sốt Pad Krapao đậm vị",
+      "instruction": "Khuấy tan hoàn toàn 30 ml dầu hào, 15 ml xì dầu nhạt, 15 ml nước mắm, 8 g đường cát trắng và 15 ml nước lọc trong chén nhỏ để sẵn bên bếp."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt giã trên chảo dầu nóng",
+      "instruction": "Đun nóng chảo rộng với 35 ml dầu ăn trên lửa vừa-lớn, cho hỗn hợp tỏi ớt giã vào phi thơm khoảng 30 giây đến khi tỏi vừa ngả vàng thơm nồng và dậy mùi cay.",
+      "tip": "Canh chảo thật nóng và đảo liên tục khi phi tỏi ớt để tỏi thơm vàng mà không bị cháy khét gây đắng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn tôm nhanh trên lửa lớn",
+      "instruction": "Tăng lửa lên mức lớn nhất, trút toàn bộ tôm tươi đã ráo nước vào chảo đảo nhanh tay khoảng 2 phút đến khi tôm chuyển màu đỏ hồng cong đều và săn bề mặt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om nhanh tôm trong sốt và xào hành tây chín giòn",
+      "instruction": "Rưới đều chén sốt đã pha vào chảo tôm, đảo đều khoảng 1 phút cho sốt sôi sánh bám quanh thân tôm. Nếu dùng hành tây, thả hành tây thái lát vào đảo tiếp 1 phút cho hành vừa chín trong và tôm chín hoàn toàn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo lá húng quế Thái khi tắt bếp và dọn nóng",
+      "instruction": "Tắt bếp ngay, thả toàn bộ 30 g lá húng quế Thái và hành lá cắt khúc vào chảo đảo nhanh 3–4 lượt để hơi nóng làm lá vừa héo dậy hương thơm nồng đặc trưng mà vẫn giữ màu xanh mướt. Trút ra đĩa dùng nóng với cơm trắng.",
+      "tip": "Chỉ cho lá húng quế vào sau khi đã tắt bếp để tránh lá bị thâm đen và bay mất tinh dầu thơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 209,
+    "energyKcal": 208.7,
+    "energyKj": 873,
+    "proteinG": 20.4,
+    "fatG": 10.3,
+    "saturatedFatG": 1.5,
+    "carbG": 9.7,
+    "fiberG": 1,
+    "sugarG": 5.5,
+    "sodiumMg": 1253,
+    "saltG": 3.13,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172232",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ff28164d20178425241cf86b8e879a0fd6802c3694faa1104c29ac619e999b51",
+    "researchedFromV2Sha256": "93b0fa97f3ef47cccc2d4228f39d30378db9d4ef04bc84cbe6274e4e058a0066"
+  }
+}

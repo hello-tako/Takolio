@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-323aae415415eb28",
+    "slug": "tom-kho-tieu-xanh",
+    "title": "Tôm kho tiêu xanh",
+    "subtitle": "Tôm tươi thịt chắc kho sánh keo với tiêu xanh tươi đập dập cay tê thơm nồng, món mặn nhanh gọn cực bắt cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Hải sản",
+      "Tiêu xanh",
+      "Nhanh gọn",
+      "Nam Bộ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm tươi rang săn rồi kho mở nắp với nước mắm đường và những chùm tiêu xanh tươi đập dập, mang lại vị cay tê dịu nhẹ và hương thơm tinh dầu tiêu đặc trưng miền Nam.",
+    "servingSuggestion": "Xếp tôm cùng chùm tiêu xanh ra đĩa, rưới phần nước kho sánh bóng và rắc hành lá cắt khúc; ăn nóng với cơm trắng và rau luộc.",
+    "storageAndReheat": "Dùng hết trong ngày để giữ độ ngọt giòn của tôm và hương thơm tươi của tiêu xanh; nếu bảo quản ngăn mát tối đa 24 giờ, hâm nhanh trên chảo lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú hoặc tôm thẻ tươi",
+      "culinaryMeasure": "400 g",
+      "prepNote": "cắt bớt râu và chân, rút chỉ đen, rửa nước muối chanh loãng rồi để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 312,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GREEN_PEPPERCORN",
+      "name": "Tiêu xanh tươi nguyên chùm",
+      "culinaryMeasure": "30 g (2–3 nhánh)",
+      "prepNote": "rửa sạch, 1/2 đập dập nhẹ để ướp và 1/2 giữ nguyên chùm thả vào khi kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 25.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp tôm và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, phần đầu hành băm nhỏ ướp tôm, phần lá cắt khúc 2,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1/2 quả (khoảng 22,5 g)",
+      "prepNote": "vắt nước cốt pha nước muối loãng rửa khử tanh tôm và giữ lại vài giọt rưới khi hoàn thành",
+      "componentGroup": "process",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng trong hỗn hợp ướp và kho tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "18 g (~1,5 muỗng canh)",
+      "prepNote": "chia 10 g thắng nước màu và 8 g ướp tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc nhẹ sau khi tắt bếp để tăng tầng hương cay",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "4 g",
+      "prepNote": "pha cùng nước cốt chanh rửa khử tanh tôm rồi xả bỏ",
+      "componentGroup": "process",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng thắng nước màu và phi thơm hành tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nóng",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng chế vào nồi khi kho để tôm thấm gia vị mà không cháy sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm với nước muối chanh loãng",
+      "instruction": "Pha 4 g muối hạt và phần lớn nước cốt của 1/2 quả chanh tươi vào tô nước lạnh (chừa lại vài giọt chanh). Ngâm rửa nhanh 400 g tôm trong 1 phút cho hết mùi tanh, xả lại nước sạch rồi cắt bớt râu, rút chỉ đen trên lưng và để thật ráo nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế tiêu xanh và hành tỏi thơm",
+      "instruction": "Rửa sạch 30 g tiêu xanh tươi, lấy một nửa số hạt đập dập nhẹ cho tiết tinh dầu, phần còn lại giữ nguyên nhánh. Băm nhỏ hành tím, tỏi khô và đầu hành lá; lá hành cắt khúc 2,5 cm; ớt hiểm thái lát mỏng.",
+      "tip": "Đập dập nhẹ một phần tiêu xanh khi ướp giúp vị cay thơm thấm vào thịt tôm, trong khi giữ nguyên chùm cho vào sau giúp món ăn bắt mắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp tôm cùng tiêu xanh đập dập",
+      "instruction": "Trộn đều tôm với một nửa hành tím và tỏi băm, đầu hành băm, phần tiêu xanh đập dập, 30 ml nước mắm, 8 g đường cát trắng và 4 g hạt nêm. Ướp trong 15 phút cho thịt tôm săn và đậm đà.",
+      "tip": "Tôm tươi chỉ cần ướp khoảng 15 phút là đủ ngấm vị, ướp quá lâu với muối mắm dễ làm thịt tôm bị bở.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Thắng nước màu và xào săn tôm",
+      "instruction": "Đun nóng nồi đất hoặc chảo với 25 ml dầu ăn và 10 g đường cát trắng còn lại trên lửa nhỏ đến khi đường chuyển màu nâu cánh gián. Trút phần hành tím, tỏi băm còn lại vào phi thơm 30 giây, rồi vặn lửa lớn cho tôm vào đảo nhanh 3 phút đến khi tôm cong đỏ đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho mở nắp với tiêu xanh nguyên chùm",
+      "instruction": "Rót 100 ml nước lọc nóng vào nồi, thả các nhánh tiêu xanh nguyên chùm còn lại vào cùng. Hạ lửa vừa nhỏ, kho không đậy nắp trong 8 phút, đảo nhẹ vài lần cho tôm chín hồng hoàn toàn và nước sốt rút sánh bóng bám quanh vỏ tôm.",
+      "tip": "Không đậy nắp và không kho quá lâu để tôm giữ được độ giòn ngọt tự nhiên mà không bị bở thịt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện hương vị và bày đĩa",
+      "instruction": "Thả hành lá cắt khúc và ớt hiểm thái lát vào đảo nhẹ, tắt bếp rồi rắc 1,5 g tiêu đen xay và vắt thêm vài giọt nước cốt chanh tươi còn lại cho dậy hương thanh nhẹ. Dọn nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 203,
+    "energyKcal": 203.3,
+    "energyKj": 851,
+    "proteinG": 22.6,
+    "fatG": 7.6,
+    "saturatedFatG": 1.2,
+    "carbG": 12.5,
+    "fiberG": 1.4,
+    "sugarG": 7.5,
+    "sodiumMg": 1290,
+    "saltG": 3.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Green Peppercorn Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8df46b54fc7e31187a4822b4ac23c2d80fa58ba91fac3f61f84b9d321920e19d",
+    "researchedFromV2Sha256": "819180201a427845ba7563469c1fad3e09381efa3087f98664c55e2e4806e0d8"
+  }
+}

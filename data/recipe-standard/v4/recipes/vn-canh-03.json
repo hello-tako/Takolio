@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-canh-03",
+    "slug": "canh-kho-qua-nhoi-thit",
+    "title": "Canh khổ qua nhồi thịt thanh mát",
+    "subtitle": "Khổ qua xanh giòn dịu vị đắng, ôm trọn nhân thịt heo xay quyện mộc nhĩ thơm bùi trong nước dùng trong ngọt thanh nhiệt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Nam Bộ",
+      "Thanh nhiệt",
+      "Truyền thống",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Món canh truyền thống thanh mát với từng khoanh khổ qua xanh mềm vừa phải, giảm hẳn vị đắng gắt, bao bọc nhân thịt heo xay đậm đà giòn sần sật mộc nhĩ cùng nước canh ngọt dịu.",
+    "servingSuggestion": "Cắt khúc khổ qua nhồi thịt thành khoanh vừa ăn, xếp vào tô chan nước dùng nóng, rắc hành ngò và tiêu xay; dùng kèm cơm trắng hoặc chén nước mắm ớt.",
+    "storageAndReheat": "Mở hé nắp khi canh vừa nguội để tránh đọng hơi nước làm canh nhanh chua; bảo quản ngăn mát tối đa 24 giờ và đun sôi kỹ trước khi dùng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BITTER_MELON",
+      "name": "Khổ qua (mướp đắng) xanh tươi",
+      "culinaryMeasure": "4 trái vừa (~640 g)",
+      "prepNote": "chọn trái da căng gai nở đều, rửa sạch, cắt bỏ hai đầu, rạch dọc thân nạo sạch ruột và màng trắng bên trong",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 640,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 524.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (nạc dăm lẫn chút mỡ)",
+      "culinaryMeasure": "250 g",
+      "prepNote": "chọn thịt xay mới có tỉ lệ 8 phần nạc 2 phần mỡ để nhân mềm ngọt không bị khô",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "WOOD_EAR_MUSHROOM",
+      "name": "Mộc nhĩ (nấm mèo khô)",
+      "culinaryMeasure": "20 g",
+      "prepNote": "ngâm nước ấm 15 phút cho nở mềm, rửa sạch, cắt bỏ chân nấm cứng rồi băm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà (tạo độ kết dính cho nhân)",
+      "culinaryMeasure": "1 quả (~50 g)",
+      "prepNote": "đập ra chén đánh tan sơ trước khi trộn vào thịt xay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "15 g (1 củ vừa)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn thơm nhân thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (~12 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn trộn cùng thịt ướp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 cây)",
+      "prepNote": "phần đầu hành trắng băm nhuyễn ướp thịt; vài cọng lá dài trụng nước sôi để buộc khổ qua; phần còn lại cắt khúc rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt gốc, rửa sạch, thái nhỏ rắc lên tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "12 g (~2,5 muỗng cà phê)",
+      "prepNote": "chia 6 g ướp nhân thịt heo xay và 6 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 4 g pha nước chần khổ qua khử đắng và 4 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 4.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp nhân thịt và 3 g cân vị thanh cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 2 g ướp nhân thịt cho thơm nồng, 1 g rắc mặt khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "nấu nước dùng hầm khổ qua (thêm nước riêng để chần sơ khổ qua)",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nạo sạch ruột và chần khổ qua giảm đắng",
+      "instruction": "Rửa sạch 4 trái khổ qua, cắt bỏ hai đầu, dùng mũi dao rạch một đường dọc thân rồi dùng cán muỗng nạo sạch toàn bộ hạt và phần màng trắng gây đắng bên trong. Đun sôi một nồi nước nhỏ pha 4 g muối, chần nhanh khổ qua trong 30–45 giây rồi vớt ngay vào thau nước lạnh cho nguội hẳn, để ráo nước. Tận dụng nước nóng trụng mềm vài cọng lá hành lá để làm dây buộc.",
+      "tip": "Nạo thật sạch lớp màng trắng sát ruột và chần nhanh rồi ngâm nước lạnh giúp khổ qua hết đắng gắt mà vẫn giữ màu xanh tươi.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Ngâm mộc nhĩ và băm nhỏ rau thơm",
+      "instruction": "Ngâm 20 g mộc nhĩ khô vào nước ấm khoảng 15 phút cho nở mềm hoàn toàn, rửa lại nhiều lần cho sạch sạn, cắt bỏ chân nấm cứng và băm nhỏ. Băm nhuyễn hành tím, tỏi và phần đầu trắng của hành lá; phần lá hành còn lại và ngò rí rửa sạch, thái nhỏ.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Trộn và ướp nhân thịt heo xay mộc nhĩ",
+      "instruction": "Cho 250 g thịt heo xay vào tô lớn cùng mộc nhĩ băm, hành tím, tỏi, đầu hành lá băm, 1 quả trứng gà đánh tan, 6 g hạt nêm, 3 g đường và 2 g tiêu đen xay. Trộn và quết đều theo một chiều khoảng 2 phút cho khối nhân dẻo quánh, ướp nghỉ 10 phút cho thấm vị.",
+      "tip": "Quết nhân kỹ theo một chiều kết hợp trứng gà giúp nhân thịt kết dính chặt, không bị rời rạc hay trào ra khi hầm.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Nhồi thịt vào khổ qua và buộc cố định",
+      "instruction": "Múc từng thìa nhân thịt nhồi chặt tay vào lòng mỗi trái khổ qua, dùng ngón tay nén nhẹ hai đầu cho nhân đầy khít không còn khe rỗng. Dùng cọng hành lá đã trụng mềm quấn nhẹ một vòng ngang thân mỗi trái khổ qua và thắt nút cố định để giữ miệng khổ qua khép kín khi nấu."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hầm khổ qua trong nước sôi mở vung",
+      "instruction": "Đun sôi 1,5 lít nước lọc trong nồi sâu lòng trên lửa lớn. Khi nước sôi bùng, nhẹ nhàng thả từng trái khổ qua nhồi thịt vào, hạ xuống lửa vừa và để mở nắp hoàn toàn, hầm trong 22–25 phút. Thường xuyên dùng vá hớt sạch bọt nổi để nước canh trong vắt.",
+      "tip": "Chỉ thả khổ qua khi nước đã sôi già và tuyệt đối không đậy nắp trong lúc hầm để vỏ khổ qua không bị ngả vàng xỉn màu.",
+      "timerMinutes": 24
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Kiểm tra độ chín và nêm gia vị nước dùng",
+      "instruction": "Dùng đầu đũa xiên thử phần thân khổ qua thấy mềm mượt và nhân thịt bên trong chín chắc hoàn toàn (không còn nước hồng tiết ra). Nêm 6 g hạt nêm còn lại, 4 g muối và 3 g đường vào nước canh, khuấy nhẹ cho tan đều rồi nếm lại vị thanh ngọt hài hòa và tắt bếp.",
+      "tip": "Không nên nêm nước mắm vào canh khổ qua vì dễ làm nước canh ngả vị chua nhẹ nếu để qua bữa."
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Cắt khoanh và hoàn thiện tô canh khổ qua",
+      "instruction": "Nhẹ nhàng vớt các trái khổ qua ra đĩa, cắt khoanh tròn dày khoảng 2,5–3 cm vừa ăn rồi xếp ngay ngắn vào tô lớn. Chan ngập nước canh nóng hổi, rắc hành lá cắt nhỏ, ngò rí và 1 g tiêu đen xay lên trên mặt rồi thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 240,
+    "energyKcal": 240.1,
+    "energyKj": 1004,
+    "proteinG": 14.5,
+    "fatG": 14.7,
+    "saturatedFatG": 5.3,
+    "carbG": 13.8,
+    "fiberG": 7.8,
+    "sugarG": 3.7,
+    "sodiumMg": 984,
+    "saltG": 2.46,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168393",
+      "USDA FDC 168437",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0de3c6ecd03c2f29ddd622ca434d51afd492038b3e0d628c8130417b73283ff6",
+    "researchedFromV2Sha256": "6abd7d7a9fc37b760601f15afc8859b80df857bc21ae0d32410ecc383888e229"
+  }
+}

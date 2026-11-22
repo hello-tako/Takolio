@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a60814a4aca4143b",
+    "slug": "vien-thit-polpette-ca-chua",
+    "title": "Thịt viên bò sốt cà chua Polpette",
+    "subtitle": "Thịt bò xay trộn ruột bánh mì tươi, trứng gà và hai loại phô mai Ý vo viên nhỏ om mềm trong sốt cà chua Passata thơm lá húng quế"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Món Ý",
+      "Polpette",
+      "Thịt bò viên",
+      "Sốt cà chua",
+      "Gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "egg",
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Polpette là món thịt viên om sốt cà chua truyền thống trong bữa cơm gia đình Ý. Thịt bò xay được nhào cùng ruột bánh mì gối tươi, trứng gà, nhục đậu khấu và phô mai Parmesan, Pecorino giúp viên thịt mềm ẩm mà không bị khô, sau đó thả trực tiếp vào sốt cà chua ninh sánh.",
+    "servingSuggestion": "Múc các viên thịt Polpette ra đĩa sâu lòng cùng nhiều sốt cà chua nóng hổi, điểm thêm vài lá húng quế tươi; dùng kèm bánh mì giòn chấm sốt hoặc trộn với mì Ý.",
+    "storageAndReheat": "Thịt viên om sốt bảo quản hộp kín trong ngăn mát tối đa 2–3 ngày; khi dùng hâm nóng trên chảo lửa nhỏ cùng chút nước lọc đến khi sốt sôi nhẹ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GROUND_BEEF",
+      "name": "Thịt bò xay",
+      "culinaryMeasure": "500 g",
+      "prepNote": "giữ mát đến khi trộn để hỗn hợp thịt dễ kết dính",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BREAD",
+      "name": "Ruột bánh mì gối tươi",
+      "culinaryMeasure": "3 lát (~90 g)",
+      "prepNote": "cắt bỏ viền vỏ cứng, xé hoặc xay thành vụn bánh mì mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "slice",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "50 g",
+      "prepNote": "bào mịn trộn trực tiếp vào hỗn hợp thịt viên",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PECORINO_CHEESE",
+      "name": "Phô mai Pecorino bào",
+      "culinaryMeasure": "50 g",
+      "prepNote": "tạo hương vị mặn thơm đậm đà cho viên thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (~100 g)",
+      "prepNote": "đập vào tô thịt để kết dính các nguyên liệu",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g (~2 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "NUTMEG",
+      "name": "Nhục đậu khấu xay",
+      "culinaryMeasure": "0,5 g (1 nhúm nhỏ)",
+      "prepNote": "tạo hương thơm ấm tinh tế cho thịt bò viên",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua xay nhuyễn Passata",
+      "culinaryMeasure": "800 g",
+      "prepNote": "làm nền sốt cà chua mịn để om viên thịt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 800,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để xào làm sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "3/10 củ (3 tép, ~7,5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn cho phần sốt cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 6.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng để xào chậm hành tây và tỏi làm sốt ngọt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "6 g (khoảng 5 lá)",
+      "prepNote": "rửa sạch, cho vào nồi sốt ở 5 phút cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 5.52,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "60 ml",
+      "prepNote": "trộn cùng ruột bánh mì giúp viên thịt mềm ẩm hơn",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 61.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 61.8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "7 g (~1,2 muỗng cà phê)",
+      "prepNote": "chia 4 g cho thịt viên và 3 g cho sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 7,
+      "unit": "g",
+      "grossGrams": 7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào hỗn hợp thịt bò",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị vụn ruột bánh mì và trộn thịt bò",
+      "instruction": "Cắt bỏ phần vỏ cứng của 3 lát ruột bánh mì gối tươi, xé nhỏ hoặc xay vụn mịn (trộn với 60 ml sữa tươi nếu dùng). Cho 500 g thịt bò xay, vụn bánh mì, 50 g phô mai Parmesan bào, 50 g phô mai Pecorino bào, 2 quả trứng gà tươi, 10 g ngò tây tươi băm, 0,5 g nhục đậu khấu xay, 4 g muối ăn và 2 g tiêu đen xay vào tô lớn, nhào vừa đủ quyện đều.",
+      "tip": "Dùng ruột bánh mì tươi thay vụn khô giúp viên thịt bò giữ ẩm và mềm xốp sau khi om."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp lạnh hỗn hợp thịt và vo viên vừa ăn",
+      "instruction": "Bọc kín tô thịt, cho vào ngăn mát tủ lạnh nghỉ khoảng 30 phút để vụn bánh mì hút ẩm đều giúp hỗn hợp kết dính chắc. Sau đó chia hỗn hợp thành các phần nhỏ đều nhau (~20 g mỗi phần) và vo tròn bằng hai lòng bàn tay.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Xào chậm hành tây tỏi làm nền sốt cà chua",
+      "instruction": "Bắc nồi rộng đáy lên bếp ở lửa nhỏ với 45 ml dầu ô liu nguyên chất. Cho hành tây băm và tỏi băm vào xào chậm khoảng 10–12 phút, đảo thường xuyên đến khi hành mềm trong suốt và ngọt dịu mà không để cháy vàng.",
+      "tip": "Xào chậm hành tây trên lửa nhỏ giúp sốt cà chua có vị ngọt thanh tự nhiên mà không cần thêm đường.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Đun sôi nhẹ sốt cà chua Passata",
+      "instruction": "Đổ 800 g cà chua xay nhuyễn Passata vào nồi hành tỏi, nêm 3 g muối ăn còn lại, khuấy đều và đun đến khi sốt sôi lăn tăn nhẹ."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả viên thịt om chín mềm trong sốt cà chua",
+      "instruction": "Nhẹ nhàng thả từng viên thịt bò vào nồi sốt đang sôi lăn tăn, lắc nhẹ tay cầm nồi để các viên xếp đều mà không dùng muỗng khuấy mạnh tránh vỡ viên. Đậy nắp, hạ lửa nhỏ và om liu riu khoảng 25 phút đến khi viên thịt chín kỹ hoàn toàn bên trong và sốt sánh mịn.",
+      "tip": "Chỉ lắc nhẹ nồi trong 10 phút đầu để viên thịt định hình chắc chắn trước khi đảo nhẹ.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm lá húng quế tươi và dọn nóng",
+      "instruction": "Thả 6 g lá húng quế Tây tươi vào nồi, đun thêm 5 phút ở lửa nhỏ cho dậy hương thơm tươi mát rồi tắt bếp. Nếm lại sốt cho vừa miệng, múc thịt viên cùng nhiều sốt nóng ra đĩa và thưởng thức ngay.",
+      "timerMinutes": 5
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 644,
+    "energyKcal": 644.2,
+    "energyKj": 2696,
+    "proteinG": 41.2,
+    "fatG": 39.9,
+    "saturatedFatG": 14.4,
+    "carbG": 31.5,
+    "fiberG": 5.2,
+    "sugarG": 12.3,
+    "sodiumMg": 1512,
+    "saltG": 3.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171326",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 172687",
+      "USDA FDC 173468",
+      "USDA FDC 174036",
+      "USDA FDC Pecorino Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e78fa2063c5b1ff16bc643117f05fc486f568fd0d421273b2698d7beaf4968da",
+    "researchedFromV2Sha256": "abf00a5ed6ad194afdb22f7b08337394b2871ff1e9f1c7968134c4c016c61228"
+  }
+}

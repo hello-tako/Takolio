@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7bf9327b2c48f2d4",
+    "slug": "suon-nuong-tuong",
+    "title": "Sườn non nướng tương mật ong kiểu Hoa",
+    "subtitle": "Sườn non ướp đậm xì dầu, tương đen Hoisin, tỏi và ngũ vị hương nướng lò chín mềm, phết mật ong bóng nâu thơm lừng cạnh cháy xém"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 55,
+    "servings": 4,
+    "tags": [
+      "Sườn nướng",
+      "Mật ong",
+      "Ngũ vị hương",
+      "Cuối tuần",
+      "Tiệc nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những dẻ sườn non nướng kiểu xá xíu Trung Hoa hấp dẫn với vị mặn ngọt hài hòa từ xì dầu nhạt, tương đen Hoisin, rượu Thiệu Hưng và ngũ vị hương, nướng chín mềm ẩm trong lò rồi phết mật ong lửa lớn tạo lớp vỏ caramel óng ả xém cạnh.",
+    "servingSuggestion": "Chặt sườn thành từng khúc vừa ăn, xếp ra đĩa rắc hành lá thái nhỏ và dọn nóng cùng cơm trắng, dưa leo hoặc cải thìa xào tỏi cho bữa tiệc cuối tuần.",
+    "storageAndReheat": "Bảo quản sườn đã nướng trong hộp kín ngăn mát tối đa 3 ngày; khi dùng hâm nóng lại bằng lò nướng hoặc nồi chiên không dầu 5 phút ở 180°C."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non nguyên dẻ (hoặc chặt khúc dài)",
+      "culinaryMeasure": "1200 g",
+      "prepNote": "rửa sạch, thấm thật khô bề mặt bằng khăn giấy trước khi ướp",
+      "componentGroup": "main",
+      "requiredQuantity": 1200,
+      "unit": "g",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 780,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh làm nền cho sốt ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (~18 g, khoảng 4–5 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn sốt ướp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu và giúp bề mặt sườn lên màu caramel khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phết lên mặt sườn ở lượt nướng cuối tạo độ bóng và hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 21.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "giúp phần thịt bên trong sườn đậm đà đều vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tăng mùi thơm ấm và khử mùi thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FIVE_SPICE",
+      "name": "Ngũ vị hương",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo hương thơm xá xíu truyền thống đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp thịt sườn mềm thơm và đậm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "giúp hỗn hợp sốt ướp bóng mượt và không làm khô bề mặt sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "HOISIN_SAUCE",
+      "name": "Tương đen Hoisin",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo chiều sâu vị ngọt mặn sánh đậm cho lớp sốt quét sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "240 ml (~1 chén)",
+      "prepNote": "đổ xuống đáy khay lót giấy bạc dưới vỉ nướng giúp giữ ẩm và chống khói cháy mỡ",
+      "componentGroup": "broth",
+      "requiredQuantity": 240,
+      "unit": "ml",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Pha sốt tương ngũ vị và ướp sườn qua đêm",
+      "instruction": "Thấm thật khô 1200 g sườn non. Trộn đều trong tô lớn gồm 45 ml xì dầu nhạt, tỏi băm nhuyễn, 25 g đường cát trắng, 6 g muối ăn, 1,5 g tiêu trắng xay, 1,5 g ngũ vị hương, 15 ml rượu Thiệu Hưng, 5 ml dầu mè thơm và 15 ml tương đen Hoisin. Chừa lại 1/3 lượng sốt để phết khi nướng, phần còn lại xoa đều lên khắp các dẻ sườn, bọc kín ướp ngăn mát tối thiểu 2 giờ.",
+      "tip": "Trước khi nướng 30 phút, lấy sườn ra khỏi tủ lạnh để thịt về nhiệt độ phòng giúp sườn chín đều từ trong ra ngoài.",
+      "timerMinutes": 120
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Làm nóng lò và chuẩn bị khay nước giữ ẩm",
+      "instruction": "Làm nóng lò nướng ở 200°C trước 10 phút. Lót giấy bạc vào khay nướng hứng bên dưới, đặt vỉ nướng thưa lên trên rồi rót 240 ml nước lọc vào khay đáy giúp hơi nước giữ sườn mềm mọng và tránh mỡ nhỏ xuống bốc khói.",
+      "tip": "Đặt khay nước bên dưới vỉ nướng giúp sườn không bị khô bề mặt trong suốt quá trình nướng và dễ vệ sinh khay lò."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nướng chín mềm sườn lần một ở 200°C",
+      "instruction": "Xếp các dẻ sườn lên vỉ nướng (không chồng lên nhau), đưa vào rãnh giữa lò nướng 30 phút ở 200°C cho thịt sườn chín mềm và săn bề mặt.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Quét sốt ướp và nướng tiếp mặt còn lại",
+      "instruction": "Kéo khay sườn ra, dùng cọ phết đều phần sốt ướp giữ lại lên khắp bề mặt sườn, lật mặt sườn rồi cho lại vào lò nướng thêm 20 phút ở 200°C cho gia vị thấm sâu và xém nhẹ cạnh.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phết mật ong nướng xém bóng caramel",
+      "instruction": "Quét một lớp mỏng 15 ml mật ong nguyên chất lên bề mặt sườn, chuyển khay lên rãnh trên cùng của lò và tăng nhiệt lên 220°C (chế độ lửa trên) nướng thêm 5 phút cho đến khi mặt sườn óng ánh và xém cạnh thơm lừng.",
+      "tip": "Canh sát lò trong 5 phút cuối vì mật ong lên màu rất nhanh và dễ bị cháy đắng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nghỉ thịt, chặt khúc và rắc hành lá",
+      "instruction": "Lấy sườn ra để nghỉ 5 phút trên thớt cho nước thịt ổn định lại, rồi dùng dao sắc chặt thành từng miếng vừa ăn. Xếp sườn ra đĩa, rắc hành lá thái nhỏ lên trên và dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 623,
+    "energyKcal": 622.5,
+    "energyKj": 2605,
+    "proteinG": 32.1,
+    "fatG": 46.9,
+    "saturatedFatG": 17,
+    "carbG": 15.9,
+    "fiberG": 0.7,
+    "sugarG": 12.4,
+    "sodiumMg": 1564,
+    "saltG": 3.91,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Five Spice USDA Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167861",
+      "USDA FDC 169230",
+      "USDA FDC 169640",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171370",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6d971caffe940d40fd7f04d076fb47a7b21c262c89801b7713251ff07837e785",
+    "researchedFromV2Sha256": "dacda88453a567dd3974968e96bdb14561ac94f1dc44e8f667d010635c73a6a3"
+  }
+}

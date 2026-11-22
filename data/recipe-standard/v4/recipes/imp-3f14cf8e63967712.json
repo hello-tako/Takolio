@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3f14cf8e63967712",
+    "slug": "muc-xao-toi-ot-thai",
+    "title": "Mực xào tỏi ớt kiểu Thái",
+    "subtitle": "Khoanh mực tươi khía vảy rồng xào lửa lớn giòn sần sật, thấm đẫm sốt dầu hào tỏi ớt giã cối thơm nồng đậm vị biển"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Mực xào",
+      "Tỏi ớt",
+      "Hải sản",
+      "Ẩm thực Thái",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mực xào tỏi ớt kiểu Thái ghi điểm với từng miếng mực tươi khía vảy rồng giòn sần sật, không ra nước, thấm đẫm hương thơm nồng nàn của tỏi ớt giã cối phi vàng và sốt dầu hào, nước mắm, xì dầu đặc đậm đà đưa cơm.",
+    "servingSuggestion": "Trút mực xào nóng hổi ra đĩa, dùng ngay với cơm trắng nóng kèm vài lát dưa leo tươi và chanh cắt múi nếu thích.",
+    "storageAndReheat": "Hải sản xào ngon nhất khi ăn ngay lúc vừa tắt bếp; phần dư bảo quản ngăn mát tối đa 24 giờ và đảo nhanh lại trên chảo nóng 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi (làm sạch)",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rút nang, bỏ túi mực và mắt, rửa sạch rồi khía vảy rồng mặt trong, cắt miếng 2x4 cm và thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "2 củ (50 g)",
+      "prepNote": "bóc vỏ, cho vào cối giã dập thô cùng ớt hiểm cho dậy tinh dầu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 43.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "5 quả (25 g)",
+      "prepNote": "bỏ cuống, rửa sạch, giã thô cùng tỏi (giảm bớt nếu ăn ít cay)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "pha sẵn trong chén làm nền sốt xào bóng đậm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo hậu vị đậm đà cho mực xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo màu nâu sánh hấp dẫn cho miếng mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của dầu hào và nước mắm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "tăng vị ngọt dịu cho sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi ớt giã và xào mực trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch mực, khía vảy rồng và thấm thật khô",
+      "instruction": "Làm sạch 450 g mực ống tươi, bỏ nang cứng, túi mực và mắt. Lật mặt trong thân mực khía các đường chéo đan xen tạo hình vảy rồng, cắt miếng chữ nhật 2x4 cm, râu mực cắt khúc vừa ăn rồi dùng khăn giấy thấm thật khô toàn bộ mực.",
+      "tip": "Thấm thật khô mực trước khi xào là bước quan trọng giúp mực săn giòn ngay khi chạm chảo nóng và không tiết ra nhiều nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Giã thô tỏi ớt và cắt khúc hành lá",
+      "instruction": "Cho tỏi bóc vỏ và ớt hiểm vào cối đá giã dập thô (không cần nhuyễn mịn) để tỏi ớt tiết hết tinh dầu thơm. Hành lá rửa sạch cắt khúc 3 cm.",
+      "tip": "Giã tỏi ớt bằng cối thay vì băm sẽ giúp hương thơm tỏa ra mạnh mẽ hơn hẳn khi phi nhanh trên chảo nóng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sẵn chén sốt gia vị xào mực",
+      "instruction": "Khuấy tan 25 ml dầu hào, 15 ml nước mắm, 5 ml xì dầu đặc, 5 g đường cát trắng và 4 g hạt nêm trong chén nhỏ để sẵn bên cạnh bếp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt giã trong chảo nóng",
+      "instruction": "Đun nóng chảo rộng với 30 ml dầu ăn trên lửa vừa-lớn, cho hỗn hợp tỏi ớt giã vào đảo nhanh khoảng 20–30 giây đến khi dậy mùi cay thơm nồng và tỏi vừa ngả vàng nhạt (tránh để tỏi cháy đắng).",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào mực lửa lớn săn giòn và rưới sốt áo đều",
+      "instruction": "Tăng lửa lên mức lớn nhất, trút toàn bộ mực vào đảo nhanh tay khoảng 2 phút đến khi các đường khía bung nở cong đều và thịt mực chuyển màu trắng đục săn chắc. Rưới đều chén sốt đã pha vào đảo mạnh thêm 45 giây cho sốt bám bóng vào từng miếng mực.",
+      "tip": "Món mực xào lửa lớn chỉ mất khoảng 2–3 phút; xào quá lâu sẽ làm mực ra nước và bị dai cứng như cao su.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo nhanh hành lá và dọn mực xào nóng",
+      "instruction": "Thả hành lá cắt khúc vào chảo, đảo đều thêm 15 giây rồi tắt bếp ngay để hành giữ màu xanh tươi giòn ngọt. Trút mực xào tỏi ớt ra đĩa và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 237,
+    "energyKcal": 236.6,
+    "energyKj": 990,
+    "proteinG": 21.8,
+    "fatG": 10.2,
+    "saturatedFatG": 1.7,
+    "carbG": 13.9,
+    "fiberG": 0.7,
+    "sugarG": 3.9,
+    "sodiumMg": 1129,
+    "saltG": 2.82,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 174223",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "25808177a85ff1b1f60db3c4e88fce852126c5e87513a5fdf2c65ca1aa16cbf7",
+    "researchedFromV2Sha256": "ca2754ec720062086b8cebdd94858bebea81868ea9e8a117e95f32e4ab0edafc"
+  }
+}

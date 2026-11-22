@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8ebb3021c30c48f8",
+    "slug": "pad-see-ew-ga",
+    "title": "Hủ tiếu xào xì dầu thịt gà kiểu Thái (Pad See Ew)",
+    "subtitle": "Bánh phở tươi bản lớn xào lửa lớn cháy cạnh thơm khói chảo, áo đều sốt hắc xì dầu dầu hào cùng ức gà mềm, trứng tơi và cải thìa giòn xanh"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Pad See Ew",
+      "Mì xào",
+      "Ức gà",
+      "Xì dầu"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Pad See Ew là món mì xào xì dầu trứ danh tại các khu chợ đêm Thái Lan, nổi bật với sợi bánh phở tươi bản to dẻo dai áp chảo hơi xém cạnh, vị mặn ngọt hài hòa từ hắc xì dầu, dầu hào và cải xanh giòn ngọt.",
+    "servingSuggestion": "Trút Pad See Ew nóng hổi ra đĩa, rắc thêm chút tiêu trắng xay và dọn kèm ớt tươi thái lát ngâm giấm hoặc chanh tươi tùy thích.",
+    "storageAndReheat": "Nên ăn nóng ngay để sợi bánh phở tơi mềm và thơm mùi chảo; nếu còn dư bảo quản ngăn mát trong 24 giờ, xào nóng lại với 1 muỗng canh nước lọc trên lửa lớn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PHO_NOODLE_FRESH",
+      "name": "Bánh phở tươi hoặc hủ tiếu bản to",
+      "culinaryMeasure": "600 g",
+      "prepNote": "nhẹ nhàng gỡ tơi từng sợi tránh gãy nát, chia sẵn 3 phần đều nhau (~200 g/phần) để xào từng mẻ",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê không da",
+      "culinaryMeasure": "340 g",
+      "prepNote": "thái lát mỏng 0,5 cm ngang thớ, ướp mềm cùng xì dầu, đường và chút nước lọc",
+      "componentGroup": "main",
+      "requiredQuantity": 340,
+      "unit": "g",
+      "grossGrams": 340,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "3 quả",
+      "prepNote": "chuẩn bị sẵn bên cạnh bếp, dùng 1 quả cho mỗi mẻ xào",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BOK_CHOY",
+      "name": "Cải thìa (hoặc cải ngọt, cải làn)",
+      "culinaryMeasure": "225 g",
+      "prepNote": "rửa sạch, phần cọng thái lát xéo mỏng, phần lá cắt khúc vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 225,
+      "unit": "g",
+      "grossGrams": 225,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 202.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 6 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ chia 3 phần để phi thơm từng mẻ xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "trộn trong chén nước sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml ướp thịt ức gà và 15 ml pha chén sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đen đặc Thái",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo màu nâu sẫm bóng đẹp và mùi hương caramen đặc trưng cho bánh phở",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "22 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia 2 g ướp thịt gà và 20 g chia 3 phần rắc trực tiếp khi áp chảo bánh phở",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "g",
+      "grossGrams": 22,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện trên mặt đĩa trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "55 ml (khoảng 3,5 muỗng canh)",
+      "prepNote": "chia 15 ml áp chảo thịt gà và 40 ml cho 3 mẻ xào bánh phở",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 50.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45.54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (ướp mềm thịt gà)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn vào ức gà giúp thịt giữ ẩm mềm mượt khi áp chảo lửa lớn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái ướp ức gà và pha sốt xào xì dầu",
+      "instruction": "Thái lát mỏng 340 g ức gà phi lê rồi bóp đều cùng 10 ml xì dầu nhạt, 2 g đường cát trắng và 15 ml nước lọc, ướp nghỉ 12 phút cho thịt ngậm nước mềm mọng. Pha sẵn hỗn hợp sốt gồm 25 ml dầu hào, 15 ml xì dầu nhạt còn lại và 15 ml xì dầu đen đặc Thái, chia đều thành 3 phần.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Gỡ tơi bánh phở và sơ chế cải thìa",
+      "instruction": "Gỡ tơi nhẹ tay 600 g bánh phở tươi thành 3 phần (~200 g/phần) để khi xào áp chảo từng suất không bị dồn cục. Rửa sạch 225 g cải thìa, thái xéo phần cọng và cắt khúc phần lá; băm nhỏ 3/4 củ tỏi khô; chuẩn bị sẵn 3 quả trứng gà bên bếp.",
+      "tip": "Xào Pad See Ew từng phần 1 suất ăn trên chảo rộng giúp sợi phở tiếp xúc mặt chảo nóng, xém cạnh thơm khói mà không bị đứt nát."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo chín thơm thịt ức gà",
+      "instruction": "Làm nóng chảo đáy rộng trên lửa lớn với 15 ml dầu ăn, dàn đều thịt ức gà đã ướp thành một lớp mỏng và áp chảo khoảng 3 phút đến khi hai mặt hơi xém vàng, thịt chín trắng hoàn toàn thì trút ra đĩa riêng.",
+      "tip": "Áp chảo thịt ức gà thành một lớp mỏng trên lửa lớn giúp thịt săn chín nhanh và giữ được độ mọng nước bên trong.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi tỏi, đánh trứng tơi và xào cải thìa",
+      "instruction": "Cho khoảng 13 ml dầu ăn cùng 1/3 lượng tỏi băm vào chảo xào thơm trên lửa vừa lớn trong 20 giây, đập 1 quả trứng gà vào đánh vỡ lòng đỏ chờ đông một nửa rồi đảo tơi. Cho ngay 1/3 lượng cải thìa vào đảo nhanh tay 15 giây cho rau xanh bóng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áp chảo xém bánh phở cùng sốt xì dầu",
+      "instruction": "Cho 1 phần bánh phở (200 g), 1 phần nước sốt xì dầu và 1/3 phần đường cát trắng còn lại (~7 g) vào chảo, tăng lửa lớn và đảo hất nhẹ nhàng cho sợi phở áo đều màu nâu bóng. Dàn phẳng mặt phở để yên 20 giây cho hơi xém cạnh thơm mùi khói chảo rồi lật áp xém thêm 20 giây nữa.",
+      "tip": "Dùng thao tác hất chảo hoặc xẻng lùa từ dưới đáy thay vì chọc thẳng vào sợi phở sẽ giữ sợi bánh nguyên đẹp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn thịt gà và lặp lại cho các phần còn lại",
+      "instruction": "Trút 1/3 phần ức gà đã xào vào chảo (chừa lại nước thừa dưới đĩa), đảo nhanh 15 giây cho quyện đều rồi múc ra đĩa. Lau nhanh mặt chảo bằng khăn giấy và lặp lại bước 4–6 cho 2 phần còn lại; rắc 2 g tiêu trắng xay lên trên và dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 621,
+    "energyKcal": 620.7,
+    "energyKj": 2597,
+    "proteinG": 37.8,
+    "fatG": 23.2,
+    "saturatedFatG": 4.4,
+    "carbG": 64.1,
+    "fiberG": 2.7,
+    "sugarG": 10.2,
+    "sodiumMg": 1327,
+    "saltG": 3.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "NIN VN Fresh Pho Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170390",
+      "USDA FDC 170933",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d56f2264d6c428eb1627cff414db56cb4e2a75abc971409e5cbd662adb1797e2",
+    "researchedFromV2Sha256": "159f24857839a9905520c0343720c30f217abf8d93cf4b05f0aafd30fb8cc680"
+  }
+}

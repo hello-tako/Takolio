@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e39a1be406f9e1ea",
+    "slug": "trung-hap-han",
+    "title": "Trứng hấp xốp kiểu Hàn (Gyeran Jjim)",
+    "subtitle": "Trứng hấp bông xốp phồng cao mềm tan trong miệng, đậm vị nước mắm, nước tương và thơm lừng dầu mè hành lá"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Gyeran jjim",
+      "Trứng hấp",
+      "Hàn Quốc",
+      "Bông xốp",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gyeran Jjim là món trứng hấp nổi tiếng thường được phục vụ nóng hổi trong thố đất tại các quán thịt nướng Hàn Quốc. Bằng kỹ thuật khuấy nhẹ giữa chừng khi nấu trong nồi đáy dày hoặc nồi đất đậy nắp kín, trứng nở phồng bông xốp như bánh souffle nhưng vẫn giữ độ ẩm mềm mịn tan ngay đầu lưỡi.",
+    "servingSuggestion": "Dọn nguyên thố hoặc nồi đất còn đang bốc hơi nghi ngút, rắc thêm hành lá, ớt bột Hàn và hạt mè rang; ăn nóng ngay kèm cơm trắng và thịt nướng.",
+    "storageAndReheat": "Trứng hấp Gyeran Jjim ngon nhất khi thưởng thức ngay lúc vừa tắt bếp vì sẽ xẹp nhẹ khi nguội; nếu còn dư bảo quản ngăn mát tối đa 24 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "5 quả (khoảng 250 g)",
+      "prepNote": "đập ra tô lớn, đánh tan thật đều bằng phới hoặc đũa",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ; trộn 2/3 vào hỗn hợp trứng và giữ 1/3 rắc mặt khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo vị mặn đậm đà và độ umami thay cho mắm tép Hàn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "bổ sung hương thơm hài hòa cho trứng hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước mắm và giúp trứng mềm mượt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia đôi: một nửa trộn vào trứng, một nửa rắc mặt khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "chia đôi: một nửa trộn vào trứng và một nửa rưới hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc trang trí lên bề mặt trứng hấp tạo điểm nhấn màu sắc",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện bề mặt trứng hấp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "220 ml",
+      "prepNote": "khuấy cùng trứng để tạo độ xốp mềm ẩm mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 220,
+      "unit": "ml",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 198,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Pha gia vị ướp hành lá và đánh tan trứng",
+      "instruction": "Thái nhỏ hành lá. Trộn 2/3 lượng hành lá với 10 ml nước mắm ngon, 5 ml nước tương, 3 g đường cát trắng, 4 ml dầu mè rang và 0,5 g tiêu đen xay trong chén nhỏ, để nghỉ 2 phút cho thấm. Đập 5 quả trứng gà vào tô lớn đánh thật tan, rồi đổ 220 ml nước lọc cùng chén hành lá gia vị vào khuấy đều.",
+      "tip": "Tỉ lệ nước gần tương đương thể tích trứng giúp kết cấu trứng hấp mềm ẩm và nở phồng xốp đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu trứng giai đoạn đầu trong nồi đất đậy nắp",
+      "instruction": "Đổ hỗn hợp trứng vào nồi đất Hàn Quốc hoặc nồi inox đáy dày cỡ nhỏ (nên dùng nồi sâu lòng sao cho trứng chiếm khoảng 2/3 chiều cao nồi). Đậy nắp kín, nấu trên lửa vừa khoảng 7 phút.",
+      "tip": "Không đổ trứng quá đầy miệng nồi để chừa không gian cho trứng nở phồng lên khi gặp hơi nóng.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Khuấy nhẹ giữa chừng giúp trứng chín xốp đều",
+      "instruction": "Mở nắp nồi: lúc này phần rìa và đáy trứng đã bắt đầu đông đặc còn phần giữa vẫn sánh loãng. Dùng thìa khuấy nhẹ nhàng từ đáy lên trên trong vài giây cho hỗn hợp hòa đều và không bị cháy đáy, sau đó đậy nắp lại ngay.",
+      "tip": "Bước khuấy nhẹ giữa chừng giúp nhiệt phân bổ đều khắp khối trứng, tạo độ bông xốp tơi nhẹ chứ không bị chai cứng đáy."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hạ lửa nhỏ ủ cho trứng phồng xốp hoàn toàn",
+      "instruction": "Hạ xuống lửa nhỏ, tiếp tục nấu kín nắp thêm 4 phút đến khi khối trứng nở phồng cao lên sát nắp, mặt trứng se mịn và chín hẳn ở tâm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Ủ thêm hơi nóng trong 1 phút tạo mùi thơm đáy nồi",
+      "instruction": "Giữ nguyên nắp đậy và hạ lửa thật nhỏ thêm 1 phút để phần đáy có lớp xém vàng thơm nhẹ (không để quá lâu kẻo khét đắng) rồi tắt bếp.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu, ớt bột và dầu mè dọn nóng",
+      "instruction": "Mở nắp nồi, nhanh tay rắc phần hành lá còn lại, 0,5 g tiêu đen xay, 2 g ớt bột Hàn Quốc, hạt mè trắng rang và rưới nốt 4 ml dầu mè rang lên mặt trứng đang phồng xốp rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 146,
+    "energyKcal": 145.6,
+    "energyKj": 609,
+    "proteinG": 10.1,
+    "fatG": 10.1,
+    "saturatedFatG": 2.7,
+    "carbG": 3.5,
+    "fiberG": 0.7,
+    "sugarG": 1.8,
+    "sodiumMg": 529,
+    "saltG": 1.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "62f750f3590596be60da0d6a48da6ca9d233379acf240b0e0c65a77f8e393bef",
+    "researchedFromV2Sha256": "c7b1bff8333d19ec81340ebaff34a379fb43bba4dcee12ac14decccdfc7e5c6a"
+  }
+}

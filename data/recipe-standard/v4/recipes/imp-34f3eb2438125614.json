@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-34f3eb2438125614",
+    "slug": "bap-cai-xao-toi-quang-dong",
+    "title": "Bắp cải xào tỏi kiểu Quảng Đông",
+    "subtitle": "Bắp cải xanh xé miếng kết hợp cà rốt thái lát xào lửa lớn giữ trọn độ giòn ngọt, dậy mùi tỏi phi, rượu Thiệu Hưng và giấm đen"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Quảng Đông",
+      "Bắp cải",
+      "Xào tỏi",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bắp cải xào tỏi kiểu Quảng Đông nổi bật với từng lá bắp cải xé tay giòn sần sật, mép lá hơi xém cạnh thơm mùi chảo nóng, quyện vị mặn ngọt thanh nhẹ của xì dầu, rượu Thiệu Hưng và giấm đen Trấn Giang.",
+    "servingSuggestion": "Trút ra đĩa và dùng nóng ngay với cơm trắng để cảm nhận trọn vẹn độ giòn ngọt tự nhiên của rau củ.",
+    "storageAndReheat": "Món rau xào nên dùng hết trong bữa để giữ độ giòn tươi; nếu bảo quản tủ mát tối đa 24 giờ, đảo nóng nhanh trên chảo lửa lớn trong 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh",
+      "culinaryMeasure": "0,65 bắp vừa (~520 g)",
+      "prepNote": "tách lá, loại bỏ phần sống lá dày cứng, xé tay miếng vừa ăn và để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 0.65,
+      "unit": "piece",
+      "grossGrams": 520,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 442,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "0,75 củ (~82 g)",
+      "prepNote": "gọt vỏ, thái lát vát mỏng để nhanh chín cùng bắp cải",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 82.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 73.43,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (~25 g, 5–6 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi cắt đôi hoặc băm thô",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (~1 đốt nhỏ)",
+      "prepNote": "gọt vỏ, thái sợi chỉ mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt khô đỏ",
+      "culinaryMeasure": "3 quả (~15 g)",
+      "prepNote": "bỏ hạt, cắt khúc ngắn để tạo hương thơm cay dịu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (~20 g, 2 cọng)",
+      "prepNote": "rửa sạch, cắt khúc dài khoảng 5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng xào trên lửa lớn giúp rau bóng mượt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 20.24,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 19.23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "nêm tạo vị mặn thanh khi xào lửa lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_VINEGAR",
+      "name": "Giấm đen Trấn Giang",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng trước khi tắt bếp để giữ hương thơm chua thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới quanh thành chảo nóng giúp dậy mùi thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của xì dầu và vị chua dịu của giấm đen",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vừa ăn ở bước xào cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "80 g",
+      "prepNote": "thái lát mỏng 2–3 mm để áp chảo lấy mỡ thơm (có thể bỏ qua nếu ăn chay)",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 80,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo hơi nước giúp bắp cải chín nhanh trong chảo đậy nắp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Xé tay bắp cải, thái cà rốt và để thật ráo",
+      "instruction": "Tách rời từng lá bắp cải xanh, loại bỏ phần gân lá dày cứng rồi dùng tay xé thành miếng vừa ăn. Thái lát mỏng cà rốt tươi; rửa nhẹ cả hai loại rau rồi vẩy thật ráo nước. Đập dập cắt đôi tỏi khô, thái sợi gừng tươi, bỏ hạt cắt khúc ớt khô đỏ, cắt khúc 5 cm hành lá tươi và thái lát mỏng thịt ba chỉ heo (nếu dùng).",
+      "tip": "Rau phải thật ráo nước trước khi cho vào chảo nóng để tránh làm hạ nhiệt, khiến bắp cải bị ra nước và mất độ giòn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo thịt ba chỉ lấy mỡ thơm",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa lớn đến khi hơi bốc khói, cho 22 ml dầu ăn thực vật tráng đều lòng chảo. Nếu dùng thịt ba chỉ heo, cho thịt vào áp chảo 2 phút cho hai mặt xém vàng và tiết bớt mỡ thơm rồi gạt sang mép chảo hoặc gắp ra riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm ớt khô, tỏi và gừng",
+      "instruction": "Hạ lửa vừa, cho ớt khô đỏ cắt khúc vào đảo khoảng 20 giây cho dậy mùi cay nhẹ, tiếp tục thả tỏi khô và gừng tươi thái sợi vào phi thơm thêm 40 giây đến khi tỏi hơi ngả vàng thơm mà không bị cháy đắng.",
+      "tip": "Luôn để mắt tới tỏi phi ở lửa vừa vì tỏi cháy sẽ làm món rau xào bị đắng và sậm màu.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào lửa lớn bắp cải và cà rốt",
+      "instruction": "Vặn lửa lớn nhất, trút toàn bộ bắp cải xanh và cà rốt vào chảo đảo nhanh tay trong 1 phút. Rưới 10 ml rượu Thiệu Hưng quanh thành chảo cho bốc hơi thơm, thêm 15 ml xì dầu nhạt, 2 g đường cát trắng và 15 ml nước lọc, đảo đều rồi đậy nắp om nhanh 1–2 phút cho bắp cải vừa chín tới.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm giấm đen và nêm muối cân vị",
+      "instruction": "Mở nắp, trút thịt ba chỉ heo trở lại chảo (nếu dùng), rưới 5 ml giấm đen Trấn Giang và nêm 3 g muối ăn, đảo nhanh tay 30 giây trên lửa lớn đến khi nước hơi cạn ráo và mép lá bắp cải xém nhẹ đẹp mắt.",
+      "tip": "Cho giấm đen vào công đoạn cuối giúp giữ nguyên vị chua thanh dịu và hương thơm đặc trưng mà không bị bay hơi hết."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá và hoàn thiện",
+      "instruction": "Thả hành lá tươi cắt khúc vào đảo nhanh 20–30 giây cho hành vừa chín tái giữ màu xanh tươi rồi tắt bếp ngay. Múc ra đĩa và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 268,
+    "energyKcal": 268.4,
+    "energyKj": 1123,
+    "proteinG": 5.8,
+    "fatG": 20.9,
+    "saturatedFatG": 6.2,
+    "carbG": 15.9,
+    "fiberG": 4.8,
+    "sugarG": 7.2,
+    "sodiumMg": 782,
+    "saltG": 1.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Chinkiang Black Vinegar Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "52efb7776902ccc550e2e7ddddf172a3dcc69a16412ccd93bd2ca230754c7447",
+    "researchedFromV2Sha256": "a4d0192d3e34c28ffcf8f3aaf95a3b3ccd52ee02c382679dd7dd7311b5e6ac3d"
+  }
+}

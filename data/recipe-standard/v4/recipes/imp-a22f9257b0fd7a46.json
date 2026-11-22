@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a22f9257b0fd7a46",
+    "slug": "ba-chi-kho-dong-pha",
+    "title": "Ba chỉ kho Đông Pha",
+    "subtitle": "Từng khối ba chỉ heo buộc dây lạt kho liu riu hàng giờ trong rượu Thiệu Hưng, xì dầu, đường phèn và lớp hành gừng thơm nồng đến mềm tan"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "hard",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 180,
+    "servings": 5,
+    "tags": [
+      "Đông Pha nhục",
+      "Trung Hoa",
+      "Món kho",
+      "Tiệc nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "braise"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Ba chỉ kho Đông Pha là tuyệt phẩm ẩm thực Giang Nam với từng khối thịt ba chỉ vuông vắn có lớp bì màu nâu hổ phách óng ả, phần mỡ trong mềm tan không ngấy nhờ được om chậm hàng giờ với rượu Thiệu Hưng, xì dầu và đường phèn.",
+    "servingSuggestion": "Gắp từng khối thịt ra đĩa sâu lòng, cắt bỏ dây buộc, rưới phần nước kho sánh bóng lên mặt; dọn nóng cùng cơm trắng dẻo và cải thìa luộc xanh mướt.",
+    "storageAndReheat": "Có thể bảo quản hộp kín trong ngăn mát tối đa 4 ngày (thịt kho càng hâm lại càng đậm đà). Khi ăn, hấp cách thủy hoặc đun liu riu lại với nước kho trên lửa nhỏ trong 10–15 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo nguyên tảng có da",
+      "culinaryMeasure": "800 g",
+      "prepNote": "chọn tảng ba chỉ dày đều nạc mỡ, cạo sạch lông bì trước khi chần (phần mỡ tiết ra khi om lâu sẽ được vớt bỏ bớt)",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.72,
+      "edibleGrams": 576,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "6 bó nhỏ (~240 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 8–10 cm xếp lót kín đáy nồi chống cháy bì",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "bunch",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g (~8 lát dày)",
+      "prepNote": "rửa sạch, giữ vỏ hoặc gọt vỏ, thái lát xếp lên trên lớp hành lót nồi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "360 ml (~1,5 chén)",
+      "prepNote": "làm nước kho chính tạo hương thơm nồng nàn (cồn bay hơi hết khi om lâu, chỉ dùng một phần nước kho cô bóng)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 360,
+      "unit": "ml",
+      "grossGrams": 356.4,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 89.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "150 ml (~2/3 chén)",
+      "prepNote": "tạo vị mặn dịu hài hòa cho nước kho (chỉ ăn phần ngấm thịt và sốt rưới cô sánh)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 177,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 79.65,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo màu nâu hổ phách óng ánh đặc trưng cho lớp bì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 43.75,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 19.69,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ROCK_SUGAR",
+      "name": "Đường phèn",
+      "culinaryMeasure": "80 g",
+      "prepNote": "đập nhỏ vừa để dễ tan tạo vị ngọt thanh và nước sốt sánh bóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "STAR_ANISE",
+      "name": "Hoa hồi khô",
+      "culinaryMeasure": "3 g (~2 cánh)",
+      "prepNote": "rửa sạch bụi trước khi thả vào nồi kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CINNAMON",
+      "name": "Quế thanh khô",
+      "culinaryMeasure": "3 g (~1 thanh nhỏ)",
+      "prepNote": "rửa sạch tạo hương thơm ấm áp cho nước kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "1 g (~2 lá)",
+      "prepNote": "thả vào nồi kho giúp thịt thơm dịu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "1000 ml dùng chần nguyên tảng thịt rồi đổ bỏ; 200 ml đun sôi để châm nếu nước kho cạn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sơ nguyên tảng thịt ba chỉ",
+      "instruction": "Cạo sạch phần bì của 800 g thịt ba chỉ heo nguyên tảng. Đun sôi 1000 ml nước lọc trong nồi lớn, thả nguyên tảng thịt vào chần nhanh trong 2 phút để loại bỏ tạp chất và giúp khối thịt săn chắc dễ cắt. Vớt ra xả sạch dưới vòi nước lạnh rồi thấm khô.",
+      "tip": "Chần nguyên tảng trước khi cắt giúp các khối thịt vuông vắn, không bị co méo lệch lạc.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Cắt khối vuông và buộc dây giữ dáng",
+      "instruction": "Cắt tảng thịt thành 5–6 khối vuông kích thước khoảng 6–7 cm. Dùng dây lạt hoặc chỉ buộc thực phẩm quấn chữ thập chắc tay quanh từng khối thịt để thịt không bị vỡ nát trong suốt quá trình om lâu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Lót đáy nồi với hành lá và gừng lát",
+      "instruction": "Xếp toàn bộ hành lá tươi cắt khúc lót kín đều khắp đáy nồi đất hoặc nồi gang thành dày, rải đều 40 g gừng tươi thái lát lên trên. Đặt từng khối thịt ba chỉ với mặt bì úp xuống dưới xếp khít nhau trên lớp hành gừng.",
+      "tip": "Lớp hành lá dày dưới đáy vừa chống cháy khét phần bì suốt nhiều giờ om, vừa giúp phần thịt thấm hương thơm ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đổ rượu xì dầu và om liu riu lần một",
+      "instruction": "Rưới đều 360 ml rượu Thiệu Hưng, 150 ml xì dầu nhạt và 35 ml xì dầu đặc lên thịt, thả 80 g đường phèn cùng hoa hồi khô, quế thanh khô và lá nguyệt quế khô (nếu dùng) vào. Đậy nắp kín, đun lửa vừa lớn cho đến khi sôi rồi lập tức hạ lửa nhỏ nhất, om liu riu 90 phút.",
+      "timerMinutes": 90
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lật mặt bì ngửa lên và om mềm tan",
+      "instruction": "Mở nắp, nhẹ tay lật từng khối thịt cho mặt bì hướng lên trên để mặt bì bóng đẹp không bị bở. Đậy nắp kín lại và tiếp tục om lửa nhỏ thêm 75–90 phút nữa đến khi phần mỡ trong như thạch và xiên đũa qua thịt dễ dàng; nếu nước kho cạn quá nửa thì châm thêm ít nước lọc đun sôi.",
+      "tip": "Tuyệt đối chỉ châm thêm nước sôi nếu nước kho cạn, vì nước lạnh sẽ làm thớ thịt bị co cứng lại.",
+      "timerMinutes": 80
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cô sánh nước sốt và hoàn thiện",
+      "instruction": "Nhẹ nhàng gắp các khối thịt ra đĩa sâu lòng, dùng kéo cắt bỏ dây buộc. Lọc phần nước kho trong nồi qua rây bỏ xác hành gừng, vớt bỏ thật sạch lớp mỡ tiết ra nổi trên mặt; trích khoảng một nửa lượng nước kho (phần nước kho mặn còn lại chắt bỏ hoặc giữ riêng làm nước nền) đun sôi trên lửa vừa khoảng 5 phút cho cô sánh lại vừa đủ phủ bóng mặt muỗng rồi rưới đều lên các khối thịt. Dùng nóng với cơm trắng.",
+      "timerMinutes": 5
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 665,
+    "energyKcal": 665.1,
+    "energyKj": 2782,
+    "proteinG": 12.8,
+    "fatG": 61.2,
+    "saturatedFatG": 22.3,
+    "carbG": 11.6,
+    "fiberG": 0.8,
+    "sugarG": 8.5,
+    "sodiumMg": 1139,
+    "saltG": 2.85,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170917",
+      "USDA FDC 171316",
+      "USDA FDC 171320",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Sucrose Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8bd61b0014aa4ba0a9f99bfe0f99a42a05be746490f0e6d9dbccbe9cae1e9439",
+    "researchedFromV2Sha256": "1b8eee68225532eff6a66aa6510eae1527c32b3b963629da1f9985b8949445be"
+  }
+}

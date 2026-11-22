@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-04",
+    "slug": "oyakodon",
+    "title": "Cơm gà trứng Oyakodon Nhật Bản",
+    "subtitle": "Cơm donburi Nhật truyền thống với thịt đùi gà mềm ngọt om nước dùng dashi, quyện lớp trứng gà đánh lướt mịn mượt trên nền cơm trắng dẻo nóng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Cơm donburi",
+      "Thịt gà",
+      "Nhanh gọn",
+      "Bữa trưa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Oyakodon là món cơm tô gia đình quen thuộc của Nhật Bản, kết hợp thịt đùi gà cắt miếng vừa ăn nấu cùng hành tây ngọt mềm trong nước dùng dashi đậm vị xì dầu và rượu ngọt mirin, phủ lớp trứng đánh nhẹ chín tới mịn mượt.",
+    "servingSuggestion": "Xới cơm Nhật nóng ra hai tô sâu lòng, nhẹ nhàng trút trọn phần gà trứng còn nóng hổi lên trên, rắc hành lá thái nhỏ và ớt bột Shichimi rồi thưởng thức ngay.",
+    "storageAndReheat": "Nên dùng ngay khi trứng còn mềm mịn; nếu dư, tách riêng phần cơm và nhân gà trứng cho vào hộp kín bảo quản tủ lạnh tối đa 1 ngày, hâm nóng bằng lò vi sóng hoặc chảo nhỏ có nắp trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương",
+      "culinaryMeasure": "280 g (2 má đùi)",
+      "prepNote": "lọc bỏ xương và mỡ thừa, cắt lát xéo dày 2 cm theo kỹ thuật sogigiri",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 280,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (150 g)",
+      "prepNote": "đập ra bát, dùng đũa cắt nhẹ lòng trắng 5–6 lần tạo vân trắng vàng, không đánh tan hoàn toàn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng dọc thớ dày khoảng 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm gạo Nhật nấu chín",
+      "culinaryMeasure": "360 g (2 chén đầy)",
+      "prepNote": "nấu từ gạo hạt ngắn Nhật giữ nóng tơi dẻo để lót đáy tô",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "pha hòa tan hoặc nấu từ kombu và cá bào để tạo nền vị thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha cùng dashi, mirin và đường làm nước sốt om gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ ngọt dịu và hương thơm đặc trưng cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để ướp khử mùi và làm mềm thịt đùi gà trước khi nấu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "hòa tan hoàn toàn vào hỗn hợp nước sốt om gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khúc ngắn 1 cm để rắc trang trí lên mặt tô cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SHICHIMI",
+      "name": "Bột ớt 7 vị Nhật (Shichimi)",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lên bề mặt khi dọn ăn để tăng hương thơm cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế và ướp thịt đùi gà với rượu Sake",
+      "instruction": "Làm sạch 280 g thịt đùi gà lọc xương, thấm khô bằng khăn giấy rồi cắt miếng vuông cạnh 2 cm theo góc dao nghiêng để miếng thịt dày đều. Cho thịt gà vào bát, rưới 15 ml rượu Sake nấu ăn lên trộn đều và ướp trong 5 phút cho thịt mềm và hết mùi tanh.",
+      "tip": "Cắt thịt gà theo góc dao nghiêng giúp tăng diện tích tiếp xúc với nước sốt, thịt chín nhanh và thấm đều hơn mà không bị khô.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Thái rau củ và pha hỗn hợp nước sốt om",
+      "instruction": "Thái dọc 1/2 củ hành tây thành múi mỏng 5 mm và cắt nhỏ 1/2 bó hành lá. Trong bát nhỏ, khuấy tan 120 ml nước dùng Dashi, 30 ml nước tương Nhật, 30 ml rượu ngọt Mirin và 8 g đường cát trắng đến khi đường hòa quyện hoàn toàn.",
+      "tip": "Hòa tan đường trước trong nước sốt nguội sẽ giúp nước om trong chảo đậm đều ngay từ đầu, tránh bị cháy đường ở đáy chảo."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu mềm hành tây trong nước sốt",
+      "instruction": "Đổ hỗn hợp nước sốt Dashi đã pha vào chảo nông đường kính 20 cm, đặt lên bếp lửa vừa và không đậy nắp. Khi nước sốt vừa sôi lăn tăn, thả hành tây thái mỏng vào dàn đều, nấu mở nắp khoảng 3 phút cho đến khi hành tây chuyển trong và tiết vị ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om chín hoàn toàn thịt đùi gà",
+      "instruction": "Xếp đều từng miếng thịt đùi gà đã ướp vào chảo nước sốt đang sôi nhẹ trên lửa vừa. Nấu khoảng 4–5 phút và trở mặt gà giữa chừng cho đến khi thịt gà chuyển màu trắng đục hoàn toàn, không còn sắc hồng ở lõi và nước sốt hơi rút sánh lại.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đánh nhẹ và rưới trứng thành hai lần",
+      "instruction": "Đập 3 quả trứng gà vào bát, dùng đũa gạt cắt lòng trắng 5–6 nhịp cho tơi nhẹ, giữ lại vân trắng vàng. Rưới 2/3 phần trứng (ưu tiên lòng trắng) vào giữa chảo trên lửa vừa nhỏ, chờ 30 giây cho trứng hơi se mặt rồi rưới nốt 1/3 trứng còn lại đều khắp, đậy vung nấu thêm 1–2 phút đến khi trứng chín tới mềm mịn.",
+      "tip": "Không đánh trứng tan bông hoàn toàn vì sẽ làm món trứng mất đi vân cẩm thạch trắng vàng đẹp mắt và độ béo bùi đặc trưng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày tô cơm Oyakodon và thưởng thức nóng",
+      "instruction": "Xới 360 g cơm gạo Nhật nóng vào hai tô donburi, lắc nhẹ chảo rồi trượt nguyên mảng gà trứng cùng nước sốt phủ kín mặt cơm. Rắc hành lá thái nhỏ và chút bột ớt 7 vị Nhật Shichimi lên trên rồi dọn ăn ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 672,
+    "energyKcal": 672.2,
+    "energyKj": 2813,
+    "proteinG": 42.8,
+    "fatG": 21.8,
+    "saturatedFatG": 6.3,
+    "carbG": 68.2,
+    "fiberG": 1.8,
+    "sugarG": 12.7,
+    "sodiumMg": 1380,
+    "saltG": 3.45,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "MEXT Spice Ref",
+      "USDA FDC 168878",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 171287",
+      "USDA FDC 172385",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/oyakodon.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5404e3189ccd13e8d38f2831f6768cf2ce3320ae978bf19955aa882b0baf955b",
+    "researchedFromV2Sha256": "82378c9b6531fdd69f26b28ce3a562a18de77317838e12ad12ef69071b92e139"
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-fbbe89a1039604fc",
+    "slug": "nam-xao-toi-trung",
+    "title": "Nấm đùi gà xào tỏi nước tương",
+    "subtitle": "Từng khoanh nấm đùi gà khía caro áp chảo xém vàng dai giòn như bào ngư, đảo nhanh trong sốt tỏi băm xì dầu nhạt thơm lừng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Nấm đùi gà",
+      "Xào tỏi",
+      "Nhanh gọn",
+      "Chay",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món nấm xào 10 phút đậm hương vị nhà hàng Trung Hoa: nấm đùi gà thái khoanh dày khía caro áp chảo xém cạnh săn giòn, rồi quyện cùng hỗn hợp tỏi phi thơm lẫn tỏi sống băm nhuyễn, xì dầu nhạt và chút dầu hào dậy vị ngọt tự nhiên.",
+    "servingSuggestion": "Trút nấm đùi gà xào tỏi ra đĩa nóng, rắc hành lá xanh và ớt khoanh, thưởng thức ngay cùng cơm trắng nóng.",
+    "storageAndReheat": "Nên dùng hết trong bữa ăn để cảm nhận trọn vẹn độ giòn sần sật của nấm; bảo quản ngăn mát tối đa 24 giờ và áp chảo lại 2 phút trên lửa lớn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "400 g",
+      "prepNote": "lau sạch bằng khăn ẩm (không ngâm nước), cắt gốc cứng, thái khoanh dày 1,5 cm rồi khía caro nông hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 380,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (~25 g, khoảng 8–10 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn (chia 3/4 để phi thơm, 1/4 trộn sống lúc sau)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh và màu nâu nhẹ đẹp mắt cho nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2 cây)",
+      "prepNote": "rửa sạch, thái khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia đôi: 15 ml áp chảo xém vàng nấm, 15 ml phi tỏi làm sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "nêm nhẹ tăng độ đậm đà cho sốt tỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "dằn dịu vị mặn và làm nổi vị ngọt tự nhiên của nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "8 ml (~1/2 muỗng canh)",
+      "prepNote": "tăng độ sánh bóng và vị ngọt umami (có thể bỏ qua nếu ăn thuần chay)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát khoanh mỏng tạo điểm nhấn cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lau sạch, thái khoanh và khía caro nấm đùi gà",
+      "instruction": "Dùng khăn giấy ẩm lau sạch 400 g nấm đùi gà (tránh rửa trực tiếp dưới nước làm nấm hút ẩm mất độ giòn). Cắt bỏ phần chân cứng, cắt nấm thành khoanh dày 1,5 cm rồi khía các đường caro nông hai mặt; băm nhuyễn tỏi khô, thái khúc 3 cm hành lá và thái lát ớt hiểm.",
+      "tip": "Chỉ dùng khăn ẩm lau sạch nấm giúp giữ trọn kết cấu dai giòn tự nhiên, không bị chảy nước khi áp chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo xém vàng hai mặt từng khoanh nấm",
+      "instruction": "Tráng 15 ml dầu ăn lên chảo rộng trên lửa vừa lớn, xếp các khoanh nấm thành một lớp đều, áp chảo 4 phút và lật mặt đến khi hai mặt nấm hơi xém vàng cạnh săn giòn thì gắp ra đĩa riêng.",
+      "tip": "Khía caro giúp nấm nhanh chín đều bên trong và giữ sốt bám chặt quanh từng khoanh nấm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm phần lớn tỏi băm trên lửa vừa",
+      "instruction": "Thêm 15 ml dầu ăn còn lại vào chảo, hạ lửa vừa rồi cho 3/4 lượng tỏi băm vào phi 1 phút đến khi vừa chuyển vàng nhạt và dậy hương thơm nồng.",
+      "tip": "Không phi tỏi quá vàng đậm vì tỏi sẽ bị đắng khi kết hợp cùng xì dầu.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Hòa tỏi sống và gia vị thành sốt thơm",
+      "instruction": "Cho 1/4 lượng tỏi băm sống còn lại vào chảo cùng 2 g muối ăn, 2 g đường cát trắng, 15 ml xì dầu nhạt và 8 ml dầu hào, đảo nhanh 15 giây cho gia vị hòa quyện sôi nhẹ.",
+      "tip": "Kết hợp cả tỏi phi vàng lẫn chút tỏi sống giúp món nấm dậy tầng hương thơm nồng nàn đặc trưng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo nấm đùi gà thấm đều sốt tỏi",
+      "instruction": "Trút đĩa nấm đùi gà đã áp chảo trở lại chảo, tăng lửa vừa lớn đảo nhanh tay 2 phút cho các khoanh nấm áo đều lớp sốt bóng đẹp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, ớt và dọn nóng",
+      "instruction": "Thả hành lá cắt khúc và ớt hiểm thái lát vào chảo đảo thêm 30 giây giữ màu tươi rồi tắt bếp, trút ra đĩa thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 137,
+    "energyKcal": 136.7,
+    "energyKj": 572,
+    "proteinG": 5.4,
+    "fatG": 8.9,
+    "saturatedFatG": 1.3,
+    "carbG": 12.2,
+    "fiberG": 3.4,
+    "sugarG": 2.7,
+    "sodiumMg": 710,
+    "saltG": 1.77,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6e51ed29ffbcb1ca4a6629c232c704f71be1acbce88bc0b0711d10a1a5ffc902",
+    "researchedFromV2Sha256": "a10da6a01d0856dcb4b2dba22d4c884e9f76cee6febce8670ebbf3a97970c740"
+  }
+}

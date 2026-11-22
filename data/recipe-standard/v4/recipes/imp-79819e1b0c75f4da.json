@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-79819e1b0c75f4da",
+    "slug": "mi-udon-xao-thit-heo-bap-cai-yaki-udon",
+    "title": "Mì Udon xào thịt ba chỉ bắp cải Yaki Udon",
+    "subtitle": "Sợi mì Udon trắng tròn dai mềm xào lửa lớn cùng thịt ba chỉ xém cạnh, bắp cải giòn ngọt, cà rốt và nấm hương đậm vị xì dầu Nhật"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 18,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Mì xào",
+      "Yaki Udon",
+      "Thịt ba chỉ",
+      "Bữa tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Yaki Udon là món mì xào trứ danh của ẩm thực đường phố Nhật Bản với sợi mì udon dày mềm dai quyện vị béo thơm của thịt ba chỉ, rau củ tươi giòn và nước sốt xì dầu pha rượu mirin, sake cùng cá bào katsuobushi.",
+    "servingSuggestion": "Bày mì Udon xào nóng hổi ra đĩa sâu lòng, rắc ngay cá bào khô Katsuobushi để từng lát cá múa nhẹ theo hơi nóng và thưởng thức liền tay.",
+    "storageAndReheat": "Mì ngon nhất khi ăn nóng ngay sau khi xào; phần dư có thể cất hộp kín tủ lạnh tối đa 2 ngày, khi ăn xào lại trên chảo lửa vừa với 1 muỗng canh nước lọc để sợi mì mềm tơi trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "UDON_WHEAT",
+      "name": "Mì Udon tươi đóng gói",
+      "culinaryMeasure": "2 gói (400 g)",
+      "prepNote": "chần nhanh trong nước sôi 40 giây cho sợi tơi mềm rồi vớt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "pack",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo thái lát",
+      "culinaryMeasure": "160 g",
+      "prepNote": "thái lát mỏng 3 mm, cắt miếng dài 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 160,
+      "unit": "g",
+      "grossGrams": 160,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh",
+      "culinaryMeasure": "1/4 bắp nhỏ (200 g)",
+      "prepNote": "bỏ lõi cứng, cắt miếng vuông cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "bóc vỏ, thái múi mỏng dọc thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1/2 củ (55 g)",
+      "prepNote": "gọt vỏ, thái lát mỏng rồi cắt sợi dài 5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm hương tươi",
+      "culinaryMeasure": "40 g (3–4 tai nấm)",
+      "prepNote": "cắt bỏ chân cứng, thái lát mỏng 3–4 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, cắt khúc 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "rưới men thành chảo nóng để tạo mùi thơm cháy cạnh đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha cùng nước tương và mirin làm sốt xào mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt dịu cân bằng cho sợi mì udon",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để xào thịt ba chỉ và rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "rắc nêm thịt ba chỉ khi áp chảo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "nêm khi xào thịt và hoàn thiện món ăn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô (Katsuobushi)",
+      "culinaryMeasure": "5 g (2 muỗng canh)",
+      "prepNote": "rắc lên mặt đĩa mì nóng để tăng hương vị umami",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau củ, thịt ba chỉ và pha hỗn hợp sốt",
+      "instruction": "Thái lát mỏng 160 g thịt ba chỉ heo cắt đoạn 3 cm; cắt 1/4 bắp cải xanh thành miếng vuông 2,5 cm; thái múi 1/2 củ hành tây; thái sợi 1/2 củ cà rốt; thái lát 40 g nấm hương tươi và cắt khúc 1 bó hành lá. Khuấy đều 30 ml nước tương Nhật, 15 ml rượu Sake nấu ăn và 10 ml rượu ngọt Mirin trong bát nhỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần nhanh sợi mì Udon cho tơi mềm",
+      "instruction": "Đun sôi nồi nước trên lửa lớn, thả 2 gói mì Udon tươi vào chần nhanh khoảng 40 giây đến 1 phút vừa đủ để các sợi mì tách tơi ra, lập tức vớt ra rổ để thật ráo nước.",
+      "tip": "Mì udon tươi đã chín sẵn nên chỉ cần chần thoáng dưới 1 phút; chần quá lâu sợi mì sẽ bị bở và đứt gãy khi xào.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào thịt ba chỉ vàng xém cạnh",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa với 15 ml dầu ăn thực vật. Cho thịt ba chỉ vào xào, rắc 1 g muối ăn và 1 g tiêu đen xay, đảo đều khoảng 4 phút đến khi thịt ra bớt mỡ, xém vàng nhẹ các mép và chín kỹ hoàn toàn.",
+      "tip": "Xào cho thịt ba chỉ hơi xém vàng giúp mỡ thừa tiết ra làm nền xào rau củ thơm béo đậm đà.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào và om chín mềm bắp cải cùng rau củ",
+      "instruction": "Cho hành tây vào chảo đảo 1 phút cho dậy mùi, tiếp tục thả bắp cải xanh, cà rốt, nấm hương tươi và phần đầu hành lá vào đảo đều tay cho thấm mỡ thịt. Đậy nắp chảo và hạ lửa vừa nhỏ hấp nhẹ trong 3 phút để rau củ chín mềm mà vẫn giữ được độ giòn ngọt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào mì Udon trên lửa lớn và rưới sốt áp thành chảo",
+      "instruction": "Mở nắp, tăng lên lửa vừa lớn, trút mì Udon đã chần vào chảo và dùng kẹp gắp nâng đảo đều tay trong 2 phút. Rưới hỗn hợp nước sốt nước tương Nhật men theo thành chảo nóng, đảo thêm 2 phút cùng phần lá hành xanh đến khi sốt rút quyện bóng đều từng sợi mì rồi tắt bếp.",
+      "tip": "Dùng kẹp gắp thay vì đũa và rót nước tương dọc thành chảo nóng giúp sợi udon không bị đứt vụn mà lại dậy mùi thơm khói nhẹ đặc trưng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa mì và rắc cá bào Katsuobushi",
+      "instruction": "Gắp mì Yaki Udon nóng hổi chia đều ra hai đĩa, rắc thêm cá bào khô Katsuobushi lên trên để tăng độ đậm đà và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 779,
+    "energyKcal": 778.5,
+    "energyKj": 3257,
+    "proteinG": 18.6,
+    "fatG": 50.2,
+    "saturatedFatG": 16.7,
+    "carbG": 59.7,
+    "fiberG": 6.6,
+    "sugarG": 8.8,
+    "sodiumMg": 1474,
+    "saltG": 3.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Boiled/Fresh Udon",
+      "MEXT Hon-Mirin 16031",
+      "MEXT Katsuobushi 10099",
+      "MEXT Sake 16021",
+      "USDA FDC 167820",
+      "USDA FDC 169251",
+      "USDA FDC 169975",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0171afac52ea4477abebed5a7679929fe4dee43327ee2ffbc64c100965c37574",
+    "researchedFromV2Sha256": "13fd627ec21a15b26423d315c7ff1e7308790596b211c5e12beecf8402785dc6"
+  }
+}

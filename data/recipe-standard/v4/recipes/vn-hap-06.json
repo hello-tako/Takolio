@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-hap-06",
+    "slug": "tom-hap-nuoc-dua-tuoi",
+    "title": "Tôm sú hấp nước dừa tươi ngọt lịm",
+    "subtitle": "Tôm sú tươi roi rói hấp cùng nước dừa xiêm thanh ngọt và sả đập dập, thịt tôm săn chắc đỏ au dậy hương dừa dịu nhẹ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Hải sản",
+      "Dưới 20 phút",
+      "Đặc sản Nam Bộ",
+      "Đãi tiệc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm sú tươi sống hấp trực tiếp trong nước dừa xiêm ngọt thanh cùng sả cây và gừng lát giúp vỏ tôm lên màu đỏ cam bắt mắt, thịt tôm săn chắc giòn ngọt và thấm vị dừa dịu mát đặc trưng miền Tây.",
+    "servingSuggestion": "Xếp tôm đỏ au ra đĩa hoặc quanh vành trái dừa xiêm, trang trí ớt sừng thái chỉ và vài cọng rau thơm, ăn nóng chấm muối tiêu chanh ớt.",
+    "storageAndReheat": "Tôm hấp ngon nhất khi dùng nóng ngay sau khi chín. Nếu còn dư, bóc vỏ rồi bảo quản ngăn mát tối đa 24 giờ và hấp lại nhanh 2–3 phút hoặc dùng chế biến món xào, salad."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi sống",
+      "culinaryMeasure": "550 g (khoảng 16–18 con)",
+      "prepNote": "cắt bớt râu và chóp nhọn đầu, rút chỉ đen dọc lưng, rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 550,
+      "unit": "g",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 429,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COCONUT_WATER",
+      "name": "Nước dừa xiêm tươi",
+      "culinaryMeasure": "350 ml",
+      "prepNote": "lấy từ 1 quả dừa xiêm tươi ngọt thanh, lọc sạch cặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 350,
+      "unit": "ml",
+      "grossGrams": 353.5,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 229.78,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả cây tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc bẹ già, rửa sạch; 1 cây thái lát mỏng ướp tôm, 2 cây đập dập cắt khúc lót đáy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, thái 4–5 lát mỏng giúp khử mùi tanh và tăng hương ấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng cho vào cùng sả gừng khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 7.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, bỏ hạt thái sợi chỉ dài để trang trí và thêm vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "10 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "chia 5 g ướp tôm trước khi hấp và 5 g làm muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 5.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "ướp nhẹ giúp tôm đậm vị và lên màu đỏ bóng đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "trộn vào muối tiêu chanh và rắc nhẹ khi ướp tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "rửa sạch, vắt lấy nước cốt pha muối tiêu chanh chấm tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm sú và rút chỉ đen dọc lưng",
+      "instruction": "Dùng kéo cắt gọn râu tôm, chân và phần gai nhọn ở đầu tôm, dùng tăm nhọn khều nhẹ ở đốt lưng thứ hai để rút sạch đường chỉ đen. Rửa nhanh tôm qua nước muối loãng rồi xả sạch lại với nước mát, để vào rổ cho thật ráo.",
+      "tip": "Rút chỉ đen bằng tăm ngay tại khe đốt vỏ giúp giữ nguyên con tôm đẹp mắt mà không bị rách lưng khi hấp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Sơ chế gia vị và ướp tôm sú",
+      "instruction": "Bóc bẹ già 3 cây sả: thái lát mỏng 1 cây để ướp tôm, 2 cây còn lại đập dập cắt khúc 5 cm. Thái lát mỏng 20 g gừng và 25 g hành tím; bỏ hạt thái sợi chỉ 1 quả ớt sừng. Trộn đều tôm với sả thái lát, 5 g muối hạt, 4 g đường cát trắng và một nhúm nhỏ tiêu đen xay, để ướp 10 phút cho ngấm.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp tôm vào nồi cùng nước dừa xiêm",
+      "instruction": "Trải lớp sả đập dập, gừng thái lát và hành tím thái lát xuống đáy chảo sâu lòng hoặc nồi đáy rộng. Xếp đều tôm sú đã ướp lên trên mặt lớp sả gừng rồi rót từ từ 350 ml nước dừa xiêm tươi vào nồi sao cho nước dừa xâm xấp khoảng một nửa thân tôm.",
+      "tip": "Nên chọn nước dừa xiêm tươi vừa chín tới có vị ngọt thanh tự nhiên để làm bật vị ngọt của tôm mà không bị chua gắt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp tôm chín đỏ au trong nước dừa",
+      "instruction": "Đậy kín nắp nồi và đun trên lửa lớn để nước dừa nhanh chóng sôi bùng, sau đó giữ lửa vừa hấp tiếp khoảng 7 phút cho đến khi toàn bộ vỏ tôm chuyển màu đỏ au, thịt tôm săn chắc và thân uốn cong hình chữ C là chín hoàn toàn.",
+      "tip": "Không hấp tôm quá 10 phút vì thịt tôm sẽ bị teo cứng, mất độ giòn ngọt và nước dừa bay hơi cạn.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh chấm tôm sú",
+      "instruction": "Trong lúc chờ tôm chín, cho 5 g muối hạt còn lại và 2 g tiêu đen xay vào chén nhỏ, vắt nước cốt 1 quả chanh tươi vào khuấy đều cho tan nhẹ thành muối tiêu chanh sánh thơm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa tôm hấp nước dừa nóng hổi",
+      "instruction": "Tắt bếp, gắp tôm xếp vòng tròn đẹp mắt quanh đĩa lớn (hoặc quanh miệng vỏ trái dừa tươi), rưới vài muỗng nước hấp dừa sả nóng hổi lên mình tôm cho bóng mượt, điểm thêm ớt sừng thái chỉ và dọn dùng nóng ngay cùng chén muối tiêu chanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 152,
+    "energyKcal": 151.5,
+    "energyKj": 634,
+    "proteinG": 29.6,
+    "fatG": 1,
+    "saturatedFatG": 0.3,
+    "carbG": 6.9,
+    "fiberG": 1.4,
+    "sugarG": 3.4,
+    "sodiumMg": 962,
+    "saltG": 2.41,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170174",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4666e450ee9b1e7bb2b4754ed22ef632da1f053e6fb7ff627290deb5f4dc8bde",
+    "researchedFromV2Sha256": "24ff694cfd9c5834568e14ef1fdc7698dcccf4a7f64ae02e6f97141345ca95b9"
+  }
+}

@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-35deaaa123c7470d",
+    "slug": "nom-gia-chua-cay",
+    "title": "Nộm giá đỗ chua cay chay",
+    "subtitle": "Giá đỗ chần sơ giòn sần sật trộn cùng cà rốt bào sợi, nước mắm chay chanh tỏi ớt chua cay và đậu phộng rang bùi béo"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món nộm",
+      "Giá đỗ",
+      "Khai vị",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "peanut",
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa nộm giá đỗ chua cay chay thanh mát chống ngán với từng cọng giá đỗ trắng mập giòn sần sật, cà rốt cam tươi bào sợi, quyện đều nước trộn nước mắm chay chanh tỏi ớt hài hòa, thơm dịu rau húng quế và bùi béo đậu phộng rang.",
+    "servingSuggestion": "Bày nộm giá ra đĩa, rắc thêm đậu phộng rang giã dập và húng quế thái nhỏ lên trên; dùng ngay như món khai vị hoặc ăn kèm các món kho chay.",
+    "storageAndReheat": "Món nộm ngon nhất ngay sau khi trộn để giữ độ giòn ráo; nếu chuẩn bị trước, nên tách riêng phần rau củ ráo nước và phần nước trộn, chỉ trộn đều ngay trước khi dọn bữa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "nhặt bỏ vỏ đậu và rễ dập, rửa sạch, chần nhanh 10 giây rồi ngâm nước lạnh vớt ra để thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, bào sợi mỏng, bóp nhẹ với 2 g muối ăn 3 phút rồi rửa sạch vắt ráo cho giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3–4 cm chần sơ cùng giá hoặc trộn tươi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "vắt lấy khoảng 15 ml nước cốt, bỏ hạt để pha nước trộn nộm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "bỏ cuống và bớt hạt nếu ăn cay vừa, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước trộn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_FISH_SAUCE",
+      "name": "Nước mắm chay",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo nền vị mặn thơm thanh cho nước trộn nộm chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (2 muỗng canh)",
+      "prepNote": "dùng 22 g pha nước trộn chua ngọt và 3 g ướp cà rốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "kết hợp nước cốt chanh tạo vị chua thanh dịu bền vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "THAI_BASIL",
+      "name": "Rau húng quế tươi",
+      "culinaryMeasure": "20 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lá non rửa sạch, để ráo rồi thái rối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng (lạc) rang giã dập",
+      "culinaryMeasure": "30 g",
+      "prepNote": "rang chín thơm, xát bỏ vỏ lụa rồi giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "dùng bóp sơ cà rốt cho giòn và ra bớt nước rồi xả bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 0.9,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần nhanh giá đỗ và hành lá giữ độ giòn",
+      "instruction": "Nhặt sạch giá đỗ và rửa kỹ rồi để ráo. Đun sôi nồi nước nhỏ, thả giá đỗ cùng hành lá cắt khúc 3–4 cm vào chần thật nhanh trong 10 giây, vớt ngay ra ngâm vào tô nước lạnh 1 phút rồi đổ ra rổ để thật ráo nước.",
+      "tip": "Chần giá đỗ rất nhanh qua nước sôi rồi sốc lạnh giúp giá hết mùi hăng ngái mà vẫn giữ độ giòn trắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Bóp giòn cà rốt bào sợi",
+      "instruction": "Cà rốt gọt vỏ, bào sợi mỏng đều rồi trộn nhẹ với 3 g muối ăn và 3 g đường cát trắng trong 3 phút để rút bớt nước hăng. Sau đó xả nhanh qua nước đun sôi để nguội, vắt nhẹ tay cho ráo nước.",
+      "tip": "Ướp muối đường nhẹ rồi vắt ráo trước khi trộn giúp sợi cà rốt giòn sần sật và không tiết nước làm loãng nộm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn nộm chay chua cay mặn ngọt",
+      "instruction": "Vắt chanh tươi lấy nước cốt bỏ hạt; băm thật nhuyễn tỏi khô và ớt hiểm. Khuấy đều trong chén 30 ml nước mắm chay, 22 g đường cát trắng còn lại, 15 ml giấm gạo và nước cốt chanh cho đường tan hoàn toàn rồi thả tỏi ớt băm vào trộn đều.",
+      "tip": "Nêm thử hỗn hợp nước trộn đạt vị chua cay mặn ngọt hơi đậm một chút để khi áo vào giá và cà rốt là vừa miệng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn đều giá đỗ, cà rốt và hành lá thấm vị",
+      "instruction": "Cho giá đỗ đã ráo, cà rốt bào sợi và hành lá vào âu lớn. Rưới từ từ phần nước trộn nộm vào âu, dùng tay đeo găng bóp trộn thật nhẹ nhàng cho gia vị phủ đều rồi để nghỉ 5 phút cho nguyên liệu ngấm vị.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm rau húng quế và chắt nước thừa",
+      "instruction": "Nghiêng nhẹ âu để chắt bỏ phần nước dư nếu rau có tiết thêm nước, sau đó thả rau húng quế thái rối vào đảo đều nhẹ tay thêm một lượt để nộm dậy mùi thơm mát."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc đậu phộng rang và thưởng thức ngay",
+      "instruction": "Gắp nộm giá đỗ chua cay ra đĩa, rắc đều 30 g đậu phộng rang giã dập lên mặt đĩa và thưởng thức ngay khi rau củ còn giòn mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 147,
+    "energyKcal": 147,
+    "energyKj": 616,
+    "proteinG": 6.9,
+    "fatG": 5.3,
+    "saturatedFatG": 0.7,
+    "carbG": 21.9,
+    "fiberG": 4.2,
+    "sugarG": 14.9,
+    "sodiumMg": 816,
+    "saltG": 2.04,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 172232",
+      "USDA FDC 172238",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "Vegetarian Fish Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d1291fff8d6d03ec4023a82dea5f818a81a7af5be73cbefbdc457eb16bf5a7c2",
+    "researchedFromV2Sha256": "ea10fad4f536d7827f22c2241b6eb39a061021f7980197c8f5408f05016df7c8"
+  }
+}

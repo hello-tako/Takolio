@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-11b65c6b18266849",
+    "slug": "dau-phu-kho-dua-chay",
+    "title": "Đậu phụ kho dứa chay chua ngọt",
+    "subtitle": "Đậu phụ rán vàng giòn kho liu riu cùng dứa chín thơm ngọt trong nước sốt nước tương dầu hào sánh đậm bắt cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Nam Bộ",
+      "Món kho",
+      "Đậu phụ",
+      "Dứa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món kho chay mới lạ kích thích vị giác với đậu phụ trắng chiên vàng giòn bên ngoài, mềm béo bên trong, rim thấm cùng những miếng dứa chín chua ngọt thanh dịu, quyện sốt nước tương dầu hào chay sánh bóng thơm lừng hành tỏi.",
+    "servingSuggestion": "Múc đậu phụ kho dứa ra đĩa sâu lòng, rưới nước sốt sánh vàng lên trên rồi rắc hành lá, ớt lát và tiêu xay; thưởng thức nóng cùng cơm trắng.",
+    "storageAndReheat": "Để nguội rồi bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; hâm nóng lại trên lửa nhỏ 4–5 phút cùng 1–2 muỗng nước lọc trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "4 bìa (khoảng 480 g)",
+      "prepNote": "rửa nhẹ, thấm thật khô nước rồi cắt miếng vuông dày 1,5 cm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g)",
+      "prepNote": "gọt vỏ, bỏ mắt, bỏ lõi cứng rồi thái lát tam giác dày 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "đầu hành trắng chẻ đôi để phi thơm, lá xanh cắt khúc rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (1 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ phi thơm cùng tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "thái lát mỏng rắc mặt tăng sắc màu và vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "pha hỗn hợp sốt kho đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo độ đậm đà sánh bóng cho nước sốt kho dứa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "hòa cùng nước tương tạo vị chua ngọt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "hòa tan với 30 ml nước lọc để làm sánh sốt ở bước cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm nhẹ làm nổi vị ngọt của dứa chín",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm lên món kho trước khi dùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "55 ml (~3,5 muỗng canh)",
+      "prepNote": "dùng khoảng 40 ml rán vàng đậu phụ (chắt bỏ dầu dư), giữ 15 ml phi thơm hành tỏi",
+      "componentGroup": "main",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 50.6,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 22.77,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "130 ml (100 ml pha sốt + 30 ml hòa bột năng)",
+      "prepNote": "pha loãng sốt kho và hòa tan bột năng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 130,
+      "unit": "ml",
+      "grossGrams": 130,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 130,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đậu phụ, dứa chín và pha sốt kho",
+      "instruction": "Đậu phụ trắng thấm thật khô bằng khăn giấy rồi cắt miếng vuông dày 1,5 cm. Dứa chín gọt sạch vỏ và mắt, cắt lát tam giác dày 0,8 cm. Băm nhỏ tỏi khô và hành tím; hành lá chẻ đầu hành để riêng, lá xanh cắt khúc; ớt sừng thái lát. Khuấy tan trong tô 45 ml nước tương, 15 ml dầu hào chay, 8 g đường cát trắng, 3 g muối ăn và 100 ml nước lọc; hòa riêng 8 g bột năng với 30 ml nước lọc còn lại.",
+      "tip": "Thấm thật khô đậu phụ trước khi rán giúp dầu không bị bắn và lớp vỏ ngoài vàng giòn chắc chắn hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Rán vàng giòn đều các mặt đậu phụ",
+      "instruction": "Làm nóng chảo với 40 ml dầu ăn trên lửa vừa đến khi dầu sôi tăm, thả từng miếng đậu phụ vào rán khoảng 7 phút. Lật nhẹ tay cho đến khi các mặt vàng giòn đều thì gắp ra đĩa lót giấy thấm dầu.",
+      "tip": "Chỉ thả đậu vào khi dầu đã nóng già giúp đậu không dính sát đáy chảo và tạo vỏ giòn đều.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím, tỏi băm và xào dứa chín",
+      "instruction": "Chắt bớt dầu thừa ra khỏi chảo, giữ lại khoảng 15 ml dầu ăn trên lửa vừa rồi cho hành tím băm, tỏi băm và đầu hành trắng vào phi thơm 40 giây. Cho dứa chín thái lát vào đảo đều 4 phút cho dứa hơi mềm và tiết nước chua ngọt thơm lừng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Kho rim đậu phụ với dứa và nước sốt",
+      "instruction": "Xếp nhẹ các miếng đậu phụ đã rán vàng vào chảo dứa, rưới đều tô nước sốt nước tương đã pha vào. Đun sôi nhẹ rồi hạ xuống lửa nhỏ, kho liu riu khoảng 10 phút và nhẹ nhàng trở mặt đậu một lần để đậu thấm đượm vị chua ngọt mặn hài hòa.",
+      "tip": "Kho ở lửa nhỏ và trở nhẹ mặt đậu một lần giúp đậu thấm đều vị chua ngọt mà không bị nát.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Tạo độ sánh mượt cho sốt kho dứa",
+      "instruction": "Khuấy đều lại chén nước bột năng rồi rót từ từ vào chảo, nghiêng lắc nhẹ chảo khoảng 1 phút cho đến khi nước sốt sánh bóng quyện quanh từng miếng đậu và dứa thì tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện món đậu phụ kho dứa nóng hổi",
+      "instruction": "Rắc hành lá xanh cắt khúc, ớt sừng thái lát và 2 g tiêu đen xay lên mặt chảo. Múc đậu phụ kho dứa ra đĩa sâu lòng, chan đều nước sốt sánh vàng lên trên và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 279,
+    "energyKcal": 279.1,
+    "energyKj": 1167,
+    "proteinG": 18.5,
+    "fatG": 16.3,
+    "saturatedFatG": 2.4,
+    "carbG": 20.4,
+    "fiberG": 3.1,
+    "sugarG": 11.2,
+    "sodiumMg": 1520,
+    "saltG": 3.8,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b2ad2056e8eed27f13f09aed3ec1e10506917787bc4599041d0b1c64db4e17c1",
+    "researchedFromV2Sha256": "b86772bb5d375635120425236b68dd2785a8153b377358756e17d76b9a420019"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8fcc592ab7250a38",
+    "slug": "bap-cai-om-ca-chua-y",
+    "title": "Bắp cải om cà chua kiểu Ý",
+    "subtitle": "Bắp cải thái sợi om chậm trong sốt cà chua sánh dịu quyện vị ngọt của hành tây, tỏi thơm và dầu ô liu béo nhẹ"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Bắp cải om",
+      "Món chay",
+      "Ẩm thực Ý",
+      "Món phụ",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": []
+  },
+  "overview": {
+    "description": "Món rau om dân dã vùng Bắc Ý với từng sợi bắp cải chín mềm ngọt lịm, thấm đều nước sốt cà chua đỏ au quyện hương dầu ô liu, hành tây và tỏi phi dịu nhẹ.",
+    "servingSuggestion": "Múc nóng ra đĩa sâu lòng để dùng làm món ăn kèm cho các món thịt nướng, xúc xích hoặc chấm trực tiếp với bánh mì giòn.",
+    "storageAndReheat": "Món bắp cải om để qua đêm trong ngăn mát tối đa 2 ngày càng thấm đẫm gia vị; khi ăn hâm nóng lại trên chảo với lửa vừa khoảng 5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải tươi",
+      "culinaryMeasure": "1 bắp nhỏ (khoảng 800 g)",
+      "prepNote": "bỏ lá già ngoài, bổ tư cắt bỏ lõi cứng rồi thái sợi ngang dày 1 cm, rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 680,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua nghiền đóng hộp Ý (Passata)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "giúp món om lên màu đỏ đẹp và tạo độ sánh dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (~105 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2 tép)",
+      "prepNote": "bóc vỏ, đập dập nguyên tép để phi thơm rồi gắp bỏ trước khi om",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng xào nền hành tỏi và giúp bắp cải bóng mềm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "200 ml",
+      "prepNote": "châm vào om mềm bắp cải trong nồi kín",
+      "componentGroup": "broth",
+      "requiredQuantity": 200,
+      "unit": "ml",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "nêm khi xào bắp cải và điều chỉnh ở bước cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 5.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc tạo mùi thơm ấm cho món rau om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái sợi bắp cải và chuẩn bị hành tỏi",
+      "instruction": "Tách bỏ lớp lá già bên ngoài của 1 bắp cải tươi, bổ tư theo chiều dọc rồi cắt bỏ phần lõi cứng, sau đó thái ngang thành sợi dày khoảng 1 cm, rửa sạch và vẩy ráo. Thái hạt lựu nhỏ 3/4 củ hành tây, bóc vỏ và đập dập nhẹ 2 tép tỏi khô."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành tây và tỏi với dầu ô liu",
+      "instruction": "Làm nóng 45 ml dầu ô liu trong chảo sâu lòng hoặc nồi đế dày trên lửa vừa. Cho hành tây thái nhỏ vào xào 4 phút đến khi mềm trong, tiếp tục thả tỏi đập dập vào đảo thêm 1 phút cho dậy mùi thơm dịu rồi gắp bỏ xác tỏi ra ngoài.",
+      "tip": "Vớt bỏ tép tỏi ngay khi vừa thơm giúp món om có hương tỏi thoang thoảng dễ chịu mà không bị đắng nếu tỏi quá lửa.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào xẹp bắp cải với muối và tiêu",
+      "instruction": "Cho toàn bộ bắp cải thái sợi vào nồi, nêm 6 g muối ăn và 1,5 g tiêu đen xay. Xào mở nắp trên lửa vừa khoảng 4–5 phút, đảo đều tay để từng sợi cải thấm lớp dầu thơm và bắt đầu xẹp bớt thể tích.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Đảo quyện cùng cà chua nghiền đóng hộp",
+      "instruction": "Đổ 300 g cà chua nghiền đóng hộp Ý vào nồi bắp cải, đảo đều tay và đun mở nắp trong 3 phút để nước sốt cà chua hơi cô lại và bám đều lên từng sợi cải.",
+      "tip": "Đun mở nắp cùng cà chua nghiền trong vài phút đầu giúp sốt cô lại và bám đều lên từng sợi bắp cải trước khi om.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om nhỏ lửa đến khi bắp cải chín mềm ngọt",
+      "instruction": "Rót 200 ml nước dùng rau củ vào xấp mặt cải, đậy kín nắp, hạ lửa nhỏ và om liu riu trong khoảng 20–22 phút đến khi bắp cải chín mềm ngọt hoàn toàn.",
+      "tip": "Nếu thích sợi bắp cải còn giữ chút độ giòn nhẹ có thể rút ngắn thời gian om xuống khoảng 15 phút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cô sánh sốt và dọn nóng",
+      "instruction": "Mở nắp kiểm tra độ mềm của bắp cải; nếu nước còn loãng, bật lửa lớn đun thêm 2–3 phút cho nước sốt sánh bóng quyện vào cải. Nêm nếm lại vừa miệng rồi trút ra đĩa dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 170,
+    "energyKcal": 169.9,
+    "energyKj": 712,
+    "proteinG": 4,
+    "fatG": 10.2,
+    "saturatedFatG": 1.4,
+    "carbG": 19.1,
+    "fiberG": 6.3,
+    "sugarG": 10.2,
+    "sodiumMg": 770,
+    "saltG": 1.92,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 169975",
+      "USDA FDC 170000",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171595",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9179b1db2d1a94f1aee49d808e6df9afe9748352498601cbe8961ec22db0cea9",
+    "researchedFromV2Sha256": "71df3d86ef60f3f59aa0a2139c1e24a0fca3756c880f643b4f8d6940d9da5e19"
+  }
+}

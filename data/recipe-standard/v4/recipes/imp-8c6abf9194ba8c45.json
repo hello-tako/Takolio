@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8c6abf9194ba8c45",
+    "slug": "ga-xao-gia-itame",
+    "title": "Gà xào giá Itame",
+    "subtitle": "Đùi gà áp chảo da vàng giòn trộn thấm sốt xì dầu tỏi, xào nhanh lửa lớn cùng giá đỗ giòn sần sật thanh đạm"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Gà xào",
+      "Giá đỗ",
+      "Itame",
+      "Ẩm thực Nhật",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà xào giá Itame (Tori Moyashi Itame) là món xào nhà Nhật nhanh gọn chỉ trong 20 phút, kết hợp thịt đùi gà áp chảo vàng thơm thấm sốt xì dầu tỏi và giá đỗ xào nhanh trên lửa lớn nên vẫn giữ được độ giòn ngọt tươi mát.",
+    "servingSuggestion": "Múc gà xào giá nóng hổi ra đĩa rộng, rắc hành lá băm nhỏ cùng chút tiêu đen xay lên trên và dùng ngay khi còn nóng kèm cơm trắng.",
+    "storageAndReheat": "Nên ăn hết ngay sau khi xào để giá đỗ giữ được độ giòn tươi; nếu dư, bảo quản ngăn mát tối đa 24 giờ và đảo nóng nhanh trên lửa lớn 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà lọc xương còn da",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rửa sạch, thấm thật khô, cắt miếng vuông vừa ăn cỡ 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "nhặt bỏ rễ và vỏ đỗ nếu có, rửa sạch rồi để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "dùng trộn thấm trực tiếp vào thịt gà vừa áp chảo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,4 củ (khoảng 3 tép vừa)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn hoặc mài mịn trộn cùng xì dầu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm gà",
+      "culinaryMeasure": "4 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "nêm trực tiếp khi xào giá đỗ để giữ vị ngọt thanh giòn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng áp chảo đùi gà giúp da vàng thơm béo dịu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên đĩa gà xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lên món xào khi hoàn thiện để dậy hương",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (một nhúm nhỏ)",
+      "prepNote": "rắc nhẹ ướp thịt gà trước khi áp chảo cho đậm đà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đùi gà, giá đỗ và tỏi băm",
+      "instruction": "Thấm thật khô 450 g đùi gà lọc xương còn da, cắt miếng vuông cỡ 3 cm rồi xóc đều với 1 g muối ăn. Giá đỗ tươi rửa sạch, vớt ra rổ xóc kỹ cho thật ráo nước; tỏi khô mài nhuyễn hoặc băm mịn và hành lá thái nhỏ để riêng.",
+      "tip": "Giá đỗ phải để thật ráo nước trước khi cho vào chảo để tránh tiết nước làm món xào bị ướt nhũn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo mặt da đùi gà chín vàng giòn",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 10 ml dầu mè thơm, xếp các miếng đùi gà úp mặt da xuống chảo không chồng lên nhau, đậy nắp áp chảo khoảng 3 phút cho mặt da vàng giòn và tiết mỡ thơm.",
+      "tip": "Đậy nắp khi áp mặt da giúp hơi nóng làm thịt gà chín đều bên trong mà phần da vẫn giòn đẹp.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Lật mặt áp chín gà hoàn toàn",
+      "instruction": "Mở nắp, lật mặt thịt gà xuống và áp thêm khoảng 3 phút đến khi gà chín hoàn toàn bên trong, mặt ngoài vàng đều không còn nước đỏ thì gắp gà ra tô riêng, giữ nguyên phần mỡ gà thơm trong chảo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "marinate",
+      "title": "Trộn thịt gà nóng với sốt xì dầu và tỏi mài",
+      "instruction": "Cho 35 ml xì dầu Nhật và tỏi băm nhuyễn vào tô thịt gà đang còn nóng, đảo trộn đều tay và để yên 2 phút cho từng miếng thịt gà hút đậm hương vị tỏi xì dầu.",
+      "tip": "Trộn sốt xì dầu tỏi vào gà ngay khi gà còn nóng giúp thịt thấm vị sâu mà không làm cháy tỏi trong chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào nhanh giá đỗ trên lửa lớn giữ độ giòn",
+      "instruction": "Bật lửa lớn làm nóng lại phần mỡ gà trong chảo, trút toàn bộ 300 g giá đỗ vào cùng 4 g hạt nêm gà, đảo nhanh tay khoảng 1–2 phút đến khi giá vừa hơi trong nhẹ mà vẫn giữ nguyên độ giòn sần sật.",
+      "tip": "Chỉ xào giá đỗ trên lửa lớn trong thời gian ngắn; xào quá 2 phút giá sẽ mềm nhũn và ra nước."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo quyện gà với giá đỗ và dọn nóng",
+      "instruction": "Trút thịt gà cùng toàn bộ nước sốt tỏi xì dầu trở lại chảo giá đỗ, đảo nhanh tay 30 giây cho sốt áo đều gà và giá rồi tắt bếp ngay. Múc ra đĩa, rắc hành lá thái nhỏ cùng tiêu đen xay lên trên và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 339,
+    "energyKcal": 338.5,
+    "energyKj": 1417,
+    "proteinG": 33.5,
+    "fatG": 19,
+    "saturatedFatG": 4.8,
+    "carbG": 8.8,
+    "fiberG": 2.2,
+    "sugarG": 4.5,
+    "sodiumMg": 1236,
+    "saltG": 3.09,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "52206e2eebae61603d3d999c0e548181f77d437566b26e13bfe5644c909200c4",
+    "researchedFromV2Sha256": "70c0441dcd4cfb4c45340c65a3de0a18ec647b92f96fc8c55c9b42ea102bd2ae"
+  }
+}

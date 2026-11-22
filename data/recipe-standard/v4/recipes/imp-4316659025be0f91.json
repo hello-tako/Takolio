@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4316659025be0f91",
+    "slug": "mi-xao-bo-cay-thai",
+    "title": "Mì xào bò cay kiểu Thái",
+    "subtitle": "Sợi hủ tiếu bản rộng áp chảo xém cạnh kiểu Pad Kee Mao cùng thịt bò mềm, cải rổ, cà rốt, ớt tỏi và lá húng quế Thái dậy mùi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Pad Kee Mao",
+      "Mì xào",
+      "Thịt bò",
+      "Ẩm thực Thái",
+      "Cay nồng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì xào bò cay kiểu Thái (Pad Kee Mao) nổi bật với sợi hủ tiếu bản rộng dai mềm xém cạnh thơm mùi chảo lửa, thịt bò thăn mềm mọng đậm vị, hòa quyện vị cay nồng của tỏi ớt giã cùng mùi thơm đặc trưng không thể thiếu của lá húng quế Thái.",
+    "servingSuggestion": "Gắp mì xào bò cay nóng hổi ra đĩa lớn, rắc thêm hành lá và thưởng thức ngay khi lá húng quế còn thơm nồng.",
+    "storageAndReheat": "Mì xào lửa lớn ngon nhất khi dùng ngay; phần dư bảo quản ngăn mát tối đa 24 giờ và áp chảo nhanh lại trên lửa vừa với 1 muỗng canh nước."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PAD_THAI_NOODLE",
+      "name": "Hủ tiếu khô bản rộng (hoặc bánh phở khô)",
+      "culinaryMeasure": "240 g",
+      "prepNote": "ngâm nước lạnh 30 phút cho sợi dẻo mềm nhưng còn hơi cứng lõi rồi vớt ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò tươi",
+      "culinaryMeasure": "340 g",
+      "prepNote": "thấm khô, thái lát mỏng 3–4 mm ngang thớ rồi ướp 15 phút",
+      "componentGroup": "main",
+      "requiredQuantity": 340,
+      "unit": "g",
+      "grossGrams": 340,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BOK_CHOY",
+      "name": "Cải rổ hoặc cải ngọt tươi",
+      "culinaryMeasure": "120 g",
+      "prepNote": "rửa sạch, tách riêng phần cọng thái xéo và phần lá cắt khúc 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "3/4 củ (82,5 g)",
+      "prepNote": "gọt vỏ, thái sợi hoặc lát xéo mỏng nhanh chín",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 82.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 73.43,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "1/2 quả (75 g)",
+      "prepNote": "bỏ hạt, thái lát xéo mỏng tạo màu đỏ tươi đẹp mắt",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 63.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái tươi",
+      "culinaryMeasure": "50 g (khoảng 2–3 nắm)",
+      "prepNote": "nhặt lấy lá non, rửa sạch và để thật ráo nước",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g, ~7 tép)",
+      "prepNote": "bóc vỏ, giã thô cùng ớt hiểm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "4 quả (20 g)",
+      "prepNote": "bỏ cuống, giã thô cùng tỏi cho dậy tinh dầu cay thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "pha sốt xào mì tạo độ bóng sánh đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 30.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "25 ml (10 ml ướp bò + 15 ml pha sốt)",
+      "prepNote": "chia để ướp thịt bò mềm đậm và pha sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo màu nâu cánh gián bóng đẹp cho sợi mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tăng hậu vị đậm đà chuẩn Thái cho phần sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "18 g (2 g ướp bò + 16 g rắc mì)",
+      "prepNote": "chia 2 g ướp thịt bò và 16 g rắc trực tiếp lên mì lúc xào tạo độ xém caramel",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "40 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "chia để áp chảo thịt bò, phi tỏi ớt và áp chảo sợi mì",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 33.12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (ướp thịt bò)",
+      "culinaryMeasure": "20 ml",
+      "prepNote": "trộn cùng xì dầu ướp giúp thịt bò mềm mọng hơn khi áp chảo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Ướp thịt thăn bò mềm mọng và ngâm sợi hủ tiếu",
+      "instruction": "Ngâm 240 g hủ tiếu khô bản rộng trong nước lạnh 30 phút cho sợi mềm dẻo rồi vớt ra rổ để thật ráo. Thịt thăn bò thái lát mỏng ngang thớ, ướp cùng 10 ml xì dầu, 2 g đường cát trắng và 20 ml nước lọc trong 15 phút để thịt ngấm vị và giữ ẩm.",
+      "tip": "Không ngâm hủ tiếu khô bằng nước sôi vì sợi sẽ nhanh nhũn và dễ đứt gãy khi đảo mạnh trên chảo.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Giã tỏi ớt, pha sốt xào và cắt thái rau củ",
+      "instruction": "Giã dập thô tỏi khô và ớt hiểm trong cối. Trong chén nhỏ, khuấy đều 25 ml dầu hào, 15 ml xì dầu còn lại, 5 ml xì dầu đặc và 5 ml nước mắm. Thái sợi cà rốt, thái xéo ớt chuông đỏ, tách riêng cọng và lá cải rổ, nhặt lá húng quế Thái để ráo."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo thịt bò chín tới trên lửa lớn",
+      "instruction": "Đun nóng chảo rộng với 15 ml dầu ăn trên lửa lớn, dàn đều thịt bò đã ướp thành một lớp và áp chảo nhanh 2 phút đến khi hai mặt xém nâu nhẹ, thịt chín tái vừa tới thì trút ngay ra đĩa riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi tỏi ớt giã và xào nhanh rau củ cứng",
+      "instruction": "Hạ lửa vừa, thêm 25 ml dầu ăn còn lại vào chảo phi thơm hỗn hợp tỏi ớt giã khoảng 30 giây (tránh cháy). Bật lửa lớn, cho cà rốt, ớt chuông đỏ và phần cọng cải rổ vào xào nhanh 45 giây cho vừa chín giòn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo mì thấm sốt và áp chảo xém cạnh tạo mùi khói",
+      "instruction": "Cho hủ tiếu đã ráo vào chảo, rưới đều chén sốt đã pha và rắc 16 g đường cát trắng còn lại lên mặt mì. Đảo nhanh 2 phút cho sợi mì thấm bóng sốt, sau đó dàn phẳng mặt chảo giữ yên 20 giây cho sợi mì hơi xém cạnh thơm mùi khói chảo rồi lật đảo lại.",
+      "tip": "Để yên sợi mì tiếp xúc đáy chảo nóng 15–20 giây không đảo sẽ tạo lớp xém nhẹ caramel đặc trưng của Pad Kee Mao.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn thịt bò, lá húng quế Thái và dọn nóng",
+      "instruction": "Trút thịt bò đã áp chảo (gạn bỏ nước thịt đọng để mì không nhão) trở lại chảo cùng phần lá cải rổ, đảo đều 30 giây cho thịt bò chín hoàn toàn. Tắt bếp, thả ngay 50 g lá húng quế Thái và hành lá vào đảo vài lượt cho lá vừa héo dậy mùi thơm nồng rồi bày ra đĩa dùng nóng.",
+      "tip": "Chỉ cho lá húng quế Thái vào sau khi tắt bếp để hơi nóng còn lại làm héo nhẹ mà lá không bị thâm đen hay mất hương thơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 671,
+    "energyKcal": 671.3,
+    "energyKj": 2809,
+    "proteinG": 31.4,
+    "fatG": 24,
+    "saturatedFatG": 6.4,
+    "carbG": 80.3,
+    "fiberG": 3.7,
+    "sugarG": 10.3,
+    "sodiumMg": 1328,
+    "saltG": 3.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169745",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 170187",
+      "USDA FDC 170390",
+      "USDA FDC 170393",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172232",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b198a296dc013f32bf176af46cec1d81ebc4dcbc0aaeab28d808a12c7c0bb2d6",
+    "researchedFromV2Sha256": "87cdbf68b7a9073d868c0a0f1397505b764a555a709cf98cf0aa93bec659c852"
+  }
+}

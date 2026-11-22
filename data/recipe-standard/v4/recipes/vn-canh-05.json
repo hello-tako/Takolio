@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-canh-05",
+    "slug": "canh-bi-do-thit-bam",
+    "title": "Canh bí đỏ thịt bằm hạt sen",
+    "subtitle": "Bí đỏ chín bùi sánh mịn nấu cùng thịt heo nạc băm ngọt đậm và hạt sen bở thơm, giàu dinh dưỡng cho mọi lứa tuổi"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 22,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Bổ dưỡng",
+      "Cơm nhà",
+      "Trẻ em thích",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh vàng óng bắt mắt với từng miếng bí đỏ mềm bùi tan nhẹ, hạt sen bở thơm quyện cùng thịt heo băm xào tơi đậm đà và mùi thơm dịu của hành lá, ngò gai.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, rắc thêm ngò gai thái nhỏ và chút tiêu xay; ăn kèm cơm trắng rất hợp cho bữa tối gia đình có trẻ nhỏ và người lớn tuổi.",
+    "storageAndReheat": "Để canh nguội hoàn toàn rồi bảo quản trong hộp kín ở ngăn mát tối đa 24 giờ; khi hâm lại nên đun lửa nhỏ và khuấy nhẹ để phần bí sánh không bén đáy nồi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PUMPKIN",
+      "name": "Bí đỏ tươi (gọt vỏ bỏ ruột)",
+      "culinaryMeasure": "0.625 quả (~500 g cả vỏ)",
+      "prepNote": "gọt bỏ vỏ cứng, nạo sạch ruột và hạt, rửa sạch rồi cắt miếng vuông quân cờ cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.625,
+      "unit": "piece",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo nạc xay",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chọn thịt nạc vai xay nhuyễn để thịt mềm ngọt và nước canh không bị nhiều váng mỡ",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LOTUS_SEED",
+      "name": "Hạt sen tươi tách vỏ",
+      "culinaryMeasure": "100 g",
+      "prepNote": "rửa sạch, kiểm tra lấy hết tâm sen màu xanh ở giữa để canh không bị đắng",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "15 g (1 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia một nửa ướp thịt, một nửa phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (~10 g, khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 3 nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh, đầu hành băm nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "10 g (5 lá)",
+      "prepNote": "rửa sạch, thái nhuyễn rắc lên tô canh cho dậy mùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tỏi và xào tơi thịt băm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 7 ml ướp thịt và 8 ml nêm khi xào thịt",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "chia 4 g ướp thịt băm và 6 g nêm nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "nêm khi xào thịt giúp cân bằng vị mặn ngọt đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vào lúc xào bí và nước dùng để giữ vị ngọt bùi của bí đỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp thịt, nửa rắc mặt tô canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "lượng nước dùng vừa đủ giúp canh ngọt sánh tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 1056,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế hạt sen và cắt miếng bí đỏ",
+      "instruction": "Rửa sạch 100 g hạt sen tươi, tách nhẹ đầu hạt để rút bỏ hoàn toàn phần tâm sen xanh nếu còn sót vì tâm sen gây vị đắng. Bí đỏ gọt vỏ, bỏ sạch phần ruột xơ và hạt, rửa qua nước lạnh rồi cắt miếng vuông cỡ 2,5 cm để bí chín nhanh mà không dễ vỡ vụn.",
+      "tip": "Nếu dùng hạt sen khô thay cho sen tươi, hãy ngâm nước ấm trước 30 phút rồi ninh hạt sen trước 10 phút cho bở đều cùng bí đỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt heo nạc xay cho đậm đà",
+      "instruction": "Cho 200 g thịt heo nạc xay vào tô, ướp với một nửa chỗ hành tím băm, 7 ml nước mắm ngon, 4 g hạt nêm và 1 g tiêu đen xay. Trộn đều rồi ướp 10 phút cho thịt ngấm gia vị; trong lúc chờ, thái nhỏ hành lá và ngò gai, băm nhỏ tỏi và phần hành tím còn lại.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào săn thịt băm",
+      "instruction": "Đặt nồi lên bếp với 15 ml dầu ăn ở lửa vừa, cho tỏi băm và phần hành tím băm còn lại vào phi thơm vàng nhẹ. Trút thịt heo xay đã ướp vào đảo nhanh tay cho thịt tơi rời và săn lại hoàn toàn, thêm 8 g đường và 8 ml nước mắm còn lại, xào thêm 1 phút cho dậy mùi.",
+      "tip": "Dùng đũa đảo tơi liên tục khi thịt mới vào nồi nóng giúp thịt băm không bị vón cục lớn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào sơ bí đỏ thấm gia vị trước khi đổ nước",
+      "instruction": "Cho toàn bộ bí đỏ cắt miếng vào nồi thịt, nêm 5 g muối ăn rồi đảo đều trên lửa vừa khoảng 2 phút cho miếng bí săn bề mặt và áo đều hương thơm của thịt xào.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Ninh bí đỏ và hạt sen chín bở mềm",
+      "instruction": "Đổ 1,2 lít nước lọc vào nồi, đun lửa lớn đến khi nước sôi bùng thì hớt sạch bọt nổi. Thả 100 g hạt sen tươi vào, hạ xuống lửa vừa đậy hé vung và nấu khoảng 15 phút cho đến khi hạt sen chín bở và dùng đũa xiên qua miếng bí đỏ dễ dàng.",
+      "tip": "Hớt bọt kỹ ngay khi nước vừa sôi và không khuấy mạnh khi bí đã mềm sẽ giúp nước canh trong và vàng đẹp.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tạo độ sánh nhẹ và hoàn thiện tô canh",
+      "instruction": "Nêm 6 g hạt nêm còn lại vào nồi, nếm thử lại cho vừa vị ngọt thanh tự nhiên rồi dùng lưng muôi dầm nhẹ 2–3 miếng bí đỏ chín cho nước canh hơi sánh vàng. Tắt bếp, rắc hành lá, ngò gai thái nhỏ cùng 1 g tiêu đen xay rồi múc ra tô thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 231,
+    "energyKcal": 230.6,
+    "energyKj": 965,
+    "proteinG": 11.2,
+    "fatG": 14.2,
+    "saturatedFatG": 4.5,
+    "carbG": 15.6,
+    "fiberG": 1.4,
+    "sugarG": 5.8,
+    "sodiumMg": 1282,
+    "saltG": 3.21,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 168448",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170148 Fresh",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN Culinary Herb Ref",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "eb715f5672a55698fa18e87c1af029e5e17ae8287d8e9a983fa9644f4e859131",
+    "researchedFromV2Sha256": "2f8650c56faac564cd7ca5190567ebcafaa5bf78f7380470babc0b3e4c8b6a95"
+  }
+}

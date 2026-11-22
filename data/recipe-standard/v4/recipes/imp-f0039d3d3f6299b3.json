@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f0039d3d3f6299b3",
+    "slug": "nam-kho-dau-phu-tuong",
+    "title": "Nấm đùi gà kho đậu phụ tương đậm vị",
+    "subtitle": "Nấm đùi gà giòn ngọt kho cùng đậu phụ rán và cà chua trong nước sốt tương sánh màu cánh gián đậm đà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món kho",
+      "Nấm đùi gà",
+      "Đậu phụ",
+      "Ngày rằm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa nấm đùi gà kho đậu phụ thơm nồng quyến rũ với màu nâu cánh gián óng ả từ xì dầu đặc kết hợp nước tương và vị chua ngọt tự nhiên của cà chua chín, giúp từng lát nấm dai giòn và miếng đậu phụ mềm béo thấm trọn gia vị.",
+    "servingSuggestion": "Múc nấm và đậu phụ kho tương ra đĩa sâu lòng, rưới đều nước sốt sánh bóng lên trên rồi rắc hành lá, tiêu đen và ớt lát; ăn nóng cùng cơm trắng.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn hâm nóng lại trên lửa nhỏ 4–5 phút và thêm chút nước lọc nếu sốt quá đặc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa nhẹ, để ráo và cắt mỗi bìa thành 3–4 miếng dày vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "220 g",
+      "prepNote": "cắt gốc già, rửa sạch, thái lát dọc dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 209,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 10 ml xào nấm và 30 ml pha nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 47.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 47.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Hắc xì dầu (xì dầu đặc tạo màu)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo màu nâu cánh gián óng đẹp và hương tương đậm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc 2–3 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "hài hòa vị chua của cà chua và vị mặn của tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "tăng độ đậm cho sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MSG",
+      "name": "Bột ngọt (mì chính)",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "hòa tan trong nước sốt kho (có thể điều chỉnh theo khẩu vị)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g xào nấm và 0,5 g rắc mặt đĩa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml chiên sơ đậu và 10 ml phi tỏi xào nấm",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "thái lát mỏng rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "tạo lượng nước xâm xấp kho mềm thấm vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đậu phụ, nấm đùi gà và cà chua",
+      "instruction": "Đậu phụ trắng rửa nhẹ, để thật ráo rồi cắt miếng vuông dày vừa ăn. Nấm đùi gà cắt bỏ gốc, rửa sạch, thái lát dọc dày 0,5 cm. Cà chua bỏ cuống bổ múi cau; tỏi khô băm nhuyễn; hành lá cắt khúc 2–3 cm; ớt sừng thái lát mỏng.",
+      "tip": "Cắt đậu phụ miếng hơi dày một chút để khi kho lâu đậu vẫn chắc miếng và không bị vỡ nát."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng sơ các mặt đậu phụ",
+      "instruction": "Làm nóng chảo với 15 ml dầu ăn trên lửa vừa, thả từng miếng đậu phụ vào chiên khoảng 6 phút đến khi hai mặt ngả vàng nhẹ thì gắp ra đĩa để ráo dầu.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi tỏi và xào săn nấm đùi gà",
+      "instruction": "Cho 10 ml dầu ăn còn lại vào chảo, phi thơm tỏi băm trên lửa vừa trong 30 giây. Đổ nấm đùi gà vào xào nhanh tay 3 phút với 10 ml nước tương và 1 g tiêu đen xay cho đến khi nấm săn cạnh và ngấm hương thơm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Xếp tầng nguyên liệu và pha sốt tương kho",
+      "instruction": "Xếp cà chua bổ múi cau lót dưới đáy nồi kho, phủ phần nấm đùi gà đã xào lên trên và xếp đậu phụ chiên lên lớp trên cùng. Khuấy đều trong tô 30 ml nước tương còn lại, 20 ml hắc xì dầu, 15 g đường cát trắng, 4 g muối ăn, 3 g bột ngọt và 300 ml nước lọc đến khi tan hết.",
+      "tip": "Lót cà chua dưới đáy nồi giúp cà chua tiết nước ngọt làm nền sốt, đồng thời giữ đậu phụ phía trên nguyên vẹn không bị nát."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu đến khi nước tương sánh đậm",
+      "instruction": "Rót tô nước sốt tương vào nồi sao cho xâm xấp mặt nguyên liệu, bật lửa lớn đun sôi rồi hạ xuống lửa nhỏ, đậy hé vung kho liu riu trong 15 phút. Thỉnh thoảng lắc nhẹ quai nồi cho gia vị ngấm đều đến khi nước kho cạn sánh lại.",
+      "tip": "Kho ở lửa nhỏ liu riu và mở hé vung giúp nước sốt rút sánh dần mà không bị trào hay cháy khét đáy nồi.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện món nấm kho đậu phụ tương",
+      "instruction": "Nêm nếm lại sốt kho cho vừa vị đậm đà, tắt bếp rồi rắc hành lá cắt khúc, ớt sừng thái lát và 0,5 g tiêu đen xay còn lại lên trên. Múc ra đĩa sâu lòng và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 236,
+    "energyKcal": 236.1,
+    "energyKj": 987,
+    "proteinG": 17.2,
+    "fatG": 13.1,
+    "saturatedFatG": 1.9,
+    "carbG": 18.1,
+    "fiberG": 4.2,
+    "sugarG": 9.7,
+    "sodiumMg": 1932,
+    "saltG": 4.83,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Monosodium Glutamate"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f7d59a6e64ef3eed23730c619a716ca9d40e860ffb46ee9b0bb1626bc862d7cb",
+    "researchedFromV2Sha256": "dbadf94ce37f14a350656598eb1ae2ac5b05071faf23dabe72168168c2b43f60"
+  }
+}

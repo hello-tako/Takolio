@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-cuon-05",
+    "slug": "nom-du-du-bo-kho",
+    "title": "Nộm đu đủ bò khô phố cổ Hà Nội",
+    "subtitle": "Sợi đu đủ xanh và cà rốt nạo giòn sần sật quyện nước mắm giấm đường chua ngọt cay nhẹ, điểm thịt bò khô xé sợi, rau thơm và lạc rang"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_cuon_nom",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món nộm",
+      "Phố cổ Hà Nội",
+      "Đu đủ xanh",
+      "Ăn vặt",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "peanut"
+    ]
+  },
+  "overview": {
+    "description": "Nộm đu đủ bò khô mang nét đặc trưng ẩm thực phố cổ Hà Nội với sợi đu đủ xanh và cà rốt giòn tan không chát, thấm đẫm nước trộn mắm chanh chua ngọt dịu cay, kết hợp thịt bò khô xé sợi thơm lừng, rau kinh giới và lạc rang bùi ngậy.",
+    "servingSuggestion": "Gắp nộm đu đủ ra đĩa sâu lòng, xếp thêm thịt bò khô xé sợi, rắc lạc rang giã dập và hành phi giòn lên trên; trộn đều ngay trước khi thưởng thức.",
+    "storageAndReheat": "Không nên rưới nước trộn quá lâu trước khi ăn vì đu đủ sẽ tiết nước và làm ỉu lạc rang; bảo quản phần nguyên liệu khô và nước trộn riêng trong ngăn mát tủ lạnh tối đa 24 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GREEN_MANGO_PAPAYA",
+      "name": "Đu đủ xanh nạo sợi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "khía vỏ cho ra bớt nhựa, gọt vỏ bỏ hạt rồi bào sợi dài mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 287,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, bào sợi dài mảnh tương tự đu đủ",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò khô xé sợi",
+      "culinaryMeasure": "140 g",
+      "prepNote": "xé thành sợi mỏng vừa ăn để thấm đều nước nộm",
+      "componentGroup": "main",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 140,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PEANUT",
+      "name": "Lạc rang giã dập",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rang chín vàng trên lửa nhỏ, xát sạch vỏ lụa và giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Rau kinh giới và húng bạc hà",
+      "culinaryMeasure": "30 g",
+      "prepNote": "nhặt bỏ cọng già, rửa sạch, vẩy ráo nước rồi cắt khúc ngắn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (làm hành phi)",
+      "culinaryMeasure": "20 g",
+      "prepNote": "thái lát mỏng, phi vàng giòn rắc mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (phi hành)",
+      "culinaryMeasure": "10 ml",
+      "prepNote": "dùng phi vàng giòn hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 6.44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn pha nước trộn nộm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "1 quả băm nhuyễn pha nước trộn, 1 quả thái lát trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml",
+      "prepNote": "tạo vị mặn thơm nền cho nước trộn nộm phố cổ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 43.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "45 g",
+      "prepNote": "dùng 20 g ướp giòn đu đủ cà rốt và 25 g pha nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 29.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1.5 quả (khoảng 68 g)",
+      "prepNote": "vắt lấy nước cốt, bỏ hạt pha nước trộn nộm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "20 ml",
+      "prepNote": "pha nước lạnh ngâm đu đủ cà rốt khử nhựa chát",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20.2,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 5.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "10 g",
+      "prepNote": "dùng 5 g ngâm nước giấm khử nhựa và 5 g bóp đu đủ cà rốt rồi rửa sạch",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "pha nước muối giấm ngâm đu đủ cà rốt cho sạch nhựa",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Bào sợi và ngâm khử nhựa đu đủ, cà rốt",
+      "instruction": "Khía nhẹ vài đường quanh vỏ đu đủ xanh cho chảy bớt nhựa rồi rửa sạch, gọt vỏ, bỏ hạt và bào sợi mỏng dài. Cà rốt gọt vỏ, bào sợi tương tự. Hòa 600 ml nước lọc với 20 ml giấm gạo và 5 g muối ăn, thả đu đủ và cà rốt vào ngâm 20 phút cho ra sạch nhựa.",
+      "tip": "Ngâm nước giấm muối giúp sợi đu đủ xanh giòn trắng, hết hẳn vị hăng chát tự nhiên.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Bóp muối, ướp đường giúp sợi nộm giòn tan",
+      "instruction": "Vớt đu đủ và cà rốt ra, bóp nhẹ với 5 g muối ăn trong 2 phút rồi xả sạch lại bằng nước lạnh và vắt ráo. Trộn đều sợi rau củ với 20 g đường cát trắng, để yên 15 phút cho sợi đu đủ cứng giòn rồi vắt thật ráo phần nước tiết ra.",
+      "tip": "Ướp đường rồi vắt ráo trước khi trộn là bí quyết giúp sợi nộm giòn sần sật mà không bị chảy nước khi bày đĩa.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang lạc, phi hành tím và xé bò khô",
+      "instruction": "Rang lạc trên lửa nhỏ khoảng 8 phút đến khi chín thơm vàng đều, để nguội bóc vỏ lụa và giã dập. Phi thơm vàng hành tím thái lát với 10 ml dầu ăn trên lửa nhỏ rồi vớt ra giấy thấm dầu. Xé thịt bò khô thành sợi mảnh vừa ăn, nhặt rửa sạch rau kinh giới và húng bạc hà rồi cắt nhỏ.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước trộn nộm chua ngọt cay nhẹ",
+      "instruction": "Khuấy tan 45 ml nước mắm ngon với 25 g đường cát trắng và nước cốt 1,5 quả chanh tươi đến khi tan hết đường. Thêm tỏi băm nhuyễn và 1 quả ớt tươi băm nhỏ vào đảo đều, nếm lại cho vừa vị chua ngọt mặn hài hòa."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Áo sơ nộm với rau thơm và bò khô",
+      "instruction": "Cho đu đủ xanh, cà rốt đã vắt ráo, thịt bò khô xé sợi cùng rau kinh giới và húng bạc hà vào âu trộn lớn, đảo tơi đều để các nguyên liệu phân bổ hài hòa."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới nước trộn và trình bày thưởng thức",
+      "instruction": "Rưới đều bát nước trộn nộm vào âu, dùng đũa trộn nhẹ tay cho từng sợi đu đủ và bò khô thấm đẫm gia vị. Gắp nộm ra đĩa sâu lòng, rắc lạc rang giã dập, hành phi giòn và vài lát ớt tươi lên trên rồi thưởng thức ngay.",
+      "tip": "Chỉ rắc lạc rang và hành phi lên đĩa nộm ngay trước khi ăn để giữ độ giòn bùi và mùi thơm hấp dẫn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 315,
+    "energyKcal": 314.6,
+    "energyKj": 1317,
+    "proteinG": 16.2,
+    "fatG": 15.7,
+    "saturatedFatG": 3.4,
+    "carbG": 30.8,
+    "fiberG": 5.2,
+    "sugarG": 20.9,
+    "sodiumMg": 1517,
+    "saltG": 3.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170187",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173474",
+      "USDA FDC 173647",
+      "USDA FDC Green Papaya Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5007af4b39dd747b39696ef4d069bc54ee0a58c15f862a6a35da972abc1eaeb6",
+    "researchedFromV2Sha256": "dc0a447c57936908896a5f40196a75c35dc392ca5380bcb6216faf85ae27fd7a"
+  }
+}

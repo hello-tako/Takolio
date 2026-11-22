@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f8fc539b7aa359ac",
+    "slug": "com-chien-dua-thai",
+    "title": "Cơm chiên dứa hải sản kiểu Thái (Khao Pad Sapparot)",
+    "subtitle": "Cơm hạt tơi vàng óng hương bột cà ri xào cùng dứa chín mọng, tôm tươi áp chảo, trứng gà và hạt điều rang giòn bùi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Cơm chiên",
+      "Hải sản",
+      "Dứa chín",
+      "Chua ngọt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "cashew",
+      "crustaceans",
+      "egg",
+      "fish",
+      "shrimp",
+      "soybean",
+      "tree_nuts",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Khao Pad Sapparot là món cơm chiên nhiệt đới nổi tiếng của Thái Lan với hạt cơm tơi vàng ươm hương cà ri dịu nhẹ, vị chua ngọt thanh mát từ dứa tươi hòa cùng tôm săn ngọt và hạt điều bùi béo.",
+    "servingSuggestion": "Múc cơm chiên dứa vào lòng quả dứa khoét rỗng hoặc đĩa rộng, xếp tôm lên trên và rắc thêm hành lá; dọn ăn nóng kèm dưa leo thái lát.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay để hạt điều giòn và cơm không bị ẩm; phần dư bảo quản ngăn mát tối đa 24 giờ và rang lại trên chảo lửa vừa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nấu chín để nguội",
+      "culinaryMeasure": "500 g (khoảng 3 chén đầy)",
+      "prepNote": "nấu hơi ráo nước, để nguội hoặc qua đêm trong tủ mát rồi bóp tơi rời từng hạt",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "250 g (khoảng 15–18 con vừa)",
+      "prepNote": "bóc vỏ, rút chỉ đen trên lưng, rửa sạch rồi thấm thật khô trước khi áp chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 225,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa chín tươi",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g)",
+      "prepNote": "gọt vỏ, bỏ mắt và lõi cứng, thái miếng vuông 1,5 cm rồi để ráo bớt nước",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 255,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "3 quả",
+      "prepNote": "đập ra chén đánh tan sơ trước khi chiên cùng cơm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín",
+      "culinaryMeasure": "1,5 quả (khoảng 180 g)",
+      "prepNote": "rửa sạch, bỏ bớt hạt nước bên trong, thái hạt lựu 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CASHEW",
+      "name": "Hạt điều rang không muối",
+      "culinaryMeasure": "75 g",
+      "prepNote": "để nguyên hạt hoặc tách đôi, cho vào ở bước cuối để giữ độ giòn bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 75,
+      "unit": "g",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CURRY_POWDER",
+      "name": "Bột cà ri vàng",
+      "culinaryMeasure": "5 g (2 muỗng cà phê)",
+      "prepNote": "trộn chung với đường, muối và tiêu trắng cho tơi đều trước khi rắc vào cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu / Nước tương",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "hòa cùng nước mắm thành hỗn hợp gia vị ướt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm hài hòa với vị ngọt của dứa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (2 muỗng cà phê)",
+      "prepNote": "trộn trong chén gia vị khô",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "trộn trong chén gia vị khô giúp cơm chiên thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (1/3 muỗng cà phê)",
+      "prepNote": "trộn đều cùng bột cà ri và đường",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "40 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "chia 15 ml áp chảo tôm và 25 ml chiên trứng cùng cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 33.12,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị cơm nguội, tôm, dứa và cà chua",
+      "instruction": "Đánh tơi 500 g cơm trắng nguội để hạt cơm rời hẳn không vón cục. Thấm thật khô 250 g tôm tươi đã bóc vỏ rút chỉ lưng. Thái vuông 1/2 quả dứa chín và để ráo nước trên rây; thái hạt lựu 3/4 củ hành tây và 1,5 quả cà chua bỏ ruột; thái nhỏ 1 bó hành lá.",
+      "tip": "Dùng cơm nấu ráo để nguội qua đêm giúp hạt cơm săn chắc, không bị nhão nát khi đảo với dứa tươi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Trộn sẵn gia vị khô cà ri và gia vị ướt",
+      "instruction": "Trộn đều trong chén gia vị khô gồm 5 g bột cà ri vàng, 8 g đường cát trắng, 2 g muối ăn và 2 g tiêu trắng xay để bột cà ri tơi không vón cục. Pha riêng chén gia vị ướt gồm 15 ml xì dầu và 15 ml nước mắm ngon đặt sẵn cạnh bếp.",
+      "tip": "Pha tách biệt gia vị khô và ướt giúp bạn rắc tơi bột cà ri đều từng hạt cơm rồi mới rưới nước mắm tạo hương thơm bùng vị."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo tôm vàng thơm và giữ riêng",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa lớn với 15 ml dầu ăn, xếp tôm tươi vào áp chảo mỗi mặt khoảng 1 phút đến khi tôm chuyển màu hồng cam, cạnh hơi xém thơm và chín hoàn toàn bên trong thì gắp ra đĩa riêng, giữ lại dầu thơm trong chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên trứng tơi và đảo cơm cùng hành tây",
+      "instruction": "Thêm 25 ml dầu ăn vào chảo trên lửa vừa lớn, đổ 3 quả trứng gà vào đảo nhanh tay đến khi trứng vừa se chín 90% thành từng mảng nhỏ thì trút ngay cơm nguội và hành tây thái hạt lựu vào đảo đều 3 phút cho hạt cơm nóng tơi và áo trứng vàng đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị cà ri và rang cháy cạnh với dứa",
+      "instruction": "Rắc toàn bộ chén gia vị khô chứa bột cà ri và rưới đều chén xì dầu nước mắm quanh thành chảo, đảo liên tục 2 phút trên lửa lớn cho hạt cơm thấm vàng óng đều màu. Cho dứa chín vào đảo cùng 2 phút cho dứa nóng thơm, thỉnh thoảng dàn phẳng cơm nghỉ 15 giây rồi đảo tiếp để hạt cơm săn ráo và thơm nhẹ mùi chảo.",
+      "tip": "Rưới nước mắm và xì dầu dọc thành chảo đang nóng sẽ tạo hương thơm dậy mùi mà không làm cơm bị ướt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn tôm, hạt điều, cà chua và hành lá",
+      "instruction": "Trút tôm áp chảo vào đảo đều 30 giây rồi tắt bếp. Thêm ngay 75 g hạt điều rang, cà chua thái hạt lựu và hành lá thái nhỏ vào trộn nhanh tay cho giữ trọn độ giòn bùi của hạt điều và màu tươi của rau củ, múc ra đĩa dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 672,
+    "energyKcal": 671.9,
+    "energyKj": 2811,
+    "proteinG": 32.3,
+    "fatG": 27.6,
+    "saturatedFatG": 5.2,
+    "carbG": 76.7,
+    "fiberG": 5.4,
+    "sugarG": 16.2,
+    "sodiumMg": 1218,
+    "saltG": 3.05,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168878",
+      "USDA FDC 169124",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170162",
+      "USDA FDC 170457",
+      "USDA FDC 170924",
+      "USDA FDC 170933",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5b1a6e080803aff0baff57cec8a57021788a5673f96d3553e80ee2881702e16f",
+    "researchedFromV2Sha256": "9e0cb238e62098d0eeed6f6c57334df06c615a8ff87300027b47e56448f9e0c9"
+  }
+}

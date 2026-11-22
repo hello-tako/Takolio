@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-24cdd0b61f9ed162",
+    "slug": "canh-cua-dong-dau-phu",
+    "title": "Canh riêu cua đồng đậu phụ cà chua",
+    "subtitle": "Riêu cua đồng kết mảng béo ngọt nấu cùng đậu phụ rán vàng giòn, cà chua chua thanh từ me chín và rau răm thơm lừng chuẩn vị Bắc"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Cua đồng",
+      "Truyền thống",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "fish",
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Món canh riêu cua đậu phụ đậm hương vị đồng bằng Bắc Bộ với phần nước canh chua thanh nhẹ của me và cà chua, từng miếng đậu phụ rán vàng thấm vị quyện mảng riêu cua ngọt béo và rau răm dậy mùi.",
+    "servingSuggestion": "Múc canh nóng ra bát tô, xếp nhẹ mảng riêu cua và rắc hành phi giòn lên trên; ăn kèm cơm trắng, cà muối hoặc chan bún tươi kèm rau sống chẻ nhỏ đều rất ngon.",
+    "storageAndReheat": "Để nguội hoàn toàn rồi bảo quản ngăn mát tối đa 24 giờ; khi hâm lại nên đun sôi lăn tăn nhẹ nhàng tránh làm nát đậu phụ và vỡ mảng riêu cua."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Cua đồng tươi (giã hoặc xay lọc nước)",
+      "culinaryMeasure": "400 g",
+      "prepNote": "ngâm rửa sạch, tách mai khêu gạch riêng, thân cua bỏ yếm giã nhuyễn với chút muối rồi lọc lấy nước thịt cua",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "2 bìa (~240 g)",
+      "prepNote": "rửa sơ thấm khô, cắt miếng vuông vừa ăn rồi rán vàng đều các mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2.5 quả (~300 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.96,
+      "edibleGrams": 288,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "TAMARIND",
+      "name": "Me chín (hoặc me chua)",
+      "culinaryMeasure": "25 g (~1,5 muỗng canh)",
+      "prepNote": "ngâm dằm với ít nước nóng rồi lọc qua rây bỏ hạt lấy nước cốt chua thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 21.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô (hành khô)",
+      "culinaryMeasure": "25 g (2–3 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng một nửa để phi vàng giòn rắc mặt, nửa còn lại băm nhỏ xào cà chua và gạch cua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 nhánh)",
+      "prepNote": "rửa sạch, thái khúc ngắn 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "10 g (1 nhúm nhỏ)",
+      "prepNote": "nhặt bỏ gốc già, rửa sạch, thái nhỏ rắc cùng hành lá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng 20 ml rán vàng đậu phụ, 15 ml phi thơm hành tím và chưng gạch cua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 20.93,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm hoàn thiện nước riêu cua cho dậy vị truyền thống",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "hòa vào nước cua trước khi đun giúp riêu kết tảng chắc",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 2 g khi giã cua và 4 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "trích 60 ml dằm lọc me chín, phần còn lại lọc nước cua nấu canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 1056,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch cua đồng, khêu gạch và lọc nước cua",
+      "instruction": "Ngâm rửa sạch 400 g cua đồng cho hết bùn đất, tách mai, bỏ yếm và khêu riêng phần gạch cua ra chén. Giã nhuyễn thân cua với 2 g muối ăn (hoặc dùng cua xay nhuyễn), hòa với 1,14 lít nước lọc, bóp kỹ rồi lọc gạn 2–3 lần qua rây mịn vào nồi nấu canh để loại bỏ hoàn toàn vỏ sạn. Ngâm dằm 25 g me chín với 60 ml nước nóng rồi lọc lấy nước cốt.",
+      "tip": "Lọc nước cua qua rây mịn 2 lần giúp thu hết thịt cua mà nước canh vẫn sạch hoàn toàn không bị lợn cợn vỏ cứng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Rán vàng đậu phụ và phi giòn hành tím",
+      "instruction": "Thấm khô 2 bìa đậu phụ, cắt miếng vuông vừa ăn khoảng 2,5 cm. Làm nóng chảo với 20 ml dầu ăn trên lửa vừa, thả đậu phụ vào rán vàng giòn các mặt rồi gắp ra đĩa giấy thấm dầu. Bổ múi cau 2,5 quả cà chua; thái nhỏ hành lá và rau răm; chia 25 g hành tím làm hai phần (một nửa thái lát mỏng, một nửa băm nhỏ) rồi dùng chảo nhỏ với 15 ml dầu ăn phi vàng giòn phần hành thái lát, vớt riêng ra chén.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu nổi riêu cua đồng và vớt tảng riêu riêng",
+      "instruction": "Hòa 10 g hạt nêm và 2 g muối ăn vào nồi nước lọc cua, khuấy nhẹ một chiều rồi bắc lên bếp đun ở lửa vừa. Khi nước nóng dần và thịt cua bắt đầu tách lớp nổi lên mặt, ngừng khuấy hoàn toàn và hạ nhỏ lửa để riêu kết lại thành từng mảng dày. Khi nước sôi nhẹ, dùng vá lỗ nhẹ nhàng vớt phần riêu cua ra bát riêng để không bị nát.",
+      "tip": "Ngừng khuấy ngay khi thịt cua bắt đầu kết mảng và vớt riêu ra trước khi cho cà chua giúp giữ trọn tảng riêu nguyên vẹn đẹp mắt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chưng gạch cua cùng cà chua tạo màu đỏ óng",
+      "instruction": "Tận dụng chảo dầu vừa phi hành, cho phần hành tím băm vào phi thơm, thả cà chua bổ múi cau và 2 g muối ăn còn lại vào xào mềm khoảng 2 phút cho ra màu đỏ đẹp rồi trút chén gạch cua vào đảo nhanh tay 1 phút đến khi gạch chín thơm vàng óng.",
+      "tip": "Chưng gạch cua trên lửa vừa cùng hành phi và cà chua giúp gạch lên màu vàng cam óng ả và khử hoàn toàn mùi tanh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu nước riêu chua dịu và thả đậu phụ rán",
+      "instruction": "Trút chảo cà chua chưng gạch vào nồi nước cua, đun sôi lại rồi từ từ rót nước cốt me vào cùng 15 ml nước mắm ngon, điều chỉnh độ chua thanh mặn ngọt hài hòa. Thả toàn bộ đậu phụ rán vàng vào nồi đun sôi liu riu thêm 3 phút cho đậu thấm vị canh.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả lại riêu cua, hành răm và rắc hành phi",
+      "instruction": "Nhẹ nhàng đặt phần riêu cua trở lại mặt nồi canh, rắc hành lá và rau răm thái nhỏ rồi tắt bếp ngay. Múc canh ra bát tô, rắc phần hành tím phi vàng giòn lên trên và dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 183,
+    "energyKcal": 183.2,
+    "energyKj": 766,
+    "proteinG": 17.5,
+    "fatG": 9.2,
+    "saturatedFatG": 1.4,
+    "carbG": 9.5,
+    "fiberG": 2.1,
+    "sugarG": 5.3,
+    "sodiumMg": 1521,
+    "saltG": 3.8,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169918",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "VN Rau Ram Ref",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ba3ec0b694c9b6f3519c4010478412f99efbe8c27eb39fff22e9d98f1fe957b3",
+    "researchedFromV2Sha256": "d3c47f99736bc95673e0e94ffac5322b30b4b30ae6adaa4b5530e1e8cf6d514a"
+  }
+}
