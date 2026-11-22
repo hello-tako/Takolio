@@ -22,12 +22,13 @@ import {
   TkvErrorState,
   TkvIconButton,
   TkvSearchField,
-  TkvSkeleton,
   TkvSurface,
   TkvTextField,
 } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
 import { BrandFeatureIcon } from '../components/VNextMedia';
+import { FridgeInventorySkeleton } from '../components/Skeletons';
+import { showTkvToast } from '../components/LivingMotion';
 import { useVNextSeo } from '../lib/seo';
 
 const CATEGORY_ICONS: Record<string, VNextIconName> = {
@@ -182,12 +183,13 @@ export const C03InventoryPilot: React.FC = () => {
       expiryDate: string | null;
       expiryEstimated: boolean;
     }) => api.addInventoryItem(payload),
-    onSuccess: () => {
+    onSuccess: (_res, vars) => {
       void invalidateInventoryDependents();
       setAddOpen(false);
       setName('');
       setQuantity(1);
       setMutationBanner(null);
+      showTkvToast({ message: `Đã thêm “${vars.name}” vào tủ lạnh`, tone: 'success' });
     },
     onError: (err) => handleMutationError(err, 'Chưa thêm được nguyên liệu vào tủ lạnh.'),
   });
@@ -491,11 +493,7 @@ export const C03InventoryPilot: React.FC = () => {
 
         {/* Inventory Content */}
         {inventoryQuery.isPending ? (
-          <div className="space-y-3">
-            <TkvSkeleton className="h-20" label="Đang tải danh sách nguyên liệu…" />
-            <TkvSkeleton className="h-20" label="Đang tải lô nguyên liệu…" />
-            <TkvSkeleton className="h-20" label="Đang tải lô nguyên liệu…" />
-          </div>
+          <FridgeInventorySkeleton />
         ) : inventoryQuery.isError ? (
           <TkvErrorState
             title="Không đọc được tồn kho hiện tại"

@@ -63,10 +63,11 @@ export const TkvButton: React.FC<TkvButtonProps> = ({
     {...rest}
   >
     {isLoading ? (
-      <span
-        aria-hidden="true"
-        className="w-4 h-4 rounded-full border-2 border-current border-t-transparent animate-spin"
-      />
+      <span aria-hidden="true" className="inline-flex items-center gap-1">
+        <span className="tkv-pending-dot" style={{ animationDelay: '0ms' }} />
+        <span className="tkv-pending-dot" style={{ animationDelay: '140ms' }} />
+        <span className="tkv-pending-dot" style={{ animationDelay: '280ms' }} />
+      </span>
     ) : (
       iconLeft && <VNextIcon name={iconLeft} size={18} />
     )}
@@ -332,7 +333,7 @@ export const TkvSkeleton: React.FC<{ className?: string; label?: string }> = ({
     role="status"
     aria-live="polite"
     className={clsx(
-      'rounded-2xl bg-[var(--tkv-surface-subtle)] border border-[var(--tkv-border)] animate-pulse',
+      'rounded-2xl tkv-shimmer border border-[var(--tkv-border)]/70',
       className,
     )}
   >
@@ -348,8 +349,8 @@ export const TkvEmptyState: React.FC<{
   primaryAction?: React.ReactNode;
   secondaryAction?: React.ReactNode;
 }> = ({ pose = 'empty-fridge', eyebrow, title, description, primaryAction, secondaryAction }) => (
-  <TkvSurface tone="default" className="p-6 sm:p-8 text-center flex flex-col items-center gap-3">
-    <MascotIllustration pose={pose} size={112} decorative />
+  <TkvSurface tone="default" className="p-6 sm:p-8 text-center flex flex-col items-center gap-3 tkv-enter-fade-up">
+    <MascotIllustration pose={pose} size={112} motion="idle" decorative />
     {eyebrow && (
       <span className="text-xs font-bold uppercase tracking-wider text-[var(--tkv-ink-muted)]">
         {eyebrow}

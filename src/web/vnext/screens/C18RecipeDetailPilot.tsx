@@ -19,11 +19,11 @@ import {
   TkvEmptyState,
   TkvErrorState,
   TkvIconButton,
-  TkvSkeleton,
   TkvSurface,
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
 import { VerifiedDishImage } from '../components/VNextMedia';
+import { RecipeDetailSkeleton } from '../components/Skeletons';
 import { buildRecipeJsonLd, useVNextSeo } from '../lib/seo';
 
 const UNIT_LABELS_VI: Record<string, string> = {
@@ -165,11 +165,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
   if (recipeQuery.isPending) {
     return (
       <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
-        <div className="space-y-4">
-          <TkvSkeleton className="h-64" label="Đang tải công thức món ăn…" />
-          <TkvSkeleton className="h-24" label="Đang tải danh sách nguyên liệu…" />
-          <TkvSkeleton className="h-36" label="Đang tải các bước nấu…" />
-        </div>
+        <RecipeDetailSkeleton />
       </ConsumerStudioShell>
     );
   }

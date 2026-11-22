@@ -38,6 +38,7 @@ import {
 } from '../components/Primitives';
 import { BrandFeatureIcon, BrandLockup, MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
 import { VNextIcon } from '../components/VNextIcons';
+import { TkvConfettiBurst } from '../components/LivingMotion';
 
 const QUICK_CATEGORIES: Array<{ id: string; label: string }> = [
   { id: 'mon_kho', label: 'Món kho' },
@@ -59,8 +60,12 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
   const savedView = params.get('view') === 'saved';
   const filters = readDiscoveryFilters(params);
   const isGuest = useAuthStore((s) => s.isGuest);
+  const householdSize = useAuthStore((s) => s.householdSize);
   const familyPrefs = useFamilyPreferences(!isGuest);
-  const effectiveServings = filters.servings ?? familyPrefs.data?.preferences.householdSize ?? 2;
+  const effectiveServings =
+    filters.servings ??
+    familyPrefs.data?.preferences.householdSize ??
+    (Number.isInteger(householdSize) && householdSize >= 1 ? householdSize : 2);
 
   const screenId = savedView ? 'C17' : filters.q.trim() ? 'C16' : 'C15';
 
@@ -1078,12 +1083,16 @@ export const C22CookingCompleteVNext: React.FC = () => {
       showContextualScan={false}
     >
       <form onSubmit={handleSubmit} noValidate className="max-w-3xl mx-auto space-y-6">
-        <TkvSurface className="p-4 sm:p-6 bg-gradient-to-br from-[var(--tkv-surface)] to-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)] flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <MascotIllustration
-            pose={done ? 'achievement' : 'cooking'}
-            size={84}
-            className="w-20 h-20 shrink-0"
-          />
+        <TkvSurface className="relative p-4 sm:p-6 bg-gradient-to-br from-[var(--tkv-surface)] to-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)] flex flex-col sm:flex-row items-start sm:items-center gap-4 overflow-visible tkv-enter-fade-up">
+          <div className="relative shrink-0">
+            {done && <TkvConfettiBurst />}
+            <MascotIllustration
+              pose={done ? 'achievement' : 'cooking'}
+              size={84}
+              motion={done ? 'cheer' : 'idle'}
+              className="w-20 h-20 shrink-0"
+            />
+          </div>
           <div className="space-y-2 min-w-0">
             <TkvBadge tone={done ? 'success' : 'coral'} icon={done ? 'check' : 'recipes'}>
               {done ? 'Đã ghi nhận bữa nấu' : 'Kiểm tra lượng thực dùng'}
