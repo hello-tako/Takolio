@@ -159,6 +159,9 @@ export const provider = {
     const plan = prepareReleaseConfig({ manifest, receipt, baseline: baseline(), stagingEmailRecipient: recipient });
     if (env.ENABLE_STAGING_EMAIL === 'true') addStagingEmail(plan, snapshot.worker, recipient);
     plan.config.vars.GOOGLE_CLIENT_ID = STAGING_GOOGLE_CLIENT_ID;
+    if (env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'true' || env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'false') {
+      plan.config.vars.RECIPE_CATALOG_V4_STANDARD_ENABLED = env.RECIPE_CATALOG_V4_STANDARD_ENABLED;
+    }
     plan.bytes = `${JSON.stringify(plan.config, null, 2)}\n`;
     plan.sha256 = configHash(plan.bytes);
     // Validate account inventory and hostname conflicts before any code upload or traffic change.

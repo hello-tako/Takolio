@@ -28,7 +28,7 @@ const runEvidence = {
 
 function hash(value) { return createHash('sha256').update(value).digest('hex'); }
 function git(...args) {
-  const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' });
+  const result = spawnSync('git', args, { cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
   if (result.status !== 0) throw new Error('git ' + args.join(' ') + ': ' + result.stderr);
   return result.stdout.trimEnd();
 }

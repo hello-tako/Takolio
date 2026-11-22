@@ -173,6 +173,11 @@ export const productionProvider = {
       rollbackConfirmed: env.CONFIRM_CATALOG_ROLLBACK === 'true', previous,
       release: readJson(CATALOG_RELEASE_MANIFEST_PATH),
       previousVersion: await read(`${script}/versions/${snapshot.worker.versionId}`) }));
+    if (env.RECIPE_CATALOG_V4_STANDARD === 'true' || env.RECIPE_CATALOG_V4_STANDARD === 'false') {
+      plan.config.vars.RECIPE_CATALOG_V4_STANDARD_ENABLED = env.RECIPE_CATALOG_V4_STANDARD;
+      plan.bytes = `${JSON.stringify(plan.config, null, 2)}\n`;
+      plan.sha256 = configHash(plan.bytes);
+    }
     const context = { manifest, audit: snapshot, checks, plan, acceptance, stagingEvidence: staging.proof,
       certificationEvidence: certification.proof, state: 'prepared', mutationAttempted: false };
     writeFileSync(resolve(output, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);

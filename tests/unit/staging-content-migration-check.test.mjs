@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { listMigrations, renderSchemaGateSql, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1 } from '../../scripts/staging-family-migration-check.mjs';
 import {
-  baselineQuery, CONTENT_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_CULINARY_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
+  baselineQuery, CONTENT_TIP, CULINARY_STANDARD_V4_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_CULINARY_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
   verifyBaselinePreserved, verifyCandidateChain, verifySchema,
 } from '../../scripts/staging-v2-migration-check.mjs';
 
@@ -175,7 +175,7 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
   it('selects dispatch contract explicitly then binds every query and recheck to the receipt', () => {
     const workflow = load(readFileSync('.github/workflows/staging-v2-migrate.yml', 'utf8'));
     const input = workflow.on.workflow_dispatch.inputs.migration;
-    expect(input).toMatchObject({ type: 'choice', required: true, default: GLOBAL_PRIVACY_SOVEREIGN_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_CULINARY_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP] });
+    expect(input).toMatchObject({ type: 'choice', required: true, default: CULINARY_STANDARD_V4_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_CULINARY_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, CULINARY_STANDARD_V4_TIP] });
     const steps = workflow.jobs.certify.steps;
     const gates = steps.filter(step => step.env?.MIGRATION_TIP);
     expect(gates).toHaveLength(1);
@@ -252,6 +252,45 @@ describe('0045->0046->0047 saved content certification', () => {
         write('gate.json', result(db.prepare(historicalSavedContentSchemaGateSql(migrations)).all()))];
       expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED',
         aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 47, tip }, schemaCheck: { constraints: 'PASS' } });
+    } finally { db.close(); }
+  });
+});
+
+describe('bounded canonical staging 0051->0052 Culinary Standard V4 certification', () => {
+  it('applies and certifies 0052 Culinary Standard V4 from 0051 cleanly', async () => {
+    const tip = CULINARY_STANDARD_V4_TIP;
+    const migrations = listMigrations();
+    expect(migrations).toHaveLength(52);
+    expect(migrations.at(-1)).toBe(tip);
+    const candidate = { sha: 'a'.repeat(40), mainSha: 'a'.repeat(40), schema: { version: tip }, chain: [tip] };
+    expect(verifyCandidateChain(candidate, tip)).toBe(candidate);
+    expect(() => verifyCandidateChain({ ...candidate, chain: [GLOBAL_PRIVACY_SOVEREIGN_TIP, tip] }, tip)).toThrow(/Only current-main/);
+    const { receipt, write } = fixture();
+    write('receipt.json', { sha: candidate.sha, schema: { version: tip, migrations: migrations.map(name => ({ name })) }, chain: [tip], database: STAGING_D1 });
+    const db = new DatabaseSync(':memory:');
+    try {
+      for (const name of migrations.slice(0, -1)) db.exec(readFileSync(`migrations/${name}`, 'utf8'));
+      const capture = () => baselineQuery(tip).split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
+      await run('identity', receipt, [write('list.json', [{ name: STAGING_D1.name, uuid: STAGING_D1.id }]),
+        write('info.json', { name: STAGING_D1.name, uuid: STAGING_D1.id })]);
+      await run('pre-ledger', receipt, [write('pre-ledger.json', result(migrations.slice(0, -1).map(name => ({ name }))))]);
+      await run('bookmark', receipt, [write('bookmark.json', { bookmark: 'local-v4-rehearsal' })]);
+      const fk = write('fk.json', result([]));
+      const quick = write('quick.json', result([{ quick_check: 'ok' }]));
+      const before = capture();
+      await run('pre-health', receipt, [fk, quick, write('before.json', before)]);
+      await run('plan', receipt, [write('plan.txt', tip)]);
+      db.exec(readFileSync(`migrations/${tip}`, 'utf8'));
+      expect(verifyBaselinePreserved(result([verifyBaseline(before, tip)]), capture(), tip)).toEqual({ drift: 'none' });
+      const rows = db.prepare(schemaQuery(tip)).all();
+      expect(verifySchema(result(rows), tip).constraints).toBe('PASS');
+      db.exec('CREATE TABLE d1_migrations (id INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT)');
+      for (const name of migrations) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
+      const post = [write('post-ledger.json', result(migrations.map(name => ({ name })))), fk, quick,
+        write('after.json', capture()), write('schema.json', result(rows)),
+        write('gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+      expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0052_CULINARY_STANDARD_V4_CERTIFIED',
+        aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 52, tip }, schemaCheck: { constraints: 'PASS' } });
     } finally { db.close(); }
   });
 });

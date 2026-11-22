@@ -19,6 +19,10 @@ on:
         description: Add native email restricted to the private approved staging recipient
         type: boolean
         default: false
+      recipe_catalog_v4_standard_enabled:
+        description: Enable Takolio Culinary Standard V4 (500 standardized recipes; requires migration 0052 for d1/canary)
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -62,6 +66,7 @@ jobs:
           HARDENED_SHA: ${{ inputs.hardened_sha }}
           CONFIRM_STAGING: ${{ inputs.confirm_staging }}
           ENABLE_STAGING_EMAIL: ${{ inputs.enable_staging_email }}
+          RECIPE_CATALOG_V4_STANDARD_ENABLED: ${{ inputs.recipe_catalog_v4_standard_enabled }}
           STAGING_OTP_TEST_RECIPIENT: ${{ secrets.STAGING_OTP_TEST_RECIPIENT }}
           GH_TOKEN: ${{ github.token }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
