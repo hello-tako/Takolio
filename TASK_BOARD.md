@@ -1,3 +1,11 @@
+## Takolio Culinary Standard V4 — `0052` & Workflow Rollout Ready - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_RELEASE_WORKFLOWS_READY_ON_BRANCH `feat/recipe-catalog-500-standardization` (commits `b5f92250`, `cd6ebe2d`, `51718103`); NOT pushed, NO remote D1 migration.
+- Registered `0052_culinary_standard_v4_catalog_500.sql` in `.github/workflows/{staging-v2-migrate,production-d1-migrate}.yml` and `scripts/staging-v2-migration-check.mjs` (`STAGING_0052_CULINARY_STANDARD_V4_CERTIFIED`), wired `RECIPE_CATALOG_V4_STANDARD_ENABLED` in `deploy.yml`, `domain-{staging,production}-release.yml`, `scripts/release-check.{mjs,d.mts}`, `scripts/cloudflare-deploy-retry.mjs`, `scripts/domain/{staging,production}-provider.mjs`, and `wrangler.{eu,jp}.jsonc`, raised `maxBuffer` to `32 MiB` for `0052` `git show`, and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+- Verified `pnpm typecheck`, `pnpm lint`, `pnpm check:migrations`, `pnpm recipe:standard-v4:check`, `21/21` Vitest suites (`670/670` tests incl. `0051->0052` staging certification, `production-migration-preflight`, `release-check`, `t21rc2t`, `vnext-g02-foundation`, and sovereign-cell tests), `pnpm build`, and `git diff --check` PASS exit 0.
+
+---
+
 ## Takolio Culinary Standard V4 — `0052` Promoted & Main Router Wired - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_PROMOTED_AND_WIRED_ON_BRANCH `feat/recipe-catalog-500-standardization` (commits `b5f92250`, `cd6ebe2d`); NOT pushed, NO remote D1 migration.
