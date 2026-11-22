@@ -221,9 +221,9 @@ export const C01HomePilot: React.FC = () => {
           {/* Primary Column (7 cols on Desktop) */}
           <div data-testid="tkv-c01-primary" className="lg:col-span-7 space-y-6 min-w-0">
             {/* Hero Meal / Bé Mầm Bếp Card */}
-            {home.query.isPending ? (
+            {!home.requiresAccount && home.query.isPending ? (
               <TkvSkeleton className="h-48" label="Đang tải bữa ăn tiếp theo…" />
-            ) : home.query.isError ? (
+            ) : !home.requiresAccount && home.query.isError ? (
               <TkvErrorState
                 title="Chưa kiểm tra được lịch bữa ăn"
                 message="Không thể tải thực đơn hiện tại. Bạn có thể thử tải lại hoặc xem gợi ý món bên dưới."

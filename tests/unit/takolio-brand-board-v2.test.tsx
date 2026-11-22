@@ -63,4 +63,10 @@ describe('Takolio Official Brand Board v2 — Artwork Rule 5b & Token Compliance
     expect(hillsHtml).not.toContain('<svg');
     expect(hillsHtml).toContain('/takolio/brand-v2/decor/culinary-hills-strip');
   });
+
+  it('guards disabled guest planner query on C01HomePilot so guests never see an eternal hero skeleton', () => {
+    const src = readFileSync(path.join(REPO_ROOT, 'src/web/vnext/screens/C01HomePilot.tsx'), 'utf8');
+    expect(src).toContain('!home.requiresAccount && home.query.isPending');
+    expect(src).toContain('!home.requiresAccount && home.query.isError');
+  });
 });
