@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-06",
+    "slug": "thit-ba-chi-kho-cu-cai",
+    "title": "Thịt ba chỉ kho củ cải trắng",
+    "subtitle": "Thịt ba chỉ heo mềm béo kho hai lần lửa cùng củ cải trắng ngọt thanh, nước kho hổ phách sóng sánh chuẩn cơm nhà Bắc Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Bắc Bộ",
+      "Mùa đông",
+      "Cơm nhà",
+      "Thịt heo"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng thịt ba chỉ đan xen nạc mỡ mềm tan hòa cùng từng khúc củ cải trắng thấm vị ngọt thanh và nước màu hổ phách đậm đà, cực kỳ hao cơm trong những ngày se lạnh.",
+    "servingSuggestion": "Múc thịt và củ cải ra đĩa sâu lòng, chan nước kho óng ả và rắc hành lá, tiêu xay; ăn nóng cùng cơm trắng và đĩa rau cải luộc.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 3 ngày; khi ăn đun nóng lại trên lửa nhỏ, thịt và củ cải thấm vị càng mềm ngon."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "500 g",
+      "prepNote": "cạo sạch bì, xát muối rửa sạch, cắt miếng vuông vừa ăn dày 2,5–3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DAIKON",
+      "name": "Củ cải trắng tươi",
+      "culinaryMeasure": "500 g (khoảng 2–3 củ vừa)",
+      "prepNote": "gọt vỏ, cắt khúc hình con chì to khoảng 3 cm để khi kho không bị teo nát",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "35 g (3 củ)",
+      "prepNote": "bóc vỏ, băm nhuyễn; chia đôi để ướp thịt và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 30.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, phần đầu hành đập dập và phần lá thái khúc nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (2,5 muỗng canh)",
+      "prepNote": "chia 20 ml ướp thịt và 15 ml nêm lúc kho lần hai",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "chia 12 g thắng nước màu cánh gián và 8 g ướp nêm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "8 g",
+      "prepNote": "dùng 5 g xát rửa thịt và xóc củ cải giảm hăng rồi xả bỏ, 3 g ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.38,
+      "edibleGrams": 3.04,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp thịt và rắc mặt lúc hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng thắng nước màu và xào săn thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nóng",
+      "culinaryMeasure": "350 ml",
+      "prepNote": "dùng 50 ml hãm nước màu và 300 ml chế kho thịt",
+      "componentGroup": "broth",
+      "requiredQuantity": 350,
+      "unit": "ml",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 315,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt ba chỉ và khử hăng củ cải trắng",
+      "instruction": "Cạo sạch bì 500 g thịt ba chỉ, xát với 3 g muối hạt rồi rửa sạch, thấm khô và thái miếng vuông dày 2,5–3 cm. Củ cải trắng gọt vỏ, cắt khúc hình con chì to khoảng 3 cm, xóc nhẹ với 2 g muối hạt trong 5 phút rồi rửa lại bằng nước sạch để giảm mùi hăng.",
+      "tip": "Cắt củ cải miếng hơi dày vì trong quá trình kho củ cải sẽ ngót bớt nước và dễ bị nát nếu thái quá mỏng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt ba chỉ thấm gia vị",
+      "instruction": "Cho thịt ba chỉ vào tô lớn, ướp với một nửa hành tím băm, 20 ml nước mắm ngon, 8 g hạt nêm, 5 g đường cát trắng, 3 g muối, 1 g tiêu đen xay và đầu hành lá đập dập. Trộn đều và ướp trong 30 phút cho thịt ngấm gia vị.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Thắng nước màu và xào săn thịt",
+      "instruction": "Làm nóng nồi đáy dày với 20 ml dầu ăn và 12 g đường cát trắng còn lại trên lửa nhỏ đến khi đường tan chảy chuyển màu nâu cánh gián. Nhanh tay rót 50 ml nước lọc nóng vào khuấy tan rồi cho phần hành tím băm còn lại vào phi thơm. Trút thịt ba chỉ đã ướp vào đảo săn trên lửa vừa trong 5 phút.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Kho thịt lửa một cho mềm thớ thịt",
+      "instruction": "Chế 300 ml nước lọc nóng vào xâm xấp mặt thịt, đun sôi rồi hớt sạch bọt để nước kho thật trong. Hạ lửa nhỏ, đậy hé nắp kho liu riu 20 phút cho thịt bắt đầu mềm và tiết ra vị ngọt béo.",
+      "tip": "Luôn dùng nước nóng để chế vào nồi thịt đang xào giúp thịt không bị co cứng và giữ được độ trong của nước kho.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cho củ cải trắng vào kho lửa hai",
+      "instruction": "Thả củ cải trắng vào nồi thịt, tắt bếp để nghỉ 10 phút cho thịt và củ cải hồi nhiệt ngấm màu rồi bật bếp lại kho thêm 15 phút trên lửa nhỏ. Khi củ cải chuyển trong mềm, nêm tiếp 15 ml nước mắm và 3 g đường cát trắng còn lại, đun thêm 2 phút cho nước kho sánh hổ phách.",
+      "tip": "Kỹ thuật kho hai lửa giúp miếng thịt lên màu nâu bóng tự nhiên, củ cải thấm đều vị ngọt béo từ thịt mà không bị nát vụn.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và hoàn thiện món ăn",
+      "instruction": "Nêm nếm lại độ mặn ngọt vừa miệng, cho hành lá cắt khúc, ớt tươi thái lát và 1 g tiêu đen xay còn lại vào nồi, đảo nhẹ rồi tắt bếp. Múc thịt kho củ cải ra đĩa sâu lòng và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 739,
+    "energyKcal": 739.2,
+    "energyKj": 3092,
+    "proteinG": 13.4,
+    "fatG": 70.6,
+    "saturatedFatG": 24.8,
+    "carbG": 12.6,
+    "fiberG": 2.2,
+    "sugarG": 9,
+    "sodiumMg": 1513,
+    "saltG": 3.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 168452",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b91e783ed6acd2a35a38516f81070643a25c53c38d90ec7fff228bfc45ec2ade",
+    "researchedFromV2Sha256": "0286660156bbe2f9cbba0690eb825eb6d29f1902beda66b678037e82f5e983a5"
+  }
+}

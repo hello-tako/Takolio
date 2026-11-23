@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4d9fae75b597d2c5",
+    "slug": "bo-nuong-sa-thai",
+    "title": "Thịt bò ướp sả nướng kiểu Thái",
+    "subtitle": "Thịt thăn bò thái lát mỏng ướp sả non, tỏi, tiêu đen, nước mắm và đường nâu nướng xém cạnh thơm lừng, ăn kèm chanh ớt tươi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 12,
+    "servings": 4,
+    "tags": [
+      "Bò nướng",
+      "Sả thơm",
+      "Thái Lan",
+      "Món nhậu",
+      "Nướng vỉ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Từng lát thịt thăn bò mềm mọng thấm đẫm hương thơm nồng nàn của sả non băm nhuyễn, tỏi, tiêu đen, xì dầu và nước mắm ngon, nướng nhanh trên lửa lớn cho mặt thịt xém cạnh thơm phức, cực kỳ hợp cho bữa tiệc hay cơm gia đình.",
+    "servingSuggestion": "Xếp thịt bò nướng sả ra đĩa khi còn nóng, bày kèm chanh cắt múi cau và ớt hiểm thái lát; dùng với xôi nếp, cơm trắng, bún tươi hoặc cuốn rau sống.",
+    "storageAndReheat": "Bò nướng ngon nhất khi dùng nóng ngay sau khi nướng và để nghỉ vài phút; nếu dư, bọc kín bảo quản tủ mát tối đa 2 ngày và áp chảo nóng nhanh 1 phút mỗi mặt cho thịt mềm ẩm trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò tươi thái lát",
+      "culinaryMeasure": "500 g",
+      "prepNote": "để ngăn đá 20 phút cho hơi cứng rồi thái lát mỏng 0,5 cm ngược thớ thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (lấy phần thân trắng non)",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc vỏ già ngoài, chỉ lấy phần gốc trắng non đập dập rồi băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 25 g)",
+      "prepNote": "bóc vỏ, giã hoặc băm thật nhuyễn cùng tiêu đen xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (1 muỗng cà phê)",
+      "prepNote": "giã chung với tỏi khô tạo mùi cay thơm đậm đà cho sốt ướp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh và màu nâu đẹp cho lát thịt bò nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tăng chiều sâu vị mặn umami đặc trưng kiểu Thái",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo độ ngọt dịu và lớp caramen xém cạnh hấp dẫn khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn vào sốt ướp giúp thịt bò mềm ẩm và không bám dính vỉ nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tăng hương thơm béo dịu cho lát bò nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (cắt múi ăn kèm)",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "rửa sạch, bổ múi cau vắt trực tiếp lên bò nướng khi ăn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ (ăn kèm)",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát vát chéo bày cạnh đĩa thịt nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái thịt bò ngược thớ và băm nhuyễn sả tỏi",
+      "instruction": "Đặt 500 g thịt thăn bò vào ngăn đá khoảng 20 phút cho hơi se cứng bề mặt rồi thái thành các lát mỏng đều khoảng 0,5 cm theo chiều ngang ngược thớ thịt. Bóc bỏ bẹ già của 3 cây sả tươi, lấy phần gốc trắng non băm thật nhuyễn; bóc vỏ tỏi khô rồi giã nhuyễn cùng 3 g tiêu đen xay.",
+      "tip": "Thái thịt bò ngược thớ giúp từng miếng thịt sau khi nướng dễ nhai, mềm ngọt và không bị dai gân.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Trộn sốt sả và ướp lạnh thịt bò",
+      "instruction": "Trong tô lớn, hòa tan 20 g đường nâu với 20 ml xì dầu nhạt, 20 ml nước mắm ngon, 15 ml dầu ăn thực vật và 5 ml dầu mè thơm đến khi đường tan hết. Thêm sả băm và hỗn hợp tỏi tiêu vào trộn đều rồi thả thịt bò vào bóp nhẹ cho gia vị áo đều từng lát. Bọc kín tô, ướp trong ngăn mát tủ lạnh ít nhất 30 phút.",
+      "tip": "Ướp thịt bò trong ngăn mát tối thiểu 30 phút (hoặc 2 giờ) giúp thịt ngấm sâu mùi sả tỏi và giữ được độ an toàn vệ sinh.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Làm nóng vỉ nướng và xiên que (nếu dùng)",
+      "instruction": "Nếu xiên que tre, ngâm que trong nước sạch trước 30 phút để tránh cháy xém rồi xiên từng lát thịt bò dẹt theo dạng sóng. Làm nóng bếp than hoa hoặc vỉ nướng điện ở lửa vừa-lớn rồi phết lớp dầu mỏng lên mặt vỉ. Rũ nhẹ bớt vụn sả thừa bám dày trên thịt và bỏ phần nước ướp sống còn dư."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng nhanh thịt bò trên lửa vừa-lớn",
+      "instruction": "Xếp các lát hoặc xiên thịt bò lên vỉ nóng sao cho không chồng lên nhau. Nướng khoảng 2–3 phút mỗi mặt đến khi bề mặt thịt chuyển nâu xém cạnh, mỡ rìa xèo thơm và thịt vừa chín tới bên trong mà không bị khô xác.",
+      "tip": "Lát thăn bò thái mỏng chín rất nhanh; tránh nướng quá 3 phút mỗi mặt kẻo thịt mất nước ngọt và bị dai.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Để thịt nghỉ ổn định nước ngọt",
+      "instruction": "Gắp thịt bò nướng ra đĩa ấm, đậy hờ giấy bạc để thịt nghỉ trong 3 phút cho lượng nước ngọt phân bố đều trở lại trong từng thớ thịt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa cùng chanh múi cau và ớt hiểm",
+      "instruction": "Sắp xếp thịt bò nướng sả lên đĩa, đặt chanh tươi cắt múi cau và ớt hiểm đỏ thái lát bên cạnh để vắt thêm vị chua cay khi thưởng thức cùng cơm trắng, xôi nếp hoặc rau sống."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 316,
+    "energyKcal": 315.8,
+    "energyKj": 1322,
+    "proteinG": 27.2,
+    "fatG": 17.8,
+    "saturatedFatG": 5.8,
+    "carbG": 11.3,
+    "fiberG": 0.5,
+    "sugarG": 5.4,
+    "sodiumMg": 881,
+    "saltG": 2.2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3d276aefdbc22f127cb71d3e55a0df851bbc9fa11ada3cc1ca058bd034121cbc",
+    "researchedFromV2Sha256": "a42178363f3afa985b4af7e1c9db05f8d0fadd0ce2e88b4d3b902848b6c11d98"
+  }
+}

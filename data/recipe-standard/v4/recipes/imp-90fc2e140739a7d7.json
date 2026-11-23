@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-90fc2e140739a7d7",
+    "slug": "tom-yum-ca-nam",
+    "title": "Canh chua cay cá nấm Tom Yum kiểu Thái (Tom Yum Pla)",
+    "subtitle": "Nước canh Tom Yum trong thanh dậy hương sả, riềng, lá chanh Thái nấu cùng cá phi lê trắng ngọt, nấm đùi gà giòn và cà chua bi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Thái Lan",
+      "Món canh",
+      "Tom Yum",
+      "Cá tươi",
+      "Chua cay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Tom Yum Pla là biến thể Tom Yum nước trong thanh mát không dùng cốt dừa hay tương ớt béo, nổi bật với vị ngọt tự nhiên của phi lê cá thịt trắng, nấm đùi gà giòn sần sật và hương thảo mộc tươi nồng nàn.",
+    "servingSuggestion": "Múc canh Tom Yum cá nấm nóng hổi ra tô lớn, rắc ngò rí lên trên và thưởng thức cùng cơm trắng dẻo.",
+    "storageAndReheat": "Thịt cá dễ nát khi hâm đi hâm lại nên ngon nhất khi ăn hết trong bữa; nếu còn dư có thể bảo quản ngăn mát 24 giờ và hâm nhẹ trên lửa nhỏ không khuấy mạnh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WHITE_FISH_FILLET",
+      "name": "Phi lê cá thịt trắng (cá chẽm hoặc cá basa)",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa sạch với chút muối loãng khử tanh, thấm khô rồi cắt miếng vuông dày 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "gọt sạch gốc, rửa nhanh, thái lát vát xéo dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín (hoặc cà chua bi)",
+      "culinaryMeasure": "1 quả lớn (khoảng 120 g)",
+      "prepNote": "rửa sạch, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "2,5 cây (khoảng 50 g)",
+      "prepNote": "bỏ bẹ già, đập dập phần gốc trắng và cắt khúc xéo 5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GALANGAL",
+      "name": "Củ riềng tươi",
+      "culinaryMeasure": "30 g (khoảng 6 lát)",
+      "prepNote": "cạo vỏ, thái lát mỏng để dễ tiết hương vào nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (Kaffir)",
+      "culinaryMeasure": "5 g (5 lá)",
+      "prepNote": "rửa sạch, vò nhẹ rồi xé bỏ gân giữa",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "4 quả",
+      "prepNote": "rửa sạch, đập dập hoặc giã dối cho cay thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, bổ đôi cho ngọt thanh nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "nêm tạo nền vị đậm đà trước khi thả cá",
+      "componentGroup": "broth",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "12 g (khoảng 1 muỗng canh)",
+      "prepNote": "băm nhỏ cho nhanh tan trong nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 45 ml nước cốt)",
+      "prepNote": "vắt bỏ hạt, cho vào sau khi tắt bếp để nước canh không bị đắng",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nấu nước dùng canh)",
+      "culinaryMeasure": "900 ml",
+      "prepNote": "đun sôi hầm thảo mộc cho thơm thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 900,
+      "unit": "ml",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 810,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế phi lê cá và thảo mộc Thái",
+      "instruction": "Cắt 500 g phi lê cá thịt trắng thành miếng vuông 3–4 cm để ráo. Thái lát 200 g nấm đùi gà, bổ múi cau 1 quả cà chua. Đập dập và cắt khúc 5 cm phần 2,5 cây sả, thái lát mỏng 30 g củ riềng, xé bỏ gân 5 g lá chanh Thái, đập dập 4 quả ớt hiểm, bổ đôi 30 g hành tím. Cắt khúc 1/2 bó hành lá và thái nhỏ 15 g ngò rí.",
+      "tip": "Cắt phi lê cá thành miếng vuông dày vừa phải giúp cá không bị vỡ vụn khi nấu trong nước dùng nóng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu nước dùng thảo mộc thơm nồng",
+      "instruction": "Đun sôi 900 ml nước lọc trong nồi trên lửa lớn, thả toàn bộ sả, riềng, lá chanh Thái, hành tím và ớt hiểm vào rồi hạ lửa vừa, nấu liu riu 5 phút cho các loại thảo mộc tiết hết tinh dầu thơm vào nước dùng.",
+      "tip": "Có thể vớt bớt xác sả và riềng ra sau khi nấu thơm nếu muốn tô canh gọn gàng dễ múc.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nêm vị nền và nấu nấm, cà chua",
+      "instruction": "Nêm 45 ml nước mắm ngon cùng 12 g đường thốt nốt vào nồi khuấy tan. Cho 200 g nấm đùi gà và cà chua bổ múi cau vào nấu sôi vừa khoảng 3 phút cho nấm chín mềm ngọt và cà chua tiết màu nhẹ.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả phi lê cá nấu chín nhẹ nhàng",
+      "instruction": "Hạ lửa xuống mức vừa để mặt nước chỉ sôi lăn tăn, thả nhẹ từng miếng phi lê cá vào nồi và nấu khoảng 3 phút đến khi thịt cá chuyển trắng đục, săn chắc chín hoàn toàn mà không đảo mạnh tay làm nát miếng cá.",
+      "tip": "Giữ nước sôi lăn tăn và không khuấy đảo sau khi thả cá là bí quyết giữ từng miếng cá nguyên vẹn và nước canh trong veo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp vắt nước cốt chanh cân vị",
+      "instruction": "Tắt bếp chờ nước canh ngừng sôi hẳn mới rưới nước cốt từ 2 quả chanh tươi vào khuấy thật nhẹ tay để giữ trọn hương thơm tươi mát và vị chua thanh mà không bị đắng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành ngò và dọn canh Tom Yum nóng",
+      "instruction": "Nếm lại cho đạt vị chua cay mặn ngọt cân bằng, thả hành lá cắt khúc vào nồi đảo nhẹ rồi múc canh ra tô, rắc ngò rí thái nhỏ lên trên và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 193,
+    "energyKcal": 192.9,
+    "energyKj": 807,
+    "proteinG": 28.7,
+    "fatG": 3.9,
+    "saturatedFatG": 0.9,
+    "carbG": 11.4,
+    "fiberG": 2.3,
+    "sugarG": 5.6,
+    "sodiumMg": 1148,
+    "saltG": 2.87,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA / SE Asian Galangal Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 168580",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175148",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b119bd404383a3ee96781bd335b052feafb18b391ca8a6d2fff1d27f9368b7b1",
+    "researchedFromV2Sha256": "9360d9d93e7f31e90169e37f5cd7cac7ce77c258214275b8f2de1ae611613ef5"
+  }
+}

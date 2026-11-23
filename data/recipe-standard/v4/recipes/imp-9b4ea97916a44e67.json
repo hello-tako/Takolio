@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9b4ea97916a44e67",
+    "slug": "canh-rau-muong-nau-tom-thanh-mat",
+    "title": "Canh rau muống nấu tôm thanh mát",
+    "subtitle": "Rau muống xanh mướt giòn ngon hòa cùng vị ngọt đậm của tôm tươi giã dập, món canh thanh nhiệt nhanh gọn kiểu miền Bắc"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Dưới 20 phút",
+      "Thanh mát",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món canh mùa hè thanh mát đậm chất cơm nhà Bắc Bộ với từng cọng rau muống xanh giòn, nước dùng trong ngọt thanh vị tôm tươi giã nhuyễn và mùi thơm dịu nhẹ của hành tím phi.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, có thể vắt thêm vài giọt chanh tươi khi dùng hoặc ăn kèm cà pháo muối, cơm trắng và món mặn kho tiêu.",
+    "storageAndReheat": "Canh rau muống nên dùng hết ngay trong bữa để giữ màu xanh và độ giòn của rau; không khuyến khích đun lại nhiều lần vì rau dễ chuyển màu thẫm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WATER_SPINACH",
+      "name": "Rau muống tươi non",
+      "culinaryMeasure": "1.5 bó (~450 g)",
+      "prepNote": "nhặt lấy phần ngọn và lá non, bỏ gốc già, cắt khúc 5 cm, ngâm nước muối loãng rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bóc vỏ, bỏ đầu, rút chỉ đen; chia 1/3 giã nhuyễn để tạo nước ngọt, 2/3 còn lại đập dập nhẹ",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhuyễn để phi thơm khử mùi tanh của tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 3 nhánh)",
+      "prepNote": "rửa sạch, thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi)",
+      "culinaryMeasure": "15 g (3 nhánh)",
+      "prepNote": "nhặt gốc, rửa sạch, thái khúc ngắn rắc lên tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím và xào săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm vừa nhẹ để không làm át vị ngọt thanh của tôm",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm vào nước dùng giúp cân bằng vị ngọt thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 3 g pha nước ngâm rửa rau muống và 5 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 5.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "nêm chút đường dằn vị mặn dịu dàng",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "900 ml",
+      "prepNote": "lượng nước dùng vừa đủ cho 4 tô canh thanh mát",
+      "componentGroup": "broth",
+      "requiredQuantity": 900,
+      "unit": "ml",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 792,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nhặt và rửa sạch rau muống non",
+      "instruction": "Nhặt bỏ phần cọng già và lá úa của 1,5 bó rau muống, cắt khúc dài khoảng 5 cm. Ngâm rau vào chậu nước sạch pha 3 g muối ăn trong 7 phút cho sạch bụi bẩn, sau đó rửa lại 2–3 lần nước lạnh rồi vớt ra rổ để thật ráo.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế tôm giã nhuyễn và đập dập",
+      "instruction": "Lột vỏ 250 g tôm tươi, bỏ đầu, rút sạch chỉ đen dọc lưng, rửa qua nước lạnh rồi thấm ráo. Chia 1/3 lượng tôm cho vào cối giã thật nhuyễn để tạo độ ngọt tự nhiên cho nước canh; 2/3 phần tôm còn lại dùng sống dao đập dập nhẹ cho thịt tôm giữ độ sần sật. Băm nhỏ 20 g hành tím, cắt khúc hành lá và ngò rí.",
+      "tip": "Kết hợp giã nhuyễn 1/3 tôm và đập dập 2/3 tôm giúp nước dùng vừa ngọt đậm đà vừa còn miếng thịt tôm ăn rất đã miệng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào chín thơm tôm",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, cho hành tím băm vào phi đến khi dậy mùi thơm vàng nhẹ. Trút cả phần tôm giã nhuyễn và tôm đập dập vào đảo đều 2–3 phút đến khi tôm săn lại, chuyển màu cam hồng hấp dẫn và chín đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu nước dùng tôm ngọt trong",
+      "instruction": "Đổ 900 ml nước lọc vào nồi tôm, bật lửa lớn đun sôi bùng, dùng vá hớt sạch phần bọt nổi trên mặt rồi hạ xuống lửa vừa nấu tiếp 5 phút để thịt tôm tiết hết vị ngọt vào nước canh.",
+      "tip": "Hớt sạch bọt ngay khi nước vừa sôi giúp nồi canh rau muống giữ được độ trong thanh và không bị đục.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và thả rau muống nấu mở vung",
+      "instruction": "Nêm 8 g hạt nêm, 5 g muối ăn còn lại, 10 ml nước mắm và 4 g đường vào nồi, khuấy tan rồi nếm lại vị thanh ngọt hài hòa. Khi nước sôi bùng trở lại trên lửa lớn, thả rau muống vào và dùng vá nhấn nhẹ cho rau ngập nước, nấu mở vung đúng 3 phút đến khi cọng rau vừa chín tới, xanh mướt và vẫn giữ độ giòn.",
+      "tip": "Nấu rau muống ở lửa lớn và tuyệt đối không đậy nắp giúp giữ màu xanh tươi tự nhiên mà không bị thâm sẫm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá và ngò rí",
+      "instruction": "Tắt bếp ngay sau khi rau chín tới, thả hành lá và ngò rí cắt khúc vào đảo nhẹ một lượt cho dậy hương thơm rồi múc canh ra tô dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 103,
+    "energyKcal": 103.1,
+    "energyKj": 431,
+    "proteinG": 12.9,
+    "fatG": 3.8,
+    "saturatedFatG": 0.6,
+    "carbG": 6.1,
+    "fiberG": 2.4,
+    "sugarG": 2.3,
+    "sodiumMg": 1238,
+    "saltG": 3.1,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169378",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "50f66046d1e252ea6781d0e0f2faecd69622c94c5c606939b51b600bc49e3776",
+    "researchedFromV2Sha256": "487b988233f9fcfbb50fed836f354f6d80e660dc599db6dfbe3efd3520a1de61"
+  }
+}

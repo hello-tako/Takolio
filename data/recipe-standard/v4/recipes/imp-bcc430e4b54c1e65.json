@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-bcc430e4b54c1e65",
+    "slug": "canh-tom-chuet-tom",
+    "title": "Canh bắp cải tôm tươi thanh ngọt kiểu Thái (Tom Chuet)",
+    "subtitle": "Nước canh trong dịu ngọt vị tôm tươi và bắp cải non hầm mềm, hòa quyện cà chua chín, hương tỏi phi và hành ngò nhẹ nhàng không cay"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Thái Lan",
+      "Món canh",
+      "Không cay",
+      "Thanh đạm",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tom Chuet là món canh thanh mát không cay quen thuộc trên mâm cơm gia đình Thái Lan, kết hợp vị ngọt tự nhiên từ tôm tươi áp chảo sơ cùng bắp cải mềm ngọt, cà chua chín và nước dùng thơm mùi tỏi phi.",
+    "servingSuggestion": "Múc canh Tom Chuet nóng ra tô lớn, rắc tiêu đen xay và ngò rí lên trên; rất hợp dùng kèm các món mặn hoặc món xào cay kiểu Thái.",
+    "storageAndReheat": "Canh rau bắp cải nên dùng hết trong ngày để giữ độ ngọt tươi; nếu bảo quản ngăn mát tối đa 24 giờ, đun sôi nhanh lại trên lửa vừa rồi dùng ngay."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, bóc vỏ, rút chỉ đen trên lưng rồi để ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng (bắp sú)",
+      "culinaryMeasure": "1/2 bắp (khoảng 400 g)",
+      "prepNote": "tách lá bỏ sống cứng dày, rửa sạch và cắt miếng vuông 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau (6 miếng mỗi quả)",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm nền canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, phần đầu hành trắng băm phi thơm, phần lá xanh thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, thái khúc ngắn 2 cm rắc mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu / Nước tương thanh",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "nêm tạo mùi thơm dịu và vị đậm thanh cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (khoảng 3/4 muỗng cà phê)",
+      "prepNote": "nêm cân bằng độ mặn thanh cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "giúp nước dùng có vị ngọt hậu hài hòa",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện lên tô canh để dậy hương thơm ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi thơm tỏi băm, đầu hành và xào săn tôm tươi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nấu canh)",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "đun sôi làm nước dùng canh trong ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1260,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi và các loại rau củ",
+      "instruction": "Rửa sạch 300 g tôm tươi đã bóc vỏ rút chỉ lưng, để ráo nước. Cắt miếng vuông 3–4 cm phần 1/2 bắp cải trắng, bổ múi cau 2 quả cà chua chín, băm nhỏ 1/2 củ tỏi khô, thái nhỏ đầu hành trắng và cắt khúc 2 cm phần lá xanh của 1 bó hành lá cùng 15 g ngò rí."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm tỏi hành và xào săn tôm tươi",
+      "instruction": "Làm nóng nồi trên lửa vừa với 15 ml dầu ăn, cho tỏi băm và đầu hành trắng vào phi thơm 30 giây đến khi vừa ngả vàng dịu. Trút 300 g tôm tươi vào đảo nhanh tay khoảng 2 phút đến khi bề mặt tôm săn lại và chuyển sắc hồng cam.",
+      "tip": "Xào sơ tôm với tỏi phi trước khi đổ nước giúp thịt tôm thơm ngon hơn và nước canh có độ ngọt béo tự nhiên.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đổ nước lọc đun sôi và hớt sạch bọt",
+      "instruction": "Rót 1400 ml nước lọc vào nồi tôm, tăng lửa lớn đun sôi bùng rồi hạ lửa vừa, dùng vá hớt thật sạch lớp bọt nổi trên mặt để nước canh trong vắt đẹp mắt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu cà chua và bắp cải vừa chín tới",
+      "instruction": "Thả cà chua bổ múi cau vào nồi nấu 2 phút cho cà chua hơi mềm và tiết vị ngọt chua thanh. Tiếp tục cho bắp cải vào nấu sôi vừa thêm 4 phút đến khi bắp cải vừa chín mềm trong mà vẫn còn độ giòn ngọt, không bị nhũn nát.",
+      "tip": "Không đun bắp cải quá lâu để giữ trọn độ giòn ngọt tự nhiên và màu xanh trắng tươi sáng của rau.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị xì dầu thanh dịu vừa miệng",
+      "instruction": "Nêm vào nồi canh 30 ml xì dầu, 4 g muối ăn và 4 g đường cát trắng, khuấy nhẹ cho gia vị tan đều rồi đun sôi lăn tăn thêm 1 phút, nếm chỉnh lại độ mặn ngọt hài hòa."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành ngò và tiêu đen xay",
+      "instruction": "Tắt bếp ngay rồi thả phần lá xanh của hành lá và ngò rí cắt khúc vào nồi đảo nhẹ, múc canh ra tô lớn, rắc 2 g tiêu đen xay lên trên và dùng nóng.",
+      "tip": "Cho tiêu đen và hành ngò sau cùng khi tắt bếp giúp giữ được mùi thơm dịu ấm đặc trưng của món canh Tom Chuet."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 135,
+    "energyKcal": 134.5,
+    "energyKj": 563,
+    "proteinG": 16.4,
+    "fatG": 3.8,
+    "saturatedFatG": 0.6,
+    "carbG": 10.7,
+    "fiberG": 3.4,
+    "sugarG": 5.6,
+    "sodiumMg": 976,
+    "saltG": 2.44,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6b7a523d16da748c9cbd39d203bec562f27ee3a160eb653ceaae101224a6cf40",
+    "researchedFromV2Sha256": "62b7b43cc399bd95b4d7420fd7a036f578ab719135d5c55bf9aff18ebbaf2fef"
+  }
+}

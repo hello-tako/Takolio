@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-295e7045e644d2ca",
+    "slug": "goi-muc-mi-soi-thai",
+    "title": "Gỏi miến mực chua cay kiểu Thái (Yam Wun Sen)",
+    "subtitle": "Miến dong dai trong trộn cùng mực tươi chần giòn, sả hành thơm nồng, tôm khô giã tỏi ớt và nước sốt chanh đường thốt nốt chua cay"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Gỏi trộn",
+      "Miến trộn",
+      "Hải sản",
+      "Chua cay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "molluscs",
+      "sesame",
+      "shrimp",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Yam Wun Sen là món gỏi miến khai vị thanh mát trứ danh của Thái Lan với sợi miến trong dai không bết dính, mực tươi giòn ngọt quyện sốt nước mắm chanh đường thốt nốt chua cay đậm vị.",
+    "servingSuggestion": "Bày gỏi miến mực ra đĩa sâu lòng, rắc mè rang vàng và vài lát ớt đỏ lên trên; thưởng thức ngay khi còn mát tươi như món khai vị hoặc ăn nhẹ.",
+    "storageAndReheat": "Miến dễ hút nước và nở mềm nên ngon nhất khi trộn và dùng hết ngay trong vòng 1–2 giờ sau khi chế biến."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GLASS_NOODLE",
+      "name": "Miến dong hoặc miến đậu xanh khô",
+      "culinaryMeasure": "150 g",
+      "prepNote": "ngâm nước lạnh 10 phút cho mềm trước khi luộc chín trong",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi làm sạch",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bỏ túi mực và mai cứng, rửa sạch rồi thái khoanh tròn dày 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 212.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DRIED_SHRIMP",
+      "name": "Tôm khô",
+      "culinaryMeasure": "15 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "rửa sạch, ngâm nước ấm 10 phút cho mềm rồi để ráo trước khi giã cùng tỏi ớt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (phần gốc non)",
+      "culinaryMeasure": "2 cây (khoảng 40 g)",
+      "prepNote": "lột bẹ già, thái khoanh thật mỏng để trộn trực tiếp cùng gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím tươi",
+      "culinaryMeasure": "25 g (khoảng 2 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 4 tép)",
+      "prepNote": "bóc vỏ, giã dập cùng tôm khô và ớt hiểm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "3 quả",
+      "prepNote": "giã dập 2 quả cùng tỏi và tôm khô, thái lát 1 quả để trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 45 ml nước cốt)",
+      "prepNote": "vắt lọc bỏ hạt pha nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "40 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "khuấy tan cùng đường thốt nốt và nước cốt chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 48,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "băm nhỏ để khuấy tan hoàn toàn trong nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà (húng lủi tươi)",
+      "culinaryMeasure": "10 g",
+      "prepNote": "nhặt lá non, rửa sạch và để ráo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Mè trắng rang vàng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện lên mặt đĩa gỏi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc miến và chần mực)",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "dùng đun sôi luộc chín miến và chần mực rồi chắt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm miến, tôm khô và thái mực cùng rau thơm",
+      "instruction": "Ngâm 150 g miến khô trong nước lạnh 10 phút cho mềm đều; đồng thời ngâm 15 g tôm khô vào chút nước ấm 10 phút rồi vớt ráo. Thái khoanh 250 g mực ống làm sạch. Thái lát thật mỏng 2 cây sả và 25 g hành tím, cắt khúc 3/4 bó hành lá và 15 g ngò rí, nhặt 10 g lá bạc hà, thái lát 1 quả ớt hiểm.",
+      "tip": "Thái sả thật mỏng theo khoanh tròn để khi trộn gỏi không bị xơ cứng và tỏa mùi thơm dịu.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc miến dai trong và xả nước lạnh",
+      "instruction": "Đun sôi 1000 ml nước lọc trên lửa lớn, thả miến vào luộc nhanh 2 phút đến khi sợi miến chuyển trong mềm thì vớt ra xả ngay dưới vòi nước lạnh cho dai tơi, để thật ráo rồi dùng kéo cắt ngắn khoảng 10 cm.",
+      "tip": "Xả lạnh ngay sau khi luộc giúp sợi miến dong không bị dính bết và giữ được độ dai giòn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chần mực giòn ngọt vừa chín tới",
+      "instruction": "Dùng tiếp nồi nước sôi đó chần 250 g mực trong 2 phút đến khi khoanh mực cuộn tròn trắng đục và chín hoàn toàn thì vớt ra ngâm nhanh tô nước nguội rồi để thật ráo nước.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Giã tôm khô tỏi ớt và pha nước trộn gỏi",
+      "instruction": "Cho tôm khô đã ngâm mềm cùng 1/2 củ tỏi và 2 quả ớt hiểm vào cối giã dập nhuyễn vừa để dậy vị ngọt thơm cay nồng. Khuấy tan 20 g đường thốt nốt băm nhỏ với 40 ml nước mắm ngon và nước cốt của 2 quả chanh tươi thành hỗn hợp sốt chua mặn ngọt hài hòa.",
+      "tip": "Giã tôm khô cùng tỏi ớt giúp nước trộn gỏi có vị ngọt umami đậm đà và mùi thơm quyện tự nhiên."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn miến, mực cùng các loại rau thơm",
+      "instruction": "Cho miến đã ráo nước vào âu lớn, rưới nước trộn gỏi vào đảo đều cho từng sợi miến thấm gia vị. Tiếp tục cho mực chần, hỗn hợp tôm khô tỏi ớt giã, sả thái lát, hành tím, hành lá, ngò rí và lá bạc hà vào trộn nhẹ tay cho hòa quyện."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và rắc mè rang vàng",
+      "instruction": "Nếm lại cho vừa vị chua cay mặn ngọt đặc trưng rồi bày gỏi miến mực ra đĩa sâu lòng, rắc 5 g mè trắng rang vàng cùng ớt thái lát lên trên và dùng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 328,
+    "energyKcal": 327.7,
+    "energyKj": 1371,
+    "proteinG": 16.5,
+    "fatG": 2.2,
+    "saturatedFatG": 0.4,
+    "carbG": 60.6,
+    "fiberG": 1.8,
+    "sugarG": 7.9,
+    "sodiumMg": 1415,
+    "saltG": 3.54,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Asian Dried Shrimp Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 168952",
+      "USDA FDC 169230",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 170499",
+      "USDA FDC 172185",
+      "USDA FDC 173474",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "65db5d6e999ac7f5e2c46bbd68c888feafd9d8e89bd2bdf4fb2581e6636fde20",
+    "researchedFromV2Sha256": "e50f897449e3b30c1483ab8144540f374b33f0bedfda29e0bc0eaee5e91f7dd0"
+  }
+}

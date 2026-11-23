@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b5571547ad5d2cec",
+    "slug": "mi-y-ca-hoi-bo-chanh",
+    "title": "Mì Ý cá hồi sốt bơ chanh",
+    "subtitle": "Mì ống hoặc Spaghetti trộn cá hồi áp săn thấm rượu vang trắng, nước cốt chanh vàng thanh mát và sốt bơ lạt đánh bóng thơm ngò tây"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Cá hồi",
+      "Bơ chanh",
+      "Nấu nhanh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "salmon",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý cá hồi sốt bơ chanh là lựa chọn hoàn hảo cho bữa tối nhanh gọn mà vẫn tinh tế. Cá hồi áp chảo vừa chín mềm được hòa quyện cùng hành tím phi thơm, rượu vang trắng, nước cốt chanh vàng và bơ lạt đánh bóng ngoài bếp lửa.",
+    "servingSuggestion": "Chia mì và cá hồi ra 3 đĩa sâu lòng khi còn nóng, rắc vỏ chanh vàng bào sợi mảnh, phần ngò tây tươi còn lại và tiêu đen xay lên trên.",
+    "storageAndReheat": "Món mì cá hồi sốt bơ chanh nên thưởng thức ngay lúc nóng để sốt bơ giữ độ bóng mượt; phần dư bảo quản ngăn mát tối đa 24 giờ và hâm nhẹ trên chảo lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ITALIAN_PASTA_SHORT",
+      "name": "Mì Ý Penne hoặc Spaghetti",
+      "culinaryMeasure": "240 g",
+      "prepNote": "luộc bớt 1–2 phút so với bao bì để hoàn thiện trong chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "thấm khô hoàn toàn và cắt hạt lựu lớn cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "30 g",
+      "prepNote": "cắt miếng nhỏ giữ lạnh để đánh bóng sốt khi tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để phi hành tím thơm dịu và áp săn cá hồi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "45 g (khoảng 2–3 củ)",
+      "prepNote": "bóc vỏ, băm thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 39.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "75 ml",
+      "prepNote": "tưới lên cá hồi rồi đun bay hơi giúp dậy hương hải sản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 74.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 74.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (~100 g)",
+      "prepNote": "bào lấy 1 muỗng cà phê vỏ vàng và vắt lấy khoảng 25 ml nước cốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g (~2 muỗng canh băm)",
+      "prepNote": "chia đôi: một nửa phi cùng hành tím, một nửa rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 10 g pha nước luộc mì và 2 g nêm sốt cá hồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "xay tươi rắc lên cá hồi và mì khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 120 ml làm bóng sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cá hồi, hành tím và chanh vàng",
+      "instruction": "Thấm thật khô 250 g phi lê cá hồi tươi rồi cắt khối vừa ăn cỡ 2 cm. Bóc vỏ và băm nhỏ 45 g hành tím; rửa sạch và băm nhỏ 10 g ngò tây tươi; bào lấy 1 muỗng cà phê vỏ vàng chanh vàng tươi và vắt lấy khoảng 25 ml nước cốt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý và giữ nước luộc giàu tinh bột",
+      "instruction": "Đun sôi mạnh nồi lớn với 2,5 lít nước lọc cùng 10 g muối ăn. Thả 240 g mì Ý Penne vào luộc khoảng 8–9 phút (bớt 1–2 phút so với hướng dẫn bao bì) để đạt độ al dente; múc giữ lại 120 ml nước luộc mì trước khi vớt.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm hành tím và áp săn cá hồi",
+      "instruction": "Đặt chảo lớn lên bếp ở lửa nhỏ với 30 ml dầu ô liu nguyên chất, cho hành tím băm và một nửa lượng ngò tây tươi vào đảo 3 phút đến khi hành mềm trong mà không cháy. Tăng lên lửa vừa, thả cá hồi vào đảo nhẹ tay khoảng 3 phút cho các mặt săn lại và chín đều.",
+      "tip": "Không đảo mạnh tay hay nấu cá hồi quá lâu để từng miếng cá giữ nguyên khối mềm ngọt.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Khử rượu vang trắng và thêm nước cốt chanh",
+      "instruction": "Rót 75 ml rượu vang trắng khô vào chảo cá hồi, đun liu riu 2 phút cho bay hơi hết mùi cồn. Tiếp theo rưới nước cốt chanh vàng cùng 2 g muối ăn và 1 g tiêu đen xay vào đảo nhẹ cho sốt hòa quyện.",
+      "tip": "Đun cho cồn rượu vang bay hơi hoàn toàn trước khi vắt chanh để sốt giữ được vị chua thanh dịu nhẹ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì Ý trong sốt cá hồi và đánh bóng bơ",
+      "instruction": "Cho mì Ý đã vớt vào chảo cá hồi, rưới dần từng ít nước luộc mì và xóc đảo nhẹ tay 2 phút trên lửa vừa cho mì ngấm sốt. Tắt bếp hoàn toàn, thả 30 g bơ lạt cắt nhỏ vào đảo nhanh đến khi bơ tan chảy tạo lớp sốt sánh bóng.",
+      "tip": "Cho bơ lạt lạnh vào sau khi đã tắt bếp giúp sốt bơ chanh bám mượt quanh sợi mì mà không tách dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc vỏ chanh bào, ngò tây và thưởng thức nóng",
+      "instruction": "Nếm lại gia vị cho vừa miệng, chia mì cá hồi ra 3 đĩa sâu lòng rồi rắc vỏ chanh vàng bào, phần ngò tây tươi còn lại và 0,5 g tiêu đen xay lên trên, dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 655,
+    "energyKcal": 654.9,
+    "energyKj": 2740,
+    "proteinG": 27.8,
+    "fatG": 29.7,
+    "saturatedFatG": 9.2,
+    "carbG": 64.3,
+    "fiberG": 3.6,
+    "sugarG": 3.8,
+    "sodiumMg": 448,
+    "saltG": 1.12,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168927",
+      "USDA FDC 170416",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d3f1f616f764d857d3e4aa6df85c730517100f64ce47d3d5dcbf397c272ba719",
+    "researchedFromV2Sha256": "67e8950d77f39848430cfbeb7921b41aa1372a72d2b5fb74844ad67f3d51ec6a"
+  }
+}

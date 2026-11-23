@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-57294c4da3e61e24",
+    "slug": "sup-miso-tom-nam",
+    "title": "Súp Miso tôm nấm đùi gà",
+    "subtitle": "Nước dùng Dashi thanh ngọt nấu cùng tôm tươi nguyên con, nấm đùi gà giòn ngọt, rong biển Wakame và tương Miso Nhật thơm ấm bụng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Súp Miso",
+      "Tôm tươi",
+      "Nấm đùi gà",
+      "Canh Nhật",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bát súp Miso hải sản chuẩn vị Nhật Bản kết hợp vị ngọt tự nhiên từ tôm tươi nấu cùng rượu Sake khử tanh, nấm đùi gà cắt lát sần sật, rong biển Wakame mềm mượt và tương Miso hòa tan sau khi tắt bếp giữ trọn hương thơm.",
+    "servingSuggestion": "Múc súp Miso nóng ra 3 bát nhỏ, chia đều tôm, nấm và rong biển, rắc thêm hành lá thái khoanh; dùng nóng làm món canh khai vị hoặc ăn kèm cơm trắng và cá nướng.",
+    "storageAndReheat": "Súp Miso ngon nhất khi thưởng thức ngay sau khi nấu; nếu bảo quản tủ mát tối đa 1 ngày, chỉ hâm nóng lại trên lửa nhỏ cho đến khi vừa bốc hơi, tuyệt đối không đun sôi bùng để tránh mất mùi thơm của Miso."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "200 g (khoảng 6–8 con vừa)",
+      "prepNote": "cắt bỏ râu, chân, tách nhẹ đầu để lấy gạch sạch và rút chỉ đen dọc sống lưng",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 156,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "100 g (khoảng 1–2 cây)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc cứng rồi thái lát mỏng dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MISO",
+      "name": "Tương Miso Nhật Bản",
+      "culinaryMeasure": "54 g (~3 muỗng canh)",
+      "prepNote": "hòa tan với một vá nước canh nóng trong chén riêng trước khi cho vào nồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 54,
+      "unit": "g",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "WAKAME_SEAWEED",
+      "name": "Rong biển Wakame khô",
+      "culinaryMeasure": "5 g (~1,5 muỗng canh)",
+      "prepNote": "ngâm nước lạnh 3 phút cho nở mềm rồi vắt nhẹ, cắt đoạn vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để cho vào cuối cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "đun sôi cùng nước để khử mùi tanh hải sản và làm ngọt nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.9,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.67,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "pha cùng nước lọc làm nền nước dùng đậm vị umami",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "nêm thêm một chút ở bước cuối nếu muốn nước súp đậm vị hơn",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "550 ml",
+      "prepNote": "kết hợp với nước dùng Dashi nấu súp cho 3 bát",
+      "componentGroup": "broth",
+      "requiredQuantity": 550,
+      "unit": "ml",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 495,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, nấm đùi gà và rong biển",
+      "instruction": "Rửa sạch tôm tươi dưới vòi nước lạnh, cắt bỏ râu và chân dài, tách nhẹ đầu tôm và rạch lưng rút bỏ chỉ đen, giữ nguyên đầu vỏ để nấu nước dùng ngọt thanh. Lau sạch nấm đùi gà và thái lát dày 0,5 cm. Ngâm rong biển Wakame khô trong nước lạnh khoảng 3 phút cho nở mềm rồi vắt ráo; thái khoanh mỏng hành lá tươi.",
+      "tip": "Nấu nguyên đầu và vỏ tôm giúp tiết ra vị ngọt hải sản tự nhiên, hòa quyện rất hợp với nước dùng Dashi và Miso.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng với rượu Sake",
+      "instruction": "Đổ 550 ml nước lọc và 100 ml nước dùng Dashi cùng 15 ml rượu Sake vào nồi, đặt lên bếp đun trên lửa vừa đến khi nước dùng sôi lăn tăn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu chín tôm tươi và vớt bọt trong nước",
+      "instruction": "Thả tôm tươi vào nồi nước dùng đang sôi, đun trên lửa vừa khoảng 2–3 phút đến khi vỏ tôm chuyển màu đỏ cam rực và thịt tôm săn đục chín hoàn toàn; dùng muôi hớt sạch bọt nổi để nước súp thật trong.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu nấm đùi gà và rong biển Wakame",
+      "instruction": "Cho nấm đùi gà thái lát vào nồi, hạ lửa vừa nhỏ nấu sôi liu riu thêm 3 phút cho nấm chín mềm tiết vị ngọt. Tiếp tục thả rong biển Wakame đã nở ráo và hành lá thái khoanh vào nồi nấu khoảng 1 phút.",
+      "tip": "Không nấu nấm và rong biển quá lâu để nấm giữ được độ giòn nhẹ còn rong biển không bị nhũn nát.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Tắt bếp và hòa tan tương Miso Nhật Bản",
+      "instruction": "Tắt bếp hoàn toàn để nước súp ngừng sôi. Cho 54 g tương Miso Nhật Bản vào chén hoặc rây lọc, múc một vá nước dùng nóng từ nồi khuấy cho Miso tan mịn hoàn toàn rồi đổ ngược vào nồi súp, khuấy nhẹ đều tay.",
+      "tip": "Tuyệt đối không đun sôi lại nồi súp sau khi đã cho tương Miso vì nhiệt sôi mạnh sẽ làm bay mất hương thơm lên men đặc trưng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm chỉnh vị và múc súp dùng nóng",
+      "instruction": "Nếm thử độ mặn của nước dùng, nếu cần tăng nhẹ độ đậm có thể thêm 5 ml xì dầu Nhật Bản tùy khẩu vị. Múc súp Miso ra 3 bát, chia đều tôm, nấm đùi gà và rong biển rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 101,
+    "energyKcal": 101.1,
+    "energyKj": 423,
+    "proteinG": 14.3,
+    "fatG": 1.5,
+    "saturatedFatG": 0.2,
+    "carbG": 8,
+    "fiberG": 2,
+    "sugarG": 1.8,
+    "sodiumMg": 964,
+    "saltG": 2.41,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 168580",
+      "USDA FDC 170005",
+      "USDA FDC 170496",
+      "USDA FDC 172446",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f1137148cb5755b0b45bb8bbcc3a65e9c169bb0083df129695f38218c320360b",
+    "researchedFromV2Sha256": "192ba2451aa6187b9167ef3447b9dc84ef426ad02966e76e0d7cc1adf25c5fc9"
+  }
+}

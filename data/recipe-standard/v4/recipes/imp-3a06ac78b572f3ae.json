@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3a06ac78b572f3ae",
+    "slug": "nom-dua-leo-tom-chua-cay",
+    "title": "Nộm dưa leo tôm chua cay",
+    "subtitle": "Dưa leo bỏ ruột thái lát ngâm đá giòn sần sật quyện tôm rim săn ngọt, cà rốt, rau thơm và nước trộn chanh ớt hiểm cay nồng sảng khoái"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_cuon_nom",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 4,
+    "tags": [
+      "Nộm dưa leo",
+      "Tôm tươi",
+      "Chua cay",
+      "Khai vị",
+      "Mát lành"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "peanut",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Nộm dưa leo tôm chua cay là món khai vị bùng vị với dưa leo và cà rốt ngâm đá giữ trọn độ giòn mát, kết hợp tôm tươi rim muối ngọt thịt và nước mắm chanh tương ớt giã tỏi ớt hiểm cay nồng, rắc lạc rang thơm bùi.",
+    "servingSuggestion": "Gắp nộm ra đĩa, rắc đậu phộng rang giã dập lên mặt và dọn ăn ngay kèm bánh phồng tôm giòn tan.",
+    "storageAndReheat": "Dùng ngon nhất trong vòng 30 phút sau khi trộn; nếu chưa ăn ngay, để riêng dưa leo cà rốt đã vắt ráo, tôm rim và nước trộn trong tủ lạnh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "5 quả (khoảng 750 g)",
+      "prepNote": "chà đầu khử đắng, bỏ ruột, thái lát mỏng ngâm nước đá",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 712.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "450 g",
+      "prepNote": "cắt râu chân, rút chỉ đen, rim chín tới với chút muối rồi bóc vỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 351,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1.5 củ (khoảng 165 g)",
+      "prepNote": "gọt vỏ, bào sợi mảnh ngâm đá cùng dưa leo",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 165,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 146.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "vắt lấy nước cốt, bỏ hạt pha nước trộn chua cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (khoảng 15 g)",
+      "prepNote": "giã nhuyễn cùng tỏi đường tạo vị cay nồng đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, giã nhuyễn pha nước mắm trộn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "nền vị mặn thơm cho nước trộn nộm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "48 g (~4 muỗng canh)",
+      "prepNote": "giã nhuyễn cùng tỏi ớt cân bằng vị chua cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 48,
+      "unit": "g",
+      "grossGrams": 48,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo độ sánh và sắc đỏ cay cho nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang giã dập",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rang chín vàng trên lửa nhỏ, xát vỏ và giã dập vừa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Rau húng lủi và húng quế",
+      "culinaryMeasure": "50 g",
+      "prepNote": "nhặt lá non, rửa sạch, để ráo và cắt nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g",
+      "prepNote": "dùng 2 g rim tôm và 4 g pha nước muối ngâm dưa leo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "PIZZA_RICE_CRACKER",
+      "name": "Bánh phồng tôm chiên ăn kèm",
+      "culinaryMeasure": "100 g",
+      "prepNote": "chiên giòn hoặc nướng để ăn kèm nộm",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "400 ml",
+      "prepNote": "pha nước đá muối ngâm giòn dưa leo cà rốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế dưa leo và cà rốt ngâm đá giòn",
+      "instruction": "Rửa sạch dưa leo, cắt hai đầu và chà xát vòng tròn đến khi ra bọt trắng để khử vị đắng rồi rửa sạch. Bổ đôi dưa leo, nạo bỏ ruột, thái lát mỏng; cà rốt gọt vỏ bào sợi mảnh. Ngâm cả hai vào thau nước đá với 400 ml nước lọc và 4 g muối ăn trong 10 phút rồi vớt ra vắt ráo nước.",
+      "tip": "Ngâm dưa leo và cà rốt trong nước đá muối giúp sợi rau củ giòn lâu, giữ màu tươi sáng và hạn chế ra nước sau khi trộn.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Rim chín tôm tươi giữ độ ngọt giòn",
+      "instruction": "Làm sạch tôm, rút bỏ chỉ đen trên sống lưng rồi để ráo. Làm nóng chảo trên lửa vừa, cho tôm và 2 g muối ăn vào rim đảo đều khoảng 5 phút đến khi tôm chuyển màu đỏ cam đều, chín săn hoàn toàn thì tắt bếp, để nguội bóc vỏ và chẻ đôi.",
+      "tip": "Rim tôm vừa chín tới trên lửa vừa giúp tôm không bị teo khô mà giữ trọn vị ngọt đậm tự nhiên.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Giã tỏi ớt hiểm pha nước mắm chua cay",
+      "instruction": "Cho 48 g đường cát trắng, tỏi khô và 3 quả ớt hiểm vào cối giã thật nhuyễn. Trút ra bát, hòa thêm 45 ml nước mắm ngon, 15 ml tương ớt và nước cốt 2 quả chanh tươi, khuấy tan hoàn toàn để tạo bát nước trộn sánh thơm."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Rang đậu phộng và cắt nhỏ rau thơm",
+      "instruction": "Rang chín vàng đậu phộng trên lửa nhỏ, để nguội xát sạch vỏ lụa rồi giã dập vừa. Nhặt rửa sạch rau húng lủi và húng quế, vẩy ráo nước rồi cắt nhỏ. Chuẩn bị sẵn bánh phồng tôm giòn ăn kèm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Trộn thấm dưa leo, cà rốt và tôm rim",
+      "instruction": "Cho dưa leo, cà rốt đã vắt ráo và tôm rim vào tô lớn, rưới đều bát nước trộn mắm chanh ớt vào, đeo găng tay trộn nhẹ nhàng rồi để yên 8 phút cho các nguyên liệu ngấm vị chua cay mặn ngọt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn rau thơm, rắc đậu phộng và thưởng thức",
+      "instruction": "Thêm rau húng lủi và húng quế cắt nhỏ vào tô nộm, đảo đều nhẹ tay lần cuối để rau giữ màu xanh tươi. Gắp nộm ra đĩa, rắc đậu phộng rang giã dập lên trên và dọn ăn ngay kèm bánh phồng tôm.",
+      "tip": "Chỉ cho rau thơm vào trộn ở bước cuối để lá rau không bị dập nát hay thâm màu."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 350,
+    "energyKcal": 349.9,
+    "energyKj": 1465,
+    "proteinG": 24.8,
+    "fatG": 7.4,
+    "saturatedFatG": 1.1,
+    "carbG": 50.2,
+    "fiberG": 4.5,
+    "sugarG": 19.3,
+    "sodiumMg": 1612,
+    "saltG": 4.03,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168409",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 172185",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173474",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "USDA FDC Sriracha Ref",
+      "VN Banh Da Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ff21aa25c5a6765c36bc5d9eeaf0a246983d7f0f385ec6d6a6fd299b71c81947",
+    "researchedFromV2Sha256": "378c335561ebcd27ae665ce3c61f642cebe2748d9d327b8c9ba9912c0873b50a"
+  }
+}

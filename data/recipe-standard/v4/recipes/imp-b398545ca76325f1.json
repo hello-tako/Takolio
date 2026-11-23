@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b398545ca76325f1",
+    "slug": "canh-bap-cai-sa-thai",
+    "title": "Canh bắp cải nấu sả chanh Thái chay",
+    "subtitle": "Canh bắp cải giòn ngọt nấu cùng đậu phụ non, cà rốt và sả tươi đập dập, nước dùng chay trong thanh hậu chua dịu của chanh tươi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Canh chay",
+      "Bắp cải",
+      "Sả chanh",
+      "Thanh mát",
+      "Thái Lan"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh bắp cải sả Thái chay thanh nhẹ trong veo, kết hợp vị ngọt mát tự nhiên của bắp cải xanh và cà rốt, đậu phụ non mềm mịn cùng hương thơm nồng dịu của sả đập dập và nước cốt chanh tươi rất dễ ăn.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, gắp bỏ bớt khúc sả già, rắc hành lá và ngò rí lên trên; dùng khai vị hoặc ăn kèm cơm trắng trong bữa cơm thanh đạm.",
+    "storageAndReheat": "Nên dùng hết trong ngày để bắp cải giữ màu xanh giòn ngọt và giữ trọn mùi thơm chanh tươi; nếu bảo quản tủ mát trong 24 giờ, chỉ đun sôi lại phần nước canh và rau rồi vắt thêm chút chanh tươi trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh tươi",
+      "culinaryMeasure": "1/2 cây nhỏ (khoảng 400 g)",
+      "prepNote": "tách lá rửa sạch, bỏ phần sống cứng dày rồi xé hoặc thái miếng vuông vừa ăn 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ non hoặc đậu phụ trắng mềm",
+      "culinaryMeasure": "1,5 miếng (khoảng 180 g)",
+      "prepNote": "rửa nhẹ qua nước sạch, cắt khối vuông cạnh 2 cm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát mỏng hoặc tỉa hoa dày 0,3 cm cho ngọt nước",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc bỏ lớp vỏ già ngoài, đập dập phần gốc rồi cắt khúc 6 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (khoảng 68 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 30 ml nước cốt, lọc bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "VEG_FISH_SAUCE",
+      "name": "Nước mắm chay",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "nêm nước canh sau khi tắt bếp để giữ vị thanh đậm tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 28.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "nêm nền ngọt dịu cho nước dùng rau củ",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua thanh của nước cốt chanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (khoảng 2 muỗng cà phê)",
+      "prepNote": "xào sơ cà rốt và sả tạo độ bóng thơm dịu cho nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khúc ngắn 2 cm rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá để rắc thơm mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "nấu nước dùng sả chanh thanh mát",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 900,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, đậu phụ, cà rốt và sả",
+      "instruction": "Bắp cải xanh tách từng lá rửa sạch, lược bỏ phần cuống cứng rồi thái hoặc xé miếng vuông cỡ 4 cm để ráo. Cà rốt gọt vỏ, thái lát mỏng 0,3 cm. Đậu phụ trắng cắt khối vuông 2 cm. Sả tươi bóc bẹ già, dùng sống dao đập dập rồi cắt khúc 6 cm. Vắt 1,5 quả chanh tươi lấy 30 ml nước cốt; rửa sạch và thái nhỏ hành lá, ngò rí.",
+      "tip": "Thái bỏ bớt phần gân cứng ở cuống bắp cải giúp lá bắp cải chín đồng đều cùng lúc và giữ độ giòn ngọt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm sả cà rốt và ninh nước dùng sả",
+      "instruction": "Đun nóng 10 ml dầu ăn thực vật trong nồi ở lửa vừa, cho sả tươi đập dập và cà rốt thái lát vào đảo sơ 1 phút cho dậy mùi thơm dịu. Đổ 1000 ml nước lọc vào đun lửa lớn đến khi sôi bùng rồi hạ lửa vừa nấu 4 phút cho nước dùng thấm tinh dầu sả và cà rốt bắt đầu mềm.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu bắp cải xanh và nêm gia vị chay",
+      "instruction": "Thả toàn bộ bắp cải xanh vào nồi nước sả, nêm 8 g hạt nêm chay nấm hương và 6 g đường cát trắng. Nấu ở lửa vừa khoảng 4–5 phút đến khi lá bắp cải chuyển màu xanh trong, vừa chín mềm mà vẫn còn độ giòn nhẹ.",
+      "tip": "Không đậy nắp quá kín và không nấu bắp cải quá lâu để lá giữ màu xanh tươi đẹp mắt và nước canh không bị nồng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả đậu phụ nấu nóng đều",
+      "instruction": "Nhẹ nhàng thả các miếng đậu phụ cắt khối vào nồi, đun sôi lăn riu thêm 2 phút trên lửa vừa để đậu phụ nóng đều và thấm vị ngọt thanh của nước canh mà không bị vỡ nát.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp nêm nước mắm chay và nước cốt chanh",
+      "instruction": "Tắt bếp rồi rót 25 ml nước mắm chay và 30 ml nước cốt chanh tươi vào nồi canh, khuấy nhẹ một vòng để vị chua thanh của chanh hòa quyện mà không bị bay mất hương tươi.",
+      "tip": "Luôn tắt bếp trước khi cho nước cốt chanh để canh có mùi thơm dịu tự nhiên và không bị đắng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành ngò và dùng nóng",
+      "instruction": "Gắp bỏ bớt các khúc sả già, múc canh bắp cải sả ra tô lớn, rắc hành lá và ngò rí thái nhỏ lên trên rồi dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 137,
+    "energyKcal": 136.9,
+    "energyKj": 573,
+    "proteinG": 8.4,
+    "fatG": 6.3,
+    "saturatedFatG": 0.9,
+    "carbG": 15.2,
+    "fiberG": 4.5,
+    "sugarG": 7.9,
+    "sodiumMg": 1001,
+    "saltG": 2.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "Vegetarian Fish Sauce Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "23c6175ba486eee480a01b83e8a082d2c33951699b9f8174682e59310b921c36",
+    "researchedFromV2Sha256": "8d073ab3731c90ebf1b65ec8b717314dc6721ef42e80062f16ce6218c0cf31fd"
+  }
+}

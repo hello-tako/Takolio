@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-5ae4665cc17ff036",
+    "slug": "mi-y-sot-cay-ca-chua",
+    "title": "Mì Ý Penne sốt cà chua cay Arrabbiata",
+    "subtitle": "Mì ống Penne có rãnh thấm đẫm sốt cà chua lột vỏ ninh sánh quyện vị cay nồng của ớt tươi, hương tỏi phi dầu ô liu và ngò tây thơm mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Arrabbiata",
+      "Sốt cay",
+      "Cà chua"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Penne all'Arrabbiata là món mì cay nổi tiếng vùng Lazio với cái tên mang nghĩa 'giận dữ' bởi sắc đỏ rực của cà chua và vị cay bùng nổ từ ớt tươi. Mì ống Penne có rãnh nhỏ giúp ôm trọn phần sốt cà chua sánh đặc cùng hương ngò tây tươi mát.",
+    "servingSuggestion": "Múc mì ra 3 đĩa sâu lòng khi còn nóng hổi, rắc thêm ngò tây tươi băm và phô mai Pecorino Romano bào mịn nếu thích.",
+    "storageAndReheat": "Sốt Arrabbiata ngon nhất khi dùng ngay; phần dư bảo quản hộp kín trong ngăn mát tối đa 1–2 ngày và hâm nóng trên chảo cùng chút nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ITALIAN_PASTA_SHORT",
+      "name": "Mì Ý Penne rigate",
+      "culinaryMeasure": "240 g",
+      "prepNote": "dùng loại mì ống có rãnh giúp bám sốt cà chua tốt hơn",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua lột vỏ đóng hộp",
+      "culinaryMeasure": "320 g",
+      "prepNote": "đổ ra tô và dùng nĩa dằm nát sơ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/4 củ (2 tép, ~6 g)",
+      "prepNote": "bóc vỏ, để nguyên tép hoặc đập dập nhẹ, vớt bỏ sau khi ninh sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 1.86,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (~10 g)",
+      "prepNote": "rửa sạch, bỏ cuống và cắt khoanh mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi và ớt trên lửa nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PECORINO_CHEESE",
+      "name": "Phô mai Pecorino Romano bào",
+      "culinaryMeasure": "30 g",
+      "prepNote": "bào mịn để rắc thêm lên đĩa mì khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "14 g (~2,5 muỗng cà phê)",
+      "prepNote": "dùng 12 g cho nước luộc mì và 2 g nêm sốt cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 14,
+      "unit": "g",
+      "grossGrams": 14,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 3.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và giữ lại 80 ml để chỉnh độ sánh sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế ngò tây, ớt tươi và dằm cà chua",
+      "instruction": "Rửa sạch 12 g ngò tây tươi, thấm khô và thái nhỏ để riêng. Bỏ cuống 2 quả ớt tươi rồi thái khoanh mỏng (bỏ bớt hạt nếu ăn cay vừa); bóc vỏ 2 tép tỏi tươi, đập dập nhẹ. Trút 320 g cà chua lột vỏ đóng hộp ra tô và dùng nĩa dằm nát."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi và ớt với dầu ô liu lửa nhỏ",
+      "instruction": "Đặt chảo lớn lên bếp ở lửa nhỏ với 30 ml dầu ô liu nguyên chất, cho tỏi tươi và ớt tươi cắt khoanh vào đảo nhẹ khoảng 3 phút cho dầu dậy mùi cay thơm nồng mà không để tỏi cháy nâu.",
+      "tip": "Giữ lửa nhỏ khi phi tỏi ớt giúp tinh dầu ớt hòa tan sâu vào dầu ô liu mà không bị khét đắng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Ninh sánh sốt cà chua cay Arrabbiata",
+      "instruction": "Trút toàn bộ cà chua dằm vào chảo, nêm 2 g muối ăn và đảo đều. Đun trên lửa vừa khoảng 15–18 phút, thỉnh thoảng khuấy đều cho sốt sánh đặc, không còn loãng nước; sau đó gắp bỏ tép tỏi ra ngoài.",
+      "tip": "Vớt bỏ tép tỏi sau khi sốt đã dậy hương giúp sốt Arrabbiata thanh vị và mịn đẹp.",
+      "timerMinutes": 16
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Luộc mì Ý Penne đạt độ dai al dente",
+      "instruction": "Khi sốt ninh được khoảng 10 phút, đun sôi mạnh nồi với 2,5 lít nước lọc cùng 12 g muối ăn. Thả 240 g mì Ý Penne rigate vào luộc khoảng 9–10 phút đến độ al dente, giữ lại 80 ml nước luộc mì trước khi vớt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì Penne quyện đều sốt cay",
+      "instruction": "Cho mì Penne đã vớt thẳng vào chảo sốt cà chua cay, thêm 1–2 muỗng canh nước luộc mì nếu sốt đặc rồi xóc đảo đều tay khoảng 1–2 phút trên lửa vừa để từng ống mì bám đều sốt đỏ bóng.",
+      "tip": "Thêm một ít nước luộc mì giàu tinh bột giúp sốt cà chua cay bám mượt bên trong lẫn bên ngoài ống mì Penne.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc ngò tây, phô mai Pecorino và dọn nóng",
+      "instruction": "Tắt bếp, rắc phần lớn ngò tây tươi thái nhỏ vào đảo đều. Múc mì ra 3 đĩa sâu lòng, rắc phần ngò tây còn lại và 30 g phô mai Pecorino Romano bào lên trên nếu thích rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 449,
+    "energyKcal": 448.7,
+    "energyKj": 1877,
+    "proteinG": 15.1,
+    "fatG": 13.3,
+    "saturatedFatG": 3.3,
+    "carbG": 68,
+    "fiberG": 4.6,
+    "sugarG": 6.9,
+    "sodiumMg": 716,
+    "saltG": 1.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC Pecorino Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "16a242100a73ec1803f750fdb13a912fc9570cd02561a535783ba386d04f3846",
+    "researchedFromV2Sha256": "c00408e31d736fedc58545898f2f8991529d0ff39bbea9e7083c6dcc06965cf0"
+  }
+}

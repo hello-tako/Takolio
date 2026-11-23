@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9c2f22829fd3d3f1",
+    "slug": "bo-xao-kim-chi",
+    "title": "Thịt bò xào kim chi Hàn Quốc",
+    "subtitle": "Thịt thăn bò thái lát mỏng xào lửa lớn mềm ngọt cùng kim chi cải thảo chua cay, hành tây giòn thơm và sốt mật ong dầu hào"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt bò",
+      "Kim chi",
+      "Hàn Quốc",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa thịt bò xào kim chi Hàn Quốc hấp dẫn với từng lát thịt thăn bò mềm ẩm thấm gia vị, kết hợp hoàn hảo cùng kim chi cải thảo chua cay đậm đà và hành tây giòn ngọt quyện sốt mật ong dầu hào bóng đẹp.",
+    "servingSuggestion": "Trút thịt bò xào kim chi ra đĩa, rắc thêm hành lá và hạt mè trắng rang lên trên; thưởng thức ngay khi còn nóng hổi với cơm trắng dẻo.",
+    "storageAndReheat": "Món xào ngon nhất khi ăn nóng ngay; nếu bảo quản hộp kín trong ngăn mát tối đa 2 ngày, chỉ đảo nóng nhanh trên chảo lửa lớn 1–2 phút để thịt bò giữ được độ mềm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò",
+      "culinaryMeasure": "260 g",
+      "prepNote": "thái lát mỏng 3 mm ngang thớ để thịt mềm không bị dai",
+      "componentGroup": "main",
+      "requiredQuantity": 260,
+      "unit": "g",
+      "grossGrams": 260,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 260,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chua",
+      "culinaryMeasure": "180 g",
+      "prepNote": "cắt miếng vừa ăn cỡ 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,6 củ (khoảng 84 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 84,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 75.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,4 củ (khoảng 10 g, ~3 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn; chia 1/2 ướp bò và 1/2 phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 5 ml ướp thịt bò và 15 ml nêm khi xào chung",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt đậm đà và độ bóng mượt cho món xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua gắt của kim chi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 11.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "ướp giúp thịt bò nhanh săn mềm và lên màu đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp vị nền đậm đà cho thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp thơm thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~4 muỗng cà phê)",
+      "prepNote": "chia 5 ml trộn ướp giữ ẩm thịt bò và 15 ml xào lửa lớn",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp cho dậy hương",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rắc mặt trang trí trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái mỏng và ướp thịt bò thấm gia vị",
+      "instruction": "Thái 260 g thịt thăn bò thành lát mỏng khoảng 3 mm theo chiều ngang thớ để thịt mềm ngọt. Cho thịt vào tô ướp đều với 1/2 lượng tỏi băm, 5 ml xì dầu, 3 g đường cát trắng, 2 g hạt nêm, 1 g tiêu đen xay và 5 ml dầu ăn, để thấm trong 15 phút.",
+      "tip": "Thái ngang thớ và trộn thêm 5 ml dầu ăn vào tô ướp giúp thịt bò giữ được độ mọng nước và không bị ra nước khi xào.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế kim chi, hành tây và hành lá",
+      "instruction": "Cắt kim chi cải thảo thành miếng vừa ăn khoảng 3 cm, hành tây thái múi cau mỏng, hành lá cắt khúc 3 cm và băm nhuyễn 1/2 lượng tỏi khô còn lại."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào tái nhanh thịt bò trên lửa lớn",
+      "instruction": "Đun nóng chảo rộng trên lửa lớn với 15 ml dầu ăn, cho phần tỏi băm còn lại vào phi thơm 20 giây rồi trút thịt bò đã ướp vào đảo nhanh tay khoảng 2 phút đến khi thịt vừa săn chuyển màu tái chín thì trút ngay ra đĩa riêng.",
+      "tip": "Xào riêng thịt bò trên lửa lớn rồi trút ra sớm giúp thịt không bị chín quá kỹ dẫn đến dai cứng khi xào tiếp với kim chi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn kim chi cho dậy hương thơm",
+      "instruction": "Dùng lại chảo nóng đó trên lửa vừa–lớn, cho kim chi cải thảo vào đảo đều khoảng 2 phút đến khi kim chi săn lại, tỏa mùi chua cay thơm nồng và hơi xém cạnh.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào quyện thịt bò, hành tây với sốt mật ong dầu hào",
+      "instruction": "Trút đĩa thịt bò cùng hành tây thái múi cau trở lại chảo kim chi, nêm 15 ml xì dầu còn lại, 8 ml dầu hào và 8 ml mật ong nguyên chất. Đảo nhanh tay trên lửa lớn khoảng 2–3 phút đến khi thịt bò chín hoàn toàn, hành tây vừa chín giòn và nước sốt sánh bóng bám đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, dầu mè và mè rang dọn nóng",
+      "instruction": "Thả hành lá cắt khúc vào đảo nhanh 30 giây rồi tắt bếp, rưới 5 ml dầu mè rang lên trên và đảo đều. Trút thịt bò xào kim chi ra đĩa, rắc hạt mè trắng rang tùy thích và dùng nóng ngay với cơm trắng.",
+      "tip": "Chỉ rưới dầu mè rang khi đã tắt bếp để hương thơm béo dịu được giữ trọn vẹn và không bị đắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 278,
+    "energyKcal": 278.4,
+    "energyKj": 1165,
+    "proteinG": 20.2,
+    "fatG": 17.3,
+    "saturatedFatG": 4.7,
+    "carbG": 11.1,
+    "fiberG": 2,
+    "sugarG": 6.5,
+    "sodiumMg": 982,
+    "saltG": 2.46,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169640",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170187",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0000f56f952196fb4951018982dc644e3fc8487db7b07e6d4ccebfd4b08e4415",
+    "researchedFromV2Sha256": "17b9200720f3d0e7ff6450b400d256a007d4160638732643d7d6c4e4fd14f673"
+  }
+}

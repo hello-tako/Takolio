@@ -8,7 +8,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { listMigrations, renderSchemaGateSql, REQUIRED_MIGRATIONS_MARKER } from '../../scripts/d1-schema-gate.mjs';
 import { STAGING_D1 } from '../../scripts/staging-family-migration-check.mjs';
 import {
-  baselineQuery, CONTENT_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_CULINARY_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
+  baselineQuery, CONTENT_TIP, CULINARY_STANDARD_V4_CHAIN, CULINARY_STANDARD_V4_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_CULINARY_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, SAVED_CONTENT_TIP, run, schemaQuery, TIP, verifyBaseline,
   verifyBaselinePreserved, verifyCandidateChain, verifySchema,
 } from '../../scripts/staging-v2-migration-check.mjs';
 
@@ -38,7 +38,7 @@ function fixture() {
   return { receipt, write, read: () => JSON.parse(readFileSync(receipt, 'utf8')) };
 }
 
-const POST_0047_GATE_RE = /catalog_manifest|recipe_search_|trg_catalog_|idx_recipe_search_|idx_household_members_user_household|idx_shopping_lists_household_created|idx_scans_household_created|'locale'|'country_code'|'currency'|'timezone'|'week_start_day'|'is_default_name'|recipe_content_localizations|barcode_products|idx_recipe_content_localizations_|idx_barcode_products_|total_amount_minor|tax_amount_minor|discount_amount_minor|ai_region|unit_price_minor|total_price_minor|expiry_regime|'barcode'|storage_zone|energy_kj|saturated_fat_g|salt_g|edible_yield_ratio|global_payment_intents|billing_webhook_events|oauth_identities|idx_global_payment_intents_|idx_oauth_identities_|'subscriptions'|'provider'|provider_subscription_id|dodo_customer_id|billing_currency|cancel_at_period_end|grace_period_ends_at|privacy_requests|consent_records|financial_tax_archive|idx_privacy_requests_|idx_consent_records_|idx_financial_tax_archive_|erased_at/;
+const POST_0047_GATE_RE = /catalog_manifest|recipe_search_|trg_catalog_|idx_recipe_search_|idx_household_members_user_household|idx_shopping_lists_household_created|idx_scans_household_created|'locale'|'country_code'|'currency'|'timezone'|'week_start_day'|'is_default_name'|recipe_content_localizations|barcode_products|idx_recipe_content_localizations_|idx_barcode_products_|total_amount_minor|tax_amount_minor|discount_amount_minor|ai_region|unit_price_minor|total_price_minor|expiry_regime|'barcode'|storage_zone|energy_kj|saturated_fat_g|salt_g|edible_yield_ratio|global_payment_intents|billing_webhook_events|oauth_identities|idx_global_payment_intents_|idx_oauth_identities_|'subscriptions'|'provider'|provider_subscription_id|dodo_customer_id|billing_currency|cancel_at_period_end|grace_period_ends_at|privacy_requests|consent_records|financial_tax_archive|idx_privacy_requests_|idx_consent_records_|idx_financial_tax_archive_|erased_at|culinary_standard_v4_|recipe_standard_v4_|idx_recipe_standard_v4_/;
 
 function historicalContentSchemaGateSql() {
   // Exercise 0046's contract; the 0047 and 0048 gates are checked separately below.
@@ -175,7 +175,7 @@ describe('bounded canonical staging 0045->0046 content archive certification', (
   it('selects dispatch contract explicitly then binds every query and recheck to the receipt', () => {
     const workflow = load(readFileSync('.github/workflows/staging-v2-migrate.yml', 'utf8'));
     const input = workflow.on.workflow_dispatch.inputs.migration;
-    expect(input).toMatchObject({ type: 'choice', required: true, default: GLOBAL_PRIVACY_SOVEREIGN_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_CULINARY_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP] });
+    expect(input).toMatchObject({ type: 'choice', required: true, default: CULINARY_STANDARD_V4_TIP, options: [TIP, CONTENT_TIP, SAVED_CONTENT_TIP, GLOBAL_FOUNDATION_TIP, GLOBAL_CULINARY_TIP, GLOBAL_BILLING_OAUTH_TIP, GLOBAL_PRIVACY_SOVEREIGN_TIP, CULINARY_STANDARD_V4_TIP] });
     const steps = workflow.jobs.certify.steps;
     const gates = steps.filter(step => step.env?.MIGRATION_TIP);
     expect(gates).toHaveLength(1);
@@ -252,6 +252,46 @@ describe('0045->0046->0047 saved content certification', () => {
         write('gate.json', result(db.prepare(historicalSavedContentSchemaGateSql(migrations)).all()))];
       expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0047_SAVED_CONTENT_CERTIFIED',
         aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 47, tip }, schemaCheck: { constraints: 'PASS' } });
+    } finally { db.close(); }
+  });
+});
+
+describe('bounded canonical staging 0051->0057 Culinary Standard V4 certification', () => {
+  it('applies and certifies 0052..0057 Culinary Standard V4 from 0051 cleanly', async () => {
+    const tip = CULINARY_STANDARD_V4_TIP;
+    const migrations = listMigrations();
+    expect(migrations).toHaveLength(57);
+    expect(migrations.at(-1)).toBe(tip);
+    const preMigrations = migrations.slice(0, -CULINARY_STANDARD_V4_CHAIN.length);
+    const candidate = { sha: 'a'.repeat(40), mainSha: 'a'.repeat(40), schema: { version: tip }, chain: [...CULINARY_STANDARD_V4_CHAIN] };
+    expect(verifyCandidateChain(candidate, tip)).toBe(candidate);
+    expect(() => verifyCandidateChain({ ...candidate, chain: [GLOBAL_PRIVACY_SOVEREIGN_TIP, ...CULINARY_STANDARD_V4_CHAIN] }, tip)).toThrow(/Only current-main/);
+    const { receipt, write } = fixture();
+    write('receipt.json', { sha: candidate.sha, schema: { version: tip, migrations: migrations.map(name => ({ name })) }, chain: [...CULINARY_STANDARD_V4_CHAIN], database: STAGING_D1 });
+    const db = new DatabaseSync(':memory:');
+    try {
+      for (const name of preMigrations) db.exec(readFileSync(`migrations/${name}`, 'utf8'));
+      const capture = () => baselineQuery(tip).split(';').map(query => ({ success: true, results: [db.prepare(query).get()] }));
+      await run('identity', receipt, [write('list.json', [{ name: STAGING_D1.name, uuid: STAGING_D1.id }]),
+        write('info.json', { name: STAGING_D1.name, uuid: STAGING_D1.id })]);
+      await run('pre-ledger', receipt, [write('pre-ledger.json', result(preMigrations.map(name => ({ name }))))]);
+      await run('bookmark', receipt, [write('bookmark.json', { bookmark: 'local-v4-rehearsal' })]);
+      const fk = write('fk.json', result([]));
+      const quick = write('quick.json', result([{ quick_check: 'ok' }]));
+      const before = capture();
+      await run('pre-health', receipt, [fk, quick, write('before.json', before)]);
+      await run('plan', receipt, [write('plan.txt', CULINARY_STANDARD_V4_CHAIN.join('\n'))]);
+      for (const name of CULINARY_STANDARD_V4_CHAIN) db.exec(readFileSync(`migrations/${name}`, 'utf8'));
+      expect(verifyBaselinePreserved(result([verifyBaseline(before, tip)]), capture(), tip)).toEqual({ drift: 'none' });
+      const rows = db.prepare(schemaQuery(tip)).all();
+      expect(verifySchema(result(rows), tip).constraints).toBe('PASS');
+      db.exec('CREATE TABLE d1_migrations (id INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT)');
+      for (const name of migrations) db.prepare('INSERT INTO d1_migrations(name) VALUES (?)').run(name);
+      const post = [write('post-ledger.json', result(migrations.map(name => ({ name })))), fk, quick,
+        write('after.json', capture()), write('schema.json', result(rows)),
+        write('gate.json', result(db.prepare(renderSchemaGateSql()).all()))];
+      expect(await run('post', receipt, post)).toMatchObject({ status: 'STAGING_0057_CULINARY_STANDARD_V4_CERTIFIED',
+        aggregateDrift: 'none', schemaGate: 'PASS', postLedger: { count: 57, tip }, schemaCheck: { constraints: 'PASS' } });
     } finally { db.close(); }
   });
 });

@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-81a203668e5e4c1a",
+    "slug": "canh-trung-nam-kim-cham",
+    "title": "Canh trứng nấm kim châm cà chua",
+    "subtitle": "Nấm kim châm giòn ngọt nấu cùng cà chua chua dịu và vân trứng gà đánh tơi vàng óng, món canh thanh nhẹ nấu nhanh 15 phút"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món canh",
+      "Nấm",
+      "Dưới 20 phút",
+      "Dễ nấu",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh thanh nhẹ giàu chất xơ với nấm kim châm giòn sần sật ngọt nước, hòa quyện sắc đỏ dịu của cà chua chín và những sợi vân trứng gà mềm béo đẹp mắt.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn ngay sau khi tắt bếp, rắc hành lá và tiêu xay lên trên; dùng kèm cơm trắng hoặc ăn nhẹ buổi tối đều rất ngon.",
+    "storageAndReheat": "Món canh nấm trứng nên dùng hết ngay trong bữa để giữ độ giòn của nấm kim châm và vị béo mịn của trứng; hạn chế đun lại nhiều lần."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (~150 g)",
+      "prepNote": "đập ra bát, thêm chút nước mắm rồi đánh tan thật đều",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ENOKI_MUSHROOM",
+      "name": "Nấm kim châm tươi",
+      "culinaryMeasure": "200 g (1 gói)",
+      "prepNote": "cắt bỏ phần gốc rễ, tách thành từng chùm nhỏ vừa ăn, rửa nhanh và ngâm nước muối loãng 5 phút rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (~240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.96,
+      "edibleGrams": 230.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (~10 g, 2–3 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ phi cùng hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 2–3 nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tỏi và xào cà chua lên màu đẹp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 3 ml đánh cùng trứng gà và 12 ml nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm nhẹ tạo vị ngọt thanh cho nước dùng nấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 2 g pha nước ngâm rửa nấm và 3 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 3.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "rắc thơm mặt tô canh khi hoàn thành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1100 ml (1,1 lít)",
+      "prepNote": "lượng nước vừa đủ nấu canh nấm trứng cho 3 người",
+      "componentGroup": "broth",
+      "requiredQuantity": 1100,
+      "unit": "ml",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 990,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch nấm kim châm, cà chua và đánh trứng",
+      "instruction": "Cắt bỏ phần gốc rễ của 200 g nấm kim châm, tách tơi từng cụm nhỏ rồi rửa sạch và ngâm nước pha 2 g muối ăn khoảng 5 phút cho hết mùi hăng, vớt ra rổ để thật ráo. Bổ múi cau 2 quả cà chua; băm nhỏ 20 g hành tím và 10 g tỏi khô; thái nhỏ hành lá. Đập 3 quả trứng gà vào tô cùng 3 ml nước mắm rồi đánh tan đều.",
+      "tip": "Chỉ ngâm rửa nấm kim châm khi sắp nấu và để thật ráo để nấm không bị nhũn hay mất vị ngọt tự nhiên.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào cà chua tạo màu nền",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, cho hành tím băm và tỏi băm vào phi thơm vàng nhạt. Thả cà chua bổ múi cau vào đảo đều khoảng 3 phút cho cà chua mềm nhẹ và tiết màu đỏ tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng và nấu chín nấm kim châm",
+      "instruction": "Đổ 1,1 lít nước lọc vào nồi cà chua, đun lửa lớn đến khi sôi bùng rồi thả toàn bộ nấm kim châm vào nấu trên lửa vừa đúng 3–4 phút cho nấm vừa chín tới, vẫn giữ được độ giòn sần sật và tiết vị ngọt vào nước canh.",
+      "tip": "Không nấu nấm kim châm quá 5 phút để sợi nấm không bị dai nhũn và giữ trọn vị ngọt thanh.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rưới trứng gà tạo vân mịn bồng bềnh",
+      "instruction": "Hạ xuống lửa nhỏ để nước canh chỉ sôi lăn tăn nhẹ, rồi rót từ từ chén trứng đã đánh tan theo vòng tròn quanh nồi, đồng thời dùng đũa khuấy nhẹ nhàng theo một chiều để trứng tạo thành các sợi vân vàng mỏng mịn và không bị vón cục.",
+      "tip": "Rót trứng chậm theo dòng mảnh khi lửa nhỏ và khuấy nhẹ một chiều sẽ tạo vân trứng tơi mềm như mây.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và nấu chín kỹ trứng gà",
+      "instruction": "Nêm 3 g muối ăn còn lại, 6 g hạt nêm và 12 ml nước mắm còn lại vào nồi, khuấy nhẹ tay và giữ lửa nhỏ đun thêm 1–2 phút cho các dải trứng chín hoàn toàn mà vẫn mềm mịn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và dùng nóng",
+      "instruction": "Nếm lại nước canh lần cuối cho vừa miệng rồi tắt bếp ngay để vân trứng giữ độ mềm béo. Múc canh ra tô lớn, rắc hành lá thái nhỏ và 1 g tiêu đen xay lên trên, thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 155,
+    "energyKcal": 155.4,
+    "energyKj": 650,
+    "proteinG": 8.7,
+    "fatG": 9,
+    "saturatedFatG": 2.1,
+    "carbG": 11.6,
+    "fiberG": 3,
+    "sugarG": 3.4,
+    "sodiumMg": 1291,
+    "saltG": 3.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169253",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a05dcd7ea953254e47a300d35e8f568a5e5bfaaad13abf2799055d5e50fd6ec3",
+    "researchedFromV2Sha256": "aba3ea8c57d8b2d1a8cdc037a980773e1b3be5f2e36e6d0165c9af80a9ec2b9d"
+  }
+}

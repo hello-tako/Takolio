@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b87b71d57128cc07",
+    "slug": "ca-loc-chien-sa-ot-vang-gion",
+    "title": "Cá lóc chiên sả ớt vàng giòn",
+    "subtitle": "Khúc cá lóc ướp sả nghệ chiên vàng giòn rụm phủ sả phi thơm lừng, thịt cá ngọt săn chấm mắm ớt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Cá lóc",
+      "Nam Bộ",
+      "Sả ớt",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá lóc chiên sả ớt vàng giòn là món ăn đậm chất miền Tây Nam Bộ, hấp dẫn bởi lớp vỏ ngoài vàng óng màu nghệ và giòn tan quyện sả tỏi phi thơm nức, trong khi thớ thịt cá lóc bên trong vẫn trắng ngọt, săn chắc.",
+    "servingSuggestion": "Xếp các khúc cá ra đĩa, phủ đều phần sả tỏi phi vàng giòn lên trên cùng vài lát ớt sừng trang trí, ăn nóng với cơm trắng và chén nước mắm chanh ớt.",
+    "storageAndReheat": "Nên dùng hết trong ngày để giữ độ giòn của lớp vỏ và sả phi; nếu bảo quản tủ mát tối đa 24 giờ, nên làm nóng lại bằng nồi chiên không dầu ở 180°C trong 4–5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá lóc tươi (cắt khúc)",
+      "culinaryMeasure": "700 g (khoảng 5–6 khúc dày)",
+      "prepNote": "làm sạch nhớt bằng muối và chanh, rửa sạch, thấm khô và khía nhẹ hai mặt da cá",
+      "componentGroup": "main",
+      "requiredQuantity": 700,
+      "unit": "g",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 546,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "5 cây (khoảng 100 g)",
+      "prepNote": "bỏ bẹ già, rửa sạch, băm thật nhuyễn (chia 1/2 ướp cá, 1/2 phi vàng giòn)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng và ớt hiểm",
+      "culinaryMeasure": "3 quả (khoảng 15 g)",
+      "prepNote": "2 quả băm nhỏ ướp cá và phi thơm, 1 quả thái lát pha nước chấm và trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn (chia 1/2 ướp cá, 1/2 phi vàng sau sả)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "20 g (~2 củ)",
+      "prepNote": "bóc vỏ, băm nhuyễn để ướp khử tanh cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên giòn",
+      "culinaryMeasure": "50 g (~3,5 muỗng canh)",
+      "prepNote": "hòa với 60 ml nước và chút muối tạo hỗn hợp bột sệt áo cá",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "TURMERIC",
+      "name": "Bột nghệ",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo sắc vàng ươm bắt mắt và khử tanh cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "4 g chà xát rửa sạch nhớt cá rồi xả bỏ, 2 g ướp cá và 2 g pha bột",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "chia 4 g ướp cá, 4 g pha nước chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "ướp vào thịt cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp khử tanh cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1/2 quả",
+      "prepNote": "dùng một phần chà rửa cá cho sạch nhớt, vài giọt vắt vào nước mắm chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 6.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon (pha chấm)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "pha nước mắm ớt chanh ăn kèm cá chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 30.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên cá và sả tỏi)",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "dùng để phi vàng giòn sả tỏi trước rồi chiên ngập mặt cá",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 230,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml",
+      "prepNote": "hòa tan bột chiên giòn thành dạng sệt",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch nhớt, cắt khúc và ướp cá lóc",
+      "instruction": "Chà xát cá lóc với 4 g muối ăn và vài lát chanh tươi để hết nhớt, rửa sạch nhiều lần rồi thấm thật khô và cắt khúc dày khoảng 2 cm, khía nhẹ trên da. Băm nhuyễn sả tươi, tỏi, hành tím và 2 quả ớt. Ướp cá với 1/2 lượng sả băm, 1/2 tỏi băm, hành tím, 1 quả ớt băm, 2 g muối, 4 g hạt nêm, 4 g đường, 2 g tiêu đen xay và 3 g bột nghệ trong 20 phút cho thấm.",
+      "tip": "Khứa nhẹ trên da và thấm khô mặt cá trước khi ướp giúp gia vị bám sâu và khi chiên không bị bắn dầu.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Pha bột áo chiên giòn cho cá",
+      "instruction": "Cho 50 g bột chiên giòn, 2 g muối ăn còn lại và 60 ml nước lọc vào tô, khuấy đều đến khi thu được hỗn hợp bột sền sệt mịn màng đủ bám một lớp áo mỏng quanh khúc cá."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên vàng giòn sả băm và tỏi băm trước",
+      "instruction": "Đun nóng 250 ml dầu ăn trong chảo sâu lòng ở lửa vừa, thả 1/2 phần sả băm còn lại vào chiên trước khoảng 3 phút cho vàng thơm rồi mới cho 1/2 phần tỏi băm còn lại vào đảo thêm 1 phút đến khi vàng giòn đều thì vớt ngay ra rây để ráo dầu.",
+      "tip": "Sả chứa nhiều nước và lâu chín hơn tỏi nên phải chiên sả trước rồi mới thả tỏi vào, tránh để tỏi cháy đắng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên ngập dầu cá lóc tẩm bột đến khi giòn rụm",
+      "instruction": "Giữ chảo dầu thơm đang nóng ở lửa vừa, nhúng từng khúc cá lóc đã ướp (gạt bớt sả băm để không cháy) qua lớp bột chiên giòn sệt rồi thả vào chiên mỗi mặt 4 phút cho vàng ươm. Cuối cùng tăng lửa lớn trong 1 phút để thoát bớt dầu và vỏ giòn lâu, kiểm tra thịt cá trắng đục chín hoàn toàn rồi vớt ra giấy thấm dầu.",
+      "tip": "Tăng lửa lớn 1 phút cuối trước khi vớt là mẹo giúp đẩy dầu thừa ra ngoài, giúp cá lóc giòn lâu mà không bị ngấy.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Xóc cá cùng sả tỏi phi và pha nước chấm",
+      "instruction": "Chắt hết dầu trong chảo, cho cá chiên vào xóc nhanh tay cùng sả tỏi chiên vàng và 1 quả ớt băm còn lại trong 30 giây cho bám đều hương thơm. Trong chén nhỏ, khuấy tan 30 ml nước mắm ngon với 4 g đường, vài giọt nước cốt chanh và ớt thái lát để làm nước chấm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày cá chiên sả ớt ra đĩa và thưởng thức",
+      "instruction": "Xếp các khúc cá lóc chiên vàng giòn ra đĩa, rắc hết phần sả tỏi phi giòn lên mặt cùng lát ớt tươi trang trí và dọn ăn ngay với cơm trắng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 292,
+    "energyKcal": 291.6,
+    "energyKj": 1220,
+    "proteinG": 29.1,
+    "fatG": 10.6,
+    "saturatedFatG": 2,
+    "carbG": 19.6,
+    "fiberG": 0.9,
+    "sugarG": 3.1,
+    "sodiumMg": 1297,
+    "saltG": 3.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172231",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175176",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "04355739d8bb1e4fe581c7028028d40de1b1103497f0f349e5ac29e858e37183",
+    "researchedFromV2Sha256": "2dde0993324ae9b03754e24509761127888f47067fa853fb659d86e88c567f8a"
+  }
+}

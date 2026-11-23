@@ -26,14 +26,29 @@ export interface RecipeAuthorityProof {
   checkedAt: string;
 }
 
+export const CATALOG_RELEASE_MANIFEST_PATH: string;
+export const STANDARD_V4_MANIFEST_PATH: string;
 export const RELEASE_RECIPE_CATALOG_MODES: readonly string[];
 export const RELEASE_CANARY_PERCENT_OPTIONS: readonly number[];
 export function resolveMealCompositionV2Release(input: { eventName: unknown; input: unknown }): 'true' | 'false';
+export function resolveRecipeCatalogV4StandardRelease(input: { eventName: unknown; input: unknown }): 'true' | 'false';
+export function readStandardV4CatalogRelease(filePath?: string): RecipeAuthorityReleaseRef;
+export function resolveEffectiveCatalogRelease(
+  manifest: { recipeCatalogV4StandardEnabled?: boolean } | null | undefined,
+  release: RecipeAuthorityReleaseRef,
+): RecipeAuthorityReleaseRef;
 export function validateRecipeCatalogMode(value: unknown): RecipeCatalogRollout['mode'];
 export function validateRecipeCatalogRollout(input: { mode: unknown; canaryPercent: unknown }): Readonly<RecipeCatalogRollout>;
 export function validateRecipeCatalogManifestPolicy(manifest: unknown): Readonly<RecipeCatalogRollout>;
 export function verifyRecipeAuthorityEvidence(
-  manifest: { sha: string; environment: string; recipeCatalogMode: string; recipeCatalogCanaryPercent: number; recipeCatalogCutoverEnabled: boolean },
+  manifest: {
+    sha: string;
+    environment: string;
+    recipeCatalogMode: string;
+    recipeCatalogCanaryPercent: number;
+    recipeCatalogCutoverEnabled: boolean;
+    recipeCatalogV4StandardEnabled?: boolean;
+  },
   evidence: unknown,
   release: RecipeAuthorityReleaseRef,
 ): RecipeAuthorityProof;

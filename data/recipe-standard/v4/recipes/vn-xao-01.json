@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-xao-01",
+    "slug": "rau-muong-xao-toi",
+    "title": "Rau muống xào tỏi xanh giòn",
+    "subtitle": "Rau muống ngọn non xanh mướt giòn sần sật, dậy mùi thơm nồng của tỏi ta phi vàng và chút tỏi tươi đảo cuối"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau xanh",
+      "Thanh đạm",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa rau muống xào tỏi chuẩn vị cơm nhà với cọng rau xanh mướt không bị thâm đen, giòn ngọt tự nhiên quyện vị đậm đà của nước mắm ngon và hương tỏi phi vàng ruộm thơm lừng.",
+    "servingSuggestion": "Gắp rau muống ra đĩa, rắc thêm vài lát ớt sừng đỏ lên trên; ăn nóng ngay cùng cơm trắng và chấm kèm nước tương tỏi ớt hoặc nước mắm chanh ớt.",
+    "storageAndReheat": "Món rau xào ngon nhất khi ăn ngay lúc vừa bắc xuống để giữ độ giòn và màu xanh; hạn chế để qua đêm hoặc hâm lại nhiều lần vì rau dễ bị nhũn và sẫm màu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WATER_SPINACH",
+      "name": "Rau muống ngọn non",
+      "culinaryMeasure": "1 bó (khoảng 300 g)",
+      "prepNote": "nhặt bỏ lá già và gốc cứng, ngắt khúc 6–8 cm, ngâm nước muối loãng rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 255,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi ta khô",
+      "culinaryMeasure": "1,5 củ (khoảng 38 g)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ, chia 2/3 để phi thơm ban đầu và 1/3 cho vào lúc cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, bỏ hạt và thái lát chéo mỏng để trang trí và tạo vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "dùng để phi thơm tỏi và xào rau nhanh trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "nêm vào rau lúc xào để dậy mùi thơm đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "nêm cùng rau muống khi đảo trên lửa lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 g)",
+      "prepNote": "làm dịu vị mặn và giữ hậu vị ngọt thanh cho rau",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 g)",
+      "prepNote": "dùng 6 g cho vào nồi nước chần rau, phần 2 g còn lại nêm trực tiếp khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "1 muỗng cà phê (5 ml)",
+      "prepNote": "pha vào nước sôi chần rau giúp cọng rau giữ sắc xanh tươi, không nêm vào chảo xào",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.1,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 0.51,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nhặt rửa rau muống và chuẩn bị tỏi ớt",
+      "instruction": "Nhặt bỏ lá úa, lá già và phần gốc xơ cứng của rau muống, ngắt thành từng đoạn dài 6–8 cm. Rửa sạch nhiều lần rồi ngâm nước muối loãng 5 phút, vớt ra rổ để thật ráo nước. Bóc vỏ tỏi ta, đập dập rồi băm nhỏ, chia thành hai phần (2/3 để phi thơm đầu và 1/3 để cho vào cuối). Ớt sừng đỏ rửa sạch, thái lát xéo mỏng.",
+      "tip": "Chọn mớ rau muống ngọn nhỏ, thân non mềm thì khi xào sẽ giòn ngọt và ít bị dai xơ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần rau muống và sốc nhiệt nước đá",
+      "instruction": "Đun sôi một nồi nước lớn (đủ ngập rau) trên lửa lớn, thả 6 g muối ăn và 5 ml giấm gạo vào khuấy tan. Khi nước sôi bùng, thả rau muống vào đảo nhanh trong 30–45 giây cho rau vừa chuyển màu xanh ngọc tươi rồi vớt ra ngay, thả vào thau nước đá lạnh ngâm 2 phút cho nguội hẳn trước khi vớt ra vắt nhẹ để thật ráo.",
+      "tip": "Không đậy vung khi chần và sốc nhiệt ngay bằng nước đá là bí quyết giúp rau muống giữ màu xanh lục bảo và độ giòn sần sật.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm phần tỏi băm ban đầu",
+      "instruction": "Đặt chảo sâu lòng lên bếp ở lửa vừa, làm nóng 30 ml dầu ăn rồi cho 2/3 lượng tỏi băm vào phi đều tay khoảng 30–40 giây đến khi tỏi vừa chuyển màu vàng nhạt và tỏa mùi thơm lừng.",
+      "tip": "Canh lửa vừa và tắt bớt nhiệt nếu chảo quá nóng để tỏi không bị cháy sẫm gây vị đắng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào rau muống lửa lớn và nêm gia vị",
+      "instruction": "Bật bếp lên lửa lớn nhất, trút toàn bộ phần rau muống đã để ráo vào chảo dầu tỏi và đảo nhanh tay liên tục. Rưới đều 10 ml nước mắm ngon, rắc 5 g hạt nêm, 3 g đường cát trắng và 2 g muối ăn còn lại, đảo đều trong khoảng 1–2 phút cho rau bóng dầu và thấm gia vị.",
+      "tip": "Xào nhanh trên lửa lớn giúp rau không bị tiết nước và giữ nguyên độ giòn thanh.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm phần tỏi tươi cuối cùng dậy mùi",
+      "instruction": "Khi rau đã ngấm đều gia vị và nóng hổi, rắc nốt 1/3 lượng tỏi băm tươi còn lại vào chảo, đảo nhanh tay thêm 20–30 giây cho hương tỏi tươi hòa quyện nồng nàn mà không bị cháy."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Tắt bếp ngay, gắp rau muống xào tỏi ra đĩa lớn, rưới chút nước xào còn trong chảo lên mặt rau và xếp vài lát ớt sừng đỏ lên trên. Dọn dùng nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 115,
+    "energyKcal": 115,
+    "energyKj": 481,
+    "proteinG": 3.3,
+    "fatG": 8.6,
+    "saturatedFatG": 1.3,
+    "carbG": 8.2,
+    "fiberG": 2,
+    "sugarG": 2,
+    "sodiumMg": 945,
+    "saltG": 2.36,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169378",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b8210bec08577514fd03576f30f5d7970c28c2710e8e7481154c5581133f0d0f",
+    "researchedFromV2Sha256": "e4fa01e17a4e3a0c553743e572b0709d55fca5f2b45993bbec40afd2e8b9ac58"
+  }
+}

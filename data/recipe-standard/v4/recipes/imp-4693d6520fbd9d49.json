@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4693d6520fbd9d49",
+    "slug": "bo-nuong-toi",
+    "title": "Thịt bò nướng tỏi lát kiểu Hoa",
+    "subtitle": "Thịt bò thái lát mỏng ngang thớ ướp xì dầu nướng lửa lớn xém cạnh, phủ tỏi lát phi vàng giòn và hành lá chấm muối tiêu đậm đà"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món nướng",
+      "Thịt bò",
+      "Tỏi phi",
+      "Cháy cạnh",
+      "Món nhậu"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món thịt bò nướng tỏi thơm lừng với từng lát bò thăn mềm mọng cháy cạnh nhẹ, hòa quyện hương xì dầu dầu hào đậm đà, điểm xuyết những lát tỏi phi vàng giòn rụm và muối tiêu chấm kèm.",
+    "servingSuggestion": "Xếp thịt bò nướng nóng ra đĩa, rắc tỏi lát phi vàng cùng hành lá xanh lên mặt; thưởng thức ngay cùng muối tiêu và cơm trắng hoặc cuốn rau sống.",
+    "storageAndReheat": "Thịt bò nướng ngon nhất khi dùng ngay lúc nóng; phần dư bảo quản ngăn mát tối đa 24 giờ và áp chảo nóng lại trên chảo gang khoảng 1 phút cho vừa ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò thái lát mỏng",
+      "culinaryMeasure": "450 g",
+      "prepNote": "để ngăn đá 20 phút cho hơi cứng rồi thái lát mỏng 4–5 mm ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1,5 củ (khoảng 37,5 g)",
+      "prepNote": "bóc vỏ, một nửa băm nhỏ để ướp thịt, một nửa thái lát mỏng 2 mm để phi giòn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, cắt khúc 3–4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu và màu nâu đẹp cho lát thịt bò nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "giúp lát thịt bò bóng mềm và đậm đà hơn khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml ướp thịt bò, 5 ml quét vỉ nướng và 10 ml phi tỏi lát",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2,5 g ướp thịt và 2,5 g trộn với tiêu đen làm muối chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt bò và 2 g pha muối tiêu chấm kèm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái lát thịt bò ngang thớ và chuẩn bị tỏi hành",
+      "instruction": "Rửa nhanh 450 g thịt thăn bò, thấm thật khô rồi cho vào ngăn đá 20 phút cho hơi se mặt để dễ thái lát mỏng 4 đến 5 mm theo chiều ngang thớ. Bóc vỏ tỏi khô, chia một nửa băm nhỏ và một nửa thái lát mỏng đều 2 mm; rửa sạch hành lá tươi rồi cắt khúc 3 đến 4 cm.",
+      "tip": "Thái tỏi thành lát mỏng đều giúp khi phi tạo thành từng miếng tỏi giòn rụm vàng đều mà không dễ cháy khét như tỏi băm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt bò với xì dầu và dầu hào",
+      "instruction": "Cho thịt bò thái lát vào tô lớn cùng phần tỏi băm nhỏ, 30 ml xì dầu, 10 ml dầu hào, 10 ml dầu ăn thực vật, 2,5 g muối ăn và 1 g tiêu đen xay. Trộn nhẹ cho gia vị bám đều khắp mặt thịt, bọc kín ướp trong ngăn mát 20 phút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi tỏi thái lát vàng giòn rìa",
+      "instruction": "Đặt chảo nhỏ lên bếp với 10 ml dầu ăn thực vật trên lửa vừa-nhỏ, cho toàn bộ tỏi thái lát vào đảo nhẹ liên tục khoảng 3 phút đến khi rìa lát tỏi vừa ngả màu vàng nhạt thơm lừng thì vớt ngay ra đĩa lót khăn giấy cho giòn ráo dầu.",
+      "tip": "Phải vớt tỏi phi ngay khi còn màu vàng nhạt vì lượng dầu nóng bám trên lát tỏi sẽ tiếp tục làm tỏi vàng đậm thêm sau khi vớt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng hoặc chảo gang lửa lớn",
+      "instruction": "Làm nóng vỉ nướng than, bếp nướng điện hoặc chảo gang dày trên lửa lớn trong 5 phút cho bề mặt thật nóng, sau đó phết 5 ml dầu ăn thực vật còn lại lên mặt vỉ để chống dính.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng nhanh thịt bò cháy cạnh hai mặt",
+      "instruction": "Xếp các lát thịt bò lên mặt vỉ nóng thành một lớp thưa không chồng chéo, nướng nhanh trên lửa lớn khoảng 2 phút mỗi mặt đến khi thịt xém vàng nhẹ ở rìa và bên trong chín mềm vừa tới (không còn sắc đỏ sống nếu thích ăn chín kỹ). Nếu nhiều thịt hãy chia làm 2 mẻ nướng.",
+      "tip": "Không xếp các lát thịt quá sát nhau khiến hơi nước bốc lên làm thịt bị hấp mềm thay vì cháy cạnh thơm ngon.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Pha muối tiêu và trình bày đĩa bò nướng",
+      "instruction": "Trộn đều 2,5 g muối ăn còn lại với 2 g tiêu đen xay ra chén nhỏ làm đồ chấm. Xếp thịt bò nướng nóng ra đĩa, rắc đều tỏi lát phi vàng giòn cùng hành lá tươi cắt khúc lên trên và dọn dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 367,
+    "energyKcal": 366.5,
+    "energyKj": 1534,
+    "proteinG": 32.9,
+    "fatG": 23,
+    "saturatedFatG": 7.2,
+    "carbG": 6.2,
+    "fiberG": 0.9,
+    "sugarG": 0.8,
+    "sodiumMg": 1493,
+    "saltG": 3.73,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "63825ac212546f1837503016f8c9bc1eb3582f9d7028058f89211e888b7f63ca",
+    "researchedFromV2Sha256": "b3497dbf333c4794f197090361532b9451188ee3a8b1dbf3d33d3ef4ef8f8881"
+  }
+}

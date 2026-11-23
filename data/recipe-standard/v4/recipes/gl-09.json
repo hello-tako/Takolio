@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-09",
+    "slug": "chawanmushi",
+    "title": "Trứng hấp Chawanmushi tôm nấm Nhật Bản",
+    "subtitle": "Trứng hấp custard mặn kiểu Nhật mềm mịn như thạch lụa, hòa quyện vị ngọt thanh của tôm tươi, thịt đùi gà, nấm hương và nước dùng dashi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Món hấp",
+      "Thanh đạm",
+      "Hải sản",
+      "Bữa tối nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "chicken",
+      "crustaceans",
+      "egg",
+      "fish",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Chawanmushi là món trứng hấp khai vị tinh tế của ẩm thực Nhật Bản, nổi bật với kết cấu custard mịn màng không rỗ bọt khí nhờ tỷ lệ trứng và nước dùng dashi chuẩn xác cùng kỹ thuật hấp lửa nhỏ cách thủy.",
+    "servingSuggestion": "Dọn nguyên chén sứ hấp nóng hổi lên bàn ăn cùng thìa nhỏ, rắc thêm hành lá tươi lên mặt chén và dùng làm món khai vị hoặc ăn kèm cơm trắng.",
+    "storageAndReheat": "Ngon nhất khi thưởng thức ngay sau khi hấp; phần chưa dùng hết đậy kín nắp chén bảo quản tủ lạnh tối đa 1–2 ngày và hấp cách thủy lại lửa nhỏ 3–4 phút cho nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (100 g)",
+      "prepNote": "đập nhẹ tay đánh tan vừa quyện với dashi, tránh tạo bọt khí",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "80 g (khoảng 4–6 con vừa)",
+      "prepNote": "lột vỏ, bỏ đầu và chỉ đen, ướp với 10 ml rượu sake cho thơm",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 62.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương",
+      "culinaryMeasure": "70 g",
+      "prepNote": "thái miếng nhỏ 1,5 cm, ướp với 10 ml rượu sake để khử mùi",
+      "componentGroup": "main",
+      "requiredQuantity": 70,
+      "unit": "g",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi để nguội",
+      "culinaryMeasure": "220 ml",
+      "prepNote": "đun trước rồi để nguội hẳn về nhiệt độ phòng trước khi pha trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 220,
+      "unit": "ml",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm tươi (nấm hải sản/nấm rơm)",
+      "culinaryMeasure": "50 g",
+      "prepNote": "cắt bỏ chân nấm, tách cụm nhỏ vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô",
+      "culinaryMeasure": "8 g (2 tai nấm)",
+      "prepNote": "ngâm 15 phút trong 50 ml nước lọc ấm cho nở mềm, vắt ráo thái lát mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_CAKE",
+      "name": "Chả cá Nhật (Kamaboko)",
+      "culinaryMeasure": "30 g (4 lát mỏng)",
+      "prepNote": "thái lát mỏng 3 mm để xếp lên mặt chén trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia đôi: 10 ml ướp tôm và 10 ml ướp thịt gà trong 10 phút",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 19.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 19.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật nhạt màu",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "nêm hỗn hợp trứng dashi giữ màu vàng sáng đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo hậu vị ngọt thanh dịu cho phần trứng hấp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "nêm vừa vị thanh nhẹ trong hỗn hợp trứng dashi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh xéo mỏng để rắc lên trên chén trứng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm (ngâm nấm)",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "dùng để ngâm mềm nấm hương khô",
+      "componentGroup": "process",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nấm hương khô và sơ chế nấm tươi",
+      "instruction": "Ngâm 8 g nấm hương khô trong 50 ml nước lọc ấm khoảng 15 phút cho nở mềm hoàn toàn, vắt nhẹ ráo nước rồi cắt bỏ chân nấm, thái lát mỏng. Phần 50 g nấm tươi cắt bỏ gốc, tách thành từng nhánh nhỏ vừa miệng và 30 g chả cá Nhật thái 4 lát mỏng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp tôm cùng thịt gà với rượu Sake",
+      "instruction": "Lột vỏ 80 g tôm tươi, rút bỏ chỉ đen sống lưng; cắt 70 g thịt đùi gà thành miếng nhỏ 1,5 cm. Cho tôm và gà vào hai bát riêng, rưới mỗi bát 10 ml rượu Sake nấu ăn (tổng 20 ml) và ướp 10 phút giúp thịt thơm và sạch mùi.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp trứng dashi và lọc qua rây mịn",
+      "instruction": "Đập 2 quả trứng gà vào bát, dùng đũa đánh tan nhẹ nhàng sát đáy bát theo đường zíc zắc để tránh nổi bọt. Rót từ từ 220 ml nước dùng Dashi đã nguội hoàn toàn cùng 5 ml nước tương Nhật, 5 ml rượu ngọt Mirin và 1 g muối ăn vào khuấy đều, sau đó lọc hỗn hợp qua rây mịn 2 lần vào ca rót.",
+      "tip": "Nước dùng Dashi bắt buộc phải nguội trước khi trộn với trứng để tránh làm trứng chín vón cục ngay trong bát."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Xếp nhân và rót trứng vào hai chén sứ",
+      "instruction": "Chia đều thịt đùi gà, nấm hương thái lát và nấm tươi xuống đáy hai chén sứ có nắp. Đặt tôm tươi và lát chả cá Nhật lên lớp trên để tạo điểm nhấn màu sắc, từ từ rót hỗn hợp trứng qua thành chén đến khoảng 80% dung tích, hớt sạch bọt khí li ti trên bề mặt rồi đậy kín nắp chén hoặc bọc màng giấy bạc.",
+      "tip": "Hớt sạch toàn bộ bọt khí trên mặt chén trước khi hấp giúp bề mặt trứng chín bóng láng như gương."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp cách thủy trứng ở lửa nhỏ nhất",
+      "instruction": "Đun sôi nồi nước cao đến khoảng nửa thân chén hấp, sau đó hạ ngay xuống mức lửa nhỏ nhất để nước chỉ lăn tăn hơi nóng ở 85–90°C. Nhẹ nhàng đặt hai chén trứng vào nồi, đậy nắp nồi hơi hé một khe nhỏ bằng chiếc đũa và hấp liu riu 22–25 phút cho đến khi trứng đông mịn hoàn toàn và tôm gà chín kỹ.",
+      "tip": "Tuyệt đối không để nước trong nồi sôi bùng vì nhiệt quá cao sẽ khiến trứng tách nước và bị rỗ mặt như tổ ong.",
+      "timerMinutes": 24
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Kiểm tra độ chín và dọn thưởng thức nóng",
+      "instruction": "Mở nắp chén, dùng đầu xiên tre châm nhẹ vào giữa phần trứng: nếu nước tiết ra trong veo (không đục) là trứng đã chín đều và gà tôm đạt chuẩn an toàn. Rắc hành lá thái mỏng lên mặt chén, đậy nắp lại 1 phút cho dậy hương rồi dọn dùng nóng với thìa nhỏ."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 214,
+    "energyKcal": 214.4,
+    "energyKj": 897,
+    "proteinG": 22.7,
+    "fatG": 8.5,
+    "saturatedFatG": 2.5,
+    "carbG": 9,
+    "fiberG": 1.2,
+    "sugarG": 2.5,
+    "sodiumMg": 943,
+    "saltG": 2.36,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA / MEXT Fish Cake Ref",
+      "USDA FDC 168436",
+      "USDA FDC 169251",
+      "USDA FDC 170005",
+      "USDA FDC 171287",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/oyakodon.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3da81fc2d0c9bac89140870fb368c7a9f4d8eebb11623b710679a20d4deea784",
+    "researchedFromV2Sha256": "2dfffdcadb918a1ab59dc5f018d63d7ca85fac722696e3245259877be09580fa"
+  }
+}

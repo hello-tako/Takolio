@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b9d222a8c523b8e4",
+    "slug": "dua-leo-dap-toi-tu-xuyen",
+    "title": "Dưa leo đập tỏi Tứ Xuyên",
+    "subtitle": "Dưa leo đập dập giòn sần thấm đẫm sốt giấm đen Trấn Giang, tỏi băm, dầu mè và dầu ớt tê cay đặc trưng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Món trộn",
+      "Tứ Xuyên",
+      "Khai vị",
+      "Dưa leo",
+      "Giải ngấy"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món khai vị lạnh trứ danh của ẩm thực Tứ Xuyên với từng miếng dưa leo đập dập giòn rụm, thấm sâu hỗn hợp giấm đen Trấn Giang, tỏi tươi, dầu mè thơm lừng và sa tế dầu ớt.",
+    "servingSuggestion": "Bày dưa leo ra đĩa sâu lòng, rưới phần sốt còn lại trong tô lên mặt, rắc mè trắng rang và ngò rí; ăn lạnh ngay để khai vị hoặc giải ngấy cùng các món thịt kho, đồ chiên.",
+    "storageAndReheat": "Món trộn ăn liền ngon nhất trong vòng 30 phút sau khi trộn; nếu chuẩn bị trước, nên bảo quản riêng dưa đã vắt ráo và phần sốt trong ngăn mát tối đa 12 giờ rồi mới trộn trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "3 quả (khoảng 450 g)",
+      "prepNote": "chọn dưa đặc ruột, rửa sạch, lau khô, cắt bỏ hai đầu, đập dập rồi cắt miếng xéo 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 405,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhuyễn để giữ vị nồng thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát mỏng (tăng giảm tùy độ cay mong muốn)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SICHUAN_PEPPER",
+      "name": "Tiêu Tứ Xuyên (hoa tiêu)",
+      "culinaryMeasure": "1 g (~1/2 muỗng cà phê)",
+      "prepNote": "tùy chọn rang sơ và giã dập nhẹ để tăng hương tê cay đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "trộn ướp rút nước cho dưa giòn rồi chắt bỏ phần nước tiết ra",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị chua đậm của giấm đen và vị mặn của xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu và hương umami cho nước sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_VINEGAR",
+      "name": "Giấm đen Trấn Giang",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "tạo vị chua thanh dịu và hương thơm lên men đặc trưng của món Tứ Xuyên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "hòa vào nước sốt trộn giúp dậy mùi thơm béo đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI_OIL",
+      "name": "Dầu ớt Tứ Xuyên",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo màu đỏ bóng đẹp mắt và vị cay nồng đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "rang vàng thơm trên chảo khô, để nguội rắc lên mặt đĩa dưa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, để ráo, thái khúc ngắn 2 cm rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Đập dập và cắt miếng dưa leo",
+      "instruction": "Rửa sạch 3 quả dưa leo tươi, lau khô vỏ bằng khăn sạch rồi cắt bỏ hai đầu. Đặt mặt phẳng bản dao lớn nằm ngang lên từng quả dưa, dùng lòng bàn tay ấn vỗ dứt khoát cho thân dưa nứt tách làm 4 dải dài nhưng không bị nát vụn. Dựng các dải dưa lên rồi cắt chéo góc 45 độ thành miếng vừa ăn dài khoảng 3 cm.",
+      "tip": "Đập dập tạo các mép vỡ gồ ghề giúp nước sốt bám sâu vào thịt dưa hơn hẳn so với cách thái lát phẳng thông thường."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp muối rút bớt nước giúp dưa giòn lâu",
+      "instruction": "Cho dưa leo vào tô lớn, rắc đều 6 g muối ăn vào xóc nhẹ rồi để yên 15–20 phút cho dưa tiết bớt nước hăng. Sau khi ướp, chắt bỏ toàn bộ phần nước muối đã tiết ra và vắt nhẹ tay để miếng dưa ráo hẳn.",
+      "tip": "Nếu thử thấy miếng dưa hơi đậm vị muối, có thể tráng thật nhanh qua nước đun sôi để nguội rồi thấm khô trước khi trộn sốt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Băm tỏi, thái ớt và rang thơm mè trắng",
+      "instruction": "Trong lúc chờ ướp dưa, băm nhuyễn tỏi khô và thái lát mỏng ớt hiểm đỏ. Bắc chảo khô lên bếp lửa nhỏ, cho hạt mè trắng vào đảo đều khoảng 2 phút đến khi mè ngả vàng thơm thì trút ra chén để nguội. Nếu dùng tiêu Tứ Xuyên, rang cùng mè khoảng 30 giây cho dậy mùi rồi giã dập.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp nước sốt giấm đen Tứ Xuyên",
+      "instruction": "Trong một chén vừa, hòa tan 20 ml xì dầu nhạt, 30 ml giấm đen Trấn Giang và 12 g đường cát trắng, khuấy đều tay cho đến khi đường tan hoàn toàn. Tiếp tục rót 15 ml dầu mè và 15 ml dầu ớt Tứ Xuyên vào khuấy hòa quyện.",
+      "tip": "Khuấy tan hết đường trước khi trộn vào dưa giúp vị chua, ngọt, mặn phân bố đồng đều trên từng miếng dưa leo."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn dưa leo với tỏi ớt và nước sốt",
+      "instruction": "Cho tỏi băm, ớt hiểm thái lát và tiêu Tứ Xuyên giã dập (nếu dùng) vào tô dưa leo đã ráo nước. Rưới toàn bộ chén nước sốt lên trên, dùng đũa hoặc tay đeo găng trộn nhẹ nhàng từ dưới lên trong 1 phút cho từng miếng dưa áo đều gia vị."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Ướp lạnh ngắn, rắc mè rang và thưởng thức",
+      "instruction": "Đậy kín tô dưa rồi ướp trong ngăn mát tủ lạnh khoảng 10–15 phút cho dưa ngấm sốt và giòn mát. Gắp dưa ra đĩa, rưới thêm phần nước sốt dưới đáy tô, rắc hạt mè trắng rang và ngò rí thái khúc lên trên rồi dùng ngay.",
+      "tip": "Không nên trộn sốt trước quá lâu vì muối và giấm sẽ tiếp tục làm dưa ra nước khiến món ăn bị nhũn và loãng vị."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 145,
+    "energyKcal": 144.9,
+    "energyKj": 607,
+    "proteinG": 2.7,
+    "fatG": 10,
+    "saturatedFatG": 1.5,
+    "carbG": 12.9,
+    "fiberG": 1.5,
+    "sugarG": 6.9,
+    "sodiumMg": 751,
+    "saltG": 1.88,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Chili Oil / Satay Ref",
+      "Chinkiang Black Vinegar Ref",
+      "Spice Reference",
+      "USDA FDC 168409",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0108fd9b397054c86308bd2c11f5fd78780877ccdd9fc48a5affaf2bd694cfa9",
+    "researchedFromV2Sha256": "7706d3de617cd05bd4aa738524599b2b9ee5562dcbc81ee49574f5226731bf2c"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b4924a7d33d5acff",
+    "slug": "chao-trung-trung",
+    "title": "Cháo trứng vân mây kiểu Hoa",
+    "subtitle": "Cháo trắng ninh nhừ sánh mịn rưới dòng trứng gà đánh tan tạo vân hoa mềm mượt, điểm hành lá, gừng sợi và tiêu trắng ấm bụng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 3,
+    "tags": [
+      "Cháo nóng",
+      "Trứng gà",
+      "Bữa sáng",
+      "Dễ tiêu",
+      "Thanh nhẹ"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Nồi cháo trắng sánh nhừ bông mịn kiểu Hoa với những sợi vân trứng gà vàng óng mềm mượt hòa quyện, thoang thoảng mùi tiêu trắng ấm nồng, hành lá tươi và chút xì dầu nhạt dịu vị.",
+    "servingSuggestion": "Múc cháo nóng ra tô, rắc gừng tươi thái sợi và hành lá xanh; dọn kèm chén xì dầu nhạt để mỗi người tự nêm thêm theo khẩu vị.",
+    "storageAndReheat": "Cháo để nguội sẽ đặc lại; bảo quản hộp kín trong ngăn mát tối đa 2 ngày và khi hâm nóng hãy thêm chút nước sôi khuấy đều trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ",
+      "culinaryMeasure": "150 g (~3/4 bát ăn cơm)",
+      "prepNote": "vo sạch 2–3 lần rồi ngâm nước lạnh 30–60 phút cho hạt gạo mau nở nhừ",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1600 ml (1,6 lít)",
+      "prepNote": "dùng ninh gạo thành cháo sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1600,
+      "unit": "ml",
+      "grossGrams": 1600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1360,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đập ra bát đánh thật tan để rưới tạo vân trứng mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, thái sợi chỉ thật mỏng để rắc mặt tô cháo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dọn kèm hoặc rưới nhẹ lên mặt tô cháo khi ăn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm vị thanh nhẹ cho nồi cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo vị cay ấm đặc trưng của cháo Hoa",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "trộn cùng hành lá cuối bước nấu giúp cháo óng mượt",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "tăng vị ngọt dịu cho nước cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo sạch và ngâm gạo tẻ cho nhanh nhừ",
+      "instruction": "Vo sạch 150 g gạo tẻ qua 2 đến 3 lần nước, sau đó ngâm gạo trong nước lạnh khoảng 30 đến 60 phút cho hạt gạo hút nước nở mềm rồi chắt ráo bỏ nước ngâm.",
+      "tip": "Ngâm gạo trước giúp hạt gạo nhanh nở bung khi nấu, nồi cháo sánh mịn đều mà không tốn nhiều thời gian ninh.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh gạo tẻ trên lửa liu riu đến khi sánh mịn",
+      "instruction": "Cho gạo đã ngâm cùng 1600 ml nước lọc vào nồi đáy dày, đun sôi bùng trên lửa lớn rồi lập tức hạ xuống lửa nhỏ-vừa. Ninh liu riu khoảng 35 phút, thỉnh thoảng khuấy đều đáy nồi để tránh bén khét cho đến khi hạt gạo nở bung mềm nhừ và nước cháo sánh mịn.",
+      "tip": "Khuấy nhẹ sát đáy nồi khoảng mỗi 7–10 phút trong giai đoạn đầu để tinh bột gạo không lắng dính cháy đáy nồi.",
+      "timerMinutes": 35
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà và thái hành gừng",
+      "instruction": "Trong lúc chờ cháo nhừ, đập 3 quả trứng gà vào bát đánh thật tan đều lòng đỏ và lòng trắng. Rửa sạch hành lá tươi thái nhỏ, đồng thời thái sợi chỉ 10 g gừng tươi để riêng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rưới trứng tạo vân mây và nêm gia vị",
+      "instruction": "Khi nồi cháo đã đạt độ sánh mịn, giữ lửa vừa cho cháo sôi lăn tăn, một tay khuấy nhẹ cháo theo một chiều, tay kia rót từ từ bát trứng đánh tan thành dòng thật mảnh vào nồi để tạo thành những sợi vân trứng mềm mượt. Đun thêm 2 phút cho trứng chín hoàn toàn rồi nêm 4 g muối ăn, 2 g tiêu trắng xay và 3 g hạt nêm khuấy đều.",
+      "tip": "Rưới trứng thành dòng thật mảnh kết hợp khuấy chậm một chiều giúp vân trứng tơi mịn như lụa, không bị vón cục to.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Ủ hành lá với dầu ăn cho cháo bóng mượt",
+      "instruction": "Cho hành lá thái nhỏ và 5 ml dầu ăn thực vật vào nồi cháo, khuấy nhẹ thêm một lượt rồi tắt bếp, đậy vung ủ 2 phút để hành lá chín tới giữ màu xanh tươi và bề mặt cháo óng mượt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc cháo ra tô và rưới xì dầu nhạt",
+      "instruction": "Múc cháo trứng vân mây nóng hổi ra tô, rắc gừng tươi thái sợi lên trên, rưới nhẹ vài giọt xì dầu nhạt (hoặc dọn chén xì dầu nhạt bên cạnh để tự nêm) rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 268,
+    "energyKcal": 268,
+    "energyKj": 1121,
+    "proteinG": 9.6,
+    "fatG": 6.1,
+    "saturatedFatG": 1.7,
+    "carbG": 42.2,
+    "fiberG": 1.2,
+    "sugarG": 0.6,
+    "sodiumMg": 1083,
+    "saltG": 2.71,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169231",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "72871a2fc746552ac6e78133bc0ed9bcd2492780c7b69628ed27fb2f12f7a63c",
+    "researchedFromV2Sha256": "71bfca88335e031c523fcfc1ee4d25cf3fef4a58432f94a506be3462ddcc2bb1"
+  }
+}

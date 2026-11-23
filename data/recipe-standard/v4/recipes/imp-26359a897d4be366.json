@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-26359a897d4be366",
+    "slug": "sup-tom-nam-trung",
+    "title": "Súp tôm nấm đùi gà gừng ấm",
+    "subtitle": "Tôm tươi giòn ngọt nấu cùng nấm đùi gà trong nước dùng gà trong veo, thơm nồng vị gừng, tỏi phi và dầu mè dịu nhẹ"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Súp",
+      "Tôm tươi",
+      "Nấm đùi gà",
+      "Thanh ngọt",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món súp khai vị nhẹ bụng mà giàu dinh dưỡng kiểu nhà hàng Trung Hoa: nước dùng gà thanh ngọt quyện hương gừng tươi ấm áp, những lát nấm đùi gà dai ngọt tự nhiên và thịt tôm ướp rượu Thiệu Hưng chín tới hồng hào giòn sần sật.",
+    "servingSuggestion": "Múc súp nóng ra tô, rưới thêm vài giọt dầu mè thơm và rắc lá hành xanh thái nhỏ, dùng nóng ngay làm món khai vị hoặc ăn cùng bữa cơm gia đình.",
+    "storageAndReheat": "Nên dùng hết trong ngày để tôm giữ độ giòn ngọt; nếu bảo quản tủ mát tối đa 24 giờ, chỉ đun sôi lại phần nước súp nấm rồi thả tôm vào đảo nóng nhanh 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bóc vỏ, rút sạch chỉ đen trên lưng, rửa sạch, thấm khô và ướp 10 phút với rượu Thiệu Hưng cùng nhúm muối",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ phần chân nấm cứng, thái lát mỏng dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "gọt vỏ, thái lát mỏng hoặc sợi mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2–3 cây)",
+      "prepNote": "tách riêng phần đầu trắng đập dập để phi thơm, phần lá xanh thái nhỏ rắc cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/4 củ (~6 g, khoảng 2 tép)",
+      "prepNote": "bóc vỏ, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 5.39,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị đậm thanh cho nước súp mà không làm sẫm màu nước",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng ướp tôm để khử tanh và dậy mùi ngọt thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "làm nước nền ngọt thanh cho món súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp tôm, 4 g nêm nước súp vừa ăn",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo vị cay ấm nhẹ khi hoàn thiện tô súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để phi thơm gừng, tỏi và đầu hành trắng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để tăng hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch và ướp khử tanh tôm tươi",
+      "instruction": "Tôm tươi bóc vỏ, bỏ đầu, rạch nhẹ lưng rút sạch chỉ đen rồi rửa nước lạnh và thấm ráo. Ướp tôm trong tô với 15 ml rượu Thiệu Hưng và 1 g muối ăn trong 10 phút cho thịt tôm săn và thơm ngọt.",
+      "tip": "Ướp chút rượu Thiệu Hưng giúp khử hoàn toàn mùi tanh hải sản mà vẫn giữ vị ngọt tự nhiên của tôm.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái lát nấm đùi gà và rau gia vị",
+      "instruction": "Dùng khăn ẩm lau sạch 200 g nấm đùi gà, cắt bỏ phần gốc già rồi thái lát dày 0,5 cm. Gừng tươi thái lát mỏng, tỏi thái lát, hành lá tách riêng phần đầu trắng thái khúc và phần lá xanh thái nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm gừng tỏi và đun nước dùng gà",
+      "instruction": "Đun nóng 15 ml dầu ăn trong nồi trên lửa vừa, thả gừng thái lát, tỏi thái lát và đầu hành trắng vào phi thơm nhanh 20 giây đến khi dậy mùi (không để tỏi xém cháy). Đổ 1200 ml nước dùng gà vào nồi và đun lửa lớn đến khi sôi."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu chín nấm đùi gà và nêm vị thanh",
+      "instruction": "Khi nước dùng sôi, thả nấm đùi gà thái lát vào nấu 3 phút trên lửa vừa để nấm tiết vị ngọt. Nêm thêm 15 ml xì dầu nhạt và 4 g muối ăn, khuấy đều và hớt bọt nếu có.",
+      "tip": "Cắt nấm đùi gà độ dày 0,5 cm giúp nấm chín nhanh trong 3 phút mà vẫn giữ được độ giòn sần sật.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả tôm nấu chín hồng vừa tới",
+      "instruction": "Thả toàn bộ tôm đã ướp vào nồi súp đang sôi nhẹ, nấu thêm đúng 3 phút đến khi thân tôm uốn cong, chuyển màu hồng đục đều và chín hoàn toàn bên trong thì tắt bếp ngay.",
+      "tip": "Không nấu tôm quá lâu sau khi thân tôm đã chuyển hồng săn chắc vì tôm sẽ bị bở hoặc dai khô.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc tiêu trắng, rưới dầu mè và dùng nóng",
+      "instruction": "Khuấy nhẹ 1 g tiêu trắng xay vào nồi súp, múc ra 4 tô sâu lòng, rưới đều 5 ml dầu mè thơm và rắc phần lá hành xanh thái nhỏ lên trên rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 157,
+    "energyKcal": 156.7,
+    "energyKj": 656,
+    "proteinG": 16.2,
+    "fatG": 6.9,
+    "saturatedFatG": 1.2,
+    "carbG": 7.4,
+    "fiberG": 1.5,
+    "sugarG": 2,
+    "sodiumMg": 1525,
+    "saltG": 3.81,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5655514a1e723966a27e0c13b5b93b8054589314d103108005cdfb889a92c671",
+    "researchedFromV2Sha256": "60df14591a8c48871c4350b6e73f4fac3ba0657118ec7a4889f818b1655db3d4"
+  }
+}

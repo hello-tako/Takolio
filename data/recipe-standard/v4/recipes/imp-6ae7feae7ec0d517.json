@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6ae7feae7ec0d517",
+    "slug": "ga-xien-yakitori-hanh",
+    "title": "Gà xiên nướng hành lá Yakitori",
+    "subtitle": "Xiên đùi gà xen kẽ hành lá nướng xém cạnh thơm lừng, quét nhiều lớp nước sốt tare đậm đà sánh bóng kiểu quán nướng Nhật Bản"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 3,
+    "tags": [
+      "Nhật Bản",
+      "Yakitori",
+      "Đồ nướng",
+      "Thịt gà",
+      "Món nhậu"
+    ],
+    "mealTypes": [
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Negima Yakitori là món gà xiên nướng trứ danh trong các quán izakaya Nhật Bản, kết hợp thịt đùi gà mềm mọng xen kẽ khúc hành lá ngọt thơm, được quét liên tục nước sốt tare cô đặc từ xì dầu, mirin, sake và đường nâu.",
+    "servingSuggestion": "Dọn nóng từng xiên gà Yakitori vừa nướng xong ra đĩa dài, rắc thêm chút bột ớt 7 vị Shichimi Togarashi và dùng kèm nước chấm sốt tare chừa riêng.",
+    "storageAndReheat": "Phần xiên thừa bảo quản hộp kín tủ mát tối đa 3 ngày; khi dùng làm nóng lại bằng lò nướng hoặc nồi chiên không dầu ở 180°C khoảng 6–7 phút và quét thêm chút sốt tare."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương",
+      "culinaryMeasure": "450 g",
+      "prepNote": "thấm khô, cắt miếng vuông đều cạnh 3 cm để ở nhiệt độ phòng trước khi xiên",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (ưu tiên gốc to)",
+      "culinaryMeasure": "2 bó (80 g)",
+      "prepNote": "tách lá xanh để nấu sốt tare, phần thân trắng xanh nhạt cắt khúc 3 cm để xiên",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "bunch",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 73.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "90 ml (6 muỗng canh)",
+      "prepNote": "nền chính để nấu cô đặc nước sốt tare",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 106.2,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 63.72,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "90 ml (6 muỗng canh)",
+      "prepNote": "tạo độ ngọt bóng đặc trưng cho sốt tare",
+      "componentGroup": "sauce",
+      "requiredQuantity": 90,
+      "unit": "ml",
+      "grossGrams": 103.5,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 62.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "nấu cùng xì dầu và mirin giúp sốt tare thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.55,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 26.73,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu (hoặc đường vàng)",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "hòa cùng nước sốt tare tạo màu nâu cánh gián caramel khi nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "phết lớp mỏng chống dính lên vỉ nướng trước khi xếp xiên gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHICHIMI",
+      "name": "Bột ớt 7 vị Nhật (Shichimi)",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc lên các xiên gà khi thưởng thức để tăng vị cay thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nấu sốt tare)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "pha loãng nhẹ hỗn hợp xì dầu khi cô đặc để sốt không bị mặn gắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm que tre và nấu cô đặc nước sốt Tare",
+      "instruction": "Ngâm 9 que xiên tre ngập trong khay nước lạnh ít nhất 30 phút để que không cháy sém khi nướng. Cho 90 ml nước tương Nhật, 90 ml rượu ngọt Mirin, 45 ml rượu Sake nấu ăn, 45 ml nước lọc, 10 g đường nâu cùng phần lá xanh của 2 bó hành lá vào nồi nhỏ, đun sôi rồi hạ lửa nhỏ đun mở nắp khoảng 25 phút đến khi sốt còn 1/3 lượng ban đầu và hơi sánh bóng thì vớt bỏ lá hành, để nguội hẳn.",
+      "tip": "Tách riêng 1/3 lượng sốt tare nguội ra chén sạch để chấm hoặc quét sau khi nướng xong, tránh nhiễm chéo từ cọ đã quét thịt sống.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái gà, hành lá và xiên xen kẽ khít tay",
+      "instruction": "Cắt 450 g thịt đùi gà lọc xương thành các miếng vuông cạnh 3 cm và cắt phần thân trắng hành lá thành các khúc dài 3 cm tương ứng. Xiên lần lượt thịt gà xen kẽ hành lá vào 9 que tre (mỗi xiên khoảng 3–4 miếng gà và 2–3 khúc hành), xếp các miếng sát khít nhau che kín phần que gỗ ở giữa.",
+      "tip": "Xiên thịt và hành thật khít nhau đồng thời bọc giấy bạc vào phần đuôi que tre sẽ ngăn que bị cháy gãy trong lò nướng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng lò và nướng xiên gà lần đầu cho se mặt",
+      "instruction": "Làm nóng trước lò nướng chế độ lửa trên ở mức cao (hoặc chuẩn bị bếp than hồng) trong 5 phút. Lót giấy bạc dưới khay, đặt vỉ lên trên, quét 10 ml dầu ăn trung tính chống dính rồi xếp các xiên gà lên vỉ, nướng 6 phút cho mặt thịt săn lại và bắt đầu chín tới.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Quét sốt Tare và nướng lật mặt cho xém cạnh",
+      "instruction": "Lấy khay xiên ra khỏi lò, dùng cọ quét đều lớp sốt tare sánh lên cả hai mặt thịt gà và hành lá, cho lại vào lò nướng thêm 4 phút đến khi lớp sốt sủi bọt thơm lừng và các cạnh gà hơi xém nâu.",
+      "tip": "Canh sát ở những phút cuối sau khi quét sốt vì lượng đường trong sốt tare dễ bị cháy sém nhanh dưới thanh nhiệt lò.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Quét lớp sốt Tare thứ hai tạo màu bóng đẹp",
+      "instruction": "Lật mặt đẹp của các xiên gà hướng lên trên, quét thêm một lớp sốt tare mỏng nữa rồi nướng thêm 2 phút cuối đến khi thịt gà chín hoàn toàn bên trong, mặt ngoài bóng mượt xém cạnh thơm nức.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Quét sốt sạch, rắc Shichimi và thưởng thức nóng",
+      "instruction": "Gắp các xiên gà Yakitori ra đĩa, dùng cọ sạch quét thêm một lớp mỏng phần sốt tare đã chừa riêng, rắc chút bột ớt 7 vị Nhật Shichimi lên trên và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 367,
+    "energyKcal": 367.1,
+    "energyKj": 1537,
+    "proteinG": 31.3,
+    "fatG": 17.5,
+    "saturatedFatG": 4.6,
+    "carbG": 14.5,
+    "fiberG": 0.9,
+    "sugarG": 10.6,
+    "sodiumMg": 1298,
+    "saltG": 3.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "MEXT Spice Ref",
+      "USDA FDC 168833",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a47a22106838b7010d8fd321c0a962196f23352a4dc3bac3a1eefab823cd41d5",
+    "researchedFromV2Sha256": "7ea1502a4332f34d647777f6c3a31cedbc91837e644e103626946b38996e58b3"
+  }
+}

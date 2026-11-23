@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7facaaeafc40dac2",
+    "slug": "ca-hoi-nuong-muoi-chanh",
+    "title": "Cá hồi nướng muối chanh Shioyaki",
+    "subtitle": "Phi lê cá hồi ướp rượu sake và muối hạt kiểu Shioyaki truyền thống, nướng da giòn thịt mềm béo, dùng kèm củ cải trắng mài và chanh tươi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Shioyaki",
+      "Cá hồi",
+      "Đồ nướng",
+      "Nhẹ bụng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon"
+    ]
+  },
+  "overview": {
+    "description": "Shioyaki là phương pháp nướng cá với muối mộc mạc nhưng tinh tế của Nhật Bản. Cá hồi được xoa rượu sake và ướp muối hạt trong tủ lạnh để khử tanh, rút bớt nước thừa giúp thịt cá săn ngọt và phần da nướng giòn thơm.",
+    "servingSuggestion": "Xếp cá hồi nướng nóng ra đĩa cùng ụ củ cải trắng mài nhuyễn vắt nhẹ nước, múi chanh tươi và hành lá thái nhỏ; dọn kèm cơm trắng nóng và canh miso.",
+    "storageAndReheat": "Bảo quản cá nướng thừa trong hộp kín ngăn mát tối đa 2 ngày; khi ăn làm nóng lại bằng lò nướng hoặc nồi chiên không dầu ở 180°C trong 3–4 phút cho da giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi còn da",
+      "culinaryMeasure": "340 g (2 miếng dày ~2,5 cm)",
+      "prepNote": "nhổ sạch xương dăm, cạo sạch vảy trên mặt da rồi thấm khô",
+      "componentGroup": "main",
+      "requiredQuantity": 340,
+      "unit": "g",
+      "grossGrams": 340,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối hạt (Kosher/muối biển hạt)",
+      "culinaryMeasure": "12 g (~2,5 muỗng cà phê)",
+      "prepNote": "rắc đều ướp lạnh 45–60 phút rồi rửa sạch lớp muối mặt ngoài trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "xoa nhẹ hai mặt cá trước khi ướp muối để khử mùi tanh hiệu quả",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 8.91,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "thoa lớp thật mỏng lên khay hoặc giấy bạc chống dính da cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (45 g)",
+      "prepNote": "rửa sạch, cắt múi cau để vắt lên miếng cá hồi khi thưởng thức",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DAIKON",
+      "name": "Củ cải trắng (Daikon Oroshi)",
+      "culinaryMeasure": "80 g (1 khúc ngắn)",
+      "prepNote": "gọt vỏ, mài nhuyễn rồi vắt nhẹ cho ráo bớt nước để ăn kèm chống ngấy",
+      "componentGroup": "garnish",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 68,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng rắc lên cá trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch xương dăm, vảy cá và xoa rượu Sake",
+      "instruction": "Miết dọc thớ thịt 340 g phi lê cá hồi còn da để tìm và nhổ hết xương dăm bằng nhíp, cạo sạch phần vảy còn sót trên mặt da. Rưới đều 15 ml rượu Sake nấu ăn lên cả hai mặt cá, để nghỉ 5 phút rồi dùng khăn giấy thấm khô nhẹ.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp muối hạt lạnh giúp thịt cá săn ngọt",
+      "instruction": "Đặt cá lên vỉ thoáng đặt trên khay, rắc đều 12 g muối hạt phủ khắp hai mặt miếng cá hồi. Đặt khay cá không đậy nắp vào ngăn mát tủ lạnh khoảng 45 phút để muối rút bớt độ ẩm thừa và giúp vị đậm thấm sâu vào thớ cá.",
+      "tip": "Ướp muối rồi để hở trong tủ lạnh giúp bề mặt cá khô ráo, khi nướng thịt cá săn chắc và da rất dễ giòn.",
+      "timerMinutes": 45
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Rửa sạch muối thừa, thấm khô và mài củ cải trắng",
+      "instruction": "Lấy cá ra khỏi tủ lạnh, xả nhanh dưới vòi nước lạnh để rửa trôi hoàn toàn lớp muối mặn bên ngoài rồi dùng khăn giấy thấm thật khô cả phần thịt lẫn mặt da. Gọt vỏ 80 g củ cải trắng, mài nhuyễn mịn và vắt nhẹ cho ráo bớt nước; cắt múi cau 1 quả chanh tươi và thái nhỏ 0,5 bó hành lá.",
+      "tip": "Rửa sạch muối thừa sau khi ướp giúp cá thấm vị mặn dịu hài hòa từ bên trong mà không bị mặn gắt trên bề mặt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng lò nướng hoặc nồi chiên không dầu",
+      "instruction": "Làm nóng trước lò nướng chế độ lửa trên ở 220°C trong 5 phút (kê khay cách thanh nhiệt khoảng 10 cm). Lót giấy bạc lên khay nướng, thoa đều 10 ml dầu ăn trung tính chống dính rồi xếp hai miếng cá hồi lên khay.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng cá hồi xém vàng và giòn mặt da",
+      "instruction": "Cho khay cá vào nướng ở 220°C khoảng 6–8 phút (xoay khay một lần giữa chừng nếu cần) đến khi phần da giòn phồng nhẹ, bề mặt thịt cá hơi xém vàng các cạnh và phần thịt bên trong chuyển màu hồng nhạt đục tách thớ nhẹ là vừa chín tới.",
+      "tip": "Nướng ở nhiệt cao trong thời gian ngắn giúp da cá hồi giòn rụm mà phần thịt bên trong vẫn giữ được độ béo ẩm tự nhiên.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày cá nướng cùng củ cải mài, chanh tươi và hành lá",
+      "instruction": "Chuyển cá hồi nướng Shioyaki ra đĩa, đặt ụ củ cải trắng mài và múi chanh tươi bên cạnh, rắc thêm hành lá thái nhỏ. Vắt nước cốt chanh trực tiếp lên mặt cá và dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 391,
+    "energyKcal": 391,
+    "energyKj": 1635,
+    "proteinG": 35.2,
+    "fatG": 25.2,
+    "saturatedFatG": 5.5,
+    "carbG": 3.5,
+    "fiberG": 1.1,
+    "sugarG": 1.3,
+    "sodiumMg": 458,
+    "saltG": 1.15,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 168155",
+      "USDA FDC 168452",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5d758ce57af3d9bdf4d303bd2ab7a45be485b119e055089ee72588aa5d7a5d75",
+    "researchedFromV2Sha256": "a2b8ae89724ede5f472c575ba75ff00e2ae22dc5a10bb8fda25f82cebf27951e"
+  }
+}

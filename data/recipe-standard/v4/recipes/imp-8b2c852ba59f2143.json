@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8b2c852ba59f2143",
+    "slug": "risotto-rau-bina-nam",
+    "title": "Cơm Risotto rau bina và nấm",
+    "subtitle": "Gạo Arborio om chậm với nước dùng rau củ nóng, nấm đùi gà áp chảo vàng thơm, rau bina xanh mướt và đánh bóng cuối bằng bơ phô mai"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Cơm Risotto",
+      "Rau bina",
+      "Nấm đùi gà",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "milk",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Cơm Risotto rau bina và nấm là sự kết hợp hài hòa giữa vị ngọt giòn của nấm đùi gà áp chảo, sắc xanh tươi mát từ cải bó xôi cùng hạt gạo Arborio mềm dẻo sóng sánh trong nước dùng rau củ, bơ lạt và phô mai Parmesan.",
+    "servingSuggestion": "Múc cơm Risotto nóng ra 3 đĩa sâu lòng, rắc thêm tiêu đen mới xay và chút phô mai Parmesan bào mịn lên trên rồi dùng ngay khi cơm còn sóng sánh.",
+    "storageAndReheat": "Risotto ngon nhất khi ăn nóng ngay lúc vừa tắt bếp; phần dư bảo quản ngăn mát tối đa 2 ngày, hâm lại bằng chảo nhỏ với ít nước dùng rau củ nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ARBORIO_RICE",
+      "name": "Gạo Ý Arborio nấu Risotto",
+      "culinaryMeasure": "250 g",
+      "prepNote": "không vo gạo để giữ lớp tinh bột tạo độ sánh kem tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "280 g",
+      "prepNote": "lau sạch bằng khăn ẩm, thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 266,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "100 g",
+      "prepNote": "nhặt rửa sạch, để ráo nước và thái khúc vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/5 củ (~84 g)",
+      "prepNote": "bóc vỏ, băm hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 84,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 75.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/4 củ (2 tép, ~6 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 5.39,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "80 ml",
+      "prepNote": "đổ vào sau khi rang gạo để tăng hương vị thanh nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 80,
+      "unit": "ml",
+      "grossGrams": 79.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 79.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "30 g",
+      "prepNote": "chia 15 g xào hành nấm và 15 g cắt nhỏ giữ lạnh đánh bóng cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "30 g",
+      "prepNote": "trộn ở bước cuối tạo vị béo đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "kết hợp với bơ để xào hành tây và nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "giữ sôi lăn tăn trên bếp riêng suốt thời gian nấu",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1000,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm nhẹ cho nấm và điều chỉnh cuối cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện món cơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Đun nóng nước dùng và sơ chế nấm, rau bina",
+      "instruction": "Đun sôi lăn tăn 1 lít nước dùng rau củ trên bếp nhỏ để giữ nóng liên tục. Lau sạch 280 g nấm đùi gà tươi bằng khăn ẩm rồi thái lát dày 0,5 cm. Rửa sạch và để ráo 100 g rau bina tươi; băm nhỏ hành tây và tỏi tươi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm hành tỏi và áp chảo nấm vàng cạnh",
+      "instruction": "Làm nóng nồi đáy dày trên lửa vừa với 20 ml dầu ô liu nguyên chất và 15 g bơ lạt, cho hành tây vào xào 4 phút đến khi mềm trong rồi thêm tỏi băm đảo 1 phút. Tăng lửa lớn, cho nấm đùi gà vào xào khoảng 5 phút đến khi nấm xém vàng và thơm, nêm 2 g muối ăn.",
+      "tip": "Xào nấm trên lửa lớn giúp nước nấm bay hơi nhanh, giữ được độ giòn ngọt mà không bị sũng nước.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang gạo Arborio và khử rượu vang trắng",
+      "instruction": "Hạ về lửa vừa, đổ 250 g gạo Ý Arborio vào đảo đều 2 phút cho từng hạt gạo áo dầu và trong mờ ở viền. Rót 80 ml rượu vang trắng khô vào khuấy liên tục 2 phút đến khi rượu bay hơi gần hết.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om cơm Risotto từng vá nước dùng nóng",
+      "instruction": "Múc từng vá nước dùng rau củ nóng (~120 ml) chế vào nồi gạo, khuấy đều tay để tinh bột gạo tiết ra sánh mịn; đợi nước rút gần hết mới châm vá kế tiếp. Lặp lại thao tác này khoảng 18 phút đến khi hạt gạo chín mềm ngoài, hơi dai nhẹ ở lõi.",
+      "tip": "Không đổ nước dùng ồ ạt một lần vì gạo sẽ bị luộc nhão mà mất đi độ sánh kem đặc trưng.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn rau bina tươi giữ màu xanh mướt",
+      "instruction": "Khi cơm đã gần đạt độ chín mong muốn, thả 100 g rau bina tươi vào nồi, đảo nhanh tay khoảng 2 phút cho lá vừa héo mềm và hòa quyện đều vào cơm mà vẫn giữ được màu xanh tươi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đánh bóng bơ phô mai và dọn nóng",
+      "instruction": "Tắt bếp, cho 15 g bơ lạt lạnh còn lại cùng 30 g phô mai Parmesan bào mịn vào đánh mạnh tay 1 phút đến khi cơm bóng mượt. Đậy nắp nghỉ 1 phút, nêm lại 2 g muối ăn còn lại và 1,5 g tiêu đen xay rồi múc ra 3 đĩa sâu lòng dùng nóng ngay.",
+      "tip": "Dùng bơ lạt thật lạnh cho bước đánh bóng cuối khi đã tắt bếp giúp Risotto đạt độ sánh kem óng mượt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 577,
+    "energyKcal": 576.8,
+    "energyKj": 2412,
+    "proteinG": 15,
+    "fatG": 18.4,
+    "saturatedFatG": 7.9,
+    "carbG": 84.1,
+    "fiberG": 5,
+    "sugarG": 6.1,
+    "sodiumMg": 1418,
+    "saltG": 3.54,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168462",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171595",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC Arborio Rice Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4dc2dc902cfda0f26defb1ba00a0791720c4e7a244126b8fede0ff7885953196",
+    "researchedFromV2Sha256": "7c10fe09541c9202f605ad23d76ec87fb33312646b15218af25248fde13a9dea"
+  }
+}

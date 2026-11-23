@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-1d4d9422e7f81e97",
+    "slug": "cua-hap-chanh-ot",
+    "title": "Cua thịt hấp chanh sả ớt",
+    "subtitle": "Cua biển thịt chắc hấp chín đỏ au cùng sả, gừng, hành tây thơm nồng, gỡ thịt ngọt mọng chấm muối tiêu chanh ớt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Hải sản",
+      "Cua biển",
+      "Món Nam",
+      "Đãi tiệc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans"
+    ]
+  },
+  "overview": {
+    "description": "Cua thịt tươi sống được chà rửa sạch và hấp cách thủy cùng sả cây đập dập, hành tây, gừng và ớt hiểm giúp khử mùi bùn biển, giữ nguyên từng thớ thịt trắng muốt ngọt đậm quyện chén muối tiêu chanh ớt.",
+    "servingSuggestion": "Bày cua hấp đỏ au ra mâm lớn cùng vài lát chanh tươi và rau răm thơm nồng; bóc mai gỡ thịt chấm muối tiêu chanh ớt ngay khi còn nóng.",
+    "storageAndReheat": "Chỉ hấp và dùng cua tươi sống trong ngày. Nếu còn dư, gỡ sẵn thịt cua bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hấp nóng lại trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Cua thịt tươi nguyên con (4 con)",
+      "culinaryMeasure": "1800 g (khoảng 4 con cua biển)",
+      "prepNote": "ngâm nước đá cho cua ngất rồi tháo dây chà rửa sạch bùn đất quanh mai và khớp chân",
+      "componentGroup": "main",
+      "requiredQuantity": 1800,
+      "unit": "g",
+      "grossGrams": 1800,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 810,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả cây tươi",
+      "culinaryMeasure": "4 cây (khoảng 80 g)",
+      "prepNote": "bóc bẹ già, đập dập cắt khúc 5 cm để lót đáy xửng và phủ lên cua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g (1 nhánh vừa)",
+      "prepNote": "cạo vỏ, thái lát mỏng rải cùng sả để khử mùi tanh và tăng hương ấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, bổ múi cau lót dưới đáy xửng giúp hơi hấp ngọt thơm tự nhiên",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch, cắt khúc 5 cm rải lên mình cua trước khi hấp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (khoảng 15 g)",
+      "prepNote": "2 quả thái lát xéo hấp cùng cua, 1 quả băm nhỏ pha muối tiêu chanh ớt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "1/2 quả cắt lát trang trí mâm cua, 1,5 quả vắt nước cốt pha muối chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, để ráo dùng ăn kèm cua hấp giúp ấm bụng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "12 g (2 muỗng cà phê)",
+      "prepNote": "chia 6 g rắc nhẹ lên mình cua khi hấp và 6 g pha muối tiêu chanh ớt chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 8.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "trộn vào chén muối tiêu chanh ớt chấm cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "hòa vào muối tiêu chanh giúp vị chấm đậm đà dịu gắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (đun sôi hấp cua)",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "đổ đáy nồi dưới vỉ hấp",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm ngất và chà rửa sạch cua thịt nguyên con",
+      "instruction": "Giữ nguyên dây buộc, ngâm 4 con cua thịt tươi sống vào thau nước đá lạnh khoảng 15 phút cho cua ngất hoàn toàn để không bị rụng càng khi hấp. Tháo dây buộc, dùng bàn chải chà sạch kỹ toàn bộ mai, càng, các kẽ chân và phần yếm cua dưới vòi nước chảy rồi để ráo.",
+      "tip": "Ngâm nước đá lạnh làm cua ngủ yên giúp tháo dây dễ dàng, giữ trọn vẹn càng chân đẹp mắt và không làm mất nước ngọt bên trong cua.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế sả, gừng, hành tây, hành lá, ớt và rau răm",
+      "instruction": "Bóc bẹ già 4 cây sả, đập dập cắt khúc 5 cm. Cạo vỏ 30 g gừng thái lát mỏng; hành tây bóc vỏ bổ múi cau; hành lá cắt khúc 5 cm. Thái lát xéo 2 quả ớt hiểm và băm nhỏ 1 quả còn lại; nhặt rửa sạch rau răm để ráo; cắt vài lát chanh trang trí và chuẩn bị phần chanh vắt nước cốt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp cua ngửa bụng và hấp chín đỏ au",
+      "instruction": "Đổ 500 ml nước lọc vào đáy nồi hấp sao cho mặt nước thấp hơn vỉ. Xếp hành tây bổ múi, sả đập dập và gừng thái lát lên mặt vỉ, đặt 4 con cua ngửa phần yếm lên trên để giữ trọn gạch và nước ngọt. Rải hành lá, 2 quả ớt hiểm thái lát cùng 6 g muối hạt lên mình cua, đậy kín nắp đun sôi rồi hạ lửa vừa hấp 18 phút.",
+      "tip": "Luôn đặt cua nằm ngửa bụng lên trên khi hấp để phần gạch cua và nước ngọt tự nhiên đọng lại trong mai không bị chảy xuống nồi.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh ớt chấm thịt cua",
+      "instruction": "Trong lúc chờ cua chín, trộn đều 6 g muối hạt còn lại, 2 g tiêu đen xay, 5 g đường cát trắng và 1 quả ớt hiểm băm nhỏ trong chén, vắt nước cốt 1,5 quả chanh tươi vào khuấy tan tạo thành chén muối chấm sánh thơm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kiểm tra độ chín an toàn của cua hấp",
+      "instruction": "Mở nắp kiểm tra thấy toàn bộ vỏ mai, càng và chân cua đã chuyển màu đỏ cam tươi đều, tách thử phần yếm thấy gạch đặc sánh và thịt trắng đục chắc nịch không còn trong sống là đạt; nếu cua lớn dày mình có thể hấp thêm 3 phút cho chín hẳn.",
+      "tip": "Tuyệt đối không dùng cua đã chết trước khi hấp vì thịt dễ bị bở, mất vị ngọt và tiềm ẩn nguy cơ mất an toàn thực phẩm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày mâm cua hấp nóng kèm rau răm và muối chấm",
+      "instruction": "Gắp cua ra mâm lớn, để ráo hơi nóng khoảng 2 phút cho mặt vỏ khô se, xếp kèm rau răm tươi và vài lát chanh tươi xung quanh; thưởng thức nóng ngay cùng chén muối tiêu chanh ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 202,
+    "energyKcal": 202.2,
+    "energyKj": 846,
+    "proteinG": 37.3,
+    "fatG": 2.3,
+    "saturatedFatG": 0.5,
+    "carbG": 6.7,
+    "fiberG": 1.1,
+    "sugarG": 2.5,
+    "sodiumMg": 1411,
+    "saltG": 3.53,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "VN Rau Ram Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a070f49b50e179907a2466fd4e11284e009b5762ef46bdcdaa70bce0302cd71d",
+    "researchedFromV2Sha256": "c2e739d6cd0a7fd914d1c709221e640c4ce105bb8226b048f6deeffbcf8a1aa0"
+  }
+}

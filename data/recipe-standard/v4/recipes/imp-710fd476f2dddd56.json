@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-710fd476f2dddd56",
+    "slug": "com-trung-boc-omurice",
+    "title": "Cơm gà sốt cà chua bọc trứng Omurice",
+    "subtitle": "Cơm chiên thịt gà sốt cà chua đậm đà thơm mùi bơ lạt và hành tây, được bọc khéo léo trong lớp trứng chiên vàng mịn mượt chuẩn vị Yoshoku Nhật Bản"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Omurice",
+      "Trẻ em",
+      "Cơm chiên",
+      "Trứng gà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "pan_fry",
+      "assemble"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Omurice là món cơm bọc trứng nổi tiếng thuộc phong cách ẩm thực Yoshoku Nhật Bản. Hạt cơm tơi ráo xào thấm đều sốt cà chua ketchup, thịt đùi gà mềm ngọt và đậu xanh, bọc ngoài bằng lớp trứng rây mịn mềm ẩm tan chảy.",
+    "servingSuggestion": "Úp ngược từng phần Omurice ra đĩa bầu dục cho phần mép gấp nằm gọn bên dưới, rưới hình zíc zắc chút tương cà lên mặt trứng vàng mịn và dọn ăn nóng.",
+    "storageAndReheat": "Phần cơm gà chiên có thể bảo quản tủ lạnh 2 ngày hoặc đông lạnh 1 tháng; khi dùng chiên nóng lại cơm rồi mới tráng lớp trứng tươi bọc ngoài để giữ độ mềm ngon nhất."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm gạo Nhật hạt ngắn nấu chín để ráo",
+      "culinaryMeasure": "300 g (2 chén vừa)",
+      "prepNote": "dàn đều cho nguội bớt và ráo hơi nước giúp hạt cơm tơi khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (200 g)",
+      "prepNote": "chia 2 phần mỗi phần 2 quả, đánh nhẹ với chút muối rồi lọc qua rây mịn",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương",
+      "culinaryMeasure": "120 g",
+      "prepNote": "cắt hạt lựu nhỏ cạnh 1,5 cm để nhanh chín và trộn đều với cơm",
+      "componentGroup": "main",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0.5 củ (70 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ đều",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà (Ketchup)",
+      "culinaryMeasure": "75 ml (5 muỗng canh)",
+      "prepNote": "dùng 60 ml xào cô đặc cùng cơm gà và giữ lại 15 ml rưới trang trí mặt trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 86.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 86.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WORCESTERSHIRE_SAUCE",
+      "name": "Sốt Worcestershire (hoặc xì dầu)",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo chiều sâu umami cho phần cơm gà sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "35 g (~2,5 muỗng canh)",
+      "prepNote": "chia 15 g xào cơm gà và 20 g chia đôi cho 2 lần tráng trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 33.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GREEN_BEANS",
+      "name": "Đậu Hà Lan / đậu cô ve hạt nhỏ",
+      "culinaryMeasure": "30 g (2 muỗng canh)",
+      "prepNote": "luộc sơ 2 phút cho chín mềm và giữ màu xanh tươi",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đều: 1 g nêm gà cơm và 1 g đánh cùng 4 quả trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "nêm khi xào thịt gà và cơm sốt cà chua",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt gà, hành tây, đậu xanh và làm ráo cơm",
+      "instruction": "Trải 300 g cơm gạo Nhật nấu chín ra đĩa rộng cho thoát hơi ẩm. Thái hạt lựu nhỏ 0,5 củ hành tây và 120 g thịt đùi gà lọc xương (cạnh 1,5 cm); chần nhanh 30 g đậu xanh cắt nhỏ trong nước sôi 2 phút rồi vớt ra để ráo.",
+      "tip": "Cơm nguội hoặc cơm mới nấu được quạt ráo hơi nước sẽ giúp từng hạt cơm tơi bóng, không bị vón cục hay nhão bết khi trộn sốt cà chua.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm hành tây và thịt đùi gà với bơ lạt",
+      "instruction": "Đun chảy 15 g bơ lạt trong chảo rộng trên lửa vừa, cho hành tây hạt lựu vào xào khoảng 3 phút cho trong thơm. Tiếp tục thả thịt đùi gà vào xào cùng 1 g muối ăn và 1 g tiêu đen xay thêm 4–5 phút đến khi thịt gà săn chắc, chín trắng đều không còn sắc hồng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Cô sánh tương cà và chiên cơm gà đỏ bóng",
+      "instruction": "Hạ lửa vừa nhỏ, đổ 60 ml tương cà và 5 ml sốt Worcestershire vào chảo gà hành, đảo đều 2 phút cho nước sốt bay bớt hơi ẩm và dịu vị chua gắt. Trút 300 g cơm vào dùng sạn ép tán nhẹ cho tơi hạt rồi đảo cùng đậu xanh thêm 3 phút cho cơm thấm đều màu đỏ cam, chia ra hai phần bằng nhau.",
+      "tip": "Cô đặc nhẹ tương cà trước khi cho cơm vào giúp loại bỏ nước dư, giữ hạt cơm săn ráo và dậy mùi thơm bơ cà chua nồng nàn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Đánh trứng và lọc qua rây cho vỏ trứng mịn lụa",
+      "instruction": "Làm từng suất một: đập 2 quả trứng gà vào bát với 0,5 g muối ăn, dùng đũa đánh tan đều theo đường zíc zắc rồi lọc qua rây lưới mịn vào ca nhỏ để loại bỏ dây chằng lòng trắng. Lặp lại tương tự cho 2 quả trứng của suất thứ hai."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Tráng lớp trứng nửa chín mềm mịn trên chảo chống dính",
+      "instruction": "Đun chảy 10 g bơ lạt trong chảo chống dính nhỏ đường kính 20 cm trên lửa vừa, xoay tráng đều mặt chảo. Đổ bát trứng thứ nhất vào, vừa dùng đầu đũa khuấy nhanh theo vòng tròn ở giữa chảo vừa lắc nhẹ chảo khoảng 1 phút cho đến khi trứng tạo vân mịn, mặt trên vẫn còn hơi ướt thì tắt bếp và đặt đáy chảo lên khăn ẩm 5 giây.",
+      "tip": "Đặt chảo lên khăn ẩm giúp hạ nhiệt tức thì để lớp trứng không bị khô cháy trong lúc tạo hình bọc cơm.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bọc cơm gà, tạo hình oval và rưới tương cà",
+      "instruction": "Đặt một phần cơm gà sốt cà chua vào giữa mặt trứng theo chiều thuôn dài, nhẹ tay gấp hai mép trứng phủ ôm lấy cơm rồi kê sát đĩa vào thành chảo úp ngược lại cho mặt láng hướng lên trên. Dùng khăn giấy nắn nhẹ thành khối oval đẹp mắt, làm tương tự suất thứ hai, rưới 15 ml tương cà còn lại thành đường zíc zắc và dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 615,
+    "energyKcal": 614.8,
+    "energyKj": 2572,
+    "proteinG": 28.2,
+    "fatG": 28.7,
+    "saturatedFatG": 13.2,
+    "carbG": 59.5,
+    "fiberG": 1.8,
+    "sugarG": 11.7,
+    "sodiumMg": 986,
+    "saltG": 2.47,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168878",
+      "USDA FDC 169076",
+      "USDA FDC 169961",
+      "USDA FDC 170000",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 172227",
+      "USDA FDC 172385",
+      "USDA FDC 173430",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4cc3a30db55b7b54af699b819dc0011a47a8ef05b028178f583db8a142cb6233",
+    "researchedFromV2Sha256": "cff17e56b24663e5169818f0ab2d357033e3922934e6799de6b0499f59eac1fd"
+  }
+}

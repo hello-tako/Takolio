@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6d3fa354c64cf8b1",
+    "slug": "ca-kho-tuong-dam",
+    "title": "Cá kho tương đậm kiểu Trung",
+    "subtitle": "Cá nguyên con áp chảo vàng giòn da rồi kho sánh cùng rượu Thiệu Hưng, giấm đen Trấn Giang và xì dầu đậm đà"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Cá nguyên con",
+      "Trung Hoa",
+      "Đậm đà",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cá kho tàu trứ danh kiểu Trung Hoa không thêm nước mà om cá trực tiếp trong hỗn hợp rượu Thiệu Hưng, giấm đen Trấn Giang và xì dầu sánh bóng, giữ nguyên lớp da vàng giòn và thớ thịt trắng ngọt.",
+    "servingSuggestion": "Đặt nguyên con cá lên đĩa bầu dục lớn, rưới đều phần sốt nâu đỏ sánh mịn lên mình cá và dùng nóng cùng cơm trắng.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn, cho cá cùng nước sốt vào chảo đậy nắp hâm trên lửa nhỏ 5–6 phút đến khi nóng kỹ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá rô phi nguyên con làm sạch",
+      "culinaryMeasure": "1000 g (1 con lớn)",
+      "prepNote": "đánh sạch vảy, bỏ mang và màng đen trong bụng, rửa sạch rồi thấm thật khô, khía 3 đường chéo mỗi bên mình cá",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "g",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 780,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "phủ một lớp thật mỏng lên hai mặt da cá trước khi áp chảo để giữ da nguyên vẹn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "dùng để phi thơm gừng và áp chảo vàng đều hai mặt cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 31.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (khoảng 6 lát)",
+      "prepNote": "rửa sạch, thái lát mỏng để phi thơm chống dính chảo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 3–4 cây)",
+      "prepNote": "rửa sạch, cắt khúc dài 5 cm để kho cùng cá và rắc trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "120 ml (~1/2 cốc)",
+      "prepNote": "tạo nền nước kho khử tanh hoàn toàn và giúp thịt cá thơm ngọt đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 118.8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 59.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu và độ sánh bóng đặc trưng cho sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_VINEGAR",
+      "name": "Giấm đen Trấn Giang",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo chiều sâu hương vị chua thanh và giúp xương cá mềm hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 36.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tạo màu nâu đỏ óng ánh đặc trưng cho món cá kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "nêm vị mặn hài hòa cho nước sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3–4 tép)",
+      "prepNote": "tùy chọn bóc vỏ, thái lát mỏng cho vào kho cùng gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "tùy chọn thái lát vát cho vào cùng nước sốt nếu thích cay nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "tùy chọn xát nhẹ ướp cá trước khi áp chảo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tùy chọn ướp khử mùi tanh bên trong bụng cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm thật khô cá, khía mình và phủ bột bắp mỏng",
+      "instruction": "Làm sạch hoàn toàn vảy, mang và màng đen trong bụng cá rô phi. Dùng khăn giấy thấm thật khô cả bên ngoài lẫn trong bụng cá, dùng dao sắc khía 3 đường chéo song song trên mỗi bên thân cá. Nếu thích, xát nhẹ 1,5 g muối ăn và 1 g tiêu trắng xay vào mình cá rồi phủ một lớp 6 g bột bắp thật mỏng đều khắp hai mặt.",
+      "tip": "Thấm cá thật khô và chỉ phủ lớp bột bắp thật mỏng là bí quyết giúp da cá vàng giòn, không bị dính và tróc da khi áp chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm gừng tươi chống dính chảo",
+      "instruction": "Làm nóng chảo sâu lòng lớn trên lửa lớn đến khi mặt chảo hơi bốc khói, đổ 45 ml dầu ăn và thả 6 lát gừng tươi vào rồi hạ xuống lửa vừa. Phi gừng khoảng 1 phút cho dậy mùi thơm và các lát gừng chuyển vàng nhẹ thì gắp gừng ra chén để riêng.",
+      "tip": "Chà nhẹ mặt chảo bằng gừng và dầu nóng giúp tạo lớp chống dính tự nhiên, rất hiệu quả khi chiên cá nguyên con."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo mặt thứ nhất của cá không đảo lật sớm",
+      "instruction": "Nhẹ nhàng đặt con cá vào chảo dầu nóng trên lửa vừa. Giữ nguyên vị trí cá, tuyệt đối không đẩy hay lật cá trong 5 phút đầu tiên; chỉ thỉnh thoảng nghiêng nhẹ chảo cho dầu láng đều quanh thân cá để mặt dưới chín vàng giòn.",
+      "tip": "Nếu xê dịch cá khi da chưa chín giòn, lớp da rất dễ bám chặt vào đáy chảo và bị rách.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt và áp chảo vàng đều mặt còn lại",
+      "instruction": "Sau 5 phút, lắc nhẹ chảo để kiểm tra cá đã tự róc khỏi đáy. Dùng hai xẻng rộng bản nhẹ nhàng lật cá sang mặt còn lại và tiếp tục áp chảo trên lửa vừa thêm 5 phút nữa đến khi hai mặt da cá vàng đều đẹp mắt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Rưới rượu Thiệu Hưng, giấm đen và nước tương kho cá",
+      "instruction": "Cho gừng đã phi trở lại chảo cùng hành lá cắt khúc (thêm tỏi thái lát và ớt hiểm đỏ nếu dùng). Rưới đều 120 ml rượu Thiệu Hưng, 35 ml giấm đen Trấn Giang, 15 ml xì dầu đặc, 15 ml xì dầu nhạt và 25 g đường cát trắng quanh mình cá, giữ lửa vừa cho hỗn hợp sôi bùng lên rồi hạ lửa vừa-nhỏ."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Om sánh sốt, rưới đều hai mặt và dọn nóng",
+      "instruction": "Liên tục dùng muôi múc nước sốt rưới đều lên thân cá, kho mỗi mặt khoảng 4–5 phút đến khi nước sốt cạn sánh lại gần như siro và thịt cá ở phần dày nhất tách róc dễ dàng khỏi xương. Nhẹ nhàng gắp cá ra đĩa lớn, rưới toàn bộ phần sốt nâu đỏ óng ánh lên trên và dùng nóng với cơm trắng.",
+      "tip": "Tránh lật trở cá quá nhiều lần khi kho để giữ nguyên hình dáng đẹp mắt; thay vào đó hãy múc nước sốt rưới liên tục lên thân cá.",
+      "timerMinutes": 9
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 341,
+    "energyKcal": 340.8,
+    "energyKj": 1425,
+    "proteinG": 39.3,
+    "fatG": 12.5,
+    "saturatedFatG": 2.4,
+    "carbG": 12.6,
+    "fiberG": 0.6,
+    "sugarG": 7.7,
+    "sodiumMg": 745,
+    "saltG": 1.86,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Chinkiang Black Vinegar Ref",
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170933",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175176"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a510891d8a2135a5405fd24108770af9fa9c1265ed38266e63d4eaa1dc03bbfa",
+    "researchedFromV2Sha256": "d7f2b2197eee328041dc277d93bb25ea703fa8eb508391e6c53c54e1a23b194a"
+  }
+}

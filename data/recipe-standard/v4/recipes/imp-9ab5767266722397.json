@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9ab5767266722397",
+    "slug": "canh-muc-ca-chua-chua-nhe",
+    "title": "Canh mực cà chua chua nhẹ",
+    "subtitle": "Mực ống thái khoanh giòn ngọt nấu cùng cà chua chín chua dịu và gừng thơm ấm bụng, món canh hải sản nhanh gọn cho bữa tối"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món canh",
+      "Hải sản",
+      "Dưới 20 phút",
+      "Dễ nấu",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Món canh biển thanh nhẹ dễ nấu với từng khoanh mực ống giòn sần sật, nước canh ánh đỏ cam từ cà chua xào mềm, dậy hương gừng thái sợi ấm áp và chút chanh tươi chua dịu.",
+    "servingSuggestion": "Dọn canh nóng vào tô ngay khi mực vừa chín tới, vắt nhẹ nước cốt chanh tùy thích, rắc hành lá và tiêu xay; ăn kèm cơm trắng và chén nước mắm ớt chấm mực.",
+    "storageAndReheat": "Canh mực ngon nhất khi dùng hết ngay trong bữa; không nên đun lại nhiều lần vì mực sẽ bị dai và tiết nước tanh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi làm sạch",
+      "culinaryMeasure": "350 g",
+      "prepNote": "rút đầu, bỏ túi mực và nang cứng, lột sạch lớp da ngoài, rửa kỹ để ráo rồi thái khoanh dày 1,5–2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 297.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2.5 quả (~300 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.96,
+      "edibleGrams": 288,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, rửa sạch, một nửa thái lát mỏng để phi khử tanh và một nửa thái sợi mịn rắc vào canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "0.5 quả (~22,5 g)",
+      "prepNote": "vắt lấy nước cốt (bỏ hạt) thêm vào khi hoàn thiện để tạo vị chua thanh nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 22.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 nhánh)",
+      "prepNote": "rửa sạch, cắt khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "nhặt gốc, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím, gừng và xào mềm cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 6 ml ướp mực và 14 ml nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp mực và 5 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua nhẹ của cà chua và chanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "dùng 2 g xát rửa khử nhớt mực và 2 g nêm khi xào cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp mực cho thơm, nửa rắc lên tô canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1100 ml (1,1 lít)",
+      "prepNote": "lượng nước vừa đủ cho 3 tô canh mực thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1100,
+      "unit": "ml",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 990,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch mực ống và khử mùi tanh",
+      "instruction": "Rút bỏ đầu, ruột, túi mực và sống lưng cứng của 350 g mực ống tươi; lột bỏ lớp màng da bên ngoài nếu thích nước canh thật trong. Chà xát nhanh mực với 2 g muối ăn rồi rửa sạch nhiều lần bằng nước lạnh, để thật ráo và cắt khoanh tròn dày 1,5–2 cm.",
+      "tip": "Bóp rửa nhanh mực với chút muối rồi để thật ráo nước giúp mực hết nhớt và giữ độ giòn sần sật khi nấu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp mực và sơ chế cà chua, gừng, hành",
+      "instruction": "Ướp mực cắt khoanh với 6 ml nước mắm, 3 g hạt nêm và 1 g tiêu đen xay trong 10 phút cho thấm vị. Trong lúc chờ, bổ múi cau 2,5 quả cà chua, băm nhỏ 25 g hành tím, thái lát một nửa lượng gừng và thái sợi phần gừng còn lại; cắt khúc hành lá và ngò rí.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành gừng và xào cà chua lên màu",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, cho hành tím băm và gừng thái lát vào phi thơm khoảng 1 phút cho dậy mùi ấm nồng. Trút cà chua bổ múi cau vào cùng 2 g muối ăn còn lại, xào đảo khoảng 2–3 phút đến khi cà chua mềm nhẹ và ra màu đỏ cam đẹp mắt.",
+      "tip": "Phi thơm hành tím cùng gừng lát trước khi xào cà chua là bước khử mùi tanh đặc trưng giúp canh mực thơm dịu hơn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu sôi nước dùng chua ngọt thanh nhẹ",
+      "instruction": "Đổ 1,1 lít nước lọc vào nồi cà chua, bật lửa lớn đun sôi bùng rồi nêm 14 ml nước mắm còn lại, 5 g hạt nêm và 5 g đường cát trắng, nấu sôi 3 phút cho gia vị tan đều và cà chua tiết vị chua dịu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả mực vào nấu chín tới giữ độ giòn ngọt",
+      "instruction": "Khi nước đang sôi đều trên lửa lớn vừa, thả toàn bộ mực đã ướp và gừng thái sợi vào nồi. Nấu đúng 2–3 phút cho nước sôi lại, khoanh mực cong tròn, chuyển màu trắng đục săn chắc và chín hoàn toàn bên trong rồi nêm nếm lại cho vừa miệng.",
+      "tip": "Chỉ thả mực khi nước đang sôi mạnh và nấu khoảng 2–3 phút để mực vừa chín tới, giữ trọn độ giòn ngọt mà không bị dai.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với chanh tươi và hành ngò",
+      "instruction": "Tắt bếp ngay, thả hành lá và ngò rí cắt nhỏ vào đảo nhẹ. Múc canh ra tô, vắt thêm nước cốt của 0,5 quả chanh tươi tùy khẩu vị và rắc 1 g tiêu đen xay lên trên, thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 177,
+    "energyKcal": 177.3,
+    "energyKj": 742,
+    "proteinG": 17.5,
+    "fatG": 6.1,
+    "saturatedFatG": 1.1,
+    "carbG": 13.4,
+    "fiberG": 2.1,
+    "sugarG": 5.8,
+    "sodiumMg": 1431,
+    "saltG": 3.58,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "78ceb42b4a9a7fb2c5fd50eba41946dd16f7a1c0f7ac1e39a62c22d379855b70",
+    "researchedFromV2Sha256": "306798046fb51a21de059fe3037de3d6f23d9a26697e2bf70999b602de85ccb1"
+  }
+}

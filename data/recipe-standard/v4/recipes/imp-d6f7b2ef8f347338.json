@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d6f7b2ef8f347338",
+    "slug": "canh-dua-suon-non",
+    "title": "Canh dứa sườn non",
+    "subtitle": "Sườn non heo hầm mềm ngọt xương hòa quyện cùng vị chua ngọt tự nhiên của dứa chín và cà chua đặc trưng ẩm thực Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Sườn non",
+      "Dứa chín",
+      "Nam Bộ",
+      "Chua ngọt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Canh dứa sườn non là món canh khai vị quen thuộc trong bữa cơm Nam Bộ. Sườn non được chần sạch rồi hầm liu riu ra nước ngọt thanh, nấu cùng dứa chín và cà chua tạo vị chua ngọt tự nhiên rất bắt cơm.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, rắc hành lá và ngò gai thái nhỏ; dùng kèm cơm trắng và chén nước mắm ớt mặn để chấm từng miếng sườn non mềm ngọt.",
+    "storageAndReheat": "Có thể bảo quản ngăn mát tủ lạnh trong hộp kín tối đa 2 ngày; khi ăn đun sôi lại trên lửa vừa 5 phút để sườn nóng đều và thấm vị nước canh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa qua nước muối loãng, chặt miếng vừa ăn 3–4 cm, chần nước sôi 3 phút rồi rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 325,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa (thơm) chín",
+      "culinaryMeasure": "1/2 quả (khoảng 300 g nguyên vỏ)",
+      "prepNote": "gọt sạch vỏ và mắt, bỏ lõi cứng, thái lát xéo dày 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau (6 miếng mỗi quả)",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "TAMARIND",
+      "name": "Me chín vắt nước cốt",
+      "culinaryMeasure": "20 g (1 muỗng canh cơm me)",
+      "prepNote": "ngâm 50 ml nước nóng từ lượng nước nấu, dằm lấy nước cốt lọc bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 17,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, thái lát hoặc băm nhỏ (chia đôi để ướp sườn và phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 20 g)",
+      "prepNote": "rửa sạch, đầu hành băm nhỏ ướp sườn, lá xanh cắt khúc 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "10 g (3–4 lá)",
+      "prepNote": "rửa sạch, thái khúc 1,5 cm để rắc sau cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (1,5 muỗng canh)",
+      "prepNote": "dùng để xào săn sườn non và xào sơ cà chua dứa",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 17.48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 10 ml ướp sườn và 20 ml nêm nước canh sau khi hầm",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp sườn và 5 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (1,5 muỗng cà phê)",
+      "prepNote": "dùng 4 g chà rửa và chần sườn rồi xả bỏ, 4 g còn lại nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua thanh của dứa và me",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/3 muỗng cà phê)",
+      "prepNote": "ướp sườn khử mùi và rắc hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng 50 ml lọc me và 1450 ml hầm sườn nấu canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1350,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sạch và ướp gia vị cho sườn non",
+      "instruction": "Chặt 500 g sườn non heo thành khúc dài 3–4 cm, chà xát với 4 g muối ăn rồi rửa sạch. Đun sôi một nồi nước phụ, thả sườn vào chần 3 phút trên lửa lớn cho ra hết tạp chất rồi vớt ra xả sạch dưới vòi nước lạnh, để ráo. Ướp sườn với 10 ml nước mắm, 3 g hạt nêm, một nửa hành tím băm, đầu hành băm và 0,5 g tiêu đen xay trong 15 phút.",
+      "tip": "Chần sườn rồi rửa lại dưới vòi nước lạnh trước khi ướp là bí quyết giúp nước canh sườn trong veo, không có mùi hôi và ít bọt đục.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế dứa chín, cà chua, me và rau thơm",
+      "instruction": "Gọt sạch vỏ và mắt 1/2 quả dứa chín, bỏ lõi rồi thái lát xéo dày 0,8 cm. Rửa sạch 2 quả cà chua, bổ múi cau. Ngâm 20 g cơm me chín với 50 ml nước nóng lấy từ phần nước lọc, dằm nhuyễn rồi lọc qua rây lấy nước cốt. Rửa sạch và thái khúc hành lá, ngò gai."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn sườn non rồi hầm mềm ngọt nước",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, phi thơm phần hành tím băm còn lại rồi cho sườn non đã ướp vào đảo săn 3 phút cho thịt bên ngoài hơi se lại. Đổ 1450 ml nước lọc vào nồi, đun sôi bùng rồi hạ lửa nhỏ liu riu, đậy hé vung hầm 25 phút và thường xuyên hớt bọt để sườn mềm rục và nước dùng ngọt trong.",
+      "tip": "Giữ lửa nhỏ liu riu khi hầm sườn để thịt tiết chất ngọt từ từ vào nước dùng mà nước không bị đục và không cạn nhanh.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào sơ cà chua dứa và nấu hòa quyện",
+      "instruction": "Trong chảo nhỏ, làm nóng 5 ml dầu ăn còn lại trên lửa vừa, cho dứa thái lát và cà chua bổ múi cau vào đảo nhẹ 2 phút cho cà chua lên màu đẹp rồi trút toàn bộ vào nồi sườn đang hầm. Tiếp tục nấu thêm 5 phút trên lửa vừa để vị chua ngọt tự nhiên của dứa và cà chua tiết vào nước canh.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm nếm chua ngọt cân bằng",
+      "instruction": "Từ từ rót nước cốt me đã lọc vào nồi tùy khẩu vị chua mong muốn, nêm tiếp 20 ml nước mắm ngon, 5 g hạt nêm còn lại, 4 g muối ăn và 6 g đường cát trắng. Khuấy nhẹ và nấu thêm 2 phút cho gia vị thấm đều vào từng miếng sườn non, đảm bảo sườn chín mềm rời xương nhẹ.",
+      "tip": "Nêm nước cốt me từng chút một và nếm thử lại vì độ chua tự nhiên của dứa chín và cà chua sẽ khác nhau theo mùa."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành ngò và dọn canh nóng",
+      "instruction": "Tắt bếp, thả hành lá cắt khúc và ngò gai vào nồi canh cho dậy mùi thơm đặc trưng miền Nam. Múc canh ra tô lớn, rắc nốt 0,5 g tiêu đen xay lên mặt và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 327,
+    "energyKcal": 327,
+    "energyKj": 1368,
+    "proteinG": 14.5,
+    "fatG": 23.6,
+    "saturatedFatG": 7.7,
+    "carbG": 15,
+    "fiberG": 2,
+    "sugarG": 10.3,
+    "sodiumMg": 1493,
+    "saltG": 3.73,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169124",
+      "USDA FDC 169655",
+      "USDA FDC 169918",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN Culinary Herb Ref",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b2964be88a73bd77f88807efcb925e53a0fe6edadb0b047c77156bd29f0524e0",
+    "researchedFromV2Sha256": "50283ebdc7b6c09b55126ad7b39adbecb011c08985f532f78772a85bf77a5746"
+  }
+}

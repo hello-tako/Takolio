@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c78c4d4ca35484d3",
+    "slug": "com-nam-han",
+    "title": "Cơm nấu nấm Hàn Quốc",
+    "subtitle": "Gạo tẻ hạt ngắn dẻo thơm nấu cùng nấm đùi gà, bào ngư và kim châm trong nước dùng tảo bẹ, chan sốt xì dầu hành lá"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Cơm nấm",
+      "Món chay",
+      "Hàn Quốc",
+      "Nấm tươi",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Nồi cơm nấm Hàn Quốc (Beoseot-bap) tỏa hương thơm dịu tự nhiên nhờ gạo được rang sơ rồi nấu trực tiếp với nước dùng tảo bẹ Kombu cùng ba loại nấm ngọt giòn, ăn kèm chén sốt xì dầu hành lá thanh tao.",
+    "servingSuggestion": "Xới nhẹ cho cơm tơi đều cùng các loại nấm, múc ra chén rồi rưới từng muỗng sốt xì dầu hành lá theo khẩu vị; ăn kèm kim chi hoặc rong biển cuộn.",
+    "storageAndReheat": "Cơm nấm bảo quản hộp kín trong ngăn mát tối đa 2 ngày; khi hâm nóng hãy vẩy thêm 1 muỗng canh nước lọc rồi đậy nắp hấp hoặc quay lò vi sóng để hạt cơm mềm dẻo lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ hạt ngắn",
+      "culinaryMeasure": "400 g (khoảng 2 chén gạo)",
+      "prepNote": "vo sạch nhẹ tay rồi ngâm nước lạnh 30 phút, chắt thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà và nấm bào ngư",
+      "culinaryMeasure": "350 g (250 g nấm đùi gà, 100 g nấm bào ngư)",
+      "prepNote": "nấm đùi gà cắt lát dày 0,8 cm (giữ lại cuống nấu nước dùng), nấm bào ngư xé sợi vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 332.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ENOKI_MUSHROOM",
+      "name": "Nấm kim châm tươi",
+      "culinaryMeasure": "100 g (1 gói nhỏ)",
+      "prepNote": "cắt bỏ phần gốc rễ, rửa nhanh rồi tách thành từng cụm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ Kombu khô",
+      "culinaryMeasure": "8 g (1 miếng khoảng 8x8 cm)",
+      "prepNote": "lau sạch lớp phấn trắng nhẹ bằng khăn ẩm, nấu lấy nước dùng rồi vớt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng để pha chén sốt xì dầu chan cơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhuyễn để trộn sốt xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng để rang sơ hạt gạo giúp cơm tơi bóng",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "trộn áo hành lá trước khi pha sốt để hành xanh tươi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "trộn vào chén sốt chan cơm tạo vị bùi thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "850 ml",
+      "prepNote": "800 ml ninh nước dùng tảo bẹ cùng cuống nấm lấy khoảng 650 ml nấu cơm, trích 30 ml pha sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 850,
+      "unit": "ml",
+      "grossGrams": 850,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 722.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo ngâm gạo tẻ và nấu nước dùng nấm tảo bẹ",
+      "instruction": "Vo sạch 400 g gạo tẻ hạt ngắn 2–3 lần nước, ngâm trong nước lạnh khoảng 30 phút rồi vớt ra rổ để thật ráo. Cho 820 ml nước lọc vào nồi cùng 8 g tảo bẹ Kombu khô và phần gốc cuống nấm đùi gà đã rửa sạch, đun sôi rồi hạ lửa nhỏ ninh liu riu 15 phút cho ngọt nước. Vớt bỏ xác tảo bẹ và cuống nấm, đong lấy khoảng 650 ml nước dùng nóng.",
+      "tip": "Ngâm gạo trước khi nấu giúp hạt cơm chín đều từ lõi và tạo độ dẻo bóng; không nấu tảo bẹ quá lâu ở lửa lớn để tránh nước dùng bị nhớt.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Cắt lát nấm đùi gà, xé nấm bào ngư và tách nấm kim châm",
+      "instruction": "Nấm đùi gà thái lát dày 0,8 cm (cắt hơi dày vì nấm sẽ ngót lại khi chín). Nấm bào ngư dùng tay xé dọc thành sợi vừa ăn để không bị nát, còn nấm kim châm tươi cắt bỏ gốc, tách thành từng chùm nhỏ để riêng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang sơ gạo và nấu cơm cùng nấm đùi gà, bào ngư",
+      "instruction": "Làm nóng nồi gang đáy dày trên lửa vừa với 15 ml dầu ăn thực vật, trút gạo đã ráo vào đảo đều tay khoảng 3 phút đến khi hạt gạo hơi trong lại. Hạ lửa vừa, chế từ từ 650 ml nước dùng tảo bẹ vào vừa ngập mặt gạo rồi xếp đều nấm đùi gà và nấm bào ngư lên trên. Đậy kín nắp, nấu lửa vừa 5 phút rồi hạ lửa nhỏ nấu thêm 15 phút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha chén sốt xì dầu hành lá dầu mè",
+      "instruction": "Trong lúc chờ cơm chín, cho hành lá thái nhuyễn vào chén trộn đều với 10 ml dầu mè rang trước để giữ màu xanh tươi. Tiếp tục thêm 30 ml xì dầu, 30 ml nước lọc còn lại và 4 g hạt mè trắng rang, khuấy đều cho gia vị hòa quyện.",
+      "tip": "Áo hành lá với dầu mè trước khi thêm xì dầu giúp hành giữ độ giòn tươi, không bị héo sẫm màu."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu cạn hơi và ủ kín nồi cơm nấm",
+      "instruction": "Sau 15 phút nấu lửa nhỏ, hạ về mức lửa nhỏ nhất nấu tiếp 8 phút đến khi không còn hơi nước thoát mạnh ở mép nắp. Tắt bếp và giữ nguyên nắp đậy kín để ủ cơm thêm 5 phút cho hạt cơm chín ráo hoàn toàn.",
+      "tip": "Tuyệt đối không mở nắp trong suốt 5 phút ủ cơm để giữ trọn hơi nóng làm nấm và hạt cơm dẻo thơm đồng đều.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Xếp nấm kim châm hấp hơi và dọn cơm nóng",
+      "instruction": "Mở nắp nồi, trải đều 100 g nấm kim châm lên bề mặt cơm nóng và đậy nắp lại 1 phút cho nấm chín mềm bằng hơi nóng tự nhiên. Dùng muôi xới nhẹ từ dưới lên cho cơm tơi đều với ba loại nấm, múc ra chén và dọn kèm sốt xì dầu hành lá để chan trực tiếp khi ăn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 458,
+    "energyKcal": 458.1,
+    "energyKj": 1917,
+    "proteinG": 10.9,
+    "fatG": 7.3,
+    "saturatedFatG": 1.1,
+    "carbG": 87.3,
+    "fiberG": 4.3,
+    "sugarG": 1.3,
+    "sodiumMg": 505,
+    "saltG": 1.26,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168457",
+      "USDA FDC 168580",
+      "USDA FDC 169253",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d80452e133c80da2d221a0a05e8933952f4faa10769fbbfdb587eb6dac07b852",
+    "researchedFromV2Sha256": "9ddb98ee95bf89970ec85c85da5a2cd682cb99074f3dfb226a78c37c40aca126"
+  }
+}

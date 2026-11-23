@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-122b920eba3f2e50",
+    "slug": "mi-xao-dau-phu",
+    "title": "Mì xào đậu phụ cải thảo kiểu Hoa",
+    "subtitle": "Sợi mì Udon dai mềm xào cùng đậu phụ áp chảo vàng giòn, cải thảo, cà rốt và sốt tương đen Hoisin đậm đà kiểu Trung Hoa"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì xào",
+      "Đậu phụ",
+      "Món chay",
+      "Nhanh gọn",
+      "Cải thảo"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì xào đậu phụ kiểu Hoa hài hòa giữa sợi mì Udon mềm dai thấm đẫm sốt tương Hoisin sánh bóng, đậu phụ vàng ruộm bên ngoài béo mềm bên trong cùng cải thảo và cà rốt giòn ngọt.",
+    "servingSuggestion": "Chia mì nóng ra đĩa, rắc thêm chút tiêu xay hoặc hành lá, có thể dọn kèm ít tương ớt nếu thích vị cay nhẹ.",
+    "storageAndReheat": "Mì xào ngon nhất khi ăn nóng ngay sau khi nấu; nếu dư có thể bảo quản hộp kín trong ngăn mát 1 ngày và xào lại nhanh với 1 muỗng canh nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "UDON_WHEAT",
+      "name": "Mì Udon lúa mì tươi",
+      "culinaryMeasure": "2 gói (400 g)",
+      "prepNote": "tách tơi sợi trước khi chần nhanh cho không vón cục",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "pack",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng (loại cứng)",
+      "culinaryMeasure": "3 bìa (360 g)",
+      "prepNote": "ép nhẹ cho ráo nước, thấm khô rồi cắt khối vuông cạnh 2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "NAPA_CABBAGE",
+      "name": "Cải thảo tươi",
+      "culinaryMeasure": "220 g (khoảng 4–5 lá lớn)",
+      "prepNote": "rửa sạch, tách phần cọng và lá thái miếng vừa ăn rộng 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 198,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, bào hoặc thái sợi mỏng dài 5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (40 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm thật nhuyễn để pha sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng pha hỗn hợp sốt xào mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "HOISIN_SAUCE",
+      "name": "Tương đen Hoisin",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt mặn đậm đà đặc trưng kiểu Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "làm dậy hương thơm cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "trộn vào nước sốt tạo mùi thơm béo đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "8 g (~1 muỗng canh)",
+      "prepNote": "hòa vào sốt giúp nước sốt sánh bám đều sợi mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị mặn của xì dầu và tương đen",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml áp chảo đậu phụ và 10 ml xào rau củ",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml",
+      "prepNote": "dùng 1150 ml trụng mì rồi chắt bỏ, giữ 50 ml pha loãng nước sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ép ráo đậu phụ và sơ chế rau củ",
+      "instruction": "Đặt 3 bìa đậu phụ trắng lên khăn giấy sạch, ép nhẹ khoảng 5 phút cho thoát bớt nước rồi cắt thành khối vuông cạnh 2,5 cm. Rửa sạch cải thảo và cà rốt; cải thảo thái miếng vừa ăn tách riêng phần cọng trắng với lá xanh, cà rốt bào sợi mỏng, hành lá cắt khúc 4 cm, còn gừng tươi và tỏi khô băm nhuyễn.",
+      "tip": "Ép ráo đậu phụ trước khi áp chảo giúp mặt đậu nhanh vàng giòn, không bị bắn dầu và không nát vỡ khi đảo cùng mì."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt tương đen Hoisin",
+      "instruction": "Cho vào bát nhỏ 25 ml xì dầu, 20 ml tương đen Hoisin, 15 ml rượu Thiệu Hưng, 10 ml dầu mè thơm, 8 g bột bắp, 6 g đường cát trắng, gừng băm, tỏi băm và 50 ml nước lọc. Khuấy đều tay đến khi bột bắp và đường tan hoàn toàn rồi đặt sẵn bên cạnh bếp.",
+      "tip": "Pha sẵn chén sốt trước khi xào giúp bạn chủ động tốc độ trên lửa lớn, tránh tình trạng rau chín nhũn trong lúc nêm từng loại gia vị."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Trụng tơi mì Udon lúa mì",
+      "instruction": "Đun sôi khoảng 1150 ml nước lọc trong nồi vừa, thả 2 gói mì Udon lúa mì tươi vào trụng khoảng 1 đến 2 phút trên lửa lớn, dùng đũa khuấy nhẹ cho các sợi mì tách tơi hoàn toàn mà không bị nát. Vớt mì ra rổ cho ráo hết nước.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo đậu phụ vàng giòn các mặt",
+      "instruction": "Làm nóng chảo chống dính lớn trên lửa vừa với 15 ml dầu ăn thực vật, xếp đều các khối đậu phụ vào thành một lớp thưa. Áp chảo khoảng 8 phút, lật đều các mặt đến khi đậu phụ vàng nâu giòn cạnh thì gắp riêng ra đĩa.",
+      "tip": "Không lật đậu phụ quá sớm; hãy đợi mặt dưới se vàng hẳn mới trở mặt để đậu giữ nguyên khối vuông đẹp mắt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào nhanh cà rốt và cải thảo lửa lớn",
+      "instruction": "Cho 10 ml dầu ăn còn lại vào chảo, tăng lên lửa lớn. Thả cà rốt thái sợi và phần cọng trắng cải thảo vào đảo nhanh 1 phút cho dậy mùi thơm, sau đó thêm phần lá xanh cải thảo vào xào tiếp khoảng 45 giây đến khi rau vừa chín tới, vẫn giữ độ giòn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo mì quyện sốt đậu phụ và dọn nóng",
+      "instruction": "Trút mì Udon đã ráo nước, đậu phụ áp chảo, hành lá cắt khúc và khuấy lại chén sốt tương đen Hoisin rưới đều vào chảo. Xóc và đảo nhẹ tay trên lửa lớn khoảng 1 phút cho nước sốt sánh bóng áo đều từng sợi mì và rau củ rồi tắt bếp, dọn ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 411,
+    "energyKcal": 410.6,
+    "energyKj": 1717,
+    "proteinG": 18.1,
+    "fatG": 17.8,
+    "saturatedFatG": 2.6,
+    "carbG": 46.3,
+    "fiberG": 5,
+    "sugarG": 8.3,
+    "sodiumMg": 877,
+    "saltG": 2.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Boiled/Fresh Udon",
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 169977",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 171028",
+      "USDA FDC 171370",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "970936443e0d5419c3c731500b93aec739e6a176a3e1552121e75fc4590046d4",
+    "researchedFromV2Sha256": "25add1b9996b287d2a6e851fc2b491fa24b450cabf170e21428d33c72e062663"
+  }
+}

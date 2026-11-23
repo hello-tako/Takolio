@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d6e35b3fa19080de",
+    "slug": "trung-om-nam-nhat",
+    "title": "Trứng om nấm đùi gà kiểu Nhật",
+    "subtitle": "Nấm đùi gà om mềm trong nước dùng Dashi xì dầu Mirin thanh ngọt rồi phủ trứng gà đánh tan om chín mượt mà, ấm bụng cho bữa cơm nhẹ"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món om Nhật",
+      "Trứng gà",
+      "Nấm đùi gà",
+      "Nhanh gọn",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món trứng om nấm Tamago-toji kiểu gia đình Nhật với nấm đùi gà thái lát sần sật thấm đẫm nước dùng Dashi pha xì dầu nhạt, rượu Mirin và Sake, ôm trọn bởi lớp trứng gà đánh mịn chín mềm vừa tới.",
+    "servingSuggestion": "Múc trứng om nấm ra tô cùng ít nước dùng thanh ngọt, rắc hành lá xanh và tiêu đen xay nếu thích; dùng nóng trực tiếp chan lên cơm trắng hoặc ăn kèm mì Udon.",
+    "storageAndReheat": "Món trứng om ngon nhất khi thưởng thức nóng ngay sau khi nấu để giữ độ mềm mượt của trứng; nếu còn dư, đậy kín bảo quản ngăn mát tối đa 1 ngày và hâm ấm nhẹ trên lửa nhỏ, tránh đun sôi làm trứng bị khô xác."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "5 quả (khoảng 250 g)",
+      "prepNote": "đập ra tô, dùng đũa đánh tan đều vừa phải, không đánh bông tạo bọt khí",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g (khoảng 2–3 cây vừa)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già rồi thái lát dày 0,5 cm vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "dùng làm nền nước om thanh ngọt vị umami",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt Nhật Bản",
+      "culinaryMeasure": "18 ml (~1 muỗng canh)",
+      "prepNote": "giúp nước om đậm vị mà vẫn giữ màu trong sáng đẹp mắt",
+      "componentGroup": "broth",
+      "requiredQuantity": 18,
+      "unit": "ml",
+      "grossGrams": 21.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo hậu vị ngọt dịu hài hòa cho nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "làm dịu mùi nấm và giúp nước om thơm thanh hơn",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.9,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 8.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "hòa tan vào nước dùng Dashi trước khi đun",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "dùng cân bằng độ đậm nhẹ của nước om",
+      "componentGroup": "broth",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để rắc cùng lúc với trứng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay (tùy chọn)",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ mặt món khi dọn để tăng hương cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, hành lá và đánh trứng",
+      "instruction": "Lau sạch 200 g nấm đùi gà tươi, cắt bỏ phần gốc cứng rồi thái lát mỏng dày khoảng 0,5 cm. Rửa sạch hành lá tươi và thái khoanh mỏng. Đập 5 quả trứng gà tươi ra tô, dùng đũa đánh tan đều lòng đỏ và lòng trắng nhưng không đánh nổi bọt.",
+      "tip": "Chỉ đánh nhẹ cho lòng trắng và lòng đỏ hòa đều thành dòng mịn; đánh quá mạnh tạo nhiều bọt khí sẽ khiến trứng om bị rỗ mặt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha và đun sôi nước dùng om kiểu Nhật",
+      "instruction": "Cho 300 ml nước dùng Dashi vào nồi nông hoặc chảo sâu lòng, thêm 18 ml xì dầu nhạt Nhật Bản, 15 ml rượu ngọt Mirin, 10 ml rượu Sake, 8 g đường cát trắng và 1,5 g muối ăn. Khuấy tan gia vị rồi đun trên lửa vừa khoảng 3 phút cho đến khi nước om sôi lăn tăn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Om chín mềm nấm đùi gà trong nước dùng",
+      "instruction": "Thả toàn bộ nấm đùi gà thái lát vào nồi nước om đang sôi, dàn đều và nấu trên lửa vừa khoảng 3 phút cho nấm chín mềm, giữ độ giòn nhẹ và tiết vị ngọt vào nước dùng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rưới trứng gà đánh tan và rắc hành lá",
+      "instruction": "Hạ nhỏ lửa xuống mức thấp để nước chỉ lăn tăn nhẹ. Rưới từ từ tô trứng gà đánh tan theo vòng xoắn ốc phủ đều lên khắp mặt nấm, sau đó rắc đều phần hành lá thái khoanh lên trên.",
+      "tip": "Rưới trứng thành dòng mảnh theo vòng tròn từ ngoài vào trong giúp trứng chín đều thành mảng mềm mịn ôm lấy từng lát nấm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đậy nắp om chín tới cho trứng mềm mượt",
+      "instruction": "Đậy nắp nồi và om trên lửa nhỏ khoảng 2 phút cho đến khi phần lòng trắng chín đông hoàn toàn và trứng đạt độ mềm ẩm mượt mà thì tắt bếp ngay, tránh nấu quá lâu làm trứng khô cứng.",
+      "tip": "Tắt bếp ngay khi trứng vừa se mặt vì lượng nhiệt dư trong nồi sẽ tiếp tục làm trứng chín mịn hoàn hảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc ra tô và rắc tiêu thưởng thức nóng",
+      "instruction": "Nhẹ nhàng xắn chia trứng om nấm ra 3 tô cùng nước dùng trong nồi, rắc thêm chút tiêu đen xay nếu thích và dùng nóng ngay với cơm trắng hoặc mì."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 165,
+    "energyKcal": 165.2,
+    "energyKj": 691,
+    "proteinG": 12.9,
+    "fatG": 7.3,
+    "saturatedFatG": 2.3,
+    "carbG": 11.3,
+    "fiberG": 1.8,
+    "sugarG": 6.1,
+    "sodiumMg": 1019,
+    "saltG": 2.55,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 168580",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f14fae2f30afb6f5d41d546b6f26e25e48134445d4de727d13e337a0a8c12ea3",
+    "researchedFromV2Sha256": "568f6e647ed88e6e92ae8dbf2d4b7816900e5cdea02859b4f9a2bd82692230b6"
+  }
+}

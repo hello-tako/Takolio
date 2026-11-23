@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8301ed8c884fb619",
+    "slug": "cai-bap-xao-nam-chay",
+    "title": "Bắp cải xào nấm đùi gà chay",
+    "subtitle": "Bắp cải giòn ngọt xào nhanh lửa lớn cùng nấm đùi gà thái lát, lá hẹ xanh thơm và xì dầu đậm vị"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món xào",
+      "Bắp cải",
+      "Nấm đùi gà",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món xào chay thanh đạm mà đưa cơm với lá bắp cải trắng giòn ngọt tự nhiên kết hợp nấm đùi gà dai sần sật, thấm nhẹ nước tương, hương tỏi phi và mùi thơm đặc trưng của lá hẹ xanh tươi.",
+    "servingSuggestion": "Trút bắp cải xào nấm ra đĩa rộng khi còn nóng hổi, rắc tiêu xay lên mặt và dùng kèm cơm trắng nóng hoặc chấm thêm chén nước tương ớt.",
+    "storageAndReheat": "Món rau xào nên dùng hết trong bữa để giữ trọn độ giòn của bắp cải; nếu còn dư bảo quản ngăn mát tối đa 24 giờ và đảo nhanh lại trên chảo nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/2 bắp (khoảng 400 g)",
+      "prepNote": "bỏ lõi cứng, tách lá rửa sạch, ngâm nước muối loãng rồi cắt miếng vuông vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "cắt bỏ gốc, rửa sạch nhanh tay, để ráo và thái lát chéo mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "thái lát mỏng cho vào cuối tạo vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHIVES",
+      "name": "Hẹ lá tươi",
+      "culinaryMeasure": "60 g",
+      "prepNote": "nhặt rửa sạch, để ráo rồi cắt khúc dài 2–3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới đều khi xào chín bắp cải và nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (1 muỗng cà phê)",
+      "prepNote": "dùng 3 g pha nước chần bắp cải rồi xả bỏ, 3 g nêm trực tiếp khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "5 g (1 muỗng cà phê đầy)",
+      "prepNote": "tăng vị ngọt dịu cho rau xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "phi thơm tỏi và xào nhanh nấm, bắp cải",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc thơm lên món xào khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SAKE",
+      "name": "Rượu gạo nấu ăn (rượu trắng)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới nhanh khi xào nấm giúp khử mùi hăng nhẹ và tăng hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.62,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, nấm đùi gà, lá hẹ và gia vị",
+      "instruction": "Tách từng lá bắp cải, cắt bỏ lõi cứng rồi thái miếng vuông vừa ăn, rửa sạch và để ráo. Nấm đùi gà cắt bỏ gốc, rửa nhanh rồi thái lát chéo mỏng khoảng 0,5 cm. Hẹ lá rửa sạch cắt khúc 2–3 cm; tỏi khô băm nhuyễn; ớt hiểm thái lát mỏng.",
+      "tip": "Thái nấm đùi gà thành lát chéo mỏng giúp nấm nhanh chín đều, thấm gia vị và giữ được độ giòn sần sật."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần sơ bắp cải trong nước sôi muối",
+      "instruction": "Đun sôi nồi nước vừa đủ ngập rau cùng 3 g muối ăn, thả bắp cải vào chần nhanh trong 2 phút rồi vớt ngay ra rổ để thật ráo nước.",
+      "tip": "Chần sơ bắp cải giúp lá cải giữ được độ giòn ngọt, màu sắc tươi sáng và không bị ra nhiều nước khi xào.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào săn nấm đùi gà",
+      "instruction": "Làm nóng chảo với 25 ml dầu ăn trên lửa vừa, thả tỏi băm vào phi khoảng 20 giây đến khi thơm nhẹ. Trút nấm đùi gà vào xào trên lửa lớn khoảng 3 phút cho đến khi lát nấm săn lại, rưới 15 ml rượu gạo nấu ăn dọc thành chảo để dậy hương.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh bắp cải trên lửa lớn",
+      "instruction": "Cho bắp cải đã ráo nước vào chảo nấm, duy trì lửa lớn và đảo nhanh tay đều liên tục trong 3 phút để bắp cải nóng đều, quyện mùi thơm mà vẫn giữ trọn độ giòn ngọt.",
+      "tip": "Xào nhanh tay trên lửa lớn là bí quyết giúp bắp cải chín tới giòn ngon thay vì bị mềm nhũn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị xì dầu, hạt nêm chay và đảo hẹ",
+      "instruction": "Nêm vào chảo 20 ml nước tương, 3 g muối ăn còn lại, 5 g hạt nêm chay và 5 g đường cát trắng, đảo đều 1 phút cho gia vị thấm phủ khắp rau nấm. Thả hẹ lá cắt khúc và ớt hiểm thái lát vào đảo thêm 30 giây rồi tắt bếp ngay."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện đĩa bắp cải xào nấm nóng",
+      "instruction": "Rắc 1,5 g tiêu đen xay vào đảo nhẹ thêm một lượt rồi trút ra đĩa lớn, dùng nóng ngay với cơm trắng hoặc chấm thêm chút nước tương ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 145,
+    "energyKcal": 144.6,
+    "energyKj": 606,
+    "proteinG": 5.2,
+    "fatG": 7.9,
+    "saturatedFatG": 1.2,
+    "carbG": 15.8,
+    "fiberG": 5.1,
+    "sugarG": 6.7,
+    "sodiumMg": 1106,
+    "saltG": 2.77,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 169994",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "baac2cf3d31ec51e23e709b1cf7561f5278a1d47a5cdb261e3b395aec9dfc949",
+    "researchedFromV2Sha256": "7d8b42b23f606da4fe5747f357c9954b23c2f4374b27165a659bb64fc95e3d1f"
+  }
+}

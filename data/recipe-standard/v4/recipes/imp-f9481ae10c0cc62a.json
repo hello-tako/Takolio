@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f9481ae10c0cc62a",
+    "slug": "sup-ca-chua-kem-y",
+    "title": "Súp cà chua kem tươi kiểu Ý",
+    "subtitle": "Súp cà chua chín xay mịn lọc rây mượt mà kết hợp sữa tươi, kem béo và bánh mì áp chảo giòn rụm ấm áp"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Súp kem cà chua",
+      "Ẩm thực Ý",
+      "Khai vị",
+      "Món nóng",
+      "Crouton"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bát súp cà chua kem kiểu Ý mịn mượt như nhung với vị chua thanh tự nhiên từ cà chua chín hòa quyện độ béo dịu của sữa tươi, kem tươi và hương húng quế Tây thanh tao.",
+    "servingSuggestion": "Múc súp nóng ra tô sâu lòng, rưới thêm vòng kem tươi, rắc phô mai Parmesan bào và dùng kèm các viên bánh mì áp chảo giòn rụm để giữ độ giòn.",
+    "storageAndReheat": "Bảo quản phần súp trong hộp kín ở ngăn mát tối đa 2 ngày, tách riêng bánh mì giòn; khi ăn hâm nóng lại trên lửa thật nhỏ và khuấy đều, không đun sôi bùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "6 quả (khoảng 720 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ làm 6–8 múi cau để nấu nhừ",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 720,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 684,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/4 củ (khoảng 2 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 5.39,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "chia rót từ từ vào nồi bột để nấu nền sốt sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 463.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 463.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi nấu ăn (Cooking cream)",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "trộn vào sau khi xay lọc giúp súp béo mịn mượt mà",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 99,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 99,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "35 g",
+      "prepNote": "chia 15 g nấu cà chua, 20 g còn lại làm sốt bơ bột",
+      "componentGroup": "broth",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "16 g (~2 muỗng canh)",
+      "prepNote": "xào với bơ thành hỗn hợp roux tạo độ sánh tự nhiên cho súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "đun sôi nhẹ cùng cà chua giúp súp thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "6 g (~10 lá)",
+      "prepNote": "rửa sạch, để ráo nấu cùng cà chua tạo mùi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 5.52,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng 15 ml xào hành tây cùng bơ và 10 ml áp chảo bánh mì giòn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BREAD",
+      "name": "Bánh mì lát",
+      "culinaryMeasure": "2 lát (60 g)",
+      "prepNote": "cắt hạt lựu cỡ 1 cm để áp chảo vàng giòn ăn kèm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "slice",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "20 g",
+      "prepNote": "rắc lên mặt bát súp nóng khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua tự nhiên của cà chua chín",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "nêm điều chỉnh vị vừa ăn cho nồi súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào súp và rắc nhẹ khi thưởng thức",
+      "componentGroup": "broth",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "cook",
+      "title": "Nấu mềm cà chua cùng bơ và húng quế",
+      "instruction": "Rửa sạch 6 quả cà chua chín đỏ, bổ múi cau. Đun chảy 15 g bơ lạt trong nồi ở lửa vừa, cho cà chua cùng 6 g lá húng quế Tây vào đảo đều, hạ lửa nhỏ và nấu khoảng 10 phút đến khi cà chua mềm rục, tiết hết nước ngọt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào hành tây và làm nền bột sánh",
+      "instruction": "Trong nồi súp chính, đun chảy 20 g bơ lạt còn lại cùng 15 ml dầu ô liu ở lửa nhỏ. Cho 1 củ hành tây băm nhỏ vào xào 8 phút đến khi hành mềm trong, thêm 2 tép tỏi băm đảo thêm 1 phút cho thơm. Rắc 16 g bột mì đa dụng vào đảo đều liên tục 2 phút cho bột chín thơm mà không bị sậm màu.",
+      "tip": "Cho tỏi băm vào sau cùng khi hành tây gần chín mềm giúp tỏi giữ mùi thơm ngọt mà không bị cháy đắng.",
+      "timerMinutes": 11
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu sốt sữa và ninh cùng cà chua",
+      "instruction": "Rót từ từ 450 ml sữa tươi không đường thành từng đợt nhỏ vào nồi hành tây bột mì, vừa rót vừa khuấy đều tay bằng phới lồng để hỗn hợp sánh mịn không vón cục, đun lửa vừa 5 phút. Tiếp theo đổ 500 ml nước dùng rau củ, 4 g đường cát trắng, 6 g muối ăn, 1,5 g tiêu đen xay và toàn bộ nồi cà chua đã nấu mềm vào, hạ lửa nhỏ đun liu riu thêm 12 phút.",
+      "tip": "Rót sữa từ từ từng chút một và khuấy đều ngay từ đầu là bí quyết để hỗn hợp bột mì tan mượt hoàn toàn.",
+      "timerMinutes": 17
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xay nhuyễn, lọc rây và hòa kem tươi",
+      "instruction": "Tắt bếp, để súp nguội bớt 3 phút rồi dùng máy xay cầm tay xay thật nhuyễn, sau đó lọc hỗn hợp qua rây mịn để loại bỏ hoàn toàn vỏ và hạt cà chua. Đổ súp trở lại nồi, thêm 100 ml kem tươi nấu ăn vào khuấy đều rồi hâm ấm lại ở lửa thật nhỏ trong 2 phút, tuyệt đối không để sôi bùng.",
+      "tip": "Lọc súp qua rây giúp kết cấu súp sánh mịn mượt mà chuẩn nhà hàng, còn việc không đun sôi sau khi cho kem tươi giúp súp không bị tách béo lợn cợn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áp chảo bánh mì hạt lựu giòn rụm",
+      "instruction": "Cắt 2 lát bánh mì thành khối vuông nhỏ khoảng 1 cm. Làm nóng 10 ml dầu ô liu còn lại trên chảo chống dính ở lửa vừa, cho bánh mì vào đảo đều tay 4–5 phút đến khi các cạnh vàng giòn đều thì trút ra đĩa lót giấy thấm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc súp nóng và trang trí",
+      "instruction": "Nêm nếm lại súp lần cuối cho vừa miệng, múc nóng ra 4 bát sâu lòng, rắc 20 g phô mai Parmesan bào mịn lên trên và đặt các viên bánh mì áp chảo giòn cạnh bên để dùng kèm ngay khi súp còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 409,
+    "energyKcal": 409.3,
+    "energyKj": 1712,
+    "proteinG": 10.6,
+    "fatG": 28,
+    "saturatedFatG": 14.2,
+    "carbG": 30.9,
+    "fiberG": 3.5,
+    "sugarG": 15.5,
+    "sodiumMg": 1062,
+    "saltG": 2.66,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169761",
+      "USDA FDC 170000",
+      "USDA FDC 170457",
+      "USDA FDC 170848",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171413",
+      "USDA FDC 171595",
+      "USDA FDC 172232",
+      "USDA FDC 172687",
+      "USDA FDC 173430",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "777a673e4e0c2d07a03b31964642c6669c8d2d661f565f124da91bfc42d31bdb",
+    "researchedFromV2Sha256": "549799400d5b6266539a3bd44ffd6523b4b2533c7748068f4ce85672b6316596"
+  }
+}

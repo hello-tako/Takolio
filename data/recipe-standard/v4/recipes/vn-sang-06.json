@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-sang-06",
+    "slug": "sup-ga-ngo-non-nam-huong",
+    "title": "Súp gà ngô non nấm hương trứng hoa",
+    "subtitle": "Nước dùng gà ngọt thanh quyện hạt ngô ngọt giòn, nấm hương thái chỉ và những vân hoa trứng mềm mịn"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Súp nóng",
+      "Ăn sáng",
+      "Khai vị",
+      "Thanh nhẹ",
+      "Dễ tiêu"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Nồi súp gà ngô non nấm hương nóng hổi sánh nhẹ óng ả với vị ngọt tự nhiên từ ức gà ta luộc xé sợi và hạt ngô ngọt, thơm nồng hương nấm hương khô, điểm xuyết những dải vân trứng hoa mềm mượt, dầu mè và tiêu trắng.",
+    "servingSuggestion": "Múc súp nóng ra bát sâu lòng, nhỏ vài giọt dầu mè, rắc thêm ngò rí, hành lá và tiêu trắng xay; dùng nóng ngay để cảm nhận độ sánh mượt.",
+    "storageAndReheat": "Súp ngon nhất khi ăn nóng vừa nấu xong. Nếu bảo quản ngăn mát tối đa 24 giờ, khi hâm lại trên lửa nhỏ cần khuấy liên tục và thêm 2–3 muỗng nước lọc nếu súp đặc lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà ta tươi (hoặc phi lê ức gà)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch với chút muối loãng, để nguyên miếng luộc chín rồi xé sợi mảnh",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SWEET_CORN",
+      "name": "Hạt ngô ngọt tươi (bắp Mỹ)",
+      "culinaryMeasure": "200 g (~2 bắp tách hạt)",
+      "prepNote": "tách lấy hạt đều, rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô (đông cô)",
+      "culinaryMeasure": "20 g (~6–8 tai nấm)",
+      "prepNote": "ngâm nước ấm 20 phút cho nở mềm, cắt bỏ chân cứng rồi thái sợi chỉ mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi (tạo vân hoa)",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra chén, đánh tan nhẹ cho lòng trắng và lòng đỏ hòa đều",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng (hoặc bột bắp)",
+      "culinaryMeasure": "25 g (~2,5 muỗng canh)",
+      "prepNote": "hòa tan hoàn toàn với 60 ml nước lọc nguội để tạo độ sánh cho súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (~2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm xào sơ gà và nấm hương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn để rắc vào súp lúc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, thái nhỏ rắc mặt tô súp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "dùng để phi thơm hành tím và xào gà nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "nhỏ vài giọt lên mặt súp khi dọn ăn để dậy mùi thơm béo nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 2 g luộc gà, 4 g nêm nước dùng súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm vào nồi súp cho vị ngọt thanh tròn vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "rắc mặt tô súp trước khi thưởng thức giúp thơm ấm dịu nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng 1440 ml luộc gà và nấu nước dùng súp, 60 ml hòa bột năng",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nấm hương khô và luộc chín ức gà",
+      "instruction": "Ngâm 20 g nấm hương khô trong nước ấm khoảng 20 phút cho nở mềm, cắt bỏ chân nấm, rửa sạch rồi thái sợi chỉ mỏng. Cho 300 g ức gà vào nồi cùng 1,44 lít nước lọc và 2 g muối ăn, đun sôi rồi hạ lửa vừa luộc 12 phút, thường xuyên hớt bọt cho nước dùng thật trong. Vớt ức gà ra để nguội bớt rồi xé sợi nhỏ vừa ăn, giữ lại toàn bộ nước luộc gà.",
+      "tip": "Hớt bọt kỹ ngay khi nước vừa sôi giúp nước dùng súp gà trong veo và không bị mùi hôi.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị ngô ngọt, bột năng và trứng đánh tan",
+      "instruction": "Rửa sạch 200 g hạt ngô ngọt tươi để ráo. Hòa tan hoàn toàn 25 g bột năng với 60 ml nước lọc nguội trong chén nhỏ cho không còn vón cục. Đập 2 quả trứng gà vào chén, đánh tan nhẹ bằng đũa; rửa sạch hành lá và ngò rí rồi thái nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím, xào sơ gà xé và nấm hương",
+      "instruction": "Làm nóng 10 ml dầu ăn trong nồi sạch trên lửa vừa, cho 20 g hành tím băm nhỏ vào phi thơm. Trút thịt ức gà xé sợi và nấm hương thái sợi vào đảo đều khoảng 3 phút cho thơm săn rồi đổ toàn bộ nước luộc gà và hạt ngô ngọt vào nồi, đun sôi trở lại trong 4 phút để hạt ngô chín mềm ngọt.",
+      "tip": "Xào nhanh thịt gà xé cùng nấm hương và hành tím trước khi chan nước dùng giúp tô súp thơm đậm đà hơn nhiều.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm gia vị và tạo độ sánh mượt cho súp",
+      "instruction": "Nêm 4 g muối ăn còn lại và 6 g hạt nêm vào nồi nước dùng đang sôi nhẹ, nếm lại cho vừa vị ngọt thanh. Khuấy lại chén nước bột năng cho đều rồi rót từ từ từng dòng nhỏ vào nồi, vừa rót vừa khuấy đều tay một chiều trên lửa nhỏ khoảng 2 phút đến khi súp sánh mượt trong veo.",
+      "tip": "Rót bột năng thật chậm và khuấy đều tay liên tục giúp súp sánh mịn đồng nhất, không bị vón cục.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rót trứng tạo vân hoa mềm mượt",
+      "instruction": "Giữ nồi súp sôi lăn tăn trên lửa nhỏ, rót từ từ chén trứng gà đã đánh tan qua rây (hoặc rưới dòng nhỏ cao tay) đồng thời dùng đũa khuấy nhẹ nhàng theo chiều kim đồng hồ để tạo thành các vân hoa trứng mỏng tơi đẹp mắt. Nấu thêm 1 phút cho trứng chín hẳn rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc súp ra bát, thêm dầu mè và rau thơm",
+      "instruction": "Múc súp gà nóng hổi ra 4 bát, nhỏ đều 5 ml dầu mè thơm lên bề mặt, rắc hành lá thái nhỏ, ngò rí và 2 g tiêu trắng xay. Thưởng thức ngay khi súp còn nóng sánh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 242,
+    "energyKcal": 242.2,
+    "energyKj": 1013,
+    "proteinG": 22.2,
+    "fatG": 8.3,
+    "saturatedFatG": 1.7,
+    "carbG": 20.9,
+    "fiberG": 2.1,
+    "sugarG": 4.2,
+    "sodiumMg": 905,
+    "saltG": 2.26,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168436",
+      "USDA FDC 169717",
+      "USDA FDC 169997",
+      "USDA FDC 169998",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "388e059f16dff7358380e001fa0bad8640c6281aeb89ccd24caa1d2d5fc2e1e5",
+    "researchedFromV2Sha256": "8b1d6dbbffe79a42bc0e742db07b1e8106178b298773a78d2dcde5398fb248e3"
+  }
+}

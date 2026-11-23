@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-bb07db73fb381724",
+    "slug": "dau-phu-lanh-hiyayakko-gung-hanh",
+    "title": "Đậu phụ non lạnh Hiyayakko gừng hành",
+    "subtitle": "Đậu phụ non ướp lạnh mềm tan trong miệng, phủ gừng tươi mài nhuyễn, hành lá và cá bào, rưới xì dầu Nhật quyện dầu mè thanh mát"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 1,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Khai vị",
+      "Không cần nấu",
+      "Đậu phụ",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "assemble"
+    ],
+    "allergenTags": [
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Hiyayakko là món đậu phụ lạnh truyền thống ngày hè của Nhật Bản, giữ trọn vị béo mát nguyên bản của đậu phụ non kết hợp cùng gừng mài cay ấm, hành lá giòn thơm và nước tương pha dầu mè thanh dịu.",
+    "servingSuggestion": "Dọn lạnh ngay sau khi rưới nước tương lên đậu phụ; dùng làm món khai vị giải nhiệt hoặc ăn kèm cơm trắng và cá nướng.",
+    "storageAndReheat": "Món ăn dùng lạnh ngay trong ngày để giữ độ tươi mịn của đậu phụ non; không hâm nóng hay cấp đông vì sẽ làm đậu bị rỗ xốp."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non (Kinugoshi)",
+      "culinaryMeasure": "350 g (1 hộp vừa)",
+      "prepNote": "giữ lạnh sâu trong tủ mát, thấm ráo nhẹ bằng khăn giấy trước khi cắt",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh vừa)",
+      "prepNote": "gọt sạch vỏ, mài thật nhuyễn cả nước cốt và xác gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thấm khô rồi thái khoanh mỏng thật đều",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới đều lên mặt đậu phụ ngay trước khi thưởng thức",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "trộn cùng nước tương Nhật để tăng hương thơm béo dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô (Katsuobushi)",
+      "culinaryMeasure": "5 g (2 muỗng canh)",
+      "prepNote": "rắc nhẹ lên trên cùng để tạo vị umami đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (1,5 muỗng cà phê)",
+      "prepNote": "rắc thêm lên mặt đậu tăng độ bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển khô Nori cắt sợi",
+      "culinaryMeasure": "3 g (1/2 lá)",
+      "prepNote": "cắt sợi mảnh trang trí mặt đậu phụ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm lạnh sâu và thấm nhẹ nước cho đậu phụ non",
+      "instruction": "Giữ 350 g đậu phụ non trong ngăn mát tủ lạnh đến sát giờ chế biến. Nhẹ nhàng lấy khối đậu ra khỏi hộp, gói lỏng trong hai lớp khăn giấy sạch đặt lên đĩa khoảng 5 phút để thấm bớt phần nước đọng bề mặt mà không làm nát đậu.",
+      "tip": "Tuyệt đối không dùng vật nặng ép đậu phụ non vì sẽ làm vỡ cấu trúc mềm mịn đặc trưng của món Hiyayakko.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Mài nhuyễn gừng tươi và chuẩn bị rau gia vị",
+      "instruction": "Gọt sạch vỏ 15 g gừng tươi, dùng bàn mài nhuyễn mịn và giữ lại cả phần nước gừng tiết ra. Rửa sạch 1/2 bó hành lá tươi, vẩy ráo nước rồi thái khoanh thật mỏng; nếu dùng rong biển khô Nori thì cắt thành sợi nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp nước tương dầu mè",
+      "instruction": "Trong chén nhỏ, khuấy đều 20 ml nước tương Nhật cùng 5 ml dầu mè rang đến khi hòa quyện hoàn toàn, giữ sẵn để rưới trực tiếp trước lúc ăn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Cắt khối đậu phụ và xếp ra đĩa sâu lòng",
+      "instruction": "Gỡ bỏ khăn giấy, nhúng lưỡi dao mỏng qua nước lọc cho trơn rồi cắt khối đậu phụ non thành 6 hoặc 8 miếng vuông vừa ăn. Dùng xẻng rộng bản nhẹ tay nhấc từng khối đậu xếp vào hai đĩa sâu lòng hoặc bát nhỏ.",
+      "tip": "Nhúng ướt dao trước khi cắt giúp lát cắt đậu phụ sắc nét, bóng mịn và không dính mặt dao."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Phủ gia vị lên mặt đậu và ướp lạnh nhẹ",
+      "instruction": "Nghiêng nhẹ đĩa đổ bỏ phần nước vừa tiết thêm từ đậu phụ trong 2 phút chờ. Lần lượt đặt gừng tươi mài nhuyễn, hành lá thái mỏng lên chính giữa từng miếng đậu, rắc cá bào khô Katsuobushi, hạt mè trắng rang và rong biển khô Nori lên trên.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới sốt nước tương ngay tại bàn và thưởng thức",
+      "instruction": "Rưới đều hỗn hợp nước tương Nhật và dầu mè rang quanh các miếng đậu phụ ngay trước khi ăn để giữ đậu luôn mát lạnh, không bị ngấm mặn quá sớm.",
+      "tip": "Nghiêng nhẹ đĩa chắt bỏ nước đậu thừa một lần nữa ngay trước lúc rưới sốt giúp hương vị đậm đà không bị loãng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 155,
+    "energyKcal": 154.8,
+    "energyKj": 648,
+    "proteinG": 12.1,
+    "fatG": 8.5,
+    "saturatedFatG": 1.2,
+    "carbG": 8.2,
+    "fiberG": 1.1,
+    "sugarG": 1.8,
+    "sodiumMg": 718,
+    "saltG": 1.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Katsuobushi 10099",
+      "USDA FDC 168456",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 172476",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ef1b6ae09d334a06363aa0a518c6383d16eb9318e2965d3568455f6d3bd50dc5",
+    "researchedFromV2Sha256": "5be84c00e33fa803659f68ba420bb3b5520deabb9fb2cd30189802e030248523"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a48b19224e397cea",
+    "slug": "com-bo-hanh-tay-gyudon-kieu-nhat",
+    "title": "Cơm bò hành tây Gyudon kiểu Nhật",
+    "subtitle": "Thịt bò thái mỏng mềm ngọt quyện hành tây om trong nước dùng dashi, sake và xì dầu đậm đà, phủ trên tô cơm Nhật dẻo nóng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Cơm donburi",
+      "Thịt bò",
+      "Nhanh gọn",
+      "Bữa trưa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "egg",
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gyudon là món cơm bò quốc dân của Nhật Bản với những lát thịt bò có vân mỡ mỏng tang được om nhanh cùng hành tây thái múi trong sốt xì dầu, rượu sake, mirin và dashi thanh ngọt.",
+    "servingSuggestion": "Xới cơm trắng nóng ra tô sâu lòng, gắp thịt bò và hành tây phủ kín mặt cơm, rưới thêm vài muỗng nước sốt om rồi rắc hành lá thái khoanh; có thể ăn kèm trứng lòng đào hoặc gừng hồng muối.",
+    "storageAndReheat": "Phần thịt bò và nước sốt nguội có thể cho vào hộp kín bảo quản tủ mát tối đa 2 ngày; khi dùng hâm nóng trên bếp lửa nhỏ 2–3 phút rồi mới chan lên cơm nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thái lát thật mỏng",
+      "culinaryMeasure": "250 g",
+      "prepNote": "chọn phần có vân mỡ nhẹ, thái lát mỏng 1,5–2 mm rồi cắt khúc vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ vừa (140 g)",
+      "prepNote": "bóc vỏ, bổ đôi rồi thái múi dọc dày 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm gạo Nhật nấu chín",
+      "culinaryMeasure": "360 g (2 tô vừa)",
+      "prepNote": "giữ ấm nóng tơi dẻo trong nồi cơm",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "làm nền thanh ngọt cho nước sốt om thịt bò",
+      "componentGroup": "broth",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "giúp thịt bò mềm thơm và khử mùi gây",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 44.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm và màu nâu hổ phách cho món bò",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tăng độ bóng và vị ngọt hậu êm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của nước tương Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "8 g (1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, mài nhuyễn cả nước lẫn cái để cho vào cuối cùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để rắc lên trên tô cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà (làm trứng lòng đào ăn kèm)",
+      "culinaryMeasure": "2 quả (100 g)",
+      "prepNote": "luộc lòng đào hoặc chần nhanh đặt lên mặt tô cơm nếu thích",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt bò thái mỏng, hành tây và gừng",
+      "instruction": "Thái 250 g thịt bò thành lát thật mỏng dày khoảng 1,5 mm rồi cắt đoạn dài 4–5 cm; thái múi mỏng 1 củ hành tây theo chiều dọc; mài nhuyễn 8 g gừng tươi và thái khoanh mỏng 1/2 bó hành lá. Giữ ấm sẵn 360 g cơm gạo Nhật nấu chín.",
+      "tip": "Nếu tự thái thịt bò tại nhà, đặt khối thịt vào ngăn đá 30 phút cho hơi se cứng lại sẽ giúp cắt được những lát thịt mỏng đều dễ dàng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc nhanh trứng lòng đào ăn kèm (tùy chọn)",
+      "instruction": "Nếu dùng trứng ăn kèm, đun sôi nhẹ nồi nước nhỏ, nhẹ nhàng thả 2 quả trứng gà lạnh vào luộc đúng 6 phút trên lửa vừa, sau đó vớt ngay sang bát nước đá ngâm 5 phút cho nguội hẳn rồi bóc sạch vỏ.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đun sôi nước sốt và nấu mềm ngọt hành tây",
+      "instruction": "Cho 120 ml nước dùng Dashi, 45 ml rượu Sake nấu ăn, 35 ml nước tương Nhật, 15 ml rượu ngọt Mirin và 12 g đường cát trắng vào chảo sâu lòng trên lửa vừa, khuấy tan đường. Khi nước sốt sôi nhẹ, thả toàn bộ hành tây vào nấu khoảng 5 phút cho đến khi hành mềm trong và ngấm vị.",
+      "tip": "Nấu mềm hành tây trước giúp hành tiết trọn vị ngọt vào nước dùng mà không cần đun thịt bò quá lâu.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om nhanh thịt bò thái mỏng đến vừa chín tới",
+      "instruction": "Dàn đều các lát thịt bò vào chảo nước sốt đang sôi lăn tăn trên lửa vừa, dùng đũa tách tơi các lát thịt để chín đều. Nấu khoảng 3–4 phút, thường xuyên hớt sạch bọt nổi lên mặt nước để nước sốt trong đẹp và thịt vừa chín tới không còn màu đỏ tái.",
+      "tip": "Thịt bò thái mỏng rất nhanh chín; tránh đun quá 5 phút khiến thịt bị co cứng, dai và mất nước ngọt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm gừng mài nhuyễn dậy hương thơm",
+      "instruction": "Cho 8 g gừng tươi mài nhuyễn vào chảo thịt bò, đảo nhẹ cho hòa quyện vào nước sốt và nấu thêm 1 phút trên lửa nhỏ để gừng tỏa hương thơm dịu mà không bị nồng gắt rồi tắt bếp.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày tô cơm Gyudon nóng và thưởng thức",
+      "instruction": "Xới 360 g cơm gạo Nhật vào hai tô sâu lòng, gắp thịt bò cùng hành tây xếp phủ đều lên cơm, chan thêm vài muỗng nước sốt om cho thấm vị. Rắc hành lá thái khoanh lên trên và đặt thêm nửa quả trứng lòng đào nếu thích, dọn ăn ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 638,
+    "energyKcal": 637.6,
+    "energyKj": 2668,
+    "proteinG": 39.3,
+    "fatG": 18.2,
+    "saturatedFatG": 6.7,
+    "carbG": 70.3,
+    "fiberG": 2.3,
+    "sugarG": 12.8,
+    "sodiumMg": 1467,
+    "saltG": 3.67,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 168878",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 171287",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a84f0f142a805de472824bc5f9732bb465e6d53af8cb4441df8c4d10b0c83c6c",
+    "researchedFromV2Sha256": "73737099a5b243548474a25d21553695e4b6dfc47f0f7e99b38b8bd043a4b123"
+  }
+}

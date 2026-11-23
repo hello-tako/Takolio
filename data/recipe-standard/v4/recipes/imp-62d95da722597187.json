@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-62d95da722597187",
+    "slug": "mi-soba-tron-nam-me",
+    "title": "Mì Soba trộn nấm mè",
+    "subtitle": "Mì Soba kiều mạch dai bùi trộn nấm đùi gà áp chảo xém cạnh quyện sốt xì dầu giấm gạo, dầu mè và hạt mè rang thơm"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì Soba",
+      "Nấm đùi gà",
+      "Mè rang",
+      "Ẩm thực Nhật",
+      "Bữa trưa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "buckwheat",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Soba trộn nấm mè mang hương vị thanh nhã của mì kiều mạch Nhật Bản dai mềm, hòa quyện cùng nấm đùi gà xào vàng giòn sần sật, gừng bào, hành lá và phần sốt mè rang thơm bùi đậm vị xì dầu giấm gạo.",
+    "servingSuggestion": "Chia mì Soba trộn nấm ra đĩa hoặc bát nông, rắc phần hành lá và hạt mè rang chừa lại lên trên; có thể thưởng thức lúc còn ấm nóng hoặc để mát đều ngon.",
+    "storageAndReheat": "Ngon nhất khi dùng trong ngày; nếu bảo quản ngăn mát tối đa 24 giờ trong hộp kín, nên để riêng phần sốt trộn và nấm xào để sợi mì Soba không bị trương mềm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOBA_BUCKWHEAT",
+      "name": "Mì Soba kiều mạch khô",
+      "culinaryMeasure": "210 g",
+      "prepNote": "luộc vừa chín tới rồi xả ngay nước lạnh để giữ độ dai bùi",
+      "componentGroup": "main",
+      "requiredQuantity": 210,
+      "unit": "g",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 210,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "cắt bỏ gốc cứng, lau sạch bằng khăn ẩm rồi thái lát dày 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 332.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng, chia đôi để xào và rắc mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (khoảng 2 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng nấm đùi gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "8 g (khoảng 2 muỗng cà phê mài)",
+      "prepNote": "cạo vỏ, mài nhuyễn cho vào phần sốt trộn mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "tạo vị mặn thanh umami làm nền cho sốt trộn mì Soba",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 70.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "mang lại mùi thơm béo đậm đà đặc trưng cho món trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo độ chua nhẹ hài hòa giúp sợi mì thanh thoát không ngấy",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua mặn trong bát sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng xào nấm đùi gà trên lửa vừa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "20 g (khoảng 2 muỗng canh)",
+      "prepNote": "rang vàng thơm rồi trộn một nửa vào mì và rắc phần còn lại lên mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "trộn vào nước sốt để tăng hương cay nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc luộc mì",
+      "culinaryMeasure": "1500 ml",
+      "prepNote": "đun sôi lượng lớn để luộc chín sợi mì Soba rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "sauce",
+      "title": "Pha sốt xì dầu dầu mè giấm gạo và rang mè",
+      "instruction": "Cho 60 ml xì dầu Nhật, 25 ml dầu mè rang, 20 ml giấm gạo, 8 g đường cát trắng, 8 g gừng tươi mài nhuyễn và 1 g tiêu đen xay vào bát, khuấy tan đều đường. Đồng thời cho 20 g hạt mè trắng vào chảo khô rang trên lửa vừa khoảng 2 phút đến khi vàng thơm rồi trút ra chén riêng.",
+      "tip": "Khuấy sốt cho tan đường trước khi nấu giúp các gia vị quyện đều ngay khi tiếp xúc với mì nóng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc và xả lạnh sợi mì Soba giữ độ dai",
+      "instruction": "Đun sôi 1500 ml nước lọc trên lửa lớn, thả 210 g mì Soba kiều mạch vào luộc khoảng 4–5 phút, đảo nhẹ bằng đũa cho sợi mì không dính chùm. Khi mì vừa chín tới (còn hơi dai ở lõi), vớt ngay ra rổ xả dưới vòi nước lạnh kết hợp chà nhẹ cho sạch nhớt bột rồi xóc thật ráo nước.",
+      "tip": "Không luộc mì Soba quá lâu kẻo sợi bị bở đứt; xả nước lạnh ngay giúp mì săn dai.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, hành tím và hành lá",
+      "instruction": "Cắt bỏ phần gốc cứng của 350 g nấm đùi gà tươi, dùng khăn ẩm lau sạch bụi bẩn mà không ngâm nước, thái lát dày khoảng 5 mm. Hành tím bóc vỏ băm nhỏ; hành lá thái lát xéo mỏng và chia làm 2 phần.",
+      "tip": "Lau nấm bằng khăn ẩm thay vì rửa ngập nước giúp nấm không bị sũng nước khi áp chảo, lên màu vàng ngon hơn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo xào thơm nấm đùi gà cùng hành tím",
+      "instruction": "Làm nóng chảo lớn trên lửa vừa lớn với 10 ml dầu ăn thực vật, cho hành tím băm vào phi khoảng 45 giây cho dậy mùi thơm rồi thả nấm đùi gà cùng 1/2 lượng hành lá vào đảo nhanh tay 3–4 phút đến khi nấm xém cạnh vàng nhẹ và chín mềm.",
+      "tip": "Xào nấm trên lửa lớn giúp bề mặt nấm săn vàng và giữ độ giòn ngọt thay vì bị ra nhiều nước.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim nhẹ nước sốt cùng nấm và đảo đều với mì Soba",
+      "instruction": "Rót toàn bộ bát sốt đã pha vào chảo nấm, đảo đều khoảng 30 giây cho sốt sôi lăn tăn và áo quanh từng lát nấm. Cho mì Soba đã ráo nước vào chảo, đảo đều nhẹ tay trên lửa nhỏ khoảng 1 phút để sợi mì hút trọn hương vị sốt nấm, thêm 1/2 lượng hạt mè rang và phần hành lá còn lại vào đảo lần cuối rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa mì Soba trộn nấm mè",
+      "instruction": "Gắp mì Soba trộn nấm ra 3 đĩa hoặc bát nông, rắc nốt phần hạt mè rang còn lại lên trên mặt và thưởng thức ngay khi mì còn ấm thơm hoặc để nguội mát như món mì trộn lạnh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 446,
+    "energyKcal": 445.7,
+    "energyKj": 1865,
+    "proteinG": 17,
+    "fatG": 15.9,
+    "saturatedFatG": 2.3,
+    "carbG": 63.7,
+    "fiberG": 7.2,
+    "sugarG": 5.9,
+    "sodiumMg": 1811,
+    "saltG": 4.53,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Dry Soba 01097",
+      "USDA FDC 168580",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2b9a7226031f3e72c7f68cfe3eb9129356a21a8476b40c33a478044090f6fcc3",
+    "researchedFromV2Sha256": "d0eedf7f7e5d7b7ef51801aa71ece3a181a9600c37b3fed924a3996f396883b1"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-bbfdcf2e3b277fed",
+    "slug": "soba-nong-ga",
+    "title": "Mì Soba nóng thịt gà",
+    "subtitle": "Sợi mì Soba kiều mạch nóng trong nước dùng Dashi Kombu cá bào đậm vị, phủ đùi gà áp chảo da giòn và hành boa-rô thơm ngọt"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Mì Soba",
+      "Thịt gà",
+      "Nước dùng Dashi",
+      "Ẩm thực Nhật",
+      "Mì nước"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "buckwheat",
+      "chicken",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Soba nóng thịt gà (Torinanban Soba) là món mì nước ấm áp kinh điển của Nhật Bản, kết hợp nước dùng Dashi truyền thống từ tảo bẹ Kombu và cá bào Katsuobushi, đùi gà áp chảo da vàng giòn, hành boa-rô xém ngọt cùng chút gừng mài thơm nồng.",
+    "servingSuggestion": "Xếp mì Soba nóng vào 3 tô, chan ngập nước dùng Dashi cùng thịt gà và hành boa-rô áp xém, thêm chút gừng tươi mài nhuyễn và bột ớt 7 vị Shichimi rồi thưởng thức ngay.",
+    "storageAndReheat": "Nếu chưa ăn hết ngay, bảo quản riêng phần mì Soba đã luộc ráo và phần nước dùng thịt gà trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn đun sôi nước dùng rồi trụng nóng lại mì."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOBA_BUCKWHEAT",
+      "name": "Mì Soba kiều mạch khô",
+      "culinaryMeasure": "270 g",
+      "prepNote": "luộc bớt 30 giây so với hướng dẫn để sợi mì dai ngon khi chan nước nóng",
+      "componentGroup": "main",
+      "requiredQuantity": 270,
+      "unit": "g",
+      "grossGrams": 270,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà rút xương còn da",
+      "culinaryMeasure": "300 g",
+      "prepNote": "lọc bỏ cục mỡ thừa, giữ nguyên da, cắt miếng vừa ăn và ướp 1 g muối",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEEK",
+      "name": "Hành boa-rô (Tỏi tây)",
+      "culinaryMeasure": "150 g",
+      "prepNote": "rửa sạch phần thân trắng và xanh non, cắt khúc dài 5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "láng mỏng chảo để áp chảo gà không dính, kết hợp mỡ gà tiết ra",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 6.66,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ Kombu khô",
+      "culinaryMeasure": "15 g",
+      "prepNote": "lau nhẹ bằng khăn ẩm rồi ngâm nấu nước dùng Dashi",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 2.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô (Katsuobushi)",
+      "culinaryMeasure": "30 g",
+      "prepNote": "ngâm nấu Dashi cùng tảo bẹ Kombu rồi lọc bỏ bã lấy nước trong",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "22 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "nêm vào nước dùng Dashi giúp thịt gà thơm mềm",
+      "componentGroup": "broth",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 21.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu hài hòa cho nước dùng mì Soba",
+      "componentGroup": "broth",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "nêm nền vị umami đậm đà đặc trưng cho nước dùng Soba",
+      "componentGroup": "broth",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 47.2,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 40.12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "dùng 1 g ướp sơ đùi gà, 1 g còn lại nêm vào nồi nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "cạo vỏ, mài nhuyễn làm topping thơm ấm trên mặt tô mì",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SHICHIMI",
+      "name": "Bột ớt 7 vị Nhật Shichimi",
+      "culinaryMeasure": "2 g (khoảng 1/2 muỗng cà phê)",
+      "prepNote": "rắc lên mặt tô mì khi ăn để tăng hương thơm cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu Dashi và luộc mì",
+      "culinaryMeasure": "1600 ml",
+      "prepNote": "chia 1000 ml để ngâm nấu Dashi và 600 ml để luộc mì Soba",
+      "componentGroup": "broth",
+      "requiredQuantity": 1600,
+      "unit": "ml",
+      "grossGrams": 1600,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 960,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm Kombu và sơ chế gà, hành boa-rô, gừng",
+      "instruction": "Ngâm 15 g tảo bẹ Kombu khô trong 1000 ml nước lọc lạnh ít nhất 30 phút. Trong lúc chờ, cắt 300 g đùi gà còn da thành miếng vừa ăn, xóc đều với 1 g muối ăn để 10 phút; hành boa-rô cắt khúc dài 5 cm; gừng tươi gọt vỏ mài nhuyễn để riêng.",
+      "tip": "Giữ nguyên lớp da gà giúp khi áp chảo tiết ra mỡ gà thơm béo tự nhiên làm hành boa-rô cháy cạnh ngọt đậm.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu và lọc nước dùng Dashi từ Kombu và cá bào",
+      "instruction": "Bắc nồi nước ngâm Kombu lên bếp lửa vừa, đun đến khi sủi tăm sắp sôi thì vớt ngay miếng Kombu ra. Thả 30 g cá bào khô Katsuobushi vào đun liu riu 30 giây rồi tắt bếp, ngâm yên 10 phút cho cá bào chìm xuống đáy, sau đó lọc qua rây lót khăn giấy lấy khoảng 950 ml nước dùng Dashi trong veo.",
+      "tip": "Ngâm cá bào sau khi tắt bếp đủ 10 phút giúp nước dùng rút trọn vị ngọt umami mà không bị đục hay tanh.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo gà da vàng giòn và hành boa-rô xém cạnh",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 8 ml dầu ăn thực vật, xếp đùi gà mặt da xuống và đặt các khúc hành boa-rô xen vào khoảng trống. Áp chảo yên khoảng 4–5 phút đến khi da gà vàng giòn và mặt cắt hành boa-rô chuyển màu hổ phách trong thì lật mặt áp tiếp 2–3 phút.",
+      "tip": "Không đảo gà và hành quá sớm để mặt cắt hành boa-rô áp xém vàng ngọt mà không bị cháy đen đắng.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm nước dùng Dashi và nấu chín kỹ thịt gà",
+      "instruction": "Rót toàn bộ nước dùng Dashi đã lọc vào chảo gà và hành boa-rô, đun sôi rồi hạ lửa nhỏ. Nêm 22 ml rượu Sake nấu ăn, 45 ml rượu Mirin, 40 ml xì dầu Nhật và 1 g muối ăn còn lại, hớt sạch bọt rồi đun liu riu 4–5 phút đến khi thịt gà chín hoàn toàn bên trong.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Luộc, xả lạnh và trụng nóng lại mì Soba",
+      "instruction": "Đun sôi 600 ml nước lọc trong nồi riêng, thả 270 g mì Soba kiều mạch vào luộc khoảng 3–4 phút cho vừa chín tới rồi vớt ra xả ngay dưới vòi nước lạnh kết hợp chà nhẹ cho sạch lớp tinh bột nhớt. Trước khi chan nước dùng, nhúng nhanh mì Soba vào nước sôi 5 giây cho nóng rồi xóc thật ráo.",
+      "tip": "Xả lạnh giúp sợi Soba săn dai, sau đó nhúng nhanh qua nước nóng trước khi xếp vào tô giúp giữ nhiệt cho cả tô mì.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày tô mì Soba nóng thịt gà",
+      "instruction": "Chia mì Soba ra 3 tô lớn, chan ngập nước dùng Dashi đang sôi cùng các miếng thịt gà và hành boa-rô lên trên, đặt chút gừng tươi mài nhuyễn và rắc bột ớt 7 vị Nhật Shichimi tùy thích rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 597,
+    "energyKcal": 597,
+    "energyKj": 2498,
+    "proteinG": 34.8,
+    "fatG": 15.1,
+    "saturatedFatG": 3.6,
+    "carbG": 77.2,
+    "fiberG": 4.6,
+    "sugarG": 9.4,
+    "sodiumMg": 1694,
+    "saltG": 4.24,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Dry Soba 01097",
+      "MEXT Hon-Mirin 16031",
+      "MEXT Katsuobushi 10099",
+      "MEXT Sake 16021",
+      "MEXT Spice Ref",
+      "USDA FDC 168457",
+      "USDA FDC 169231",
+      "USDA FDC 169246",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "cf125bd130ac99f2617a502f1c53f2ed1ff31c3ebb784b7c51b312640aae8cac",
+    "researchedFromV2Sha256": "522a686fb73f3caa5d4eeb5a446a0a65708214f1958cad43d1129712d060a736"
+  }
+}

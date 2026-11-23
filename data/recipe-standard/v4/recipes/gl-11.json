@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-11",
+    "slug": "spaghetti-bolognese",
+    "title": "Mì Ý sốt bò bằm Bolognese",
+    "subtitle": "Mì Spaghetti dai ngon thấm đẫm sốt thịt bò xay hầm chậm cùng ba chỉ xông khói, rau củ soffritto, rượu vang trắng và sữa tươi béo dịu"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 60,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Thịt bò bằm",
+      "Sốt cà chua",
+      "Gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "celery",
+      "milk",
+      "pork",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì Ý sốt bò bằm Bolognese chuẩn vị với nền rau củ cà rốt, cần tây, hành tây xào ngọt, kết hợp thịt bò xay và ba chỉ xông khói hầm chậm cùng sốt cà chua Passata, rượu vang trắng và sữa tươi tạo độ béo mượt tròn vị.",
+    "servingSuggestion": "Bày mì Ý ra đĩa sâu lòng, chan ngập sốt thịt bò Bolognese nóng hổi lên trên, rắc thêm phô mai Parmesan bào mịn và ít tiêu đen xay.",
+    "storageAndReheat": "Sốt Bolognese bảo quản trong hộp kín ở ngăn mát được 3 ngày hoặc cấp đông đến 1 tháng; khi dùng hâm nóng sốt trên lửa nhỏ với chút nước lọc rồi trộn mì mới luộc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "250 g",
+      "prepNote": "luộc đến độ al dente ngay trước khi trộn sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_BEEF",
+      "name": "Thịt bò xay",
+      "culinaryMeasure": "250 g",
+      "prepNote": "để nhiệt độ phòng 15 phút trước khi xào để thịt nhanh săn đều",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BACON_HAM",
+      "name": "Thịt ba chỉ xông khói Pancetta",
+      "culinaryMeasure": "75 g",
+      "prepNote": "thái hạt lựu nhỏ khoảng 5 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 75,
+      "unit": "g",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Sốt cà chua xay nhuyễn Passata",
+      "culinaryMeasure": "300 g",
+      "prepNote": "khuấy đều trước khi đổ vào nồi hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1/2 củ (~55 g)",
+      "prepNote": "gọt vỏ, rửa sạch và băm hạt lựu thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CELERY",
+      "name": "Cần tây",
+      "culinaryMeasure": "50 g (khoảng 1 nhánh)",
+      "prepNote": "rửa sạch, tước xơ rồi băm hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (~70 g)",
+      "prepNote": "bóc vỏ, băm nhỏ đều với cà rốt và cần tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô nấu ăn",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng để khử mùi và tăng hương thơm cho thịt bò",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 99,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 99,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi nguyên kem không đường",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "cho vào cuối lúc hầm để sốt béo mịn và dịu vị chua cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 103,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 103,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BEEF_BROTH",
+      "name": "Nước dùng bò",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "giữ ấm để châm dần trong lúc hầm sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng xào thịt xông khói và rau củ soffritto",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "30 g",
+      "prepNote": "rắc lên đĩa mì khi thưởng thức",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 8 g cho nước luộc mì và 4 g nêm sốt thịt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào sốt và rắc hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và giữ lại 100 ml làm bóng sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái hạt lựu thịt xông khói và rau củ nền",
+      "instruction": "Thái hạt lựu nhỏ 75 g thịt ba chỉ xông khói Pancetta. Gọt vỏ cà rốt, nhặt rửa cần tây và bóc vỏ hành tây rồi băm thật nhỏ cả ba loại rau củ để làm nền soffritto giúp sốt ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thịt xông khói và rau củ soffritto",
+      "instruction": "Bắc nồi đáy dày lên bếp ở lửa vừa, cho 15 ml dầu ô liu và thịt ba chỉ xông khói vào đảo 4 phút đến khi ra mỡ và hơi xém cạnh. Trút cà rốt, cần tây và hành tây vào xào chậm khoảng 8 phút đến khi rau mềm trong và thơm ngọt, không để cháy xém.",
+      "tip": "Xào chậm rau củ trên lửa vừa giúp giải phóng đường tự nhiên tạo độ ngọt sâu cho sốt Bolognese.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn thịt bò xay và khử rượu vang",
+      "instruction": "Tăng lên lửa vừa-lớn, cho 250 g thịt bò xay vào nồi, dùng muỗng gỗ dằm tơi và đảo đều khoảng 6 phút đến khi thịt săn chắc, chín hoàn toàn hết màu hồng. Đổ 100 ml rượu vang trắng khô nấu ăn vào, đảo đều 3 phút đến khi cồn bay hơi hết.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Hầm sốt cà chua cùng nước dùng bò và sữa tươi",
+      "instruction": "Đổ 300 g sốt cà chua xay nhuyễn Passata vào nồi, nêm 4 g muối ăn và 2 g tiêu đen xay. Hạ lửa thật nhỏ, đậy vung hờ và hầm liu riu khoảng 40 phút, thỉnh thoảng khuấy đều và châm dần 250 ml nước dùng bò nếu sốt đặc. Khi còn 10 phút cuối, rót 100 ml sữa tươi nguyên kem vào khuấy đều cho sốt béo mịn.",
+      "tip": "Sữa tươi giúp trung hòa vị chua gắt của cà chua và làm thịt bò xay mềm mượt hơn.",
+      "timerMinutes": 40
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti chín độ al dente",
+      "instruction": "Khi sốt gần hầm xong, đun sôi mạnh nồi với 2,5 lít nước lọc cùng 8 g muối ăn. Thả 250 g mì Ý Spaghetti khô vào luộc khoảng 8–9 phút cho đến khi sợi mì chín dai vừa tới, giữ lại 100 ml nước luộc mì trước khi vớt.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn mì với sốt và rắc phô mai",
+      "instruction": "Cho mì đã vớt vào nồi sốt Bolognese cùng 2–3 muỗng canh nước luộc mì, đảo đều trên lửa vừa 1 phút cho sốt bám đều từng sợi mì. Tắt bếp, chia ra 3 đĩa sâu lòng, rắc 30 g phô mai Parmesan bào lên trên nếu thích rồi thưởng thức nóng.",
+      "tip": "Mì và sốt trộn nóng trực tiếp giúp tinh bột từ nước luộc kết dính sốt thịt vào sợi mì đồng đều."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 777,
+    "energyKcal": 776.8,
+    "energyKj": 3250,
+    "proteinG": 38.4,
+    "fatG": 31.7,
+    "saturatedFatG": 11.3,
+    "carbG": 77.9,
+    "fiberG": 5.8,
+    "sugarG": 11,
+    "sodiumMg": 1477,
+    "saltG": 3.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167923",
+      "USDA FDC 168927",
+      "USDA FDC 169072",
+      "USDA FDC 169988",
+      "USDA FDC 170000",
+      "USDA FDC 170393",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171413",
+      "USDA FDC 171593",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174036"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/carbonara.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "925c81e34822c95c39b075ac74d3ba4f938f5356176c8205847f25f613378e2c",
+    "researchedFromV2Sha256": "1a1c522311074da7a5627214324d311d092356c45167a8b4598aa757beaed704"
+  }
+}

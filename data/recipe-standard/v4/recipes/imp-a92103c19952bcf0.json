@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a92103c19952bcf0",
+    "slug": "ga-chien-chanh-y",
+    "title": "Gà chiên giòn ướp chanh vàng kiểu Ý",
+    "subtitle": "Ức gà ướp nước cốt chanh vàng và thảo mộc đậm đà, áo lớp bột chiên xù trộn Parmesan rồi chiên vàng và nướng giòn"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Gà chiên",
+      "Chanh vàng",
+      "Parmesan",
+      "Giòn rụm",
+      "Ẩm thực Ý"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "milk",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món gà chiên thơm mát hương chanh vàng vùng Địa Trung Hải: ức gà ướp rượu vang trắng, chanh tươi và tỏi thảo mộc giúp thịt mềm ẩm, bọc lớp bột chiên xù giòn rụm trộn phô mai Parmesan và vỏ chanh bào.",
+    "servingSuggestion": "Xếp gà nóng ra đĩa, rắc thêm ngò tây tươi băm nhỏ và vỏ chanh vàng bào sợi; ăn kèm salad rau xanh dầu giấm hoặc khoai tây chiên.",
+    "storageAndReheat": "Bảo quản thịt gà nguội trong hộp kín ở ngăn mát tối đa 2 ngày. Khi dùng, làm nóng bằng nồi chiên không dầu hoặc lò nướng ở 180°C khoảng 6–8 phút để lớp vỏ giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê",
+      "culinaryMeasure": "650 g",
+      "prepNote": "rửa sạch, thấm khô rồi cắt miếng vừa ăn dày khoảng 1,8–2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 650,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "3 quả (~300 g)",
+      "prepNote": "bào lấy 1 muỗng canh vỏ chanh vàng trước, rồi vắt lấy nước cốt ướp thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 165,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, cắt đôi từng tép để ngâm ướp thơm thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "trộn vào nước cốt chanh để ướp mềm và khử mùi thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 49.5,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 34.65,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Thảo mộc Ý khô (oregano, hương thảo)",
+      "culinaryMeasure": "3 g (~1 muỗng canh)",
+      "prepNote": "thêm vào nước ướp gà cho dậy hương thơm đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên xù",
+      "culinaryMeasure": "140 g",
+      "prepNote": "trộn đều cùng phô mai Parmesan, vỏ chanh bào và ngò tây làm lớp áo giòn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 119,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "50 g",
+      "prepNote": "trộn vào bột chiên xù giúp lớp vỏ béo thơm và lên màu vàng đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi băm nhỏ",
+      "culinaryMeasure": "15 g",
+      "prepNote": "chia 10 g trộn vào lớp bột áo và 5 g rắc trang trí khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu (để chiên áp chảo)",
+      "culinaryMeasure": "180 ml",
+      "prepNote": "đun nóng chiên vàng lớp áo bột; phần lớn dầu chiên còn dư giữ lại ngoài chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "ml",
+      "grossGrams": 163.8,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 19.66,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 4 g pha nước ướp gà và 4 g trộn vào lớp bột chiên xù",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 6.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn vào hỗn hợp bột áo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị chanh vàng và sơ chế ức gà",
+      "instruction": "Rửa sạch 3 quả chanh vàng tươi, bào mịn lấy khoảng 1 muỗng canh lớp vỏ vàng bên ngoài (tránh phần cùi trắng bị đắng) để riêng, sau đó vắt lấy nước cốt chanh lọc bỏ hạt. Cắt 650 g ức gà phi lê thành các miếng vừa ăn dày khoảng 1,8–2 cm và thấm khô.",
+      "tip": "Cắt miếng ức gà dày đều nhau giúp thịt chín thấu bên trong mà lớp vỏ ngoài không bị cháy."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt gà với nước cốt chanh và thảo mộc",
+      "instruction": "Pha nước ướp gồm nước cốt chanh vàng, 50 ml rượu vang trắng khô, tỏi tươi cắt đôi, 3 g thảo mộc Ý khô và 4 g muối ăn. Trộn đều ức gà trong tô nước ướp, bọc kín rồi để ngăn mát tủ lạnh khoảng 60 phút cho thấm hương chanh dịu.",
+      "tip": "Không ướp ức gà trong nước chanh quá 2 giờ vì axit sẽ làm biến tính bề mặt khiến thịt gà bị bở.",
+      "timerMinutes": 60
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Trộn lớp áo bột chiên xù Parmesan",
+      "instruction": "Trộn đều 140 g bột chiên xù, 50 g phô mai Parmesan bào mịn, phần vỏ chanh vàng bào sợi, 10 g ngò tây tươi băm nhỏ, 4 g muối ăn còn lại và 1,5 g tiêu đen xay trong một đĩa trẹt rộng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Áo bột từng miếng ức gà đã ráo nước ướp",
+      "instruction": "Làm nóng trước lò nướng ở 180°C và lót giấy nến lên khay nướng. Gắp từng miếng ức gà ra để ráo bớt nước ướp (không rửa lại), đặt vào đĩa bột chiên xù và ấn nhẹ hai mặt cho lớp bột bám kín đều."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên vàng hai mặt rồi nướng chín thấu trong lò",
+      "instruction": "Đun nóng 180 ml dầu ô liu trong chảo lớn trên lửa vừa-lớn. Chiên từng mẻ gà mỗi mặt khoảng 3 phút cho lớp vỏ bột vàng giòn đẹp mắt rồi vớt ra giấy thấm dầu. Xếp gà lên khay nướng và cho vào lò ở 180°C nướng thêm 18–20 phút đến khi thịt gà chín trắng hoàn toàn bên trong, xiên vào không còn nước hồng.",
+      "tip": "Chiên nhanh tạo lớp vỏ giòn rồi nướng lò giúp thịt ức gà chín đều mọng nước và giảm lượng dầu thấm vào thịt.",
+      "timerMinutes": 24
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc ngò tây tươi và thưởng thức nóng",
+      "instruction": "Xếp gà chiên chanh vàng ra đĩa, rắc nốt 5 g ngò tây tươi băm nhỏ còn lại lên trên rồi dọn dùng nóng ngay cùng salad rau xanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 426,
+    "energyKcal": 425.5,
+    "energyKj": 1780,
+    "proteinG": 45,
+    "fatG": 13.4,
+    "saturatedFatG": 3.9,
+    "carbG": 28.9,
+    "fiberG": 2.5,
+    "sugarG": 1.9,
+    "sodiumMg": 1112,
+    "saltG": 2.78,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 167746",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173475"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "bbefd24f7c898d7b37dbac53bff10d06dd9fa2713e3fd857339386f98251dc28",
+    "researchedFromV2Sha256": "4e0a8ae6b51b98cf31b2a88b41f746d343613accaae7e4e564903bdee360309f"
+  }
+}

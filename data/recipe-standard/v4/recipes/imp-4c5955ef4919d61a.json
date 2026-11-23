@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4c5955ef4919d61a",
+    "slug": "mi-y-cua-ot",
+    "title": "Mì Ý thịt cua tỏi ớt chanh vàng",
+    "subtitle": "Sợi mì Spaghetti quyện thịt cua biển ngọt thanh, dầu ô liu phi tỏi ớt thơm nồng và hương vỏ chanh vàng tươi mát"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Mì Ý cua",
+      "Hải sản",
+      "Ẩm thực Ý",
+      "Cay nhẹ",
+      "Bữa tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì Ý hải sản tinh tế với từng thớ thịt cua biển ngọt tự nhiên hòa quyện sốt nhũ hóa trắng sánh từ dầu ô liu phi thơm tỏi ớt và nước luộc mì, điểm nhấn bởi hương thơm tươi mát của vỏ chanh vàng và ngò tây.",
+    "servingSuggestion": "Chia mì ra 4 đĩa sâu lòng khi còn nóng hổi, rắc thêm ngò tây băm và một vòng nhỏ dầu ô liu nguyên chất; tránh dùng phô mai để giữ trọn vị ngọt thanh của thịt cua.",
+    "storageAndReheat": "Mì hải sản ngon nhất khi ăn ngay lúc nóng; nếu còn thừa bảo quản ngăn mát tối đa 24 giờ và làm nóng nhanh trên chảo với ít nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "360 g",
+      "prepNote": "luộc ít hơn bao bì 1 phút để giữ độ dai, chừa lại 150 ml nước luộc mì",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Thịt cua biển gỡ sẵn",
+      "culinaryMeasure": "250 g",
+      "prepNote": "kiểm tra kỹ và nhặt sạch mảnh mai hay sụn cua nếu còn sót",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, đập dập nhẹ nguyên tép để phi lấy hương rồi gắp bỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 6.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi (ớt sừng hoặc ớt hiểm)",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "rửa sạch, bỏ hạt và thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dùng 35 ml phi tỏi ớt làm sốt và 10 ml rưới lúc hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả",
+      "prepNote": "bào mịn phần vỏ vàng (tránh cùi trắng) và vắt lấy 15 ml nước cốt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g",
+      "prepNote": "rửa sạch, thấm khô và băm thật nhuyễn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "18 g (15 g luộc mì, 3 g nêm sốt)",
+      "prepNote": "hòa 15 g vào nước luộc mì (đổ bỏ phần lớn), 3 g nêm lại chảo cua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "3000 ml (3 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 150 ml nước luộc giàu tinh bột",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3000,
+      "unit": "ml",
+      "grossGrams": 3000,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Kiểm tra thịt cua và sơ chế gia vị thơm",
+      "instruction": "Dùng tay kiểm tra nhẹ nhàng 250 g thịt cua biển gỡ sẵn để loại bỏ sạch các mảnh vỏ hay sụn cứng còn sót. Bóc vỏ đập dập 2–3 tép tỏi khô, bỏ hạt thái lát 2 quả ớt tươi, băm thật nhuyễn 12 g ngò tây tươi và bào lấy phần vỏ vàng thơm của 1 quả chanh vàng (tránh phần cùi trắng) rồi vắt sẵn 15 ml nước cốt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Spaghetti và giữ lại nước luộc",
+      "instruction": "Đun sôi mạnh 3000 ml nước lọc cùng 15 g muối ăn, cho 360 g mì Ý Spaghetti vào luộc khoảng 8 phút (ít hơn hướng dẫn bao bì 1 phút) để sợi mì đạt độ dai al dente. Trước khi vớt mì, múc giữ lại 150 ml nước luộc mì.",
+      "tip": "Múc nước luộc mì ngay trước khi vớt để giữ phần tinh bột tự nhiên, giúp sốt dầu ô liu nhanh chóng nhũ hóa sánh mượt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm nhẹ tỏi ớt và làm nóng thịt cua",
+      "instruction": "Đặt chảo rộng lên bếp, cho 35 ml dầu ô liu, tỏi đập dập và ớt thái lát vào chảo ngay từ khi dầu còn nguội rồi bật lửa nhỏ. Phi từ từ 2–3 phút cho dầu dậy mùi thơm mà tỏi không bị vàng cháy, sau đó gắp bỏ xác tỏi. Cho 250 g thịt cua biển vào chảo đảo thật nhẹ tay khoảng 1–2 phút cho cua nóng đều và thấm dầu thơm.",
+      "tip": "Phi tỏi từ dầu nguội trên lửa nhỏ và gắp bỏ tỏi trước khi chuyển vàng giúp dầu thơm dịu mà không bị đắng; đồng thời không đảo mạnh làm nát thớ thịt cua.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nhũ hóa sốt trắng từ nước luộc mì",
+      "instruction": "Múc khoảng 80 ml nước luộc mì đang nóng rót vào chảo thịt cua, nêm 3 g muối ăn rồi lắc nhẹ chảo trên lửa vừa khoảng 1 phút cho dầu ô liu và tinh bột trong nước luộc nhũ hóa thành lớp sốt hơi sánh bao quanh thịt cua."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc mì Spaghetti trong chảo sốt cua",
+      "instruction": "Vớt mì Ý Spaghetti đang al dente cho thẳng vào chảo sốt cua, đảo và xóc chảo trên lửa vừa khoảng 1 phút để từng sợi mì hút trọn vị ngọt của cua và nước sốt. Nếu thấy khô, châm thêm từng chút nước luộc mì còn lại đến khi sốt bóng đều.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn vỏ chanh vàng, ngò tây và dọn nóng",
+      "instruction": "Tắt bếp, rắc phần vỏ chanh vàng bào mịn, vài giọt nước cốt chanh vàng và 12 g ngò tây băm nhỏ vào chảo, rưới thêm 10 ml dầu ô liu còn lại rồi trộn đều một lượt. Chia mì ra 4 đĩa sâu lòng và dùng nóng ngay.",
+      "tip": "Cho vỏ chanh và ngò tây sau khi tắt bếp để nhiệt dư làm dậy hương tươi mát mà không làm mất mùi tinh dầu tự nhiên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 486,
+    "energyKcal": 485.6,
+    "energyKj": 2032,
+    "proteinG": 23.3,
+    "fatG": 12.3,
+    "saturatedFatG": 1.8,
+    "carbG": 68.9,
+    "fiberG": 3.3,
+    "sugarG": 2.8,
+    "sodiumMg": 627,
+    "saltG": 1.57,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9931a9d5aede0d95dd9a459bdf38c48ea289e099129c04014a41215856a9df15",
+    "researchedFromV2Sha256": "a5cfa01b1d72407c37dade79ab327252725d6d62f29c5bd49aa42c239516770b"
+  }
+}

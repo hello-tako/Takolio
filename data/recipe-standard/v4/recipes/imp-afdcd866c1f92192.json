@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-afdcd866c1f92192",
+    "slug": "ca-om-ca-chua-y",
+    "title": "Cá phi lê om cà chua bi kiểu Ý",
+    "subtitle": "Phi lê cá thịt trắng om dịu trong nước dùng cà chua bi, hành tây, rượu vang trắng và ô liu đen đậm vị biển"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Cá om",
+      "Cà chua bi",
+      "Hải sản",
+      "Thanh nhẹ",
+      "Ẩm thực Ý"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Món cá om thanh tao kiểu ngư dân vùng biển Naples nước Ý với từng miếng phi lê cá thịt trắng mềm ngọt giữ nguyên thớ, nấu trong nước dùng cà chua bi tươi mát quyện hương tỏi, rượu vang trắng và quả ô liu đen.",
+    "servingSuggestion": "Gắp cá ra 4 đĩa sâu lòng, chan đều nước dùng cà chua và ô liu nóng hổi lên mặt cá, rắc ngò tây tươi băm nhỏ và ăn kèm bánh mì giòn chấm nước sốt.",
+    "storageAndReheat": "Món cá om ngon nhất khi dùng ngay lúc mới nấu. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hâm lại trên lửa thật nhỏ để thịt cá không bị nát."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WHITE_FISH_FILLET",
+      "name": "Phi lê cá thịt trắng",
+      "culinaryMeasure": "600 g (4 miếng phi lê)",
+      "prepNote": "chọn cá chẽm, cá tuyết hoặc cá basa chắc thịt, thấm thật khô trước khi ướp",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua bi chín đỏ",
+      "culinaryMeasure": "360 g (khoảng 3 phần quả lớn)",
+      "prepNote": "rửa sạch, bổ đôi từng quả",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "3/4 củ vừa (~105 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng để phi thơm dịu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi hành và nấu nền nước dùng cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "60 ml",
+      "prepNote": "khử tanh và tăng chiều sâu hương vị cho nước dùng om cá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 59.4,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 41.58,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_BLACK",
+      "name": "Quả ô liu đen bỏ hạt",
+      "culinaryMeasure": "50 g",
+      "prepNote": "để ráo nước ngâm, thái lát hoặc bổ đôi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi đỏ",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng tạo vị cay ấm nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "0,5 g (1–2 lá)",
+      "prepNote": "thả vào cùng hành tây để tạo mùi thơm dịu rồi vớt bỏ trước khi dọn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 0.1,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, băm nhỏ chia đôi cho vào nước dùng và rắc trang trí cuối cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2,5 g ướp hai mặt phi lê cá và 2,5 g nêm vào hành tây cà chua",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc ướp đều lên hai mặt cá phi lê",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nấu nước om cá)",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "đổ vào cùng rượu vang trắng tạo lượng nước ngập khoảng nửa miếng cá",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 187.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thấm khô và ướp phi lê cá thịt trắng",
+      "instruction": "Rửa sạch 600 g phi lê cá thịt trắng dưới vòi nước lạnh rồi dùng khăn giấy thấm thật khô. Rắc đều 2,5 g muối ăn và 1,5 g tiêu đen xay lên cả hai mặt miếng cá, để nghỉ 10 phút cho thịt cá săn và thấm gia vị.",
+      "tip": "Thấm thật khô bề mặt cá trước khi ướp muối tiêu giúp thịt cá săn chắc và giữ nguyên thớ đẹp khi om.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế cà chua bi, hành tây và tỏi ớt",
+      "instruction": "Cà chua bi rửa sạch, bổ đôi; hành tây vàng thái hạt lựu nhỏ; tỏi tươi thái lát mỏng; ớt tươi đỏ thái lát; ngò tây tươi băm nhỏ và chia làm hai phần."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi hành và nấu mềm cà chua bi",
+      "instruction": "Làm nóng 35 ml dầu ô liu nguyên chất trong chảo sâu lòng rộng trên lửa vừa. Cho tỏi thái lát và ớt tươi vào đảo 1–2 phút đến khi vừa dậy mùi thơm (không để tỏi cháy vàng). Thêm hành tây, lá nguyệt quế khô và 2,5 g muối ăn còn lại vào xào 3 phút cho hành mềm trong, rồi cho cà chua bi và quả ô liu đen vào đảo nhẹ thêm 3 phút.",
+      "tip": "Xào tỏi thái lát trên lửa vừa giúp tỏi tiết mùi thơm dịu mà không bị cháy đắng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu nước dùng rượu vang trắng cho sôi",
+      "instruction": "Rót 60 ml rượu vang trắng khô vào chảo, đun sôi 1 phút cho cồn bay hơi hết. Đổ tiếp 250 ml nước lọc và một nửa lượng ngò tây tươi băm vào chảo, đun sôi trở lại trên lửa vừa.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om dịu phi lê cá chín tới trong nước dùng",
+      "instruction": "Nhẹ nhàng xếp 4 miếng phi lê cá thành một lớp vào giữa chảo (mặt da hướng xuống dưới nếu có), gạt rau củ sang xung quanh và múc nước dùng rưới nhẹ lên mặt cá. Hạ xuống lửa nhỏ, đậy nắp om liu riu khoảng 7 phút cho thịt cá chuyển trắng đục hoàn toàn và dễ tách thớ khi ấn nhẹ bằng nĩa.",
+      "tip": "Không đảo lật mạnh miếng cá khi đang om để giữ phi lê nguyên vẹn, đẹp mắt và không bị nát.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Ủ ấm 3 phút, rắc ngò tây và dùng nóng",
+      "instruction": "Tắt bếp, giữ nguyên nắp thêm 3 phút cho cá ngấm vị rồi gắp bỏ lá nguyệt quế khô. Múc cá ra 4 bát sâu lòng, chan nước dùng cà chua ô liu lên trên, rắc phần ngò tây tươi còn lại và dùng nóng kèm bánh mì giòn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 290,
+    "energyKcal": 289.8,
+    "energyKj": 1213,
+    "proteinG": 32.2,
+    "fatG": 13.4,
+    "saturatedFatG": 2.3,
+    "carbG": 8.1,
+    "fiberG": 2,
+    "sugarG": 3.6,
+    "sodiumMg": 624,
+    "saltG": 1.56,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169094",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170917",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175148"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "96368b117e8cd5928cdf72cb448cd75c2e3024cf743ed9dca99a2c1957fcc098",
+    "researchedFromV2Sha256": "6a00f89aa89b3fb8744b2e00469f65843991cb83f8208492b22afbd5a8af892d"
+  }
+}

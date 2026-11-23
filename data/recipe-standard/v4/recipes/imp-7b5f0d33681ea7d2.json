@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7b5f0d33681ea7d2",
+    "slug": "ga-parmigiana-nuong",
+    "title": "Gà Parmigiana nướng phô mai",
+    "subtitle": "Ức gà tẩm bột chiên xù giòn rụm phủ sốt cà chua húng quế và phô mai Mozzarella nướng tan béo ngậy chuẩn vị Ý"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Gà Parmigiana",
+      "Ẩm thực Ý",
+      "Nướng lò",
+      "Phô mai",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món gà Parmigiana kinh điển với từng lát ức gà dần mỏng tẩm bột chiên xù trộn phô mai Pecorino vàng giòn, phủ sốt cà chua húng quế nấu sánh và phô mai Mozzarella nướng chảy thơm lừng.",
+    "servingSuggestion": "Dọn nóng trực tiếp từ khay nướng, rắc ngò tây băm; dùng kèm mì Ý luộc hoặc salad rau xanh trộn dầu giấm để cân bằng vị béo.",
+    "storageAndReheat": "Nên thưởng thức ngay khi lớp vỏ còn giòn; nếu còn dư, đậy kín trong ngăn mát tối đa 2 ngày và hâm nóng lại bằng lò nướng 180°C trong 10 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê không da",
+      "culinaryMeasure": "600 g (2 miếng lớn)",
+      "prepNote": "bổ ngang thành 4–6 lát mỏng rồi dần đều dày khoảng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "100 g (~2/3 chén)",
+      "prepNote": "đổ ra đĩa sâu lòng để áo lớp bột mỏng bên ngoài miếng gà, phần dư bỏ đi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra tô, đánh tan đều cùng nước cốt chanh vàng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1/2 quả (lấy khoảng 15 ml nước cốt)",
+      "prepNote": "vắt nước cốt trộn vào trứng giúp lớp vỏ chiên thơm và đỡ ngấy",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên xù",
+      "culinaryMeasure": "120 g (~12 muỗng canh)",
+      "prepNote": "trộn đều cùng phô mai Pecorino bào và một nửa lượng ngò tây băm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 78,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PECORINO_CHEESE",
+      "name": "Phô mai Pecorino Romano bào mịn",
+      "culinaryMeasure": "40 g (~5 muỗng canh)",
+      "prepNote": "trộn vào bột chiên xù để tạo hương mặn béo đậm đà cho lớp vỏ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, băm nhuyễn; chia nửa trộn bột chiên xù, nửa rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua nghiền đóng hộp Ý (Passata)",
+      "culinaryMeasure": "600 g (~600 ml)",
+      "prepNote": "nấu sốt cà chua nền và phủ lên mặt gà trước khi nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 6 tép)",
+      "prepNote": "bóc vỏ, đập dập nhẹ để phi thơm trong dầu ô liu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 21.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, để ráo và xé bằng tay trước khi thả vào sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "MOZZARELLA_CHEESE",
+      "name": "Phô mai Mozzarella tươi",
+      "culinaryMeasure": "250 g (2 viên)",
+      "prepNote": "thấm ráo nước, xé miếng vừa để phủ lên mặt gà trước khi nướng",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi và nấu sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (để chiên nông)",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "đun nóng trên chảo để chiên vàng giòn hai mặt gà rồi thấm ráo dầu",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 92,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia nửa ướp nhẹ thịt gà, nửa còn lại nêm sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp thịt gà và nửa nêm vào sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "sauce",
+      "title": "Nấu sốt cà chua húng quế sánh mịn",
+      "instruction": "Đun nóng 30 ml dầu ô liu trong nồi nhỏ trên lửa vừa-nhỏ, cho 1 củ tỏi đập dập vào phi thơm trong 30 giây, đảo liên tục để tỏi không bị cháy đắng. Đổ 600 g cà chua nghiền đóng hộp Ý vào nồi, xé tay 10 g lá húng quế Tây thả vào, nêm 3 g muối ăn và 1 g tiêu đen xay. Đậy nắp hờ, hạ lửa nhỏ và om liu riu khoảng 20 phút cho sốt sánh dịu lại.",
+      "tip": "Xé lá húng quế bằng tay thay vì cắt dao giúp tinh dầu thơm giữ nguyên trong lá, đồng thời không để tỏi chuyển nâu vì sẽ làm đắng cả nồi sốt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Dần mỏng và ướp ức gà",
+      "instruction": "Rửa sạch 600 g ức gà phi lê, thấm thật khô bằng khăn giấy. Xẻ ngang mỗi miếng ức gà thành 2–3 lát dày đều nhau, đặt giữa hai lớp màng bọc thực phẩm hoặc giấy nến rồi dùng búa dần thịt đập nhẹ đến độ dày khoảng 0,5 cm. Rắc đều 3 g muối ăn và 1 g tiêu đen xay lên cả hai mặt lát gà.",
+      "tip": "Dần đều độ dày giúp các miếng gà chín đồng thời khi chiên, giữ được độ mọng nước bên trong mà lớp vỏ không bị cháy."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chuẩn bị ba đĩa áo bột tẩm gà",
+      "instruction": "Bày sẵn 3 đĩa sâu lòng: đĩa thứ nhất đựng 100 g bột mì đa dụng; đĩa thứ hai đập 2 quả trứng gà đánh tan đều cùng nước cốt 1/2 quả chanh vàng; đĩa thứ ba trộn đều 120 g bột chiên xù với 40 g phô mai Pecorino Romano bào mịn và một nửa lượng ngò tây băm (5 g). Lần lượt áo từng lát gà qua bột mì rồi giũ sạch bột thừa, nhúng qua trứng rồi lăn đều vào đĩa bột chiên xù, ấn nhẹ tay cho bột bám chặt hai mặt.",
+      "tip": "Để phần trứng thừa rỏ bớt trước khi đặt vào đĩa bột chiên xù giúp lớp áo bám khít, không bị vón cục và bong tróc khi chiên."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên vàng giòn từng lát gà",
+      "instruction": "Đổ 100 ml dầu ăn vào chảo rộng đáy dày, đun nóng trên lửa vừa đến khi thả thử vài vụn bột chiên xù thấy sủi bọt xèo mạnh. Đặt các lát gà đã tẩm bột vào chiên mỗi mặt khoảng 2 phút đến khi lớp vỏ chuyển màu vàng ruộm giòn tan và thịt gà bên trong chín trắng hoàn toàn (nhiệt tâm đạt 74°C). Gắp gà ra đĩa có lót giấy thấm dầu và đặt thêm tờ giấy lên mặt để hút bớt dầu thừa.",
+      "tip": "Chỉ lật gà đúng một lần trong quá trình chiên và để gà nghỉ trên giấy thấm dầu 2 phút để lớp vỏ giữ được độ giòn rụm tối đa.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xếp gà cùng sốt cà chua và phô mai Mozzarella",
+      "instruction": "Làm nóng lò nướng trước ở chế độ lửa trên 220°C. Múc 2 muôi sốt cà chua đã nấu trải đều xuống đáy khay nướng chịu nhiệt, xếp các lát gà chiên giòn lên trên, tiếp tục múc thêm sốt cà chua phủ đều mặt từng miếng gà. Xé 250 g phô mai Mozzarella tươi đã thấm ráo nước phủ kín lên trên và rắc phần ngò tây băm còn lại (5 g).",
+      "tip": "Nhớ thấm ráo nước của phô mai Mozzarella tươi trước khi xếp lên khay để nước phô mai không chảy ra làm ướt lớp vỏ giòn hay cháy khét thành khay."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nướng chảy phô mai và dọn nóng",
+      "instruction": "Đặt khay gà vào rãnh trên của lò nướng trong khoảng 3–4 phút ở 220°C đến khi phô mai Mozzarella tan chảy hoàn toàn, sủi bọt nhẹ và hơi xém vàng ở mép. Lấy khay ra, nghỉ 2 phút rồi dọn nóng ngay ra đĩa ấm.",
+      "timerMinutes": 4
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 692,
+    "energyKcal": 691.9,
+    "energyKj": 2895,
+    "proteinG": 62.1,
+    "fatG": 32.4,
+    "saturatedFatG": 11.9,
+    "carbG": 37.7,
+    "fiberG": 4.1,
+    "sugarG": 8,
+    "sodiumMg": 1501,
+    "saltG": 3.75,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 167746",
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 169761",
+      "USDA FDC 170416",
+      "USDA FDC 170845",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC Pecorino Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "efc4d47f0499fad55f611e3d4170ae58885fd1ff5116b3a07931e190e81dd2f0",
+    "researchedFromV2Sha256": "98ffaa2517b022e2f5a83077bcdcaa1982ad4cec3a3dc9910bcf1dabe001034f"
+  }
+}

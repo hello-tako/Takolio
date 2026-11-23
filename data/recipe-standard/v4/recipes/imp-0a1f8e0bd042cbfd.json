@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0a1f8e0bd042cbfd",
+    "slug": "ba-chi-xao-bap-cai",
+    "title": "Thịt ba chỉ xào bắp cải giòn kiểu Trung",
+    "subtitle": "Những lát ba chỉ mỏng áp chảo xém cạnh tươm mỡ, xào lửa lớn cùng bắp cải ngọt giòn, tỏi gừng, rượu Thiệu Hưng và dầu mè thơm lừng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Thịt ba chỉ",
+      "Bắp cải",
+      "Món xào",
+      "Đưa cơm",
+      "Trung Hoa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món xào dân dã cực kỳ đưa cơm của ẩm thực Trung Hoa: thịt ba chỉ thái lát mỏng áp chảo xém cạnh cho tiết bớt mỡ béo ngậy, dùng chính phần mỡ thơm đó xào lửa lớn với bắp cải trắng xé miếng giòn ngọt, rưới xì dầu nhạt quanh thành chảo dậy hương chảo nóng.",
+    "servingSuggestion": "Trút thịt ba chỉ xào bắp cải ra đĩa lớn, dùng nóng ngay với cơm trắng dẻo khi bắp cải còn giữ độ giòn ngọt mọng nước.",
+    "storageAndReheat": "Món ngon nhất khi ăn nóng ngay lúc vừa xào để bắp cải không bị mềm nhũn; bảo quản ngăn mát tối đa 24 giờ và đảo nóng nhanh 2 phút trên lửa lớn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, thấm khô, để ngăn đá 15 phút cho hơi cứng rồi thái lát mỏng đều",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "1/2 bắp (~400 g)",
+      "prepNote": "tách từng lá rửa sạch, vẩy thật ráo nước rồi xé hoặc cắt miếng vuông 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (~18 g, khoảng 5–6 tép)",
+      "prepNote": "bóc vỏ, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "cạo vỏ, thái sợi mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "2 quả (~10 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái khoanh xéo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2 cây)",
+      "prepNote": "cắt khúc 3 cm, tách riêng phần đầu trắng phi thơm và lá xanh cho vào cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "rưới quanh thành chảo nóng giúp dậy hương thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm vừa vào bắp cải giúp giữ độ giòn và vị đậm thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "làm nổi bật vị ngọt tự nhiên của bắp cải",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới hoàn thiện sau cùng để giữ trọn mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tráng mỏng lòng chảo trước khi áp chảo thịt ba chỉ",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới vào chảo khi áp thịt để khử mùi và tăng hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.8,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái lát mỏng ba chỉ và xé ráo bắp cải",
+      "instruction": "Thấm khô 300 g thịt ba chỉ rồi thái lát mỏng đều tay. Tách 1/2 bắp cải trắng rửa sạch, để thật ráo nước rồi xé miếng vừa ăn khoảng 4 cm; thái lát tỏi, thái sợi gừng, thái khoanh ớt hiểm và cắt khúc hành lá (tách riêng đầu trắng và lá xanh).",
+      "tip": "Bắp cải phải thật ráo nước trước khi vào chảo để khi xào không bị chảy nước và giữ được độ giòn ngọt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo thịt ba chỉ xém cạnh tươm mỡ",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa lớn với 15 ml dầu ăn tráng mặt chảo, xếp các lát thịt ba chỉ vào áp chảo 5 phút (trở đều mặt sau mỗi 1–2 phút) đến khi thịt ra bớt mỡ thơm và xém vàng các cạnh.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rưới rượu Thiệu Hưng và phi thơm gia vị",
+      "instruction": "Gạt nhẹ thịt ba chỉ sang một bên chảo, rưới 15 ml rượu Thiệu Hưng vào phần chảo nóng đảo 20 giây cho bay hơi thơm nồng. Tiếp tục thả đầu hành trắng, tỏi thái lát, gừng thái sợi và ớt hiểm vào phi thơm 30 giây trên lửa vừa."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh bắp cải trên lửa lớn giữ độ giòn",
+      "instruction": "Tăng lên lửa lớn nhất, trút toàn bộ bắp cải vào đảo nhanh tay liên tục trong 3 phút đến khi lá bắp cải vừa mềm trong nhẹ mà phần cuống vẫn giữ độ giòn sần sật.",
+      "tip": "Xào lửa thật lớn và đảo liên tục giúp bắp cải chín nhanh, bóng mỡ thơm mà không bị ra nước nhũn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Rưới xì dầu quanh thành chảo và nêm vị",
+      "instruction": "Rưới đều 45 ml xì dầu nhạt dọc theo thành chảo nóng cho bốc mùi thơm, thêm 4 g muối ăn và 6 g đường cát trắng rồi đảo đều 30 giây cho thịt và bắp cải thấm gia vị đậm đà.",
+      "tip": "Rưới xì dầu dọc theo thành chảo nóng giúp nước tương xèo nhẹ, dậy mùi thơm đặc trưng hơn so với đổ thẳng lên rau."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc hành lá và dọn nóng",
+      "instruction": "Rưới 15 ml dầu mè thơm và thả phần lá hành xanh vào chảo, đảo thêm 15 giây rồi tắt bếp ngay. Múc ra đĩa và dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 662,
+    "energyKcal": 661.8,
+    "energyKj": 2769,
+    "proteinG": 12.9,
+    "fatG": 62,
+    "saturatedFatG": 20.6,
+    "carbG": 13.2,
+    "fiberG": 3.4,
+    "sugarG": 6.3,
+    "sodiumMg": 1582,
+    "saltG": 3.95,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "edc888af37391d3a606f5bb96fb5f3f3c8b89fba7ec3d834351541aaa0850145",
+    "researchedFromV2Sha256": "2a3433af64513a48c4873dbaa5e85dc3b7adf9d204576aea214cc26933004ccc"
+  }
+}

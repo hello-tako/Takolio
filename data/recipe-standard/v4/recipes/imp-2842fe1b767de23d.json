@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2842fe1b767de23d",
+    "slug": "trung-cuon-gyeran-mari",
+    "title": "Trứng cuộn Hàn Quốc (Gyeran Mari)",
+    "subtitle": "Cuộn trứng gà vàng ươm mềm ẩm điểm xuyết sắc đỏ cà rốt và xanh hành lá, cắt khoanh gọn đẹp cho bữa sáng hoặc hộp cơm Bento"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_nhanh_sang",
+    "difficulty": "medium",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Hàn Quốc",
+      "Món trứng",
+      "Bữa sáng",
+      "Hộp cơm",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Trứng cuộn Hàn Quốc (Gyeran Mari) có kết cấu mềm mịn, nhiều lớp cuộn chặt tay với nhân cà rốt và hành lá băm nhuyễn đẹp mắt, vị béo nhẹ thanh tao thích hợp dùng kèm cơm nóng hoặc xếp hộp cơm trưa.",
+    "servingSuggestion": "Để trứng cuộn nguội bớt 3 phút cho định hình rồi cắt lát dày 2 cm, bày ra đĩa chấm kèm nước tương hoặc tương cà tùy thích.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tối đa 2 ngày; món ăn ngon ở cả nhiệt độ phòng hoặc làm ấm nhẹ bằng lò vi sóng 30 giây."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (~200 g)",
+      "prepNote": "chọn trứng tươi để cuộn trứng có màu vàng đẹp và độ kết dính tốt",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0,25 củ (~27,5 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái hạt lựu thật nhỏ cỡ 2 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 27.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 24.48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (~20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn phần lá xanh và đầu hành",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp lớp trứng cuộn mềm ẩm và tơi xốp hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "nêm vừa đủ tôn vị béo tự nhiên của trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "0,5 g (~1 nhúm nhỏ)",
+      "prepNote": "tạo hương thơm dịu nhẹ cho trứng cuộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tráng mỏng mặt chảo chống dính giữa các lần đổ trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu chấm kèm)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "rót ra chén nhỏ dùng chấm kèm trứng cuộn",
+      "componentGroup": "dipping",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Băm nhuyễn cà rốt, hành lá và đánh mịn trứng",
+      "instruction": "Thái hạt lựu thật nhỏ 27,5 g cà rốt (khoảng 2 mm) và thái nhuyễn 20 g hành lá tươi. Đập 4 quả trứng gà tươi vào tô, thêm 15 ml sữa tươi không đường, 2 g muối ăn và 0,5 g tiêu đen xay rồi đánh tan đều tay. Nên lọc hỗn hợp trứng qua rây rồi mới trộn cà rốt và hành lá vào.",
+      "tip": "Lọc trứng qua rây trước khi trộn rau giúp loại bỏ lợn cợn lòng trắng, bề mặt cuộn trứng láng mịn và dễ cuộn hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đổ và cuộn lớp trứng đầu tiên",
+      "instruction": "Làm nóng chảo chống dính đáy phẳng trên lửa nhỏ, dùng giấy thấm phết một lớp mỏng dầu thực vật (khoảng 3 ml). Khuấy đều tô trứng để cà rốt không lắng đáy, rót 1/3 lượng trứng láng kín mặt chảo. Đợi khoảng 1,5 phút khi mặt dưới chín vàng nhẹ còn mặt trên hơi ướt thì nhẹ nhàng cuộn tròn từ một mép chảo sang mép đối diện.",
+      "tip": "Luôn giữ lửa nhỏ trong suốt quá trình tráng để trứng chín từ từ mà không bị cháy sạm hay rỗ mặt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nối thêm lớp trứng thứ hai dày đều",
+      "instruction": "Đẩy cuộn trứng về sát mép chảo, phết thêm 3 ml dầu thực vật lên phần mặt chảo trống. Rót tiếp 1/3 lượng trứng vào, nghiêng nhẹ chảo cho trứng chảy vào phần mép dưới cuộn đầu tiên để kết dính. Chờ 1,5 phút cho lớp mới chín tới rồi cuộn ngược lại ôm trọn lớp cũ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Cuộn lớp trứng cuối và ép tạo dáng bầu dục",
+      "instruction": "Phết nốt 4 ml dầu thực vật lên phần chảo trống, rót 1/3 lượng trứng còn lại vào nối mép và chiên 1,5 phút rồi cuộn tiếp thành khối trứng dày chắc. Ép nhẹ bốn mặt cuộn trứng vào thành chảo khoảng 30 giây mỗi mặt để định hình dáng chữ nhật hoặc bầu dục gọn đẹp và trứng chín hoàn toàn bên trong.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Ủ nguội nhẹ cho khối trứng định hình",
+      "instruction": "Gắp cuộn trứng ra thớt hoặc mành tre, cuộn nhẹ giữ dáng trong 3 phút cho hơi nóng tản bớt và kết cấu trứng ổn định chắc chắn trước khi cắt.",
+      "tip": "Để trứng nghỉ 3 phút sau khi chiên giúp lát cắt sắc gọn, các lớp trứng không bị tách rời."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt khoanh vừa ăn và dọn kèm xì dầu",
+      "instruction": "Dùng dao sắc cắt cuộn trứng Gyeran Mari thành từng khoanh dày khoảng 2 cm, xếp nghiêng đẹp mắt lên đĩa và dọn kèm chén nước tương chấm nhẹ hoặc ăn cùng cơm nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 180,
+    "energyKcal": 180.4,
+    "energyKj": 755,
+    "proteinG": 12.3,
+    "fatG": 12.9,
+    "saturatedFatG": 3.5,
+    "carbG": 3.4,
+    "fiberG": 0.7,
+    "sugarG": 1.5,
+    "sodiumMg": 1012,
+    "saltG": 2.53,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b0ff00dd10d8209d3f98f78a5ab7186d3ee45b560ce1396dc25af04e5c6cec6b",
+    "researchedFromV2Sha256": "d968fd759d83778a616a2e0393bbc1e8d7c0ecd3ea3a88aeff03f5cc9047820d"
+  }
+}

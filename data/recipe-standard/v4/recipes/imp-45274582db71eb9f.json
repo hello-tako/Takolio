@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-45274582db71eb9f",
+    "slug": "mi-xao-tom-quang-dong",
+    "title": "Mì xào tôm cải bắp kiểu Quảng Đông",
+    "subtitle": "Sợi mì trứng mềm dai xào lửa lớn cùng tôm tươi giòn ngọt, bắp cải, giá đỗ và nước sốt dầu hào xì dầu óng ánh"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì xào",
+      "Quảng Đông",
+      "Tôm tươi",
+      "Bắp cải",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "molluscs",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì xào kiểu Quảng Đông đậm đà hương chảo nóng với từng sợi mì trứng mềm dai không bết dính, hòa quyện vị ngọt mặn dịu của dầu hào, xì dầu và dầu mè, kết hợp tôm tươi săn giòn cùng bắp cải thái sợi và giá đỗ giòn mát.",
+    "servingSuggestion": "Gắp mì xào tôm nóng hổi ra đĩa rộng, dùng ngay khi bắp cải và giá đỗ còn giữ độ giòn tươi, có thể kèm chén tương ớt nếu thích vị cay.",
+    "storageAndReheat": "Món ngon nhất khi ăn nóng ngay sau khi xào; nếu còn dư, bảo quản kín trong ngăn mát tối đa 24 giờ và đảo nóng nhanh 2–3 phút trên chảo không dính."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì trứng sợi mềm",
+      "culinaryMeasure": "300 g",
+      "prepNote": "trụng nước sôi theo hướng dẫn, xả nhanh nước lạnh và trộn chút dầu ăn cho tơi sợi",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bóc vỏ, bỏ đầu, rạch lưng rút sạch chỉ đen, rửa sạch và thấm thật khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "1/8 bắp (~120 g)",
+      "prepNote": "rửa sạch, để ráo nước hoàn toàn rồi thái sợi mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.15,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 102,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "150 g",
+      "prepNote": "nhặt sạch vỏ đậu, rửa nhẹ và để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2–3 cây)",
+      "prepNote": "rửa sạch, cắt khúc dài khoảng 4–5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (~12 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 5 ml trộn mì chống dính, 15 ml xào tôm, 20 ml xào rau và mì",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 33.12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt đậm đặc trưng cho sốt mì xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo mùi thơm và độ mặn vừa vặn cho sợi mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của dầu hào và xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "hòa vào chén sốt để mì có hương thơm hấp dẫn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "hòa vào nước sốt tăng độ đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "70 ml (~4,5 muỗng canh)",
+      "prepNote": "làm loãng sốt giúp gia vị thấm đều khắp sợi mì khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 70,
+      "unit": "ml",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm, rau củ và pha chén sốt",
+      "instruction": "Tôm tươi bóc vỏ, rút chỉ lưng, rửa sạch rồi thấm thật khô; bắp cải thái sợi mỏng, giá đỗ rửa ráo, hành lá cắt khúc 4–5 cm và tỏi băm nhuyễn. Trong chén nhỏ, khuấy tan 22 ml dầu hào, 22 ml xì dầu, 15 g đường cát trắng, 5 ml dầu mè thơm, 2 g muối ăn cùng 70 ml nước lọc.",
+      "tip": "Pha sẵn chén sốt trước khi bật bếp giúp quá trình xào lửa lớn diễn ra liên tục mà không bị cháy chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Trụng tơi sợi mì trứng chống dính",
+      "instruction": "Đun sôi nồi nước lớn, thả 300 g mì trứng vào trụng 2 phút vừa chín mềm. Vớt mì ra xả ngay qua nước lạnh cho sợi săn dai, để thật ráo nước rồi xóc đều với 5 ml dầu ăn để sợi mì tơi bóng không dính nhau.",
+      "tip": "Xả nước lạnh ngay sau khi trụng giúp sợi mì săn lại, không bị bở nát khi đảo trên chảo lửa lớn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhanh tôm tươi trên lửa lớn",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa lớn với 15 ml dầu ăn, cho tỏi băm vào phi thơm 15 giây rồi thả tôm vào đảo nhanh tay 2 phút đến khi tôm vừa chuyển hồng đục thì trút ra đĩa riêng.",
+      "tip": "Xào tôm vừa chín tới rồi vớt ra giúp tôm giữ độ giòn ngọt và không bị dai khi đảo chung với mì ở bước cuối.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào bắp cải và đảo mì thấm sốt",
+      "instruction": "Thêm 10 ml dầu ăn vào chảo nóng, thả bắp cải thái sợi vào xào 2 phút cho vừa mềm giòn. Rưới 10 ml dầu ăn còn lại quanh chảo rồi trút mì trứng vào cùng toàn bộ chén sốt đã pha, đảo hất đều tay 1 phút trên lửa lớn nhất cho từng sợi mì thấm đều sốt bóng đẹp.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kết hợp tôm và giá đỗ giòn ngọt",
+      "instruction": "Đổ đĩa tôm đã xào trở lại chảo cùng 150 g giá đỗ tươi, đảo đều tay 1 phút đến khi giá vừa chín tới và tôm chín hoàn toàn.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá và dọn mì xào nóng",
+      "instruction": "Thả hành lá cắt khúc vào chảo, đảo thêm 15 giây giữ màu xanh tươi rồi tắt bếp ngay. Gắp mì xào tôm ra đĩa lớn và thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 579,
+    "energyKcal": 578.7,
+    "energyKj": 2422,
+    "proteinG": 28.4,
+    "fatG": 15.9,
+    "saturatedFatG": 2.6,
+    "carbG": 81.7,
+    "fiberG": 4.7,
+    "sugarG": 10.4,
+    "sodiumMg": 1487,
+    "saltG": 3.72,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169963",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b3118fcb707e84eb574de9cf142e871a6e09eccdca45e30947a49a5ead8615ed",
+    "researchedFromV2Sha256": "071992d0dcb5b0c1493f78916b79aa500abe6c31d01ff0c9ef7f0fc31d2a5df7"
+  }
+}

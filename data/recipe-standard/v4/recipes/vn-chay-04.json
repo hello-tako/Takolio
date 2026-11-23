@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chay-04",
+    "slug": "ca-tim-nuong-mo-hanh",
+    "title": "Cà tím nướng mỡ hành nước tương tỏi ớt",
+    "subtitle": "Cà tím nướng mềm mọng ngọt thơm quyện mỡ hành xanh mướt, nước tương tỏi ớt đậm đà và đậu phộng rang bùi béo"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Nam Bộ",
+      "Món nướng",
+      "Cà tím",
+      "Dân dã"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "peanut",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cà tím nướng mỡ hành dân dã chuẩn vị Nam Bộ với phần thịt cà trắng mềm mọng ngọt tự nhiên, thơm nhẹ hương khói, phủ lớp mỡ hành xanh bóng béo ngậy, rưới sốt nước tương tỏi ớt chua mặn ngọt hài hòa và đậu phộng rang giòn bùi.",
+    "servingSuggestion": "Bày cà tím nướng nóng hổi ra đĩa dài, rưới thêm nước tương tỏi ớt và rắc đậu phộng rang giã dập cùng tiêu xay; ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Món ngon nhất khi dùng ngay lúc vừa nướng xong; nếu còn dư có thể bọc kín bảo quản ngăn mát tối đa 24 giờ và làm nóng lại bằng lò nướng ở 170°C trong 5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGGPLANT",
+      "name": "Cà tím dài quả thẳng",
+      "culinaryMeasure": "500 g (khoảng 2–3 quả vừa)",
+      "prepNote": "rửa sạch, giữ nguyên cuống, bổ đôi theo chiều dọc và khứa nhẹ ca-rô trên mặt thịt cà",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "2 bó nhỏ (khoảng 80 g)",
+      "prepNote": "rửa sạch, để ráo nước rồi thái nhỏ làm mỡ hành",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "bunch",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 73.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "đun sôi già để xối vào hành lá làm mỡ hành xanh mướt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha phần sốt nước tương tỏi ớt rưới cà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để pha nước tương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "bỏ hạt nếu không ăn cay nhiều, băm nhuyễn pha sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan trong nước tương tạo vị dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn vào chén hành lá trước khi xối dầu nóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "g",
+      "grossGrams": 2.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc thơm lên mặt cà tím sau khi nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng (lạc) rang giã dập",
+      "culinaryMeasure": "20 g",
+      "prepNote": "rang chín vàng, xát vỏ và giã dập vừa ăn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "pha loãng sốt nước tương cho vị hài hòa không quá gắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế cà tím và các nguyên liệu ăn kèm",
+      "instruction": "Chọn cà tím dài quả thẳng, vỏ căng bóng, rửa sạch rồi bổ đôi theo chiều dọc, dùng mũi dao khứa vài đường chéo trên bề mặt thịt cà để gia vị dễ thấm. Hành lá rửa sạch, vẩy thật ráo rồi thái nhỏ; tỏi khô và ớt sừng băm thật nhuyễn; đậu phộng rang giã dập.",
+      "tip": "Khứa đường chéo nhẹ trên mặt cắt cà tím giúp cà chín nhanh đều và giữ được sốt khi nướng lần hai."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nướng sơ cà tím cho thịt cà mềm ngọt",
+      "instruction": "Làm nóng lò nướng hoặc nồi chiên không dầu ở 190°C trong 5 phút. Xếp cà tím lên khay có lót giấy bạc với mặt cắt hướng lên trên, nướng lần 1 trong 15 phút đến khi vỏ hơi xém và thịt cà mềm nhũn khi ấn nhẹ.",
+      "tip": "Nếu nướng trên bếp than hoa, có thể nướng nguyên quả và trở đều mỗi 4–5 phút để vỏ cháy xém thơm đặc trưng rồi mới tách vỏ.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sốt nước tương tỏi ớt chua ngọt dịu",
+      "instruction": "Trong lúc chờ nướng cà, cho vào chén 30 ml nước tương, 60 ml nước lọc và 5 g đường cát trắng, khuấy đều tay đến khi đường tan hết. Tiếp tục thêm toàn bộ phần tỏi băm và ớt băm vào trộn đều để tạo vị mặn ngọt cay dịu hài hòa."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Chế biến mỡ hành xanh mướt thơm béo",
+      "instruction": "Cho hành lá thái nhỏ cùng 2,5 g muối ăn vào chén chịu nhiệt. Đun nóng 30 ml dầu ăn thực vật trong chảo nhỏ trên lửa vừa khoảng 1 phút đến khi dầu sôi sủi tăm thì tắt bếp, đổ trực tiếp dầu nóng vào chén hành và đảo đều tay.",
+      "tip": "Trộn chút muối vào hành và đổ dầu sôi già khi đã tắt bếp giúp hành giữ màu xanh tươi mà không bị cháy đắng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Tước thớ thịt cà tím và nướng thấm sốt lần hai",
+      "instruction": "Lấy khay cà tím ra khỏi lò, dùng nĩa xăm nhẹ và tước dọc nhẹ nhàng cho phần thịt cà tơi ra thành thớ dài. Dùng muỗng rưới đều một nửa phần sốt nước tương tỏi ớt và một nửa mỡ hành lên khắp bề mặt cà tím, đưa lại vào lò nướng thêm 8 phút ở 180°C cho sốt thấm sâu vào từng thớ cà.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Phết mỡ hành, rắc đậu phộng và thưởng thức nóng",
+      "instruction": "Xếp cà tím nướng ra đĩa dài, chan nốt phần sốt nước tương tỏi ớt và mỡ hành còn lại lên mặt cà. Rắc đều đậu phộng rang giã dập cùng 1 g tiêu đen xay và thưởng thức ngay khi còn nóng hổi với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 184,
+    "energyKcal": 184,
+    "energyKj": 771,
+    "proteinG": 4.9,
+    "fatG": 12.9,
+    "saturatedFatG": 1.8,
+    "carbG": 15.5,
+    "fiberG": 6,
+    "sugarG": 8,
+    "sodiumMg": 980,
+    "saltG": 2.45,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169228",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "020aa2d7430620bff82eabf7fa88aa7ebfcd7a16184150ea97c552c7be6bcd20",
+    "researchedFromV2Sha256": "151b7bb79a79cc49c8ce6f1e586342ad48ea95e98b78f36a18a18df3bb370879"
+  }
+}

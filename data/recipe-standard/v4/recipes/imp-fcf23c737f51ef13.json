@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-fcf23c737f51ef13",
+    "slug": "com-chien-ca-chua-trung",
+    "title": "Cơm chiên cà chua trứng",
+    "subtitle": "Hạt cơm tơi săn áo sốt cà chua tương cà đỏ óng hòa cùng trứng bác bông mềm và hương dầu mè thơm nức"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Cơm chiên",
+      "Cà chua",
+      "Trứng gà",
+      "Trung Hoa",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cơm chiên cà chua trứng kiểu Trung Hoa giản dị nhưng cuốn hút với từng hạt cơm nguội tơi ráo quyện đều nước sốt cà chua chua ngọt, dầu hào đậm đà và những mảng trứng gà chiên mềm thơm.",
+    "servingSuggestion": "Múc cơm chiên ra tô hoặc đĩa sâu lòng, rắc hành lá thái nhỏ lên trên; dùng nóng ngay cùng dưa leo thái lát hoặc canh rong biển thanh mát.",
+    "storageAndReheat": "Ngon nhất khi ăn ngay lúc vừa chiên xong; nếu bảo quản ngăn mát trong hộp kín tối đa 2 ngày, khi hâm lại đảo trên chảo chống dính lửa vừa 3–4 phút cho hạt cơm nóng tơi trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm nguội để lạnh qua đêm",
+      "culinaryMeasure": "700 g (~4,5 chén cơm)",
+      "prepNote": "chọn cơm trắng nấu khô ráo, để tủ lạnh qua đêm rồi dùng tay bóp tơi rời từng hạt",
+      "componentGroup": "main",
+      "requiredQuantity": 700,
+      "unit": "g",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 700,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "6 quả",
+      "prepNote": "đập ra tô, đánh tan đều cùng một chút tiêu trắng nếu thích",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 264,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (khoảng 240 g)",
+      "prepNote": "rửa sạch, bỏ cuống và bớt hạt nước, thái hạt lựu nhỏ đều tay",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 216,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 3 cây)",
+      "prepNote": "rửa sạch, thái nhỏ, tách riêng phần đầu trắng phi thơm và phần lá xanh rắc cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "chia 15 ml chiên trứng bác và 30 ml xào cà chua cùng cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 39.33,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "tạo vị chua ngọt đặc trưng và màu đỏ au hấp dẫn cho hạt cơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt đậm umami cho cơm chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 26.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 26.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "giúp từng hạt cơm lên màu nâu bóng đẹp mắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 27.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "7,5 ml (~1,5 muỗng cà phê)",
+      "prepNote": "rưới sau cùng để dậy mùi thơm béo đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 7.5,
+      "unit": "ml",
+      "grossGrams": 6.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "tùy chọn nêm nếu muốn vị sốt cà chua dịu ngọt hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "tùy chọn nêm thêm nếu thấy nhạt sau khi trộn gia vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "tùy chọn rắc nhẹ tạo hương cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Tơi cơm nguội và chuẩn bị trứng, cà chua",
+      "instruction": "Dùng tay sạch bóp nhẹ 700 g cơm nguội để lạnh sao cho từng hạt cơm tách rời hoàn toàn, không còn vón cục. Đập 6 quả trứng gà vào tô đánh tan đều. Cà chua chín bỏ bớt phần hạt nước rồi cắt hạt lựu nhỏ; tỏi băm nhuyễn; hành lá thái nhỏ tách riêng đầu trắng và lá xanh.",
+      "tip": "Dùng cơm nguội để lạnh qua đêm và bỏ bớt nước hạt cà chua là hai bí quyết giúp hạt cơm chiên săn tơi, không bị nhão dính."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên trứng bác mềm ẩm rồi trút ra riêng",
+      "instruction": "Làm nóng chảo sâu lòng với 15 ml dầu ăn trên lửa vừa-lớn. Đổ trứng gà đã đánh vào, đảo nhẹ tay theo vòng tròn khoảng 1–2 phút cho đến khi trứng vừa đông thành từng mảng bông mềm, bề mặt còn hơi ẩm bóng thì lập tức múc ra đĩa để riêng.",
+      "tip": "Không chiên trứng quá khô ở bước này vì trứng sẽ chín tiếp khi trộn chung với cơm nóng ở cuối.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào cạn nước cà chua",
+      "instruction": "Cho 30 ml dầu ăn còn lại vào chảo trên lửa vừa, cho đầu hành trắng vào phi thơm 15 giây rồi thả tỏi băm và cà chua hạt lựu vào. Đảo đều khoảng 3 phút cho đến khi cà chua mềm nhừ và phần nước tiết ra bay hơi gần hết, tạo thành lớp nền sệt.",
+      "tip": "Phải đợi nước cà chua rút cạn gần hết mới cho cơm vào để cơm giữ được độ tơi ráo hoàn hảo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên tơi cơm nguội trên lửa vừa-lớn",
+      "instruction": "Trút toàn bộ cơm nguội đã tơi vào chảo, tăng lửa vừa-lớn và đảo đều tay liên tục khoảng 3 phút cho hạt cơm nóng đều, săn lại và quyện lớp xốt cà chua đỏ cam.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Rưới tương cà, dầu hào, xì dầu đặc áo đều hạt cơm",
+      "instruction": "Rưới 45 ml tương cà, 22 ml dầu hào và 22 ml xì dầu đặc quanh mặt cơm, tiếp tục đảo nhanh tay thêm 2 phút trên lửa lớn cho đến khi từng hạt cơm đều lên màu nâu đỏ bóng bẩy, không còn đọng sốt ở đáy chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn trứng bác, rưới dầu mè và hoàn thiện",
+      "instruction": "Cho trứng gà bác trở lại chảo, rưới 7,5 ml dầu mè thơm và dùng xẻng nhẹ nhàng đảo tơi cùng cơm trong 1 phút cho trứng chín hẳn và hòa quyện. Nếm thử và điều chỉnh thêm 3 g đường cát trắng, 3 g muối ăn hoặc 1 g tiêu trắng xay nếu thích, rắc phần lá xanh hành lá lên trên rồi dọn nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 625,
+    "energyKcal": 624.7,
+    "energyKj": 2613,
+    "proteinG": 19.4,
+    "fatG": 24.7,
+    "saturatedFatG": 5.2,
+    "carbG": 79.7,
+    "fiberG": 2.3,
+    "sugarG": 9.1,
+    "sodiumMg": 1361,
+    "saltG": 3.4,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 168878",
+      "USDA FDC 169076",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "425b0f70cad55799855b64e58d584c55c6646dda18fe540f2e72b9002176ab26",
+    "researchedFromV2Sha256": "7e985363a21ae73ce4001ba679331fb581d2f53cd63cadb6e4b5a69df4835778"
+  }
+}

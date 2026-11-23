@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chay-06",
+    "slug": "canh-cai-nau-dau-phu-non",
+    "title": "Canh cải xanh gừng đậu phụ thanh mát",
+    "subtitle": "Bát canh cải bẹ xanh giữ sắc xanh mướt cùng đậu phụ trắng béo mềm và gừng già đập dập cay ấm bụng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 4,
+    "tags": [
+      "Món chay",
+      "Món canh",
+      "Cải bẹ xanh",
+      "Ấm bụng",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bát canh cải bẹ xanh thanh đạm mà ấm bụng với vị hăng ngọt dịu nhẹ đặc trưng của rau cải non, hòa quyện hương gừng già cay thơm nồng giúp làm ấm cơ thể cùng những miếng đậu phụ trắng béo mềm thấm vị.",
+    "servingSuggestion": "Múc canh ra tô lớn khi còn bốc khói, rắc hành lá, ngò rí và chút tiêu đen xay; dùng nóng trong bữa cơm chay gia đình.",
+    "storageAndReheat": "Canh cải xanh ngon nhất khi ăn nóng trong ngày vì để lâu hoặc hâm lại nhiều lần rau dễ ngả màu vàng và tăng vị đắng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BOK_CHOY",
+      "name": "Rau cải bẹ xanh tươi",
+      "culinaryMeasure": "400 g (1 bó vừa)",
+      "prepNote": "cắt bỏ gốc già, tách bẹ rửa sạch, ngâm nước muối loãng 5 phút rồi cắt khúc 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa nhẹ tay, cắt miếng vuông vừa ăn cạnh 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng già tươi",
+      "culinaryMeasure": "25 g (1 nhánh vừa)",
+      "prepNote": "cạo sạch vỏ, chia nửa đập dập để phi thơm, nửa thái sợi mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "15 g (1 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm nền canh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi thơm hành tím và gừng đập dập",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm tạo vị ngọt thanh cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm đậm vị nền nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị đắng nhẹ tự nhiên của cải xanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tăng hương thơm dịu cho nước canh chay",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, thái nhỏ rắc thơm khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc thơm lên mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "nấu nước dùng canh thanh mát",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 950,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau cải bẹ xanh, đậu phụ và gừng",
+      "instruction": "Rau cải bẹ xanh nhặt bỏ lá úa và phần gốc già, tách bẹ rửa sạch nhiều lần rồi cắt khúc 3–4 cm, để ráo. Đậu phụ trắng cắt miếng vuông cạnh 2 cm. Gừng già cạo vỏ, đập dập một nửa (12,5 g), phần còn lại thái sợi mỏng; hành tím băm nhỏ; hành lá và ngò rí thái nhỏ.",
+      "tip": "Chọn bó cải bẹ xanh non, cọng mảnh vừa phải sẽ ít đắng và giòn ngọt hơn cải già."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và gừng già đập dập",
+      "instruction": "Đặt nồi lên bếp với 15 ml dầu ăn trên lửa vừa, cho hành tím băm và phần gừng đập dập vào phi khoảng 45 giây đến khi dậy mùi thơm cay ấm đặc trưng.",
+      "tip": "Phi thơm gừng đập dập trước giúp tinh dầu gừng tiết ra hòa vào nước dùng, làm ấm bụng và khử mùi tanh nhẹ của đậu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu nước canh sôi và thả đậu phụ",
+      "instruction": "Đổ 1000 ml nước lọc vào nồi, đậy nắp đun lửa lớn cho sôi bùng rồi hạ lửa vừa. Nhẹ nhàng thả từng miếng đậu phụ trắng vào, nấu sôi lăn tăn trong 4 phút cho đậu nóng đều và nước canh ngấm hương gừng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm gia vị cân bằng vị cải bẹ xanh",
+      "instruction": "Nêm vào nồi canh 6 g hạt nêm chay, 3 g muối ăn, 2 g đường cát trắng và 15 ml nước tương, khuấy thật nhẹ tay tránh làm vỡ đậu và nếm lại cho vừa khẩu vị thanh dịu.",
+      "tip": "Thêm một chút đường cát trắng giúp dịu hẳn vị đắng nhẹ đặc trưng của rau cải bẹ xanh."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu cải bẹ xanh giữ màu xanh giòn",
+      "instruction": "Tăng lên lửa lớn cho nước canh sôi mạnh trở lại rồi thả rau cải bẹ xanh cùng phần gừng thái sợi vào, dùng vá ấn nhẹ cho rau ngập nước. Nấu mở vung trong 2 phút đến khi cọng cải vừa chín tới, giữ nguyên màu xanh mướt.",
+      "tip": "Không đậy vung và không nấu cải quá 3 phút để rau không bị úa vàng và mất độ giòn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện và dọn canh nóng",
+      "instruction": "Tắt bếp ngay khi cải vừa chín tới, thả hành lá và ngò rí thái nhỏ vào. Múc canh ra tô lớn, rắc 1 g tiêu đen xay lên trên và dùng nóng ngay trong bữa cơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 132,
+    "energyKcal": 132.1,
+    "energyKj": 552,
+    "proteinG": 11.1,
+    "fatG": 8.3,
+    "saturatedFatG": 1.2,
+    "carbG": 6.5,
+    "fiberG": 2.2,
+    "sugarG": 2.6,
+    "sodiumMg": 830,
+    "saltG": 2.08,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170390",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "44e292f9764c33808acc4ef1cfa60944714ca154cf320ab72cc8ad44070e55c8",
+    "researchedFromV2Sha256": "01c4f8b61dbf7432c6ad25d359c08567041bd55c1dffcf39132056639133d743"
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-01121ea953ffed76",
+    "slug": "suon-kho-trung",
+    "title": "Sườn non kho trứng cút",
+    "subtitle": "Sườn non heo kho mềm róc xương cùng trứng cút luộc và nước dừa tươi thanh ngọt, thấm đẫm màu cánh gián đậm đà chuẩn cơm nhà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 45,
+    "servings": 5,
+    "tags": [
+      "Món kho",
+      "Sườn non",
+      "Trứng cút",
+      "Bắc Bộ",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng sườn non kho liu riu trong nước dừa tươi đến khi mềm rệu, kết hợp cùng trứng cút bùi béo thấm màu nâu hổ phách sóng sánh và hương thơm cay ấm của tiêu ớt.",
+    "servingSuggestion": "Múc sườn và trứng cút ra đĩa sâu lòng, chan nước kho sánh bóng và rắc hành lá cùng tiêu xay; ăn nóng với cơm trắng dẻo.",
+    "storageAndReheat": "Để nguội rồi bảo quản hộp kín trong ngăn mát tối đa 3 ngày; khi dùng hâm lại trên lửa nhỏ cho nước sốt nóng sánh đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt miếng",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch, chần nước sôi khử mùi rồi chặt khúc vừa ăn dài 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "QUAIL_EGG",
+      "name": "Trứng cút tươi",
+      "culinaryMeasure": "15 quả (150 g)",
+      "prepNote": "luộc chín, ngâm nước lạnh rồi bóc sạch vỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 127.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COCONUT_WATER",
+      "name": "Nước dừa tươi",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "lọc qua rây cho sạch cặn để kho mềm sườn và tạo vị ngọt thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 505,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 505,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.6 củ (15 g, ~5 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 13.05,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (2–3 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (15 g)",
+      "prepNote": "rửa sạch, băm nhỏ 1 quả ướp sườn và để nguyên 2 quả thả vào nồi kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 25 ml ướp sườn và 10 ml nêm lúc kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "chia 15 g thắng nước màu cánh gián và 10 g ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "8 g",
+      "prepNote": "dùng 5 g rửa và chần sườn rồi xả bỏ, 3 g ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.38,
+      "edibleGrams": 3.04,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp sườn và rắc mặt khi hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 10 ml thắng nước màu và 20 ml xào săn sườn cùng trứng cút",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng 30 ml hãm nước màu và 70 ml bổ sung khi kho nếu cần",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chần sơ sườn non và luộc bóc vỏ trứng cút",
+      "instruction": "Rửa sạch 600 g sườn non với 2 g muối, chặt miếng vừa ăn rồi chần qua nồi nước sôi pha 3 g muối trong 3 phút để sạch bọt bẩn, vớt ra rửa lại nước lạnh và để ráo. Luộc 15 quả trứng cút trong nước sôi 7 phút rồi ngâm ngay vào thau nước lạnh 5 phút trước khi bóc sạch vỏ.",
+      "tip": "Ngâm trứng cút vào nước lạnh ngay sau khi luộc giúp vỏ tách dễ dàng và lòng đỏ không bị thâm xanh.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp sườn non với gia vị và hành tỏi băm",
+      "instruction": "Băm nhuyễn hành tím, tỏi khô và 1 quả ớt hiểm. Cho sườn vào tô lớn, ướp cùng một nửa lượng hành tỏi băm, ớt băm, 25 ml nước mắm ngon, 10 g đường cát trắng, 3 g muối và 1 g tiêu đen xay. Trộn đều và ướp 30 phút cho sườn thấm sâu.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Thắng nước màu cánh gián và xào săn sườn",
+      "instruction": "Đun nóng 10 ml dầu ăn với 15 g đường cát trắng còn lại trong nồi đáy dày trên lửa nhỏ đến khi đường tan chuyển màu nâu cánh gián, rót nhanh 30 ml nước lọc ấm vào khuấy đều. Thêm 20 ml dầu ăn và phi thơm phần hành tím tỏi băm còn lại, rồi trút sườn vào xào săn trên lửa vừa 4 phút.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đảo nhẹ trứng cút và đổ nước dừa tươi",
+      "instruction": "Thả 15 quả trứng cút đã bóc vỏ và 2 quả ớt hiểm nguyên trái vào nồi sườn, đảo nhẹ tay 2 phút cho trứng áo đều lớp nước màu đẹp. Rót 500 ml nước dừa tươi vào ngập mặt sườn, đun sôi bùng và hớt sạch bọt nổi.",
+      "tip": "Đảo nhẹ tay bằng muỗng gỗ hoặc lắc nồi khi có trứng cút để giữ trứng tròn nguyên không bị sứt mẻ."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu cho sườn mềm và nước sánh lại",
+      "instruction": "Hạ lửa nhỏ, đậy hé vung kho liu riu trong 30 phút cho thịt sườn mềm rệu (thêm 70 ml nước lọc ấm nếu nước dừa cạn nhanh). Mở nắp tăng lên lửa vừa kho tiếp 5 phút cùng 10 ml nước mắm còn lại đến khi nước kho rút còn khoảng một phần ba và sánh bóng.",
+      "tip": "Chừa lại phần nước kho sánh vừa phải ở đáy nồi để chan cơm nóng hoặc chấm rau luộc sẽ đậm vị hơn.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và hoàn thiện món ăn",
+      "instruction": "Nêm lại gia vị vừa khẩu vị rồi tắt bếp. Múc sườn non và trứng cút ra đĩa sâu lòng, rưới nước kho óng ả và rắc hành lá cắt nhỏ cùng 1 g tiêu đen xay còn lại lên trên để dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 353,
+    "energyKcal": 352.7,
+    "energyKj": 1475,
+    "proteinG": 17.1,
+    "fatG": 26.2,
+    "saturatedFatG": 8.5,
+    "carbG": 11.7,
+    "fiberG": 1.6,
+    "sugarG": 8.7,
+    "sodiumMg": 1098,
+    "saltG": 2.75,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170174",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172191",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5abf4b4fe39ba32c692c79c18bfeb4ba341d0125e9ca9e18098fb28076bed604",
+    "researchedFromV2Sha256": "c8f74ef980631bbc4c17599e4ca6903fdc3ffac36ecb49cac6fbb7320459b619"
+  }
+}

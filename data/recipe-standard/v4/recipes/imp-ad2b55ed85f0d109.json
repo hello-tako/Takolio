@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ad2b55ed85f0d109",
+    "slug": "canh-bap-cai-trung-cuon",
+    "title": "Canh bắp cải trứng cuộn",
+    "subtitle": "Bắp cải thái sợi giòn ngọt nấu cùng cà rốt và những dải trứng gà đánh tơi cuộn vàng mềm mịn trong nước dùng thanh đạm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Thanh đạm",
+      "Dễ nấu",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Món canh gia đình thanh đạm dễ ăn với những sợi bắp cải xanh mướt giòn ngọt tự nhiên, điểm xuyết lát cà rốt cam tươi và những vân trứng gà vàng óng mềm mượt.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, rắc hành lá, ngò rí, vài lát ớt đỏ (nếu ăn cay) và tiêu xay; ăn kèm cơm trắng cùng thịt rim hoặc đậu phụ rán tẩm hành.",
+    "storageAndReheat": "Món canh bắp cải trứng nên ăn hết ngay khi vừa nấu để rau còn giòn và trứng mềm thơm; tránh đun lại lâu khiến bắp cải nồng mùi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh tươi",
+      "culinaryMeasure": "0.75 bắp (~600 g)",
+      "prepNote": "bỏ lá già và cùi cứng, thái sợi vừa ăn bản 1 cm, rửa sạch nhiều lần rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (~200 g)",
+      "prepNote": "đập ra chén, đánh tan thật đều cả lòng đỏ và lòng trắng",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0.5 củ (~55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát mỏng vừa ăn cho thêm màu sắc và vị ngọt",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (1–2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó (~30 g, 3 cây)",
+      "prepNote": "rửa sạch, phần đầu hành đập dập phi thơm, phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nhúm nhỏ)",
+      "prepNote": "nhặt bỏ gốc, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng trang trí tăng hương vị",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím và đầu hành lá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm ở bước cuối giúp nước canh dậy mùi thơm đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "nêm vào nước dùng tạo độ ngọt dịu hài hòa",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "nêm nước dùng giúp vị canh đậm vừa phải",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "tăng hậu vị ngọt thanh kết hợp cùng bắp cải",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lên tô canh khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "lượng nước dùng phù hợp cho 4 tô canh thanh mát",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1080,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái sợi bắp cải, cà rốt và đánh tan trứng",
+      "instruction": "Tách bỏ lá úa và phần cùi cứng của 0,75 bắp cải, thái sợi hoặc miếng vuông vừa ăn rồi rửa sạch qua 2–3 lần nước, để thật ráo. Gọt vỏ 0,5 củ cà rốt, thái lát mỏng. Băm nhỏ 20 g hành tím, thái nhỏ ngò rí và hành lá (để riêng phần đầu hành đập dập), thái lát ớt sừng. Đập 4 quả trứng gà vào tô, đánh tan đều tay.",
+      "tip": "Đánh đều tay cho lòng đỏ và lòng trắng hòa quyện hoàn toàn sẽ giúp vân trứng cuộn thành dải mảnh mịn đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành và đun sôi nước dùng cà rốt",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa, cho hành tím băm và đầu hành lá vào phi thơm vàng nhẹ. Đổ 1,2 lít nước lọc vào nồi cùng cà rốt thái lát, nêm 6 g muối ăn, 10 g hạt nêm và 8 g đường cát trắng, đun sôi khoảng 4 phút cho cà rốt hơi mềm và gia vị tan đều.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rưới trứng tạo vân cuộn vàng mềm mịn",
+      "instruction": "Khi nước dùng đang sôi đều ở lửa vừa, từ từ rót phần trứng gà đã đánh tan vào nồi qua dòng chảy nhỏ, đồng thời dùng đũa khuấy nhẹ nhàng theo một vòng tròn để trứng kết thành những sợi cuộn mỏng bồng bềnh và không bị vón cục.",
+      "tip": "Giữ nước sôi vừa phải và khuấy thật nhẹ một chiều trong lúc rưới trứng để tạo vân cuộn tơi đẹp mà không làm đục nước.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu bắp cải vừa chín tới giữ độ giòn ngọt",
+      "instruction": "Thả toàn bộ bắp cải thái sợi vào nồi, đảo nhẹ cho ngập nước và nấu mở vung trên lửa vừa thêm 2 phút đến khi bắp cải vừa chín tới vẫn giữ màu xanh nhạt tươi tắn, độ giòn ngọt và trứng chín hoàn toàn bên trong.",
+      "tip": "Chỉ nấu bắp cải khoảng 2 phút mở vung để rau giữ được độ giòn ngọt tự nhiên và không bị nồng mùi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm nước mắm sau cùng giữ trọn hương thơm",
+      "instruction": "Rưới 20 ml nước mắm ngon vào nồi canh, khuấy nhẹ đều một lượt rồi nếm lại vị thanh ngọt vừa miệng trước khi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành ngò, ớt lát và tiêu xay",
+      "instruction": "Tắt bếp, rắc hành lá và ngò rí thái nhỏ cùng vài lát ớt sừng đỏ và 1 g tiêu đen xay lên mặt nồi. Múc canh ra tô lớn dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 151,
+    "energyKcal": 150.8,
+    "energyKj": 632,
+    "proteinG": 8.1,
+    "fatG": 7.7,
+    "saturatedFatG": 1.9,
+    "carbG": 13.7,
+    "fiberG": 4,
+    "sugarG": 7.9,
+    "sodiumMg": 1562,
+    "saltG": 3.9,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "79118e20cc1752ddbd78f1ec899ec6df774b32599c6ea4c170bcfc803b579d1d",
+    "researchedFromV2Sha256": "cad7b6316ee97b7b61f6cccecf451356cdc533f0e8e13e54ee6aaff11fd67be0"
+  }
+}

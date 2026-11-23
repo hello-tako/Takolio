@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-500ffbf4fd05f9da",
+    "slug": "mi-y-muc-ot",
+    "title": "Mì Ý mực sốt cà chua cay",
+    "subtitle": "Sợi mì spaghetti al dente áo đẫm sốt cà chua bi chua ngọt quyện mực ống săn giòn và vị ớt cay nhẹ"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Mì Ý",
+      "Hải sản",
+      "Mực tươi",
+      "Sốt cà chua",
+      "Cay nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "squid",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Sự kết hợp chuẩn vị biển Địa Trung Hải giữa mực ống tươi áp chảo xém cạnh, om mềm trong sốt cà chua bi nấu cùng rượu vang trắng, tỏi và ớt tươi cay nhẹ, bám quyện hoàn hảo quanh từng sợi mì Ý.",
+    "servingSuggestion": "Chia mì mực ra 4 đĩa sâu lòng khi còn nóng hổi, rắc thêm ít ngò tây tươi, lá hẹ thái nhỏ và tiêu đen xay; món mì hải sản Ý truyền thống không dùng kèm phô mai để giữ trọn vị ngọt thanh của mực.",
+    "storageAndReheat": "Mì Ý trộn sốt ngon nhất khi dùng ngay sau khi nấu. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hâm lại trên chảo với 2 muỗng canh nước ở lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý sợi dài (spaghetti)",
+      "culinaryMeasure": "320 g",
+      "prepNote": "luộc trong nước muối sôi già đến độ chín vừa dai (al dente)",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi đã làm sạch",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rửa sạch, rút túi mực và mai, cắt thân thành khoanh dày 1 cm, râu cắt đôi rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua bi chín đỏ",
+      "culinaryMeasure": "300 g (khoảng 2,5 phần quả lớn)",
+      "prepNote": "rửa sạch, bổ đôi từng quả",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/2 củ (~12,5 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi đỏ",
+      "culinaryMeasure": "2 quả (~10 g)",
+      "prepNote": "rửa sạch, bỏ bớt hạt nếu ăn cay nhẹ, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "60 ml",
+      "prepNote": "dùng để khử tanh và hòa vị đáy chảo sau khi xào mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 59.4,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 41.58,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "chia 30 ml áp chảo mực và làm sốt, 15 ml rưới cuối khi xóc mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 38.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ phần lá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHIVES",
+      "name": "Hẹ lá tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, cắt khúc ngắn 1,5 cm để tạo hương cuối và rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 7 g pha vào nước luộc mì (đổ bỏ phần lớn nước), 3 g nêm vào sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 3.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nêm sốt và rắc hoàn thiện khi dọn đĩa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc mì)",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đun sôi với muối để luộc mì và giữ lại 100 ml nước luộc mì sánh sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế mực ống và rau thơm",
+      "instruction": "Làm sạch kỹ 450 g mực ống tươi, rút bỏ túi mực, mai và phần răng cứng ở gốc râu rồi rửa sạch, cắt thân thành khoanh dày 1 cm và thấm thật khô bằng khăn giấy. Cà chua bi bổ đôi, tỏi tươi băm nhỏ, ớt tươi thái lát, 15 g ngò tây tươi thái nhỏ và hẹ lá cắt khúc ngắn.",
+      "tip": "Mực được thấm ráo nước trước khi vào chảo nóng sẽ xém cạnh thơm lừng thay vì tiết nước bị luộc dai."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo nhanh mực ống trên lửa lớn",
+      "instruction": "Làm nóng chảo sâu lòng với 30 ml dầu ô liu nguyên chất trên lửa lớn đến khi dầu thật nóng. Thả mực vào áp chảo nhanh khoảng 4–5 phút, đảo vài lần cho đến khi mực săn cong và hơi xém vàng ở viền.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi tỏi ớt và om mực cùng cà chua bi",
+      "instruction": "Hạ xuống lửa vừa, cho tỏi băm và ớt tươi vào đảo thơm 30 giây, sau đó thêm cà chua bi bổ đôi và rót 60 ml rượu vang trắng khô vào, cạo nhẹ đáy chảo cho tan phần cháy thơm. Nêm 3 g muối ăn và 1 g tiêu đen xay, đậy nắp om trên lửa nhỏ khoảng 15 phút đến khi cà chua nát quyện thành sốt đỏ sánh và mực chín mềm.",
+      "tip": "Mực cần được om đủ thời gian trên lửa liu riu để thớ thịt chuyển từ dai sang mềm ngọt và hòa quyện với nước cà chua.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Luộc mì Ý al dente song song khi om sốt",
+      "instruction": "Trong lúc om sốt mực ở những phút cuối, đun sôi 2 lít nước lọc với 7 g muối ăn trong nồi lớn. Thả 320 g mì Ý spaghetti vào luộc khoảng 8–9 phút (ít hơn hướng dẫn bao bì 1 phút) đến độ chín dai vừa phải, giữ lại khoảng 100 ml nước luộc mì trước khi vớt mì ra.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn hẹ, ngò tây và xóc mì quyện sốt",
+      "instruction": "Mở nắp chảo sốt mực, cho phần lớn hẹ lá tươi và một nửa lượng ngò tây tươi vào đảo 1 phút cho vừa héo dậy mùi. Đổ mì Ý đã ráo vào chảo, thêm 15 ml dầu ô liu nguyên chất còn lại cùng từng muỗng nước luộc mì và xóc đều trên lửa lớn 1 phút để sốt bám bóng từng sợi mì.",
+      "tip": "Tinh bột trong nước luộc mì giúp kết dính dầu ô liu và nước cà chua thành lớp sốt mượt bám đều lên sợi spaghetti.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Chia mì mực sốt cà chua ra 4 đĩa sâu lòng, rưới phần sốt mực còn lại lên trên mặt mì. Rắc nốt phần ngò tây tươi, hẹ lá tươi và 1 g tiêu đen xay còn lại rồi dọn thưởng thức ngay khi còn nóng hổi."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 502,
+    "energyKcal": 501.6,
+    "energyKj": 2098,
+    "proteinG": 26.5,
+    "fatG": 12.5,
+    "saturatedFatG": 2,
+    "carbG": 67.7,
+    "fiberG": 3.9,
+    "sugarG": 4.5,
+    "sodiumMg": 393,
+    "saltG": 0.98,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 169994",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f553e7e7396fdd8e4d9de921f8d0efb1a15fb3f1b14a50a75b938d04037e4080",
+    "researchedFromV2Sha256": "a035f9cf8eb30af313f1af857cee33d8567ee0dc9e0159e907a1f3cc513294f6"
+  }
+}

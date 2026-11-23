@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-1b54108818405e6a",
+    "slug": "com-chien-ba-chi-kim-chi",
+    "title": "Cơm chiên ba chỉ kim chi Hàn Quốc",
+    "subtitle": "Cơm trắng rang săn hạt cùng thịt ba chỉ xém cạnh béo giòn, kim chi chua cay, sốt Gochujang và trứng ốp la lòng đào"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Cơm chiên",
+      "Ba chỉ heo",
+      "Kim chi",
+      "Hàn Quốc",
+      "Bữa tối nhanh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cơm chiên ba chỉ kim chi Hàn Quốc (Kimchi Bokkeumbap) đậm đà khó cưỡng với từng hạt cơm săn tơi phủ màu đỏ cam bắt mắt của tương ớt Gochujang, quyện thịt ba chỉ chiên xém béo giòn, kim chi chua cay và trứng ốp la lòng đào.",
+    "servingSuggestion": "Nén nhẹ cơm chiên ra chén rồi úp ra đĩa, đặt trứng ốp la lên trên, rắc thêm hành lá xanh, hạt mè trắng rang và rong biển cắt sợi để thưởng thức nóng.",
+    "storageAndReheat": "Cơm chiên ngon nhất khi dùng nóng ngay vừa ra chảo; phần thừa bảo quản hộp kín trong ngăn mát tối đa 2 ngày và đảo nóng lại trên chảo chống dính với lửa vừa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nấu chín (để nguội)",
+      "culinaryMeasure": "580 g (khoảng 3,5 chén cơm)",
+      "prepNote": "bóp tơi từng hạt cơm trước khi chiên (nếu cơm tủ lạnh hơi cứng có thể quay ấm 30 giây rồi bóp tơi)",
+      "componentGroup": "main",
+      "requiredQuantity": 580,
+      "unit": "g",
+      "grossGrams": 580,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 580,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo tươi",
+      "culinaryMeasure": "180 g",
+      "prepNote": "thái miếng nhỏ cỡ 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo lên men kỹ",
+      "culinaryMeasure": "180 g (cả cái và 60 ml nước kim chi)",
+      "prepNote": "cắt nhỏ cỡ 1,5 cm, giữ lại khoảng 60 ml nước kim chi trong hũ",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,4 củ (khoảng 56 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 56,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 50.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "tách riêng phần đầu trắng thái nhỏ để xào thơm và lá xanh rắc hoàn thiện",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị đậm đà và hương thơm xém chảo cho cơm chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "25 g (~1,5 muỗng canh)",
+      "prepNote": "tạo màu đỏ cam óng đẹp và vị cay ngọt đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml láng chảo áp thịt ba chỉ và 10 ml chiên trứng ốp la",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để giữ mùi thơm đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt ba chỉ, 1 g chỉnh vị cuối nếu cần",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp thịt ba chỉ và rắc cuối",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "chiên ốp la lòng đào hoặc chín kỹ đặt lên mặt đĩa cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc mặt cơm chiên trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển lá khô cắt sợi",
+      "culinaryMeasure": "4 g (khoảng 1,5 lá nướng giòn)",
+      "prepNote": "cắt sợi mảnh rắc phủ mặt đĩa cơm chiên",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm tơi cơm nguội, thái thịt ba chỉ và sơ chế kim chi",
+      "instruction": "Dùng tay sạch bóp nhẹ cho 580 g cơm trắng nguội tơi rời từng hạt. Thái 180 g thịt ba chỉ heo thành miếng nhỏ 1,5 cm rồi ướp với 1 g muối ăn và 0,5 g tiêu đen xay. Cắt nhỏ kim chi cải thảo (giữ lại 60 ml nước kim chi), thái hạt lựu hành tây, tách riêng đầu hành trắng và lá xanh hành lá, cắt sợi mảnh rong biển lá khô.",
+      "tip": "Dùng cơm nguội để tủ lạnh qua đêm đã bóp tơi sẽ giúp cơm chiên săn hạt và không bị bết dính chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo thịt ba chỉ vàng giòn và tiết mỡ thơm",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 5 ml dầu ăn, cho thịt ba chỉ đã ướp vào đảo đều khoảng 5–6 phút đến khi thịt chín vàng đều các mặt, xém cạnh giòn và tiết ra mỡ thơm (nếu mỡ tiết ra quá nhiều, chắt bớt chỉ giữ lại khoảng 1,5 muỗng canh mỡ trong chảo).",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tây và xào kỹ kim chi với Gochujang",
+      "instruction": "Cho hành tây thái hạt lựu và phần đầu hành trắng vào chảo mỡ thịt đảo nhanh 30 giây trên lửa lớn cho thơm. Sau đó trút kim chi cải thảo, 60 ml nước kim chi, 20 ml xì dầu và 25 g tương ớt Hàn Quốc (Gochujang) vào xào đều trong 3 phút đến khi kim chi mềm sậm màu và sốt quyện đều.",
+      "tip": "Xào kỹ kim chi cùng tương ớt Gochujang trước khi cho cơm vào giúp vị chua cay thấm sâu và loại bỏ hơi ẩm dư.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rang cơm thấm đều sốt đỏ cam trên lửa vừa rồi tăng lửa lớn",
+      "instruction": "Hạ bếp xuống lửa vừa–nhỏ, trút toàn bộ cơm nguội đã bóp tơi vào chảo, dùng muôi tán nhẹ và đảo đều 3 phút cho từng hạt cơm nhuộm màu đỏ cam bóng đẹp. Tiếp theo, tăng lên lửa lớn đảo thưa tay thêm 2 phút cho hạt cơm săn giòn và thơm mùi chảo.",
+      "tip": "Hạ lửa lúc mới trộn để cơm không dính đáy, rồi tăng lửa lớn ở 2 phút cuối giúp hạt cơm săn thơm cháy cạnh nhẹ.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Nêm chỉnh vị, rưới dầu mè và chiên trứng ốp la ăn kèm",
+      "instruction": "Nếm thử và chỉnh thêm tối đa 1 g muối ăn cùng 0,5 g tiêu đen xay nếu cần, tắt bếp rồi rưới 10 ml dầu mè rang và phần lá xanh hành lá vào đảo đều. Trên một chảo chống dính nhỏ khác, đun nóng 10 ml dầu ăn còn lại và chiên ốp la 3 quả trứng gà đến độ chín mong muốn."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa cơm chiên ba chỉ kim chi nóng hổi",
+      "instruction": "Múc cơm chiên ba chỉ kim chi ra từng đĩa hoặc tô, đặt trứng ốp la lên trên, rắc thêm hạt mè trắng rang và rong biển lá khô cắt sợi rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 740,
+    "energyKcal": 740.2,
+    "energyKj": 3097,
+    "proteinG": 18.8,
+    "fatG": 45.1,
+    "saturatedFatG": 14.4,
+    "carbG": 63.3,
+    "fiberG": 2.9,
+    "sugarG": 3.7,
+    "sodiumMg": 1276,
+    "saltG": 3.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 167820",
+      "USDA FDC 168456",
+      "USDA FDC 168878",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f4b8185c520b79aee5819e91f65ff314451a9500354614bf83cbca076d13a949",
+    "researchedFromV2Sha256": "dcf5a4f70d4941352e968c9c7e10795b151dad4d64efb096369f71b194954208"
+  }
+}

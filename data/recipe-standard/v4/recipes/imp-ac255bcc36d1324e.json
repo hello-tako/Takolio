@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ac255bcc36d1324e",
+    "slug": "ca-hoi-ap-chao-sot-teriyaki-bong-dep",
+    "title": "Cá hồi áp chảo sốt Teriyaki kiểu Nhật",
+    "subtitle": "Phi lê cá hồi còn da áp chảo giòn rụm, thịt cá mềm mọng ẩm quyện lớp sốt Teriyaki sánh bóng đậm đà hương bơ, gừng tỏi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Nhật Bản",
+      "Cá hồi",
+      "Teriyaki",
+      "Áp chảo",
+      "Bổ dưỡng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "salmon",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá hồi phi lê còn da được phủ nhẹ lớp bột mì giữ trọn nước ngọt bên trong, áp chảo mặt da giòn vàng với bơ lạt rồi rim nhanh trong sốt Teriyaki tự pha từ nước tương Nhật, rượu mirin, sake và đường.",
+    "servingSuggestion": "Xếp từng miếng cá hồi ra đĩa với mặt da giòn quay lên trên, rưới phần sốt Teriyaki sánh bóng còn lại trong chảo, rắc hành lá thái nhỏ và dọn kèm cơm trắng nóng cùng bông cải xanh luộc.",
+    "storageAndReheat": "Phần cá thừa bảo quản trong hộp kín ngăn mát tối đa 2 ngày; khi ăn làm nóng nhanh trong chảo lửa nhỏ có thêm 1 muỗng canh nước hoặc quay lò vi sóng 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi còn da",
+      "culinaryMeasure": "600 g (4 miếng dày ~2 cm)",
+      "prepNote": "rửa sạch, thấm thật khô, rắc muối tiêu rồi áo một lớp mỏng bột mì hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "16 g (2 muỗng canh)",
+      "prepNote": "phủ đều hai mặt cá hồi rồi giũ bỏ bột thừa để giữ ẩm và giúp sốt bám sánh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 14.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "tạo độ béo thơm và màu vàng bóng cho da cá khi áp chảo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "kết hợp cùng bơ để chịu nhiệt tốt, tránh cháy bơ khi áp chảo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 11.73,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "pha sốt Teriyaki chuẩn vị Nhật Bản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 70.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 70.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "60 ml (4 muỗng canh)",
+      "prepNote": "chia đôi: 30 ml hấp mềm cá trên chảo và 30 ml pha sốt Teriyaki",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 59.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 59.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ ngọt dịu và độ bóng mượt tự nhiên cho sốt Teriyaki",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "24 g (2 muỗng canh)",
+      "prepNote": "giúp sốt caramel hóa tạo độ sánh óng ả khi cô đặc",
+      "componentGroup": "sauce",
+      "requiredQuantity": 24,
+      "unit": "g",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "gọt vỏ, băm hoặc mài nhuyễn cho vào sốt Teriyaki tăng hương thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, đập dập băm nhỏ để ướp thơm phần sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "rắc đều hai mặt miếng cá hồi trước khi áo bột",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "ướp nhẹ lên phi lê cá hồi cho dậy mùi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí lên bề mặt cá khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt Teriyaki hương gừng tỏi",
+      "instruction": "Trong bát chịu nhiệt, cho 60 ml nước tương Nhật, 30 ml rượu Sake nấu ăn (một nửa lượng chuẩn bị), 30 ml rượu ngọt Mirin, 24 g đường cát trắng cùng 10 g gừng tươi băm và 1/2 củ tỏi băm nhuyễn. Khuấy đều cho đường tan hoàn toàn hoặc làm ấm nhẹ 30 giây để gia vị hòa quyện."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thấm khô, ướp muối tiêu và áo bột mì cho cá hồi",
+      "instruction": "Dùng khăn giấy thấm thật khô bề mặt 600 g phi lê cá hồi còn da, rắc đều 2 g muối ăn và 1 g tiêu đen xay lên cả hai mặt. Tiếp theo rắc đều 16 g bột mì đa dụng phủ mỏng hai mặt cá, vỗ nhẹ cho bột bám sát rồi giũ bỏ phần bột thừa.",
+      "tip": "Lớp bột mì mỏng đóng vai trò khóa nước ngọt trong thịt cá hồi, đồng thời giúp sốt Teriyaki tự sánh quyện mà không cần pha thêm bột năng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo mặt da cá hồi vàng giòn với dầu và bơ",
+      "instruction": "Làm nóng chảo chống dính lớn trên lửa vừa với 15 ml dầu ăn trung tính và 25 g bơ lạt. Khi bơ vừa tan sủi bọt, đặt từng miếng cá hồi mặt da úp xuống chảo, dùng xẻng ép nhẹ 15 giây cho mặt da áp sát đáy chảo rồi chiên khoảng 3 phút đến khi da cá vàng giòn và phần thịt chín dần lên quá nửa thân cá thì lật mặt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rưới rượu Sake hấp chín mềm lõi cá hồi",
+      "instruction": "Rưới 30 ml rượu Sake nấu ăn còn lại vào chảo, đậy kín vung và hạ xuống lửa nhỏ hấp thêm 3–4 phút cho đến khi thịt cá hồi chuyển màu hồng nhạt đục đều và chín tới mềm ẩm. Nhẹ nhàng gắp cá ra đĩa riêng và lau sạch phần mỡ cháy thừa trong chảo.",
+      "tip": "Không đậy vung hấp quá lâu khiến cá hồi bị khô xác; thịt cá vừa chuyển đục và tách thớ nhẹ khi ấn là đạt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cô sánh sốt Teriyaki và áo bóng lên cá hồi",
+      "instruction": "Đổ toàn bộ bát sốt Teriyaki vào chảo nóng trên lửa vừa, khi sốt bắt đầu sôi sủi bọt đều thì đặt cá hồi trở lại chảo. Nghiêng chảo và liên tục múc sốt rưới lên từng miếng cá khoảng 2 phút cho đến khi sốt cô sánh lại thành lớp men nâu bóng bám đẹp quanh miếng cá rồi tắt bếp.",
+      "tip": "Tắt bếp ngay khi sốt vừa sánh nhẹ vì khi nguội bớt sốt Teriyaki sẽ tiếp tục cô đặc và bám bóng đẹp hơn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày cá hồi sốt Teriyaki và dùng nóng",
+      "instruction": "Xếp các miếng cá hồi ra đĩa lớn với mặt da giòn quay lên trên, rưới nốt phần sốt Teriyaki sánh bóng trong chảo lên mặt cá, rắc hành lá thái nhỏ và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 468,
+    "energyKcal": 468,
+    "energyKj": 1958,
+    "proteinG": 32.9,
+    "fatG": 27.8,
+    "saturatedFatG": 7.9,
+    "carbG": 15.9,
+    "fiberG": 0.5,
+    "sugarG": 9.7,
+    "sodiumMg": 1258,
+    "saltG": 3.15,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169761",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c5bcbee07e09ace8f3444007688b69f58b40baee2e0231eacf872eb27cb9bca5",
+    "researchedFromV2Sha256": "045a8c482be0a614ac650c3c134a74b9934c17b2c6367ff84e1be41275a4a459"
+  }
+}

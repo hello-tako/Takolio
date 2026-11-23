@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-57b4406be05661c7",
+    "slug": "ba-chi-xao-tuong-dau",
+    "title": "Thịt ba chỉ xào tương đậu",
+    "subtitle": "Lát ba chỉ áp chảo cháy cạnh giòn béo xào quyện tương ớt đậu bản Doubanjiang, đậu đen muối và ớt chuông giòn ngọt"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt ba chỉ",
+      "Tương đậu",
+      "Trung Hoa",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món thịt ba chỉ xào tương đậu đậm chất cơm nhà Trung Hoa với từng miếng ba chỉ áp chảo xém cạnh thơm béo, quyện trong mùi thơm nồng đặc trưng của tương ớt đậu bản Doubanjiang và đậu tương đen lên men Douchi.",
+    "servingSuggestion": "Dọn nóng ngay ra đĩa, dùng kèm cơm trắng nóng để cân bằng vị mặn béo đậm đà; có thể ăn kèm rau cải luộc.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn đảo nhanh trên chảo lửa vừa 2–3 phút cho thịt nóng giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "450 g",
+      "prepNote": "thấm khô, thái dải dày khoảng 5 mm để áp chảo nhanh chín và xém cạnh (chắt bỏ bớt mỡ thừa tiết ra)",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 22 ml ướp thịt ba chỉ và 8 ml rưới quanh thành chảo lúc hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 19.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "0,8 g (~1/3 muỗng cà phê)",
+      "prepNote": "ướp khử mùi và tạo vị ấm cho thịt ba chỉ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.8,
+      "unit": "g",
+      "grossGrams": 0.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 10 ml ướp thịt và 5 ml nêm lúc xào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "ướp thịt giúp lên màu nâu cánh gián đẹp mắt khi áp chảo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "1,5 quả (khoảng 225 g)",
+      "prepNote": "rửa sạch, bỏ hạt và gân trắng, thái sợi dày khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 225,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 191.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái múi cau hoặc lát dày vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 8 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ để phi thơm cùng tương đậu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó (khoảng 6 cây)",
+      "prepNote": "rửa sạch, cắt khúc 4 cm, tách riêng phần đầu trắng và lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "DOUBANJIANG",
+      "name": "Tương ớt đậu bản Doubanjiang",
+      "culinaryMeasure": "30 g (~1,5 muỗng canh)",
+      "prepNote": "băm nhỏ trên thớt trước khi xào để tương tan đều và ra dầu đỏ đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "FERMENTED_BLACK_BEAN",
+      "name": "Đậu tương đen lên men Douchi",
+      "culinaryMeasure": "13 g (~1,5 muỗng canh)",
+      "prepNote": "rửa sơ cho dịu vị mặn, thấm khô rồi băm nhỏ cùng tương đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 13,
+      "unit": "g",
+      "grossGrams": 13,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (3 lát mỏng)",
+      "prepNote": "tùy chọn gọt vỏ, thái sợi mỏng để tăng hương ấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "tùy chọn thái lát mỏng nếu muốn tăng thêm độ cay nồng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn đậm của tương đậu và đậu đen muối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "chỉ dùng lượng ít tráng chảo ban đầu vì thịt ba chỉ tự tiết mỡ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái dải và ướp thịt ba chỉ thấm gia vị",
+      "instruction": "Thái thịt ba chỉ heo thành các dải dày khoảng 5 mm. Cho thịt vào tô ướp cùng 22 ml rượu Thiệu Hưng, 0,8 g tiêu trắng xay, 10 ml xì dầu nhạt và 5 ml xì dầu đặc; trộn đều rồi để thấm khoảng 10–15 phút trong lúc sơ chế rau củ.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế rau củ và băm nhỏ tương đậu",
+      "instruction": "Ớt chuông đỏ cắt sợi dày, hành tây thái lát dày, tỏi khô băm nhỏ, hành lá cắt khúc tách riêng đầu trắng và lá xanh, gừng thái sợi và ớt hiểm thái lát nếu dùng. Băm nhỏ 30 g tương ớt đậu bản Doubanjiang cùng 13 g đậu tương đen lên men Douchi trên thớt.",
+      "tip": "Băm nhỏ hai loại tương đậu giúp gia vị tan đều trong dầu nóng và không bị cắn trúng miếng tương mặn gắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo vàng giòn hai mặt thịt ba chỉ",
+      "instruction": "Làm nóng chảo sâu lòng lớn trên lửa vừa-lớn, tráng đều 10 ml dầu ăn. Xếp các dải thịt ba chỉ thành một lớp phẳng không chồng lên nhau, áp chảo mỗi mặt khoảng 2–3 phút cho thịt tiết bớt mỡ, xém vàng cạnh và chín kỹ hoàn toàn bên trong. Gắp thịt ra thớt cắt miếng dài 4–5 cm vừa ăn; chắt bỏ bớt phần mỡ thừa tiết ra trong chảo, chỉ chừa lại khoảng 1 muỗng canh mỡ thơm để phi tương đậu.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào thơm tương đậu trên lửa nhỏ tạo dầu đỏ",
+      "instruction": "Hạ bếp xuống lửa nhỏ, cho tương ớt đậu bản và đậu tương đen băm vào phần mỡ thịt trong chảo, đảo đều tay khoảng 1 phút cho đến khi hỗn hợp dậy mùi thơm nồng và phần dầu chuyển màu đỏ cam óng ánh.",
+      "tip": "Luôn xào tương đậu trên lửa nhỏ để tương ra màu đỏ đẹp mà không bị cháy khét gây đắng.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào tỏi, hành và rau củ giữ độ giòn",
+      "instruction": "Cho tỏi băm và phần đầu hành trắng (thêm gừng sợi, ớt hiểm nếu dùng) vào đảo 1 phút cho thơm. Tăng lên lửa lớn, thả hành tây và ớt chuông đỏ vào xào nhanh tay khoảng 30–45 giây cho rau vừa chín tái vẫn giữ độ giòn ngọt.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đảo quyện thịt ba chỉ, rưới rượu và hoàn thiện",
+      "instruction": "Trút thịt ba chỉ đã cắt miếng trở lại chảo, đảo đều 30 giây trên lửa lớn. Rưới 8 ml rượu Thiệu Hưng còn lại cùng 5 ml xì dầu nhạt quanh thành chảo nóng, rắc 6 g đường cát trắng và phần lá xanh hành lá vào đảo nhanh một lượt rồi tắt bếp ngay. Dọn nóng dùng kèm cơm trắng.",
+      "tip": "Không cần nêm thêm muối rời vì tương đậu bản, đậu đen muối và xì dầu đã đủ độ mặn đậm đà."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 737,
+    "energyKcal": 736.7,
+    "energyKj": 3082,
+    "proteinG": 15.1,
+    "fatG": 67.5,
+    "saturatedFatG": 23.8,
+    "carbG": 16.6,
+    "fiberG": 3.4,
+    "sugarG": 7.5,
+    "sodiumMg": 1276,
+    "saltG": 3.19,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Douchi Reference",
+      "Pixian Doubanjiang Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 170933",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b61931828870200eb549ca9b31feded8a3791d07f5111f4c563159cc91215d0a",
+    "researchedFromV2Sha256": "c587cad384601ce68d34943e2118cc0c54c5cf9e13970cb24e57a9b45814b4ef"
+  }
+}

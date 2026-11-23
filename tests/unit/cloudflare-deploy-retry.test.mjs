@@ -105,6 +105,8 @@ describe('safe recovery of Cloudflare pre-upload metadata 504', () => {
     expect(deploymentArguments(m)).toEqual(['exec', 'wrangler', 'deploy', '--var', `GIT_COMMIT:${m.sha}`,
       '--var', 'STRICT_OTP_FAIL_CLOSED:false', '--var', 'RECIPE_CATALOG_MODE:d1', '--var', 'RECIPE_CATALOG_D1_CANARY_PERCENT:0',
       '--var', 'RECIPE_CATALOG_CUTOVER_ENABLED:true', '--var', 'MEAL_PLANNER_ENABLED:true', '--var', 'MEAL_COMPOSITION_V2_ENABLED:true']);
+    expect(deploymentArguments({ ...m, recipeCatalogV4StandardEnabled: true })).toContain('RECIPE_CATALOG_V4_STANDARD_ENABLED:true');
+    expect(deploymentArguments({ ...m, recipeCatalogV4StandardEnabled: false })).toContain('RECIPE_CATALOG_V4_STANDARD_ENABLED:false');
     expect(deploymentArguments({ ...m, environment: 'staging' })).toContain('wrangler.staging.jsonc');
     expect(() => deploymentArguments({ ...m, sha: 'main' })).toThrow();
     expect(() => deploymentArguments({ ...m, recipeCatalogCutoverEnabled: false })).toThrow();

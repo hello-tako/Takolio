@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f2334219f33e48d0",
+    "slug": "tom-nuong-muoi-nhat",
+    "title": "Tôm nướng muối kiểu Nhật",
+    "subtitle": "Tôm sú nguyên vỏ ướp sơ rượu Sake, xiên thẳng rắc muối hạt biển nướng xém cạnh giữ trọn thịt ngọt chắc, chấm chanh tiêu"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Tôm nướng",
+      "Shioyaki",
+      "Hải sản",
+      "Ẩm thực Nhật",
+      "Món nướng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm nướng muối kiểu Nhật (Ebi Shioyaki) tôn vinh trọn vẹn vị ngọt tự nhiên của tôm sú nguyên vỏ, chỉ cần ướp nhanh với rượu Sake khử tanh, xiên que giữ thân thẳng đẹp và phủ lớp muối hạt nướng xém vỏ giòn thơm.",
+    "servingSuggestion": "Xếp tôm nướng muối đỏ au ra đĩa cùng múi chanh tươi, rắc chút hành lá thái nhỏ và dọn kèm chén muối tiêu đen xay để chấm thịt tôm sau khi bóc vỏ.",
+    "storageAndReheat": "Tôm nướng muối ngon nhất khi dùng nóng ngay sau khi nướng để vỏ giòn và thịt ngọt mọng; nếu dư, bóc vỏ bảo quản ngăn mát tối đa 24 giờ và làm nóng nhanh trên chảo."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi nguyên vỏ cỡ lớn",
+      "culinaryMeasure": "400 g (khoảng 9 con lớn)",
+      "prepNote": "rửa sạch, cắt bớt râu dài, rạch nhẹ lưng lấy chỉ đen rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 312,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối hạt biển",
+      "culinaryMeasure": "10 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "rắc đều lên hai mặt lớp vỏ tôm trước khi nướng để tạo vị mặn thanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "rưới ướp tôm 5 phút giúp khử mùi tanh hải sản rất hiệu quả",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.5,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 8.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "cắt múi cau để vắt nước cốt lên thịt tôm khi thưởng thức",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc lên đĩa tôm nướng tăng hương sắc",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "phết mỏng lên khay hoặc vỉ nướng giúp vỏ tôm không bị dính cháy",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 2.22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "dùng trộn nhẹ cùng chút muối dư làm gia vị chấm kèm nếu thích",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm sú sạch chỉ lưng và cắt râu",
+      "instruction": "Rửa sạch 400 g tôm sú tươi nguyên vỏ dưới vòi nước lạnh, dùng kéo cắt gọn phần râu dài, chóp nhọn ở đầu và chân tôm, dùng tăm nhọn khéo léo rút chỉ đen dọc lưng tôm mà không làm rách vỏ. Rửa lại rồi thấm khô.",
+      "tip": "Giữ nguyên vỏ tôm khi nướng giúp khóa chặt độ ẩm và vị ngọt của thịt tôm bên trong."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp tôm với rượu Sake khử tanh rồi thấm thật khô",
+      "instruction": "Xếp tôm vào khay nông, rưới đều 45 ml rượu Sake nấu ăn lên mình tôm và để yên 5 phút cho khử mùi tanh hải sản. Sau đó vớt tôm ra, dùng khăn giấy thấm thật khô cả hai mặt vỏ tôm.",
+      "tip": "Thấm thật khô mặt vỏ tôm trước khi nướng giúp vỏ tôm lên màu đỏ đẹp và hơi xém giòn thay vì bị hấp hơi.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Xiên que giữ dáng tôm thẳng và rắc muối hạt biển",
+      "instruction": "Dùng que tre đã ngâm nước lạnh xiên dọc từ đuôi lên sát đầu tôm để tôm giữ dáng thẳng đẹp khi gặp nhiệt. Rắc đều 10 g muối hạt biển phủ lên cả hai mặt vỏ tôm.",
+      "tip": "Ngâm que tre vào nước 10 phút trước khi xiên giúp đầu que không bị cháy sém khi nướng trên lửa lớn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng và phết dầu chống dính",
+      "instruction": "Làm nóng lò nướng chế độ lửa trên 220°C (hoặc bếp nướng than/vỉ nướng) trước 5 phút, lót giấy bạc gấp mép lên khay và phết đều 8 ml dầu ăn thực vật lên bề mặt tiếp xúc.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng tôm đỏ au xém cạnh hai mặt",
+      "instruction": "Xếp tôm lên khay nướng, nướng mặt đầu tiên khoảng 4–5 phút đến khi vỏ tôm chuyển sang màu đỏ cam tươi và hơi xém nhẹ thì lật mặt, nướng tiếp 2–3 phút nữa đến khi thịt tôm chín trắng đục hoàn toàn và săn chắc.",
+      "tip": "Không nướng tôm quá lâu kẻo thịt tôm bị khô xác và mất đi độ ngọt mọng tự nhiên.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa tôm nướng muối cùng chanh tươi và hành lá",
+      "instruction": "Nhẹ nhàng rút bỏ que tre, xếp tôm nướng muối ra đĩa cùng các múi chanh tươi cắt sẵn, rắc hành lá thái nhỏ và chuẩn bị thêm chút tiêu đen xay bên cạnh; khi ăn bóc bỏ lớp vỏ muối và vắt chanh lên thịt tôm nóng hổi."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 104,
+    "energyKcal": 103.9,
+    "energyKj": 435,
+    "proteinG": 21.1,
+    "fatG": 1.3,
+    "saturatedFatG": 0.2,
+    "carbG": 1.8,
+    "fiberG": 0.5,
+    "sugarG": 0.3,
+    "sodiumMg": 448,
+    "saltG": 1.12,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 168155",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f48c5e1f33bbc6725d60adfa682fd174bf88cceacff0de86dac6ed6d6f9b8000",
+    "researchedFromV2Sha256": "d642d9cf84c90257a7fb5d81f887a2dc504c6158898587200e6c48ad933674dc"
+  }
+}

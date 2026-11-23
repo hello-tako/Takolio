@@ -96,7 +96,8 @@
     "CLEANUP_RESERVED_SCAN_RETENTION_MINUTES": "60",
     "WEEK_SCHEMA_MODE": "dual",
     "MEAL_COMPOSITION_V2_ENABLED": "true",
-    "GOOGLE_JWKS_VERIFY_ENABLED": "true"
+    "GOOGLE_JWKS_VERIFY_ENABLED": "true",
+    "RECIPE_CATALOG_V4_STANDARD_ENABLED": "true"
   },
   "observability": {
     "logs": {

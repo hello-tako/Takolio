@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-88b58c0233dec53e",
+    "slug": "trung-xao-kim-chi",
+    "title": "Trứng xào kim chi Hàn Quốc",
+    "subtitle": "Trứng gà đánh bông chiên mềm mịn quyện cùng kim chi cải thảo xào thơm cay dịu và hành lá tươi mát cho bữa cơm 10 phút"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 8,
+    "servings": 3,
+    "tags": [
+      "Món nhanh",
+      "Trứng gà",
+      "Kim chi",
+      "Hàn Quốc",
+      "Bữa sáng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa trứng xào kim chi mềm mịn tan trong miệng với từng mảng trứng vàng ươm béo nhẹ xen lẫn kim chi cải thảo chua cay giòn sần sật, cực kỳ gọn nhẹ cho bữa sáng hoặc bữa tối bận rộn.",
+    "servingSuggestion": "Gạt trứng xào kim chi ra đĩa ấm ngay khi vừa chín tới, rắc hành lá thái nhỏ và hạt mè trắng rang; dùng nóng kèm cơm trắng hoặc bánh mì nướng.",
+    "storageAndReheat": "Món trứng xào ngon nhất khi thưởng thức ngay sau khi nấu để giữ độ mềm mướt; không nên hâm đi hâm lại nhiều lần vì trứng sẽ bị khô xác."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "6 quả (khoảng 300 g)",
+      "prepNote": "đập ra tô lớn, để nhiệt độ phòng",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 264,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chua",
+      "culinaryMeasure": "150 g",
+      "prepNote": "cắt nhỏ cỡ 1,5 cm, vắt nhẹ chắt riêng khoảng 25 ml nước kim chi",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tráng đều chảo chống dính và xào thơm kim chi",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "4 ml (~3/4 muỗng cà phê)",
+      "prepNote": "đánh tan cùng trứng tạo hương thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "ml",
+      "grossGrams": 3.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "nêm tạo hậu vị đậm đà cho hỗn hợp trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm vừa phải vì kim chi đã có độ mặn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "đánh tan cùng trứng để khử mùi tanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái nhuyễn rắc lên mặt đĩa trứng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc trang trí trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Cắt nhỏ kim chi và thái nhuyễn hành lá",
+      "instruction": "Gắp 150 g kim chi cải thảo ra thớt, vắt nhẹ lấy khoảng 25 ml nước kim chi để riêng rồi cắt phần cái thành miếng nhỏ cỡ 1,5 cm để dễ hòa quyện với trứng. Hành lá rửa sạch, thái nhuyễn để rắc hoàn thiện."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà với dầu mè và gia vị",
+      "instruction": "Đập 6 quả trứng gà vào tô lớn, thêm 4 ml dầu mè rang, 5 ml xì dầu (tùy chọn), 1,5 g muối ăn và 1 g tiêu đen xay. Dùng đũa hoặc phới lồng đánh đều tay đến khi lòng trắng và lòng đỏ hòa quyện hoàn toàn, nổi bọt nhẹ.",
+      "tip": "Không cho quá nhiều muối vì kim chi và xì dầu đã mặn sẵn; giữ lại phần nước kim chi để rưới hoặc nêm nhẹ sau cùng giúp trứng không bị vón tách nước."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào thơm kim chi trên chảo chống dính",
+      "instruction": "Làm nóng chảo chống dính trên lửa vừa với 20 ml dầu ăn, cho kim chi cắt nhỏ vào xào đều trong 2 phút đến khi kim chi săn ráo và dậy mùi chua cay thơm nồng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đổ trứng và đảo nhẹ ở lửa nhỏ tạo mảng mềm mịn",
+      "instruction": "Hạ bếp xuống lửa nhỏ, rót từ từ tô trứng đã đánh tan vào chảo kim chi rồi rưới nhẹ 25 ml nước kim chi lên trên. Dùng phới silicon gạt nhẹ nhàng từ mép chảo vào giữa theo từng đường chậm rãi trong 3–4 phút cho trứng đông thành từng mảng bông mềm, ẩm mướt.",
+      "tip": "Giữ lửa nhỏ và đảo chậm tay là bí quyết giúp trứng chín mềm mịn như lụa, không bị khô xác hay cháy đáy.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp sớm tận dụng nhiệt dư",
+      "instruction": "Khi mặt trứng vừa se lại nhưng vẫn còn hơi bóng ẩm khoảng 90%, tắt bếp ngay và đảo nhẹ thêm 10 giây để nhiệt dư trong chảo làm trứng chín vừa tới hoàn hảo mà không bị dai.",
+      "tip": "Không đợi trứng khô hẳn trên bếp mới tắt vì hơi nóng của chảo sẽ tiếp tục làm trứng cứng và bớt béo."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc hành lá và mè rang dùng nóng",
+      "instruction": "Trút trứng xào kim chi ra đĩa, rắc hành lá thái nhuyễn và hạt mè trắng rang tùy thích lên trên rồi dọn ăn nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 204,
+    "energyKcal": 203.6,
+    "energyKj": 852,
+    "proteinG": 12.1,
+    "fatG": 15.9,
+    "saturatedFatG": 3.8,
+    "carbG": 3.1,
+    "fiberG": 1.3,
+    "sugarG": 1.1,
+    "sodiumMg": 677,
+    "saltG": 1.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0eb7170993398c3f7bad14095422a4414e07733eb7aee9543591d2998064a70c",
+    "researchedFromV2Sha256": "3d2afb61c7731f4dc6263b88d24dda2637ee36530691568a9fb2feaa432177db"
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-38137393c32d70d7",
+    "slug": "risotto-tom",
+    "title": "Risotto tôm tươi nấu nước dùng vỏ tôm",
+    "subtitle": "Cơm Ý Arborio sánh kem mượt mà thấm đẫm vị ngọt tự nhiên từ nước dùng ninh vỏ đầu tôm, rượu vang trắng và bơ lạt"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Risotto",
+      "Tôm tươi",
+      "Cơm Ý",
+      "Hải sản",
+      "Sánh kem"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "celery",
+      "crustaceans",
+      "milk",
+      "shrimp",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa risotto chuẩn phong cách Ý với hạt gạo Arborio dẻo mềm nhưng vẫn giữ độ sần nhẹ ở lõi, tỏa hương ngọt biển sâu lắng nhờ nước dùng ninh từ vỏ và đầu tôm rang kỹ, kết thúc bằng bước đánh bơ tạo độ bóng kem mượt mà.",
+    "servingSuggestion": "Múc risotto ra đĩa sâu lòng khi vừa nhấc khỏi bếp, xếp các con tôm áp chảo lên trên mặt và rắc ngò tây tươi băm nhỏ; theo truyền thống Ý, risotto hải sản không dùng kèm phô mai.",
+    "storageAndReheat": "Risotto ngon nhất khi dùng ngay lúc vừa nấu xong để giữ độ sánh kem đặc trưng. Phần còn dư có thể bảo quản ngăn mát tối đa 2 ngày và hâm nóng trên chảo cùng 2–3 muỗng canh nước dùng hoặc nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ARBORIO_RICE",
+      "name": "Gạo Ý Arborio nấu Risotto",
+      "culinaryMeasure": "320 g",
+      "prepNote": "không vo gạo để giữ trọn lớp tinh bột tạo độ sánh kem cho risotto",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi nguyên con (cả vỏ và đầu)",
+      "culinaryMeasure": "450 g",
+      "prepNote": "bóc riêng vỏ đầu để ninh nước dùng; rút chỉ đen, giữ nửa phần tôm nguyên con áp chảo, nửa phần băm nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 351,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (hẹ tây)",
+      "culinaryMeasure": "60 g (khoảng 3–4 củ)",
+      "prepNote": "bóc vỏ, dùng 1 củ bổ đôi ninh nước dùng tôm, phần còn lại băm nhuyễn xào nền cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 52.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, dùng 1 tép đập dập nấu nước dùng, phần còn lại băm nhỏ xào cùng hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ vừa (~110 g)",
+      "prepNote": "gọt vỏ, cắt khúc to để ninh ngọt nước dùng tôm rồi lọc bỏ bã",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CELERY",
+      "name": "Cần tây tươi",
+      "culinaryMeasure": "60 g (khoảng 1–2 cọng)",
+      "prepNote": "rửa sạch, cắt khúc to để ninh nước dùng tôm rồi lọc bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "140 ml",
+      "prepNote": "chia 60 ml khử mùi khi ninh vỏ tôm và 80 ml rưới vào gạo rang",
+      "componentGroup": "sauce",
+      "requiredQuantity": 140,
+      "unit": "ml",
+      "grossGrams": 138.6,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 97.02,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt lạnh",
+      "culinaryMeasure": "30 g",
+      "prepNote": "cắt khối nhỏ, giữ lạnh để đánh sánh kem sau khi tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 10 ml rang vỏ tôm, 10 ml áp chảo tôm nguyên con và 10 ml phi thơm hành tím",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 25.94,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "phần cọng cho vào nồi nước dùng tôm, phần lá băm nhỏ để trộn cơm và trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g nêm nước dùng tôm và 3 g chỉnh vị risotto cuối cùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 5.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào risotto khi hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (ninh nước dùng vỏ tôm)",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "ninh cùng vỏ đầu tôm và rau củ lấy khoảng 1,2 lít nước dùng nóng",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 1125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Bóc tôm giữ vỏ đầu và sơ chế rau củ",
+      "instruction": "Rửa sạch 450 g tôm tươi, tách riêng phần đầu và vỏ tôm để nấu nước dùng. Rút sạch chỉ đen trên lưng tôm; giữ một nửa số thịt tôm nguyên con để áp chảo trang trí, nửa còn lại băm nhỏ. Cà rốt tươi và cần tây tươi cắt khúc to; tách riêng cọng và lá ngò tây tươi.",
+      "tip": "Tôm tươi còn nguyên đầu và vỏ là yếu tố tạo nên phần nước dùng ngọt đậm vị biển mà không cần thêm bột nêm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Rang vỏ tôm và ninh nước dùng hải sản",
+      "instruction": "Làm nóng 10 ml dầu ô liu nguyên chất trong nồi trên lửa vừa, cho vỏ và đầu tôm vào rang đảo khoảng 3 phút đến khi chuyển màu hồng cam và dậy hương thơm. Thêm cà rốt, cần tây, 1 củ hành tím bổ đôi, 1 tép tỏi đập dập và cọng ngò tây vào xào thêm 3 phút. Rót 60 ml rượu vang trắng khô cho bay hơi cồn, đổ 1,5 lít nước lọc cùng 3 g muối ăn vào, đun sôi rồi hạ lửa nhỏ ninh 25 phút; lọc lấy phần nước dùng trong và giữ nóng trên bếp.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo nhanh phần tôm nguyên con",
+      "instruction": "Trong lúc ninh nước dùng, làm nóng chảo với 10 ml dầu ô liu nguyên chất trên lửa vừa-lớn. Thả phần tôm nguyên con vào áp chảo mỗi mặt 1–1,5 phút đến khi thịt tôm chuyển hồng đục, săn chắc và chín hoàn toàn thì gắp ra đĩa riêng cùng một ít lá ngò tây băm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi hành tỏi và rang hạt gạo Arborio",
+      "instruction": "Đun nóng 10 ml dầu ô liu nguyên chất còn lại trong chảo sâu lòng trên lửa vừa, cho phần hành tím và tỏi băm vào phi 4 phút đến khi hành mềm trong. Đổ 320 g gạo Ý Arborio (không vo) vào đảo liên tục 2 phút đến khi hạt gạo nóng ran và viền gạo hơi trong lại.",
+      "tip": "Bước rang gạo giúp lớp ngoài hạt gạo săn chắc, nhờ vậy hạt cơm dẻo sánh bên ngoài mà không bị nát vụn khi châm nước dùng.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Châm nước dùng tôm nấu chín cơm từng muôi",
+      "instruction": "Rót 80 ml rượu vang trắng khô còn lại vào chảo gạo, đảo đều đến khi rượu bay hơi hết. Sau đó châm từng muôi nước dùng tôm đang nóng sủi tăm vào chảo, khuấy đều tay và đợi gạo hút gần cạn nước mới châm tiếp muôi kế tiếp; tiếp tục nấu khoảng 18 phút đến khi hạt gạo chín mềm sánh nhưng còn sần nhẹ ở lõi.",
+      "tip": "Luôn giữ nước dùng tôm ở trạng thái nóng sủi tăm khi châm vào gạo để quá trình chín diễn ra liên tục và hạt gạo không bị sượng.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Nấu chín tôm băm cùng cơm risotto",
+      "instruction": "Khi gạo gần đạt độ chín mong muốn, thả phần thịt tôm băm nhỏ vào chảo cơm, đảo nhẹ tay thêm 2–3 phút đến khi tôm chuyển màu hồng đục chín hoàn toàn và hòa quyện vào nền cơm sánh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Đánh bơ tạo độ bóng kem và trình bày",
+      "instruction": "Tắt bếp ngay, thả 30 g bơ lạt lạnh cắt khối cùng phần lá ngò tây tươi băm nhỏ còn lại vào chảo, khuấy nhanh và dứt khoát khoảng 30 giây cho bơ tan nhũ hóa thành lớp kem bóng mượt. Nêm lại với 3 g muối ăn và 2 g tiêu đen xay cho vừa miệng, múc risotto ra đĩa sâu lòng, xếp tôm áp chảo lên trên và thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 508,
+    "energyKcal": 507.5,
+    "energyKj": 2124,
+    "proteinG": 23.6,
+    "fatG": 13.6,
+    "saturatedFatG": 5,
+    "carbG": 67.9,
+    "fiberG": 1.9,
+    "sugarG": 1.8,
+    "sodiumMg": 612,
+    "saltG": 1.53,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169988",
+      "USDA FDC 170393",
+      "USDA FDC 170416",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "USDA FDC Arborio Rice Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b08efae4eeca45921b80b7d4bdbe4450bcd0604212d44becff22105f34ff8a5a",
+    "researchedFromV2Sha256": "d24203fcf893aaebbd07109ecffe013bb9e94c97fa9e782f74321c84c3a3cc8d"
+  }
+}

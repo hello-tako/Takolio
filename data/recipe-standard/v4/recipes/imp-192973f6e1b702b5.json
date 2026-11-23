@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-192973f6e1b702b5",
+    "slug": "dau-phu-chien-sot-cay-thai",
+    "title": "Đậu phụ chiên sốt cay kiểu Thái",
+    "subtitle": "Đậu phụ chiên vỏ giòn ruộm rưới sốt tương ớt tỏi, đường thốt nốt và nước cốt chanh chua cay ngọt hài hòa"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Đậu phụ chiên",
+      "Món chay",
+      "Khai vị",
+      "Ẩm thực Thái",
+      "Chua cay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "assemble"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ chiên sốt cay kiểu Thái hấp dẫn với lớp vỏ ngoài chiên vàng giòn rụm, bên trong vẫn mềm béo, quyện cùng nước sốt chua cay mặn ngọt từ đường thốt nốt, nước cốt chanh, tương ớt và tỏi phi thơm lừng.",
+    "servingSuggestion": "Xếp đậu phụ chiên nóng ra đĩa, rưới đều sốt cay hoặc dọn chén sốt chấm riêng bên cạnh; rắc ngò rí, hành lá và vài lát ớt hiểm, dùng làm món khai vị hoặc ăn kèm cơm trắng.",
+    "storageAndReheat": "Đậu chiên giòn nên ăn ngay lúc nóng; nếu dư, tách riêng đậu và sốt để tủ mát 24 giờ, chiên lại đậu trong nồi chiên không dầu 4 phút ở 180°C trước khi rưới sốt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng loại chắc",
+      "culinaryMeasure": "4,5 bìa (540 g)",
+      "prepNote": "ép ráo nước 15 phút dưới vật nặng nhẹ, thấm khô rồi cắt khối vuông cạnh 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 4.5,
+      "unit": "piece",
+      "grossGrams": 540,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp (áo vỏ đậu)",
+      "culinaryMeasure": "45 g (khoảng 3 muỗng canh)",
+      "prepNote": "trộn đều nhẹ tay áo lớp mỏng bên ngoài từng viên đậu trước khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ nhỏ (20 g, ~6 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn (dùng phi thơm tạo mùi cho sốt)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.8,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 17.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1/4 củ (27,5 g)",
+      "prepNote": "gọt vỏ, bào sợi thật mảnh để trộn vào sốt tạo màu sắc và độ giòn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 27.5,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 24.48,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, bỏ cuống, thái lát mỏng hoặc băm nhỏ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "35 g (khoảng 2,5 muỗng canh)",
+      "prepNote": "bào nhỏ hoặc giã vụn cho dễ tan khi pha sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt chua ngọt Thái",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ sánh bóng và vị cay ngọt cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương ngon)",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm thay nước mắm cho món đậu chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (67,5 g)",
+      "prepNote": "vắt lấy khoảng 45 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g",
+      "prepNote": "nhặt sạch rễ, rửa ráo, thái nhỏ để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc lên đĩa đậu chiên",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên ngập và phi tỏi)",
+      "culinaryMeasure": "400 ml",
+      "prepNote": "chiên ngập đậu phụ vàng giòn và trích 10 ml phi thơm tỏi làm sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 368,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ép ráo nước và cắt miếng đậu phụ",
+      "instruction": "Đặt 4,5 bìa đậu phụ lên khăn sạch hoặc rổ có lót giấy thấm, chèn đĩa phẳng hoặc vật nặng nhẹ lên trên để ép bớt nước trong 15 phút. Sau đó thấm khô bề mặt rồi cắt đậu thành khối vuông cạnh khoảng 3 cm.",
+      "tip": "Ép đậu ráo nước giúp miếng đậu săn chắc, chiên nhanh giòn lâu và không bị nổ bắn dầu.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế tỏi ớt, rau củ và áo bột bắp cho đậu",
+      "instruction": "Băm nhuyễn tỏi, thái hạt lựu nhỏ hành tây, bào sợi mảnh cà rốt, thái lát ớt hiểm, cắt nhỏ ngò rí và hành lá. Cho các viên đậu phụ vào hộp lớn, rắc đều 45 g bột bắp và xóc nhẹ tay cho lớp bột mỏng bám đều quanh từng miếng đậu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi và pha nước sốt chua cay Thái",
+      "instruction": "Trong chảo nhỏ, đun nóng 10 ml dầu ăn trên lửa vừa, phi thơm tỏi băm khoảng 30 giây rồi tắt bếp trút ra chén. Hòa tan 35 g đường thốt nốt bào nhỏ cùng 30 ml tương ớt, 35 ml xì dầu và nước cốt của 1,5 quả chanh tươi; thêm tỏi phi, hành tây, cà rốt sợi và ớt hiểm vào khuấy đều.",
+      "tip": "Nếm thử chén sốt để cân chỉnh vị chua cay mặn ngọt hơi đậm một chút vì đậu phụ chiên có vị nhạt thanh."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun nóng dầu ăn đạt chuẩn nhiệt độ chiên",
+      "instruction": "Đổ khoảng 390 ml dầu ăn còn lại vào chảo sâu lòng, đun trên lửa vừa-lớn đến khoảng 180°C. Thử nhiệt bằng cách nhúng đầu đũa gỗ xuống đáy chảo, thấy bọt khí nhỏ sủi đều quanh đầu đũa là dầu đã sẵn sàng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên ngập dầu đậu phụ thành hai mẻ vàng giòn",
+      "instruction": "Thả nhẹ từng viên đậu phụ đã áo bột bắp vào chảo dầu nóng, chia làm 2 mẻ để đậu không dính vào nhau. Chiên khoảng 4–5 phút mỗi mẻ đến khi lớp vỏ phồng nhẹ và vàng giòn đều các mặt thì vớt ra rổ lót giấy thấm dầu.",
+      "tip": "Không cho quá nhiều đậu cùng lúc làm tụt nhiệt độ dầu, khiến vỏ đậu hút dầu và bị ỉu nhanh.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Xếp đĩa, rưới sốt cay và rắc rau thơm",
+      "instruction": "Xếp các khối đậu phụ chiên giòn nóng hổi lên đĩa, rưới đều phần sốt chua cay lên mặt (hoặc để sốt chấm riêng nếu muốn giữ vỏ giòn tối đa). Rắc ngò rí và hành lá cắt nhỏ lên trên rồi dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 404,
+    "energyKcal": 404.3,
+    "energyKj": 1691,
+    "proteinG": 20.4,
+    "fatG": 22.1,
+    "saturatedFatG": 3.2,
+    "carbG": 36.3,
+    "fiberG": 3.4,
+    "sugarG": 14.9,
+    "sodiumMg": 1023,
+    "saltG": 2.56,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169698",
+      "USDA FDC 169997",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 174277",
+      "USDA FDC Palm Sugar Ref",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a6777df67ee49288a65f8ce9fa97899c7a1f5650f253d44d9ce9746b8b26f19b",
+    "researchedFromV2Sha256": "e0df246cf9b1c255028596d2ff500a98037e7230f87f2debf0c3968c7c637480"
+  }
+}

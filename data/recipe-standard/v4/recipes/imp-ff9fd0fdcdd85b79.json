@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ff9fd0fdcdd85b79",
+    "slug": "bap-cai-nuong-bo",
+    "title": "Bắp cải áp chảo bơ xì dầu kiểu Nhật",
+    "subtitle": "Bắp cải tươi cắt miếng dày áp chảo xém cạnh ngọt thơm quyện bơ lạt tan chảy, tỏi lát, xì dầu Nhật và cá bào Katsuobushi chuẩn món nhắm Izakaya"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Izakaya",
+      "Bắp cải áp chảo",
+      "Bơ xì dầu",
+      "Món phụ Nhật",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món bắp cải áp chảo bơ xì dầu đơn giản mà cuốn hút theo phong cách quán Izakaya Nhật Bản: từng miếng bắp cải được nướng xém vàng tự nhiên giữ trọn vị ngọt giòn, thấm đẫm hương béo thơm của bơ lạt quyện xì dầu Nhật và tỏi phi.",
+    "servingSuggestion": "Dọn bắp cải áp chảo nóng hổi ra đĩa, rắc thêm hành lá xanh và ít cá bào khô Katsuobushi lên mặt; ăn kèm cơm nóng hoặc dùng làm món rau phụ cân bằng bữa tiệc nướng.",
+    "storageAndReheat": "Món ăn ngon nhất khi thưởng thức nóng ngay sau khi chế biến lúc bơ còn thơm béo; nếu còn dư, bảo quản ngăn mát tối đa 1 ngày và áp chảo lại nhanh trên lửa vừa 2 phút trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải tươi",
+      "culinaryMeasure": "1/2 bắp nhỏ (khoảng 400 g)",
+      "prepNote": "giữ nguyên phần lõi mềm ở gốc để các lớp lá dính liền khi cắt miếng vuông dày 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g (~1,5 muỗng canh)",
+      "prepNote": "cho vào ở giai đoạn cuối trên lửa vừa nhỏ để bơ tan thơm mà không bị cháy khét",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "dùng áp chảo bắp cải lúc đầu giúp chịu nhiệt tốt trước khi thêm bơ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "rưới dọc mép chảo nóng cho dậy mùi thơm đặc trưng của xì dầu cháy cạnh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng rắc mặt khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi thái lát",
+      "culinaryMeasure": "3 tép (khoảng 7,5 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng để áp thơm cùng bơ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 6.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BONITO_FLAKES",
+      "name": "Cá bào khô Katsuobushi (tùy chọn)",
+      "culinaryMeasure": "5 g (1 nắm nhỏ)",
+      "prepNote": "rắc mặt khi bắp cải còn nóng để cá bào nhảy múa thơm ngon",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "rắc nhẹ điều chỉnh vị bên cạnh xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện tạo mùi cay thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Cắt miếng bắp cải và sơ chế tỏi, hành lá",
+      "instruction": "Bóc bỏ lá già ngoài cùng của 400 g bắp cải tươi, rửa sạch và để thật ráo nước. Bổ bắp cải thành miếng to cỡ 4–5 cm sao cho các lớp lá vẫn bám với nhau (phần lõi cứng thái lát mỏng hơn cho nhanh chín). Thái lát mỏng tỏi tươi và thái khoanh nhỏ hành lá.",
+      "tip": "Để bắp cải thật ráo nước trước khi áp chảo giúp lá rau nhanh xém vàng thơm mà không bị tiết nước hấp nhũn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo mặt đầu bắp cải không đảo",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa với 10 ml dầu ăn thực vật. Xếp các miếng bắp cải thành một lớp phẳng xuống đáy chảo và giữ yên không đảo trong 3 phút cho mặt dưới xém vàng nâu nhẹ và dậy mùi ngọt tự nhiên.",
+      "tip": "Không đảo liên tục trong 3 phút đầu là bí quyết giúp bắp cải cháy cạnh thơm lừng như nướng vỉ thay vì ra nước như món xào.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Lật mặt áp tiếp cho bắp cải chín mềm",
+      "instruction": "Dùng kẹp hoặc xẻng lật nhẹ nhàng từng miếng bắp cải sang mặt còn lại, áp tiếp trên lửa vừa khoảng 3 phút đến khi mặt thứ hai cũng hơi xém cạnh và phần lá bắt đầu mềm dịu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đậy nắp hấp nhanh làm mềm phần lõi",
+      "instruction": "Đậy nắp chảo và hạ lửa vừa nhỏ thêm khoảng 2 phút để hơi ẩm tự nhiên trong bắp cải làm chín mềm phần cuống dày bên trong.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Làm tan chảy bơ lạt với tỏi và xì dầu Nhật",
+      "instruction": "Mở nắp, hạ lửa nhỏ rồi thả 25 g bơ lạt cùng tỏi thái lát vào chảo, nghiêng nhẹ cho bơ tan chảy quyện mùi tỏi thơm trong 1 phút. Rưới 15 ml xì dầu Nhật Bản dọc theo mép chảo nóng, rắc 2 g muối ăn và 1 g tiêu đen xay rồi đảo nhanh tay cho bơ xì dầu áo bóng từng miếng bắp cải.",
+      "tip": "Rưới xì dầu vào thành chảo nóng giúp tạo hương thơm xì dầu cháy đặc trưng mà không làm bắp cải bị mặn cục bộ.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, cá bào và thưởng thức nóng",
+      "instruction": "Tắt bếp, gắp bắp cải áp chảo ra đĩa nóng và rưới phần bơ xì dầu còn lại trong chảo lên trên, rắc hành lá thái nhỏ cùng cá bào khô Katsuobushi (nếu dùng) và ăn ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 128,
+    "energyKcal": 127.6,
+    "energyKj": 534,
+    "proteinG": 3.6,
+    "fatG": 9.7,
+    "saturatedFatG": 4.7,
+    "carbG": 8.3,
+    "fiberG": 3.2,
+    "sugarG": 3.8,
+    "sodiumMg": 607,
+    "saltG": 1.52,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Katsuobushi 10099",
+      "USDA FDC 169230",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1ac81c8acee98823cc4ade2e7c9ef1361ece2d78a71a0041b494ce841442cfdf",
+    "researchedFromV2Sha256": "3c539a042caf9e7d85217bf31a2ef8a0677d150f04031e1d6d7e8837a94ab30c"
+  }
+}

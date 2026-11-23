@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ee7ca138c67f4f24",
+    "slug": "bo-xao-gung-itame",
+    "title": "Bò xào gừng Itame",
+    "subtitle": "Thịt bò thái lát áo bột khoai tây mềm mọng, xào nhanh cùng hành tây ngọt giòn và sốt gừng Sake Mirin xì dầu sánh bóng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Thịt bò xào",
+      "Gừng tươi",
+      "Itame",
+      "Ẩm thực Nhật",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bò xào gừng Itame kiểu Nhật có miếng thịt bò mềm mọng nhờ bí quyết áo lớp tinh bột khoai tây mỏng, xào nhanh cùng hành tây hấp chín ngọt thanh và gừng tươi hai kiểu vừa thái sợi vừa mài nhuyễn trong nước sốt xì dầu Mirin sánh đậm.",
+    "servingSuggestion": "Múc bò xào gừng hành tây ra đĩa nông lòng, rắc hành lá thái nhỏ lên trên và dùng nóng ngay cùng cơm trắng dẻo.",
+    "storageAndReheat": "Nên dùng nóng ngay sau khi xào để thịt bò giữ độ mềm mọng; nếu còn dư, bảo quản hộp kín ngăn mát tối đa 2 ngày và đảo nóng nhanh trên lửa vừa trong 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thái lát mỏng",
+      "culinaryMeasure": "250 g",
+      "prepNote": "cắt miếng vừa ăn 4 cm ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1,5 củ (khoảng 210 g)",
+      "prepNote": "bóc vỏ, bổ múi cau dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "30 g (1 nhánh lớn)",
+      "prepNote": "cạo vỏ mỏng; chia một nửa thái sợi mảnh, một nửa mài nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha sốt xào gừng tạo màu nâu bóng và vị mặn dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ ngọt thanh và độ sánh bóng cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "chia 15 ml ướp làm mềm thịt bò, 30 ml còn lại pha nước sốt gừng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 44.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn dịu của xì dầu trong nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "POTATO_STARCH",
+      "name": "Tinh bột khoai tây",
+      "culinaryMeasure": "4 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "xoa áo lớp mỏng lên thịt bò ướp giúp thịt giữ ẩm và không bị khô",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng xào thịt bò và hành tây tạo mùi thơm hấp dẫn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1 g (một nhúm nhỏ)",
+      "prepNote": "dùng ướp nhẹ thịt bò trước khi áo tinh bột khoai tây",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "ướp thịt bò và nêm nhẹ khi hoàn thiện món xào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên đĩa thịt bò xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp thịt bò áo tinh bột khoai tây",
+      "instruction": "Cắt 250 g thịt bò thái lát mỏng thành miếng vừa ăn khoảng 4 cm. Cho thịt bò vào tô cùng 15 ml rượu Sake nấu ăn, 1 g muối ăn, 1 g tiêu đen xay và 4 g tinh bột khoai tây, dùng tay bóp trộn nhẹ cho gia vị và lớp tinh bột áo đều quanh từng lát thịt, để thấm 10 phút.",
+      "tip": "Lớp tinh bột khoai tây mỏng giúp khóa độ ẩm bên trong thớ thịt bò, đồng thời làm nước sốt tự nhiên sánh nhẹ khi xào.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị hành tây, gừng tươi hai kiểu và hành lá",
+      "instruction": "Hành tây bóc vỏ, bổ múi cau dày 1,5 cm. Gừng tươi cạo thật mỏng lớp vỏ ngoài; chia 30 g gừng làm hai phần, một nửa thái sợi mảnh và một nửa mài nhuyễn; hành lá rửa sạch thái nhỏ để riêng.",
+      "tip": "Gọt vỏ gừng thật mỏng giúp giữ lại phần tinh dầu thơm nhất nằm ngay dưới lớp vỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha bát nước sốt Sake Mirin xì dầu cân bằng",
+      "instruction": "Cho 30 ml xì dầu Nhật, 30 ml rượu Mirin, 30 ml rượu Sake nấu ăn còn lại và 4 g đường cát trắng vào chén, khuấy đều đến khi đường tan hoàn toàn.",
+      "tip": "Pha sẵn nước sốt trước khi bật bếp giúp thao tác xào diễn ra liên tục nhanh gọn, thịt bò không bị quá lửa."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh thịt bò với dầu mè rồi hấp mềm hành tây",
+      "instruction": "Làm nóng chảo trên lửa vừa với 10 ml dầu mè thơm, cho thịt bò đã ướp vào đảo nhanh khoảng 1–2 phút đến khi thịt vừa đổi màu hết đỏ tái. Lập tức thả hành tây bổ múi cau vào đảo đều, đậy nắp chảo và hạ lửa nhỏ hấp-xào khoảng 3 phút cho hành tây mềm dịu và tiết vị ngọt.",
+      "tip": "Đậy nắp hạ lửa nhỏ giúp hành tây chín mềm ngọt nhanh mà không làm thịt bò bị khô xơ.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo quyện nước sốt gừng sánh bóng",
+      "instruction": "Mở nắp chảo, vặn lên lửa vừa lớn, rót toàn bộ bát nước sốt đã pha cùng cả phần gừng thái sợi và gừng mài nhuyễn vào chảo. Đảo nhanh tay khoảng 1–2 phút đến khi nước sốt sôi sệt lại, bám bóng đều quanh thịt bò và hành tây thì tắt bếp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa bò xào gừng Itame dùng nóng",
+      "instruction": "Múc bò xào gừng hành tây ra đĩa nóng, rắc hành lá thái nhỏ lên trên rồi dùng ngay với cơm trắng nóng hổi."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 272,
+    "energyKcal": 272.3,
+    "energyKj": 1139,
+    "proteinG": 19.2,
+    "fatG": 12,
+    "saturatedFatG": 3.9,
+    "carbG": 16.9,
+    "fiberG": 1.6,
+    "sugarG": 8.9,
+    "sodiumMg": 831,
+    "saltG": 2.08,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC Potato Starch"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f0e7d2bc14d03303ab2cb3aec5a82f70f351668d0a931448b2080414ca050ead",
+    "researchedFromV2Sha256": "72770dd432f54301313b169f6c342ea320198ae4038e9eaf44762e1059df9f2c"
+  }
+}

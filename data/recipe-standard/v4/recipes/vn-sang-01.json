@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-sang-01",
+    "slug": "com-chien-trung-toi-hanh-hoa",
+    "title": "Cơm chiên trứng tỏi phi hành hoa",
+    "subtitle": "Cơm nguội rang tơi vàng óng bọc trứng gà béo thơm, dậy mùi tỏi phi giòn rụm và hành lá tươi"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 2,
+    "tags": [
+      "Ăn sáng",
+      "Cơm chiên",
+      "Nhanh gọn",
+      "Tiết kiệm",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa cơm chiên trứng tỏi phi vàng ươm với từng hạt cơm săn tơi rời rạc, áo lớp trứng gà mượt mà, thơm nức hương tỏi phi giòn tan, hành lá xanh mát và nước mắm dậy mùi.",
+    "servingSuggestion": "Múc cơm chiên ra đĩa ngay khi còn nóng giòn, rắc thêm tiêu xay và hành lá, ăn kèm dưa leo thái lát, cà chua bi và chén xì dầu ớt.",
+    "storageAndReheat": "Ngon nhất khi thưởng thức ngay sau khi rang để hạt cơm và tỏi phi giữ độ giòn. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ rồi đảo lại trên chảo nóng không dầu 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm nguội để mát tơi hạt",
+      "culinaryMeasure": "360 g (khoảng 2 chén đầy)",
+      "prepNote": "dùng cơm nấu hơi khô, bóp tơi đều trước khi ướp gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đập ra chén riêng hoặc dùng 1 quả trộn cơm, 1 quả chiên vân mây",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ lớn (khoảng 25 g)",
+      "prepNote": "bóc vỏ, chia 1/2 băm nhỏ và 1/2 thái lát mỏng để phi vàng giòn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, phần đầu trắng đập dập băm nhỏ, phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín (trang trí)",
+      "culinaryMeasure": "1/2 quả (khoảng 60 g)",
+      "prepNote": "rửa sạch, thái lát mỏng xếp viền đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (phi tỏi và rang cơm)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng 20 ml phi giòn tỏi và tráng chảo, 10 ml trộn ướp cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "trộn 5 ml ướp cơm trước, 5 ml rưới quanh thành chảo lúc gần xong",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn trực tiếp vào cơm nguội trước khi rang",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "làm dịu vị mặn và giúp hạt cơm lên màu vàng nhẹ đẹp mắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm cân bằng vị cùng nước mắm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1/2 ướp cơm, 1/2 rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm tơi cơm nguội và ướp gia vị",
+      "instruction": "Cho 360 g cơm nguội ra tô lớn, dùng tay sạch bóp nhẹ cho từng hạt cơm tách rời hoàn toàn. Trộn cơm với 5 ml nước mắm ngon, 3 g hạt nêm, 2 g đường cát trắng, 1,5 g muối ăn, 1/2 lượng tiêu đen xay và 10 ml dầu ăn để hạt cơm bóng mượt, thấm đều gia vị trước khi chiên.",
+      "tip": "Dùng cơm nấu ráo nước đã để nguội trong ngăn mát vài giờ sẽ giúp hạt cơm săn chắc, khi rang rất tơi mà không bị bết dính."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế tỏi, hành lá và cà chua",
+      "instruction": "Bóc vỏ 1 củ tỏi khô, chia một nửa băm nhuyễn và một nửa thái lát mỏng đều nhau. Rửa sạch hành lá, tách riêng đầu hành trắng băm nhỏ, phần lá xanh thái nhuyễn. Rửa sạch cà chua chín, cắt lát mỏng để trang trí đĩa cơm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm vàng giòn tỏi băm và tỏi lát",
+      "instruction": "Đun nóng 20 ml dầu ăn trong chảo sâu lòng trên lửa vừa, thử đầu đũa thấy sủi tăm nhẹ thì hạ lửa nhỏ. Cho tỏi băm vào đảo đều tay khoảng 2 phút đến khi vừa ngả màu vàng nhạt thì vớt nhanh ra đĩa lót giấy thấm dầu. Tiếp tục thả tỏi thái lát vào phi thêm 1 phút đến khi nổi vàng giòn thì vớt ra ngay, giữ lại phần dầu tỏi trong chảo.",
+      "tip": "Vớt tỏi phi ngay khi chuyển màu vàng nhạt vì lượng nhiệt dư sẽ tiếp tục làm tỏi vàng giòn hoàn hảo mà không bị cháy đắng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đánh tan và chiên tơi trứng gà",
+      "instruction": "Làm nóng lại chảo dầu tỏi trên lửa vừa, cho phần đầu hành lá băm vào đảo thơm 15 giây. Đập 2 quả trứng gà trực tiếp vào chảo, chờ 10 giây cho lớp đáy hơi se lại rồi dùng đũa khuấy đều theo vòng tròn tạo thành những mảng trứng vàng xốp mềm.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rang cơm lửa lớn cho hạt săn tơi",
+      "instruction": "Trút toàn bộ tô cơm đã ướp vào chảo trứng, tăng lên lửa lớn và đảo liên tục trong 5 phút. Dùng xẻng gỗ hoặc đũa tản đều để hạt cơm và trứng hòa quyện, rang đến khi thấy hạt cơm khô ráo, săn bóng và bắt đầu nhảy lách tách nhẹ trên mặt chảo.",
+      "tip": "Giữ lửa lớn và đảo đều tay giúp hơi ẩm thoát nhanh, hạt cơm săn giòn bên ngoài nhưng vẫn dẻo mềm bên trong.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới nước mắm tạo hương và trình bày",
+      "instruction": "Rưới 5 ml nước mắm ngon còn lại dọc quanh thành chảo đang nóng để dậy hương thơm đặc trưng, đảo thêm 30 giây rồi tắt bếp. Trút hành lá thái nhỏ và phần tiêu đen xay còn lại vào đảo đều. Múc cơm ra đĩa, xếp cà chua thái lát bên cạnh, rắc toàn bộ tỏi phi vàng giòn lên mặt và thưởng thức nóng.",
+      "tip": "Chỉ rắc tỏi phi lên mặt khi tắt bếp hoặc lúc bày đĩa để giữ nguyên độ giòn rụm đến miếng cuối cùng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 442,
+    "energyKcal": 442.4,
+    "energyKj": 1851,
+    "proteinG": 12,
+    "fatG": 17.3,
+    "saturatedFatG": 3.4,
+    "carbG": 58.8,
+    "fiberG": 1.7,
+    "sugarG": 2.8,
+    "sodiumMg": 1079,
+    "saltG": 2.7,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7f0e7bd407d6a215419d22b17b64dc7762e26d38e33e1963fd6b6ac634ed167c",
+    "researchedFromV2Sha256": "15a0af0b7daa6b1f020e3fa177f32d8fd430f274edd946b64d67500a0b442ca7"
+  }
+}

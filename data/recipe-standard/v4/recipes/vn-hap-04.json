@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-hap-04",
+    "slug": "rau-cu-luoc-kho-quet",
+    "title": "Rau củ luộc thập cẩm chấm kho quẹt tóp mỡ",
+    "subtitle": "Súp lơ xanh, cà rốt, su su luộc giòn xanh mướt chấm cùng niêu kho quẹt tóp mỡ tôm khô đậm đà chuẩn vị Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món luộc",
+      "Rau củ",
+      "Kho quẹt",
+      "Món Nam",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "pork",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa rau củ luộc giòn ngọt giữ trọn sắc xanh cam tươi tắn chấm ngập trong niêu kho quẹt sánh kẹo mặn ngọt hài hòa, thơm lừng tóp mỡ giòn rụm, tôm khô dai ngọt và tiêu xanh cay nồng.",
+    "servingSuggestion": "Bày súp lơ xanh, cà rốt và su su luộc ra đĩa lớn, đặt bên cạnh niêu kho quẹt nóng hổi còn sôi lăn tăn, ăn kèm cơm trắng hoặc cơm cháy giòn.",
+    "storageAndReheat": "Rau củ luộc nên ăn hết trong bữa để giữ độ giòn và màu sắc tươi ngon. Phần kho quẹt có thể bảo quản hũ kín trong ngăn mát 3–4 ngày, hâm nóng trên lửa nhỏ cùng 1 muỗng nước trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Súp lơ xanh (bông cải xanh)",
+      "culinaryMeasure": "1 bông (khoảng 300 g)",
+      "prepNote": "tách nhánh vừa ăn, ngâm nước muối loãng 5 phút rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 246,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2 củ (khoảng 220 g)",
+      "prepNote": "gọt vỏ, rửa sạch, cắt khúc dài 4 cm hoặc tỉa hoa dày 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHAYOTE",
+      "name": "Quả su su non tươi",
+      "culinaryMeasure": "1 quả (khoảng 220 g)",
+      "prepNote": "gọt vỏ dưới vòi nước cho sạch nhựa, bổ đôi bỏ hạt rồi cắt miếng con chì vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 193.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ (thắng tóp mỡ)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "rửa sạch, thấm khô, thái hạt lựu vuông khoảng 1 cm để thắng lấy tóp mỡ và mỡ nước",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DRIED_SHRIMP",
+      "name": "Tôm khô loại ngon",
+      "culinaryMeasure": "25 g",
+      "prepNote": "rửa sạch bụi, ngâm nước ấm 20 phút cho nở mềm rồi vớt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "55 ml (khoảng 3,5 muỗng canh)",
+      "prepNote": "chọn nước mắm truyền thống độ đạm cao để kho quẹt sánh thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 66,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 52.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "35 g (khoảng 3 muỗng canh)",
+      "prepNote": "tạo vị ngọt đậm đặc trưng và màu cánh gián đẹp mắt cho kho quẹt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ cho hỗn hợp kho quẹt tròn vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 3.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, rửa sạch, thái lát mỏng để phi thơm nền kho quẹt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (khoảng 12,5 g, 4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ rắc mặt niêu kho quẹt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "GREEN_PEPPERCORN",
+      "name": "Tiêu xanh tươi",
+      "culinaryMeasure": "15 g (2–3 nhánh)",
+      "prepNote": "rửa sạch, để nguyên chùm hoặc tách vài hạt đập nhẹ cho dậy mùi cay nồng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, để nguyên quả hoặc cắt lát tạo độ cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (luộc rau)",
+      "culinaryMeasure": "10 g (2 muỗng cà phê)",
+      "prepNote": "thêm vào nước luộc rau giúp giữ màu xanh tươi và vị ngọt tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc rau và nấu kho quẹt)",
+      "culinaryMeasure": "1300 ml",
+      "prepNote": "dùng 1200 ml luộc rau củ, 50 ml ngâm tôm khô và 50 ml pha nước mắm kho quẹt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1300,
+      "unit": "ml",
+      "grossGrams": 1300,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 104,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm tôm khô và sơ chế rau củ luộc",
+      "instruction": "Rửa sạch 25 g tôm khô rồi ngâm trong 50 ml nước ấm khoảng 20 phút cho mềm, vớt ra để ráo. Tách súp lơ xanh thành miếng vừa ăn, gọt vỏ cà rốt cắt khúc vừa và gọt vỏ su su cắt miếng con chì đều nhau, rửa sạch toàn bộ rồi để ráo nước.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Thắng tóp mỡ giòn rụm trong nồi đất",
+      "instruction": "Thái 200 g thịt ba chỉ thành hạt lựu vuông 1 cm. Cho thịt vào nồi đất hoặc chảo đáy dày, thắng trên lửa vừa và đảo đều tay khoảng 12 phút đến khi mỡ tiết ra hết và phần tóp mỡ vàng giòn rụm. Vớt tóp mỡ ra đĩa riêng, chắt bớt mỡ nước chỉ giữ lại khoảng 20 ml trong nồi.",
+      "tip": "Thắng tóp mỡ ở lửa vừa không quá gắt sẽ giúp mỡ ra kiệt, tóp vàng giòn đều mà không bị cháy khét hay bắn dầu.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Luộc rau củ giòn ngọt và giữ màu xanh tươi",
+      "instruction": "Đun sôi 1,2 lít nước lọc với 10 g muối ăn trên lửa lớn. Thả cà rốt và su su vào luộc trước 3 phút, sau đó mới cho súp lơ xanh vào luộc chung thêm 2 phút đến khi rau củ vừa chín tới còn độ giòn. Vớt ngay rau củ ra rổ cho ráo hơi nước rồi xếp đẹp mắt ra đĩa.",
+      "tip": "Cho cà rốt và su su vào trước rồi mới thả súp lơ giúp các loại rau chín đồng đều mà súp lơ không bị nhũn hay ngả vàng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp nước mắm đường kho quẹt",
+      "instruction": "Bóc vỏ hành tím thái lát mỏng, tỏi băm nhỏ, hành lá thái khoanh nhỏ, rửa sạch tiêu xanh và ớt hiểm. Trong chén sạch, khuấy tan 55 ml nước mắm ngon với 35 g đường cát trắng, 4 g hạt nêm và 50 ml nước lọc để sẵn sàng kho."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào tôm khô và rim kho quẹt sánh kẹo",
+      "instruction": "Đun nóng lại phần mỡ nước trong nồi đất ở lửa vừa, cho hành tím và tỏi băm vào phi thơm vàng. Đổ tôm khô đã ngâm mềm vào đảo đều 2 phút cho săn thơm rồi rót hỗn hợp nước mắm đường vào, hạ lửa nhỏ liu riu và kho khoảng 8 phút đến khi nước sốt sánh sệt lại.",
+      "tip": "Kho bằng nồi đất trên lửa nhỏ liu riu giúp nước mắm đường keo sánh từ từ, giữ được độ bóng đẹp và hương thơm đậm đà đặc trưng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn tóp mỡ tiêu xanh và dọn thưởng thức",
+      "instruction": "Thả phần tóp mỡ vàng giòn, 15 g tiêu xanh tươi và 2 quả ớt hiểm vào nồi kho quẹt, đảo đều thêm 1 phút để tóp mỡ áo đều lớp sốt mặn ngọt nhưng vẫn giữ độ giòn nhẹ. Rắc hành lá thái khoanh lên mặt niêu kho quẹt, dọn nóng ngay cạnh đĩa rau củ luộc giòn ngọt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 336,
+    "energyKcal": 336.4,
+    "energyKj": 1407,
+    "proteinG": 11.8,
+    "fatG": 23.2,
+    "saturatedFatG": 8.3,
+    "carbG": 22.1,
+    "fiberG": 4.5,
+    "sugarG": 12.5,
+    "sodiumMg": 1525,
+    "saltG": 3.81,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Green Peppercorn Ref",
+      "USDA / Asian Dried Shrimp Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169990",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170379",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a83ef6f2d387fe9c8ea90a15835d5c6bc473a73cf56cec54a728e390a5f23ab8",
+    "researchedFromV2Sha256": "03ccdf1e6fa7cc16b3f8f4d44f1b665c586f04397b5e04e0891b4dae03ead8ac"
+  }
+}

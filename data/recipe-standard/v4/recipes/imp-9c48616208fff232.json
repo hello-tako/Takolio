@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9c48616208fff232",
+    "slug": "mi-y-bong-cai-xanh",
+    "title": "Mì Ý sốt kem bông cải xanh hạnh nhân",
+    "subtitle": "Sợi mì Spaghetti quyện sốt bông cải xanh xay mịn cùng phô mai Parmesan, bông cải om mềm và hạnh nhân rang giòn bùi thơm"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Bông cải xanh",
+      "Hạnh nhân",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "almond",
+      "milk",
+      "tree_nuts",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý bông cải xanh hạnh nhân là món pasta rau củ thanh mát, giàu dinh dưỡng với phần sốt xanh mướt được tạo nên từ một nửa bông cải xanh xay nhuyễn cùng hạnh nhân rang và phô mai Parmesan, kết hợp phần bông cải om mềm giữ nguyên nhánh tạo kết cấu thú vị.",
+    "servingSuggestion": "Múc mì ra 3 đĩa sâu lòng khi còn nóng, rắc phần hạnh nhân rang giòn còn lại, ít phô mai Parmesan bào và ớt tươi thái lát lên trên.",
+    "storageAndReheat": "Món mì sốt rau củ ngon nhất khi ăn nóng ngay; nếu còn dư bảo quản ngăn mát tối đa 2 ngày và hâm nóng trên chảo cùng vài muỗng nước lọc cho sốt mượt lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "240 g",
+      "prepNote": "luộc đến độ al dente trong nồi nước sôi có muối",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "1,5 cây (~450 g)",
+      "prepNote": "rửa sạch, tách lấy phần bông nhỏ đều nhau, bỏ cuống già cứng",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 369,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/5 củ (1–2 tép, ~5 g)",
+      "prepNote": "bóc vỏ, đập dập để phi thơm dầu rồi gắp bỏ trước khi xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "35 g",
+      "prepNote": "chia 25 g xay cùng sốt bông cải và 10 g rắc mặt mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ALMOND",
+      "name": "Hạnh nhân bóc vỏ",
+      "culinaryMeasure": "40 g",
+      "prepNote": "rang thơm trên chảo khô rồi chia đôi phần xay sốt và phần rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để phi tỏi và áp chảo om bông cải",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "15 g",
+      "prepNote": "đảo bóng cuối giúp sốt rau củ thơm ngậy hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng rắc trang trí tạo vị cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "14 g (~2,5 muỗng cà phê)",
+      "prepNote": "dùng 11 g pha nước luộc mì và 3 g nêm bông cải",
+      "componentGroup": "broth",
+      "requiredQuantity": 14,
+      "unit": "g",
+      "grossGrams": 14,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 3.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2650 ml",
+      "prepNote": "dùng 150 ml om bông cải và 2500 ml đun sôi luộc mì",
+      "componentGroup": "broth",
+      "requiredQuantity": 2650,
+      "unit": "ml",
+      "grossGrams": 2650,
+      "edibleRetentionRatio": 0.06,
+      "edibleGrams": 159,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Tách bông cải xanh và rang thơm hạnh nhân",
+      "instruction": "Rửa sạch 450 g bông cải xanh tươi, chỉ tách lấy phần bông nhỏ vừa ăn (bông lớn chẻ đôi cho đều), bỏ phần cuống già. Rang 40 g hạnh nhân bóc vỏ trên chảo khô lửa vừa khoảng 1–2 phút đến khi dậy mùi thơm nhẹ rồi trút ra để riêng.",
+      "tip": "Rang hạnh nhân rất nhanh trên lửa vừa để giữ vị bùi ngọt mà không bị cháy đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi tỏi và om mềm bông cải xanh",
+      "instruction": "Cho 30 ml dầu ô liu nguyên chất vào chảo lớn, phi thơm tỏi tươi đập dập khoảng 1 phút rồi cho toàn bộ bông cải xanh vào đảo lửa lớn 2 phút cho xém cạnh nhẹ. Rót 150 ml nước lọc vào chảo, nêm 3 g muối ăn, đậy nắp om lửa nhỏ khoảng 12–15 phút đến khi bông cải chín mềm.",
+      "timerMinutes": 14
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti và giữ nước tinh bột",
+      "instruction": "Trong lúc om bông cải, đun sôi mạnh nồi lớn với 2,5 lít nước lọc cùng 11 g muối ăn. Cho 240 g mì Ý Spaghetti khô vào luộc khoảng 8–9 phút đạt độ al dente; múc giữ lại 100 ml nước luộc mì trước khi vớt.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Xay mịn sốt kem bông cải xanh hạnh nhân",
+      "instruction": "Gắp bỏ tép tỏi ra khỏi chảo bông cải, dùng nĩa dằm nhẹ vài bông trong chảo. Múc một nửa lượng bông cải đã om cùng một nửa lượng hạnh nhân rang cho vào máy xay với 25 g phô mai Parmesan bào và 2–3 muỗng canh nước luộc mì, xay thành sốt kem xanh mịn.",
+      "tip": "Chia đôi bông cải giúp món mì vừa có lớp sốt kem xanh mịn bám sợi vừa còn nguyên các bông giòn mềm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn mì Ý với sốt bông cải và bơ lạt",
+      "instruction": "Trút mì Ý Spaghetti vào chảo bông cải, đổ toàn bộ phần sốt kem bông cải xanh vừa xay vào rồi đảo đều tay 2 phút trên lửa vừa, thêm chút nước luộc mì nếu cần cho sốt bám mượt. Tắt bếp và đảo tan 15 g bơ lạt (nếu dùng).",
+      "tip": "Đảo tan bơ lạt sau khi tắt bếp giúp lớp sốt rau củ thêm bóng mượt và dậy mùi thơm béo dịu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hạnh nhân rang, ớt tươi và dọn nóng",
+      "instruction": "Chia mì ra 3 đĩa sâu lòng, rắc phần hạnh nhân rang còn lại (đập dập nhẹ), 10 g phô mai Parmesan bào và 1 quả ớt tươi thái lát (nếu dùng) lên trên, thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 584,
+    "energyKcal": 583.7,
+    "energyKj": 2442,
+    "proteinG": 21.3,
+    "fatG": 24.8,
+    "saturatedFatG": 6.6,
+    "carbG": 71.6,
+    "fiberG": 7.5,
+    "sugarG": 5,
+    "sodiumMg": 677,
+    "saltG": 1.69,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170379",
+      "USDA FDC 170567",
+      "USDA FDC 170848",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d6ddf99b03905d628dd03b18374d5a68aecae9a75fb0206b1429e01b83140a16",
+    "researchedFromV2Sha256": "5d96d7d2893eb93e5cc9d4a8b40f10c07614c6210048e1cc7b41bb238cf7f2d9"
+  }
+}

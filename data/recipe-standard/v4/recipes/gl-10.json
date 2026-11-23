@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-10",
+    "slug": "thai-green-curry",
+    "title": "Cà ri xanh thịt gà kiểu Thái (Green Curry)",
+    "subtitle": "Thịt đùi gà om mềm trong nước cốt dừa béo ngậy hòa quyện sốt cà ri xanh, lá chanh Thái thơm nồng và cà tím giòn ngọt"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Cà ri",
+      "Cốt dừa",
+      "Cay nồng",
+      "Món om"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Cà ri xanh (Kaeng Khiao Wan) nổi bật với màu xanh ngọc tự nhiên của ớt xanh và rau thơm, nước sốt cốt dừa tách dầu béo mịn quyện cùng đùi gà mềm ngọt, cà tím và hương lá chanh Thái.",
+    "servingSuggestion": "Múc cà ri xanh nóng ra tô sâu lòng, rắc thêm vài lá húng quế Thái tươi và ớt đỏ thái lát; dọn ăn kèm cơm trắng gạo lài hoặc bún gạo tươi.",
+    "storageAndReheat": "Cà ri ngon hơn khi để nghỉ 1–2 giờ cho thấm vị; bảo quản ngăn mát tối đa 2 ngày trong hộp kín, khi ăn đun nóng lại trên lửa nhỏ và khuấy đều để cốt dừa không tách lớp."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương bỏ da",
+      "culinaryMeasure": "400 g",
+      "prepNote": "rửa sạch với chút muối, thấm khô, cắt miếng vuông vừa ăn khoảng 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COCONUT_MILK",
+      "name": "Nước cốt dừa đậm đặc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "chia 120 ml phần kem đặc phía trên để tách dầu xào paste, 180 ml còn lại cho vào bước hoàn thiện",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà thanh",
+      "culinaryMeasure": "180 ml",
+      "prepNote": "giúp điều chỉnh độ sánh mượt cho nước cà ri khi om gà",
+      "componentGroup": "broth",
+      "requiredQuantity": 180,
+      "unit": "ml",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "THAI_CURRY_PASTE",
+      "name": "Sốt cà ri xanh Thái",
+      "culinaryMeasure": "45 g (khoảng 3 muỗng canh)",
+      "prepNote": "giã hoặc xay quyện cùng mắm tôm và một ít lá húng quế tươi để tăng hương thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHRIMP_PASTE",
+      "name": "Mắm tôm (hoặc mắm ruốc)",
+      "culinaryMeasure": "4 g (3/4 muỗng cà phê)",
+      "prepNote": "trộn chung với sốt cà ri xanh để tạo chiều sâu vị umami đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái",
+      "culinaryMeasure": "25 g (1 nắm vừa)",
+      "prepNote": "chia 10 g giã cùng sốt cà ri cho xanh thơm, 15 g còn lại thả vào khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (Kaffir)",
+      "culinaryMeasure": "4 g (4–5 lá)",
+      "prepNote": "rửa sạch, tước bỏ gân giữa cứng, xé nhỏ để dậy tinh dầu khi om",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "EGGPLANT",
+      "name": "Cà tím (hoặc cà pháo xanh Thái)",
+      "culinaryMeasure": "170 g",
+      "prepNote": "rửa sạch, bổ múi cau hoặc cắt miếng 2,5 cm, ngâm nước muối loãng chống thâm rồi vớt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 170,
+      "unit": "g",
+      "grossGrams": 170,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 149.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "1/2 quả (khoảng 75 g)",
+      "prepNote": "bỏ hạt và lõi trắng, thái sợi dài 4 cm tạo điểm nhấn màu đỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 63.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "rửa sạch, thái lát xéo trang trí trên mặt tô cà ri",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "băm nhỏ để nhanh tan khi nêm vào nước cà ri",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "nêm cân bằng vị mặn ngọt với đường thốt nốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Tăng hương sốt cà ri xanh và sơ chế nguyên liệu",
+      "instruction": "Cho 45 g sốt cà ri xanh Thái, 4 g mắm tôm và 10 g lá húng quế Thái vào cối giã hoặc máy xay nhỏ, nghiền quyện thành hỗn hợp xanh mượt dậy mùi tươi mới. Cắt 400 g thịt đùi gà thành miếng vuông 3–4 cm. Cắt 170 g cà tím thành múi cau vừa ăn, thái sợi 1/2 quả ớt chuông đỏ và thái lát 2 quả ớt sừng đỏ.",
+      "tip": "Giã thêm lá húng quế tươi cùng mắm tôm giúp sốt cà ri đóng gói có màu xanh đẹp và hương thơm đậm như giã tay tại nhà."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun tách dầu cốt dừa và xào thơm sốt cà ri",
+      "instruction": "Múc 120 ml phần kem đặc phía trên của nước cốt dừa cho vào nồi đáy dày, đun trên lửa vừa và khuấy nhẹ khoảng 4 phút đến khi nước bay hơi bớt và thấy lớp dầu dừa trong óng ánh tách nổi lên mặt. Cho toàn bộ hỗn hợp sốt cà ri xanh vào đảo đều tay thêm 3–4 phút cho đến khi sốt thơm nồng và sánh bóng.",
+      "tip": "Kỹ thuật tách dầu trực tiếp từ nước cốt dừa giúp món cà ri Thái có độ béo ngậy tự nhiên mà không cần dùng thêm dầu ăn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn đùi gà và om mềm với nước dùng",
+      "instruction": "Cho 400 g thịt đùi gà vào nồi sốt cà ri, đảo đều khoảng 3 phút trên lửa vừa để từng miếng thịt săn lại và áo kín lớp sốt thơm. Rót 180 ml nước dùng gà vào nồi, thả 4 g lá chanh Thái xé nhỏ bỏ gân vào rồi hạ lửa nhỏ, đậy hé nắp om liu riu 12 phút đến khi thịt gà chín mềm hoàn toàn và thấm vị.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu cà tím, ớt chuông và nêm gia vị",
+      "instruction": "Vớt bỏ bớt lá chanh cứng nếu thích, cho 170 g cà tím và 1/2 quả ớt chuông đỏ thái sợi vào nồi nấu tiếp khoảng 5 phút đến khi cà tím vừa chín mềm mà vẫn giữ nguyên khối không nát. Nêm 20 g đường thốt nốt băm nhỏ cùng 20 ml nước mắm ngon, khuấy tan rồi nếm điều chỉnh cho vị mặn ngọt cay béo hài hòa.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hòa phần nước cốt dừa còn lại",
+      "instruction": "Rót 180 ml nước cốt dừa còn lại vào nồi, khuấy nhẹ tay và đun sôi lăn tăn trên lửa nhỏ thêm 2 phút để nước cà ri sánh mịn, hòa quyện đều màu xanh ngọc dịu mắt.",
+      "tip": "Không đun sôi mạnh sau khi đã cho phần cốt dừa cuối vào vì nhiệt cao sẽ làm cốt dừa bị tách béo và lợn cợn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tắt bếp thả húng quế và dọn nóng",
+      "instruction": "Tắt bếp ngay rồi cho 15 g lá húng quế Thái còn lại vào đảo nhẹ cho lá vừa héo dậy mùi thơm. Múc cà ri xanh thịt gà ra tô sâu lòng, xếp vài lát ớt sừng đỏ lên trên và dọn nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 544,
+    "energyKcal": 544.4,
+    "energyKj": 2278,
+    "proteinG": 31,
+    "fatG": 39.2,
+    "saturatedFatG": 25.3,
+    "carbG": 19.9,
+    "fiberG": 5,
+    "sugarG": 13.3,
+    "sodiumMg": 1473,
+    "saltG": 3.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Asian Shrimp Paste Ref",
+      "Citrus Leaf Culinary Ref",
+      "Thai Curry Paste Ref",
+      "USDA FDC 169228",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 170172",
+      "USDA FDC 172185",
+      "USDA FDC 172232",
+      "USDA FDC 172385",
+      "USDA FDC 172883",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/pad-krapow.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "448a3c4b018afa2d937a5bc0ced993742499bc0b4dc367d4ffb8fb7e36f0302f",
+    "researchedFromV2Sha256": "5ba88aab04ed1c87188debb87454d34094772613cebefbcdbb0e8650b2377899"
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2d508cd359edb61c",
+    "slug": "dau-phu-hap-tom-gung",
+    "title": "Đậu phụ trứng hấp tôm gừng",
+    "subtitle": "Những khoanh đậu phụ trứng mềm tan phủ chả tôm tươi băm nhuyễn quyện gừng hành hấp chín tới, rưới sốt dầu hào xì dầu sánh bóng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_hap_luoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Dim sum",
+      "Đậu phụ",
+      "Tôm tươi"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "molluscs",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ trứng hấp tôm gừng mang phong vị dim sum tinh tế với phần đậu phụ trứng béo mịn nâng đỡ viên chả tôm giòn ngọt tự nhiên, hoàn thiện bằng lớp sốt xì dầu dầu hào trong mượt và hương thơm ấm nồng của gừng hành.",
+    "servingSuggestion": "Dọn nóng nguyên đĩa ngay sau khi rưới sốt và rắc lá hành xanh; dùng làm món chính nhẹ bụng cùng cơm trắng hoặc món khai vị tiệc gia đình.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay sau khi hấp; nếu bảo quản tủ mát tối đa 24 giờ, đậy kín màng bọc thực phẩm và hấp nóng lại khoảng 4–5 phút trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_TOFU",
+      "name": "Đậu phụ trứng",
+      "culinaryMeasure": "360 g (~1,5–2 ống đậu phụ trứng)",
+      "prepNote": "cắt bỏ hai đầu ống, nhẹ tay đẩy ra và cắt khoanh tròn dày khoảng 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "200 g tôm nõn tươi",
+      "prepNote": "rửa sạch, rút chỉ đen, thấm thật khô rồi băm nhuyễn bằng dao để giữ độ dai",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi (lấy lòng trắng)",
+      "culinaryMeasure": "1 quả (~50 g)",
+      "prepNote": "tách lấy lòng trắng đánh nhẹ để giúp chả tôm dẻo kết dính",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 32.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (~1,5 muỗng canh băm)",
+      "prepNote": "gọt vỏ, băm thật nhuyễn để trộn vào chả tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (~40 g, 3 cọng)",
+      "prepNote": "rửa sạch, phần đầu trắng thái lát mỏng trộn chả tôm, phần lá xanh thái nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "trộn vào chả tôm giúp khử mùi tanh hải sản",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.92,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.92,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 2 g trộn kết dính chả tôm, 3 g nấu sánh nước sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "chia 4 ml trộn vào chả tôm, 4 ml hòa vào sốt rưới cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "pha hỗn hợp sốt rưới mặn thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "6 ml (~1 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt đậm và màu nâu óng cho sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "ml",
+      "grossGrams": 7.32,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.32,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị trong chén sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm vào hỗn hợp chả tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia đều trộn chả tôm và nấu sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "120 ml (~1/2 chén)",
+      "prepNote": "dùng hòa tan gia vị để nấu phần sốt rưới",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô và băm nhuyễn chả tôm",
+      "instruction": "Tôm tươi bóc vỏ rút sạch chỉ đen, dùng khăn giấy thấm thật khô từng con rồi dùng dao băm nhuyễn bằng tay để thịt tôm giữ được độ dai giòn tự nhiên, không bị bở nát. Gừng tươi băm nhuyễn; hành lá tươi tách phần đầu trắng thái lát mỏng và phần lá xanh thái nhỏ.",
+      "tip": "Thấm thật khô tôm và băm bằng dao thay vì xay máy sẽ giúp chả tôm dẻo quánh, giòn sần sật khi hấp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Quết dẻo chả tôm với gừng hành",
+      "instruction": "Cho thịt tôm băm vào tô cùng 8 ml rượu Thiệu Hưng, 2 g bột bắp, 4 ml dầu mè thơm, 1,5 g muối ăn và một nửa lượng tiêu trắng xay. Dùng muỗng quết mạnh tay theo một chiều trong 4 phút đến khi chả tôm dẻo dính có độ đàn hồi. Sau đó trộn thêm gừng băm, đầu hành trắng và lòng trắng trứng gà (nếu dùng) vào quyện đều.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Xếp đậu phụ trứng và tạo hình tôm hấp",
+      "instruction": "Cắt ống đậu phụ trứng thành 12 khoanh tròn dày đều nhau khoảng 2 cm, xếp gọn lên đĩa sâu lòng chịu nhiệt. Dùng muỗng múc khoảng 1 muỗng canh chả tôm đắp lên bề mặt mỗi khoanh đậu phụ và ấn nhẹ ở giữa cho chả bám chắc vào miếng đậu."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hấp chín đậu phụ tôm trong xửng nóng",
+      "instruction": "Đun sôi nước trong xửng hấp trên lửa lớn, đặt đĩa đậu phụ tôm vào xửng, đậy kín nắp và hấp liên tục trong 10 phút cho đến khi chả tôm chuyển màu hồng cam tươi, săn chắc chín hoàn toàn bên trong và đậu phụ trứng nóng đều.",
+      "tip": "Chỉ đặt đĩa vào khi nước trong xửng đã sôi mạnh để chả tôm se mặt nhanh, giữ trọn vị ngọt và tránh đọng quá nhiều nước.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Nấu sốt xì dầu dầu hào sánh mượt",
+      "instruction": "Trong lúc chờ hấp, khuấy đều trong chén nhỏ 120 ml nước lọc, 10 ml xì dầu nhạt, 6 ml dầu hào, 3 g bột bắp còn lại, 2 g đường cát trắng và phần tiêu trắng xay còn lại. Đổ hỗn hợp vào chảo nhỏ, đun lửa vừa và khuấy liên tục 2 phút đến khi sốt trong bóng, sánh nhẹ thì tắt bếp và khuấy thêm 4 ml dầu mè thơm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chắt nước hấp, rưới sốt và thưởng thức",
+      "instruction": "Lấy đĩa đậu phụ hấp tôm ra khỏi xửng, nhẹ tay nghiêng đĩa chắt bỏ phần nước tiết ra khi hấp để món ăn không bị loãng vị. Rưới đều phần sốt nóng sánh bóng lên từng khoanh đậu phụ tôm, rắc lá hành xanh thái nhỏ lên mặt và dùng nóng ngay với cơm trắng.",
+      "tip": "Chắt sạch nước tiết ra sau khi hấp giúp lớp sốt rưới bám đậm đà và giữ trọn vị béo thơm của đậu phụ trứng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 211,
+    "energyKcal": 211,
+    "energyKj": 883,
+    "proteinG": 21.7,
+    "fatG": 9.3,
+    "saturatedFatG": 2.1,
+    "carbG": 9.3,
+    "fiberG": 0.8,
+    "sugarG": 1.9,
+    "sodiumMg": 816,
+    "saltG": 2.04,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Asian Egg Tofu Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1cf7eaeed48e1dd0452678f47a45bc1f2f9edfbb31237148f3f73f9b1a151e6e",
+    "researchedFromV2Sha256": "0e08d58f6cee8917495c9cd92e6f1e47a0b9d6b8b98e21f55a7d78497de0b86f"
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-08",
+    "slug": "tokbokki-cay-ngot",
+    "title": "Bánh gạo Tokbokki sốt cay ngọt",
+    "subtitle": "Bánh gạo dẻo mềm quyện sốt tương ớt Gochujang cay ngọt sánh đỏ cùng chả cá Hàn Quốc, bắp cải ngọt dịu và trứng gà luộc"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 2,
+    "tags": [
+      "Hàn Quốc",
+      "Ăn vặt",
+      "Cay ngọt",
+      "Bánh gạo",
+      "Đường phố"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bánh gạo Tokbokki sốt cay ngọt chuẩn vị đường phố Seoul với từng thỏi bánh gạo dẻo bùi thấm đẫm nước sốt Gochujang đỏ óng sánh mịn, hòa quyện vị ngọt thanh của bắp cải, chả cá mềm dai và trứng gà luộc béo bùi.",
+    "servingSuggestion": "Múc Tokbokki nóng hổi ra đĩa sâu lòng, cắt đôi trứng gà luộc đặt lên trên và rắc thêm chút hạt mè trắng rang, dùng ngay khi nước sốt còn sánh ấm.",
+    "storageAndReheat": "Nếu còn dư, cất hộp kín trong ngăn mát tối đa 2 ngày; khi ăn lại thêm 2–3 muỗng canh nước lọc vào chảo rồi đun nhỏ lửa 4–5 phút cho bánh gạo mềm dẻo trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE_CAKE_TTEOK",
+      "name": "Bánh gạo Hàn Quốc dạng thỏi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sơ nước lạnh; nếu là bánh đông lạnh hoặc khô thì ngâm nước ấm 15 phút cho mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "FISH_CAKE",
+      "name": "Chả cá Hàn Quốc thái miếng",
+      "culinaryMeasure": "90 g (~1–2 miếng mỏng)",
+      "prepNote": "cắt miếng tam giác hoặc chữ nhật vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 90,
+      "unit": "g",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà luộc ăn kèm",
+      "culinaryMeasure": "2 quả (~100 g)",
+      "prepNote": "để nhiệt độ phòng trước khi luộc để vỏ không bị nứt",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "0,15 bắp nhỏ (~120 g)",
+      "prepNote": "rửa sạch, cắt miếng vuông 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.15,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 102,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ANCHOVY_KOMBU_BROTH",
+      "name": "Nước dùng cá cơm tảo bẹ",
+      "culinaryMeasure": "480 ml (~2 chén đầy)",
+      "prepNote": "chuẩn bị sẵn để tạo nền vị ngọt thanh umami cho sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 480,
+      "unit": "ml",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 408,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "38 g (~2 muỗng canh đầy)",
+      "prepNote": "khuấy tan trực tiếp trong nước dùng nóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 38,
+      "unit": "g",
+      "grossGrams": 38,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 38,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "giúp nước sốt lên màu đỏ tươi bắt mắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo độ mặn dịu và chiều sâu hương vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "16 g (~4 muỗng cà phê)",
+      "prepNote": "cân bằng vị cay nồng của tương ớt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 16,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CORN_SYRUP",
+      "name": "Siro ngô (Siro gạo)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp sốt có độ bóng mượt và vị ngọt dịu tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 20.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhuyễn",
+      "culinaryMeasure": "0,3 củ (~7,5 g, 2–3 tép)",
+      "prepNote": "băm thật nhuyễn để hòa tan vào sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 6.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới sau cùng trước khi tắt bếp để dậy mùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc trang trí lên đĩa thành phẩm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Luộc trứng gà lòng đào và sơ chế nguyên liệu",
+      "instruction": "Đun sôi nước trong nồi nhỏ, thả nhẹ 2 quả trứng gà vào luộc đúng 7 phút trên lửa vừa để đạt độ lòng đào dẻo, sau đó vớt ra ngâm ngay vào nước lạnh rồi bóc vỏ. Rửa sạch 300 g bánh gạo Hàn Quốc dạng thỏi, cắt miếng chả cá Hàn Quốc, cắt vuông bắp cải trắng và cắt khúc 4 cm hành lá tươi.",
+      "tip": "Nếu dùng bánh gạo bảo quản lạnh bị cứng, ngâm nước ấm 10–15 phút trước khi nấu giúp bánh chín đều mà không nát bề mặt.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha nước sốt cay ngọt Gochujang",
+      "instruction": "Đổ 480 ml nước dùng cá cơm tảo bẹ vào chảo sâu lòng, cho 38 g tương ớt Hàn Quốc (Gochujang), 3 g ớt bột Hàn Quốc (Gochugaru), 10 ml nước tương, 16 g đường cát trắng, 15 ml siro ngô và tỏi khô băm nhuyễn vào khuấy tan hoàn toàn trên lửa vừa.",
+      "tip": "Khuấy tan hoàn toàn tương ớt Gochujang trước khi thả bánh gạo để sốt mịn đều, không bị vón cục."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu mềm bánh gạo trong nước sốt",
+      "instruction": "Khi nước sốt sôi lăn tăn, thả toàn bộ bánh gạo Hàn Quốc dạng thỏi vào chảo, hạ lửa vừa-nhỏ và nấu khoảng 6 phút. Khuấy nhẹ tay thường xuyên để tinh bột từ bánh gạo tiết ra làm nước sốt sánh dần và bánh không bị dính đáy chảo.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm bắp cải và chả cá Hàn Quốc",
+      "instruction": "Cho bắp cải trắng và chả cá Hàn Quốc thái miếng vào chảo, đảo đều nhẹ nhàng và tiếp tục đun liu riu thêm 4 phút cho bắp cải chín mềm tiết vị ngọt tự nhiên, chả cá nở phồng thấm sốt cay ngọt đỏ au.",
+      "tip": "Không đun quá cạn vì nước sốt Tokbokki sẽ đặc thêm nhẹ khi nguội bớt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áo sốt cho trứng gà luộc và hành lá",
+      "instruction": "Thả trứng gà luộc đã bóc vỏ cùng hành lá tươi cắt khúc vào chảo, dùng muỗng rưới đều phần sốt sánh lên mặt trứng và nấu thêm 1–2 phút cho hành vừa chín tái dậy mùi thơm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè và dọn nóng",
+      "instruction": "Tắt bếp, rưới 5 ml dầu mè rang lên khắp mặt chảo và đảo nhẹ một lượt. Múc Tokbokki cùng chả cá, bắp cải ra đĩa sâu lòng, cắt đôi trứng gà đặt lên trên và rắc hạt mè trắng rang trang trí rồi thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 646,
+    "energyKcal": 646,
+    "energyKj": 2703,
+    "proteinG": 22.5,
+    "fatG": 9.7,
+    "saturatedFatG": 2.3,
+    "carbG": 117,
+    "fiberG": 4.4,
+    "sugarG": 24.3,
+    "sodiumMg": 1722,
+    "saltG": 4.31,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Anchovy Kelp Stock Ref",
+      "Korean Chili Flake Ref",
+      "Korean Tteok Ref",
+      "USDA / Korean Gochujang Ref",
+      "USDA / MEXT Fish Cake Ref",
+      "USDA FDC 168836",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/kimchi-fried-rice.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "36b39d26d4528a39803b3e102890771109e4a56391158ed5ad4f5fdec73ae925",
+    "researchedFromV2Sha256": "ab9f053061a47942160f5c1219eb77e309f71d477303a35579d428250f46f386"
+  }
+}

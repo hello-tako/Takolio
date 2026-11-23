@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e5d49dd8dc1449d1",
+    "slug": "ba-chi-kho-kim-chi",
+    "title": "Thịt ba chỉ kho kim chi Hàn Quốc",
+    "subtitle": "Thịt ba chỉ heo kho mềm béo ngậy cùng kim chi lên men chua sâu, tương Doenjang và bột ớt Hàn trong nước kho sánh đậm"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 65,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Ba chỉ heo",
+      "Kim chi",
+      "Hàn Quốc",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Nồi thịt ba chỉ kho kim chi Hàn Quốc (Kimchi Jjim) đậm đà quyến rũ với từng miếng ba chỉ ninh mềm tan béo ngậy, thấm trọn vị chua cay nồng nàn của kim chi lên men kỹ và hương tương đậu Doenjang trầm ấm.",
+    "servingSuggestion": "Dùng kéo cắt kim chi thành khúc vừa ăn ngay trong nồi, rắc hành lá và ớt sừng thái lát lên trên; dọn nóng cùng cơm trắng và trứng cuộn hoặc đậu phụ trắng.",
+    "storageAndReheat": "Thịt ba chỉ kho kim chi bảo quản hộp kín trong ngăn mát tủ lạnh đến 4 ngày hoặc cấp đông 1 tháng; khi hâm nóng lại trên lửa nhỏ hương vị càng ngấm sâu và ngon hơn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo tươi",
+      "culinaryMeasure": "480 g",
+      "prepNote": "rửa sạch, thấm khô rồi cắt miếng dày 1,5 cm, dài khoảng 6 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 480,
+      "unit": "g",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo lên men kỹ (đã chua)",
+      "culinaryMeasure": "750 g (cả cái và toàn bộ nước kim chi)",
+      "prepNote": "giữ nguyên bẹ hoặc cắt khúc lớn dài 8–10 cm cùng nước kim chi đi kèm",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 750,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin Nhật",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "ướp thịt ba chỉ khử mùi và làm thịt nhanh mềm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng xếp cùng nồi kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái lát vát rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "thái lát vát trang trí khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "8 g (~1 muỗng canh)",
+      "prepNote": "tạo sắc đỏ đậm đà và vị cay ấm cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "trộn vào sốt kho tăng độ mặn ngọt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DOENJANG",
+      "name": "Tương đậu tương Hàn (Doenjang)",
+      "culinaryMeasure": "10 g (~1/2 muỗng canh)",
+      "prepNote": "tạo chiều sâu vị umami đặc trưng cho món kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "6 g (1 lát dày)",
+      "prepNote": "cạo vỏ, băm nhuyễn trộn sốt kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn trộn sốt kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "làm dịu độ chua của kim chi lên men kỹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp cùng rượu Mirin cho thịt ba chỉ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (hoặc nước vo gạo lần 2)",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "giúp nước kho sánh tự nhiên và hòa quyện gia vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Sơ chế và ướp thịt ba chỉ khử mùi với Mirin",
+      "instruction": "Thịt ba chỉ heo rửa sạch, thấm khô rồi cắt thành từng miếng dày 1,5 cm, dài 6 cm. Cho thịt vào tô ướp cùng 30 ml rượu Mirin Nhật và 1 g tiêu đen xay, trộn đều rồi để nghỉ 10 phút cho thịt thơm và nhanh mềm khi kho.",
+      "tip": "Nên chọn loại kim chi cải thảo đã lên men chua kỹ ít nhất 3–4 tuần thì khi kho cùng thịt ba chỉ mới dậy được vị chua sâu đặc trưng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sốt tương Doenjang ớt bột và thái hành",
+      "instruction": "Băm nhuyễn gừng tươi và tỏi khô, trộn đều trong chén nhỏ với 8 g ớt bột Hàn Quốc (Gochugaru), 15 ml xì dầu, 10 g tương đậu tương Hàn (Doenjang) và 6 g đường cát trắng thành hỗn hợp sốt sệt. Thái lát mỏng hành tây, thái vát hành lá và ớt sừng tươi."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp lớp kim chi, thịt ba chỉ và rưới sốt vào nồi kho",
+      "instruction": "Xếp toàn bộ 750 g kim chi cải thảo cùng nước kim chi xuống đáy nồi gang hoặc nồi đáy dày, xếp thịt ba chỉ đã ướp lên trên mặt kim chi rồi rải đều hành tây thái lát. Phết hết phần sốt tương đã trộn lên trên thịt và từ từ rót 250 ml nước lọc (hoặc nước vo gạo lần hai) vào quanh thành nồi.",
+      "tip": "Xếp kim chi lót dưới đáy và đặt thịt lên trên giúp mỡ ba chỉ tiết xuống thấm vào từng bẹ kim chi, đồng thời ngăn thịt bị bén cháy đáy nồi."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sôi bùng và kho liu riu đến khi thịt mềm tan",
+      "instruction": "Đậy kín nắp nồi, đun trên lửa lớn khoảng 5 phút cho nước kho sôi bùng lên. Sau đó hạ xuống lửa nhỏ, tiếp tục kho liu riu đậy nắp trong 55 phút, thỉnh thoảng mở nắp múc nước kho rưới lên mặt thịt cho đến khi thịt ba chỉ chín mềm nhừ hoàn toàn và kim chi chuyển màu trong mướt.",
+      "tip": "Nếu thấy nước cạn nhanh khi kho gần đủ thời gian, có thể châm thêm 50 ml nước nóng để món kho giữ được độ sánh ẩm.",
+      "timerMinutes": 55
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Cân chỉnh vị cuối và cắt kim chi vừa ăn",
+      "instruction": "Mở nắp nếm thử nước kho: nếu kim chi quá chua có thể thêm một chút đường, còn nếu nhạt thì chỉnh thêm ít xì dầu. Dùng kéo bếp và kẹp gắp cắt kim chi trong nồi thành những khúc ngắn vừa gắp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ớt sừng và dọn nóng cùng cơm",
+      "instruction": "Tắt bếp, rắc hành lá và ớt sừng tươi thái lát lên mặt nồi thịt ba chỉ kho kim chi. Dọn nóng trực tiếp hoặc múc ra đĩa sâu lòng để thưởng thức cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 704,
+    "energyKcal": 704,
+    "energyKj": 2945,
+    "proteinG": 14.8,
+    "fatG": 65,
+    "saturatedFatG": 23.4,
+    "carbG": 14.9,
+    "fiberG": 4.3,
+    "sugarG": 8.1,
+    "sodiumMg": 1331,
+    "saltG": 3.33,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "Korean Doenjang Ref",
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0909709f7910e43ddb2e20804ed638cb82433aff0a70b52132f0840e8cc012d7",
+    "researchedFromV2Sha256": "d4cdb1144995af63ed21fb08ff35ac41e6806d2581134cdfbd12c688fa08e0d9"
+  }
+}

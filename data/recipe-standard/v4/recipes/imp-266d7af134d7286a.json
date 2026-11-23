@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-266d7af134d7286a",
+    "slug": "mi-y-nam-kem",
+    "title": "Mì Ý nấm đùi gà sốt kem",
+    "subtitle": "Nấm đùi gà áp chảo vàng thơm cùng bơ tỏi quyện sốt kem sữa sánh mịn và phô mai Parmesan ôm trọn sợi mì Spaghetti nóng hổi"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Nấm đùi gà",
+      "Sốt kem",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý nấm đùi gà sốt kem là món pasta ấm áp, dễ nấu chỉ trong 30 phút. Nấm đùi gà giòn ngọt được xào vàng với bơ lạt và dầu ô liu rồi hòa quyện cùng kem tươi, sữa tươi và phô mai Parmesan béo ngậy.",
+    "servingSuggestion": "Múc mì ra 3 đĩa sâu lòng khi còn nóng, rắc thêm ngò tây tươi thái nhỏ, chút phô mai Parmesan bào và tiêu đen xay lên trên.",
+    "storageAndReheat": "Thưởng thức ngay khi còn nóng để sốt kem giữ độ mượt; nếu bảo quản ngăn mát tối đa 2 ngày, hâm nóng trên chảo lửa nhỏ cùng vài muỗng sữa tươi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "255 g",
+      "prepNote": "luộc bớt 1 phút so với hướng dẫn bao bì",
+      "componentGroup": "main",
+      "requiredQuantity": 255,
+      "unit": "g",
+      "grossGrams": 255,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 255,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "225 g",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già và thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 225,
+      "unit": "g",
+      "grossGrams": 225,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 213.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi nấu ăn",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "khuấy đều trước khi đổ vào chảo nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 148.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 148.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "giúp sốt kem có độ loãng mượt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 103,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 103,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "20 g",
+      "prepNote": "dùng để phi tỏi và xào thơm nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "đun cùng bơ lạt giúp bơ không bị cháy khét",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "3/10 củ (3 tép, ~7,5 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 6.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "35 g",
+      "prepNote": "chia 25 g trộn vào sốt và 10 g rắc mặt mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "nhặt lá, rửa sạch, thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 8 g pha nước luộc mì và 4 g nêm nấm sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào nấm và rắc hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2500 ml (2,5 lít)",
+      "prepNote": "đun sôi luộc mì và giữ lại 150 ml nước tinh bột",
+      "componentGroup": "broth",
+      "requiredQuantity": 2500,
+      "unit": "ml",
+      "grossGrams": 2500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 125,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, tỏi và ngò tây",
+      "instruction": "Dùng khăn ẩm lau sạch 225 g nấm đùi gà tươi (không rửa ngập nước để nấm khỏi nhũn), cắt bỏ phần gốc già rồi thái lát dày 0,5 cm. Bóc vỏ, băm nhỏ 3 tép tỏi tươi; rửa sạch và thái nhỏ 10 g ngò tây tươi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti giữ lại nước tinh bột",
+      "instruction": "Đun sôi mạnh nồi lớn với 2,5 lít nước lọc và 8 g muối ăn. Thả 255 g mì Ý Spaghetti khô vào luộc khoảng 8 phút (ít hơn 1 phút so với hướng dẫn bao bì) để đạt độ al dente. Múc giữ lại 150 ml nước luộc mì rồi vớt mì ra.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào vàng nấm đùi gà với bơ tỏi",
+      "instruction": "Làm nóng chảo lớn trên lửa vừa với 20 g bơ lạt và 15 ml dầu ô liu. Cho tỏi băm vào phi thơm 30 giây, sau đó trút nấm đùi gà vào xào khoảng 7 phút đến khi nấm ra hết nước, săn lại và vàng đều hai mặt. Nêm 4 g muối ăn và 1,5 g tiêu đen xay.",
+      "tip": "Không đảo nấm liên tục trong 3 phút đầu để bề mặt nấm tiếp xúc nhiệt tốt và lên màu vàng nâu hấp dẫn.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu sốt kem tươi và sữa tươi sánh nhẹ",
+      "instruction": "Hạ lửa nhỏ, rót 150 ml kem tươi và 100 ml sữa tươi không đường vào chảo nấm, khuấy nhẹ cho hòa quyện. Đun liu riu khoảng 3 phút cho sốt hơi sánh lại mà không để sôi bùng tránh tách béo.",
+      "tip": "Giữ sốt kem sôi lăn tăn nhẹ thay vì sôi mạnh để kết cấu kem sữa mịn mượt và không bị tách váng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn mì Ý và làm tan phô mai Parmesan",
+      "instruction": "Cho mì Ý Spaghetti đã vớt vào chảo sốt, đảo đều 2 phút trên lửa nhỏ-vừa để từng sợi mì thấm kem; thêm dần từng muỗng nước luộc mì nếu sốt đặc. Tắt bếp rồi rắc 25 g phô mai Parmesan bào vào đảo nhanh đến khi phô mai tan mượt.",
+      "tip": "Chỉ cho phô mai vào khi đã tắt bếp hoặc lửa thật nhỏ để phô mai tan đều mịn, không bị vón sợi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với ngò tây và dọn nóng",
+      "instruction": "Nếm lại gia vị, rắc 10 g ngò tây tươi thái nhỏ vào đảo nhẹ. Chia mì ra 3 đĩa sâu lòng, rắc thêm 10 g phô mai Parmesan bào còn lại cùng 0,5 g tiêu đen xay lên trên và thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 673,
+    "energyKcal": 672.6,
+    "energyKj": 2814,
+    "proteinG": 20.8,
+    "fatG": 33.9,
+    "saturatedFatG": 18.4,
+    "carbG": 72.7,
+    "fiberG": 4.7,
+    "sugarG": 6.4,
+    "sodiumMg": 770,
+    "saltG": 1.93,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e2d9731003d9de4f9a2079be84bab973ce43e7e8d8de42402aaf4af3968120c8",
+    "researchedFromV2Sha256": "43009c07cd4fd7de4245814281f387cddce09405bd485a56b8490be3947e5370"
+  }
+}

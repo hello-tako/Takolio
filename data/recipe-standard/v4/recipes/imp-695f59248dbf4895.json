@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-695f59248dbf4895",
+    "slug": "ca-kho-gung-sa",
+    "title": "Cá kho gừng sả miền Trung",
+    "subtitle": "Cá lóc cắt khoanh chiên sơ kho liu riu cùng sả băm, gừng giã nhuyễn và ớt cay nồng, thấm vị mặn ngọt đậm đà chuẩn cơm nhà miền Trung"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "trung",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Cá kho",
+      "Miền Trung",
+      "Gừng sả",
+      "Món kho",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Khúc cá lóc chiên săn chắc thịt kho thấm vị nước mắm ngon, thơm nồng mùi sả băm, gừng giã dập phi vàng và vị cay ấm đặc trưng từ ớt bột cùng ớt tươi miền Trung.",
+    "servingSuggestion": "Gắp cá ra đĩa sâu lòng, rưới phần nước kho sánh thơm sả gừng và rắc hành lá thái nhỏ; dùng nóng với cơm trắng dẻo.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tối đa 3 ngày; khi dùng hâm nóng lại trên lửa nhỏ cùng 1–2 muỗng canh nước sôi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá lóc tươi cắt khoanh",
+      "culinaryMeasure": "750 g",
+      "prepNote": "làm sạch vảy ruột, chà muối rửa sạch nhớt rồi cắt khoanh dày 2–2,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 585,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "50 g (1 nhánh vừa)",
+      "prepNote": "cạo vỏ, rửa sạch rồi giã nhuyễn để ướp và xào thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (60 g)",
+      "prepNote": "bóc bẹ già, rửa sạch rồi băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (2–3 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi (ớt hiểm và ớt sừng)",
+      "culinaryMeasure": "3 quả (15 g)",
+      "prepNote": "rửa sạch, băm nhỏ 1 quả ớt hiểm cùng sả và thái khoanh 2 quả ớt còn lại",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt bột khô",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc vào lúc xào gừng sả tạo màu đỏ cam ấm mắt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "rưới đều lên mặt cá khi xếp vào nồi kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 54,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 54,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "chia 15 g thắng nước màu nhẹ và 10 g ướp nêm cá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "7 g",
+      "prepNote": "dùng 4 g xát khử nhớt cá rồi xả bỏ, 3 g xóc ướp cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 7,
+      "unit": "g",
+      "grossGrams": 7,
+      "edibleRetentionRatio": 0.43,
+      "edibleGrams": 3.01,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng 25 ml chiên sơ hai mặt cá và 15 ml phi thơm sả gừng",
+      "componentGroup": "process",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc sôi",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "châm xâm xấp mặt cá để kho liu riu không bị tanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 225,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch nhớt và ướp muối cho cá săn chắc",
+      "instruction": "Đánh vảy, bỏ ruột và màng đen trong bụng 750 g cá lóc, chà xát đều với 4 g muối hạt rồi rửa sạch nước lạnh và thấm khô, cắt khoanh dày 2–2,5 cm. Xóc nhẹ cá với 3 g muối hạt còn lại và ướp trong 25 phút cho thớ thịt cá săn chắc.",
+      "tip": "Ướp trước với chút muối giúp thịt cá cứng cáp khi chiên và thấm vị mặn đậm đà từ bên trong.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Giã gừng, băm sả, hành tím và ớt",
+      "instruction": "Giã nhuyễn 50 g gừng tươi trong cối để tinh dầu gừng tiết ra tối đa. Băm thật nhuyễn 3 cây sả cùng 1 quả ớt hiểm; hành tím băm nhỏ; 2 quả ớt còn lại cắt khoanh xéo và hành lá thái nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên sơ hai mặt khứa cá lóc cho săn vàng",
+      "instruction": "Làm nóng chảo với 25 ml dầu ăn trên lửa vừa, thả từng khoanh cá vào chiên sơ khoảng 2 phút mỗi mặt cho bề mặt cá se vàng nhẹ rồi gắp ra đĩa có lót giấy thấm dầu.",
+      "tip": "Chiên sơ giúp khóa lớp thịt cá bên ngoài để khi kho lâu với nước sôi miếng cá vẫn giữ nguyên khoanh đẹp mắt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm hành tím, gừng sả và ớt bột",
+      "instruction": "Dùng nồi đất hoặc nồi đáy dày, đun nóng 15 ml dầu ăn còn lại và 15 g đường cát trắng trên lửa nhỏ đến khi đường chuyển màu nâu cánh gián. Cho hành tím băm, gừng giã nhuyễn, sả băm và 2 g ớt bột khô vào xào đều trong 3 phút cho dậy mùi thơm nồng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xếp cá vào nồi và kho liu riu với nước sôi",
+      "instruction": "Xếp từng khoanh cá đã chiên sơ lên lớp sả gừng thơm, rưới 45 ml nước mắm ngon và 10 g đường cát trắng còn lại lên mặt cá rồi đậy kín nắp 2 phút cho thấm hương. Chế 250 ml nước lọc sôi vào xâm xấp mặt cá, đun sôi lại rồi hạ lửa nhỏ kho liu riu trong 22 phút, thỉnh thoảng nghiêng nhẹ nồi cho nước kho áo đều.",
+      "tip": "Luôn dùng nước đang sôi chế vào nồi cá kho để cá không bị tanh và nước kho giữ được độ nóng ổn định.",
+      "timerMinutes": 22
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả ớt khoanh, nêm lại và rắc hành lá",
+      "instruction": "Khi nước kho rút còn khoảng một nửa và hơi sánh sệt, thả ớt cắt khoanh vào kho mở nắp thêm 3 phút cho nước keo đẹp, nêm lại vừa ăn rồi tắt bếp. Múc cá kho gừng sả ra đĩa và rắc hành lá thái nhỏ lên trên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 273,
+    "energyKcal": 272.6,
+    "energyKj": 1140,
+    "proteinG": 30,
+    "fatG": 10.7,
+    "saturatedFatG": 2,
+    "carbG": 13.6,
+    "fiberG": 0.8,
+    "sugarG": 7.8,
+    "sodiumMg": 1440,
+    "saltG": 3.6,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 171319",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175176"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9d3d29042fcbf059eb01e3d54b56bc787082b58290a45f50ab157e52927abbb0",
+    "researchedFromV2Sha256": "4a455f9e48c34219624378b5c79b8f202077af5185a0e556a504cb4826e43ea5"
+  }
+}

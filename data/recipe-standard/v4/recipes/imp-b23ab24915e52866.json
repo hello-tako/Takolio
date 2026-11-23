@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b23ab24915e52866",
+    "slug": "com-chien-duong-chau",
+    "title": "Cơm chiên Dương Châu",
+    "subtitle": "Hạt cơm tơi vàng óng ánh áo lòng đỏ trứng, quyện tôm tươi, thịt bằm, lạp xưởng, trứng chiên cắt hạt lựu cùng cà rốt và đậu giòn ngọt"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Dương Châu",
+      "Cơm chiên",
+      "Quảng Đông",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "pork",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cơm chiên Dương Châu chuẩn vị quán Quảng Đông nổi bật với hạt cơm săn tơi vàng ươm nhờ kỹ thuật trộn lòng đỏ trứng trước khi rang, kết hợp đầy đặn tôm tươi, thịt heo xay, lạp xưởng thơm béo và rau củ giòn ngọt.",
+    "servingSuggestion": "Dọn nóng ra đĩa hoặc nén chén úp ngược đẹp mắt, rắc thêm tiêu xay và hành lá; ăn kèm dưa leo, cà chua lát và chút nước tương ớt.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; hâm nóng bằng cách đảo nhanh trên chảo chống dính lửa vừa trong 3–4 phút cho hạt cơm tơi nóng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nguội hạt tơi",
+      "culinaryMeasure": "600 g (~3 chén đầy)",
+      "prepNote": "nên dùng cơm nấu hơi khô để nguội hoặc để qua đêm tủ mát, đánh tơi hạt trước khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "150 g tôm nõn",
+      "prepNote": "rút chỉ lưng, rửa sạch thấm khô rồi thái hạt lựu vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay",
+      "culinaryMeasure": "100 g",
+      "prepNote": "ướp nhẹ gia vị rồi xào săn tơi",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHINESE_SAUSAGE",
+      "name": "Lạp xưởng Quảng Đông",
+      "culinaryMeasure": "60 g (~1,5–2 cây nhỏ)",
+      "prepNote": "luộc hoặc hấp chín 5 phút, để nguội rồi thái hạt lựu đều",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (~150 g)",
+      "prepNote": "tách 1 lòng đỏ trộn vào cơm cho vàng hạt, phần trứng còn lại đánh tan chiên mỏng cắt hạt lựu",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "0,5 củ (~55 g)",
+      "prepNote": "gọt vỏ, thái hạt lựu nhỏ, chần sơ rồi ngâm nước lạnh cho giòn màu đẹp",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GREEN_BEANS",
+      "name": "Đậu cô ve hoặc đậu Hà Lan",
+      "culinaryMeasure": "50 g",
+      "prepNote": "tước xơ, thái hạt lựu nhỏ bằng cà rốt rồi chần sơ ngâm lạnh",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (~12,5 g, 3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (~20 g, 2–3 nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc bước cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "chia đều để tráng trứng, xào nhân tôm thịt và rang cơm lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 34.96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml trộn ướp cơm, 10 ml nêm khi đảo hoàn thiện để giữ màu vàng đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp thịt bằm, 2 g trộn cơm và trứng, 2 g nêm sau cùng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp tôm, 2 g chần rau củ hoặc nêm cơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 2.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp tôm, 3 g nêm hài hòa vị cơm chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp tôm thịt và rắc thơm khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nhân tôm thịt, lạp xưởng và rau củ",
+      "instruction": "Ướp 150 g tôm tươi bóc vỏ thái hạt lựu với 1 g muối ăn, 1 g đường cát trắng và 0,5 g tiêu đen xay; ướp 100 g thịt heo xay với 2 g hạt nêm và 0,5 g tiêu đen xay trong 10 phút. Luộc chín 60 g lạp xưởng Quảng Đông trong 5 phút rồi để nguội, thái hạt lựu. Cà rốt và đậu cô ve thái hạt lựu, luộc sơ với 2 g muối ăn trong 2 phút rồi vớt ngâm nước lạnh và để ráo.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Trộn cơm vàng và tráng trứng cắt hạt lựu",
+      "instruction": "Đánh tơi 600 g cơm trắng nguội. Tách 1 lòng đỏ trứng gà trộn đều vào cơm cùng 5 ml xì dầu nhạt và 1 g hạt nêm cho từng hạt cơm ánh vàng. Phần trứng gà còn lại đánh tan với 1 g hạt nêm, tráng chín vàng hai mặt trên chảo với 10 ml dầu ăn thực vật trong 3 phút rồi gắp ra thái hạt lựu.",
+      "tip": "Trộn lòng đỏ trứng vào cơm nguội trước khi chiên giúp từng hạt cơm tơi rời và lên màu vàng óng đều rất đẹp.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín tôm, thịt bằm và lạp xưởng",
+      "instruction": "Làm nóng 10 ml dầu ăn thực vật trong chảo lớn, phi thơm một nửa tỏi khô băm rồi cho tôm vào xào nhanh lửa lớn 2 phút đến khi tôm chuyển hồng săn chắc hoàn toàn, trút ra đĩa. Tiếp tục cho thịt heo xay vào đảo tơi 2 phút cho chín đều, thả lạp xưởng thái hạt lựu vào đảo thêm 1 phút cho dậy mùi rồi trút chung ra đĩa.",
+      "tip": "Xào riêng từng nguyên liệu rồi mới trộn chung ở cuối giúp tôm giữ độ giòn ngọt và lạp xưởng không bị cháy xém.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rang cơm tơi săn trên lửa lớn",
+      "instruction": "Làm nóng 20 ml dầu ăn thực vật còn lại, phi thơm phần tỏi băm còn lại rồi cho cà rốt và đậu cô ve vào đảo 1 phút. Trút toàn bộ cơm đã trộn trứng vào chảo, đảo đều liên tục trên lửa lớn khoảng 5 phút cho đến khi hạt cơm nóng săn, tơi ráo và hơi nhảy nhẹ trên mặt chảo.",
+      "tip": "Giữ lửa lớn và đảo đều tay liên tục giúp cơm tơi giòn bên ngoài mà bên trong vẫn giữ được độ dẻo mềm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn quyện nhân thập cẩm và nêm gia vị",
+      "instruction": "Cho toàn bộ tôm, thịt heo xay, lạp xưởng và trứng chiên cắt hạt lựu trở lại chảo cơm. Nêm 10 ml xì dầu nhạt còn lại, 2 g hạt nêm còn lại, 3 g đường cát trắng và phần tiêu đen xay còn lại, đảo đều thêm 2 phút cho mọi nguyên liệu quyện nóng đậm đà.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá và trình bày nóng",
+      "instruction": "Rắc hành lá tươi thái nhỏ vào chảo cơm, đảo nhanh thêm 20 giây cho hành dậy mùi thơm rồi tắt bếp. Múc cơm chiên Dương Châu ra đĩa, rắc thêm chút tiêu xay nếu thích và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 676,
+    "energyKcal": 675.6,
+    "energyKj": 2827,
+    "proteinG": 31.2,
+    "fatG": 31.1,
+    "saturatedFatG": 8.5,
+    "carbG": 65.9,
+    "fiberG": 2.1,
+    "sugarG": 5.2,
+    "sodiumMg": 1330,
+    "saltG": 3.33,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Chinese Sausage Ref",
+      "USDA FDC 167902",
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169961",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c35d990700c82d41cb844659ec45096548eaa4adb202c8c8431e6cbb1b6ac49b",
+    "researchedFromV2Sha256": "2af45fce514d2c653dd40575895c456ecbc826c7553370b829e721fa44469ac4"
+  }
+}

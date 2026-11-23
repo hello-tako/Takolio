@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-aba623dc468a9569",
+    "slug": "canh-ca-nam-nhat",
+    "title": "Canh cá hồi nấu nấm kiểu Nhật",
+    "subtitle": "Canh trong nước dùng tảo bẹ Kombu nấu cùng phi lê cá hồi chần khử tanh kiểu Shimofuri, nấm đùi gà, gừng lát, rượu Sake và xì dầu Nhật thanh ngọt"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 18,
+    "servings": 4,
+    "tags": [
+      "Canh cá Nhật",
+      "Cá hồi",
+      "Nấm đùi gà",
+      "Tảo bẹ Kombu",
+      "Thanh ngọt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh cá hồi nấu nấm kiểu Nhật trong vắt và thanh nhẹ với nước dùng ngâm tảo bẹ Kombu ngọt umami tự nhiên, thịt cá hồi phi lê xử lý chần sơ kiểu Shimofuri hoàn toàn không tanh, kết hợp nấm đùi gà và hương gừng rượu Sake ấm áp.",
+    "servingSuggestion": "Múc canh nóng ra 4 bát, chia đều các miếng cá hồi và nấm đùi gà, thả hành lá lên trên để dậy mùi thơm; dùng nóng kèm cơm trắng hoặc các món kho mặn.",
+    "storageAndReheat": "Canh ngon nhất khi ăn nóng trong ngày; nếu bảo quản tủ mát tối đa 1–2 ngày, hâm nóng nhẹ trên lửa nhỏ đến khi vừa sôi lăn tăn, tránh khuấy mạnh làm vỡ miếng cá hồi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê tươi",
+      "culinaryMeasure": "400 g (cắt khối vuông 3 cm)",
+      "prepNote": "rắc muối ướp 15 phút rồi chần nhanh qua nước sôi 30 giây và rửa sạch váng để khử tanh hoàn toàn",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g (khoảng 2–3 cây)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già rồi thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ Kombu khô",
+      "culinaryMeasure": "10 g (1 miếng cỡ vừa)",
+      "prepNote": "lau nhẹ bằng khăn ẩm (không rửa mất phấn trắng umami), ngâm nước lạnh trước khi đun và vớt bỏ trước khi nước sôi",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 mẩu nhỏ)",
+      "prepNote": "gọt vỏ, thái lát mỏng nấu cùng nước dùng để khử tanh và tạo hương thanh ấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "nêm vào nước dùng giúp khử mùi tanh và làm dịu vị ngọt của cá hồi",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 25.24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "nêm ở bước cuối giúp nước canh dậy hương thơm thanh tao",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2,5 g rắc khử tanh cá hồi rồi rửa bỏ, 2,5 g nêm vào nồi canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 3.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng để cho vào khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "dùng ngâm tảo bẹ Kombu nấu canh cho 4 bát (chưa kể phần nước trụng sơ cá)",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1080,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm tảo bẹ Kombu lấy nước dùng umami",
+      "instruction": "Dùng khăn sạch hơi ẩm lau nhẹ bụi trên 10 g tảo bẹ Kombu khô (giữ nguyên lớp phấn trắng tự nhiên trên bề mặt), sau đó thả vào nồi chứa 1200 ml nước lọc ngâm khoảng 20–30 phút cho tảo nở mềm và tiết vị ngọt.",
+      "tip": "Không rửa trực tiếp tảo bẹ Kombu dưới vòi nước mạnh vì sẽ làm trôi lớp phấn trắng tạo vị umami quý giá.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Ướp muối khử tanh cá hồi và sơ chế rau nấm",
+      "instruction": "Cắt 400 g cá hồi phi lê thành miếng vuông vừa ăn khoảng 3 cm, rắc đều 2,5 g muối ăn lên các mặt cá và để yên 15 phút cho muối rút bớt dịch tanh. Trong lúc chờ, thái lát nấm đùi gà dày 0,5 cm, thái lát mỏng gừng tươi và cắt xéo hành lá.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chần nhanh cá hồi theo kỹ thuật Shimofuri",
+      "instruction": "Đun sôi một nồi nước nhỏ khác, thả nhanh các miếng cá hồi đã ướp muối vào trụng đúng 30 giây cho bề mặt thịt cá vừa se trắng rồi vớt ngay ra thau nước lạnh, rửa sạch nhẹ nhàng phần váng đục bám quanh cá và để ráo.",
+      "tip": "Kỹ thuật chần nhanh Shimofuri giúp loại bỏ hoàn toàn mùi tanh và giữ cho nồi nước canh sau khi nấu trong veo không bị váng đục.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu nước dùng Kombu với nấm đùi gà và gừng",
+      "instruction": "Đặt nồi nước ngâm tảo bẹ Kombu lên bếp đun trên lửa vừa; ngay khi thấy đáy nồi sủi bọt tăm lăn tăn chuẩn bị sôi thì vớt bỏ miếng tảo bẹ Kombu ra. Thêm 30 ml rượu Sake Nhật Bản, gừng thái lát và nấm đùi gà vào nồi, đun sôi nhẹ 5 phút và hớt bọt nếu có.",
+      "tip": "Vớt tảo bẹ Kombu ra ngay trước khi nước sôi bùng để tránh nước dùng bị nhớt hoặc có vị chát đắng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả cá hồi vào nấu chín tới",
+      "instruction": "Thả nhẹ từng miếng cá hồi đã chần vào nồi canh đang sôi lăn tăn, hạ lửa nhỏ và nấu khoảng 6 phút đến khi thịt cá hồi chuyển hồng cam đục đồng nhất, chín mềm tận lõi mà không bị nát vụn, đồng thời hớt sạch bọt nổi.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm xì dầu, muối và hoàn thiện tô canh",
+      "instruction": "Nêm 30 ml xì dầu Nhật Bản và 2,5 g muối ăn còn lại vào nồi canh, khuấy nhẹ tay và nếm lại cho vừa vị thanh ngọt. Cho hành lá thái xéo vào nồi rồi tắt bếp ngay, múc canh nóng ra 4 bát và thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 238,
+    "energyKcal": 238.1,
+    "energyKj": 996,
+    "proteinG": 22.9,
+    "fatG": 13.7,
+    "saturatedFatG": 3.1,
+    "carbG": 4.4,
+    "fiberG": 1.4,
+    "sugarG": 0.8,
+    "sodiumMg": 871,
+    "saltG": 2.18,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 168457",
+      "USDA FDC 168580",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7c3c4687425844448aeff9f8d62f16bcdde03c954e0ed7fecbe1a8e11b931541",
+    "researchedFromV2Sha256": "8b12d93532906aedb8027ff4142ac10debcad55aab1a165c5f810e14f9e8b916"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7ed24282981e96f6",
+    "slug": "thit-ba-chi-shogayaki-gung",
+    "title": "Thịt ba chỉ áp chảo sốt gừng Shogayaki",
+    "subtitle": "Thịt ba chỉ heo thái mỏng áp chảo xém cạnh quyện sốt gừng tươi xì dầu mirin thơm nồng, ăn kèm bắp cải thái sợi thanh mát"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Nhật Bản",
+      "Shogayaki",
+      "Thịt ba chỉ",
+      "Cơm trưa",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Shogayaki là món thịt heo xào gừng quốc dân trong thực đơn teishoku Nhật Bản, nổi bật với từng lát thịt ba chỉ mềm thơm phủ sốt gừng tươi mài nhuyễn hòa quyện vị mặn ngọt từ nước tương, rượu sake và mirin.",
+    "servingSuggestion": "Bày thịt ba chỉ sốt gừng nóng hổi cạnh ụ bắp cải thái sợi mịn trên đĩa lớn, rưới phần sốt sánh còn lại trong chảo lên mặt thịt và ăn cùng cơm trắng nóng.",
+    "storageAndReheat": "Phần thịt thừa bảo quản hộp kín ngăn mát tối đa 2 ngày; hâm nóng lại trên chảo lửa nhỏ hoặc lò vi sóng 1–2 phút, phần bắp cải nên ăn tươi trong ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo thái mỏng",
+      "culinaryMeasure": "340 g",
+      "prepNote": "cắt khúc dài 4–5 cm dày 2 mm để nhanh chín và thấm đều sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 340,
+      "unit": "g",
+      "grossGrams": 340,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 312.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải xanh",
+      "culinaryMeasure": "1/2 bắp nhỏ (400 g)",
+      "prepNote": "bỏ lõi cứng, bào sợi thật mảnh rồi ngâm nước lạnh vẩy thật ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 nhánh lớn)",
+      "prepNote": "gọt vỏ, mài nhuyễn lấy cả nước cốt và bã gừng mịn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (hoặc hành boa-rô Nhật)",
+      "culinaryMeasure": "1 bó vừa (40 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng phần đầu trắng và lá xanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "làm nền mặn đậm cho nước sốt gừng Shogayaki",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "giúp khử mùi thịt heo và làm mềm lát thịt khi áp chảo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 44.55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 44.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "tạo vị ngọt dịu và độ sánh bóng cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "hòa tan hoàn toàn vào bát sốt trước khi nấu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "phết lớp mỏng chống dính chảo khi áp chảo thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 7.82,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Bào sợi bắp cải ngâm giòn và sơ chế nguyên liệu",
+      "instruction": "Cắt bỏ phần lõi cứng của 1/2 bắp cải xanh, dùng dao sắc hoặc bàn bào bào thành sợi thật mảnh rồi ngâm nước đá lạnh 5 phút cho giòn, sau đó vẩy thật ráo nước. Cắt 340 g thịt ba chỉ thái mỏng thành miếng vừa ăn và chia làm 2 mẻ; thái lát mỏng 1 bó hành lá tươi và mài nhuyễn 25 g gừng tươi lấy cả nước.",
+      "tip": "Quay hoặc vẩy thật ráo nước bắp cải sợi sẽ giúp đĩa thịt sốt gừng không bị loãng nước khi bày chung.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn nước sốt gừng Shogayaki",
+      "instruction": "Trộn đều 45 ml nước tương Nhật, 45 ml rượu Sake nấu ăn, 45 ml rượu ngọt Mirin và 10 g đường cát trắng trong bát đến khi đường tan hết. Chia hỗn hợp sốt làm 2 phần đều nhau tương ứng với 2 mẻ chiên thịt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo mẻ thịt ba chỉ thứ nhất với lửa vừa cao",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa cao, phết 5 ml dầu ăn thực vật rồi xếp phẳng mẻ thịt ba chỉ thứ nhất thành một lớp không chồng chéo. Áp chảo khoảng 2 phút cho thịt xém vàng nhẹ các mép và tiết bớt mỡ thơm thì trở mặt.",
+      "tip": "Chia thịt chiên thành 2 mẻ vừa vặn mặt chảo giúp thịt áp chảo xém thơm thay vì bị ra nước và hấp mềm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áo sốt gừng và hành lá cho mẻ thịt thứ nhất",
+      "instruction": "Đổ 1/2 bát nước sốt đã pha vào chảo cùng một nửa lượng gừng tươi mài nhuyễn và hành lá thái mỏng. Đảo nhanh tay trên lửa vừa khoảng 2 phút đến khi thịt heo chín kỹ hoàn toàn, nước sốt sôi sủi bọt hơi sánh lại bám bóng đều từng lát thịt thì gắp ra đĩa đã lót bắp cải sợi.",
+      "tip": "Cho gừng tươi mài cả nước vào cùng lúc với sốt giúp hương gừng quyện thơm nồng mà không bị cháy đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áp chảo và hoàn thiện mẻ thịt ba chỉ thứ hai",
+      "instruction": "Lau nhẹ chảo bằng khăn giấy, phết 5 ml dầu ăn thực vật còn lại và lặp lại quy trình áp chảo với mẻ thịt ba chỉ thứ hai cùng phần nước sốt, gừng tươi và hành lá còn lại trong 4 phút đến khi thịt chín đều và sốt keo sánh.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa Shogayaki nóng hổi và dùng kèm cơm",
+      "instruction": "Xếp phần thịt ba chỉ còn lại lên đĩa bên cạnh bắp cải xanh bào sợi, rưới toàn bộ nước sốt gừng sánh thơm trong chảo lên trên mặt thịt và thưởng thức ngay cùng cơm trắng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 681,
+    "energyKcal": 680.6,
+    "energyKj": 2848,
+    "proteinG": 13.1,
+    "fatG": 58.2,
+    "saturatedFatG": 20.6,
+    "carbG": 21.2,
+    "fiberG": 3.4,
+    "sugarG": 14.2,
+    "sodiumMg": 1032,
+    "saltG": 2.58,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Sake 16021",
+      "USDA FDC 167820",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "81ea24d173972ec1b47292157e8ca404e0ecacc115f0ea7f7a00f92e15759c48",
+    "researchedFromV2Sha256": "1c477a09e1b43625b53f46a3bdeb09a770134ace41fe341f28f587bc2c590f66"
+  }
+}

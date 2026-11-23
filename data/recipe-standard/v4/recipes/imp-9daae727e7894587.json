@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9daae727e7894587",
+    "slug": "canh-ga-bap-cai-ngot",
+    "title": "Canh gà nấu bắp cải ngọt",
+    "subtitle": "Thịt đùi gà ta hầm thơm gừng tươi cùng bắp cải giòn ngọt và cà rốt đỏ cam, nước canh trong veo ấm bụng cho bữa cơm gia đình"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Đùi gà",
+      "Bắp cải",
+      "Cà rốt",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Canh gà nấu bắp cải ngọt mang đến hương vị thanh dịu dễ ăn. Thịt đùi gà chặt miếng ướp nhẹ gừng hành rồi ninh mềm, kết hợp cùng bắp cải và cà rốt tiết ra vị ngọt tự nhiên giúp nước canh trong lành và đậm đà.",
+    "servingSuggestion": "Dùng canh nóng trong bữa cơm chiều mát hoặc ngày mưa, rắc thêm hành lá và tiêu xay; chấm thịt gà với muối tiêu chanh hoặc nước mắm ớt.",
+    "storageAndReheat": "Nếu dùng không hết, để nguội hoàn toàn rồi đậy kín cất ngăn mát tối đa 24 giờ; khi hâm lại đun sôi nhẹ 3–4 phút trên lửa vừa để bắp cải không bị nát."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà ta (má đùi chặt miếng)",
+      "culinaryMeasure": "550 g",
+      "prepNote": "chà muối và gừng khử mùi, rửa sạch rồi chặt miếng vừa ăn 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 550,
+      "unit": "g",
+      "grossGrams": 550,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 451,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "1/2 bắp nhỏ (khoảng 400 g)",
+      "prepNote": "tách lá, bỏ phần sống gân quá cứng, rửa sạch rồi thái miếng vuông 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "1 củ vừa (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, tỉa hoa hoặc thái khoanh tròn dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, chia đôi: một nửa thái sợi hoặc đập dập khử mùi gà, một nửa băm nhỏ ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia đôi để ướp thịt gà và phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, đầu hành băm nhỏ ướp gà, phần lá xanh thái khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành gừng và xào săn thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (1,5 muỗng canh)",
+      "prepNote": "chia 8 ml ướp gà và 12 ml nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp thịt gà và 3 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (1 muỗng cà phê)",
+      "prepNote": "dùng 2 g chà rửa gà rồi xả sạch, 4 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ cho nước canh hài hòa theo vị Nam Bộ",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/3 muỗng cà phê)",
+      "prepNote": "chia đôi ướp gà và rắc lên mặt tô canh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "ninh gà lấy nước dùng ngọt thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1350,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử mùi và ướp thịt đùi gà",
+      "instruction": "Chà xát 550 g đùi gà với 2 g muối ăn và vài lát gừng tươi đập dập trong 2 phút để khử mùi hôi, xả sạch với nước lạnh rồi chặt miếng vừa ăn 3–4 cm, để ráo. Ướp thịt gà với 8 ml nước mắm, 3 g hạt nêm, một nửa hành tím băm, phần gừng băm còn lại, đầu hành băm và 0,5 g tiêu đen xay trong 15 phút.",
+      "tip": "Chà xát da gà bằng muối ăn kết hợp gừng đập dập rồi rửa lại nước sạch sẽ khử hoàn toàn mùi hôi đặc trưng của gia cầm.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, cà rốt và hành lá",
+      "instruction": "Tách từng lá 1/2 bắp cải trắng, rửa sạch dưới vòi nước rồi cắt miếng vuông cạnh 4 cm cho dễ gắp. Gọt vỏ 1 củ cà rốt, thái khoanh tròn dày 0,5 cm. Rửa sạch phần lá xanh hành lá rồi thái khúc dài 2 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào săn thịt gà",
+      "instruction": "Bắc nồi lên bếp ở lửa vừa với 15 ml dầu ăn, cho phần hành tím băm còn lại và vài sợi gừng tươi vào phi thơm 30 giây. Trút toàn bộ thịt gà đã ướp vào đảo đều khoảng 4 phút đến khi bề mặt da và thịt gà săn lại, dậy mùi thơm hấp dẫn.",
+      "tip": "Xào săn thịt gà trước khi đổ nước giúp phần thịt bên ngoài se lại, giữ nước ngọt bên trong và làm nước canh thơm đậm hơn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm gà lấy nước dùng ngọt trong",
+      "instruction": "Đổ 1500 ml nước lọc vào nồi gà, bật lửa lớn đun sôi bùng rồi dùng vá hớt thật sạch lớp bọt nổi. Hạ xuống lửa vừa nhỏ, đậy hé vung ninh gà khoảng 15 phút cho thịt gà chín mềm hoàn toàn và nước dùng ngọt thanh.",
+      "tip": "Ninh gà với lửa vừa nhỏ và mở hé vung giúp nước canh giữ độ trong veo, không bị đục váng mỡ.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín cà rốt, bắp cải và nêm gia vị",
+      "instruction": "Thả cà rốt thái khoanh vào nồi nấu 5 phút trước, sau đó cho toàn bộ bắp cải vào nấu thêm 5 phút trên lửa vừa đến khi bắp cải chín mềm ngọt nhưng vẫn giữ độ giòn nhẹ. Nêm 12 ml nước mắm còn lại, 3 g hạt nêm, 4 g muối ăn và 4 g đường cát trắng cho vừa khẩu vị gia đình.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, tiêu xay và dọn canh",
+      "instruction": "Kiểm tra thịt gà chín mềm không còn sắc hồng bên trong xương và rau củ vừa độ chín tới thì tắt bếp. Thả hành lá thái khúc vào nồi đảo nhẹ, múc canh ra tô lớn và rắc 0,5 g tiêu đen xay lên mặt trước khi dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 279,
+    "energyKcal": 278.5,
+    "energyKj": 1166,
+    "proteinG": 23.8,
+    "fatG": 15.4,
+    "saturatedFatG": 3.8,
+    "carbG": 11.3,
+    "fiberG": 3.3,
+    "sugarG": 5.9,
+    "sodiumMg": 1252,
+    "saltG": 3.13,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d59920258983adce2292b97cad4f10595b84d8935d2393fded5c9848d29d5ff9",
+    "researchedFromV2Sha256": "d3797087cc02a3ba321f0e54f6f66d4bc75be8d1e5bce5a2d9e69d262244a5be"
+  }
+}

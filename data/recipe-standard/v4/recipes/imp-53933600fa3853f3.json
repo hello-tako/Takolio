@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-53933600fa3853f3",
+    "slug": "bo-xao-nam-han",
+    "title": "Thịt bò xào nấm kiểu Hàn",
+    "subtitle": "Thịt bò thái lát mỏng ướp sốt tương mè tỏi đường xào lửa lớn cùng nấm đùi gà giòn ngọt và hành tây"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Bulgogi xào",
+      "Thịt bò",
+      "Nấm đùi gà",
+      "Hàn Quốc",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Thịt bò xào nấm kiểu Hàn kết hợp hương vị bulgogi mặn ngọt thơm dầu mè với nấm đùi gà thái lát dọc dai giòn và hành tây ngọt thanh. Thịt bò được thái mỏng ngang thớ và ướp thấm gia vị trước khi xào nhanh trên chảo nóng, giúp thịt mềm mọng mà không bị ra nước.",
+    "servingSuggestion": "Dọn thịt bò và nấm nóng hổi ra đĩa, rắc hạt mè trắng rang lên trên; ăn kèm cơm trắng nóng hoặc cuốn cùng rau xà lách và kim chi.",
+    "storageAndReheat": "Có thể ướp thịt bò trước trong ngăn mát tới 12 giờ; món xào ngon nhất khi ăn nóng ngay, nếu bảo quản tủ mát tối đa 24 giờ và đảo lại nhanh trên chảo nóng 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò (hoặc diềm thăn bò)",
+      "culinaryMeasure": "400 g",
+      "prepNote": "để ngăn mát hơi se lạnh cho dễ thái, cắt lát mỏng 3 mm ngang thớ rồi thấm khô bề mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g (~2 cây lớn)",
+      "prepNote": "cắt gốc, rửa nhanh để ráo, thái lát dọc thân dày 3–4 mm để giữ độ dai giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng khoảng 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 5–6 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 18,8 g, ~5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Hàn Quốc (Xì dầu)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "trộn vào sốt ướp bulgogi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng (hoặc đường nâu)",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "giúp thịt bò mềm nhanh và lên màu nâu bóng đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "trộn 10 ml vào nước ướp thịt bò và rưới 5 ml sau khi tắt bếp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn trực tiếp vào sốt ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "xào thơm nấm đùi gà, hành tây và thịt bò trên lửa lớn",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện bề mặt món xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái mỏng thịt bò ngang thớ",
+      "instruction": "Làm sạch 400 g thịt thăn bò, thấm khô bề mặt rồi thái lát mỏng khoảng 3 mm theo chiều ngang thớ để thịt mềm ngọt và không bị dai khi xào nhanh.",
+      "tip": "Đặt miếng bò vào ngăn đá khoảng 15 phút trước khi thái giúp thớ thịt hơi se cứng lại, rất dễ thái lát mỏng đều tay."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Pha sốt bulgogi và ướp thịt bò",
+      "instruction": "Trong tô lớn, khuấy tan 35 ml nước tương Hàn Quốc, 20 g đường cát trắng, 10 ml dầu mè rang, tỏi băm nhuyễn và 1,5 g tiêu đen xay. Cho thịt bò vào bóp nhẹ cho từng lát thấm đều sốt, đậy kín ướp 15–20 phút.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Thái dọc nấm đùi gà và sơ chế hành",
+      "instruction": "Trong lúc chờ ướp thịt, thái dọc 200 g nấm đùi gà thành lát dày 3–4 mm, thái múi cau mỏng hành tây và cắt khúc hành lá dài khoảng 5–6 cm.",
+      "tip": "Thái nấm dọc theo chiều dài thân nấm giúp miếng nấm giữ độ dai sần sật và không bị nát vụn khi đảo cùng thịt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào thơm nấm đùi gà, hành tây và hành lá",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa-cao với 25 ml dầu ăn thực vật. Cho nấm đùi gà, hành tây và phần lớn hành lá (giữ lại ít lá xanh rắc mặt) vào đảo nhanh tay trong 2 phút đến khi hành hơi xém cạnh và nấm dịu mềm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào nhanh thịt bò chín mềm quyện sốt",
+      "instruction": "Dàn đều toàn bộ thịt bò cùng nước ướp vào chảo, giữ lửa lớn-vừa đảo đều tay khoảng 4 phút đến khi thịt bò chuyển màu nâu chín đều, nước sốt rút sánh lại bám bóng quanh thịt, nấm và hành.",
+      "tip": "Thịt bò thái mỏng chín rất nhanh, chỉ cần xào vừa chuyển màu hoàn toàn là đạt; đảo quá lâu thịt sẽ khô và ra nước.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc mè rang và thưởng thức",
+      "instruction": "Nêm nếm lại vừa khẩu vị, tắt bếp rồi rưới nốt 5 ml dầu mè rang còn lại vào đảo đều. Trút ra đĩa, rắc phần hành lá xanh và hạt mè trắng rang lên trên rồi dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 435,
+    "energyKcal": 435.1,
+    "energyKj": 1821,
+    "proteinG": 31.9,
+    "fatG": 26.9,
+    "saturatedFatG": 7.3,
+    "carbG": 17.6,
+    "fiberG": 2.9,
+    "sugarG": 9.1,
+    "sodiumMg": 847,
+    "saltG": 2.12,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "543b94203f7714453264c4fdac486ab87dd50e0e4dc328db7aa0ba94e807f99b",
+    "researchedFromV2Sha256": "3c782f0eb8065c8f21b8a6c806663185133698f5fd32fa24e94f203279ef04c7"
+  }
+}

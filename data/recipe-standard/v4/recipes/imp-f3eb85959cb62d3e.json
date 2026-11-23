@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f3eb85959cb62d3e",
+    "slug": "sup-ga-rau-cu-y",
+    "title": "Súp gà rau củ thanh nhẹ kiểu Ý",
+    "subtitle": "Nước dùng gà trong ngọt tự nhiên hầm cùng cà rốt, khoai tây, cần tây thái hạt lựu và thịt ức gà xé mềm ấm bụng"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Súp gà",
+      "Rau củ",
+      "Ẩm thực Ý",
+      "Thanh nhẹ",
+      "Bổ dưỡng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "boil"
+    ],
+    "allergenTags": [
+      "celery",
+      "chicken"
+    ]
+  },
+  "overview": {
+    "description": "Tô súp gà rau củ kiểu Ý nhẹ nhàng, thanh vị với nước dùng gà luộc trong vắt ngọt tự nhiên, kết hợp cà rốt, khoai tây bùi mềm, cần tây thơm dịu và thịt ức gà xé thớ mềm ngon.",
+    "servingSuggestion": "Múc súp nóng ra tô sâu lòng, rắc thêm ngò tây tươi thái nhỏ và chút tiêu đen xay mới; rất thích hợp dùng kèm bánh mì nướng giòn cho bữa tối nhẹ nhàng.",
+    "storageAndReheat": "Bảo quản súp trong hộp kín ở ngăn mát tối đa 3 ngày; khi dùng đun sôi nhẹ lại trên lửa vừa cho khoai tây và thịt gà nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê không da",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa sạch, thấm khô để luộc lấy nước dùng ngọt rồi xé miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2,5 củ (~275 g)",
+      "prepNote": "gọt vỏ, thái hạt lựu đều cỡ 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 275,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 244.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CELERY",
+      "name": "Cần tây tươi",
+      "culinaryMeasure": "120 g (~3 bẹ)",
+      "prepNote": "rửa sạch, thái lát mỏng đều",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "POTATO",
+      "name": "Khoai tây",
+      "culinaryMeasure": "280 g (~2 củ vừa)",
+      "prepNote": "gọt vỏ, thái hạt lựu cỡ 1,5 cm và ngâm sơ nước sạch cho khỏi thâm",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 238,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g (~2 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ rắc bát súp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BAY_LEAF",
+      "name": "Lá nguyệt quế khô",
+      "culinaryMeasure": "1 g (2 lá)",
+      "prepNote": "thả luộc cùng ức gà tạo hương thơm thảo mộc rồi vớt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 0.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng xào thơm bộ rau củ nền trước khi chan nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "TOMATO_PASTE",
+      "name": "Cà chua cô đặc (Tomato paste)",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "giúp nước súp có sắc vàng cam ấm áp và vị ngọt hậu",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia nửa luộc gà, nửa còn lại nêm nồi súp rau củ",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 7.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào súp và rắc thêm khi dọn nóng",
+      "componentGroup": "broth",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng 1000 ml luộc ức gà lấy nước dùng và 500 ml châm thêm khi nấu súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1275,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau củ thái hạt lựu và ức gà",
+      "instruction": "Gọt vỏ cà rốt và khoai tây rồi thái hạt lựu đều cỡ 1,5 cm (ngâm khoai tây vào nước lạnh cho khỏi thâm rồi vớt ráo). Băm nhỏ hành tây, thái lát mỏng cần tây, băm nhuyễn tỏi khô và thái nhỏ 12 g ngò tây tươi. Rửa sạch 500 g ức gà phi lê dưới vòi nước lạnh.",
+      "tip": "Thái cà rốt và khoai tây kích thước đồng đều giúp hai loại củ chín mềm cùng lúc mà không bị nát."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc ức gà lấy nước dùng trong ngọt",
+      "instruction": "Đặt 500 g ức gà vào nồi cùng 2 lá nguyệt quế khô và 4 g muối ăn, đổ 1000 ml nước lọc lạnh ngập gà rồi đun sôi. Khi nước sôi, hớt sạch bọt nổi để nước dùng thật trong, hạ lửa nhỏ đậy nắp và luộc liu riu 20 phút cho thịt gà chín mềm hoàn toàn.",
+      "tip": "Bắt đầu luộc gà từ nước lạnh và hớt bọt kỹ giúp chất ngọt từ thịt tiết ra từ từ và nồi nước dùng trong veo.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào thơm rau củ nền với dầu ô liu",
+      "instruction": "Trong lúc chờ gà chín, làm nóng 40 ml dầu ô liu trong nồi súp lớn ở lửa vừa. Cho hành tây băm vào xào 2 phút cho trong, sau đó thêm cà rốt, cần tây và tỏi băm vào đảo đều tay thêm 5 phút cho rau củ dậy mùi thơm và hơi dịu mềm.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Lọc nước dùng và xé nhỏ thịt ức gà",
+      "instruction": "Vớt ức gà ra đĩa để nguội bớt rồi dùng tay xé sợi hoặc cắt miếng nhỏ vừa ăn. Lọc toàn bộ phần nước luộc gà qua rây mịn để loại bỏ cặn bọt và lá nguyệt quế."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Ninh mềm khoai tây, cà rốt và thịt gà",
+      "instruction": "Rót phần nước luộc gà đã lọc cùng 500 ml nước lọc còn lại vào nồi rau củ đã xào. Thêm khoai tây cắt hạt lựu, 15 g cà chua cô đặc, 4 g muối ăn còn lại và 1,5 g tiêu đen xay. Đun sôi nhẹ rồi hạ lửa nhỏ đậy nắp nấu 18 phút đến khi khoai tây và cà rốt chín bùi, sau đó thả thịt gà xé vào nấu thêm 5 phút cho hòa vị.",
+      "tip": "Thả thịt gà xé vào ở 5 phút cuối giúp thịt thấm vị súp rau củ mà vẫn giữ được độ mềm ngọt, không bị bã xơ.",
+      "timerMinutes": 23
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại và múc súp nóng rắc ngò tây",
+      "instruction": "Nêm nếm lại muối và tiêu đen cho vừa khẩu vị gia đình, múc súp ra 4 tô sâu lòng khi còn nóng hổi rồi rắc ngò tây tươi thái nhỏ cùng 0,5 g tiêu đen xay lên mặt trước khi thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 327,
+    "energyKcal": 327.2,
+    "energyKj": 1369,
+    "proteinG": 30.9,
+    "fatG": 12.7,
+    "saturatedFatG": 2,
+    "carbG": 22.1,
+    "fiberG": 4.4,
+    "sugarG": 5.6,
+    "sodiumMg": 866,
+    "saltG": 2.17,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169988",
+      "USDA FDC 170000",
+      "USDA FDC 170026",
+      "USDA FDC 170393",
+      "USDA FDC 170416",
+      "USDA FDC 170460",
+      "USDA FDC 170917",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "242c11f9175823bd4a10d6e99b46a4a6cc8fc319995c8aba53e9107f6c449b00",
+    "researchedFromV2Sha256": "0c1b34b177b31edce0a6125ea0bfddc2201888708354f160ceabbc559e3346ec"
+  }
+}

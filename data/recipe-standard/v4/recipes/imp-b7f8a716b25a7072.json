@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b7f8a716b25a7072",
+    "slug": "canh-bo-bap-cai-han",
+    "title": "Canh bò cải thảo Hàn Quốc",
+    "subtitle": "Nước canh thịt bò xào tỏi dầu mè trong veo ngọt thanh, nấu mềm cùng cải thảo tươi mát kiểu cơm nhà Hàn Quốc"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Thịt bò",
+      "Cải thảo",
+      "Hàn Quốc",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Tô canh bò cải thảo Hàn Quốc ấm áp với nước dùng trong thanh ngọt tự nhiên từ thịt bò xào săn và rau cải thảo hầm mềm, điểm xuyết hương dầu mè và tỏi thơm dịu rất dễ ăn.",
+    "servingSuggestion": "Múc canh nóng vào tô lớn, rắc chút hạt mè trắng rang lên trên; dọn ăn kèm cơm trắng nóng dẻo và một đĩa kim chi cải thảo.",
+    "storageAndReheat": "Canh ngon nhất khi ăn nóng trong ngày; phần dư bảo quản ngăn mát tủ lạnh tối đa 2 ngày trong hộp kín và đun sôi lại trên lửa vừa trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò thăn hoặc nạc vai",
+      "culinaryMeasure": "250 g",
+      "prepNote": "thái lát mỏng vừa ăn ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "NAPA_CABBAGE",
+      "name": "Cải thảo tươi",
+      "culinaryMeasure": "450 g (khoảng 1/2 cây vừa)",
+      "prepNote": "tách từng lá, rửa sạch rồi cắt khúc dài 4–5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 405,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn; chia đôi 1/2 ướp bò và 1/2 nêm sau",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái khúc dài 3–4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt (nước tương nấu canh)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 15 ml ướp thịt bò và 15 ml nêm nước canh để nước giữ màu trong",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "dùng để ướp và xào săn thịt bò tạo mùi thơm nền",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "nêm điều chỉnh độ mặn thanh ở bước cuối",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt bò và 1 g rắc sau cùng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rắc trang trí mặt tô canh khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "dùng nấu nước canh ngọt thanh",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1260,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái lát và ướp thịt bò thấm gia vị",
+      "instruction": "Thái thịt bò thăn thành lát mỏng ngang thớ cỡ 3–4 cm để khi nấu không bị dai. Ướp thịt trong tô với 15 ml xì dầu nhạt, 1/2 lượng tỏi băm, 10 ml dầu mè rang và 1 g tiêu đen xay, trộn đều rồi để nghỉ 10 phút trong lúc sơ chế rau.",
+      "tip": "Ướp thịt bò với xì dầu nấu canh và dầu mè trước khi xào là bí quyết tạo nước dùng ngọt đậm nhanh mà không cần ninh xương lâu.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Rửa sạch và cắt khúc cải thảo, hành lá",
+      "instruction": "Tách rời từng lá cải thảo, rửa sạch từng bẹ dưới vòi nước rồi để ráo, cắt khúc dài khoảng 4–5 cm (phần cuống trắng dày có thể chẻ dọc làm đôi để chín đều cùng lá). Hành lá rửa sạch, cắt khúc 3–4 cm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn thịt bò dậy hương dầu mè",
+      "instruction": "Đặt nồi đáy dày lên bếp ở lửa lớn, cho toàn bộ thịt bò đã ướp vào xào nhanh tay khoảng 3 phút đến khi các mặt thịt chuyển màu nâu xém nhẹ, săn lại và không còn đỏ hồng.",
+      "tip": "Không cần thêm dầu ăn khi xào vì trong phần ướp thịt đã có đủ dầu mè giúp thịt dậy mùi thơm mà nước canh vẫn thanh nhẹ.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ninh nước dùng bò và hớt bọt làm trong canh",
+      "instruction": "Đổ 1.400 ml nước lọc vào nồi thịt bò, đun sôi mạnh trên lửa lớn rồi dùng muỗng hớt sạch lớp bọt nâu nổi trên mặt. Đậy nắp, hạ xuống lửa vừa và đun liu riu khoảng 10 phút để nước dùng chiết ra vị ngọt thịt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín mềm cải thảo và nêm nước canh",
+      "instruction": "Cho cải thảo cắt khúc vào nồi canh, đun sôi lại rồi hạ lửa vừa, đậy nắp nấu thêm 10 phút cho cọng cải chín mềm trong và tiết vị ngọt tự nhiên. Nêm nốt 15 ml xì dầu nhạt còn lại, 1/2 lượng tỏi băm còn lại, 4 g muối ăn và hành lá vào nồi, khuấy nhẹ và đun thêm 2 phút cho hòa vị.",
+      "tip": "Dùng xì dầu nhạt (xì dầu nấu canh) và muối tinh giúp nước canh giữ được màu vàng trong đẹp mắt thay vì bị sẫm đen.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện tô canh và dọn nóng",
+      "instruction": "Kiểm tra lại độ vừa miệng, rắc 1 g tiêu đen xay còn lại rồi tắt bếp. Múc canh bò cải thảo nóng hổi ra tô, rắc thêm hạt mè trắng rang tùy thích và thưởng thức cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 166,
+    "energyKcal": 165.5,
+    "energyKj": 693,
+    "proteinG": 15.3,
+    "fatG": 9.7,
+    "saturatedFatG": 3,
+    "carbG": 4.8,
+    "fiberG": 1.8,
+    "sugarG": 1.7,
+    "sodiumMg": 940,
+    "saltG": 2.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169977",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "684a1086ebcd521160c088c83a5ea97deb01ee3b2cd6d5dfa78ff2221af859e8",
+    "researchedFromV2Sha256": "b60c1fb5e2f4003183ecdd70106e4716ca92bd28430506dd6972711b7b362598"
+  }
+}

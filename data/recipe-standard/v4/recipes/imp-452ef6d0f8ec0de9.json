@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-452ef6d0f8ec0de9",
+    "slug": "tom-om-ca-chua-y",
+    "title": "Tôm om sốt cà chua kiểu Ý",
+    "subtitle": "Tôm tươi săn ngọt chín tới trong nước sốt cà chua passata sóng sánh, thơm hương tỏi phi và lá húng quế Tây"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Tôm om",
+      "Sốt cà chua",
+      "Nhanh gọn",
+      "Hải sản",
+      "Ẩm thực Ý"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm om sốt cà chua thanh nhẹ kiểu Ý hoàn thành chỉ trong 25 phút với nguyên liệu tinh gọn: tôm tươi bóc vỏ săn ngọt quyện trong sốt cà chua passata sánh mịn, điểm vị cay nhẹ từ ớt và hương thơm tươi mát của húng quế Tây.",
+    "servingSuggestion": "Múc tôm cùng nước sốt cà chua ra đĩa sâu lòng, rưới thêm vài giọt dầu ô liu nguyên chất và dọn nóng ngay kèm bánh mì nướng giòn hoặc cơm trắng.",
+    "storageAndReheat": "Món tôm ngon nhất khi dùng ngay lúc mới nấu để tôm giữ độ giòn ngọt. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hâm nhanh ở lửa nhỏ trong 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi đã bóc vỏ",
+      "culinaryMeasure": "350 g (tôm thịt sạch vỏ)",
+      "prepNote": "rửa sạch, rút chỉ đen dọc sống lưng rồi thấm thật khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua nghiền nhuyễn (passata)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "dùng loại passata mịn để sốt sánh đều nhanh chóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 20 ml phi tỏi ớt nấu sốt và 5 ml rưới bóng mặt món khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.66,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi đỏ",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng hoặc để nguyên quả nếu thích cay dịu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "10 g (1 nắm lá)",
+      "prepNote": "rửa nhẹ, để ráo rồi xé nhỏ thả vào cuối cùng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm nhạt tay vào sốt cà chua vì tôm đã có vị ngọt mặn tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm vào sốt trước khi thả tôm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (tráng lọ cà chua)",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "tráng sạch phần cà chua còn bám trong lọ đổ vào chảo sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm và sơ chế tỏi ớt",
+      "instruction": "Rửa sạch 350 g tôm tươi đã bóc vỏ, rạch nhẹ lưng lấy sạch chỉ đen rồi dùng khăn giấy thấm thật khô nước. Băm nhỏ tỏi tươi, thái lát ớt tươi đỏ và rửa sạch lá húng quế Tây để ráo.",
+      "tip": "Thấm khô tôm trước khi thả vào sốt sẽ giúp nước sốt cà chua giữ được độ sánh đậm mà không bị loãng nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt trong dầu ô liu",
+      "instruction": "Làm nóng chảo sâu lòng với 20 ml dầu ô liu nguyên chất trên lửa vừa, thả tỏi băm và ớt tươi vào đảo liên tục khoảng 1 phút cho dậy mùi thơm ấm mà không để tỏi chuyển vàng nâu.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Nấu sánh sốt cà chua passata",
+      "instruction": "Đổ 300 g cà chua nghiền nhuyễn (passata) cùng 50 ml nước lọc tráng lọ vào chảo. Nêm 3 g muối ăn và 1 g tiêu đen xay, khuấy đều và đun sôi lăn tăn trên lửa vừa khoảng 3 phút cho sốt hơi sánh lại.",
+      "tip": "Kiểm tra lại độ mặn trước khi cho tôm vào vì tôm biển vốn đã có vị mặn tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om chín tới tôm tươi trong sốt cà chua",
+      "instruction": "Thả tôm tươi vào chảo sốt đang sôi nhẹ, dàn đều cho tôm ngập trong nước sốt và om trên lửa vừa khoảng 4–5 phút, đảo nhẹ giữa chừng đến khi tôm uốn cong, chuyển màu đỏ cam và thịt săn đục chín hoàn toàn.",
+      "tip": "Không nấu tôm quá lâu vì tôm bóc vỏ chín rất nhanh, nấu quá 6 phút thịt tôm sẽ bị khô và mất độ giòn ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn lá húng quế Tây và rưới dầu ô liu",
+      "instruction": "Tắt bếp, xé nhỏ lá húng quế Tây tươi thả vào chảo tôm, đảo nhẹ cho lá héo dịu dậy hương. Múc tôm và sốt ra đĩa sâu lòng, rưới 5 ml dầu ô liu nguyên chất còn lại lên trên rồi thưởng thức nóng ngay."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thưởng thức cùng bánh mì nướng giòn",
+      "instruction": "Dọn đĩa tôm om cà chua kèm các lát bánh mì nướng giòn hoặc bánh mì bơ tỏi ngay khi còn nóng ấm để chấm trọn phần nước sốt sánh thơm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 202,
+    "energyKcal": 201.7,
+    "energyKj": 844,
+    "proteinG": 25.4,
+    "fatG": 8.1,
+    "saturatedFatG": 1.2,
+    "carbG": 8.7,
+    "fiberG": 2.1,
+    "sugarG": 4.5,
+    "sodiumMg": 655,
+    "saltG": 1.64,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5329af471b43c2718e68644fccd38a4bff4425aeab078525ef6f7e21577a3c77",
+    "researchedFromV2Sha256": "55efd411512ec44b3b3026e755a3a2050aa7d946b03bf9bafdff1162d3f71f2c"
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-296dbce4d9098a2e",
+    "slug": "ca-nuong-tuong",
+    "title": "Cá chẽm nướng xì dầu hành gừng",
+    "subtitle": "Phi lê cá thịt trắng nướng giấy bạc mềm mọng thấm sốt xì dầu ngọt dịu, rưới dầu mè phi hành gừng tỏi thơm nức kiểu Trung Hoa"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món nướng",
+      "Phi lê cá",
+      "Xì dầu",
+      "Hành gừng",
+      "Bữa tối"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng phi lê cá chẽm trắng muốt, mềm mọng tự nhiên sau khi nướng kín giấy bạc cùng gừng hành và xì dầu nhạt, nổi bật với lớp dầu mè phi tỏi hành nóng hổi rưới lên mặt khi dọn.",
+    "servingSuggestion": "Gắp cá nướng ra đĩa sâu lòng, chan phần nước sốt xì dầu trong khay cùng hành gừng phi dầu mè lên trên; ăn nóng kèm cơm trắng và rau cải luộc.",
+    "storageAndReheat": "Bảo quản cá nướng trong hộp kín ở ngăn mát tủ lạnh tối đa 24 giờ; khi dùng hâm lại ở lò 160°C trong 6–8 phút hoặc hấp cách thủy 5 phút để thịt cá không bị khô."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WHITE_FISH_FILLET",
+      "name": "Phi lê cá chẽm (hoặc cá thịt trắng)",
+      "culinaryMeasure": "700 g (4 miếng ~175 g/miếng)",
+      "prepNote": "rửa nhanh nước lạnh, thấm thật khô hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 700,
+      "unit": "g",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 700,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "50 ml (~3,5 muỗng canh)",
+      "prepNote": "hòa với đường và nước lọc làm sốt nướng cá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 59,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 59,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (60 g)",
+      "prepNote": "rửa sạch, cắt khúc 5 cm, chia đôi để lót khay và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 nhánh vừa)",
+      "prepNote": "cạo vỏ, thái sợi chỉ mỏng, chia đôi để nướng và phi dầu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm cùng dầu mè",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "phi nóng cùng tỏi, gừng và hành lá rưới mặt cá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "xoa đều hai mặt phi lê cá giúp cá không dính và giữ ẩm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "hòa tan với xì dầu nhạt tạo vị mặn ngọt hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "xoa đều hai mặt cá trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc ướp khử mùi tanh cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "pha loãng xì dầu nhạt để cá nướng không bị gắt mặn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm nóng lò và sơ chế phi lê cá",
+      "instruction": "Làm nóng trước lò nướng ở 180°C trong khoảng 10 phút. Rửa nhanh 700 g phi lê cá chẽm dưới vòi nước lạnh rồi dùng khăn giấy thấm thật khô hai mặt. Xoa đều 10 ml dầu ăn thực vật, 3 g muối ăn và 2 g tiêu đen xay lên cả hai mặt từng miếng cá.",
+      "tip": "Thấm thật khô mặt cá trước khi thoa dầu và muối tiêu giúp gia vị bám đều và hạn chế mùi tanh khi nướng kín."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái gừng hành và pha chén sốt xì dầu",
+      "instruction": "Thái 25 g gừng tươi thành sợi chỉ, cắt khúc 5 cm phần hành lá tươi và băm nhỏ 4 tép tỏi khô. Trong chén nhỏ, khuấy tan hoàn toàn 6 g đường cát trắng với 50 ml xì dầu nhạt và 60 ml nước lọc."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp cá vào khay lót gừng hành và rưới sốt",
+      "instruction": "Lót một nửa lượng gừng thái sợi và một nửa hành lá cắt khúc xuống đáy khay nướng vừa kích thước, xếp 4 miếng phi lê cá lên trên thành một lớp không chồng chéo. Rưới đều hỗn hợp xì dầu nhạt đã pha lên mặt cá rồi rắc nốt phần gừng và hành lá còn lại lên trên (chừa lại ít để phi dầu mè).",
+      "tip": "Lớp gừng hành lót bên dưới vừa giúp cá không dính đáy khay vừa truyền hương thơm đều từ mặt dưới lên."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Bọc kín giấy bạc và nướng chín cá",
+      "instruction": "Đậy kín miệng khay bằng giấy bạc sao cho hơi nước không thoát ra ngoài, cho vào rãnh giữa lò nướng ở 180°C trong 15 phút. Sau đó mở hé giấy bạc kiểm tra thấy thịt cá chuyển trắng đục hoàn toàn và dễ tách thớ khi khều nhẹ bằng nĩa là cá đã chín tới.",
+      "tip": "Nướng kín bằng giấy bạc giữ trọn nước ngọt của phi lê cá; tránh nướng quá lâu làm thớ cá bị khô bở.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phi thơm tỏi, gừng và hành với dầu mè",
+      "instruction": "Trong lúc chờ cá nướng gần xong, đun nóng 15 ml dầu mè thơm trong chảo nhỏ trên lửa vừa, cho tỏi băm vào phi thơm khoảng 30 giây đến khi vừa vàng nhạt rồi cho phần hành lá và gừng sợi còn lại vào đảo nhanh 1 phút cho dậy hương thơm thì tắt bếp.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và rưới dầu mè hành gừng nóng",
+      "instruction": "Cẩn thận mở giấy bạc tránh bỏng hơi nóng, nhẹ nhàng chuyển từng miếng phi lê cá ra đĩa sâu lòng. Chan phần nước sốt xì dầu ấm trong khay nướng lên cá, sau đó rưới hỗn hợp hành gừng tỏi phi dầu mè thơm phức lên mặt và dọn nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 275,
+    "energyKcal": 274.7,
+    "energyKj": 1150,
+    "proteinG": 37.6,
+    "fatG": 10.8,
+    "saturatedFatG": 2.1,
+    "carbG": 5.5,
+    "fiberG": 0.7,
+    "sugarG": 2,
+    "sodiumMg": 1236,
+    "saltG": 3.09,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175148"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "73173933b7130ec909e6655046baa65d903b7d0cb0ecfd8703816f3ec0c8130a",
+    "researchedFromV2Sha256": "d5fe46e9381fd47055e8af79b5feb3c996717910f04bbe528962909461c85ccf"
+  }
+}

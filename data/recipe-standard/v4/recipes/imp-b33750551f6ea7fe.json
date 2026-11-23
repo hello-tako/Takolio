@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b33750551f6ea7fe",
+    "slug": "nam-nuong-bo-shoyu",
+    "title": "Nấm nướng bơ Shoyu",
+    "subtitle": "Nấm đùi gà thái khoanh dày khía caro áp chảo vàng nâu quyện bơ tan chảy và xì dầu cháy cạnh thơm nức kiểu Izakaya"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Nấm đùi gà",
+      "Bơ Shoyu",
+      "Izakaya",
+      "Ẩm thực Nhật",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "milk",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Nấm nướng bơ Shoyu là món nhậu Izakaya kinh điển của Nhật Bản, dùng nấm đùi gà cắt khoanh dày khía caro áp chảo vàng ruộm rồi áo đẫm bơ béo thơm và xì dầu Nhật rưới cháy cạnh, cắn vào giòn sần sật đậm vị umami.",
+    "servingSuggestion": "Xếp từng khoanh nấm nướng bơ Shoyu lên đĩa ấm, rưới phần bơ xì dầu còn lại trong chảo, rắc hành lá thái nhỏ lên trên rồi thưởng thức ngay khi còn nóng.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay sau khi áp chảo; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 2 ngày và làm nóng lại trên chảo khô khoảng 1–2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "300 g (khoảng 3–4 cây lớn)",
+      "prepNote": "cắt bỏ gốc cứng, lau sạch bằng khăn ẩm rồi thái khoanh dày 1,5–2 cm và khía caro nhẹ một mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g",
+      "prepNote": "cắt miếng vừa để đun tan chảy tạo hương béo thơm cho nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "láng chảo cùng bơ giúp bơ không bị cháy khét khi áp chảo nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 6.66,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "rưới quanh thành chảo nóng để tạo hương thơm cháy cạnh đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (khoảng 1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lên hai mặt khoanh nấm khi chiên vàng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "rắc đều lên nấm giúp dậy mùi thơm cay dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí lên đĩa nấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lau sạch và thái khoanh khía caro nấm đùi gà",
+      "instruction": "Cắt bỏ phần gốc cứng của 300 g nấm đùi gà tươi, dùng khăn ẩm lau sạch bụi đất mà không ngâm nước. Thái thân nấm thành từng khoanh tròn dày khoảng 1,5–2 cm, dùng mũi dao khía nhẹ hình mắt lưới caro lên một mặt khoanh nấm và thái nhỏ hành lá để riêng.",
+      "tip": "Thái nấm thành khoanh dày và không rửa ngập nước giúp nấm giữ được độ giòn sần sật như sò điệp áp chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm tan chảy bơ với dầu ăn trên chảo nóng",
+      "instruction": "Làm nóng chảo rộng trên lửa vừa, cho 8 ml dầu ăn thực vật và 25 g bơ lạt vào, lắc nhẹ chảo đến khi bơ tan chảy hoàn toàn và bắt đầu sủi bọt lăn tăn thơm béo.",
+      "tip": "Pha thêm một chút dầu ăn cùng bơ lạt giúp nâng điểm khói, tránh làm bơ chuyển màu cháy đen khi áp chảo."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo mặt khía caro của nấm vàng nâu",
+      "instruction": "Xếp các khoanh nấm thành một lớp đều trên chảo (mặt khía caro úp xuống), không xếp chồng lên nhau, chiên yên trên lửa vừa khoảng 3 phút đến khi mặt nấm chuyển màu vàng nâu đẹp mắt và hơi xém cạnh.",
+      "tip": "Không đảo nấm liên tục và không xếp chồng để nấm được áp chảo trực tiếp thay vì bị hấp hơi chảy nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt nấm áp vàng và nêm muối tiêu",
+      "instruction": "Lật ngược các khoanh nấm sang mặt còn lại, áp chảo thêm khoảng 2–3 phút đến khi hai mặt đều vàng nâu hấp dẫn rồi rắc đều 1,5 g muối ăn và 1 g tiêu đen xay lên mặt nấm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Rưới xì dầu quanh mép chảo tạo hương Shoyu thơm lừng",
+      "instruction": "Rưới 10 ml xì dầu Nhật chạy dọc theo thành chảo nóng để xì dầu bốc hơi thơm nức, lập tức nghiêng và lắc nhẹ chảo trong 15 giây cho phần sốt bơ xì dầu áo bóng đều quanh từng khoanh nấm.",
+      "tip": "Rưới xì dầu vào mép chảo nóng thay vì đổ thẳng lên nấm giúp bốc mùi thơm cháy cạnh đặc trưng của món Nhật."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn hành lá và dọn đĩa nấm nướng bơ Shoyu nóng",
+      "instruction": "Cho hành lá thái nhỏ vào đảo nhanh 5 giây rồi tắt bếp ngay. Gắp nấm ra đĩa ấm, rưới hết phần bơ xì dầu trong chảo lên trên và thưởng thức nóng kèm cơm trắng hoặc làm món khai vị."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 116,
+    "energyKcal": 115.6,
+    "energyKj": 484,
+    "proteinG": 3.7,
+    "fatG": 9.4,
+    "saturatedFatG": 4.7,
+    "carbG": 6.6,
+    "fiberG": 2.5,
+    "sugarG": 1.2,
+    "sodiumMg": 429,
+    "saltG": 1.07,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "663a4b9b85bb5d46e8b09b3fa8976f81cd57a14ac13015440d62dc93ea969976",
+    "researchedFromV2Sha256": "d6d937eb5a0d127ba6b3c340aba53e34f1b471320c9aad7c50f688ae8d07868d"
+  }
+}

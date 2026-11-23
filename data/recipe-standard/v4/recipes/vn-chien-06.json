@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chien-06",
+    "slug": "ca-ro-phi-chien-gion-mam-gung",
+    "title": "Cá rô phi chiên giòn chấm mắm gừng",
+    "subtitle": "Cá rô phi khía vảy áo lớp bột mì mỏng chiên vàng giòn rụm, thịt trắng ngọt chấm nước mắm gừng tỏi ớt ấm nồng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Cá tươi",
+      "Cơm nhà",
+      "Dễ làm",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cá rô phi chiên giòn chấm mắm gừng là món ăn quen thuộc trong mâm cơm Việt nhờ nguyên liệu bình dân nhưng cực kỳ đưa cơm. Cá được làm sạch kỹ màng đen, khía sâu thân, áo lớp bột mì mỏng pha gia vị rồi chiên lửa vừa cho lớp da phồng giòn rụm, thịt cá bên trong vẫn mềm ngọt tự nhiên.",
+    "servingSuggestion": "Bày cá nguyên con ra đĩa lớn, dùng nóng cùng cơm trắng, rau muống luộc hoặc cuốn bánh tráng rau sống, chấm đẫm chén nước mắm gừng chanh tỏi ớt.",
+    "storageAndReheat": "Món ngon nhất khi ăn nóng ngay sau khi chiên để cảm nhận độ giòn tan của da cá; nếu còn dư, bảo quản tủ mát tối đa 24 giờ và làm nóng bằng nồi chiên không dầu ở 180°C trong 6 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá rô phi tươi nguyên con",
+      "culinaryMeasure": "900 g (2 con vừa)",
+      "prepNote": "đánh vảy, bỏ mang ruột, cạo sạch màng đen bụng cá, khía chéo 3–4 đường mỗi mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 900,
+      "unit": "g",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 702,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "35 g (~4 muỗng canh)",
+      "prepNote": "hòa với 60 ml nước thành hỗn hợp sền sệt nhúng cá cho giòn và chống dính chảo",
+      "componentGroup": "main",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "10 g (~2 muỗng cà phê)",
+      "prepNote": "6 g chà xát khử nhớt tanh cá rồi rửa sạch, 2 g ướp cá và 2 g pha vào bột nhúng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp vào đường khía cá, nửa còn lại pha vào bột mì",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g (1 củ vừa)",
+      "prepNote": "cạo vỏ, rửa sạch, giã hoặc băm thật nhuyễn để pha nước mắm chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước mắm gừng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, bỏ bớt hạt rồi băm nhuyễn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1,5 quả",
+      "prepNote": "vắt lấy khoảng 35–40 ml nước cốt chanh pha nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm nguyên chất",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "pha nước mắm gừng chua cay mặn ngọt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 72,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 46.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "khuấy tan với nước ấm làm nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 16.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên cá)",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "đun nóng già để chiên cá vàng giòn đều hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 276,
+      "edibleRetentionRatio": 0.12,
+      "edibleGrams": 33.12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "chia 60 ml pha sệt bột mì, 60 ml nước ấm pha nước mắm gừng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 96,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử tanh và khía thân cá rô phi",
+      "instruction": "Đánh sạch vảy, cắt bỏ mang và mổ bỏ ruột cá rô phi, chú ý cạo sạch lớp màng đen bên trong bụng cá để hết mùi tanh. Dùng 6 g muối ăn chà xát khắp mình và bụng cá trong 2 phút rồi rửa sạch lại bằng nước lạnh, dùng khăn sạch thấm thật khô cá và khía 3–4 đường chéo trên mỗi mặt thân cá.",
+      "tip": "Cạo thật sạch lớp màng đen trong bụng cá và chà xát muối kỹ giúp khử hoàn toàn mùi tanh bùn của cá rô phi đồng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp cá và pha hỗn hợp bột mì nhúng",
+      "instruction": "Rắc đều 2 g muối ăn và 1 g tiêu đen xay vào các đường khía trên thân cá, ướp 10 phút cho thịt cá săn đậm vị. Trong tô lớn, khuấy đều 35 g bột mì đa dụng với 60 ml nước lọc, 2 g muối ăn và 1 g tiêu đen xay còn lại thành hỗn hợp sền sệt mịn không vón cục.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên cá ngập dầu lửa vừa đến khi vàng giòn",
+      "instruction": "Đổ 300 ml dầu ăn vào chảo lớn sâu lòng, đun lửa vừa đến khi dầu nóng già và thử đầu đũa thấy sủi tăm mạnh. Nhúng từng con cá qua tô bột mì cho phủ một lớp áo thật mỏng rồi nhẹ nhàng thả vào chảo, chiên mỗi mặt 7–8 phút không trở quá sớm đến khi da cá vàng giòn rụm và thịt cá chín trắng đục tận xương.",
+      "tip": "Giữ lửa vừa ổn định và đợi mặt dưới chín vàng cứng cáp mới lật để da cá không bị dính sát chảo hay vỡ nát.",
+      "timerMinutes": 16
+    },
+    {
+      "stepNumber": 4,
+      "phase": "finish",
+      "title": "Vớt cá lên rây cho ráo dầu",
+      "instruction": "Khi hai mặt cá đã vàng giòn đều từ đầu đến đuôi, nhẹ nhàng gắp cá ra rây thưa hoặc đĩa có lót giấy thấm dầu, để nghỉ 2 phút cho thoát bớt dầu thừa giúp vỏ cá giòn lâu hơn.",
+      "tip": "Gác cá lên rây thưa hoặc giấy thấm dầu giúp hơi ẩm thoát đều, giữ lớp vỏ ngoài giòn rụm lâu hơn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Giã nhuyễn gừng tỏi ớt và pha nước mắm",
+      "instruction": "Giã nhuyễn 40 g gừng tươi, 1 củ tỏi khô và 2 quả ớt tươi (hoặc băm thật mịn). Hòa tan hoàn toàn 25 g đường cát trắng với 60 ml nước lọc ấm trong chén, sau đó thêm 60 ml nước mắm nguyên chất và nước cốt của 1,5 quả chanh tươi khuấy đều, cuối cùng cho gừng tỏi ớt vào.",
+      "tip": "Khuấy tan đường trước với nước ấm rồi mới thêm nước mắm, chanh và gừng tỏi ớt sau cùng để nước chấm sánh thơm và tỏi ớt nổi đẹp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày cá chiên ra đĩa và thưởng thức nóng",
+      "instruction": "Đặt cá rô phi chiên giòn lên đĩa lớn, dọn ngay khi còn nóng hổi giòn tan cùng chén nước mắm gừng, ăn kèm cơm trắng nóng và rau luộc hoặc cuốn rau sống."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 326,
+    "energyKcal": 325.9,
+    "energyKj": 1363,
+    "proteinG": 36.3,
+    "fatG": 12.7,
+    "saturatedFatG": 2.4,
+    "carbG": 15.3,
+    "fiberG": 0.9,
+    "sugarG": 5,
+    "sodiumMg": 1400,
+    "saltG": 3.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169761",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175176"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6830c3d9044ab33d82fd1aac59794a32ea5b34d18ce3320ac8d5bc54b71463ee",
+    "researchedFromV2Sha256": "aa1e4e091a39b466f05d5027bd50ab239e3a53cd57e8cebacdb685a3b7456aec"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-03cb4c492e643034",
+    "slug": "tom-chien-trung-mong",
+    "title": "Tôm chiên trứng mỏng",
+    "subtitle": "Tôm tươi xào săn xếp trên lớp trứng gà đánh bột bắp chiên mỏng vàng ươm, mềm mịn thơm hành"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Tôm tươi",
+      "Trứng chiên",
+      "Trẻ em thích",
+      "Dưới 30 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Tôm chiên trứng mỏng là món ăn đơn giản nhưng rất được lòng trẻ nhỏ và gia đình bận rộn. Tôm tươi bóc vỏ được xào nhanh cho chín đỏ rồi trải đều trên lớp trứng gà đánh cùng chút bột bắp hòa nước, chiên lửa nhỏ đậy vung để mặt trứng mềm mịn, không bị khô xác.",
+    "servingSuggestion": "Trượt nguyên miếng trứng chiên tôm ra đĩa phẳng, cắt miếng vừa ăn và dùng nóng ngay với cơm trắng, có thể chấm thêm tương ớt hoặc nước mắm chua ngọt.",
+    "storageAndReheat": "Món ăn ngon nhất khi vừa chiên xong còn nóng mềm; nếu bảo quản hộp kín trong ngăn mát tối đa 24 giờ, hâm lại trên chảo chống dính lửa nhỏ có nắp đậy trong 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "bỏ đầu, bóc vỏ, chẻ nhẹ sống lưng rút chỉ đen rồi thấm thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (200 g)",
+      "prepNote": "đập vào tô lớn chuẩn bị đánh tan",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, để ráo rồi thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "10 g (1 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhuyễn trộn vào trứng cho thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 8.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp (bột ngô)",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "hòa tan với 30 ml nước lọc rồi trộn vào trứng giúp bề mặt trứng mềm mượt, không vỡ",
+      "componentGroup": "main",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm vào hỗn hợp trứng cho thơm đậm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp tôm, 1 g nêm vào tô trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia nửa ướp tôm, nửa trộn trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 10 ml xào săn tôm trước, 20 ml chiên lớp trứng mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 23.46,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng hòa tan hoàn toàn bột bắp trước khi đánh vào trứng",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch tôm và ướp muối tiêu",
+      "instruction": "Tôm tươi bỏ đầu, bóc vỏ, khía nhẹ dọc sống lưng để rút sạch chỉ đen rồi thấm thật ráo nước bằng khăn giấy. Ướp tôm với 1 g muối ăn và 0,5 g tiêu đen xay trong 5 phút cho thịt tôm săn và đậm đà.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Hòa bột bắp và đánh tan hỗn hợp trứng",
+      "instruction": "Khuấy tan hoàn toàn 10 g bột bắp với 30 ml nước lọc trong chén nhỏ. Đập 4 quả trứng gà vào tô lớn, đổ nước bột bắp vào cùng 10 ml nước mắm ngon, 1 g muối ăn, 0,5 g tiêu đen xay, hành tím băm và hành lá thái nhỏ rồi đánh tan đều nhẹ tay.",
+      "tip": "Cho nước bột bắp vào trứng giúp cấu trúc trứng mềm mịn, bóng đẹp và không bị khô rách khi chiên lớp mỏng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhanh tôm tươi chín tới trên lửa lớn",
+      "instruction": "Đun nóng 10 ml dầu ăn trong chảo chống dính trên lửa lớn, thả tôm đã ướp vào đảo nhanh tay khoảng 2 phút đến khi tôm chuyển màu đỏ hồng cong nhẹ và chín tới hoàn toàn, trút ngay ra đĩa để riêng.",
+      "tip": "Xào tôm nhanh ở lửa lớn giúp tôm chín săn, giữ trọn vị ngọt mà không ra nước vào trứng ở bước sau.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Tráng lớp trứng mỏng và xếp tôm lên mặt",
+      "instruction": "Lau sạch chảo, đun nóng 20 ml dầu ăn còn lại trên lửa vừa rồi hạ lửa nhỏ. Đổ toàn bộ tô trứng vào, nghiêng chảo dàn đều thành lớp mỏng phủ khắp đáy chảo. Ngay khi viền và mặt trứng bắt đầu se lại nhưng mặt trên còn hơi ướt, xếp đều toàn bộ tôm đã xào lên trên mặt trứng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đậy nắp chiên lửa nhỏ cho trứng chín đều",
+      "instruction": "Đậy nắp chảo và chiên tiếp ở lửa nhỏ khoảng 3–4 phút cho đến khi mặt dưới vàng ươm và lớp trứng mặt trên chín đông hoàn toàn quanh từng con tôm mà không cần lật mặt.",
+      "tip": "Đậy nắp ở lửa nhỏ giúp hơi nhiệt tuần hoàn làm chín mặt trên của lớp trứng mỏng, tránh làm vỡ trứng khi lật.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trượt trứng ra đĩa và cắt miếng thưởng thức",
+      "instruction": "Tắt bếp, nhẹ nhàng trượt miếng trứng chiên tôm ra đĩa phẳng, cắt thành từng miếng vuông hoặc tam giác vừa ăn và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 227,
+    "energyKcal": 227.3,
+    "energyKj": 951,
+    "proteinG": 20.9,
+    "fatG": 13.8,
+    "saturatedFatG": 3,
+    "carbG": 4.8,
+    "fiberG": 0.4,
+    "sugarG": 0.7,
+    "sodiumMg": 735,
+    "saltG": 1.84,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "15d45f3ab29439fe685076a6a795e1203f373111a2f2af0db38fedf5f2eae265",
+    "researchedFromV2Sha256": "5ea0e12f93d1e042278eee320903344dd19299704a62dbc01f79c1542df74e15"
+  }
+}

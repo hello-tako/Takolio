@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ce3c9df133ba1cd4",
+    "slug": "banh-trang-chien-trung",
+    "title": "Bánh tráng chiên trứng",
+    "subtitle": "Bánh tráng nướng chiên phồng giòn rụm phủ trứng gà béo mềm, hành lá, ruốc sấy và rau răm thơm nức"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Ăn vặt",
+      "Bánh tráng",
+      "Sài Gòn",
+      "Dưới 30 phút"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Bánh tráng chiên trứng là món ăn vặt đường phố Sài Gòn nổi tiếng nhờ sự kết hợp giữa miếng bánh tráng mỏng chiên phồng giòn rụm bên dưới và lớp trứng gà béo mềm bên trên, điểm thêm vị mặn thơm của ruốc sấy, hành phi, ớt hiểm và rau răm tươi.",
+    "servingSuggestion": "Cắt bánh thành từng miếng tam giác vừa ăn khi còn nóng giòn, chấm kèm tương ớt cay ngọt và thưởng thức ngay lúc mới ra chảo.",
+    "storageAndReheat": "Món ăn ngon nhất ngay khi vừa chiên xong để giữ độ giòn của bánh tráng; không nên cất tủ lạnh qua ngày vì hơi ẩm từ trứng sẽ làm bánh tráng bị dai cứng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE_PAPER",
+      "name": "Bánh tráng mỏng (bánh tráng nướng)",
+      "culinaryMeasure": "3/4 xấp (150 g, khoảng 4–5 lá mỏng)",
+      "prepNote": "chọn loại bánh tráng mỏng vừa, không quá dày để nhanh phồng giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "pack",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (150 g)",
+      "prepNote": "đập ra chén đánh nhẹ tay với chút muối tiêu",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch để ráo, phần đầu hành thái mịn, phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "rửa sạch, bỏ bớt hạt và băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DRIED_SHRIMP",
+      "name": "Ruốc sấy (tép khô sợi nhỏ)",
+      "culinaryMeasure": "15 g (~2 muỗng canh)",
+      "prepNote": "chọn loại ruốc khô ráo, sợi tơi thơm để rắc mặt bánh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (phi thơm)",
+      "culinaryMeasure": "20 g (~2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng phi vàng giòn (hoặc dùng hành phi sẵn)",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "20 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, vẩy thật ráo rồi thái rối vừa ăn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (hoặc muối tôm)",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1,5 g đánh vào trứng, 2,5 g rắc đều lên mặt bánh khi chiên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "đánh cùng trứng cho thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt (chấm kèm)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới lên mặt bánh hoặc làm nước chấm ăn kèm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 28.7,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "dùng phi hành nếu tự làm và tráng đều đáy chảo khi chiên từng chiếc bánh",
+      "componentGroup": "main",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 41.4,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 35.19,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế hành lá, rau răm, ớt và đánh trứng",
+      "instruction": "Hành lá rửa sạch để ráo rồi thái nhỏ; rau răm thái rối; ớt hiểm băm nhỏ. Nếu tự làm hành phi, phi vàng giòn 20 g hành tím thái lát với 10 ml dầu ăn rồi vớt ra để riêng. Đập 3 quả trứng gà vào tô, thêm 1,5 g muối ăn và 1 g tiêu đen xay rồi đánh tan nhẹ tay cho hòa quyện.",
+      "tip": "Đánh trứng vừa tay, không đánh nổi bọt quá nhiều để giữ độ mềm béo tự nhiên khi áp nhiệt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm nóng chảo và áp giòn mặt bánh tráng",
+      "instruction": "Đặt chảo chống dính rộng lên bếp ở lửa vừa, cho khoảng 8–10 ml dầu ăn vào tráng đều đáy chảo. Đặt 1 lá bánh tráng mỏng vào chảo, dùng xẻng ép nhẹ cho mặt bánh tiếp xúc đều với dầu nóng trong khoảng 20 giây đến khi bánh bắt đầu phồng giòn nhẹ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Trải đều trứng gà lên mặt bánh tráng nóng",
+      "instruction": "Nhanh tay múc khoảng 1/4 phần trứng gà đã đánh đổ lên giữa bánh tráng rồi nghiêng hoặc dùng lưng muỗng dàn đều khắp bề mặt trước khi trứng kịp đông hẳn.",
+      "tip": "Thao tác dàn trứng cần nhanh và dứt khoát ngay khi bánh vừa ấm phồng để trứng bám chặt vào bề mặt bánh tráng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rắc ruốc sấy, hành lá, rau răm và chiên chín trứng",
+      "instruction": "Hạ xuống lửa nhỏ, rắc đều lên mặt trứng một phần muối ăn (hoặc muối tôm) còn lại, hành lá thái nhỏ, ruốc sấy, hành phi (nếu dùng), ớt hiểm băm và rau răm. Chiên khoảng 2–3 phút cho trứng chín đông hoàn toàn và mặt bánh dưới vàng giòn đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Gập đôi bánh và lặp lại với các lá còn lại",
+      "instruction": "Gập đôi chiếc bánh tráng lại (hoặc giữ nguyên hình tròn tùy thích), áp thêm 30 giây cho giòn đều hai mép rồi gắp ra đặt trên giá thoáng hơi. Lặp lại thao tác với phần bánh tráng, dầu ăn và nguyên liệu còn lại.",
+      "tip": "Không xếp chồng các miếng bánh nóng lên nhau vì hơi nước bốc lên sẽ làm vỏ bánh tráng nhanh bị ỉu mềm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt miếng và thưởng thức nóng với tương ớt",
+      "instruction": "Dùng kéo cắt bánh tráng chiên trứng thành từng miếng tam giác vừa ăn, rưới thêm tương ớt lên trên hoặc bày chén tương ớt bên cạnh và ăn ngay khi còn giòn rụm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 367,
+    "energyKcal": 367.3,
+    "energyKj": 1537,
+    "proteinG": 11.1,
+    "fatG": 16.4,
+    "saturatedFatG": 3.2,
+    "carbG": 44,
+    "fiberG": 1.4,
+    "sugarG": 2.6,
+    "sodiumMg": 1002,
+    "saltG": 2.51,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Asian Dried Shrimp Ref",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC Rice Paper Ref",
+      "USDA FDC Sriracha Ref",
+      "VN Rau Ram Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f8fa03bb80198ad18167b83ce5ce1fc270e8d63d5c1cf0a9c826696324c8b0c2",
+    "researchedFromV2Sha256": "8888d4ade4d1f7585109efdc6b6c62de6600e2295b7dd602b10a3f8652677ce0"
+  }
+}

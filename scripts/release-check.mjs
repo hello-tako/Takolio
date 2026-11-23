@@ -32,6 +32,9 @@ export const RELEASE_CANARY_PERCENT_INPUTS = ['0', ...RELEASE_CANARY_PERCENT_OPT
 export function resolveMealCompositionV2Release({ eventName, input }) {
   return eventName === 'workflow_dispatch' && input === 'true' ? 'true' : 'false';
 }
+export function resolveRecipeCatalogV4StandardRelease({ eventName, input }) {
+  return eventName === 'workflow_dispatch' && input === 'true' ? 'true' : 'false';
+}
 const USER_VISIBLE_D1_MODES = ['canary', 'd1'];
 
 export function validateRecipeCatalogMode(value) {
@@ -497,6 +500,7 @@ function git(cwd, ...args) {
   return execFileSync('git', args, {
     cwd,
     encoding: 'utf8',
+    maxBuffer: 32 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   }).trim();
 }
@@ -566,6 +570,7 @@ export function migrationManifest(cwd, sha) {
     }
     const bytes = execFileSync('git', ['show', `${sha}:${file}`], {
       cwd,
+      maxBuffer: 32 * 1024 * 1024,
       stdio: ['ignore', 'pipe', 'pipe'],
     });
     return { name, sha256: createHash('sha256').update(bytes).digest('hex') };
@@ -822,7 +827,8 @@ export function verifyPreviousRecipeAuthority(manifest, evidence, options = {}) 
   const relation = evidence.commit === manifest.sha ? 'same' : 'ancestor';
   if (relation === 'ancestor' && !(options.isAncestor ?? gitIsAncestor(cwd))(evidence.commit, manifest.sha))
     throw new Error('Previous Worker commit is not an ancestor of the release');
-  const readRelease = options.readRelease ?? ((sha) => readCatalogReleaseAt(cwd, sha));
+  const isV4 = evidence.releaseId === 'takolio-culinary-standard-v4';
+  const readRelease = options.readRelease ?? ((sha) => readCatalogReleaseAt(cwd, sha, isV4));
   const release = readRelease(evidence.commit);
   const proof = {
     commit: evidence.commit,
@@ -830,6 +836,7 @@ export function verifyPreviousRecipeAuthority(manifest, evidence, options = {}) 
     configuredMode: state.mode,
     canaryPercent: state.canaryPercent,
     cutoverEnabled: state.cutoverEnabled,
+    ...(isV4 ? { recipeCatalogV4StandardEnabled: true } : {}),
     release: {
       releaseId: release?.releaseId,
       expectedRecipeCount: release?.expectedRecipeCount,
@@ -842,8 +849,23 @@ export function verifyPreviousRecipeAuthority(manifest, evidence, options = {}) 
   return { ...proof, checkedAt: new Date().toISOString() };
 }
 
-function readCatalogReleaseAt(cwd, sha) {
+function readCatalogReleaseAt(cwd, sha, isV4 = false) {
   let text;
+  if (isV4) {
+    try {
+      text = git(cwd, 'show', `${sha}:${STANDARD_V4_MANIFEST_PATH}`);
+    } catch {
+      throw new Error('Previous Worker commit has no reviewed Culinary Standard V4 manifest');
+    }
+    const parsed = JSON.parse(text);
+    return {
+      releaseId: parsed.standardId,
+      expectedRecipeCount: parsed.recipeCount,
+      expectedRuntimeFingerprint: parsed.runtimeFingerprint,
+      legacyBaselineCount: parsed.recipeCount,
+      legacyBaselineFingerprint: parsed.runtimeFingerprint,
+    };
+  }
   try {
     text = git(cwd, 'show', `${sha}:${CATALOG_RELEASE_MANIFEST_PATH}`);
   } catch {
@@ -859,6 +881,7 @@ function previousAuthorityManifest(manifest, proof) {
     recipeCatalogMode: proof.configuredMode,
     recipeCatalogCanaryPercent: proof.canaryPercent,
     recipeCatalogCutoverEnabled: proof.cutoverEnabled,
+    ...(proof.recipeCatalogV4StandardEnabled === true ? { recipeCatalogV4StandardEnabled: true } : {}),
   };
 }
 
@@ -970,6 +993,25 @@ function writeManifest(file, manifest) {
  *   d1            → every request served VERIFIED D1 == release fingerprint, fallbackReason null.
  * A D1 fallback while D1 was selected is a HOLD/ROLLBACK signal, never a pass.
  */
+export function readStandardV4CatalogRelease(filePath = STANDARD_V4_MANIFEST_PATH) {
+  const parsed = JSON.parse(readFileSync(filePath, 'utf8'));
+  return {
+    releaseId: parsed.standardId,
+    expectedRecipeCount: parsed.recipeCount,
+    expectedRuntimeFingerprint: parsed.runtimeFingerprint,
+    legacyBaselineCount: parsed.recipeCount,
+    legacyBaselineFingerprint: parsed.runtimeFingerprint,
+  };
+}
+
+export function resolveEffectiveCatalogRelease(manifest, release) {
+  if (manifest?.recipeCatalogV4StandardEnabled === true) {
+    if (release?.releaseId === 'takolio-culinary-standard-v4') return release;
+    return readStandardV4CatalogRelease();
+  }
+  return release;
+}
+
 export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
   if (!SHA.test(manifest?.sha || ''))
     throw new Error('Target release SHA must be a canonical full Git SHA');
@@ -977,6 +1019,7 @@ export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
     throw new Error('Recipe authority evidence is not an object');
   if (evidence.schemaVersion !== 1)
     throw new Error('Recipe authority evidence schema is not supported');
+  const effectiveRelease = resolveEffectiveCatalogRelease(manifest, release);
   const problems = [];
   const expect = (label, actual, expected) => {
     if (actual !== expected)
@@ -987,12 +1030,12 @@ export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
   expect('configuredMode', evidence.configuredMode, manifest.recipeCatalogMode);
   expect('cutoverEnabled', evidence.cutoverEnabled, manifest.recipeCatalogCutoverEnabled);
   expect('canaryPercent', evidence.canaryPercent, manifest.recipeCatalogCanaryPercent);
-  expect('releaseId', evidence.releaseId, release.releaseId);
-  expect('expectedRecipeCount', evidence.expectedRecipeCount, release.expectedRecipeCount);
+  expect('releaseId', evidence.releaseId, effectiveRelease.releaseId);
+  expect('expectedRecipeCount', evidence.expectedRecipeCount, effectiveRelease.expectedRecipeCount);
   expect(
     'expectedRuntimeFingerprint',
     evidence.expectedRuntimeFingerprint,
-    release.expectedRuntimeFingerprint,
+    effectiveRelease.expectedRuntimeFingerprint,
   );
   const d1ProbeState = manifest.recipeCatalogMode !== 'static';
   if (d1ProbeState) {
@@ -1001,8 +1044,8 @@ export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
     expect('fallbackReason', evidence.fallbackReason, null);
     expect('d1Readiness', evidence.d1Readiness, 'ready');
     expect('d1ReadinessCode', evidence.d1ReadinessCode, null);
-    expect('servedRecipeCount', evidence.servedRecipeCount, release.expectedRecipeCount);
-    expect('servedFingerprint', evidence.servedFingerprint, release.expectedRuntimeFingerprint);
+    expect('servedRecipeCount', evidence.servedRecipeCount, effectiveRelease.expectedRecipeCount);
+    expect('servedFingerprint', evidence.servedFingerprint, effectiveRelease.expectedRuntimeFingerprint);
     expect('fingerprintMatchesRelease', evidence.fingerprintMatchesRelease, true);
     expect(
       'globalSource',
@@ -1019,8 +1062,8 @@ export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
     expect('fallbackReason', evidence.fallbackReason, null);
     expect('d1Readiness', evidence.d1Readiness, 'not_evaluated');
     expect('d1ReadinessCode', evidence.d1ReadinessCode, null);
-    expect('servedRecipeCount', evidence.servedRecipeCount, release.legacyBaselineCount);
-    expect('servedFingerprint', evidence.servedFingerprint, release.legacyBaselineFingerprint);
+    expect('servedRecipeCount', evidence.servedRecipeCount, effectiveRelease.legacyBaselineCount);
+    expect('servedFingerprint', evidence.servedFingerprint, effectiveRelease.legacyBaselineFingerprint);
     expect('fingerprintMatchesRelease', evidence.fingerprintMatchesRelease, false);
     expect('globalSource', evidence.globalSource, 'static');
   }
@@ -1045,6 +1088,7 @@ export function verifyRecipeAuthorityEvidence(manifest, evidence, release) {
 
 export const CATALOG_RELEASE_MANIFEST_PATH =
   'packages/recipes/src/import/catalog-release.current.json';
+export const STANDARD_V4_MANIFEST_PATH = 'data/recipe-standard/v4/manifest.json';
 
 /**
  * Reads the protected evidence. Only HTTP 200 with a JSON object is evidence: a rejected
@@ -1095,6 +1139,10 @@ async function main() {
       eventName: process.env.GITHUB_EVENT_NAME,
       input: process.env.MEAL_COMPOSITION_V2_ENABLED_INPUT,
     });
+    const recipeCatalogV4StandardEnabled = resolveRecipeCatalogV4StandardRelease({
+      eventName: process.env.GITHUB_EVENT_NAME,
+      input: process.env.RECIPE_CATALOG_V4_STANDARD_ENABLED_INPUT,
+    });
     const hardenedSha =
       process.env.HARDENED_SHA ||
       (environment === 'staging' && process.env.GITHUB_EVENT_NAME === 'workflow_run'
@@ -1113,6 +1161,7 @@ async function main() {
       recipeCatalogCutoverEnabled: rollout.cutoverEnabled,
       recipeCatalogRollbackConfirmed: process.env.RECIPE_CATALOG_ROLLBACK_CONFIRMED === 'true',
       mealCompositionV2Enabled: mealCompositionV2Enabled === 'true',
+      recipeCatalogV4StandardEnabled: recipeCatalogV4StandardEnabled === 'true',
       ci: await hostedCi(source.sha, repository),
       schema: migrationManifest(process.cwd(), source.sha),
       workflowRunId: process.env.GITHUB_RUN_ID,
@@ -1123,12 +1172,12 @@ async function main() {
     if (process.env.GITHUB_OUTPUT)
       appendFileSync(
         process.env.GITHUB_OUTPUT,
-        `deploy_sha=${source.sha}\nrecipe_catalog_mode=${rollout.mode}\nrecipe_catalog_d1_canary_percent=${rollout.canaryPercent}\nrecipe_catalog_cutover_enabled=${rollout.cutoverEnabled}\nmeal_composition_v2_enabled=${mealCompositionV2Enabled}\n`,
+        `deploy_sha=${source.sha}\nrecipe_catalog_mode=${rollout.mode}\nrecipe_catalog_d1_canary_percent=${rollout.canaryPercent}\nrecipe_catalog_cutover_enabled=${rollout.cutoverEnabled}\nmeal_composition_v2_enabled=${mealCompositionV2Enabled}\nrecipe_catalog_v4_standard_enabled=${recipeCatalogV4StandardEnabled}\n`,
       );
     if (process.env.GITHUB_STEP_SUMMARY)
       appendFileSync(
         process.env.GITHUB_STEP_SUMMARY,
-        `## Approved release candidate\n\n- SHA: \`${source.sha}\`\n- Main: \`${source.mainSha}\`\n- Hardened ancestor: \`${source.hardenedSha}\`\n- Schema: \`${manifest.schema.version}\` (${manifest.schema.sha256})\n- Exact-head CI: ${manifest.ci.url}\n- Meal Composition V2 (server + UI): \`${mealCompositionV2Enabled}\`\n\nCandidate validation is not proof of deployment; see the deployment receipt artifact.\n`,
+        `## Approved release candidate\n\n- SHA: \`${source.sha}\`\n- Main: \`${source.mainSha}\`\n- Hardened ancestor: \`${source.hardenedSha}\`\n- Schema: \`${manifest.schema.version}\` (${manifest.schema.sha256})\n- Exact-head CI: ${manifest.ci.url}\n- Meal Composition V2 (server + UI): \`${mealCompositionV2Enabled}\`\n- Culinary Standard V4 (500 recipes): \`${recipeCatalogV4StandardEnabled}\`\n\nCandidate validation is not proof of deployment; see the deployment receipt artifact.\n`,
       );
   } else {
     const manifest = JSON.parse(readFileSync(file, 'utf8'));

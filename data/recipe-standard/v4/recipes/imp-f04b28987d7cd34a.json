@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f04b28987d7cd34a",
+    "slug": "cua-nuong-muoi-nhat",
+    "title": "Cua nướng muối biển kiểu Nhật",
+    "subtitle": "Chân cua biển cắt hở nửa vỏ ướp rượu Sake, muối hạt và quết nhẹ bơ lạt nướng than hồng cháy cạnh thơm lừng vị biển Hokkaido, chấm xì dầu chanh tươi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Cua nướng muối",
+      "Hải sản Nhật",
+      "Tiệc nướng",
+      "Hokkaido",
+      "Cao cấp"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "milk",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cua nướng muối kiểu Nhật (Yaki-kani) trứ danh vùng Hokkaido: từng thớ thịt cua biển tươi ngọt mọng nước được bảo vệ bởi lớp vỏ nướng xém cùng muối biển, rượu Sake và chút bơ lạt thơm béo, ăn kèm chanh vàng tươi và xì dầu.",
+    "servingSuggestion": "Dọn cua nướng muối còn nóng hổi ra đĩa lớn, rắc thêm hành lá xanh và xếp các múi chanh vàng bên cạnh; khi ăn vắt chanh tươi lên thịt cua và chấm thêm xì dầu Nhật nếu thích.",
+    "storageAndReheat": "Cua nướng ngon nhất khi thưởng thức nóng ngay tại bàn; nếu còn thừa, tách lấy phần thịt cua bảo quản hộp kín trong ngăn mát tối đa 1 ngày và áp chảo làm nóng nhanh với chút bơ trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Chân cua biển nguyên vỏ (cua tuyết hoặc hoàng đế)",
+      "culinaryMeasure": "800 g chân cua nguyên vỏ",
+      "prepNote": "rã đông hoàn toàn nếu dùng hàng cấp đông, dùng kéo cắt bỏ nửa vỏ mặt trên để lộ thịt và thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 440,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối ăn hạt thô",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "rắc đều lên mặt vỏ cua khi nướng (phần lớn bám ở lớp vỏ ngoài không ăn trực tiếp)",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (khoảng 100 g)",
+      "prepNote": "cắt thành 4–6 múi cau đều nhau để vắt trực tiếp lên thịt cua nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh thật nhỏ rắc trang trí lên cua khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "rưới nhẹ lên phần thịt cua đã lộ vỏ trước khi nướng giúp khử tanh và giữ ẩm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 20.79,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "cắt miếng nhỏ đặt hoặc phết lên phần thịt cua ở phút nướng cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng làm nước chấm kèm hoặc nhỏ vài giọt lên thịt cua nướng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Xả băng và cắt tách nửa vỏ chân cua",
+      "instruction": "Nếu dùng chân cua đông lạnh, xả nhanh dưới vòi nước chảy cho sạch lớp băng bọc ngoài rồi để rã đông hoàn toàn và thấm ráo. Dùng kéo bếp sắc cắt dọc hai bên mép mỗi chân cua, nhẹ nhàng tách bỏ nửa mặt vỏ phía trên để lộ phần thịt cua bên trong và dùng khăn giấy thấm khô nước đọng.",
+      "tip": "Cắt mở sẵn nửa vỏ trước khi nướng giúp người ăn thưởng thức dễ dàng mà không bị bỏng tay khi tách vỏ nóng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Rưới rượu Sake và rắc muối biển thô lên vỏ cua",
+      "instruction": "Rưới đều 30 ml rượu Sake Nhật Bản lên phần thịt cua đã lộ mặt để khử mùi tanh hải sản và giữ độ mọng nước. Rắc đều 15 g muối ăn hạt thô lên khắp mặt vỏ và viền cua; đồng thời thái nhỏ hành lá tươi và cắt múi cau quả chanh vàng để sẵn.",
+      "tip": "Rắc muối chủ yếu lên mặt vỏ giúp tạo lớp hương biển thơm mặn tự nhiên mà thịt cua bên trong vẫn ngọt thanh, không bị gắt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng than hoặc lò nướng",
+      "instruction": "Làm nóng bếp than hoa hoặc vỉ nướng điện ở mức nhiệt vừa lớn trong khoảng 4 phút cho mặt vỉ thật nóng đều."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng cua úp mặt vỏ trước trong 5 phút",
+      "instruction": "Đặt các chân cua lên vỉ với phần vỏ bên dưới hướng xuống lửa, nướng khoảng 5 phút cho vỏ cua chuyển màu đỏ cam rực, hơi xém cạnh và phần nước ngọt trong vỏ bắt đầu sôi lăn tăn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phết bơ lạt và nướng chín tới thịt cua",
+      "instruction": "Lật hoặc giữ nguyên mặt thịt hướng lên tùy độ nóng vỉ, đặt 20 g bơ lạt cắt nhỏ lên mặt thịt cua rồi nướng tiếp trên lửa vừa thêm 4–5 phút đến khi thịt cua chuyển màu trắng đục săn chắc hoàn toàn và bơ tan thơm lừng.",
+      "tip": "Không nướng quá lâu sau khi thịt cua đã đục săn để tránh làm thịt bị khô xơ và mất nước ngọt tự nhiên.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc hành lá và thưởng thức kèm chanh xì dầu",
+      "instruction": "Gắp cua nướng ra đĩa lớn, rắc hành lá thái nhỏ lên mặt thịt cua, xếp các múi chanh vàng xung quanh và dọn kèm chén xì dầu Nhật Bản để vắt chanh chấm thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 142,
+    "energyKcal": 141.5,
+    "energyKj": 592,
+    "proteinG": 20.6,
+    "fatG": 4.9,
+    "saturatedFatG": 2.6,
+    "carbG": 2.1,
+    "fiberG": 0.5,
+    "sugarG": 0.5,
+    "sodiumMg": 939,
+    "saltG": 2.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 167746",
+      "USDA FDC 170005",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174208",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1dff837557626b9103ea8365e94224e7fdacb9f319f1f89a53b44c8ec3d79627",
+    "researchedFromV2Sha256": "00a37d510676eb95f279699e8e9c5315bc82cb21205f26cead47876f4b72f533"
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-canh-02",
+    "slug": "canh-cua-dong-rau-day-mong-toi",
+    "title": "Canh cua đồng rau đay mồng tơi mướp hương",
+    "subtitle": "Món canh giải nhiệt trứ danh mùa hè miền Bắc với tảng riêu cua đồng béo ngậy nấu cùng rau đay, mồng tơi và mướp hương thơm ngọt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Mùa hè",
+      "Cua đồng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crab",
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Bát canh cua đồng thanh mát chuẩn vị Bắc Bộ với phần riêu cua kết mảng dày béo thơm, gạch cua chưng vàng óng quyện cùng rau đay, mồng tơi mềm mướt và mướp hương ngọt dịu.",
+    "servingSuggestion": "Dọn canh nóng vào tô lớn, gạt nhẹ tảng riêu cua nổi lên mặt cho đẹp mắt; ăn kèm cơm trắng và đĩa cà pháo muối giòn.",
+    "storageAndReheat": "Canh cua rau đay ngon nhất khi dùng hết trong ngày vì rau dễ bị nhớt và xuống màu; nếu bảo quản tủ mát, chỉ giữ phần nước riêu tối đa 12 giờ và đun sôi lại kỹ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CRAB_MEAT",
+      "name": "Cua đồng tươi (làm sạch, giã lọc nước)",
+      "culinaryMeasure": "500 g (cua đồng nguyên con)",
+      "prepNote": "ngâm nước cho nhả bùn, tách mai khêu gạch riêng, phần thân bỏ yếm giã nhuyễn với chút muối rồi lọc lấy nước thịt cua",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 275,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLAND_CHRYSANTHEMUM",
+      "name": "Rau đay và rau mồng tơi non",
+      "culinaryMeasure": "400 g (1 bó rau đay + 1 bó mồng tơi)",
+      "prepNote": "nhặt lấy lá và ngọn non, rửa sạch nhiều lần, để ráo rồi thái nhỏ cỡ 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LUFFA",
+      "name": "Mướp hương tươi",
+      "culinaryMeasure": "300 g (1 quả vừa)",
+      "prepNote": "gọt bỏ lớp vỏ xanh ngoài, rửa sạch, bổ đôi theo chiều dọc rồi thái lát vát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 246,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô (hành khô)",
+      "culinaryMeasure": "15 g (1 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia đôi: một nửa giã chung hoặc khuấy vào nước cua, một nửa phi thơm chưng gạch)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 13.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chưng gạch cua)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tím và chưng vàng phần gạch cua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 3 g cho vào cối giã cùng cua giúp thịt cua dẻo và dễ đóng bánh, 3 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm dịu vào nước canh để giữ vị ngọt thanh của cua đồng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm sau cùng cho nước canh dậy hương truyền thống",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SHRIMP_PASTE",
+      "name": "Mắm tôm (tùy chọn)",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan với ít nước canh để tăng mùi thơm đặc trưng chuẩn vị Bắc",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (lọc cua và nấu canh)",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "chia làm 2 lần lọc qua rây lưới nhỏ để thu hết thịt cua mà không sót vỏ cứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1080,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch cua đồng và khêu gạch cua",
+      "instruction": "Ngâm 500 g cua đồng trong chậu nước sạch khoảng 15–20 phút cho nhả hết bùn đất, xóc rửa nhiều lần đến khi nước trong. Tách bỏ mai cua, lột bỏ phần yếm và chất bẩn ở miệng cua; dùng tăm nhọn khêu lấy toàn bộ phần gạch cua màu vàng cam trong mai ra chén riêng.",
+      "tip": "Tự sơ chế cua sống giúp nước canh ngọt đậm và sạch cát; nếu dùng cua xay sẵn, hãy chọn hàng tươi mới xay trong ngày.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Giã thịt cua và lọc lấy nước cốt cua",
+      "instruction": "Cho phần thân cua đã làm sạch vào cối cùng 3 g muối ăn, giã thật nhuyễn mịn. Đổ 600 ml nước lọc vào bóp nhẹ cho thịt cua tan đều rồi gạn qua rây lưới mịn vào nồi nấu canh; tiếp tục đổ 600 ml nước lọc còn lại vào phần bã vỏ, bóp và lọc lần hai để thu trọn phần thịt cua, bỏ sạch xác vỏ.",
+      "tip": "Cho chút muối khi giã giúp đạm cua kết dính dẻo hơn, khi đun sẽ đóng thành tảng riêu dày và không bị bở vụn.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế rau đay, mồng tơi, mướp hương và hành tím",
+      "instruction": "Nhặt bỏ cọng già của 400 g rau đay và rau mồng tơi, giữ phần lá và đọt non, rửa sạch rồi thái khúc nhỏ khoảng 1 cm để canh có độ sánh mịn. Mướp hương gọt vỏ, rửa sạch, bổ đôi dọc thân và thái lát chéo dày 0,7 cm. Hành tím bóc vỏ, băm nhuyễn 15 g và chia làm hai phần bằng nhau."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun nước cua cho đóng tảng riêu nổi mặt",
+      "instruction": "Hòa một nửa lượng hành tím băm vào nồi nước lọc cua, đặt lên bếp đun ở lửa vừa và khuấy nhẹ một chiều trong 2 phút đầu để thịt cua không lắng bén đáy nồi. Khi nước bắt đầu nóng già và thịt cua tách lớp, ngừng khuấy hoàn toàn, hạ lửa nhỏ vừa để riêu cua từ từ kết thành mảng dày nổi lên mặt nồi mà không bị trào.",
+      "tip": "Tuyệt đối không khuấy khi nước cua gần sôi và không đun lửa lớn quá mức vì bọt cua dễ trào ra ngoài và làm vỡ tảng riêu.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phi hành tím chưng gạch cua vàng thơm",
+      "instruction": "Trong lúc đợi nồi canh sôi, bắc chảo nhỏ với 15 ml dầu ăn trên lửa vừa, cho nửa lượng hành tím băm còn lại vào phi thơm. Khi hành dậy mùi, trút chén gạch cua vào chưng nhanh tay khoảng 1–2 phút cho gạch chuyển màu vàng cam óng ả và chín thơm.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Thả mướp hương, rau đay và mồng tơi vào canh",
+      "instruction": "Dùng vá gạt nhẹ tảng riêu cua sang một bên mép nồi. Thả mướp hương vào khoảng trống trước, đợi nước sôi lăn tăn lại rồi cho rau đay và mồng tơi vào theo mép nồi, ấn nhẹ cho rau ngập nước. Nêm 3 g muối còn lại, 6 g hạt nêm, 10 ml nước mắm ngon và 5 g mắm tôm (nếu dùng).",
+      "tip": "Thả rau vào mép nồi thay vì đổ thẳng lên giữa mặt nước sẽ giữ nguyên vẹn tảng riêu cua đẹp mắt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Trút gạch cua chưng và hoàn thiện tô canh",
+      "instruction": "Nấu thêm 2 phút ở lửa vừa đến khi rau mồng tơi, rau đay chín mềm xanh mướt và mướp hương vừa chuyển trong, thịt cua chín kỹ hoàn toàn. Rưới phần gạch cua đã chưng lên mặt nồi, khuấy nhẹ mép nồi rồi tắt bếp ngay để giữ trọn vị ngọt và sắc xanh của rau."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 124,
+    "energyKcal": 123.5,
+    "energyKj": 517,
+    "proteinG": 15.3,
+    "fatG": 4.2,
+    "saturatedFatG": 0.7,
+    "carbG": 6.9,
+    "fiberG": 2.6,
+    "sugarG": 1.8,
+    "sodiumMg": 1420,
+    "saltG": 3.55,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Asian Shrimp Paste Ref",
+      "USDA FDC 168421",
+      "USDA FDC 169249",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174208",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5eec2917a08d21f741299b6de1690b65e5f63840a73fab47c56db3fd8115dc93",
+    "researchedFromV2Sha256": "b930d88edece775932bda17c441e2ab6dabeb1d3fc85ee2dc884535695bb4bc1"
+  }
+}

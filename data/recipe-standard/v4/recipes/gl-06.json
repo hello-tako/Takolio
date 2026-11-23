@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-06",
+    "slug": "pad-krapow",
+    "title": "Thịt heo băm xào lá quế kiểu Thái (Pad Krapow)",
+    "subtitle": "Thịt heo băm xào tỏi ớt thơm nồng hương húng quế Thái, đậm vị nước tương và nước mắm, ăn kèm cơm trắng trứng ốp la giòn viền"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 2,
+    "tags": [
+      "Thái Lan",
+      "Món xào",
+      "Cay nồng",
+      "Cơm đĩa",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Pad Krapow là món cơm đĩa đường phố trứ danh của Thái Lan với thịt heo băm xào săn trên lửa lớn cùng tỏi ớt giã dập, đậu que giòn ngọt, sốt nước tương đậm đà và lá húng quế thơm nồng.",
+    "servingSuggestion": "Xới cơm trắng nóng ra đĩa sâu lòng, múc thịt heo xào húng quế lên bên cạnh, đặt trứng gà ốp la viền giòn lên trên và dọn kèm chén nước mắm ớt chanh.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay sau khi xào; phần thịt xào có thể bảo quản hộp kín trong ngăn mát 2 ngày, hâm nóng bằng chảo lửa lớn và chiên trứng mới khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo xay (có chút mỡ giắt)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "để ráo nước, dùng nĩa đánh tơi trước khi xào để thịt không vón cục",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 5–6 tép)",
+      "prepNote": "bóc vỏ, cho vào cối giã sần sùi cùng ớt để dậy tinh dầu thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm và ớt sừng đỏ",
+      "culinaryMeasure": "4 quả (3 ớt hiểm, 1 ớt sừng)",
+      "prepNote": "rửa sạch, bỏ cuống; ớt hiểm giã dập cùng tỏi, ớt sừng thái lát xéo tạo màu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GREEN_BEANS",
+      "name": "Đậu que tươi (hoặc đậu đũa)",
+      "culinaryMeasure": "100 g",
+      "prepNote": "tước xơ hai bên, rửa sạch, thái khúc ngắn khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái",
+      "culinaryMeasure": "25 g (1 nắm lớn)",
+      "prepNote": "nhặt lấy lá non và ngọn mềm, rửa nhẹ, để thật ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đen đặc Thái",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha sẵn cùng xì dầu nhạt, nước mắm, đường và nước lọc trước khi bật bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt (nước tương thanh)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "khuấy đều trong chén sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tăng hương thơm đậm đà đặc trưng ẩm thực Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "khuấy tan hoàn toàn trong hỗn hợp nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "chia 20 ml để xào thịt heo trên lửa lớn và 15 ml để chiên trứng ốp la",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 24.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "đập ra từng chén nhỏ trước khi chiên để giữ lòng đỏ nguyên vẹn",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nấu chín nóng",
+      "culinaryMeasure": "300 g (2 chén cơm)",
+      "prepNote": "dùng gạo thơm hạt dẻo, xới tơi trước khi dọn",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha sốt xào)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "giúp hòa tan đường và điều chỉnh độ sánh của nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Giã tỏi ớt và sơ chế rau củ",
+      "instruction": "Cho 1/2 củ tỏi khô bóc vỏ cùng 3 quả ớt hiểm vào cối, giã dập thành hỗn hợp sần sùi để tinh dầu tiết ra mạnh hơn so với băm. Thái lát xéo 1 quả ớt sừng đỏ. Tước xơ 100 g đậu que và cắt khúc ngắn 1 cm. Nhặt 25 g lá húng quế Thái, rửa nhẹ rồi vẩy thật ráo.",
+      "tip": "Không nên giã tỏi ớt quá nhuyễn thành bột vì khi gặp dầu nóng rất dễ cháy khét và tạo vị đắng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn nước sốt xào đậm đà",
+      "instruction": "Trộn đều trong một chén nhỏ gồm 15 ml xì dầu đen đặc Thái, 15 ml xì dầu nhạt, 10 ml nước mắm ngon, 5 g đường cát trắng và 30 ml nước lọc. Khuấy kỹ đến khi đường tan hoàn toàn để sẵn ngay cạnh bếp.",
+      "tip": "Các bước xào Pad Krapow diễn ra rất nhanh trên lửa lớn nên việc pha sẵn sốt giúp thịt không bị quá lửa trong lúc nêm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt và xào săn thịt heo băm",
+      "instruction": "Đun nóng chảo sâu lòng trên lửa lớn với 20 ml dầu ăn đến khi dầu lăn tăn hơi nóng, cho hỗn hợp tỏi và ớt hiểm giã dập vào đảo nhanh khoảng 20 giây cho dậy mùi thơm nồng. Lập tức trút 300 g thịt heo xay vào chảo, dùng xẻng dằm tơi đều tay và xào liên tục khoảng 4 phút đến khi thịt săn rời, ráo nước và chín hoàn toàn không còn màu hồng.",
+      "tip": "Giữ lửa lớn và dằm thịt thật tơi ngay từ đầu để thịt ra hết nước thừa nhanh, áp chảo hơi xém cạnh sẽ thơm mùi khói chảo.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào đậu que và áo đều nước sốt",
+      "instruction": "Cho 100 g đậu que cắt khúc cùng ớt sừng đỏ thái lát vào chảo thịt, đảo đều 1 phút trên lửa lớn. Khuấy lại chén nước sốt rồi rưới hết vào chảo, tiếp tục đảo nhanh tay thêm 2 phút cho nước sốt sôi bùng, keo nhẹ lại và bám bóng đều quanh từng hạt thịt heo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp và đảo nhanh lá húng quế Thái",
+      "instruction": "Tắt bếp ngay khi nước sốt vừa sệt, cho toàn bộ 25 g lá húng quế Thái vào chảo và đảo nhanh 10–15 giây cho lá vừa xẹp xuống, tỏa hương thơm nồng nàn nhờ nhiệt dư rồi trút ngay ra đĩa.",
+      "tip": "Cho lá húng quế vào sau khi đã tắt bếp giúp giữ trọn màu xanh tươi và tinh dầu thơm đặc trưng của lá quế."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Chiên trứng gà ốp la viền giòn kiểu Thái",
+      "instruction": "Dùng một chảo nhỏ làm nóng 15 ml dầu ăn còn lại trên lửa vừa lớn đến khi dầu thật nóng già, nhẹ nhàng trượt từng quả trứng gà (2 quả) vào chiên khoảng 2 phút. Nghiêng nhẹ chảo và múc dầu nóng rưới lên mặt lòng trắng để viền trứng phồng giòn vàng rụm trong khi lòng đỏ vẫn béo sánh lòng đào rồi vớt ra.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Trình bày cơm đĩa Pad Krapow nóng hổi",
+      "instruction": "Ép nhẹ 300 g cơm trắng nóng vào chén rồi úp ra 2 đĩa, múc phần thịt heo băm xào lá quế sang bên cạnh và đặt mỗi đĩa 1 quả trứng ốp la giòn viền lên trên, dọn dùng ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 813,
+    "energyKcal": 812.9,
+    "energyKj": 3401,
+    "proteinG": 38.2,
+    "fatG": 48.8,
+    "saturatedFatG": 15.1,
+    "carbG": 53.4,
+    "fiberG": 2.3,
+    "sugarG": 6.1,
+    "sodiumMg": 1578,
+    "saltG": 3.95,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 167902",
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169961",
+      "USDA FDC 170106",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172232",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/pad-krapow.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "76b23f3e7bc5408231bcdb454b1e9942ddabdbb2035f37618a9201a42ee36870",
+    "researchedFromV2Sha256": "028df0d24c7c63e643d13bb5ce435c77e2c59fef920a04654cca3b26f0814f84"
+  }
+}

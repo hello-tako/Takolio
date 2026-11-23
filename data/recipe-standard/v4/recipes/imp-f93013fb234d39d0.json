@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f93013fb234d39d0",
+    "slug": "bun-xao-chay-nam",
+    "title": "Bún xào chay nấm đùi gà rau củ",
+    "subtitle": "Sợi bún gạo tươi tơi mềm không bết dính, xào thơm cùng nấm đùi gà, bắp cải, cà rốt và nước tương đậm đà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Bún xào",
+      "Nấm đùi gà",
+      "Rau củ",
+      "Ngày rằm"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa bún xào chay mộc mạc mà tròn vị với từng sợi bún gạo tơi mềm thấm đều nước tương thơm lừng, kết hợp nấm đùi gà giòn ngọt, bắp cải và cà rốt thái sợi giòn tươi, dậy hương tỏi phi và hành lá.",
+    "servingSuggestion": "Gắp bún xào nóng ra đĩa lớn, rắc thêm chút tiêu xay và ớt thái lát nếu thích cay; dùng nóng kèm chén nước tương ớt hoặc dưa leo rau sống.",
+    "storageAndReheat": "Bún xào ngon nhất khi thưởng thức nóng ngay sau khi nấu; nếu còn dư bảo quản ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo lửa vừa 2–3 phút với 1 muỗng nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE_VERMICELLI",
+      "name": "Bún gạo tươi",
+      "culinaryMeasure": "400 g",
+      "prepNote": "trụng nhanh qua nước sôi 1–2 phút nếu sợi còn cứng rồi xả ráo cho tơi rời",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "cắt gốc, rửa nhanh nước sạch rồi để ráo, thái lát mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/4 bắp (khoảng 200 g)",
+      "prepNote": "rửa sạch, bỏ gân cứng rồi thái sợi dài vừa gắp",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 170,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch và thái sợi mỏng dài 4–5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml xào rau nấm và 15 ml trộn/xào tơi bún",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 26.22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 25 ml nêm rau nấm và 15 ml rưới khi đảo cùng bún",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 47.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 47.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "nêm vị ngọt thanh cho phần rau nấm xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "dùng 2 g pha nước rửa nấm rồi xả bỏ, 3 g nêm khi xào rau",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "hài hòa vị mặn của nước tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc thơm lên mặt đĩa bún xào",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, bắp cải, cà rốt và trụng bún",
+      "instruction": "Nấm đùi gà cắt bỏ gốc, rửa nhanh trong nước pha 2 g muối ăn rồi xả sạch, để ráo và thái lát mỏng. Bắp cải rửa sạch, thái sợi; cà rốt gọt vỏ thái sợi mỏng; tỏi khô băm nhỏ; hành lá cắt khúc 3 cm. Đun sôi nồi nước, trụng nhanh 400 g bún gạo tươi khoảng 1 phút rồi vớt ra rổ để thật ráo và trộn nhẹ với 10 ml dầu ăn cho sợi tơi.",
+      "tip": "Trộn nhẹ bún ráo nước với một chút dầu ăn giúp từng sợi bún tơi rời, không dính chảo và không bị nát khi đảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào cà rốt, bắp cải",
+      "instruction": "Làm nóng chảo rộng với 20 ml dầu ăn còn lại trên lửa vừa, cho tỏi băm vào phi 30 giây đến khi thơm vàng nhẹ. Bật lửa lớn, cho cà rốt và bắp cải thái sợi vào đảo đều tay 3 phút đến khi rau hơi mềm mà vẫn giữ độ giòn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín nấm đùi gà cùng rau củ",
+      "instruction": "Cho nấm đùi gà thái lát vào chảo rau củ, tiếp tục đảo đều trên lửa lớn trong 3 phút cho nấm chín mềm và tiết nước ngọt tự nhiên hòa vào rau.",
+      "tip": "Xào cà rốt và bắp cải trước rồi mới thêm nấm đùi gà thái lát mỏng giúp cả ba nguyên liệu chín tới đồng đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm gia vị đậm đà cho hỗn hợp rau nấm",
+      "instruction": "Nêm vào chảo 25 ml nước tương, 4 g hạt nêm chay, 3 g muối ăn còn lại và 8 g đường cát trắng, đảo đều tay 1 phút cho đường tan hết và rau nấm thấm đẫm gia vị."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo tơi bún gạo tươi quyện đều rau nấm",
+      "instruction": "Hạ xuống lửa vừa, trút bún gạo tươi đã ráo vào chảo, dùng đũa xới đảo nhẹ tay cho sợi bún hòa quyện với rau nấm. Rưới thêm 15 ml nước tương còn lại vào bún và đảo đều thêm 2 phút cho sợi bún thấm màu vàng nâu nhẹ đẹp mắt.",
+      "tip": "Dùng hai chiếc đũa đảo hất nhẹ từ dưới lên thay vì xẻng đè mạnh để sợi bún không bị gãy vụn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, tiêu xay và dọn bún xào nóng",
+      "instruction": "Nêm nếm lại vừa miệng rồi cho hành lá cắt khúc vào đảo nhanh 15 giây, tắt bếp. Gắp bún xào chay ra đĩa, rắc 1 g tiêu đen xay lên trên và thưởng thức nóng kèm chén nước tương ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 301,
+    "energyKcal": 300.5,
+    "energyKj": 1258,
+    "proteinG": 7.3,
+    "fatG": 9.5,
+    "saturatedFatG": 1.4,
+    "carbG": 49.3,
+    "fiberG": 5.5,
+    "sugarG": 7.2,
+    "sodiumMg": 1516,
+    "saltG": 3.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "NIN VN Fresh Bun Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f665cba686e6da185c386aba9e09295ad1bb319e876887abd10c1ed43bf85f66",
+    "researchedFromV2Sha256": "94a9646b0255d986cdf03e45ba83019cdd9f608535c9b9c2da207bc3d5608b80"
+  }
+}

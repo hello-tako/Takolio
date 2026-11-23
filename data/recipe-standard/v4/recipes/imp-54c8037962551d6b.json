@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-54c8037962551d6b",
+    "slug": "gia-do-xao-toi",
+    "title": "Giá đỗ xào tỏi",
+    "subtitle": "Giá đỗ trắng mập giòn ngọt xào chớp nhoáng trên lửa lớn cùng tỏi phi vàng thơm và hành lá xanh tươi"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau củ",
+      "Thanh đạm",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Giá đỗ xào tỏi là món rau cấp tốc giữ nguyên độ giòn mọng ngọt thanh tự nhiên của giá đỗ tươi, quyện mùi tỏi phi vàng thơm lừng và vị mặn dịu vừa vặn, cực kỳ hợp để giải ngấy trong bữa cơm gia đình.",
+    "servingSuggestion": "Gắp giá đỗ xào tỏi ra đĩa phẳng ngay sau khi tắt bếp, dùng nóng với cơm trắng cùng các món thịt kho hoặc cá chiên.",
+    "storageAndReheat": "Giá đỗ xào rất nhanh ra nước khi nguội nên cần ăn hết ngay trong bữa; không khuyến khích bảo quản qua đêm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "nhặt bỏ rễ và vỏ đậu, rửa nhẹ nhàng rồi vẩy thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi và áo bóng cọng giá khi xào nhanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1,5 muỗng cà phê (8 ml)",
+      "prepNote": "rưới nhanh vào chảo để dậy mùi thơm dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "nêm đều lên giá đỗ lúc đảo lửa lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 g)",
+      "prepNote": "giúp cân bằng vị ngọt thanh của giá đỗ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "rắc hoàn thiện trước khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nhặt rửa và làm ráo hoàn toàn giá đỗ",
+      "instruction": "Nhặt bỏ phần rễ dài và vỏ đậu đen còn sót trên giá đỗ, rửa nhẹ tay 2 lần nước sạch rồi vớt ra rổ thưa, vẩy thật ráo nước để khi xào giá không bị ra nước và nát dập.",
+      "tip": "Để giá đỗ thật khô ráo trước khi xào giúp món ăn giòn sần sật và không bị sũng nước dưới đáy đĩa."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi băm và hành lá",
+      "instruction": "Tỏi khô bóc vỏ, đập dập rồi băm nhỏ. Hành lá rửa sạch, bỏ gốc già và cắt khúc dài khoảng 4 cm để chung một chén."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm vàng tỏi băm",
+      "instruction": "Đặt chảo rộng lên bếp lửa vừa-lớn, đun nóng 25 ml dầu ăn rồi cho tỏi băm vào phi đều tay khoảng 30–40 giây đến khi tỏi vừa ngả vàng nhẹ và tỏa mùi thơm lừng.",
+      "tip": "Không phi tỏi quá cháy sẫm vì tỏi khét sẽ làm mất vị ngọt thanh của giá đỗ."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào giá đỗ chớp nhoáng trên lửa lớn",
+      "instruction": "Vặn bếp lên lửa lớn nhất, trút toàn bộ giá đỗ vào chảo dầu tỏi và đảo nhanh tay liên tục khoảng 1 phút. Rắc 5 g hạt nêm, 3 g muối ăn và rưới 8 ml nước mắm ngon, tiếp tục đảo đều thêm 1 phút cho cọng giá vừa chín tới vẫn còn căng giòn.",
+      "tip": "Tổng thời gian xào giá trên chảo chỉ nên từ 1,5 đến 2 phút để giữ trọn độ giòn mọng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm hành lá và tiêu đen xay",
+      "instruction": "Thả hành lá cắt khúc và 1,5 g tiêu đen xay vào chảo giá đỗ, đảo nhanh tay thêm 15–20 giây cho hành vừa chín xanh rồi tắt bếp ngay.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức nóng",
+      "instruction": "Gắp ngay giá đỗ xào tỏi ra đĩa phẳng để tránh hơi nóng trong chảo làm giá tiếp tục chín mềm, rưới chút nước xào thơm mùi tỏi lên mặt và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 116,
+    "energyKcal": 115.6,
+    "energyKj": 484,
+    "proteinG": 4.5,
+    "fatG": 7.2,
+    "saturatedFatG": 1.1,
+    "carbG": 11.1,
+    "fiberG": 2.6,
+    "sugarG": 5.4,
+    "sodiumMg": 924,
+    "saltG": 2.31,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b3981b1e4dbccfd3c2f031d3bc5e66983b93422ac7f68ec890e53284b4429d8a",
+    "researchedFromV2Sha256": "165a01ade8a0619fcfb9dff6ab23ad7299ae0886c184aaaeb26bb0ca0a16edb2"
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e3df53f1154592bc",
+    "slug": "ca-nuong-ca-chua-y",
+    "title": "Cá nướng cà chua chanh vàng kiểu Ý",
+    "subtitle": "Phi lê cá biển thịt trắng ướp chanh tỏi nướng lò cùng cà chua chín mọng và lớp vụn bánh mì giòn thơm thảo mộc"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Cá nướng",
+      "Ẩm thực Ý",
+      "Cà chua",
+      "Chanh vàng",
+      "Ít béo"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Phi lê cá thịt trắng chắc ngọt được ướp thấm vị nước cốt chanh vàng, tỏi và dầu ô liu, phủ lớp vụn bánh mì ngò tây giòn rụm rồi nướng lò cùng cà chua chín mọng tiết sốt chua ngọt tự nhiên.",
+    "servingSuggestion": "Dọn cá nóng ra đĩa, rưới phần nước sốt cà chua đọng dưới khay lên trên và ăn kèm bánh mì giòn hoặc khoai tây nướng.",
+    "storageAndReheat": "Món ngon nhất khi ăn nóng ngay sau khi nướng; nếu còn thừa có thể bảo quản ngăn mát tối đa 24 giờ và hâm lại ở 170°C trong 6–8 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WHITE_FISH_FILLET",
+      "name": "Phi lê cá thịt trắng (cá kiếm hoặc cá chẽm)",
+      "culinaryMeasure": "600 g (4 khúc phi lê)",
+      "prepNote": "rửa nhanh dưới vòi nước lạnh, gỡ sạch xương dăm rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "4 quả (khoảng 480 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ đôi hoặc bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 480,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 480,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1 quả (khoảng 100 g)",
+      "prepNote": "1/2 quả vắt lấy nước cốt ướp cá, 1/2 quả thái lát mỏng đặt lên mặt cá",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn; chia đôi cho nước ướp và hỗn hợp phủ mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "16 g (~8 nhánh)",
+      "prepNote": "rửa sạch, nhặt lá, băm nhỏ; chia cho nước ướp, lớp phủ và rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 16,
+      "unit": "g",
+      "grossGrams": 16,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 14.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên xù (hoặc vụn bánh mì khô)",
+      "culinaryMeasure": "30 g (~4 muỗng canh)",
+      "prepNote": "trộn đều với ngò tây, tỏi băm và dầu ô liu để phủ giòn mặt cá",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "55 ml (~3,5 muỗng canh)",
+      "prepNote": "chia 30 ml pha nước ướp, 15 ml trộn bột xù và 10 ml phết khay nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 50.1,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 47.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia đều ướp cá, trộn lớp phủ và rắc nhẹ lên cà chua",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "xay mịn để ướp cá và rắc mặt trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm nóng lò và sơ chế phi lê cá",
+      "instruction": "Bật lò nướng làm nóng trước ở 200°C chế độ hai lửa trên-dưới trong 10 phút. Rửa nhanh 600 g phi lê cá thịt trắng dưới vòi nước lạnh, dùng nhíp kiểm tra gắp hết xương dăm dọc thớ thịt rồi thấm thật khô bề mặt cá bằng khăn giấy.",
+      "tip": "Thấm thật khô miếng cá giúp nước ướp và lớp vụn bánh mì bám chắc, đồng thời mặt cá khi nướng lên màu vàng đẹp mà không bị ra nước đục.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Pha nước sốt chanh tỏi và ướp cá",
+      "instruction": "Trong chén nhỏ, khuấy đều 30 ml dầu ô liu, nước cốt 1/2 quả chanh vàng, 1/2 lượng tỏi băm nhuyễn, 6 g ngò tây băm, 3 g muối ăn và 1 g tiêu đen xay. Xếp 4 miếng cá vào đĩa sâu, phết đều hỗn hợp lên hai mặt và để ướp khoảng 15 phút ở nhiệt độ phòng cho thấm vị.",
+      "tip": "Không ướp cá với nước cốt chanh quá 20 phút vì lượng axit tự nhiên có thể làm bề mặt thịt cá bị tái bở trước khi nướng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Chuẩn bị cà chua và hỗn hợp vụn bánh mì thảo mộc",
+      "instruction": "Cà chua chín rửa sạch, bổ đôi hoặc bổ múi cau vừa ăn; nửa quả chanh vàng còn lại thái lát mỏng. Trong bát riêng, trộn tơi 30 g bột chiên xù cùng phần tỏi băm còn lại, 6 g ngò tây băm và 15 ml dầu ô liu."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp cá cùng cà chua lên khay nướng",
+      "instruction": "Phết đều 10 ml dầu ô liu còn lại lên đáy khay nướng chống dính (hoặc lót giấy nến). Đặt 4 khúc cá đã ướp vào giữa khay, xếp cà chua xen kẽ xung quanh, rắc 3 g muối ăn và 1 g tiêu đen xay còn lại lên cá và cà chua. Phủ đều hỗn hợp bột chiên xù thảo mộc lên kín mặt trên từng miếng cá."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng lò đến khi cá chín mọng, mặt vàng giòn",
+      "instruction": "Đặt khay vào ngăn giữa lò nướng ở 200°C, nướng khoảng 15–18 phút. Khoảng 5 phút cuối, đặt thêm các lát chanh vàng mỏng lên mặt cá và nướng tiếp đến khi lớp vụn bánh mì chuyển vàng giòn, cà chua mềm nhừ tiết nước ngọt và thớ cá chuyển trắng đục hoàn toàn, dễ tách nhẹ bằng nĩa.",
+      "tip": "Canh chừng trong 5 phút cuối để cá vừa chín tới giữ độ mọng nước ngọt thịt, tránh nướng quá lâu làm phi lê cá bị khô xác.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nghỉ cá và rưới nước sốt cà chua",
+      "instruction": "Lấy khay cá ra khỏi lò, để cá nghỉ 3 phút cho phần nước ngọt ổn định bên trong thớ thịt. Chuyển cá và cà chua ra đĩa ấm, rưới phần nước sốt cà chua đọng dưới khay lên trên và rắc nốt 4 g ngò tây tươi băm nhỏ để hoàn thiện."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 332,
+    "energyKcal": 332.2,
+    "energyKj": 1390,
+    "proteinG": 33,
+    "fatG": 16.6,
+    "saturatedFatG": 2.8,
+    "carbG": 13.1,
+    "fiberG": 2.3,
+    "sugarG": 3.7,
+    "sodiumMg": 724,
+    "saltG": 1.81,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Panko / Batter Mix Ref",
+      "USDA FDC 167746",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 175148"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8d5061d70b4d0b4ab7f459fbb2aac2cb66f8e6741401406a8e8126f73123848d",
+    "researchedFromV2Sha256": "261071898f9ef91fe2dc1a424494bb530b0deb9df1ab49b3a1e5ea3a058e5fc3"
+  }
+}

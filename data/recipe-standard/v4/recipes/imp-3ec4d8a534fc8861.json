@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3ec4d8a534fc8861",
+    "slug": "ga-nuong-bulgogi",
+    "title": "Gà nướng Bulgogi kiểu Hàn (Dak Bulgogi)",
+    "subtitle": "Đùi gà rút xương ướp nước tương, đường nâu, mật ong và gừng tỏi nướng áp chảo xém cạnh thơm lừng"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Dak bulgogi",
+      "Gà nướng",
+      "Hàn Quốc",
+      "Mặn ngọt",
+      "Cuốn rau"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà nướng Bulgogi (Dak Bulgogi) sử dụng phần đùi gà mềm mọng ướp đậm đà trong hỗn hợp nước tương, đường nâu, mật ong, rượu mirin, dầu mè và gừng tỏi. Khi nướng hoặc áp chảo trên lửa vừa-cao, lớp gia vị caramel hóa tạo bề mặt vàng xém thơm lừng mà thịt bên trong vẫn mọng nước.",
+    "servingSuggestion": "Thái gà thành miếng vừa ăn, rưới nước sốt ướp đã đun sánh và rắc hành lá, mè rang lên trên; ăn nóng với cơm trắng hoặc cuốn lá xà lách kèm kim chi.",
+    "storageAndReheat": "Có thể ướp gà trước trong ngăn mát qua đêm để tiện nấu nhanh; gà đã nướng bảo quản hộp kín ngăn mát tối đa 2 ngày và hâm nóng bằng lò nướng 180°C trong 5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà (rút xương hoặc lọc nạc)",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch, thấm thật khô, khứa vài đường nông mặt thịt dày để dễ thấm gia vị và chín đều",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng hoặc xay nhỏ một phần hòa vào nước ướp cho thịt mềm ngọt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, phần đầu trắng băm nhỏ ướp gà, phần lá xanh thái nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê băm)",
+      "prepNote": "gọt vỏ, băm hoặc mài nhuyễn để khử mùi gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Hàn Quốc (Xì dầu)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "nước sốt nền mặn thơm ướp thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "giúp gà lên màu nâu cánh gián bóng đẹp khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo độ ngọt dịu và lớp áo óng ả cho thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 21.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin Nhật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp thịt gà mềm ẩm và khử mùi tanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tạo mùi thơm bùi đặc trưng cho sốt ướp bulgogi",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn vào nước sốt ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "phết mỏng lên vỉ hoặc chảo gang chống dính trước khi nướng",
+      "componentGroup": "main",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 7.82,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc trang trí lên bề mặt thịt gà khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế và khứa nhẹ thịt đùi gà",
+      "instruction": "Rửa sạch 600 g thịt đùi gà dưới vòi nước lạnh, thấm thật khô bằng khăn giấy. Dùng dao khứa 2–3 đường chéo sâu khoảng 1 cm trên phần thịt dày để nước ướp thấm nhanh và thịt không bị co rút khi gặp nhiệt cao."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Pha sốt bulgogi và ướp gà thấm vị",
+      "instruction": "Trong tô lớn, khuấy tan 45 ml nước tương Hàn Quốc, 20 g đường nâu, 15 ml mật ong nguyên chất, 15 ml rượu ngọt Mirin Nhật, 10 ml dầu mè rang, tỏi băm, gừng băm, đầu hành lá băm và 1,5 g tiêu đen xay. Cho thịt gà và hành tây thái mỏng vào bóp đều cho phủ kín sốt, đậy kín ướp ít nhất 30 phút (hoặc 2–4 giờ trong ngăn mát cho đậm đà).",
+      "tip": "Đảm bảo đường nâu tan hết trong hỗn hợp ướp để sốt bám đều vào thớ gà, tránh bị cháy cục bộ khi nướng.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng chảo gang hoặc lò nướng",
+      "instruction": "Nếu ướp lạnh, lấy gà ra ngoài khoảng 15 phút cho bớt lạnh. Làm nóng chảo gang hoặc vỉ nướng ở lửa vừa-cao (hoặc làm nóng lò nướng ở 200°C), phết đều 10 ml dầu ăn thực vật lên bề mặt chảo/vỉ để chống dính.",
+      "tip": "Để thịt về gần nhiệt độ phòng trước khi nướng giúp gà chín đều từ trong ra ngoài mà bề mặt không bị cháy khét."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nướng gà chín vàng xém cạnh hai mặt",
+      "instruction": "Gạt bớt phần hành tây bám trên thịt (giữ lại nước ướp), đặt gà lên vỉ hoặc chảo nóng nướng khoảng 6 phút mỗi mặt đến khi bề mặt xém vàng bóng đẹp. Kiểm tra phần thịt dày nhất đạt độ chín hoàn toàn, cắt thử không còn màu hồng và nước thịt chảy ra trong.",
+      "tip": "Trở mặt khi mặt dưới đã lên màu nâu cánh gián; vì sốt có đường và mật ong nên cần canh lửa vừa-cao, tránh lửa quá gắt.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Đun sôi sánh phần nước ướp làm sốt rưới",
+      "instruction": "Đổ toàn bộ nước ướp còn dư cùng hành tây thái lát vào chảo nhỏ, đun sôi mạnh rồi hạ lửa vừa-nhỏ nấu thêm 3 phút cho hành tây chín mềm và nước sốt sánh nhẹ lại, đảm bảo tiệt trùng an toàn trước khi dùng làm sốt rưới.",
+      "tip": "Luôn đun sôi kỹ phần nước ướp từng tiếp xúc với thịt gà sống ít nhất 2–3 phút trước khi rưới lên thành phẩm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thái miếng, rưới sốt và rắc mè hoàn thiện",
+      "instruction": "Cho gà nướng nghỉ 4 phút trên thớt để giữ trọn nước ngọt bên trong, thái miếng vừa ăn rồi xếp ra đĩa. Rưới nước sốt bulgogi sánh bóng cùng hành tây lên trên, rắc lá xanh hành lá thái nhỏ và hạt mè trắng rang rồi dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 338,
+    "energyKcal": 338.2,
+    "energyKj": 1416,
+    "proteinG": 26.5,
+    "fatG": 18.4,
+    "saturatedFatG": 4.4,
+    "carbG": 15.6,
+    "fiberG": 0.9,
+    "sugarG": 11.9,
+    "sodiumMg": 839,
+    "saltG": 2.1,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169640",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c5957f3b217229ee5baee0671cb331a26dfe07332d7b7f6a252aec97fcc4699b",
+    "researchedFromV2Sha256": "4d0e2c7e73fce62d8c6f2467e12ac21c8f0cd4c76a9c48ae015080597937201e"
+  }
+}

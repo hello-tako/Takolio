@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6eaf6ed6d417c52c",
+    "slug": "muc-chien-muoi-ot",
+    "title": "Mực chiên giòn muối ớt kiểu Hồng Kông",
+    "subtitle": "Mực tươi áo hai lớp bột ướt và bột khô chiên vàng giòn rụm, xóc nhanh cùng tỏi gừng, ớt hiểm phi thơm và muối tiêu rang"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Hồng Kông",
+      "Hải sản",
+      "Muối ớt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mực chiên giòn muối ớt kiểu Hồng Kông hấp dẫn với lớp vỏ ngoài xốp giòn vàng ruộm ôm trọn miếng mực tươi giòn ngọt bên trong, dậy mùi thơm bùng nổ của tỏi phi, gừng băm, ớt hiểm và hành lá.",
+    "servingSuggestion": "Dọn nóng ngay khi vừa xóc gia vị để giữ độ giòn rụm; thưởng thức kèm tương ớt hoặc chanh tươi như món khai vị hoặc ăn cùng cơm trắng.",
+    "storageAndReheat": "Món chiên ngon nhất khi dùng ngay lúc nóng giòn; nếu còn dư, bảo quản tủ mát tối đa 24 giờ và làm nóng lại bằng nồi chiên không dầu ở 180°C trong 3–4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi làm sạch",
+      "culinaryMeasure": "450 g",
+      "prepNote": "bỏ túi mực, mai và nội tạng, rửa sạch thấm thật khô, cắt khoanh hoặc miếng vừa ăn khía vằn nhẹ",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "85 g (~10 muỗng canh)",
+      "prepNote": "chia 50 g pha bột ướt áo mực, 35 g trộn lớp bột khô ngoài cùng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 85,
+      "unit": "g",
+      "grossGrams": 85,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "35 g (~4,5 muỗng canh)",
+      "prepNote": "trộn chung với bột mì đa dụng làm lớp bột khô giúp vỏ giòn lâu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BAKING_SODA",
+      "name": "Bột nở Baking soda",
+      "culinaryMeasure": "1,5 g (~1/3 muỗng cà phê)",
+      "prepNote": "trộn vào bột khô giúp lớp vỏ chiên phồng xốp giòn nhẹ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (~25 g, 6–7 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "10 g (~1 muỗng canh băm)",
+      "prepNote": "gọt vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm và ớt sừng đỏ",
+      "culinaryMeasure": "3 quả (~15 g)",
+      "prepNote": "bỏ bớt hạt nếu muốn giảm cay, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g, 2 cọng)",
+      "prepNote": "rửa sạch, thái nhỏ để xóc thơm bước cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "ướp sơ mực 10 phút khử mùi tanh rồi thấm ráo lại",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 7.43,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "trộn cùng tiêu đen xay; dùng 2 g pha bột ướt, 1 g rắc sau khi chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đều pha vào bột ướt và rắc xóc cùng muối ăn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "500 ml (chiên ngập dầu)",
+      "prepNote": "dùng chiên ngập mực cho vàng giòn (phần lớn dầu chắt ra sau khi chiên)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 460,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 46,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "70 ml (~4,5 muỗng canh)",
+      "prepNote": "khuấy với bột mì đa dụng tạo hỗn hợp bột ướt sánh mịn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 70,
+      "unit": "ml",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế mực tươi và ướp khử tanh",
+      "instruction": "Làm sạch 450 g mực ống tươi, cắt khoanh hoặc miếng vừa ăn và khía vằn nhẹ mặt trong. Có thể ướp mực với 15 ml rượu Thiệu Hưng trong 10 phút rồi dùng khăn giấy thấm thật khô ráo bề mặt mực. Băm nhuyễn tỏi khô, gừng tươi và ớt hiểm cùng ớt sừng đỏ; thái nhỏ hành lá tươi.",
+      "tip": "Thấm thật khô mực trước khi nhúng bột là yếu tố quyết định giúp lớp vỏ bám chắc và không bị bắn dầu khi chiên.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Pha bột ướt và trộn lớp bột khô",
+      "instruction": "Trong tô vừa, khuấy tan 50 g bột mì đa dụng với 70 ml nước lọc, 2 g muối ăn và 1 g tiêu đen xay thành hỗn hợp bột ướt sánh mịn. Trong đĩa rộng khác, trộn đều 35 g bột mì đa dụng còn lại cùng 35 g bột bắp và 1,5 g bột nở Baking soda."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Áo hai lớp bột cho từng miếng mực",
+      "instruction": "Trút mực đã thấm khô vào tô bột ướt đảo đều cho bột áo mỏng khắp bề mặt, sau đó gắp từng miếng mực lăn kỹ qua đĩa bột khô để tạo lớp áo tơi mịn. Xếp thưa các miếng mực đã áo bột ra khay phẳng, tránh chồng lên nhau gây bết dính.",
+      "tip": "Áo bột từng mẻ và xếp thưa nhau giúp lớp bột khô tơi xốp khi tiếp xúc với dầu nóng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên ngập dầu mực vàng giòn",
+      "instruction": "Đun nóng 500 ml dầu ăn thực vật trong chảo sâu lòng đến khoảng 180°C (thả đầu đũa thấy sủi tăm mạnh). Chia mực thành 2–3 mẻ nhỏ rồi thả vào chiên lửa vừa lớn khoảng 2–3 phút mỗi mẻ đến khi lớp vỏ phồng vàng giòn và thịt mực chín trắng săn bên trong. Vớt mực ra giá lưới cho ráo dầu.",
+      "tip": "Không cho quá nhiều mực vào chiên cùng lúc để tránh làm tụt nhiệt độ dầu khiến lớp vỏ bị ngấm dầu và mềm ỉu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phi thơm tỏi, gừng và ớt băm",
+      "instruction": "Chắt hết dầu chiên ra tô riêng, chỉ chừa lại khoảng 1 muỗng canh dầu nóng tráng mặt chảo. Hạ lửa vừa, cho tỏi băm, gừng băm và ớt băm vào đảo nhanh khoảng 1 phút cho dậy mùi thơm lừng mà không để tỏi cháy sậm.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Xóc mực với muối tiêu, hành lá và dọn nóng",
+      "instruction": "Trút toàn bộ mực chiên giòn và hành lá tươi thái nhỏ vào chảo, rắc 1 g muối ăn và 1 g tiêu đen xay còn lại rồi xóc đảo nhanh tay trong 20–30 giây cho tỏi ớt và muối tiêu bám đều khắp miếng mực. Tắt bếp, bày ngay ra đĩa và dùng nóng giòn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 423,
+    "energyKcal": 422.7,
+    "energyKj": 1768,
+    "proteinG": 23.7,
+    "fatG": 17.5,
+    "saturatedFatG": 2.8,
+    "carbG": 40.7,
+    "fiberG": 1.6,
+    "sugarG": 0.7,
+    "sodiumMg": 586,
+    "saltG": 1.46,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 169761",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "USDA FDC 175039"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "40d30ab8bfc0264f87b8f4c3814251e31ca02c8f2a0c43f7bf57b06a17f05950",
+    "researchedFromV2Sha256": "77cba96b653b12470e4f775a9223c0787c4b8c6b1974689393091a2fa50c8daf"
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-574963de4a60d466",
+    "slug": "ca-hap-chanh-ot-thai",
+    "title": "Cá chẽm hấp chanh ớt kiểu Thái (Pla Neung Manao)",
+    "subtitle": "Cá tươi nguyên con hấp sả chín mọng ngọt thịt, chan đẫm sốt nước dùng gà pha chanh tươi, nước mắm, tỏi băm và ớt hiểm cay nồng"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_hap_luoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Món hấp",
+      "Cá tươi",
+      "Chua cay",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "celery",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Pla Neung Manao là món cá hấp kinh điển trong các bữa tiệc Thái Lan, giữ trọn độ ngọt thanh mềm mọng của thịt cá tươi hòa quyện cùng nước sốt chanh tỏi ớt chua tê bùng vị và hương cần tàu tươi mát.",
+    "servingSuggestion": "Chuyển cá hấp sang đĩa bầu dục sâu lòng, xếp lá cần tàu xung quanh rồi rưới đều nước sốt chanh tỏi ớt nóng ấm lên mình cá; dọn ăn ngay với cơm trắng.",
+    "storageAndReheat": "Món cá hấp ngon nhất khi thưởng thức nóng ngay lúc vừa rưới sốt; nếu bảo quản ngăn mát trong 24 giờ, nên giữ riêng phần sốt và hấp nóng lại cá 5 phút trước khi chan sốt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "FISH_FRESHWATER",
+      "name": "Cá chẽm hoặc cá điêu hồng nguyên con làm sạch",
+      "culinaryMeasure": "650 g (1 con vừa)",
+      "prepNote": "đánh sạch vảy, bỏ mang ruột và màng đen bụng cá, rửa nước muối loãng thấm khô rồi khứa 3 đường chéo trên mỗi mặt mình cá",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 507,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "2 cây (khoảng 40 g)",
+      "prepNote": "đập dập, cắt khúc ngắn để nhồi bụng cá và lót dưới mình cá khi hấp khử tanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà thanh",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "đun sôi hòa tan đường thốt nốt làm nền nước sốt chan cá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "12 g (khoảng 1 muỗng canh)",
+      "prepNote": "băm nhỏ để nhanh tan trong nước dùng gà nóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2,5 quả (khoảng 50 ml nước cốt)",
+      "prepNote": "vắt lọc bỏ hạt, hòa vào sốt khi nước dùng đã tắt bếp để giữ hương thơm và vị chua thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 56.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "khuấy đều trong hỗn hợp sốt chanh tỏi ớt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ lớn (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhỏ để dậy mùi nồng đặc trưng của sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "5 quả",
+      "prepNote": "rửa sạch, băm nhỏ 4 quả pha sốt và thái lát 1 quả trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CELERY",
+      "name": "Cần tàu (hoặc cần tây non)",
+      "culinaryMeasure": "30 g (2–3 nhánh)",
+      "prepNote": "rửa sạch, cắt khúc 4 cm xếp quanh mình cá và rắc mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí tươi (rau mùi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái nhỏ trộn vào sốt ngay trước khi chan lên cá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, khứa mình cá và chuẩn bị xửng hấp",
+      "instruction": "Thấm thật khô 650 g cá chẽm đã làm sạch, dùng dao sắc khứa 3 đường chéo sâu tới sát xương trên mỗi mặt mình cá để hơi nóng thấm đều nhanh chín. Đập dập 2 cây sả cắt khúc, nhồi một nửa vào bụng cá và lót phần còn lại dưới đáy đĩa chịu nhiệt rồi đặt cá lên trên.",
+      "tip": "Thấm khô mình cá và lót sả bên dưới giúp cá không bị dính đĩa và khử sạch mùi tanh khi hấp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Hấp cá chín mềm giữ trọn vị ngọt",
+      "instruction": "Đun sôi mạnh nồi nước hấp trên lửa lớn rồi đặt đĩa cá vào xửng, đậy kín nắp và hấp liên tục 11 phút đến khi mắt cá đục trắng hẳn và dùng đũa tách nhẹ phần thịt dày nhất thấy chín trắng róc xương hoàn toàn.",
+      "tip": "Chỉ đặt cá vào xửng khi nước đã sôi bùng để thịt cá săn nhanh bên ngoài và giữ được vị ngọt mọng bên trong.",
+      "timerMinutes": 11
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế tỏi, ớt hiểm và rau thơm ăn kèm",
+      "instruction": "Trong lúc hấp cá, băm thật nhỏ 1 củ tỏi khô và 4 quả ớt hiểm tươi, thái lát xéo 1 quả ớt hiểm còn lại để trang trí. Rửa sạch 30 g cần tàu cắt khúc 4 cm và thái nhỏ 15 g ngò rí; vắt lấy nước cốt 2,5 quả chanh tươi lọc bỏ hạt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu tan đường và pha sốt chanh tỏi ớt",
+      "instruction": "Đun sôi 100 ml nước dùng gà với 12 g đường thốt nốt băm nhỏ trong nồi nhỏ khoảng 2 phút đến khi đường tan hoàn toàn rồi tắt bếp, đổ ra tô. Cho tỏi băm, ớt hiểm băm nhỏ, 35 ml nước mắm ngon và nước cốt chanh tươi vào khuấy đều nếm vừa vị chua cay nổi bật.",
+      "tip": "Cho nước cốt chanh và tỏi ớt vào tô nước dùng ấm thay vì đun sôi trực tiếp giúp tỏi giữ mùi thơm cay nồng và chanh không bị đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Chuyển cá sang đĩa sạch và xếp cần tàu",
+      "instruction": "Cẩn thận nhấc cá vừa hấp chín sang đĩa bầu dục sâu lòng, bỏ phần nước hấp cá đọng dưới đĩa cũ để món ăn không bị tanh, sau đó xếp phần lớn cần tàu cắt khúc quanh mình cá."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chan sốt nóng và hoàn thiện món cá hấp",
+      "instruction": "Trộn 15 g ngò rí thái nhỏ vào tô sốt, khuấy đều rồi rưới toàn bộ sốt chanh tỏi ớt lên khắp mình cá, trang trí thêm vài lá cần tàu và ớt thái lát lên trên rồi dọn nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 227,
+    "energyKcal": 226.7,
+    "energyKj": 948,
+    "proteinG": 35.1,
+    "fatG": 4.4,
+    "saturatedFatG": 1.2,
+    "carbG": 10.6,
+    "fiberG": 1.1,
+    "sugarG": 5.2,
+    "sodiumMg": 1281,
+    "saltG": 3.2,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169988",
+      "USDA FDC 169997",
+      "USDA FDC 170106",
+      "USDA FDC 172185",
+      "USDA FDC 172883",
+      "USDA FDC 175176",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9eaf09b92f49adaf1c7afc9b9b36ebd2ced88e2d58fc9e5f84daffb521f55933",
+    "researchedFromV2Sha256": "e3bde15fc4c32e1b0e0d8f211ae2f59b37e590d9f1395a9954c1ae0c5b6fcd61"
+  }
+}

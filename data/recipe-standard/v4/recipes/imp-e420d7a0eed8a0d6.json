@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e420d7a0eed8a0d6",
+    "slug": "tom-sot-cay-nhat",
+    "title": "Tôm sốt cay Nhật Bản (Ebi Chili)",
+    "subtitle": "Tôm tươi áp chảo giòn ngọt quyện sốt cà cay thơm nồng ấm từ tương ớt đậu bản Doubanjiang, tương cà, gừng tỏi và rượu Sake kiểu Yoshoku Nhật Bản"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_xao",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Ebi Chili",
+      "Tôm sốt cay",
+      "Yoshoku",
+      "Nhật Bản",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món Ebi Chili trứ danh trong ẩm thực Nhật Bản: tôm tươi sơ chế sạch giòn sần sật được áp chảo nhanh tay giữ trọn độ ngọt, sau đó áo đều lớp sốt đỏ óng sánh mịn hòa quyện vị cay thơm lên men của Doubanjiang và vị chua ngọt dịu từ tương cà.",
+    "servingSuggestion": "Múc tôm sốt cay ra đĩa nóng, rắc thêm phần lá xanh hành lá thái nhỏ; dùng kèm cơm trắng nóng hoặc mì xào rau củ đều rất bắt vị.",
+    "storageAndReheat": "Món tôm ngon nhất khi ăn nóng ngay vừa nấu xong; nếu còn thừa, đậy kín bảo quản ngăn mát tối đa 2 ngày và hâm nhanh trên chảo lửa vừa với 1 muỗng canh nước lọc để tôm không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi to (bóc vỏ, rút chỉ lưng)",
+      "culinaryMeasure": "350 g thịt tôm (khoảng 14–16 con to)",
+      "prepNote": "bóc vỏ, khứa nhẹ dọc sống lưng rút chỉ đen, chà bột năng rửa sạch rồi thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "30 g (~3,5 muỗng canh)",
+      "prepNote": "chia 10 g chà khử nhớt tôm rồi xả bỏ, 10 g áo tôm trước khi áp chảo và 10 g hòa nước làm sánh sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.67,
+      "edibleGrams": 20.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g (1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, băm thật nhuyễn để phi thơm nền sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "4 tép lớn (khoảng 10 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn chung với gừng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "chia phần đầu trắng băm nhỏ nấu cùng sốt, phần lá xanh thái khoanh rắc hoàn thiện",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DOUBANJIANG",
+      "name": "Tương ớt đậu bản Tứ Xuyên (Doubanjiang)",
+      "culinaryMeasure": "18 g (~1 muỗng canh)",
+      "prepNote": "xào thơm trên lửa nhỏ trước khi thêm sốt lỏng để dậy màu đỏ đẹp và hương cay thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà (Ketchup)",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "tạo vị chua ngọt dịu đặc trưng cho sốt Ebi Chili Nhật Bản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "dùng làm nền nước sốt đậm vị ngọt tự nhiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp tôm khử tanh và 20 ml pha nước sốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 34.7,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tăng chiều sâu vị mặn umami cho sốt cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "cân bằng vị cay mặn của Doubanjiang và xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 12 ml áp chảo tôm và 13 ml phi thơm gừng tỏi làm sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "7 ml (~1,5 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi hoàn tất món ăn để giữ trọn hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 7,
+      "unit": "ml",
+      "grossGrams": 6.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "dùng ướp thấm vào thịt tôm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp cùng tôm khử mùi và tạo hương cay ấm nhẹ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (hòa bột năng)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "hòa tan phần bột năng cuối cùng để tạo độ sánh cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 40.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch tôm bằng bột năng và sơ chế gia vị",
+      "instruction": "Cho 350 g tôm tươi đã bóc vỏ, rút chỉ lưng vào tô, rắc 10 g bột năng vào bóp nhẹ 30 giây để hút sạch nhớt và mùi tanh, sau đó rửa kỹ lại dưới vòi nước lạnh và thấm thật khô bằng khăn giấy. Băm thật nhuyễn gừng tươi và tỏi tươi; hành lá tách riêng phần đầu trắng băm nhỏ và phần lá xanh thái khoanh.",
+      "tip": "Chà tôm với một chút bột năng rồi xả sạch là mẹo giúp thịt tôm giòn săn tự nhiên và hoàn toàn hết mùi tanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp tôm với Sake, gia vị và lớp áo bột mỏng",
+      "instruction": "Ướp tôm đã thấm khô với 2 g muối ăn, 1 g tiêu trắng xay và 15 ml rượu Sake Nhật Bản, trộn đều rồi tiếp tục rắc thêm 10 g bột năng áo đều quanh từng con tôm; để nghỉ 10 phút cho thấm vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo sơ tôm trên lửa vừa lớn",
+      "instruction": "Đun nóng 12 ml dầu ăn thực vật trong chảo rộng trên lửa vừa lớn, xếp tôm thành một lớp thoáng và áp chảo mỗi mặt khoảng 1 phút đến khi mặt ngoài tôm vừa chuyển màu hồng cam và lớp bột se nhẹ thì gắp ngay ra đĩa riêng. Lau sạch cặn cháy nhẹ trong chảo bằng khăn giấy.",
+      "tip": "Không xào tôm chín kỹ ở bước này vì tôm sẽ tiếp tục được đảo cùng sốt nóng; áp chảo vừa chuyển màu giúp tôm giữ được độ giòn mọng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Phi thơm gừng tỏi và xào tương Doubanjiang",
+      "instruction": "Cho 13 ml dầu ăn thực vật còn lại vào chảo trên lửa vừa, thả gừng tươi và tỏi băm vào phi khoảng 30 giây đến khi thơm dịu thì hạ lửa nhỏ, thêm 18 g tương ớt đậu bản Doubanjiang vào đảo đều 30 giây cho dậy màu dầu đỏ và hương thơm nồng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Đun hòa quyện nền sốt cà cay ngọt",
+      "instruction": "Đổ vào chảo 45 ml tương cà Ketchup, 150 ml nước dùng gà, 20 ml rượu Sake còn lại, 15 ml xì dầu Nhật Bản và 8 g đường cát trắng. Khuấy đều và đun sôi liu riu trên lửa vừa khoảng 3 phút cho các gia vị hòa quyện.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Nấu chín tôm trong sốt và tạo độ sánh bóng",
+      "instruction": "Trút toàn bộ tôm đã áp chảo cùng phần đầu trắng hành lá vào chảo sốt, đảo nhẹ tay khoảng 2 phút đến khi tôm cong tròn, thịt chín đục hoàn toàn. Hòa tan 10 g bột năng còn lại với 45 ml nước lọc rồi rót từ từ vào chảo vừa khuấy đều đến khi sốt sánh bóng bám đều từng con tôm.",
+      "tip": "Rót nước bột năng từ từ từng chút một và khuấy liên tục trên lửa vừa để sốt sánh mượt đều, không bị vón cục.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Rưới dầu mè thơm và hoàn thiện đĩa tôm",
+      "instruction": "Tắt bếp ngay khi sốt sánh đạt độ bóng đẹp, rưới 7 ml dầu mè thơm vào đảo nhanh một vòng để giữ trọn hương thơm. Múc tôm sốt cay ra đĩa nóng, rắc phần lá xanh hành lá thái nhỏ lên trên và dùng kèm cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 273,
+    "energyKcal": 273.1,
+    "energyKj": 1143,
+    "proteinG": 25.8,
+    "fatG": 10.3,
+    "saturatedFatG": 1.6,
+    "carbG": 18.4,
+    "fiberG": 0.9,
+    "sugarG": 7.4,
+    "sodiumMg": 1343,
+    "saltG": 3.36,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "Pixian Doubanjiang Ref",
+      "USDA FDC 169076",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172883",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8febca6b675e777d608a428b9181c75823b72952ffec8ffd3c7f1f56c70bf979",
+    "researchedFromV2Sha256": "55a79d3eb495badd92a4859e611604ab1e2d7abee9587df42e95766cd5d8109a"
+  }
+}

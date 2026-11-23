@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2a958e709ba9cb7c",
+    "slug": "dau-phu-xao-kimchi",
+    "title": "Đậu phụ áp chảo kim chi xào cay (Dubu Kimchi)",
+    "subtitle": "Đậu phụ áp chảo vàng ruộm hai mặt ăn kèm kim chi xào cay đậm Gochujang thơm mùi tỏi phi và hành tây ngọt"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Dubu kimchi",
+      "Đậu phụ",
+      "Kim chi xào",
+      "Hàn Quốc",
+      "Món nhậu"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Phiên bản đậu phụ áp chảo kim chi xào cay (Dubu Kimchi) mang đến kết cấu giòn nhẹ bên ngoài của từng miếng đậu phụ vàng ruộm, hòa quyện cùng đĩa kim chi cải thảo xào sốt Gochujang đỏ óng cay nồng, rất thích hợp ăn cùng cơm trắng nóng hoặc làm món nhắm cuối tuần.",
+    "servingSuggestion": "Xếp đậu phụ áp chảo nóng cạnh phần kim chi xào, rắc hành lá và hạt mè trắng rang lên trên; dùng nóng cùng cơm trắng hoặc đồ uống lạnh.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay để cảm nhận vỏ đậu phụ còn giòn; nếu còn dư bảo quản hộp kín ngăn mát tối đa 24 giờ và áp chảo ấm lại trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ chắc (đậu hũ trắng cứng)",
+      "culinaryMeasure": "3 miếng (khoảng 360 g)",
+      "prepNote": "thấm thật khô hai mặt, thái miếng vuông hoặc chữ nhật dày khoảng 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo lên men chua",
+      "culinaryMeasure": "280 g",
+      "prepNote": "vắt nhẹ bớt nước muối nếu quá nhiều nước, cắt khúc vừa ăn khoảng 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 280,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng hoặc miếng vuông cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, cắt khúc 3 cm; giữ một ít thái nhỏ rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, thái lát xéo mỏng tạo màu sắc bắt mắt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "25 g (~1,5 muỗng canh)",
+      "prepNote": "hòa vào chén gia vị xào kim chi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "6 g (~1 muỗng canh)",
+      "prepNote": "tạo màu đỏ rực và vị cay ấm cho kim chi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm vị mặn thơm cho hỗn hợp sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị chua gắt của kim chi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "trộn vào chén gia vị xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng 15 ml áp chảo đậu phụ và 5 ml còn lại xào hành tỏi với kim chi",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 15.64,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "rưới sau khi tắt bếp giúp dậy hương thơm đặc trưng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện lên kim chi và đậu phụ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "pha loãng sốt tương ớt khi xào kim chi giúp sốt bám đều không cháy đáy",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 21,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô đậu phụ và pha sốt xào kim chi",
+      "instruction": "Thấm thật khô 3 miếng đậu phụ chắc rồi cắt lát dày khoảng 1,5 cm. Cắt khúc 280 g kim chi cải thảo, thái miếng hành tây, cắt khúc hành lá, thái lát xéo ớt sừng đỏ và băm nhỏ tỏi. Trộn đều 25 g tương ớt Hàn Quốc, 6 g ớt bột Hàn Quốc, 15 ml nước tương, 12 g đường cát trắng, 1 g tiêu đen xay và 30 ml nước lọc trong chén."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo vàng giòn hai mặt đậu phụ",
+      "instruction": "Làm nóng chảo chống dính trên lửa vừa-cao với 15 ml dầu ăn thực vật, xếp đậu phụ vào áp chảo khoảng 3–4 phút mỗi mặt đến khi hai mặt vàng ruộm giòn cạnh rồi gắp riêng ra đĩa.",
+      "tip": "Chiên vàng đậu phụ trước rồi tận dụng luôn chảo đó để xào kim chi giúp tiết kiệm thời gian mà đậu vẫn giữ được độ giòn mặt ngoài.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tây và tỏi băm",
+      "instruction": "Thêm 5 ml dầu ăn thực vật còn lại vào cùng chảo, cho hành tây và tỏi băm vào đảo đều 1 phút trên lửa vừa đến khi tỏi dậy mùi thơm và hành hơi trong lại.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào mềm kim chi cùng hỗn hợp sốt cay",
+      "instruction": "Trút kim chi cải thảo vào chảo xào 4 phút trên lửa vừa cho lá kim chi mềm săn lại, sau đó đổ chén sốt tương ớt đã pha vào đảo đều thêm 2 phút cho sốt thấm quyện đỏ bóng.",
+      "tip": "Xào kỹ kim chi trước khi đổ chén sốt giúp dịu độ chua gắt và giải phóng vị ngọt tự nhiên của cải thảo lên men.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm ớt sừng, hành lá và rưới dầu mè",
+      "instruction": "Thả ớt sừng đỏ thái lát và phần lớn hành lá cắt khúc vào chảo kim chi xào thêm 1 phút cho hành vừa chín tới rồi tắt bếp. Rưới 8 ml dầu mè rang lên trên và đảo nhẹ một lượt.",
+      "tip": "Tắt bếp rồi mới rưới dầu mè rang giúp giữ trọn hương thơm bùi béo mà không bị bay mùi ở nhiệt độ cao."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đậu phụ cạnh kim chi xào nóng",
+      "instruction": "Xếp các lát đậu phụ áp chảo vàng giòn ra một bên đĩa, múc phần kim chi xào cay nóng cạnh bên, rắc phần hành lá thái nhỏ còn lại và hạt mè trắng rang lên trên rồi dùng nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 251,
+    "energyKcal": 251,
+    "energyKj": 1050,
+    "proteinG": 15.1,
+    "fatG": 15.6,
+    "saturatedFatG": 2.3,
+    "carbG": 17.6,
+    "fiberG": 4.5,
+    "sugarG": 8.8,
+    "sodiumMg": 1004,
+    "saltG": 2.51,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b4f5cf3281dd4724f8f8c334581ba727d8944427ac4e5060f06e712fb7c51818",
+    "researchedFromV2Sha256": "43259ad3705221db35076429a6d5790f7f8394722ef53e20852e16b717eb565a"
+  }
+}

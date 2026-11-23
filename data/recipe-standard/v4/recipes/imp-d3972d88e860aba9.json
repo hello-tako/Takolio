@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d3972d88e860aba9",
+    "slug": "goi-muc-chanh",
+    "title": "Gỏi mực chanh ớt giòn ngọt",
+    "subtitle": "Mực ống tươi luộc gừng chín tới cắt khoanh giòn ngọt trộn cùng hành lá chần, rau răm và nước mắm chanh tỏi ớt chua cay mát lành"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_cuon_nom",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Gỏi mực",
+      "Hải sản",
+      "Chanh ớt",
+      "Khai vị",
+      "Miền Trung"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs",
+      "squid"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi mực chanh ớt là món khai vị hải sản thanh mát, nhanh gọn với từng khoanh mực ống trắng giòn ngọt tự nhiên không tanh, quyện hành lá chần dịu hăng, rau răm thơm nồng và nước trộn chanh tỏi ớt đậm vị chua cay hài hòa.",
+    "servingSuggestion": "Bày gỏi mực ra đĩa, rắc vài lát ớt hiểm và rau răm lên trên; dọn ăn ngay kèm bánh phồng tôm hoặc bánh đa nướng giòn rụm.",
+    "storageAndReheat": "Gỏi mực ngon nhất khi dùng ngay trong vòng 30 phút sau khi trộn để khoanh mực giữ độ giòn và không tiết nước; nếu chưa trộn, bọc kín mực luộc ráo và nước chấm riêng trong ngăn mát tối đa 12 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi",
+      "culinaryMeasure": "500 g",
+      "prepNote": "làm sạch túi mực, nang, mắt và da ngoài, rửa nước muối loãng để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 425,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "vắt lấy nước cốt, lọc bỏ hạt pha nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "1 quả băm nhuyễn pha nước trộn, 1 quả thái lát trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó (khoảng 30 g)",
+      "prepNote": "rửa sạch, chần sơ nước sôi cho bớt hăng rồi cắt khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước trộn gỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "40 ml",
+      "prepNote": "tạo nền vị mặn thơm cho nước trộn gỏi hải sản",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 48,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "cân bằng vị chua thanh của nước cốt chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g",
+      "prepNote": "cạo vỏ, đập dập cho vào nước luộc mực khử mùi tanh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "20 g",
+      "prepNote": "nhặt lá non, rửa sạch, để ráo rồi thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g",
+      "prepNote": "dùng 3 g rửa sạch mực và 2 g nêm nước luộc mực",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "PIZZA_RICE_CRACKER",
+      "name": "Bánh phồng tôm hoặc bánh đa nướng",
+      "culinaryMeasure": "80 g",
+      "prepNote": "chiên hoặc nướng giòn ăn kèm gỏi mực",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 80,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "dùng luộc chín mực ống và chần sơ hành lá",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử tanh mực ống tươi",
+      "instruction": "Rút bỏ nang mực, túi mực và mắt, bóc sạch lớp da ngoài rồi chà rửa mực với 3 g muối ăn, xả sạch lại bằng nước lạnh và để thật ráo.",
+      "tip": "Chọn mực ống thân trắng bóng, thịt săn đàn hồi và không có mùi lạ để món gỏi giòn ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc mực vừa chín tới với gừng và thái khoanh",
+      "instruction": "Đun sôi 800 ml nước lọc trên lửa lớn cùng 15 g gừng tươi đập dập và 2 g muối ăn. Thả mực vào luộc khoảng 3 phút đến khi thân mực săn lại, chuyển màu trắng đục chín hoàn toàn thì vớt ra ngâm nhanh vào nước nguội sạch rồi vớt ráo, thái khoanh tròn dày khoảng 1 cm.",
+      "tip": "Không luộc mực quá lâu vì thịt mực sẽ bị teo và dai; vớt ra ngay khi mực vừa chuyển trắng đục và săn đều.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chần sơ hành lá và chuẩn bị rau thơm",
+      "instruction": "Tận dụng nồi nước sôi vừa luộc mực, nhúng nhanh hành lá vào chần 15 giây rồi vớt ra ngâm nước lạnh cho giữ màu xanh và giảm vị hăng, để ráo và cắt khúc 3 cm. Nhặt rửa sạch rau răm rồi thái nhỏ, băm nhuyễn tỏi khô và 1 quả ớt hiểm, quả ớt còn lại thái lát."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước trộn gỏi mắm chanh tỏi ớt",
+      "instruction": "Cho 40 ml nước mắm ngon, 25 g đường cát trắng và nước cốt 2 quả chanh tươi vào bát, khuấy tan hoàn toàn đường rồi thêm tỏi băm và ớt hiểm băm nhuyễn vào đảo đều."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Trộn thấm khoanh mực lần đầu",
+      "instruction": "Cho toàn bộ mực thái khoanh vào tô lớn, rưới một nửa bát nước trộn mắm chanh vào đảo đều và để yên 5 phút cho từng khoanh mực ngấm vị chua ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn hành lá, rau răm và dọn ăn kèm bánh phồng",
+      "instruction": "Cho hành lá chần cắt khúc và rau răm thái nhỏ vào tô mực, rưới nốt phần nước trộn còn lại rồi trộn nhẹ tay cho đều vị. Bày gỏi ra đĩa, trang trí vài lát ớt hiểm lên trên và dọn ăn ngay kèm bánh phồng tôm giòn rụm.",
+      "tip": "Chanh tươi có độ chua khác nhau tùy quả nên hãy nếm thử sau khi trộn để gia giảm nhẹ đường hoặc nước cốt chanh cho vừa miệng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 287,
+    "energyKcal": 287.4,
+    "energyKj": 1203,
+    "proteinG": 24.8,
+    "fatG": 2.4,
+    "saturatedFatG": 0.6,
+    "carbG": 41,
+    "fiberG": 1.3,
+    "sugarG": 10.2,
+    "sodiumMg": 1645,
+    "saltG": 4.11,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223",
+      "VN Banh Da Ref",
+      "VN Rau Ram Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0b3db5508772ed50415456859cc22de71e35c13bb120724d112a498dc78be134",
+    "researchedFromV2Sha256": "44992233b8bf22c46a46c34e0ae2a6b0b29d161cdfa3963a2e337fa29ffd8eae"
+  }
+}

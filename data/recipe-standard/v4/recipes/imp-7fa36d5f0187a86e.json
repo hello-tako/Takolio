@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7fa36d5f0187a86e",
+    "slug": "com-chien-ba-chi-hanh",
+    "title": "Cơm chiên ba chỉ hành",
+    "subtitle": "Thịt ba chỉ cắt hạt lựu rang cháy cạnh béo thơm cùng tỏi phi, cơm nguội săn tơi đậm xì dầu và nhiều hành lá"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Cơm chiên",
+      "Ba chỉ",
+      "Béo thơm",
+      "Nhanh gọn",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cơm chiên ba chỉ hành thơm nức mũi với những miếng thịt ba chỉ cắt hạt lự chiên giòn cạnh tiết mỡ béo ngậy, hạt cơm rang săn rời áo hương tỏi phi, xì dầu dậy mùi khói chảo cùng thật nhiều hành lá tươi xanh.",
+    "servingSuggestion": "Múc cơm chiên ba chỉ hành ra đĩa nóng, rắc tiêu đen xay và hành lá, thưởng thức cùng dưa leo thái lát và chén nước tương ớt xắt.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng để phần ba chỉ cháy cạnh giữ độ giòn. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và rang lại trên chảo nóng không dầu 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm nguội tơi hạt",
+      "culinaryMeasure": "540 g (khoảng 3 chén đầy)",
+      "prepNote": "bóp tơi đều từng hạt, dùng cơm nấu hơi khô để chiên săn ngon",
+      "componentGroup": "main",
+      "requiredQuantity": 540,
+      "unit": "g",
+      "grossGrams": 540,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "rửa sạch thấm khô, thái hạt lự nhỏ đều cạnh 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch, tách riêng phần đầu trắng băm nhỏ phi thơm và phần lá xanh thái nhuyễn rắc cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 5 ml áo thịt ba chỉ cháy cạnh, 15 ml rưới quanh thành chảo khi rang cơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "nêm cùng cơm chiên cho đậm vị ngọt thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "giúp cân bằng vị mặn của xì dầu và tạo màu nâu bóng nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "trộn sơ vào cơm nguội trước khi rang",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc vào chảo cơm lúc hoàn thiện giúp dậy hương cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tráng đáy chảo lúc đầu để thịt ba chỉ nhanh tiết mỡ mà không dính",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 7.82,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái hạt lự thịt ba chỉ và làm tơi cơm nguội",
+      "instruction": "Thấm thật khô 200 g thịt ba chỉ heo rồi thái hạt lự nhỏ đều cạnh 0,8 cm. Băm nhỏ 1 củ tỏi khô; rửa sạch hành lá, tách riêng đầu hành trắng băm nhỏ và lá xanh thái nhuyễn. Đánh tơi 540 g cơm nguội với 2 g muối ăn trong tô lớn.",
+      "tip": "Cắt thịt ba chỉ hạt lự đều nhau giúp thịt nhanh ra mỡ và cháy cạnh giòn đều khắp từng miếng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo thịt ba chỉ ra mỡ vàng giòn cạnh",
+      "instruction": "Tráng 10 ml dầu ăn vào chảo lớn trên lửa vừa, cho thịt ba chỉ cắt hạt lự vào đảo đều khoảng 5 phút đến khi thịt tiết ra mỡ béo và các cạnh xém vàng giòn nhẹ. Rưới 5 ml xì dầu lên thịt đảo nhanh 20 giây cho thơm rồi vớt phần thịt ra chén riêng, giữ lại khoảng 2 muỗng canh mỡ thơm trong chảo.",
+      "tip": "Vớt thịt ba chỉ ra trước rồi mới rang cơm giúp thịt giữ được độ giòn cạnh mà không bị dai cứng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và đầu hành trắng với mỡ ba chỉ",
+      "instruction": "Làm nóng phần mỡ ba chỉ vừa giữ lại trên lửa vừa, cho tỏi băm và đầu hành trắng băm nhỏ vào phi nhanh khoảng 30 giây đến khi dậy mùi thơm nức và hơi ngả vàng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rang cơm lửa lớn cho săn hạt thấm mỡ thơm",
+      "instruction": "Trút toàn bộ cơm nguội vào chảo, tăng lên lửa lớn và đảo liên tục trong 4 phút để từng hạt cơm áo đều lớp mỡ ba chỉ thơm tỏi, trở nên săn chắc, tơi rời và nhảy nhẹ trên mặt chảo.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm xì dầu quanh chảo và trộn ba chỉ giòn",
+      "instruction": "Rưới 15 ml xì dầu còn lại dọc quanh thành chảo nóng, thêm 4 g hạt nêm và 3 g đường cát trắng vào đảo đều tay 1 phút cho dậy hương thơm đặc trưng và hạt cơm lên màu nâu vàng đẹp mắt. Trút đĩa thịt ba chỉ cháy cạnh vào đảo đều thêm 1 phút.",
+      "tip": "Rưới xì dầu vào mép chảo nóng giúp nước tương bốc hương thơm nồng mà không làm ướt nhão hạt cơm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc nhiều hành lá xanh, tiêu xay và dọn nóng",
+      "instruction": "Tắt bếp, rắc toàn bộ phần lá hành xanh thái nhuyễn và 1,5 g tiêu đen xay vào chảo cơm, đảo nhẹ 2–3 lượt cho hành vừa chín tái xanh mướt. Múc cơm chiên ba chỉ hành ra đĩa và thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 595,
+    "energyKcal": 594.7,
+    "energyKj": 2488,
+    "proteinG": 11.9,
+    "fatG": 35.1,
+    "saturatedFatG": 12.2,
+    "carbG": 56.2,
+    "fiberG": 1.4,
+    "sugarG": 1.6,
+    "sodiumMg": 935,
+    "saltG": 2.34,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "f7ca9be077b285f8d58a29ffd23ad81d3647c25e570f860d45c5c994cb5141b6",
+    "researchedFromV2Sha256": "b236b420adf65df735ee7c013aa837d0a1e2e0e92d4ddc392193e6318a367e10"
+  }
+}

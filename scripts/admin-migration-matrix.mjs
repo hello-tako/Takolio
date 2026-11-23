@@ -8,7 +8,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAdminFixtureSql, localWranglerEnv } from './admin-local-lib.mjs';
-import { CUSTOMER_BASELINE, GLOBAL_RELEASE_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
+import { CUSTOMER_BASELINE, GLOBAL_RELEASE_BASELINE, V2_RELEASE_BASELINE, V3_RELEASE_BASELINE, V4_CATALOG_RELEASE_BASELINE, selectGuardedCustomerBaseline } from './admin-customer-baseline.mjs';
 import { migrationManifest, verifyMigrationLedger } from './release-check.mjs';
 import { renderSchemaGateCommand } from './d1-schema-gate.mjs';
 
@@ -28,7 +28,7 @@ const runEvidence = {
 
 function hash(value) { return createHash('sha256').update(value).digest('hex'); }
 function git(...args) {
-  const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' });
+  const result = spawnSync('git', args, { cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
   if (result.status !== 0) throw new Error('git ' + args.join(' ') + ': ' + result.stderr);
   return result.stdout.trimEnd();
 }
@@ -142,10 +142,10 @@ try {
   const head = git('rev-parse', 'HEAD');
   const { mainBase: mergeBase, baseline: guardedBaseline } = selectGuardedCustomerBaseline({
     git, originalBaseline: MAIN_BASELINE, releaseBaseline: V2_RELEASE_BASELINE, v3ReleaseBaseline: V3_RELEASE_BASELINE,
-    globalReleaseBaseline: GLOBAL_RELEASE_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
+    globalReleaseBaseline: GLOBAL_RELEASE_BASELINE, v4CatalogReleaseBaseline: V4_CATALOG_RELEASE_BASELINE, guardedPaths: ['migrations', 'scripts/d1-schema-gate.sql'],
   });
-  // Keep 47-file V3 matrix scenarios pinned to V3_RELEASE_BASELINE after guarding against GLOBAL_RELEASE_BASELINE.
-  const customerBaseline = guardedBaseline === GLOBAL_RELEASE_BASELINE
+  // Keep 47-file V3 matrix scenarios pinned to V3_RELEASE_BASELINE after guarding against GLOBAL_RELEASE_BASELINE / V4_CATALOG_RELEASE_BASELINE.
+  const customerBaseline = (guardedBaseline === GLOBAL_RELEASE_BASELINE || guardedBaseline === V4_CATALOG_RELEASE_BASELINE)
     ? (git('merge-base', '--is-ancestor', V3_RELEASE_BASELINE, head), V3_RELEASE_BASELINE)
     : guardedBaseline;
   runEvidence.head = head;

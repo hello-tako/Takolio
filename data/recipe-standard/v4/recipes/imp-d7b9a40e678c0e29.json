@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d7b9a40e678c0e29",
+    "slug": "ga-nuong-muoi-han",
+    "title": "Gà nướng muối kiểu Hàn",
+    "subtitle": "Đùi gà rút xương còn da áp chảo không dầu vàng giòn rụm với muối tiêu, ăn kèm hành lá nướng xém, tỏi nguyên tép và chanh tươi"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 4,
+    "tags": [
+      "Gà nướng",
+      "Đùi gà",
+      "Hàn Quốc",
+      "Da giòn",
+      "Bữa cơm gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Món gà nướng muối kiểu Hàn (Dak-sogeum-gui) giản dị mà cực kỳ cuốn hút: thịt đùi gà rút xương được áp chảo tự tiết mỡ giúp lớp da mỏng giòn tan, thịt bên trong ngọt mọng quyện hành lá tỏi nướng xém thơm nức.",
+    "servingSuggestion": "Thái gà thành miếng vừa ăn xếp ra đĩa cùng hành lá và tỏi nướng xém vàng, vắt thêm múi chanh tươi và chấm muối tiêu dầu mè rang.",
+    "storageAndReheat": "Gà nướng da giòn ngon nhất khi dùng nóng ngay sau khi chế biến; nếu còn dư có thể cất ngăn mát tối đa 2 ngày và quay nóng bằng nồi chiên không dầu 180°C trong 4–5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà rút xương còn da",
+      "culinaryMeasure": "750 g (khoảng 6–7 má đùi)",
+      "prepNote": "lọc bỏ bớt mỡ thừa quanh mép, xăm nhẹ lên da và thấm thật khô",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 750,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 6 g ướp hai mặt đùi gà, 1 g rắc hành tỏi nướng, 1 g pha chấm dầu mè",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp gà, 0,5 g rắc hành tỏi và 0,5 g pha chấm dầu mè",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "cắt khúc dài 5 cm để nướng xém thơm trong mỡ gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ lớn (khoảng 25 g, ~8 tép)",
+      "prepNote": "bóc vỏ giữ nguyên tép (tép lớn bổ đôi) để nướng vàng thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "trộn cùng muối tiêu làm chén sốt chấm chuẩn quán nướng Hàn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rắc lên gà nướng hoặc pha vào chén chấm dầu mè",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "cắt múi cau vắt lên thịt gà nướng giúp cân bằng độ béo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Xăm da, thấm khô và ướp muối tiêu cho đùi gà",
+      "instruction": "Lọc bỏ phần mỡ thừa ở mép 750 g thịt đùi gà rút xương, dùng mũi dao nhọn xăm nhẹ vài lỗ nhỏ trên bề mặt da (tránh đâm sâu vào thịt) và rạch mỏng ở những chỗ thịt quá dày để chín đều. Rắc đều 6 g muối ăn và 2 g tiêu đen xay lên cả hai mặt, để thấm 10 phút rồi dùng khăn giấy thấm thật khô lại mặt da.",
+      "tip": "Muối sẽ kéo bớt nước ra bề mặt thịt, vì vậy hãy thấm khô lại một lần nữa ngay trước khi cho lên chảo để da gà nổ giòn đẹp và không bắn mỡ.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Cắt khúc hành lá, chuẩn bị tỏi tép và chén chấm dầu mè",
+      "instruction": "Cắt hành lá thành khúc dài 5 cm và bóc vỏ tỏi khô giữ nguyên tép. Trong chén nhỏ, trộn 15 ml dầu mè rang với 1 g muối ăn, 0,5 g tiêu đen xay và 4 g hạt mè trắng rang làm nước chấm. Cắt chanh tươi thành múi cau."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo mặt thịt rồi lật áp giòn mặt da không cần dầu",
+      "instruction": "Đặt chảo gang hoặc chảo chống dính khô lên bếp lửa vừa, không cần cho dầu ăn. Đặt từng miếng đùi gà sao cho mặt thịt tiếp xúc với chảo trước khoảng 1 phút cho thịt định hình phẳng, sau đó lật úp mặt da xuống dưới, dùng xẻng ép nhẹ và nướng yên trong 7–8 phút. Thỉnh thoảng nghiêng chảo dùng giấy thấm bớt mỡ tiết ra (chừa lại khoảng 1 muỗng canh mỡ).",
+      "tip": "Áp mặt thịt trước 1 phút giúp miếng gà không bị co rút méo mó; không lật đi lật lại liên tục và thấm bớt mỡ thừa để da gà được nướng giòn thay vì bị ngập mỡ.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên chín hoàn toàn mặt thịt và cho gà nghỉ",
+      "instruction": "Khi mặt da đã vàng giòn rụm và tự bong khỏi đáy chảo, lật lại áp mặt thịt thêm 2 phút đến khi thịt gà chín trắng hoàn toàn và nước tiết ra trong suốt (nhiệt độ lõi đạt trên 75°C). Gắp gà ra thớt để nghỉ 3 phút trước khi thái miếng vừa ăn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng xém hành lá và tỏi nguyên tép trong mỡ gà",
+      "instruction": "Tận dụng lượng mỡ gà thơm còn lại trong chảo, bật lửa lớn cho hành lá cắt khúc và tỏi nguyên tép vào áp chảo 2 phút, rắc thêm 1 g muối ăn và 0,5 g tiêu đen xay rồi đảo đều đến khi hành lá xém cạnh thơm ngọt và tỏi chuyển vàng bùi.",
+      "tip": "Nướng hành lá cắt khúc dài và tỏi nguyên tép trực tiếp trong mỡ gà giúp dậy hương thơm ngọt tự nhiên và cân bằng vị béo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày gà nướng muối kèm chanh tươi và chấm dầu mè",
+      "instruction": "Thái gà thành miếng vừa ăn xếp ra đĩa, gắp hành lá và tỏi nướng xém bày lên cạnh cùng múi chanh tươi. Khi thưởng thức hãy vắt vài giọt chanh lên thịt gà nóng và chấm với chén dầu mè muối tiêu."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 384,
+    "energyKcal": 384.2,
+    "energyKj": 1608,
+    "proteinG": 37.1,
+    "fatG": 23.7,
+    "saturatedFatG": 6,
+    "carbG": 4.1,
+    "fiberG": 0.9,
+    "sugarG": 0.5,
+    "sodiumMg": 855,
+    "saltG": 2.14,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 172385",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "102b728313bb05c99ee4f9fac01a232cef02e254917eca0a0bce1b8779d73d12",
+    "researchedFromV2Sha256": "31d066809a882c198f2ce5dd04ea1fd1a299db92d0288bcf551a5a26f6bfead1"
+  }
+}

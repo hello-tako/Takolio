@@ -151,6 +151,35 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     'trg_recipe_search_docs_ins',
     'trg_recipe_search_docs_upd',
   ];
+  const standardV4MissingMigrations = [
+    '0052_culinary_standard_v4_catalog_500.sql',
+    '0053_culinary_standard_v4_catalog_part2.sql',
+    '0054_culinary_standard_v4_catalog_part3.sql',
+    '0055_culinary_standard_v4_catalog_part4.sql',
+    '0056_culinary_standard_v4_catalog_part5.sql',
+    '0057_culinary_standard_v4_catalog_part6.sql',
+  ].map(detail => ({ issue: 'missing_migration', detail }));
+  const standardV4Tables = [
+    'culinary_standard_v4_ingredients',
+    'recipe_standard_v4_catalog',
+    'recipe_standard_v4_ingredients',
+    'recipe_standard_v4_steps',
+  ];
+  const standardV4Columns = [
+    'culinary_standard_v4_ingredients.edible_yield_ratio',
+    'culinary_standard_v4_ingredients.energy_kcal',
+    'recipe_standard_v4_catalog.allergen_tags_json',
+    'recipe_standard_v4_catalog.runtime_order',
+    'recipe_standard_v4_ingredients.culinary_measure',
+    'recipe_standard_v4_ingredients.edible_grams',
+    'recipe_standard_v4_steps.instruction',
+    'recipe_standard_v4_steps.phase',
+  ];
+  const missingStandardV4Columns = standardV4Columns.map(detail => ({ issue: 'missing_column', detail }));
+  const standardV4Indexes = [
+    'idx_recipe_standard_v4_ingredients_recipe',
+    'idx_recipe_standard_v4_steps_recipe',
+  ];
 
   const databases: SqliteD1[] = [];
   const gate = renderSchemaGateSql();
@@ -220,7 +249,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
       'auth_otp_assertions', 'auth_otp_claims', 'auth_otp_issuances',
       'auth_otp_requests', 'auth_otp_scopes', 'auth_otp_tickets',
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables,
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables, ...standardV4Tables,
     ].sort());
     expect(issues.some((row) => row.issue === 'unexpected_migration')).toBe(false);
   });
@@ -232,10 +261,10 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter((row) => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter((row) => row.issue === 'missing_table').map((row) => row.detail)).toEqual([
-      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables,
+      'checkout_admissions', 'payment_reconciliation_records', ...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables, ...standardV4Tables,
     ].sort());
     expect(issues.filter((row) => row.issue === 'missing_index').map((row) => row.detail)).toEqual([
-      'idx_checkout_admissions_user_state', 'idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...globalIndexes,
+      'idx_checkout_admissions_user_state', 'idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...globalIndexes, ...standardV4Indexes,
     ].sort());
   });
 
@@ -244,16 +273,16 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual([...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables].sort());
-    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...globalIndexes].sort());
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual([...familyTables, 'recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables, ...standardV4Tables].sort());
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_saved_recipe_entries_recent', 'idx_shopping_demand_reviews_item', ...globalIndexes, ...standardV4Indexes].sort());
   });
   it('rejects a 0042 database until unknown shopping demand review persistence exists', () => {
     const tip = '0042_family_meals_preferences_saved_shopping.sql'; const names = listMigrations();
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{issue:string;detail:string}>(gate);
     expect(issues.filter(row=>row.issue==='missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['recipe_content_access', 'recipe_content_versions', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'week_swap_receipts', ...globalTables].sort());
-    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_shopping_demand_reviews_item', ...globalIndexes].sort());
+    expect(issues.filter(row=>row.issue==='missing_table').map(row=>row.detail)).toEqual(['recipe_content_access', 'recipe_content_versions', 'shopping_demand_review_commands', 'shopping_demand_reviews', 'week_swap_receipts', ...globalTables, ...standardV4Tables].sort());
+    expect(issues.filter(row=>row.issue==='missing_index').map(row=>row.detail)).toEqual(['idx_recipe_content_versions_recipe', 'idx_shopping_demand_reviews_item', ...globalIndexes, ...standardV4Indexes].sort());
     expect(issues.filter(row=>row.issue==='missing_trigger').map(row=>row.detail)).toEqual([
       ...contentTriggers, ...savedContentTriggers, ...categoryTriggers, 'trg_shopping_demand_review_commands_immutable_delete', 'trg_shopping_demand_review_commands_immutable_update', ...receiptTriggers, ...globalTriggers,
     ].sort());
@@ -264,7 +293,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
     expect(issues.filter(row => row.issue === 'missing_column')).toEqual([
-      ...missingContentColumns, missingSavedContentColumn, { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns, ...missingGlobalColumns,
+      ...missingContentColumns, missingSavedContentColumn, { issue: 'missing_column', detail: 'inventory_lots.display_category' }, ...missingReceiptColumns, ...missingGlobalColumns, ...missingStandardV4Columns,
     ].sort((a, b) => a.detail.localeCompare(b.detail)));
     expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...categoryTriggers, ...receiptTriggers, ...globalTriggers].sort());
   });
@@ -273,8 +302,8 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     const issues = db.query<{ issue: string; detail: string }>(gate);
     expect(issues.filter(row => row.issue === 'missing_migration')).toEqual(missingMigrationsAfter(tip));
-    expect(issues.filter(row => row.issue === 'missing_table')).toEqual(['recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables].sort().map(detail => ({ issue: 'missing_table', detail })));
-    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, missingSavedContentColumn, ...missingReceiptColumns, ...missingGlobalColumns].sort((a, b) => a.detail.localeCompare(b.detail)));
+    expect(issues.filter(row => row.issue === 'missing_table')).toEqual(['recipe_content_access', 'recipe_content_versions', 'week_swap_receipts', ...globalTables, ...standardV4Tables].sort().map(detail => ({ issue: 'missing_table', detail })));
+    expect(issues.filter(row => row.issue === 'missing_column')).toEqual([...missingContentColumns, missingSavedContentColumn, ...missingReceiptColumns, ...missingGlobalColumns, ...missingStandardV4Columns].sort((a, b) => a.detail.localeCompare(b.detail)));
     expect(issues.filter(row => row.issue === 'missing_trigger').map(row => row.detail)).toEqual([...contentTriggers, ...savedContentTriggers, ...receiptTriggers, ...globalTriggers].sort());
   });
   it('rejects a 0045 database until content archive and receipt references exist', () => {
@@ -288,14 +317,16 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
+      ...standardV4MissingMigrations,
       { issue: 'missing_table', detail: 'recipe_content_access' },
       { issue: 'missing_table', detail: 'recipe_content_versions' },
-      ...globalTables.map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...missingContentColumns,
       missingSavedContentColumn,
       ...missingGlobalColumns,
+      ...missingStandardV4Columns,
       { issue: 'missing_index', detail: 'idx_recipe_content_versions_recipe' },
-      ...globalIndexes.map(detail => ({ issue: 'missing_index', detail })),
+      ...[...globalIndexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...[...contentTriggers, ...savedContentTriggers, ...globalTriggers].map(detail => ({ issue: 'missing_trigger', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
@@ -306,13 +337,15 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(db.query(gate)).toEqual([
       missingSavedContentColumn,
       ...missingGlobalColumns,
+      ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0047_saved_recipe_content.sql' },
       { issue: 'missing_migration', detail: '0048_global_locale_timezone_and_search_foundation.sql' },
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      ...globalTables.map(detail => ({ issue: 'missing_table', detail })),
-      ...globalIndexes.map(detail => ({ issue: 'missing_index', detail })),
+      ...standardV4MissingMigrations,
+      ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalIndexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...[...savedContentTriggers, ...globalTriggers].map(detail => ({ issue: 'missing_trigger', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
@@ -322,12 +355,14 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
       ...missingGlobalColumns,
+      ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0048_global_locale_timezone_and_search_foundation.sql' },
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      ...globalTables.map(detail => ({ issue: 'missing_table', detail })),
-      ...globalIndexes.map(detail => ({ issue: 'missing_index', detail })),
+      ...standardV4MissingMigrations,
+      ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalIndexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...globalTriggers.map(detail => ({ issue: 'missing_trigger', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
@@ -339,11 +374,13 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       ...missingGlobalPhase2Columns,
       ...missingGlobalPhase3Columns,
       ...missingGlobalPhase4Columns,
+      ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      ...[...globalPhase2Tables, ...globalPhase3Tables, ...globalPhase4Tables].map(detail => ({ issue: 'missing_table', detail })),
-      ...[...globalPhase2Indexes, ...globalPhase3Indexes, ...globalPhase4Indexes].map(detail => ({ issue: 'missing_index', detail })),
+      ...standardV4MissingMigrations,
+      ...[...globalPhase2Tables, ...globalPhase3Tables, ...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalPhase2Indexes, ...globalPhase3Indexes, ...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
   it('rejects a 0049 database until global Phase 3 billing & OAuth tables and columns are applied', () => {
@@ -353,10 +390,12 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     expect(db.query(gate)).toEqual([
       ...missingGlobalPhase3Columns,
       ...missingGlobalPhase4Columns,
+      ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      ...[...globalPhase3Tables, ...globalPhase4Tables].map(detail => ({ issue: 'missing_table', detail })),
-      ...[...globalPhase3Indexes, ...globalPhase4Indexes].map(detail => ({ issue: 'missing_index', detail })),
+      ...standardV4MissingMigrations,
+      ...[...globalPhase3Tables, ...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalPhase3Indexes, ...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
   it('rejects a 0050 database until global Phase 4 privacy erasure/portability/consent tables and columns are applied', () => {
@@ -365,9 +404,22 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
       ...missingGlobalPhase4Columns,
+      ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      ...globalPhase4Tables.map(detail => ({ issue: 'missing_table', detail })),
-      ...globalPhase4Indexes.map(detail => ({ issue: 'missing_index', detail })),
+      ...standardV4MissingMigrations,
+      ...[...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
+      ...[...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
+    ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
+  });
+  it('rejects a 0051 database until Culinary Standard V4 catalog tables and indexes are applied', () => {
+    const tip = '0051_privacy_erasure_portability_and_consent_ledger.sql';
+    const names = listMigrations();
+    const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
+    expect(db.query(gate)).toEqual([
+      ...missingStandardV4Columns,
+      ...standardV4MissingMigrations,
+      ...standardV4Tables.map(detail => ({ issue: 'missing_table', detail })),
+      ...standardV4Indexes.map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
   });
   it.each([...contentColumns, savedContentColumn])('rejects a complete ledger with missing content column %s', (qualified) => {

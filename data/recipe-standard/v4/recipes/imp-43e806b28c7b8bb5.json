@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-43e806b28c7b8bb5",
+    "slug": "com-chien-tom-trung",
+    "title": "Cơm chiên tôm trứng",
+    "subtitle": "Cơm nguội rang tơi săn hạt cùng tôm tươi ngọt thịt, trứng gà béo thơm, cà rốt và giá đỗ giòn mát"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Cơm chiên",
+      "Tôm trứng",
+      "Ăn nhanh",
+      "Dưới 20 phút",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "egg",
+      "fish",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa cơm chiên tôm trứng dân dã mà tròn vị với hạt cơm tơi rời bóng nhẹ, thịt tôm tươi săn ngọt đậm xì dầu nước mắm, trứng gà xốp vàng, cà rốt thái hạt lựu và giá đỗ giòn thanh giải ngấy.",
+    "servingSuggestion": "Múc cơm chiên ra đĩa nóng, rắc tiêu đen xay và hành lá, ăn kèm dưa leo cắt lát cùng chén nước tương ớt xắt.",
+    "storageAndReheat": "Thưởng thức ngay lúc nóng để giá đỗ giữ độ giòn và hạt cơm săn ngon. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và rang lại trên chảo nóng không dầu 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm nguội tơi hạt",
+      "culinaryMeasure": "540 g (khoảng 3 chén đầy)",
+      "prepNote": "để nguội ráo nước và bóp tơi rời từng hạt trước khi chiên",
+      "componentGroup": "main",
+      "requiredQuantity": 540,
+      "unit": "g",
+      "grossGrams": 540,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "bóc vỏ, bỏ đầu và rút sạch chỉ đen trên lưng, cắt hạt lựu hoặc chẻ đôi",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 156,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đánh tan nhẹ với chút tiêu cho xốp đều",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1/2 củ (khoảng 55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái hạt lựu nhỏ cho nhanh chín",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "100 g",
+      "prepNote": "rửa sạch, nhặt bỏ vỏ đậu và để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (~2–3 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia 1/2 ướp tôm, 1/2 phi thơm)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới quanh thành chảo lúc rang cơm tạo màu và hương thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "chia 5 ml ướp tôm, 5 ml nêm cơm chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp tôm, 3 g nêm cơm và cà rốt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "trộn nhẹ vào cơm nguội cho đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp tôm, 1 g rắc mặt đĩa cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 10 ml xào tôm và cà rốt, 20 ml chiên trứng và rang cơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Làm sạch và ướp tôm tươi đậm vị",
+      "instruction": "Bóc vỏ 200 g tôm tươi, bỏ đầu, rút sạch chỉ đen rồi rửa nước muối loãng và thấm thật khô. Thái tôm thành miếng nhỏ vừa ăn, ướp với 1/2 lượng hành tím băm, 5 ml nước mắm ngon, 2 g hạt nêm và 1 g tiêu đen xay trong 10 phút cho săn ngọt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế cà rốt, giá đỗ và đánh tơi cơm nguội",
+      "instruction": "Thái hạt lựu nhỏ 1/2 củ cà rốt; rửa sạch 100 g giá đỗ rồi để thật ráo nước. Băm nhỏ tỏi và phần hành tím còn lại; thái nhỏ hành lá. Bóp tơi 540 g cơm nguội với 2 g muối ăn; đánh tan 2 quả trứng gà trong chén.",
+      "tip": "Cà rốt thái hạt lựu thật đều và giá đỗ để thật ráo sẽ giúp chảo cơm không bị ra nước lúc xào nhanh."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào chín tôm tươi và cà rốt hạt lựu",
+      "instruction": "Đun nóng 10 ml dầu ăn trong chảo lớn trên lửa lớn, phi thơm một nửa lượng tỏi băm và hành tím băm. Cho tôm đã ướp cùng cà rốt hạt lựu vào xào nhanh khoảng 3 phút đến khi tôm chuyển màu cam hồng, chín săn hoàn toàn và cà rốt vừa mềm thì xúc riêng ra đĩa.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên tơi trứng gà và rang cơm lửa lớn",
+      "instruction": "Cho 20 ml dầu ăn còn lại vào chảo nóng, phi thơm phần tỏi và hành tím băm còn lại. Đổ chén trứng gà vào đảo đều 30 giây thành mảng xốp mềm rồi trút toàn bộ cơm nguội vào. Tăng lửa lớn, rang đảo liên tục trong 4 phút để hạt cơm tơi đều, săn bóng và bám đều trứng vàng.",
+      "tip": "Đảo cơm đều tay trên lửa lớn cho đến khi nghe tiếng hạt cơm nhảy tanh tách nhẹ là cơm đã đạt độ săn ngon.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm xì dầu, nước mắm và trộn tôm, giá đỗ",
+      "instruction": "Rưới 20 ml xì dầu và 5 ml nước mắm ngon còn lại dọc quanh thành chảo nóng, thêm 3 g hạt nêm còn lại rồi đảo đều 1 phút cho dậy mùi thơm. Trút đĩa tôm cà rốt và 100 g giá đỗ vào đảo nhanh tay trên lửa lớn khoảng 1 phút để giá đỗ vừa chín tới vẫn còn độ giòn ngọt.",
+      "tip": "Rưới xì dầu quanh thành chảo đang nóng sẽ tạo mùi thơm cháy cạnh đặc trưng và giúp hạt cơm không bị ướt sũng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, tiêu xay và dọn nóng",
+      "instruction": "Tắt bếp, rắc hành lá thái nhỏ và 1 g tiêu đen xay còn lại vào đảo đều lần cuối. Múc cơm chiên tôm trứng ra đĩa và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 434,
+    "energyKcal": 433.5,
+    "energyKj": 1814,
+    "proteinG": 21.7,
+    "fatG": 12.1,
+    "saturatedFatG": 2.4,
+    "carbG": 59,
+    "fiberG": 2.5,
+    "sugarG": 3.5,
+    "sodiumMg": 1401,
+    "saltG": 3.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168878",
+      "USDA FDC 169230",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170393",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "598f52aed342553ae6e459009e090bc7b590186ad88c41a160219b37408e2a3b",
+    "researchedFromV2Sha256": "54c9b902af1377cd062601800800567c16be7c190296670935dba93fa2cbedcd"
+  }
+}

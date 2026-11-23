@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ee5bc076d722f397",
+    "slug": "ga-hap-nam-dong",
+    "title": "Gà hấp nấm đông cô",
+    "subtitle": "Thịt đùi gà ướp mềm đậm vị hấp cách thủy cùng nấm hương khô và gừng sợi giữ trọn nước ngọt thanh"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Thịt gà",
+      "Nấm hương",
+      "Trung Hoa",
+      "Gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "chicken",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món gà hấp nấm đông cô kiểu gia đình Trung Hoa giữ nguyên độ mọng nước ngọt tự nhiên của thịt đùi gà ướp bột bắp kết hợp hương thơm umami đậm đà từ nấm hương khô ngâm nở.",
+    "servingSuggestion": "Đặt nguyên đĩa gà hấp nóng hổi lên bàn ăn, rắc hành lá thái nhỏ; dùng kèm cơm trắng và chan phần nước thịt ngọt tiết ra trong đĩa.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn hấp lại trong xửng khoảng 5–7 phút cho thịt và nấm nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà rút xương không da",
+      "culinaryMeasure": "500 g",
+      "prepNote": "rửa sạch, thấm khô, chặt hoặc cắt miếng vừa ăn cỡ 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DRIED_SHIITAKE",
+      "name": "Nấm hương khô (nấm đông cô)",
+      "culinaryMeasure": "30 g (~1 nắm lớn)",
+      "prepNote": "rửa sạch bụi rồi ngâm nước lạnh vài giờ hoặc nước ấm 30 phút cho nở mềm, cắt bỏ chân nấm cứng và bổ đôi mũ nấm to",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g (~8 lát mỏng)",
+      "prepNote": "gọt vỏ, thái lát mỏng hoặc thái sợi để ướp khử mùi và tạo hương ấm khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "ướp thịt gà tạo vị mặn thanh dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "3 ml (~1/2 muỗng cà phê)",
+      "prepNote": "tạo màu nâu óng đẹp mắt cho thịt gà sau khi hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "ml",
+      "grossGrams": 3.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "8 ml (~1/2 muỗng canh)",
+      "prepNote": "ướp gà tăng vị ngọt đậm umami cho nước hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "ướp khử mùi thịt gà và dậy mùi thơm khi hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 3.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "2 ml (~1/4 muỗng cà phê)",
+      "prepNote": "trộn ướp giúp thịt gà bóng mượt và thơm dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "ml",
+      "grossGrams": 1.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "0,5 g (~1 nhúm vừa)",
+      "prepNote": "ướp tạo vị cay ấm nhẹ khử mùi gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "áo nhẹ miếng thịt gà giúp thịt giữ nước và mềm mượt sau khi hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "tùy chọn bỏ hạt, băm nhỏ trộn cùng gà và nấm nếu thích vị cay nhẹ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 2 cây)",
+      "prepNote": "rửa sạch, thái nhỏ rắc lên mặt đĩa gà khi vừa hấp xong",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "JUJUBE_GOJI",
+      "name": "Kỷ tử khô",
+      "culinaryMeasure": "5 g (~1 muỗng canh)",
+      "prepNote": "tùy chọn rửa sạch, ngâm nở nhẹ rải lên mặt đĩa trước khi hấp cho đẹp màu và bổ dưỡng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm nở và sơ chế nấm hương khô",
+      "instruction": "Rửa sạch bụi trên 30 g nấm hương khô rồi ngâm trong nước ấm khoảng 30 phút (hoặc ngâm nước lạnh vài giờ) cho nấm nở mềm hoàn toàn. Vớt nấm ra, vắt nhẹ bớt nước, dùng kéo cắt bỏ phần chân nấm dai cứng rồi bổ đôi các tai nấm to.",
+      "tip": "Nên dùng nấm hương khô ngâm nở thay cho nấm tươi vì nấm khô giữ được hương thơm umami đậm đà đặc trưng khi hấp cùng gà.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Thái miếng và ướp gà với gia vị giữ ẩm",
+      "instruction": "Cắt đùi gà rút xương không da thành miếng vừa ăn cỡ 3–4 cm, cho vào tô lớn. Thêm 40 g gừng tươi thái lát, 5 ml xì dầu nhạt, 3 ml xì dầu đặc, 8 ml dầu hào, 5 ml rượu Thiệu Hưng, 2 ml dầu mè thơm, 0,5 g tiêu trắng xay và 3 g bột bắp. Trộn thật đều tay rồi ướp khoảng 10–15 phút cho thịt ngấm vị.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Trộn gà với nấm đông cô và chuẩn bị ớt, hành lá",
+      "instruction": "Cho toàn bộ nấm hương khô đã ngâm mềm vào tô thịt gà ướp cùng ớt hiểm đỏ băm nhỏ (nếu dùng), trộn đều lại một lượt. Hành lá rửa sạch thái nhỏ; kỷ tử khô (nếu dùng) rửa nhanh qua nước sạch rồi để ráo."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Dàn đều gà và nấm lên đĩa sâu lòng",
+      "instruction": "Chuyển toàn bộ hỗn hợp gà, gừng và nấm sang một chiếc đĩa sứ sâu lòng chịu nhiệt, dàn đều thành một lớp phẳng không chồng chất quá dày, rải kỷ tử khô (nếu dùng) lên trên.",
+      "tip": "Chọn đĩa sâu lòng thay vì tô sâu giúp thịt gà tiếp xúc đều với hơi nóng để chín nhanh, đồng thời hứng trọn được phần nước ngọt tiết ra."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hấp cách thủy lửa vừa đến khi gà chín hoàn toàn",
+      "instruction": "Đun sôi mạnh nước trong nồi xửng lớn, đặt đĩa gà lên giá hấp, đậy kín nắp và hấp trên lửa vừa khoảng 20 phút tính từ lúc nước sôi mạnh. Kiểm tra phần thịt gà dày nhất không còn màu hồng đỏ và nước thịt tiết ra trong hoàn toàn là đạt.",
+      "tip": "Chỉ đặt đĩa gà vào xửng khi nước đã sôi mạnh để hơi nóng bao bọc đều ngay từ đầu, giúp thịt gà giữ trọn nước ngọt.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá và dọn nóng cùng nước hấp ngọt",
+      "instruction": "Cẩn thận nhấc đĩa gà ra khỏi xửng hấp, rắc hành lá thái nhỏ lên mặt khi đĩa gà còn bốc khói nghi ngút. Dọn nóng ngay và thưởng thức cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 266,
+    "energyKcal": 265.6,
+    "energyKj": 1112,
+    "proteinG": 25.3,
+    "fatG": 13.8,
+    "saturatedFatG": 3.7,
+    "carbG": 9.5,
+    "fiberG": 1.2,
+    "sugarG": 1.5,
+    "sodiumMg": 302,
+    "saltG": 0.76,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Shaoxing Wine Ref",
+      "USDA FDC 168436",
+      "USDA FDC 169231",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 172385",
+      "USDA FDC 174277",
+      "USDA FDC Jujube Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e2e6c4755b62d64c1308b7abee87ae137f34875a6bd737a662715a9b3713acde",
+    "researchedFromV2Sha256": "5d2518c217726f864fafd8608d670f4ede43186f18517bdf773a48ffa741129b"
+  }
+}

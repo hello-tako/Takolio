@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3fd9eb5a7c40c3c0",
+    "slug": "risotto-ga-hanh",
+    "title": "Risotto gà hành kiểu Ý",
+    "subtitle": "Hạt gạo Arborio dẻo béo nấu chậm cùng nước dùng gà nóng, ức gà áp chảo vàng mềm, bơ lạt và phô mai Parmesan sánh mượt"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Risotto",
+      "Ẩm thực Ý",
+      "Ức gà",
+      "Gạo Ý",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "milk",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa cơm Ý Risotto béo mịn chuẩn vị với từng hạt gạo Arborio mềm dẻo bên ngoài nhưng vẫn giữ lõi sần nhẹ bên trong, quyện thịt ức gà ngọt mềm, hành tây thơm dịu, bơ lạt và phô mai Parmesan.",
+    "servingSuggestion": "Múc cơm Risotto nóng ra đĩa sâu lòng, rắc ngò tây băm nhỏ và thêm ít phô mai Parmesan bào lên trên; thưởng thức ngay khi cơm còn sánh chảy nhẹ.",
+    "storageAndReheat": "Món Risotto ngon nhất khi ăn nóng ngay sau khi hoàn thiện; nếu còn dư có thể bảo quản ngăn mát tối đa 2 ngày và hâm nóng trên chảo với chút nước dùng gà hoặc nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ARBORIO_RICE",
+      "name": "Gạo Ý Arborio hoặc Carnaroli",
+      "culinaryMeasure": "320 g",
+      "prepNote": "không vo rửa để giữ nguyên lớp tinh bột tạo độ sánh kem tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, thấm thật khô rồi thái hạt lựu đều cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "bóc vỏ, băm thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/4 củ (khoảng 2 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 5.39,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô nấu ăn",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "đun bay hơi cồn sau khi rang gạo để tạo vị thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 99,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 49.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHICKEN_BROTH",
+      "name": "Nước dùng gà",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "đun sôi lăn tăn trên bếp riêng, giữ nóng suốt quá trình nấu",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 1140,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "50 g",
+      "prepNote": "chia 25 g để áp chảo thịt gà, 25 g còn lại đánh bóng cơm lúc tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml áp chảo gà cùng bơ, 10 ml xào hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "50 g",
+      "prepNote": "trộn 40 g đánh bóng cơm lúc tắt bếp, giữ 10 g rắc đĩa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, băm nhỏ rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia nêm ức gà và điều chỉnh cơm trước khi trộn phô mai",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm khi áp chảo gà và rắc hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế gà, hành tây và hâm nóng nước dùng gà",
+      "instruction": "Thấm thật khô 300 g ức gà phi lê rồi cắt thành khối hạt lựu 2 cm. Băm nhỏ 1 củ hành tây, băm nhuyễn 2 tép tỏi khô và băm nhỏ 10 g ngò tây tươi. Đổ 1200 ml nước dùng gà vào nồi riêng, đun sôi nhẹ rồi giữ nóng liu riu trên bếp phụ suốt quá trình nấu.",
+      "tip": "Nước dùng gà phải luôn giữ nóng; nếu châm nước nguội vào chảo gạo đang sôi sẽ làm hạt gạo sốc nhiệt và chín sượng không đều."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo chín vàng hạt lựu ức gà",
+      "instruction": "Đun nóng 25 g bơ lạt cùng 15 ml dầu ô liu trong chảo sâu lòng trên lửa vừa-lớn. Thả ức gà vào áp chảo khoảng 5 phút, nêm 2 g muối ăn và 1 g tiêu đen xay, đảo đều đến khi các mặt thịt gà vàng thơm và chín hoàn toàn bên trong rồi gắp ra đĩa riêng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào hành tây và rang hạt gạo Arborio",
+      "instruction": "Cùng chiếc chảo đó, thêm 10 ml dầu ô liu ở lửa vừa, cho hành tây và tỏi băm vào xào 4 phút đến khi hành mềm trong. Trút toàn bộ 320 g gạo Ý Arborio (không vo rửa) vào đảo đều liên tục khoảng 2 phút đến khi viền hạt gạo hơi trong lại và tỏa mùi thơm bùi.",
+      "tip": "Không vo gạo Arborio và rang khô nhẹ 2 phút giúp hạt gạo săn lớp vỏ ngoài, giữ độ dẻo dai mà không bị nát bấy khi khuấy.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Châm rượu vang và nấu chậm cùng nước dùng gà",
+      "instruction": "Rót 100 ml rượu vang trắng khô vào chảo gạo, khuấy đều 1–2 phút đến khi bay hết mùi cồn. Tiếp tục múc từng muôi nước dùng gà nóng châm vào xấp mặt gạo, khuấy nhẹ đều tay đến khi gạo hút gần cạn nước mới châm muôi tiếp theo. Lặp lại quá trình này trong khoảng 18 phút đến khi hạt gạo mềm dẻo bên ngoài và còn lõi hơi sần nhẹ.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn thịt gà và nêm gia vị",
+      "instruction": "Khi gạo gần chín tới (khoảng 3–4 phút cuối), trút toàn bộ ức gà đã áp chảo vào chảo cơm, châm thêm chút nước dùng gà nóng nếu thấy đặc và đảo nhẹ 3 phút cho thịt gà hòa vị cùng cơm. Nếm thử rồi nêm thêm khoảng 3 g muối ăn và 1 g tiêu đen xay cho vừa miệng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đánh bóng bơ phô mai (Mantecatura) và dọn nóng",
+      "instruction": "Tắt hẳn bếp, cho 25 g bơ lạt còn lại và 40 g phô mai Parmesan bào mịn vào chảo cơm, khuấy nhanh tay đến khi bơ và phô mai tan quyện thành lớp sốt kem bóng mượt bao đều từng hạt gạo. Múc ra 4 đĩa sâu lòng, rắc 10 g phô mai Parmesan còn lại cùng ngò tây băm lên trên và dùng nóng ngay.",
+      "tip": "Đánh bóng bơ và phô mai sau khi tắt bếp là kỹ thuật chuẩn Ý giúp Risotto sánh kem mịn màng thay vì bị tách dầu."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 638,
+    "energyKcal": 637.5,
+    "energyKj": 2667,
+    "proteinG": 31.5,
+    "fatG": 23.6,
+    "saturatedFatG": 10.4,
+    "carbG": 70.2,
+    "fiberG": 1.7,
+    "sugarG": 2.9,
+    "sodiumMg": 1400,
+    "saltG": 3.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 172883",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC Arborio Rice Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "02ec2d8872cdad073a144ed0313ef0c85bd3638246be0818538a1241f12ea6d8",
+    "researchedFromV2Sha256": "200c94fce3a5995aa69f8a44440463b20249aca1aea073f3551633b0111cc9e4"
+  }
+}

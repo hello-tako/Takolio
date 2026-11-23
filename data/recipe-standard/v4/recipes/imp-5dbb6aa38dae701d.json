@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-5dbb6aa38dae701d",
+    "slug": "mi-xao-kimchi-han",
+    "title": "Mì xào kim chi Hàn Quốc",
+    "subtitle": "Sợi mì ramen dai mềm xào cùng kim chi cải thảo chua cay đậm vị, quyện bơ tỏi thơm béo và trứng ốp la lòng đào hấp dẫn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Mì xào",
+      "Kim chi",
+      "Hàn Quốc",
+      "Bữa tối nhanh",
+      "Trứng ốp la"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa mì xào kim chi Hàn Quốc nóng hổi với sợi mì ramen săn bóng áo đều sốt tương ớt Gochujang cay nhẹ, vị chua thanh của kim chi lên men, chút béo ngậy từ bơ lạt và trứng ốp la đặt trên mặt.",
+    "servingSuggestion": "Chia mì ra đĩa sâu lòng, đặt trứng ốp la lòng đào lên trên, rắc thêm hành lá và rong biển lá khô cắt sợi; dùng nóng ngay để sợi mì giữ độ dai ngon.",
+    "storageAndReheat": "Món mì xào ngon nhất khi ăn ngay lúc vừa ra chảo; nếu còn dư có thể cất hộp kín trong ngăn mát tối đa 24 giờ và đảo nóng lại trên chảo với 1 muỗng canh nước lọc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì ramen khô",
+      "culinaryMeasure": "240 g (3 vắt mì khô, bỏ gói gia vị)",
+      "prepNote": "luộc chín tới rồi xả nước lạnh cho sợi mì săn dai, để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chua",
+      "culinaryMeasure": "250 g (cả cái và ít nước kim chi)",
+      "prepNote": "cắt miếng vừa ăn cỡ 2–3 cm, giữ lại khoảng 2 muỗng canh nước kim chi",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "để nhiệt độ phòng để chiên ốp la phủ mặt mì",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng hoặc hạt lựu vừa ăn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g, ~4–5 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái lát mỏng, chia 2/3 để xào thơm và 1/3 để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới quanh thành chảo tạo mùi thơm cho mì xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "hòa tan tạo màu đỏ đẹp và vị cay ngọt dịu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "cân bằng độ chua gắt của kim chi lên men",
+      "componentGroup": "sauce",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "đun chảy cùng dầu ăn tạo độ béo thơm đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~4 muỗng cà phê)",
+      "prepNote": "chia 5 ml trộn mì chống dính, 5 ml chiên trứng, 10 ml xào hành tỏi",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "8 ml (~1,5 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để dậy hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển lá khô cắt vụn",
+      "culinaryMeasure": "4 g (khoảng 1 lá nướng giòn)",
+      "prepNote": "cắt sợi mảnh hoặc bóp vụn rắc trang trí mặt mì",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1500 ml (1,5 lít)",
+      "prepNote": "dùng phần lớn để luộc mì rồi chắt bỏ, trích 30 ml pha sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1500,
+      "unit": "ml",
+      "grossGrams": 1500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Luộc mì ramen vừa chín tới và làm tơi sợi",
+      "instruction": "Đun sôi khoảng 1.470 ml nước lọc trong nồi lớn, thả 240 g mì ramen khô vào luộc trong 3 phút đến khi sợi mì vừa tách tơi nhưng vẫn còn độ dai ở lõi (không dùng gói gia vị đi kèm). Vớt mì ra rổ, xả nhanh dưới vòi nước lạnh, xóc thật ráo rồi trộn đều với 5 ml dầu ăn để sợi mì không bết dính.",
+      "tip": "Xả nước lạnh ngay sau khi luộc và áo một lớp dầu mỏng giúp sợi mì săn bóng, khi xào trên lửa lớn không bị nát vụn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Sơ chế rau củ và pha sẵn hỗn hợp sốt xào",
+      "instruction": "Cắt kim chi cải thảo chua thành miếng dài 2–3 cm (giữ lại phần nước kim chi). Băm nhuyễn tỏi khô, thái lát mỏng hành tây và chia hành lá thành 2 phần. Trong chén nhỏ, khuấy tan 15 g tương ớt Hàn Quốc (Gochujang), 25 ml xì dầu, 6 g đường cát trắng cùng 30 ml nước lọc đến khi hỗn hợp sánh mịn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên trứng ốp la lòng đào ăn kèm",
+      "instruction": "Làm nóng chảo chống dính trên lửa vừa với 5 ml dầu ăn, đập từng quả trong 3 quả trứng gà vào chiên khoảng 2–3 phút đến khi lòng trắng chín đục hoàn toàn và mép dưới hơi giòn, lòng đỏ vẫn dẻo sánh (hoặc chiên chín kỹ tùy khẩu vị). Nhẹ nhàng gắp trứng ra đĩa riêng giữ ấm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm bơ tỏi cùng hành tây và xào kim chi",
+      "instruction": "Vẫn dùng chảo lớn trên lửa vừa, cho 10 ml dầu ăn còn lại và 15 g bơ lạt vào đun tan chảy. Cho tỏi băm vào phi thơm 20 giây rồi trút hành tây và 2/3 lượng hành lá vào đảo 2 phút cho hành mềm trong. Tiếp theo, thả kim chi vào xào mạnh tay trên lửa lớn 2 phút đến khi kim chi săn ráo và dậy mùi chua cay thơm nồng.",
+      "tip": "Kết hợp dầu ăn với bơ lạt giúp món ăn có độ béo thơm của bơ mà không bị cháy khét khi xào ở nhiệt độ cao.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào mì ramen thấm đều sốt cay ngọt",
+      "instruction": "Trút toàn bộ mì ramen đã luộc và bát sốt tương ớt Gochujang vào chảo kim chi, tăng lên lửa lớn và đảo đều tay liên tục trong 2 phút để từng sợi mì áo đều màu đỏ cam bóng đẹp và xém cạnh nhẹ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, bày đĩa cùng trứng và rong biển",
+      "instruction": "Tắt bếp ngay rồi rưới 8 ml dầu mè rang và 1/3 lượng hành lá còn lại vào chảo, đảo thêm vài lượt cho dậy mùi thơm. Chia mì ra 3 đĩa, đặt mỗi đĩa một quả trứng ốp la lên trên và rắc rong biển lá khô cắt vụn tùy thích để thưởng thức ngay khi còn nóng.",
+      "tip": "Chỉ rưới dầu mè sau khi đã tắt bếp để giữ trọn hương thơm đặc trưng và tránh làm dầu mè bị đắng do nhiệt cao."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 514,
+    "energyKcal": 513.7,
+    "energyKj": 2149,
+    "proteinG": 18.3,
+    "fatG": 19.1,
+    "saturatedFatG": 5.8,
+    "carbG": 67.9,
+    "fiberG": 4.8,
+    "sugarG": 7.3,
+    "sodiumMg": 1479,
+    "saltG": 3.7,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Korean Gochujang Ref",
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 168456",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170497",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "61f3ae98eed7914e232eac99aa2453a93368b3cd0eb7ca2d1fdd0486a1897419",
+    "researchedFromV2Sha256": "4fdc9845fdab8adeff8116f6150a1aec1195d9707e2e8136441cd37657a72db5"
+  }
+}

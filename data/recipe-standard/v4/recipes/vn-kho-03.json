@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-03",
+    "slug": "ga-ta-kho-gung-sa",
+    "title": "Gà ta kho gừng sả",
+    "subtitle": "Thịt đùi gà ta dai ngọt kho săn cùng gừng tươi thái sợi và sả băm thơm nồng, nước sốt sánh óng cực bắt cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Gà ta",
+      "Gừng sả",
+      "Ấm bụng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Thịt đùi gà ta giữ nguyên da dai giòn, từng thớ thịt thấm đẫm vị mặn ngọt hài hòa quyện mùi thơm cay ấm của gừng thái sợi và sả băm vàng ruộm.",
+    "servingSuggestion": "Múc gà kho ra đĩa sâu lòng, rưới nước sốt gừng sả óng vàng lên trên và ăn nóng cùng cơm trắng, canh rau cải xanh.",
+    "storageAndReheat": "Bảo quản trong hộp đậy kín ở ngăn mát tối đa 3 ngày; khi dùng thêm 1 muỗng canh nước lọc và đun lửa nhỏ đến khi gà nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà ta chặt miếng",
+      "culinaryMeasure": "600 g",
+      "prepNote": "xát muối và ít gừng đập dập khử mùi, rửa sạch rồi chặt miếng vừa ăn cỡ 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 492,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "50 g (1 củ vừa)",
+      "prepNote": "cạo sạch vỏ, rửa sạch rồi thái sợi nhỏ; chia đôi để ướp và cho vào lúc kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (60 g)",
+      "prepNote": "bóc lớp bẹ già bên ngoài, rửa sạch rồi băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (khoảng 10 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml ướp gà và 15 ml nêm lúc kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "chia 15 g thắng nước màu và 5 g ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "8 g",
+      "prepNote": "dùng 5 g chà rửa khử mùi gà rồi xả bỏ, 3 g ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.38,
+      "edibleGrams": 3.04,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp gà và rắc mặt khi hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng để thắng nước màu và phi thơm sả gừng tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm",
+      "culinaryMeasure": "120 ml",
+      "prepNote": "dùng để kho gà cho thịt chín mềm thấm gia vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 120,
+      "unit": "ml",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Khử mùi, chặt miếng gà và sơ chế gừng sả",
+      "instruction": "Chà xát 600 g đùi gà với 5 g muối hạt và vài lát gừng đập dập để khử mùi hôi, rửa sạch lại với nước rồi để ráo, chặt thành từng miếng vừa ăn cỡ 3–4 cm. Gừng tươi thái sợi nhỏ; sả tươi, hành tím và tỏi băm nhuyễn; ớt hiểm thái lát mỏng.",
+      "tip": "Không chặt miếng gà quá nhỏ vì thịt gà sẽ co lại khi kho, dễ bị khô và nát xương."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt gà với nước mắm và sả gừng",
+      "instruction": "Cho gà vào tô lớn, ướp cùng một nửa lượng gừng thái sợi, một nửa lượng sả băm, một nửa tỏi băm, 15 ml nước mắm, 5 g đường cát trắng, 5 g hạt nêm, 3 g muối và 1 g tiêu đen xay. Trộn đều và để 25 phút cho gia vị thấm vào từng thớ thịt.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Thắng nước màu và phi thơm sả gừng",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa với 25 ml dầu ăn và 15 g đường cát trắng còn lại, khuấy nhẹ đến khi đường tan và chuyển màu nâu cánh gián. Hạ lửa nhỏ rồi trút nhanh phần hành tím, tỏi, sả băm và gừng sợi còn lại vào đảo thơm 30 giây.",
+      "tip": "Cho sả và gừng vào ngay khi đường vừa chuyển màu cánh gián để hãm nhiệt, vừa tạo mùi thơm nức vừa giúp nước màu không bị cháy khét."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào săn thịt gà trên lửa lớn",
+      "instruction": "Vặn lửa lớn, cho toàn bộ thịt gà đã ướp vào chảo đảo liên tục trong 5 phút đến khi da gà săn lại, bề mặt miếng thịt đổi màu vàng nâu đẹp mắt và thấm đều dầu thơm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho nhỏ lửa cho gà chín mềm sánh sốt",
+      "instruction": "Rót 120 ml nước lọc ấm vào chảo cho xâm xấp mặt thịt gà, thêm 15 ml nước mắm còn lại và ớt thái lát. Đợi nước sôi lại thì hạ lửa nhỏ, đậy nắp kho liu riu 18 phút, thỉnh thoảng đảo nhẹ để thịt gà chín thấu vào tận xương không còn đỏ hồng.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cô cạn nhẹ nước sốt và trình bày",
+      "instruction": "Mở nắp, tăng lên lửa vừa đảo thêm 2–3 phút đến khi nước kho cạn sệt và bám bóng quanh từng miếng thịt gà. Nêm nếm lại vừa miệng, tắt bếp rồi rắc 1 g tiêu đen xay còn lại lên trên và dọn ăn nóng.",
+      "tip": "Giữ lại một ít nước kho sánh sệt dưới đáy chảo để chan cơm hoặc chấm rau luộc sẽ rất đậm vị."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 318,
+    "energyKcal": 317.6,
+    "energyKj": 1329,
+    "proteinG": 25.1,
+    "fatG": 18.3,
+    "saturatedFatG": 4.4,
+    "carbG": 12.7,
+    "fiberG": 0.6,
+    "sugarG": 6.2,
+    "sodiumMg": 1312,
+    "saltG": 3.28,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b9671283feb805c51afb893ec88f2a23b1850532f3ae99da86773afaf6e6fbe4",
+    "researchedFromV2Sha256": "c7375faf000974751aa0584fd29a91768141fedfadbb800b65f64c72469f3a1f"
+  }
+}

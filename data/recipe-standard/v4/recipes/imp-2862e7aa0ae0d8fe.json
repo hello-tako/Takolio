@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2862e7aa0ae0d8fe",
+    "slug": "bo-xao-dua-chua-ngot",
+    "title": "Bò xào dứa chua ngọt",
+    "subtitle": "Thịt thăn bò mềm mọng quyện vị chua ngọt thanh dịu từ dứa chín tươi và hành tây giòn thơm kiểu Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 18,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt bò",
+      "Chua ngọt",
+      "Nam Bộ",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bò xào dứa chua ngọt là món ăn cực kỳ bắt cơm với thịt thăn bò mềm tan nhờ enzyme tự nhiên từ dứa tươi, kết hợp cùng hành tây giòn ngọt và nước sốt dầu hào nước mắm đậm đà hương vị Nam Bộ.",
+    "servingSuggestion": "Múc bò xào dứa ra đĩa rộng khi còn bốc khói, rắc tiêu đen xay lên mặt; ăn nóng kèm cơm trắng và nước tương ớt.",
+    "storageAndReheat": "Món xào ngon nhất khi ăn ngay lúc vừa nấu xong vì dứa tiết nước theo thời gian; nếu bảo quản tủ mát trong ngày, hâm nóng nhanh trên chảo lửa lớn khoảng 1 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, thấm thật khô rồi thái lát mỏng ngang thớ",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa / Thơm chín",
+      "culinaryMeasure": "2/5 quả vừa (khoảng 240 g thịt dứa)",
+      "prepNote": "gọt sạch vỏ và mắt, bỏ lõi cứng ở giữa rồi thái miếng vát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (khoảng 140 g)",
+      "prepNote": "bóc vỏ, rửa sạch, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, băm nhỏ; chia đôi để ướp bò và phi thơm lúc xào",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "chia 5 ml ướp bò, 15 ml xào bò và 10 ml xào dứa hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 12 ml ướp thịt bò và 8 ml nêm khi xào dứa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "dùng để ướp thịt bò mềm bóng và đậm đà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 muỗng cà phê (10 g)",
+      "prepNote": "cân bằng vị chua dịu của dứa chín theo khẩu vị Nam Bộ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "dùng để ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1/2 muỗng cà phê (3 g)",
+      "prepNote": "dùng để ướp thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "chia 1 g ướp thịt bò và 1 g rắc mặt đĩa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái lát và ướp thịt bò đậm đà",
+      "instruction": "Thấm thật khô thịt thăn bò rồi thái lát mỏng ngang thớ. Cho thịt vào tô ướp cùng một nửa lượng tỏi băm, 12 ml nước mắm ngon, 15 ml dầu hào, 10 g đường cát trắng, 5 g hạt nêm, 3 g muối ăn, 1 g tiêu đen xay và 5 ml dầu ăn; trộn đều và để ngấm 15 phút.",
+      "tip": "Không ướp chung thịt bò với dứa sống trước khi xào vì enzyme trong dứa sẽ làm thịt bò bị bở nát.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế dứa chín, hành tây và hành lá",
+      "instruction": "Dứa chín gọt sạch vỏ và mắt, bổ dọc bỏ phần lõi cứng ở giữa rồi thái lát dày khoảng 0,5 cm vừa ăn. Hành tây bóc vỏ bổ múi cau; hành lá rửa sạch cắt khúc 3 cm; phần tỏi còn lại băm nhỏ.",
+      "tip": "Bỏ sạch phần lõi cứng của quả dứa giúp món xào ngọt thơm mà không bị rát lưỡi khi ăn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào tái thịt bò trên lửa lớn",
+      "instruction": "Làm nóng 15 ml dầu ăn trong chảo trên lửa lớn, cho một nửa phần tỏi băm còn lại vào phi thơm. Trút thịt bò đã ướp vào đảo nhanh tay liên tục khoảng 1,5–2 phút đến khi thịt vừa chín tái 80% thì trút ngay ra đĩa riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào dứa chín và hành tây dậy mùi chua ngọt",
+      "instruction": "Dùng lại chảo vừa xào bò, thêm 10 ml dầu ăn đun nóng rồi phi thơm nốt phần tỏi băm. Cho dứa và hành tây vào xào trên lửa lớn khoảng 2 phút, rưới thêm 8 ml nước mắm ngon còn lại để dứa tiết vị chua ngọt đậm đà và hành tây vừa chín trong.",
+      "tip": "Xào dứa trên lửa lớn giúp dứa se mặt thơm lừng mà không bị tiết quá nhiều nước.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo chung thịt bò quyện sốt dứa",
+      "instruction": "Trút đĩa thịt bò cùng nước thịt tiết ra trở lại chảo dứa hành tây, bật lửa lớn và đảo nhanh tay khoảng 1 phút cho thịt bò chín hoàn toàn và thấm đều sốt chua ngọt."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá và dọn đĩa ăn nóng",
+      "instruction": "Thả hành lá cắt khúc vào đảo nhanh 15 giây rồi tắt bếp. Bày bò xào dứa chua ngọt ra đĩa, rắc 1 g tiêu đen xay còn lại lên trên và thưởng thức nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 347,
+    "energyKcal": 347,
+    "energyKj": 1452,
+    "proteinG": 22.6,
+    "fatG": 19.1,
+    "saturatedFatG": 5.4,
+    "carbG": 22,
+    "fiberG": 2.3,
+    "sugarG": 14.2,
+    "sodiumMg": 1518,
+    "saltG": 3.8,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169124",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ab41d359bac6f6e05c8e07d2099c9d1aa66b4b06bfb1953127882b4f28c08c23",
+    "researchedFromV2Sha256": "95f88171ea5f667701fd53ddee30d00456b478dcb1ccf1883a8f71305b99335e"
+  }
+}

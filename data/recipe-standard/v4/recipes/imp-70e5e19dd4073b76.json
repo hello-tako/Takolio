@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-70e5e19dd4073b76",
+    "slug": "bo-ham-ca-chua-y",
+    "title": "Bò hầm cà chua kiểu Ý (Stracotto)",
+    "subtitle": "Thịt bò áp chảo vàng cạnh hầm liu riu nhiều giờ cùng rượu vang đỏ, passata cà chua và rau củ ngọt thanh"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "hard",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 110,
+    "servings": 5,
+    "tags": [
+      "Stracotto",
+      "Bò hầm",
+      "Rượu vang đỏ",
+      "Ẩm thực Ý",
+      "Mùa lạnh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "beef",
+      "celery",
+      "milk",
+      "sulphites",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món bò hầm truyền thống miền Bắc nước Ý được nấu chậm cùng nền rau củ xào thơm, rượu vang đỏ và sốt cà chua passata, cho thớ thịt bò mềm tơi đậm đà cùng nước sốt sánh quyện tuyệt hảo.",
+    "servingSuggestion": "Múc thịt bò hầm nóng hổi ra đĩa sâu lòng cùng nước sốt sánh đặc, ăn kèm bánh mì giòn chấm sốt, khoai tây nghiền hoặc polenta nóng.",
+    "storageAndReheat": "Món hầm để qua đêm trong ngăn mát tủ lạnh sẽ càng thấm vị ngon hơn, bảo quản được tối đa 3 ngày. Hâm lại trên lửa nhỏ, thêm 2–3 muỗng canh nước hoặc nước dùng nếu sốt quá đặc."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt bò nạc vai thái khối",
+      "culinaryMeasure": "1100 g",
+      "prepNote": "lọc bỏ gân quá dai, cắt khối vuông đều 3,5–4 cm rồi thấm khô",
+      "componentGroup": "main",
+      "requiredQuantity": 1100,
+      "unit": "g",
+      "grossGrams": 1100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua nghiền nhuyễn (passata)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "khuấy đều trước khi rót vào nồi hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BEEF_BROTH",
+      "name": "Nước dùng bò nóng",
+      "culinaryMeasure": "1000 ml (1 lít)",
+      "prepNote": "đun nóng sẵn trước khi châm vào thịt để thịt không bị dai",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 850,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang đỏ nấu ăn",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "dùng để tráng đáy nồi sau khi áp chảo thịt bò",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 148.5,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 103.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "1,5 củ vừa (~210 g)",
+      "prepNote": "bóc vỏ, băm hạt lựu nhỏ làm nền rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 210,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 189,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2 củ vừa (~220 g)",
+      "prepNote": "gọt vỏ, băm hạt lựu nhỏ cùng hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CELERY",
+      "name": "Cần tây tươi",
+      "culinaryMeasure": "120 g (khoảng 3 cọng)",
+      "prepNote": "rửa sạch, tước xơ nếu già rồi thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 120,
+      "unit": "g",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 108,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "35 g (~3 muỗng canh)",
+      "prepNote": "áo một lớp thật mỏng quanh khối thịt bò và giũ bỏ bột thừa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 29.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "35 g",
+      "prepNote": "đun chảy cùng dầu ô liu để xào rau và áp chảo bò",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng kết hợp với bơ để không bị cháy bơ khi áp chảo lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 34.58,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Thảo mộc Ý khô (hương thảo, xạ hương)",
+      "culinaryMeasure": "3 g (~1 muỗng canh)",
+      "prepNote": "thêm vào nồi thịt trước khi rót rượu vang để dậy hương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "nêm sau khi đã châm nước dùng nóng để kiểm soát vị mặn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vào nồi hầm và rắc thêm khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái khối thịt bò và áo lớp bột mỏng",
+      "instruction": "Thấm thật khô 1,1 kg thịt bò bằng khăn giấy rồi cắt thành các khối vuông đều cỡ 3,5–4 cm. Cho thịt vào tô lớn, rắc đều 35 g bột mì đa dụng, xóc nhẹ cho bột phủ một lớp mỏng rồi giũ bớt phần bột thừa ra ngoài.",
+      "tip": "Chỉ áo lớp bột rất mỏng và giũ sạch phần dư để nước sốt hầm sánh mịn tự nhiên mà không bị lợn cợn vón cục."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị nền rau củ và đun nóng nước dùng",
+      "instruction": "Băm hạt lựu nhỏ hành tây vàng, cà rốt tươi và cần tây tươi để làm nền rau củ kiểu Ý. Đồng thời đặt 1 lít nước dùng bò lên một bếp khác đun nóng già và giữ ấm trên lửa nhỏ.",
+      "tip": "Luôn dùng nước dùng thật nóng khi châm vào thịt đang áp chảo để thớ bò không bị co cứng do sốc nhiệt."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào thơm nền rau củ với bơ và dầu ô liu",
+      "instruction": "Đặt nồi gang hoặc nồi đáy dày lên lửa vừa, cho 40 ml dầu ô liu nguyên chất và 35 g bơ lạt vào đun chảy. Thả hành tây, cà rốt và cần tây vào xào khoảng 5 phút đến khi rau củ mềm dịu và dậy mùi ngọt thơm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo xém vàng đều các khối thịt bò",
+      "instruction": "Tăng lên lửa vừa-lớn, cho thịt bò đã áo bột vào nồi cùng rau củ (chia 2 mẻ nếu đáy nồi nhỏ) và áp chảo khoảng 8 phút đến khi các mặt thịt chuyển màu nâu vàng đẹp mắt. Thêm 3 g thảo mộc Ý khô vào đảo đều 30 giây cho dậy hương.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Khử cặn đáy nồi với rượu vang đỏ",
+      "instruction": "Vặn lửa lớn, rót 150 ml rượu vang đỏ nấu ăn vào nồi. Dùng muỗng gỗ cạo nhẹ toàn bộ phần cháy xém thơm ngon bám ở đáy nồi hòa tan vào rượu, đun sôi khoảng 3 phút cho mùi cồn bay hơi hoàn toàn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Thêm cà chua nghiền và hầm liu riu 90 phút",
+      "instruction": "Đổ 300 g cà chua nghiền nhuyễn (passata) vào nồi, khuấy đều rồi rót tiếp 1 lít nước dùng bò nóng vào ngập mặt thịt. Nêm 8 g muối ăn và 3 g tiêu đen xay, đậy nắp kín, hạ xuống lửa thật nhỏ và hầm liu riu ít nhất 90 phút đến khi thịt bò mềm tơi, dùng nĩa xiên qua dễ dàng.",
+      "tip": "Thỉnh thoảng mở nắp đảo nhẹ đáy nồi và châm thêm chút nước nóng nếu thấy sốt cạn quá nhanh trước khi thịt kịp mềm.",
+      "timerMinutes": 90
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Cô sánh sốt và hoàn thiện món bò hầm",
+      "instruction": "Mở nắp kiểm tra: nếu nước sốt còn hơi loãng, vặn lửa vừa-lớn đun thêm 5–8 phút không đậy nắp để sốt rút bớt và sánh bóng lại. Nếm lại gia vị cho vừa miệng, tắt bếp rồi múc bò hầm nóng ra đĩa sâu lòng để thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 638,
+    "energyKcal": 638,
+    "energyKj": 2670,
+    "proteinG": 51.1,
+    "fatG": 37.4,
+    "saturatedFatG": 14.1,
+    "carbG": 19.7,
+    "fiberG": 3.8,
+    "sugarG": 7.1,
+    "sodiumMg": 1231,
+    "saltG": 3.08,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169761",
+      "USDA FDC 169988",
+      "USDA FDC 170000",
+      "USDA FDC 170187",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171593",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173475"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ae45ed65324a3f5b2bc88be379cd85784ac172b90aacda793b92e8489d3ace9a",
+    "researchedFromV2Sha256": "7142bd127adbda02adeb961894284703e4892dbe56741a693ffd7520169dade0"
+  }
+}

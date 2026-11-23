@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a4822c0a1187e4d7",
+    "slug": "suon-nuong-muoi-ot",
+    "title": "Sườn nướng muối ớt",
+    "subtitle": "Sườn non ướp muối hạt, ớt hiểm, tỏi và nước mắm ngon nướng vàng xém cạnh, chấm muối ớt chanh chua cay thơm lừng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Sườn nướng",
+      "Muối ớt",
+      "Cuối tuần",
+      "Món mặn",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Những khúc sườn non nhiều thịt mềm ngọt được ướp đậm đà vị mặn mà của muối hạt, cay nồng từ ớt hiểm tươi và tỏi băm, nướng chín vàng xém cạnh ăn kèm nước chấm chanh ớt.",
+    "servingSuggestion": "Bày sườn nướng ra đĩa lớn, dọn nóng cùng cơm trắng, dưa leo, rau sống và chén nước mắm chanh ớt tiêu cay thơm.",
+    "storageAndReheat": "Bảo quản sườn đã nướng trong hộp kín ở ngăn mát tối đa 2 ngày; khi dùng làm nóng lại bằng lò nướng hoặc nồi chiên không dầu ở 180°C khoảng 5 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non heo chặt khúc",
+      "culinaryMeasure": "800 g",
+      "prepNote": "rửa nước muối loãng, chần sơ nước sôi rồi chặt khúc vừa ăn và khía nhẹ mặt thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "4 quả (20 g)",
+      "prepNote": "bỏ cuống, băm nhuyễn 3 quả ướp sườn và 1 quả pha nước chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4–5 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, băm nhỏ trộn vào hỗn hợp ướp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (45 g)",
+      "prepNote": "vắt lấy nước cốt để pha nước chấm chua cay và rưới nhẹ lên sườn",
+      "componentGroup": "dipping",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (2,5 muỗng canh)",
+      "prepNote": "chia 20 ml ướp sườn và 15 ml pha nước chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 35.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "35 g (~2,5–3 muỗng canh)",
+      "prepNote": "chia 15 g ướp sườn và 20 g pha nước chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "12 g (~2 muỗng cà phê)",
+      "prepNote": "dùng 8 g rửa và chần sườn rồi xả bỏ, 4 g giã ướp sườn muối ớt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.33,
+      "edibleGrams": 3.96,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp sườn và 1 g rắc vào nước chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml trộn ướp sườn và 10 ml phết mặt khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 20.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc ấm",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để pha nước chấm chua cay",
+      "componentGroup": "dipping",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, chần sơ và khía nhẹ sườn non",
+      "instruction": "Rửa sạch 800 g sườn non với 4 g muối hạt, chặt khúc vừa ăn cỡ 4–5 cm rồi chần qua nồi nước sôi pha 4 g muối trong 3 phút để khử mùi hôi và làm sạch bọt bẩn. Vớt sườn ra rửa lại nước lạnh, thấm thật khô và khía nhẹ vài đường trên mặt thịt để nhanh thấm gia vị.",
+      "tip": "Chần sơ sườn giúp loại bỏ tạp chất và giữ phần thịt bên trong mềm ẩm hơn khi nướng ở nhiệt độ cao.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Giã muối ớt và ướp sườn thấm vị",
+      "instruction": "Giã nhuyễn 4 g muối hạt còn lại cùng 3 quả ớt hiểm, tỏi khô và hành tím băm nhỏ. Trộn hỗn hợp muối ớt này với 20 ml nước mắm, 15 g đường cát trắng, 2 g tiêu đen xay và 15 ml dầu ăn cho tan đều, xoa khắp từng khúc sườn, bọc kín ướp ít nhất 40 phút.",
+      "tip": "Ướp thêm 15 ml dầu ăn trực tiếp vào sườn giúp bề mặt thịt giữ ẩm, không bị khô cứng khi nướng.",
+      "timerMinutes": 40
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước chấm chanh ớt tiêu ăn kèm",
+      "instruction": "Trong lúc chờ sườn ngấm, khuấy tan 20 g đường cát trắng với 30 ml nước lọc ấm và nước cốt của 1 quả chanh tươi (chừa lại một ít để vắt lên sườn nếu thích). Cho tiếp 15 ml nước mắm ngon, 1 quả ớt hiểm băm nhỏ và 1 g tiêu đen xay vào khuấy đều."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng lò và nướng sườn mặt thứ nhất",
+      "instruction": "Làm nóng lò nướng hoặc nồi chiên không dầu ở 200°C trước 10 phút. Xếp sườn lên vỉ nướng có lót giấy bạc hứng mỡ bên dưới, phết nhẹ một lớp dầu ăn trong phần 10 ml dầu còn lại và nướng 15 phút.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lật mặt, phết sốt và nướng vàng cháy cạnh",
+      "instruction": "Mở lò lật mặt sườn, phết phần dầu ăn còn lại cùng lớp nước ướp sườn mỏng lên bề mặt rồi nướng tiếp 12–15 phút ở 200°C cho đến khi hai mặt sườn vàng ruộm, xém cạnh thơm lừng và phần thịt sát xương chín hoàn toàn không còn đỏ.",
+      "tip": "Canh kỹ 5 phút cuối và trở đều mặt giúp lớp gia vị muối ớt bám thơm mà không bị cháy đen đắng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Để sườn nghỉ giữ ngọt và dọn thưởng thức",
+      "instruction": "Lấy sườn nướng ra khỏi lò, để nghỉ 5 phút trên đĩa cho nước thịt ổn định lại bên trong trước khi xếp ra bàn. Dọn sườn nướng muối ớt dùng nóng kèm chén nước chấm chua cay vừa pha và cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 456,
+    "energyKcal": 456.2,
+    "energyKj": 1909,
+    "proteinG": 21.2,
+    "fatG": 35.5,
+    "saturatedFatG": 11.9,
+    "carbG": 12.4,
+    "fiberG": 0.6,
+    "sugarG": 9.9,
+    "sodiumMg": 1185,
+    "saltG": 2.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167861",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b97eed0b515685b9f9d19cbda6470dde8cadc3c88f46f4d3aa97ba7c2f512690",
+    "researchedFromV2Sha256": "c3ce6641b40e010029458ae894dcd6e3917fcb51f630cef85dc2ab93667ead2d"
+  }
+}

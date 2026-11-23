@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-da0c2dea539000e5",
+    "slug": "frittata-nam-pho-mai",
+    "title": "Frittata nấm phô mai kiểu Ý",
+    "subtitle": "Trứng chiên dày kiểu Ý vàng ươm thơm lừng nhân nấm đùi gà xào cháy cạnh, hành tỏi và phô mai Parmesan béo mặn"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Frittata",
+      "Bữa sáng",
+      "Ẩm thực Ý",
+      "Trứng nấm",
+      "Phô mai"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Ổ trứng chiên dày Frittata kiểu Ý mềm ẩm bên trong, xém vàng bên ngoài với nấm đùi gà xào thơm ngọt, ngò tây tươi, tỏi phi và phô mai Parmesan tan quyện đậm đà.",
+    "servingSuggestion": "Cắt ổ Frittata thành từng miếng tam giác đều nhau, rắc thêm ngò tây tươi và dùng nóng hoặc ở nhiệt độ phòng cùng bánh mì nướng và salad trộn.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn làm nóng lại nhẹ bằng chảo khô lửa nhỏ hoặc thưởng thức nguội đều rất ngon."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "6 quả (~300 g)",
+      "prepNote": "đập ra tô lớn, đánh tan đều cùng phô mai Parmesan bào và gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 264,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "lau sạch bằng khăn ẩm (không ngâm nước), cắt bỏ gốc già và thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "40 g",
+      "prepNote": "đánh quyện trực tiếp vào hỗn hợp trứng gà",
+      "componentGroup": "main",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "chia 15 ml xào thơm nấm đùi gà và 15 ml tráng chảo chiên trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 25.94,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (~3 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và băm nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 2 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt vảy khô (hoặc ớt bột)",
+      "culinaryMeasure": "0.5 g (~1 nhúm nhỏ)",
+      "prepNote": "tạo hậu vị ấm nhẹ khi phi cùng đầu hành tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g rắc khi xào nấm và 2 g đánh vào tô trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "đánh đều vào hỗn hợp trứng phô mai",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lau sạch nấm đùi gà và sơ chế ngò tây, tỏi",
+      "instruction": "Dùng khăn ẩm lau sạch 300 g nấm đùi gà tươi (không ngâm ngập nước để nấm không hút ẩm), cắt bỏ phần gốc già và thái lát dày 0,5 cm. Rửa sạch 15 g ngò tây tươi, thấm khô và băm nhỏ; bóc vỏ băm nhuyễn 2 tép tỏi khô."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào chín vàng nấm đùi gà và để nguội bớt",
+      "instruction": "Đun nóng 15 ml dầu ô liu trong chảo chống dính đường kính khoảng 24 cm trên lửa vừa, cho tỏi băm và 0,5 g ớt vảy khô vào đảo nhanh 30 giây cho thơm. Tăng lên lửa lớn, thả nấm đùi gà vào xào mở nắp khoảng 6 phút cùng 1 g muối ăn đến khi nấm ra hết nước và xém vàng cạnh; trút nấm ra đĩa để nguội bớt 3 phút.",
+      "tip": "Xào nấm mở nắp ở lửa lớn và để nấm nguội bớt trước khi trộn vào trứng giúp nấm không tiết nước làm loãng trứng và không làm trứng bị chín vón cục.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà với phô mai Parmesan",
+      "instruction": "Đập 6 quả trứng gà tươi vào tô lớn, thêm 40 g phô mai Parmesan bào mịn, 2 g muối ăn và 1 g tiêu đen xay. Dùng phới lồng đánh đều cho lòng đỏ, lòng trắng và phô mai hòa quyện hoàn toàn, sau đó trút phần nấm đùi gà xào đã nguội bớt vào trộn đều.",
+      "tip": "Phô mai Parmesan vốn có vị mặn đậm nên chỉ cần nêm lượng muối vừa phải để tránh món trứng bị gắt mặn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đổ hỗn hợp trứng và gom mép chín đều",
+      "instruction": "Lau sạch chảo, thêm 15 ml dầu ô liu còn lại đun nóng nhẹ trên lửa nhỏ. Rót hỗn hợp trứng nấm vào chảo, rắc 2/3 phần ngò tây băm lên mặt. Để yên 1 phút cho đáy se lại rồi dùng phới silicon kéo nhẹ trứng từ mép vào giữa để phần trứng lỏng chảy xuống đáy, lặp lại thao tác này trong khoảng 4 phút đến khi phần đáy và viền thành hình.",
+      "tip": "Thao tác gom mép trứng từ ngoài vào giữa trong vài phút đầu giúp khối trứng chín đều từ đáy lên mà không bị khô cứng.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đậy nắp om nhỏ lửa cho trứng chín mặt trên",
+      "instruction": "Đậy nắp vung kín chảo, hạ lửa thật nhỏ và nấu thêm khoảng 8 phút đến khi toàn bộ khối trứng phồng nhẹ, bề mặt trên se chín đặc lại chỉ còn hơi ẩm nhẹ ở tâm.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Lật áp chảo mặt trên và cắt múi tam giác",
+      "instruction": "Úp một chiếc đĩa phẳng rộng lên miệng chảo, lật dứt khoát ổ Frittata ra đĩa rồi trượt nhẹ trở lại chảo áp mặt còn lại thêm 2 phút trên lửa nhỏ cho vàng đều cả hai mặt. Trút ra thớt hoặc đĩa lớn, rắc nốt phần ngò tây tươi còn lại, nghỉ 2 phút rồi cắt thành 6 miếng tam giác dùng nóng hoặc ấm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 299,
+    "energyKcal": 299.4,
+    "energyKj": 1252,
+    "proteinG": 19.7,
+    "fatG": 21.3,
+    "saturatedFatG": 6.3,
+    "carbG": 8.7,
+    "fiberG": 2.6,
+    "sugarG": 1.6,
+    "sodiumMg": 740,
+    "saltG": 1.85,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171319",
+      "USDA FDC 171413",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8777c4420e2b58c01c3fa22917f94bb0a7613f3beb2c6690ff3d0920d49397ae",
+    "researchedFromV2Sha256": "da84d2b469a79b598b3478d4e3325c34c231875bb012086cf607b4369e731573"
+  }
+}

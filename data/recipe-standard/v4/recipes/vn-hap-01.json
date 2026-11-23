@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-hap-01",
+    "slug": "ga-ta-hap-la-chanh",
+    "title": "Gà ta hấp lá chanh da giòn thịt ngọt",
+    "subtitle": "Gà ta thả vườn hấp cách thủy cùng sả gừng thơm lừng, da vàng giòn mọng nước quyện hương lá chanh thái chỉ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "bac",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Gà ta",
+      "Thanh đạm",
+      "Đãi tiệc",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "chicken"
+    ]
+  },
+  "overview": {
+    "description": "Gà ta hấp cách thủy giữ trọn vị ngọt thanh tự nhiên của thịt săn chắc, lớp da vàng óng giòn sần sật, thấm đẫm hương thơm ấm nồng từ sả cây, gừng tươi và lá chanh bánh tẻ.",
+    "servingSuggestion": "Chặt gà thành miếng vừa ăn xếp ra đĩa, rắc đều lá chanh thái chỉ và vài lát ớt sừng lên trên; dọn nóng kèm chén muối tiêu chanh ớt.",
+    "storageAndReheat": "Gà hấp ngon nhất khi dùng ngay trong ngày. Nếu còn dư, bọc kín bảo quản ngăn mát tối đa 24 giờ rồi hấp lại 5–7 phút ở lửa vừa để thịt nóng mà không bị khô."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_WHOLE",
+      "name": "Gà ta chặt đôi (nửa con)",
+      "culinaryMeasure": "800 g (1/2 con gà ta)",
+      "prepNote": "nhổ sạch lông măng, cắt bỏ phao câu, chà muối gừng rửa sạch rồi để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.68,
+      "edibleGrams": 544,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả cây tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc lớp bẹ già, rửa sạch; 2 cây đập dập cắt khúc lót xửng, 1 cây thái lát ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "40 g (1 củ vừa)",
+      "prepNote": "cạo sạch vỏ, rửa sạch; chia 20 g thái lát lót xửng, 10 g băm nhỏ ướp gà và 10 g đập dập khử mùi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh tươi bánh tẻ",
+      "culinaryMeasure": "10 g (khoảng 12–15 lá)",
+      "prepNote": "rửa sạch, để ráo; chia 5 g để nguyên lót nồi và ướp, 5 g thái sợi chỉ mịn rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 6.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, rửa sạch, đập dập nhẹ để lót cùng sả gừng giúp dậy hương khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 7.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch; 1 quả bỏ hạt thái lát ướp gà, 1 quả băm nhỏ pha muối chấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 8.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "18 g (khoảng 1 muỗng canh)",
+      "prepNote": "chia 6 g chà rửa khử mùi gà rồi xả sạch, 6 g ướp da gà, 6 g làm muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng xoa đều phần thịt trong và ngoài da gà trước khi hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "chia 1,5 g ướp gà và 1,5 g trộn muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "trộn vào chén muối tiêu chanh để vị chấm dịu và hài hòa hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "rửa sạch, vắt lấy nước cốt pha muối tiêu chanh; vỏ chanh có thể giữ lót hấp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (đun sôi hấp cách thủy)",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "đổ vào đáy nồi hấp cách mặt vỉ tối thiểu 3 cm để hơi nước bốc đều",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và khử mùi hôi gà ta",
+      "instruction": "Rửa sạch nửa con gà ta dưới vòi nước lạnh, cắt bỏ tuyến dầu ở phần đuôi. Dùng 6 g muối hạt và 10 g gừng đập dập chà xát kỹ cả bên ngoài da lẫn khoang bụng trong 2 phút để loại bỏ mùi hôi và chất nhờn, sau đó xả lại nhiều lần với nước sạch rồi thấm thật khô bằng khăn giấy.",
+      "tip": "Thấm thật ráo bề mặt da trước khi ướp sẽ giúp gia vị bám đều và da gà khi hấp xong căng bóng, không bị bở nhão."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế sả, gừng, hành tím và lá chanh",
+      "instruction": "Cạo vỏ phần gừng còn lại, cắt 20 g thành lát mỏng và băm nhỏ 10 g. Bóc lớp bẹ già của 3 cây sả, đập dập cắt khúc 2 cây và thái lát mỏng 1 cây. Lá chanh rửa sạch lau khô, giữ 5 g lá nguyên để lót hấp, phần 5 g còn lại cuộn tròn thái sợi chỉ thật mảnh. Bóc vỏ 30 g hành tím đập dập, thái lát 1 quả ớt và băm nhỏ 1 quả ớt còn lại."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp đậm đà phần thịt và da gà",
+      "instruction": "Trộn đều 6 g muối hạt, 5 g hạt nêm, 1,5 g tiêu đen xay, 10 g gừng băm, 1 cây sả thái lát, 1 quả ớt thái lát và một ít lá chanh thái chỉ. Xoa đều hỗn hợp lên khắp mình gà, nhét phần gia vị vào mặt trong khoang bụng rồi bọc kín để ướp 15 phút cho thịt ngấm sâu hương thơm.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chuẩn bị xửng hấp và hấp gà chín tới",
+      "instruction": "Đổ 700 ml nước lọc vào đáy nồi hấp, đun sôi bùng trên lửa lớn. Lót 2 cây sả đập dập, 20 g gừng thái lát, 30 g hành tím đập dập và 5 g lá chanh nguyên lên mặt vỉ hấp. Đặt nửa con gà ta ngửa phần thịt lên trên, đậy kín nắp và hấp cách thủy ở lửa vừa trong 25 phút.",
+      "tip": "Không mở nắp vung liên tục trong 20 phút đầu để giữ ổn định nhiệt độ hơi nước và tránh thất thoát tinh dầu sả lá chanh.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kiểm tra độ chín và làm giòn da gà",
+      "instruction": "Dùng đầu đũa nhọn xiên vào phần thịt dày nhất ở má đùi, nếu thấy nước tiết ra trong suốt và không còn màu hồng là gà đã chín hoàn toàn. Tắt bếp, đậy vung ủ thêm 3 phút cho thịt mọng nước rồi vớt gà ra ngâm nhanh vào âu nước đá sạch khoảng 2 phút giúp da se giòn vàng đẹp.",
+      "tip": "Ủ thêm vài phút sau khi tắt bếp rồi mới sốc nhiệt nhanh giúp thớ thịt gà không bị khô xác mà lớp da vẫn săn giòn sần sật.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh ớt chấm gà",
+      "instruction": "Trong lúc chờ gà nguội ráo, cho 6 g muối hạt, 1,5 g tiêu đen xay, 3 g đường cát trắng và 1 quả ớt băm nhỏ vào chén sạch. Vắt nước cốt 1 quả chanh tươi vào chén, khuấy nhẹ cho muối tan bớt tạo thành hỗn hợp chấm sánh nhẹ, thơm dịu vị chanh."
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Chặt gà và trình bày cùng lá chanh thái chỉ",
+      "instruction": "Khi gà nguội bớt và da se khô, đặt lên thớt dùng dao sắc chặt thành từng miếng vuông vừa ăn, xếp ngay ngắn ra đĩa lớn. Rắc toàn bộ phần lá chanh thái chỉ còn lại phủ đều lên mặt da gà cho dậy mùi thơm, dọn ăn nóng kèm chén muối tiêu chanh ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 312,
+    "energyKcal": 311.7,
+    "energyKj": 1305,
+    "proteinG": 25.8,
+    "fatG": 20.6,
+    "saturatedFatG": 5.9,
+    "carbG": 4.7,
+    "fiberG": 0.6,
+    "sugarG": 1.3,
+    "sodiumMg": 1175,
+    "saltG": 2.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171077",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "80050a49f8622bf81450665feb58cac70447d431f8bed1143736f7958b6ac512",
+    "researchedFromV2Sha256": "ffea52549a962b3529bdeabbbd4be000d974a3f79f1d13350f268e9ad4cee92b"
+  }
+}

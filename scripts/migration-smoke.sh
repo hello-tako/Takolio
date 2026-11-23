@@ -662,6 +662,18 @@ INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' A
 INSERT INTO assert_one SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'financial_tax_archive';
 INSERT INTO assert_one SELECT COUNT(*) FROM pragma_table_info('users') WHERE name = 'erased_at';
 INSERT INTO assert_one SELECT COUNT(*) = 500 FROM recipes;
+.read migrations/0052_culinary_standard_v4_catalog_500.sql
+.read migrations/0053_culinary_standard_v4_catalog_part2.sql
+.read migrations/0054_culinary_standard_v4_catalog_part3.sql
+.read migrations/0055_culinary_standard_v4_catalog_part4.sql
+.read migrations/0056_culinary_standard_v4_catalog_part5.sql
+.read migrations/0057_culinary_standard_v4_catalog_part6.sql
+INSERT INTO assert_one SELECT COUNT(*) = 249 FROM culinary_standard_v4_ingredients;
+INSERT INTO assert_one SELECT COUNT(*) = 500 FROM recipe_standard_v4_catalog;
+INSERT INTO assert_one SELECT COUNT(*) > 6000 FROM recipe_standard_v4_ingredients;
+INSERT INTO assert_one SELECT COUNT(*) >= 3000 FROM recipe_standard_v4_steps;
+INSERT INTO assert_one SELECT COUNT(*) = 45 FROM ingredients;
+INSERT INTO assert_one SELECT COUNT(*) = 500 FROM recipes;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_foreign_key_check;
 INSERT INTO assert_zero SELECT COUNT(*) FROM pragma_integrity_check WHERE integrity_check <> 'ok';
 SELECT 'migration-smoke=ok';

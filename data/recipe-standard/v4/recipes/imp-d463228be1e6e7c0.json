@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d463228be1e6e7c0",
+    "slug": "com-risotto-nam-bo-pho-mai-beo-ngay",
+    "title": "Cơm Risotto nấm bơ phô mai béo ngậy",
+    "subtitle": "Gạo Ý Arborio rang thơm rồi om chậm cùng nước dùng rau củ nóng, nấm xào vàng xém và đánh bóng cuối bằng bơ lạt lạnh cùng phô mai Parmesan"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Cơm Risotto",
+      "Nấm tươi",
+      "Bơ phô mai",
+      "Ấm bụng"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "milk",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Cơm Risotto nấm bơ phô mai là món cơm kem đặc trưng của miền Bắc nước Ý. Hạt gạo Arborio hạt tròn giàu tinh bột được rang nhẹ rồi om từng vá nước dùng rau củ nóng, hòa quyện vị ngọt umami từ nấm áp chảo và độ béo mịn của bơ lạnh, phô mai Parmesan.",
+    "servingSuggestion": "Múc cơm Risotto ra đĩa sâu lòng để giữ độ sóng sánh, xếp phần nấm xào để riêng lên mặt, rắc thêm ngò tây băm, tiêu đen xay và chút phô mai Parmesan.",
+    "storageAndReheat": "Cơm Risotto ngon nhất khi ăn nóng ngay sau khi hoàn thiện; phần dư bảo quản ngăn mát tối đa 2 ngày, khi hâm lại thêm ít nước dùng rau củ khuấy trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ARBORIO_RICE",
+      "name": "Gạo Ý Arborio nấu Risotto",
+      "culinaryMeasure": "240 g",
+      "prepNote": "không vo gạo để giữ lớp tinh bột tự nhiên tạo độ sánh kem",
+      "componentGroup": "main",
+      "requiredQuantity": 240,
+      "unit": "g",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà và nấm bào ngư tươi",
+      "culinaryMeasure": "300 g",
+      "prepNote": "lau sạch bằng khăn ẩm, thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "1/2 củ (~70 g)",
+      "prepNote": "bóc vỏ, băm hạt lựu thật nhỏ để dễ tan khi om",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/5 củ (1–2 tép, ~5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 4.35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "đun sôi lăn tăn và giữ nóng liên tục suốt quá trình nấu",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 800,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "45 g",
+      "prepNote": "chia 22 g để xào nấm và 23 g giữ thật lạnh cắt nhỏ để đánh bóng cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 12 ml xào nấm và 8 ml xào hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "40 g",
+      "prepNote": "bào mịn sẵn để trộn đánh bóng cùng bơ lạnh khi tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "60 ml",
+      "prepNote": "dùng để khử gạo sau bước rang sơ giúp dậy mùi thanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 59.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 59.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "8 g (~1,5 muỗng canh băm)",
+      "prepNote": "rửa sạch, thấm khô và thái nhỏ để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ cho nấm và điều chỉnh lại ở bước cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm nấm và rắc mặt cơm trước khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Giữ nóng nước dùng và sơ chế nấm rau củ",
+      "instruction": "Đun 800 ml nước dùng rau củ trong nồi riêng ở lửa nhỏ cho luôn sôi lăn tăn. Lau sạch 300 g nấm đùi gà và nấm bào ngư bằng khăn ẩm (không ngâm nước), thái lát dày 0,5 cm. Băm nhỏ hành tây, tỏi tươi và ngò tây để riêng; cắt 23 g bơ lạt vào ngăn mát giữ lạnh.",
+      "tip": "Nước dùng phải luôn nóng để không làm hạt gạo bị sốc nhiệt và sượng lõi khi om."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo nấm vàng thơm với bơ và tỏi",
+      "instruction": "Làm nóng chảo lớn trên lửa vừa-cao với 12 ml dầu ô liu nguyên chất và 22 g bơ lạt. Phi thơm tỏi băm 30 giây rồi trút nấm vào dàn đều một lớp, xào 5 phút đến khi nấm cạn nước và vàng xém nhẹ. Nêm 2 g muối ăn và 1 g tiêu đen xay, trút ra đĩa giữ ấm.",
+      "tip": "Dàn nấm thành một lớp mỏng và hạn chế đảo sớm giúp nấm xém vàng thơm thay vì ra nhiều nước.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào hành tây và rang hạt gạo Arborio",
+      "instruction": "Bắc nồi đáy dày lên bếp ở lửa vừa, thêm 8 ml dầu ô liu còn lại vào xào hành tây băm khoảng 4 phút đến khi hành mềm trong suốt (không để vàng cháy). Đổ 240 g gạo Ý Arborio vào đảo đều 3 phút cho đến khi viền hạt gạo trở nên trong mờ.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Om gạo từng vá nước dùng nóng với nấm",
+      "instruction": "Rót 60 ml rượu vang trắng khô vào nồi gạo (nếu dùng), đảo 2 phút cho bay hơi hết mùi cồn. Múc từng vá nước dùng rau củ nóng (~120 ml) vào ngập mặt gạo, khuấy đều tay; khi nước rút gần cạn mới thêm vá tiếp theo. Sau 8 phút, trút 2/3 lượng nấm xào vào om cùng đến phút thứ 18 khi hạt gạo mềm béo bên ngoài và hơi sật nhẹ ở lõi.",
+      "tip": "Thêm nước dùng nóng từng vá một và khuấy đều giúp tinh bột gạo tiết ra tự nhiên tạo độ sánh như kem.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Đánh bóng Risotto với bơ lạnh và phô mai",
+      "instruction": "Khi cơm đạt độ sánh sóng sánh nhẹ, tắt bếp ngay. Cho 23 g bơ lạt lạnh cắt nhỏ cùng 40 g phô mai Parmesan bào mịn vào nồi, đánh nhanh và đều tay khoảng 2 phút đến khi cơm bóng mượt và quyện kem mịn.",
+      "tip": "Tắt bếp rồi mới cho bơ lạnh và phô mai vào đánh giúp tạo nhũ tương béo mượt mà không bị tách dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại gia vị và trình bày đĩa nóng",
+      "instruction": "Trộn 8 g ngò tây tươi băm, nêm nếm lại phần muối ăn (khoảng 3 g) và 0,5 g tiêu đen xay còn lại cho vừa miệng, để nghỉ 1 phút. Múc cơm Risotto ra 3 đĩa sâu lòng, xếp 1/3 lượng nấm còn lại lên trên và dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 595,
+    "energyKcal": 594.9,
+    "energyKj": 2488,
+    "proteinG": 15.1,
+    "fatG": 23.2,
+    "saturatedFatG": 11,
+    "carbG": 78.8,
+    "fiberG": 4.3,
+    "sugarG": 5.1,
+    "sodiumMg": 1434,
+    "saltG": 3.58,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170416",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171595",
+      "USDA FDC 173190",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC Arborio Rice Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "30688cfa2bfdb73a26e165321e2aa818cb26723e7e8729a877ab337e4ef4ae3b",
+    "researchedFromV2Sha256": "c3de2c7a2cc424d1170c0b3280f1e77fef5ca16f1fbdb0611f392a26500e5305"
+  }
+}

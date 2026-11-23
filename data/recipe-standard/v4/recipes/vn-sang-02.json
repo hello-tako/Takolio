@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-sang-02",
+    "slug": "banh-mi-op-la-pate",
+    "title": "Bánh mì ốp la pate dưa leo",
+    "subtitle": "Ổ bánh mì vỏ giòn rụm phết pate gan béo mịn, kẹp trứng ốp la lòng đào chiên bơ và dưa leo ngò rí mát lành"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 6,
+    "cookTimeMinutes": 8,
+    "servings": 2,
+    "tags": [
+      "Bánh mì",
+      "Ăn sáng",
+      "Nhanh gọn",
+      "Quốc dân",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "pan_fry",
+      "grill_roast",
+      "assemble"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món sáng quốc dân chuẩn vị quán Việt với hai ổ bánh mì nóng giòn, lớp pate gan mịn béo phủ đều ruột bánh, trứng gà ốp la lòng đào chiên bơ thơm ngậy cùng dưa leo giòn mát, ngò rí, xì dầu và tương ớt cay dịu.",
+    "servingSuggestion": "Kẹp nhẹ ổ bánh mì và thưởng thức ngay khi vỏ bánh còn giòn rụm và lòng đỏ trứng còn ấm sóng sánh; dùng kèm ly cà phê sữa đá hoặc sữa đậu nành.",
+    "storageAndReheat": "Bánh mì ốp la ngon nhất khi ăn liền sau khi làm. Nếu cần chuẩn bị trước, chỉ nên nướng giòn bánh và chiên trứng ngay trước khi ăn; phần pate và rau rửa sạch bảo quản riêng trong ngăn mát tối đa 2 ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BANH_MI",
+      "name": "Bánh mì Việt Nam",
+      "culinaryMeasure": "2 ổ (khoảng 180 g)",
+      "prepNote": "chọn ổ bánh mới, vỏ mỏng giòn, ruột xốp; rạch dọc một bên không cắt rời",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "chọn trứng tươi để ốp la lòng đào sánh mịn và an toàn",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PORK_LIVER",
+      "name": "Pate gan heo mịn",
+      "culinaryMeasure": "80 g (~4 muỗng canh)",
+      "prepNote": "để nhiệt độ phòng cho mềm dễ phết đều lên hai mặt ruột bánh",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 80,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BUTTER",
+      "name": "Bơ thực vật hoặc bơ lạt",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "dùng để chiên trứng ốp la tạo mùi thơm béo đặc trưng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "1 quả vừa (khoảng 150 g)",
+      "prepNote": "rửa sạch, bỏ hai đầu, thái lát xéo mỏng theo chiều dài",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt bỏ rễ và lá úa, rửa sạch, vẩy thật ráo nước",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới đều 5 ml lên mỗi ổ bánh mì trước khi kẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "rưới tùy khẩu vị cay lên mặt trứng và dưa leo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc nhẹ lên bề mặt trứng khi đang chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "rắc lên trứng ốp la cho dậy hương ấm thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng để tăng vị cay nhẹ nếu thích",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế dưa leo, ngò rí và ớt tươi",
+      "instruction": "Rửa sạch dưa leo, cắt bỏ hai đầu rồi thái lát vát xéo mỏng khoảng 0,3 cm để khi kẹp dễ ăn và giữ độ giòn mát. Nhặt sạch rễ ngò rí, rửa kỹ rồi vẩy thật ráo nước để bánh không bị ướt mềm. Thái lát mỏng ớt sừng đỏ nếu dùng cay.",
+      "tip": "Vẩy thật ráo nước rau thơm và dưa leo trước khi kẹp giúp vỏ bánh mì giữ độ giòn lâu hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm nóng giòn vỏ bánh mì và phết pate",
+      "instruction": "Làm nóng nồi chiên không dầu hoặc lò nướng ở 180°C, cho 2 ổ bánh mì vào nướng lại 3 phút cho vỏ ngoài nóng giòn rụm (hoặc áp chảo khô trên lửa vừa 2 phút mỗi mặt). Dùng dao răng cưa rạch dọc một bên thân bánh tạo khoang mở, phết đều 40 g pate gan heo vào hai mặt ruột của mỗi ổ bánh.",
+      "tip": "Phết pate lên cả hai mặt ruột khi bánh vừa nướng nóng sẽ giúp pate hơi chảy mềm, lan tỏa hương béo ngậy khắp ổ bánh.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Đun chảy bơ và chiên trứng ốp la lòng đào",
+      "instruction": "Đặt chảo chống dính lên bếp với lửa vừa, cho 15 g bơ vào đun chảy đến khi sủi bọt lăn tăn nhưng không để cháy nâu. Hạ lửa nhỏ vừa, đập nhẹ 2 quả trứng gà vào chảo, giữ nguyên khoảng 2 phút cho lòng trắng đông trắng hoàn toàn và viền hơi vàng giòn trong khi lòng đỏ vẫn tròn mềm sóng sánh.",
+      "tip": "Chiên bơ ở lửa nhỏ vừa giúp trứng không bị cháy cạnh và giữ được hương thơm béo thanh đặc trưng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm gia vị lên mặt trứng ốp la",
+      "instruction": "Khi trứng chín đạt khoảng 7 phần (lòng trắng đông chắc, lòng đỏ hơi se màng mỏng bên ngoài), rắc đều 1,5 g muối ăn và 1 g tiêu đen xay lên bề mặt trứng, nấu thêm 30 giây rồi tắt bếp ngay để giữ độ lòng đào chuẩn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Xếp nhân vào ổ bánh mì",
+      "instruction": "Dùng xẻng mỏng nhẹ nhàng xúc từng quả trứng ốp la đặt gọn vào giữa lòng mỗi ổ bánh mì đã phết pate. Xếp tiếp các lát dưa leo giòn mát, vài nhánh ngò rí tươi và vài lát ớt sừng đỏ lên trên mặt trứng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới xì dầu, tương ớt và thưởng thức nóng",
+      "instruction": "Rưới đều 5 ml xì dầu và 7–8 ml tương ớt vào bên trong mỗi ổ bánh mì, khép nhẹ hai mép bánh lại để phần pate, lòng đào trứng và rau hòa quyện với nhau. Dọn ăn ngay khi bánh còn nóng giòn.",
+      "tip": "Tránh ấn quá mạnh tay khi vừa kẹp xong để lòng đỏ trứng không bị vỡ tràn ra ngoài trước khi cắn miếng đầu tiên."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 435,
+    "energyKcal": 435.3,
+    "energyKj": 1821,
+    "proteinG": 23.4,
+    "fatG": 13.1,
+    "saturatedFatG": 5.7,
+    "carbG": 54.9,
+    "fiberG": 3,
+    "sugarG": 5.6,
+    "sodiumMg": 1398,
+    "saltG": 3.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167871",
+      "USDA FDC 168409",
+      "USDA FDC 169997",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 172686",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1626804475297-41608ea09aeb?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7b7076981a3efe4065aa2f9e32b5b9a1626b4e9ba471be9dd55f49f6338a8126",
+    "researchedFromV2Sha256": "4cafb25782c35857efb3413889f8453723ba5bd549ff2f40a30168e34f8a7469"
+  }
+}

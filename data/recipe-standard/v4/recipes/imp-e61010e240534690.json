@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e61010e240534690",
+    "slug": "muc-om-ca-chua-y",
+    "title": "Mực om cà chua kiểu Ý",
+    "subtitle": "Mực ống tươi om mềm trong sốt cà chua pelati sánh đỏ cùng rượu vang trắng, tỏi thơm và ngò tây"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Mực om",
+      "Cà chua",
+      "Hải sản",
+      "Ẩm thực Ý",
+      "Món chính"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "squid",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Món mực om cà chua mang đậm hương vị vùng biển nước Ý với từng khoanh mực mềm mọng không hề bị dai, thấm đẫm nước sốt cà chua pelati chua thanh hòa quyện mùi tỏi, rượu vang trắng và ngò tây tươi.",
+    "servingSuggestion": "Múc mực om nóng hổi ra đĩa sâu lòng cùng nước sốt đỏ sánh, rắc ngò tây băm nhỏ và ăn kèm bánh mì nướng giòn để chấm sốt.",
+    "storageAndReheat": "Bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 2 ngày. Khi ăn, hâm lại trên chảo với lửa nhỏ trong 4–5 phút để mực mềm ấm mà không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi đã làm sạch",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rút bỏ túi mực, nội tạng, mai và răng mực; thái thân thành khoanh dày 1 cm, râu cắt đôi rồi thấm khô",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua lột vỏ đóng hộp (pelati)",
+      "culinaryMeasure": "400 g (1 hộp)",
+      "prepNote": "dằm nát bằng nĩa hoặc muỗng gỗ trước hoặc ngay khi cho vào nồi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu vang trắng khô",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "dùng để khử tanh và hòa tan vị thơm đáy chảo sau khi xào mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 99,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 69.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng để phi thơm tỏi ớt và xào săn mực",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 25.94,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, bỏ mầm xanh ở giữa rồi băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi đỏ",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, để nguyên quả hoặc băm nhỏ tùy mức độ ăn cay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, để ráo rồi băm nhỏ để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vào sốt cà chua và điều chỉnh lại trước khi tắt bếp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào sốt để tăng độ ấm thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và cắt khoanh mực ống",
+      "instruction": "Rửa sạch 600 g mực ống dưới vòi nước lạnh, rút bỏ túi mực, nội tạng, mai cứng và mắt răng mực. Thái thân mực thành các khoanh tròn dày đều 1 cm, phần râu cắt làm đôi rồi dùng khăn giấy thấm thật khô nước.",
+      "tip": "Thái khoanh mực dày đều nhau giúp mực chín đồng thời, tránh miếng nhỏ bị quắt trong khi miếng dày chưa mềm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi, ớt và ngò tây",
+      "instruction": "Bóc vỏ tỏi tươi, tách bỏ phần mầm xanh ở giữa rồi băm nhỏ. Ớt tươi rửa sạch, giữ nguyên quả nếu muốn vị cay nhẹ dịu hoặc thái lát nếu thích cay rõ; ngò tây tươi rửa sạch, thấm ráo rồi băm nhuyễn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt và xào săn mực",
+      "instruction": "Đun nóng 30 ml dầu ô liu nguyên chất trong chảo sâu lòng trên lửa vừa. Cho tỏi băm và ớt tươi vào phi thơm khoảng 1 phút cho dậy hương (không để tỏi cháy vàng), rồi thả mực vào đảo nhanh tay 2 phút đến khi mực săn lại và chuyển màu trắng đục.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Khử mùi bằng rượu vang trắng khô",
+      "instruction": "Vặn lửa lớn, rót 100 ml rượu vang trắng khô vào chảo mực và đun sôi mạnh khoảng 2–3 phút để cồn bay hơi hoàn toàn, đồng thời giữ lại vị ngọt thơm đậm đà.",
+      "tip": "Để lửa lớn ngay khi rót rượu giúp hơi cồn thoát nhanh trong khi hương trái cây thanh nhẹ của vang ngấm vào từng khoanh mực.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om mực cùng cà chua pelati trên lửa liu riu",
+      "instruction": "Đổ 400 g cà chua lột vỏ đóng hộp (pelati) vào chảo, dùng muỗng gỗ dằm nát phần thịt cà chua, nêm 5 g muối ăn và 1,5 g tiêu đen xay. Hạ xuống lửa nhỏ, đậy nắp kín và om liu riu 12 phút đến khi mực mềm hẳn.",
+      "tip": "Kiểm tra độ mềm bằng nĩa sau 12 phút; nếu mực cỡ lớn hơi dày, có thể om thêm 3–4 phút cho đến khi thớ mực mềm tơi.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Mở nắp sánh sốt, rắc ngò tây và dọn nóng",
+      "instruction": "Mở nắp chảo, tăng lên lửa vừa-lớn đun thêm 3–4 phút cho nước sốt cà chua sánh đặc lại nhưng vẫn đủ độ ẩm để chấm bánh mì. Nếm lại gia vị cho vừa miệng, tắt bếp, rắc ngò tây tươi băm nhỏ lên trên, đảo nhẹ và dọn dùng nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 227,
+    "energyKcal": 226.9,
+    "energyKj": 950,
+    "proteinG": 21.8,
+    "fatG": 8.6,
+    "saturatedFatG": 1.4,
+    "carbG": 13,
+    "fiberG": 2.2,
+    "sugarG": 4.7,
+    "sodiumMg": 672,
+    "saltG": 1.68,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 170106",
+      "USDA FDC 170416",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 174223"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "9617df795256461fe09ea114bae57d48f82f7b54e9196e83e4bbc371f4c62e4f",
+    "researchedFromV2Sha256": "ada91f4fd6a3961a21cc41c3ce5a9e586904edbc79969a4727db1755aa20cea0"
+  }
+}

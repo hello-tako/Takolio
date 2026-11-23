@@ -1,0 +1,4993 @@
+{
+  "schemaVersion": 4,
+  "totalCount": 249,
+  "ingredients": [
+    {
+      "id": "PORK_BELLY",
+      "nameVi": "Thịt ba chỉ",
+      "nameEn": "Pork belly",
+      "aliases": [
+        "ba chỉ",
+        "ba rọi",
+        "thịt ba rọi",
+        "thịt ba chỉ heo",
+        "pork belly"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 518,
+      "proteinPer100g": 9.34,
+      "fatPer100g": 53.01,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GROUND_PORK",
+      "nameVi": "Thịt heo xay",
+      "nameEn": "Ground pork",
+      "aliases": [
+        "thịt băm",
+        "thịt xay",
+        "thịt lợn xay",
+        "thịt bằm"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 263,
+      "proteinPer100g": 16.88,
+      "fatPer100g": 21.19,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BEEF_SIRLOIN",
+      "nameVi": "Thịt bò",
+      "nameEn": "Beef sirloin",
+      "aliases": [
+        "thịt bò",
+        "bò phi lê",
+        "thịt bò phi lê",
+        "thịt thăn bò",
+        "bắp bò"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "beef"
+      ],
+      "kcalPer100g": 183,
+      "proteinPer100g": 20.6,
+      "fatPer100g": 10.6,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHICKEN_BREAST",
+      "nameVi": "Ức gà",
+      "nameEn": "Chicken breast",
+      "aliases": [
+        "ức gà",
+        "thịt ức gà",
+        "gà phi lê"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "chicken"
+      ],
+      "kcalPer100g": 120,
+      "proteinPer100g": 22.5,
+      "fatPer100g": 2.62,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHICKEN_THIGH",
+      "nameVi": "Đùi gà",
+      "nameEn": "Chicken thigh",
+      "aliases": [
+        "đùi gà",
+        "má đùi gà",
+        "thịt đùi gà"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "chicken"
+      ],
+      "kcalPer100g": 177,
+      "proteinPer100g": 19.3,
+      "fatPer100g": 10.5,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.82
+    },
+    {
+      "id": "SHRIMP",
+      "nameVi": "Tôm tươi",
+      "nameEn": "Fresh shrimp",
+      "aliases": [
+        "tôm",
+        "tôm sú",
+        "tôm thẻ",
+        "tôm lột"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "shrimp",
+        "crustaceans"
+      ],
+      "kcalPer100g": 85,
+      "proteinPer100g": 20.1,
+      "fatPer100g": 0.51,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.78
+    },
+    {
+      "id": "SALMON_FILLET",
+      "nameVi": "Cá hồi",
+      "nameEn": "Salmon fillet",
+      "aliases": [
+        "cá hồi",
+        "phi lê cá hồi"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "salmon",
+        "fish"
+      ],
+      "kcalPer100g": 208,
+      "proteinPer100g": 20.42,
+      "fatPer100g": 13.42,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHICKEN_EGG",
+      "nameVi": "Trứng gà",
+      "nameEn": "Chicken egg",
+      "aliases": [
+        "trứng gà",
+        "trứng gà ta",
+        "egg",
+        "eggs",
+        "chicken egg"
+      ],
+      "category": "egg",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "egg"
+      ],
+      "kcalPer100g": 143,
+      "proteinPer100g": 12.56,
+      "fatPer100g": 9.51,
+      "carbPer100g": 0.72,
+      "edibleYieldRatio": 0.88,
+      "gramsPerPiece": 50
+    },
+    {
+      "id": "FRESH_MILK",
+      "nameVi": "Sữa tươi",
+      "nameEn": "Fresh milk",
+      "aliases": [
+        "sữa",
+        "sữa tươi",
+        "sữa không đường",
+        "sữa có đường"
+      ],
+      "category": "dairy",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 61,
+      "proteinPer100g": 3.15,
+      "fatPer100g": 3.25,
+      "carbPer100g": 4.8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.03
+    },
+    {
+      "id": "CHEDDAR_CHEESE",
+      "nameVi": "Phô mai",
+      "nameEn": "Cheese",
+      "aliases": [
+        "phô mai",
+        "pho mát",
+        "cheddar"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 403,
+      "proteinPer100g": 22.87,
+      "fatPer100g": 33.31,
+      "carbPer100g": 3.09,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BUTTER",
+      "nameVi": "Bơ thực vật/động vật",
+      "nameEn": "Butter",
+      "aliases": [
+        "bơ",
+        "bơ lạt",
+        "bơ phe",
+        "butter"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 717,
+      "proteinPer100g": 0.85,
+      "fatPer100g": 81.11,
+      "carbPer100g": 0.06,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TOMATO",
+      "nameVi": "Cà chua",
+      "nameEn": "Tomato",
+      "aliases": [
+        "cà chua",
+        "cà chua bi",
+        "tomato"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 18,
+      "proteinPer100g": 0.88,
+      "fatPer100g": 0.2,
+      "carbPer100g": 3.89,
+      "edibleYieldRatio": 1,
+      "gramsPerPiece": 120
+    },
+    {
+      "id": "WATER_SPINACH",
+      "nameVi": "Rau muống",
+      "nameEn": "Water spinach",
+      "aliases": [
+        "rau muống",
+        "muống nước",
+        "rau muống đồng"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "bunch",
+      "allergenTags": [],
+      "kcalPer100g": 19,
+      "proteinPer100g": 2.6,
+      "fatPer100g": 0.2,
+      "carbPer100g": 3.14,
+      "edibleYieldRatio": 0.85,
+      "gramsPerBunch": 300
+    },
+    {
+      "id": "SPINACH",
+      "nameVi": "Rau chân vịt",
+      "nameEn": "Spinach",
+      "aliases": [
+        "rau bina",
+        "cải bó xôi",
+        "rau chân vịt"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 23,
+      "proteinPer100g": 2.86,
+      "fatPer100g": 0.39,
+      "carbPer100g": 3.63,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TOFU",
+      "nameVi": "Đậu phụ",
+      "nameEn": "Tofu",
+      "aliases": [
+        "đậu phụ",
+        "đậu hũ",
+        "tàu hũ",
+        "tofu"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 83,
+      "proteinPer100g": 10,
+      "fatPer100g": 5.26,
+      "carbPer100g": 1.2,
+      "edibleYieldRatio": 1,
+      "gramsPerPiece": 120
+    },
+    {
+      "id": "BROCCOLI",
+      "nameVi": "Bông cải xanh",
+      "nameEn": "Broccoli",
+      "aliases": [
+        "súp lơ",
+        "súp lơ xanh",
+        "bông cải xanh",
+        "broccoli"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 34,
+      "proteinPer100g": 2.82,
+      "fatPer100g": 0.37,
+      "carbPer100g": 6.64,
+      "edibleYieldRatio": 0.82,
+      "gramsPerPiece": 300
+    },
+    {
+      "id": "CARROT",
+      "nameVi": "Cà rốt",
+      "nameEn": "Carrot",
+      "aliases": [
+        "cà rốt",
+        "carrot"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 41,
+      "proteinPer100g": 0.93,
+      "fatPer100g": 0.24,
+      "carbPer100g": 9.58,
+      "edibleYieldRatio": 0.89,
+      "gramsPerPiece": 110
+    },
+    {
+      "id": "ONION",
+      "nameVi": "Hành tây",
+      "nameEn": "Onion",
+      "aliases": [
+        "hành tây",
+        "củ hành tây"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 40,
+      "proteinPer100g": 1.1,
+      "fatPer100g": 0.1,
+      "carbPer100g": 9.34,
+      "edibleYieldRatio": 0.9,
+      "gramsPerPiece": 140
+    },
+    {
+      "id": "GARLIC",
+      "nameVi": "Tỏi",
+      "nameEn": "Garlic",
+      "aliases": [
+        "tỏi",
+        "tỏi cô đơn",
+        "tỏi ta",
+        "củ tỏi"
+      ],
+      "category": "spice",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 149,
+      "proteinPer100g": 6.36,
+      "fatPer100g": 0.5,
+      "carbPer100g": 33.06,
+      "edibleYieldRatio": 0.87,
+      "gramsPerPiece": 25
+    },
+    {
+      "id": "GINGER",
+      "nameVi": "Gừng",
+      "nameEn": "Ginger",
+      "aliases": [
+        "gừng",
+        "củ gừng"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 80,
+      "proteinPer100g": 1.82,
+      "fatPer100g": 0.75,
+      "carbPer100g": 17.77,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "SCALLION",
+      "nameVi": "Hành lá",
+      "nameEn": "Green onion",
+      "aliases": [
+        "hành lá",
+        "hành hoa",
+        "scallion"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "bunch",
+      "allergenTags": [],
+      "kcalPer100g": 32,
+      "proteinPer100g": 1.83,
+      "fatPer100g": 0.19,
+      "carbPer100g": 7.34,
+      "edibleYieldRatio": 0.92,
+      "gramsPerBunch": 40
+    },
+    {
+      "id": "CHILI",
+      "nameVi": "Ớt",
+      "nameEn": "Chili",
+      "aliases": [
+        "ớt",
+        "ớt hiểm",
+        "ớt sừng",
+        "ớt đỏ"
+      ],
+      "category": "spice",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 40,
+      "proteinPer100g": 1.87,
+      "fatPer100g": 0.44,
+      "carbPer100g": 8.81,
+      "edibleYieldRatio": 0.9,
+      "gramsPerPiece": 5
+    },
+    {
+      "id": "CUCUMBER",
+      "nameVi": "Dưa leo",
+      "nameEn": "Cucumber",
+      "aliases": [
+        "dưa chuột",
+        "dưa leo"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 15,
+      "proteinPer100g": 0.65,
+      "fatPer100g": 0.11,
+      "carbPer100g": 3.63,
+      "edibleYieldRatio": 0.95,
+      "gramsPerPiece": 150
+    },
+    {
+      "id": "CABBAGE",
+      "nameVi": "Bắp cải",
+      "nameEn": "Cabbage",
+      "aliases": [
+        "bắp cải",
+        "cải bắp"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 25,
+      "proteinPer100g": 1.28,
+      "fatPer100g": 0.1,
+      "carbPer100g": 5.8,
+      "edibleYieldRatio": 0.85,
+      "gramsPerPiece": 800
+    },
+    {
+      "id": "KIMCHI",
+      "nameVi": "Kim chi",
+      "nameEn": "Kimchi",
+      "aliases": [
+        "kimchi",
+        "kim chi hàn quốc"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 15,
+      "proteinPer100g": 1.1,
+      "fatPer100g": 0.5,
+      "carbPer100g": 2.4,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MUSHROOM",
+      "nameVi": "Nấm đùi gà / nấm hương",
+      "nameEn": "Mushroom",
+      "aliases": [
+        "nấm",
+        "nấm hương",
+        "nấm kim châm",
+        "nấm đùi gà",
+        "nấm rơm"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 27,
+      "proteinPer100g": 2.5,
+      "fatPer100g": 0.34,
+      "carbPer100g": 4.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "RICE",
+      "nameVi": "Gạo / Cơm nguội",
+      "nameEn": "Rice",
+      "aliases": [
+        "gạo",
+        "cơm",
+        "cơm nguội",
+        "gạo thơm"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 358,
+      "proteinPer100g": 6.5,
+      "fatPer100g": 0.58,
+      "carbPer100g": 79.15,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SPAGHETTI_PASTA",
+      "nameVi": "Mì Ý / Pasta",
+      "nameEn": "Pasta",
+      "aliases": [
+        "mì ý",
+        "spaghetti",
+        "pasta",
+        "mì sợi"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 371,
+      "proteinPer100g": 13.04,
+      "fatPer100g": 1.51,
+      "carbPer100g": 74.67,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "NOODLE",
+      "nameVi": "Bún / Mì sợi",
+      "nameEn": "Noodles",
+      "aliases": [
+        "bún",
+        "mì",
+        "phở",
+        "hủ tiếu",
+        "bún tươi"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 110,
+      "proteinPer100g": 2.2,
+      "fatPer100g": 0.3,
+      "carbPer100g": 24.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FISH_SAUCE",
+      "nameVi": "Nước mắm",
+      "nameEn": "Fish sauce",
+      "aliases": [
+        "nước mắm",
+        "mắm nam ngư",
+        "mắm"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 35,
+      "proteinPer100g": 5.06,
+      "fatPer100g": 0.01,
+      "carbPer100g": 3.64,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.2
+    },
+    {
+      "id": "SOY_SAUCE",
+      "nameVi": "Xì dầu / Nước tương",
+      "nameEn": "Soy sauce",
+      "aliases": [
+        "xì dầu",
+        "nước tương",
+        "tương đậu nành"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 53,
+      "proteinPer100g": 8.14,
+      "fatPer100g": 0.57,
+      "carbPer100g": 4.93,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.18
+    },
+    {
+      "id": "COOKING_OIL",
+      "nameVi": "Dầu ăn",
+      "nameEn": "Cooking oil",
+      "aliases": [
+        "dầu ăn",
+        "dầu mè",
+        "dầu olive",
+        "dầu thực vật"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 884,
+      "proteinPer100g": 0,
+      "fatPer100g": 100,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.92
+    },
+    {
+      "id": "PORK_RIBS",
+      "nameVi": "Sườn heo / Sườn non",
+      "nameEn": "Pork ribs",
+      "aliases": [
+        "sườn",
+        "sườn heo",
+        "sườn non",
+        "sườn sụn"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 277,
+      "proteinPer100g": 15.6,
+      "fatPer100g": 23.3,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.65
+    },
+    {
+      "id": "CRAB_MEAT",
+      "nameVi": "Cua đồng / Cua thịt",
+      "nameEn": "Crab meat / Field crab",
+      "aliases": [
+        "cua đồng",
+        "cua",
+        "riêu cua",
+        "thịt cua"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "crab",
+        "crustaceans"
+      ],
+      "kcalPer100g": 87,
+      "proteinPer100g": 18.06,
+      "fatPer100g": 1.08,
+      "carbPer100g": 0.04,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SQUID",
+      "nameVi": "Mực tươi",
+      "nameEn": "Squid",
+      "aliases": [
+        "mực",
+        "mực ống",
+        "mực lá",
+        "mực tươi"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "squid",
+        "molluscs"
+      ],
+      "kcalPer100g": 92,
+      "proteinPer100g": 15.58,
+      "fatPer100g": 1.38,
+      "carbPer100g": 3.08,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "FISH_FRESHWATER",
+      "nameVi": "Cá tươi (Cá lóc, cá điêu hồng, rô phi)",
+      "nameEn": "Freshwater fish",
+      "aliases": [
+        "cá lóc",
+        "cá quả",
+        "cá điêu hồng",
+        "cá rô",
+        "cá tươi",
+        "cá trắm"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 105,
+      "proteinPer100g": 19.5,
+      "fatPer100g": 2.4,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.78
+    },
+    {
+      "id": "BITTER_MELON",
+      "nameVi": "Khổ qua / Mướp đắng",
+      "nameEn": "Bitter melon",
+      "aliases": [
+        "khổ qua",
+        "mướp đắng"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 17,
+      "proteinPer100g": 1,
+      "fatPer100g": 0.17,
+      "carbPer100g": 3.7,
+      "edibleYieldRatio": 0.82,
+      "gramsPerPiece": 160
+    },
+    {
+      "id": "WINTER_MELON",
+      "nameVi": "Bí đao",
+      "nameEn": "Winter melon",
+      "aliases": [
+        "bí đao",
+        "bí xanh"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 13,
+      "proteinPer100g": 0.4,
+      "fatPer100g": 0.2,
+      "carbPer100g": 3,
+      "edibleYieldRatio": 0.78,
+      "gramsPerPiece": 500
+    },
+    {
+      "id": "PUMPKIN",
+      "nameVi": "Bí đỏ",
+      "nameEn": "Pumpkin",
+      "aliases": [
+        "bí đỏ",
+        "bí ngô"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 26,
+      "proteinPer100g": 1,
+      "fatPer100g": 0.1,
+      "carbPer100g": 6.5,
+      "edibleYieldRatio": 0.75,
+      "gramsPerPiece": 800
+    },
+    {
+      "id": "PINEAPPLE",
+      "nameVi": "Dứa / Thơm",
+      "nameEn": "Pineapple",
+      "aliases": [
+        "dứa",
+        "thơm",
+        "khóm"
+      ],
+      "category": "fruit",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 50,
+      "proteinPer100g": 0.54,
+      "fatPer100g": 0.12,
+      "carbPer100g": 13.12,
+      "edibleYieldRatio": 0.6,
+      "gramsPerPiece": 600
+    },
+    {
+      "id": "BEAN_SPROUTS",
+      "nameVi": "Giá đỗ",
+      "nameEn": "Bean sprouts",
+      "aliases": [
+        "giá đỗ",
+        "giá sống"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 30,
+      "proteinPer100g": 3.04,
+      "fatPer100g": 0.18,
+      "carbPer100g": 5.94,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHAYOTE",
+      "nameVi": "Su su",
+      "nameEn": "Chayote",
+      "aliases": [
+        "su su",
+        "quả su su"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 19,
+      "proteinPer100g": 0.82,
+      "fatPer100g": 0.13,
+      "carbPer100g": 4.51,
+      "edibleYieldRatio": 0.88,
+      "gramsPerPiece": 220
+    },
+    {
+      "id": "LEMONGRASS",
+      "nameVi": "Sả tươi",
+      "nameEn": "Lemongrass",
+      "aliases": [
+        "sả",
+        "củ sả",
+        "cây sả"
+      ],
+      "category": "spice",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 99,
+      "proteinPer100g": 1.82,
+      "fatPer100g": 0.49,
+      "carbPer100g": 25.31,
+      "edibleYieldRatio": 0.75,
+      "gramsPerPiece": 20
+    },
+    {
+      "id": "LIME",
+      "nameVi": "Chanh tươi",
+      "nameEn": "Lime",
+      "aliases": [
+        "chanh",
+        "quả chanh",
+        "nước cốt chanh"
+      ],
+      "category": "fruit",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 30,
+      "proteinPer100g": 0.7,
+      "fatPer100g": 0.2,
+      "carbPer100g": 10.54,
+      "edibleYieldRatio": 0.5,
+      "gramsPerPiece": 45
+    },
+    {
+      "id": "RICE_PAPER",
+      "nameVi": "Bánh tráng cuốn",
+      "nameEn": "Rice paper",
+      "aliases": [
+        "bánh tráng",
+        "bánh đa nem",
+        "ram"
+      ],
+      "category": "grain",
+      "defaultUnit": "pack",
+      "allergenTags": [],
+      "kcalPer100g": 335,
+      "proteinPer100g": 3.5,
+      "fatPer100g": 0.4,
+      "carbPer100g": 79,
+      "edibleYieldRatio": 1,
+      "gramsPerPack": 200
+    },
+    {
+      "id": "SESAME_OIL",
+      "nameVi": "Dầu mè",
+      "nameEn": "Sesame oil",
+      "aliases": [
+        "dầu vừng",
+        "dầu mè thơm",
+        "sesame oil",
+        "toasted sesame oil"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "sesame"
+      ],
+      "kcalPer100g": 884,
+      "proteinPer100g": 0,
+      "fatPer100g": 100,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.92
+    },
+    {
+      "id": "OLIVE_OIL",
+      "nameVi": "Dầu ô liu",
+      "nameEn": "Olive oil",
+      "aliases": [
+        "dầu oliu",
+        "extra virgin olive oil",
+        "olive oil"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 884,
+      "proteinPer100g": 0,
+      "fatPer100g": 100,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.91
+    },
+    {
+      "id": "MISO",
+      "nameVi": "Tương Miso",
+      "nameEn": "Miso paste",
+      "aliases": [
+        "miso",
+        "tương đậu nành nhật",
+        "awase miso",
+        "shiro miso",
+        "aka miso"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 199,
+      "proteinPer100g": 11.69,
+      "fatPer100g": 6.01,
+      "carbPer100g": 26.47,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MIRIN",
+      "nameVi": "Rượu Mirin",
+      "nameEn": "Mirin",
+      "aliases": [
+        "mirin",
+        "hon mirin",
+        "rượu ngọt nhật"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 241,
+      "proteinPer100g": 0.3,
+      "fatPer100g": 0,
+      "carbPer100g": 43.2,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.15
+    },
+    {
+      "id": "DASHI",
+      "nameVi": "Nước dùng Dashi",
+      "nameEn": "Dashi stock",
+      "aliases": [
+        "dashi",
+        "hondashi",
+        "katsuobushi dashi",
+        "bột dashi"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 5,
+      "proteinPer100g": 0.8,
+      "fatPer100g": 0,
+      "carbPer100g": 0.4,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "MUSTARD",
+      "nameVi": "Mù tạt vàng / Dijon",
+      "nameEn": "Mustard",
+      "aliases": [
+        "mustard",
+        "dijon mustard",
+        "mù tạt hạt",
+        "senf",
+        "moutarde"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "mustard"
+      ],
+      "kcalPer100g": 60,
+      "proteinPer100g": 3.74,
+      "fatPer100g": 3.34,
+      "carbPer100g": 5.83,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WINE_COOKING",
+      "nameVi": "Rượu vang nấu ăn",
+      "nameEn": "Cooking wine",
+      "aliases": [
+        "cooking wine",
+        "white wine",
+        "red wine",
+        "rượu vang trắng",
+        "rượu sake nấu ăn"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "sulphites"
+      ],
+      "kcalPer100g": 82,
+      "proteinPer100g": 0.07,
+      "fatPer100g": 0,
+      "carbPer100g": 2.6,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.99
+    },
+    {
+      "id": "SOBA_BUCKWHEAT",
+      "nameVi": "Mì Soba kiều mạch",
+      "nameEn": "Buckwheat soba noodles",
+      "aliases": [
+        "soba",
+        "mì soba",
+        "buckwheat noodles",
+        "juwari soba"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "buckwheat",
+        "wheat"
+      ],
+      "kcalPer100g": 344,
+      "proteinPer100g": 13.8,
+      "fatPer100g": 2.2,
+      "carbPer100g": 69,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "UDON_WHEAT",
+      "nameVi": "Mì Udon lúa mì",
+      "nameEn": "Wheat udon noodles",
+      "aliases": [
+        "udon",
+        "mì udon",
+        "sanuki udon"
+      ],
+      "category": "grain",
+      "defaultUnit": "pack",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 105,
+      "proteinPer100g": 2.6,
+      "fatPer100g": 0.4,
+      "carbPer100g": 21.6,
+      "edibleYieldRatio": 1,
+      "gramsPerPack": 200
+    },
+    {
+      "id": "BREAD",
+      "nameVi": "Bánh mì gối / Bánh mì Âu",
+      "nameEn": "Bread",
+      "aliases": [
+        "bánh mì lát",
+        "bánh mì sandwich",
+        "toast bread",
+        "sourdough",
+        "baguette",
+        "vollkornbrot",
+        "shokupan"
+      ],
+      "category": "grain",
+      "defaultUnit": "slice",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 265,
+      "proteinPer100g": 9,
+      "fatPer100g": 3.2,
+      "carbPer100g": 49,
+      "edibleYieldRatio": 1,
+      "gramsPerSlice": 30
+    },
+    {
+      "id": "OATS",
+      "nameVi": "Yến mạch",
+      "nameEn": "Rolled oats",
+      "aliases": [
+        "yến mạch cán dẹt",
+        "oats",
+        "oatmeal",
+        "haferflocken"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 379,
+      "proteinPer100g": 13.15,
+      "fatPer100g": 6.52,
+      "carbPer100g": 67.7,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "POTATO",
+      "nameVi": "Khoai tây",
+      "nameEn": "Potato",
+      "aliases": [
+        "khoai tây",
+        "potato",
+        "potatoes",
+        "kartoffeln",
+        "pomme de terre"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 77,
+      "proteinPer100g": 2.02,
+      "fatPer100g": 0.09,
+      "carbPer100g": 17.47,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "YOGURT",
+      "nameVi": "Sữa chua không đường",
+      "nameEn": "Plain yogurt",
+      "aliases": [
+        "sữa chua",
+        "yogurt",
+        "yoghurt",
+        "greek yogurt",
+        "naturjoghurt"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 61,
+      "proteinPer100g": 3.47,
+      "fatPer100g": 3.25,
+      "carbPer100g": 4.66,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CREAM",
+      "nameVi": "Kem tươi (Whipping/Cooking cream)",
+      "nameEn": "Heavy cream",
+      "aliases": [
+        "kem tươi",
+        "whipping cream",
+        "heavy cream",
+        "crème fraîche",
+        "sahne"
+      ],
+      "category": "dairy",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 340,
+      "proteinPer100g": 2.84,
+      "fatPer100g": 36.1,
+      "carbPer100g": 2.84,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.99
+    },
+    {
+      "id": "NATTO",
+      "nameVi": "Đậu tương lên men Natto",
+      "nameEn": "Natto (fermented soybeans)",
+      "aliases": [
+        "natto",
+        "đậu nành lên men"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "pack",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 211,
+      "proteinPer100g": 19.4,
+      "fatPer100g": 11,
+      "carbPer100g": 12.6,
+      "edibleYieldRatio": 1,
+      "gramsPerPack": 45
+    },
+    {
+      "id": "SOYBEAN",
+      "nameVi": "Đậu nành / Edamame",
+      "nameEn": "Soybeans (Edamame)",
+      "aliases": [
+        "đậu nành",
+        "edamame",
+        "soybeans",
+        "sojabohnen"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 121,
+      "proteinPer100g": 11.91,
+      "fatPer100g": 5.2,
+      "carbPer100g": 8.91,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GROUND_BEEF",
+      "nameVi": "Thịt bò xay",
+      "nameEn": "Ground beef",
+      "aliases": [
+        "bò băm",
+        "thịt bò xay",
+        "minced beef",
+        "rinderhackfleisch",
+        "boeuf haché"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "beef"
+      ],
+      "kcalPer100g": 215,
+      "proteinPer100g": 18.6,
+      "fatPer100g": 15,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BACON_HAM",
+      "nameVi": "Thịt xông khói / Giăm bông",
+      "nameEn": "Bacon & ham",
+      "aliases": [
+        "bacon",
+        "giăm bông",
+        "ham",
+        "schinken",
+        "speck",
+        "lardons"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 368,
+      "proteinPer100g": 13.7,
+      "fatPer100g": 34,
+      "carbPer100g": 1.2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MACKEREL",
+      "nameVi": "Cá thu Nhật (Saba)",
+      "nameEn": "Mackerel",
+      "aliases": [
+        "cá saba",
+        "cá thu saba",
+        "mackerel",
+        "saba",
+        "makrele",
+        "maquereau"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "mackerel",
+        "fish"
+      ],
+      "kcalPer100g": 205,
+      "proteinPer100g": 18.6,
+      "fatPer100g": 13.89,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.8
+    },
+    {
+      "id": "CLAM_MUSSEL",
+      "nameVi": "Nghêu / Ngao / Vẹm",
+      "nameEn": "Clams & mussels",
+      "aliases": [
+        "nghêu",
+        "ngao",
+        "vẹm xanh",
+        "clams",
+        "mussels",
+        "asari",
+        "moules",
+        "muscheln"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "molluscs"
+      ],
+      "kcalPer100g": 86,
+      "proteinPer100g": 14.67,
+      "fatPer100g": 0.96,
+      "carbPer100g": 3.57,
+      "edibleYieldRatio": 0.45
+    },
+    {
+      "id": "SALMON_ROE",
+      "nameVi": "Trứng cá hồi (Ikura)",
+      "nameEn": "Salmon roe",
+      "aliases": [
+        "trứng cá hồi",
+        "ikura",
+        "salmon roe"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "salmon_roe",
+        "fish"
+      ],
+      "kcalPer100g": 264,
+      "proteinPer100g": 24.6,
+      "fatPer100g": 17.9,
+      "carbPer100g": 4,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WALNUT",
+      "nameVi": "Hạt óc chó",
+      "nameEn": "Walnut",
+      "aliases": [
+        "óc chó",
+        "walnut",
+        "walnuts",
+        "walnüsse",
+        "noix"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "walnut",
+        "tree_nuts"
+      ],
+      "kcalPer100g": 654,
+      "proteinPer100g": 15.23,
+      "fatPer100g": 65.21,
+      "carbPer100g": 13.71,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CASHEW",
+      "nameVi": "Hạt điều",
+      "nameEn": "Cashew nut",
+      "aliases": [
+        "hạt điều",
+        "cashew",
+        "cashews",
+        "cashewkerne",
+        "noix de cajou"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "cashew",
+        "tree_nuts"
+      ],
+      "kcalPer100g": 553,
+      "proteinPer100g": 18.22,
+      "fatPer100g": 43.85,
+      "carbPer100g": 30.19,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PEANUT",
+      "nameVi": "Đậu phộng / Lạc",
+      "nameEn": "Peanut",
+      "aliases": [
+        "đậu phộng",
+        "hạt lạc",
+        "peanut",
+        "peanuts",
+        "erdnüsse",
+        "cacahuètes"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "peanut"
+      ],
+      "kcalPer100g": 567,
+      "proteinPer100g": 25.8,
+      "fatPer100g": 49.24,
+      "carbPer100g": 16.13,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ALMOND",
+      "nameVi": "Hạnh nhân",
+      "nameEn": "Almond",
+      "aliases": [
+        "hạnh nhân",
+        "almond",
+        "almonds",
+        "mandeln",
+        "amandes"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "almond",
+        "tree_nuts"
+      ],
+      "kcalPer100g": 579,
+      "proteinPer100g": 21.15,
+      "fatPer100g": 49.93,
+      "carbPer100g": 21.55,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SESAME_SEED",
+      "nameVi": "Hạt mè / Vừng",
+      "nameEn": "Sesame seeds",
+      "aliases": [
+        "hạt mè",
+        "hạt vừng",
+        "sesame seeds",
+        "sesam",
+        "graines de sésame"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "sesame"
+      ],
+      "kcalPer100g": 573,
+      "proteinPer100g": 17.73,
+      "fatPer100g": 49.67,
+      "carbPer100g": 23.45,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "LUPIN_BEAN",
+      "nameVi": "Đậu Lupin",
+      "nameEn": "Lupin beans",
+      "aliases": [
+        "lupin",
+        "lupini",
+        "lupinen",
+        "graines de lupin"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "lupin"
+      ],
+      "kcalPer100g": 119,
+      "proteinPer100g": 15.57,
+      "fatPer100g": 2.92,
+      "carbPer100g": 9.88,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CELERY",
+      "nameVi": "Cần tây",
+      "nameEn": "Celery",
+      "aliases": [
+        "cần tây",
+        "celery",
+        "sellerie",
+        "céleri",
+        "sedano"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "celery"
+      ],
+      "kcalPer100g": 14,
+      "proteinPer100g": 0.69,
+      "fatPer100g": 0.17,
+      "carbPer100g": 2.97,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "YAM_NAGAIIMO",
+      "nameVi": "Khoai mài / Nagaimo",
+      "nameEn": "Japanese mountain yam",
+      "aliases": [
+        "khoai mài",
+        "nagaimo",
+        "yamaimo",
+        "tororo"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "yam"
+      ],
+      "kcalPer100g": 65,
+      "proteinPer100g": 2.2,
+      "fatPer100g": 0.3,
+      "carbPer100g": 13.9,
+      "edibleYieldRatio": 0.88
+    },
+    {
+      "id": "BELL_PEPPER",
+      "nameVi": "Ớt chuông",
+      "nameEn": "Bell pepper",
+      "aliases": [
+        "ớt chuông",
+        "paprika",
+        "poivron",
+        "bell pepper",
+        "piman"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 26,
+      "proteinPer100g": 0.99,
+      "fatPer100g": 0.3,
+      "carbPer100g": 6.03,
+      "edibleYieldRatio": 0.85,
+      "gramsPerPiece": 150
+    },
+    {
+      "id": "ZUCCHINI",
+      "nameVi": "Bí ngòi",
+      "nameEn": "Zucchini (Courgette)",
+      "aliases": [
+        "bí ngòi",
+        "zucchini",
+        "courgette"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 17,
+      "proteinPer100g": 1.21,
+      "fatPer100g": 0.32,
+      "carbPer100g": 3.11,
+      "edibleYieldRatio": 0.92,
+      "gramsPerPiece": 200
+    },
+    {
+      "id": "SALT",
+      "nameVi": "Muối ăn",
+      "nameEn": "Salt",
+      "aliases": [
+        "muối",
+        "muối tinh",
+        "muối hạt",
+        "muối biển",
+        "kosher salt"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 0,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SUGAR",
+      "nameVi": "Đường cát trắng",
+      "nameEn": "White sugar",
+      "aliases": [
+        "đường",
+        "đường cát",
+        "đường trắng",
+        "đường kính",
+        "granulated sugar"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 387,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 99.98,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BROWN_SUGAR",
+      "nameVi": "Đường nâu / Đường vàng",
+      "nameEn": "Brown sugar",
+      "aliases": [
+        "đường nâu",
+        "đường vàng",
+        "đường đỏ",
+        "brown sugar"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 380,
+      "proteinPer100g": 0.12,
+      "fatPer100g": 0,
+      "carbPer100g": 98.09,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ROCK_SUGAR",
+      "nameVi": "Đường phèn",
+      "nameEn": "Rock sugar",
+      "aliases": [
+        "đường phèn",
+        "rock sugar"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 387,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 99.9,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PALM_SUGAR",
+      "nameVi": "Đường thốt nốt / Đường dừa",
+      "nameEn": "Palm sugar",
+      "aliases": [
+        "đường thốt nốt",
+        "đường dừa",
+        "palm sugar",
+        "coconut sugar"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 375,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0.1,
+      "carbPer100g": 93,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "HONEY",
+      "nameVi": "Mật ong",
+      "nameEn": "Honey",
+      "aliases": [
+        "mật ong",
+        "mật ong nguyên chất",
+        "honey"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 304,
+      "proteinPer100g": 0.3,
+      "fatPer100g": 0,
+      "carbPer100g": 82.4,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.42
+    },
+    {
+      "id": "CORN_SYRUP",
+      "nameVi": "Siro ngô / Siro gạo",
+      "nameEn": "Corn or rice syrup",
+      "aliases": [
+        "siro ngô",
+        "siro gạo",
+        "mạch nha",
+        "corn syrup",
+        "oligosaccharide"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 286,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 77.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.38
+    },
+    {
+      "id": "MSG",
+      "nameVi": "Bột ngọt (Mì chính)",
+      "nameEn": "MSG",
+      "aliases": [
+        "bột ngọt",
+        "mì chính",
+        "msg"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 0,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SEASONING_POWDER",
+      "nameVi": "Hạt nêm (Bột nêm)",
+      "nameEn": "Seasoning powder",
+      "aliases": [
+        "hạt nêm",
+        "bột nêm",
+        "bột canh",
+        "hạt nêm gà",
+        "chicken bouillon powder"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 210,
+      "proteinPer100g": 8,
+      "fatPer100g": 2.5,
+      "carbPer100g": 39,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "VEG_SEASONING_POWDER",
+      "nameVi": "Hạt nêm chay nấm hương",
+      "nameEn": "Mushroom vegan seasoning powder",
+      "aliases": [
+        "hạt nêm chay",
+        "bột nêm chay",
+        "nêm chay nấm"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 195,
+      "proteinPer100g": 5.5,
+      "fatPer100g": 0.8,
+      "carbPer100g": 41,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BLACK_PEPPER",
+      "nameVi": "Tiêu đen xay",
+      "nameEn": "Black pepper",
+      "aliases": [
+        "tiêu",
+        "tiêu xay",
+        "tiêu đen",
+        "tiêu đen xay",
+        "tiêu hạt",
+        "black pepper"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 251,
+      "proteinPer100g": 10.39,
+      "fatPer100g": 3.26,
+      "carbPer100g": 63.95,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WHITE_PEPPER",
+      "nameVi": "Tiêu trắng xay",
+      "nameEn": "White pepper",
+      "aliases": [
+        "tiêu trắng",
+        "tiêu trắng xay",
+        "tiêu sọ",
+        "white pepper"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 296,
+      "proteinPer100g": 10.4,
+      "fatPer100g": 2.12,
+      "carbPer100g": 68.61,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GREEN_PEPPERCORN",
+      "nameVi": "Tiêu xanh tươi",
+      "nameEn": "Green peppercorns",
+      "aliases": [
+        "tiêu xanh",
+        "tiêu xanh nguyên nhánh",
+        "green peppercorn"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 95,
+      "proteinPer100g": 4.2,
+      "fatPer100g": 1.2,
+      "carbPer100g": 21,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "SICHUAN_PEPPER",
+      "nameVi": "Tiêu Tứ Xuyên (Hoa tiêu)",
+      "nameEn": "Sichuan peppercorn",
+      "aliases": [
+        "tiêu tứ xuyên",
+        "hoa tiêu",
+        "sichuan peppercorn"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 265,
+      "proteinPer100g": 11,
+      "fatPer100g": 4,
+      "carbPer100g": 60,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHILI_POWDER",
+      "nameVi": "Ớt bột / Ớt vảy khô",
+      "nameEn": "Chili powder / Dried chili",
+      "aliases": [
+        "ớt bột",
+        "ớt vảy",
+        "ớt khô",
+        "ớt bột paprika",
+        "ớt bột huế",
+        "chili flakes"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 282,
+      "proteinPer100g": 13.46,
+      "fatPer100g": 14.28,
+      "carbPer100g": 49.7,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GOCHUGARU",
+      "nameVi": "Ớt bột Hàn Quốc (Gochugaru)",
+      "nameEn": "Korean chili flakes",
+      "aliases": [
+        "gochugaru",
+        "ớt bột hàn",
+        "ớt bột hàn quốc"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 318,
+      "proteinPer100g": 12,
+      "fatPer100g": 12,
+      "carbPer100g": 56,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SHICHIMI",
+      "nameVi": "Bột ớt 7 vị Nhật (Shichimi)",
+      "nameEn": "Shichimi togarashi",
+      "aliases": [
+        "shichimi",
+        "shichimi togarashi",
+        "ớt 7 vị"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "sesame"
+      ],
+      "kcalPer100g": 340,
+      "proteinPer100g": 13,
+      "fatPer100g": 14,
+      "carbPer100g": 50,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TURMERIC",
+      "nameVi": "Nghệ tươi / Bột nghệ",
+      "nameEn": "Turmeric",
+      "aliases": [
+        "nghệ",
+        "bột nghệ",
+        "nghệ tươi",
+        "turmeric"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 312,
+      "proteinPer100g": 9.68,
+      "fatPer100g": 3.25,
+      "carbPer100g": 67.14,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CURRY_POWDER",
+      "nameVi": "Bột cà ri",
+      "nameEn": "Curry powder",
+      "aliases": [
+        "bột cà ri",
+        "cà ri bột",
+        "curry powder"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 325,
+      "proteinPer100g": 14.29,
+      "fatPer100g": 14.01,
+      "carbPer100g": 55.83,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FIVE_SPICE",
+      "nameVi": "Ngũ vị hương",
+      "nameEn": "Chinese five-spice powder",
+      "aliases": [
+        "ngũ vị hương",
+        "bột ngũ vị hương",
+        "five spice"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 330,
+      "proteinPer100g": 6.5,
+      "fatPer100g": 11.5,
+      "carbPer100g": 62,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "STAR_ANISE",
+      "nameVi": "Hoa hồi khô",
+      "nameEn": "Star anise",
+      "aliases": [
+        "hoa hồi",
+        "đại hồi",
+        "star anise"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 337,
+      "proteinPer100g": 17.6,
+      "fatPer100g": 15.9,
+      "carbPer100g": 50,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CINNAMON",
+      "nameVi": "Quế thanh / Bột quế",
+      "nameEn": "Cinnamon",
+      "aliases": [
+        "quế",
+        "quế thanh",
+        "bột quế",
+        "cinnamon"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 247,
+      "proteinPer100g": 3.99,
+      "fatPer100g": 1.24,
+      "carbPer100g": 80.59,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BLACK_CARDAMOM",
+      "nameVi": "Thảo quả",
+      "nameEn": "Black cardamom",
+      "aliases": [
+        "thảo quả",
+        "cardamom"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 311,
+      "proteinPer100g": 10.76,
+      "fatPer100g": 6.7,
+      "carbPer100g": 68.47,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CORIANDER_SEED",
+      "nameVi": "Hạt mùi khô",
+      "nameEn": "Coriander seeds",
+      "aliases": [
+        "hạt mùi",
+        "hạt ngò khô",
+        "coriander seed"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 298,
+      "proteinPer100g": 12.37,
+      "fatPer100g": 17.77,
+      "carbPer100g": 54.99,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CLOVE",
+      "nameVi": "Đinh hương",
+      "nameEn": "Cloves",
+      "aliases": [
+        "đinh hương",
+        "clove",
+        "cloves"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 274,
+      "proteinPer100g": 5.97,
+      "fatPer100g": 13,
+      "carbPer100g": 65.53,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BAY_LEAF",
+      "nameVi": "Lá nguyệt quế khô",
+      "nameEn": "Bay leaves",
+      "aliases": [
+        "lá nguyệt quế",
+        "nguyệt quế",
+        "bay leaf"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 313,
+      "proteinPer100g": 7.61,
+      "fatPer100g": 8.36,
+      "carbPer100g": 74.97,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "OREGANO_HERBS",
+      "nameVi": "Lá Oregano / Thảo mộc Ý khô",
+      "nameEn": "Dried Italian herbs / Oregano",
+      "aliases": [
+        "oregano",
+        "gia vị ý",
+        "italian seasoning",
+        "thyme",
+        "cỏ xạ hương",
+        "hương thảo",
+        "rosemary"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 265,
+      "proteinPer100g": 9,
+      "fatPer100g": 4.28,
+      "carbPer100g": 68.92,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "NUTMEG",
+      "nameVi": "Nhục đậu khấu xay",
+      "nameEn": "Nutmeg",
+      "aliases": [
+        "nhục đậu khấu",
+        "nutmeg"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 525,
+      "proteinPer100g": 5.84,
+      "fatPer100g": 36.31,
+      "carbPer100g": 49.29,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ANNATTO_OIL",
+      "nameVi": "Dầu màu điều / Hạt điều màu",
+      "nameEn": "Annatto oil / seeds",
+      "aliases": [
+        "dầu màu điều",
+        "màu điều",
+        "hạt điều màu",
+        "annatto"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 884,
+      "proteinPer100g": 0,
+      "fatPer100g": 100,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.92
+    },
+    {
+      "id": "GARLIC_POWDER",
+      "nameVi": "Bột tỏi",
+      "nameEn": "Garlic powder",
+      "aliases": [
+        "bột tỏi",
+        "garlic powder"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 331,
+      "proteinPer100g": 16.55,
+      "fatPer100g": 0.73,
+      "carbPer100g": 72.73,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "OYSTER_SAUCE",
+      "nameVi": "Dầu hào",
+      "nameEn": "Oyster sauce",
+      "aliases": [
+        "dầu hào",
+        "sốt hàu",
+        "tương hàu",
+        "oyster sauce"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "molluscs",
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 51,
+      "proteinPer100g": 1.35,
+      "fatPer100g": 0.25,
+      "carbPer100g": 10.9,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.22
+    },
+    {
+      "id": "VEG_OYSTER_SAUCE",
+      "nameVi": "Dầu hào chay nấm đông cô",
+      "nameEn": "Vegetarian mushroom oyster sauce",
+      "aliases": [
+        "dầu hào chay",
+        "sốt hào chay"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 60,
+      "proteinPer100g": 1.2,
+      "fatPer100g": 0.2,
+      "carbPer100g": 13.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.2
+    },
+    {
+      "id": "LIGHT_SOY_SAUCE",
+      "nameVi": "Xì dầu nhạt (Light soy sauce)",
+      "nameEn": "Light soy sauce",
+      "aliases": [
+        "xì dầu nhạt",
+        "nước tương nhạt",
+        "light soy sauce",
+        "usukuchi"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 53,
+      "proteinPer100g": 8.1,
+      "fatPer100g": 0.4,
+      "carbPer100g": 4.9,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.18
+    },
+    {
+      "id": "DARK_SOY_SAUCE",
+      "nameVi": "Xì dầu đặc (Dark soy sauce)",
+      "nameEn": "Dark soy sauce",
+      "aliases": [
+        "xì dầu đặc",
+        "xì dầu đậm",
+        "hắc xì dầu",
+        "nước tương đen",
+        "dark soy sauce"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 96,
+      "proteinPer100g": 6.2,
+      "fatPer100g": 0.2,
+      "carbPer100g": 17.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.25
+    },
+    {
+      "id": "VEG_FISH_SAUCE",
+      "nameVi": "Nước mắm chay",
+      "nameEn": "Vegetarian fish sauce",
+      "aliases": [
+        "nước mắm chay",
+        "mắm chay"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 42,
+      "proteinPer100g": 3,
+      "fatPer100g": 0,
+      "carbPer100g": 7.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.15
+    },
+    {
+      "id": "CHILI_SAUCE",
+      "nameVi": "Tương ớt",
+      "nameEn": "Chili sauce",
+      "aliases": [
+        "tương ớt",
+        "tương ớt thái",
+        "sriracha",
+        "sweet chili sauce"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 93,
+      "proteinPer100g": 1.9,
+      "fatPer100g": 0.9,
+      "carbPer100g": 19.6,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.15
+    },
+    {
+      "id": "CHILI_OIL",
+      "nameVi": "Sa tế / Dầu ớt Tứ Xuyên",
+      "nameEn": "Chili oil / Satay sauce",
+      "aliases": [
+        "sa tế",
+        "sa tế tôm",
+        "dầu ớt",
+        "chili oil",
+        "lao gan ma"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 710,
+      "proteinPer100g": 2.5,
+      "fatPer100g": 74,
+      "carbPer100g": 8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.95
+    },
+    {
+      "id": "KETCHUP",
+      "nameVi": "Tương cà (Ketchup)",
+      "nameEn": "Tomato ketchup",
+      "aliases": [
+        "tương cà",
+        "ketchup",
+        "sốt cà chua ketchup"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 112,
+      "proteinPer100g": 1.74,
+      "fatPer100g": 0.1,
+      "carbPer100g": 27.4,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.15
+    },
+    {
+      "id": "HOISIN_SAUCE",
+      "nameVi": "Tương đen (Hoisin sauce)",
+      "nameEn": "Hoisin sauce",
+      "aliases": [
+        "tương đen",
+        "tương hoisin",
+        "tương đen ăn phở",
+        "hoisin sauce"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat",
+        "sesame"
+      ],
+      "kcalPer100g": 220,
+      "proteinPer100g": 3.2,
+      "fatPer100g": 3.4,
+      "carbPer100g": 44.1,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.24
+    },
+    {
+      "id": "PLUM_SAUCE_CHUNJANG",
+      "nameVi": "Tương đậu đen Hàn (Chunjang)",
+      "nameEn": "Korean black bean paste",
+      "aliases": [
+        "chunjang",
+        "tương đen chunjang",
+        "black bean paste"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 178,
+      "proteinPer100g": 7.8,
+      "fatPer100g": 1.8,
+      "carbPer100g": 32.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GOCHUJANG",
+      "nameVi": "Tương ớt Hàn Quốc (Gochujang)",
+      "nameEn": "Korean gochujang paste",
+      "aliases": [
+        "gochujang",
+        "tương ớt hàn",
+        "tương ớt hàn quốc"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 213,
+      "proteinPer100g": 4.5,
+      "fatPer100g": 1.5,
+      "carbPer100g": 45,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DOENJANG",
+      "nameVi": "Tương đậu tương Hàn (Doenjang)",
+      "nameEn": "Korean fermented soybean paste",
+      "aliases": [
+        "doenjang",
+        "tương đậu hàn",
+        "tương đậu nành hàn quốc"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 152,
+      "proteinPer100g": 12,
+      "fatPer100g": 4.5,
+      "carbPer100g": 16,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DOUBANJIANG",
+      "nameVi": "Tương ớt đậu bản Tứ Xuyên (Doubanjiang)",
+      "nameEn": "Pixian doubanjiang",
+      "aliases": [
+        "doubanjiang",
+        "tương ớt đậu bản",
+        "tương đậu cay tứ xuyên"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 95,
+      "proteinPer100g": 5.2,
+      "fatPer100g": 3.5,
+      "carbPer100g": 10.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FERMENTED_BLACK_BEAN",
+      "nameVi": "Đậu tương đen lên men (Douchi)",
+      "nameEn": "Fermented black soybeans",
+      "aliases": [
+        "douchi",
+        "đậu tương đen lên men",
+        "đậu đen muối",
+        "tàu xì"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 242,
+      "proteinPer100g": 19,
+      "fatPer100g": 9,
+      "carbPer100g": 21,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TAHINI_SESAME_PASTE",
+      "nameVi": "Sốt tương mè (Sesame paste)",
+      "nameEn": "Chinese sesame paste / Tahini",
+      "aliases": [
+        "tương mè",
+        "tương vừng",
+        "sesame paste",
+        "tahini"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "sesame"
+      ],
+      "kcalPer100g": 595,
+      "proteinPer100g": 17,
+      "fatPer100g": 53.8,
+      "carbPer100g": 21.2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SHRIMP_PASTE",
+      "nameVi": "Mắm tôm / Mắm ruốc",
+      "nameEn": "Fermented shrimp paste",
+      "aliases": [
+        "mắm tôm",
+        "mắm ruốc",
+        "mắm ruốc huế",
+        "kapi",
+        "shrimp paste"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "shrimp",
+        "crustaceans"
+      ],
+      "kcalPer100g": 98,
+      "proteinPer100g": 17.5,
+      "fatPer100g": 1.5,
+      "carbPer100g": 3.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FERMENTED_ANCHOVY_SAUCE",
+      "nameVi": "Mắm nêm",
+      "nameEn": "Fermented anchovy sauce",
+      "aliases": [
+        "mắm nêm",
+        "mắm cá cơm"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 65,
+      "proteinPer100g": 9.5,
+      "fatPer100g": 0.5,
+      "carbPer100g": 5.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.15
+    },
+    {
+      "id": "FERMENTED_RICE_ME",
+      "nameVi": "Cơm mẻ lên men",
+      "nameEn": "Fermented rice starter",
+      "aliases": [
+        "bỗng mẻ",
+        "cơm mẻ lên men",
+        "men mẻ"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 125,
+      "proteinPer100g": 2.8,
+      "fatPer100g": 0.3,
+      "carbPer100g": 27.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MAYONNAISE",
+      "nameVi": "Sốt Mayonnaise",
+      "nameEn": "Mayonnaise",
+      "aliases": [
+        "mayonnaise",
+        "sốt mayonnaise",
+        "sốt mayo"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "egg"
+      ],
+      "kcalPer100g": 680,
+      "proteinPer100g": 0.96,
+      "fatPer100g": 74.85,
+      "carbPer100g": 0.57,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WORCESTERSHIRE_SAUCE",
+      "nameVi": "Sốt Worcestershire / Tonkatsu",
+      "nameEn": "Worcestershire / Tonkatsu sauce",
+      "aliases": [
+        "worcestershire",
+        "tonkatsu sauce",
+        "sốt tonkatsu"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 78,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 19.46,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.12
+    },
+    {
+      "id": "PONZU_SAUCE",
+      "nameVi": "Nước tương Ponzu chanh Nhật",
+      "nameEn": "Ponzu citrus soy sauce",
+      "aliases": [
+        "ponzu",
+        "nước tương ponzu"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "soybean",
+        "wheat"
+      ],
+      "kcalPer100g": 48,
+      "proteinPer100g": 4.2,
+      "fatPer100g": 0,
+      "carbPer100g": 7.8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.1
+    },
+    {
+      "id": "RICE_VINEGAR",
+      "nameVi": "Giấm gạo",
+      "nameEn": "Rice vinegar",
+      "aliases": [
+        "giấm",
+        "dấm",
+        "giấm gạo",
+        "dấm gạo",
+        "giấm ăn",
+        "rice vinegar"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 18,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0.4,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.01
+    },
+    {
+      "id": "BLACK_VINEGAR",
+      "nameVi": "Giấm đen Trấn Giang",
+      "nameEn": "Chinese black vinegar",
+      "aliases": [
+        "giấm đen",
+        "giấm trấn giang",
+        "chinkiang vinegar"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 32,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0,
+      "carbPer100g": 5.8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.03
+    },
+    {
+      "id": "BALSAMIC_VINEGAR",
+      "nameVi": "Giấm Balsamic Ý",
+      "nameEn": "Balsamic vinegar",
+      "aliases": [
+        "giấm balsamic",
+        "balsamic vinegar"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "sulphites"
+      ],
+      "kcalPer100g": 88,
+      "proteinPer100g": 0.49,
+      "fatPer100g": 0,
+      "carbPer100g": 17.03,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.06
+    },
+    {
+      "id": "TAMARIND",
+      "nameVi": "Me chín / Cơm me vắt",
+      "nameEn": "Tamarind pulp",
+      "aliases": [
+        "me chín",
+        "cơm me chín",
+        "me vắt",
+        "nước cốt me",
+        "tamarind"
+      ],
+      "category": "fruit",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 239,
+      "proteinPer100g": 2.8,
+      "fatPer100g": 0.6,
+      "carbPer100g": 62.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SHAOXING_WINE",
+      "nameVi": "Rượu Thiệu Hưng",
+      "nameEn": "Shaoxing cooking wine",
+      "aliases": [
+        "rượu thiệu hưng",
+        "rượu nấu ăn trung quốc",
+        "shaoxing wine"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 105,
+      "proteinPer100g": 0.4,
+      "fatPer100g": 0,
+      "carbPer100g": 4.5,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.99
+    },
+    {
+      "id": "SAKE",
+      "nameVi": "Rượu Sake Nhật Bản",
+      "nameEn": "Cooking sake",
+      "aliases": [
+        "rượu sake",
+        "sake",
+        "rượu trắng",
+        "rượu gạo",
+        "rượu nếp",
+        "rượu nấu ăn"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 103,
+      "proteinPer100g": 0.4,
+      "fatPer100g": 0,
+      "carbPer100g": 4.9,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 0.99
+    },
+    {
+      "id": "CURRY_ROUX_BLOCK",
+      "nameVi": "Viên cà ri Nhật",
+      "nameEn": "Japanese curry roux block",
+      "aliases": [
+        "viên cà ri nhật",
+        "bánh cà ri nhật",
+        "curry roux"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat",
+        "soybean"
+      ],
+      "kcalPer100g": 512,
+      "proteinPer100g": 6.8,
+      "fatPer100g": 34.5,
+      "carbPer100g": 43.2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TOM_YUM_PASTE",
+      "nameVi": "Sốt Tom Yum / Gia vị lẩu Thái",
+      "nameEn": "Tom Yum paste",
+      "aliases": [
+        "tom yum paste",
+        "sốt tom yum",
+        "gia vị lẩu thái"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "shrimp",
+        "crustaceans"
+      ],
+      "kcalPer100g": 235,
+      "proteinPer100g": 3.2,
+      "fatPer100g": 14.5,
+      "carbPer100g": 22.8,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "THAI_CURRY_PASTE",
+      "nameVi": "Sốt cà ri xanh / đỏ Thái",
+      "nameEn": "Thai green or red curry paste",
+      "aliases": [
+        "cà ri xanh",
+        "sốt cà ri xanh",
+        "bột cà ri xanh",
+        "cà ri đỏ",
+        "curry paste"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "shrimp",
+        "crustaceans"
+      ],
+      "kcalPer100g": 128,
+      "proteinPer100g": 3,
+      "fatPer100g": 5.2,
+      "carbPer100g": 17.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "COCONUT_MILK",
+      "nameVi": "Nước cốt dừa",
+      "nameEn": "Coconut milk",
+      "aliases": [
+        "nước cốt dừa",
+        "cốt dừa",
+        "coconut milk"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 230,
+      "proteinPer100g": 2.29,
+      "fatPer100g": 23.84,
+      "carbPer100g": 5.54,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "COCONUT_WATER",
+      "nameVi": "Nước dừa tươi",
+      "nameEn": "Coconut water",
+      "aliases": [
+        "nước dừa tươi",
+        "nước dừa",
+        "coconut water"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 19,
+      "proteinPer100g": 0.72,
+      "fatPer100g": 0.2,
+      "carbPer100g": 3.71,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.01
+    },
+    {
+      "id": "CHICKEN_BROTH",
+      "nameVi": "Nước dùng gà",
+      "nameEn": "Chicken broth",
+      "aliases": [
+        "nước dùng gà",
+        "nước luộc gà",
+        "chicken broth",
+        "chicken stock"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 15,
+      "proteinPer100g": 1.4,
+      "fatPer100g": 0.6,
+      "carbPer100g": 0.8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "BEEF_BROTH",
+      "nameVi": "Nước dùng bò / Hầm xương",
+      "nameEn": "Beef broth",
+      "aliases": [
+        "nước dùng bò",
+        "nước xương bò",
+        "beef broth"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 17,
+      "proteinPer100g": 1.8,
+      "fatPer100g": 0.6,
+      "carbPer100g": 0.9,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "VEG_BROTH",
+      "nameVi": "Nước dùng rau củ / Nấm",
+      "nameEn": "Vegetable broth",
+      "aliases": [
+        "nước dùng rau củ",
+        "nước dùng nấm",
+        "nước ngâm nấm hương",
+        "vegetable broth"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 12,
+      "proteinPer100g": 0.4,
+      "fatPer100g": 0.1,
+      "carbPer100g": 2.2,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "ANCHOVY_KOMBU_BROTH",
+      "nameVi": "Nước dùng cá cơm tảo bẹ Hàn",
+      "nameEn": "Anchovy kelp stock",
+      "aliases": [
+        "nước dùng cá cơm",
+        "nước dùng cá cơm tảo bẹ",
+        "anchovy stock"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 10,
+      "proteinPer100g": 1.2,
+      "fatPer100g": 0.1,
+      "carbPer100g": 0.8,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "COOKING_WATER",
+      "nameVi": "Nước lọc",
+      "nameEn": "Water",
+      "aliases": [
+        "nước",
+        "nước lọc",
+        "nước sạch",
+        "nước sôi",
+        "nước nóng",
+        "nước ấm",
+        "nước luộc mì",
+        "water",
+        "đá viên"
+      ],
+      "category": "other",
+      "defaultUnit": "ml",
+      "allergenTags": [],
+      "kcalPer100g": 0,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1
+    },
+    {
+      "id": "LARD",
+      "nameVi": "Mỡ heo thắng (Mỡ nước / Tóp mỡ)",
+      "nameEn": "Pork lard / fat",
+      "aliases": [
+        "mỡ heo",
+        "mỡ lợn",
+        "mỡ gà",
+        "tóp mỡ",
+        "lard"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 902,
+      "proteinPer100g": 0,
+      "fatPer100g": 100,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PEANUT_BUTTER",
+      "nameVi": "Bơ đậu phộng",
+      "nameEn": "Peanut butter",
+      "aliases": [
+        "bơ đậu phộng",
+        "bơ lạc",
+        "peanut butter"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "peanut"
+      ],
+      "kcalPer100g": 588,
+      "proteinPer100g": 25.09,
+      "fatPer100g": 50.39,
+      "carbPer100g": 19.56,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CORNSTARCH",
+      "nameVi": "Bột bắp (Bột ngô)",
+      "nameEn": "Cornstarch",
+      "aliases": [
+        "bột bắp",
+        "bột ngô",
+        "cornstarch"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 381,
+      "proteinPer100g": 0.26,
+      "fatPer100g": 0.05,
+      "carbPer100g": 91.27,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TAPIOCA_STARCH",
+      "nameVi": "Bột năng",
+      "nameEn": "Tapioca starch",
+      "aliases": [
+        "bột năng",
+        "bột sắn",
+        "tapioca starch"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 358,
+      "proteinPer100g": 0.19,
+      "fatPer100g": 0.02,
+      "carbPer100g": 88.69,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "POTATO_STARCH",
+      "nameVi": "Tinh bột khoai tây",
+      "nameEn": "Potato starch",
+      "aliases": [
+        "tinh bột khoai tây",
+        "bột khoai tây",
+        "potato starch"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 331,
+      "proteinPer100g": 0.1,
+      "fatPer100g": 0.1,
+      "carbPer100g": 83,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ALL_PURPOSE_FLOUR",
+      "nameVi": "Bột mì đa dụng",
+      "nameEn": "All-purpose wheat flour",
+      "aliases": [
+        "bột mì",
+        "bột mì đa dụng",
+        "bột mì 00",
+        "wheat flour"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 364,
+      "proteinPer100g": 10.33,
+      "fatPer100g": 0.98,
+      "carbPer100g": 76.31,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "RICE_FLOUR",
+      "nameVi": "Bột gạo",
+      "nameEn": "Rice flour",
+      "aliases": [
+        "bột gạo",
+        "bột gạo tẻ",
+        "rice flour"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 366,
+      "proteinPer100g": 5.95,
+      "fatPer100g": 1.42,
+      "carbPer100g": 80.13,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CRISPY_BATTER_MIX",
+      "nameVi": "Bột chiên giòn / Bột chiên xù",
+      "nameEn": "Crispy coating flour / Panko",
+      "aliases": [
+        "bột chiên giòn",
+        "bột chiên xù",
+        "panko",
+        "tempura flour"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 358,
+      "proteinPer100g": 9.5,
+      "fatPer100g": 1.5,
+      "carbPer100g": 76,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BAKING_SODA",
+      "nameVi": "Baking soda / Bột nở",
+      "nameEn": "Baking soda / Baking powder",
+      "aliases": [
+        "baking soda",
+        "bột nở",
+        "baking powder"
+      ],
+      "category": "other",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 0,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SHALLOT",
+      "nameVi": "Hành tím (Hành khô)",
+      "nameEn": "Shallots",
+      "aliases": [
+        "hành tím",
+        "hành khô",
+        "hành tím băm",
+        "hành phi",
+        "shallot",
+        "hẹ tây"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 72,
+      "proteinPer100g": 2.5,
+      "fatPer100g": 0.1,
+      "carbPer100g": 16.8,
+      "edibleYieldRatio": 0.88
+    },
+    {
+      "id": "RED_ONION",
+      "nameVi": "Hành tây tím",
+      "nameEn": "Red onion",
+      "aliases": [
+        "hành tây tím",
+        "red onion"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 40,
+      "proteinPer100g": 1.1,
+      "fatPer100g": 0.1,
+      "carbPer100g": 9.34,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "LEEK",
+      "nameVi": "Tỏi tây (Hành boa-rô)",
+      "nameEn": "Leek / Tokyo Negi",
+      "aliases": [
+        "tỏi tây",
+        "hành boa rô",
+        "hành boa-rô",
+        "hành negi",
+        "leek"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 61,
+      "proteinPer100g": 1.5,
+      "fatPer100g": 0.3,
+      "carbPer100g": 14.15,
+      "edibleYieldRatio": 0.8
+    },
+    {
+      "id": "CILANTRO",
+      "nameVi": "Ngò rí (Rau mùi ta)",
+      "nameEn": "Cilantro / Coriander",
+      "aliases": [
+        "ngò rí",
+        "rau mùi",
+        "rau mùi ta",
+        "rễ ngò rí",
+        "rễ mùi",
+        "cilantro",
+        "coriander"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 23,
+      "proteinPer100g": 2.13,
+      "fatPer100g": 0.52,
+      "carbPer100g": 3.67,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "CULANTRO",
+      "nameVi": "Ngò gai (Mùi tàu)",
+      "nameEn": "Culantro / Sawtooth coriander",
+      "aliases": [
+        "ngò gai",
+        "mùi tàu",
+        "rau mùi tàu",
+        "culantro"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 26,
+      "proteinPer100g": 2.2,
+      "fatPer100g": 0.4,
+      "carbPer100g": 4.3,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "RICE_PADDY_HERB",
+      "nameVi": "Rau ngổ (Ngò ôm)",
+      "nameEn": "Rice paddy herb",
+      "aliases": [
+        "rau ngổ",
+        "ngò ôm",
+        "rau om"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 22,
+      "proteinPer100g": 2,
+      "fatPer100g": 0.3,
+      "carbPer100g": 3.8,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "DILL",
+      "nameVi": "Thì là tươi",
+      "nameEn": "Fresh dill",
+      "aliases": [
+        "thì là",
+        "thìa là",
+        "dill"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 43,
+      "proteinPer100g": 3.46,
+      "fatPer100g": 1.12,
+      "carbPer100g": 7.02,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "VIETNAMESE_CORIANDER",
+      "nameVi": "Rau răm",
+      "nameEn": "Vietnamese coriander",
+      "aliases": [
+        "rau răm",
+        "laksa leaf"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 28,
+      "proteinPer100g": 2.4,
+      "fatPer100g": 0.4,
+      "carbPer100g": 4.8,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "THAI_BASIL",
+      "nameVi": "Húng quế (Quế vị / Húng chó)",
+      "nameEn": "Thai / Holy basil",
+      "aliases": [
+        "húng quế",
+        "rau quế",
+        "húng quế thái",
+        "húng quế thánh",
+        "holy basil",
+        "thai basil"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 23,
+      "proteinPer100g": 3.15,
+      "fatPer100g": 0.64,
+      "carbPer100g": 2.65,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "SWEET_BASIL_IT",
+      "nameVi": "Lá húng quế Tây (Sweet basil)",
+      "nameEn": "Italian sweet basil",
+      "aliases": [
+        "lá húng quế tươi",
+        "húng quế tây",
+        "basil",
+        "sweet basil"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 23,
+      "proteinPer100g": 3.15,
+      "fatPer100g": 0.64,
+      "carbPer100g": 2.65,
+      "edibleYieldRatio": 0.92
+    },
+    {
+      "id": "PERILLA",
+      "nameVi": "Lá tía tô",
+      "nameEn": "Perilla leaves",
+      "aliases": [
+        "tía tô",
+        "lá tía tô",
+        "perilla",
+        "shiso",
+        "lá vừng hàn"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 37,
+      "proteinPer100g": 3.8,
+      "fatPer100g": 0.6,
+      "carbPer100g": 5.5,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "MARJORAM_MINT",
+      "nameVi": "Húng lủi / Kinh giới / Bạc hà",
+      "nameEn": "Mint / Vietnamese balm",
+      "aliases": [
+        "húng lủi",
+        "kinh giới",
+        "húng láng",
+        "bạc hà",
+        "rau thơm",
+        "mint"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 44,
+      "proteinPer100g": 3.29,
+      "fatPer100g": 0.73,
+      "carbPer100g": 8.41,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "CHIVES",
+      "nameVi": "Hẹ lá tươi",
+      "nameEn": "Garlic chives",
+      "aliases": [
+        "hẹ",
+        "lá hẹ",
+        "hẹ tỏi",
+        "chives"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 30,
+      "proteinPer100g": 3.27,
+      "fatPer100g": 0.73,
+      "carbPer100g": 4.35,
+      "edibleYieldRatio": 0.92
+    },
+    {
+      "id": "PARSLEY",
+      "nameVi": "Ngò tây (Parsley)",
+      "nameEn": "Fresh parsley",
+      "aliases": [
+        "ngò tây",
+        "mùi tây",
+        "parsley"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 36,
+      "proteinPer100g": 2.97,
+      "fatPer100g": 0.79,
+      "carbPer100g": 6.33,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "GALANGAL",
+      "nameVi": "Củ riềng tươi",
+      "nameEn": "Fresh galangal",
+      "aliases": [
+        "riềng",
+        "củ riềng",
+        "riềng băm",
+        "galangal"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 71,
+      "proteinPer100g": 1.2,
+      "fatPer100g": 0.4,
+      "carbPer100g": 16,
+      "edibleYieldRatio": 0.88
+    },
+    {
+      "id": "KAFFIR_LIME_LEAF",
+      "nameVi": "Lá chanh tươi / Lá chanh Kaffir",
+      "nameEn": "Lime / Kaffir lime leaves",
+      "aliases": [
+        "lá chanh",
+        "lá chanh kaffir",
+        "lá chanh makrut",
+        "kaffir lime leaf"
+      ],
+      "category": "spice",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 45,
+      "proteinPer100g": 2,
+      "fatPer100g": 0.5,
+      "carbPer100g": 9,
+      "edibleYieldRatio": 0.95
+    },
+    {
+      "id": "LEMON",
+      "nameVi": "Chanh vàng tươi (Lemon)",
+      "nameEn": "Fresh lemon",
+      "aliases": [
+        "chanh vàng",
+        "vỏ chanh vàng",
+        "lemon"
+      ],
+      "category": "fruit",
+      "defaultUnit": "piece",
+      "allergenTags": [],
+      "kcalPer100g": 29,
+      "proteinPer100g": 1.1,
+      "fatPer100g": 0.3,
+      "carbPer100g": 9.32,
+      "edibleYieldRatio": 0.55,
+      "gramsPerPiece": 100
+    },
+    {
+      "id": "PORK_SHOULDER",
+      "nameVi": "Thịt nạc vai / Nạc dăm heo",
+      "nameEn": "Pork shoulder / collar",
+      "aliases": [
+        "nạc vai",
+        "thịt vai",
+        "nạc dăm",
+        "thịt nạc vai",
+        "thịt heo",
+        "pork shoulder"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 236,
+      "proteinPer100g": 17.4,
+      "fatPer100g": 18,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PORK_CHOP",
+      "nameVi": "Sườn cốt lết / Thăn heo",
+      "nameEn": "Pork chop / loin",
+      "aliases": [
+        "cốt lết",
+        "sườn cốt lết",
+        "thịt thăn heo",
+        "nạc thăn",
+        "pork loin"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 143,
+      "proteinPer100g": 20.7,
+      "fatPer100g": 6,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "PORK_HOCK",
+      "nameVi": "Chân giò heo / Bắp giò",
+      "nameEn": "Pork hock / shank",
+      "aliases": [
+        "chân giò",
+        "giò heo",
+        "bắp giò",
+        "móng giò"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 248,
+      "proteinPer100g": 17.2,
+      "fatPer100g": 19.5,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.62
+    },
+    {
+      "id": "PORK_BONE",
+      "nameVi": "Xương ống heo (Ninh nước dùng)",
+      "nameEn": "Pork soup bones",
+      "aliases": [
+        "xương ống",
+        "xương ống heo",
+        "xương heo",
+        "xương chân giò"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 150,
+      "proteinPer100g": 14,
+      "fatPer100g": 10,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.25
+    },
+    {
+      "id": "PORK_EAR",
+      "nameVi": "Tai heo",
+      "nameEn": "Pork ear",
+      "aliases": [
+        "tai heo",
+        "tai lợn"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 234,
+      "proteinPer100g": 22.5,
+      "fatPer100g": 15.1,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "PORK_LIVER",
+      "nameVi": "Gan heo / Pate",
+      "nameEn": "Pork liver / Pate",
+      "aliases": [
+        "gan heo",
+        "gan lợn",
+        "pate",
+        "pate gan"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 134,
+      "proteinPer100g": 21.39,
+      "fatPer100g": 3.65,
+      "carbPer100g": 2.47,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PORK_SAUSAGE_GIO",
+      "nameVi": "Giò lụa / Chả lụa / Nem chua",
+      "nameEn": "Vietnamese pork roll (Giò lụa)",
+      "aliases": [
+        "giò lụa",
+        "chả lụa",
+        "chả cốm",
+        "chả Huế",
+        "giò thủ"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 165,
+      "proteinPer100g": 18.5,
+      "fatPer100g": 9.2,
+      "carbPer100g": 2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CHINESE_SAUSAGE",
+      "nameVi": "Lạp xưởng / Xúc xích",
+      "nameEn": "Chinese sausage / Pork sausage",
+      "aliases": [
+        "lạp xưởng",
+        "xúc xích",
+        "sausage"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "pork"
+      ],
+      "kcalPer100g": 435,
+      "proteinPer100g": 16,
+      "fatPer100g": 36,
+      "carbPer100g": 11.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BEEF_BRISKET",
+      "nameVi": "Nạm bò / Gầu bò",
+      "nameEn": "Beef brisket / shank",
+      "aliases": [
+        "nạm bò",
+        "gầu bò",
+        "thịt bò vai",
+        "gân bò",
+        "beef brisket"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "beef"
+      ],
+      "kcalPer100g": 215,
+      "proteinPer100g": 18.8,
+      "fatPer100g": 15,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BEEF_RIB_BONE",
+      "nameVi": "Xương bò / Sườn bò",
+      "nameEn": "Beef bones / Short ribs",
+      "aliases": [
+        "xương bò",
+        "sườn bò",
+        "xương sườn bò",
+        "beef bone"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "beef"
+      ],
+      "kcalPer100g": 240,
+      "proteinPer100g": 17.5,
+      "fatPer100g": 18.5,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.45
+    },
+    {
+      "id": "CHICKEN_WHOLE",
+      "nameVi": "Thịt gà ta nguyên con / Chặt miếng",
+      "nameEn": "Whole chicken (bone-in)",
+      "aliases": [
+        "gà ta",
+        "gà nguyên con",
+        "gà miếng",
+        "thịt gà",
+        "xương gà"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "chicken"
+      ],
+      "kcalPer100g": 215,
+      "proteinPer100g": 18.6,
+      "fatPer100g": 15.06,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.68
+    },
+    {
+      "id": "CHICKEN_WING",
+      "nameVi": "Cánh gà",
+      "nameEn": "Chicken wings",
+      "aliases": [
+        "cánh gà",
+        "cánh gà khúc giữa"
+      ],
+      "category": "meat",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "chicken"
+      ],
+      "kcalPer100g": 222,
+      "proteinPer100g": 18.3,
+      "fatPer100g": 15.9,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 0.65
+    },
+    {
+      "id": "WHITE_FISH_FILLET",
+      "nameVi": "Phi lê cá thịt trắng (Chẽm, basa, thu)",
+      "nameEn": "White fish fillet",
+      "aliases": [
+        "cá phi lê",
+        "cá chẽm",
+        "cá thu",
+        "cá kiếm",
+        "cá thác lác",
+        "cá basa",
+        "white fish"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 112,
+      "proteinPer100g": 20.5,
+      "fatPer100g": 2.8,
+      "carbPer100g": 0,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DRIED_SHRIMP",
+      "nameVi": "Tôm khô",
+      "nameEn": "Dried shrimp",
+      "aliases": [
+        "tôm khô",
+        "tép khô",
+        "dried shrimp"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "shrimp",
+        "crustaceans"
+      ],
+      "kcalPer100g": 295,
+      "proteinPer100g": 62,
+      "fatPer100g": 3.2,
+      "carbPer100g": 2.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DRIED_ANCHOVY",
+      "nameVi": "Cá cơm khô",
+      "nameEn": "Dried anchovy",
+      "aliases": [
+        "cá cơm khô",
+        "cá khô",
+        "dried anchovy"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 278,
+      "proteinPer100g": 56,
+      "fatPer100g": 4.5,
+      "carbPer100g": 0.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BONITO_FLAKES",
+      "nameVi": "Cá bào khô (Katsuobushi)",
+      "nameEn": "Bonito flakes (Katsuobushi)",
+      "aliases": [
+        "katsuobushi",
+        "cá bào",
+        "cá bào khô"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 352,
+      "proteinPer100g": 77.1,
+      "fatPer100g": 2.9,
+      "carbPer100g": 0.4,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DRIED_SQUID",
+      "nameVi": "Mực khô",
+      "nameEn": "Dried squid",
+      "aliases": [
+        "mực khô",
+        "khô mực"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "squid",
+        "molluscs"
+      ],
+      "kcalPer100g": 334,
+      "proteinPer100g": 69.2,
+      "fatPer100g": 4.3,
+      "carbPer100g": 0.8,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FISH_CAKE",
+      "nameVi": "Chả cá / Chả cua / Thanh cua",
+      "nameEn": "Fish cake / Surimi / Kamaboko",
+      "aliases": [
+        "chả cá",
+        "chả cua",
+        "chả cá hàn quốc",
+        "kamaboko",
+        "thanh cua",
+        "kanikama"
+      ],
+      "category": "seafood",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "fish"
+      ],
+      "kcalPer100g": 115,
+      "proteinPer100g": 12.2,
+      "fatPer100g": 2.4,
+      "carbPer100g": 10.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "QUAIL_EGG",
+      "nameVi": "Trứng cút",
+      "nameEn": "Quail eggs",
+      "aliases": [
+        "trứng cút",
+        "trứng chim cút"
+      ],
+      "category": "egg",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "egg"
+      ],
+      "kcalPer100g": 158,
+      "proteinPer100g": 13.05,
+      "fatPer100g": 11.09,
+      "carbPer100g": 0.41,
+      "edibleYieldRatio": 0.85,
+      "gramsPerPiece": 10
+    },
+    {
+      "id": "DUCK_EGG",
+      "nameVi": "Trứng vịt",
+      "nameEn": "Duck eggs",
+      "aliases": [
+        "trứng vịt",
+        "trứng vịt tươi"
+      ],
+      "category": "egg",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "egg"
+      ],
+      "kcalPer100g": 185,
+      "proteinPer100g": 12.81,
+      "fatPer100g": 13.77,
+      "carbPer100g": 1.45,
+      "edibleYieldRatio": 0.88,
+      "gramsPerPiece": 68
+    },
+    {
+      "id": "SALTED_EGG",
+      "nameVi": "Trứng muối",
+      "nameEn": "Salted duck egg",
+      "aliases": [
+        "trứng muối",
+        "lòng đỏ trứng muối"
+      ],
+      "category": "egg",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "egg"
+      ],
+      "kcalPer100g": 190,
+      "proteinPer100g": 13,
+      "fatPer100g": 14.2,
+      "carbPer100g": 1.5,
+      "edibleYieldRatio": 0.88,
+      "gramsPerPiece": 65
+    },
+    {
+      "id": "PARMESAN_CHEESE",
+      "nameVi": "Phô mai Parmesan / Parmigiano bào",
+      "nameEn": "Parmesan cheese",
+      "aliases": [
+        "parmesan",
+        "parmigiano",
+        "phô mai parmesan",
+        "phô mai bào"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 431,
+      "proteinPer100g": 38.46,
+      "fatPer100g": 28.61,
+      "carbPer100g": 4.06,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PECORINO_CHEESE",
+      "nameVi": "Phô mai Pecorino Romano",
+      "nameEn": "Pecorino Romano cheese",
+      "aliases": [
+        "pecorino",
+        "pecorino romano"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 387,
+      "proteinPer100g": 31.8,
+      "fatPer100g": 26.9,
+      "carbPer100g": 3.6,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MOZZARELLA_CHEESE",
+      "nameVi": "Phô mai Mozzarella",
+      "nameEn": "Mozzarella cheese",
+      "aliases": [
+        "mozzarella",
+        "phô mai mozzarella"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 280,
+      "proteinPer100g": 27.5,
+      "fatPer100g": 17.1,
+      "carbPer100g": 3.1,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "RICOTTA_CHEESE",
+      "nameVi": "Phô mai Ricotta / Feta",
+      "nameEn": "Ricotta / Feta cheese",
+      "aliases": [
+        "ricotta",
+        "feta",
+        "phô mai ricotta",
+        "phô mai feta"
+      ],
+      "category": "dairy",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "milk"
+      ],
+      "kcalPer100g": 174,
+      "proteinPer100g": 11.26,
+      "fatPer100g": 12.98,
+      "carbPer100g": 3.04,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SOFT_TOFU",
+      "nameVi": "Đậu phụ non (Silken tofu)",
+      "nameEn": "Silken soft tofu",
+      "aliases": [
+        "đậu phụ non",
+        "đậu hũ non",
+        "đậu phụ lụa",
+        "silken tofu"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 55,
+      "proteinPer100g": 4.8,
+      "fatPer100g": 2.7,
+      "carbPer100g": 2.9,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "EGG_TOFU",
+      "nameVi": "Đậu phụ trứng",
+      "nameEn": "Egg tofu",
+      "aliases": [
+        "đậu phụ trứng",
+        "đậu hũ trứng",
+        "egg tofu"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean",
+        "egg"
+      ],
+      "kcalPer100g": 78,
+      "proteinPer100g": 5.2,
+      "fatPer100g": 4.5,
+      "carbPer100g": 3.8,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "FRIED_TOFU",
+      "nameVi": "Đậu phụ chiên sẵn / Đậu hũ ky",
+      "nameEn": "Fried tofu / Tofu skin",
+      "aliases": [
+        "đậu hũ chiên",
+        "đậu phụ chiên",
+        "váng đậu",
+        "tàu hũ ky"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 271,
+      "proteinPer100g": 17.2,
+      "fatPer100g": 20.2,
+      "carbPer100g": 10.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BOK_CHOY",
+      "nameVi": "Cải thìa / Cải chíp",
+      "nameEn": "Bok choy",
+      "aliases": [
+        "cải thìa",
+        "cải chíp",
+        "cải ngọt",
+        "cải bẹ xanh",
+        "cải làn",
+        "cải rổ",
+        "bok choy"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 13,
+      "proteinPer100g": 1.5,
+      "fatPer100g": 0.2,
+      "carbPer100g": 2.18,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "NAPA_CABBAGE",
+      "nameVi": "Cải thảo",
+      "nameEn": "Napa cabbage",
+      "aliases": [
+        "cải thảo",
+        "bắp cải thảo",
+        "napa cabbage"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 12,
+      "proteinPer100g": 1.1,
+      "fatPer100g": 0.2,
+      "carbPer100g": 2.23,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "LETTUCE",
+      "nameVi": "Xà lách tươi / Rau sống ăn kèm",
+      "nameEn": "Lettuce / Salad greens",
+      "aliases": [
+        "xà lách",
+        "rau sống",
+        "xà lách xoong",
+        "rau ăn kèm",
+        "lettuce"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 15,
+      "proteinPer100g": 1.36,
+      "fatPer100g": 0.15,
+      "carbPer100g": 2.87,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "GARLAND_CHRYSANTHEMUM",
+      "nameVi": "Rau cải cúc (Tần ô) / Rau đay / Mồng tơi",
+      "nameEn": "Chrysanthemum greens / Malabar spinach",
+      "aliases": [
+        "cải cúc",
+        "tần ô",
+        "rau đay",
+        "mồng tơi",
+        "rau cần nước",
+        "rau nhút"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 19,
+      "proteinPer100g": 1.8,
+      "fatPer100g": 0.2,
+      "carbPer100g": 3.4,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "DAIKON",
+      "nameVi": "Củ cải trắng",
+      "nameEn": "Daikon radish",
+      "aliases": [
+        "củ cải trắng",
+        "củ cải",
+        "củ cải hàn",
+        "daikon"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 18,
+      "proteinPer100g": 0.6,
+      "fatPer100g": 0.1,
+      "carbPer100g": 4.1,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "PICKLED_RADISH",
+      "nameVi": "Củ cải muối vàng (Danmuji)",
+      "nameEn": "Pickled yellow radish",
+      "aliases": [
+        "danmuji",
+        "củ cải muối",
+        "củ cải vàng",
+        "fukujinzuke"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 24,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0.1,
+      "carbPer100g": 5.2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "EGGPLANT",
+      "nameVi": "Cà tím",
+      "nameEn": "Eggplant",
+      "aliases": [
+        "cà tím",
+        "cà tím dài",
+        "eggplant"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 25,
+      "proteinPer100g": 0.98,
+      "fatPer100g": 0.18,
+      "carbPer100g": 5.88,
+      "edibleYieldRatio": 0.88
+    },
+    {
+      "id": "OKRA",
+      "nameVi": "Đậu bắp",
+      "nameEn": "Okra",
+      "aliases": [
+        "đậu bắp",
+        "okra"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 33,
+      "proteinPer100g": 1.93,
+      "fatPer100g": 0.19,
+      "carbPer100g": 7.45,
+      "edibleYieldRatio": 0.88
+    },
+    {
+      "id": "TARO_STEM",
+      "nameVi": "Dọc mùng (Bạc hà nấu canh)",
+      "nameEn": "Taro stem / Elephant ear stem",
+      "aliases": [
+        "dọc mùng",
+        "bạc hà dọc mùng"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 14,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0.1,
+      "carbPer100g": 3,
+      "edibleYieldRatio": 0.8
+    },
+    {
+      "id": "LUFFA",
+      "nameVi": "Mướp hương",
+      "nameEn": "Luffa / Angled gourd",
+      "aliases": [
+        "mướp hương",
+        "mướp ngọt",
+        "luffa"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 20,
+      "proteinPer100g": 1.2,
+      "fatPer100g": 0.2,
+      "carbPer100g": 4.35,
+      "edibleYieldRatio": 0.82
+    },
+    {
+      "id": "GREEN_BEANS",
+      "nameVi": "Đậu cô ve / Đậu đũa / Đậu Hà Lan",
+      "nameEn": "Green beans / Snow peas",
+      "aliases": [
+        "đậu cô ve",
+        "đậu que",
+        "đậu đũa",
+        "đậu hà lan",
+        "snap peas",
+        "đậu non"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 31,
+      "proteinPer100g": 1.83,
+      "fatPer100g": 0.22,
+      "carbPer100g": 6.97,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "BABY_CORN",
+      "nameVi": "Ngô non (Bắp non)",
+      "nameEn": "Baby corn",
+      "aliases": [
+        "ngô non",
+        "bắp non",
+        "ngô bao tử",
+        "baby corn"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 26,
+      "proteinPer100g": 2.2,
+      "fatPer100g": 0.2,
+      "carbPer100g": 5.2,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SWEET_CORN",
+      "nameVi": "Bắp ngọt (Ngô ngọt)",
+      "nameEn": "Sweet corn kernels",
+      "aliases": [
+        "bắp ngọt",
+        "ngô ngọt",
+        "hạt ngô"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 86,
+      "proteinPer100g": 3.27,
+      "fatPer100g": 1.35,
+      "carbPer100g": 18.7,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "SWEET_POTATO",
+      "nameVi": "Khoai lang / Khoai môn",
+      "nameEn": "Sweet potato / Taro",
+      "aliases": [
+        "khoai lang",
+        "khoai môn",
+        "sweet potato"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 86,
+      "proteinPer100g": 1.57,
+      "fatPer100g": 0.05,
+      "carbPer100g": 20.12,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "JICAMA",
+      "nameVi": "Củ đậu (Củ sắn nước) / Su hào",
+      "nameEn": "Jicama / Kohlrabi",
+      "aliases": [
+        "củ đậu",
+        "củ sắn",
+        "su hào",
+        "jicama",
+        "kohlrabi"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 38,
+      "proteinPer100g": 0.72,
+      "fatPer100g": 0.09,
+      "carbPer100g": 8.82,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "LOTUS_ROOT",
+      "nameVi": "Củ sen tươi",
+      "nameEn": "Lotus root",
+      "aliases": [
+        "củ sen",
+        "ngó sen",
+        "lotus root"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 74,
+      "proteinPer100g": 2.6,
+      "fatPer100g": 0.1,
+      "carbPer100g": 17.23,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "LOTUS_SEED",
+      "nameVi": "Hạt sen tươi / khô",
+      "nameEn": "Lotus seeds",
+      "aliases": [
+        "hạt sen",
+        "hạt sen tươi",
+        "hạt sen khô"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 89,
+      "proteinPer100g": 4.13,
+      "fatPer100g": 0.53,
+      "carbPer100g": 17.28,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BANANA_BLOSSOM",
+      "nameVi": "Hoa chuối bào / Chuối xanh",
+      "nameEn": "Banana blossom / Green banana",
+      "aliases": [
+        "hoa chuối",
+        "bắp chuối",
+        "chuối xanh",
+        "chuối chát"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 51,
+      "proteinPer100g": 1.6,
+      "fatPer100g": 0.6,
+      "carbPer100g": 9.9,
+      "edibleYieldRatio": 0.85
+    },
+    {
+      "id": "BAMBOO_SHOOT",
+      "nameVi": "Măng tươi / Măng chua",
+      "nameEn": "Bamboo shoots",
+      "aliases": [
+        "măng chua",
+        "măng tươi",
+        "măng",
+        "bamboo shoot"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 27,
+      "proteinPer100g": 2.6,
+      "fatPer100g": 0.3,
+      "carbPer100g": 5.2,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "CAULIFLOWER",
+      "nameVi": "Súp lơ trắng (Bông cải trắng)",
+      "nameEn": "Cauliflower",
+      "aliases": [
+        "súp lơ trắng",
+        "bông cải trắng",
+        "cauliflower"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 25,
+      "proteinPer100g": 1.92,
+      "fatPer100g": 0.28,
+      "carbPer100g": 4.97,
+      "edibleYieldRatio": 0.82
+    },
+    {
+      "id": "WATER_CHESTNUT",
+      "nameVi": "Củ năng (Củ mã thầy)",
+      "nameEn": "Water chestnuts",
+      "aliases": [
+        "củ năng",
+        "mã thầy",
+        "water chestnut"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 97,
+      "proteinPer100g": 1.4,
+      "fatPer100g": 0.1,
+      "carbPer100g": 23.94,
+      "edibleYieldRatio": 0.82
+    },
+    {
+      "id": "SOUR_STARFRUIT",
+      "nameVi": "Khế chua / Lá giang / Sấu",
+      "nameEn": "Sour starfruit / Giang leaves",
+      "aliases": [
+        "khế chua",
+        "lá giang",
+        "quả sấu",
+        "dọc"
+      ],
+      "category": "fruit",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 31,
+      "proteinPer100g": 1.04,
+      "fatPer100g": 0.33,
+      "carbPer100g": 6.73,
+      "edibleYieldRatio": 0.95
+    },
+    {
+      "id": "GREEN_MANGO_PAPAYA",
+      "nameVi": "Xoài xanh / Đu đủ xanh bào sợi",
+      "nameEn": "Green mango or green papaya",
+      "aliases": [
+        "đu đủ xanh",
+        "xoài xanh",
+        "gỏi đu đủ"
+      ],
+      "category": "fruit",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 43,
+      "proteinPer100g": 0.5,
+      "fatPer100g": 0.25,
+      "carbPer100g": 10.8,
+      "edibleYieldRatio": 0.82
+    },
+    {
+      "id": "CANNED_TOMATO",
+      "nameVi": "Cà chua nghiền / Đóng hộp Ý",
+      "nameEn": "Canned crushed tomatoes / Passata",
+      "aliases": [
+        "passata",
+        "cà chua đóng hộp",
+        "cà chua pelati",
+        "cà chua xay nhuyễn",
+        "sốt cà chua"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 32,
+      "proteinPer100g": 1.64,
+      "fatPer100g": 0.25,
+      "carbPer100g": 7.29,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "TOMATO_PASTE",
+      "nameVi": "Cà chua cô đặc (Tomato paste)",
+      "nameEn": "Tomato paste",
+      "aliases": [
+        "tomato paste",
+        "cà chua cô đặc",
+        "bột cà chua"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 82,
+      "proteinPer100g": 4.32,
+      "fatPer100g": 0.47,
+      "carbPer100g": 18.91,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "OLIVE_BLACK",
+      "nameVi": "Quả ô liu đen / xanh bỏ hạt",
+      "nameEn": "Olives",
+      "aliases": [
+        "ô liu",
+        "ô liu đen",
+        "quả ô liu",
+        "olives"
+      ],
+      "category": "fruit",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 116,
+      "proteinPer100g": 0.84,
+      "fatPer100g": 10.9,
+      "carbPer100g": 6.04,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "CANNELLINI_BEANS",
+      "nameVi": "Đậu trắng / Đậu Borlotti Ý",
+      "nameEn": "White kidney / Cannellini beans",
+      "aliases": [
+        "đậu cannellini",
+        "đậu borlotti",
+        "đậu trắng",
+        "white beans"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 114,
+      "proteinPer100g": 8.2,
+      "fatPer100g": 0.4,
+      "carbPer100g": 20.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "MUNG_BEAN",
+      "nameVi": "Đậu xanh cà vỏ",
+      "nameEn": "Peeled split mung beans",
+      "aliases": [
+        "đậu xanh",
+        "đậu xanh cà vỏ",
+        "đậu xanh không vỏ"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 347,
+      "proteinPer100g": 23.86,
+      "fatPer100g": 1.15,
+      "carbPer100g": 62.62,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "VEGAN_MEAT_CHAY",
+      "nameVi": "Sườn non chay / Đậu hũ non chay",
+      "nameEn": "Dried vegan soy protein",
+      "aliases": [
+        "sườn chay",
+        "sườn non chay",
+        "thịt chay"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "soybean"
+      ],
+      "kcalPer100g": 345,
+      "proteinPer100g": 50,
+      "fatPer100g": 1.5,
+      "carbPer100g": 30,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DRIED_SHIITAKE",
+      "nameVi": "Nấm hương khô (Đông cô khô)",
+      "nameEn": "Dried shiitake mushrooms",
+      "aliases": [
+        "nấm hương khô",
+        "đông cô khô",
+        "dried shiitake"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 296,
+      "proteinPer100g": 9.58,
+      "fatPer100g": 0.99,
+      "carbPer100g": 75.37,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WOOD_EAR_MUSHROOM",
+      "nameVi": "Mộc nhĩ (Nấm mèo khô)",
+      "nameEn": "Dried wood ear mushroom",
+      "aliases": [
+        "mộc nhĩ",
+        "nấm mèo",
+        "wood ear mushroom"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 284,
+      "proteinPer100g": 9.25,
+      "fatPer100g": 0.73,
+      "carbPer100g": 73.01,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ENOKI_MUSHROOM",
+      "nameVi": "Nấm kim châm tươi (Enoki)",
+      "nameEn": "Enoki mushrooms",
+      "aliases": [
+        "enoki",
+        "nấm enoki"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 37,
+      "proteinPer100g": 2.66,
+      "fatPer100g": 0.29,
+      "carbPer100g": 7.81,
+      "edibleYieldRatio": 0.9
+    },
+    {
+      "id": "KING_OYSTER_MUSHROOM",
+      "nameVi": "Nấm đùi gà & Bào ngư",
+      "nameEn": "King oyster / Oyster mushrooms",
+      "aliases": [
+        "nấm bào ngư",
+        "nấm sò",
+        "nấm shimeji",
+        "nấm linh chi",
+        "nấm mỡ",
+        "king oyster mushroom"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 33,
+      "proteinPer100g": 3.31,
+      "fatPer100g": 0.41,
+      "carbPer100g": 6.09,
+      "edibleYieldRatio": 0.95
+    },
+    {
+      "id": "NORI_SEAWEED",
+      "nameVi": "Rong biển lá khô (Nori / Gim)",
+      "nameEn": "Roasted seaweed sheets (Nori)",
+      "aliases": [
+        "rong biển khô",
+        "rong biển nori",
+        "gim",
+        "nori",
+        "rong biển vụn"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 35,
+      "proteinPer100g": 5.81,
+      "fatPer100g": 0.28,
+      "carbPer100g": 5.11,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "KOMBU_KELP",
+      "nameVi": "Tảo bẹ Kombu khô",
+      "nameEn": "Dried kombu kelp",
+      "aliases": [
+        "kombu",
+        "tảo bẹ",
+        "tảo bẹ kombu"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 43,
+      "proteinPer100g": 1.68,
+      "fatPer100g": 0.56,
+      "carbPer100g": 9.57,
+      "edibleYieldRatio": 0.15
+    },
+    {
+      "id": "WAKAME_SEAWEED",
+      "nameVi": "Rong biển Wakame khô",
+      "nameEn": "Dried wakame seaweed",
+      "aliases": [
+        "wakame",
+        "rong biển wakame"
+      ],
+      "category": "vegetable",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 45,
+      "proteinPer100g": 3.03,
+      "fatPer100g": 0.64,
+      "carbPer100g": 9.14,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "JUJUBE_GOJI",
+      "nameVi": "Táo đỏ / Kỷ tử khô",
+      "nameEn": "Dried jujube & goji berries",
+      "aliases": [
+        "táo đỏ",
+        "táo tàu",
+        "kỷ tử",
+        "goji"
+      ],
+      "category": "fruit",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 287,
+      "proteinPer100g": 3.7,
+      "fatPer100g": 1.1,
+      "carbPer100g": 73.6,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "COOKED_RICE",
+      "nameVi": "Cơm trắng nấu chín",
+      "nameEn": "Cooked steamed white rice",
+      "aliases": [
+        "cơm trắng",
+        "cơm nấu chín",
+        "cơm dẻo",
+        "cooked rice"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 130,
+      "proteinPer100g": 2.69,
+      "fatPer100g": 0.28,
+      "carbPer100g": 28.17,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GLUTINOUS_RICE",
+      "nameVi": "Gạo nếp",
+      "nameEn": "Glutinous sticky rice",
+      "aliases": [
+        "gạo nếp",
+        "nếp cái hoa vàng",
+        "sticky rice"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 370,
+      "proteinPer100g": 6.81,
+      "fatPer100g": 0.55,
+      "carbPer100g": 81.68,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "RICE_VERMICELLI",
+      "nameVi": "Bún gạo tươi",
+      "nameEn": "Fresh rice vermicelli (Bún)",
+      "aliases": [
+        "bún rối",
+        "bún lá",
+        "bún sợi to",
+        "bún bò",
+        "rice vermicelli"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 109,
+      "proteinPer100g": 1.8,
+      "fatPer100g": 0.2,
+      "carbPer100g": 24.9,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "DRIED_VERMICELLI",
+      "nameVi": "Bún khô / Bánh hỏi khô",
+      "nameEn": "Dried rice vermicelli",
+      "aliases": [
+        "bún khô",
+        "miến gạo khô"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 364,
+      "proteinPer100g": 5.95,
+      "fatPer100g": 0.56,
+      "carbPer100g": 80.17,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PHO_NOODLE_FRESH",
+      "nameVi": "Bánh phở tươi / Hủ tiếu / Mì Quảng",
+      "nameEn": "Fresh flat rice noodles",
+      "aliases": [
+        "bánh phở",
+        "bánh phở tươi",
+        "hủ tiếu tươi",
+        "mì quảng tươi"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 112,
+      "proteinPer100g": 2,
+      "fatPer100g": 0.3,
+      "carbPer100g": 25,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "PAD_THAI_NOODLE",
+      "nameVi": "Bánh phở khô / Hủ tiếu khô",
+      "nameEn": "Dried flat rice noodles",
+      "aliases": [
+        "bánh phở khô",
+        "hủ tiếu khô",
+        "mì gạo bản to",
+        "pad thai noodle"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 364,
+      "proteinPer100g": 5.95,
+      "fatPer100g": 0.56,
+      "carbPer100g": 80.17,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "GLASS_NOODLE",
+      "nameVi": "Miến dong / Miến khoai lang Hàn (Japchae)",
+      "nameEn": "Glass vermicelli noodles",
+      "aliases": [
+        "miến",
+        "miến dong",
+        "miến khoai lang",
+        "miến đậu xanh",
+        "dangmyeon"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 351,
+      "proteinPer100g": 0.16,
+      "fatPer100g": 0.06,
+      "carbPer100g": 86.09,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "EGG_NOODLE",
+      "nameVi": "Mì trứng / Mì ramen / Mì vắt",
+      "nameEn": "Egg / Ramen wheat noodles",
+      "aliases": [
+        "mì trứng",
+        "mì ramen",
+        "mì gói",
+        "mì tươi",
+        "mì yakisoba",
+        "ramen",
+        "naengmyeon"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat",
+        "egg"
+      ],
+      "kcalPer100g": 352,
+      "proteinPer100g": 12.2,
+      "fatPer100g": 2.8,
+      "carbPer100g": 68.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "RICE_CAKE_TTEOK",
+      "nameVi": "Bánh gạo Hàn Quốc (Tteokbokki)",
+      "nameEn": "Korean cylindrical rice cake",
+      "aliases": [
+        "bánh gạo",
+        "bánh gạo hàn quốc",
+        "tteok",
+        "tokbokki"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 234,
+      "proteinPer100g": 4.1,
+      "fatPer100g": 0.4,
+      "carbPer100g": 52.8,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "BANH_MI",
+      "nameVi": "Bánh mì Việt Nam",
+      "nameEn": "Vietnamese baguette",
+      "aliases": [
+        "bánh mì",
+        "bánh mì việt nam",
+        "banh mi"
+      ],
+      "category": "grain",
+      "defaultUnit": "piece",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 272,
+      "proteinPer100g": 8.8,
+      "fatPer100g": 1.9,
+      "carbPer100g": 53.6,
+      "edibleYieldRatio": 1,
+      "gramsPerPiece": 90
+    },
+    {
+      "id": "ITALIAN_PASTA_SHORT",
+      "nameVi": "Mì Ý Penne / Fusilli / Nui / Lasagna",
+      "nameEn": "Italian Penne / Fusilli / Lasagna pasta",
+      "aliases": [
+        "penne",
+        "linguine",
+        "lasagna",
+        "nui",
+        "ditali",
+        "mì ý ngắn"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [
+        "wheat"
+      ],
+      "kcalPer100g": 365,
+      "proteinPer100g": 12.5,
+      "fatPer100g": 1.5,
+      "carbPer100g": 74,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ARBORIO_RICE",
+      "nameVi": "Gạo Ý Arborio / Carnaroli (nấu Risotto)",
+      "nameEn": "Arborio risotto rice",
+      "aliases": [
+        "arborio",
+        "carnaroli",
+        "gạo arborio",
+        "gạo risotto"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 355,
+      "proteinPer100g": 6.5,
+      "fatPer100g": 0.6,
+      "carbPer100g": 79,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "ROASTED_RICE_POWDER",
+      "nameVi": "Thính gạo rang (Khao Khua)",
+      "nameEn": "Toasted rice powder",
+      "aliases": [
+        "thính gạo",
+        "gạo rang xay",
+        "khao khua",
+        "toasted rice powder"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 360,
+      "proteinPer100g": 6.8,
+      "fatPer100g": 0.8,
+      "carbPer100g": 79.5,
+      "edibleYieldRatio": 1
+    },
+    {
+      "id": "WINE_VINEGAR",
+      "nameVi": "Giấm vang trắng / Giấm táo",
+      "nameEn": "White wine or apple cider vinegar",
+      "aliases": [
+        "giấm vang trắng",
+        "giấm táo",
+        "white wine vinegar",
+        "apple cider vinegar"
+      ],
+      "category": "spice",
+      "defaultUnit": "ml",
+      "allergenTags": [
+        "sulphites"
+      ],
+      "kcalPer100g": 19,
+      "proteinPer100g": 0,
+      "fatPer100g": 0,
+      "carbPer100g": 0.9,
+      "edibleYieldRatio": 1,
+      "densityGPerMl": 1.01
+    },
+    {
+      "id": "PIZZA_RICE_CRACKER",
+      "nameVi": "Bánh đa / Bánh phồng tôm",
+      "nameEn": "Grilled rice cracker / Prawn cracker",
+      "aliases": [
+        "bánh đa",
+        "bánh đa nướng",
+        "bánh phồng tôm",
+        "bánh tráng nướng"
+      ],
+      "category": "grain",
+      "defaultUnit": "g",
+      "allergenTags": [],
+      "kcalPer100g": 375,
+      "proteinPer100g": 4,
+      "fatPer100g": 1.2,
+      "carbPer100g": 86,
+      "edibleYieldRatio": 1
+    }
+  ]
+}

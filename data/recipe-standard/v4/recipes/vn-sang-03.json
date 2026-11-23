@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-sang-03",
+    "slug": "chao-thit-bam-gung-tia-to",
+    "title": "Cháo thịt bằm gừng tía tô giải cảm",
+    "subtitle": "Cháo gạo rang sánh mịn nấu thịt heo nạc băm ngọt thanh cùng lá tía tô và gừng già ấm bụng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Cháo nóng",
+      "Giải cảm",
+      "Ăn sáng",
+      "Ấm bụng",
+      "Dễ tiêu"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "boil"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Tô cháo thịt bằm nóng hổi với hạt gạo tẻ kết hợp gạo nếp rang thơm nở bung sánh mịn, thịt heo nạc băm mềm ngọt không vón cục, hòa quyện hương cay ấm của gừng già, tiêu đen và lá tía tô giải cảm hiệu quả.",
+    "servingSuggestion": "Múc cháo nóng sôi lên bát đã lót sẵn lá tía tô, hành lá và gừng thái chỉ, rắc nhiều tiêu đen xay rồi dùng ngay khi còn nóng để ra mồ hôi nhẹ.",
+    "storageAndReheat": "Nên ăn nóng ngay sau khi nấu. Nếu còn dư, để nguội rồi cất hộp kín trong ngăn mát tối đa 24 giờ; khi hâm lại trên lửa nhỏ cần thêm chút nước sôi khuấy đều tránh khê đáy và chỉ rắc tía tô tươi lúc ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm",
+      "culinaryMeasure": "100 g (~1/2 chén ăn cơm)",
+      "prepNote": "vo nhẹ 1–2 nước cho sạch bụi cám rồi để thật ráo trước khi rang",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GLUTINOUS_RICE",
+      "name": "Gạo nếp",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "trộn chung với gạo tẻ giúp nồi cháo sánh dẻo tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo nạc xay (hoặc băm nhỏ)",
+      "culinaryMeasure": "180 g",
+      "prepNote": "chọn phần nạc vai có chút mỡ nhẹ để thịt mềm ngọt không khô",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (~2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp cùng thịt heo xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng già tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, rửa sạch, thái sợi chỉ thật mảnh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PERILLA",
+      "name": "Lá tía tô tươi",
+      "culinaryMeasure": "35 g (1 nắm vừa)",
+      "prepNote": "nhặt lấy lá non, rửa sạch, để ráo rồi thái sợi nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 5 ml ướp thịt bằm, 10 ml nêm nồi cháo khi gần xong",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 1/2 ướp thịt, 1/2 nêm nước cháo",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "dùng 1,5 g ướp thịt, 2,5 g nêm nồi cháo cho vị thanh nhẹ",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "dùng 1 g ướp thịt, 1 g rắc mặt tô cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc nấu cháo",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "dùng nước sôi châm vào gạo rang giúp cháo nhanh nhừ và không vón",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1020,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Vo sạch và rang thơm hỗn hợp gạo tẻ, gạo nếp",
+      "instruction": "Trộn 100 g gạo tẻ với 20 g gạo nếp, vo nhanh qua 2 lần nước sạch rồi chắt thật ráo. Làm nóng nồi đáy dày không dầu trên lửa nhỏ, cho gạo vào rang đều tay khoảng 6 phút đến khi hạt gạo khô ráo, chuyển màu trắng đục và dậy hương thơm dịu.",
+      "tip": "Rang gạo không dầu trước khi nấu giúp hạt gạo săn lại, khi ninh chín sẽ nở bung sánh mịn mà không bị vữa nát.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Ninh cháo gạo rang trên lửa nhỏ vừa",
+      "instruction": "Đổ 1,2 lít nước lọc đun sôi vào nồi gạo vừa rang, khuấy nhẹ đáy nồi một lượt rồi đậy hé nắp. Đun sôi bùng trên lửa vừa sau đó hạ lửa nhỏ ninh khoảng 18 phút, thỉnh thoảng khuấy đều sát đáy nồi để hạt gạo nở bung mềm nhừ và nước cháo sánh mịn.",
+      "tip": "Nên dùng nước nóng đổ vào gạo rang và khuấy sát đáy nồi 5 phút một lần để tránh tình trạng cháo bị bén khét.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp thịt heo xay và sơ chế gừng, tía tô, hành lá",
+      "instruction": "Trong lúc ninh cháo, cho 180 g thịt heo nạc xay vào tô, ướp với 20 g hành tím băm, 5 ml nước mắm ngon, 2,5 g hạt nêm, 1,5 g muối ăn và 1 g tiêu đen xay, trộn đều để 10 phút cho thấm vị. Gừng già cạo vỏ thái chỉ mảnh; lá tía tô và hành lá rửa sạch rồi thái sợi nhỏ."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Khuấy tơi thịt bằm vào nồi cháo đang sôi",
+      "instruction": "Khi hạt gạo đã nở nhừ sánh mịn, múc một vá nước cháo nóng rưới vào tô thịt heo xay rồi dằm tơi ra trước khi trút từ từ vào nồi. Khuấy đều tay trên lửa vừa trong 4 phút để thịt chín hoàn toàn, tơi mịn mà không đóng cục và tiết vị ngọt tự nhiên.",
+      "tip": "Hòa chút nước cháo vào thịt xay trước khi thả vào nồi là bí quyết giúp thịt bằm tơi đều như ngoài hàng mà không cần xào nhiều dầu mỡ.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và thêm gừng tươi ấm bụng",
+      "instruction": "Nêm thêm 10 ml nước mắm ngon, 2,5 g hạt nêm và 2,5 g muối ăn vào nồi cháo, khuấy nhẹ rồi nếm lại cho vừa khẩu vị thanh nhẹ. Thả 2/3 lượng gừng già thái chỉ vào nấu sôi lăn tăn thêm 1 phút để tinh dầu gừng hòa vào cháo."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Lót rau thơm và múc cháo nóng giải cảm",
+      "instruction": "Xếp một nửa lượng lá tía tô thái sợi, hành lá thái nhỏ và phần gừng thái chỉ còn lại xuống đáy 3 tô sứ sâu lòng. Múc cháo thịt bằm đang sôi sục lên trên để hơi nóng làm chín tái lá tía tô dậy mùi thơm, rắc thêm phần tía tô còn lại cùng 1 g tiêu đen xay lên mặt và thưởng thức nóng ngay.",
+      "tip": "Không đun lá tía tô quá lâu trong nồi vì tinh dầu dễ bay hơi và lá sẽ chuyển màu thâm đen kém đẹp mắt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 324,
+    "energyKcal": 323.9,
+    "energyKj": 1355,
+    "proteinG": 14,
+    "fatG": 13.1,
+    "saturatedFatG": 4.8,
+    "carbG": 36.2,
+    "fiberG": 1.7,
+    "sugarG": 1.2,
+    "sodiumMg": 1301,
+    "saltG": 3.25,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Shiso Ref",
+      "USDA FDC 167902",
+      "USDA FDC 168881",
+      "USDA FDC 169231",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "84e9b48bdef89661ade44837bafecab38d877cf0f5594b2a38717aea4500d945",
+    "researchedFromV2Sha256": "e1c873b76448ec53784b6d3a15ab83906520aeaae1d14e6327628be4fcfbada0"
+  }
+}

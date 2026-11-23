@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-daec3b038c4f43af",
+    "slug": "ca-nuong-tuong-han",
+    "title": "Cá thu nướng chấm tương Hàn Quốc",
+    "subtitle": "Cá thu nướng vỉ da vàng giòn thơm thịt trắng ngọt béo, rưới nước tương xì dầu tỏi ớt chanh tươi kiểu Hàn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Cá nướng",
+      "Cá thu",
+      "Hàn Quốc",
+      "Nước chấm tương",
+      "Bữa cơm gia đình"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "fish",
+      "mackerel",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cá thu nướng kiểu Hàn hấp dẫn với lớp da cá giòn rụm vàng ươm, phần thịt bên trong trắng mềm béo ngậy giữ trọn vị ngọt tự nhiên, kết hợp nước chấm xì dầu tỏi ớt chanh tươi cân bằng vị béo rất bắt cơm.",
+    "servingSuggestion": "Bày cá thu nướng ra đĩa dài, rưới một nửa chén nước tương chấm lên thân cá và rắc ngò rí thái nhỏ; phần nước chấm còn lại để riêng chấm kèm cơm trắng nóng.",
+    "storageAndReheat": "Cá nướng ngon nhất khi dùng nóng ngay vừa ra lò; phần dư bảo quản ngăn mát tối đa 2 ngày và làm nóng lại trong nồi chiên không dầu hoặc lò nướng 180°C khoảng 5 phút để da giòn lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "MACKEREL",
+      "name": "Cá thu Nhật (Saba) nguyên con làm sạch",
+      "culinaryMeasure": "650 g (khoảng 2–4 con)",
+      "prepNote": "rửa sạch máu tanh dọc sống lưng, thấm thật khô, khứa 3–4 đường chéo mỗi bên thân",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "phết đều hai mặt cá và vỉ nướng chống dính",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 19.32,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~2/3 muỗng cà phê)",
+      "prepNote": "rắc đều lên hai mặt thân cá trước khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 3.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SAKE",
+      "name": "Rượu gạo nấu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "xoa đều thân cá 10 phút giúp khử mùi tanh đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 14.85,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt (nước tương)",
+      "culinaryMeasure": "55 ml (~3,5 muỗng canh)",
+      "prepNote": "làm nền pha bát nước chấm chua cay kiểu Hàn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 64.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 64.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "vắt lấy khoảng 25 ml nước cốt chanh tạo vị chua thanh cho nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g, ~3 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn pha nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ nhẹ và vị cay thơm cho nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí mặt cá",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn trộn vào nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "trộn vào nước chấm tăng độ thơm béo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "giã dập nhẹ trộn cùng nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "hòa dịu độ mặn của bát nước tương chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, khứa thân và ướp cá thu với muối, rượu",
+      "instruction": "Rửa sạch cá thu Nhật cả ngoài da lẫn phần màng đen dọc sống lưng trong bụng cá, dùng khăn giấy thấm thật khô nước. Khứa 3–4 đường chéo sâu vừa phải lên mỗi bên thân cá để cá chín đều và không bị nổ da. Thoa đều 30 ml rượu gạo nấu ăn (nếu dùng) để 10 phút rồi thấm khô lại, sau đó phết 20 ml dầu ăn và rắc đều 4 g muối ăn lên cả hai mặt cá.",
+      "tip": "Thấm thật khô thân cá và phết lớp dầu ăn mỏng lên da cá là bí quyết giúp da cá giòn rụm và không bị dính rách vào vỉ nướng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha chén nước tương xì dầu tỏi ớt chanh tươi",
+      "instruction": "Băm thật nhuyễn tỏi khô, thái nhỏ hành lá và ngò rí, vắt chanh tươi lấy khoảng 25 ml nước cốt (bỏ hạt). Trong chén, khuấy tan 55 ml xì dầu nhạt, 15 ml nước lọc, nước cốt chanh, tỏi băm, 4 g ớt bột Hàn Quốc (Gochugaru), hành lá thái nhỏ, 10 ml dầu mè rang và 5 g hạt mè trắng rang giã dập."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng vỉ nướng và nướng vàng mặt đầu tiên",
+      "instruction": "Làm nóng vỉ nướng (hoặc lò nướng chế độ 220°C) và phết 10 ml dầu ăn còn lại lên bề mặt vỉ. Đặt cá thu lên vỉ, nướng ở lửa vừa–lớn khoảng 7 phút cho đến khi lớp da mặt dưới săn vàng giòn và tỏa mùi thơm béo.",
+      "tip": "Chỉ nên lật cá đúng một lần khi mặt dưới đã vàng giòn hẳn để tránh làm nát thịt cá.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt cá nướng chín đều toàn thân",
+      "instruction": "Dùng xẻng bản rộng nhẹ nhàng lật cá sang mặt còn lại, tiếp tục nướng thêm 6–7 phút đến khi cả hai mặt da vàng giòn đều và phần thịt ở chỗ dày nhất chuyển trắng đục hoàn toàn, dễ tách khỏi xương.",
+      "tip": "Nếu không có vỉ nướng, có thể áp chảo chống dính lửa vừa mỗi mặt 6–7 phút với nắp hé nhẹ để cá chín đều từ trong ra ngoài.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Rưới nước tương chấm và rắc ngò rí lên mặt cá",
+      "instruction": "Gắp cá thu nướng ra đĩa dài, múc một nửa lượng nước tương tỏi ớt chanh đã pha rưới đều lên thân cá nóng rồi rắc ngò rí thái nhỏ lên trên để tăng hương thơm tươi mát."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Dọn cá nướng nóng kèm chén nước chấm và cơm trắng",
+      "instruction": "Đặt phần nước tương chấm còn lại vào chén nhỏ dọn bên cạnh để chấm thêm khi ăn cùng cơm trắng nóng dẻo."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 360,
+    "energyKcal": 360,
+    "energyKj": 1507,
+    "proteinG": 26.2,
+    "fatG": 26,
+    "saturatedFatG": 5.4,
+    "carbG": 3.7,
+    "fiberG": 0.9,
+    "sugarG": 0.5,
+    "sodiumMg": 1394,
+    "saltG": 3.49,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175119"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a3a1750e81f4fb71526aeacba7648a34e22a04792bfdc4527e051721f73a2d71",
+    "researchedFromV2Sha256": "c74715e81e8ed5e412fca257bf5e51af8241f53cd4292bbef2ebce790200bdf7"
+  }
+}

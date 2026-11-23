@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4d81607829384874",
+    "slug": "ga-hap-gung-hanh",
+    "title": "Đùi gà hấp gừng hành thơm mềm",
+    "subtitle": "Đùi gà ướp đậm vị hấp chín mềm mọng cùng gừng sợi, hành tím và hành lá tươi, rưới dầu mè thơm chấm muối tiêu chanh"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 28,
+    "servings": 4,
+    "tags": [
+      "Món hấp",
+      "Gà",
+      "Gừng",
+      "Gia đình",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đùi gà tơ khứa nhẹ ướp thấm gia vị rồi hấp cách thủy cùng gừng non thái sợi, hành tím và hành lá giúp giữ trọn độ ẩm ngọt trong từng thớ thịt, dậy hương thơm ấm bụng rất hợp bữa cơm gia đình.",
+    "servingSuggestion": "Chặt hoặc để nguyên đùi gà xếp ra đĩa, rưới thêm nước hấp thơm gừng hành và dầu mè; dọn nóng chấm muối tiêu chanh hoặc xì dầu ớt.",
+    "storageAndReheat": "Gà hấp bảo quản hộp kín trong ngăn mát tối đa 2 ngày; khi ăn hấp lại 6–8 phút ở lửa vừa để thịt nóng mềm mà không bị khô."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà tươi (4 cái)",
+      "culinaryMeasure": "900 g",
+      "prepNote": "làm sạch lông tơ, chà muối gừng rửa sạch rồi khứa 2–3 đường chéo sâu vừa trên mỗi đùi",
+      "componentGroup": "main",
+      "requiredQuantity": 900,
+      "unit": "g",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 738,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "60 g (1 củ lớn)",
+      "prepNote": "cạo vỏ; dùng 15 g đập dập rửa gà, 25 g thái sợi ướp và lót đáy, 20 g thái sợi rải mặt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1.5 bó (khoảng 60 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 5 cm; chia một nửa lót đáy đĩa hấp, nửa còn lại rải mặt phút cuối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "40 g (3 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng lót dưới đĩa và xếp quanh đùi gà khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 35.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "rửa sạch, bỏ hạt thái sợi trang trí mặt gà và pha nước chấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "rửa sạch, vắt lấy nước cốt pha muối tiêu chanh chấm thịt gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "12 g (2 muỗng cà phê)",
+      "prepNote": "chia 4 g chà rửa gà rồi xả bỏ, 4 g ướp gà và 4 g pha muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 7.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "xoa đều vào các đường khứa trên đùi gà khi ướp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt gà và 1 g trộn vào muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới đều lên đùi gà ngay sau khi hấp chín cho bóng thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "có thể rưới nhẹ vào sốt ướp hoặc dùng chấm kèm tùy khẩu vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (đun sôi hấp gà)",
+      "culinaryMeasure": "700 ml",
+      "prepNote": "đổ đáy nồi hấp cách thủy",
+      "componentGroup": "broth",
+      "requiredQuantity": 700,
+      "unit": "ml",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử mùi và khứa đùi gà",
+      "instruction": "Làm sạch lông tơ trên 4 chiếc đùi gà, dùng 4 g muối hạt và 15 g gừng đập dập chà xát khắp mặt da và thịt trong 2 phút để khử mùi hôi, sau đó xả sạch lại với nước mát và thấm khô. Dùng dao sắc khứa 2–3 đường chéo trên phần thịt dày để gà thấm gia vị và chín nhanh hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Sơ chế gừng hành và ướp đùi gà thấm vị",
+      "instruction": "Thái sợi chỉ 45 g gừng còn lại; hành tím thái lát mỏng; hành lá cắt khúc dài 5 cm; ớt tươi thái sợi. Trộn ướp đùi gà với 4 g muối hạt, 5 g hạt nêm, 1 g tiêu đen xay, 15 ml xì dầu (nếu dùng) và 25 g gừng thái sợi, xoa kỹ vào các đường khứa rồi ướp 20 phút.",
+      "tip": "Xoa gia vị vào sâu bên trong các đường khứa giúp phần thịt sát xương đậm đà mà không cần ướp quá mặn bên ngoài.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp đĩa hấp gà cách thủy lửa vừa",
+      "instruction": "Trải một nửa lượng hành lá cắt khúc, hành tím thái lát và ít gừng sợi xuống đáy đĩa sâu lòng chịu nhiệt, đặt đùi gà đã ướp lên trên. Đun sôi 700 ml nước lọc trong nồi hấp, cho đĩa gà vào xửng, đậy kín vung và hấp trên lửa vừa trong 22 phút.",
+      "tip": "Lót hành lá và hành tím dưới đáy đĩa giúp ngăn da gà dính vào đĩa và tạo hơi thơm ngấm ngược vào thịt.",
+      "timerMinutes": 22
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thêm hành lá, gừng sợi hấp chín tới",
+      "instruction": "Mở nắp xửng, rải phần hành lá cắt khúc và 20 g gừng thái sợi còn lại phủ lên mặt đùi gà rồi đậy nắp hấp tiếp thêm 5 phút. Dùng tăm xiên vào phần thịt dày nhất gần khớp xương thấy nước tiết ra trong suốt không còn màu hồng là gà đã chín hoàn toàn.",
+      "tip": "Thêm hành lá và lớp gừng sợi mới vào 5 phút cuối giúp rau giữ được sắc xanh tươi và hương thơm cay ấm nổi bật khi dọn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha chén muối tiêu chanh chấm gà",
+      "instruction": "Trộn 4 g muối hạt còn lại với 1 g tiêu đen xay trong chén nhỏ, vắt nước cốt 1 quả chanh tươi vào khuấy nhẹ cho muối tan bớt."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè và trình bày đĩa gà hấp nóng",
+      "instruction": "Nhấc đĩa gà ra khỏi xửng, rưới 5 ml dầu mè thơm đều lên mặt da gà và rắc ớt tươi thái sợi trang trí; chặt miếng vừa ăn hoặc để nguyên đùi dọn nóng cùng chén muối tiêu chanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 364,
+    "energyKcal": 364.2,
+    "energyKj": 1525,
+    "proteinG": 36.8,
+    "fatG": 20.7,
+    "saturatedFatG": 5.6,
+    "carbG": 6.1,
+    "fiberG": 1.2,
+    "sugarG": 1.5,
+    "sodiumMg": 1361,
+    "saltG": 3.4,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169231",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a9b8458243995913cf6ff16969d41411619ca54ae2f5e1204f8c96f8a5c06071",
+    "researchedFromV2Sha256": "503f82046707782b3106372ca923f8e3b3c9feb76253f70315ee87bfee011f7a"
+  }
+}

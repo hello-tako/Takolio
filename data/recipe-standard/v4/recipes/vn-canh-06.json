@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-canh-06",
+    "slug": "canh-ngao-nau-chua-thi-la",
+    "title": "Canh ngao nấu chua thì là",
+    "subtitle": "Nước luộc ngao ngọt khiết kết hợp vị chua dịu từ dứa, cà chua và hương thơm nồng đặc trưng của rau thì là chuẩn vị Bắc"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Miền Bắc",
+      "Hải sản",
+      "Thanh mát",
+      "Dễ nấu"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "molluscs"
+    ]
+  },
+  "overview": {
+    "description": "Món canh giải nhiệt thanh đạm quen thuộc trong mâm cơm miền Bắc với phần nước luộc ngao trong vắt ngọt tự nhiên, chua dịu hài hòa từ dứa và cà chua cùng mùi thơm quyến rũ của thì là.",
+    "servingSuggestion": "Múc canh ngao ra tô lớn khi vừa chín tới, ăn nóng cùng cơm trắng hoặc chan bún tươi đều rất bắt vị; dùng kèm rau sống hoặc cà muối càng thêm đưa cơm.",
+    "storageAndReheat": "Canh hải sản ngon nhất khi ăn ngay trong bữa; không nên để qua đêm vì ngao dễ có mùi tanh và rau thì là bị úa màu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CLAM_MUSSEL",
+      "name": "Ngao tươi sống còn vỏ",
+      "culinaryMeasure": "1000 g (1 kg)",
+      "prepNote": "ngâm nước muối loãng cùng vài lát ớt cho nhả hết cát, chà sạch vỏ và xả kỹ nhiều lần",
+      "componentGroup": "main",
+      "requiredQuantity": 1000,
+      "unit": "g",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2.5 quả (~300 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.96,
+      "edibleGrams": 288,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa / Thơm chín",
+      "culinaryMeasure": "0.5 quả (~300 g cả vỏ)",
+      "prepNote": "gọt sạch vỏ, khoét bỏ mắt, bỏ lõi cứng rồi thái lát mỏng vát xéo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 195,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "DILL",
+      "name": "Thì là tươi",
+      "culinaryMeasure": "20 g (1 mớ nhỏ)",
+      "prepNote": "nhặt bỏ gốc già, rửa sạch, thái khúc ngắn khoảng 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 2–3 nhánh)",
+      "prepNote": "rửa sạch, phần đầu hành thái nhỏ, phần lá cắt khúc 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát (dùng một phần ngâm ngao nhả cát, phần còn lại thả canh cân tính hàn)",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhỏ (chia 1/3 ướp thịt ngao, 2/3 phi thơm xào cà chua)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím và xào cà chua lên màu đẹp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm cốt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 7 ml ướp thịt ngao và 8 ml nêm nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "nêm dịu vào nước canh để cân bằng vị chua ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "dùng 3 g pha nước ngâm ngao và 1 g nêm khi xào cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ làm dịu vị chua gắt của cà chua và dứa",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc ngao làm nước canh)",
+      "culinaryMeasure": "1400 ml (1,4 lít)",
+      "prepNote": "lượng nước luộc vừa ngập ngao, sau đó gạn phần nước trong làm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 1400,
+      "unit": "ml",
+      "grossGrams": 1400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1190,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm sạch cát và sơ chế rau thơm",
+      "instruction": "Ngâm 1 kg ngao tươi trong thau nước pha 3 g muối ăn và vài lát ớt tươi khoảng 30 phút để ngao nhả hết bùn cát, sau đó chà rửa sạch lớp vỏ ngoài và xả kỹ qua 2–3 lần nước. Trong lúc ngâm ngao, bổ múi cau 2,5 quả cà chua, gọt vỏ bỏ mắt thái lát 0,5 quả dứa, băm nhỏ 20 g hành tím, cắt khúc 2 cm thì là và hành lá, phần ớt còn lại thái lát.",
+      "tip": "Ngâm ngao với nước muối loãng thêm vài lát ớt cay là cách đơn giản nhất giúp ngao mở vỏ nhả sạch cát mà không bị chết.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc ngao mở miệng và gạn lấy nước dùng trong",
+      "instruction": "Cho ngao sạch vào nồi cùng 1,4 lít nước lọc, đun ở lửa lớn đến khi nước sôi và toàn bộ vỏ ngao vừa há mở miệng hoàn toàn thì tắt bếp ngay để thịt ngao không bị teo dai. Vớt ngao ra rổ, loại bỏ những con không há miệng, tách bỏ vỏ lấy phần thịt ngao rồi rửa nhanh qua nước lọc cho sạch hẳn cát; phần nước luộc ngao đổ ra tô lớn để yên 5 phút cho lắng hết cặn dưới đáy.",
+      "tip": "Không luộc ngao quá lâu sau khi vỏ đã mở miệng kẻo thịt ngao bị quắt nhỏ và dai mất độ ngọt.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp thịt ngao và xào cùng cà chua tạo màu",
+      "instruction": "Ướp phần thịt ngao với 1/3 chỗ hành tím băm và 7 ml nước mắm cốt khoảng 5 phút. Làm nóng nồi khô với 15 ml dầu ăn trên lửa vừa, phi thơm phần hành tím băm còn lại rồi cho thịt ngao vào đảo nhanh tay 1 phút, trút ra đĩa riêng. Dùng tiếp nồi đó xào cà chua bổ múi cau với 1 g muối còn lại khoảng 2 phút cho cà chua mềm tơi và tiết màu đỏ cam.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chắt nước luộc ngao và nấu chín dứa chua ngọt",
+      "instruction": "Từ từ rót phần nước luộc ngao đã lắng vào nồi cà chua xào, khéo léo chừa lại phần cặn cát đọng dưới đáy tô. Bật lửa lớn đun sôi, sau đó thả các lát dứa vào nấu trên lửa vừa khoảng 5 phút cho dứa chín mềm và tiết vị chua ngọt thanh dịu hòa quyện cùng nước ngao.",
+      "tip": "Chắt nước luộc ngao thật nhẹ tay để giữ phần nước trong vắt và loại bỏ hoàn toàn cặn sạn dưới đáy tô.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nêm gia vị và trút thịt ngao vào nồi canh",
+      "instruction": "Nêm vào nồi 6 g hạt nêm, 5 g đường cát trắng và 8 ml nước mắm cốt còn lại, khuấy nhẹ và nếm thử lại cho đạt vị chua thanh, ngọt hậu, mặn vừa. Trút đĩa thịt ngao đã xào vào nồi, đun sôi lăn tăn lại 1 phút cho thịt ngao ngấm đều nước canh."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả thì là, hành lá và hoàn thiện món canh",
+      "instruction": "Tắt bếp ngay rồi cho toàn bộ thì là tươi, hành lá cắt khúc và ớt thái lát vào đảo nhẹ một lượt để rau vừa chín tới bằng hơi nóng, giữ được màu xanh tươi và hương thơm nồng đặc trưng của thì là. Múc canh ra tô lớn dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 180,
+    "energyKcal": 179.6,
+    "energyKj": 752,
+    "proteinG": 18.1,
+    "fatG": 4.7,
+    "saturatedFatG": 0.6,
+    "carbG": 16.7,
+    "fiberG": 1.9,
+    "sugarG": 8.8,
+    "sodiumMg": 1382,
+    "saltG": 3.46,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169124",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172233",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174212",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5c17f77b7c3bfd8f61d1d5e1eb434cae477589a6d1c8de3393660a2edc1e3fd9",
+    "researchedFromV2Sha256": "2d3bc431fb2ce9462ef188afe54d92bcaf740675305e6d7f1940f64c75368655"
+  }
+}

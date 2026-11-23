@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8b874d97e90e00f0",
+    "slug": "ga-chien-sa-thai",
+    "title": "Gà chiên sả kiểu Thái",
+    "subtitle": "Đùi gà lọc xương ướp sả giã tơi sợi, rễ ngò, tỏi tiêu rồi chiên ngập dầu vàng giòn rụm, xóc cùng lá chanh Kaffir thơm nức"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 40,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Đùi gà",
+      "Sả ớt",
+      "Ẩm thực Thái",
+      "Giòn rụm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà chiên sả kiểu Thái hấp dẫn với từng miếng thịt đùi gà mềm mọng bên trong, lớp vỏ ngoài giòn rụm áo phủ những sợi sả giã tơi chiên vàng ruộm, dậy hương nồng nàn của rễ ngò rí, tiêu đen và lá chanh Kaffir.",
+    "servingSuggestion": "Bày gà chiên sả cùng sợi sả chiên giòn ra đĩa lớn, dùng nóng với cơm trắng hoặc xôi nếp dẻo kèm tương ớt chua ngọt Thái và dưa leo.",
+    "storageAndReheat": "Gà chiên ngon nhất ngay sau khi vớt ráo dầu; phần dư bọc kín bảo quản ngăn mát tối đa 48 giờ, làm nóng lại bằng nồi chiên không dầu ở 180°C trong 6–8 phút để lấy lại độ giòn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương (còn da)",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa sạch với chút muối loãng, thấm thật khô rồi cắt miếng vừa ăn cạnh 4–5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (chỉ lấy phần gốc non)",
+      "culinaryMeasure": "4 cây (80 g)",
+      "prepNote": "bỏ lá già, cắt khúc 4 cm, đập dập rồi dùng chày giã cho tơi thành sợi bông mịn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g, ~7–8 tép)",
+      "prepNote": "bóc vỏ, giã nhuyễn cùng rễ ngò rí và tiêu đen",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CILANTRO",
+      "name": "Rễ ngò rí (hoặc phần cọng ngò rí)",
+      "culinaryMeasure": "15 g (khoảng 3–4 rễ)",
+      "prepNote": "cạo rửa sạch đất cát, thái nhỏ rồi giã mịn cùng tỏi và tiêu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "5 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "giã chung với tỏi và rễ ngò tạo hương cay nồng đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "ướp thịt gà giúp miếng gà đậm đà và lên màu đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm thấm sâu vào thớ thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước mắm và dầu hào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "dùng chà rửa khử mùi gà và nêm nhẹ phần ướp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "20 g (khoảng 2 muỗng canh)",
+      "prepNote": "trộn áo đều lên gà sau khi ướp để vỏ chiên giòn lâu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Kaffir tươi",
+      "culinaryMeasure": "5 g (khoảng 6–8 lá)",
+      "prepNote": "rửa sạch, bỏ gân giữa rồi thái chỉ thật mảnh để xóc cùng gà chiên",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 4.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt chua ngọt Thái",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "dọn ra chén nhỏ làm sốt chấm ăn kèm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 51.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 51.7,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (chiên ngập)",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "đun nóng ở 165°C để chiên gà chín vàng giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 414,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 41.4,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đùi gà và giã tơi sả thành sợi bông",
+      "instruction": "Rửa sạch 600 g thịt đùi gà lọc xương (xát nhẹ với 1 g muối rồi rửa lại), dùng khăn giấy thấm thật khô và cắt miếng vuông 4–5 cm. Cắt khúc phần gốc trắng của 4 cây sả tươi, đập dập rồi dùng chày giã liên tục trong cối đến khi sả tơi nhẹ thành từng sợi mảnh như bông.",
+      "tip": "Giã sả cho tơi sợi giúp khi chiên sả chín giòn như ruốc và bám đều quanh miếng gà thay vì bị cứng sượng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Giã cốt gia vị ướp gà thấm đều",
+      "instruction": "Giã nhuyễn tỏi, rễ ngò rí và 5 g tiêu đen xay thành hỗn hợp sệt thơm. Cho thịt gà vào tô lớn cùng phần sả đã giã tơi, hỗn hợp tỏi tiêu rễ ngò, 30 ml dầu hào, 15 ml nước mắm, 5 g đường cát trắng và 1 g muối còn lại; dùng tay bóp trộn đều và ướp trong ngăn mát ít nhất 30 phút.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Áo bột bắp và chuẩn bị lá chanh Kaffir thái chỉ",
+      "instruction": "Rửa sạch 5 g lá chanh Kaffir, bỏ gân giữa và thái chỉ thật mảnh. Trước khi chiên, rắc đều 20 g bột bắp vào tô gà đã ướp, trộn nhẹ để lớp bột mỏng áo đều các miếng gà và sợi sả."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Làm nóng dầu chiên ở nhiệt độ vừa 165°C",
+      "instruction": "Đổ 450 ml dầu ăn vào nồi hoặc chảo sâu lòng, đun trên lửa vừa đến khi đạt khoảng 165°C (nhúng đầu đũa gỗ thấy sủi bọt lăn tăn nhẹ xung quanh). Không để dầu quá nóng bốc khói vì sả và đường trong gia vị ướp sẽ nhanh cháy sậm màu."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên gà cùng sợi sả vàng giòn chín đều",
+      "instruction": "Thả gà vào chiên thành 2 mẻ vừa phải trên lửa vừa trong khoảng 5–6 phút, thỉnh thoảng đảo nhẹ để từng miếng gà chín tận lõi (không còn nước hồng khi xăm thử) và áo màu vàng nâu giòn rụm. Vớt gà và các sợi sả vàng giòn ra giá lưới cho ráo dầu.",
+      "tip": "Các sợi sả tơi thường chín vàng nhanh hơn thịt gà, hãy dùng vợt lưới vớt riêng những sợi sả vàng ruộm trước để tránh bị cháy đắng.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Xóc gà với lá chanh Kaffir và dọn kèm tương ớt",
+      "instruction": "Cho toàn bộ gà chiên và sả chiên giòn vào tô khô, rắc lá chanh Kaffir thái chỉ vào xóc đều vài lượt để hơi nóng làm lá dậy hương thơm dịu. Bày ra đĩa, dọn nóng cùng chén tương ớt chua ngọt Thái và cơm hoặc xôi nếp.",
+      "tip": "Chỉ xóc lá chanh Kaffir thái chỉ sau khi vớt gà ra khỏi chảo dầu nóng để giữ được màu xanh tươi và hương thơm thanh mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 427,
+    "energyKcal": 426.5,
+    "energyKj": 1785,
+    "proteinG": 30.4,
+    "fatG": 26.4,
+    "saturatedFatG": 5.9,
+    "carbG": 16.1,
+    "fiberG": 0.8,
+    "sugarG": 4.3,
+    "sodiumMg": 1092,
+    "saltG": 2.73,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 169997",
+      "USDA FDC 170931",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a575cd3644687bf4ffe4ce7ee40ae71e30a24d529ca0335291ccb0aff6b74836",
+    "researchedFromV2Sha256": "087e9c86937ff6f8b04afee1f88ce65277f460e939a40079c82d5c3a33d1d9e4"
+  }
+}

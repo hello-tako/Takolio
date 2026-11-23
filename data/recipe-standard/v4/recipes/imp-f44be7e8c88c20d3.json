@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f44be7e8c88c20d3",
+    "slug": "sup-ca-hoi-kem-y",
+    "title": "Súp cá hồi kem tươi kiểu Ý",
+    "subtitle": "Nồi súp kem ấm áp sánh mịn từ khoai tây, cà rốt và cá hồi phi lê chín mềm béo thanh không tanh"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_canh",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 35,
+    "servings": 4,
+    "tags": [
+      "Súp kem",
+      "Cá hồi",
+      "Khoai tây",
+      "Ẩm thực Ý",
+      "Mùa lạnh"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "salmon"
+    ]
+  },
+  "overview": {
+    "description": "Bát súp cá hồi nấu kem kiểu Ý sánh mịn tự nhiên nhờ khoai tây bở hòa cùng kem tươi béo dịu, tôn lên vị ngọt thơm đặc trưng của từng khối phi lê cá hồi tươi chín vừa tới.",
+    "servingSuggestion": "Múc súp cá hồi ra tô sâu lòng khi còn nóng ấm, rắc ngò tây tươi thái nhỏ, chút thì là tươi và tiêu đen xay mới; ăn kèm bánh mì nướng giòn.",
+    "storageAndReheat": "Bảo quản súp nguội trong hộp kín ở ngăn mát tối đa 2 ngày. Khi hâm, đun lửa thật nhỏ và khuấy nhẹ để kem không tách dầu và miếng cá hồi không bị nát."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê tươi bỏ da",
+      "culinaryMeasure": "400 g",
+      "prepNote": "nhổ sạch xương dăm, thấm khô rồi cắt khối vuông 3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi (whipping cream)",
+      "culinaryMeasure": "220 ml",
+      "prepNote": "để ở nhiệt độ phòng trước khi rót vào súp để tránh tách lớp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 220,
+      "unit": "ml",
+      "grossGrams": 217.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 217.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "POTATO",
+      "name": "Khoai tây tươi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "gọt vỏ, rửa sạch rồi cắt hạt lựu đều cạnh 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 297.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "2 củ vừa (~220 g)",
+      "prepNote": "gọt vỏ, thái lát tròn mỏng hoặc hạt lựu vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 195.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "1 củ vừa (~140 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g",
+      "prepNote": "dùng để xào thơm hành tây và rau củ tạo nền béo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "900 ml",
+      "prepNote": "đun ấm sẵn để ninh mềm khoai tây và cà rốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 900,
+      "unit": "ml",
+      "grossGrams": 900,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 765,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "12 g (~2 muỗng canh băm)",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt tô súp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DILL",
+      "name": "Thì là tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, thái nhuyễn rắc mặt để tăng hương thơm hợp cá hồi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g nêm khi hầm rau củ và 3 g chỉnh vị cuối",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm cuối cùng sau khi cho kem tươi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau củ và cắt khối cá hồi",
+      "instruction": "Gọt vỏ khoai tây tươi và cắt hạt lựu 1,5 cm; cà rốt tươi thái lát mỏng; hành tây vàng băm nhỏ; ngò tây tươi và thì là tươi thái nhỏ. Cá hồi phi lê thấm khô, kiểm tra nhổ sạch xương dăm rồi cắt thành khối vuông 3 cm.",
+      "tip": "Cắt khoai tây kích thước đều nhau giúp khoai chín bở đồng thời, tạo độ sánh mượt tự nhiên cho nước súp."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào mềm hành tây và rau củ với bơ lạt",
+      "instruction": "Đun chảy 25 g bơ lạt trong nồi đáy dày trên lửa vừa. Thả hành tây băm vào xào dịu khoảng 4 phút cho trong mềm (không để cháy vàng), rồi thêm khoai tây và cà rốt vào đảo đều 2 phút cho rau củ ngấm bơ thơm.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Ninh mềm khoai tây và cà rốt trong nước dùng",
+      "instruction": "Rót 900 ml nước dùng rau củ và nêm 3 g muối ăn vào nồi, đun sôi rồi hạ xuống lửa nhỏ, đậy nắp ninh liu riu khoảng 20 phút đến khi dùng nĩa xiên qua miếng khoai tây thấy mềm bở hoàn toàn.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả cá hồi nấu chín dịu trên lửa nhỏ",
+      "instruction": "Nhẹ nhàng thả các khối cá hồi phi lê vào nồi súp, giữ lửa thật nhỏ và nấu khoảng 7 phút mà không khuấy mạnh tay để cá chín đục hoàn toàn, dễ tách thớ mà vẫn nguyên vẹn từng miếng.",
+      "tip": "Giữ lửa liu riu thay vì đun sôi mạnh sau khi cho cá vào giúp thịt cá hồi mềm mọng và không bị nát vụn trong nồi súp.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Hòa kem tươi và nêm gia vị hoàn thiện",
+      "instruction": "Từ từ rót 220 ml kem tươi vào nồi súp, khuấy thật nhẹ tay theo một chiều. Nêm 3 g muối ăn còn lại và 2 g tiêu đen xay, đun ấm thêm 2 phút trên lửa nhỏ rồi tắt bếp ngay khi mép nồi hơi lăn tăn.",
+      "tip": "Không đun sôi bùng sau khi đã cho kem tươi để tránh kem bị tách váng dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Ủ ấm 5 phút và dọn súp nóng",
+      "instruction": "Đậy nắp cho súp nghỉ 5 phút để hương vị hòa quyện sâu hơn. Múc súp cá hồi kem ra 4 tô sâu lòng, rắc 12 g ngò tây tươi và thì là tươi lên trên rồi dọn nóng cùng bánh mì nướng giòn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 554,
+    "energyKcal": 554.1,
+    "energyKj": 2318,
+    "proteinG": 25.3,
+    "fatG": 38.6,
+    "saturatedFatG": 18.9,
+    "carbG": 27,
+    "fiberG": 4.2,
+    "sugarG": 7.8,
+    "sodiumMg": 1100,
+    "saltG": 2.75,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 170000",
+      "USDA FDC 170026",
+      "USDA FDC 170393",
+      "USDA FDC 170416",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 171595",
+      "USDA FDC 172233",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "58857cabe58684ca25f324437fc644f2ff9f896ac4c64d09513eb19f7f5a7881",
+    "researchedFromV2Sha256": "c9b165fa61aa6ca0616f630827ac7392da3e42006513ce245f712ae5b89c60e7"
+  }
+}

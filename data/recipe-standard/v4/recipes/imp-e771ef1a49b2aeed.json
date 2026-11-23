@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e771ef1a49b2aeed",
+    "slug": "bong-cai-xao-nam-chay",
+    "title": "Bông cải xanh xào nấm đùi gà chay",
+    "subtitle": "Bông cải xanh và cà rốt giữ độ giòn tươi, xào nhanh trên lửa lớn cùng nấm đùi gà trong lớp sốt nước tương sánh nhẹ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món xào",
+      "Bông cải xanh",
+      "Nấm đùi gà",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa rau xào chay đầy màu sắc với từng nhánh bông cải xanh mướt giòn sần sật, cà rốt ngọt thanh và nấm đùi gà thái lát dai giòn, được bao bọc bởi lớp nước sốt nước tương và bột bắp sánh mịn thơm mùi tỏi phi.",
+    "servingSuggestion": "Dọn nóng ra đĩa ngay sau khi tắt bếp, rắc thêm tiêu xay và ớt thái lát; dùng kèm cơm trắng nóng hoặc chén nước tương ớt.",
+    "storageAndReheat": "Món xào ngon nhất khi ăn ngay lúc vừa nấu xong để giữ độ giòn của bông cải; nếu bảo quản tủ mát tối đa 1 ngày, đảo nhanh lại trên chảo nóng 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BROCCOLI",
+      "name": "Bông cải xanh tươi",
+      "culinaryMeasure": "1 bông vừa (khoảng 300 g)",
+      "prepNote": "tách nhánh vừa ăn, ngâm nước muối loãng 5 phút rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 246,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "250 g",
+      "prepNote": "cắt gốc, rửa nhanh rồi để ráo, thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 237.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái lát mỏng hoặc tỉa hoa vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhuyễn phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "nêm đậm vị rau nấm khi xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 15 ml xào săn nấm riêng và 20 ml phi tỏi xào rau",
+      "componentGroup": "main",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.59,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "tạo vị ngọt dịu cân bằng nước tương",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "nêm thấm đều rau củ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "dùng một nhúm xào nấm và phần còn lại nêm rau xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 0,5 g xào nấm và 1 g rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp (bột ngô)",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan với 50 ml nước lọc để làm sánh sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (khoảng 5 g)",
+      "prepNote": "thái lát mỏng rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "50 ml (hòa bột bắp)",
+      "prepNote": "hòa tan bột bắp trước khi rưới vào chảo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bông cải xanh, nấm đùi gà và cà rốt",
+      "instruction": "Tách bông cải xanh thành từng nhánh vừa ăn, rửa sạch rồi để ráo. Nấm đùi gà cắt bỏ gốc, rửa nhanh sạch đất rồi thái lát dày 0,5 cm. Cà rốt gọt vỏ, thái lát mỏng; tỏi khô băm nhỏ; ớt sừng thái lát mỏng. Hòa tan 4 g bột bắp với 50 ml nước lọc trong chén riêng.",
+      "tip": "Không ngâm nấm đùi gà quá lâu trong nước để tránh nấm hút nước làm nhũn và mất vị ngọt khi xào."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần sơ bông cải xanh và cà rốt giữ độ giòn",
+      "instruction": "Đun sôi nồi nước nhỏ trên bếp, thả bông cải xanh và cà rốt vào chần nhanh trong 1–2 phút rồi vớt ra ngâm ngay vào thau nước lạnh khoảng 1 phút, sau đó vớt ra rổ để thật ráo nước.",
+      "tip": "Chần sơ rồi ngâm nước lạnh giúp bông cải xanh chín đều, giữ màu xanh mướt và giòn ngọt khi xào nhanh trên lửa lớn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào săn nấm đùi gà riêng trên lửa lớn",
+      "instruction": "Làm nóng chảo với 15 ml dầu ăn trên lửa lớn, trút nấm đùi gà vào xào nhanh tay 3 phút cho đến khi nấm săn lại và hơi xém cạnh. Nêm 1 g muối ăn và 0,5 g tiêu đen xay, đảo đều rồi trút nấm ra đĩa riêng.",
+      "tip": "Xào riêng nấm trước giúp nấm rút bớt nước, giữ độ dai giòn thơm và không làm nhũn rau khi xào chung.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào nhanh bông cải, cà rốt",
+      "instruction": "Dùng lại chảo, thêm 20 ml dầu ăn đun nóng rồi cho tỏi băm vào phi khoảng 30 giây đến khi thơm vàng nhẹ. Bật lửa lớn, cho bông cải xanh và cà rốt đã ráo nước vào đảo đều tay 2 phút; nêm 30 ml nước tương, 8 g đường cát trắng, 8 g hạt nêm chay và 2 g muối ăn còn lại.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Trộn nấm và làm sánh nước sốt bột bắp",
+      "instruction": "Trút phần nấm đùi gà đã xào vào lại chảo rau củ, đảo đều tay cho hòa quyện. Khuấy đều chén nước bột bắp rồi chế từ từ vào chảo, đảo nhanh khoảng 1 phút đến khi lớp sốt sánh nhẹ bao quanh đều các nguyên liệu thì tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày đĩa rau nấm xào chay nóng hổi",
+      "instruction": "Gắp bông cải xanh xào nấm đùi gà ra đĩa lớn, rắc 1 g tiêu đen xay còn lại cùng vài lát ớt sừng đỏ lên trên để tăng màu sắc và hương thơm. Dùng nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 192,
+    "energyKcal": 191.6,
+    "energyKj": 802,
+    "proteinG": 6.7,
+    "fatG": 11,
+    "saturatedFatG": 1.6,
+    "carbG": 20.6,
+    "fiberG": 5.2,
+    "sugarG": 6.9,
+    "sodiumMg": 1506,
+    "saltG": 3.77,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170106",
+      "USDA FDC 170379",
+      "USDA FDC 170393",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "da00eaa13c9f2816a0e0cd3777d97e2d1ba3b33d907c3fb8dd4e2f73657a3112",
+    "researchedFromV2Sha256": "9b91ca40e94c3b1b28386cf59ce4dec0174dd969b946421709f53d2cfded6329"
+  }
+}

@@ -96,6 +96,10 @@ required_tables(name) AS (
     ,('privacy_requests')
     ,('consent_records')
     ,('financial_tax_archive')
+    ,('culinary_standard_v4_ingredients')
+    ,('recipe_standard_v4_catalog')
+    ,('recipe_standard_v4_ingredients')
+    ,('recipe_standard_v4_steps')
 ),
 required_columns(table_name, column_name) AS (
   VALUES
@@ -384,11 +388,21 @@ required_columns(table_name, column_name) AS (
     ,('financial_tax_archive', 'country_code')
     ,('financial_tax_archive', 'retention_until')
     ,('users', 'erased_at')
+    ,('culinary_standard_v4_ingredients', 'energy_kcal')
+    ,('culinary_standard_v4_ingredients', 'edible_yield_ratio')
+    ,('recipe_standard_v4_catalog', 'runtime_order')
+    ,('recipe_standard_v4_catalog', 'allergen_tags_json')
+    ,('recipe_standard_v4_ingredients', 'culinary_measure')
+    ,('recipe_standard_v4_ingredients', 'edible_grams')
+    ,('recipe_standard_v4_steps', 'phase')
+    ,('recipe_standard_v4_steps', 'instruction')
 ),
 -- Indexes and triggers share one sqlite_master lookup: D1 (workerd) caps compound SELECTs at
 -- 5 terms (SQLITE_LIMIT_COMPOUND_SELECT), so the gate must stay at five UNION ALL branches.
 required_schema_objects(type, name) AS (
   VALUES
+    ('index', 'idx_recipe_standard_v4_ingredients_recipe'),
+    ('index', 'idx_recipe_standard_v4_steps_recipe'),
     ('index', 'idx_privacy_requests_status_deadline'),
     ('index', 'idx_consent_records_user_type'),
     ('index', 'idx_financial_tax_archive_retention'),

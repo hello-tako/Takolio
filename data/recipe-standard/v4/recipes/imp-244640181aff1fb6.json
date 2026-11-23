@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-244640181aff1fb6",
+    "slug": "nam-nuong-sa",
+    "title": "Nấm đùi gà nướng sả kiểu Thái",
+    "subtitle": "Khoanh nấm đùi gà khứa vằn ướp sả băm nhuyễn, hành tím, tương ớt và dầu hào chay nướng xém vàng đậm hương"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Nấm đùi gà",
+      "Nấm nướng",
+      "Sả ớt",
+      "Ẩm thực Thái"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Nấm đùi gà nướng sả kiểu Thái là món chay thơm nức với từng khoanh nấm giòn ngọt tự nhiên được luộc sơ khử hăng, khứa vảy rồng thấm đẫm sốt xì dầu, dầu hào chay, dầu mè và sả băm nhuyễn, nướng xém cạnh hấp dẫn.",
+    "servingSuggestion": "Xếp nấm nướng sả nóng hổi ra đĩa, rắc mè rang và hành lá thái nhỏ lên mặt; ăn kèm cơm trắng nóng và rưới thêm nước sốt nướng trong khay.",
+    "storageAndReheat": "Nên ăn ngay sau khi nướng để nấm giòn ngọt; phần dư bảo quản ngăn mát tối đa 24 giờ và làm nóng lại bằng nồi chiên không dầu ở 180°C trong 3–4 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "380 g",
+      "prepNote": "rửa sạch, cạo phần gốc, luộc sơ 2 phút rồi cắt khoanh dày 1 cm, khứa chéo hai mặt",
+      "componentGroup": "main",
+      "requiredQuantity": 380,
+      "unit": "g",
+      "grossGrams": 380,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 361,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (lấy phần non)",
+      "culinaryMeasure": "3 cây (60 g)",
+      "prepNote": "bóc bỏ lớp vỏ già, băm thật nhuyễn để sả bám thơm vào mặt nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (12–13 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "45 g (khoảng 3 củ)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 39.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "pha sốt ướp tạo vị mặn thơm cho nấm chay",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "giúp sốt ướp sánh đậm và bám đều lên khoanh nấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn và giúp bề mặt nấm lên màu vàng xém đẹp khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tạo vị cay nhẹ kích thích vị giác",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (1/2 muỗng cà phê)",
+      "prepNote": "tăng hương ấm thơm cho sốt ướp nấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "12 ml (khoảng 1 muỗng canh)",
+      "prepNote": "tạo mùi thơm béo đặc trưng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "ml",
+      "grossGrams": 11,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "trộn vào sốt ướp giúp nấm bóng ẩm không bị khô khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang vàng",
+      "culinaryMeasure": "6 g (khoảng 2 muỗng cà phê)",
+      "prepNote": "rắc mặt nấm sau khi nướng để tăng độ bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái nhỏ chia vào phần ướp và rắc trang trí cuối món",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "515 ml (500 ml chần nấm + 15 ml pha sốt)",
+      "prepNote": "dùng 500 ml luộc sơ nấm rồi chắt bỏ, và 15 ml hòa loãng sốt ướp",
+      "componentGroup": "main",
+      "requiredQuantity": 515,
+      "unit": "ml",
+      "grossGrams": 515,
+      "edibleRetentionRatio": 0.03,
+      "edibleGrams": 15.45,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Luộc sơ nấm đùi gà, thái khoanh và khứa mặt",
+      "instruction": "Đun sôi 500 ml nước lọc, cho 380 g nấm đùi gà đã rửa sạch vào luộc sơ đúng 2 phút để nấm sạch và hết mùi hăng, vớt ra để nguội bớt rồi thái khoanh dày 1 cm. Dùng dao khứa nhẹ vài đường chéo trên hai mặt mỗi khoanh nấm để gia vị thấm sâu.",
+      "tip": "Luộc sơ 2 phút trước khi ướp giúp nấm mềm dẻo không gãy nát, ra bớt nước khi nướng và thấm gia vị nhanh gấp đôi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Băm nhuyễn sả tỏi và thái lát hành tím",
+      "instruction": "Băm thật nhuyễn phần gốc non của 3 cây sả tươi và tỏi khô; thái lát mỏng 45 g hành tím khô; thái nhỏ hành lá tươi để riêng một ít rắc mặt sau khi nướng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Pha sốt dầu hào chay và ướp thấm khoanh nấm",
+      "instruction": "Khuấy tan 20 ml xì dầu, 30 ml dầu hào chay, 8 g đường cát trắng, 10 ml tương ớt, 1,5 g tiêu đen xay, 12 ml dầu mè, 20 ml dầu ăn và 15 ml nước lọc còn lại. Trộn nhẹ khoanh nấm với phần sốt này cùng sả băm, tỏi băm, hành tím thái lát và phần lớn hành lá; ướp 15 phút.",
+      "tip": "Giữa thời gian ướp nên đảo trở mặt các khoanh nấm một lần để hai mặt ngấm đều sả và gia vị.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp nấm thành một lớp đều lên khay nướng",
+      "instruction": "Làm nóng trước nồi chiên không dầu hoặc lò nướng ở 200°C trong 3 phút. Lót giấy bạc vào khay, xếp từng khoanh nấm đã ướp thành một lớp thưa đều nhau rồi rưới hết phần sốt ướp còn lại lên mặt nấm.",
+      "tip": "Không xếp chồng nấm lên nhau để luồng khí nóng lưu thông đều, giúp các khoanh nấm xém cạnh đẹp mắt thay vì bị hấp ướt."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng nấm ở 200°C đến khi xém vàng thơm lừng",
+      "instruction": "Đưa khay nấm vào nướng ở nhiệt độ 200°C trong 8–10 phút đến khi mặt nấm se ráo, cạnh xém vàng nhẹ và dậy mùi thơm nồng của sả nướng cùng dầu mè.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc mè rang, hành lá và thưởng thức nóng",
+      "instruction": "Gắp nấm nướng sả ra đĩa, chan nhẹ phần sốt còn đọng trong khay lên mặt nấm. Rắc hạt mè trắng rang vàng cùng chút hành lá tươi còn lại lên trên rồi dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 192,
+    "energyKcal": 191.6,
+    "energyKj": 801,
+    "proteinG": 6.2,
+    "fatG": 10.9,
+    "saturatedFatG": 1.6,
+    "carbG": 21.4,
+    "fiberG": 4,
+    "sugarG": 7.1,
+    "sodiumMg": 825,
+    "saltG": 2.06,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Sriracha Ref",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3ae24e8a87463313884e882dc6a4f8bbd276f2f776ee4c5f8669c68c85e12ea3",
+    "researchedFromV2Sha256": "2db91a6246cbb59298bc37a6942f11248a8518ed154f61b7bce859320d89f5f7"
+  }
+}

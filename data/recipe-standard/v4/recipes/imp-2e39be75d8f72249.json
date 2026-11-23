@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2e39be75d8f72249",
+    "slug": "ca-chua-xao-nam-chay",
+    "title": "Cà chua xào nấm đùi gà chay",
+    "subtitle": "Nấm đùi gà xào săn giòn ngọt hòa quyện sốt cà chua chín đỏ mọng sánh mịn, thanh đạm đưa cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Món xào",
+      "Cà chua",
+      "Nấm đùi gà",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món xào chay thanh nhẹ nhanh gọn với từng lát nấm đùi gà xém cạnh giòn dai thấm hương tỏi phi, quyện trong phần sốt cà chua chín đỏ mọng chua ngọt dịu, thêm chút dầu hào chay và bột năng giúp nước sốt sánh bóng quyến rũ.",
+    "servingSuggestion": "Múc cà chua xào nấm ra đĩa sâu lòng khi còn nóng hổi, rắc thêm phần lá hành xanh thái nhỏ lên trên; dùng kèm cơm trắng nóng rất bắt cơm.",
+    "storageAndReheat": "Món xào ngon nhất khi ăn nóng ngay trong bữa; nếu bảo quản hộp kín trong ngăn mát tối đa 24 giờ, hãy đun nóng lại trên chảo lửa vừa 2–3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "350 g",
+      "prepNote": "cắt gốc, rửa nhanh nước muối loãng, xả sạch để thật ráo rồi thái lát xéo dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 332.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả (khoảng 360 g)",
+      "prepNote": "rửa sạch, bỏ cuống rồi bổ múi cau vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "chia phần đầu hành cắt khúc 2 cm và phần lá xanh thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "phi thơm tỏi và xào săn nấm đùi gà",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha chén sốt xào đậm vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "8 ml (~1/2 muỗng canh)",
+      "prepNote": "tạo hương vị umami và độ sánh bóng cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 9.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua tự nhiên của cà chua chín",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "nêm làm đậm vị cà chua và nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "TAPIOCA_STARCH",
+      "name": "Bột năng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "hòa tan trong chén sốt tạo độ sánh mượt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "hòa tan gia vị và bột năng thành chén sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, cà chua và hành tỏi",
+      "instruction": "Nấm đùi gà cắt bỏ gốc, rửa nhanh qua nước sạch rồi thấm thật ráo, thái lát xéo dày 0,5 cm. Cà chua chín bỏ cuống, bổ múi cau; tỏi khô băm nhỏ; hành lá rửa sạch, tách riêng đầu hành cắt khúc 2 cm và phần lá xanh thái nhỏ.",
+      "tip": "Thấm thật ráo nước nấm đùi gà trước khi xào giúp lát nấm nhanh xém cạnh và giữ độ dai giòn thay vì bị luộc trong nước nấm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha chén nước sốt nước tương và bột năng",
+      "instruction": "Cho vào chén 15 ml nước tương, 8 ml dầu hào chay, 5 g đường cát trắng, 4 g bột năng và 35 ml nước lọc. Khuấy đều tay cho đường và bột năng tan hoàn toàn để sẵn bên cạnh bếp.",
+      "tip": "Pha sẵn bột năng cùng nước tương và đường giúp khi rưới vào chảo sốt sánh đều ngay lập tức mà không bị vón cục."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào xém cạnh nấm đùi gà",
+      "instruction": "Làm nóng chảo với 25 ml dầu ăn trên lửa vừa, thả tỏi băm vào phi khoảng 40 giây đến khi vàng thơm. Bật lửa lớn, cho nấm đùi gà vào đảo đều 4 phút đến khi lát nấm săn chắc và hơi xém vàng hai mặt.",
+      "tip": "Đợi chảo nóng và xào nấm ở lửa lớn giúp nấm giữ được độ giòn ngọt và màu xém cạnh hấp dẫn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào mềm cà chua tiết nước sốt đỏ tự nhiên",
+      "instruction": "Đưa cà chua bổ múi cau vào chảo nấm, hạ xuống lửa vừa và đảo nhẹ tay trong 3 phút để cà chua chín mềm, tiết ra phần nước đỏ cam hòa quyện quanh nấm mà múi cà vẫn giữ được dáng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rưới chén sốt làm sánh bóng và nêm vừa vị",
+      "instruction": "Khuấy đều lại chén sốt rồi đổ vào chảo, thêm 3 g muối ăn và đảo nhẹ trong 2 phút đến khi sốt sôi nhẹ, sánh bóng bao phủ đều từng lát nấm và múi cà chua.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với đầu hành và lá hành xanh",
+      "instruction": "Thả phần đầu hành lá cắt khúc vào đảo nhanh 30 giây rồi tắt bếp. Múc cà chua xào nấm ra đĩa sâu lòng, rắc phần lá hành xanh thái nhỏ lên trên và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 146,
+    "energyKcal": 146.2,
+    "energyKj": 611,
+    "proteinG": 5.6,
+    "fatG": 8,
+    "saturatedFatG": 1.2,
+    "carbG": 16.6,
+    "fiberG": 4.3,
+    "sugarG": 6.6,
+    "sodiumMg": 816,
+    "saltG": 2.04,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169717",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "54f494c0506d043fdb1c35af6ae2d92177950bb78c5c4905fe58802b2e488415",
+    "researchedFromV2Sha256": "d025df7fec30106ae191e708cbc862ba2bd6ec0a5b72701e8a0693228b5dff15"
+  }
+}

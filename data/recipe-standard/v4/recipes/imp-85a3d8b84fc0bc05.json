@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-85a3d8b84fc0bc05",
+    "slug": "mi-ramen-pho-mai-kim-chi",
+    "title": "Mì ramen phô mai kim chi",
+    "subtitle": "Sợi mì ramen dai ngon thấm nước dùng kim chi cay ấm, quyện lớp phô mai Cheddar tan chảy béo ngậy và trứng gà lòng đào"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 2,
+    "tags": [
+      "Hàn Quốc",
+      "Mì cay",
+      "Phô mai",
+      "Kim chi",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "sesame",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì ramen phô mai kim chi kết hợp vị chua cay nồng ấm của kim chi cải thảo xào thơm với nước dùng đậm đà, sợi mì ramen dai giòn, trứng gà lòng đào và lớp phô mai Cheddar tan chảy béo thơm hài hòa.",
+    "servingSuggestion": "Bưng nguyên nồi nhỏ ra bàn hoặc múc ra tô sâu lòng, rắc hành lá thái nhỏ và thưởng thức ngay khi phô mai còn kéo sợi nóng hổi.",
+    "storageAndReheat": "Món mì nước ngon nhất khi ăn ngay lúc vừa nấu xong; không nên bảo quản qua đêm vì sợi mì sẽ trương nở và mất độ dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "EGG_NOODLE",
+      "name": "Mì ramen Hàn Quốc (vắt mì khô)",
+      "culinaryMeasure": "200 g (2 vắt mì)",
+      "prepNote": "chọn loại mì sợi dày dai kiểu Hàn để không bị bở",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo ủ chua",
+      "culinaryMeasure": "160 g (kèm khoảng 50 ml nước kim chi)",
+      "prepNote": "chắt riêng nước kim chi, phần cái thái miếng nhỏ vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 160,
+      "unit": "g",
+      "grossGrams": 160,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHEDDAR_CHEESE",
+      "name": "Phô mai Cheddar bào sợi",
+      "culinaryMeasure": "50 g (~1/2 chén nhỏ)",
+      "prepNote": "dùng loại bào sợi hoặc lát mỏng để dễ tan chảy trên mặt mì",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (~100 g)",
+      "prepNote": "đập trực tiếp vào nồi mì ở công đoạn cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô thái lát",
+      "culinaryMeasure": "25 g (~2 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát mỏng để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhỏ",
+      "culinaryMeasure": "0,4 củ (~10 g, 3 tép)",
+      "prepNote": "băm nhuyễn để xào thơm cùng kim chi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, phần đầu trắng thái nhỏ phi thơm, lá xanh cắt khoanh rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ cam đẹp mắt và vị cay ấm nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm vị gà",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê đầy)",
+      "prepNote": "giúp nước dùng mì ngọt thanh đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua của kim chi",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "chia 10 ml xào kim chi và 5 ml rưới hoàn thiện",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "phi thơm hành tím và tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nấu nước dùng mì)",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "lượng nước vừa đủ cho 2 tô mì sóng sánh đậm vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 680,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế kim chi, hành tỏi và phô mai",
+      "instruction": "Thái nhỏ 160 g kim chi cải thảo ủ chua và chắt riêng khoảng 50 ml nước kim chi. Thái lát hành tím khô, băm nhỏ tỏi khô, thái nhỏ hành lá tươi (tách riêng đầu trắng và lá xanh), chuẩn bị sẵn 50 g phô mai Cheddar bào sợi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào kim chi",
+      "instruction": "Làm nóng nồi trên lửa vừa với 10 ml dầu thực vật và 10 ml dầu mè rang, cho hành tím khô thái lát, tỏi khô băm nhỏ và đầu hành trắng vào phi thơm 1 phút. Tiếp tục cho kim chi cải thảo cùng 3 g ớt bột Hàn Quốc (Gochugaru) vào đảo đều 2 phút cho kim chi dậy mùi thơm nồng.",
+      "tip": "Xào kim chi với chút dầu mè trước khi đổ nước giúp nước dùng mì có mùi thơm sâu và màu sắc hấp dẫn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu sôi nước dùng kim chi đậm vị",
+      "instruction": "Rót 800 ml nước lọc cùng phần nước kim chi vào nồi, nêm 6 g hạt nêm vị gà và 3 g đường cát trắng, khuấy đều và đun trên lửa lớn khoảng 3–4 phút cho đến khi nước dùng sôi bùng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu mì ramen vừa chín dai",
+      "instruction": "Thả 200 g mì ramen Hàn Quốc (2 vắt mì) vào nồi nước dùng đang sôi, nấu khoảng 2 phút trên lửa vừa đồng thời dùng đũa tách nhẹ cho sợi mì tơi ra nhưng vẫn giữ độ dai giòn.",
+      "tip": "Chỉ nấu mì khoảng 2 phút trước khi cho trứng để tổng thời gian nấu không làm mì bị nhũn nát.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đập trứng gà và phủ phô mai Cheddar",
+      "instruction": "Hạ lửa nhỏ, gạt nhẹ mì sang hai bên để tạo hai khoảng trống rồi đập 2 quả trứng gà tươi vào nồi, đậy nắp nấu thêm 2 phút cho lòng trắng chín đông còn lòng đỏ sánh lòng đào. Mở nắp, rải đều 50 g phô mai Cheddar bào sợi lên mặt mì rồi đậy nắp thêm 30 giây cho phô mai tan chảy.",
+      "tip": "Phủ phô mai ở bước cuối trên lửa thật nhỏ giúp phô mai tan mịn quyện vào sợi mì mà không bị tách dầu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè, rắc hành lá và thưởng thức",
+      "instruction": "Tắt bếp, rưới 5 ml dầu mè rang còn lại và rắc phần hành lá xanh thái khoanh lên mặt nồi mì; dùng nóng ngay để cảm nhận trọn vẹn vị cay ấm hòa cùng phô mai béo ngậy."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 661,
+    "energyKcal": 661,
+    "energyKj": 2766,
+    "proteinG": 25.5,
+    "fatG": 27.1,
+    "saturatedFatG": 8.5,
+    "carbG": 79.3,
+    "fiberG": 5.1,
+    "sugarG": 5.6,
+    "sodiumMg": 1545,
+    "saltG": 3.86,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA / MEXT Wheat Noodle Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170497",
+      "USDA FDC 170499",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173414",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2990f477bfc519843cda7f1eb855f95c0117a6023604c139083db60775aee081",
+    "researchedFromV2Sha256": "0f2048029bcf0732af4698378ea5894081942771be9c760522bd0b75ce57298a"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b575db6fcd68a387",
+    "slug": "canh-trung-han",
+    "title": "Canh trứng kiểu Hàn (Gyeran Guk)",
+    "subtitle": "Tô canh trứng thanh nhẹ nấu nước dùng tảo bẹ ngọt tự nhiên, vân trứng tơ mềm mịn thơm hành lá và dầu mè"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 5,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Gyeran guk",
+      "Canh trứng",
+      "Hàn Quốc",
+      "Thanh đạm",
+      "Món nhanh"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Canh trứng Gyeran Guk là món canh nhà quốc dân của Hàn Quốc vì chỉ mất 15 phút chế biến nhưng vô cùng ấm bụng và dễ tiêu hóa. Nước dùng đun cùng tảo bẹ kombu ngọt thanh tự nhiên, nêm nhẹ nước tương và nước mắm rồi rưới trứng gà đánh tan tạo thành những vân trứng mềm mịn như mây.",
+    "servingSuggestion": "Múc canh ra tô nóng, rắc chút tiêu đen và nhỏ vài giọt dầu mè thơm; ăn kèm cơm trắng nóng hoặc chan trực tiếp cơm vào canh cho bữa sáng nhẹ nhàng.",
+    "storageAndReheat": "Canh trứng nên dùng hết trong bữa để giữ vân trứng mềm mượt và không bị tanh; nếu còn dư, đậy kín bảo quản ngăn mát tối đa 12 giờ và đun sôi nhẹ lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (khoảng 200 g)",
+      "prepNote": "đập ra tô, đánh tan đều cho lòng đỏ và lòng trắng hòa quyện",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KOMBU_KELP",
+      "name": "Tảo bẹ khô (Kombu / Dashima)",
+      "culinaryMeasure": "8 g (1 miếng khoảng 8x8 cm)",
+      "prepNote": "lau sạch lớp phấn trắng bằng khăn khô nhẹ tay, không rửa trôi vị ngọt umami",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 1.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm tạo màu hổ phách nhẹ và vị umami cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tăng hậu vị ngọt thanh cho nước dùng tảo bẹ",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chỉnh độ mặn vừa miệng sau khi nêm nước tương",
+      "componentGroup": "broth",
+      "requiredQuantity": 2.5,
+      "unit": "g",
+      "grossGrams": 2.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc vào canh khi hoàn thiện giúp dậy hương thơm ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới nhẹ khi tắt bếp tạo mùi thơm dịu",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "750 ml",
+      "prepNote": "đun cùng tảo bẹ khô lấy nước dùng thanh ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 750,
+      "unit": "ml",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 675,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Đánh tan trứng gà và sơ chế hành tỏi",
+      "instruction": "Đập 4 quả trứng gà vào tô lớn, dùng đũa đánh tan thật đều đến khi không còn sợi lòng trắng. Thái nhỏ hành lá, băm thật nhuyễn tỏi và dùng khăn khô lau nhẹ miếng tảo bẹ khô."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Nấu nước dùng tảo bẹ ngọt thanh",
+      "instruction": "Cho 750 ml nước lọc và 8 g tảo bẹ khô vào nồi, đun lửa vừa trong 5 phút đến khi nước vừa sôi lăn tăn quanh mép nồi thì gắp bỏ miếng tảo bẹ ra ngay để nước dùng trong và không bị nhớt.",
+      "tip": "Không đun tảo bẹ sôi sùng sục quá lâu vì chất nhầy trong tảo tiết ra sẽ làm đục nước canh.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nêm gia vị tạo nền nước canh đậm đà",
+      "instruction": "Cho tỏi băm, 15 ml nước tương, 5 ml nước mắm ngon và 2,5 g muối ăn vào nồi nước dùng, khuấy đều và đun sôi bùng trở lại trên lửa vừa."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rưới trứng theo dòng mảnh tạo vân mềm mịn",
+      "instruction": "Khi nước canh đang sôi nhẹ, cầm tô trứng rót từ từ theo dòng thật mảnh theo vòng tròn quanh nồi. Để yên tuyệt đối không khuấy trong 10 giây để trứng tự định hình thành sợi tơ mềm mượt.",
+      "tip": "Không khuấy ngay lúc mới đổ trứng vì sẽ làm trứng tan vụn và khiến nước canh bị đục."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Khuấy nhẹ và nấu chín hoàn toàn vân trứng",
+      "instruction": "Dùng đũa khua nhẹ một vòng dưới đáy cho các dải trứng tơi đều nhau, đun thêm 1 phút trên lửa vừa đến khi trứng chín phồng nhẹ và nổi đều trong nồi canh.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả hành lá, rắc tiêu và nhỏ dầu mè",
+      "instruction": "Thả hành lá thái nhỏ và 1 g tiêu đen xay vào nồi, nêm nếm lại cho vừa miệng rồi tắt bếp. Múc canh nóng ra tô, rưới nhẹ 5 ml dầu mè rang lên trên và dùng nóng với cơm trắng.",
+      "tip": "Nếu thích vị cay nhẹ giải cảm, có thể rắc thêm một chút ớt bột mịn hoặc ớt tươi thái lát mỏng lên mặt tô canh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 112,
+    "energyKcal": 111.6,
+    "energyKj": 467,
+    "proteinG": 8.4,
+    "fatG": 7.2,
+    "saturatedFatG": 2.1,
+    "carbG": 3.1,
+    "fiberG": 0.5,
+    "sugarG": 0.6,
+    "sodiumMg": 891,
+    "saltG": 2.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168457",
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "21e84ec0f5d392b884efedfc34da3b92822d4ccb519b2915d1a591a136535a5a",
+    "researchedFromV2Sha256": "963259b5d459c3161fe24cef3cabe6afc4652909bbac5714da33b5fe4626de5b"
+  }
+}

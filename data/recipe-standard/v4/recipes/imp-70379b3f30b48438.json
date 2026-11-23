@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-70379b3f30b48438",
+    "slug": "goi-dua-leo-tom-nhat",
+    "title": "Gỏi dưa leo tôm giấm Nhật Sunomono",
+    "subtitle": "Dưa leo thái lát mỏng bóp muối giòn sần sật trộn cùng tôm luộc ngọt thịt, rưới nước giấm gạo chua ngọt dịu và mè rang thơm bùi"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Nhật Bản",
+      "Sunomono",
+      "Món gỏi",
+      "Khai vị",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix",
+      "boil"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "sesame",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Ebi Sunomono là món gỏi trộn giấm khai vị truyền thống thanh nhẹ của Nhật Bản. Dưa leo được ướp muối vắt ráo để giữ độ giòn lâu, kết hợp cùng tôm tươi luộc chín ngọt thịt và nước sốt giấm gạo pha xì dầu, đường và dầu mè thơm dịu.",
+    "servingSuggestion": "Múc gỏi dưa leo tôm ra các chén thủy tinh nhỏ, rắc hạt mè trắng rang và hành lá lên trên, dùng lạnh làm món khai vị hoặc ăn kèm cá nướng, cơm chiên để chống ngấy.",
+    "storageAndReheat": "Món ăn dùng lạnh, bảo quản hộp kín trong ngăn mát tủ lạnh tối đa 1–2 ngày; không để lâu hơn vì dưa leo sẽ tiết nước làm nhạt vị sốt giấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi giòn",
+      "culinaryMeasure": "2 quả vừa (300 g)",
+      "prepNote": "rửa sạch, gọt vỏ xen kẽ tạo sọc đẹp, thái lát thật mỏng 2 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi còn vỏ",
+      "culinaryMeasure": "220 g",
+      "prepNote": "bóc vỏ, rút chỉ đen sống lưng, luộc chín tới rồi bổ đôi theo chiều dọc nếu con to",
+      "componentGroup": "main",
+      "requiredQuantity": 220,
+      "unit": "g",
+      "grossGrams": 220,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 171.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo Nhật",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị chua thanh dịu đặc trưng của món Sunomono",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 35.35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "hòa tan cùng giấm gạo tạo hậu vị chua ngọt cân bằng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "bổ sung vị mặn dịu và hương đậu nành hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tăng hương thơm béo nhẹ cho nước sốt trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "8 g (~2,5 muỗng cà phê)",
+      "prepNote": "rắc vào trộn cùng gỏi và trang trí bề mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (xát dưa leo)",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "trộn ướp rút nước cho dưa leo giòn rồi vắt bỏ nước muối",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 1.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ rắc trang trí lên trên",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt vảy khô (tùy chọn)",
+      "culinaryMeasure": "1 g (1/4 muỗng cà phê)",
+      "prepNote": "tạo điểm nhấn cay nhẹ ấm vị cho nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái mỏng và ướp muối làm giòn dưa leo",
+      "instruction": "Rửa sạch 2 quả dưa leo tươi, cắt bỏ hai đầu, có thể bào vỏ sọc xen kẽ cho đẹp rồi thái thành những lát tròn thật mỏng khoảng 2 mm. Cho dưa leo vào tô, rắc 5 g muối ăn lên bóp nhẹ đều tay rồi để yên 10 phút cho dưa ra hết nước chát.",
+      "tip": "Ướp muối trước khi trộn giúp lát dưa leo giòn sần sật và không tiết thêm nước làm loãng sốt giấm về sau.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Sơ chế và luộc chín tới tôm tươi",
+      "instruction": "Rửa sạch 220 g tôm tươi, bóc bỏ vỏ, rút sạch chỉ đen trên sống lưng. Đun sôi nồi nước nhỏ trên lửa vừa, thả tôm vào luộc khoảng 3 phút cho đến khi tôm cong tròn, chuyển sang màu hồng cam đục và chín kỹ hoàn toàn thì vớt ngay ra để nguội ráo.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Vắt thật kiệt nước dưa leo đã ướp muối",
+      "instruction": "Dùng hai tay nắm từng nắm dưa leo bóp vắt thật kiệt phần nước muối tiết ra (nếu thấy hơi mặn có thể tráng nhanh qua nước lọc lạnh rồi vắt lại), thấm thêm bằng khăn giấy cho dưa khô ráo hoàn toàn.",
+      "tip": "Dưa leo càng được vắt ráo nước thì khi trộn sẽ càng giòn lâu và thấm đều vị nước sốt giấm ngọt."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha nước sốt giấm gạo chua ngọt",
+      "instruction": "Trong bát nhỏ, khuấy tan 35 ml giấm gạo Nhật, 12 g đường cát trắng, 15 ml nước tương Nhật, 5 ml dầu mè rang cùng 1 g ớt vảy khô đến khi hạt đường hòa quyện hoàn toàn vào dung dịch giấm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn nhẹ gỏi dưa leo tôm và ướp lạnh",
+      "instruction": "Cho dưa leo đã vắt ráo, tôm luộc đã nguội (có thể chẻ đôi con lớn) và 0,5 bó hành lá thái nhỏ vào tô sạch. Rưới đều bát nước sốt giấm gạo lên trên, đảo trộn nhẹ tay cho dưa không bị dập, rắc 8 g hạt mè trắng rang vào trộn thêm lần nữa rồi đậy kín để ngăn mát tủ lạnh 15 phút cho thấm vị.",
+      "tip": "Ướp lạnh khoảng 15–20 phút trước khi ăn giúp món gỏi Sunomono mát sâu, giòn ngọt và các hương vị hòa quyện thanh tao nhất.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày gỏi Sunomono ra chén và dùng mát",
+      "instruction": "Chia gỏi dưa leo tôm ra ba chén nhỏ gọn đẹp, rưới thêm chút nước sốt dưới đáy tô lên trên và thưởng thức lạnh như món khai vị thanh mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 115,
+    "energyKcal": 115.3,
+    "energyKj": 483,
+    "proteinG": 13.2,
+    "fatG": 3.3,
+    "saturatedFatG": 0.5,
+    "carbG": 9,
+    "fiberG": 1.1,
+    "sugarG": 5.8,
+    "sodiumMg": 563,
+    "saltG": 1.41,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168409",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171319",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e97b0fcaee04dac6112648d5c65a030c6c6aa1e8fb72739cef679dbb9f0a1291",
+    "researchedFromV2Sha256": "94c9a1ef627b6711f2ca9183a51996dca248ff1d933ae8792fa7a451b3fa7013"
+  }
+}

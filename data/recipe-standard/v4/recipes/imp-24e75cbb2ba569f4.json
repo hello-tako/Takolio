@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-24e75cbb2ba569f4",
+    "slug": "banh-trang-tron-rau-cu",
+    "title": "Bánh tráng trộn rau củ",
+    "subtitle": "Bánh tráng gạo cắt sợi dai mềm trộn bắp cải, cà rốt bào giòn cùng sốt nước tương chanh ớt chua cay mặn ngọt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Bánh tráng trộn",
+      "Nam Bộ",
+      "Ăn vặt",
+      "Thanh nhẹ",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "peanut",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món bánh tráng trộn rau củ chuẩn vị Sài Gòn phiên bản thanh mát với sợi bánh tráng dẻo dai vừa độ, bắp cải và cà rốt bào giòn, rau răm thơm nồng quyện mỡ hành béo nhẹ, đậu phộng rang giòn bùi và sốt nước tương chanh ớt.",
+    "servingSuggestion": "Cho bánh tráng trộn rau củ ra đĩa ngay khi vừa trộn xong, rắc thêm đậu phộng rang và rau răm lên trên rồi thưởng thức liền để bánh không bị nhũn.",
+    "storageAndReheat": "Chỉ trộn ngay trước lúc ăn để bánh tráng giữ độ dẻo dai và rau củ còn giòn. Có thể chuẩn bị riêng bánh tráng cắt sợi, rau củ bào và hũ nước sốt trong ngăn mát tối đa 1 ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE_PAPER",
+      "name": "Bánh tráng gạo dẻo",
+      "culinaryMeasure": "1/2 xấp (khoảng 100 g)",
+      "prepNote": "dùng kéo cắt sợi dài bản rộng 1–1,5 cm, tách tơi các sợi",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "pack",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng tươi",
+      "culinaryMeasure": "1/5 bắp vừa (khoảng 160 g)",
+      "prepNote": "tách lá rửa sạch, để thật ráo rồi bào sợi thật mỏng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 160,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 136,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt tươi",
+      "culinaryMeasure": "1 củ vừa (khoảng 110 g)",
+      "prepNote": "gọt vỏ, rửa sạch, bào sợi mảnh dài",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 110,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 97.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "VIETNAMESE_CORIANDER",
+      "name": "Rau răm tươi",
+      "culinaryMeasure": "20 g (1 nắm vừa)",
+      "prepNote": "nhặt lấy lá, rửa sạch vẩy ráo rồi thái rối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang chín",
+      "culinaryMeasure": "35 g",
+      "prepNote": "bóc sạch vỏ lụa, giã dập vừa phải cho thơm bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (làm mỡ hành)",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhuyễn cho vào chén để dội dầu nóng làm mỡ hành",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1,5 quả (khoảng 68 g)",
+      "prepNote": "vắt lấy nước cốt bỏ hạt (chia 1/2 pha nước sốt, 1/2 rưới lúc trộn cuối)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát mỏng hoặc băm nhỏ tùy mức độ ăn cay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "pha cùng đường, nước cốt chanh và nước lọc tạo nước sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "khuấy tan hoàn toàn trong nước sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "dùng 1 g pha nước sốt, 1 g làm mỡ hành đậm vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (làm mỡ hành)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "đun thật nóng rồi rưới lên hành lá giúp sợi bánh tráng bóng tơi không dính chùm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "hòa tan cùng xì dầu, đường và nước cốt chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Cắt sợi bánh tráng và bào mỏng bắp cải, cà rốt",
+      "instruction": "Dùng kéo cắt 100 g bánh tráng gạo thành những sợi dài rộng khoảng 1–1,5 cm rồi tách nhẹ cho rời nhau. Bào sợi thật mỏng 160 g bắp cải trắng và 110 g cà rốt đã rửa sạch để thật ráo nước. Rau răm thái rối, ớt hiểm thái lát mỏng và giã dập 35 g đậu phộng rang.",
+      "tip": "Rau củ và rau răm phải vẩy thật ráo nước trước khi trộn để bánh tráng không bị ướt nhũn nhanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Làm mỡ hành thơm béo chống dính bánh tráng",
+      "instruction": "Cho hành lá thái nhuyễn cùng 1 g muối ăn vào chén chịu nhiệt. Đun nóng 15 ml dầu ăn trong chảo nhỏ khoảng 1 phút đến khi thấy hơi gợn sóng nóng thì đổ trực tiếp vào chén hành, trộn đều cho hành chín xanh thơm dậy mùi.",
+      "tip": "Thêm một chút mỡ hành vào bánh tráng giúp các sợi bánh tách rời nhau, mềm bóng mà không bị vón cục.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước sốt xì dầu chanh chua ngọt",
+      "instruction": "Vắt 1,5 quả chanh tươi lấy nước cốt bỏ hạt. Cho 10 ml xì dầu, 10 g đường cát trắng, 1 g muối ăn còn lại, 15 ml nước lọc và một nửa lượng nước cốt chanh vào chén, khuấy đều tay đến khi đường tan hoàn toàn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áo mỡ hành cho bánh tráng trước khi trộn rau",
+      "instruction": "Cho toàn bộ bánh tráng cắt sợi vào thau lớn, rưới đều chén mỡ hành vào và dùng tay sạch (đeo găng) xóc nhẹ 1 phút cho từng sợi bánh tráng áo lớp dầu hành mỏng thơm đều.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn đều bánh tráng với rau củ và nước sốt",
+      "instruction": "Cho bắp cải, cà rốt bào sợi, rau răm thái rối, ớt hiểm thái lát và một nửa lượng đậu phộng rang vào thau bánh tráng. Rưới đều nước sốt xì dầu đã pha và phần nước cốt chanh còn lại lên trên, trộn nhẹ tay đều từ dưới lên trong 1 phút cho nguyên liệu thấm đều vị chua cay mặn ngọt.",
+      "tip": "Không bóp quá mạnh tay khi trộn để sợi bánh tráng giữ độ dai dẻo và bắp cải vẫn giòn ngon."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc đậu phộng rang và thưởng thức ngay",
+      "instruction": "Chia bánh tráng trộn rau củ ra đĩa, rắc nốt phần đậu phộng rang giã dập lên mặt và thưởng thức ngay lúc bánh tráng còn dai giòn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 262,
+    "energyKcal": 262.3,
+    "energyKj": 1098,
+    "proteinG": 5.8,
+    "fatG": 10.2,
+    "saturatedFatG": 1.4,
+    "carbG": 39.7,
+    "fiberG": 4.1,
+    "sugarG": 7.6,
+    "sodiumMg": 604,
+    "saltG": 1.51,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170393",
+      "USDA FDC 171413",
+      "USDA FDC 172430",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Rice Paper Ref",
+      "VN Rau Ram Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "60944fc7510ffc897fa0a30283a1334471528201dadfc50600711adf3bd39afb",
+    "researchedFromV2Sha256": "89b46d22c25a5ea4c1a1322638b2960a3d7908a631f1bd8d08f522e10553b3aa"
+  }
+}

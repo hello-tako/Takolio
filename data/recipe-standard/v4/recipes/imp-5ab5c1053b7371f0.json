@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-5ab5c1053b7371f0",
+    "slug": "dau-phu-chien-sa-ot-chay-dam-da",
+    "title": "Đậu phụ chiên sả ớt chay đậm đà",
+    "subtitle": "Miếng đậu phụ chiên vàng giòn rụm áo kín sả ớt băm phi thơm lừng, thấm xì dầu mặn ngọt đưa cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chay",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món chay",
+      "Đậu phụ",
+      "Chiên sả ớt",
+      "Đậm vị",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đậu phụ trắng chiên vàng giòn bên ngoài nhưng vẫn mềm béo bên trong, xóc đều cùng sả băm, tỏi và ớt tươi phi thơm với nước tương đậm đà, tạo nên món mặn chay dân dã dậy hương sả ớt vô cùng đưa cơm.",
+    "servingSuggestion": "Bày đậu phụ chiên sả ớt ra đĩa, rắc thêm chút tiêu xay và dọn nóng cùng cơm trắng, dưa leo thái lát hoặc rau luộc.",
+    "storageAndReheat": "Ngon nhất khi ăn nóng ngay để cảm nhận lớp vỏ giòn thơm; nếu bảo quản ngăn mát tối đa 2 ngày, hãy áp chảo nhanh trên lửa vừa 3 phút cho đậu nóng giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa nhẹ, thấm thật ráo nước, cắt mỗi bìa thành 6–8 miếng vuông vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bỏ bẹ già, rửa sạch và băm thật nhuyễn phần củ trắng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "bỏ cuống và hạt nếu ăn cay vừa, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu) chay",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn thơm đậm đà áo quanh đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước tương, giúp sả bám màu đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (1/2 muỗng cà phê)",
+      "prepNote": "ướp nhẹ hỗn hợp sả ớt phi cho đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "tăng độ ngọt hậu cho lớp áo sả ớt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc thơm trước khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "100 ml (chiên ngập mặt chảo và phi thơm)",
+      "prepNote": "dùng khoảng 85 ml chiên vàng đậu (chắt bỏ phần dầu dư), giữ lại 15 ml phi sả ớt",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 92,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm ráo đậu phụ và băm nhuyễn sả, tỏi, ớt",
+      "instruction": "Đậu phụ trắng rửa nhẹ, dùng khăn giấy thấm thật khô rồi cắt mỗi bìa thành 6–8 miếng vuông dày khoảng 2 cm. Sả tươi bóc bỏ lớp bẹ già bên ngoài, cắt bỏ gốc và băm thật nhuyễn; tỏi khô và ớt sừng bỏ hạt, băm nhuyễn để riêng.",
+      "tip": "Băm sả càng nhuyễn thì khi xào sả càng dễ dậy hương và bám kín đều lên bề mặt từng miếng đậu phụ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng giòn đều các mặt đậu phụ",
+      "instruction": "Làm nóng chảo với 85 ml dầu ăn thực vật trên lửa vừa đến khi dầu nóng già, lần lượt thả từng miếng đậu phụ vào chiên khoảng 8 phút. Lật nhẹ các mặt đến khi vỏ đậu phồng vàng giòn đều thì gắp ra đĩa lót giấy thấm dầu.",
+      "tip": "Chờ dầu nóng già trước khi thả đậu và giữ khoảng cách giữa các miếng giúp đậu không bị dính sát và không vỡ khi trở mặt.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi, sả băm và ớt trên lửa nhỏ",
+      "instruction": "Chắt bớt dầu trong chảo ra, chỉ giữ lại khoảng 15 ml dầu ăn. Cho tỏi băm vào phi 30 giây trên lửa nhỏ cho vừa dậy hương, tiếp tục đổ toàn bộ sả băm và ớt băm vào đảo đều tay thêm 2 phút đến khi sả ngả vàng thơm nồng.",
+      "tip": "Giữ lửa nhỏ khi phi sả và tỏi để hỗn hợp chín vàng đều từ từ, tránh bị cháy đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nêm gia vị vào hỗn hợp sả ớt",
+      "instruction": "Nêm trực tiếp vào chảo sả ớt 30 ml nước tương, 8 g đường cát trắng, 3 g muối ăn và 4 g hạt nêm chay. Đảo đều trên lửa nhỏ khoảng 1 phút cho đường tan hết và gia vị quyện sánh với sả ớt."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xóc đều đậu phụ chiên với sả ớt đậm đà",
+      "instruction": "Trút toàn bộ phần đậu phụ đã chiên giòn trở lại chảo, dùng đũa hoặc xẻng gỗ đảo nhẹ và đều tay trong 3 phút trên lửa nhỏ để lớp sả ớt mặn ngọt bám kín quanh từng miếng đậu.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc tiêu đen và trình bày ra đĩa nóng",
+      "instruction": "Rắc 1 g tiêu đen xay vào chảo, đảo nhanh thêm 10 giây rồi tắt bếp. Gắp đậu phụ chiên sả ớt ra đĩa, gạt đều phần sả ớt phi vàng lên mặt và dùng nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 214,
+    "energyKcal": 214.2,
+    "energyKj": 896,
+    "proteinG": 13.9,
+    "fatG": 14.2,
+    "saturatedFatG": 2.1,
+    "carbG": 11.9,
+    "fiberG": 1.5,
+    "sugarG": 3.6,
+    "sodiumMg": 1251,
+    "saltG": 3.13,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "875cd9c905c1d8c12ddc98caa50f74e59877981f56644e259aa1a370dc8a1748",
+    "researchedFromV2Sha256": "5ecf33351bded411ef149f66f577b94d9483a0b1cb3127d5be5588227396904b"
+  }
+}

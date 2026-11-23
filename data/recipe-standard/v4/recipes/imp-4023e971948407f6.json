@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-4023e971948407f6",
+    "slug": "ca-hoi-om-ca-chua",
+    "title": "Cá hồi om cà chua kiểu Nhật",
+    "subtitle": "Cá hồi áp chảo áo bột mỏng om cùng cà chua tươi, hành tây và nấm đùi gà trong nước sốt xì dầu Mirin thanh ngọt đậm đà"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 3,
+    "tags": [
+      "Món om Nhật",
+      "Cá hồi",
+      "Cà chua",
+      "Cơm nhà",
+      "Bữa tối ấm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món cá hồi om cà chua phong cách gia đình Nhật kết hợp vị béo ngậy của phi lê cá hồi áp chảo với nước sốt cà chua tươi chua dịu, ngọt thanh hành tây và hương thơm umami từ nấm cùng xì dầu Nhật Bản.",
+    "servingSuggestion": "Dọn cá hồi om cà chua ra đĩa sâu lòng khi còn nóng hổi, rưới đều nước sốt sánh mịn lên mặt cá, rắc thêm hành lá xanh và ăn kèm cơm trắng hạt dẻo.",
+    "storageAndReheat": "Món ăn ngon nhất khi dùng nóng trong ngày; nếu còn dư, bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày và hâm nóng nhẹ trên lửa nhỏ với 1–2 muỗng canh nước lọc để sốt không bị cạn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê tươi (bỏ da)",
+      "culinaryMeasure": "300 g (khoảng 3 miếng dày 2 cm)",
+      "prepNote": "rửa nhanh, thấm thật khô bằng khăn giấy rồi cắt thành 3 phần bằng nhau (~100 g/miếng)",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "3 quả vừa (khoảng 360 g)",
+      "prepNote": "khứa chữ thập ở đáy, chần nước sôi 30 giây rồi bóc vỏ, bỏ hạt và thái hạt lựu",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 331.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ vừa (khoảng 105 g)",
+      "prepNote": "bóc vỏ khô, thái múi cau mỏng vừa ăn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "80 g (khoảng 1–2 cây nhỏ)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già rồi thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 76,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "3 tép (khoảng 7,5 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để phi thơm nền sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 6.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, thái khúc ngắn khoảng 2–3 cm để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "12 g (~1,5 muỗng canh)",
+      "prepNote": "dùng áo một lớp thật mỏng lên mặt cá trước khi áp chảo giúp giữ thịt cá không nát và sốt bám sánh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 10.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia 8 ml để áp chảo cá hồi và 7 ml để phi tỏi xào rau củ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.33,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm cùng sốt cà chua tạo vị umami đậm đà kiểu Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo độ bóng đẹp và vị ngọt dịu tự nhiên cho nước sốt om",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua tự nhiên của cà chua tươi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp đều mặt cá hồi, 1 g nêm chỉnh lại sốt ở bước cuối",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp cá khử mùi, phần còn lại rắc khi hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "châm thêm vào chảo khi om cà chua nếu sốt hơi đặc",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 51,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thấm khô và ướp gia vị cho cá hồi",
+      "instruction": "Rửa nhanh cá hồi phi lê với nước lạnh rồi dùng khăn giấy thấm thật khô bề mặt, cắt thành 3 miếng vừa ăn khoảng 100 g mỗi miếng. Rắc đều 2 g muối ăn và 1/2 lượng tiêu đen xay lên cả hai mặt cá, để nghỉ 10 phút cho thịt cá săn và thấm gia vị.",
+      "tip": "Thấm thật khô cá trước khi ướp và áo bột giúp cá không bị bắn dầu khi áp chảo và giữ được lớp bề mặt vàng đẹp.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chần bóc vỏ cà chua và sơ chế rau củ",
+      "instruction": "Khía hình chữ thập nhẹ ở đáy 3 quả cà chua chín, thả vào nồi nước sôi chần khoảng 30 giây đến khi mép vỏ hơi tách rồi vớt ra ngâm nước lạnh, bóc sạch vỏ, bỏ hạt và thái hạt lựu. Bóc vỏ hành tây và thái múi cau mỏng, băm nhuyễn tỏi tươi, thái lát nấm đùi gà dày 0,5 cm và cắt khúc hành lá dài 2–3 cm.",
+      "tip": "Chần bỏ vỏ và hạt cà chua giúp nước sốt om sau khi nấu mịn mượt, không bị lợn cợn xác vỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Áo một lớp bột mì mỏng lên miếng cá",
+      "instruction": "Rắc đều 12 g bột mì đa dụng lên hai mặt từng miếng cá hồi đã ướp, dùng tay vỗ và giũ nhẹ cho phần bột thừa rơi bớt, chỉ giữ lại lớp áo thật mỏng phủ đều quanh cá."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áp chảo sơ cho cá hồi vàng nhẹ hai mặt",
+      "instruction": "Đun nóng 8 ml dầu ô liu trong chảo rộng trên lửa vừa, đặt từng miếng cá hồi vào áp chảo mỗi mặt khoảng 2 phút đến khi bề mặt chuyển vàng nhạt và se cạnh thì nhẹ nhàng gắp ra đĩa riêng. Không chiên chín kỹ ở bước này vì cá sẽ tiếp tục được om trong sốt.",
+      "tip": "Áp chảo lửa vừa trong thời gian ngắn giúp khóa ẩm bên trong thớ thịt cá hồi, tránh bị khô bở khi om tiếp.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào thơm tỏi, hành tây và nấm đùi gà",
+      "instruction": "Vẫn dùng chảo đó, thêm 7 ml dầu ô liu còn lại trên lửa vừa, cho tỏi băm vào phi khoảng 20 giây đến khi dậy mùi thơm dịu (không để cháy xém). Tiếp tục cho hành tây và nấm đùi gà vào đảo đều khoảng 3 phút đến khi hành tây hơi trong và nấm mềm tỏa hương ngọt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "sauce",
+      "title": "Nấu nhừ cà chua thành sốt mặn ngọt",
+      "instruction": "Trút toàn bộ cà chua thái hạt lựu vào chảo cùng 25 ml xì dầu Nhật Bản, 15 ml rượu ngọt Mirin và 5 g đường cát trắng. Đảo đều và đun sôi trên lửa vừa, sau đó hạ nhỏ lửa om khoảng 5 phút đến khi cà chua nhừ ra sốt đỏ cam sánh nhẹ; nếu chảo hơi khô thì thêm từ từ 60 ml nước lọc.",
+      "tip": "Nêm thử phần sốt cà chua trước khi thả cá vào; vị đạt là chua dịu tự nhiên, hài hòa giữa mặn của xì dầu và ngọt thanh từ Mirin.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 7,
+      "phase": "cook",
+      "title": "Om cá hồi thấm đẫm sốt cà chua",
+      "instruction": "Xếp nhẹ các miếng cá hồi đã áp chảo trở lại chảo sốt, dùng thìa rưới đều nước sốt lên mặt cá. Đậy nắp và om trên lửa nhỏ khoảng 5 phút cho đến khi thịt cá chuyển màu hồng cam đục đồng nhất, chín tới hoàn toàn ở phần lõi mà vẫn mềm ẩm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 8,
+      "phase": "finish",
+      "title": "Chỉnh gia vị và hoàn thiện đĩa cá om",
+      "instruction": "Mở nắp chảo, rắc 1 g muối ăn còn lại cùng phần tiêu đen xay còn lại nếu cần điều chỉnh độ đậm, lắc nhẹ chảo cho sốt hòa quyện. Rắc hành lá thái khúc lên trên, tắt bếp và dọn nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 329,
+    "energyKcal": 329.3,
+    "energyKj": 1377,
+    "proteinG": 24,
+    "fatG": 18,
+    "saturatedFatG": 3.7,
+    "carbG": 17.4,
+    "fiberG": 2.9,
+    "sugarG": 8.6,
+    "sodiumMg": 1001,
+    "saltG": 2.5,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169761",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e4d0ac5f33c5848b2f14efbf86ccbf3a192f08317f6e0bcfffb8547f503985e7",
+    "researchedFromV2Sha256": "f44aa223e896a540d72869b4ac32bbdcdfc45e72bd137e4d9c47819f748fd6fe"
+  }
+}

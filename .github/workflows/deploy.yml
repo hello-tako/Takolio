@@ -42,6 +42,10 @@ on:
         description: 'T20 Meal Composition V2: sets BOTH the Worker MEAL_COMPOSITION_V2_ENABLED var and the build-time VITE_MEAL_COMPOSITION_V2_ENABLED UI flag together (requires migration 0039; false rolls back)'
         type: boolean
         default: false
+      recipe_catalog_v4_standard_enabled:
+        description: 'Takolio Culinary Standard V4 (ADR-084): serve the 500 standardized V4 recipes across static/shadow/canary/d1 (requires migration 0052 for d1/canary; false rolls back)'
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -71,6 +75,7 @@ jobs:
       recipe_catalog_d1_canary_percent: ${{ steps.gate.outputs.recipe_catalog_d1_canary_percent }}
       recipe_catalog_cutover_enabled: ${{ steps.gate.outputs.recipe_catalog_cutover_enabled }}
       meal_composition_v2_enabled: ${{ steps.gate.outputs.meal_composition_v2_enabled }}
+      recipe_catalog_v4_standard_enabled: ${{ steps.gate.outputs.recipe_catalog_v4_standard_enabled }}
     steps:
       - name: Checkout trusted main release policy and full ancestry
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -94,6 +99,7 @@ jobs:
           RECIPE_CATALOG_D1_CANARY_PERCENT: ${{ github.event_name == 'workflow_dispatch' && inputs.recipe_catalog_d1_canary_percent || '0' }}
           RECIPE_CATALOG_ROLLBACK_CONFIRMED: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_recipe_catalog_rollback || false }}
           MEAL_COMPOSITION_V2_ENABLED_INPUT: ${{ github.event_name == 'workflow_dispatch' && inputs.meal_composition_v2_enabled || false }}
+          RECIPE_CATALOG_V4_STANDARD_ENABLED_INPUT: ${{ github.event_name == 'workflow_dispatch' && inputs.recipe_catalog_v4_standard_enabled || false }}
         run: node scripts/release-check.mjs gate
 
       - name: Save immutable candidate manifest

@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-hap-05",
+    "slug": "muc-hap-gung-sa",
+    "title": "Mực ống hấp gừng sả giòn ngọt",
+    "subtitle": "Mực ống tươi dày mình hấp nhanh cùng sả đập dập và gừng non thái chỉ giữ trọn độ giòn sần sật, chấm muối tiêu chanh"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Hải sản",
+      "Dưới 20 phút",
+      "Miền Trung",
+      "Tươi ngọt"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "squid",
+      "sulphites"
+    ]
+  },
+  "overview": {
+    "description": "Mực ống tươi làm sạch khéo léo hấp cách thủy lửa lớn cùng sả cây, gừng non và lá chanh, từng miếng mực trắng ngần giòn sần sật, mọng nước tự nhiên, thơm dịu không hề tanh.",
+    "servingSuggestion": "Gắp mực hấp ra đĩa lớn, rắc thêm vài sợi gừng và ớt sừng trang trí; dọn ăn ngay khi còn nóng chấm cùng chén muối tiêu chanh hoặc nước mắm gừng.",
+    "storageAndReheat": "Mực hấp ngon nhất khi thưởng thức nóng ngay để giữ độ giòn sần sật. Nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hấp lại nhanh 2–3 phút, tránh hấp lâu làm mực dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi nguyên con",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rút bỏ túi mực, nang mực và nội tạng, lột lớp da ngoài, rửa sạch với rượu gừng rồi khứa nhẹ vảy rồng",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng non tươi",
+      "culinaryMeasure": "45 g (1 củ vừa)",
+      "prepNote": "cạo vỏ, rửa sạch; chia 15 g đập dập rửa mực, 30 g thái sợi chỉ lót và phủ mặt mực",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "3 cây (khoảng 60 g)",
+      "prepNote": "bóc lớp vỏ già, rửa sạch, đập dập rồi cắt khúc 5 cm lót đáy và rải lên mực",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "30 g (2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng rải cùng gừng sả khi hấp",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.45,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh tươi",
+      "culinaryMeasure": "5 g (khoảng 6–8 lá)",
+      "prepNote": "rửa sạch, một nửa để nguyên lót đáy đĩa hấp, một nửa thái chỉ rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 2.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng để tạo vị cay nhẹ và màu sắc nổi bật",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "WINE_COOKING",
+      "name": "Rượu trắng nấu ăn (khử tanh)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng chà xát sơ thân mực 2 phút rồi xả sạch bằng nước lạnh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 29.7,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 2.97,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "9 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "chia 4 g ướp nhẹ thân mực và 5 g pha chén muối tiêu chanh chấm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 9,
+      "unit": "g",
+      "grossGrams": 9,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (1/2 muỗng cà phê)",
+      "prepNote": "dùng trộn vào chén muối tiêu chanh và rắc nhẹ lên mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "1 quả (khoảng 45 g)",
+      "prepNote": "rửa sạch, cắt đôi vắt lấy nước cốt pha muối tiêu chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (đun sôi hấp mực)",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "đổ vào đáy nồi hấp, đun sôi mạnh trước khi cho xửng mực vào",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch mực ống và khử mùi tanh",
+      "instruction": "Kéo nhẹ đầu mực tách khỏi thân, rút bỏ túi mực, nang sống lưng và toàn bộ nội tạng, cắt bỏ mắt và răng mực rồi lột bỏ lớp màng da sẫm bên ngoài. Bóp nhẹ mực với 30 ml rượu trắng nấu ăn và 15 g gừng đập dập trong 2 phút, xả sạch dưới vòi nước lạnh và thấm thật ráo.",
+      "tip": "Không làm vỡ túi mực khi rút ruột và chỉ dùng rượu gừng chà nhanh với nước mát để thịt mực giữ được độ giòn ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Khứa thân mực và ướp nhẹ gia vị",
+      "instruction": "Dùng dao sắc khứa nhẹ các đường vảy rồng nông trên thân mực (hoặc cắt khoanh dày 2 cm nếu thích), phần râu mực cắt làm đôi. Ướp đều mực với 4 g muối ăn trong 10 phút cho thịt săn nhẹ và đậm đà hơn khi hấp.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế gừng non, sả, hành tím, lá chanh và ớt",
+      "instruction": "Thái 30 g gừng non thành sợi chỉ mảnh. Bóc bẹ già của 3 cây sả, đập dập rồi cắt khúc dài 5 cm. Bóc vỏ 30 g hành tím thái lát mỏng; thái vát 2 quả ớt sừng; lá chanh rửa sạch để một nửa nguyên lá và thái chỉ phần còn lại."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xếp đĩa và hấp mực nhanh trên lửa lớn",
+      "instruction": "Lót một lớp sả đập dập, lá chanh nguyên và một nửa lượng gừng sợi dưới đáy đĩa sâu lòng chịu nhiệt, xếp mực ống lên trên rồi rải nốt gừng sợi, hành tím thái lát và ớt sừng phủ đều. Đun sôi bùng 600 ml nước lọc trong nồi hấp, đặt đĩa mực vào xửng đậy kín vung và hấp lửa lớn trong 8 phút.",
+      "tip": "Hấp mực nhanh ở lửa lớn chỉ 7–9 phút tùy độ dày thân mực; khi thịt mực chuyển trắng đục và các đường khứa nở bung đều là vừa chín tới, tránh hấp quá lâu làm mực ra nước và bị dai.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Pha muối tiêu chanh chấm hải sản",
+      "instruction": "Trong lúc chờ mực chín, trộn đều 5 g muối ăn còn lại với 2 g tiêu đen xay trong chén nhỏ, vắt nước cốt 1 quả chanh tươi vào khuấy tan tạo thành chén muối tiêu chanh chua cay hài hòa."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Ủ ấm ngắn và trình bày đĩa mực hấp nóng",
+      "instruction": "Tắt bếp và giữ đĩa mực trong nồi đậy nắp thêm 1 phút cho hương sả gừng thấm sâu rồi nhấc ra, gạn bỏ bớt phần nước hấp thừa nếu quá nhiều. Rắc phần lá chanh thái chỉ lên trên đĩa mực và thưởng thức nóng ngay cùng muối tiêu chanh.",
+      "tip": "Gạn bớt phần nước hấp tiết ra trước khi dọn giúp miếng mực ráo mặt, giữ trọn độ giòn sần sật và không làm loãng muối chấm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 179,
+    "energyKcal": 179.3,
+    "energyKj": 750,
+    "proteinG": 27.1,
+    "fatG": 2.5,
+    "saturatedFatG": 0.7,
+    "carbG": 10.7,
+    "fiberG": 0.8,
+    "sugarG": 0.8,
+    "sodiumMg": 1124,
+    "saltG": 2.81,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 169231",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 173190",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174223"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1535400255456-984241443b29?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "4d5f1acbbd3cfe923434eaf42ee64cf738406e850db6bef0650a9b7ff9291de4",
+    "researchedFromV2Sha256": "941a101cc187b292e7c505f554296096dee4f5fe83505b0fffae4966e2a6c426"
+  }
+}

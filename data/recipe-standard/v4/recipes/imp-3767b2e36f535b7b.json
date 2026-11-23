@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-3767b2e36f535b7b",
+    "slug": "ga-nuong-tuong-trung",
+    "title": "Gà nướng xì dầu mật ong kiểu Hoa",
+    "subtitle": "Ức gà ướp xì dầu đặc, ngũ vị hương, tỏi gừng rồi nướng lửa vừa kết hợp phết mật ong cho mặt ngoài bóng đẹp cánh gián thơm lừng"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Món nướng",
+      "Ức gà",
+      "Xì dầu",
+      "Mật ong",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng ức gà nướng óng ả màu cánh gián từ xì dầu đặc và mật ong, thấm sâu hương thơm ấm áp của ngũ vị hương, tỏi gừng và dầu mè, thịt bên trong vẫn mềm mọng khi thưởng thức.",
+    "servingSuggestion": "Để gà nghỉ 5 phút rồi thái lát xéo dày 1,5 cm xếp ra đĩa, rưới nước sốt nướng còn lại và rắc hành lá; dùng nóng với cơm trắng hoặc rau cải chần.",
+    "storageAndReheat": "Bảo quản thịt gà nướng trong hộp kín ở ngăn mát tối đa 3 ngày; khi dùng hâm nóng lại trong lò 160°C khoảng 6–8 phút hoặc áp chảo lửa nhỏ có đậy nắp để thịt giữ độ ẩm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê",
+      "culinaryMeasure": "700 g (khoảng 3–4 miếng lớn)",
+      "prepNote": "rửa sạch, thấm thật khô, khía nhẹ vài đường nông giúp thấm gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 700,
+      "unit": "g",
+      "grossGrams": 700,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 700,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo màu nâu cánh gián bóng đẹp và vị đậm đà cho gà nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 43.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 43.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "cân bằng vị mặn thanh thấm sâu vào thớ thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "HONEY",
+      "name": "Mật ong nguyên chất",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 12 ml ướp gà và 8 ml phết mặt tạo lớp bóng caramel khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 28.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 28.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FIVE_SPICE",
+      "name": "Bột ngũ vị hương",
+      "culinaryMeasure": "2 g (~3/4 muỗng cà phê)",
+      "prepNote": "tạo hương vị quay nướng đặc trưng ẩm thực Hoa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 18,8 g, ~5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (1 nhánh nhỏ)",
+      "prepNote": "cạo vỏ, mài hoặc băm nhuyễn khử mùi thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "giúp thịt mềm mọng và thơm dịu",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giữ độ ẩm bề mặt ức gà khi nướng lò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo hậu cay ấm nhẹ cho phần xốt ướp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm khô ức gà và pha xốt ướp ngũ vị",
+      "instruction": "Rửa sạch 700 g ức gà phi lê, dùng khăn giấy thấm thật khô rồi khía nhẹ vài đường nông trên mặt thịt để gia vị thấm sâu. Trong tô nhỏ, khuấy đều 35 ml xì dầu đặc, 20 ml xì dầu nhạt, 12 ml mật ong nguyên chất, 2 g bột ngũ vị hương, tỏi băm nhuyễn, gừng băm nhuyễn, 10 ml dầu mè thơm, 15 ml dầu ăn thực vật và 1,5 g tiêu trắng xay; múc tách riêng 1 muỗng canh hỗn hợp xốt sạch ra chén nhỏ để phết gà khi nướng.",
+      "tip": "Thấm khô hoàn toàn mặt ức gà trước khi ướp giúp hỗn hợp xì dầu ngũ vị bám chặt vào thịt mà không bị trôi loãng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt gà ít nhất 60 phút cho đậm vị",
+      "instruction": "Đặt ức gà vào tô lớn hoặc túi zip, đổ toàn bộ phần xốt ướp vào xoa bóp đều khắp các mặt thịt. Đậy kín và ướp trong ngăn mát tủ lạnh ít nhất 1 đến 2 giờ (thỉnh thoảng trở mặt cho gà thấm đều), sau đó lấy ra để nhiệt độ phòng khoảng 20 phút trước khi nướng.",
+      "tip": "Để gà bớt lạnh trước khi vào lò giúp miếng ức gà chín đều từ ngoài vào trong mà không bị khô mặt ngoài.",
+      "timerMinutes": 60
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nướng mặt thứ nhất ở nhiệt độ vừa",
+      "instruction": "Làm nóng lò nướng ở 170°C, lót giấy nến hoặc giấy bạc vào khay rồi xếp các miếng ức gà đã rũ nhẹ phần xốt bám trên bề mặt thành một lớp thưa (bỏ phần nước ướp thịt sống còn dư trong tô). Đặt khay ở rãnh giữa lò, nướng trong 20 phút trên lửa vừa để thịt chín từ từ mà xốt xì dầu không bị cháy khét.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt và phết lớp mật ong bóng đẹp",
+      "instruction": "Lấy khay gà ra khỏi lò, nhẹ nhàng lật từng miếng gà sang mặt còn lại. Hòa 8 ml mật ong nguyên chất còn lại với 1 muỗng canh xốt xì dầu sạch đã tách riêng từ bước 1 rồi dùng cọ phết đều lên bề mặt thịt gà.",
+      "tip": "Chỉ phết mật ong ở nửa sau quá trình nướng để tạo lớp caramel nâu bóng đẹp mắt mà không làm đường cháy đắng."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nướng hoàn tất đến khi gà chín mềm mọng",
+      "instruction": "Đưa khay gà trở lại lò ở 170°C nướng thêm 15 đến 20 phút nữa (có thể tăng 200°C ở 3 phút cuối nếu thích cạnh gà xém nhẹ, đứng canh sát). Kiểm tra phần dày nhất của miếng gà thấy thịt chín trắng hoàn toàn, nước tiết ra trong suốt không còn sắc hồng là đạt.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Để gà nghỉ, thái lát và rắc hành lá",
+      "instruction": "Lấy gà ra khỏi lò để nghỉ trên thớt khoảng 5 phút cho nước thịt ổn định lại bên trong, sau đó thái lát xéo dày 1,5 cm xếp ra đĩa. Chan phần nước xốt nóng thơm tiết ra trong khay nướng lên mặt thịt, rắc hành lá tươi thái nhỏ và dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 308,
+    "energyKcal": 308.3,
+    "energyKj": 1290,
+    "proteinG": 41.1,
+    "fatG": 10.3,
+    "saturatedFatG": 1.8,
+    "carbG": 11.1,
+    "fiberG": 0.7,
+    "sugarG": 7.4,
+    "sodiumMg": 943,
+    "saltG": 2.36,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Five Spice USDA Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169640",
+      "USDA FDC 170005",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "27e7f7c0c67e933ed17858c3f846ad8c5a915c2010732b3d216eaae722293325",
+    "researchedFromV2Sha256": "d887b64d8ec6b53821389dbbf48eeef7210482e2b7388a34d5196fe1ef9fc821"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6e4967b3145dee09",
+    "slug": "nam-xao-hung-que-thai",
+    "title": "Nấm đùi gà xào húng quế kiểu Thái chay",
+    "subtitle": "Nấm đùi gà áp chảo cháy cạnh xào tỏi ớt cay nồng cùng dầu hào chay, xì dầu và lá húng quế thơm nức chuẩn vị Pad Krapao Hed"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Pad Krapao",
+      "Món chay",
+      "Nấm đùi gà",
+      "Húng quế",
+      "Thái Lan"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Phiên bản chay thanh đạm nhưng cực kỳ bắt cơm của món xào đường phố Thái Pad Krapao: nấm đùi gà xém cạnh giòn ngọt sần sật thấm sốt xì dầu đậm đà, quyện hương cay nồng của tỏi ớt và lá húng quế tươi bùng vị.",
+    "servingSuggestion": "Xúc nấm xào nóng hổi ra đĩa, rắc thêm hành lá thái khúc; dùng ngay với cơm trắng nóng dẻo hoặc kèm dưa leo thái lát thanh mát.",
+    "storageAndReheat": "Nên ăn nóng ngay sau khi xào để nấm giòn ngon và lá húng quế còn xanh thơm; nếu còn dư, bảo quản tủ mát tối đa 24 giờ và đảo nhanh trên chảo nóng không đậy nắp."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "500 g (khoảng 4–5 cây nấm lớn)",
+      "prepNote": "dùng khăn ẩm lau sạch, cắt bỏ phần gốc già, thái lát vát dày 0,5 cm hoặc bổ miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 475,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "THAI_BASIL",
+      "name": "Lá húng quế Thái tươi",
+      "culinaryMeasure": "30 g (khoảng 2 nắm đầy)",
+      "prepNote": "nhặt lấy lá non và ngọn mềm, rửa nhẹ vẩy thật ráo nước",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 27,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây trắng",
+      "culinaryMeasure": "1/2 củ (khoảng 70 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng hoặc hạt lựu to cho ngọt giòn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "1/2 quả (khoảng 75 g)",
+      "prepNote": "rửa sạch, bỏ hạt và lõi trắng, cắt miếng vuông 2 cm tạo màu sắc",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 63.75,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ vừa (khoảng 25 g)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhuyễn cùng ớt hiểm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, bỏ cuống, đập dập băm nhỏ (tăng giảm tùy độ cay)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo độ sánh bóng và vị umami đậm đà cho sốt xào chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt (nước tương)",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "nêm vị mặn thanh hài hòa cùng dầu hào chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc (tạo màu)",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "tạo màu nâu cánh gián bóng đẹp chuẩn món xào Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "15 g (khoảng 1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn đậm của xì dầu và dầu hào chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia làm 2 phần để áp chảo xém nấm và phi thơm tỏi ớt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khúc 2 cm để rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "hòa tan hỗn hợp sốt giúp sốt bám đều quanh từng lát nấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 15,
+      "isOptional": true,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế nấm đùi gà, húng quế và pha sốt xào chay",
+      "instruction": "Lau sạch 500 g nấm đùi gà bằng khăn ẩm, cắt bỏ gốc rồi thái lát vát dày 0,5 cm. Nhặt lá húng quế Thái rửa nhẹ rồi vẩy thật ráo nước. Thái miếng hành tây và ớt chuông đỏ; băm nhuyễn tỏi khô và 4 quả ớt hiểm đỏ; cắt khúc hành lá. Trong chén nhỏ, khuấy tan 30 ml dầu hào chay, 20 ml xì dầu nhạt, 8 ml xì dầu đặc, 15 g đường cát trắng và 20 ml nước lọc.",
+      "tip": "Vẩy thật ráo lá húng quế giúp chảo không bị bắn dầu và nước sốt xào giữ được độ sệt đậm đà không bị loãng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo nấm đùi gà cho săn xém cạnh",
+      "instruction": "Làm nóng chảo rộng trên lửa lớn với 15 ml dầu ăn thực vật, xếp nấm đùi gà dàn thành một lớp mỏng và để yên 2 phút cho mặt dưới hơi cháy xém vàng rồi mới đảo đều thêm 1 phút đến khi nấm săn lại, gạt nấm sang một bên chảo.",
+      "tip": "Để yên nấm 1–2 phút không đảo liên tục giúp nấm thoát bớt hơi nước và có lớp cháy cạnh thơm bùi thay vì bị ra nước nhũn.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi ớt và xào rau củ",
+      "instruction": "Thêm 10 ml dầu ăn thực vật còn lại vào phần trống trên chảo ở lửa vừa, cho tỏi băm và ớt hiểm băm vào phi khoảng 40 giây đến khi dậy mùi cay thơm nồng thì cho hành tây và ớt chuông đỏ vào đảo nhanh 1–2 phút cho rau củ vừa chín tới vẫn giữ độ giòn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Áo đều sốt dầu hào chay trên lửa lớn",
+      "instruction": "Bật lửa lớn, đảo chung nấm với rau củ rồi rưới đều chén sốt đã pha vào chảo. Xóc và đảo nhanh tay liên tục khoảng 2 phút cho đến khi nước sốt sôi sệt bóng mượt, áo bám đều từng lát nấm màu nâu hổ phách.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Tắt bếp trộn lá húng quế dậy hương",
+      "instruction": "Tắt bếp ngay rồi trút toàn bộ 30 g lá húng quế Thái vào chảo nấm còn nóng, đảo nhanh tay trong 20–30 giây cho lá vừa héo mềm dưới nhiệt dư và dậy mùi thơm đặc trưng.",
+      "tip": "Luôn cho húng quế vào sau khi đã tắt bếp để giữ trọn tinh dầu thơm và màu xanh tươi, tránh bị thâm đen đắng."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày ra đĩa và dùng nóng với cơm",
+      "instruction": "Trút nấm xào húng quế ra đĩa, rắc thêm hành lá thái khúc lên trên và dọn dùng nóng ngay cùng cơm trắng dẻo."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 182,
+    "energyKcal": 181.7,
+    "energyKj": 760,
+    "proteinG": 7.6,
+    "fatG": 8.2,
+    "saturatedFatG": 1.2,
+    "carbG": 24.1,
+    "fiberG": 5.1,
+    "sugarG": 10.7,
+    "sodiumMg": 930,
+    "saltG": 2.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0682d6e6f48ccba026e97c67ffa3086aa4c810c0e2dccc4c759b2e2af1242bd2",
+    "researchedFromV2Sha256": "34d4219554a013b8bd22ef3297f8f3cccfa32969879a129cc21127037167dca1"
+  }
+}

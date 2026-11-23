@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-64e505d497388f4a",
+    "slug": "ca-hoi-ap-chao-toi-chanh",
+    "title": "Cá hồi áp chảo sốt tỏi chanh",
+    "subtitle": "Cá hồi phi lê áp chảo da giòn thịt hồng mọng nước, rưới sốt bơ tỏi chanh nước mắm chua thanh đậm đà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Áp chảo",
+      "Cá hồi",
+      "Nhanh gọn",
+      "Hiện đại"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "milk",
+      "salmon"
+    ]
+  },
+  "overview": {
+    "description": "Cá hồi áp chảo sốt tỏi chanh là sự kết hợp tinh tế giữa kỹ thuật áp chảo da giòn kiểu Âu và hương vị sốt bơ tỏi chanh pha nước mắm hài hòa theo khẩu vị Việt. Miếng cá giữ được độ béo mọng đặc trưng bên trong, hòa quyện lớp sốt chua thanh thơm lừng giúp ăn không bị ngấy.",
+    "servingSuggestion": "Dọn nóng từng miếng cá hồi ra đĩa, rưới đều sốt bơ tỏi chanh lên mặt, rắc hành lá và tiêu xay, ăn kèm cơm trắng nóng hoặc salad cà chua tươi.",
+    "storageAndReheat": "Cá hồi ngon nhất khi ăn nóng ngay để thịt mềm mọng và da giòn; nếu bảo quản tủ mát tối đa 24 giờ, nên hâm nhẹ bằng chảo nắp kín ở lửa nhỏ 2–3 phút tránh làm khô thịt cá."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Cá hồi phi lê còn da",
+      "culinaryMeasure": "600 g (3 miếng dày 2,5 cm)",
+      "prepNote": "rửa nhanh với nước muối loãng rồi thấm thật khô hoàn toàn bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 600,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (25 g)",
+      "prepNote": "bóc vỏ, băm nhỏ phi thơm cùng bơ lạt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím",
+      "culinaryMeasure": "10 g (1 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 8.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "2 quả (10 g)",
+      "prepNote": "băm nhỏ làm sốt cay nhẹ (tùy chọn)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "vắt lấy 40 ml nước cốt (20 ml ướp cá, 20 ml pha sốt) và cắt vài lát mỏng trang trí",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "15 g (~1 muỗng canh)",
+      "prepNote": "đun chảy làm nền sốt bơ tỏi chanh béo thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "áp chảo cá hồi giúp da giòn không cháy",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 15.64,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị đậm đà kiểu Việt cho sốt tỏi chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua mặn trong sốt tỏi chanh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "xát đều hai mặt miếng cá hồi để ướp thấm vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "chia 2 g ướp cá hồi, 1 g rắc hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua tươi (ăn kèm)",
+      "culinaryMeasure": "1 quả (120 g)",
+      "prepNote": "rửa sạch, thái lát hoặc múi nhỏ xếp ăn kèm cân bằng vị béo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thấm khô và ướp cá hồi với muối tiêu chanh",
+      "instruction": "Thấm thật khô 3 miếng cá hồi phi lê bằng khăn giấy sạch, xoa đều 2 g muối ăn, 2 g tiêu đen xay và 20 ml nước cốt chanh tươi lên các mặt miếng cá rồi để ướp 10 phút cho thịt cá săn và thơm.",
+      "tip": "Lau thật khô bề mặt da cá trước khi áp chảo giúp lớp da áp nhiệt trực tiếp nhanh chóng vàng giòn mà không bị dính chảo.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị tỏi, hành tím, ớt và hành lá",
+      "instruction": "Tỏi khô và hành tím bóc vỏ, băm nhỏ; ớt tươi băm nhỏ; hành lá thái nhuyễn. Cắt thêm vài lát chanh mỏng và thái lát quả cà chua tươi (nếu dùng) để ăn kèm."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo cá hồi da giòn trên lửa vừa",
+      "instruction": "Đặt chảo chống dính lên bếp, đun nóng 20 ml dầu ăn trên lửa vừa, đặt mặt da cá hồi xuống trước và ấn nhẹ 15 giây cho da phẳng sát đáy chảo. Áp chảo yên mặt da trong 3 phút cho vàng giòn, rồi nhẹ nhàng trở mặt nấu thêm 2 phút cho hai bên chín vừa tới và thịt cá chuyển hồng nhạt mọng nước, gắp cá ra đĩa nghỉ.",
+      "tip": "Không di chuyển miếng cá liên tục trong lúc áp chảo và tránh nấu quá lâu khiến cá hồi bị khô xác.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu sốt bơ tỏi chanh nước mắm sánh thơm",
+      "instruction": "Dùng chảo sạch trên lửa nhỏ, cho 15 g bơ lạt vào đun chảy rồi thêm tỏi băm, hành tím băm và ớt băm (nếu ăn cay) phi thơm khoảng 1 phút cho vừa dậy mùi. Rót 20 ml nước mắm ngon, 20 ml nước cốt chanh còn lại và 8 g đường cát trắng vào khuấy tan sôi lăn tăn trong 1 phút cho sốt hơi sánh.",
+      "tip": "Giữ lửa nhỏ khi đun chảy bơ lạt để bơ không bị cháy khét, đồng thời giúp tỏi hành dậy mùi thơm dịu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áo nhanh sốt tỏi chanh lên cá hồi",
+      "instruction": "Đặt các miếng cá hồi vừa áp chảo trở lại chảo sốt, dùng thìa rưới liên tục phần sốt bơ tỏi chanh nóng lên mặt thịt cá khoảng 1 phút trên lửa nhỏ để hương vị ngấm đều mà vẫn giữ nguyên độ giòn của lớp da.",
+      "tip": "Rưới liên tục sốt bơ tỏi chanh lên mặt thịt cá thay vì nấu lâu trên bếp giúp cá hồi giữ trọn độ mọng mềm bên trong.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa cùng cà chua và dùng nóng",
+      "instruction": "Gắp cá hồi ra đĩa, rưới toàn bộ phần sốt còn lại trong chảo lên trên, rắc hành lá thái nhỏ và 1 g tiêu đen xay còn lại, trang trí vài lát chanh và cà chua tươi bên cạnh rồi thưởng thức ngay khi nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 541,
+    "energyKcal": 541.3,
+    "energyKj": 2264,
+    "proteinG": 42.6,
+    "fatG": 36.3,
+    "saturatedFatG": 9.5,
+    "carbG": 10.3,
+    "fiberG": 1.6,
+    "sugarG": 4.9,
+    "sodiumMg": 1010,
+    "saltG": 2.53,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "8a0cbe2830df3ec718a7e935fbdae9ebcb037d5c6f02c16e8eef1342df55c7ed",
+    "researchedFromV2Sha256": "4efacea3a138c24e530d8c7bc5100040028c0f5e63bbde4d9b519caf0a2b97c3"
+  }
+}

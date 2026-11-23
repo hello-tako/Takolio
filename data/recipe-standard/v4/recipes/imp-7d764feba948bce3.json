@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7d764feba948bce3",
+    "slug": "canh-kimchi-ca",
+    "title": "Canh kim chi cá hồi đậu phụ",
+    "subtitle": "Nồi canh kim chi jjigae cay ấm với cá hồi tươi béo ngậy, đậu phụ mềm mịn và nước dùng chua thanh chuẩn vị Hàn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_canh",
+    "difficulty": "medium",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Canh kim chi",
+      "Hàn Quốc",
+      "Cá hồi",
+      "Đậu phụ",
+      "Cay ấm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Canh kim chi cá hồi đậu phụ là biến tấu đậm đà của món kimchi jjigae truyền thống Hàn Quốc. Vị chua cay tự nhiên của kim chi cải thảo lên men kỹ hòa cùng thịt cá hồi béo ngọt và đậu phụ thanh mát, rất đưa cơm trong những ngày se lạnh.",
+    "servingSuggestion": "Dọn canh nóng hổi ngay trong nồi đất hoặc tô sâu lòng, rắc hành lá thái vát lên mặt và ăn kèm cơm trắng nóng dẻo.",
+    "storageAndReheat": "Nên thưởng thức ngay khi còn nóng để cá và đậu phụ giữ nguyên thớ đẹp; nếu còn dư, bảo quản hộp kín trong ngăn mát tối đa 24 giờ và hâm sôi nhẹ trên lửa nhỏ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi tươi",
+      "culinaryMeasure": "400 g",
+      "prepNote": "rửa nhanh với nước muối loãng, thấm thật khô rồi cắt khúc vuông khoảng 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo chua (kèm 80 g nước kim chi)",
+      "culinaryMeasure": "400 g",
+      "prepNote": "chọn kim chi lên men chua kỹ; phần cải cắt khúc dài 3 cm, giữ lại phần nước kim chi để nấu canh",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 400,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "2 miếng (khoảng 240 g)",
+      "prepNote": "rửa nhẹ qua nước lọc, thấm ráo rồi thái lát dày khoảng 1,2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 240,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ vừa (khoảng 140 g)",
+      "prepNote": "bóc vỏ, rửa sạch, thái lát dày 0,5 cm theo chiều dọc",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái vát khúc dài 2–3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "tạo màu đỏ cam đẹp và vị cay ấm đặc trưng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm tạo hậu vị đậm đà cho nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "làm dịu độ chua gắt của kim chi lên men kỹ",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm từ từ sau khi đã có nước kim chi và nước tương để tránh mặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc khử mùi tanh cá ở bước nêm cuối",
+      "componentGroup": "broth",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để xào săn kim chi và tỏi băm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang Hàn Quốc",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới ở bước cuối để giữ trọn hương thơm béo ngậy",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "750 ml",
+      "prepNote": "dùng để hầm nước canh kim chi",
+      "componentGroup": "broth",
+      "requiredQuantity": 750,
+      "unit": "ml",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 675,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế kim chi, đậu phụ và rau củ",
+      "instruction": "Cắt 320 g cải kim chi thành khúc dài khoảng 3 cm, giữ riêng 80 g nước kim chi. Thái lát đậu phụ trắng dày khoảng 1,2 cm, đặt lên đĩa có lót khăn giấy cho ráo bớt nước. Thái lát hành tây dày 0,5 cm, băm nhỏ 4 tép tỏi và thái vát hành lá.",
+      "tip": "Kim chi càng lên men chua kỹ thì nước canh càng đậm đà, dậy vị chua thanh tự nhiên mà không cần dùng thêm giấm."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Cắt khúc và thấm khô cá hồi",
+      "instruction": "Rửa nhanh 400 g phi lê cá hồi dưới vòi nước lạnh, dùng khăn giấy thấm thật khô cả hai mặt rồi cắt khúc vuông khoảng 3–4 cm để khi nấu thịt cá giữ nguyên miếng không bị bở nát.",
+      "tip": "Thấm thật khô bề mặt cá hồi trước khi nấu giúp cá săn thớ và giảm đáng kể mùi tanh đặc trưng của hải sản."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào kim chi cùng tỏi và ớt bột Hàn",
+      "instruction": "Làm nóng nồi đáy dày trên lửa vừa với 15 ml dầu ăn thực vật, cho tỏi băm, phần cải kim chi đã cắt khúc và 6 g ớt bột Hàn Quốc vào đảo đều trong 5 phút đến khi lá kim chi hơi trong, mềm dịu và tiết ra màu đỏ cam thơm nồng.",
+      "tip": "Xào kỹ kim chi trước khi đổ nước giúp giảm vị chua gắt và giải phóng hương thơm đặc trưng của ớt bột Hàn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm nền nước dùng kim chi đậm vị",
+      "instruction": "Đổ phần nước kim chi giữ lại cùng 750 ml nước lọc vào nồi. Bật lửa lớn đun sôi bùng, sau đó đậy nắp và hạ về lửa vừa, nấu liu riu trong 10 phút cho kim chi ra hết vị ngọt chua vào nước dùng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín cá hồi và hành tây",
+      "instruction": "Thả nhẹ từng khúc cá hồi và hành tây thái lát vào nồi nước đang sôi lăn tăn, nấu trên lửa vừa khoảng 7 phút đến khi thớ cá hồi chuyển màu hồng nhạt đục đều và chín hẳn từ bên trong, chú ý không khuấy mạnh làm vỡ cá.",
+      "tip": "Kiểm tra lát cá ở phút thứ 7: chỉ cần thịt cá tách múi dễ dàng và không còn lõi trong sống là đạt, tránh nấu quá lâu khiến cá bị khô.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thả đậu phụ, nêm gia vị và hoàn thiện",
+      "instruction": "Xếp nhẹ đậu phụ trắng lên mặt nồi canh, nêm 15 ml nước tương, 8 g đường cát trắng, 1 g tiêu đen xay và nếm thử trước khi thêm từ từ 3 g muối ăn cho vừa khẩu vị. Rưới 10 ml dầu mè rang, đun sôi nhẹ thêm 3 phút cho đậu phụ nóng đều, rắc hành lá lên trên rồi tắt bếp.",
+      "timerMinutes": 3
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 357,
+    "energyKcal": 357.2,
+    "energyKj": 1494,
+    "proteinG": 28.8,
+    "fatG": 22.9,
+    "saturatedFatG": 4.4,
+    "carbG": 10.9,
+    "fiberG": 3.5,
+    "sugarG": 5,
+    "sodiumMg": 1100,
+    "saltG": 2.75,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b5e33aff19d45425d3c90c525e97d3e193ff249b411d6f6849d87823a29595c7",
+    "researchedFromV2Sha256": "1712fa2a5a869cc7c495c8384c6169ddf210a52c77a620d46fbe26492d86cad4"
+  }
+}

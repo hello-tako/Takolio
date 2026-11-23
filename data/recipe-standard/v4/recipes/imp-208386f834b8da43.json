@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-208386f834b8da43",
+    "slug": "trung-kho-tuong-keo",
+    "title": "Trứng gà kho nước tương sánh keo",
+    "subtitle": "Trứng gà luộc lòng chín tới chiên xém nhẹ rồi kho liu riu trong sốt nước tương, hắc xì dầu và ngũ vị hương sánh bóng đậm đà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Trứng kho",
+      "Nước tương",
+      "Nhanh gọn",
+      "Đưa cơm",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "boil",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những quả trứng gà thấm đẫm nước sốt nước tương và xì dầu đặc sánh kẹo màu nâu bóng đẹp mắt, phảng phất mùi thơm dịu của ngũ vị hương, hành tỏi phi và tương ớt cay nhẹ.",
+    "servingSuggestion": "Cắt đôi hoặc để nguyên quả trứng bày ra đĩa sâu lòng, rưới phần sốt keo bóng cùng hành lá, ngò rí và tiêu xay; ăn nóng với cơm trắng.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 3 ngày; khi ăn hâm lại trên lửa nhỏ cùng 1 muỗng nước ấm để sốt sánh nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "8 quả (khoảng 400 g)",
+      "prepNote": "luộc chín, ngâm nước lạnh bóc sạch vỏ và khứa nhẹ hoặc châm tăm vài lỗ",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 352,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (xì dầu)",
+      "culinaryMeasure": "55 ml (~3,5–4 muỗng canh)",
+      "prepNote": "tạo nền vị mặn ngọt thanh dịu cho nước sốt kho trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 55,
+      "unit": "ml",
+      "grossGrams": 64.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 64.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc (hắc xì dầu)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp trứng và nước kho lên màu nâu cánh gián bóng đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "tăng độ sánh bóng và vị cay ngọt nhẹ cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 11.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 11.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FIVE_SPICE",
+      "name": "Bột ngũ vị hương",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo hương thơm ấm áp đặc trưng của món kho tàu xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của nước tương và giúp sốt nhanh sánh keo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.4 củ (10 g, ~3 tép)",
+      "prepNote": "bóc vỏ, thái lát mỏng hoặc băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI",
+      "name": "Ớt tươi",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, thái lát mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, phần đầu hành cắt khúc phi thơm, phần lá thái nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi)",
+      "culinaryMeasure": "15 g (2–3 nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ để rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc lên đĩa trứng kho khi hoàn thành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha vào nước luộc trứng giúp vỏ trứng không nứt và dễ bóc",
+      "componentGroup": "process",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.15,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cho vào nước luộc trứng rồi xả bỏ",
+      "componentGroup": "process",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml chiên sơ vàng lớp lòng trắng trứng và 10 ml phi hành tỏi",
+      "componentGroup": "process",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 19.55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 15,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "pha loãng nước sốt kho trứng cho ngấm đều không bị mặn gắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Luộc trứng với giấm muối và bóc vỏ",
+      "instruction": "Cho 8 quả trứng gà vào nồi nước lạnh ngập mặt cùng 5 g muối ăn và 15 ml giấm gạo, bật lửa vừa đến khi nước sôi thì hạ lửa nhỏ luộc thêm 7 phút cho trứng chín hoàn toàn. Vớt trứng ngâm ngay vào tô nước lạnh 3 phút rồi bóc sạch vỏ và dùng tăm xăm nhẹ vài lỗ quanh lòng trắng.",
+      "tip": "Thêm chút muối và giấm vào nồi nước lạnh khi luộc giúp vỏ trứng không bị nứt và tách khỏi màng lụa cực kỳ dễ dàng.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế hành tỏi, rau thơm và pha chén sốt kho",
+      "instruction": "Thái lát mỏng hành tím, tỏi khô và ớt tươi; cắt khúc phần đầu hành lá, thái nhỏ lá hành và ngò rí. Trong chén riêng, khuấy tan 55 ml nước tương, 15 ml xì dầu đặc, 10 ml tương ớt, 12 g đường cát trắng, 1 g bột ngũ vị hương và 100 ml nước lọc."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên sơ trứng cho vàng săn lớp vỏ ngoài",
+      "instruction": "Thấm thật khô bề mặt trứng đã bóc vỏ. Làm nóng chảo chống dính với 15 ml dầu ăn trên lửa vừa, thả trứng vào lăn nhẹ đều tay trong 3 phút cho lớp lòng trắng bên ngoài se vàng nhẹ rồi vớt ra đĩa.",
+      "tip": "Thấm khô trứng trước khi chiên và đảo nhẹ liên tục giúp trứng không bị bắn dầu và có lớp vỏ dai ngon khi kho.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi thơm đầu hành, hành tím, tỏi và ớt",
+      "instruction": "Chắt bớt dầu nếu còn nhiều, thêm 10 ml dầu ăn vào chảo trên lửa vừa nhỏ, phi thơm đầu hành lá, hành tím, tỏi và ớt thái lát trong 1 phút cho đến khi vừa dậy mùi và ngả vàng nhẹ thì tạm nhấc khỏi bếp để không cháy."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho liu riu cho trứng áo màu nâu bóng",
+      "instruction": "Đổ chén hỗn hợp sốt nước tương đã pha vào chảo, đặt lại lên bếp đun sôi nhẹ rồi thả toàn bộ trứng gà vào. Kho liu riu ở lửa vừa nhỏ trong 8–10 phút, thỉnh thoảng nghiêng chảo hoặc múc sốt rưới đều lên trứng cho đến khi nước kho sánh keo bóng đẹp.",
+      "tip": "Kho lửa nhỏ và đảo nhẹ tay giúp màu nâu của xì dầu đặc áo đều quanh từng quả trứng mà không làm nát lòng trắng.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ngò rí và tiêu đen thưởng thức",
+      "instruction": "Khi nước sốt đã keo sánh và trứng lên màu nâu óng ả, tắt bếp, gắp trứng ra đĩa sâu lòng và rưới phần sốt keo còn lại lên trên. Rắc hành lá, ngò rí thái nhỏ và 1,5 g tiêu đen xay rồi dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 278,
+    "energyKcal": 278.4,
+    "energyKj": 1165,
+    "proteinG": 17.7,
+    "fatG": 18,
+    "saturatedFatG": 4.7,
+    "carbG": 11.4,
+    "fiberG": 1.2,
+    "sugarG": 6.8,
+    "sodiumMg": 1739,
+    "saltG": 4.35,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "Five Spice USDA Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "633ef7c2e0d459d46761a5256c050b97805bf74c3dd453a4fbc0b31c5fad6d81",
+    "researchedFromV2Sha256": "6f6e5e3801a551e2dc7fcbc2024acde4f7559596b1eb0acd6cb28fb0860dbecf"
+  }
+}

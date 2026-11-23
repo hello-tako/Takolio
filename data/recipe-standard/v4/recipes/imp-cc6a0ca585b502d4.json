@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cc6a0ca585b502d4",
+    "slug": "larb-ga",
+    "title": "Larb gà bằm trộn thính gạo kiểu Isaan",
+    "subtitle": "Thịt gà bằm xào tơi vừa chín tới trộn cùng thính gạo rang thơm bùi, hành tím, lá bạc hà và sốt chanh mắm ớt chuẩn vị Đông Bắc Thái"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Larb gà",
+      "Isaan",
+      "Thính gạo",
+      "Chua cay",
+      "Thái Lan"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Larb gà kiểu Isaan là món gỏi thịt ấm nổi tiếng của vùng Đông Bắc Thái Lan, gây ấn tượng với thịt gà bằm mềm ẩm không khô, quyện thính gạo rang giòn bùi, vị chua thanh của chanh, mặn thơm nước mắm và hương lá bạc hà tươi mát.",
+    "servingSuggestion": "Bày larb gà ra đĩa, rắc thêm lá bạc hà tươi lên trên; dùng ấm kèm xôi nếp hoặc cơm trắng cùng dưa leo, bắp cải giòn và đậu que sống.",
+    "storageAndReheat": "Nên trộn thính gạo và rau thơm ngay trước khi ăn để thính không bị ỉu hút hết nước sốt; nếu bảo quản tủ mát tối đa 24 giờ, chỉ giữ riêng phần thịt xào sốt và trộn thính, rau thơm lúc ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà tươi băm hoặc xay vừa",
+      "culinaryMeasure": "300 g",
+      "prepNote": "rửa sạch, thấm khô rồi băm nhuyễn vừa phải bằng dao (không xay nát như giò)",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà lọc xương băm nhỏ",
+      "culinaryMeasure": "150 g",
+      "prepNote": "lọc bỏ da và xương, băm chung với ức gà giúp thịt gà mềm ngọt không bị khô bở",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ROASTED_RICE_POWDER",
+      "name": "Thính gạo rang (Khao Khua)",
+      "culinaryMeasure": "25 g (khoảng 3 muỗng canh)",
+      "prepNote": "dùng thính gạo tẻ/nếp rang vàng nâu thơm giã thô hơi lợn cợn",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 45 ml nước cốt bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "chia 5 ml xào cùng thịt gà và 30 ml trộn sốt hoàn thiện",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "3 quả (khoảng 15 g)",
+      "prepNote": "rửa sạch, bỏ cuống, băm nhỏ (gia giảm tùy khẩu vị cay)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn để xào thơm cùng thịt gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "50 g (khoảng 3 củ vừa)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng theo chiều ngang",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 44,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (lá chanh Kaffir)",
+      "culinaryMeasure": "2 g (khoảng 2–3 lá)",
+      "prepNote": "rửa sạch, bỏ sống gân, thái chỉ thật nhuyễn để trộn thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 1.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "làm dịu nhẹ nếu nước cốt chanh quá chua gắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, để ráo, thái nhỏ phần lá và cọng non",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà tươi (húng lủi)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lấy lá tươi, rửa sạch, để thật ráo nước rắc mặt đĩa",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "50 ml (khoảng 3 muỗng canh)",
+      "prepNote": "dùng xào chần thịt gà bằm giúp thịt tơi mềm không bị cháy khô",
+      "componentGroup": "broth",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Băm thịt gà và sơ chế hành tím, rau thơm",
+      "instruction": "Kết hợp 300 g ức gà và 150 g thịt đùi gà lọc xương băm nhỏ vừa ăn bằng tay để thịt giữ được độ mọng nước. Băm nhuyễn tỏi khô và 3 quả ớt hiểm đỏ. Thái lát thật mỏng hành tím khô; thái chỉ lá chanh Thái; thái nhỏ hành lá và ngò rí; nhặt lá bạc hà tươi để ráo. Vắt 2 quả chanh tươi lấy 45 ml nước cốt.",
+      "tip": "Phối trộn ức gà cùng thịt đùi gà theo tỉ lệ 2:1 giúp món Larb vừa giàu đạm vừa mềm ngọt, không bị khô xác khi xào không dầu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào nước thịt gà bằm chín tơi mọng",
+      "instruction": "Cho 50 ml nước lọc vào chảo rộng đun sôi lăn tăn trên lửa lớn. Trút toàn bộ thịt gà băm, tỏi băm và 5 ml nước mắm ngon vào, dùng muôi dằm và đảo liên tục khoảng 3–4 phút cho đến khi thịt gà tơi rời, chuyển trắng đục và chín hoàn toàn bên trong nhưng vẫn còn ít nước xào ẩm.",
+      "tip": "Tuyệt đối không xào khô cạn nước khiến thịt gà bị xơ; vừa thấy thịt chín hẳn không còn màu hồng là tắt bếp ngay.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Tắt bếp ủ hành tím và nêm nước cốt chanh mắm",
+      "instruction": "Tắt bếp rồi cho ngay hành tím thái lát mỏng vào chảo thịt gà còn nóng, đảo nhẹ để hơi ấm làm hành tím dịu bớt mùi hăng mà vẫn giữ độ giòn. Rưới tiếp 30 ml nước mắm ngon còn lại, 45 ml nước cốt chanh tươi và 4 g đường cát trắng vào trộn đều cho hòa vị.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "finish",
+      "title": "Trộn thính gạo rang và ớt hiểm đỏ",
+      "instruction": "Rắc từ từ 25 g thính gạo rang (Khao Khua) cùng ớt hiểm băm và lá chanh Thái thái chỉ vào chảo thịt ấm, đảo đều tay cho hạt thính thấm hút nước thịt quyện thành lớp áo sánh thơm đặc trưng.",
+      "tip": "Chỉ trộn thính gạo rang sau khi đã tắt bếp và ngay trước lúc dọn ăn để giữ mùi thơm bùi và độ sần sật chuẩn vị Isaan."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn hành lá, ngò rí và cân chỉnh vị",
+      "instruction": "Thêm hành lá và ngò rí thái nhỏ vào đảo nhẹ một lượt. Nếm lại lần cuối để bảo đảm sự cân bằng giữa vị chua thanh của chanh, mặn thơm nước mắm, cay nồng của ớt và bùi béo của thính gạo."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa cùng lá bạc hà tươi và dọn ấm",
+      "instruction": "Múc larb gà ra đĩa, rắc lá bạc hà tươi lên trên mặt để giữ màu xanh mát không bị thâm nhiệt, dọn dùng ấm với xôi nếp hoặc cơm trắng và rau sống."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 276,
+    "energyKcal": 276.1,
+    "energyKj": 1155,
+    "proteinG": 34.6,
+    "fatG": 8.1,
+    "saturatedFatG": 2,
+    "carbG": 15.2,
+    "fiberG": 1.8,
+    "sugarG": 3.7,
+    "sodiumMg": 1193,
+    "saltG": 2.98,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "Toasted Rice Powder Ref",
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 171477",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173474",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "91fd1e262bcc12a9764cec8398a90d8abb0a3f4e380e0864b29ab3278487b16c",
+    "researchedFromV2Sha256": "2381082acdaf96c70202747c16cc26fd431b9d86f608c078f381e9cfdfed1ac6"
+  }
+}

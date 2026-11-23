@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-f4665d594d941e4a",
+    "slug": "chao-ga-gung-nong",
+    "title": "Cháo gà gừng nóng",
+    "subtitle": "Cháo gạo rang nấu nước luộc đùi gà ngọt thanh, thịt gà xé mềm quyện gừng sợi và hành lá ấm áp"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 45,
+    "servings": 4,
+    "tags": [
+      "Cháo gà",
+      "Gừng ấm",
+      "Ăn sáng",
+      "Bồi bổ",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Nồi cháo gà gừng nóng hổi với nước dùng ngọt tự nhiên từ đùi gà ta luộc cùng gừng hành tím, hạt gạo tẻ kết hợp gạo nếp nở bung sánh mịn, thịt đùi gà xé phay mềm ngọt và gừng tươi thái chỉ ấm bụng.",
+    "servingSuggestion": "Múc cháo nóng ra tô, xếp thịt gà xé sợi lên trên cùng hành lá thái nhỏ, gừng thái chỉ, tiêu đen xay và vài giọt dầu mè; ăn kèm quẩy giòn hoặc chén nước mắm gừng.",
+    "storageAndReheat": "Có thể bảo quản phần cháo và thịt gà xé riêng trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn chỉ cần đun sôi lại phần cháo với chút nước lọc rồi cho gà xé và gừng hành vào."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE",
+      "name": "Gạo tẻ thơm",
+      "culinaryMeasure": "200 g (~1 chén đầy)",
+      "prepNote": "vo nhẹ cho sạch rồi để thật ráo trước khi rang",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GLUTINOUS_RICE",
+      "name": "Gạo nếp",
+      "culinaryMeasure": "30 g (~2 muỗng canh)",
+      "prepNote": "trộn cùng gạo tẻ để nồi cháo sánh dẻo tự nhiên",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà tươi (góc tư hoặc tỏi đùi)",
+      "culinaryMeasure": "500 g (~2–3 đùi gà)",
+      "prepNote": "chà muối rửa sạch khử mùi, luộc chín rồi xé miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 410,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "45 g (1 củ vừa)",
+      "prepNote": "chia 25 g đập dập luộc gà cho thơm, 20 g thái sợi chỉ rắc tô cháo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 40.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "25 g (~2–3 củ nhỏ)",
+      "prepNote": "để nguyên vỏ nướng sơ hoặc đập dập thả vào nồi luộc gà tạo hương thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 22,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch, giữ vài đầu hành chần nguyên, phần còn lại thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "nêm khi cháo đã nhừ để giữ trọn hương thơm dịu",
+      "componentGroup": "broth",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 3 g chà rửa gà xả sạch, 3 g luộc gà, 2 g nêm cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 5.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "6 g (~1,5 muỗng cà phê)",
+      "prepNote": "trộn 2 g vào thịt gà xé, 4 g nêm nồi cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~2/3 muỗng cà phê)",
+      "prepNote": "trộn chút vào thịt gà xé và rắc mặt tô cháo nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "nhỏ vài giọt lên mặt cháo trước khi dọn ăn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "dùng để luộc đùi gà lấy nước dùng và ninh nhừ cháo",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1700,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch đùi gà, vo gạo và sơ chế gừng hành",
+      "instruction": "Chà xát 500 g đùi gà với 3 g muối ăn trong 2 phút cho sạch mùi rồi rửa kỹ nước lạnh, để ráo. Trộn 200 g gạo tẻ với 30 g gạo nếp, vo qua 2 nước rồi chắt ráo. Đập dập 25 g gừng tươi và 25 g hành tím khô; phần 20 g gừng còn lại cạo vỏ thái sợi chỉ; hành lá rửa sạch thái nhỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc chín đùi gà lấy nước dùng ngọt thanh",
+      "instruction": "Cho đùi gà vào nồi cùng 2 lít nước lọc, gừng đập dập, hành tím và 3 g muối ăn. Đun sôi trên lửa lớn rồi hạ lửa vừa hớt sạch bọt, luộc liu riu khoảng 20 phút đến khi xiên đũa vào phần thịt dày nhất không thấy nước hồng chảy ra. Vớt đùi gà ra đĩa để nguội bớt, lọc giữ lại toàn bộ nước dùng gà.",
+      "tip": "Không luộc gà sôi sục quá mạnh để thịt đùi gà chín mềm mọng, giữ được độ ngọt và nước dùng trong veo.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Rang thơm gạo tẻ và gạo nếp",
+      "instruction": "Trong lúc luộc gà, làm nóng chảo khô không dầu trên lửa nhỏ, cho gạo tẻ và gạo nếp đã ráo nước vào rang đều tay khoảng 6 phút đến khi hạt gạo khô ráo, chuyển màu trắng đục và dậy hương thơm dịu thì tắt bếp.",
+      "tip": "Rang gạo đến khi hạt gạo trắng đục và thơm nhẹ là vừa đạt; tránh rang cháy vàng đậm sẽ làm cháo bị sẫm màu.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ninh cháo với nước luộc gà cho sánh nhừ",
+      "instruction": "Trút toàn bộ gạo rang vào nồi nước luộc gà nóng, khuấy đều một lượt rồi đun sôi trở lại. Hạ lửa nhỏ ninh khoảng 20 phút, thỉnh thoảng khuấy nhẹ sát đáy nồi để hạt gạo nở bung sánh mịn và ngấm trọn vị ngọt thanh của nước gà.",
+      "tip": "Dùng nước luộc gà nóng để ninh gạo rang giúp hạt gạo nhanh nở mềm và bát cháo đậm vị ngọt tự nhiên.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Xé sợi đùi gà luộc và trộn gia vị nhẹ",
+      "instruction": "Khi đùi gà đã nguội bớt, tách bỏ xương rồi xé thịt gà thành từng miếng sợi vừa ăn. Trộn nhẹ thịt gà xé với 2 g hạt nêm và 1 g tiêu đen xay cho đậm đà hơn."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm nồi cháo và hoàn thiện tô cháo gà gừng",
+      "instruction": "Nêm 20 ml nước mắm ngon, 4 g hạt nêm còn lại và 2 g muối ăn vào nồi cháo nhừ, khuấy đều rồi nấu thêm 2 phút trên lửa nhỏ. Múc cháo nóng ra 4 tô, xếp thịt gà xé sợi lên trên, rắc hành lá thái nhỏ, gừng tươi thái chỉ, 1 g tiêu đen xay còn lại và nhỏ đều 5 ml dầu mè trước khi thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 420,
+    "energyKcal": 419.9,
+    "energyKj": 1757,
+    "proteinG": 24.5,
+    "fatG": 12.4,
+    "saturatedFatG": 3.3,
+    "carbG": 50.2,
+    "fiberG": 1.6,
+    "sugarG": 1.3,
+    "sodiumMg": 1311,
+    "saltG": 3.28,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168881",
+      "USDA FDC 169231",
+      "USDA FDC 169756",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "d49ffb0085ed3db122a255613feaef3d072e6cbfddff7840e8d424519f6f58be",
+    "researchedFromV2Sha256": "6cf35f9128c35c80ccf4997a9fa925505d03fa4d5db58241e7b8628c0bcae3a9"
+  }
+}

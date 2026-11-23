@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-51f6c12eefee914d",
+    "slug": "dau-phu-kho-bap-cai",
+    "title": "Đậu phụ kho bắp cải",
+    "subtitle": "Đậu phụ chiên vàng óng kho mềm cùng bắp cải ngọt và nấm kim châm trong nước tương đậm đà thanh đạm"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Món kho",
+      "Đậu phụ",
+      "Bắp cải",
+      "Thanh đạm",
+      "Trung Hoa"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "braise"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món kho bình dân kiểu gia đình Trung Hoa kết hợp đậu phụ chiên vàng giòn vỏ ngoài, bắp cải giòn ngọt và nấm kim châm dai mềm thấm đẫm sốt nước tương sánh nhẹ.",
+    "servingSuggestion": "Dọn nóng ngay trong nồi đất hoặc đĩa sâu lòng, rắc hành lá và tiêu đen xay lên mặt; dùng kèm cơm trắng nóng rất bắt vị.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn, hâm nóng trên chảo lửa nhỏ 3–4 phút cho đậu phụ và bắp cải nóng đều."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng",
+      "culinaryMeasure": "3 bìa (khoảng 360 g)",
+      "prepNote": "rửa nhẹ, thấm khô bằng khăn giấy, cắt miếng vuông cỡ 3–4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải trắng",
+      "culinaryMeasure": "1/2 cây nhỏ (khoảng 400 g)",
+      "prepNote": "tách lá, rửa sạch, ngâm nước muối loãng 10 phút rồi để ráo, cắt miếng vuông vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ENOKI_MUSHROOM",
+      "name": "Nấm kim châm tươi",
+      "culinaryMeasure": "100 g",
+      "prepNote": "cắt bỏ phần gốc rễ, tách nhỏ thành từng cụm vừa ăn, rửa nhanh và để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 100,
+      "unit": "g",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 4 tép)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhuyễn để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó (khoảng 2 cây)",
+      "prepNote": "rửa sạch, cắt khúc 2–3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng chiên vàng đều các mặt đậu phụ rồi chắt bớt để xào thơm tỏi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.8,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 23.92,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu và hương thơm nước tương nền cho món kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "tạo màu nâu óng đẹp mắt cho đậu phụ và nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "tăng độ ngọt thanh và độ sánh nhẹ cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước tương và dầu hào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "3 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm thêm tùy khẩu vị khi kho bắp cải",
+      "componentGroup": "sauce",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "tăng vị ngọt dịu tự nhiên cho nước kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/2 muỗng cà phê)",
+      "prepNote": "rắc vào nồi ở bước cuối tạo hương cay ấm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "rưới ở bước hoàn thiện giúp món kho dậy hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "tạo lượng nước xâm xấp giúp bắp cải và đậu phụ thấm đều gia vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 135,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bắp cải, nấm kim châm và cắt đậu phụ",
+      "instruction": "Tách rời lá bắp cải trắng, cắt miếng vuông vừa ăn, rửa sạch rồi để ráo hoàn toàn. Nấm kim châm cắt bỏ phần gốc rễ, tách thành từng cụm nhỏ, rửa nhẹ tay và để ráo. Đậu phụ trắng thấm khô bề mặt, cắt thành miếng vuông dày khoảng 3–4 cm. Tỏi băm nhỏ, hành lá cắt khúc 2–3 cm.",
+      "tip": "Thấm thật khô miếng đậu phụ trước khi chiên để không bị bắn dầu và giúp lớp vỏ ngoài nhanh vàng giòn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chiên vàng các mặt đậu phụ",
+      "instruction": "Đun nóng 40 ml dầu ăn trong chảo chống dính trên lửa vừa. Nhẹ nhàng xếp từng miếng đậu phụ vào chảo, chiên mỗi mặt khoảng 2–3 phút đến khi vàng giòn đều các mặt thì gắp ra đĩa lót giấy thấm dầu, chắt bớt phần dầu dư trong chảo chỉ chừa lại khoảng 1 muỗng canh.",
+      "tip": "Chiên vàng mặt đậu trước khi kho tạo lớp vỏ dai nhẹ, giúp đậu giữ nguyên miếng không bị nát và hút nước kho tốt hơn.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi và xào sơ nấm cùng bắp cải",
+      "instruction": "Sử dụng phần dầu còn lại trong chảo trên lửa vừa, cho tỏi băm vào phi khoảng 30 giây cho dậy mùi thơm vàng. Thả nấm kim châm vào đảo nhanh 1 phút cho săn lại, tiếp tục cho bắp cải vào đảo đều thêm 2 phút trên lửa lớn để rau áo lớp dầu thơm.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm gia vị và om mềm bắp cải",
+      "instruction": "Cho 25 ml xì dầu nhạt, 5 ml xì dầu đặc, 15 ml dầu hào chay, 5 g đường cát trắng, 3 g muối ăn, 4 g hạt nêm chay và 150 ml nước lọc vào chảo. Đảo đều cho gia vị hòa tan, đậy nắp và hạ lửa nhỏ đun khoảng 6–8 phút cho bắp cải chín mềm và tiết nước ngọt.",
+      "tip": "Không nên đổ quá nhiều nước ngay từ đầu vì bắp cải và nấm kim châm sẽ tiết thêm nước trong quá trình đun.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho đậu phụ thấm đẫm nước sốt",
+      "instruction": "Xếp phần đậu phụ đã chiên vàng vào chảo bắp cải, dùng vá nhẹ nhàng đảo đều để đậu ngập trong phần nước kho. Tiếp tục kho liu riu thêm 4–5 phút cho đậu phụ phồng mềm và thấm sâu hương vị nước tương.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với tiêu đen, dầu mè và hành lá",
+      "instruction": "Nêm nếm lại nước kho cho vừa khẩu vị, rưới 5 ml dầu mè thơm, rắc 1 g tiêu đen xay và hành lá cắt khúc lên mặt chảo rồi tắt bếp. Dọn món ăn ra đĩa sâu lòng và dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 254,
+    "energyKcal": 253.8,
+    "energyKj": 1062,
+    "proteinG": 15.8,
+    "fatG": 16.1,
+    "saturatedFatG": 2.3,
+    "carbG": 16.7,
+    "fiberG": 5.4,
+    "sugarG": 7.3,
+    "sodiumMg": 1428,
+    "saltG": 3.57,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169253",
+      "USDA FDC 169655",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 172475",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "ca80a96598d41662040e7bcdec81dfc698b6711e5ce9436210446d7676b9e18e",
+    "researchedFromV2Sha256": "77cde94fa04560d42870a3a4793a02c21a17bc355a5fcd92d851effacc0dc87e"
+  }
+}

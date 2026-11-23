@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-51b6559bf09bc980",
+    "slug": "canh-tom-nau-bi-do",
+    "title": "Canh tôm nấu bí đỏ dẻo ngọt",
+    "subtitle": "Bí đỏ hầm bở dẻo hòa quyện vị tôm sú xào thơm tỏi và gừng sợi ấm bụng, tạo nên tô canh vàng sánh ngọt lành cho bữa cơm nhà"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 22,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Nam Bộ",
+      "Bí đỏ",
+      "Bổ dưỡng",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Khác với kiểu nấu nhanh giữ miếng, bí đỏ được ninh bở dẻo trên lửa nhỏ cùng nước dùng ngọt thanh từ tôm tươi xào tỏi gừng thơm nức, mang đến tô canh ấm áp sánh vàng dịu nhẹ.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, rắc hành lá, ngò rí và tiêu xay; dùng kèm cơm trắng nóng rất thích hợp cho bữa tối gia đình quây quần.",
+    "storageAndReheat": "Để nguội rồi bảo quản hộp kín trong tủ mát tối đa 24 giờ; khi hâm lại nên khuấy đều nhẹ tay trên lửa nhỏ để phần bí bở dẻo không bén đáy nồi."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PUMPKIN",
+      "name": "Bí đỏ tươi",
+      "culinaryMeasure": "0.625 quả (~500 g cả vỏ)",
+      "prepNote": "gọt bỏ vỏ cứng, nạo sạch ruột và hạt, rửa sạch rồi cắt miếng vừa ăn cỡ 2–3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.625,
+      "unit": "piece",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 390,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi (hoặc tôm thẻ)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "lột vỏ, bỏ đầu, rút sạch chỉ đen sống lưng, rửa ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 234,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (~12,5 g, 3–4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ để phi thơm xào săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 11.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "8 g (1 lát nhỏ)",
+      "prepNote": "cạo vỏ, thái sợi mảnh phi cùng tỏi để khử tanh tôm và tạo vị ấm bụng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 7.2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 3 nhánh)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nhúm nhỏ)",
+      "prepNote": "nhặt bỏ gốc, rửa sạch, thái nhỏ rắc mặt canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi gừng và xào săn tôm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.11,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "nêm ở bước cuối giúp nước canh dậy mùi thơm",
+      "componentGroup": "broth",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia nửa ướp tôm và nửa điều chỉnh vị canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp tôm và 3 g nêm nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "làm bật vị ngọt bùi tự nhiên của bí đỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia nửa ướp tôm, nửa rắc khi hoàn thiện",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1200 ml (1,2 lít)",
+      "prepNote": "lượng nước dùng giúp hầm bí đỏ chín dẻo sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 1020,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế bí đỏ, rau thơm và làm sạch tôm",
+      "instruction": "Gọt sạch vỏ 0,625 quả bí đỏ, bỏ hết phần ruột và hạt, rửa sạch rồi thái miếng vuông cạnh 2–3 cm. Lột vỏ 300 g tôm tươi, bỏ đầu, rạch nhẹ lưng rút sạch chỉ đen, rửa qua nước lạnh rồi thấm ráo. Băm nhỏ 12,5 g tỏi khô, thái sợi mảnh 8 g gừng tươi, thái nhỏ hành lá và ngò rí.",
+      "tip": "Chọn miếng bí đỏ có vỏ sẫm màu và ruột vàng cam rực sẽ cho thành phẩm dẻo bùi và ngọt nước hơn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp tôm tươi cho săn chắc đậm đà",
+      "instruction": "Cho thịt tôm đã làm sạch vào tô, ướp cùng 4 g hạt nêm, 3 g muối ăn và 1 g tiêu đen xay. Trộn đều rồi để nghỉ khoảng 12 phút cho thịt tôm săn nhẹ và thấm đều gia vị.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm tỏi gừng và xào săn tôm tươi",
+      "instruction": "Làm nóng nồi đáy dày với 15 ml dầu ăn trên lửa vừa, cho tỏi băm và gừng thái sợi vào phi thơm dậy mùi. Trút tôm đã ướp vào đảo nhanh tay 2 phút đến khi tôm vừa săn lại và chuyển màu hồng cam thì tắt nhẹ lửa, gắp tôm ra chén riêng.",
+      "tip": "Gắp tôm ra riêng sau khi xào săn để tránh tôm bị ninh chung 15 phút với bí đỏ sẽ mất độ giòn ngọt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ninh bí đỏ chín bở dẻo trên lửa nhỏ",
+      "instruction": "Đổ 1,2 lít nước lọc vào nồi vừa xào tôm, bật lửa lớn đun sôi bùng và hớt sạch bọt nếu có. Thả toàn bộ bí đỏ cắt miếng vào, hạ xuống lửa nhỏ và ninh khoảng 15 phút đến khi dùng đũa xiên thử thấy bí chín mềm bở dẻo.",
+      "tip": "Hầm bí đỏ trên lửa nhỏ giúp miếng bí chín bở dẻo từ từ và tiết vị ngọt sánh tự nhiên mà không bị đục nước.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cho tôm trở lại và nêm nếm vị ngọt thanh",
+      "instruction": "Trút phần tôm đã xào vào nồi bí đỏ, nêm 3 g muối còn lại, 4 g hạt nêm, 5 g đường cát trắng và 10 ml nước mắm ngon. Khuấy nhẹ cho gia vị hòa tan rồi đun sôi lăn tăn thêm 2 phút cho tôm chín kỹ hoàn toàn và hòa quyện với nước bí.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành ngò, tiêu xay và dùng nóng",
+      "instruction": "Nếm lại cho vừa khẩu vị rồi tắt bếp, rắc hành lá, ngò rí thái nhỏ và 1 g tiêu đen xay còn lại lên mặt nồi. Múc canh ra tô dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 123,
+    "energyKcal": 123,
+    "energyKj": 515,
+    "proteinG": 13.4,
+    "fatG": 3.8,
+    "saturatedFatG": 0.6,
+    "carbG": 10.5,
+    "fiberG": 0.9,
+    "sugarG": 4.5,
+    "sodiumMg": 1220,
+    "saltG": 3.05,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168448",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2041006f1a05862ce58acbf14f87b75f3b06353f4187bbbd5d357b4580f57bda",
+    "researchedFromV2Sha256": "99fa6a307e0f3fa51bc9b4106c556b0468be4884cfb3828783be0704facdd8e9"
+  }
+}

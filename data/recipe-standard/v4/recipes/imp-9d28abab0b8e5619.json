@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9d28abab0b8e5619",
+    "slug": "ga-ham-kim-chi",
+    "title": "Gà hầm kim chi (Dak Kimchi Jjim)",
+    "subtitle": "Đùi gà hầm mềm thấm đẫm vị kim chi cải thảo ủ chua cay nồng, sóng sánh nước sốt đỏ đậm đà kiểu Dak Kimchi Jjim cực đưa cơm"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Hàn Quốc",
+      "Món hầm",
+      "Thịt gà",
+      "Kim chi",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gà hầm kim chi (Dak Kimchi Jjim) kết hợp những miếng đùi gà chặt vừa ăn được om chậm cùng kim chi cải thảo chua lâu năm và sốt Gochujang cay thơm, cho phần thịt gà mềm rục thấm vị và nước sốt sánh đỏ cực kỳ bắt cơm.",
+    "servingSuggestion": "Bày gà hầm kim chi nóng hổi ra đĩa sâu lòng hoặc nồi đất, rắc hành lá xanh lên mặt và ăn kèm cơm trắng dẻo nóng.",
+    "storageAndReheat": "Để nguội hoàn toàn rồi bảo quản hộp kín trong ngăn mát tối đa 3 ngày; khi dùng hâm nóng trên lửa vừa 6–8 phút, có thể thêm chút nước nếu sốt quá sánh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà có xương chặt miếng",
+      "culinaryMeasure": "750 g",
+      "prepNote": "rửa sạch với muối loãng, thấm khô, chặt miếng vừa ăn và khứa nhẹ cho thấm vị",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 615,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo ủ chua kỹ",
+      "culinaryMeasure": "500 g (kèm khoảng 60 ml nước kim chi)",
+      "prepNote": "giữ nguyên bẹ hoặc cắt đôi dọc để om lâu không bị nát",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,5 củ (~70 g)",
+      "prepNote": "bóc vỏ, thái múi cau dày 1 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhuyễn",
+      "culinaryMeasure": "0,4 củ (~10 g, 3 tép)",
+      "prepNote": "băm nhuyễn để pha sốt ướp om gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 8.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, thái khúc dài 4 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "làm nước om gà và kim chi giúp cân bằng độ mặn đậm sẵn có của gia vị",
+      "componentGroup": "broth",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": false
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "36 g (~2 muỗng canh)",
+      "prepNote": "hòa vào nước sốt om gà tạo màu đỏ đẹp và độ sánh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 36,
+      "unit": "g",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "7 g (~1 muỗng canh)",
+      "prepNote": "tăng vị cay ấm và màu sắc rực rỡ cho món hầm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 7,
+      "unit": "g",
+      "grossGrams": 7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm đà hài hòa cho thịt gà và kim chi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm cá cơm",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "thay thế tép muối Hàn giúp tăng hậu vị umami cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (~1 muỗng canh)",
+      "prepNote": "cân bằng vị chua nồng của kim chi ủ kỹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SAKE",
+      "name": "Rượu nấu ăn (Sake hoặc rượu gạo)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "giúp khử mùi thịt gà và làm thịt mềm thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.85,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 12.62,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "tạo vị cay thơm nhẹ cho phần nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để món hầm thơm lừng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế đùi gà, kim chi và rau củ",
+      "instruction": "Rửa sạch 750 g đùi gà có xương chặt miếng, để ráo và khứa nhẹ vài đường trên thịt để nhanh thấm sốt. Cắt đôi theo chiều dọc 500 g kim chi cải thảo ủ chua kỹ và chắt giữ khoảng 60 ml nước kim chi. Thái múi cau hành tây, cắt khúc 4 cm hành lá tươi.",
+      "tip": "Giữ nguyên bẹ kim chi dài hoặc chỉ cắt làm đôi giúp kim chi khi hầm 30 phút vẫn còn độ mềm dai chứ không bị vụn."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt om Gochujang đậm đà",
+      "instruction": "Trong tô vừa, khuấy đều 36 g tương ớt Hàn Quốc (Gochujang), 7 g ớt bột Hàn Quốc (Gochugaru), 30 ml nước tương, 15 ml nước mắm cá cơm, 12 g đường cát trắng, 15 ml rượu nấu ăn, 1 g tiêu đen xay, tỏi khô băm nhuyễn và phần nước kim chi cho hòa quyện hoàn toàn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xếp kim chi, thịt gà và đun sôi nồi hầm",
+      "instruction": "Lót một lớp kim chi cải thảo xuống đáy nồi rộng, xếp các miếng đùi gà và hành tây lên trên rồi phủ phần kim chi còn lại xung quanh. Rưới đều tô sốt Gochujang và rót 450 ml nước lọc vào nồi, đậy nắp đun lửa lớn 5 phút đến khi sôi bùng.",
+      "tip": "Xếp kim chi lót đáy nồi vừa giúp thịt gà không bị bén đáy, vừa để kim chi thấm mỡ gà tiết ra rất ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Hầm liu riu cho đùi gà chín mềm thấm sốt",
+      "instruction": "Hạ lửa vừa-nhỏ, đậy nắp hầm 25 phút cho đến khi thịt đùi gà chín mềm hoàn toàn sát xương (không còn nước hồng khi xăm đũa) và kim chi dịu vị chua. Trong quá trình hầm, thỉnh thoảng mở nắp múc nước sốt rưới đều lên mặt thịt gà.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cô sánh nước sốt và thêm hành lá",
+      "instruction": "Mở nắp nồi, tăng lên lửa vừa nấu thêm 5 phút để phần nước sốt rút bớt, sánh đỏ bóng mượt áo đều lên từng miếng gà và kim chi. Thả hành lá tươi cắt khúc vào đảo nhẹ cho vừa chín tới.",
+      "tip": "Canh độ sánh của sốt theo sở thích: nếu thích chan nhiều nước sốt ăn cơm thì có thể tắt bếp sớm hơn 2 phút.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới dầu mè và dọn nóng",
+      "instruction": "Tắt bếp, rưới 10 ml dầu mè rang lên khắp bề mặt nồi gà hầm kim chi, dọn nóng ngay ra bàn cùng cơm trắng nóng hổi."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 370,
+    "energyKcal": 369.5,
+    "energyKj": 1547,
+    "proteinG": 33.1,
+    "fatG": 19.5,
+    "saturatedFatG": 5,
+    "carbG": 14.6,
+    "fiberG": 3.5,
+    "sugarG": 7.6,
+    "sodiumMg": 1808,
+    "saltG": 4.52,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Chili Flake Ref",
+      "MEXT Sake 16021",
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "bc3cb19bce5a478f8d221f3a31892d681d5a6c969ab726d808bd2eed7d00a6f6",
+    "researchedFromV2Sha256": "48f079129023a33b9da3c5f08c87975695ba2cd80afa945f9764b45863939f20"
+  }
+}

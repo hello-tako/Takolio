@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6d26ce6b0af4fb79",
+    "slug": "rau-bina-om-kem-y",
+    "title": "Rau bina om sốt kem Béchamel kiểu Ý",
+    "subtitle": "Rau bina hấp xào mềm mượt quyện trong sốt kem Béchamel béo thanh, phô mai Parmesan và thoảng hương nhục đậu khấu"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Rau bina",
+      "Béchamel",
+      "Sốt kem",
+      "Món phụ",
+      "Món chay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "simmer",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món rau ăn kèm sang trọng chuẩn cổ điển Ý với rau bina nấu chín bằng chính độ ẩm tự nhiên rồi vắt ráo, xào thơm cùng hành tây và hòa quyện trong lớp sốt kem trắng Béchamel sánh mịn, thơm vị bơ sữa, Parmesan và nhục đậu khấu.",
+    "servingSuggestion": "Múc rau bina om sốt kem nóng ra đĩa sâu lòng và thưởng thức ngay cùng thịt gà nướng, bò áp chảo hoặc phi lê cá nướng lò.",
+    "storageAndReheat": "Món ăn ngon nhất khi dùng ngay lúc mới nấu xong. Nếu bảo quản ngăn mát tối đa 24 giờ, hâm nóng nhẹ trên chảo với 1–2 muỗng canh sữa tươi và khuấy đều tay."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "600 g",
+      "prepNote": "rửa thật sạch nhiều lần nước, giữ độ ẩm bám trên lá để hấp chín rồi vắt thật kiệt nước",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 540,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "1/4 củ (~35 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để xào mềm trong",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 31.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "25 g",
+      "prepNote": "đun chảy trên lửa nhỏ để xào bột làm nền sốt Béchamel",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "khuấy đều cùng bơ chảy 1–2 phút trước khi rót sữa tươi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "để ở nhiệt độ phòng hoặc hơi ấm, rót từ từ để sốt không bị vón cục",
+      "componentGroup": "sauce",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 257.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 257.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "30 g",
+      "prepNote": "khuấy tan vào sốt Béchamel sau khi sốt đã sánh mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng để xào mềm hành tây trên lửa thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "NUTMEG",
+      "name": "Nhục đậu khấu xay",
+      "culinaryMeasure": "0,5 g (1 nhúm nhỏ)",
+      "prepNote": "tạo hương thơm ấm cổ điển đặc trưng cho sốt Béchamel",
+      "componentGroup": "sauce",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "nêm vào sốt Béchamel và chỉnh lại sau khi trộn rau bina",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "nêm vào sốt cho dịu vị béo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "cook",
+      "title": "Làm chín rau bina bằng độ ẩm tự nhiên và vắt kiệt nước",
+      "instruction": "Nhặt và rửa thật sạch 600 g rau bina tươi dưới vòi nước, không cần vẩy quá khô mà cho thẳng rau còn ướt vào nồi to, đậy nắp đun lửa vừa 4–5 phút đến khi rau xẹp mềm. Vớt rau ra rổ để hơi nguội rồi dùng tay vắt thật kiệt hết nước thừa và thái thô.",
+      "tip": "Vắt kiệt nước rau bina sau khi hấp chín là bước quan trọng nhất để món om giữ độ kem sánh đặc chứ không bị tách nước.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào dịu hành tây và đảo thơm rau bina",
+      "instruction": "Làm nóng 15 ml dầu ô liu nguyên chất trong chảo trên lửa thật nhỏ, cho hành tây vàng băm nhuyễn vào xào khoảng 8 phút đến khi hành mềm trong suốt mà không chuyển vàng. Thả rau bina đã vắt kiệt vào đảo nhanh 1 phút cho thấm hương hành rồi tạm tắt bếp.",
+      "tip": "Xào hành tây ở lửa thật nhỏ để hành tiết vị ngọt tự nhiên và trong mềm mà không bị cháy sém làm xỉn màu sốt trắng.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Nấu nền bột bơ và khuấy mịn sốt Béchamel",
+      "instruction": "Đặt nồi nhỏ lên lửa nhỏ, cho 25 g bơ lạt vào đun chảy hoàn toàn rồi thêm 25 g bột mì đa dụng, khuấy liên tục bằng phới lồng trong 1–2 phút đến khi bột quyện bơ sủi bọt nhẹ mà không ngả nâu. Rót từ từ 250 ml sữa tươi không đường vào, vừa rót vừa khuấy đều tay để hỗn hợp hòa tan hoàn toàn không vón cục.",
+      "tip": "Rót sữa từng ít một ở bước đầu và khuấy liên tục bằng phới lồng giúp sốt Béchamel láng mịn tuyệt đối.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nấu sánh sốt và hòa tan phô mai Parmesan",
+      "instruction": "Tiếp tục đun sốt trên lửa nhỏ khoảng 5 phút, khuấy đều tay đến khi sốt sánh mượt phủ đều mặt muỗng. Nêm 4 g muối ăn, 1 g tiêu đen xay và 0,5 g nhục đậu khấu xay, sau đó nhấc nồi khỏi bếp và khuấy tan 30 g phô mai Parmesan bào mịn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn quyện rau bina vào sốt kem Béchamel",
+      "instruction": "Cho toàn bộ rau bina xào hành tây vào nồi sốt kem Béchamel, trộn đều nhẹ tay cho từng lá rau phủ kín lớp sốt trắng sánh mịn và nêm lại độ mặn vừa khẩu vị."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Dọn nóng ngay khi sốt còn sánh mượt",
+      "instruction": "Múc rau bina om sốt kem ra đĩa sâu lòng và dùng nóng ngay kèm các món thịt nướng hoặc cá áp chảo."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 273,
+    "energyKcal": 273.2,
+    "energyKj": 1143,
+    "proteinG": 12.8,
+    "fatG": 17.8,
+    "saturatedFatG": 8.4,
+    "carbG": 18.7,
+    "fiberG": 4.5,
+    "sugarG": 5.7,
+    "sodiumMg": 850,
+    "saltG": 2.13,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168462",
+      "USDA FDC 169761",
+      "USDA FDC 170000",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171326",
+      "USDA FDC 171413",
+      "USDA FDC 173430",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "bcd39cc4f63da275678b9a14e0eed055e31ab9ca81ac39853424489be4324059",
+    "researchedFromV2Sha256": "52adc251baac5e19a044a0cfb1eaa0313c91300c85fccae387c8e5708fcadf02"
+  }
+}

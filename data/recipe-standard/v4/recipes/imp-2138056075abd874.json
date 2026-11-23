@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-2138056075abd874",
+    "slug": "salad-dau-phu-dua-leo",
+    "title": "Salad đậu phụ dưa leo kiểu Nhật",
+    "subtitle": "Đậu phụ trắng ép ráo cắt khối mềm mịn trộn cùng dưa leo giòn mát, hành lá và sốt tương Miso trắng giấm gạo dầu ô liu mè rang thanh nhẹ"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 3,
+    "servings": 3,
+    "tags": [
+      "Salad Nhật",
+      "Đậu phụ",
+      "Dưa leo",
+      "Thanh mát",
+      "Món chay nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix",
+      "assemble"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món salad lạnh kiểu Nhật hài hòa kết cấu giữa đậu phụ trắng mềm béo đã ép ráo nước, dưa leo tươi giòn mát và lớp sốt trộn sánh thơm từ tương Miso trắng, giấm gạo, xì dầu Nhật, dầu ô liu và mè trắng rang.",
+    "servingSuggestion": "Dọn salad đậu phụ dưa leo lạnh mát ra tô hoặc đĩa sâu lòng, rắc thêm hạt mè rang lên mặt; rất thích hợp dùng làm món khai vị hoặc món ăn kèm chống ngán cho các món chiên nướng.",
+    "storageAndReheat": "Salad đậu phụ ngon nhất khi ăn trong ngày ngay sau khi làm lạnh 10 phút; nếu bảo quản qua đêm trong tủ lạnh, dưa leo có thể tiết nước làm loãng sốt."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng loại chắc",
+      "culinaryMeasure": "2,5 bìa (khoảng 300 g)",
+      "prepNote": "bọc khăn giấy ép nhẹ 15 phút cho ráo bớt nước rồi cắt khối vuông cạnh 1,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "2 quả vừa (khoảng 300 g)",
+      "prepNote": "rửa sạch, lau khô, bổ dọc bỏ bớt phần ruột hạt rồi cắt khối vuông 1,5 cm đều với đậu phụ",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch bằng nước đun sôi để nguội, thấm khô rồi thái khoanh mỏng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MISO",
+      "name": "Tương Miso trắng Nhật Bản",
+      "culinaryMeasure": "30 g (~2 muỗng canh)",
+      "prepNote": "dùng loại Miso trắng vị ngọt dịu, đánh tan mịn trước khi thêm dầu ô liu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo Nhật",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo vị chua thanh nhẹ và giúp hòa tan tương Miso",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 40.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn umami hài hòa cho sốt trộn salad",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "rót từ từ khi đánh sốt để tạo nhũ tương sánh mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 27.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "làm dịu vị chua của giấm gạo và cân bằng độ mặn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "20 g (~2 muỗng canh)",
+      "prepNote": "chia 15 g trộn vào sốt và 5 g giữ lại rắc trang trí",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ép ráo nước đậu phụ trắng",
+      "instruction": "Lấy 300 g đậu phụ trắng loại chắc ra khỏi hộp, bọc kín bằng 2–3 lớp khăn giấy thấm nước rồi đặt lên đĩa phẳng và chèn một vật nặng vừa phải (như thớt nhỏ) lên trên. Để ép khoảng 15 phút cho đậu ráo bớt nước thừa.",
+      "tip": "Ép ráo đậu phụ trước khi trộn giúp miếng đậu săn chắc giữ nguyên khối vuông đẹp mắt và không làm loãng nước sốt salad.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Cắt khối dưa leo, đậu phụ và thái hành lá",
+      "instruction": "Rửa sạch dưa leo tươi, lau thật khô, bổ dọc làm đôi và dùng thìa nạo nhẹ bỏ phần ruột hạt nhiều nước rồi cắt khối vuông cạnh 1,5 cm. Gỡ bỏ khăn giấy quanh đậu phụ và cắt khối vuông 1,5 cm đồng kích thước với dưa leo; hành lá thái khoanh thật mỏng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Đánh sốt Miso giấm gạo dầu ô liu",
+      "instruction": "Cho 30 g tương Miso trắng Nhật Bản, 40 ml giấm gạo Nhật, 30 ml xì dầu Nhật Bản và 4 g đường cát trắng vào tô nhỏ, dùng phới lồng khuấy tan mịn hoàn toàn. Vừa khuấy đều vừa rót từ từ 30 ml dầu ô liu nguyên chất vào cho sốt quyện sánh, sau đó trộn thêm 15 g hạt mè trắng rang.",
+      "tip": "Phải đánh tan hoàn toàn tương Miso với giấm và xì dầu trước khi rót dầu ô liu để sốt nhũ hóa mịn mượt, không bị vón cục."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Trộn nhẹ nhàng đậu phụ và dưa leo với sốt",
+      "instruction": "Cho đậu phụ cắt khối, dưa leo và hành lá thái mỏng vào tô trộn rộng, rưới đều toàn bộ phần sốt Miso mè rang lên trên. Dùng thìa dẹt hất nhẹ từ đáy tô lên để sốt phủ đều khắp mặt mà không làm vỡ nát miếng đậu phụ.",
+      "tip": "Dùng tô rộng và hất nhẹ từ đáy lên giúp các khối đậu phụ giữ nguyên hình dạng vuông vức, không bị nát vụn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Làm lạnh salad cho thấm vị",
+      "instruction": "Bọc kín miệng tô bằng màng bọc thực phẩm và đặt vào ngăn mát tủ lạnh khoảng 10 phút cho các nguyên liệu mát giòn và ngấm đều hương vị sốt.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Bày đĩa, rắc mè rang và thưởng thức",
+      "instruction": "Lấy salad đậu phụ dưa leo ra khỏi tủ lạnh, múc nhẹ nhàng vào đĩa sâu lòng, rắc 5 g hạt mè trắng rang còn lại lên mặt và dùng lạnh ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 253,
+    "energyKcal": 252.6,
+    "energyKj": 1057,
+    "proteinG": 14.1,
+    "fatG": 18.5,
+    "saturatedFatG": 2.6,
+    "carbG": 11.5,
+    "fiberG": 3,
+    "sugarG": 4.2,
+    "sodiumMg": 1034,
+    "saltG": 2.58,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168409",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 172446",
+      "USDA FDC 172475",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "5d84a2afde3240c01848d79165385e4be1c53d792ac17a3a4d8b9752c69e47be",
+    "researchedFromV2Sha256": "6653ebb1cd0a86b1bb8865456cf75160a3835eb9daaa6e781241d95fa7170142"
+  }
+}

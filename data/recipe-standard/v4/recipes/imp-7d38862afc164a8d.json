@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7d38862afc164a8d",
+    "slug": "muc-hap-tuong-han",
+    "title": "Mực xào xì dầu Hàn Quốc",
+    "subtitle": "Khoanh mực tươi giòn ngọt xào lửa lớn cùng hành tây, ớt chuông và sốt xì dầu dầu hào mặn ngọt không cay"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Mực tươi",
+      "Xì dầu",
+      "Hàn Quốc",
+      "Không cay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "molluscs",
+      "sesame",
+      "soybean",
+      "squid",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mực xào xì dầu Hàn Quốc (Ojingeo Ganjang-bokkeum) nổi bật với từng khoanh mực trắng giòn sần sật, thấm đẫm sốt xì dầu đặc và dầu hào ngọt mặn hài hòa cùng hành tây, ớt chuông giòn tươi.",
+    "servingSuggestion": "Trút mực xào ra đĩa rộng, rắc thêm hạt mè trắng rang lên trên; dọn nóng ngay ăn kèm cơm trắng rất bắt vị, phù hợp cho cả trẻ nhỏ vì không cay.",
+    "storageAndReheat": "Mực xào ngon nhất khi thưởng thức ngay sau khi nấu để giữ độ giòn ngọt; nếu bảo quản ngăn mát tối đa 24 giờ, chỉ đảo nóng nhanh trên chảo 1–2 phút tránh làm mực dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SQUID",
+      "name": "Mực ống tươi",
+      "culinaryMeasure": "600 g (khoảng 2–3 con vừa)",
+      "prepNote": "rút bỏ túi mực, nội tạng và mai trong, rửa sạch rồi cắt khoanh dày 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 600,
+      "unit": "g",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 510,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái múi cau mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "3/4 quả (khoảng 112 g)",
+      "prepNote": "bỏ hạt và cuống, thái sợi bản rộng 0,8 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 95.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1,5 bó nhỏ (khoảng 60 g)",
+      "prepNote": "rửa sạch, thái nhỏ 1/3 phần đầu hành để phi thơm, 2/3 còn lại cắt khúc 4 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 55.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "3/4 củ (khoảng 18 g, ~6 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.8,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "DARK_SOY_SAUCE",
+      "name": "Xì dầu đặc",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "tạo màu nâu bóng đẹp và vị đậm đà cho mực",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 43.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 43.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "tăng vị ngọt umami và độ sánh cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "10 g (~2,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của xì dầu và dầu hào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "dùng để phi thơm hành tỏi và xào nhanh trên lửa lớn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "rưới sau cùng khi tắt bếp tạo mùi thơm béo",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 13.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "rắc phủ mặt đĩa mực xào trước khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch mực tươi và cắt khoanh đều tay",
+      "instruction": "Rút nhẹ phần đầu mực để loại bỏ túi mực, nội tạng và thanh mai trong suốt ở lưng. Rửa sạch thân và râu mực dưới vòi nước lạnh rồi thấm thật ráo nước. Cắt thân mực thành từng khoanh tròn dày khoảng 1 cm và cắt rời phần râu thành miếng vừa ăn.",
+      "tip": "Thấm thật khô mực sau khi rửa giúp mực không bị tiết quá nhiều nước làm loãng sốt khi xào."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái rau củ và pha chén sốt xì dầu dầu hào",
+      "instruction": "Thái hành tây thành múi cau mỏng, cắt ớt chuông đỏ thành sợi dày 0,8 cm; chia hành lá thành 1/3 phần đầu hành thái nhỏ và 2/3 phần lá cắt khúc 4 cm, tỏi khô băm nhuyễn. Khuấy tan 35 ml xì dầu đặc, 20 ml dầu hào cùng 10 g đường cát trắng trong chén nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tỏi và xào hành tây vừa chín trong",
+      "instruction": "Làm nóng chảo rộng với 30 ml dầu ăn trên lửa vừa, cho tỏi băm và phần đầu hành lá thái nhỏ vào phi nhanh khoảng 20 giây cho dậy mùi thơm mà không bị cháy. Thả hành tây vào đảo đều trong 2 phút đến khi mép hành hơi trong lại.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào nhanh mực và ớt chuông trên lửa lớn",
+      "instruction": "Tăng bếp lên lửa lớn, trút mực tươi, ớt chuông đỏ và toàn bộ chén sốt xì dầu dầu hào đã pha vào chảo. Đảo liên tục và nhanh tay trong 3 phút đến khi khoanh mực săn tròn, chuyển màu trắng đục chín đều và nước sốt sánh nhẹ bám quanh thân mực.",
+      "tip": "Xào mực dứt khoát trên lửa lớn trong 2–3 phút là bí quyết giữ mực giòn ngọt; xào lâu hơn mực sẽ dai và ra nước.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cô sánh sốt nếu chảo còn nhiều nước",
+      "instruction": "Quan sát đáy chảo, nếu mực tiết nhiều nước, giữ lửa lớn đảo thêm 30–60 giây cho nước cạn bớt và phần sốt áo bóng đẹp vào từng miếng mực và ớt chuông."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, dầu mè và mè rang hoàn thiện món",
+      "instruction": "Tắt bếp rồi thả phần hành lá cắt khúc 4 cm vào đảo nhanh 30 giây cho vừa tái xanh, sau đó rưới 15 ml dầu mè rang, rắc 6 g hạt mè trắng rang và trộn đều một lượt trước khi bày ra đĩa dùng nóng với cơm trắng.",
+      "tip": "Rưới dầu mè rang sau khi tắt bếp giúp giữ trọn hương thơm béo đặc trưng mà không bị đắng khét."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 348,
+    "energyKcal": 347.7,
+    "energyKj": 1455,
+    "proteinG": 29.2,
+    "fatG": 16.5,
+    "saturatedFatG": 2.7,
+    "carbG": 20.5,
+    "fiberG": 2.1,
+    "sugarG": 8.9,
+    "sodiumMg": 1005,
+    "saltG": 2.51,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Dark Soy Sauce Label Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170108",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 174223"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a9337c6bcc5cff3c7620e0f9a526eaae65b2fb04d245e6804e1203bc53cbfec5",
+    "researchedFromV2Sha256": "e15a457bb5d30de285cb541a5f5505b3ff37efaeefffa06dbf08f3886cb3aacb"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-de5ce12092f4f0aa",
+    "slug": "frittata-rau-bina-pho-mai",
+    "title": "Trứng chiên kiểu Ý Frittata rau bina phô mai",
+    "subtitle": "Khối trứng chiên dày xốp kết hợp rau bina xào thơm, hành tây ngọt dịu cùng hai lớp phô mai Parmesan và Mozzarella tan chảy béo ngậy"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Frittata",
+      "Trứng chiên",
+      "Rau bina",
+      "Phô mai"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk"
+    ]
+  },
+  "overview": {
+    "description": "Frittata rau bina phô mai là món trứng chiên dày kiểu Ý giàu đạm và chất xơ, dễ làm ngay trên bếp chảo chống dính mà không cần lò nướng. Rau bina được làm xẹp và vắt thật ráo nước để khối trứng chiên lên xốp mềm, thơm ngậy phô mai.",
+    "servingSuggestion": "Trượt khối Frittata ra thớt hoặc đĩa lớn, để nguội bớt 2 phút rồi cắt thành 6 múi tam giác đều nhau, ăn kèm salad rau trộn dầu giấm hoặc bánh mì nướng.",
+    "storageAndReheat": "Frittata ăn ngon cả khi nóng lẫn nguội; có thể bọc kín bảo quản ngăn mát 2–3 ngày và hâm nóng nhẹ bằng chảo khô lửa nhỏ hoặc thưởng thức ở nhiệt độ phòng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "6 quả (~300 g)",
+      "prepNote": "đập ra tô lớn, đánh bông nhẹ với phô mai và gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 6,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 264,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "250 g",
+      "prepNote": "rửa sạch đất cát nhiều lần, làm xẹp rồi vắt thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào",
+      "culinaryMeasure": "40 g",
+      "prepNote": "bào mịn để trộn vào trứng giúp dậy vị đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 40,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "MOZZARELLA_CHEESE",
+      "name": "Phô mai Mozzarella bào sợi",
+      "culinaryMeasure": "60 g",
+      "prepNote": "trộn cùng trứng để tạo độ béo kéo sợi mềm mại",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/5 củ (~84 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.6,
+      "unit": "piece",
+      "grossGrams": 84,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 75.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/5 củ (2 tép, ~5 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 4.35,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "thêm vào tô trứng giúp khối Frittata mềm mịn hơn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 30.9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30.9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 12 ml phi hành rau và 13 ml tráng chảo chiên trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "chia nhẹ để xào rau và nêm tô trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm thơm phần rau và trứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm xẹp và vắt ráo rau bina tươi",
+      "instruction": "Rửa sạch 250 g rau bina tươi qua nhiều lần nước cho hết cát, nhặt bỏ cuống già. Cho rau vào chảo khô trên lửa vừa (không thêm dầu hay nước), đảo khoảng 2 phút cho rau xẹp hết rồi trút ra rổ để nguội bớt, dùng tay vắt thật ráo nước và thái thô.",
+      "tip": "Vắt thật kiệt nước ở rau bina là bước quan trọng nhất để món Frittata không bị chảy nước hay nhão.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi thơm hành tây, tỏi và xào lại rau bina",
+      "instruction": "Làm sạch chảo, cho 12 ml dầu ô liu vào đun lửa vừa. Cho hành tây thái hạt lựu vào phi 3 phút đến khi mềm trong, thêm tỏi băm (nếu dùng) đảo 30 giây. Trút rau bina đã vắt ráo vào đảo 1 phút cùng 1 g muối ăn và 0,5 g tiêu đen xay, tắt bếp để nguội 4 phút.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Đánh bông trứng gà với hai loại phô mai",
+      "instruction": "Đập 6 quả trứng gà tươi ra tô lớn, đánh mạnh tay bằng phới lồng khoảng 1 phút cho trứng bông nhẹ. Thêm 40 g phô mai Parmesan bào, 60 g phô mai Mozzarella bào sợi, 30 ml sữa tươi không đường (nếu dùng), 3 g muối ăn và 1 g tiêu đen xay vào khuấy đều. Trút hỗn hợp rau đã nguội bớt vào trộn đều.",
+      "tip": "Phải đợi rau nguội bớt mới trộn vào trứng để tránh làm trứng bị chín vón lợn cợn trước khi chiên."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chiên chậm Frittata ở lửa nhỏ và đậy vung",
+      "instruction": "Lau sạch chảo chống dính đường kính 24 cm, tráng 13 ml dầu ô liu còn lại trên lửa nhỏ-vừa rồi đổ hỗn hợp trứng rau vào dàn đều mặt. Để yên 2 phút cho mép trứng se lại, dùng phới đẩy nhẹ mép vào giữa và nghiêng chảo cho trứng lỏng chảy xuống đáy lặp lại trong 6 phút, sau đó đậy nắp nấu thêm 2 phút cho mặt trên se đặc.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lật mặt áp vàng hai bên khối Frittata",
+      "instruction": "Úp một chiếc đĩa phẳng lớn lên miệng chảo, dứt khoát lật ngược khối Frittata ra đĩa rồi nhẹ nhàng trượt mặt còn lại xuống chảo. Áp chảo thêm khoảng 3 phút trên lửa nhỏ đến khi cả hai mặt đều vàng đẹp và phần lõi trứng chín chắc hoàn toàn.",
+      "tip": "Chiên ở lửa nhỏ giúp khối trứng dày chín đều vào tận lõi mà mặt đáy không bị cháy khét.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nghỉ ngắn, cắt múi tam giác và thưởng thức",
+      "instruction": "Trượt Frittata ra đĩa lớn, để nghỉ 2 phút cho kết cấu định hình chắc rồi cắt thành 6 múi tam giác đều nhau, thưởng thức khi còn ấm nóng hoặc ở nhiệt độ phòng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 345,
+    "energyKcal": 345.4,
+    "energyKj": 1445,
+    "proteinG": 24.8,
+    "fatG": 23.9,
+    "saturatedFatG": 8.6,
+    "carbG": 8.5,
+    "fiberG": 2.4,
+    "sugarG": 2.6,
+    "sodiumMg": 1043,
+    "saltG": 2.61,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168462",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170845",
+      "USDA FDC 170848",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "846524a24b5a932b4878721d1feb219e79686d05a40d4afa02c555304b6fc511",
+    "researchedFromV2Sha256": "5ff16d7d8e38658f595624c3549c27ecbb484392825d8633541817c8231c65d0"
+  }
+}

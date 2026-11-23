@@ -1,0 +1,354 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c64c83ef34771b5a",
+    "slug": "canh-nam-sa-thai",
+    "title": "Canh nấm sả Thái chay thanh vị",
+    "subtitle": "Canh nấm đùi gà và đậu phụ non nấu sả riềng lá chanh kiểu Thái, nước dùng trong thanh ngọt dịu và dậy mùi thảo mộc"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Canh chay",
+      "Nấm đùi gà",
+      "Thảo mộc Thái",
+      "Thanh nhẹ",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "soybean"
+    ]
+  },
+  "overview": {
+    "description": "Bát canh nấm sả Thái chay thanh mát lấy cảm hứng từ món Tom Yum nước trong, kết hợp nấm đùi gà giòn ngọt, đậu phụ non mềm mịn cùng hương thơm nồng nàn của sả, riềng tươi, lá chanh Thái và vị chua dịu tự nhiên từ cà chua, nước cốt chanh.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, vớt bỏ phần sả riềng già cho dễ ăn, rắc thêm hành lá và ngò rí; dùng ngay làm món khai vị hoặc ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Nên thưởng thức ngay khi vừa nấu xong để giữ trọn hương chanh tươi; nếu bảo quản tủ mát trong 24 giờ, đun sôi nhẹ lại phần nước canh và nấm rồi mới vắt thêm chanh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "350 g (khoảng 3–4 cây nấm vừa)",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già rồi thái lát vát dày 0,5 cm hoặc xé sợi to",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 332.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non",
+      "culinaryMeasure": "150 g (1/2 hộp)",
+      "prepNote": "cắt khối vuông cạnh 2 cm vừa ăn, để nhẹ tay tránh nát",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "1 quả (khoảng 120 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ 8 múi cau theo chiều dọc",
+      "componentGroup": "main",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "2 cây (khoảng 40 g)",
+      "prepNote": "bóc vỏ già ngoài, đập dập phần gốc rồi cắt khúc dài 8 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GALANGAL",
+      "name": "Củ riềng tươi",
+      "culinaryMeasure": "15 g (khoảng 4 lát mỏng)",
+      "prepNote": "cạo sạch vỏ, rửa ráo, thái lát mỏng để nấu lấy hương",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 2.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Thái (lá chanh Kaffir)",
+      "culinaryMeasure": "4 g (khoảng 5 lá tươi)",
+      "prepNote": "rửa sạch, xé đôi dọc gân lá để tinh dầu tiết ra dễ dàng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, đập dập nhẹ hoặc thái lát xéo tùy độ cay mong muốn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt)",
+      "culinaryMeasure": "1,5 quả (khoảng 68 g)",
+      "prepNote": "rửa sạch, cắt đôi vắt lấy khoảng 30 ml nước cốt, bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_FISH_SAUCE",
+      "name": "Nước mắm chay",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "dùng nêm nước canh sau khi tắt bếp để giữ vị thanh đậm",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "VEG_SEASONING_POWDER",
+      "name": "Hạt nêm chay nấm hương",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "nêm nền ngọt thanh cho nước dùng nấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "8 g (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua thanh của chanh và cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (khoảng 2 muỗng cà phê)",
+      "prepNote": "dùng xào sơ nấm và cà chua trước khi chế nước dùng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 8.74,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, cắt khúc ngắn 1,5 cm để rắc hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g (1 nắm nhỏ)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá, giữ phần cọng non để trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "950 ml (gần 1 lít)",
+      "prepNote": "dùng nấu nước dùng thảo mộc và canh nấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 950,
+      "unit": "ml",
+      "grossGrams": 950,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 855,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thảo mộc tạo hương Thái",
+      "instruction": "Bóc bỏ lớp bẹ già bên ngoài của 2 cây sả tươi, dùng sống dao đập dập phần gốc rồi cắt khúc dài khoảng 8 cm. Củ riềng tươi cạo vỏ, thái 4 lát mỏng. Lá chanh Thái rửa sạch rồi dùng tay xé đôi bỏ gân cứng; ớt hiểm đỏ đập dập nhẹ. Vắt 1,5 quả chanh tươi lấy khoảng 30 ml nước cốt để riêng.",
+      "tip": "Đập dập sả và xé rách lá chanh Thái ngay trước khi nấu giúp tinh dầu thơm thoát ra mạnh mẽ nhất mà không làm đắng nước dùng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị nấm đùi gà, đậu phụ và rau thơm",
+      "instruction": "Dùng khăn ẩm lau sạch 350 g nấm đùi gà rồi cắt bỏ chân nấm, thái lát vát dày 0,5 cm cho vừa miệng. Cà chua rửa sạch, bổ 8 múi cau. Đậu phụ non cắt khối vuông cạnh 2 cm đặt riêng ra đĩa. Hành lá và ngò rí rửa sạch, để ráo rồi thái nhỏ.",
+      "tip": "Tránh ngâm nấm đùi gà quá lâu trong nước vì nấm hút nước sẽ nhão và giảm vị ngọt tự nhiên khi nấu."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào sơ cà chua và nấm dậy vị ngọt",
+      "instruction": "Đặt nồi lên bếp ở lửa vừa, làm nóng 10 ml dầu ăn thực vật rồi cho một nửa phần cà chua bổ múi cùng nấm đùi gà vào đảo nhanh trong 2 phút đến khi nấm hơi săn mặt và dậy mùi thơm nhẹ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ninh nước dùng sả riềng lá chanh",
+      "instruction": "Đổ 950 ml nước lọc vào nồi nấm, thả sả tươi đập dập, riềng tươi thái lát và lá chanh Thái vào đun lửa lớn đến khi sôi bùng. Hạ lửa vừa và nấu sôi lăn riu trong 5 phút cho tinh dầu thảo mộc hòa quyện vào nước dùng, hớt bỏ bọt nếu có.",
+      "tip": "Thời gian ninh 5 phút giúp nước dùng chuyển hơi ánh xanh dịu và thơm nồng mùi sả riềng mà lá chanh không bị nồng hắc.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Nấu chín nấm, đậu phụ non và cà chua",
+      "instruction": "Thả nhẹ phần cà chua còn lại, ớt hiểm đỏ và đậu phụ non vào nồi. Nêm 8 g hạt nêm chay nấm hương và 8 g đường cát trắng, khuấy thật nhẹ tay theo thành nồi trong 3 phút ở lửa vừa để đậu phụ nóng đều mà không bị vỡ nát, nấm chín mềm ngọt.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Tắt bếp nêm chanh, nước mắm chay và hoàn thiện",
+      "instruction": "Tắt bếp rồi mới rót 30 ml nước mắm chay và 30 ml nước cốt chanh tươi vào khuấy nhẹ cho hòa vị chua thanh dịu. Vớt bỏ bớt xác sả, riềng và lá chanh Thái, múc canh ra tô, rắc hành lá và ngò rí lên trên rồi dùng nóng.",
+      "tip": "Luôn tắt bếp trước khi cho nước cốt chanh tươi để giữ trọn vị chua thanh mát và tránh làm tinh dầu vỏ chanh gây vị đắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 128,
+    "energyKcal": 127.6,
+    "energyKj": 533,
+    "proteinG": 7.3,
+    "fatG": 4.9,
+    "saturatedFatG": 0.7,
+    "carbG": 17.1,
+    "fiberG": 3.8,
+    "sugarG": 6.9,
+    "sodiumMg": 1116,
+    "saltG": 2.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "USDA / SE Asian Galangal Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 168580",
+      "USDA FDC 169655",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170457",
+      "USDA FDC 171413",
+      "USDA FDC 172476",
+      "USDA FDC 173647",
+      "Vegetarian Fish Sauce Ref",
+      "Vegetarian Seasoning Powder Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "66dfc88efc1d155757ef0fc3f2835cc070ef33373f7408bdac02f6edbad0c6dd",
+    "researchedFromV2Sha256": "5e89a0bc0e81e5495427b7aa13dd966e58c49bdcfea3c1cbfb64cded5d811ae9"
+  }
+}

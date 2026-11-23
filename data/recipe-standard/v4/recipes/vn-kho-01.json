@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-kho-01",
+    "slug": "thit-kho-trung",
+    "title": "Thịt kho tàu nước dừa trứng gà",
+    "subtitle": "Thịt ba chỉ cắt vuông kho nhừ cùng nước dừa xiêm và trứng gà luộc, lên màu cánh gián óng ả chuẩn vị Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 65,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Nam Bộ",
+      "Cơm nhà",
+      "Món Tết",
+      "Thịt heo"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "boil"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Nồi thịt kho tàu Nam Bộ mềm rệu với phần mỡ trong veo không ngấy, thịt nạc thấm vị mặn ngọt hài hòa từ nước dừa tươi và nước mắm ngon, quyện cùng trứng gà bùi thơm.",
+    "servingSuggestion": "Múc thịt và trứng ra tô sâu lòng, chan nước kho óng ả, dùng nóng với cơm trắng dẻo và dưa giá hoặc cải chua giải ngấy.",
+    "storageAndReheat": "Để nguội hoàn toàn rồi bảo quản ngăn mát tối đa 4 ngày trong hộp kín; khi ăn hâm lại trên lửa nhỏ cho thịt nóng đều, nước kho càng kho lại càng đậm đà."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo rút sườn",
+      "culinaryMeasure": "500 g",
+      "prepNote": "cạo sạch lông, xát muối rửa sạch, chần nước sôi rồi cắt khúc vuông 4x4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "5 quả (khoảng 250 g)",
+      "prepNote": "luộc chín vừa, ngâm nước lạnh rồi bóc sạch vỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "COCONUT_WATER",
+      "name": "Nước dừa xiêm tươi",
+      "culinaryMeasure": "400 ml (khoảng 1 trái lớn)",
+      "prepNote": "lọc qua rây cho sạch cặn cơm dừa trước khi đổ vào nồi kho",
+      "componentGroup": "broth",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 404,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 404,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12–15 g, ~5 tép)",
+      "prepNote": "bóc vỏ, giã hoặc băm thật nhuyễn để ướp và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "30 g (2 củ vừa)",
+      "prepNote": "bóc vỏ, băm nhuyễn; chia đôi 1/2 ướp thịt và 1/2 phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 26.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (2,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp thịt và 20 ml nêm lúc kho",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "30 g (~2,5 muỗng canh)",
+      "prepNote": "chia 15 g thắng nước màu cánh gián và 15 g ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "dùng 5 g xát rửa thịt và pha nước chần rồi xả bỏ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "ướp thịt và rắc thêm lên mặt khi dọn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng 5 ml thắng nước màu và 10 ml phi thơm hành tỏi xào thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "để nguyên trái thả vào nồi kho tạo hương thơm dịu",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "300 ml",
+      "prepNote": "dùng 200 ml châm khi kho nếu cạn nước và 100 ml hãm nước màu (chưa tính nước chần)",
+      "componentGroup": "broth",
+      "requiredQuantity": 300,
+      "unit": "ml",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch, chần sơ và cắt khối thịt ba chỉ",
+      "instruction": "Cạo sạch phần bì của 500 g thịt ba chỉ, chà xát đều với 5 g muối hạt rồi rửa sạch dưới vòi nước lạnh. Đun sôi nồi nước, thả thịt vào chần sơ 3 phút để loại bỏ tạp chất và mùi hôi, vớt ra rửa lại nước mát, để ráo và cắt thành các miếng vuông đều nhau cỡ 4x4 cm.",
+      "tip": "Chọn miếng ba chỉ dưới có lớp nạc mỡ đan xen đều và phần da mỏng để khi kho xong thịt mềm béo mà không bị bở nát.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Luộc chín và bóc vỏ trứng gà",
+      "instruction": "Cho 5 quả trứng gà vào nồi nước ngập mặt, đun lửa vừa từ lúc nước nguội đến khi sôi thì hạ lửa nhỏ luộc thêm 8 phút cho lòng đỏ vừa chín tới. Vớt trứng ngâm ngay vào tô nước lạnh 5 phút rồi bóc sạch vỏ.",
+      "tip": "Dùng tăm nhọn xăm nhẹ vài lỗ nhỏ quanh lòng trắng sau khi bóc vỏ sẽ giúp trứng dễ thấm nước kho hơn.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "marinate",
+      "title": "Ướp thịt ba chỉ thấm gia vị",
+      "instruction": "Trộn thịt ba chỉ trong tô lớn với một nửa lượng hành tím và tỏi băm nhuyễn, 15 ml nước mắm ngon, 15 g đường cát trắng, 5 g hạt nêm và 1 g tiêu đen xay. Xoa đều gia vị lên từng mặt thịt, bọc kín và ướp ít nhất 30 phút cho ngấm sâu.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Thắng nước màu cánh gián",
+      "instruction": "Làm nóng nồi đáy dày trên lửa nhỏ với 5 ml dầu ăn và 15 g đường cát trắng còn lại. Đun nhẹ cho đường tan chảy và nổi bọt chuyển màu nâu cánh gián thì lập tức đổ từ từ 100 ml nước lọc ấm vào khuấy tan đều để hãm nhiệt, tránh cháy đắng.",
+      "tip": "Không khuấy đường khi mới bắc lên bếp ở giai đoạn đầu; chỉ lắc nhẹ nồi để đường tan đều và lên màu hổ phách trong đẹp.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Xào săn thịt và đổ nước dừa xiêm",
+      "instruction": "Cho 10 ml dầu ăn vào nồi, phi thơm phần hành tím và tỏi băm còn lại trên lửa vừa trong 1 phút. Trút toàn bộ thịt ba chỉ đã ướp vào đảo săn các mặt khoảng 5 phút rồi rưới nước màu cánh gián vào đảo đều cho thịt áo màu đẹp. Đổ 400 ml nước dừa tươi cùng 20 ml nước mắm còn lại vào ngập mặt thịt, đun lửa lớn cho sôi bùng và hớt sạch bọt nổi.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Kho liu riu không đậy nắp cho thịt mềm rệu",
+      "instruction": "Hạ lửa nhỏ nhất, không đậy nắp và kho liu riu trong 40 phút cho thịt chín mềm từ từ và phần mỡ trở nên trong veo. Nếu nước cạn nhanh mà thịt chưa đủ mềm, châm thêm 200 ml nước lọc nóng sao cho vừa xâm xấp mặt thịt.",
+      "tip": "Kho mở nắp giúp hơi nước thoát đều, nước kho trong và thịt lên màu đỏ nâu tự nhiên không bị đục.",
+      "timerMinutes": 40
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Kho cùng trứng gà và hoàn thiện món",
+      "instruction": "Thả nhẹ 5 quả trứng gà đã bóc vỏ và 1 quả ớt sừng đỏ nguyên trái vào nồi, kho thêm 15 phút trên lửa nhỏ cho trứng ngấm vị và nước kho sánh nhẹ, không khuấy mạnh tránh làm vỡ trứng. Tắt bếp, múc thịt và trứng ra đĩa sâu lòng, rắc 1 g tiêu đen xay còn lại lên trên và thưởng thức nóng.",
+      "timerMinutes": 15
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 819,
+    "energyKcal": 818.6,
+    "energyKj": 3424,
+    "proteinG": 20.4,
+    "fatG": 74.9,
+    "saturatedFatG": 26.5,
+    "carbG": 14.9,
+    "fiberG": 1.5,
+    "sugarG": 11.5,
+    "sodiumMg": 1256,
+    "saltG": 3.14,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170106",
+      "USDA FDC 170174",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "de8d934322eee9a2246700b4161fc4288eb1199c02d632affe549f1db9357c3b",
+    "researchedFromV2Sha256": "5b0c2b906316a39470d9ac647dfa6324a3f842bac19c336ee3174711029d2ccc"
+  }
+}

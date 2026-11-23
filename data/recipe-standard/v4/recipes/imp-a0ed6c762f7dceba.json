@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-a0ed6c762f7dceba",
+    "slug": "bo-pizzaiola",
+    "title": "Bò om sốt cà chua lá Oregano (Pizzaiola)",
+    "subtitle": "Lát thịt bò dần mỏng nấu nhanh trong sốt cà chua sánh quyện mùi tỏi thơm và lá Oregano chuẩn phong vị Napoli"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Bò Pizzaiola",
+      "Ẩm thực Ý",
+      "Thịt bò",
+      "Cà chua",
+      "Món mặn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "braise"
+    ],
+    "allergenTags": [
+      "beef"
+    ]
+  },
+  "overview": {
+    "description": "Món bò Pizzaiola dân dã vùng Napoli với từng lát thịt bò dần mỏng mềm ngọt, thấm đẫm sốt cà chua nấu sánh thơm lừng mùi tỏi và thảo mộc Oregano đặc trưng.",
+    "servingSuggestion": "Dọn nóng ngay ra đĩa, múc nhiều sốt cà chua rưới lên mặt thịt và rắc vài lá húng quế tươi; ăn kèm bánh mì giòn chấm sốt hoặc mì Ý luộc.",
+    "storageAndReheat": "Nếu nấu trước, nên nấu riêng phần sốt cà chua và bảo quản ngăn mát tối đa 2 ngày; khi ăn đun sôi lại sốt rồi mới cho thịt bò vào nấu chín để thịt không bị dai."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò thái lát mỏng",
+      "culinaryMeasure": "500 g",
+      "prepNote": "khía nhẹ viền gân mỡ, đặt giữa giấy nến và dần mỏng đều 3–4 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "g",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CANNED_TOMATO",
+      "name": "Cà chua nghiền đóng hộp Ý (Passata)",
+      "culinaryMeasure": "350 g (~350 ml)",
+      "prepNote": "dùng làm phần sốt nền cà chua sánh mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "đun nóng trên chảo rộng để phi thơm tỏi và nấu sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.3,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 25.94,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 3 tép)",
+      "prepNote": "bóc vỏ, đập dập nguyên tép để phi thơm rồi gắp bỏ sau khi sốt sánh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.4,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Lá Oregano khô",
+      "culinaryMeasure": "2 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc vào sốt cà chua sau khi đã ninh sánh để giữ hương thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SWEET_BASIL_IT",
+      "name": "Lá húng quế Tây tươi",
+      "culinaryMeasure": "6 g (~5 lá)",
+      "prepNote": "rửa sạch, để ráo dùng trang trí khi dọn nóng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 5.52,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm vào sốt cà chua khi đã cạn sánh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào sốt cùng lá Oregano để dậy mùi cay ấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "50 ml",
+      "prepNote": "dùng tráng sạch phần cà chua còn dính trong hộp đổ vào chảo",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Dần mỏng và thấm khô thịt thăn bò",
+      "instruction": "Dùng mũi dao khía vài đường ngắn dọc viền gân mỡ để các lát thịt thăn bò không bị cong rút khi nấu. Đặt 500 g thịt bò thái lát lên một tờ giấy nến, phủ thêm tờ giấy nữa lên trên rồi dần nhẹ tay đến khi thịt đạt độ dày đều khoảng 3–4 mm mà không bị rách nát; thấm khô bề mặt thịt.",
+      "tip": "Không ướp muối trực tiếp lên thịt bò sống trước khi cho vào sốt vì muối sẽ kéo nước ra làm thịt dễ bị dai và sậm màu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Phi thơm tỏi với dầu ô liu",
+      "instruction": "Bóc vỏ, đập dập 3 tép tỏi. Đun nóng 30 ml dầu ô liu trong chảo rộng trên lửa vừa, thả tỏi đập dập vào phi khoảng 2 phút đến khi dậy mùi thơm dịu và tỏi vừa chuyển vàng nhẹ.",
+      "tip": "Giữ nhiệt vừa và đảo liên tục để tỏi không bị cháy khét vì tỏi cháy sẽ làm đắng toàn bộ phần sốt cà chua.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Ninh sốt cà chua sánh vị",
+      "instruction": "Đổ 350 g cà chua nghiền đóng hộp Ý vào chảo, dùng 50 ml nước lọc tráng sạch phần cà chua còn sót rồi rót vào cùng. Đun sôi nhẹ rồi hạ lửa nhỏ, om liu riu khoảng 15 phút và thỉnh thoảng khuấy đều cho sốt bay bớt hơi nước, sánh mịn và dịu vị chua.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Nêm gia vị và lá Oregano",
+      "instruction": "Khi sốt đã cạn sánh vừa ý, rắc 2 g lá Oregano khô, 5 g muối ăn và 2 g tiêu đen xay vào chảo, khuấy đều cho gia vị tan hoàn toàn rồi gắp bỏ các tép tỏi đã phi thơm.",
+      "tip": "Nêm lá Oregano vào bước sốt đã sánh giúp tinh dầu thảo mộc không bị bay hơi mất mùi và giữ được hương vị hài hòa, không át mất vị ngọt của thịt bò."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Om nhanh các lát thịt bò trong sốt nóng",
+      "instruction": "Xếp từng lát thịt bò đã dần mỏng vào chảo sao cho mặt thịt ngập đều trong lớp sốt (nếu lát quá lớn có thể cắt đôi). Giữ sốt sôi liu riu ở lửa vừa, nấu mỗi mặt khoảng 2 phút rồi lật mặt còn lại nấu thêm 2 phút đến khi thịt bò chín mềm vừa đủ và thấm đẫm sốt.",
+      "tip": "Do lát thịt đã được dần mỏng 3–4 mm nên thịt chín rất nhanh; tránh đun quá lâu hoặc để lửa quá lớn khiến thớ thịt bò bị co rút và dai.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện và thưởng thức nóng",
+      "instruction": "Kiểm tra thịt bò đã chín đều, nêm nếm lại sốt một lần cuối cho vừa miệng rồi tắt bếp. Xếp thịt ra đĩa sâu lòng, rưới đẫm phần sốt cà chua sánh đỏ lên trên và trang trí bằng vài lá húng quế Tây tươi trước khi dọn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 319,
+    "energyKcal": 318.8,
+    "energyKj": 1335,
+    "proteinG": 27.4,
+    "fatG": 20,
+    "saturatedFatG": 6.1,
+    "carbG": 7.5,
+    "fiberG": 2,
+    "sugarG": 3.9,
+    "sodiumMg": 667,
+    "saltG": 1.67,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169072",
+      "USDA FDC 169230",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172232",
+      "USDA FDC 173468",
+      "USDA FDC 173475",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "59bba854661b3adbc13fcad87cb54d65bc60564bc22fba2d2622e72fc6ebc23f",
+    "researchedFromV2Sha256": "48e4ab40adcd4ebb53f819d712534a998f0a94559e184915327a9eccd1919f68"
+  }
+}

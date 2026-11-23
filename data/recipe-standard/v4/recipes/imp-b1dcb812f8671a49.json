@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b1dcb812f8671a49",
+    "slug": "banh-trang-nuong-pho-mai",
+    "title": "Bánh tráng nướng phô mai",
+    "subtitle": "Bánh tráng gạo nướng chảo giòn rụm phủ trứng gà, phô mai mozzarella kéo sợi, xúc xích và hành phi thơm lừng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_nhanh_sang",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 8,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Bánh tráng nướng",
+      "Phô mai",
+      "Nam Bộ",
+      "Ăn vặt",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "methods": [
+      "pan_fry",
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Món bánh tráng nướng phô mai kiểu Đà Lạt hấp dẫn ngay trên chảo chống dính với đế bánh tráng gạo giòn tan, lớp trứng gà hành lá béo thơm phủ đầy phô mai mozzarella tan chảy kéo sợi, xúc xích thái lát, hành tím phi và tương ớt mayonnaise.",
+    "servingSuggestion": "Gấp đôi chiếc bánh tráng nướng giòn rụm hoặc cắt thành miếng tam giác bằng kéo, thưởng thức ngay khi phô mai còn kéo sợi nóng hổi.",
+    "storageAndReheat": "Bánh tráng nướng ngon nhất khi ăn ngay sau khi nướng để đế giữ độ giòn rụm. Không nên bảo quản bánh đã nướng quá lâu vì trứng và sốt sẽ làm mềm đế bánh."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "RICE_PAPER",
+      "name": "Bánh tráng gạo tròn (loại vừa/dày)",
+      "culinaryMeasure": "3 cái (khoảng 60 g)",
+      "prepNote": "chọn lá bánh tráng nguyên vẹn không rách để làm đế nướng",
+      "componentGroup": "main",
+      "requiredQuantity": 0.3,
+      "unit": "pack",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đánh tan từng quả riêng hoặc đánh chung rồi chia đều lên 3 mặt bánh",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MOZZARELLA_CHEESE",
+      "name": "Phô mai Mozzarella bào sợi",
+      "culinaryMeasure": "75 g",
+      "prepNote": "chia đều 25 g cho mỗi chiếc bánh để kéo sợi béo ngậy",
+      "componentGroup": "main",
+      "requiredQuantity": 75,
+      "unit": "g",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "CHINESE_SAUSAGE",
+      "name": "Xúc xích hoặc lạp xưởng",
+      "culinaryMeasure": "45 g (~1 cây nhỏ)",
+      "prepNote": "thái lát tròn thật mỏng hoặc cắt hạt lựu nhỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô (làm hành phi)",
+      "culinaryMeasure": "20 g (~2 củ nhỏ)",
+      "prepNote": "bóc vỏ, thái lát mỏng đều để phi vàng giòn rắc mặt bánh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "2 quả (khoảng 10 g)",
+      "prepNote": "rửa sạch, thái lát mỏng rắc mặt tùy độ cay",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới hình ziczac lên mặt bánh sau khi nướng xong",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 23,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "MAYONNAISE",
+      "name": "Sốt Mayonnaise",
+      "culinaryMeasure": "20 g (~1,5 muỗng canh)",
+      "prepNote": "rưới đều lên mặt bánh cùng tương ớt cho béo thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "dùng phi vàng hành tím và giữ lại dầu hành phết nhẹ lên bánh",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "1,5 g (~1/4 muỗng cà phê)",
+      "prepNote": "đánh nhẹ cùng trứng gà cho đậm vị",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế hành lá, xúc xích, ớt và đánh trứng",
+      "instruction": "Thái lát mỏng 20 g hành tím khô; rửa sạch hành lá thái nhỏ và ớt hiểm thái lát mỏng. Thái lát mỏng đều 45 g xúc xích. Đập 3 quả trứng gà vào tô cùng 1,5 g muối ăn, đánh tan nhẹ vừa đủ cho hòa quyện.",
+      "tip": "Thái xúc xích thật mỏng sẽ giúp nhân bám chặt vào lớp trứng phô mai và nóng thơm nhanh hơn khi nướng trên chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi vàng giòn hành tím và áp sơ xúc xích",
+      "instruction": "Làm nóng 15 ml dầu ăn trong chảo nhỏ trên lửa vừa, cho hành tím thái lát vào phi đều tay khoảng 2 phút đến khi vừa chuyển vàng nhạt thì vớt ra giấy thấm dầu, giữ lại phần dầu hành thơm. Đảo nhanh xúc xích trên chảo nóng 30 giây cho hơi xém thơm rồi gắp ra chén.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng đế bánh tráng và phết trứng hành lá",
+      "instruction": "Đặt chảo chống dính đáy rộng lên bếp với lửa nhỏ nhất, đặt 1 chiếc bánh tráng gạo vào làm nóng 20 giây cho hơi phẳng. Phết nhẹ 1 lớp mỏng dầu hành lên mặt bánh rồi múc 1/3 lượng trứng đánh tan cùng 1/3 hành lá thái nhỏ vào, dùng lưng muỗng dàn đều khắp mặt bánh.",
+      "tip": "Luôn nướng bánh tráng ở mức lửa nhỏ nhất để phần trứng và phô mai kịp chín tan trong khi đế bánh giòn vàng mà không bị khét."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phủ phô mai Mozzarella, xúc xích và nướng giòn đế",
+      "instruction": "Khi mặt trứng hơi se lại, rắc đều 25 g phô mai Mozzarella bào sợi, 1/3 lượng xúc xích và vài lát ớt hiểm lên trên. Tiếp tục nướng liu riu khoảng 2 phút đến khi phô mai tan chảy hoàn toàn, mép bánh tráng giòn cứng và hơi cong nhẹ.",
+      "tip": "Có thể đậy hé nắp chảo khoảng 30 giây cuối nếu muốn phô mai tan chảy nhanh và kéo sợi mượt hơn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Lặp lại thao tác với 2 chiếc bánh còn lại",
+      "instruction": "Gắp chiếc bánh đầu tiên ra thớt hoặc đĩa, tiếp tục nướng lần lượt 2 chiếc bánh tráng gạo còn lại với phần trứng, hành lá, phô mai Mozzarella, xúc xích và ớt hiểm theo đúng trình tự trên."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới tương ớt, Mayonnaise, rắc hành phi và gấp bánh",
+      "instruction": "Rưới đều tương ớt và sốt Mayonnaise theo đường ziczac lên mặt cả 3 chiếc bánh nóng, rắc thêm hành tím phi vàng giòn lên trên. Gấp đôi bánh hoặc cắt miếng tam giác vừa ăn và thưởng thức ngay lúc giòn rụm."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 362,
+    "energyKcal": 361.6,
+    "energyKj": 1513,
+    "proteinG": 16,
+    "fatG": 23.2,
+    "saturatedFatG": 7.5,
+    "carbG": 21.9,
+    "fiberG": 0.8,
+    "sugarG": 4,
+    "sodiumMg": 847,
+    "saltG": 2.12,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Chinese Sausage Ref",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170845",
+      "USDA FDC 171009",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC Rice Paper Ref",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "67a3a8bb4c245ac92bdf1aeb030129af27a767dffa5b30e606675249a507777b",
+    "researchedFromV2Sha256": "2fcdc1bb673ca9bd537b22f4f8857f8f58d7b187c7337d54e83cf798694e644d"
+  }
+}

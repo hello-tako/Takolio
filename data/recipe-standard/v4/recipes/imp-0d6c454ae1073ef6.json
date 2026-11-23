@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0d6c454ae1073ef6",
+    "slug": "su-su-hap-toi",
+    "title": "Su su hấp tỏi rưới mắm thơm",
+    "subtitle": "Su su non hấp chín tới giữ nguyên độ giòn ngọt, rưới dầu tỏi phi thơm hòa nước mắm đậm đà cho bữa cơm nhẹ bụng"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_hap_luoc",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Su su",
+      "Thanh đạm",
+      "Dễ nấu",
+      "Dưới 20 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam"
+    ],
+    "allergenTags": [
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Những miếng su su non xanh mướt hấp cách thủy vừa chín tới giữ được vị ngọt thanh tự nhiên và độ giòn nhẹ, rưới đều hỗn hợp nước mắm dầu tỏi phi vàng thơm nức cùng hành lá xanh tươi.",
+    "servingSuggestion": "Bày su su hấp ra đĩa sâu lòng, rưới đẫm phần nước mắm dầu tỏi thơm lừng lên trên, ăn nóng kèm cơm trắng hoặc chấm thêm xì dầu ớt.",
+    "storageAndReheat": "Su su hấp ngon nhất khi ăn nóng ngay trong bữa để giữ độ giòn ngọt; nếu còn dư bảo quản ngăn mát tối đa 24 giờ và hấp lại nhanh 3 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHAYOTE",
+      "name": "Quả su su non tươi",
+      "culinaryMeasure": "3 quả (khoảng 660 g)",
+      "prepNote": "gọt vỏ dưới vòi nước sạch nhựa, bổ đôi bỏ hạt rồi thái miếng con chì vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 660,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 580.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ (khoảng 25 g)",
+      "prepNote": "bóc vỏ, đập dập băm vừa để phi thơm vàng với dầu ăn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó (khoảng 40 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi và làm mượt nước sốt rưới su su",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 17.48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "pha sốt tỏi rưới lên su su chín",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "có thể rưới thêm hoặc dùng làm nước chấm kèm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn của nước mắm trong sốt tỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (khoảng 1/3 muỗng cà phê)",
+      "prepNote": "rắc nhẹ vào su su trước khi hấp để rau giữ màu xanh ngọt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (đun sôi hấp su su)",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "đổ vào đáy nồi hấp cách thủy",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Gọt vỏ khử nhựa và cắt miếng su su non",
+      "instruction": "Ngâm 3 quả su su non vào thau nước sạch hoặc đeo găng tay khi gọt bỏ lớp vỏ ngoài để tránh nhựa dính tay. Bổ đôi từng quả theo chiều dọc, khoét bỏ phần hạt trắng mềm ở giữa, rửa sạch lại rồi thái thành những miếng dài cỡ ngón tay út cho nhanh chín đều.",
+      "tip": "Gọt vỏ su su trực tiếp dưới chậu nước mát giúp nhựa mủ trôi sạch ngay, tay không bị rít mà miếng su su vẫn trắng xanh đẹp mắt."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế tỏi băm và hành lá thái nhỏ",
+      "instruction": "Bóc vỏ 1 củ tỏi khô, đập dập rồi băm vừa (không băm quá nát để tỏi phi giòn thơm). Rửa sạch hành lá tươi, để ráo rồi thái nhỏ để sẵn sàng hoàn thiện món ăn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Hấp su su vừa chín tới giữ độ giòn ngọt",
+      "instruction": "Đun sôi 500 ml nước lọc trong nồi hấp ở lửa lớn. Trộn nhẹ su su với 2 g muối ăn rồi xếp đều vào xửng hấp không chồng quá dày, đậy kín nắp và hấp trong 10 phút đến khi dùng đũa xiên nhẹ thấy miếng su su vừa chín mềm trong nhẹ nhưng vẫn giữ độ giòn.",
+      "tip": "Chỉ hấp su su khoảng 10 phút tính từ lúc nước sôi để miếng rau giữ màu xanh ngọc tươi và độ ngọt giòn, tránh hấp nhừ.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Phi tỏi vàng thơm và pha sốt mắm rưới",
+      "instruction": "Trong lúc chờ hấp su su, làm nóng 20 ml dầu ăn trên chảo nhỏ ở lửa vừa, cho tỏi băm vào phi khoảng 2 phút đến khi vàng thơm thì tắt bếp. Rót vào chảo dầu tỏi đang ấm 15 ml nước mắm ngon, 15 ml xì dầu và 5 g đường cát trắng, khuấy đều cho đường tan hoàn toàn.",
+      "tip": "Tắt bếp ngay khi tỏi vừa ngả vàng sáng rồi mới rót nước mắm đường vào để tránh bắn dầu và giữ hương tỏi thơm nồng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rắc hành lá giữ màu xanh mướt trên xửng",
+      "instruction": "Gắp su su chín ra đĩa sâu lòng, rắc đều hành lá thái nhỏ lên trên mặt su su khi còn đang bốc hơi nóng để hành dịu bớt vị hăng nhưng vẫn giữ sắc xanh tươi."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rưới nước mắm dầu tỏi và dọn ăn nóng",
+      "instruction": "Rưới đều toàn bộ phần nước mắm dầu tỏi phi vàng lên khắp các miếng su su và hành lá, đảo nhẹ cho sốt áo đều rồi dọn thưởng thức nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 115,
+    "energyKcal": 114.7,
+    "energyKj": 479,
+    "proteinG": 3.1,
+    "fatG": 6.2,
+    "saturatedFatG": 0.9,
+    "carbG": 14.2,
+    "fiberG": 3.8,
+    "sugarG": 5.5,
+    "sodiumMg": 1061,
+    "saltG": 2.65,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169990",
+      "USDA FDC 170005",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "2d39aa22711258adcb8db306d281321578e2b48d3c0839cd2a660f3e1f114af5",
+    "researchedFromV2Sha256": "bb7a09fd308a1f564a4b0465526d64003b8ebd192a3ac008dd287655fdde13c2"
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-df7a6429150724b1",
+    "slug": "tom-om-ca-chua-nhat",
+    "title": "Tôm om cà chua kiểu Nhật (Yoshoku)",
+    "subtitle": "Tôm tươi áp chảo săn ngọt om cùng cà chua chín nhừ, hành tây, tỏi thơm trong nước sốt xì dầu tương cà Sake đậm đà phong cách Yoshoku chan cơm"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món om Nhật",
+      "Yoshoku",
+      "Tôm tươi",
+      "Cà chua",
+      "Chan cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "shrimp",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món tôm om cà chua phong cách Yoshoku hiện đại của Nhật Bản: tôm tươi áp chảo nhanh tay giữ độ giòn ngọt, hòa quyện trong nước sốt cà chua tươi nấu nhừ cùng hành tây, tương cà, xì dầu Nhật và rượu Sake thơm lừng.",
+    "servingSuggestion": "Múc tôm om cà chua ra đĩa sâu lòng khi còn nóng hổi, rắc hành lá xanh thái khoanh lên mặt; dùng chan trực tiếp lên cơm trắng nóng hổi.",
+    "storageAndReheat": "Nên dùng hết trong ngày để tôm giữ được độ giòn ngọt; nếu bảo quản ngăn mát tối đa 2 ngày, tách riêng phần tôm hoặc hâm nhanh lửa vừa trong 2 phút cho vừa nóng tới."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi (bóc vỏ, rút chỉ lưng)",
+      "culinaryMeasure": "300 g thịt tôm (khoảng 14–15 con)",
+      "prepNote": "bóc vỏ, bỏ đầu, rạch lưng rút chỉ đen, rửa sạch rồi thấm thật khô bằng khăn giấy",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2,5 quả vừa (khoảng 300 g)",
+      "prepNote": "rửa sạch, bỏ cuống và thái miếng nhỏ vừa ăn để nhanh nhừ ra sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 285,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "3/4 củ vừa (khoảng 105 g)",
+      "prepNote": "bóc vỏ, thái lát mỏng để xào nhanh mềm ngọt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (khoảng 6,3 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.3,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.67,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật Bản",
+      "culinaryMeasure": "18 ml (~1 muỗng canh)",
+      "prepNote": "tạo hương vị mặn đậm hài hòa cho sốt cà chua kiểu Nhật",
+      "componentGroup": "sauce",
+      "requiredQuantity": 18,
+      "unit": "ml",
+      "grossGrams": 21.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 21.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "KETCHUP",
+      "name": "Tương cà (Ketchup)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "làm dịu vị chua gắt của cà chua tươi và giúp sốt lên màu đỏ sánh đẹp",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "22 ml (~1,5 muỗng canh)",
+      "prepNote": "khử mùi tanh hải sản và làm dậy mùi thơm sốt cà chua",
+      "componentGroup": "sauce",
+      "requiredQuantity": 22,
+      "unit": "ml",
+      "grossGrams": 21.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 18.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua ngọt cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng phi thơm tỏi, áp chảo sơ tôm và xào hành tây",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.7,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 13.01,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "chia một nửa rắc nhẹ khi áp chảo tôm, phần còn lại nêm chỉnh sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "rắc hoàn thiện trước khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khoanh mỏng để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "châm thêm vào chảo để om cà chua mềm nhừ thành sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 80,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm tươi, cà chua và hành tỏi",
+      "instruction": "Rửa sạch 300 g tôm tươi đã bóc vỏ, rút chỉ đen, thấm thật khô bằng khăn giấy. Cà chua chín bỏ cuống, cắt miếng nhỏ vừa ăn; hành tây bóc vỏ thái lát mỏng; tỏi tươi băm nhuyễn và hành lá thái khoanh mỏng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Phi tỏi và áp chảo sơ tôm cho săn ngọt",
+      "instruction": "Đun nóng 15 ml dầu ô liu trong chảo sâu lòng trên lửa vừa, cho tỏi băm vào phi khoảng 20 giây đến khi thơm nhẹ rồi trút tôm vào đảo nhanh tay với 1 g muối ăn trong khoảng 2 phút đến khi tôm vừa chuyển màu hồng thì gắp ngay ra đĩa riêng.",
+      "tip": "Xào sơ tôm rồi lấy ra trước khi om cà chua giúp tôm giữ độ giòn ngọt, không bị dai hay teo nhỏ do om lâu.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào hành tây mềm ngọt",
+      "instruction": "Vẫn dùng chảo đó trên lửa vừa, cho toàn bộ hành tây thái lát vào đảo đều khoảng 3 phút đến khi hành tây chuyển trong và tỏa mùi thơm ngọt tự nhiên.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Om cà chua với xì dầu, tương cà và Sake",
+      "instruction": "Cho cà chua cắt miếng vào chảo cùng 18 ml xì dầu Nhật Bản, 15 ml tương cà Ketchup, 22 ml rượu Sake Nhật Bản, 5 g đường cát trắng, 1 g muối ăn còn lại và 100 ml nước lọc. Đảo đều, đun sôi rồi hạ lửa nhỏ, đậy nắp om khoảng 6 phút cho cà chua nhừ ra sốt đỏ sánh.",
+      "tip": "Nếm thử sốt cà chua ở bước này; tùy độ chua ngọt của cà chua mà có thể gia giảm thêm một chút đường cho hài hòa.",
+      "timerMinutes": 6
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả tôm vào om thấm sốt cà chua",
+      "instruction": "Mở nắp, trút toàn bộ tôm đã áp chảo trở lại chảo sốt, đảo nhẹ cho sốt phủ đều và om trên lửa vừa thêm 2–3 phút đến khi tôm cong tròn, thịt chín đục hoàn toàn và nước sốt sánh quyện.",
+      "tip": "Quan sát thân tôm vừa cuộn tròn hình chữ C và chuyển màu đỏ hồng đồng nhất là đạt, không om quá lâu để tránh tôm bị khô xác.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc tiêu, hành lá và dọn ăn nóng",
+      "instruction": "Tắt bếp, rắc 1 g tiêu đen xay cùng hành lá thái khoanh lên trên, đảo nhẹ một vòng rồi múc ra đĩa sâu lòng dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 182,
+    "energyKcal": 181.7,
+    "energyKj": 760,
+    "proteinG": 22.2,
+    "fatG": 5.1,
+    "saturatedFatG": 0.8,
+    "carbG": 11.8,
+    "fiberG": 2,
+    "sugarG": 7,
+    "sodiumMg": 825,
+    "saltG": 2.06,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Sake 16021",
+      "USDA FDC 169076",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0c92ea97488a5fe7a33d6652b34846c3c5f1af0057dbba40cfff235b9d027342",
+    "researchedFromV2Sha256": "de17a798b71ef30441393d7f5f7dba4c48a1462a4a4a33ef703e520bf1203147"
+  }
+}

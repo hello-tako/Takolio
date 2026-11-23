@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-103ea67cd56c9c96",
+    "slug": "mi-y-carbonara-ba-chi",
+    "title": "Mì Ý Carbonara ba chỉ giòn",
+    "subtitle": "Sợi Spaghetti áo lớp sốt kem trứng và phô mai Pecorino Romano sánh mượt không dùng kem tươi, kết hợp thịt ba chỉ muối áp chảo giòn thơm và tiêu đen"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "medium",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Món Ý",
+      "Mì Ý",
+      "Carbonara",
+      "Ba chỉ",
+      "Béo mịn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "pan_fry",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "egg",
+      "milk",
+      "pork",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Mì Ý Carbonara chuẩn truyền thống thành Rome không hề dùng kem tươi mà tạo độ sánh mượt nhờ kỹ thuật nhũ tương hóa hỗn hợp trứng gà, phô mai Pecorino Romano bào mịn cùng mỡ ba chỉ muối giòn và nước luộc mì giàu tinh bột.",
+    "servingSuggestion": "Chia mì ra 4 đĩa sâu lòng đã làm ấm, rắc đều thịt ba chỉ giòn, thêm phô mai Pecorino Romano bào và tiêu đen mới xay lên trên rồi thưởng thức ngay.",
+    "storageAndReheat": "Mì Carbonara cần ăn ngay khi còn nóng để sốt trứng giữ được độ kem bóng mịn; món này không thích hợp để qua đêm hay hâm lại vì trứng dễ tách nước và vón cục."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý Spaghetti khô",
+      "culinaryMeasure": "320 g",
+      "prepNote": "luộc bớt 1 phút so với bao bì để đạt độ al dente",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BACON_HAM",
+      "name": "Thịt ba chỉ muối xông khói Pancetta",
+      "culinaryMeasure": "150 g",
+      "prepNote": "lọc bỏ phần bì cứng nếu có, thái sợi dày khoảng 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (~200 g)",
+      "prepNote": "tách lấy lòng đỏ (có thể giữ lại 1 quả nguyên) cho vào tô lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 130,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PECORINO_CHEESE",
+      "name": "Phô mai Pecorino Romano bào mịn",
+      "culinaryMeasure": "60 g",
+      "prepNote": "chia 50 g đánh vào sốt trứng và 10 g rắc trang trí cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/5 củ (1–2 tép, ~5 g)",
+      "prepNote": "đập dập nhẹ để phi thơm cùng mỡ ba chỉ rồi gắp bỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 4.35,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "4 g (~1,5 muỗng cà phê)",
+      "prepNote": "xay thô vừa để trộn vào sốt trứng và rắc mặt mì",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "15 g (~2,5 muỗng cà phê)",
+      "prepNote": "chỉ dùng để pha nước luộc mì vì ba chỉ và phô mai đã mặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 2.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "3000 ml (3 lít)",
+      "prepNote": "đun sôi luộc mì và múc giữ lại 100 ml nước tinh bột làm sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 3000,
+      "unit": "ml",
+      "grossGrams": 3000,
+      "edibleRetentionRatio": 0.03,
+      "edibleGrams": 90,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thái ba chỉ và đánh hỗn hợp sốt trứng phô mai",
+      "instruction": "Thái 150 g thịt ba chỉ muối xông khói Pancetta thành sợi dày 1 cm. Đập 4 quả trứng gà tươi (ưu tiên lấy lòng đỏ hoặc 1 quả nguyên kèm 3 lòng đỏ cho sốt sánh đậm), cho vào tô cùng 50 g phô mai Pecorino Romano bào mịn và 3 g tiêu đen xay, dùng phới lồng đánh đều thành hỗn hợp sánh mịn.",
+      "tip": "Dùng chủ yếu lòng đỏ trứng giúp sốt Carbonara có màu vàng óng và độ sánh kem mượt mà không bị tanh."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo ba chỉ muối ra mỡ vàng giòn",
+      "instruction": "Cho thịt ba chỉ muối vào chảo chống dính khô (không cần thêm dầu), bật lửa vừa-lớn áp chảo khoảng 8–10 phút đến khi thịt tiết mỡ và các cạnh vàng giòn. Có thể thêm tỏi tươi đập dập (nếu dùng) đảo 1 phút cho thơm rồi gắp bỏ tỏi. Vớt thịt ra bát riêng, giữ nguyên phần mỡ nóng trong chảo.",
+      "tip": "Canh lửa vừa để thịt ba chỉ muối tiết mỡ từ từ và giòn đều mà không bị cháy khét gây đắng.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Luộc mì Ý Spaghetti và giữ nước tinh bột",
+      "instruction": "Trong lúc áp chảo thịt, đun sôi mạnh nồi lớn với 3 lít nước lọc và 15 g muối hạt. Cho 320 g mì Ý Spaghetti khô vào luộc khoảng 8 phút đến độ al dente. Trước khi vớt mì, múc giữ lại khoảng 100 ml nước luộc mì nóng.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Áo mì qua nền mỡ ba chỉ và nước luộc",
+      "instruction": "Tắt bếp chảo mỡ ba chỉ để chảo nguội bớt 1 phút. Rưới khoảng 50 ml nước luộc mì vào chảo mỡ, trút mì Ý đã vớt sang chảo rồi đảo nhanh tay cho sợi mì thấm đều lớp nhũ tương mỡ thịt nóng ấm."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Trộn sốt trứng phô mai ngoài bếp lửa",
+      "instruction": "Nhấc hẳn chảo mì khỏi bếp để tránh quá nhiệt, đổ từ từ hỗn hợp trứng và phô mai Pecorino vào, vừa đổ vừa đảo và xóc liên tục 1–2 phút. Thêm từng muỗng nước luộc mì còn lại nếu sốt quá đặc đến khi tạo thành lớp kem bóng mượt bám đều sợi mì.",
+      "tip": "Tuyệt đối tắt bếp và nhấc chảo khỏi nguồn nhiệt trước khi đổ trứng để nhiệt dư chỉ làm chín mượt sốt mà không biến thành trứng bác lợn cợn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn ba chỉ giòn và dọn nóng ngay",
+      "instruction": "Trút phần lớn thịt ba chỉ giòn trở lại chảo đảo đều lần cuối. Chia mì ra 4 đĩa sâu lòng, rắc phần thịt giòn còn lại cùng 10 g phô mai Pecorino Romano bào và 1 g tiêu đen xay lên trên, thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 544,
+    "energyKcal": 543.5,
+    "energyKj": 2274,
+    "proteinG": 24.6,
+    "fatG": 21.1,
+    "saturatedFatG": 8.2,
+    "carbG": 62,
+    "fiberG": 2.8,
+    "sugarG": 2.5,
+    "sodiumMg": 963,
+    "saltG": 2.41,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167923",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC Pecorino Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "08d0130579c2fc016838b595f70e369306b3145344070a0a484d26f095185165",
+    "researchedFromV2Sha256": "b13104e7bb071423d8c42207677951f5706747cbb19f8e9bb6ea1d513f39bf84"
+  }
+}

@@ -52,6 +52,7 @@ export function deploymentArguments(manifest) {
     RECIPE_CATALOG_CUTOVER_ENABLED: manifest.recipeCatalogCutoverEnabled,
     ...(manifest.environment === 'production' ? { MEAL_PLANNER_ENABLED: manifest.mealCompositionV2Enabled } : {}),
     MEAL_COMPOSITION_V2_ENABLED: manifest.mealCompositionV2Enabled,
+    ...(typeof manifest.recipeCatalogV4StandardEnabled === 'boolean' ? { RECIPE_CATALOG_V4_STANDARD_ENABLED: manifest.recipeCatalogV4StandardEnabled } : {}),
   };
   for (const [name, value] of Object.entries(variables)) args.push('--var', `${name}:${value}`);
   return args;

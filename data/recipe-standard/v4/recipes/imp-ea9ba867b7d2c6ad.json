@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-ea9ba867b7d2c6ad",
+    "slug": "ga-hap-gung-bap-cai",
+    "title": "Ức gà hấp gừng bắp cải kiểu Nhật",
+    "subtitle": "Ức gà hấp mềm ẩm trên lớp bắp cải ngọt thanh, rưới sốt nước tương Ponzu chua dịu quyện dầu mè, gừng tươi và mè trắng rang"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_hap_luoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món hấp",
+      "Ức gà",
+      "Bắp cải",
+      "Thanh đạm",
+      "Nhật Bản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "steam",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món ức gà hấp kiểu Nhật nhẹ nhàng, giàu đạm và ít dầu mỡ: thịt ức gà hấp chín tới trên nền bắp cải ngọt giúp giữ độ ẩm mềm, sau đó xé sợi trộn sốt nước tương Ponzu, gừng bào và dầu mè thơm bùi.",
+    "servingSuggestion": "Bày thịt gà xé cùng bắp cải hấp ra đĩa lớn, rưới đều nước sốt Ponzu gừng và phần nước ngọt tiết ra khi hấp, rắc thêm hạt mè trắng rang và hành lá thái nhỏ; dùng nóng hoặc nguội mát đều ngon.",
+    "storageAndReheat": "Bảo quản phần gà hấp và sốt riêng trong hộp kín ở ngăn mát tủ lạnh tối đa 2 ngày; khi ăn có thể dùng nguội như salad gà hoặc hấp lại 3–4 phút cho ấm nóng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà không da không xương",
+      "culinaryMeasure": "320 g (khoảng 2 miếng vừa)",
+      "prepNote": "rửa sạch, thấm khô rồi khứa nhẹ vài đường nông trên mặt để thịt chín đều và thấm gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 320,
+      "unit": "g",
+      "grossGrams": 320,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 320,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CABBAGE",
+      "name": "Bắp cải tươi",
+      "culinaryMeasure": "1/2 bắp nhỏ (khoảng 400 g)",
+      "prepNote": "tách bỏ lá già, rửa sạch rồi xé hoặc cắt miếng vuông cỡ 4 cm để lót đáy đĩa hấp",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 340,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "20 g (1 nhánh nhỏ)",
+      "prepNote": "gọt vỏ, chia 10 g thái lát mỏng hấp cùng gà, 10 g còn lại bào nhuyễn pha sốt Ponzu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PONZU_SAUCE",
+      "name": "Nước tương Ponzu chanh Nhật",
+      "culinaryMeasure": "50 ml (~3,5 muỗng canh)",
+      "prepNote": "dùng pha sốt rưới giúp món hấp có vị mặn dịu và hương cam quýt thanh mát",
+      "componentGroup": "sauce",
+      "requiredQuantity": 50,
+      "unit": "ml",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "khuấy cùng nước tương Ponzu và gừng bào tạo độ béo thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake Nhật Bản",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "rưới đều lên ức gà trước khi hấp giúp khử mùi và làm thịt mềm mọng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 24.8,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 21.08,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "rắc phủ lên mặt gà hấp khi hoàn thiện",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, phần đầu hành chẻ dọc lót hấp cho thơm, phần lá xanh thái nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "xát nhẹ đều hai mặt ức gà trước khi hấp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (nồi hấp)",
+      "culinaryMeasure": "400 ml",
+      "prepNote": "đổ vào đáy xửng hấp tạo hơi nước làm chín gà và bắp cải",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "ml",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế ức gà, bắp cải và gừng hành",
+      "instruction": "Rửa sạch 320 g ức gà không da không xương, thấm khô bằng khăn giấy và khứa vài đường nông trên bề mặt cho nhanh chín. Rửa sạch bắp cải tươi, để ráo và cắt miếng vuông vừa ăn khoảng 4 cm. Chia 20 g gừng tươi: 10 g thái lát mỏng, 10 g bào thật nhuyễn; hành lá chia phần đầu lót hấp và phần lá xanh thái nhỏ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp ức gà với muối và rượu Sake",
+      "instruction": "Xát đều 2 g muối ăn lên hai mặt ức gà, rưới 25 ml rượu Sake Nhật Bản lên thịt và ướp khoảng 10 phút cho thịt gà thấm vị, khử mùi và giữ được độ mềm ẩm khi hấp.",
+      "tip": "Hấp nguyên miếng ức gà rồi mới xé sợi sau giúp khóa nước ngọt bên trong thớ thịt, tránh làm ức gà bị khô xơ.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Lót bắp cải và hấp chín ức gà",
+      "instruction": "Đổ 400 ml nước lọc vào nồi hấp và đun sôi trên lửa lớn. Trải đều bắp cải vào đĩa sâu lòng chịu nhiệt, xếp đầu hành lá và 10 g gừng thái lát lên trên rồi đặt miếng ức gà cùng toàn bộ nước ướp lên mặt. Cho đĩa vào xửng, đậy nắp kín và hấp trên lửa vừa khoảng 14–15 phút đến khi thịt gà chuyển màu trắng đục hoàn toàn và nước chảy ra trong khi xiên thử.",
+      "tip": "Không hấp quá lâu sau khi gà đã chín tới để phần ức gà giữ được kết cấu mềm mọng và bắp cải vẫn còn vị giòn ngọt.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Pha sốt nước tương Ponzu gừng dầu mè",
+      "instruction": "Trong lúc chờ hấp, pha sốt trong chén nhỏ gồm 50 ml nước tương Ponzu chanh Nhật, 10 ml dầu mè thơm và 10 g gừng tươi bào nhuyễn; khuấy thật đều tay cho gia vị hòa quyện.",
+      "tip": "Nếu thích món có thêm chút nước ngọt thanh, có thể chắt 2 muỗng canh nước hấp gà trong đĩa hòa chung vào chén sốt Ponzu."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Để gà nghỉ và xé sợi vừa ăn",
+      "instruction": "Nhấc đĩa gà hấp ra khỏi xửng, gắp ức gà để nghỉ khoảng 3 phút cho nguội bớt và ổn định nước thịt, sau đó dùng tay xé thành từng sợi vừa ăn theo thớ thịt. Chắt bớt nếu nước hấp trong đĩa quá nhiều để sốt không bị loãng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn sốt, rắc mè và hành lá hoàn thiện",
+      "instruction": "Xếp gà xé trở lại lên lớp bắp cải hấp chín mềm trong đĩa, rưới đều toàn bộ sốt nước tương Ponzu gừng dầu mè lên trên, rắc 10 g hạt mè trắng rang cùng phần hành lá thái nhỏ và thưởng thức ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 225,
+    "energyKcal": 225.3,
+    "energyKj": 943,
+    "proteinG": 27.1,
+    "fatG": 7.7,
+    "saturatedFatG": 1.3,
+    "carbG": 10.6,
+    "fiberG": 3.5,
+    "sugarG": 4.9,
+    "sodiumMg": 952,
+    "saltG": 2.38,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Ponzu Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 169231",
+      "USDA FDC 169975",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 171477",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "b6394ae05e8f409ed7d5a714eb6b814380fbd1662860744e56f07d994f2e3200",
+    "researchedFromV2Sha256": "d90c8f2b754d248625a2d4ae3f9c219ae624fb673070f29cb76eed38d84f61da"
+  }
+}

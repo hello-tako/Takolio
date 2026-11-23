@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-97ba5787e2d4113b",
+    "slug": "canh-tuong-dau-han",
+    "title": "Canh tương đậu Hàn Quốc (Doenjang Jjigae)",
+    "subtitle": "Canh tương đậu lên men Doenjang thơm nồng hòa quyện nước dùng cá cơm tảo bẹ cùng đậu phụ trắng mềm, nấm đùi gà và rau chân vịt thanh ngọt"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 20,
+    "servings": 3,
+    "tags": [
+      "Hàn Quốc",
+      "Món canh",
+      "Tương đậu",
+      "Đậu phụ",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "fish",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Canh tương đậu Hàn Quốc (Doenjang Jjigae) là món canh quen thuộc trên mâm cơm gia đình xứ Hàn với vị mặn bùi đặc trưng của tương đậu lên men Doenjang hòa cùng nước dùng cá cơm tảo bẹ ngọt thanh, nấm đùi gà giòn ngọt, rau chân vịt xanh mướt và đậu phụ mềm.",
+    "servingSuggestion": "Dọn canh nóng hổi trong nồi đất hoặc tô lớn, ăn kèm cơm trắng nóng, kim chi và các món panchan.",
+    "storageAndReheat": "Canh nguội hẳn cho vào hộp kín bảo quản ngăn mát tối đa 2 ngày; khi hâm nóng đun sôi nhẹ trên lửa vừa 3–4 phút rồi mới thêm rau nếu cần."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "ANCHOVY_KOMBU_BROTH",
+      "name": "Nước dùng cá cơm tảo bẹ",
+      "culinaryMeasure": "800 ml",
+      "prepNote": "làm nền ngọt thanh tự nhiên không cần nhiều gia vị phụ",
+      "componentGroup": "broth",
+      "requiredQuantity": 800,
+      "unit": "ml",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 720,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "DOENJANG",
+      "name": "Tương đậu Hàn Quốc (Doenjang)",
+      "culinaryMeasure": "36 g (~2 muỗng canh đầy)",
+      "prepNote": "đánh tan qua rây lọc vào nước dùng đang sôi để canh sánh mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 36,
+      "unit": "g",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOFU",
+      "name": "Đậu phụ trắng mềm",
+      "culinaryMeasure": "1,5 bìa (~180 g)",
+      "prepNote": "rửa nhẹ, cắt khối vuông cỡ 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SPINACH",
+      "name": "Rau chân vịt (Cải bó xôi)",
+      "culinaryMeasure": "150 g",
+      "prepNote": "nhặt gốc già, rửa sạch và cắt khúc 4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 142.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "140 g",
+      "prepNote": "lau sạch, thái lát vát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 133,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,5 củ (~70 g)",
+      "prepNote": "bóc vỏ, thái miếng vuông 1,5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô băm nhuyễn",
+      "culinaryMeasure": "0,3 củ (~7,5 g, 2–3 tép)",
+      "prepNote": "băm nhuyễn để thả vào nồi canh dậy mùi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 6.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (~30 g)",
+      "prepNote": "rửa sạch, thái khúc 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ hoặc ớt sừng",
+      "culinaryMeasure": "1 quả (~5 g)",
+      "prepNote": "rửa sạch, thái lát vát mỏng rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GOCHUGARU",
+      "name": "Ớt bột Hàn Quốc (Gochugaru)",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo vị cay nhẹ và sắc cam ấm cho nước canh",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau chân vịt, nấm đùi gà và đậu phụ",
+      "instruction": "Rửa sạch 150 g rau chân vịt rồi cắt khúc 4 cm. Thái lát vát nấm đùi gà tươi dày 0,5 cm, cắt vuông hành tây 1,5 cm, cắt khối vuông đậu phụ trắng mềm cỡ 2 cm, băm nhuyễn tỏi khô và thái khúc hành lá tươi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng và đánh tan tương đậu Doenjang",
+      "instruction": "Đổ 800 ml nước dùng cá cơm tảo bẹ vào nồi đất hoặc nồi đáy dày, đun sôi trên lửa lớn. Đặt rây lọc lên miệng nồi, cho 36 g tương đậu Hàn Quốc (Doenjang) vào rây rồi dùng muỗng dằm nhẹ cho tương tan đều vào nước dùng đang sôi.",
+      "tip": "Đánh tan Doenjang qua rây giúp nước canh mượt mịn, giữ lại phần xác đậu thô nếu thích hoặc hòa tan hoàn toàn đều ngon.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nấu hành tây và nấm đùi gà cho ngọt nước",
+      "instruction": "Cho hành tây thái vuông, nấm đùi gà tươi và 2 g ớt bột Hàn Quốc (Gochugaru) vào nồi, hạ lửa vừa và nấu liu riu khoảng 5 phút cho hành tây chín trong và nấm tiết vị ngọt thanh.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Thả đậu phụ trắng và tỏi băm vào nồi canh",
+      "instruction": "Nhẹ nhàng thả các khối đậu phụ trắng mềm cùng tỏi khô băm nhuyễn vào nồi canh, nấu thêm 3 phút trên lửa vừa để đậu phụ nóng thấm hương tương đậu lên men mà không bị nát.",
+      "tip": "Cho tỏi băm vào ở công đoạn sau giúp giữ mùi thơm đặc trưng rõ nét của món canh Doenjang.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chần chín rau chân vịt trong nước canh nóng",
+      "instruction": "Cho toàn bộ rau chân vịt cắt khúc vào nồi canh, nhấn nhẹ cho rau ngập nước và nấu thêm 1–2 phút đến khi rau vừa chín mềm vẫn giữ màu xanh mướt.",
+      "tip": "Không nấu rau chân vịt quá lâu để giữ trọn độ giòn ngọt và màu xanh tươi mắt."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, ớt lát và dọn nóng",
+      "instruction": "Rắc hành lá tươi và ớt hiểm đỏ thái lát lên mặt nồi canh, tắt bếp rồi dọn nóng ngay ra bàn cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 135,
+    "energyKcal": 134.9,
+    "energyKj": 564,
+    "proteinG": 13.8,
+    "fatG": 4.4,
+    "saturatedFatG": 0.6,
+    "carbG": 12.8,
+    "fiberG": 4.1,
+    "sugarG": 2.6,
+    "sodiumMg": 1206,
+    "saltG": 3.01,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Anchovy Kelp Stock Ref",
+      "Korean Chili Flake Ref",
+      "Korean Doenjang Ref",
+      "USDA FDC 168462",
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 172475"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "da8b10144a39c55aa21cb1d61e22a88deb304811fbc7cf4db69df97f355840dd",
+    "researchedFromV2Sha256": "adce81ad663fd62ad6050036f897d5ce43c198bd739706610880da16ed5b244d"
+  }
+}

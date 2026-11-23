@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-c6e706b483805e44",
+    "slug": "ba-chi-ham-kakuni",
+    "title": "Thịt ba chỉ hầm Kakuni kiểu Nhật",
+    "subtitle": "Thịt ba chỉ heo hầm hai giai đoạn mềm tan như tan trong miệng, quyện nước sốt dashi xì dầu đường ngọt dịu và trứng lòng đào ngấm vị"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_kho",
+    "difficulty": "hard",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 150,
+    "servings": 5,
+    "tags": [
+      "Nhật Bản",
+      "Kakuni",
+      "Thịt kho",
+      "Bữa tiệc",
+      "Hầm mềm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "pan_fry",
+      "boil"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Buta no Kakuni là món thịt ba chỉ hầm trứ danh vùng Nagasaki Nhật Bản. Thịt được áp chảo rút mỡ, ninh mềm trong nước gừng hành rồi mới om chậm cùng nước dùng dashi, rượu sake, mirin, đường và xì dầu cho đến khi từng thớ thịt mềm rục bóng mượt.",
+    "servingSuggestion": "Xếp từng khối thịt ba chỉ hầm bóng mượt ra bát sâu lòng cùng nửa quả trứng ngâm sốt và rau đậu hoặc cải thìa chần, rưới nước kho sánh ngọt và đặt hành trắng thái sợi lên trên.",
+    "storageAndReheat": "Món Kakuni càng để qua đêm trong tủ lạnh càng thấm đậm; hớt bỏ lớp mỡ đông trên mặt nước kho, bảo quản tối đa 3–4 ngày và hâm lại lửa nhỏ khoảng 5–7 phút trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo rút sườn",
+      "culinaryMeasure": "750 g",
+      "prepNote": "để nguyên tảng lớn cắt khúc dài 8–10 cm để hầm không nát, sau mới cắt vuông 5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 562.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "5 quả (250 g)",
+      "prepNote": "luộc 7 phút cho lòng đào, ngâm nước đá bóc vỏ rồi om cùng thịt",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "DASHI",
+      "name": "Nước dùng Dashi",
+      "culinaryMeasure": "750 ml",
+      "prepNote": "dùng làm nền thanh ngọt cho giai đoạn om sốt",
+      "componentGroup": "broth",
+      "requiredQuantity": 750,
+      "unit": "ml",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 750,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SAKE",
+      "name": "Rượu Sake nấu ăn",
+      "culinaryMeasure": "150 ml",
+      "prepNote": "chia đôi: 75 ml khử mùi ở lần ninh mềm và 75 ml cho nước sốt kho",
+      "componentGroup": "sauce",
+      "requiredQuantity": 150,
+      "unit": "ml",
+      "grossGrams": 148.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 148.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "75 ml",
+      "prepNote": "tạo độ ngọt thanh và độ bóng đẹp cho nước sốt Kakuni",
+      "componentGroup": "sauce",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 86.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 86.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "75 ml",
+      "prepNote": "cho vào giữa giai đoạn kho để thịt ngấm đậm mà không bị cứng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 75,
+      "unit": "ml",
+      "grossGrams": 88.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 88.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "55 g (~4,5 muỗng canh)",
+      "prepNote": "tạo vị ngọt đậm dịu đặc trưng cho nước kho kiểu Nagasaki",
+      "componentGroup": "sauce",
+      "requiredQuantity": 55,
+      "unit": "g",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 55,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "50 g (1 củ vừa)",
+      "prepNote": "rửa sạch thái lát mỏng, chia đôi cho hai giai đoạn ninh và kho",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi (hoặc hành boa-rô)",
+      "culinaryMeasure": "2 bó (80 g)",
+      "prepNote": "tách riêng phần lá xanh để ninh thịt và phần đầu trắng chẻ sợi ngâm đá trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "bunch",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 73.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "GREEN_BEANS",
+      "name": "Đậu cô ve ngọt (hoặc cải thìa chần)",
+      "culinaryMeasure": "80 g",
+      "prepNote": "tước xơ, chần nước sôi 2 phút giữ màu xanh ăn kèm chống ngấy",
+      "componentGroup": "garnish",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 72,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn trung tính",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "dùng để áp chảo xém vàng các mặt thịt ba chỉ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CHILI",
+      "name": "Ớt khô nguyên quả",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "bẻ đôi bỏ hạt cho vào nồi kho tạo hương cay nhẹ ấm bụng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (ninh mềm lần 1)",
+      "culinaryMeasure": "2000 ml",
+      "prepNote": "đổ ngập thịt để ninh mềm và loại bỏ mỡ thừa rồi chắt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt ba chỉ, gừng và hành lá",
+      "instruction": "Cắt 750 g thịt ba chỉ heo thành các dải lớn vừa chiều rộng lòng nồi để thịt giữ phom trong quá trình hầm lâu. Thái lát mỏng 50 g gừng tươi và chia làm hai phần bằng nhau; tách 2 bó hành lá riêng phần lá xanh cắt khúc 5 cm và phần thân trắng thái sợi mảnh ngâm nước đá trang trí."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo xém vàng rút bớt mỡ thừa của thịt",
+      "instruction": "Làm nóng nồi gang hoặc chảo đáy dày trên lửa vừa cao với 10 ml dầu ăn trung tính. Đặt từng dải thịt ba chỉ mặt mỡ xuống trước, áp chảo vàng đều tất cả các mặt khoảng 8–10 phút để khóa hương thịt và rút bớt phần mỡ béo dư thừa.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Ninh mềm thịt ba chỉ lần một trong nước gừng hành",
+      "instruction": "Xếp thịt đã áp chảo thành một lớp vào nồi lớn, đổ 2000 ml nước lọc ngập mặt thịt cùng 75 ml rượu Sake nấu ăn, một nửa lượng gừng thái lát và phần lá xanh hành lá. Đun sôi trên lửa vừa, hớt sạch bọt và váng mỡ, phủ một tờ giấy nến khoét lỗ sát mặt thịt rồi hạ lửa nhỏ nhất ninh liu riu không đậy vung khoảng 90 phút đến khi thịt mềm rục.",
+      "tip": "Ninh mở nắp ở lửa nhỏ liu riu giúp mùi hôi thịt bay hơi hết và thịt mềm tơi từng thớ mà không bị nát vụn.",
+      "timerMinutes": 90
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Luộc trứng gà lòng đào và chần đậu xanh ăn kèm",
+      "instruction": "Trong lúc ninh thịt, đun sôi một nồi nước khác, nhẹ nhàng thả 5 quả trứng gà lạnh vào luộc đúng 7 phút rồi vớt ngay sang tô nước đá 10 phút và bóc sạch vỏ. Dùng lại nồi nước sôi chần 80 g đậu cô ve trong 2 phút cho chín giòn xanh mướt rồi vớt ra đĩa.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Cắt khối vuông và kho chậm trong nước dùng Dashi",
+      "instruction": "Vớt thịt ba chỉ ra thớt, bỏ phần nước ninh cùng xác hành gừng cũ, nhẹ tay cắt thịt thành các khối vuông cạnh 5 cm rồi xếp gọn vào nồi vừa khít. Đổ 750 ml nước dùng Dashi, 75 ml rượu Sake nấu ăn còn lại, 75 ml rượu ngọt Mirin, 55 g đường cát trắng, phần gừng lát còn lại và 1 quả ớt khô nguyên quả vào, đậy nắp giấy kho lửa nhỏ liu riu trong 30 phút.",
+      "tip": "Chưa cho nước tương ngay từ đầu giúp đường và mirin thấm vào làm mềm thịt trước, tránh thịt bị mặn gắt bên ngoài.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 6,
+      "phase": "cook",
+      "title": "Nêm nước tương Nhật và om cùng trứng lòng đào",
+      "instruction": "Sau 30 phút kho, rót 75 ml nước tương Nhật vào nồi cùng 5 quả trứng gà đã bóc vỏ. Tiếp tục đậy nắp giấy om liu riu lửa nhỏ thêm 30 phút nữa, thỉnh thoảng lắc nhẹ nồi hoặc múc nước kho rưới lên trứng và thịt đến khi nước sốt sánh bóng đậm đà và thịt mềm tan khi xiên đũa qua.",
+      "tip": "Tắt bếp để thịt và trứng nguội tự nhiên trong nồi nước kho vài giờ rồi hâm lại sẽ giúp món Kakuni thấm vị đậm sâu hơn nhiều.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 7,
+      "phase": "finish",
+      "title": "Trình bày bát thịt hầm Kakuni và thưởng thức",
+      "instruction": "Gắp các khối thịt ba chỉ hầm, trứng lòng đào cắt đôi và đậu cô ve chần ra bát sâu lòng, chan nước kho bóng mượt lên trên. Vẩy ráo phần đầu hành trắng thái sợi ngâm đá đặt lên mặt thịt và thưởng thức nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 5,
+    "calories": 802,
+    "energyKcal": 802.2,
+    "energyKj": 3356,
+    "proteinG": 19.6,
+    "fatG": 65,
+    "saturatedFatG": 23.3,
+    "carbG": 25.5,
+    "fiberG": 1.1,
+    "sugarG": 19.1,
+    "sodiumMg": 1559,
+    "saltG": 3.9,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "MEXT Ichiban Dashi Ref",
+      "MEXT Sake 16021",
+      "USDA FDC 167820",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169961",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e991055e26963a5baf30bbe9ed07b36c104c49177b9a7fd3835be13e94afd5cd",
+    "researchedFromV2Sha256": "84e4c6a5e09e67c60a009f77ecc4cc4c5dbfd0d4d7bd4f2cc53ea887daddf232"
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-7cfc6a2e9d8bf8a3",
+    "slug": "canh-rau-muong-tom-dong",
+    "title": "Canh rau muống nấu tôm đồng cà chua",
+    "subtitle": "Ngọn rau muống non xanh giòn nấu cùng tôm đồng giã thô ngọt nước và cà chua chín chua dịu đậm chất đồng quê Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_canh",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Món canh",
+      "Nam Bộ",
+      "Đồng quê",
+      "Dễ nấu",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Món canh dân dã mang hương vị đồng quê với phần nước dùng ánh đỏ cam dịu nhẹ từ cà chua xào mềm, ngọt thanh đậm vị tôm đồng giã thô cùng từng cọng rau muống xanh mướt giòn ngon.",
+    "servingSuggestion": "Múc canh nóng ra tô lớn, dùng kèm cơm trắng nóng hổi cùng cá rô kho tộ hoặc thịt ba rọi cháy cạnh rất đưa cơm.",
+    "storageAndReheat": "Nên dùng hết ngay trong ngày để rau muống giữ màu xanh tươi và độ giòn; tránh hâm đi hâm lại nhiều lần khiến rau ngả thẫm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "WATER_SPINACH",
+      "name": "Rau muống non",
+      "culinaryMeasure": "1.5 bó (~450 g)",
+      "prepNote": "nhặt lấy phần ngọn và lá non, ngắt khúc vừa ăn, ngâm nước muối loãng rồi rửa sạch để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 1.5,
+      "unit": "bunch",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm đồng tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "bóc vỏ, bỏ đầu, rút chỉ đen (giữ gạch tôm nếu có), giã thô với chút gia vị",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 156,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "TOMATO",
+      "name": "Cà chua chín đỏ",
+      "culinaryMeasure": "2 quả (~240 g)",
+      "prepNote": "rửa sạch, bỏ cuống, bổ múi cau",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 240,
+      "edibleRetentionRatio": 0.96,
+      "edibleGrams": 230.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (2 củ nhỏ)",
+      "prepNote": "bóc vỏ, băm nhỏ hoặc thái lát mỏng để phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.5 bó (~20 g, 2–3 nhánh)",
+      "prepNote": "rửa sạch, thái khúc ngắn 1,5 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "20 ml (~1,5 muỗng canh)",
+      "prepNote": "dùng phi thơm hành tím, xào tôm đồng và cà chua",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 17.48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "nêm khi nấu nước canh giúp dậy mùi thơm đậm đà",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp tôm và 5 g nêm nồi nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 2 g ngâm rửa rau muống, 1 g ướp tôm và 3 g nêm nước canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 3.9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "ướp cùng tôm đồng giúp thịt tôm đậm vị dịu ngọt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "dùng ướp khử tanh tôm đồng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1300 ml (1,3 lít)",
+      "prepNote": "lượng nước vừa đủ giúp nước canh thanh mát ngọt vị tôm và cà chua",
+      "componentGroup": "broth",
+      "requiredQuantity": 1300,
+      "unit": "ml",
+      "grossGrams": 1300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 1170,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Nhặt rau muống và sơ chế cà chua, hành lá",
+      "instruction": "Nhặt bỏ phần gốc già của 1,5 bó rau muống, ngắt lấy phần cọng non và lá xanh thành khúc dài khoảng 5 cm. Ngâm rau với nước pha 2 g muối ăn trong 5 phút rồi xả sạch nhiều lần, để thật ráo. Bổ múi cau 2 quả cà chua chín, băm nhỏ 20 g hành tím và cắt nhỏ hành lá.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Giã thô và ướp tôm đồng cho ngọt nước",
+      "instruction": "Lột vỏ 200 g tôm đồng, bỏ đầu, rút sạch chỉ đen dọc lưng và giữ lại phần gạch tôm nếu có. Cho tôm vào cối giã thô vừa phải để thịt tôm vẫn còn độ sần sật, sau đó ướp với 1 g muối ăn, 3 g hạt nêm, 4 g đường cát trắng và 1 g tiêu đen xay trong 10 phút cho ngấm vị.",
+      "tip": "Giã thô tôm đồng cùng chút gạch giúp thịt tôm tiết ra hết độ ngọt vào nước dùng và tạo màu cam hấp dẫn.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào chín tôm, cà chua",
+      "instruction": "Làm nóng nồi với 20 ml dầu ăn trên lửa vừa, cho hành tím băm vào phi thơm vàng nhẹ rồi trút tôm đồng đã ướp vào đảo đều khoảng 2 phút đến khi tôm săn lại và chuyển màu hồng cam. Tiếp tục cho cà chua bổ múi cau vào xào chung thêm 3 phút cho cà chua mềm nhẹ và ra màu đỏ cam tự nhiên.",
+      "tip": "Xào chín tôm cùng cà chua trước khi đổ nước giúp nước canh có màu đỏ cam đẹp mắt và dậy mùi thơm đậm đà.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sôi nước dùng và nêm gia vị hài hòa",
+      "instruction": "Đổ 1,3 lít nước lọc vào nồi, bật lửa lớn đun sôi bùng và hớt sạch bọt nổi trên mặt. Nêm 3 g muối ăn còn lại, 5 g hạt nêm và 15 ml nước mắm ngon vào nồi, khuấy tan đều và nấu thêm 2 phút cho nước canh đậm vị chua thanh ngọt dịu.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thả rau muống vào nấu mở vung giữ màu xanh",
+      "instruction": "Khi nước đang sôi mạnh trên lửa lớn, thả toàn bộ rau muống vào nồi và dùng vá ấn nhẹ cho rau ngập đều trong nước dùng. Nấu mở nắp khoảng 2–3 phút đến khi cọng rau vừa chín tới, xanh mướt và vẫn giữ độ giòn.",
+      "tip": "Không đậy nắp nồi và nấu nhanh trên lửa lớn giúp rau muống giữ màu xanh tươi mướt mà không bị úa vàng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Hoàn thiện với hành lá và dọn nóng",
+      "instruction": "Nếm lại vị canh lần cuối cho vừa miệng, thả hành lá cắt nhỏ vào đảo nhẹ rồi tắt bếp ngay. Múc canh ra tô lớn dùng nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 115,
+    "energyKcal": 115.2,
+    "energyKj": 482,
+    "proteinG": 11.4,
+    "fatG": 4.9,
+    "saturatedFatG": 0.8,
+    "carbG": 8.4,
+    "fiberG": 3,
+    "sugarG": 3.8,
+    "sodiumMg": 1220,
+    "saltG": 3.05,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169378",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170457",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c8f70f5490649a04508361a38834a7190ff0db37b7909d4e6de956879fa6780e",
+    "researchedFromV2Sha256": "02d58ceea1258175631a28ec11c3b7376f6a2bea4166c60cae8792e6d9f0a889"
+  }
+}

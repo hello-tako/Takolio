@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-04d0b94d17ce080c",
+    "slug": "ga-xao-gung-nam-kieu-thai-gai-pad-khing",
+    "title": "Gà xào gừng nấm kiểu Thái (Gai Pad Khing)",
+    "subtitle": "Ức gà thái lát mềm ngọt xào lửa lớn cùng gừng non thái sợi chỉ, nấm hương tươi và hành tây, thấm đẫm sốt dầu hào xì dầu thơm nồng"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Món xào",
+      "Ức gà",
+      "Gừng nấm",
+      "Nhanh gọn"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish",
+      "molluscs",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gai Pad Khing là món xào gia đình thanh đạm nhưng rất bắt cơm của Thái Lan, kết hợp thịt ức gà mềm mọng với hương cay ấm của gừng tươi thái sợi chỉ, vị ngọt tự nhiên từ nấm hương và hành tây giòn nhẹ.",
+    "servingSuggestion": "Múc gà xào gừng nấm nóng hổi ra đĩa sâu lòng, rắc chút tiêu nếu thích và dọn ăn ngay với cơm trắng dẻo thơm.",
+    "storageAndReheat": "Nên dùng nóng ngay để hành tây và gừng giữ độ giòn; nếu bảo quản ngăn mát tối đa 2 ngày, hâm nóng nhanh trên chảo lửa vừa với chút nước lọc để sốt bóng trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê không da",
+      "culinaryMeasure": "380 g",
+      "prepNote": "rửa sạch, thấm khô, thái lát mỏng đều dày khoảng 0,5 cm cho nhanh chín mềm",
+      "componentGroup": "main",
+      "requiredQuantity": 380,
+      "unit": "g",
+      "grossGrams": 380,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 380,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "80 g (1 củ vừa)",
+      "prepNote": "cạo sạch vỏ, thái lát mỏng rồi thái sợi chỉ nhỏ đều tay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 72,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm hương tươi (hoặc nấm bào ngư)",
+      "culinaryMeasure": "150 g",
+      "prepNote": "cắt bỏ chân nấm cứng, lau sạch và thái lát dày 0,5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 150,
+      "unit": "g",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 150,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây vàng",
+      "culinaryMeasure": "3/4 củ (khoảng 105 g)",
+      "prepNote": "bóc vỏ, bổ múi cau mỏng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 105,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 94.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "2 quả",
+      "prepNote": "bỏ hạt, thái lát vát xéo để tạo màu đẹp và cay nhẹ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, cắt khúc 3–4 cm, tách riêng phần đầu trắng và lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "pha chung trong chén sốt xào tạo độ sánh bóng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 24.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 24.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu / Nước tương",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia 12 ml ướp mềm thịt ức gà và 13 ml pha nước sốt xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "giúp nước sốt dậy hương thơm chuẩn vị Thái",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "khuấy tan trong sốt để cân bằng vị mặn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "20 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "chia đôi để xào sơ thịt gà và xào thơm gừng nấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "ml",
+      "grossGrams": 18.4,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 16.56,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (pha sốt xào)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "giúp hòa tan sốt dầu hào và tạo độ ẩm cho món xào",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 40.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Thái lát và ướp mềm ức gà",
+      "instruction": "Thái 380 g ức gà phi lê thành từng lát mỏng dày 0,5 cm để thịt chín nhanh mà không bị khô. Trộn đều thịt gà với 12 ml xì dầu trong tô sạch, ướp nghỉ 10 phút trong lúc sơ chế rau củ.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế gừng sợi, nấm, hành tây và pha sốt",
+      "instruction": "Cạo vỏ 80 g gừng tươi và thái sợi chỉ thật mảnh, thái lát 150 g nấm hương tươi, bổ múi cau mỏng 3/4 củ hành tây, băm nhỏ 1/2 củ tỏi, thái lát xéo 2 quả ớt sừng đỏ và cắt khúc 3–4 cm hành lá (để riêng đầu hành trắng và lá xanh). Pha sẵn chén sốt gồm 20 ml dầu hào, 13 ml xì dầu còn lại, 5 ml nước mắm, 5 g đường và 45 ml nước lọc.",
+      "tip": "Thái gừng thành sợi chỉ mỏng đều giúp gừng chín mềm thơm dịu và dễ ăn hòa quyện cùng thịt gà."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo xào săn thịt ức gà",
+      "instruction": "Đun nóng chảo sâu lòng trên lửa lớn với 10 ml dầu ăn, cho toàn bộ ức gà đã ướp vào trải đều và xào nhanh tay khoảng 2 phút đến khi bề mặt gà săn trắng và chín khoảng 80% thì trút ngay ra đĩa riêng.",
+      "tip": "Xào gà riêng trước rồi lấy ra giúp thịt ức gà giữ độ mọng nước và không bị dai trong lúc xào rau.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào thơm gừng sợi, hành tây và nấm tươi",
+      "instruction": "Dùng lại chảo đó trên lửa vừa lớn với 10 ml dầu ăn còn lại, cho tỏi băm, gừng thái sợi, hành tây và phần đầu hành trắng vào đảo đều 3 phút đến khi gừng dậy hương thơm nồng và hành tây hơi trong. Tiếp tục cho nấm hương thái lát vào xào thêm 2 phút đến khi nấm mềm săn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo gà với sốt dầu hào cho sánh quyện",
+      "instruction": "Trút phần ức gà cùng nước tiết ra vào chảo, khuấy lại chén sốt đã pha rồi rưới đều vào. Đảo nhanh tay trên lửa lớn khoảng 2 phút đến khi thịt gà chín trắng hoàn toàn bên trong, nước sốt sôi sệt lại và bám bóng đều quanh từng lát gà, gừng và nấm.",
+      "tip": "Đảo nhanh trên lửa lớn ở bước cuối để nước sốt cô sánh bám vào gà mà nấm và hành tây không bị ra nước loãng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, ớt sừng và hoàn thiện đĩa gà xào",
+      "instruction": "Tắt bếp ngay rồi cho phần lá xanh của hành lá cùng ớt sừng đỏ thái lát vào đảo đều 10 giây cho hành vừa héo xanh mướt, nếm lại vừa miệng rồi trút ra đĩa thưởng thức nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 272,
+    "energyKcal": 272.2,
+    "energyKj": 1139,
+    "proteinG": 32,
+    "fatG": 9.3,
+    "saturatedFatG": 1.6,
+    "carbG": 14.7,
+    "fiberG": 2.3,
+    "sugarG": 5.5,
+    "sodiumMg": 987,
+    "saltG": 2.47,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169251",
+      "USDA FDC 169655",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "71b2d6e0501083f7d3704b14a2647077f67cd93a274cb437e1adfb2a04bf2a4e",
+    "researchedFromV2Sha256": "900b8a16362866947ee6225801f193c98449f98d36e751b8641fa426ad67e531"
+  }
+}

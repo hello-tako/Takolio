@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-706c3678abea88b4",
+    "slug": "trung-chien-tron-han",
+    "title": "Trứng chiên hành lá kiểu Hàn (Gyeran Jeon)",
+    "subtitle": "Trứng chiên tròn vàng ruộm viền giòn, thơm hành lá xanh mướt chấm nước tương pha chua ngọt kiểu hộp cơm Hàn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 8,
+    "cookTimeMinutes": 10,
+    "servings": 2,
+    "tags": [
+      "Gyeran jeon",
+      "Trứng chiên",
+      "Hàn Quốc",
+      "Món nhanh",
+      "Hộp cơm"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gyeran Jeon là món trứng chiên tròn dẹt giản dị nhưng rất được ưa chuộng trong bữa cơm gia đình và hộp cơm trưa Hàn Quốc. Trứng đánh kỹ chiên trên chảo chống dính với lượng dầu vừa đủ cho mặt ngoài vàng đều, viền giòn nhẹ và bên trong mềm ẩm thơm hành lá.",
+    "servingSuggestion": "Cắt miếng tam giác hoặc miếng vuông vừa ăn, bày ra đĩa cùng chén nước tương giấm mè; dùng nóng với cơm trắng hoặc xếp vào hộp cơm.",
+    "storageAndReheat": "Ngon nhất khi ăn ngay lúc vừa chiên xong; có thể bảo quản nguội trong hộp kín ở ngăn mát tối đa 24 giờ và áp chảo lại 1 phút không dầu trước khi ăn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "4 quả (khoảng 200 g)",
+      "prepNote": "đập ra tô lớn, đánh tan thật đều đến khi không còn vệt lòng trắng",
+      "componentGroup": "main",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 176,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (khoảng 40 g)",
+      "prepNote": "rửa sạch, vẩy thật ráo nước rồi thái nhỏ khoảng 0,5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm nhẹ vào tô trứng trước khi chiên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "0,5 g (1 nhúm nhỏ)",
+      "prepNote": "khử mùi tanh trứng và tạo hương thơm nhẹ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 0.5,
+      "unit": "g",
+      "grossGrams": 0.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 0.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "chia làm 2 lần (mỗi lần 7,5 ml) để chiên 2 chiếc trứng tròn vàng giòn viền",
+      "componentGroup": "main",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (làm nước chấm)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "pha cùng giấm và đường làm nước chấm cho món trứng chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "tạo vị chua dịu thanh nhẹ cho chén nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn chua trong nước chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "rắc vào chén nước chấm và lên mặt trứng khi dọn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Đánh tan trứng với hành lá và gia vị",
+      "instruction": "Rửa sạch hành lá, để thật ráo nước rồi thái nhỏ khoảng 0,5 cm. Đập 4 quả trứng gà vào tô, dùng đũa đánh tan thật kỹ đến khi lòng đỏ và lòng trắng hòa quyện hoàn toàn. Cho hành lá, 2 g muối ăn và 0,5 g tiêu đen xay vào khuấy đều.",
+      "tip": "Hành lá phải thật ráo nước để không làm loãng trứng và tránh bắn dầu khi chiên; đánh kỹ giúp mặt trứng mịn đẹp không bị đốm trắng."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha nước chấm tương giấm mè",
+      "instruction": "Khuấy tan 25 ml nước tương với 5 ml giấm gạo và 2 g đường cát trắng trong chén nhỏ, thêm một nửa lượng hạt mè trắng rang lên trên để dùng chấm kèm trứng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên chiếc trứng tròn đầu tiên",
+      "instruction": "Đặt chảo chống dính đường kính 20–22 cm lên bếp lửa vừa, tráng đều 7,5 ml dầu ăn thực vật. Khi dầu nóng già, đổ một nửa hỗn hợp trứng vào, nghiêng nhẹ chảo cho trứng dàn tròn đều rồi chiên khoảng 2 phút đến khi mặt dưới vàng nâu và viền trứng hơi giòn se lại.",
+      "tip": "Chia làm 2 mẻ chiên thay vì 1 mẻ lớn giúp bánh trứng tròn đẹp, dễ lật và chín đều mà không bị sống lõi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt và chiên chín vàng đều hai mặt",
+      "instruction": "Dùng xẻng bản rộng lật nhẹ miếng trứng sang mặt còn lại, hạ lửa vừa-nhỏ chiên thêm 2 phút đến khi mặt dưới vàng ruộm và phần giữa chín hoàn toàn không còn ướt rồi trút ra đĩa.",
+      "tip": "Chỉ lật đúng một lần khi mép trứng đã se chắc; nếu mặt trên còn hơi ướt thì chờ thêm 20–30 giây trước khi lật để trứng không bị vỡ.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên nốt mẻ trứng thứ hai",
+      "instruction": "Lau nhanh mặt chảo bằng khăn giấy sạch nếu có vụn trứng cháy, cho nốt 7,5 ml dầu ăn thực vật vào tráng đều rồi đổ phần hỗn hợp trứng còn lại vào chiên vàng đều hai mặt tương tự (khoảng 2 phút mỗi mặt).",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt miếng và trình bày đĩa trứng chiên",
+      "instruction": "Để trứng nghỉ trên thớt khoảng 2 phút cho định hình chắc tay rồi cắt mỗi chiếc thành 6 miếng tam giác vừa ăn, rắc phần hạt mè trắng rang còn lại lên mặt và dọn nóng cùng chén nước tương pha."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 208,
+    "energyKcal": 208,
+    "energyKj": 870,
+    "proteinG": 12.9,
+    "fatG": 15.5,
+    "saturatedFatG": 3.8,
+    "carbG": 4.2,
+    "fiberG": 0.8,
+    "sugarG": 1.8,
+    "sodiumMg": 1326,
+    "saltG": 3.32,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172238",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0a6f2f08188a37b52da64283582e2a59cfbe82f07b81c020d7db05555e7c6e78",
+    "researchedFromV2Sha256": "9ef3dced68ed443fd525136b6957b2df20deac416089a8cff16ecb1b84cab24c"
+  }
+}

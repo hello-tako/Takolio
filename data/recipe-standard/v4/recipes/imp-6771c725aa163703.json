@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6771c725aa163703",
+    "slug": "dau-phu-lanh-hanh",
+    "title": "Đậu phụ non sốt hành xì dầu lạnh",
+    "subtitle": "Đậu phụ non mát lạnh mịn mướt chan sốt xì dầu hành lá thơm nồng, pha chút chua nhẹ giấm gạo và vị cay tê của ớt hiểm"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món lạnh",
+      "Khai vị",
+      "Đậu phụ",
+      "Thanh mát",
+      "Chay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "assemble"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món khai vị lạnh chuẩn vị Trung Hoa với từng khối đậu phụ non mềm tan như kem, quyện cùng nước sốt xì dầu nhạt đun thơm hành tỏi, điểm chút giấm gạo thanh dịu, dầu mè béo thơm và ớt hiểm tươi cay nhẹ.",
+    "servingSuggestion": "Rắc thêm hành lá xanh và mè rang lên mặt đậu, dọn lạnh ngay cùng cơm trắng nóng hoặc dùng làm món khai vị giải nhiệt đầu bữa.",
+    "storageAndReheat": "Nên thưởng thức ngay sau khi làm mát 15–20 phút để đậu giữ độ tươi mượt; sốt dư bảo quản lọ kín trong ngăn mát tối đa 5 ngày."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non (đậu phụ lụa)",
+      "culinaryMeasure": "450 g (1 hộp lớn)",
+      "prepNote": "chắt bỏ nước, đặt lên khăn giấy thấm ráo bề mặt trước khi cắt khối vuông",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1 bó nhỏ (~40 g, khoảng 3 cây)",
+      "prepNote": "rửa sạch, tách riêng đầu hành trắng thái nhỏ và lá xanh thái khoanh (giữ lại ít lá trang trí)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (~12 g, khoảng 3–4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để nấu sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "45 ml (~3 muỗng canh)",
+      "prepNote": "dùng làm nền mặn thanh cho nước sốt chan đậu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "RICE_VINEGAR",
+      "name": "Giấm gạo",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo độ chua thanh cân bằng vị mặn của xì dầu",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BROWN_SUGAR",
+      "name": "Đường nâu",
+      "culinaryMeasure": "8 g (~2 muỗng cà phê)",
+      "prepNote": "giúp dịu vị mặn và tạo độ sánh bóng nhẹ cho sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "2 quả (~10 g)",
+      "prepNote": "rửa sạch, bỏ cuống và hạt nếu muốn bớt cay, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rang chín thơm để trộn sốt và rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "trộn vào sốt sau khi tắt bếp để giữ trọn hương thơm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Thấm ráo đậu phụ non",
+      "instruction": "Nhẹ tay mở hộp và lấy 450 g đậu phụ non ra ngoài, đặt lên đĩa có lót hai lớp khăn giấy sạch trong 10 phút để hút bớt nước dư, giúp đậu giữ được kết cấu mịn mà không bị loãng sốt.",
+      "tip": "Đậu phụ non rất dễ vỡ, hãy úp nhẹ hộp ra đĩa phẳng thay vì dùng dao nạy từng miếng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế hành lá, tỏi và ớt",
+      "instruction": "Rửa sạch hành lá, tách riêng phần đầu hành trắng thái nhỏ và phần lá xanh thái khoanh mỏng (giữ lại một phần nhỏ lá xanh để rắc mặt). Bóc vỏ tỏi rồi băm nhuyễn; ớt hiểm bỏ cuống, bỏ bớt hạt và băm nhỏ."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Trộn nền sốt xì dầu giấm gạo",
+      "instruction": "Cho vào chảo nhỏ lúc bếp còn nguội gồm phần đầu hành trắng thái nhỏ, tỏi băm, ớt hiểm băm, 45 ml xì dầu nhạt, 15 ml giấm gạo, 8 g đường nâu và một nửa lượng hạt mè trắng rang, khuấy đều cho đường hòa quyện.",
+      "tip": "Cho toàn bộ nguyên liệu sốt vào chảo nguội ngay từ đầu giúp tỏi và hành tiết hương từ từ mà không bị cháy xém."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đun sánh nước sốt thơm nồng",
+      "instruction": "Bật bếp lửa vừa, vừa đun vừa khuấy nhẹ đến khi hỗn hợp sôi lăn tăn thì hạ lửa nhỏ, đun liu riu 2 phút cho đường tan hoàn toàn, sốt hơi sánh lại và bay bớt mùi hăng của tỏi sống.",
+      "tip": "Không đun sốt quá lâu khiến nước bốc hơi nhiều làm sốt bị mặn gắt.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm lá hành và dầu mè thơm",
+      "instruction": "Cho phần lớn lá hành xanh thái khoanh vào chảo sốt, đảo nhanh tay 30 giây rồi tắt bếp ngay để hành giữ màu xanh mướt. Rưới 10 ml dầu mè thơm vào chảo, khuấy đều khi sốt còn ấm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cắt đậu, rưới sốt và làm mát",
+      "instruction": "Cắt đậu phụ non thành từng khối vuông vừa ăn khoảng 2,5 cm hoặc khía nhẹ thành lát đều trên đĩa sâu lòng. Chan đều nước sốt ấm lên mặt đậu, rắc phần lá hành xanh để riêng cùng số hạt mè trắng rang còn lại, ủ ngăn mát 15 phút trước khi dọn lạnh.",
+      "timerMinutes": 15
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 148,
+    "energyKcal": 148.2,
+    "energyKj": 620,
+    "proteinG": 9.4,
+    "fatG": 7.9,
+    "saturatedFatG": 1.1,
+    "carbG": 10.5,
+    "fiberG": 1,
+    "sugarG": 4.4,
+    "sodiumMg": 1067,
+    "saltG": 2.67,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168833",
+      "USDA FDC 169230",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 172238",
+      "USDA FDC 172476",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7d6bf6fddf250300263aff0e80e5d368019642bffd8dbee86b018f56b3c04f6b",
+    "researchedFromV2Sha256": "a6407dc35899329e9d90ce65ca337134be547fb824eb8d2430a037eac50e9296"
+  }
+}

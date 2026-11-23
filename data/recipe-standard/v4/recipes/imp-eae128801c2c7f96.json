@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-eae128801c2c7f96",
+    "slug": "rau-bina-tron-me-nhat",
+    "title": "Rau bina trộn mè Nhật",
+    "subtitle": "Rau bina chần xanh mướt, vắt ráo nước trộn cùng mè trắng rang giã thơm với xì dầu, Mirin và dầu mè thanh dịu"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_chay",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Rau bina",
+      "Mè rang",
+      "Món chay",
+      "Ẩm thực Nhật",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Rau bina trộn mè Nhật (Horenso Goma-ae) là món rau phụ thanh mát quen thuộc trong mâm cơm Nhật, giữ trọn màu xanh ngọc mướt của cải bó xôi hòa quyện vị béo bùi của hạt mè trắng rang giã dập và sốt xì dầu ngọt dịu.",
+    "servingSuggestion": "Bày rau bina trộn mè thành từng ụ nhỏ gọn đẹp mắt ra đĩa sứ nhỏ, rắc thêm chút hạt mè rang nguyên hạt lên trên và dùng mát hoặc ở nhiệt độ phòng kèm cơm nóng.",
+    "storageAndReheat": "Cho rau bina trộn mè vào hộp đậy kín, bảo quản trong ngăn mát tủ lạnh tối đa 2 ngày; món ăn ngon khi dùng nguội mát, không nên hâm nóng lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina (cải bó xôi)",
+      "culinaryMeasure": "300 g",
+      "prepNote": "nhặt bỏ lá úa, rửa sạch bùn đất và giữ nguyên cả gốc lẫn lá để chần",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 300,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng",
+      "culinaryMeasure": "35 g (khoảng 3,5 muỗng canh)",
+      "prepNote": "rang vàng thơm trên chảo khô rồi giã dập nhẹ, chừa lại ít hạt nguyên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "8 ml (khoảng 1,5 muỗng cà phê)",
+      "prepNote": "trộn vào sốt mè giúp dậy hương béo thơm đặc trưng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "ml",
+      "grossGrams": 7.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 7.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu Nhật",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "hòa cùng mè giã tạo vị mặn umami thanh nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (khoảng 1 muỗng canh)",
+      "prepNote": "cân bằng vị mặn của xì dầu theo đúng chuẩn sốt Goma-ae",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "MIRIN",
+      "name": "Rượu Mirin",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "làm dịu vị sốt mè và tạo độ bóng nhẹ bám lên rau",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 5.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SALT",
+      "name": "Muối ăn (chần rau)",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "hòa vào nước sôi khi chần giúp rau bina giữ màu xanh tươi",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 1.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc chần rau",
+      "culinaryMeasure": "1000 ml",
+      "prepNote": "đun sôi lượng lớn để chần nhanh rau bina rồi đổ bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1000,
+      "unit": "ml",
+      "grossGrams": 1000,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế rau bina và chuẩn bị nước chần",
+      "instruction": "Nhặt sạch 300 g rau bina, rửa kỹ từng kẽ gốc dưới vòi nước lạnh cho sạch cát rồi để nguyên cọng. Đun sôi 1000 ml nước lọc trong nồi lớn trên lửa lớn, đồng thời chuẩn bị sẵn một tô lớn nước lọc lạnh có thả vài viên đá.",
+      "tip": "Giữ nguyên cọng rau khi chần giúp dễ cầm nhúng phần cuống trước và vắt ráo nước sạch hơn sau khi luộc."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Rang thơm và giã dập hạt mè trắng",
+      "instruction": "Cho 35 g hạt mè trắng vào chảo khô trên lửa vừa, đảo và lắc chảo liên tục khoảng 2–3 phút đến khi hạt mè nở phồng, chuyển màu vàng nhạt và tỏa mùi thơm béo thì trút ngay ra bát cho nguội bớt. Chừa lại 1 muỗng cà phê hạt mè nguyên để trang trí, phần còn lại cho vào cối giã dập khoảng 70% để tiết dầu thơm.",
+      "tip": "Giã mè khi còn hơi ấm giúp dầu mè tiết ra thơm hơn nhiều, không giã nát nhuyễn hết mà để lẫn ít hạt dập tạo độ bùi.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha sốt mè xì dầu ngọt mặn cân bằng",
+      "instruction": "Cho 15 ml xì dầu Nhật, 12 g đường cát trắng, 5 ml rượu Mirin và 8 ml dầu mè thơm vào bát mè vừa giã, khuấy đều tay đến khi đường tan hết và hỗn hợp sánh thơm đồng nhất.",
+      "tip": "Nêm sốt hơi đậm nhẹ một chút vì khi trộn vào rau bina vẫn còn độ ẩm tự nhiên sẽ vừa miệng."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Chần nhanh rau bina giữ màu xanh mướt",
+      "instruction": "Khi nồi nước sôi bùng, thả 5 g muối ăn vào khuấy tan. Cầm phần ngọn lá, nhúng phần cuống rau bina vào nước sôi trước trong 15 giây cho cuống mềm bớt, sau đó nhấn chìm toàn bộ lá rau xuống nước sôi chần tiếp 35 giây rồi vớt ra ngay.",
+      "tip": "Chần phần cuống cứng trước phần lá giúp cả cọng rau chín đồng đều mà lá không bị nhũn nát.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Ngâm lạnh, vắt kiệt nước và cắt khúc rau",
+      "instruction": "Thả ngay rau bina vừa chần vào tô nước lạnh khoảng 1 phút để hãm nhiệt và giữ màu xanh tươi, sau đó vớt ra nắm chặt tay vắt thật kiệt nước. Đặt bó rau lên thớt, cắt thành từng khúc dài khoảng 3 cm rồi tơi nhẹ các cọng rau.",
+      "tip": "Vắt thật ráo nước là bước quyết định món Goma-ae ngon chuẩn vị, không bị đọng nước làm loãng sốt mè.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn rau bina với sốt mè và trình bày",
+      "instruction": "Cho rau bina đã cắt khúc vào tô sốt mè, dùng đũa hoặc tay đeo găng đảo nhẹ nhàng để từng cọng rau áo đều lớp sốt mè sánh thơm. Bày ra đĩa nhỏ, rắc phần hạt mè rang nguyên hạt chừa lại lên trên rồi thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 135,
+    "energyKcal": 134.9,
+    "energyKj": 564,
+    "proteinG": 5.4,
+    "fatG": 8.7,
+    "saturatedFatG": 1.2,
+    "carbG": 11.5,
+    "fiberG": 3.6,
+    "sugarG": 5.2,
+    "sodiumMg": 566,
+    "saltG": 1.42,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168462",
+      "USDA FDC 169655",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "bd3bdefa0cb87a9047432ba2b3ef597cff34c78233181890dc22fbcaa9e10ff6",
+    "researchedFromV2Sha256": "ecdbc6a772a0fe966b6333837ad69614c6deb6b27724807d651a08e967472fac"
+  }
+}

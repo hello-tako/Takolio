@@ -1,3 +1,77 @@
+## Takolio Culinary Standard V4 — Split Migrations `0052..0057` & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+- Split `0052` into `0052..0057` (`644–702 KB` each, `INSERT OR IGNORE INTO`, identical 500 recipes / 249 canonical ingredients / `runtimeFingerprint=b1882886...`) so local `workerd` `local-d1-worker.mjs` `replayMigrations` stays safely under the `1 MiB` prepared statement cache limit.
+- Updated `MIGRATION_LEDGER` (`57`, tip `0057_culinary_standard_v4_catalog_part6.sql`), `migration-smoke.sh`, `d1-migration-check.mjs`, `family-meal-release.mjs`, `staging-v2-migration-check.mjs`, staging/production migrate workflows, migration tests, `PROTECTED_FILE_HASHES.json` (`380` files), and pinned `V4_CATALOG_RELEASE_BASELINE` (`a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+
+---
+
+## Takolio Culinary Standard V4 — Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` Pinned - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).
+
+Additional deliverables in `5a55eec3` + baseline pin commit:
+- Exported `standardV4CatalogRelease()`, `isRecipeCatalogV4StandardEnabled`, and `resolveRecipeAuthorityV4`, and wired V4 release metadata into `src/worker/services/recipe-authority-status.ts`, `scripts/release-check.{mjs,d.mts}`, `scripts/domain/{production,staging}-provider.mjs`, and `.github/workflows/domain-production-release.yml` (`default: 'true'`).
+- Wired `V4_CATALOG_RELEASE_BASELINE` (`5a55eec34b536f1a35a7bde37d61e11b9862d448`) in `scripts/admin-customer-baseline.mjs`, `scripts/admin-release-preflight.mjs`, and `scripts/admin-migration-matrix.mjs`, and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+- Extended `tests/unit/culinary-standard-v4.test.ts` and `tests/integration/culinary-standard-v4-d1-replay.test.ts` covering `resolveRecipeAuthorityV4`, `/health/ready`, `/health/recipe-authority`, and `verifyRecipeAuthorityEvidence` (`pnpm typecheck`, `pnpm lint`, `10/10` Vitest suites / `357/357` tests PASS on candidate `5a55eec3`).
+
+---
+
+## Takolio Culinary Standard V4 — `0052` & Staging/Production Workflows Wired - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_RELEASE_WORKFLOWS_READY_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commits `b5f92250`, `cd6ebe2d`, `51718103`); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
+
+Additional deliverables in `51718103`:
+- Migration workflows: `.github/workflows/staging-v2-migrate.yml` (default `0052_culinary_standard_v4_catalog_500.sql`), `scripts/staging-v2-migration-check.mjs` (`CULINARY_STANDARD_V4_TIP`, `STAGING_0052_CULINARY_STANDARD_V4_CERTIFIED`), and `.github/workflows/production-d1-migrate.yml` (rechecks include `0052`).
+- Deploy & Sovereign Cells: `.github/workflows/deploy.yml` (`recipe_catalog_v4_standard_enabled`, default `true`), `scripts/release-check.{mjs,d.mts}` (`resolveRecipeCatalogV4StandardRelease` + `32 MiB` `maxBuffer`), `scripts/cloudflare-deploy-retry.mjs`, `.github/workflows/domain-staging-release.yml` & `scripts/domain/staging-provider.mjs` (`recipe_catalog_v4_standard_enabled`, default `true`), `.github/workflows/domain-production-release.yml` & `scripts/domain/production-provider.mjs` (`recipe_catalog_v4_standard`: `preserve`/`'true'`/`'false'`), `wrangler.eu.jsonc` & `wrangler.jp.jsonc` (`RECIPE_CATALOG_V4_STANDARD_ENABLED=true`), `scripts/admin-migration-matrix.mjs` (`32 MiB` `maxBuffer`), and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files). `wrangler.{jsonc,staging.jsonc}` and PayOS/billing/auth kept untouched.
+
+Verified after `51718103` edits (`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`):
+- `pnpm typecheck`, `pnpm lint`, `pnpm check:migrations` (`migration-smoke=ok`, `admin-migration-smoke=ok`), `pnpm recipe:standard-v4:check`, `pnpm build` (Web + Admin + Worker), and `git diff --check`: ALL PASS exit 0.
+- Targeted Vitest suites (**21/21 files, 670/670 tests PASS**): `vnext-g02-foundation` (`10/10`), `staging-content-migration-check` (`9/9` incl. `0051->0052`), `staging-v2-migration-check` (`18/18`), `production-migration-preflight` (`16/16`), `production-d1-migration-runtime-proof` (`15/15`), `production-certify-workflow` (`48/48`), `release-check` (`258/258`), `cloudflare-deploy-retry` (`36/36`), `composition-flags` (`22/22`), `deploy-candidate-artifact` (`2/2`), `domain-staging-release` (`10/10`), `domain-staging-email-policy` (`24/24`), `domain-production-release` (`17/17`), `domain-release-config` (`17/17`), `family-meal-release` (`52/52`), `global-phase4-gdpr-appi-sovereign-cell` (`3/3`), `admin-config` (`7/7`), `t21rc2t-production-approval` (`42/42`), `culinary-standard-v4` (`3/3`), `culinary-standard-v4-d1-replay` (`2/2`), `d1-schema-gate` (`59/59`).
+- Known baseline/env notes (unchanged vs `origin/main`): `node scripts/billing-contract.mjs --check` fails on pre-existing `origin/main` drift in 4 untouched files; `t21rc4-cloudflare-identity-diagnostic.test.mjs` and `pnpm admin:migration:matrix` fail locally on `--filter=blob:none` missing `cda5bf48...`. V1–V3 recipe continuity gates passed at `cd6ebe2d` on identical recipe/domain bytes.
+
+Next: Product Owner review/merge and normal CI, followed by manual Staging (`0052` + deploy) and manual Production (`0052` + deploy) dispatches when ready.
+
+---
+
+## Takolio Culinary Standard V4 — `0052` Promoted & Main Authority Router Wired - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_PROMOTED_AND_WIRED_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, commits `b5f92250` V4 catalog + `cd6ebe2d` live `0052` promotion & main router integration); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
+
+Additional deliverables in `cd6ebe2d`:
+- Promoted `migrations/0052_culinary_standard_v4_catalog_500.sql` (`migrationSha256=938b5c0f5f8562904177204de57407070d78098a84e96bd660f25a2891d94f3f`) and deleted `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql`.
+- `packages/domain/src/index.ts` (re-export `./culinary-ingredients-v4`), `packages/db/src/recipe-standard-v4.ts` (`readStandardV4Catalog` 3-SELECT `db.batch`), `packages/recipes/src/standard-v4/authority.ts` (`hydrateStandardV4D1Catalog`, `D1StandardV4RecipeAuthority`), `src/worker/services/recipe-authority.ts` (opt-in `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'` across `static`/`shadow`/`canary`/`d1` and `recipeAuthoritySnapshotIsCurrent`), `src/worker/services/recipe-authority-v4.ts` (delegates to `resolveRecipeAuthority`), and `.dev.vars.example` (`RECIPE_CATALOG_V4_STANDARD_ENABLED=true`). `src/worker/types.ts` and `.github/workflows/*` kept untouched.
+- Updated `tests/helpers/sqlite-d1.ts`, `scripts/d1-migration-check.mjs`, `scripts/family-meal-release.mjs`, `scripts/d1-schema-gate.sql` (`2aa9349ad36ea703a893dd76c85a510d19e05f23f3a619de6a757621b0322271`), `scripts/migration-smoke.sh`, and `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+
+Verified after `cd6ebe2d` edits (`PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`):
+- `pnpm recipe:standard-v4:check`, `pnpm check:migrations` (`migration-smoke=ok`, `admin-migration-smoke=ok`), `pnpm typecheck`, `pnpm lint`, V1–V3 continuity checks, `pnpm build` (Web + Admin + Worker), and `git diff --check`: ALL PASS exit 0.
+- `vitest run` on all 24 targeted suites (`vnext-g02-foundation` `10/10`, `culinary-standard-v4` `3/3`, `culinary-standard-v4-d1-replay` `2/2`, `d1-schema-gate`, `foundation-hardening`, `d1-migration-check`, `production-certify-workflow`, `production-migration-preflight`, `production-d1-migration-runtime-proof`, `staging-v2`/`staging-content`, `family-meal-release`, `recipe-authority*`, `t19`, `t20`, `recipe-d1-parity`, `recipe-media-schema`, `production-migration-bridge`, `recipe-seed-readonly`, `admin-config`, `admin-remediation`): **24/24 files, 580/580 tests PASS**.
+- Known baseline/environment notes (zero regressions from branch): `node scripts/billing-contract.mjs --check` fails `BILLING_CONTRACT_DRIFT` on pre-existing `origin/main` drift in 4 billing/types files untouched by this branch; `t21rc4-cloudflare-identity-diagnostic.test.mjs` and `pnpm admin:migration:matrix` fail locally on `--filter=blob:none` partial clone missing historical git blobs (`cda5bf48...`).
+
+Next: Explicit Product Owner approval + adding `0052` to `.github/workflows/{staging-v2-migrate,production-d1-migrate}` workflow inputs if deploying `0052` and `RECIPE_CATALOG_V4_STANDARD_ENABLED=true` to remote Staging/Production.
+
+---
+
+## Takolio Culinary Standard V4 (500-Recipe Deep Research & Standardization) - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_COMPLETE_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commit `b5f92250a2fb4b6bc1cd01ee5e94e588fc66f260`); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
+
+Deliverables committed in `b5f92250`:
+- `packages/domain/src/culinary-ingredients-v4.ts` (`249` operational canonical ingredients with USDA/MEXT/NIN nutrition, yields, densities, unit weights, allergens) — subpath import preserving Red-Zone `packages/domain/src/index.ts`.
+- `packages/recipes/src/standard-v4/{schema.ts,nutrition-engine.ts,compiler.ts,authority.ts,index.ts}` + `src/worker/services/recipe-authority-v4.ts` (`resolveRecipeAuthorityV4` opt-in wrapper via `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'`).
+- `scripts/prepare-v4-shards.mjs` & `scripts/recipe-standard-v4.mjs` (`pnpm recipe:standard-v4:check`).
+- `data/recipe-standard/v4/{operational-ingredients-reference.json,shards/*,recipes/*.json (500),compiled-runtime-500.json,manifest.json}` (`runtimeFingerprint=b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21`, `compiledRuntimeSha256=6aa1d42c8c8406c360cf2b1f71871fb7b4bc6bd405255fd29e5c76abb400d0b7`, `proposedMigrationSha256=b4ca3bc3aa1849ebbffe272952b0afe40d2b26cc37748cbdc40b143911518dcb`, `avgIngs=13.4`, `avgSteps=6`, `calRange=84..938`, `nutritionCertifiedCount=500`, `provisionalIngEnrCount=0`).
+- `docs/migrations/proposed/0052_culinary_standard_v4_catalog_500.sql` + `tests/unit/culinary-standard-v4.test.ts` + `tests/integration/culinary-standard-v4-d1-replay.test.ts`.
+
+Verified with `PATH=/opt/homebrew/opt/node@24/bin:$PATH TMPDIR=/private/tmp NODE_OPTIONS="--no-experimental-webstorage" CI=1`:
+- `pnpm typecheck`, `pnpm lint`, `pnpm recipe:standard-v4:check`, V1–V3 continuity gates (`seed:check`, `import:check`, `refresh:check`, `ingredient-v2:audit`, `recipe-intelligence-v3-audit.mjs --check`), `pnpm check:migrations`, `pnpm build`, `git diff --check`: ALL PASS exit 0.
+- Focused Vitest suites (`9` files / `246` tests, incl. `vnext-g02-foundation.test.tsx` `10/10` confirming `341/341` Red-Zone hashes intact, `culinary-standard-v4` `3/3`, and `culinary-standard-v4-d1-replay` `2/2`): PASS exit 0.
+- Known partial-clone environment limitation: `t21rc4-cloudflare-identity-diagnostic.test.mjs` (`3/4` on earlier full run before Red-Zone revert) and `pnpm admin:migration:matrix` (`0/1`) fail on this `--filter=blob:none` partial clone missing historical blobs (`cda5bf48...`); full repo clone runs them cleanly.
+
+Next: Product Owner review/sign-off for promoting `0052_culinary_standard_v4_catalog_500.sql` into live `migrations/` and wiring `resolveRecipeAuthorityV4` cleanly at release time.
+
+---
+
 ## Staging content chain correction - 2026-11-01 JST
 
 Status: FOUNDATION_RELEASE_PREPARATION; V3 publication NOT_READY.

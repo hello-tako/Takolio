@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6d7fc503ade5df6e",
+    "slug": "thit-ba-chi-xao-sa-ot-kieu-mien-trung",
+    "title": "Thịt ba chỉ xào sả ớt kiểu miền Trung",
+    "subtitle": "Thịt ba chỉ thái mỏng áp chảo xém cạnh vàng ươm, quyện sả ớt băm thơm nồng và nước mắm mặn ngọt cực đưa cơm"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "trung",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt heo",
+      "Miền Trung",
+      "Cay nồng",
+      "Đưa cơm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "fish",
+      "pork"
+    ]
+  },
+  "overview": {
+    "description": "Thịt ba chỉ xào sả ớt kiểu miền Trung hấp dẫn với phần thịt ba chỉ săn giòn xém cạnh không hề ngấy mỡ, thấm đẫm hương thơm nồng nàn của sả băm, vị cay bùng nổ từ ớt tươi và mặn ngọt hài hòa của nước mắm ngon.",
+    "servingSuggestion": "Gắp thịt ba chỉ xào sả ớt ra đĩa, rắc hành lá và tiêu đen xay lên trên; ăn nóng kèm cơm trắng dẻo và rau luộc hoặc dưa leo thái lát.",
+    "storageAndReheat": "Món mặn này bảo quản được trong hộp kín ngăn mát tủ lạnh 2–3 ngày; khi ăn chỉ cần đảo nóng lại trên chảo khô ở lửa vừa khoảng 2 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo",
+      "culinaryMeasure": "400 g",
+      "prepNote": "chà muối rửa sạch, thấm khô rồi thái lát mỏng vừa ăn dày khoảng 0,4 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 328,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "5 cây (khoảng 100 g)",
+      "prepNote": "bóc bỏ lớp bẹ già bên ngoài, rửa sạch, đập dập rồi băm thật nhuyễn phần củ non",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, bỏ cuống rồi băm nhỏ hoặc thái lát tùy mức độ chịu cay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 19 g)",
+      "prepNote": "bóc vỏ, đập dập rồi băm nhỏ để phi thơm cùng sả ớt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "nhặt rửa sạch, thái nhỏ phần lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "1 muỗng canh (15 ml)",
+      "prepNote": "rưới vào chảo khi xào thịt để thấm vị mặn thơm đặc trưng miền Trung",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "2 muỗng cà phê (8 g)",
+      "prepNote": "giúp cân bằng vị mặn cay và giúp thịt ba chỉ lên màu nâu cánh gián đẹp mắt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "nêm bổ sung cho thịt đậm đà vừa miệng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/2 muỗng cà phê (2 g)",
+      "prepNote": "rắc vào chảo trước khi tắt bếp để tăng độ thơm cay",
+      "componentGroup": "garnish",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "chỉ dùng thêm nếu thịt ba chỉ quá nạc và không tiết đủ mỡ lúc áp chảo",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế thịt ba chỉ và băm nhuyễn sả ớt",
+      "instruction": "Rửa sạch thịt ba chỉ heo, dùng khăn giấy thấm thật khô rồi thái thành từng lát mỏng vừa ăn dày khoảng 0,4 cm. Sả tươi bóc bỏ bẹ già, đập dập và băm thật nhuyễn; tỏi khô và ớt hiểm đỏ tươi băm nhỏ; hành lá rửa sạch thái nhỏ.",
+      "tip": "Thấm khô thịt ba chỉ trước khi cho lên chảo giúp thịt nhanh săn xém cạnh mà không bị bắn dầu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Áp chảo thịt ba chỉ ra bớt mỡ và săn xém",
+      "instruction": "Đặt chảo khô lên bếp lửa vừa (thêm tối đa 10 ml dầu ăn nếu thịt ít mỡ). Cho toàn bộ thịt ba chỉ vào dàn đều, đảo khoảng 3–4 phút cho thịt tiết bớt mỡ thừa, săn chắc và chín kỹ đều hai mặt không còn sắc hồng thì gắp riêng ra đĩa.",
+      "tip": "Áp chảo trước giúp phần mỡ ba chỉ tan bớt, miếng thịt khi xào xong ăn giòn ngậy mà không bị ngán.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm vàng tỏi, sả và ớt băm",
+      "instruction": "Chắt bớt phần mỡ heo dư nếu quá nhiều, chỉ giữ lại khoảng 1,5 muỗng canh mỡ nóng trong chảo. Cho tỏi băm, sả băm và ớt hiểm đỏ băm vào phi đều tay trên lửa vừa khoảng 2 phút cho đến khi sả ngả vàng nhẹ và dậy mùi thơm nồng.",
+      "tip": "Giữ lửa vừa khi phi sả để tinh dầu sả tỏa thơm mà không bị cháy khét gây đắng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào thấm gia vị đậm đà kiểu miền Trung",
+      "instruction": "Trút toàn bộ thịt ba chỉ vào lại chảo sả ớt, nêm 15 ml nước mắm ngon, 8 g đường cát trắng và 5 g hạt nêm. Hạ lửa vừa-nhỏ và đảo liên tục khoảng 3–4 phút để gia vị keo nhẹ bám đều quanh miếng thịt, bề mặt thịt vàng xém cạnh và chín kỹ hoàn toàn.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm hành lá và tiêu đen xay",
+      "instruction": "Nêm nếm lại cho vừa khẩu vị mặn cay đậm đà. Cho hành lá thái nhỏ và 2 g tiêu đen xay vào đảo nhanh tay thêm 20 giây cho hành chín xanh rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và dùng nóng với cơm",
+      "instruction": "Múc thịt ba chỉ xào sả ớt cùng phần sả phi vàng thơm ra đĩa, thưởng thức nóng ngay với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 635,
+    "energyKcal": 634.7,
+    "energyKj": 2655,
+    "proteinG": 11.7,
+    "fatG": 59.7,
+    "saturatedFatG": 21.4,
+    "carbG": 13.1,
+    "fiberG": 0.5,
+    "sugarG": 3.6,
+    "sodiumMg": 785,
+    "saltG": 1.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167820",
+      "USDA FDC 168573",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "63340daf71353016cc681651a99ae080431bdcc8c15274757c2ddd812413b2fa",
+    "researchedFromV2Sha256": "fff27227d4391a9de0a7f603f0d348d91009b02daf5f4a6efed946657862092d"
+  }
+}

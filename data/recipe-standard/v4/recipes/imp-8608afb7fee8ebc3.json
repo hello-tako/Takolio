@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8608afb7fee8ebc3",
+    "slug": "ba-chi-nuong-samgyeopsal",
+    "title": "Ba chỉ nướng Hàn Quốc (Samgyeopsal)",
+    "subtitle": "Thịt ba chỉ heo cắt dày áp chảo vàng ruộm giòn bì, nướng kèm kim chi và tỏi lát, cuốn lá xà lách tía tô chấm sốt Ssamjang chuẩn tiệc nướng Hàn"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_lau_tiec",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Hàn Quốc",
+      "Tiệc nướng",
+      "Thịt ba chỉ",
+      "Samgyeopsal",
+      "Cuốn rau"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "pork",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Ba chỉ nướng Hàn Quốc (Samgyeopsal) hấp dẫn nhờ miếng ba chỉ dày thịt xen mỡ được nướng trên chảo gang đến khi vàng giòn hai mặt, ăn kèm kim chi áp chảo và tỏi nướng thơm lừng, cuốn trong xà lách và lá tía tô cùng tương Ssamjang.",
+    "servingSuggestion": "Cắt thịt ba chỉ thành miếng vừa ăn trực tiếp trên chảo, cuốn cùng lá xà lách, lá tía tô, kim chi, tỏi nướng, hành lá trộn và chấm sốt Ssamjang hoặc dầu mè muối tiêu.",
+    "storageAndReheat": "Thịt ba chỉ đã nướng chín bảo quản hộp kín trong ngăn mát tối đa 2 ngày; hâm nóng lại bằng chảo gang không dầu trên lửa vừa 3–4 phút cho bề mặt giòn trở lại."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_BELLY",
+      "name": "Thịt ba chỉ heo cắt dày kiểu Hàn",
+      "culinaryMeasure": "650 g",
+      "prepNote": "chọn miếng có tỷ lệ nạc mỡ xen kẽ đều, rửa sạch và thấm thật khô, cắt dải dày 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 520,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo (nướng kèm)",
+      "culinaryMeasure": "180 g",
+      "prepNote": "vắt nhẹ bớt nước để khi áp chảo với mỡ thịt không bị bắn dầu",
+      "componentGroup": "main",
+      "requiredQuantity": 180,
+      "unit": "g",
+      "grossGrams": 180,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LETTUCE",
+      "name": "Xà lách tươi (rau cuốn Ssam)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "tách từng lá nguyên vẹn, rửa sạch và để thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 180,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PERILLA",
+      "name": "Lá tía tô tươi (lá vừng cuốn thịt)",
+      "culinaryMeasure": "50 g",
+      "prepNote": "rửa sạch từng lá, vẩy ráo nước để ăn cuốn kèm",
+      "componentGroup": "main",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô (thái lát nướng và băm pha sốt)",
+      "culinaryMeasure": "1,5 củ (~37,5 g)",
+      "prepNote": "1 củ thái lát dày 0,3 cm để nướng kèm thịt; 0,5 củ băm nhuyễn pha Ssamjang",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 32.63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt xanh sừng (ăn kèm thịt cuốn)",
+      "culinaryMeasure": "3 quả (~15 g)",
+      "prepNote": "rửa sạch, thái lát mỏng để kẹp vào cuốn rau",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi trộn ăn kèm",
+      "culinaryMeasure": "1 bó nhỏ (~40 g)",
+      "prepNote": "rửa sạch, tước sợi dài theo chiều dọc và ngâm nước lạnh 5 phút cho xoăn giòn",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1,
+      "unit": "bunch",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 36.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "DOENJANG",
+      "name": "Tương đậu Hàn Quốc (Doenjang pha Ssamjang)",
+      "culinaryMeasure": "45 g (~3 muỗng canh)",
+      "prepNote": "nền vị mặn bùi đặc trưng cho chén sốt chấm Ssamjang",
+      "componentGroup": "dipping",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang pha Ssamjang)",
+      "culinaryMeasure": "18 g (~1 muỗng canh)",
+      "prepNote": "trộn cùng tương đậu tạo độ cay ngọt cân bằng cho sốt chấm",
+      "componentGroup": "dipping",
+      "requiredQuantity": 18,
+      "unit": "g",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "pha cùng sốt Ssamjang cho dịu vị và dậy hương",
+      "componentGroup": "dipping",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "giúp sốt Ssamjang có vị ngọt thanh hài hòa",
+      "componentGroup": "dipping",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang (pha Ssamjang và muối chấm)",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "chia 15 ml trộn sốt Ssamjang, 15 ml làm chén dầu mè muối tiêu và 5 ml trộn hành lá",
+      "componentGroup": "dipping",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 32.2,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 24.15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SALT",
+      "name": "Muối hạt mịn (pha dầu mè chấm thịt)",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia 4 g pha chén dầu mè muối tiêu, 2 g rắc nhẹ lên mặt thịt khi nướng",
+      "componentGroup": "dipping",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.7,
+      "edibleGrams": 4.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay (pha dầu mè chấm thịt)",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "chia đều rắc nhẹ mặt thịt khi nướng và pha chén dầu mè muối tiêu",
+      "componentGroup": "dipping",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 14,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "rắc vào chén sốt chấm Ssamjang",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Chuẩn bị rau cuốn, hành lá sợi và thịt ba chỉ",
+      "instruction": "Rửa sạch xà lách tươi và lá tía tô tươi rồi vẩy thật ráo nước. Thái lát 1 củ tỏi khô để nướng, băm nhuyễn 0,5 củ tỏi khô còn lại để pha sốt, thái lát mỏng 3 quả ớt xanh sừng. Tước sợi dọc hành lá tươi ngâm nước lạnh 5 phút rồi vớt ráo, trộn với 5 ml dầu mè rang. Thấm thật khô các dải thịt ba chỉ heo cắt dày.",
+      "tip": "Thấm thật khô thịt ba chỉ trước khi đặt lên chảo gang giúp bề mặt thịt cháy cạnh vàng giòn nhanh và hạn chế bắn mỡ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sốt chấm Ssamjang và chén dầu mè muối tiêu",
+      "instruction": "Trong chén thứ nhất, trộn đều 45 g tương đậu Hàn Quốc (Doenjang), 18 g tương ớt Hàn Quốc (Gochujang), 15 ml rượu ngọt Mirin, 5 g đường cát trắng, 15 ml dầu mè rang, tỏi khô băm nhuyễn và 5 g hạt mè trắng rang thành sốt Ssamjang sánh mịn. Ở chén thứ hai, khuấy 15 ml dầu mè rang còn lại với 4 g muối hạt mịn và 0,5 g tiêu đen xay.",
+      "tip": "Chuẩn bị đủ cả hai loại nước chấm Ssamjang và dầu mè muối tiêu giúp thực khách đổi vị linh hoạt theo kiểu ăn truyền thống Hàn Quốc."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Nướng áp chảo ba chỉ heo vàng ruộm hai mặt",
+      "instruction": "Làm nóng chảo gang hoặc vỉ nướng trên lửa vừa-lớn (không cần thêm dầu vì thịt ba chỉ sẽ tự tiết mỡ), đặt các dải thịt ba chỉ heo lên chảo, rắc nhẹ 2 g muối hạt mịn và 0,5 g tiêu đen xay. Áp chảo khoảng 4 phút mỗi mặt đến khi thịt chín vàng ruộm giòn cạnh.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Cắt miếng thịt và nướng kèm tỏi lát, kim chi",
+      "instruction": "Dùng kéo bếp cắt thịt ba chỉ thành từng miếng dày vừa ăn khoảng 1,5 cm ngay trên chảo. Gạt thịt sang một bên chảo, tận dụng phần mỡ thịt nóng đặt tỏi khô thái lát và kim chi cải thảo vào áp chảo thêm 3–4 phút cho tỏi vàng thơm, kim chi xém cạnh và thịt chín hoàn toàn.",
+      "tip": "Nướng kim chi trực tiếp bằng mỡ tiết ra từ thịt ba chỉ giúp kim chi béo thơm dịu chua và làm phần thịt đỡ ngấy.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Giữ nóng thịt ở lửa thật nhỏ",
+      "instruction": "Hạ bếp xuống lửa thật nhỏ để thịt ba chỉ, kim chi và tỏi nướng luôn ấm nóng, đồng thời thấm bớt lượng mỡ dư trên chảo bằng một miếng giấy thấm nếu cần."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Cuốn rau Ssam cùng Ssamjang và thưởng thức",
+      "instruction": "Bày đĩa thịt ba chỉ nướng Samgyeopsal cùng kim chi và tỏi nướng ra bàn kèm rổ xà lách tươi, lá tía tô tươi, hành lá sợi, ớt xanh sừng và hai chén nước chấm. Khi ăn chấm miếng thịt vào dầu mè muối tiêu, đặt lên lá xà lách và lá tía tô cùng kim chi, tỏi nướng, chút Ssamjang rồi gói gọn thưởng thức."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 811,
+    "energyKcal": 810.6,
+    "energyKj": 3391,
+    "proteinG": 16.2,
+    "fatG": 76.6,
+    "saturatedFatG": 26.2,
+    "carbG": 14.1,
+    "fiberG": 3.2,
+    "sugarG": 5.6,
+    "sodiumMg": 1293,
+    "saltG": 3.23,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Korean Doenjang Ref",
+      "MEXT Hon-Mirin 16031",
+      "MEXT Shiso Ref",
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 167820",
+      "USDA FDC 169230",
+      "USDA FDC 169247",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170150",
+      "USDA FDC 170497",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "16fb0b61f83f33f980294554d8aea92a5dde9dbbbe7f8a6cb4f53a303fc84c54",
+    "researchedFromV2Sha256": "a0657c46d6f84bdee8004bd5994c93e402dc532e1ec5a9a1289c22c45c330d9f"
+  }
+}

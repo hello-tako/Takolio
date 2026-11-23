@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-6e3eb737c7d88a2c",
+    "slug": "ga-kho-trung",
+    "title": "Gà kho trứng",
+    "subtitle": "Đùi gà chặt miếng kho mềm cùng trứng gà luộc trong nước màu cánh gián sánh keo, món mặn đậm đà chuẩn vị cơm nhà Nam Bộ"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_kho",
+    "region": "nam",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Món kho",
+      "Thịt gà",
+      "Trứng gà",
+      "Nam Bộ",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "braise",
+      "boil",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Thịt đùi gà săn ngọt quyện cùng những quả trứng gà thấm đều nước kho màu nâu cánh gián sánh mượt, dậy mùi thơm của hành tím, tỏi, ớt giã nhuyễn và nước mắm ngon.",
+    "servingSuggestion": "Múc gà kho trứng ra tô sâu lòng, rắc hành lá thái nhỏ và tiêu đen xay lên trên; dùng nóng với cơm trắng và dưa cải chua.",
+    "storageAndReheat": "Bảo quản trong hộp kín ở ngăn mát tối đa 3 ngày; khi dùng hâm lại trên lửa nhỏ cho gà và trứng nóng đều, nước kho đậm vị."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà chặt miếng",
+      "culinaryMeasure": "750 g",
+      "prepNote": "xát muối và ít gừng đập dập khử mùi, rửa sạch rồi chặt miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 750,
+      "unit": "g",
+      "grossGrams": 750,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 615,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "8 quả (400 g)",
+      "prepNote": "luộc chín, ngâm nước lạnh rồi bóc sạch vỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 8,
+      "unit": "piece",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 352,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0.5 củ (12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, giã nhuyễn cùng hành tím và gốc hành lá",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "35 g (2–3 củ)",
+      "prepNote": "bóc vỏ, giã nhuyễn để ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 30.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "15 g (4–5 lát)",
+      "prepNote": "đập dập để xát khử mùi gà rồi rửa sạch",
+      "componentGroup": "process",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0.75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, phần đầu hành giã ướp gà và phần lá băm nhỏ rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "CHILI",
+      "name": "Ớt sừng đỏ",
+      "culinaryMeasure": "1 quả (5 g)",
+      "prepNote": "rửa sạch, bỏ hạt và giã nhuyễn cùng hành tỏi để ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 4.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "35 ml (2,5 muỗng canh)",
+      "prepNote": "dùng toàn bộ trong hỗn hợp ướp thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 42,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "25 g (~2 muỗng canh)",
+      "prepNote": "chia 15 g thắng nước màu cánh gián và 10 g ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (1 muỗng cà phê)",
+      "prepNote": "dùng trong hỗn hợp ướp gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối hạt",
+      "culinaryMeasure": "4 g (~3/4 muỗng cà phê)",
+      "prepNote": "dùng 4 g chà rửa gà rồi xả sạch bỏ",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia đôi để ướp gà và rắc mặt khi hoàn thành",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng thắng nước màu cánh gián",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "450 ml",
+      "prepNote": "chế ngập mặt gà để kho mềm cùng trứng",
+      "componentGroup": "broth",
+      "requiredQuantity": 450,
+      "unit": "ml",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 405,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch gà và luộc bóc vỏ trứng gà",
+      "instruction": "Chà xát 750 g đùi gà với 4 g muối hạt và 15 g gừng đập dập để khử mùi tanh, rửa lại nước lạnh rồi để ráo, chặt miếng vừa ăn. Luộc 8 quả trứng gà trong nồi nước sôi 7 phút cho vừa chín tới, vớt ra ngâm nước lạnh 3 phút rồi bóc sạch vỏ.",
+      "tip": "Dùng muối kết hợp gừng đập dập chà xát da gà là cách làm sạch mùi hôi hiệu quả nhất trước khi chặt miếng.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Giã gia vị thơm và ướp thịt gà",
+      "instruction": "Cho hành tím, tỏi khô, đầu hành lá và 1 quả ớt sừng đỏ vào cối giã thật nhuyễn. Trộn hỗn hợp này với 35 ml nước mắm ngon, 10 g đường cát trắng, 4 g hạt nêm và 1 g tiêu đen xay rồi xoa đều lên thịt gà, ướp 30 phút cho ngấm sâu.",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Thắng nước màu cánh gián và xào săn gà",
+      "instruction": "Làm nóng nồi đáy dày với 15 ml dầu ăn và 15 g đường cát trắng còn lại trên lửa nhỏ đến khi đường tan và chuyển màu nâu cánh gián. Tắt bếp tạm 5 giây rồi bật lại lửa lớn, cho toàn bộ thịt gà đã ướp vào đảo săn 5 phút đến khi thịt đổi màu vàng nâu đẹp mắt.",
+      "tip": "Xào săn gà trên lửa lớn ngay trong nồi nước màu giúp miếng gà áo đều màu nâu cánh gián bóng đẹp từ bên ngoài.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đổ nước ngập gà và thả trứng vào kho",
+      "instruction": "Rót 450 ml nước lọc vào nồi xâm xấp mặt thịt gà, đun sôi bùng và hớt sạch bọt nổi để nước kho được trong. Nhẹ nhàng thả 8 quả trứng gà đã bóc vỏ vào nồi rồi hạ lửa nhỏ."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Kho nhỏ lửa cho gà mềm và trứng thấm màu",
+      "instruction": "Đậy hé vung và kho liu riu trong 25 phút, cứ mỗi 10 phút đảo nhẹ tay một lần để thịt gà chín mềm đều, nước kho rút sánh nhẹ và trứng lên màu nâu đậm vị.",
+      "tip": "Đảo nhẹ tay hoặc múc nước kho rưới lên mặt trứng tránh làm rách lòng trắng trứng gà.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Nêm lại, rắc hành lá và tiêu thưởng thức",
+      "instruction": "Mở nắp nêm nếm lại độ mặn ngọt vừa miệng rồi tắt bếp. Múc gà kho trứng ra tô sâu lòng, rắc phần lá hành thái nhỏ và 1 g tiêu đen xay còn lại lên trên rồi ăn nóng với cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 470,
+    "energyKcal": 469.5,
+    "energyKj": 1965,
+    "proteinG": 41.9,
+    "fatG": 27.7,
+    "saturatedFatG": 7.7,
+    "carbG": 10.9,
+    "fiberG": 0.6,
+    "sugarG": 7.9,
+    "sodiumMg": 1243,
+    "saltG": 3.11,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173647",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "47add4ab015821f929e8da48c099e3b503448f700c4884509d10ded1e1fec35e",
+    "researchedFromV2Sha256": "7f9821f6467df6d1c0df944ce196f65e9e4a867725c10d9071f1ba9a38801426"
+  }
+}

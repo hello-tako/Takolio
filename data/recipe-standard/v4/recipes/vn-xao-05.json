@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-xao-05",
+    "slug": "su-su-xao-trung-ga",
+    "title": "Su su xào trứng gà thanh ngọt",
+    "subtitle": "Su su non thái sợi giòn ngọt tự nhiên ôm lấy từng mảng trứng gà vàng ươm béo nhẹ, thơm mùi hành tím và ngò rí"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_xao",
+    "region": "bac",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Rau củ",
+      "Tiết kiệm",
+      "Dưới 20 phút",
+      "Miền Bắc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Su su xào trứng gà là món xào mộc mạc quen thuộc của mâm cơm miền Bắc. Từng sợi su su giữ được độ giòn ngọt thanh mát quyện cùng lớp trứng gà tơi mềm vàng óng và hương thơm dịu của hành lá, ngò rí.",
+    "servingSuggestion": "Múc su su xào trứng ra đĩa phẳng, rắc ngò rí thái nhỏ và chút tiêu đen xay lên trên; dùng nóng cùng cơm trắng và chén nước mắm ớt.",
+    "storageAndReheat": "Món xào trứng nên ăn hết ngay trong bữa khi còn nóng để không bị tanh và su su giữ được độ giòn; tránh để qua đêm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHAYOTE",
+      "name": "Quả su su non",
+      "culinaryMeasure": "3 quả (khoảng 660 g)",
+      "prepNote": "ngâm nước cho ra bớt nhựa rồi gọt vỏ, bỏ hạt, thái sợi dày khoảng 0,3 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 660,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 580.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà ta",
+      "culinaryMeasure": "3 quả (khoảng 150 g)",
+      "prepNote": "đập ra tô, đánh tan đều lòng đỏ và lòng trắng",
+      "componentGroup": "main",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 132,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (khoảng 2 củ nhỏ)",
+      "prepNote": "bóc vỏ, rửa sạch, thái lát mỏng hoặc băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và đầu hành",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "10 g (1 nắm nhỏ)",
+      "prepNote": "nhặt rửa sạch, thái khúc ngắn để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "2 muỗng canh (30 ml)",
+      "prepNote": "dùng phi thơm hành tím và xào su su với trứng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 24.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "2 muỗng cà phê (10 ml)",
+      "prepNote": "chia 3 ml đánh cùng trứng gà cho thơm và 7 ml nêm su su",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "1 muỗng cà phê (5 g)",
+      "prepNote": "nêm khi xào su su trên lửa lớn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2/3 muỗng cà phê (4 g)",
+      "prepNote": "dùng nêm su su giúp giữ độ giòn và vị đậm nhẹ",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1/3 muỗng cà phê (1,5 g)",
+      "prepNote": "rắc hoàn thiện sau khi tắt bếp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Gọt vỏ và thái sợi su su không dính nhựa",
+      "instruction": "Ngâm 3 quả su su trong chậu nước khoảng 2 phút hoặc gọt vỏ trực tiếp dưới vòi nước chảy để nhựa su su không làm rít tay. Bổ đôi quả, khoét bỏ phần hạt non ở giữa rồi thái thành sợi dày khoảng 0,3 cm đều nhau, rửa lại nước sạch và để thật ráo.",
+      "tip": "Chọn su su quả non có vỏ xanh sáng, bấm nhẹ thấy mọng nước để món xào được ngọt và không bị xơ."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Chuẩn bị hành tím, rau thơm và đánh trứng gà",
+      "instruction": "Hành tím khô bóc vỏ, băm nhỏ. Hành lá và ngò rí rửa sạch, thái nhỏ. Đập 3 quả trứng gà ta vào tô, thêm 3 ml nước mắm ngon (giúp trứng thơm và không tanh), dùng đũa đánh tan đều lòng đỏ với lòng trắng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Phi thơm hành tím và xào su su lửa lớn",
+      "instruction": "Bắc chảo lên bếp lửa vừa, làm nóng 30 ml dầu ăn rồi cho hành tím băm vào phi thơm khoảng 30 giây. Tăng lên lửa lớn, trút toàn bộ sợi su su vào đảo nhanh tay liên tục, nêm 5 g hạt nêm, 4 g muối ăn và 7 ml nước mắm ngon còn lại, xào khoảng 3 phút đến khi sợi su su hơi trong và chín tới 80%.",
+      "tip": "Xào su su trên lửa lớn giúp su su nhanh chín mà không bị ra nhiều nước làm nhão trứng.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Đổ trứng gà và đảo quyện đều cùng su su",
+      "instruction": "Hạ xuống lửa vừa, dàn đều su su ra khắp mặt chảo rồi rưới từ từ tô trứng gà đã đánh tan lên trên. Đợi 15–20 giây cho phần trứng tiếp xúc mặt chảo hơi se lại rồi dùng đũa đảo đều nhẹ tay khoảng 1–2 phút đến khi trứng chín hoàn toàn, bám đều quanh từng sợi su su thành mảng tơi mềm.",
+      "tip": "Không đảo quá mạnh ngay khi vừa đổ trứng để tránh trứng bị nát vụn và bết dính.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Thêm hành lá và nêm nếm lại",
+      "instruction": "Khi trứng đã chín ráo mặt và thơm ngậy, cho toàn bộ hành lá thái nhỏ vào chảo đảo nhanh tay thêm 20 giây cho hành chín xanh, nếm lại gia vị cho vừa khẩu vị rồi tắt bếp."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trình bày và thưởng thức",
+      "instruction": "Múc su su xào trứng gà ra đĩa, rắc ngò rí và 1,5 g tiêu đen xay lên trên cho thơm. Dọn dùng nóng ngay cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 187,
+    "energyKcal": 186.9,
+    "energyKj": 781,
+    "proteinG": 7.9,
+    "fatG": 12.8,
+    "saturatedFatG": 2.7,
+    "carbG": 11.9,
+    "fiberG": 3.9,
+    "sugarG": 4.4,
+    "sodiumMg": 1176,
+    "saltG": 2.94,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 169990",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "a77d2b3e81d45150e5ca4600198ff4903f3f09f25163d1a7494bf0dbc55b76e6",
+    "researchedFromV2Sha256": "e52004f1799a9f27034437332931523b62ea80aa3752b48f1fb2902943210803"
+  }
+}

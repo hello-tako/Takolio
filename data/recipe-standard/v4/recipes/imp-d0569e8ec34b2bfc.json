@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d0569e8ec34b2bfc",
+    "slug": "bo-xao-gia-do",
+    "title": "Thịt bò xào giá đỗ lửa lớn",
+    "subtitle": "Thịt bò thái lát mỏng xào nhanh lửa lớn giữ độ mềm ngọt, kết hợp giá đỗ giòn sần sật thấm vị xì dầu và dầu hào thơm tỏi"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_xao",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 10,
+    "servings": 3,
+    "tags": [
+      "Món xào",
+      "Thịt bò",
+      "Giá đỗ",
+      "Bữa nhanh",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "beef",
+      "molluscs",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Đĩa thịt bò xào giá đỗ đậm đà hương vị cơm nhà kiểu Hoa với từng lát thịt bò mềm mọng thấm gia vị và cọng giá đỗ trắng mập vẫn giữ nguyên độ giòn thanh không ra nước.",
+    "servingSuggestion": "Trút bò xào giá đỗ ra đĩa khi còn bốc khói, rắc chút tiêu đen xay lên trên và ăn ngay cùng cơm trắng nóng, chấm thêm xì dầu ớt lát nếu thích.",
+    "storageAndReheat": "Món xào giá đỗ nên dùng hết ngay trong bữa để giữ độ giòn tươi; nếu bảo quản tủ mát chỉ nên giữ tối đa 12 giờ và đảo nóng lại rất nhanh trên lửa lớn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "BEEF_SIRLOIN",
+      "name": "Thịt thăn bò thái lát mỏng",
+      "culinaryMeasure": "250 g",
+      "prepNote": "thấm khô, thái lát mỏng ngang thớ vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "g",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 250,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "BEAN_SPROUTS",
+      "name": "Giá đỗ tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "nhặt bỏ rễ và vỏ đậu, rửa sạch rồi vẩy thật ráo nước",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,75 bó nhỏ (30 g)",
+      "prepNote": "rửa sạch, cắt khúc dài 3 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm nhỏ chia để ướp thịt và phi thơm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 10 ml xào bò và 15 ml xào giá đỗ",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "chia 15 ml ướp thịt bò và 10 ml nêm cuối",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 29.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 29.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "ướp giúp thịt bò đậm đà và bóng đẹp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "ướp khử mùi và giúp thớ thịt bò mềm thơm kiểu Hoa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.9,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 7.92,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "ướp thấm đều vào thớ thịt bò",
+      "componentGroup": "marinade",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "3 g (~3/4 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn dịu của xì dầu và dầu hào",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "nêm nhẹ phần giá đỗ khi đảo cuối",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia một nửa ướp thịt và một nửa rắc mặt đĩa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (1 muỗng cà phê)",
+      "prepNote": "rưới nhanh lúc tắt bếp tạo hương thơm đặc trưng món xào Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm ráo giá đỗ và thái hành tỏi",
+      "instruction": "Rửa sạch 200 g giá đỗ tươi, nhặt bỏ rễ dài hoặc vỏ đậu xanh rồi trút ra rổ để thật ráo nước. Tỏi khô băm nhỏ, hành lá tươi cắt khúc dài 3 cm. Thịt thăn bò thấm khô bằng khăn giấy, thái lát mỏng ngang thớ cho mềm.",
+      "tip": "Giá đỗ càng ráo nước thì khi xào lửa lớn càng nhanh chín giòn mà không làm loãng nước sốt trong chảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp thịt bò thấm gia vị",
+      "instruction": "Cho thịt bò thái lát vào tô cùng 1/3 lượng tỏi băm, 15 ml xì dầu, 10 ml dầu hào, 10 ml rượu Thiệu Hưng, 4 g hạt nêm, 3 g đường cát trắng và 1 g tiêu đen xay. Trộn đều rồi ướp trong 15 phút cho thịt mềm thấm vị đậm đà.",
+      "tip": "Không cho muối ăn vào bước ướp thịt bò để tránh muối rút hết nước khiến thịt bị khô cứng khi xào.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào nhanh thịt bò trên lửa lớn",
+      "instruction": "Làm nóng chảo rộng với 10 ml dầu ăn thực vật trên lửa vừa, phi thơm 1/3 lượng tỏi băm trong 20 giây. Sau đó tăng lên lửa lớn, trút thịt bò đã ướp vào đảo nhanh tay khoảng 2 phút đến khi thịt bò vừa săn chín tái đều các mặt thì trút ngay ra đĩa riêng.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Xào giá đỗ giữ độ giòn tươi",
+      "instruction": "Lau nhanh chảo nếu còn nhiều nước, cho 15 ml dầu ăn thực vật còn lại vào đun nóng rồi phi thơm phần tỏi băm cuối cùng. Tăng lửa lớn, đổ toàn bộ giá đỗ vào xào nhanh tay khoảng 2 phút cùng 2 g muối ăn đến khi cọng giá vừa trong nhẹ, hơi xẹp mà vẫn giòn.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Đảo quyện thịt bò và giá đỗ",
+      "instruction": "Trút ngay đĩa thịt bò vào chảo giá đỗ, rưới thêm 10 ml xì dầu còn lại quanh thành chảo. Đảo đều tay trên lửa lớn thêm khoảng 1 phút cho thịt bò chín hoàn toàn và gia vị quyện đều vào giá đỗ.",
+      "tip": "Tổng thời gian đảo chung không nên quá 1–2 phút để giá không bị chảy nước và thịt bò giữ trọn độ mềm ngọt.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thêm hành lá, dầu mè và hoàn thiện món xào",
+      "instruction": "Thả hành lá cắt khúc vào chảo đảo nhanh 20 giây cho hành vừa chín xanh mướt rồi tắt bếp ngay. Rưới 5 ml dầu mè thơm và rắc 0,5 g tiêu đen xay còn lại lên trên, đảo nhẹ một lượt rồi múc bò xào giá đỗ ra đĩa dùng nóng cùng cơm trắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 277,
+    "energyKcal": 276.8,
+    "energyKj": 1159,
+    "proteinG": 20.6,
+    "fatG": 17.9,
+    "saturatedFatG": 4.8,
+    "carbG": 8.7,
+    "fiberG": 1.7,
+    "sugarG": 4.6,
+    "sodiumMg": 1183,
+    "saltG": 2.96,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 169963",
+      "USDA FDC 170005",
+      "USDA FDC 170187",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 174277",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "824af3ec1fb57e3672b677be98e41b588ffcdeb9bf0651f2e9cc4732edecce39",
+    "researchedFromV2Sha256": "e696b366cad65bdf7bbc5a8dae3d42d073ac3f554a30dfd92369c3d159590501"
+  }
+}

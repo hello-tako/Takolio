@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-e427b91ce9f574c3",
+    "slug": "sup-nam-kem-y",
+    "title": "Súp nấm kem tươi kiểu Ý",
+    "subtitle": "Súp nấm đùi gà xay nhuyễn sánh mượt cùng sữa tươi, kem béo, nước dùng rau củ và bánh mì nướng giòn Crostini"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_canh",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 30,
+    "servings": 4,
+    "tags": [
+      "Súp nấm kem",
+      "Ẩm thực Ý",
+      "Khai vị",
+      "Món nóng",
+      "Crostini"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Bát súp nấm kem kiểu Ý thơm nức mùi nấm đùi gà xào vàng quyện sốt bơ bột mì béo dịu từ sữa tươi và kem tươi, kết cấu mịn mượt ăn kèm lát nấm áp chảo và bánh mì nướng giòn.",
+    "servingSuggestion": "Múc súp nóng ra 4 bát sâu lòng, xếp vài lát nấm đùi gà áp chảo vàng lên mặt và rắc ngò tây tươi thái nhỏ; dùng kèm bánh mì nướng giòn Crostini.",
+    "storageAndReheat": "Bảo quản phần súp trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn hâm nóng trên lửa nhỏ và khuấy đều, tránh đun sôi bùng làm tách lớp kem sữa."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "400 g",
+      "prepNote": "lau sạch bằng khăn ẩm, cắt bỏ gốc già; trích 3–4 lát mỏng đẹp để áp chảo trang trí, phần còn lại thái miếng vừa",
+      "componentGroup": "main",
+      "requiredQuantity": 400,
+      "unit": "g",
+      "grossGrams": 400,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 380,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1 củ (~140 g)",
+      "prepNote": "bóc vỏ, thái hạt lựu nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 126,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/4 củ (khoảng 2 tép)",
+      "prepNote": "bóc vỏ, để nguyên tép phi thơm cùng nấm rồi vớt bỏ trước khi xay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 6.2,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.17,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "rót từ từ vào hỗn hợp bơ bột mì để nấu nền sốt sánh mịn",
+      "componentGroup": "broth",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 257.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 257.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CREAM",
+      "name": "Kem tươi nấu ăn (Cooking cream)",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "khuấy vào sau khi xay mịn giúp súp béo ngậy mượt mà",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 99,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 99,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "30 g",
+      "prepNote": "đun chảy trên lửa nhỏ để xào chín bột mì",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "30 g (~3 muỗng canh)",
+      "prepNote": "nấu cùng bơ lạt tạo độ sánh mượt tự nhiên",
+      "componentGroup": "broth",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu",
+      "culinaryMeasure": "35 ml (~2,5 muỗng canh)",
+      "prepNote": "dùng 25 ml xào nấm và 10 ml áp chảo lát nấm trang trí",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 31.9,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 30.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "VEG_BROTH",
+      "name": "Nước dùng rau củ",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "ninh cùng nấm giúp súp ngọt thanh và điều chỉnh độ sánh",
+      "componentGroup": "broth",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 500,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, băm nhỏ để rắc mặt nấm áp chảo và bát súp",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BREAD",
+      "name": "Bánh mì lát (hoặc Baguette cắt lát)",
+      "culinaryMeasure": "4 lát (120 g)",
+      "prepNote": "nướng giòn hoặc áp chảo vàng hai mặt làm bánh mì ăn kèm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "slice",
+      "grossGrams": 120,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 120,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (~1 muỗng cà phê)",
+      "prepNote": "chia nêm khi xào nấm, nấu súp và áp chảo lát nấm",
+      "componentGroup": "broth",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1.5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm điều chỉnh vị ấm thơm cho súp",
+      "componentGroup": "broth",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lau sạch và phân chia nấm đùi gà, rau thơm",
+      "instruction": "Dùng khăn ẩm lau sạch 400 g nấm đùi gà tươi (tránh rửa ngập nước), cắt bỏ phần gốc già. Chọn 2 cây nấm đẹp thái dọc thành các lát mỏng khoảng 0,4 cm để riêng làm phần trang trí, phần nấm còn lại thái miếng vuông vừa. Thái hạt lựu nhỏ 1 củ hành tây, bóc vỏ 2 tép tỏi khô và băm nhỏ 10 g ngò tây tươi."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào thơm nấm đùi gà cùng tỏi và hành tây",
+      "instruction": "Đun nóng 25 ml dầu ô liu trong chảo lớn ở lửa vừa, cho tỏi khô nguyên tép và phần nấm thái miếng vuông vào cùng 2 g muối ăn, xào mở nắp khoảng 8–10 phút đến khi nấm ra nước và hơi vàng thơm. Gắp bỏ tép tỏi để súp không bị hăng, tiếp tục cho hành tây vào đảo thêm 3–4 phút cho hành mềm trong.",
+      "tip": "Vớt bỏ tép tỏi trước khi xay súp giúp giữ trọn hương thơm dịu mà không bị mùi hăng nồng lấn át vị ngọt thanh của nấm.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Nấu nền sốt sữa bơ bột mì",
+      "instruction": "Trong nồi súp chính trên lửa nhỏ, đun chảy 30 g bơ lạt, trút 30 g bột mì đa dụng vào khuấy đều liên tục 2 phút cho bột chín thơm màu vàng nhạt. Rót từ từ 250 ml sữa tươi không đường vào nồi, vừa rót vừa đánh liên tục bằng phới lồng đến khi sốt sôi nhẹ và sánh mịn không vón cục.",
+      "tip": "Rót sữa tươi từ từ từng chút một và khuấy đều tay ngay từ đầu là bí quyết giúp nền bột mì tan mượt hoàn toàn không vón cục.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ninh súp nấm với nước dùng rau củ và xay nhuyễn",
+      "instruction": "Trút toàn bộ nấm và hành tây đã xào vào nồi sốt sữa, đổ thêm 500 ml nước dùng rau củ, 3 g muối ăn và 1 g tiêu đen xay. Hạ lửa nhỏ ninh liu riu khoảng 12 phút cho nấm chín mềm ngọt, sau đó dùng máy xay cầm tay xay thật nhuyễn mịn ngay trong nồi. Rót thêm 100 ml kem tươi nấu ăn vào khuấy đều, giữ ấm trên lửa thật nhỏ mà không để sôi bùng.",
+      "tip": "Nếu thích súp loãng nhẹ hơn có thể pha thêm chút nước dùng rau củ nóng, đồng thời không đun sôi sau khi cho kem tươi để giữ kết cấu súp mượt mà.",
+      "timerMinutes": 12
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Áp chảo lát nấm trang trí và nướng giòn bánh mì",
+      "instruction": "Làm nóng 10 ml dầu ô liu còn lại trên chảo nhỏ, xếp các lát nấm mỏng để riêng vào áp chảo mỗi mặt 1–2 phút cho vàng thơm, rắc 1 g muối ăn, 0,5 g tiêu đen xay và một nửa lượng ngò tây băm (5 g). Đồng thời nướng giòn hoặc áp chảo vàng 4 lát bánh mì hai mặt để ăn kèm."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Múc súp nóng và trang trí hoàn thiện",
+      "instruction": "Múc súp nấm kem nóng hổi ra 4 bát sâu lòng, xếp các lát nấm áp chảo lên trên mặt, rắc nốt 5 g ngò tây tươi băm còn lại rồi dọn ngay cùng bánh mì nướng giòn."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 413,
+    "energyKcal": 412.5,
+    "energyKj": 1725,
+    "proteinG": 10.4,
+    "fatG": 26.3,
+    "saturatedFatG": 12.1,
+    "carbG": 36.3,
+    "fiberG": 4.2,
+    "sugarG": 9.2,
+    "sodiumMg": 1046,
+    "saltG": 2.62,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168580",
+      "USDA FDC 169230",
+      "USDA FDC 169761",
+      "USDA FDC 170000",
+      "USDA FDC 170416",
+      "USDA FDC 170859",
+      "USDA FDC 170931",
+      "USDA FDC 171265",
+      "USDA FDC 171413",
+      "USDA FDC 171595",
+      "USDA FDC 172687",
+      "USDA FDC 173430",
+      "USDA FDC 173468"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "7c8bbba944354c10730e3435804c39bdd1a45fe7adbec5a08794092784536a5d",
+    "researchedFromV2Sha256": "dd55a31ed8167edb5db29303f845a55f2efab3d3481de44474a6800803405271"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-8fecebfe6dc0f0a2",
+    "slug": "mi-y-rau-bina",
+    "title": "Mì Ý sốt kem rau bina và hạnh nhân",
+    "subtitle": "Sợi spaghetti trộn sốt pesto rau bina xanh mướt xay mịn cùng phô mai ricotta, parmesan và hạnh nhân rang bùi"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_bun_pho",
+    "difficulty": "easy",
+    "prepTimeMinutes": 12,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Mì Ý",
+      "Rau bina",
+      "Sốt kem",
+      "Nhanh gọn",
+      "Thanh đạm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "almond",
+      "milk",
+      "tree_nuts",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món mì Ý chay nhẹ nhàng nhưng đầy đặn dinh dưỡng với lớp sốt xanh ngọc mượt mà từ rau bina chần xay nhuyễn cùng phô mai ricotta béo thanh, parmesan đậm vị và hạnh nhân rang thơm bùi.",
+    "servingSuggestion": "Dọn mì ngay ra đĩa nông khi còn ấm nóng, rắc thêm chút phô mai parmesan bào sợi và hạnh nhân rang giã dập lên mặt để tăng độ giòn thơm.",
+    "storageAndReheat": "Món sốt xanh rau bina ngon nhất khi ăn ngay sau khi trộn để giữ màu xanh tươi. Nếu bảo quản tủ lạnh tối đa 1 ngày, hâm nhẹ trên chảo lửa thật nhỏ cùng 1–2 muỗng nước ấm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPAGHETTI_PASTA",
+      "name": "Mì Ý sợi dài (spaghetti)",
+      "culinaryMeasure": "270 g",
+      "prepNote": "luộc trong nước muối sôi đến độ chín dai vừa (al dente)",
+      "componentGroup": "main",
+      "requiredQuantity": 270,
+      "unit": "g",
+      "grossGrams": 270,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SPINACH",
+      "name": "Rau bina tươi (cải bó xôi)",
+      "culinaryMeasure": "200 g",
+      "prepNote": "nhặt bỏ lá úa và cuống già, rửa sạch rồi chần sơ và vắt thật kiệt nước",
+      "componentGroup": "sauce",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "RICOTTA_CHEESE",
+      "name": "Phô mai Ricotta tươi",
+      "culinaryMeasure": "60 g",
+      "prepNote": "dùng ở nhiệt độ phòng để xay quyện mịn cùng rau bina",
+      "componentGroup": "sauce",
+      "requiredQuantity": 60,
+      "unit": "g",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PARMESAN_CHEESE",
+      "name": "Phô mai Parmesan bào mịn",
+      "culinaryMeasure": "35 g",
+      "prepNote": "dùng 25 g xay vào sốt xanh, giữ 10 g rắc mặt khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ALMOND",
+      "name": "Hạnh nhân lát",
+      "culinaryMeasure": "30 g",
+      "prepNote": "rang thơm trên chảo khô, dùng 20 g xay sốt và 10 g rắc trang trí",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "g",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "2–3 tép (~10 g)",
+      "prepNote": "bóc vỏ, bỏ mầm xanh ở giữa để xay cùng sốt rau bina",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.4,
+      "unit": "piece",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "40 ml (~2,5 muỗng canh)",
+      "prepNote": "rót từ từ khi xay để tạo nhũ tương kem sánh mịn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 36.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 6 g cho nước luộc mì (bỏ nước), 2 g nêm vào sốt rau bina",
+      "componentGroup": "sauce",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.3,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "xay trực tiếp vào sốt và rắc nhẹ khi dọn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần rau và luộc mì)",
+      "culinaryMeasure": "2000 ml (2 lít)",
+      "prepNote": "đun sôi để chần rau bina và luộc mì Ý",
+      "componentGroup": "broth",
+      "requiredQuantity": 2000,
+      "unit": "ml",
+      "grossGrams": 2000,
+      "edibleRetentionRatio": 0.08,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rang thơm hạnh nhân và sơ chế rau bina",
+      "instruction": "Đặt chảo khô lên lửa vừa, cho 30 g hạnh nhân lát vào rang khoảng 2–3 phút, đảo liên tục đến khi hạnh nhân vàng nhẹ và dậy mùi thơm bùi thì đổ ra đĩa để nguội. Nhặt và rửa sạch 200 g rau bina tươi dưới vòi nước lạnh.",
+      "tip": "Rang hạnh nhân ở lửa vừa và đảo đều tay để hạt chín thơm từ trong mà không bị cháy sém bên ngoài.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Chần nhanh rau bina và vắt kiệt nước",
+      "instruction": "Đun sôi 2 lít nước lọc trong nồi lớn, thả rau bina tươi vào chần khoảng 2 phút cho lá vừa chín xẹp và giữ màu xanh mướt. Vớt ngay rau ra rổ (giữ lại nồi nước trên bếp để luộc mì), để nguội bớt rồi dùng tay vắt thật kiệt nước.",
+      "tip": "Vắt thật ráo nước sau khi chần là bí quyết giúp sốt rau bina đặc mịn, đậm đà và không bị tách nước khi trộn mì.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Xay nhuyễn sốt kem rau bina với phô mai",
+      "instruction": "Cho rau bina đã vắt ráo, 20 g hạnh nhân rang, 60 g phô mai Ricotta tươi, 25 g phô mai Parmesan bào mịn, tỏi tươi bóc vỏ, 2 g muối ăn và 1,5 g tiêu đen xay vào cối xay. Bật máy xay đồng thời rót từ từ 40 ml dầu ô liu nguyên chất vào đến khi thu được hỗn hợp kem xanh sánh mịn."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Luộc mì Ý al dente trong nước muối sôi",
+      "instruction": "Cho 6 g muối ăn vào nồi nước vừa chần rau, đun sôi già trở lại rồi thả 270 g mì Ý spaghetti vào luộc khoảng 8–9 phút đến độ chín al dente (mềm ngoài, hơi dai nhẹ ở lõi). Trước khi chắt ráo, múc giữ lại 100 ml nước luộc mì nóng.",
+      "timerMinutes": 9
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Trộn đều mì nóng với sốt rau bina",
+      "instruction": "Cho mì Ý vừa vớt còn nóng vào tô trộn lớn cùng toàn bộ sốt kem rau bina. Đảo nhanh tay cho sốt bám đều từng sợi mì; nếu sốt hơi đặc, rưới thêm từng muỗng canh nước luộc mì ấm và trộn tiếp đến khi sốt bóng mượt.",
+      "tip": "Trộn sốt bằng sức nóng dư của sợi mì thay vì đun trực tiếp trên bếp giúp giữ trọn màu xanh ngọc và vị tươi thanh của rau bina."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trang trí hạnh nhân, parmesan và dọn ngay",
+      "instruction": "Chia mì ra 3 đĩa sâu lòng, rắc 10 g phô mai Parmesan bào mịn và 10 g hạnh nhân rang còn lại lên trên mặt mì rồi thưởng thức ngay khi còn nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 604,
+    "energyKcal": 604.4,
+    "energyKj": 2529,
+    "proteinG": 22.6,
+    "fatG": 24.7,
+    "saturatedFatG": 6,
+    "carbG": 74.1,
+    "fiberG": 5.7,
+    "sugarG": 3.3,
+    "sodiumMg": 562,
+    "saltG": 1.4,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168462",
+      "USDA FDC 168927",
+      "USDA FDC 169230",
+      "USDA FDC 170567",
+      "USDA FDC 170848",
+      "USDA FDC 170853",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "1dc7105639ae114b0a176a81e5ca5aaad822acd2444074d3cd9260be65142373",
+    "researchedFromV2Sha256": "31b88d7e364bec9ae16906a541f8d564b7a4c8a5bfac39802bc1cb2c7d2926a2"
+  }
+}

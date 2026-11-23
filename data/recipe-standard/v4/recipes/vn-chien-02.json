@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "vn-chien-02",
+    "slug": "trung-chien-thit-bam-nam-rom",
+    "title": "Trứng chiên thịt bằm nấm rơm",
+    "subtitle": "Trứng gà đánh sữa tươi chiên phồng mềm xốp, quyện nhân thịt heo xay đậm đà và nấm rơm giòn ngọt"
+  },
+  "classification": {
+    "cuisine": "vietnamese",
+    "category": "mon_chien",
+    "region": "toan_quoc",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 12,
+    "servings": 3,
+    "tags": [
+      "Món chiên",
+      "Trứng chiên",
+      "Nhanh gọn",
+      "Cơm nhà",
+      "Dưới 30 phút"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "fish",
+      "milk",
+      "pork",
+      "sesame"
+    ]
+  },
+  "overview": {
+    "description": "Trứng chiên thịt bằm nấm rơm là món ăn nhanh giàu dinh dưỡng rất được yêu thích trong bữa cơm gia đình Việt. Nhân thịt bằm và nấm rơm được xào ráo nước trước khi hòa cùng hỗn hợp trứng gà đánh sữa tươi và chút dầu mè, giúp miếng trứng chiên phồng dày, thơm béo mà không bị chảy nước.",
+    "servingSuggestion": "Cắt miếng trứng thành hình tam giác như miếng bánh, bày ra đĩa cùng vài lát dưa leo, dùng nóng với cơm trắng và nước tương ớt hoặc nước mắm tỏi ớt.",
+    "storageAndReheat": "Ngon nhất ngay sau khi chiên khi mặt trứng còn phồng mềm. Có thể bảo quản hộp kín trong ngăn mát tủ lạnh 24 giờ và hâm áp chảo lửa nhỏ 2–3 phút mỗi mặt không cần thêm dầu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "5 quả (khoảng 250 g)",
+      "prepNote": "đập ra tô lớn, loại bỏ mảnh vỏ nếu có",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "piece",
+      "grossGrams": 250,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 220,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GROUND_PORK",
+      "name": "Thịt heo nạc vai xay",
+      "culinaryMeasure": "200 g",
+      "prepNote": "chọn thịt nạc vai có chút mỡ dắt để nhân mềm ngọt, không khô",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 200,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "MUSHROOM",
+      "name": "Nấm rơm tươi",
+      "culinaryMeasure": "80 g",
+      "prepNote": "gọt sạch phần gốc dính rơm, ngâm nước muối loãng rồi trụng sơ, thái lát mỏng hoặc băm vừa",
+      "componentGroup": "main",
+      "requiredQuantity": 80,
+      "unit": "g",
+      "grossGrams": 80,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 80,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FRESH_MILK",
+      "name": "Sữa tươi không đường",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "đánh cùng trứng để tạo độ béo mềm, ẩm mượt",
+      "componentGroup": "main",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 25.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 25.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (khoảng 30 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần lá xanh và băm nhỏ đầu hành trắng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím (hành khô)",
+      "culinaryMeasure": "20 g (~1–2 củ)",
+      "prepNote": "bóc vỏ, thái lát mỏng phi thơm (hoặc dùng hành phi sẵn)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/2 củ (khoảng 12,5 g)",
+      "prepNote": "bóc vỏ, băm nhuyễn để phi thơm xào nấm và thịt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "nêm vào tô trứng để dậy hương thơm truyền thống",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SEASONING_POWDER",
+      "name": "Hạt nêm",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "chia 3 g ướp thịt xay, 2 g nêm khi xào nấm rơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "1 g pha nước rửa nấm rồi xả bỏ, 1 g ướp thịt bằm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "chia 1 g ướp thịt, 1 g đánh cùng trứng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "5 ml (~1 muỗng cà phê)",
+      "prepNote": "trộn vào hỗn hợp trứng giúp khử mùi tanh và tăng hương thơm",
+      "componentGroup": "main",
+      "requiredQuantity": 5,
+      "unit": "ml",
+      "grossGrams": 4.6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4.6,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn",
+      "culinaryMeasure": "30 ml (~2 muỗng canh)",
+      "prepNote": "chia 10 ml xào nhân thịt nấm, 20 ml chiên trứng",
+      "componentGroup": "main",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 27.6,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 23.46,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "500 ml",
+      "prepNote": "đun sôi để trụng sơ nấm rơm rồi chắt bỏ",
+      "componentGroup": "main",
+      "requiredQuantity": 500,
+      "unit": "ml",
+      "grossGrams": 500,
+      "edibleRetentionRatio": 0,
+      "edibleGrams": 0,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "marinate",
+      "title": "Ướp thịt bằm và sơ chế trụng nấm rơm",
+      "instruction": "Cho thịt heo xay vào tô, ướp cùng 3 g hạt nêm, 1 g muối ăn và 1 g tiêu đen xay trong 10 phút cho thấm vị. Nấm rơm gọt bỏ gốc bẩn, rửa qua nước muối pha 1 g muối còn lại, sau đó thả vào 500 ml nước lọc đang sôi trụng nhanh 1 phút, vớt ra xả ngay nước lạnh, vắt ráo nhẹ rồi thái lát mỏng hoặc băm nhỏ.",
+      "tip": "Trụng nhanh nấm rơm rồi xả lạnh giúp nấm giữ được độ giòn ngọt, không bị thâm đen và ra ít nước khi xào.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Sơ chế hành lá, hành tím và tỏi băm",
+      "instruction": "Hành lá rửa sạch, để ráo rồi thái nhỏ. Hành tím bóc vỏ thái lát mỏng (nếu tự phi), tỏi bóc vỏ băm nhuyễn. Chuẩn bị sẵn tô lớn để đánh trứng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào ráo nhân nấm rơm và thịt bằm",
+      "instruction": "Làm nóng chảo với 10 ml dầu ăn trên lửa vừa, phi thơm hành tím và tỏi băm rồi cho nấm rơm vào đảo nhanh 2 phút cùng 2 g hạt nêm cho ráo nước, trút ra đĩa. Giữ nguyên chảo, tăng lửa lớn và cho thịt heo xay đã ướp vào đảo tơi đến khi thịt chuyển màu trắng đục chín hoàn toàn, trút nấm vào đảo chung 1 phút cho ráo hẳn nước rồi tắt bếp để nguội bớt.",
+      "tip": "Phải xào thịt và nấm thật ráo nước trên lửa lớn trước khi trộn vào trứng, nếu nhân còn ướt miếng trứng sẽ bị bở và vỡ khi lật.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Đánh tan trứng cùng sữa tươi và trộn nhân",
+      "instruction": "Đập 5 quả trứng gà vào tô lớn, thêm 25 ml sữa tươi không đường, 15 ml nước mắm ngon, 5 ml dầu mè thơm (nếu dùng) và 1 g tiêu đen xay. Dùng đũa khuấy đều nhẹ tay cho lòng trắng và lòng đỏ hòa quyện mà không tạo quá nhiều bọt khí, rồi cho hành lá thái nhỏ cùng toàn bộ nhân thịt nấm đã nguội vào trộn đều."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên phồng mặt đáy trứng trên lửa nhỏ",
+      "instruction": "Đặt chảo chống dính đường kính 22–24 cm lên bếp, đun nóng 20 ml dầu ăn còn lại trên lửa vừa rồi hạ xuống lửa nhỏ. Đổ hỗn hợp trứng thịt nấm vào chảo, dàn đều nhân khắp mặt, đậy nắp chảo chiên khoảng 5 phút cho mặt dưới chín vàng và mặt trên se đặc lại.",
+      "tip": "Đậy nắp và giữ lửa nhỏ giúp hơi nóng làm chín phần thịt trứng ở giữa mà không làm cháy sém mặt đáy.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Lật mặt chiên vàng đều và cắt miếng dọn nóng",
+      "instruction": "Khi mặt trên trứng đã se lại không còn lỏng, úp một chiếc đĩa lớn lên miệng chảo rồi lật ngược chảo để lấy trứng ra đĩa, sau đó trượt nhẹ mặt chưa chín trở lại chảo. Chiên tiếp không đậy nắp thêm 2 phút trên lửa nhỏ cho đến khi hai mặt vàng ruộm và phần nhân chín kỹ hoàn toàn, gắp ra đĩa cắt thành 6 miếng tam giác và dùng nóng.",
+      "timerMinutes": 2
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 395,
+    "energyKcal": 395.2,
+    "energyKj": 1653,
+    "proteinG": 22.5,
+    "fatG": 30.9,
+    "saturatedFatG": 9.1,
+    "carbG": 6.3,
+    "fiberG": 1.1,
+    "sugarG": 2.3,
+    "sodiumMg": 1025,
+    "saltG": 2.56,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167902",
+      "USDA FDC 169230",
+      "USDA FDC 169251",
+      "USDA FDC 170005",
+      "USDA FDC 170499",
+      "USDA FDC 170931",
+      "USDA FDC 171028",
+      "USDA FDC 171265",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173468",
+      "VN/Asian Seasoning Powder Avg"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3f739d82232247a2cf22e750db1a35f587b990c125207b0455a9ae93bd269984",
+    "researchedFromV2Sha256": "0681f57394935147485f01dbb818a3cdcb2c453b2b3358a3e2a75bee12dff821"
+  }
+}

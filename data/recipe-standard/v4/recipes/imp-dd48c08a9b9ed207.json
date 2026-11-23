@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-dd48c08a9b9ed207",
+    "slug": "suon-chien-gion",
+    "title": "Sườn non chiên giòn ngũ vị",
+    "subtitle": "Sườn non ướp thấm xì dầu, dầu hào và ngũ vị hương, nhúng hỗn hợp trứng gà bột chiên giòn rồi chiên ngập dầu vàng rụm mềm ngọt"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 25,
+    "servings": 4,
+    "tags": [
+      "Món chiên",
+      "Sườn non",
+      "Giòn rụm",
+      "Ngũ vị hương",
+      "Cơm nhà"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "molluscs",
+      "pork",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Từng khúc sườn non thơm lừng ngũ vị hương và tỏi, được bao bọc bởi lớp bột trứng vàng ruộm giòn tan bên ngoài trong khi thớ thịt sát xương bên trong vẫn mềm ngọt mọng nước.",
+    "servingSuggestion": "Xếp sườn chiên nóng ra đĩa, dọn kèm chén muối tiêu hoặc tương ớt cay; ăn cùng cơm trắng nóng và dưa leo thái lát giúp cân bằng vị béo.",
+    "storageAndReheat": "Bảo quản sườn chiên trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn làm nóng giòn lại bằng nồi chiên không dầu ở 180°C trong 6–8 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PORK_RIBS",
+      "name": "Sườn non chặt khúc vừa ăn",
+      "culinaryMeasure": "650 g",
+      "prepNote": "chà muối khử mùi rồi rửa sạch, để thật ráo nước, chặt khúc dài 4–5 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 650,
+      "unit": "g",
+      "grossGrams": 650,
+      "edibleRetentionRatio": 0.65,
+      "edibleGrams": 422.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà",
+      "culinaryMeasure": "2 quả (khoảng 100 g)",
+      "prepNote": "đánh tan trộn với bột chiên giòn thành hỗn hợp sền sệt",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CRISPY_BATTER_MIX",
+      "name": "Bột chiên giòn",
+      "culinaryMeasure": "140 g",
+      "prepNote": "pha cùng trứng gà và nước lọc tạo lớp vỏ giòn rụm",
+      "componentGroup": "main",
+      "requiredQuantity": 140,
+      "unit": "g",
+      "grossGrams": 140,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 119,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,75 củ (khoảng 18,8 g, ~5–6 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để ướp sườn",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 18.75,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 16.31,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị đậm đà và hương thơm khi ướp sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 35.4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "OYSTER_SAUCE",
+      "name": "Dầu hào",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "giúp sườn thấm vị ngọt dịu và giữ ẩm thịt",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 18.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 18.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (~1,5 muỗng cà phê)",
+      "prepNote": "làm dịu vị mặn trong hỗn hợp ướp",
+      "componentGroup": "marinade",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "2 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo hương thơm cay nhẹ cho sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "8 g (~1,5 muỗng cà phê)",
+      "prepNote": "dùng 6 g chà rửa khử mùi sườn rồi rửa sạch, 2 g ướp cùng sườn",
+      "componentGroup": "marinade",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "FIVE_SPICE",
+      "name": "Ngũ vị hương",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "tạo hương vị đặc trưng cho sườn chiên kiểu Hoa",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật (chiên ngập dầu)",
+      "culinaryMeasure": "350 ml",
+      "prepNote": "đun nóng già chiên vàng giòn sườn",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "ml",
+      "grossGrams": 322,
+      "edibleRetentionRatio": 0.1,
+      "edibleGrams": 32.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "60 ml (~4 muỗng canh)",
+      "prepNote": "pha hòa bột chiên giòn với trứng gà",
+      "componentGroup": "main",
+      "requiredQuantity": 60,
+      "unit": "ml",
+      "grossGrams": 60,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 51,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch khử mùi và thấm khô sườn non",
+      "instruction": "Chặt 650 g sườn non thành từng khúc dài khoảng 4 đến 5 cm, cho vào thau cùng 6 g muối ăn chà xát kỹ khắp mặt thịt xương trong 2 phút để khử mùi hôi, sau đó rửa lại nhiều lần bằng nước sạch rồi thấm thật khô bằng khăn giấy.",
+      "tip": "Khúc sườn ráo nước hoàn toàn sẽ giúp gia vị ướp bám chặt và lớp bột chiên không bị tuột khi thả vào dầu."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Ướp sườn non thấm gia vị ngũ vị",
+      "instruction": "Cho sườn vào tô lớn cùng tỏi băm nhuyễn, 30 ml xì dầu, 15 ml dầu hào, 5 g đường cát trắng, 2 g tiêu đen xay, 2 g muối ăn còn lại và 1,5 g ngũ vị hương. Trộn xoa đều từng khúc sườn, bọc kín để ướp trong ngăn mát ít nhất 30 phút (hoặc 2 giờ cho đậm vị).",
+      "timerMinutes": 30
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Pha hỗn hợp trứng gà bột chiên giòn",
+      "instruction": "Đập 2 quả trứng gà vào tô lớn, đánh tan đều rồi cho 140 g bột chiên giòn cùng 60 ml nước lọc vào khuấy kỹ đến khi thu được hỗn hợp bột sền sệt, mịn mượt không vón cục.",
+      "tip": "Nếu hỗn hợp quá đặc có thể thêm từng muỗng cà phê nước để lớp bột áo vừa đủ mỏng giòn, không bị dày cộp."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nhúng bột và chiên sườn trên lửa vừa",
+      "instruction": "Đổ 350 ml dầu ăn thực vật vào chảo sâu lòng, đun trên lửa vừa đến khi đầu đũa sủi tăm đều (khoảng 170°C). Gắp từng khúc sườn đã ướp (gạt bớt nước ướp thừa) nhúng ngập vào tô bột chiên giòn rồi thả từng mẻ vào chảo dầu, không xếp chồng lên nhau."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên chín vàng đều bên trong sườn non",
+      "instruction": "Chiên sườn trên lửa vừa khoảng 9 đến 10 phút, thỉnh thoảng lật trở đều các mặt đến khi lớp vỏ ngoài chuyển màu vàng nâu giòn rụm và phần thịt sát xương bên trong chín trắng hoàn toàn không còn máu hồng.",
+      "tip": "Giữ nhiệt dầu ở mức vừa phải giúp sườn non có xương chín kỹ từ bên trong trước khi lớp vỏ ngoài bị sậm màu.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Thấm ráo dầu thừa và dọn nóng",
+      "instruction": "Vớt các khúc sườn ra đĩa có lót sẵn khăn giấy thấm dầu trong 2 phút để giữ độ giòn lâu, sau đó xếp ra đĩa sạch và dọn dùng nóng với cơm trắng hoặc chấm kèm tương ớt."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 522,
+    "energyKcal": 522.1,
+    "energyKj": 2185,
+    "proteinG": 23.2,
+    "fatG": 35.3,
+    "saturatedFatG": 11.1,
+    "carbG": 26.9,
+    "fiberG": 1.2,
+    "sugarG": 2.4,
+    "sodiumMg": 1179,
+    "saltG": 2.95,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Five Spice USDA Ref",
+      "Panko / Batter Mix Ref",
+      "USDA FDC 167861",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170931",
+      "USDA FDC 171287",
+      "USDA FDC 171369",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "6b6b65f49d20c5877f58b95c115bd4c6ed66c6050a13642e1399c839ec181a14",
+    "researchedFromV2Sha256": "ffdc230151157ecaee29db8d31d2faf6dcb64141d34a42b4a58b975f8c715de6"
+  }
+}

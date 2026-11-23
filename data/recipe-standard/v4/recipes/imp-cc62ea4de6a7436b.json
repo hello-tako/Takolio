@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-cc62ea4de6a7436b",
+    "slug": "goi-dua-tom-thai",
+    "title": "Gỏi dứa tôm tươi chua cay kiểu Thái",
+    "subtitle": "Dứa chín vàng mọng trộn cùng tôm luộc giòn ngọt, hành tím thái mỏng, ớt hiểm và nước mắm chanh chua cay thanh mát, rắc đậu phộng rang bùi"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Thái Lan",
+      "Gỏi trộn",
+      "Dứa chín",
+      "Tôm tươi",
+      "Khai vị"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "peanut",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi dứa tôm tươi kiểu Thái là món khai vị giải ngấy tuyệt vời với vị ngọt mọng tự nhiên của dứa chín hòa quyện tôm luộc giòn săn, vị chua cay mặn ngọt cân bằng và hương bạc hà the mát.",
+    "servingSuggestion": "Bày gỏi dứa tôm ra đĩa rộng, rắc đậu phộng rang giã dập cùng lá bạc hà xắt rối lên trên; dùng ngay làm món khai vị hoặc ăn kèm cơm trắng.",
+    "storageAndReheat": "Dứa chín dễ tiết nước sau khi trộn muối mắm nên món gỏi ngon nhất khi dùng ngay trong vòng 1 giờ sau khi trộn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "PINEAPPLE",
+      "name": "Dứa chín tươi",
+      "culinaryMeasure": "3/4 quả (khoảng 450 g)",
+      "prepNote": "gọt vỏ, bỏ hết mắt và lõi cứng, thái miếng vuông 1,5 cm để ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.75,
+      "unit": "piece",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 382.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm tươi bóc vỏ",
+      "culinaryMeasure": "300 g",
+      "prepNote": "bóc vỏ, rút chỉ đen trên lưng, rửa sạch",
+      "componentGroup": "main",
+      "requiredQuantity": 300,
+      "unit": "g",
+      "grossGrams": 300,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 270,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (khoảng 35 ml nước cốt)",
+      "prepNote": "vắt lọc bỏ hạt để pha nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "hòa cùng nước cốt chanh và đường cát trắng",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "12 g (1 muỗng canh)",
+      "prepNote": "khuấy tan hoàn toàn trong nước trộn gỏi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "4 quả",
+      "prepNote": "rửa sạch, thái lát mỏng hoặc băm nhỏ tùy mức ăn cay",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái khúc ngắn 2 cm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím tươi",
+      "culinaryMeasure": "40 g (2 củ vừa)",
+      "prepNote": "bóc vỏ, thái lát thật mỏng",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 35.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "PEANUT",
+      "name": "Đậu phộng rang không muối",
+      "culinaryMeasure": "45 g",
+      "prepNote": "giã dập vừa để rắc hoàn thiện lên mặt đĩa gỏi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 45,
+      "unit": "g",
+      "grossGrams": 45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà tươi (húng lủi)",
+      "culinaryMeasure": "12 g (1 nắm nhỏ)",
+      "prepNote": "nhặt lá non, rửa sạch vẩy ráo rồi xắt rối",
+      "componentGroup": "garnish",
+      "requiredQuantity": 12,
+      "unit": "g",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 10.8,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (luộc tôm)",
+      "culinaryMeasure": "600 ml",
+      "prepNote": "đun sôi luộc chín tôm rồi chắt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 600,
+      "unit": "ml",
+      "grossGrams": 600,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 30,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế tôm, dứa chín và rau thơm",
+      "instruction": "Rửa sạch 300 g tôm tươi đã bóc vỏ rút chỉ lưng. Gọt vỏ, bỏ sạch mắt và lõi cứng 3/4 quả dứa chín rồi thái miếng vuông cạnh 1,5 cm. Thái lát thật mỏng 40 g hành tím, thái nhỏ 1/2 bó hành lá, thái lát mỏng 4 quả ớt hiểm, xắt rối 12 g lá bạc hà tươi và giã dập 45 g đậu phộng rang.",
+      "tip": "Chọn dứa chín tới có độ giòn ngọt vừa phải để khi trộn gỏi không bị nát và tiết quá nhiều nước."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Luộc chín tôm giữ độ giòn ngọt",
+      "instruction": "Đun sôi mạnh 600 ml nước lọc trong nồi nhỏ trên lửa lớn, thả 300 g tôm vào luộc khoảng 2 phút đến khi tôm cuộn cong, chuyển màu đỏ cam đều và thịt chín chắc hoàn toàn thì vớt ra ngay, để thật ráo và nguội hẳn.",
+      "tip": "Không luộc tôm quá lâu và để tôm nguội ráo trước khi trộn sẽ giúp thịt tôm giòn ngọt mà không làm ỉu gỏi.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn gỏi chua cay mặn ngọt",
+      "instruction": "Vắt nước cốt từ 1,5 quả chanh tươi lọc bỏ hạt cho vào chén, thêm 30 ml nước mắm ngon và 12 g đường cát trắng, khuấy đều tay đến khi đường tan hết hoàn toàn tạo hỗn hợp nước trộn sánh thơm."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Trộn nhẹ tay dứa, tôm cùng hành ớt",
+      "instruction": "Cho dứa cắt miếng, tôm luộc đã nguội, hành tím thái lát, hành lá và ớt hiểm vào tô lớn. Rưới đều toàn bộ chén nước trộn gỏi lên trên, đảo nhẹ tay từ dưới lên để tất cả nguyên liệu áo đều gia vị."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Để gỏi nghỉ ngấm vị trong 5 phút",
+      "instruction": "Để tô gỏi nghỉ 5 phút cho miếng dứa và tôm thấm sâu vị chua mặn ngọt cay hài hòa rồi nếm thử lại một lần, điều chỉnh thêm nước cốt chanh hoặc nước mắm nếu cần.",
+      "tip": "Chỉ nên cho đậu phộng rang và lá bạc hà vào ngay trước lúc ăn để đậu không bị ỉu và lá rau không bị thâm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc đậu phộng rang, bạc hà và dọn mát",
+      "instruction": "Gắp gỏi dứa tôm ra đĩa (chắt bớt nước đọng đáy tô nếu nhiều), rắc 45 g đậu phộng rang giã dập và lá bạc hà xắt rối lên trên rồi thưởng thức ngay khi còn tươi mát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 263,
+    "energyKcal": 262.7,
+    "energyKj": 1099,
+    "proteinG": 24,
+    "fatG": 8.1,
+    "saturatedFatG": 1.1,
+    "carbG": 28,
+    "fiberG": 4.2,
+    "sugarG": 19.3,
+    "sodiumMg": 1057,
+    "saltG": 2.64,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169124",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170499",
+      "USDA FDC 172185",
+      "USDA FDC 172430",
+      "USDA FDC 173474",
+      "USDA FDC 173647",
+      "USDA FDC 175179"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "490144712173babacf18df90449d8c404ab7202f9c750ce6e2a4807b5952af60",
+    "researchedFromV2Sha256": "6760c2a4d072f36a5df5f0cab6ba0b2f178b1ad690d97cb2daf0e7cbb82b4b99"
+  }
+}

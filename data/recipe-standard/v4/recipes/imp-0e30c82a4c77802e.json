@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0e30c82a4c77802e",
+    "slug": "goi-dau-phu-cay-thai",
+    "title": "Gỏi đậu phụ cay kiểu Thái",
+    "subtitle": "Đậu phụ non ướp lạnh mát mịn kết hợp sả, hành tím, dưa leo, rau thơm và nước sốt chanh đường thốt nốt cay nồng thanh mát"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Gỏi đậu phụ",
+      "Món chay",
+      "Khai vị",
+      "Ẩm thực Thái",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix",
+      "assemble"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Gỏi đậu phụ cay kiểu Thái mang đến sự tương phản thú vị giữa từng khối đậu phụ non mềm mịn mát lạnh và lớp rau thơm băm nhuyễn giòn tươi gồm sả non, hành tím, dưa leo, bạc hà, ngò rí thấm đẫm nước sốt chanh ớt đường thốt nốt chua cay hài hòa.",
+    "servingSuggestion": "Rắc mè đen rang thơm lên trên mặt đĩa gỏi đậu phụ, dọn dùng ngay khi đậu còn mát lạnh như món khai vị thanh nhẹ hoặc ăn kèm cơm trắng nóng.",
+    "storageAndReheat": "Món gỏi đậu phụ non nên dùng hết ngay sau khi rưới sốt; nếu chuẩn bị trước, ướp lạnh riêng đậu phụ và chén rau củ trộn trong ngăn mát tối đa 6 giờ."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SOFT_TOFU",
+      "name": "Đậu phụ non (đậu phụ lụa)",
+      "culinaryMeasure": "450 g",
+      "prepNote": "ướp lạnh sâu trong ngăn mát 2 giờ, gạn bỏ nước rồi cắt khối vuông 4 cm nhẹ tay",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt (nước tương ngon)",
+      "culinaryMeasure": "35 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "làm nền vị mặn thanh cho nước trộn gỏi chay",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "ml",
+      "grossGrams": 41.3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 41.3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "1,5 quả (67,5 g)",
+      "prepNote": "vắt lấy khoảng 40 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 67.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 33.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "PALM_SUGAR",
+      "name": "Đường thốt nốt",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "bào thật mỏng hoặc giã vụn để khuấy tan hoàn toàn trong nước trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ tươi",
+      "culinaryMeasure": "4 quả (20 g)",
+      "prepNote": "bỏ cuống, băm thật nhuyễn (giảm lượng nếu ăn cay ít)",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SHALLOT",
+      "name": "Hành tím khô",
+      "culinaryMeasure": "20 g (khoảng 1,5 củ)",
+      "prepNote": "bóc vỏ, thái hạt lựu thật nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 17.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi (chỉ lấy lõi non trắng)",
+      "culinaryMeasure": "1,5 cây (30 g)",
+      "prepNote": "bỏ hoàn toàn vỏ già bên ngoài, băm thật nhuyễn để ăn sống không bị xơ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.75,
+      "edibleGrams": 22.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ cả phần đầu trắng và lá xanh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "CILANTRO",
+      "name": "Ngò rí (rau mùi ta)",
+      "culinaryMeasure": "15 g",
+      "prepNote": "rửa sạch, để ráo và thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 15,
+      "unit": "g",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "MARJORAM_MINT",
+      "name": "Lá bạc hà (húng lủi)",
+      "culinaryMeasure": "10 g",
+      "prepNote": "nhặt lá non, rửa sạch để ráo rồi thái nhỏ",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "CUCUMBER",
+      "name": "Dưa leo tươi",
+      "culinaryMeasure": "1/2 quả (75 g)",
+      "prepNote": "rửa sạch, bỏ bớt phần ruột hạt, thái hạt lựu nhỏ đều tay",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 75,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 71.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "BELL_PEPPER",
+      "name": "Ớt chuông đỏ",
+      "culinaryMeasure": "1/4 quả (37,5 g)",
+      "prepNote": "bỏ hạt, thái hạt lựu thật nhỏ tạo màu đỏ tươi đẹp mắt",
+      "componentGroup": "main",
+      "requiredQuantity": 0.25,
+      "unit": "piece",
+      "grossGrams": 37.5,
+      "edibleRetentionRatio": 0.85,
+      "edibleGrams": 31.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè đen (hoặc mè trắng rang thơm)",
+      "culinaryMeasure": "10 g (khoảng 1 muỗng canh)",
+      "prepNote": "rang trên chảo khô lửa nhỏ 2 phút cho thơm lừng để rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ướp lạnh đậu phụ non và rang thơm hạt mè",
+      "instruction": "Đặt hộp 450 g đậu phụ non vào ngăn mát tủ lạnh ít nhất 2 giờ để đậu mát sâu và săn mịn. Rang khô 10 g hạt mè trên chảo nhỏ lửa nhỏ khoảng 2 phút đến khi mè dậy mùi thơm bùi thì trút ra chén để nguội.",
+      "tip": "Đậu phụ non càng mát lạnh khi ăn cùng nước trộn chua cay mặn ngọt sẽ càng thanh mát và giữ khối đẹp hơn.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Băm nhuyễn sả non và thái hạt lựu rau củ",
+      "instruction": "Băm thật nhuyễn lõi non của 1,5 cây sả tươi và 4 quả ớt hiểm. Thái hạt lựu nhỏ 20 g hành tím, dưa leo bỏ ruột và ớt chuông đỏ; thái nhỏ hành lá, ngò rí và lá bạc hà (húng lủi).",
+      "tip": "Phần sả dùng ăn sống nên chỉ lấy lõi non trắng mềm nhất và băm thật mịn để không bị xơ cứng khi nhai."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước trộn đường thốt nốt hòa tan kỹ",
+      "instruction": "Cho 20 g đường thốt nốt bào vụn vào tô cùng 35 ml xì dầu nhạt, nước cốt của 1,5 quả chanh tươi và ớt hiểm băm, khuấy kỹ khoảng 2 phút đến khi đường tan hoàn toàn thành hỗn hợp sánh thơm."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Trộn thấm các loại rau củ và rau thơm",
+      "instruction": "Cho hành tím, sả băm, dưa leo, ớt chuông đỏ, hành lá, ngò rí và lá bạc hà vào tô nước trộn vừa pha, đảo nhẹ đều tay và để nghỉ 5 phút cho rau củ ngấm đều vị chua cay mặn ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Cắt khối đậu phụ non xếp ngay ngắn ra đĩa sâu lòng",
+      "instruction": "Nhẹ nhàng lấy đậu phụ non ra khỏi hộp, chắt bỏ hết nước, dùng dao mỏng sắc cắt thành khối vuông lớn cạnh 4 cm rồi xếp ngay ngắn vào đĩa sâu lòng để hứng nước trộn."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Phủ rau trộn, rưới sốt đáy đĩa và rắc mè rang",
+      "instruction": "Múc phần rau củ trộn đặt gọn lên mặt từng miếng đậu phụ non, rưới nước trộn còn lại xung quanh đáy đĩa và rắc hạt mè rang thơm lên trên để thưởng thức ngay khi đậu còn mát lạnh.",
+      "tip": "Đặt rau trộn lên mặt và rưới nước sốt xung quanh đáy đĩa thay vì trộn đảo chung để các khối đậu phụ non không bị vỡ nát."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 162,
+    "energyKcal": 162,
+    "energyKj": 678,
+    "proteinG": 10,
+    "fatG": 6,
+    "saturatedFatG": 0.9,
+    "carbG": 19,
+    "fiberG": 2.2,
+    "sugarG": 9.3,
+    "sodiumMg": 849,
+    "saltG": 2.12,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 168409",
+      "USDA FDC 168573",
+      "USDA FDC 169997",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170108",
+      "USDA FDC 170150",
+      "USDA FDC 170499",
+      "USDA FDC 172476",
+      "USDA FDC 173474",
+      "USDA FDC 174277",
+      "USDA FDC Palm Sugar Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "60e3247733175ec419adfcd2fc2d0b16836e00b9c99a14b44971cc835e604d72",
+    "researchedFromV2Sha256": "cde071cc679e1033b1844bd5982b7681d96abb0271b4d2d22d34a56de24d53e0"
+  }
+}

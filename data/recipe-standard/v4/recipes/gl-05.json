@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "gl-05",
+    "slug": "kimchi-fried-rice",
+    "title": "Cơm chiên kim chi Hàn Quốc",
+    "subtitle": "Cơm chiên kim chi chua cay đậm vị tương ớt Gochujang, hạt cơm săn tơi phủ trứng ốp la lòng đào béo ngậy"
+  },
+  "classification": {
+    "cuisine": "korean",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 15,
+    "servings": 2,
+    "tags": [
+      "Hàn Quốc",
+      "Món nhanh",
+      "Chua cay",
+      "Cơm chiên",
+      "Bữa sáng"
+    ],
+    "mealTypes": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "stir_fry",
+      "pan_fry"
+    ],
+    "allergenTags": [
+      "egg",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cơm chiên kim chi Hàn Quốc là món ăn nhanh gọn nhưng tròn vị nhờ sự kết hợp giữa cơm nguội hạt săn tơi, kim chi cải thảo ủ chua giòn sần sật và sốt tương ớt Gochujang cay ngọt hài hòa. Lớp trứng ốp la lòng đào bên trên giúp món ăn thêm béo thơm hấp dẫn.",
+    "servingSuggestion": "Xới cơm nóng ra đĩa, đặt trứng ốp la lòng đào lên trên, rắc hạt mè trắng rang và rong biển lá khô xé nhỏ; ăn ngay khi còn nóng và trộn đều lòng đỏ trứng vào cơm.",
+    "storageAndReheat": "Món ngon nhất khi dùng ngay sau khi chiên. Phần cơm còn dư có thể bảo quản hộp kín trong ngăn mát tối đa 24 giờ và áp chảo lại trên lửa vừa 3–4 phút với chút dầu ăn trước khi dùng."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm trắng nguội hạt ngắn",
+      "culinaryMeasure": "450 g (khoảng 2,5 chén cơm)",
+      "prepNote": "dùng cơm nấu chín để nguội hoặc qua đêm trong ngăn mát để hạt cơm tơi",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KIMCHI",
+      "name": "Kim chi cải thảo ủ chua",
+      "culinaryMeasure": "160 g (kèm khoảng 40 ml nước kim chi)",
+      "prepNote": "vắt nhẹ lấy riêng khoảng 40 ml nước kim chi để pha sốt, phần cái thái nhỏ cỡ 1 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 160,
+      "unit": "g",
+      "grossGrams": 160,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 160,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHICKEN_EGG",
+      "name": "Trứng gà tươi",
+      "culinaryMeasure": "2 quả (~100 g)",
+      "prepNote": "để nhiệt độ phòng để chiên ốp la lòng đào",
+      "componentGroup": "main",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 0.88,
+      "edibleGrams": 88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "0,5 củ (~70 g)",
+      "prepNote": "bóc vỏ, rửa sạch, thái hạt lựu nhỏ 0,5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "CARROT",
+      "name": "Cà rốt",
+      "culinaryMeasure": "0,5 củ (~55 g)",
+      "prepNote": "gọt vỏ, rửa sạch, thái hạt lựu nhỏ đồng đều với hành tây",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 55,
+      "edibleRetentionRatio": 0.89,
+      "edibleGrams": 48.95,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "0,5 bó nhỏ (~20 g)",
+      "prepNote": "rửa sạch, thái nhỏ phần đầu trắng và lá xanh để riêng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GOCHUJANG",
+      "name": "Tương ớt Hàn Quốc (Gochujang)",
+      "culinaryMeasure": "20 g (~1 muỗng canh đầy)",
+      "prepNote": "hòa cùng nước kim chi và nước tương trước khi chiên",
+      "componentGroup": "sauce",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương (Xì dầu)",
+      "culinaryMeasure": "15 ml (~1 muỗng canh)",
+      "prepNote": "pha cùng tương ớt Hàn Quốc để tăng vị đậm đà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu thực vật",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "chia đôi: 5 ml xào rau củ và kim chi, 5 ml chiên trứng ốp la",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 8.28,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (~2 muỗng cà phê)",
+      "prepNote": "rưới sau cùng khi tắt bếp để giữ trọn hương thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "rắc trộn cuối cùng và trang trí trên mặt đĩa cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển lá khô (Gim)",
+      "culinaryMeasure": "3 g (1 lá lớn)",
+      "prepNote": "nướng sơ hoặc dùng loại ăn liền, xé sợi mảnh rắc mặt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế kim chi, rau củ và dằm tơi cơm nguội",
+      "instruction": "Vắt nhẹ 160 g kim chi cải thảo ủ chua để chắt riêng khoảng 40 ml nước kim chi vào chén, phần cái thái nhỏ cỡ 1 cm. Thái hạt lựu nhỏ hành tây và cà rốt, thái nhỏ hành lá. Dùng tay hoặc thìa dằm nhẹ cho 450 g cơm trắng nguội hạt ngắn tơi đều, không vón cục.",
+      "tip": "Dùng cơm nguội để qua đêm trong tủ lạnh giúp hạt cơm se mặt, khi chiên sẽ săn tơi và không bị bết dính."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha hỗn hợp sốt Gochujang chua cay",
+      "instruction": "Cho 20 g tương ớt Hàn Quốc (Gochujang), 15 ml nước tương và phần nước kim chi đã vắt vào chén nhỏ, khuấy đều tay cho đến khi hỗn hợp sốt hòa quyện sánh mịn.",
+      "tip": "Pha sẵn sốt trước giúp gia vị bám đều lên từng hạt cơm khi đảo nhanh trên chảo nóng."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Xào thơm hành tây, cà rốt và kim chi",
+      "instruction": "Làm nóng chảo sâu lòng trên lửa vừa với 5 ml dầu thực vật, cho đầu hành lá, hành tây và cà rốt vào đảo đều 2 phút đến khi hành tây hơi trong. Tiếp tục cho phần kim chi cải thảo thái nhỏ vào xào thêm 2 phút cho kim chi săn ráo và dậy mùi thơm đặc trưng.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Rang cơm và áo đều sốt Gochujang",
+      "instruction": "Tăng lên lửa lớn, trút toàn bộ 450 g cơm trắng nguội vào chảo, đảo đều và ép nhẹ mặt cơm xuống đáy chảo khoảng 3 phút cho hạt cơm nóng ráo, săn chắc. Rưới đều chén sốt Gochujang vào, đảo nhanh tay thêm 2 phút để từng hạt cơm nhuộm màu đỏ cam bóng đẹp và thấm gia vị.",
+      "tip": "Dàn cơm mỏng trên mặt chảo vài giây trước khi đảo sẽ tạo lớp cháy xém nhẹ rất thơm.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Chiên trứng ốp la lòng đào",
+      "instruction": "Trong một chảo chống dính nhỏ, đun nóng 5 ml dầu thực vật còn lại trên lửa vừa, đập nhẹ 2 quả trứng gà tươi vào chiên khoảng 3 phút đến khi lòng trắng đông chín hoàn toàn, viền hơi giòn còn lòng đỏ vẫn giữ độ sánh lòng đào.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn dầu mè và trình bày đĩa cơm",
+      "instruction": "Tắt bếp chảo cơm chiên, rưới 10 ml dầu mè rang, rắc phần hành lá xanh và một nửa lượng hạt mè trắng rang vào đảo đều một lượt cho thơm. Xới cơm ra 2 đĩa, đặt trứng ốp la lên trên, rắc nốt phần hạt mè trắng rang và rong biển lá khô xé nhỏ rồi thưởng thức ngay khi nóng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 508,
+    "energyKcal": 508.2,
+    "energyKj": 2127,
+    "proteinG": 14.8,
+    "fatG": 15.3,
+    "saturatedFatG": 3.1,
+    "carbG": 77.1,
+    "fiberG": 4.4,
+    "sugarG": 6.1,
+    "sodiumMg": 1210,
+    "saltG": 3.03,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA / Korean Gochujang Ref",
+      "USDA FDC 168456",
+      "USDA FDC 168878",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170393",
+      "USDA FDC 170497",
+      "USDA FDC 171028",
+      "USDA FDC 171287",
+      "USDA FDC 171413",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/recipes/global/kimchi-fried-rice.webp"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "e180571a64206c91489bd3e7da92daf18d12ebd4de535036f2ddeb998d97bc54",
+    "researchedFromV2Sha256": "892cd104c8842994b37e0c4c607ce72bec5078f45beec3fa4128c7b93edc4c11"
+  }
+}

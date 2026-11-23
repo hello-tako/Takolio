@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b855b6ba4a9a3be8",
+    "slug": "tom-yum-tom-nam",
+    "title": "Canh Tom Yum tôm nấm kiểu Thái",
+    "subtitle": "Nước dùng đầu tôm ninh ngọt tự nhiên dậy hương sả, riềng, lá chanh Kaffir hòa quyện vị chua cay đậm đà cùng tôm tươi và nấm"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_canh",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 20,
+    "servings": 4,
+    "tags": [
+      "Tom Yum",
+      "Canh chua cay",
+      "Tôm tươi",
+      "Ẩm thực Thái",
+      "Hải sản"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "simmer"
+    ],
+    "allergenTags": [
+      "crustaceans",
+      "fish",
+      "shrimp"
+    ]
+  },
+  "overview": {
+    "description": "Canh Tom Yum tôm nấm kiểu Thái trứ danh với nước dùng nấu trực tiếp từ gạch đầu tôm và vỏ tôm xào thơm, kết hợp bộ ba thảo mộc sả, riềng, lá chanh Kaffir cùng nấm đùi gà giòn ngọt và tôm tươi chín tới mọng thịt.",
+    "servingSuggestion": "Múc canh Tom Yum nóng hổi ra tô sâu lòng, rắc hành lá và ngò gai; dùng nóng ăn kèm cơm trắng gạo thơm hoặc chan bún tươi.",
+    "storageAndReheat": "Canh ngon nhất khi thưởng thức ngay lúc nóng để giữ hương thơm của chanh tươi; nếu dư, vớt bớt sả riềng rồi bảo quản ngăn mát tối đa 24 giờ, hâm nóng lại không đun sôi bùng quá lâu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SHRIMP",
+      "name": "Tôm sú tươi nguyên con (còn đầu, vỏ)",
+      "culinaryMeasure": "450 g (thu khoảng 350 g thịt tôm)",
+      "prepNote": "rửa sạch, lột vỏ và giữ riêng phần đầu, vỏ để nấu nước dùng; thịt tôm rút sạch chỉ đen",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 0.78,
+      "edibleGrams": 351,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "KING_OYSTER_MUSHROOM",
+      "name": "Nấm đùi gà tươi",
+      "culinaryMeasure": "200 g",
+      "prepNote": "rửa sạch, cắt gốc rồi thái lát hoặc xé miếng vừa ăn",
+      "componentGroup": "main",
+      "requiredQuantity": 200,
+      "unit": "g",
+      "grossGrams": 200,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 190,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LEMONGRASS",
+      "name": "Sả tươi",
+      "culinaryMeasure": "2 cây (40 g)",
+      "prepNote": "lấy phần gốc trắng, đập dập rồi cắt khúc dài 5 cm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GALANGAL",
+      "name": "Củ riềng tươi",
+      "culinaryMeasure": "25 g",
+      "prepNote": "cạo sạch vỏ, rửa sạch và thái lát mỏng khoảng 8–10 lát",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "KAFFIR_LIME_LEAF",
+      "name": "Lá chanh Kaffir tươi",
+      "culinaryMeasure": "5 g (khoảng 6 lá)",
+      "prepNote": "rửa sạch, vò nhẹ rồi xé đôi bỏ gân giữa để dậy tinh dầu",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.15,
+      "edibleGrams": 0.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm tươi",
+      "culinaryMeasure": "3 quả (15 g)",
+      "prepNote": "bỏ cuống, rửa sạch, giã dập hoặc đập nát (gia giảm tùy khẩu vị cay)",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "piece",
+      "grossGrams": 15,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 13.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "TOM_YUM_PASTE",
+      "name": "Tương ớt xào Thái (Nam Prik Pao / cốt Tom Yum)",
+      "culinaryMeasure": "50 g (khoảng 3 muỗng canh)",
+      "prepNote": "hòa tan với chút nước dùng nóng để tạo màu đỏ cam và vị béo cay đặc trưng",
+      "componentGroup": "broth",
+      "requiredQuantity": 50,
+      "unit": "g",
+      "grossGrams": 50,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 50,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "40 ml (khoảng 2,5 muỗng canh)",
+      "prepNote": "làm gia vị nêm mặn chính cho nồi canh",
+      "componentGroup": "broth",
+      "requiredQuantity": 40,
+      "unit": "ml",
+      "grossGrams": 48,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 48,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt lấy nước cốt)",
+      "culinaryMeasure": "2,5 quả (112,5 g)",
+      "prepNote": "vắt lấy khoảng 80–90 ml nước cốt chanh tươi, bỏ hạt",
+      "componentGroup": "broth",
+      "requiredQuantity": 2.5,
+      "unit": "piece",
+      "grossGrams": 112.5,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 56.25,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "5 g (1 muỗng cà phê)",
+      "prepNote": "cân bằng dịu vị chua cay mặn của nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc mặt tô canh",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "CULANTRO",
+      "name": "Ngò gai (mùi tàu)",
+      "culinaryMeasure": "10 g",
+      "prepNote": "rửa sạch, thái khúc ngắn 1,5 cm để tăng hương thơm chuẩn Thái",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 9,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn (xào đầu tôm)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "dùng xào chín thơm đầu và vỏ tôm trước khi ninh nước dùng",
+      "componentGroup": "broth",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 13.8,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 12.42,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "1050 ml",
+      "prepNote": "dùng ninh cùng vỏ và đầu tôm thu khoảng 950–1000 ml nước dùng ngọt",
+      "componentGroup": "broth",
+      "requiredQuantity": 1050,
+      "unit": "ml",
+      "grossGrams": 1050,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 997.5,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Lột vỏ tôm giữ đầu và rút sạch chỉ đen",
+      "instruction": "Rửa sạch 450 g tôm sú tươi, bóc bỏ vỏ và ngắt phần đầu để riêng vào tô (không bỏ đi vì phần gạch và vỏ giúp nước dùng ngọt đậm). Rút sạch chỉ đen dọc sống lưng thịt tôm, rửa lại nhanh rồi để ráo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "cook",
+      "title": "Xào gạch đầu tôm và ninh nước dùng ngọt thanh",
+      "instruction": "Làm nóng nồi với 15 ml dầu ăn trên lửa vừa-lớn, cho toàn bộ đầu và vỏ tôm vào đảo đều tay khoảng 3 phút, dùng muôi ấn nhẹ phần đầu cho gạch tôm tiết ra màu đỏ cam thơm nức. Đổ 1050 ml nước lọc vào đun sôi rồi hạ lửa nhỏ liu riu 5 phút, vớt bỏ hết vỏ và đầu tôm để thu nước dùng trong ngọt.",
+      "tip": "Không ninh vỏ tôm quá lâu hơn 5–7 phút vì nước dùng dễ bị đục và mất vị ngọt thanh tự nhiên.",
+      "timerMinutes": 8
+    },
+    {
+      "stepNumber": 3,
+      "phase": "prep",
+      "title": "Sơ chế bộ ba thảo mộc Thái và nấm đùi gà",
+      "instruction": "Đập dập sả tươi cắt khúc 5 cm; thái lát mỏng củ riềng tươi; vò nhẹ và xé bỏ gân giữa lá chanh Kaffir; đập dập ớt hiểm; cắt nấm đùi gà thành lát hoặc miếng vừa ăn; thái nhỏ hành lá và ngò gai."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Nấu thơm thảo mộc cùng nấm đùi gà",
+      "instruction": "Cho sả, riềng, lá chanh Kaffir, ớt hiểm và nấm đùi gà vào nồi nước dùng tôm, đun sôi rồi hạ lửa vừa nấu liu riu 5 phút cho thảo mộc tiết hết tinh dầu thơm và nấm chín ngọt.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Hòa tương ớt xào Thái, nêm nước mắm và nấu tôm",
+      "instruction": "Múc một ít nước dùng nóng ra chén hòa tan 50 g tương ớt xào Thái cho mịn rồi trút ngược vào nồi, nêm thêm 40 ml nước mắm. Bật lửa lớn cho canh sôi bùng trở lại, thả thịt tôm vào nấu khoảng 1 phút đến khi tôm vừa chuyển đỏ hồng cong mình chín hoàn toàn thì tắt bếp ngay.",
+      "tip": "Chỉ thả tôm khi nước sôi bùng và tắt bếp ngay sau 1 phút để thịt tôm chín ngọt, giòn săn mà không bị dai bã.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Vắt nước cốt chanh tươi và dọn canh nóng",
+      "instruction": "Khi nồi canh đã tắt bếp và bớt sôi sục, rót nước cốt của 2,5 quả chanh tươi vào cùng 5 g đường cát trắng, khuấy nhẹ và nếm chỉnh vị chua cay mặn ngọt hài hòa. Múc ra tô, rắc hành lá và ngò gai lên trên rồi thưởng thức nóng (nhắc người ăn không nhai sả, riềng, lá chanh).",
+      "tip": "Cho nước cốt chanh sau khi tắt bếp giúp giữ trọn hương thơm tươi mát của tinh dầu chanh và tránh làm nước canh bị đắng."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 167,
+    "energyKcal": 166.7,
+    "energyKj": 698,
+    "proteinG": 20.6,
+    "fatG": 5.6,
+    "saturatedFatG": 0.9,
+    "carbG": 10.4,
+    "fiberG": 2.1,
+    "sugarG": 4.5,
+    "sodiumMg": 1508,
+    "saltG": 3.77,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Citrus Leaf Culinary Ref",
+      "Thai Tom Yum Paste Ref",
+      "USDA / SE Asian Galangal Ref",
+      "USDA FDC 168155",
+      "USDA FDC 168573",
+      "USDA FDC 168580",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 173647",
+      "USDA FDC 175179",
+      "VN Culinary Herb Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "36626d90fdd3ee673a304dc4a8f36d59755a54c4e18fab175d6e5017b1d9ee93",
+    "researchedFromV2Sha256": "b20c9f10defb46a67f1dd02c0e8528905f90ffed1754c03476f2b7b88988e4b2"
+  }
+}

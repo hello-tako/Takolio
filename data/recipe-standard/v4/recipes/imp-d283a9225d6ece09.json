@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-d283a9225d6ece09",
+    "slug": "com-ca-hoi-donburi",
+    "title": "Cơm cá hồi ướp tương Donburi kiểu Nhật",
+    "subtitle": "Những lát cá hồi tươi béo mềm ướp sốt tương mirin dầu mè đậm đà, xếp trên lớp hành tây giòn ngọt và cơm gạo Nhật ấm nóng"
+  },
+  "classification": {
+    "cuisine": "japanese",
+    "category": "mon_nhanh_sang",
+    "difficulty": "easy",
+    "prepTimeMinutes": 15,
+    "cookTimeMinutes": 15,
+    "servings": 2,
+    "tags": [
+      "Nhật Bản",
+      "Donburi",
+      "Cá hồi",
+      "Bữa trưa",
+      "Thanh mát"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "toss_mix",
+      "assemble"
+    ],
+    "allergenTags": [
+      "fish",
+      "salmon",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Cơm cá hồi Zuke Donburi là món cơm tô nổi tiếng của Nhật với phi lê cá hồi tươi chuẩn sashimi thái lát mỏng, ướp thấm đẫm nước sốt xì dầu mirin thơm dầu mè, đặt lên lớp đệm hành tây thái mỏng trên nền cơm ấm.",
+    "servingSuggestion": "Xới cơm Nhật vừa ấm ra hai tô lớn, phủ kín hành tây và cá hồi ướp sốt lên trên, rắc hành lá, rong biển nori vụn, hạt mè rang và ăn kèm wasabi.",
+    "storageAndReheat": "Món cá hồi sống ướp sốt ngon nhất khi ăn ngay sau khi hoàn thành; không nên hâm nóng hoặc để qua ngày để đảm bảo độ tươi ngon và an toàn thực phẩm."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SALMON_FILLET",
+      "name": "Phi lê cá hồi tươi (chuẩn sashimi)",
+      "culinaryMeasure": "280 g",
+      "prepNote": "lọc bỏ da và xương dăm, thấm thật khô rồi thái lát xéo dày 5–7 mm",
+      "componentGroup": "main",
+      "requiredQuantity": 280,
+      "unit": "g",
+      "grossGrams": 280,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 280,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COOKED_RICE",
+      "name": "Cơm gạo Nhật hạt ngắn nấu chín",
+      "culinaryMeasure": "360 g (2 tô vừa)",
+      "prepNote": "xới tơi cho nguội bớt về mức hơi ấm trước khi xếp cá",
+      "componentGroup": "main",
+      "requiredQuantity": 360,
+      "unit": "g",
+      "grossGrams": 360,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 360,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "ONION",
+      "name": "Hành tây",
+      "culinaryMeasure": "1/2 củ (70 g)",
+      "prepNote": "thái lát ngang thật mỏng, ngâm nước lạnh 15 phút cho bớt hăng rồi vắt ráo",
+      "componentGroup": "main",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 70,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 63,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Nước tương Nhật (Shoyu)",
+      "culinaryMeasure": "45 ml (3 muỗng canh)",
+      "prepNote": "trộn cùng mirin và dầu mè làm sốt ướp cá hồi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 45,
+      "unit": "ml",
+      "grossGrams": 53.1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 53.1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "MIRIN",
+      "name": "Rượu ngọt Mirin",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "đun sôi nhẹ 30 giây nếu muốn bay bớt cồn rồi để nguội pha sốt ướp cá",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè rang",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tạo hương thơm béo dịu cho nước sốt ướp cá hồi",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "6 g (1 lát nhỏ)",
+      "prepNote": "gọt vỏ, mài nhuyễn trộn vào phần sốt ướp cá hồi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (20 g)",
+      "prepNote": "rửa sạch, thái khoanh thật nhỏ để rắc mặt tô cơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "NORI_SEAWEED",
+      "name": "Rong biển khô Nori",
+      "culinaryMeasure": "3 g (1 lá)",
+      "prepNote": "cắt hoặc xé sợi mảnh để lót dưới cá và trang trí mặt tô",
+      "componentGroup": "garnish",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "5 g (1,5 muỗng cà phê)",
+      "prepNote": "rắc lên mặt tô cơm cá hồi tăng vị bùi",
+      "componentGroup": "garnish",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm giòn hành tây thái mỏng và chuẩn bị cơm ấm",
+      "instruction": "Xới 360 g cơm gạo Nhật nấu chín ra đĩa rộng khoảng 5 phút cho thoát bớt hơi nóng, giữ cơm ở trạng thái hơi ấm dịu. Thái 1/2 củ hành tây thành lát ngang mỏng 2 mm, ngâm ngay vào bát nước lạnh 15 phút cho hết vị hăng rồi vớt ra vắt thật kiệt nước.",
+      "tip": "Cơm còn quá nóng sẽ làm cá hồi sống bị tái chín mất độ béo mượt; để cơm hơi ấm và lót lớp hành tây ở giữa là bí quyết chuẩn Nhật.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Thái lát phi lê cá hồi tươi chuẩn sashimi",
+      "instruction": "Thấm thật khô 280 g phi lê cá hồi tươi bằng khăn giấy, kiểm tra kỹ và rút sạch xương dăm nếu có. Dùng dao sắc kéo dứt khoát một đường cắt cá thành những lát sashimi dày khoảng 5–7 mm để mặt cắt láng mịn không bị nát thớ.",
+      "tip": "Nên chọn cá hồi tươi đạt chuẩn ăn sống và dùng dao thật sắc kéo một đường dài dứt khoát để không làm dập thớ thịt cá."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "sauce",
+      "title": "Pha nước sốt Zuke và ướp lạnh cá hồi",
+      "instruction": "Đun sôi nhanh 30 ml rượu ngọt Mirin trên lửa nhỏ khoảng 30 giây rồi để nguội hẳn. Trộn đều phần Mirin đã nguội với 45 ml nước tương Nhật, 10 ml dầu mè rang và 6 g gừng tươi mài nhuyễn trong tô thủy tinh. Xếp cá hồi vào đảo nhẹ cho phủ đều sốt, bọc kín màng thực phẩm và ướp trong ngăn mát 25–30 phút.",
+      "tip": "Ướp cá đủ thời gian trong ngăn mát giúp lát cá săn nhẹ và thấm đều vị xì dầu dầu mè mà vẫn giữ trọn độ tươi béo.",
+      "timerMinutes": 25
+    },
+    {
+      "stepNumber": 4,
+      "phase": "prep",
+      "title": "Chuẩn bị hành lá và rong biển Nori rắc mặt",
+      "instruction": "Trong lúc chờ ướp cá, thái nhỏ 1/2 bó hành lá tươi và dùng kéo cắt 3 g rong biển khô Nori thành sợi mảnh khoảng 3 mm để riêng ra đĩa sạch."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "finish",
+      "title": "Xếp lớp hành tây, cá hồi lên cơm ấm",
+      "instruction": "Chia đều 360 g cơm gạo Nhật hơi ấm vào hai tô donburi, trải kín lớp hành tây đã vắt thật ráo lên mặt cơm. Lần lượt xếp các lát cá hồi đã ướp tương phủ chồng nhẹ lên nhau thành hình cánh hoa đẹp mắt, rưới thêm 1–2 muỗng nước sốt ướp còn lại tùy khẩu vị."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Rắc hành lá, mè rang và thưởng thức ngay",
+      "instruction": "Rắc rong biển khô Nori cắt sợi, hành lá thái nhỏ và hạt mè trắng rang lên bề mặt tô cá hồi. Dọn thưởng thức ngay khi cá còn mát lạnh và cơm vẫn ấm dẻo."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 2,
+    "calories": 654,
+    "energyKcal": 654.1,
+    "energyKj": 2736,
+    "proteinG": 36.7,
+    "fatG": 25.4,
+    "saturatedFatG": 5.3,
+    "carbG": 64.2,
+    "fiberG": 2.1,
+    "sugarG": 8.4,
+    "sodiumMg": 1549,
+    "saltG": 3.88,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "MEXT Hon-Mirin 16031",
+      "USDA FDC 168456",
+      "USDA FDC 168878",
+      "USDA FDC 169231",
+      "USDA FDC 170000",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 171028",
+      "USDA FDC 174277",
+      "USDA FDC 175167"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0ab09124e614508d233b9b83cd56783f8159e6fb58030d782ab4ca910bf281b5",
+    "researchedFromV2Sha256": "3519921a36a5a08f7c729abb40fa1c7d5735419d8265be5589118216b2f17f41"
+  }
+}

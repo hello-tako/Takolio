@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-b8d2cb0b37dbdb81",
+    "slug": "ga-sot-chanh-bo-y",
+    "title": "Ức gà áp chảo sốt chanh bơ kiểu Ý",
+    "subtitle": "Miếng ức gà áo bột mỏng áp chảo vàng giòn hai mặt rồi om thấm sốt chanh vàng thơm lừng hương thảo, đánh bóng béo mượt bằng bơ lạt lạnh"
+  },
+  "classification": {
+    "cuisine": "italian",
+    "category": "mon_chien",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 18,
+    "servings": 3,
+    "tags": [
+      "Món Ý",
+      "Ức gà",
+      "Sốt chanh bơ",
+      "Áp chảo",
+      "Thanh nhẹ"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "pan_fry",
+      "simmer"
+    ],
+    "allergenTags": [
+      "chicken",
+      "milk",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Pollo al limone là món gà sốt chanh bơ thanh lịch đặc trưng của ẩm thực Ý. Ức gà cắt miếng đều được phủ lớp bột mì mỏng rồi áp chảo vàng ươm, sau đó rim nhẹ trong nước cốt và vỏ chanh vàng cùng hương thảo, hoàn thiện với bơ lạt lạnh tạo sốt bóng mượt.",
+    "servingSuggestion": "Xếp gà ra đĩa ấm, rưới đều phần sốt chanh bơ sánh bóng lên trên và rắc chút ngò tây tươi thái nhỏ; ăn kèm cơm trắng, mì Ý bơ tỏi hoặc bánh mì giòn chấm sốt.",
+    "storageAndReheat": "Thịt gà sốt chanh bơ bảo quản trong hộp kín ở ngăn mát tối đa 2 ngày; khi ăn hâm nóng lại trên chảo lửa nhỏ cùng 1–2 muỗng canh nước lọc để sốt không bị tách dầu."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_BREAST",
+      "name": "Ức gà phi lê",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rửa sạch, thấm khô kỹ và thái miếng dày 1,5 cm đều nhau",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LEMON",
+      "name": "Chanh vàng tươi",
+      "culinaryMeasure": "1,5 quả (~150 g)",
+      "prepNote": "bào lấy phần vỏ vàng thơm và vắt lấy khoảng 70 ml nước cốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "piece",
+      "grossGrams": 150,
+      "edibleRetentionRatio": 0.55,
+      "edibleGrams": 82.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "BUTTER",
+      "name": "Bơ lạt",
+      "culinaryMeasure": "35 g",
+      "prepNote": "chia 20 g để áp chảo gà và 15 g giữ lạnh cắt nhỏ đánh bóng sốt cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 35,
+      "unit": "g",
+      "grossGrams": 35,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "OLIVE_OIL",
+      "name": "Dầu ô liu nguyên chất",
+      "culinaryMeasure": "25 ml (~1,5 muỗng canh)",
+      "prepNote": "đun cùng bơ để áp chảo gà vàng đều",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 22.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 22.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "ALL_PURPOSE_FLOUR",
+      "name": "Bột mì đa dụng",
+      "culinaryMeasure": "20 g (~2 muỗng canh)",
+      "prepNote": "áo một lớp thật mỏng quanh miếng gà giúp vàng giòn và làm sánh sốt",
+      "componentGroup": "main",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi tươi",
+      "culinaryMeasure": "1/5 củ (2 tép, ~5 g)",
+      "prepNote": "bóc vỏ, băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.2,
+      "unit": "piece",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 4.35,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "OREGANO_HERBS",
+      "name": "Lá hương thảo tươi hoặc khô",
+      "culinaryMeasure": "3 g (~1 muỗng cà phê)",
+      "prepNote": "ngắt đoạn ngắn hoặc băm nhỏ",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 0.8,
+      "edibleGrams": 2.4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "PARSLEY",
+      "name": "Ngò tây tươi",
+      "culinaryMeasure": "6 g (~1 muỗng canh băm)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí",
+      "componentGroup": "garnish",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 5.4,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "5 g (~1 muỗng cà phê)",
+      "prepNote": "nêm nhẹ lên gà và chỉnh vị sốt chanh cuối",
+      "componentGroup": "sauce",
+      "requiredQuantity": 5,
+      "unit": "g",
+      "grossGrams": 5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "1,5 g (~1/2 muỗng cà phê)",
+      "prepNote": "nêm vào sốt rim gà",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1.5,
+      "unit": "g",
+      "grossGrams": 1.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1.5,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc",
+      "culinaryMeasure": "100 ml",
+      "prepNote": "hòa cùng nước cốt chanh để tạo lượng sốt vừa vặn",
+      "componentGroup": "broth",
+      "requiredQuantity": 100,
+      "unit": "ml",
+      "grossGrams": 100,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 100,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Sơ chế ức gà và vắt nước cốt chanh vàng",
+      "instruction": "Rửa sạch 450 g ức gà phi lê, thấm thật khô bằng khăn giấy rồi cắt thành các miếng đều nhau dày khoảng 1,5 cm. Bào lấy vỏ vàng của 1,5 quả chanh vàng tươi (tránh phần cùi trắng đắng) và vắt lấy khoảng 70 ml nước cốt; băm nhỏ tỏi tươi và lá hương thảo."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "prep",
+      "title": "Áo lớp bột mì mỏng lên từng miếng gà",
+      "instruction": "Cho 20 g bột mì đa dụng ra đĩa rộng, lăn đều hai mặt từng miếng ức gà qua bột rồi giũ nhẹ tay cho rớt bớt phần bột thừa để chỉ còn lại lớp áo thật mỏng.",
+      "tip": "Lớp bột mì mỏng giúp miếng gà giữ ẩm bên trong khi áp chảo và tự động làm sánh mượt nước sốt chanh ở bước sau."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Áp chảo ức gà vàng đều hai mặt",
+      "instruction": "Làm nóng chảo lớn trên lửa vừa với 25 ml dầu ô liu nguyên chất và 20 g bơ lạt. Khi bơ tan sủi bọt, xếp gà thành một lớp phẳng không chồng lên nhau, áp chảo khoảng 3–4 phút mỗi mặt đến khi vàng đều hai bên rồi gắp gà ra đĩa giữ ấm.",
+      "tip": "Không đảo lật gà quá sớm trong 3 phút đầu để lớp vỏ bột áp chảo xém vàng đẹp và không bị bong.",
+      "timerMinutes": 7
+    },
+    {
+      "stepNumber": 4,
+      "phase": "sauce",
+      "title": "Phi tỏi hương thảo và cạo đáy chảo làm sốt",
+      "instruction": "Hạ lửa vừa-nhỏ trên cùng chảo đó, cho tỏi băm và lá hương thảo vào phi nhanh 30 giây cho thơm (không để tỏi cháy). Đổ 100 ml nước lọc và nước cốt chanh vàng vào, dùng muỗng gỗ cạo sạch phần cháy xém ngon dưới đáy chảo.",
+      "timerMinutes": 2
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Rim gà thấm sốt chanh đến khi chín thấu",
+      "instruction": "Trút ức gà trở lại chảo cùng vỏ chanh vàng bào, nêm 5 g muối ăn và 1,5 g tiêu đen xay. Rim liu riu khoảng 4 phút, trở mặt nhẹ nhàng cho thịt gà chín hoàn toàn hết phần lõi hồng và sốt hơi sánh ôm quanh miếng thịt.",
+      "timerMinutes": 4
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Đánh bóng sốt với bơ lạnh và dọn nóng",
+      "instruction": "Tắt bếp hoàn toàn, thả 15 g bơ lạt lạnh cắt nhỏ vào chảo rồi lắc nhẹ và đảo đều đến khi bơ tan chảy tạo lớp sốt chanh bơ bóng mượt. Xếp gà ra đĩa, rưới sốt lên trên và rắc ngò tây tươi (nếu dùng) rồi thưởng thức nóng ngay.",
+      "tip": "Đánh tan bơ lạnh ngoài bếp lửa giúp sốt chanh bơ sánh óng ánh mà không bị tách nước hay ngấy dầu."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 369,
+    "energyKcal": 369.3,
+    "energyKj": 1545,
+    "proteinG": 35.1,
+    "fatG": 21.2,
+    "saturatedFatG": 7.9,
+    "carbG": 9.1,
+    "fiberG": 1.5,
+    "sugarG": 0.8,
+    "sodiumMg": 717,
+    "saltG": 1.79,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 167746",
+      "USDA FDC 169230",
+      "USDA FDC 169761",
+      "USDA FDC 170416",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 171477",
+      "USDA FDC 173430",
+      "USDA FDC 173468",
+      "USDA FDC 173475",
+      "USDA FDC 173647"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "3381b926a82817c310adceb950e9ca381f87d198f8f1c0c01fd41adf150e66ec",
+    "researchedFromV2Sha256": "30ed9cdca30621c608616283c422c08b6a1844e5d4db67b25be4ef026e433889"
+  }
+}

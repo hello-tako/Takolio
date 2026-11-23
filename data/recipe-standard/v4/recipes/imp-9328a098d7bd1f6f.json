@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-9328a098d7bd1f6f",
+    "slug": "ga-nuong-chanh-ot",
+    "title": "Gà nướng chanh ớt kiểu Thái (Gai Yang)",
+    "subtitle": "Đùi gà góc tư ướp nước mắm, tỏi, ớt hiểm và nước cốt chanh nướng vàng giòn lớp da, thịt bên trong mọng nước đậm đà"
+  },
+  "classification": {
+    "cuisine": "thai",
+    "category": "mon_lau_tiec",
+    "difficulty": "medium",
+    "prepTimeMinutes": 20,
+    "cookTimeMinutes": 40,
+    "servings": 4,
+    "tags": [
+      "Gai Yang",
+      "Gà nướng",
+      "Thái Lan",
+      "Chanh ớt",
+      "Món tiệc"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "grill_roast"
+    ],
+    "allergenTags": [
+      "chicken",
+      "fish"
+    ]
+  },
+  "overview": {
+    "description": "Món gà nướng chanh ớt kiểu Thái hấp dẫn với từng chiếc đùi gà góc tư da vàng óng giòn rụm, thịt thớ mềm mọng thấm đẫm hương vị chua thanh của nước cốt chanh, mặn thơm nước mắm cùng vị cay nồng ấm của tỏi và ớt hiểm.",
+    "servingSuggestion": "Chặt đùi gà nướng thành miếng vừa ăn hoặc để nguyên chiếc, rắc hành lá thái nhỏ; dọn nóng cùng xôi nếp hoặc cơm trắng, xà lách, dưa leo và chén tương ớt chấm kèm.",
+    "storageAndReheat": "Thưởng thức nóng ngay sau khi nướng để lớp da giữ độ giòn; nếu dư, bọc kín bảo quản tủ mát tối đa 2 ngày và làm nóng lại bằng nồi chiên không dầu ở 180°C trong 6–8 phút."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Đùi gà góc tư có da và xương",
+      "culinaryMeasure": "800 g (khoảng 4 chiếc đùi vừa)",
+      "prepNote": "xát muối rửa sạch, thấm khô rồi khứa 3 đường sâu gần tới xương",
+      "componentGroup": "main",
+      "requiredQuantity": 800,
+      "unit": "g",
+      "grossGrams": 800,
+      "edibleRetentionRatio": 0.82,
+      "edibleGrams": 656,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "LIME",
+      "name": "Chanh tươi (vắt nước cốt)",
+      "culinaryMeasure": "2 quả (khoảng 90 g)",
+      "prepNote": "rửa sạch, vắt lấy khoảng 45 ml nước cốt bỏ hạt (30 ml ướp gà, 15 ml chấm)",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "piece",
+      "grossGrams": 90,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI",
+      "name": "Ớt hiểm đỏ",
+      "culinaryMeasure": "4 quả (khoảng 20 g)",
+      "prepNote": "rửa sạch, 3 quả băm nhỏ pha sốt ướp, 1 quả thái lát pha chấm",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 4,
+      "unit": "piece",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.9,
+      "edibleGrams": 18,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1 củ lớn (khoảng 25 g)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn sốt ướp gà",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 1,
+      "unit": "piece",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 21.75,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "FISH_SAUCE",
+      "name": "Nước mắm ngon",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "tạo vị mặn đậm và hương thơm đặc trưng trong sốt ướp gà nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 36,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 36,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "20 g (khoảng 1,5 muỗng canh)",
+      "prepNote": "tạo màu vàng cánh gián đẹp mắt khi nướng và dịu vị gắt của mắm chanh",
+      "componentGroup": "marinade",
+      "requiredQuantity": 20,
+      "unit": "g",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 20,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "25 ml (khoảng 1,5 muỗng canh)",
+      "prepNote": "trộn vào sốt ướp giúp da gà bóng giòn và không bị khô khi nướng",
+      "componentGroup": "marinade",
+      "requiredQuantity": 25,
+      "unit": "ml",
+      "grossGrams": 23,
+      "edibleRetentionRatio": 0.95,
+      "edibleGrams": 21.85,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "6 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "dùng 3 g xát rửa khử tanh gà rồi xả sạch, 3 g ướp nền thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 0.5,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "BLACK_PEPPER",
+      "name": "Tiêu đen xay",
+      "culinaryMeasure": "3 g (khoảng 1 muỗng cà phê)",
+      "prepNote": "ướp khử mùi và tạo hương cay ấm cho thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 3,
+      "unit": "g",
+      "grossGrams": 3,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 3,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "CHILI_SAUCE",
+      "name": "Tương ớt Thái chấm kèm",
+      "culinaryMeasure": "30 ml (2 muỗng canh)",
+      "prepNote": "trộn cùng phần nước cốt chanh và ớt lát còn lại làm sốt chấm",
+      "componentGroup": "sauce",
+      "requiredQuantity": 30,
+      "unit": "ml",
+      "grossGrams": 34.5,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 34.5,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "1/2 bó nhỏ (khoảng 20 g)",
+      "prepNote": "rửa sạch, thái nhỏ rắc trang trí lên gà nướng",
+      "componentGroup": "garnish",
+      "requiredQuantity": 0.5,
+      "unit": "bunch",
+      "grossGrams": 20,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 18.4,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Làm sạch và khứa đùi gà cho thấm gia vị",
+      "instruction": "Xát 3 g muối ăn lên khắp 800 g đùi gà góc tư để khử mùi hôi, rửa lại thật sạch dưới vòi nước lạnh rồi dùng khăn giấy thấm khô hoàn toàn. Dùng dao sắc khứa 2–3 đường sâu tới gần xương trên cả hai mặt đùi gà, sau đó xoa đều 3 g muối còn lại và 3 g tiêu đen xay để 10 phút.",
+      "tip": "Khứa sâu gần sát xương không chỉ giúp gia vị thấm tận lõi thịt mà còn giúp phần thịt dày quanh khớp xương chín kỹ đều khi nướng.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Pha sốt chanh ớt và ướp lạnh đùi gà",
+      "instruction": "Băm nhuyễn tỏi khô và 3 quả ớt hiểm đỏ. Trộn đều 30 ml nước cốt chanh tươi, 30 ml nước mắm ngon, 20 g đường cát trắng, 25 ml dầu ăn thực vật cùng tỏi và ớt băm đến khi đường tan hết. Quét kỹ hỗn hợp sốt vào các rãnh khứa và hai mặt đùi gà, bọc kín cho vào ngăn mát tủ lạnh ướp ít nhất 60 phút.",
+      "tip": "Ướp gà trong ngăn mát tủ lạnh vừa đảm bảo an toàn thực phẩm vừa giúp lớp da se khô nhẹ, khi nướng sẽ lên màu vàng giòn hơn.",
+      "timerMinutes": 60
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Làm nóng lò và nướng đùi gà lần đầu",
+      "instruction": "Làm nóng trước lò nướng hoặc nồi chiên không dầu ở mức 195–200°C trong 10 phút. Xếp đùi gà lên vỉ có lót khay hứng mỡ phía dưới (ngửa mặt da xuống dưới trước), phết thêm một lớp sốt ướp còn dư rồi nướng ở 200°C trong 20 phút.",
+      "timerMinutes": 20
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Lật mặt, phết sốt và nướng vàng giòn lớp da",
+      "instruction": "Mở lò, lật mặt da đùi gà lên trên, phết thêm một lớp mỏng sốt ướp còn lại (nếu thấy sốt đặc nhanh cháy thì giảm nhiệt xuống 185°C) và nướng tiếp 15–20 phút nữa. Kiểm tra bằng cách xiên tăm vào phần thịt dày nhất gần xương thấy nước chảy ra trong veo, không còn dịch hồng và da gà vàng cánh gián giòn rụm là gà chín hoàn toàn.",
+      "tip": "Canh kỹ 10 phút cuối để tránh phần đường trong sốt làm xém đen da gà; có thể che giấy bạc lên đầu xương nếu cần.",
+      "timerMinutes": 18
+    },
+    {
+      "stepNumber": 5,
+      "phase": "sauce",
+      "title": "Để thịt nghỉ giữ nước và pha sốt chấm",
+      "instruction": "Lấy đùi gà ra đĩa, để nghỉ 5 phút cho nước thịt ổn định bên trong thớ thịt. Trong lúc chờ, trộn 30 ml tương ớt Thái với 15 ml nước cốt chanh tươi còn lại và 1 quả ớt hiểm thái lát làm chén sốt chấm chua cay.",
+      "timerMinutes": 5
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Chặt miếng, rắc hành lá và dọn nóng",
+      "instruction": "Chặt đùi gà thành từng miếng vừa ăn (hoặc bày nguyên chiếc), rắc hành lá thái nhỏ lên bề mặt da giòn và dọn nóng kèm chén tương ớt chanh."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 386,
+    "energyKcal": 385.7,
+    "energyKj": 1615,
+    "proteinG": 32.9,
+    "fatG": 22.9,
+    "saturatedFatG": 5.6,
+    "carbG": 11.2,
+    "fiberG": 0.9,
+    "sugarG": 7.3,
+    "sodiumMg": 1311,
+    "saltG": 3.28,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "USDA FDC 168155",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170005",
+      "USDA FDC 170106",
+      "USDA FDC 170931",
+      "USDA FDC 171413",
+      "USDA FDC 172185",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC Sriracha Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "c3d65c06a86046bab08531b7ea4931e6e96505185986a50453f69f619098e9f5",
+    "researchedFromV2Sha256": "daaf9da1e9869fd01e2f8b6e6e21d35c37285cf45ad8b9bd87a4a4a7ec34dbf2"
+  }
+}

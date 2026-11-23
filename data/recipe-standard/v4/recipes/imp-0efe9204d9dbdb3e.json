@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0efe9204d9dbdb3e",
+    "slug": "ga-chien-ot-kho",
+    "title": "Gà chiên giòn xóc ớt khô hoa tiêu Tứ Xuyên",
+    "subtitle": "Thịt đùi gà cắt miếng vừa ăn chiên giòn vàng rụm, đảo lửa nhỏ cùng ớt khô, hoa tiêu Tứ Xuyên, gừng tỏi và mè rang cay tê bùng nổ"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_chien",
+    "difficulty": "medium",
+    "prepTimeMinutes": 25,
+    "cookTimeMinutes": 15,
+    "servings": 4,
+    "tags": [
+      "Gà chiên",
+      "Tứ Xuyên",
+      "Cay tê",
+      "Món nhậu",
+      "Giòn rụm"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "deep_fry",
+      "stir_fry"
+    ],
+    "allergenTags": [
+      "chicken",
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món Lạp Tử Kê trứ danh vùng Trùng Khánh – Tứ Xuyên: những miếng thịt đùi gà rút xương ướp gia vị chiên giòn rụm bên ngoài, mềm mọng bên trong, xóc thơm cùng ớt khô ngâm mềm, hoa tiêu Tứ Xuyên tê đầu lưỡi, gừng tỏi và mè trắng rang.",
+    "servingSuggestion": "Trút gà chiên ớt khô ra đĩa rộng cùng toàn bộ gia vị thơm và dùng nóng ngay; thực khách gắp từng miếng gà giòn thơm trong đĩa ớt hấp dẫn.",
+    "storageAndReheat": "Món ngon nhất khi dùng ngay lúc nóng giòn; nếu còn dư, bảo quản ngăn mát tối đa 2 ngày và làm nóng lại bằng nồi chiên không dầu 4 phút ở 180°C."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "CHICKEN_THIGH",
+      "name": "Thịt đùi gà rút xương (không xương)",
+      "culinaryMeasure": "450 g",
+      "prepNote": "rửa sạch, thấm khô rồi cắt khối vuông vừa ăn 2 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 450,
+      "unit": "g",
+      "grossGrams": 450,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 450,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "250 ml",
+      "prepNote": "dùng để chiên nông giòn gà từng mẻ và giữ lại 15 ml phi ớt hoa tiêu",
+      "componentGroup": "main",
+      "requiredQuantity": 250,
+      "unit": "ml",
+      "grossGrams": 230,
+      "edibleRetentionRatio": 0.14,
+      "edibleGrams": 32.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "CHILI_POWDER",
+      "name": "Ớt khô nguyên quả (hoặc cắt đoạn)",
+      "culinaryMeasure": "40 g (~1,5 chén)",
+      "prepNote": "cắt khúc ngắn 1,5 cm, giũ bớt hạt, ngâm nước 15 phút rồi vớt ráo để chiên không bị cháy đen",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 40,
+      "unit": "g",
+      "grossGrams": 40,
+      "edibleRetentionRatio": 0.25,
+      "edibleGrams": 10,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "SICHUAN_PEPPER",
+      "name": "Hoa tiêu Tứ Xuyên nguyên hạt",
+      "culinaryMeasure": "8 g (~1,5 muỗng canh)",
+      "prepNote": "tạo vị tê đặc trưng vùng Tứ Xuyên",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 8,
+      "unit": "g",
+      "grossGrams": 8,
+      "edibleRetentionRatio": 0.35,
+      "edibleGrams": 2.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "GINGER",
+      "name": "Gừng tươi",
+      "culinaryMeasure": "25 g",
+      "prepNote": "cạo vỏ, thái lát mỏng hoặc sợi",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 25,
+      "unit": "g",
+      "grossGrams": 25,
+      "edibleRetentionRatio": 0.6,
+      "edibleGrams": 15,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "1/3 củ (~8 g, khoảng 2–3 tép)",
+      "prepNote": "bóc vỏ, thái lát mỏng hoặc băm thô",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.3,
+      "unit": "piece",
+      "grossGrams": 7.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 6.53,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SCALLION",
+      "name": "Hành lá tươi",
+      "culinaryMeasure": "3/4 bó nhỏ (~30 g, khoảng 2–3 cây)",
+      "prepNote": "tách riêng phần đầu trắng thái lát để phi thơm, phần lá xanh cắt khúc 3 cm cho vào cuối",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.75,
+      "unit": "bunch",
+      "grossGrams": 30,
+      "edibleRetentionRatio": 0.92,
+      "edibleGrams": 27.6,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị mặn cay và tạo độ đậm hài hòa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "9 g (~1 muỗng canh)",
+      "prepNote": "rắc trộn ở bước cuối tạo hương thơm bùi và bắt mắt",
+      "componentGroup": "garnish",
+      "requiredQuantity": 9,
+      "unit": "g",
+      "grossGrams": 9,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "chia đôi: 1 g ướp gà, 1 g nêm khi xóc gia vị",
+      "componentGroup": "marinade",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SOY_SAUCE",
+      "name": "Xì dầu (nước tương)",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "ướp giúp thịt gà đậm vị và lên màu vàng đẹp khi chiên",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "SHAOXING_WINE",
+      "name": "Rượu Thiệu Hưng",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "khử mùi và giúp thịt gà mềm thơm",
+      "componentGroup": "marinade",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 14.8,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 14.8,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 12,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/4 muỗng cà phê)",
+      "prepNote": "ướp tạo hương cay ấm cho thịt gà",
+      "componentGroup": "marinade",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 13,
+      "ingredientId": "CORNSTARCH",
+      "name": "Bột bắp",
+      "culinaryMeasure": "6 g (~2 muỗng cà phê)",
+      "prepNote": "trộn vào gà khi ướp giúp giữ độ ẩm mềm bên trong",
+      "componentGroup": "marinade",
+      "requiredQuantity": 6,
+      "unit": "g",
+      "grossGrams": 6,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 6,
+      "isOptional": true,
+      "includeInShopping": true
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Ngâm mềm ớt khô tránh cháy đắng",
+      "instruction": "Cắt 40 g ớt khô thành từng đoạn ngắn 1,5 cm (có thể giảm lượng ớt nếu ăn cay nhẹ), giũ bỏ bớt hạt rồi ngâm vào nước sạch 15 phút, sau đó vớt ra vẩy thật ráo nước.",
+      "tip": "Ngâm nước trước giúp ớt khô không bị cháy đen khi phi trên chảo nóng mà vẫn tiết ra màu đỏ và hương thơm nồng.",
+      "timerMinutes": 15
+    },
+    {
+      "stepNumber": 2,
+      "phase": "marinate",
+      "title": "Cắt khối và ướp mềm thịt đùi gà",
+      "instruction": "Thái 450 g thịt đùi gà rút xương thành khối vuông nhỏ 2 cm. Trộn đều gà trong tô với 15 ml xì dầu, 15 ml rượu Thiệu Hưng, 1 g tiêu trắng xay, 1 g muối ăn và 6 g bột bắp, ướp 10 phút cho thịt ngấm vị và săn mềm.",
+      "timerMinutes": 10
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chiên nông từng mẻ gà vàng giòn rụm",
+      "instruction": "Đun nóng 235 ml dầu ăn trong chảo sâu lòng trên lửa lớn đến khi đầu đũa sủi tăm mạnh. Chia gà thành 2 mẻ chiên nông 4–5 phút (giữ yên 1 phút đầu cho se vỏ rồi mới đảo đều mặt) đến khi từng miếng gà chín hoàn toàn bên trong, vỏ ngoài vàng giòn thì vớt ra giấy thấm dầu.",
+      "tip": "Chiên từng mẻ không chen chúc giúp mặt gà tiếp xúc tốt với đáy chảo, giòn rụm nhanh mà không bị ra nước."
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Phi ớt khô và hoa tiêu trên lửa nhỏ nhất",
+      "instruction": "Dùng chảo sạch làm nóng 15 ml dầu ăn còn lại trên lửa nhỏ nhất, thả ớt khô đã ráo nước vào đảo đều 2 phút đến khi ớt dậy mùi thơm và chuyển màu đỏ sẫm. Tiếp tục cho 8 g hoa tiêu Tứ Xuyên vào đảo thêm 1 phút trên lửa nhỏ để tạo vị tê thơm mà không làm cháy đắng.",
+      "tip": "Luôn giữ lửa nhỏ nhất khi phi ớt khô và hoa tiêu để gia vị tiết tinh dầu thơm nồng mà không bị đắng khét.",
+      "timerMinutes": 3
+    },
+    {
+      "stepNumber": 5,
+      "phase": "cook",
+      "title": "Phi thơm gừng, tỏi và đầu hành trắng",
+      "instruction": "Gạt ớt khô và hoa tiêu sang một bên chảo, cho gừng tươi thái lát, tỏi thái lát và đầu hành trắng vào khoảng trống giữa chảo phi thơm 30 giây cho dậy mùi."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Xóc đều gà giòn với mè rang và hành lá",
+      "instruction": "Trút toàn bộ gà chiên giòn trở lại chảo, rắc 9 g hạt mè trắng rang, 4 g đường cát trắng, 1 g muối ăn còn lại và phần lá hành xanh cắt khúc. Đảo nhanh tay 30 giây trên lửa vừa cho gia vị bám đều rồi trút ra đĩa thưởng thức nóng ngay."
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 4,
+    "calories": 316,
+    "energyKcal": 316.3,
+    "energyKj": 1324,
+    "proteinG": 23.2,
+    "fatG": 21.4,
+    "saturatedFatG": 4.7,
+    "carbG": 6.8,
+    "fiberG": 1.7,
+    "sugarG": 1.5,
+    "sodiumMg": 573,
+    "saltG": 1.43,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Shaoxing Wine Ref",
+      "Spice Reference",
+      "USDA FDC 169230",
+      "USDA FDC 169231",
+      "USDA FDC 169655",
+      "USDA FDC 169698",
+      "USDA FDC 170005",
+      "USDA FDC 170150",
+      "USDA FDC 170933",
+      "USDA FDC 171319",
+      "USDA FDC 171413",
+      "USDA FDC 172385",
+      "USDA FDC 173468",
+      "USDA FDC 174277"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "384d037ed1e66bae64db993d43f041234bbbaca8bd2e44be9e130e4c46414816",
+    "researchedFromV2Sha256": "d477e3e4e5c8170dd82aa574cfb1ca72fb18becf0a46d600e1167d9eef128ef7"
+  }
+}

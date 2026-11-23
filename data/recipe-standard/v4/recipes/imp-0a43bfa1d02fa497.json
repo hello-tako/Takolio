@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 4,
+  "recipeVersion": 4,
+  "identity": {
+    "id": "imp-0a43bfa1d02fa497",
+    "slug": "rau-bina-tron-toi",
+    "title": "Cải bó xôi trộn tỏi dầu mè",
+    "subtitle": "Cải bó xôi chần nhanh ngâm nước đá giữ màu xanh mướt, trộn tỏi băm, xì dầu nhạt, giấm đen Trấn Giang và mè trắng rang thanh mát"
+  },
+  "classification": {
+    "cuisine": "chinese",
+    "category": "mon_cuon_nom",
+    "difficulty": "easy",
+    "prepTimeMinutes": 10,
+    "cookTimeMinutes": 5,
+    "servings": 3,
+    "tags": [
+      "Món trộn",
+      "Cải bó xôi",
+      "Khai vị",
+      "Thanh mát",
+      "Món chay"
+    ],
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "methods": [
+      "boil",
+      "toss_mix"
+    ],
+    "allergenTags": [
+      "sesame",
+      "soybean",
+      "wheat"
+    ]
+  },
+  "overview": {
+    "description": "Món khai vị lạnh kiểu Trung Hoa thanh mát với từng cọng cải bó xôi xanh mướt giòn ngọt, quyện đều nước sốt chua mặn dịu từ giấm đen Trấn Giang, xì dầu, tỏi băm và dầu mè thơm lừng.",
+    "servingSuggestion": "Bày rau trộn ra đĩa nông lòng, rắc hạt mè trắng rang lên trên; dùng mát như món khai vị hoặc ăn kèm các món kho, món chiên để giải ngấy.",
+    "storageAndReheat": "Món trộn lạnh dùng ngon nhất trong ngày; nếu chưa ăn ngay, đậy kín bảo quản ngăn mát tối đa 12 giờ và trộn đều lại trước khi dọn."
+  },
+  "ingredients": [
+    {
+      "position": 0,
+      "ingredientId": "SPINACH",
+      "name": "Rau cải bó xôi (rau bina)",
+      "culinaryMeasure": "350 g (1 bó lớn)",
+      "prepNote": "nhặt bỏ gốc già, rửa nhiều lần cho sạch đất cát, cắt khúc dài 8–10 cm",
+      "componentGroup": "main",
+      "requiredQuantity": 350,
+      "unit": "g",
+      "grossGrams": 350,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 350,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 1,
+      "ingredientId": "GARLIC",
+      "name": "Tỏi khô",
+      "culinaryMeasure": "0,5 củ (khoảng 12,5 g, ~4 tép)",
+      "prepNote": "bóc vỏ, băm thật nhuyễn để trộn sốt",
+      "componentGroup": "aromatics",
+      "requiredQuantity": 0.5,
+      "unit": "piece",
+      "grossGrams": 12.5,
+      "edibleRetentionRatio": 0.87,
+      "edibleGrams": 10.88,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 2,
+      "ingredientId": "LIGHT_SOY_SAUCE",
+      "name": "Xì dầu nhạt",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị mặn dịu và hương đậu nành thanh cho sốt trộn",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 17.7,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 17.7,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 3,
+      "ingredientId": "BLACK_VINEGAR",
+      "name": "Giấm đen Trấn Giang",
+      "culinaryMeasure": "15 ml (1 muỗng canh)",
+      "prepNote": "tạo vị chua dịu và mùi thơm đặc trưng của món trộn kiểu Hoa",
+      "componentGroup": "sauce",
+      "requiredQuantity": 15,
+      "unit": "ml",
+      "grossGrams": 15.45,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 15.45,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 4,
+      "ingredientId": "VEG_OYSTER_SAUCE",
+      "name": "Dầu hào chay nấm đông cô",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "tăng độ ngọt umami và giúp sốt bám đều rau",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 12,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 12,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 5,
+      "ingredientId": "SESAME_OIL",
+      "name": "Dầu mè thơm",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "trộn vào sốt giúp rau bóng mượt và thơm ngậy",
+      "componentGroup": "sauce",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 9.2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 6,
+      "ingredientId": "SESAME_SEED",
+      "name": "Hạt mè trắng rang",
+      "culinaryMeasure": "10 g (~1 muỗng canh)",
+      "prepNote": "rắc lên mặt đĩa rau tăng vị bùi thơm",
+      "componentGroup": "garnish",
+      "requiredQuantity": 10,
+      "unit": "g",
+      "grossGrams": 10,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 10,
+      "isOptional": true,
+      "includeInShopping": true
+    },
+    {
+      "position": 7,
+      "ingredientId": "COOKING_OIL",
+      "name": "Dầu ăn thực vật",
+      "culinaryMeasure": "10 ml (2 muỗng cà phê)",
+      "prepNote": "chia đôi cho vào nước chần giúp rau giữ màu xanh bóng",
+      "componentGroup": "main",
+      "requiredQuantity": 10,
+      "unit": "ml",
+      "grossGrams": 9.2,
+      "edibleRetentionRatio": 0.2,
+      "edibleGrams": 1.84,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 8,
+      "ingredientId": "WHITE_PEPPER",
+      "name": "Tiêu trắng xay",
+      "culinaryMeasure": "1 g (~1/3 muỗng cà phê)",
+      "prepNote": "tạo hậu cay nhẹ cho nước sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 1,
+      "unit": "g",
+      "grossGrams": 1,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 1,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 9,
+      "ingredientId": "SALT",
+      "name": "Muối ăn",
+      "culinaryMeasure": "2 g (~1/3 muỗng cà phê)",
+      "prepNote": "cân bằng vị đậm đà trong bát sốt",
+      "componentGroup": "sauce",
+      "requiredQuantity": 2,
+      "unit": "g",
+      "grossGrams": 2,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 2,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 10,
+      "ingredientId": "SUGAR",
+      "name": "Đường cát trắng",
+      "culinaryMeasure": "4 g (~1 muỗng cà phê)",
+      "prepNote": "cân bằng vị chua thanh của giấm đen",
+      "componentGroup": "sauce",
+      "requiredQuantity": 4,
+      "unit": "g",
+      "grossGrams": 4,
+      "edibleRetentionRatio": 1,
+      "edibleGrams": 4,
+      "isOptional": false,
+      "includeInShopping": true
+    },
+    {
+      "position": 11,
+      "ingredientId": "COOKING_WATER",
+      "name": "Nước lọc (chần rau)",
+      "culinaryMeasure": "1200 ml",
+      "prepNote": "đun sôi để chần nhanh rau rồi chắt bỏ",
+      "componentGroup": "broth",
+      "requiredQuantity": 1200,
+      "unit": "ml",
+      "grossGrams": 1200,
+      "edibleRetentionRatio": 0.05,
+      "edibleGrams": 60,
+      "isOptional": false,
+      "includeInShopping": false
+    }
+  ],
+  "steps": [
+    {
+      "stepNumber": 1,
+      "phase": "prep",
+      "title": "Rửa sạch cải bó xôi và băm tỏi",
+      "instruction": "Nhặt bỏ phần lá úa và rễ già của 350 g cải bó xôi, tách nhánh rửa kỹ nhiều lượt trong thau nước lạnh cho sạch hoàn toàn đất cát bám ở gốc, vẩy ráo rồi cắt khúc dài 8 đến 10 cm. Tỏi khô bóc vỏ, băm thật nhuyễn để riêng.",
+      "tip": "Giữ lại phần gốc hồng non của cải bó xôi sau khi rửa sạch vì phần này rất giòn và ngọt tự nhiên."
+    },
+    {
+      "stepNumber": 2,
+      "phase": "sauce",
+      "title": "Pha sẵn nước sốt trộn tỏi giấm đen",
+      "instruction": "Cho vào bát nhỏ tỏi băm nhuyễn, 15 ml xì dầu nhạt, 15 ml giấm đen Trấn Giang, 10 ml dầu hào chay nấm đông cô, 10 ml dầu mè thơm, 1 g tiêu trắng xay, 2 g muối ăn và 4 g đường cát trắng. Khuấy đều tay đến khi muối đường tan hoàn toàn."
+    },
+    {
+      "stepNumber": 3,
+      "phase": "cook",
+      "title": "Chần nhanh cải bó xôi giữ màu xanh mướt",
+      "instruction": "Đun sôi 1200 ml nước lọc trong nồi lớn trên lửa lớn, đồng thời chuẩn bị sẵn một thau nước lạnh có thả đá viên. Khi nước sôi bùng, cho 5 ml dầu ăn thực vật vào nồi và thả một nửa số cải bó xôi vào chần khoảng 40 giây đến khi lá vừa chín mềm vẫn còn xanh tươi.",
+      "tip": "Chia rau thành 2 mẻ chần giúp nhiệt độ nước không tụt đột ngột, nhờ đó rau chín đều và không bị sậm màu.",
+      "timerMinutes": 1
+    },
+    {
+      "stepNumber": 4,
+      "phase": "cook",
+      "title": "Ngâm sốc nhiệt nước lạnh và chần mẻ tiếp theo",
+      "instruction": "Vớt ngay mẻ rau đầu tiên thả vào thau nước đá lạnh để hãm nhiệt. Cho nốt 5 ml dầu ăn thực vật vào nồi nước đang sôi và chần phần cải bó xôi còn lại thêm 40 giây rồi vớt ra ngâm chung vào nước đá đến khi rau nguội hẳn."
+    },
+    {
+      "stepNumber": 5,
+      "phase": "prep",
+      "title": "Vắt ráo kiệt nước rau đã chần",
+      "instruction": "Vớt cải bó xôi khỏi thau nước lạnh, chia từng nắm nhỏ rồi dùng hai tay bóp vắt nhẹ nhàng nhưng thật kiệt nước để rau không bị nát mà vẫn ráo hoàn toàn, sau đó tách tơi cho vào tô trộn lớn.",
+      "tip": "Rau vắt càng ráo nước thì nước sốt càng bám đều vào từng cọng rau mà không bị chảy loãng ra đáy đĩa."
+    },
+    {
+      "stepNumber": 6,
+      "phase": "finish",
+      "title": "Trộn đều sốt, ướp mát và rắc mè rang",
+      "instruction": "Khuấy đều lại bát sốt rồi rưới lên tô cải bó xôi, trộn nhẹ tay cho gia vị phủ đều khắp cọng rau, nếm thử và chỉnh lại độ chua mặn vừa miệng. Có thể đậy kín để tủ lạnh 10 phút cho mát rồi gắp ra đĩa, rắc hạt mè trắng rang lên trên và thưởng thức.",
+      "timerMinutes": 10
+    }
+  ],
+  "nutrition": {
+    "basis": "per_serving",
+    "servings": 3,
+    "calories": 97,
+    "energyKcal": 97.2,
+    "energyKj": 406,
+    "proteinG": 4.7,
+    "fatG": 5.8,
+    "saturatedFatG": 0.8,
+    "carbG": 8.9,
+    "fiberG": 3.2,
+    "sugarG": 2.4,
+    "sodiumMg": 793,
+    "saltG": 1.98,
+    "methodology": "deterministic-edible-yield-v4",
+    "sourceReferences": [
+      "Chinkiang Black Vinegar Ref",
+      "USDA FDC 168462",
+      "USDA FDC 169230",
+      "USDA FDC 169655",
+      "USDA FDC 170150",
+      "USDA FDC 170933",
+      "USDA FDC 171028",
+      "USDA FDC 171413",
+      "USDA FDC 173468",
+      "USDA FDC 173647",
+      "USDA FDC 174277",
+      "Vegan Mushroom Sauce Ref"
+    ]
+  },
+  "media": {
+    "legacyRuntimeImageUrl": "/frigo/illustrations/delicious-meal.png"
+  },
+  "provenance": {
+    "version": 4,
+    "standardId": "takolio-culinary-standard-v4",
+    "researchedFromV1Fingerprint": "0bc7e3cd6443b1da341a25e97d7699e93824fe163e0c2f1104cd6d2be9588a5b",
+    "researchedFromV2Sha256": "7e98c61d165844b4b863e5d900939aa37ad637c5b7771867e0d6bc35fe857839"
+  }
+}
