@@ -16,6 +16,15 @@ import {
   resetRecipeAuthorityCountersForTests,
   resolveRecipeAuthority,
 } from '../../src/worker/services/recipe-authority';
+import { resolveRecipeAuthorityV4 } from '../../src/worker/services/recipe-authority-v4';
+import {
+  publicRecipeAuthorityStatus,
+  recipeAuthorityReleaseEvidence,
+} from '../../src/worker/services/recipe-authority-status';
+import {
+  CATALOG_RELEASE_MANIFEST_PATH,
+  verifyRecipeAuthorityEvidence,
+} from '../../scripts/release-check.mjs';
 import type { Env } from '../../src/worker/types';
 import { SqliteD1, type SqliteStatementEvent } from '../helpers/sqlite-d1';
 
@@ -84,16 +93,59 @@ describe('Takolio Culinary Standard V4 — live 0052 D1 replay & authority routi
     expect(v1D1.snapshot.fingerprint).toBe(v1Release.expectedRuntimeFingerprint);
 
     // Opt-in V4 D1 mode serves 500 standardized V4 recipes from 0052 tables
-    const v4D1 = await resolveRecipeAuthority({
+    const v4Env = {
       DB: db,
+      ENVIRONMENT: 'production',
+      GIT_COMMIT: 'e'.repeat(40),
       RECIPE_CATALOG_MODE: 'd1',
       RECIPE_CATALOG_CUTOVER_ENABLED: 'true',
       RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
-    } as unknown as Env);
+    } as unknown as Env;
+    const v4D1 = await resolveRecipeAuthorityV4(v4Env);
     expect(v4D1.actualSource).toBe('d1');
     expect(v4D1.snapshot.size).toBe(500);
     expect(v4D1.snapshot.fingerprint).toBe(v4Manifest.runtimeFingerprint);
     expect(await recipeAuthoritySnapshotIsCurrent(db, v4D1.snapshot)).toBe(true);
+
+    const status = await publicRecipeAuthorityStatus(v4Env);
+    expect(status).toMatchObject({
+      configuredMode: 'd1',
+      cutoverEnabled: true,
+      globalSource: 'd1',
+      releaseId: 'takolio-culinary-standard-v4',
+      expectedRecipeCount: 500,
+    });
+
+    const evidence = await recipeAuthorityReleaseEvidence(v4Env);
+    expect(evidence).toMatchObject({
+      actualSource: 'd1',
+      releaseId: 'takolio-culinary-standard-v4',
+      servedRecipeCount: 500,
+      servedFingerprint: v4Manifest.runtimeFingerprint,
+      fingerprintMatchesRelease: true,
+      d1Readiness: 'ready',
+      fallbackReason: null,
+    });
+    const v1ManifestOnDisk = JSON.parse(readFileSync(path.join(root, CATALOG_RELEASE_MANIFEST_PATH), 'utf8'));
+    const proof = verifyRecipeAuthorityEvidence(
+      {
+        sha: 'e'.repeat(40),
+        environment: 'production',
+        recipeCatalogMode: 'd1',
+        recipeCatalogCanaryPercent: 0,
+        recipeCatalogCutoverEnabled: true,
+        recipeCatalogV4StandardEnabled: true,
+      },
+      evidence,
+      v1ManifestOnDisk,
+    );
+    expect(proof).toMatchObject({
+      releaseId: 'takolio-culinary-standard-v4',
+      actualSource: 'd1',
+      servedRecipeCount: 500,
+      servedFingerprint: v4Manifest.runtimeFingerprint,
+      d1Readiness: 'ready',
+    });
   });
 
   it('evaluates fridge availability, serving scaling, and cooking lot deductions accurately on hydrated V4 D1 recipes', async () => {

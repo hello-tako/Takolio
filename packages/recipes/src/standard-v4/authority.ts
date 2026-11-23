@@ -79,6 +79,14 @@ export interface StandardV4HydrationResult {
   readonly failures: StandardV4HydrationFailure[];
 }
 
+export interface StandardV4CatalogReleaseDescriptor {
+  readonly releaseId: string;
+  readonly expectedRecipeCount: number;
+  readonly expectedRuntimeFingerprint: string;
+  readonly legacyBaselineCount: number;
+  readonly legacyBaselineFingerprint: string;
+}
+
 const payload = compiledCatalogJson as CompiledRuntimeCatalogPayload;
 const v4Manifest = v4ManifestJson as StandardV4ManifestPayload;
 
@@ -90,6 +98,17 @@ export function isStandardV4CatalogReady(): boolean {
 
 export function standardV4RuntimeFingerprint(): string {
   return v4Manifest.runtimeFingerprint;
+}
+
+/** Machine-verifiable release metadata for the 500-recipe Takolio Culinary Standard V4 catalog. */
+export function standardV4CatalogRelease(): StandardV4CatalogReleaseDescriptor {
+  return {
+    releaseId: v4Manifest.standardId,
+    expectedRecipeCount: v4Manifest.recipeCount,
+    expectedRuntimeFingerprint: v4Manifest.runtimeFingerprint,
+    legacyBaselineCount: v4Manifest.recipeCount,
+    legacyBaselineFingerprint: v4Manifest.runtimeFingerprint,
+  };
 }
 
 export function hydrateStandardV4D1Catalog(snapshot: StandardV4D1Snapshot): StandardV4HydrationResult {

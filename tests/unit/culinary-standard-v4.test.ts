@@ -19,12 +19,28 @@ import {
   computeStandardNutritionV4,
   deriveAllergenTagsV4,
 } from '../../packages/recipes/src/standard-v4';
-import { StandardV4RecipeAuthority, isStandardV4CatalogReady } from '../../packages/recipes/src/standard-v4/authority';
+import {
+  StandardV4RecipeAuthority,
+  isStandardV4CatalogReady,
+  standardV4CatalogRelease,
+} from '../../packages/recipes/src/standard-v4/authority';
 import { fingerprintRecipes } from '../../packages/recipes/src/catalog-fingerprint';
 import {
+  isRecipeCatalogV4StandardEnabled,
   resolveRecipeAuthority,
+  resolveRecipeAuthorityV4,
   type RecipeAuthorityEnv,
 } from '../../src/worker/services/recipe-authority';
+import { resolveRecipeAuthorityV4 as aliasResolveV4 } from '../../src/worker/services/recipe-authority-v4';
+import {
+  publicRecipeAuthorityStatus,
+  recipeAuthorityReleaseEvidence,
+} from '../../src/worker/services/recipe-authority-status';
+import {
+  readStandardV4CatalogRelease,
+  verifyRecipeAuthorityEvidence,
+} from '../../scripts/release-check.mjs';
+import type { Env } from '../../src/worker/types';
 
 const root = process.cwd();
 const releaseManifest = JSON.parse(
@@ -123,6 +139,15 @@ describe('Takolio Culinary Standard V4 — 500-recipe catalog & operational dict
 
   it('supports opt-in RECIPE_CATALOG_V4_STANDARD_ENABLED authority without altering default V1 static authority', async () => {
     expect(isStandardV4CatalogReady()).toBe(true);
+    expect(resolveRecipeAuthorityV4).toBe(resolveRecipeAuthority);
+    expect(aliasResolveV4).toBe(resolveRecipeAuthority);
+    expect(isRecipeCatalogV4StandardEnabled({})).toBe(false);
+    expect(isRecipeCatalogV4StandardEnabled({ RECIPE_CATALOG_V4_STANDARD_ENABLED: 'false' })).toBe(false);
+    expect(isRecipeCatalogV4StandardEnabled({ RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true' })).toBe(true);
+
+    const v4Release = standardV4CatalogRelease();
+    expect(v4Release).toEqual(readStandardV4CatalogRelease());
+
     const v4Snapshot = await new StandardV4RecipeAuthority().load();
     expect(v4Snapshot.size).toBe(500);
     expect(v4Snapshot.fingerprint).toBe(v4Manifest.runtimeFingerprint);
@@ -134,7 +159,7 @@ describe('Takolio Culinary Standard V4 — 500-recipe catalog & operational dict
     expect(defaultRes.actualSource).toBe('static');
     expect(defaultRes.snapshot.size).toBe(71);
 
-    const optInRes = await resolveRecipeAuthority(
+    const optInRes = await resolveRecipeAuthorityV4(
       staticEnv({
         RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
       }),
@@ -142,5 +167,55 @@ describe('Takolio Culinary Standard V4 — 500-recipe catalog & operational dict
     expect(optInRes.actualSource).toBe('static');
     expect(optInRes.snapshot.size).toBe(500);
     expect(optInRes.snapshot.fingerprint).toBe(v4Manifest.runtimeFingerprint);
+
+    const sha = 'd'.repeat(40);
+    const v4StaticStatus = await publicRecipeAuthorityStatus(
+      staticEnv({ RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true' }),
+    );
+    expect(v4StaticStatus).toMatchObject({
+      configuredMode: 'static',
+      globalSource: 'static',
+      releaseId: v4Release.releaseId,
+      expectedRecipeCount: 500,
+    });
+
+    const v4StaticEvidence = await recipeAuthorityReleaseEvidence({
+      DB: undefined,
+      ENVIRONMENT: 'production',
+      GIT_COMMIT: sha,
+      RECIPE_CATALOG_MODE: 'static',
+      RECIPE_CATALOG_V4_STANDARD_ENABLED: 'true',
+    } as unknown as Env);
+    expect(v4StaticEvidence).toMatchObject({
+      configuredMode: 'static',
+      actualSource: 'static',
+      releaseId: v4Release.releaseId,
+      servedRecipeCount: 500,
+      servedFingerprint: v4Manifest.runtimeFingerprint,
+      fingerprintMatchesRelease: false,
+      d1Readiness: 'not_evaluated',
+    });
+
+    const proof = verifyRecipeAuthorityEvidence(
+      {
+        sha,
+        environment: 'production',
+        recipeCatalogMode: 'static',
+        recipeCatalogCanaryPercent: 0,
+        recipeCatalogCutoverEnabled: false,
+        recipeCatalogV4StandardEnabled: true,
+      },
+      v4StaticEvidence,
+      {
+        releaseId: 'rel-v1-ignored',
+        legacyBaselineCount: 71,
+        expectedRecipeCount: 500,
+        legacyBaselineFingerprint: '0'.repeat(64),
+        expectedRuntimeFingerprint: '1'.repeat(64),
+      },
+    );
+    expect(proof.releaseId).toBe(v4Release.releaseId);
+    expect(proof.servedRecipeCount).toBe(500);
+    expect(proof.servedFingerprint).toBe(v4Manifest.runtimeFingerprint);
   });
 });

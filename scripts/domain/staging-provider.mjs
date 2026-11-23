@@ -162,6 +162,7 @@ export const provider = {
     if (env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'true' || env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'false') {
       plan.config.vars.RECIPE_CATALOG_V4_STANDARD_ENABLED = env.RECIPE_CATALOG_V4_STANDARD_ENABLED;
     }
+    manifest.recipeCatalogV4StandardEnabled = plan.config.vars.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'true';
     plan.bytes = `${JSON.stringify(plan.config, null, 2)}\n`;
     plan.sha256 = configHash(plan.bytes);
     // Validate account inventory and hostname conflicts before any code upload or traffic change.

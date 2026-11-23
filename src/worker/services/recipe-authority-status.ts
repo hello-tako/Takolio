@@ -2,8 +2,10 @@ import {
   currentCatalogRelease,
   type RecipeAuthorityReadiness,
 } from '../../../packages/recipes/src/recipe-authority';
+import { standardV4CatalogRelease } from '../../../packages/recipes/src/standard-v4/authority';
 import type { Env } from '../types';
 import {
+  isRecipeCatalogV4StandardEnabled,
   RecipeAuthorityConfigError,
   recipeAuthorityCounters,
   resolveRecipeAuthority,
@@ -79,8 +81,14 @@ function globalSourceOf(
   return actualSource;
 }
 
+function catalogReleaseForEnv(
+  env: Pick<RecipeAuthorityEnv, 'RECIPE_CATALOG_V4_STANDARD_ENABLED'> | Env,
+) {
+  return isRecipeCatalogV4StandardEnabled(env) ? standardV4CatalogRelease() : currentCatalogRelease();
+}
+
 async function resolvePublicRecipeAuthorityStatus(env: RecipeAuthorityEnv) {
-  const release = currentCatalogRelease();
+  const release = catalogReleaseForEnv(env);
   const { config, invalid } = configOrInvalid(env);
   if (!config) {
     return {
@@ -143,7 +151,7 @@ export async function recipeAuthorityReleaseEvidence(
   env: Env,
   options: { now?: () => Date } = {},
 ): Promise<RecipeAuthorityReleaseEvidence> {
-  const release = currentCatalogRelease();
+  const release = catalogReleaseForEnv(env);
   const resolved = await resolvePublicRecipeAuthorityStatus(env);
   const status = resolved.status;
   // Invalid deployment configuration still fails the protected proof rather than manufacturing
@@ -185,6 +193,7 @@ export async function recipeAuthorityReleaseEvidence(
     servedFingerprint: resolution.snapshot.fingerprint,
     expectedRuntimeFingerprint: release.expectedRuntimeFingerprint,
     fingerprintMatchesRelease:
+      resolution.actualSource === 'd1' &&
       resolution.snapshot.fingerprint === release.expectedRuntimeFingerprint,
     d1Readiness: !d1Selected
       ? 'not_evaluated'

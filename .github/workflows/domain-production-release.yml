@@ -47,12 +47,12 @@ on:
         type: boolean
         default: false
       recipe_catalog_v4_standard:
-        description: Takolio Culinary Standard V4 setting (preserve live Worker var, or explicitly set true/false)
+        description: Takolio Culinary Standard V4 setting (true/false overrides live Worker var; preserve keeps current value)
         type: choice
-        default: preserve
+        default: 'true'
         options:
-          - preserve
           - 'true'
+          - preserve
           - 'false'
       confirm_production:
         description: Intentionally activate production and its three Takolio hostnames after independent Environment review

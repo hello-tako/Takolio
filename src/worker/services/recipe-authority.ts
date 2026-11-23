@@ -88,6 +88,14 @@ export interface RecipeAuthorityConfig {
 export type RecipeAuthorityConfigEnv = Pick<Env, 'RECIPE_CATALOG_MODE' | 'RECIPE_CATALOG_D1_CANARY_PERCENT' | 'RECIPE_CATALOG_CUTOVER_ENABLED' | 'RECIPE_CATALOG_TEST_COHORT_ENABLED' | 'RECIPE_CATALOG_TEST_INCLUDE' | 'RECIPE_CATALOG_TEST_EXCLUDE'>;
 export type RecipeAuthorityEnv = Pick<Env, 'DB' | 'RECIPE_CATALOG_SHADOW_INTERVAL_MS'> & RecipeAuthorityConfigEnv & { RECIPE_CATALOG_V4_STANDARD_ENABLED?: string };
 
+/** Returns `true` when `RECIPE_CATALOG_V4_STANDARD_ENABLED='true'` and the 500-recipe V4 catalog is intact. */
+export function isRecipeCatalogV4StandardEnabled(
+  env: Pick<RecipeAuthorityEnv, 'RECIPE_CATALOG_V4_STANDARD_ENABLED'> | Env,
+): boolean {
+  const flag = (env as { RECIPE_CATALOG_V4_STANDARD_ENABLED?: string }).RECIPE_CATALOG_V4_STANDARD_ENABLED;
+  return flag === 'true' && isStandardV4CatalogReady();
+}
+
 /**
  * Validates the whole authority configuration; throws a typed error for any invalid or
  * dangerous combination. Used by production config validation AND at request time (fail closed).
@@ -263,7 +271,7 @@ export async function resolveRecipeAuthority(env: RecipeAuthorityEnv, options: R
   const log = options.log ?? defaultLog;
   const diagnostics: RecipeAuthorityDiagnostic[] = [];
   const emit = (diagnostic: RecipeAuthorityDiagnostic) => { diagnostics.push(diagnostic); log(diagnostic); };
-  const v4Enabled = env.RECIPE_CATALOG_V4_STANDARD_ENABLED === 'true' && isStandardV4CatalogReady();
+  const v4Enabled = isRecipeCatalogV4StandardEnabled(env);
   const staticSnapshot = v4Enabled ? await standardV4Authority.load() : await staticAuthority.load();
   let config: RecipeAuthorityConfig;
   try {
@@ -322,6 +330,9 @@ export async function resolveRecipeAuthority(env: RecipeAuthorityEnv, options: R
   emit({ level: 'info', event: 'recipe_catalog_authority_selected', configuredMode: config.mode, selectedSource: 'd1', actualSource: 'd1', canary: canaryTenant, ...reasonField, fingerprintMatch: true, recipeCount: outcome.snapshot.size });
   return { snapshot: outcome.snapshot, configuredMode: config.mode, selectedSource: 'd1', actualSource: 'd1', canaryTenant, canaryAssignmentReason, fallbackReason: null, diagnostics };
 }
+
+/** Explicit V4 entrypoint alias sharing the single coherent per-request authority resolver. */
+export const resolveRecipeAuthorityV4 = resolveRecipeAuthority;
 
 /** Convenience for Hono handlers: extracts `waitUntil` when an ExecutionContext exists (not in unit harnesses). */
 export function backgroundExecutorOf(c: { executionCtx?: { waitUntil(task: Promise<unknown>): void } }): ((task: Promise<unknown>) => void) | undefined {
