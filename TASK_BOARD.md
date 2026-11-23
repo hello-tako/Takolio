@@ -1,3 +1,10 @@
+## Takolio Culinary Standard V4 — Split Migrations `0052..0057` & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+- Split V4 SQL across `0052..0057` (`644–702 KB` per file, `INSERT OR IGNORE INTO`, `runtimeFingerprint=b1882886...`) for `workerd` 1 MiB statement cache compliance; updated ledger (`57`), smoke, workflows, migration tests, `PROTECTED_FILE_HASHES.json` (`380` files), and `V4_CATALOG_RELEASE_BASELINE` (`a6c46711`).
+
+---
+
 ## Takolio Culinary Standard V4 — Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` Pinned - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).

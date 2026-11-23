@@ -1,3 +1,12 @@
+## Takolio Culinary Standard V4 — Split Migrations `0052..0057` (`<702 KB` each) & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+
+- **Workerd 1 MiB Cache Fix (`a6c46711`)**: Split `0052_culinary_standard_v4_catalog_500.sql` (`4.0 MB`) into `6` sequential idempotent migrations `0052..0057` (`644–702 KB` statement bytes each; `75 + 85*5 = 500` recipes) via `renderStandardV4MigrationFiles` (`packages/recipes/src/standard-v4/compiler.ts`) and `scripts/recipe-standard-v4.mjs`, preserving `runtimeFingerprint=b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21`.
+- **Ledger, Workflows & Hash Lock**: Updated `MIGRATION_LEDGER` (`count=57`, tip `0057_culinary_standard_v4_catalog_part6.sql`), `scripts/migration-smoke.sh`, `scripts/d1-migration-check.mjs`, `scripts/family-meal-release.mjs`, `scripts/staging-v2-migration-check.mjs` (`CULINARY_STANDARD_V4_CHAIN`), `.github/workflows/{staging-v2-migrate,production-d1-migrate}.yml`, migration/schema-gate tests, `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`380` files), and `V4_CATALOG_RELEASE_BASELINE` (`a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+
+---
+
 ## Takolio Culinary Standard V4 — `resolveRecipeAuthorityV4`, Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).

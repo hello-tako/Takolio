@@ -1,3 +1,11 @@
+## Takolio Culinary Standard V4 — Split Migrations `0052..0057` & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+- Split `0052` into `0052..0057` (`644–702 KB` each, `INSERT OR IGNORE INTO`, identical 500 recipes / 249 canonical ingredients / `runtimeFingerprint=b1882886...`) so local `workerd` `local-d1-worker.mjs` `replayMigrations` stays safely under the `1 MiB` prepared statement cache limit.
+- Updated `MIGRATION_LEDGER` (`57`, tip `0057_culinary_standard_v4_catalog_part6.sql`), `migration-smoke.sh`, `d1-migration-check.mjs`, `family-meal-release.mjs`, `staging-v2-migration-check.mjs`, staging/production migrate workflows, migration tests, `PROTECTED_FILE_HASHES.json` (`380` files), and pinned `V4_CATALOG_RELEASE_BASELINE` (`a6c4671129cc9ae2f48cf00b370b77445c35aad9`).
+
+---
+
 ## Takolio Culinary Standard V4 — Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` Pinned - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).
