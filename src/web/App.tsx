@@ -135,6 +135,9 @@ const U06HouseholdHonestPage = lazy(() =>
 const U07U08PlusReadOnlyPage = lazy(() =>
   import('./vnext/screens/AccountAndSystemPages').then((m) => ({ default: m.U07U08PlusReadOnlyWrapper })),
 );
+const BillingReturnPage = lazy(() =>
+  import('./pages/BillingReturnPage').then((m) => ({ default: m.BillingReturnPage })),
+);
 const U09U10PrivacyAndDataRightsPage = lazy(() =>
   import('./vnext/screens/AccountAndSystemPages').then((m) => ({
     default: m.U09U10PrivacyAndDataRightsPage,
@@ -344,6 +347,7 @@ export const App: React.FC = () => {
                   <Route path="/settings/planning" element={<U03PlanningSettingsPage />} />
                   <Route path="/settings/privacy" element={<U09U10PrivacyAndDataRightsPage />} />
                   <Route path="/plus" element={<U07U08PlusReadOnlyPage />} />
+                  <Route path="/billing/return" element={<BillingReturnPage />} />
                 </Route>
 
                 {/* Catch-all fallback (S02 404) */}

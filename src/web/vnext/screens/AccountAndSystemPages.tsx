@@ -6,6 +6,7 @@ import '../styles/tokens.css';
 import '../styles/vnext-adapted.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
+import { getActiveUiLocale } from '../../i18n';
 
 const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
@@ -46,6 +47,11 @@ const LazyNotificationPreferencesPage = lazy(() =>
 );
 const LazyPlusPaywallPage = lazy(() =>
   import('../../pages/PlusPaywallPage').then((m) => ({ default: m.PlusPaywallPage })),
+);
+const LazyGlobalDodoBillingPanel = lazy(() =>
+  import('../../components/global/GlobalDodoBillingPanel').then((m) => ({
+    default: m.GlobalDodoBillingPanel,
+  })),
 );
 
 function relativeTimeVi(iso: string): string {
@@ -527,18 +533,62 @@ export const U06HouseholdHonestPage: React.FC = () => {
 
 /**
  * U07 / U08 — Takolio Plus & Trạng thái thanh toán (`/plus`).
- * Protected Red Zone: renders the untouched `PlusPaywallPage` inside `ConsumerStudioShell`
- * without altering a single byte of PayOS/VietQR/billing logic!
+ * Protected Red Zone: renders the untouched `PlusPaywallPage` (Vietnam PayOS / VietQR)
+ * alongside the Dodo Payments Merchant-of-Record Global Billing Panel for JP/EU/International users,
+ * without altering a single byte of PayOS/VietQR billing logic!
  */
-export const U07U08PlusReadOnlyWrapper: React.FC = () => (
-  <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang tải gói Takolio Pro…" />}>
-        <LazyPlusPaywallPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const U07U08PlusReadOnlyWrapper: React.FC = () => {
+  const [billingChannel, setBillingChannel] = useState<'payos_vn' | 'dodo_mor'>(() =>
+    getActiveUiLocale() === 'vi' ? 'payos_vn' : 'dodo_mor',
+  );
+
+  return (
+    <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
+      <div className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-surface-alt,#FBF8F3)] p-1.5" role="tablist" aria-label="Payment channel">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={billingChannel === 'payos_vn'}
+          onClick={() => setBillingChannel('payos_vn')}
+          className={clsx(
+            'min-h-[40px] flex-1 rounded-xl px-3 text-xs sm:text-sm font-semibold transition-colors',
+            billingChannel === 'payos_vn'
+              ? 'bg-[var(--tkv-primary,#196149)] text-white shadow-sm'
+              : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
+          )}
+        >
+          Việt Nam (VietQR · PayOS)
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={billingChannel === 'dodo_mor'}
+          onClick={() => setBillingChannel('dodo_mor')}
+          className={clsx(
+            'min-h-[40px] flex-1 rounded-xl px-3 text-xs sm:text-sm font-semibold transition-colors',
+            billingChannel === 'dodo_mor'
+              ? 'bg-[var(--tkv-primary,#196149)] text-white shadow-sm'
+              : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
+          )}
+        >
+          Global (Card · Apple/Google Pay · Dodo)
+        </button>
+      </div>
+
+      {billingChannel === 'dodo_mor' ? (
+        <Suspense fallback={<SettingsFormSkeleton label="Loading Dodo Payments..." />}>
+          <LazyGlobalDodoBillingPanel />
+        </Suspense>
+      ) : (
+        <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+          <Suspense fallback={<SettingsFormSkeleton label="Đang tải gói Takolio Pro…" />}>
+            <LazyPlusPaywallPage />
+          </Suspense>
+        </div>
+      )}
+    </ConsumerStudioShell>
+  );
+};
 
 /**
  * U09 / U10 — Quyền riêng tư & Xuất/xóa dữ liệu (`/settings/privacy`).
