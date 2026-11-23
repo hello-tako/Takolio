@@ -1,3 +1,14 @@
+## Takolio Culinary Standard V4 — `resolveRecipeAuthorityV4`, Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).
+
+Additional changes in `5a55eec3` + baseline pin commit:
+- **Authority & Evidence Parity**: Added `standardV4CatalogRelease()` (`packages/recipes/src/standard-v4/authority.ts`), `isRecipeCatalogV4StandardEnabled` + `resolveRecipeAuthorityV4` (`src/worker/services/recipe-authority.ts`, `src/worker/services/recipe-authority-v4.ts`), and V4 release selection in `src/worker/services/recipe-authority-status.ts` + `scripts/release-check.{mjs,d.mts}` (`STANDARD_V4_MANIFEST_PATH`, `resolveEffectiveCatalogRelease`, `verifyPreviousRecipeAuthority` V4 lookup).
+- **Workflow Default & Providers**: Set `domain-production-release.yml` `recipe_catalog_v4_standard` default to `'true'`, propagated `manifest.recipeCatalogV4StandardEnabled` in `scripts/domain/{production,staging}-provider.mjs`, and extended `culinary-standard-v4.test.ts` + `culinary-standard-v4-d1-replay.test.ts`.
+- **Admin CI Guard & Hash Lock**: Added `V4_CATALOG_RELEASE_BASELINE` (`5a55eec34b536f1a35a7bde37d61e11b9862d448`) across `scripts/admin-customer-baseline.mjs`, `scripts/admin-release-preflight.mjs`, and `scripts/admin-migration-matrix.mjs` (preserving `origin/main` `GLOBAL_RELEASE_BASELINE` compatibility), and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+
+---
+
 ## Takolio Culinary Standard V4 — `0052` Promoted, Main Authority & Release Workflows Wired - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_RELEASE_WORKFLOWS_READY_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, commits `b5f92250` V4 catalog, `cd6ebe2d` `0052` & router integration, `51718103` workflow/sovereign-cell wiring); NOT pushed, NO remote D1 migration, NO Staging/Production deployment.

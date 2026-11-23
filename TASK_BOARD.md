@@ -1,3 +1,10 @@
+## Takolio Culinary Standard V4 — Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` Pinned - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).
+- Exported `standardV4CatalogRelease()`, `isRecipeCatalogV4StandardEnabled`, and `resolveRecipeAuthorityV4`, wired V4 release metadata in `src/worker/services/recipe-authority-status.ts` + `scripts/release-check.{mjs,d.mts}` + `scripts/domain/{production,staging}-provider.mjs` + `.github/workflows/domain-production-release.yml` (`default: 'true'`), extended `culinary-standard-v4.test.ts` + `culinary-standard-v4-d1-replay.test.ts`, wired + pinned `V4_CATALOG_RELEASE_BASELINE` across `scripts/admin-{customer-baseline,release-preflight,migration-matrix}.mjs`, and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+
+---
+
 ## Takolio Culinary Standard V4 — `0052` & Workflow Rollout Ready - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_RELEASE_WORKFLOWS_READY_ON_BRANCH `feat/recipe-catalog-500-standardization` (commits `b5f92250`, `cd6ebe2d`, `51718103`); NOT pushed, NO remote D1 migration.

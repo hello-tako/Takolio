@@ -1,3 +1,14 @@
+## Takolio Culinary Standard V4 — Release Evidence Parity & `V4_CATALOG_RELEASE_BASELINE` Pinned - 2026-11-23 JST
+
+Status: CULINARY_STANDARD_V4_ADMIN_PREFLIGHT_PINNED ON `feat/recipe-catalog-500-standardization` (rebased onto `origin/main` `edeecc47`, candidate `5a55eec34b536f1a35a7bde37d61e11b9862d448`).
+
+Additional deliverables in `5a55eec3` + baseline pin commit:
+- Exported `standardV4CatalogRelease()`, `isRecipeCatalogV4StandardEnabled`, and `resolveRecipeAuthorityV4`, and wired V4 release metadata into `src/worker/services/recipe-authority-status.ts`, `scripts/release-check.{mjs,d.mts}`, `scripts/domain/{production,staging}-provider.mjs`, and `.github/workflows/domain-production-release.yml` (`default: 'true'`).
+- Wired `V4_CATALOG_RELEASE_BASELINE` (`5a55eec34b536f1a35a7bde37d61e11b9862d448`) in `scripts/admin-customer-baseline.mjs`, `scripts/admin-release-preflight.mjs`, and `scripts/admin-migration-matrix.mjs`, and refreshed `docs/handoff/vnext/PROTECTED_FILE_HASHES.json` (`375` files).
+- Extended `tests/unit/culinary-standard-v4.test.ts` and `tests/integration/culinary-standard-v4-d1-replay.test.ts` covering `resolveRecipeAuthorityV4`, `/health/ready`, `/health/recipe-authority`, and `verifyRecipeAuthorityEvidence` (`pnpm typecheck`, `pnpm lint`, `10/10` Vitest suites / `357/357` tests PASS on candidate `5a55eec3`).
+
+---
+
 ## Takolio Culinary Standard V4 — `0052` & Staging/Production Workflows Wired - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_RELEASE_WORKFLOWS_READY_ON_BRANCH `feat/recipe-catalog-500-standardization` (worktree `/Users/tunbee27/.gemini/antigravity/scratch/takolio-recipe-standardization`, base `origin/main` `ba38382a`, implementation commits `b5f92250`, `cd6ebe2d`, `51718103`); NOT pushed, NO remote D1 migration, NO Staging/Production deploy.
