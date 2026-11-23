@@ -3,7 +3,10 @@ import type {
   PlanCompositionsDto,
   SlotCompositionDto,
 } from '../../../../packages/domain/src/meal-composition-api';
-import type { MealPlanDto } from '../../../../packages/domain/src/meal-planning-api';
+import type {
+  MealPlanDto,
+  MealPlanningIntent,
+} from '../../../../packages/domain/src/meal-planning-api';
 import { queryKeys } from '../../lib/queryKeys';
 import { shoppingApi } from '../../services/shopping';
 import { localDate } from '../../features/planner/intent';
@@ -165,4 +168,68 @@ export async function syncPlanToShoppingList(
   );
   await queryClient.invalidateQueries({ queryKey: queryKeys.shoppingList() });
   return res;
+}
+
+function addIsoDays(baseIso: string, delta: number): string {
+  const dt = new Date(`${baseIso}T12:00:00Z`);
+  dt.setUTCDate(dt.getUTCDate() + delta);
+  return dt.toISOString().slice(0, 10);
+}
+
+/**
+ * Builds a clean `shopping_allowed` regeneration intent from an existing plan so 1-tap
+ * auto-suggestion recovery works on stale/past-date plans, manual empty drafts, or
+ * overly strict `cook_now` plans without triggering `422 INVALID_PLANNING_HORIZON`.
+ */
+export function buildRecoveryIntentForPlan(
+  plan: MealPlanDto,
+  hasLockedComponents = false,
+  now = new Date(),
+): MealPlanningIntent {
+  const todayIso = localDate(now);
+  const tomorrowIso = addIsoDays(todayIso, 1);
+  const uniqueDates = [...new Set(plan.intent.slots.map((s) => s.date))].sort();
+  const hasElapsedDates = uniqueDates.some((d) => d <= todayIso);
+
+  if (!hasElapsedDates || hasLockedComponents) {
+    return {
+      ...plan.intent,
+      mode: 'shopping_allowed',
+      slots: plan.intent.slots.map((slot) => {
+        const { hardMaxTimeMinutes, ...rest } = slot;
+        return {
+          ...rest,
+          ...(hardMaxTimeMinutes && !rest.preferredTimeMinutes
+            ? { preferredTimeMinutes: hardMaxTimeMinutes }
+            : {}),
+        };
+      }),
+    };
+  }
+
+  // Shift stale calendar dates forward starting from tomorrow while preserving structure
+  const dateMap = new Map<string, string>();
+  uniqueDates.forEach((oldDate, idx) => {
+    dateMap.set(oldDate, addIsoDays(tomorrowIso, idx));
+  });
+
+  const nextSlots = plan.intent.slots.map((slot) => {
+    const { hardMaxTimeMinutes, time: _oldTime, ...rest } = slot;
+    return {
+      ...rest,
+      date: dateMap.get(slot.date) ?? tomorrowIso,
+      ...(hardMaxTimeMinutes && !rest.preferredTimeMinutes
+        ? { preferredTimeMinutes: hardMaxTimeMinutes }
+        : {}),
+    };
+  });
+
+  return {
+    ...plan.intent,
+    startDate: tomorrowIso,
+    horizonDays: Math.min(14, Math.max(1, uniqueDates.length)),
+    utcOffsetMinutes: -now.getTimezoneOffset(),
+    mode: 'shopping_allowed',
+    slots: nextSlots.slice(0, 42),
+  };
 }

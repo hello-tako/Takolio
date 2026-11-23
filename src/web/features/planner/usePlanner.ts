@@ -129,10 +129,10 @@ export function usePlanner(planId?: string, enabled = true) {
     seedFamily(result);
     return result.plan;
   }
-  async function regenerate(id: string, revision: number) {
+  async function regenerate(id: string, revision: number, intent?: MealPlanningIntent) {
     if (isMealCompositionEnabled()) {
       try {
-        const result = await familyMealPlanningApi.regenerate(id, revision);
+        const result = await familyMealPlanningApi.regenerate(id, revision, intent);
         seedFamily(result);
         return result.plan;
       } catch (failure) {
@@ -143,7 +143,7 @@ export function usePlanner(planId?: string, enabled = true) {
           throw failure;
       }
     }
-    return mealPlanningApi.regenerate(id, { revision });
+    return mealPlanningApi.regenerate(id, intent ? { revision, intent } : { revision });
   }
   function replacePlan(plan: MealPlanDto) {
     void client.cancelQueries({ queryKey: queryKeys.mealPlanningPlan(plan.id) });

@@ -1,5 +1,5 @@
 import { ZodError } from 'zod';
-import { CANONICAL_INGREDIENTS } from '@frigo/domain';
+import { CANONICAL_INGREDIENTS, findOperationalIngredientById } from '@frigo/domain';
 import {
   ExactQuantityDtoSchema,
   MoneyDtoSchema,
@@ -734,7 +734,8 @@ export const freshnessLabel = freshnessReasonLabel;
 
 export function ingredientLabel(id: string, locale?: string): string {
   const language = plannerLocale(locale);
-  const ingredient = CANONICAL_INGREDIENTS.find((item) => item.id === id);
+  const ingredient =
+    CANONICAL_INGREDIENTS.find((item) => item.id === id) ?? findOperationalIngredientById(id);
   return ingredient
     ? language === 'en'
       ? ingredient.nameEn

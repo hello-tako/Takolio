@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useQueries, useQueryClient } from '@tanstack/react-query';
 import { clsx } from 'clsx';
-import { CatalogIdSchema, CANONICAL_INGREDIENTS } from '@frigo/domain';
+import { CatalogIdSchema } from '@frigo/domain';
 import { scaleRecipeServings, type RecipeIngredient, type RecipeStep } from '@frigo/recipes';
 import type {
   MealRole,
@@ -46,6 +46,7 @@ import { usePlanner } from '../../features/planner/usePlanner';
 import { vnextHref } from '../feature';
 import { ConsumerStudioShell } from '../components/Shells';
 import { TkvButton, TkvErrorState, TkvSurface } from '../components/Primitives';
+import { showTkvToast } from '../components/LivingMotion';
 import {
   BrandFeatureIcon,
   MascotIllustration,
@@ -67,8 +68,8 @@ import {
   syncPlanToShoppingList,
 } from '../lib/planner-workbench';
 
-const LazyShoppingPage = lazy(() =>
-  import('../../pages/ShoppingPage').then((m) => ({ default: m.ShoppingPage })),
+const LazyShoppingStudio = lazy(() =>
+  import('./C27ShoppingStudio').then((m) => ({ default: m.C27ShoppingStudio })),
 );
 
 type MealTypeKey = 'breakfast' | 'lunch' | 'dinner';
@@ -383,7 +384,7 @@ export const C24PlannerSetupVNext: React.FC = () => {
 
   const customExcludedLabels = (activeDraft.forbiddenIngredientIds ?? [])
     .filter((id) => !AVOIDANCE_GROUPS.some((g) => g.ingredientIds.includes(id)))
-    .map((id) => CANONICAL_INGREDIENTS.find((c) => c.id === id)?.nameVi ?? id);
+    .map((id) => ingredientLabel(id, 'vi'));
 
   const summaryParts = [
     activeDraft.mealStyle === 'quick'
@@ -1226,6 +1227,10 @@ export const C25C26PlannerMealVNext: React.FC = () => {
     setBusyKey('shopping');
     try {
       await syncPlanToShoppingList(queryClient, plan);
+      showTkvToast({
+        message: 'Đã đồng bộ nguyên liệu sang danh sách đi chợ',
+        tone: 'success',
+      });
       navigate('/shopping');
     } catch (failure) {
       setFeedback({ tone: 'error', text: plannerErrorMessage(failure, 'vi') });
@@ -1519,7 +1524,7 @@ export const C25C26PlannerMealVNext: React.FC = () => {
                     type="button"
                     disabled={Boolean(busyKey)}
                     onClick={() => void handleSyncShopping()}
-                    className="tkv-focusable min-h-[36px] px-3.5 rounded-full bg-[var(--tkv-coral)] text-white text-xs font-extrabold inline-flex items-center gap-1.5"
+                    className="tkv-focusable min-h-[36px] px-3.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white text-xs font-extrabold inline-flex items-center gap-1.5 shadow-[var(--tkv-shadow-cta)] transition-colors"
                   >
                     <VNextIcon name="shopping" size={13} />
                     <span>
@@ -1593,7 +1598,7 @@ export const C25C26PlannerMealVNext: React.FC = () => {
                 <div className="space-y-3">
                   {resolvedRecipes.map((rec, idx) => (
                     <details
-                      key={rec.recipeId}
+                      key={`${rec.recipeId}-${idx}`}
                       open={idx === 0}
                       className="rounded-2xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] p-3.5"
                     >
@@ -1678,15 +1683,14 @@ export const C25C26PlannerMealVNext: React.FC = () => {
 
 /**
  * C27 / C28 — Danh sách đi chợ & Sửa mục mua hàng (`/shopping`).
- * Preserves offline outbox (`pendingSync`), stable idempotency keys, and needed vs acquired grouping.
+ * Pure Brand Board v2 Calm Kitchen Shopping Studio tightly linked to the active weekly meal plan,
+ * preserving offline outbox (`pendingSync`), stable idempotency keys, and honest demand review.
  */
 export const C27C28ShoppingVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C27" title="Danh sách đi chợ">
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<ShoppingListSkeleton />}>
-        <LazyShoppingPage />
-      </Suspense>
-    </div>
+  <ConsumerStudioShell screenId="C27" title="Danh sách mua sắm">
+    <Suspense fallback={<ShoppingListSkeleton />}>
+      <LazyShoppingStudio />
+    </Suspense>
   </ConsumerStudioShell>
 );
 
@@ -1775,6 +1779,10 @@ export const C29ShoppingImportVNext: React.FC = () => {
     setSyncing(true);
     try {
       await syncPlanToShoppingList(queryClient, plan, { days: tripDays });
+      showTkvToast({
+        message: 'Đã đồng bộ nguyên liệu sang danh sách mua sắm',
+        tone: 'success',
+      });
       navigate('/shopping');
     } catch (failure) {
       setErrorMsg(plannerErrorMessage(failure, 'vi'));
@@ -1860,17 +1868,32 @@ export const C29ShoppingImportVNext: React.FC = () => {
                   Dự kiến cần mua ({previewMissing.length} mục)
                 </p>
                 <ul className="max-h-72 overflow-y-auto divide-y divide-[var(--tkv-border)] rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] px-3">
-                  {previewMissing.map((item) => (
-                    <li
-                      key={`${item.ingredientId}:${item.unit}`}
-                      className="py-2.5 flex items-center justify-between gap-2 text-xs sm:text-sm"
-                    >
-                      <span className="font-bold text-[var(--tkv-ink)]">{item.name}</span>
-                      <span className="font-extrabold text-[var(--tkv-coral-ink)] tabular-nums">
-                        {formatKitchenAmount(item.missingQty, item.unit)}
-                      </span>
-                    </li>
-                  ))}
+                  {previewMissing.map((item) => {
+                    const thumb = getIngredientImage(item.ingredientId, item.name);
+                    return (
+                      <li
+                        key={`${item.ingredientId}:${item.unit}`}
+                        className="py-2.5 flex items-center justify-between gap-2 text-xs sm:text-sm"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          {thumb && (
+                            <img
+                              src={thumb}
+                              alt=""
+                              width={24}
+                              height={24}
+                              loading="lazy"
+                              className="w-6 h-6 object-contain shrink-0"
+                            />
+                          )}
+                          <span className="font-bold text-[var(--tkv-ink)] truncate">{item.name}</span>
+                        </div>
+                        <span className="font-extrabold text-[var(--tkv-primary)] tabular-nums shrink-0">
+                          {formatKitchenAmount(item.missingQty, item.unit)}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ) : (

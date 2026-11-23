@@ -219,7 +219,7 @@ export const VNextDishPickerSheet: React.FC<{
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-[#152E2C]/45 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-4"
+      className="fixed inset-0 z-50 bg-[var(--tkv-ink)]/45 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-4"
       onClick={(e) => {
         if (e.target === e.currentTarget && !busy) onClose();
       }}

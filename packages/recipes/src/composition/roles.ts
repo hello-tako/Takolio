@@ -1,4 +1,4 @@
-import { CANONICAL_INGREDIENTS, normalizeMultilingualText } from '../../../domain/src';
+import { getAllOperationalIngredients, normalizeMultilingualText } from '../../../domain/src';
 import {
   MEAL_ROLES,
   type MealRole,
@@ -52,7 +52,9 @@ export function normalizeText(value: string): string {
   return normalizeMultilingualText(value);
 }
 
-const CANONICAL_CATEGORY = new Map(CANONICAL_INGREDIENTS.map((item) => [item.id, item.category]));
+const CANONICAL_CATEGORY = new Map(
+  getAllOperationalIngredients().map((item) => [item.id, item.category]),
+);
 const PROTEIN_CATEGORIES = new Set(['meat', 'seafood', 'egg']);
 // Matched on diacritic-preserving lowercase text: "cà chua" (tomato) is not "cá" (fish), "bơ" is not "bò".
 const PROTEIN_WORDS = /(?<![\p{L}\p{N}])(thịt|ba chỉ|sườn|bò|gà|heo|lợn|vịt|cá|tôm|mực|cua|ghẹ|nghêu|sò|hàu|trứng|đậu phụ|đậu hũ|hải sản|bạch tuộc|ốc|xúc xích|chả|nem|lạp xưởng|giò|pate|thăn|bacon|chicken|beef|pork|salmon|shrimp|egg|tofu|poulet|boeuf|bœuf|porc|saumon|hähnchen|rind|schwein|lachs|pollo|manzo|maiale|cerdo|ternera)(?![\p{L}\p{N}])|(?:豚|牛|鶏|鮭|さば|鯖|えび|海老|いか|たこ|かに|卵|玉子|たまご|豆腐|納豆|ひき肉|ベーコン|べーこん|ソーセージ)/u;

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   evaluateRecipeAvailability,
@@ -231,7 +231,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
         {/* Left Media & Facts Column (5 cols on Desktop; Top Hero on Mobile) */}
         <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-20">
-          <div className="rounded-[24px] bg-[var(--tkv-surface-muted,#E7F4EC)] p-2.5 border border-[var(--tkv-border,#DCE6DE)] shadow-xs">
+          <div className="rounded-[24px] overflow-hidden bg-[var(--tkv-surface)] border border-[var(--tkv-border)] shadow-xs">
             <VerifiedDishImage
               recipeId={recipe.id}
               slug={recipe.slug}
@@ -239,38 +239,37 @@ export const C18RecipeDetailPilot: React.FC = () => {
               canonicalFallbackSrc={canonicalImg}
               aspectClass="aspect-[4/3]"
               priority
-              className="rounded-[18px]"
             />
           </div>
 
           <div className="space-y-3">
             <div className="flex items-start justify-between gap-3">
-              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)] leading-tight">
+              <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)] leading-tight">
                 {recipe.title}
               </h1>
               <SaveRecipeButton recipeId={recipe.id} title={recipe.title} compact />
             </div>
 
-            {/* 3 Sunlit Ceramic Metadata Pills */}
+            {/* Calm Brand Board v2 Metadata Pills */}
             <div className="flex items-center gap-2 flex-wrap tabular-nums">
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] text-sm font-bold inline-flex items-center gap-1.5">
-                <VNextIcon name="timer" size={15} className="text-[var(--tkv-primary,#196149)]" />
+              <span className="min-h-[36px] px-3.5 py-1.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-ink)] text-xs sm:text-sm font-bold inline-flex items-center gap-1.5">
+                <VNextIcon name="timer" size={14} className="text-[var(--tkv-primary)]" />
                 {recipe.cookTimeMinutes} phút
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-ink,#152E2C)] text-sm font-semibold inline-flex items-center gap-1.5">
-                <VNextIcon name="users" size={15} className="text-[var(--tkv-sage,#196149)]" />
+              <span className="min-h-[36px] px-3.5 py-1.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-ink)] text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5">
+                <VNextIcon name="users" size={14} className="text-[var(--tkv-primary)]" />
                 {recipe.servings} người
               </span>
-              <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage-ink,#134C39)] text-sm font-semibold inline-flex items-center">
+              <span className="min-h-[36px] px-3.5 py-1.5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] text-xs sm:text-sm font-bold inline-flex items-center">
                 {difficultyLabel}
               </span>
             </div>
 
-            <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
               {recipe.description}
             </p>
 
-            <div className="pt-1 flex flex-col sm:flex-row gap-2.5">
+            <div className="pt-1 flex flex-col gap-2.5">
               <TkvButton
                 variant="primary"
                 size="lg"
@@ -281,6 +280,14 @@ export const C18RecipeDetailPilot: React.FC = () => {
               >
                 Bắt đầu nấu ({recipe.steps.length} bước)
               </TkvButton>
+              <Link
+                to={`/planner/new?recipe=${encodeURIComponent(recipe.id)}&servings=${recipe.servings}`}
+                data-testid="c18-add-to-planner-link"
+                className="tkv-focusable w-full min-h-[44px] px-4 py-2 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] hover:border-[var(--tkv-primary)] hover:bg-[var(--tkv-surface-mint)]/40 text-sm font-extrabold text-[var(--tkv-primary)] inline-flex items-center justify-center gap-2 transition-colors"
+              >
+                <VNextIcon name="calendar" size={16} />
+                <span>Xếp vào thực đơn tuần</span>
+              </Link>
             </div>
           </div>
 
@@ -353,6 +360,15 @@ export const C18RecipeDetailPilot: React.FC = () => {
               </div>
             </div>
 
+            {addedKeys.length > 0 && (
+              <div className="rounded-2xl bg-[var(--tkv-surface-mint)]/60 border border-[var(--tkv-border-mint)] px-3.5 py-2.5 flex items-center justify-between gap-2 text-xs font-bold text-[var(--tkv-primary)]">
+                <span>Đã thêm {addedKeys.length} nguyên liệu thiếu vào danh sách mua sắm</span>
+                <Link to="/shopping" className="underline shrink-0">
+                  Mở giỏ đi chợ →
+                </Link>
+              </div>
+            )}
+
             <ul className="space-y-2.5" aria-label="Đối chiếu nguyên liệu theo định lượng">
               {availability.map((ing) => {
                 const key = `${ing.ingredientId}:${ing.unit}`;
@@ -362,31 +378,21 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
                 return (
                   <li key={`${ing.ingredientId}-${ing.name}`}>
-                    <TkvSurface padded={false} className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-[var(--tkv-border,#DCE6DE)]">
+                    <TkvSurface padded={false} className="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-[var(--tkv-border)]">
                       <div className="flex items-center gap-3 min-w-0 flex-1">
                         <span
                           className={
                             ing.status === 'satisfied'
-                              ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage,#196149)] flex items-center justify-center shrink-0'
+                              ? 'w-10 h-10 rounded-xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0'
                               : ing.status === 'unresolved'
-                                ? 'relative w-10 h-10 rounded-xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] text-[var(--tkv-honey-ink,#8A5205)] flex items-center justify-center shrink-0'
-                                : 'relative w-10 h-10 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0'
+                                ? 'w-10 h-10 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border-saffron)] text-[var(--tkv-warning-ink)] flex items-center justify-center shrink-0'
+                                : 'w-10 h-10 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-ink-secondary)] flex items-center justify-center shrink-0'
                           }
                         >
                           <VNextIcon
                             name={ing.status === 'satisfied' ? 'check' : ing.status === 'unresolved' ? 'warning' : 'shopping'}
                             size={18}
                           />
-                          {ing.status !== 'satisfied' && (
-                            <span
-                              className={
-                                ing.status === 'unresolved'
-                                  ? 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-honey,#F6C453)]'
-                                  : 'absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--tkv-primary,#196149)]'
-                              }
-                              aria-hidden="true"
-                            />
-                          )}
                         </span>
                         <div className="min-w-0">
                           <p className="text-base font-bold text-[var(--tkv-ink,#152E2C)] tabular-nums">
@@ -450,22 +456,22 @@ export const C18RecipeDetailPilot: React.FC = () => {
             <ol className="space-y-3">
               {recipe.steps.map((step) => (
                 <li key={step.stepNumber}>
-                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
-                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] font-bold text-xs tabular-nums flex items-center justify-center shrink-0">
+                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border)]">
+                    <span className="tkv-heading w-8 h-8 rounded-xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] font-extrabold text-xs tabular-nums flex items-center justify-center shrink-0">
                       {String(step.stepNumber).padStart(2, '0')}
                     </span>
                     <div className="space-y-2 min-w-0 flex-1">
-                      <p className="text-sm sm:text-base text-[var(--tkv-ink,#152E2C)] leading-relaxed">
+                      <p className="text-sm sm:text-base text-[var(--tkv-ink)] leading-relaxed">
                         {step.instruction}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {typeof step.timerMinutes === 'number' && step.timerMinutes > 0 && (
-                          <TkvBadge tone="coral" icon="timer">
+                          <TkvBadge tone="neutral" icon="timer">
                             <span className="tabular-nums">Hẹn giờ gợi ý: {step.timerMinutes} phút</span>
                           </TkvBadge>
                         )}
                         {step.tip && (
-                          <span className="text-xs font-medium text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] px-2.5 py-1 rounded-xl">
+                          <span className="text-xs font-medium text-[var(--tkv-ink-secondary)] bg-[var(--tkv-bg)] border border-[var(--tkv-border)] px-2.5 py-1 rounded-xl">
                             Mẹo bếp: {step.tip}
                           </span>
                         )}

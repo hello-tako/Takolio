@@ -11,6 +11,9 @@ import type {
 import type { PlannedMealDto } from '../../../../packages/domain/src/meal-planning-api';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { mealCompositionApi } from '../../services/meal-composition';
+import { familyPreferencesApi } from '../../services/family-preferences';
+import { familyPreferencesKey } from '../../features/family/useFamilyPreferences';
+import { sanitizeFamilyPreferencesForGeneration } from '../../features/family/preference-sync';
 import {
   compositionUnavailable,
   isMealCompositionEnabled,
@@ -29,6 +32,7 @@ import {
   TkvErrorState,
   TkvSurface,
 } from '../components/Primitives';
+import { showTkvToast } from '../components/LivingMotion';
 import { VNextIcon } from '../components/VNextIcons';
 import {
   BrandFeatureIcon,
@@ -40,6 +44,7 @@ import { VNextDishPickerSheet } from '../components/VNextDishPickerSheet';
 import { WeeklyPlannerSkeleton } from '../components/Skeletons';
 import {
   acceptSlotCompositionMutation,
+  buildRecoveryIntentForPlan,
   isSlotEditableTodayOrFuture,
   syncPlanToShoppingList,
 } from '../lib/planner-workbench';
@@ -143,6 +148,7 @@ export const C23PlannerPilot: React.FC = () => {
   const returnTo = `${location.pathname}${location.search}`;
 
   const [selectedDateKey, setSelectedDateKey] = useState<string | null>(null);
+  const [syncDays, setSyncDays] = useState<number | undefined>(undefined);
   const [actionBusyKey, setActionBusyKey] = useState<string | null>(null);
   const [actionFeedback, setActionFeedback] = useState<{
     tone: 'error' | 'info';
@@ -361,6 +367,37 @@ export const C23PlannerPilot: React.FC = () => {
       : orderedDates[0] ?? null;
   const activeDaySlots = activeDateKey ? slotsByDate.get(activeDateKey) ?? [] : [];
   const plannedMealSlotsCount = unifiedSlots.filter((s) => s.dishTitles.length > 0).length;
+  const compositionsLoading = v2Active && compositionsQuery.isPending && !effectiveCompositions;
+  const hasLockedComponents = useMemo(
+    () =>
+      (effectiveCompositions?.compositions ?? []).some((slot) =>
+        slot.components.some((c) => c.locked),
+      ),
+    [effectiveCompositions],
+  );
+  const isManualEmptyDraft = useMemo(() => {
+    if (!plan || plannedMealSlotsCount > 0) return false;
+    const comps = effectiveCompositions?.compositions ?? [];
+    if (
+      comps.length > 0 &&
+      comps.every(
+        (c) => c.mode === 'manual' || c.warnings.includes('MANUAL_SELECTION_PENDING'),
+      )
+    ) {
+      return true;
+    }
+    return (
+      plan.result.unplannedSlots.length > 0 &&
+      plan.result.unplannedSlots.every((u) => u.reasons.includes('MANUAL_SELECTION_PENDING'))
+    );
+  }, [plan, plannedMealSlotsCount, effectiveCompositions]);
+  const showInfeasibleRecovery = Boolean(
+    plan &&
+      !compositionsLoading &&
+      !isManualEmptyDraft &&
+      (plan.result.status === 'infeasible' ||
+        (plannedMealSlotsCount === 0 && plan.result.unplannedSlots.length > 0)),
+  );
 
   const missingShoppingCount = useMemo(() => {
     if (!plan) return 0;
@@ -486,12 +523,57 @@ export const C23PlannerPilot: React.FC = () => {
     }
   };
 
+  const handleAutoSuggestWeek = async () => {
+    if (!plan || actionBusyKey) return;
+    setActionFeedback(null);
+    setActionBusyKey('auto-suggest-week');
+    try {
+      // Heal any legacy unverified allergens before regenerating so SAFETY_UNKNOWN cannot trap suggestions.
+      if (v2Active) {
+        try {
+          const currentPref = await familyPreferencesApi.get();
+          const { sanitized, migratedAllergens } = sanitizeFamilyPreferencesForGeneration(
+            currentPref.preferences,
+          );
+          if (migratedAllergens.length > 0) {
+            const saved = await familyPreferencesApi.save(currentPref.revision, sanitized);
+            queryClient.setQueryData(familyPreferencesKey(), saved);
+          }
+        } catch {
+          // Proceed with regeneration even if preferences endpoint is unavailable.
+        }
+      }
+
+      const recoveryIntent = buildRecoveryIntentForPlan(plan, hasLockedComponents);
+      const updated = await model.regenerate(plan.id, plan.revision, recoveryIntent);
+      model.replacePlan(updated);
+      await queryClient.invalidateQueries({
+        queryKey: ['meal-planning', 'plan', updated.id],
+      });
+      showTkvToast({
+        message: 'Đã tự động gợi ý mâm cơm cho lịch tuần',
+        tone: 'success',
+      });
+    } catch (failure) {
+      setActionFeedback({
+        tone: 'error',
+        text: plannerErrorMessage(failure, 'vi'),
+      });
+    } finally {
+      setActionBusyKey(null);
+    }
+  };
+
   const handleQuickSyncShopping = async () => {
     if (!plan || actionBusyKey) return;
     setActionFeedback(null);
     setActionBusyKey('sync-shopping');
     try {
-      await syncPlanToShoppingList(queryClient, plan);
+      await syncPlanToShoppingList(queryClient, plan, { days: syncDays });
+      showTkvToast({
+        message: 'Đã đồng bộ nguyên liệu sang danh sách đi chợ',
+        tone: 'success',
+      });
       navigate('/shopping');
     } catch (failure) {
       setActionFeedback({
@@ -507,14 +589,14 @@ export const C23PlannerPilot: React.FC = () => {
     <ConsumerStudioShell screenId="C23" title={appCopy.planner.title}>
       <div className="flex flex-col gap-3.5 sm:gap-4">
         {/* Compact Top Heading */}
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-start sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <BrandFeatureIcon name="planner" size={40} className="shrink-0" />
             <div className="min-w-0">
-              <h1 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)] truncate">
+              <h1 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)] leading-tight">
                 {appCopy.planner.title}
               </h1>
-              <p className="text-xs font-semibold text-[var(--tkv-ink-secondary)] truncate">
+              <p className="text-xs font-semibold text-[var(--tkv-ink-secondary)] leading-snug">
                 {plan
                   ? `${plannedMealSlotsCount}/${unifiedSlots.length} bữa đã có món · ${plannerStatusLabel(plan.result.status, plannerLocale)}`
                   : isGuest
@@ -596,12 +678,44 @@ export const C23PlannerPilot: React.FC = () => {
           />
         ) : (
           <div className="flex flex-col gap-3.5">
-            {/* Infeasible / Partial Plan Recovery Banner */}
-            {(plan.result.status === 'infeasible' ||
-              (plannedMealSlotsCount === 0 && plan.result.unplannedSlots.length > 0)) && (
+            {/* Manual Empty Draft Guidance (Calm, Non-Error) */}
+            {isManualEmptyDraft && !compositionsLoading && (
               <div
                 role="status"
-                className="rounded-2xl bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                data-testid="c23-manual-draft-banner"
+                className="rounded-2xl bg-[var(--tkv-surface-mint)]/60 border border-[var(--tkv-border-mint)] p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+              >
+                <div className="space-y-0.5">
+                  <p className="text-sm font-extrabold text-[var(--tkv-ink)]">
+                    Khung thực đơn đang chờ xếp món
+                  </p>
+                  <p className="text-xs text-[var(--tkv-ink-secondary)]">
+                    Bạn có thể bấm gợi ý tự động cả tuần hoặc thêm từng món vào bữa bên dưới.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 shrink-0 flex-wrap">
+                  <TkvButton
+                    variant="primary"
+                    size="sm"
+                    iconLeft="sparkles"
+                    data-testid="c23-auto-suggest-recover-btn"
+                    disabled={Boolean(actionBusyKey)}
+                    onClick={() => void handleAutoSuggestWeek()}
+                  >
+                    {actionBusyKey === 'auto-suggest-week'
+                      ? 'Đang gợi ý…'
+                      : 'Tự động gợi ý cả tuần'}
+                  </TkvButton>
+                </div>
+              </div>
+            )}
+
+            {/* Infeasible / Partial Plan Recovery Banner (Guarded against loading flashes & manual drafts) */}
+            {showInfeasibleRecovery && (
+              <div
+                role="status"
+                data-testid="c23-infeasible-banner"
+                className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-coral)] p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
               >
                 <div className="space-y-0.5">
                   <p className="text-sm font-extrabold text-[var(--tkv-coral-ink)]">
@@ -609,51 +723,114 @@ export const C23PlannerPilot: React.FC = () => {
                   </p>
                   <p className="text-xs text-[var(--tkv-ink-secondary)]">
                     {plan.intent.mode === 'cook_now'
-                      ? 'Chế độ chỉ dùng đồ sẵn có cần đủ định lượng trong tủ lạnh. Hãy cho phép đi chợ thêm hoặc tự thêm món bên dưới.'
-                      : 'Một số điều kiện kiêng đang chặt. Bạn có thể tự thêm món vào từng bữa hoặc thiết lập lại.'}
+                      ? 'Chế độ chỉ dùng đồ sẵn có cần đủ nguyên liệu trong tủ lạnh. Bấm gợi ý tự động để phối mâm cơm kèm phần cần mua thêm.'
+                      : 'Điều kiện lọc trước đó có thể quá chặt hoặc dữ liệu vừa cập nhật. Bấm gợi ý lại để hệ thống tự phối thực đơn mới.'}
                   </p>
                 </div>
-                <TkvButton variant="secondary" size="sm" onClick={() => navigate('/planner/new')}>
-                  Thiết lập lại
-                </TkvButton>
+                <div className="flex items-center gap-2 shrink-0 flex-wrap">
+                  <TkvButton
+                    variant="primary"
+                    size="sm"
+                    iconLeft="sparkles"
+                    data-testid="c23-auto-suggest-recover-btn"
+                    disabled={Boolean(actionBusyKey)}
+                    onClick={() => void handleAutoSuggestWeek()}
+                  >
+                    {actionBusyKey === 'auto-suggest-week'
+                      ? 'Đang gợi ý…'
+                      : plan.intent.mode === 'cook_now'
+                        ? 'Gợi ý kèm đi chợ'
+                        : 'Tự động gợi ý lại'}
+                  </TkvButton>
+                  <TkvButton variant="secondary" size="sm" onClick={() => navigate('/planner/new')}>
+                    Thiết lập lại
+                  </TkvButton>
+                </div>
               </div>
             )}
 
-            {/* 1-Tap Grocery Sync Bar */}
-            <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-3.5 py-2.5 flex items-center justify-between gap-2.5 flex-wrap">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <span className="w-8 h-8 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral)] flex items-center justify-center shrink-0">
-                  <VNextIcon name="shopping" size={15} />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-xs sm:text-sm font-extrabold text-[var(--tkv-ink)] tabular-nums">
-                    {missingShoppingCount > 0
-                      ? `Thiếu ${missingShoppingCount} nguyên liệu cho lịch tuần`
-                      : 'Đồng bộ nguyên liệu đi chợ'}
-                  </p>
+            {/* Calm Planner ↔ Shopping Bridge Bar */}
+            <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-3.5 sm:p-4 flex flex-col gap-3">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="w-9 h-9 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
+                    <VNextIcon name="shopping" size={16} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm font-extrabold text-[var(--tkv-ink)] tabular-nums">
+                      {missingShoppingCount > 0
+                        ? `Thiếu ${missingShoppingCount} nguyên liệu cho lịch tuần`
+                        : 'Đồng bộ nguyên liệu sang giỏ đi chợ'}
+                    </p>
+                    <p className="text-[11px] font-semibold text-[var(--tkv-ink-secondary)]">
+                      Tự trừ phần có sẵn trong tủ lạnh và gom gọn theo quầy chợ
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0 flex-wrap">
                   <Link
                     to={`/planner/${plan.id}/shopping`}
-                    className="text-[11px] font-bold text-[var(--tkv-primary)] hover:underline"
+                    className="tkv-focusable min-h-[36px] px-3 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-xs font-bold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)] inline-flex items-center transition-colors"
                   >
-                    Tuỳ chỉnh khoảng ngày đi chợ →
+                    Xem chi tiết
                   </Link>
+                  <button
+                    type="button"
+                    data-testid="c23-sync-shopping-btn"
+                    disabled={Boolean(actionBusyKey) || plannedMealSlotsCount === 0}
+                    onClick={() => void handleQuickSyncShopping()}
+                    className="tkv-focusable min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] disabled:opacity-50 text-white text-xs font-extrabold inline-flex items-center gap-1.5 shadow-[var(--tkv-shadow-cta)] transition-colors shrink-0"
+                  >
+                    <span>
+                      {actionBusyKey === 'sync-shopping'
+                        ? 'Đang đồng bộ…'
+                        : 'Đồng bộ Giỏ đi chợ'}
+                    </span>
+                    <VNextIcon name="arrow-right" size={14} />
+                  </button>
                 </div>
               </div>
 
-              <button
-                type="button"
-                data-testid="c23-sync-shopping-btn"
-                disabled={Boolean(actionBusyKey)}
-                onClick={() => void handleQuickSyncShopping()}
-                className="tkv-focusable min-h-[38px] px-3.5 py-1.5 rounded-full bg-[var(--tkv-coral)] hover:opacity-95 disabled:opacity-50 text-white text-xs font-extrabold inline-flex items-center gap-1.5 shadow-2xs transition-opacity shrink-0"
-              >
-                <span>
-                  {actionBusyKey === 'sync-shopping'
-                    ? 'Đang chuyển…'
-                    : 'Chuyển vào Giỏ đi chợ'}
-                </span>
-                <VNextIcon name="arrow-right" size={14} />
-              </button>
+              <div className="flex items-center justify-between gap-2 flex-wrap pt-2.5 border-t border-[var(--tkv-border)]/70">
+                <div className="flex items-center gap-1.5" role="group" aria-label="Khoảng ngày đi chợ">
+                  <span className="text-[11px] font-bold text-[var(--tkv-ink-muted)] mr-1">
+                    Nhịp đi chợ:
+                  </span>
+                  {(
+                    [
+                      [1, 'Hôm nay'],
+                      [3, '3 ngày'],
+                      [undefined, 'Cả tuần'],
+                    ] as const
+                  ).map(([daysVal, label]) => {
+                    const active = syncDays === daysVal;
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() => setSyncDays(daysVal)}
+                        className={clsx(
+                          'tkv-focusable min-h-[28px] px-2.5 rounded-full text-[11px] font-bold border transition-colors',
+                          active
+                            ? 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border-[var(--tkv-primary)]'
+                            : 'bg-[var(--tkv-bg)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-mint)]',
+                        )}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+                <Link
+                  to="/shopping"
+                  className="text-[11px] font-bold text-[var(--tkv-primary)] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Mở giỏ đi chợ</span>
+                  <VNextIcon name="chevron-right" size={12} />
+                </Link>
+              </div>
             </div>
 
             {actionFeedback && (
@@ -895,12 +1072,24 @@ export const C23PlannerPilot: React.FC = () => {
                         </Link>
                       ) : (
                         /* Empty Manual / Unplanned Slot */
-                        <div className="py-2 flex items-center justify-between gap-2">
+                        <div className="py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                           <p className="text-xs text-[var(--tkv-ink-secondary)]">
                             {slot.isUnplanned
-                              ? 'Chưa có gợi ý tự động cho bữa này — bạn có thể tự chọn món.'
-                              : 'Bữa trống — chọn món chính, canh hoặc rau cho mâm cơm.'}
+                              ? 'Chưa có gợi ý tự động cho bữa này — bấm gợi ý nhanh hoặc tự chọn món.'
+                              : 'Bữa trống — gợi ý nhanh một mâm cơm hoặc tự thêm món yêu thích.'}
                           </p>
+                          {editable && (
+                            <button
+                              type="button"
+                              data-testid={`c23-suggest-slot-${slot.mealType}`}
+                              disabled={Boolean(actionBusyKey)}
+                              onClick={() => void handleRefreshMealSlot(slot)}
+                              className="tkv-focusable self-start sm:self-auto min-h-[34px] px-3 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5 shrink-0"
+                            >
+                              <VNextIcon name="sparkles" size={13} />
+                              <span>{refreshingThisSlot ? 'Đang gợi ý…' : 'Gợi ý tự động bữa này'}</span>
+                            </button>
+                          )}
                         </div>
                       )}
 

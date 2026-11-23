@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
+import { shoppingApi } from '../../services/shopping';
 import { queryKeys } from '../../lib/queryKeys';
 import { daysUntil } from '../../lib/format';
 import { presentExpiry } from '../../lib/inventory-truth';
@@ -96,8 +97,16 @@ export const C01HomePilot: React.FC = () => {
     queryKey: queryKeys.recipeDiscovery({ pageSize: 3 }),
     queryFn: () => api.getRecipeDiscovery({ pageSize: 3 }),
   });
+  const shoppingQuery = useQuery({
+    queryKey: [...queryKeys.shoppingList(), 'snapshot'],
+    queryFn: () => shoppingApi.getShoppingListSnapshot(),
+    enabled: !isGuest,
+    staleTime: 30_000,
+    retry: false,
+  });
 
   const activeItems = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
+  const remainingShoppingCount = (shoppingQuery.data?.items ?? []).filter((i) => !i.isChecked).length;
 
   useVNextSeo({
     title: 'Hôm nay ăn gì? — Takolio',
@@ -185,7 +194,7 @@ export const C01HomePilot: React.FC = () => {
               Thêm đồ
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>
-              Mua sắm
+              {remainingShoppingCount > 0 ? `Mua sắm (${remainingShoppingCount})` : 'Mua sắm'}
             </TkvChip>
           </div>
         </div>
@@ -299,7 +308,7 @@ export const C01HomePilot: React.FC = () => {
                       {home.requiresAccount && (
                         <Link
                           to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
-                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-ink)] hover:opacity-95 font-extrabold text-sm inline-flex items-center transition-colors"
+                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] hover:bg-[var(--tkv-bg)] text-[var(--tkv-ink)] font-extrabold text-sm inline-flex items-center transition-colors"
                         >
                           Đăng nhập lập tuần
                         </Link>
@@ -403,7 +412,7 @@ export const C01HomePilot: React.FC = () => {
                                 {recipe.servings} người
                               </span>
                               <span>·</span>
-                              <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
+                              <span className="font-semibold text-[var(--tkv-ink-muted)]">
                                 {recipe.cookTimeMinutes <= 20
                                   ? 'Nhanh gọn'
                                   : recipe.cookTimeMinutes <= 45
@@ -575,10 +584,14 @@ export const C01HomePilot: React.FC = () => {
                     <BrandFeatureIcon name="shopping" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                        Danh sách mua sắm thông minh
+                        {remainingShoppingCount > 0
+                          ? `Danh sách mua sắm (${remainingShoppingCount} mục)`
+                          : 'Danh sách mua sắm thông minh'}
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ
+                        {remainingShoppingCount > 0
+                          ? `Đang còn ${remainingShoppingCount} nguyên liệu cần mua theo thực đơn và ghi chú`
+                          : 'Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ'}
                       </p>
                     </div>
                   </div>

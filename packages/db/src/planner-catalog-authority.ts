@@ -1,4 +1,4 @@
-import { CANONICAL_INGREDIENTS } from '../../domain/src';
+import { CANONICAL_INGREDIENTS, findOperationalIngredientById } from '../../domain/src';
 import {
   createRecipeCatalog,
   type CatalogDiagnostic,
@@ -176,13 +176,19 @@ export function projectPlannerCatalogOnAuthority(input: {
   for (const recipe of authorityRecipes) {
     for (const line of recipe.ingredients) authorityIngredientIds.add(line.ingredientId);
   }
+  const allowedIngredientIds = new Set(
+    d1.ingredientIds.filter((ingredientId) => authorityIngredientIds.has(ingredientId)),
+  );
+  for (const ingredientId of authorityIngredientIds) {
+    if (findOperationalIngredientById(ingredientId) !== null) {
+      allowedIngredientIds.add(ingredientId);
+    }
+  }
 
   return {
     catalog: createRecipeCatalog({
       source: 'd1',
-      ingredientIds: d1.ingredientIds.filter((ingredientId) =>
-        authorityIngredientIds.has(ingredientId),
-      ),
+      ingredientIds: [...allowedIngredientIds],
       // Recipe content and steps come from the already-resolved authority snapshot. Raw D1 reads
       // supply planner-only metadata but cannot race the Recipe API's coherent content view.
       recipes: authorityRecipes.map((recipe) =>

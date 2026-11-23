@@ -1,3 +1,22 @@
+## Planner Auto-Suggestion Root Fix, Brand Board v2 Shopping Studio & 85-Screen Calm Kitchen Unification - 2026-11-24 JST
+
+Status: COMPLETE_AND_VERIFIED_LOCALLY ON `fix/menu-flow-3phase-overhaul` (base `origin/main` `9f11388c`); NOT pushed, NO remote D1 migration, NO deployment, ZERO PayOS/billing/checkout/webhook files touched.
+
+Key deliverables:
+- **Backend + Frontend Meal Plan Auto-Suggestion Fix**: `packages/db/src/planner-catalog-authority.ts` (`d1-v4` canonical ingredient acceptance fenced to `authorityIngredientIds`, hash updated in `docs/handoff/vnext/PROTECTED_FILE_HASHES.json`), `packages/recipes/src/composition/roles.ts`, `src/web/features/planner/presentation.ts`, `src/web/vnext/lib/planner-workbench.ts` (`buildRecoveryIntentForPlan`), `src/web/services/family-meal-planning.ts`, `src/web/features/planner/usePlanner.ts`, and `src/web/vnext/screens/C23PlannerPilot.tsx` (loading & `MANUAL_SELECTION_PENDING` guards, 1-tap week/slot auto-suggestion, unified Planner ↔ Shopping Bridge Bar).
+- **Brand Board v2 Shopping Studio (`C27/C28`)**: New lazy-loaded `src/web/vnext/screens/C27ShoppingStudio.tsx` wired from `PlannerAndShoppingPages.tsx` (live Meal-Plan Sync Strip with trip ranges, Smart Unresolved Demand 1-tap/batch confirm without fabricating unknown quantities, V4 aisle grouping, `Đi chợ nhanh`, in-app dish breakdown links, Post-Shopping Restock Strip).
+- **85-Screen Calm Kitchen Unification & Connectivity**: `C01HomePilot.tsx`, `C03InventoryPilot.tsx`, `C18RecipeDetailPilot.tsx`, `FridgeAndScanWrappers.tsx`, `RecipesAndCookPages.tsx`, `AccountAndSystemPages.tsx` (`U07/U08` untouched), `M01LandingPilot.tsx`, `PublicSitePages.tsx`, `OnboardingFlowPages.tsx`, `AuthFlowPages.tsx`, `Shells.tsx`, `Skeletons.tsx`.
+- **New Automated Regression Coverage**: `tests/integration/planner-d1-v4-generation.test.ts` (`1/1`) and `tests/unit/vnext-planner-shopping-unification.test.tsx` (`6/6`).
+
+Verified after final edits (`PATH="/opt/homebrew/opt/node@24/bin:$PATH" NODE_OPTIONS="--no-experimental-webstorage"`):
+- `pnpm typecheck`, `pnpm lint`, `pnpm check:migrations`, `pnpm recipe:standard-v4:check`, and `pnpm build` (Web + Admin + Worker): ALL PASS exit 0.
+- Vitest (`12/12` files, `90/90` tests PASS): `vnext-g02-foundation` (`10/10`, `380/380` hashes), `vnext-menu-flow-overhaul`, `vnext-planner-shopping-unification`, `family-planner-client`, `takolio-brand-board-v2`, `living-kitchen-upgrade`, `family-shopping-display-ui`, `family-preferences-favorites-ui`, `family-shopping-reconciliation`, `planner-d1-v4-generation`, `t19-planner-authority-persistence`, `culinary-standard-v4`.
+- Live full-stack Playwright E2E + visual screenshot inspection (`scripts/security-preview.mjs` on `http://127.0.0.1:3100`): PASS at 1440px desktop and 390×844 mobile (`pageErrors: []`, zero horizontal overflow/clipping).
+
+Next: Review branch `fix/menu-flow-3phase-overhaul` diff (note pre-existing untouched `public/sitemap.xml` in working tree) and commit/merge when ready.
+
+---
+
 ## Takolio Culinary Standard V4 — Split Migrations `0052..0057` & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).

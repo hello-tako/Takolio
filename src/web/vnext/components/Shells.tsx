@@ -445,7 +445,7 @@ export const ConsumerStudioShell: React.FC<{
               to={vnextHref('/recipes')}
               onPointerEnter={() => warmDestination('/recipes')}
               onFocus={() => warmDestination('/recipes')}
-              className="tkv-focusable tkv-tactile min-h-[44px] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-coral)] hover:text-[var(--tkv-coral-ink)]"
+              className="tkv-focusable tkv-tactile min-h-[44px] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]"
             >
               <VNextIcon name="recipes" size={18} />
               <span>Kho công thức món Việt</span>

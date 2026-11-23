@@ -300,6 +300,41 @@ export const C03InventoryPilot: React.FC = () => {
           </div>
         </div>
 
+        {/* Calm Cross-Flow Kitchen Action Strip (Fridge → Recipes / Planner / Shopping) */}
+        {items.length > 0 && (
+          <div
+            data-testid="c03-kitchen-flow-strip"
+            className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-3.5 py-2.5 flex items-center justify-between gap-2.5 flex-wrap"
+          >
+            <p className="text-xs font-bold text-[var(--tkv-ink-secondary)]">
+              Dùng nguyên liệu trong tủ để:
+            </p>
+            <div className="flex items-center gap-2 flex-wrap">
+              <Link
+                to="/recipes?noBuy=true"
+                className="tkv-focusable min-h-[34px] px-3 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors"
+              >
+                <VNextIcon name="recipes" size={13} />
+                <span>Tìm món nấu ngay</span>
+              </Link>
+              <Link
+                to="/planner/new"
+                className="tkv-focusable min-h-[34px] px-3 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] hover:border-[var(--tkv-primary)] text-xs font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors"
+              >
+                <VNextIcon name="calendar" size={13} />
+                <span>Lên thực đơn tuần</span>
+              </Link>
+              <Link
+                to="/shopping"
+                className="tkv-focusable min-h-[34px] px-3 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-xs font-bold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors"
+              >
+                <VNextIcon name="shopping" size={13} />
+                <span>Giỏ đi chợ</span>
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* S05 / Conflict or Mutation Notice */}
         {mutationBanner && (
           <TkvSurface
