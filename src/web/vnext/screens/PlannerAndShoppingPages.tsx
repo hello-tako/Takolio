@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/tokens.css';
 import '../styles/vnext-adapted.css';
-import { PlannerPage } from '../../pages/PlannerPage';
-import { ShoppingPage } from '../../pages/ShoppingPage';
 import { vnextHref } from '../feature';
 import { ConsumerStudioShell } from '../components/Shells';
 import { BrandFeatureIcon } from '../components/VNextMedia';
+import { ShoppingListSkeleton, WeeklyPlannerSkeleton } from '../components/Skeletons';
+
+const LazyPlannerPage = lazy(() =>
+  import('../../pages/PlannerPage').then((m) => ({ default: m.PlannerPage })),
+);
+const LazyShoppingPage = lazy(() =>
+  import('../../pages/ShoppingPage').then((m) => ({ default: m.ShoppingPage })),
+);
 
 /**
  * C24 — Lập thực đơn mới (`/planner/new`).
@@ -15,8 +21,8 @@ import { BrandFeatureIcon } from '../components/VNextMedia';
  */
 export const C24PlannerSetupVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C24" title="Lập thực đơn mới" backTo={vnextHref('/planner')}>
-    <div className="space-y-5">
-      <div className="tkv-leaf-wave-band rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4 sm:p-6 text-[var(--tkv-ink)] shadow-soft flex items-start gap-3.5 sm:gap-4">
+    <div className="flex flex-col gap-5">
+      <div className="tkv-leaf-wave-band rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4 sm:p-6 text-[var(--tkv-ink)] shadow-soft flex items-start gap-3.5 sm:gap-4 tkv-enter-fade-up">
         <BrandFeatureIcon name="planner" size={44} className="mt-0.5 shrink-0" />
         <div className="min-w-0 flex-1">
           <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
@@ -33,7 +39,9 @@ export const C24PlannerSetupVNext: React.FC = () => (
       </div>
 
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <PlannerPage />
+        <Suspense fallback={<WeeklyPlannerSkeleton label="Đang tải công cụ lập thực đơn…" />}>
+          <LazyPlannerPage />
+        </Suspense>
       </div>
     </div>
   </ConsumerStudioShell>
@@ -51,7 +59,9 @@ export const C25C26PlannerMealVNext: React.FC = () => {
       backTo={vnextHref(planId ? `/planner/${planId}` : '/planner')}
     >
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <PlannerPage />
+        <Suspense fallback={<WeeklyPlannerSkeleton label="Đang tải chi tiết bữa ăn…" />}>
+          <LazyPlannerPage />
+        </Suspense>
       </div>
     </ConsumerStudioShell>
   );
@@ -64,7 +74,9 @@ export const C25C26PlannerMealVNext: React.FC = () => {
 export const C27C28ShoppingVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C27" title="Danh sách đi chợ">
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <ShoppingPage />
+      <Suspense fallback={<ShoppingListSkeleton />}>
+        <LazyShoppingPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -82,7 +94,9 @@ export const C29ShoppingImportVNext: React.FC = () => {
       backTo={vnextHref(planId ? `/planner/${planId}` : '/planner')}
     >
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <PlannerPage />
+        <Suspense fallback={<ShoppingListSkeleton label="Đang tải danh sách chợ theo tuần…" />}>
+          <LazyPlannerPage />
+        </Suspense>
       </div>
     </ConsumerStudioShell>
   );

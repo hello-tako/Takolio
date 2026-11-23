@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
@@ -11,11 +11,23 @@ import { useVNextSeo } from '../lib/seo';
 import { ConsumerStudioShell } from '../components/Shells';
 import { TkvBadge, TkvButton, TkvSearchField, TkvSurface } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
-import { IngredientDetailPage } from '../../pages/IngredientDetailPage';
-import { ReconciliationPage } from '../../pages/ReconciliationPage';
-import { ScanPage } from '../../pages/ScanPage';
-import { ScanResultPage } from '../../pages/ScanResultPage';
-import { ReceiptReviewPage } from '../../pages/ReceiptReviewPage';
+import { FridgeInventorySkeleton, SettingsFormSkeleton } from '../components/Skeletons';
+
+const LazyIngredientDetailPage = lazy(() =>
+  import('../../pages/IngredientDetailPage').then((m) => ({ default: m.IngredientDetailPage })),
+);
+const LazyReconciliationPage = lazy(() =>
+  import('../../pages/ReconciliationPage').then((m) => ({ default: m.ReconciliationPage })),
+);
+const LazyScanPage = lazy(() =>
+  import('../../pages/ScanPage').then((m) => ({ default: m.ScanPage })),
+);
+const LazyScanResultPage = lazy(() =>
+  import('../../pages/ScanResultPage').then((m) => ({ default: m.ScanResultPage })),
+);
+const LazyReceiptReviewPage = lazy(() =>
+  import('../../pages/ReceiptReviewPage').then((m) => ({ default: m.ReceiptReviewPage })),
+);
 
 /**
  * C02 — Tìm nhanh (`/search` or `/?quick=1`).
@@ -256,7 +268,9 @@ export const C02QuickSearchPage: React.FC = () => {
 export const C06LotDetailVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C06" title="Chi tiết nguyên liệu" backTo={vnextHref('/fridge')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <IngredientDetailPage />
+      <Suspense fallback={<FridgeInventorySkeleton label="Đang tải chi tiết nguyên liệu…" />}>
+        <LazyIngredientDetailPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -264,9 +278,9 @@ export const C06LotDetailVNext: React.FC = () => (
 /** C08 — Đối soát tồn kho (wraps authoritative T13 ReconciliationPage; single `<h1>` inside KitchenDetailPage). */
 export const C08ReconciliationVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C08" title="Đối soát tồn kho" backTo={vnextHref('/fridge')}>
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
-        <div className="space-y-1">
+        <div className="flex flex-col gap-1">
           <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--tkv-ink,#152E2C)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
             <span>Đối soát dữ liệu máy chủ & quan sát thực tế</span>
@@ -277,7 +291,9 @@ export const C08ReconciliationVNext: React.FC = () => (
         </div>
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <ReconciliationPage />
+        <Suspense fallback={<FridgeInventorySkeleton label="Đang tải danh sách đối soát…" />}>
+          <LazyReconciliationPage />
+        </Suspense>
       </div>
     </div>
   </ConsumerStudioShell>
@@ -287,7 +303,9 @@ export const C08ReconciliationVNext: React.FC = () => (
 export const C09ScanStudioVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C09" title="Quét nguyên liệu" backTo={vnextHref('/fridge')} showContextualScan={false}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <ScanPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang mở máy quét AI…" />}>
+        <LazyScanPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -295,7 +313,7 @@ export const C09ScanStudioVNext: React.FC = () => (
 /** C11 / C12 / C13 — AI đang xử lý · Duyệt kết quả AI · Kết quả đã xác nhận. */
 export const C12ScanReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C12" title="Duyệt kết quả AI" backTo={vnextHref('/scan')} showContextualScan={false}>
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       <div className="rounded-2xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] p-4 text-xs sm:text-sm text-[var(--tkv-sage-ink,#134C39)] flex items-center gap-2.5">
         <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0" />
         <span>
@@ -304,7 +322,9 @@ export const C12ScanReviewVNext: React.FC = () => (
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <div className="tkv-review-host">
-          <ScanResultPage />
+          <Suspense fallback={<FridgeInventorySkeleton label="Đang tải bảng duyệt kết quả AI…" />}>
+            <LazyScanResultPage />
+          </Suspense>
         </div>
       </div>
     </div>
@@ -314,7 +334,7 @@ export const C12ScanReviewVNext: React.FC = () => (
 /** C14 — Duyệt hóa đơn OCR (preserves raw OCR evidence, confidence, and PII notice). */
 export const C14ReceiptReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C14" title="Duyệt hóa đơn" backTo={vnextHref('/scan')} showContextualScan={false}>
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       <div className="rounded-2xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] p-4 text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] flex items-center gap-2.5">
         <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#F6C453)] shrink-0" aria-hidden="true" />
         <VNextIcon name="info" size={18} className="text-[var(--tkv-honey,#F6C453)] shrink-0" />
@@ -324,7 +344,9 @@ export const C14ReceiptReviewVNext: React.FC = () => (
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <div className="tkv-review-host">
-          <ReceiptReviewPage plannerRoutePrefix="/planner" />
+          <Suspense fallback={<FridgeInventorySkeleton label="Đang tải bảng duyệt hóa đơn…" />}>
+            <LazyReceiptReviewPage plannerRoutePrefix="/planner" />
+          </Suspense>
         </div>
       </div>
     </div>

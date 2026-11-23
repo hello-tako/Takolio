@@ -10,7 +10,6 @@ import {
   TkvButton,
   TkvEmptyState,
   TkvErrorState,
-  TkvSkeleton,
   TkvSurface,
 } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
@@ -19,6 +18,7 @@ import {
   MascotIllustration,
   VerifiedDishImage,
 } from '../components/VNextMedia';
+import { WeeklyPlannerSkeleton } from '../components/Skeletons';
 import { useVNextSeo } from '../lib/seo';
 import { useAppLocale } from '../../i18n/LocaleContext';
 
@@ -264,11 +264,7 @@ export const C23PlannerPilot: React.FC = () => {
             </div>
           </div>
         ) : model.query.isPending ? (
-          <div className="space-y-4">
-            <TkvSkeleton className="h-36" label="Đang tải thực đơn tuần…" />
-            <TkvSkeleton className="h-24" label="Đang tải các bữa ăn…" />
-            <TkvSkeleton className="h-24" label="Đang tải các bữa ăn…" />
-          </div>
+          <WeeklyPlannerSkeleton />
         ) : model.query.isError ? (
           <TkvErrorState
             title="Chưa tải được thực đơn tuần"

@@ -1,12 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { QueryClientContext } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
+import { queryClient as defaultQueryClient } from '../../lib/query-client';
 import { useAppLocale, type AppChromeCopy } from '../../i18n/LocaleContext';
 import { OfflineBanner } from '../../components/common/OfflineBanner';
 import { useModalFocus } from '../../design-system/use-modal-focus';
 import { vnextHref } from '../feature';
+import { prefetchDestination, prefetchRouteChunk } from '../lib/prefetch';
 import {
   isSatelliteComRuntime,
   navigateToAppSurface,
@@ -15,6 +18,7 @@ import {
 import { BrandLockup } from './VNextMedia';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { TkvButton, TkvIconButton, TkvSearchField } from './Primitives';
+import { TkvToastViewport, TkvTopProgressBar } from './LivingMotion';
 
 export interface ConsumerRootItem {
   id: 'home' | 'fridge' | 'planner' | 'shopping' | 'me';
@@ -314,6 +318,7 @@ export const ConsumerStudioShell: React.FC<{
 }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const queryClient = useContext(QueryClientContext) ?? defaultQueryClient;
 
   const [quickFindOpen, setQuickFindOpen] = useState(false);
   const [quickQuery, setQuickQuery] = useState('');
@@ -322,6 +327,13 @@ export const ConsumerStudioShell: React.FC<{
   const closeQuickFind = useCallback(() => setQuickFindOpen(false), []);
   const { copy: appCopy } = useAppLocale();
   const roots = getConsumerRoots(appCopy.nav);
+
+  const warmDestination = useCallback(
+    (targetPath: string) => {
+      prefetchDestination(queryClient, targetPath);
+    },
+    [queryClient],
+  );
 
   useModalFocus(quickFindOpen, quickDialogRef, closeQuickFind, quickInputRef);
 
@@ -358,6 +370,7 @@ export const ConsumerStudioShell: React.FC<{
 
   return (
     <div className="tkv-root min-h-dvh flex flex-col" data-tkv-direction="a" data-tkv-screen={screenId}>
+      <TkvTopProgressBar />
       <a href="#tkv-consumer-main" className="tkv-skip-link">
         Đến nội dung chính
       </a>
@@ -395,15 +408,19 @@ export const ConsumerStudioShell: React.FC<{
                     <li key={item.id}>
                       <Link
                         to={item.to}
+                        onPointerEnter={() => warmDestination(item.to)}
+                        onFocus={() => warmDestination(item.to)}
                         aria-current={active ? 'page' : undefined}
                         className={clsx(
-                          'tkv-focusable min-h-[46px] px-3.5 py-2.5 rounded-2xl flex items-center gap-3 text-sm transition-colors',
+                          'tkv-focusable tkv-tactile min-h-[46px] px-3.5 py-2.5 rounded-2xl flex items-center gap-3 text-sm active:scale-[0.98]',
                           active
                             ? 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)] font-extrabold shadow-xs'
-                            : 'text-[var(--tkv-ink-secondary)] font-semibold hover:bg-[var(--tkv-bg)] hover:text-[var(--tkv-ink)]',
+                            : 'text-[var(--tkv-ink-secondary)] font-semibold hover:bg-[var(--tkv-bg)] hover:text-[var(--tkv-ink)] border border-transparent',
                         )}
                       >
-                        <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2 : 1.7} />
+                        <span className={clsx('inline-flex', active && 'tkv-pop')}>
+                          <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2.1 : 1.7} />
+                        </span>
                         <span>{item.label}</span>
                       </Link>
                     </li>
@@ -413,18 +430,22 @@ export const ConsumerStudioShell: React.FC<{
             </nav>
           </div>
 
-          <div className="space-y-2 pt-4 border-t border-[var(--tkv-border)]">
+          <div className="flex flex-col gap-2 pt-4 border-t border-[var(--tkv-border)]">
             <TkvButton
               variant="primary"
               fullWidth
               iconLeft="scan"
+              onPointerEnter={() => prefetchRouteChunk('/scan')}
+              onFocus={() => prefetchRouteChunk('/scan')}
               onClick={() => navigate(vnextHref('/scan'))}
             >
               Quét nguyên liệu
             </TkvButton>
             <Link
               to={vnextHref('/recipes')}
-              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-coral)] hover:text-[var(--tkv-coral-ink)] transition-colors"
+              onPointerEnter={() => warmDestination('/recipes')}
+              onFocus={() => warmDestination('/recipes')}
+              className="tkv-focusable tkv-tactile min-h-[44px] px-3.5 py-2 rounded-2xl flex items-center gap-2.5 text-sm font-semibold text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-coral)] hover:text-[var(--tkv-coral-ink)]"
             >
               <VNextIcon name="recipes" size={18} />
               <span>Kho công thức món Việt</span>
@@ -485,8 +506,9 @@ export const ConsumerStudioShell: React.FC<{
 
           <main
             id="tkv-consumer-main"
+            key={pathname}
             tabIndex={-1}
-            className="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 min-w-0"
+            className="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 min-w-0 tkv-page-enter"
           >
             {children}
           </main>
@@ -505,19 +527,22 @@ export const ConsumerStudioShell: React.FC<{
               <li key={item.id} className="min-w-0">
                 <Link
                   to={item.to}
+                  onTouchStart={() => warmDestination(item.to)}
+                  onPointerEnter={() => warmDestination(item.to)}
+                  onFocus={() => warmDestination(item.to)}
                   aria-current={active ? 'page' : undefined}
                   className={clsx(
-                    'tkv-focusable min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl px-0.5 py-1 transition-colors',
+                    'tkv-focusable tkv-tactile min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl px-0.5 py-1 active:scale-95',
                     active ? 'text-[var(--tkv-primary)]' : 'text-[var(--tkv-ink-muted)]',
                   )}
                 >
                   <span
                     className={clsx(
-                      'w-10 h-7 rounded-full flex items-center justify-center transition-colors shrink-0',
-                      active && 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)]',
+                      'w-10 h-7 rounded-full flex items-center justify-center transition-colors duration-200 shrink-0',
+                      active && 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)] tkv-pop shadow-xs',
                     )}
                   >
-                    <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2 : 1.65} />
+                    <VNextIcon name={item.icon} size={20} strokeWidth={active ? 2.1 : 1.65} />
                   </span>
                   <span className={clsx('max-w-full truncate text-[10.5px] sm:text-[11px] leading-snug pb-0.5', active ? 'font-extrabold' : 'font-semibold')}>
                     {item.label}
@@ -528,6 +553,7 @@ export const ConsumerStudioShell: React.FC<{
           })}
         </ul>
       </nav>
+      <TkvToastViewport />
 
       {/* C02 Quick Find Dialog */}
       {quickFindOpen && (

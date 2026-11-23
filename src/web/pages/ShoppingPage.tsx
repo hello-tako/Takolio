@@ -12,6 +12,8 @@ import { ApiError, createClientItemId } from '../services/http';
 import { queryKeys } from '../lib/queryKeys';
 import { parseShoppingForm, SHOPPING_UNITS, shoppingQuantity } from '../lib/shopping-form';
 import { ShoppingDemandReview } from '../features/ShoppingDemandReview';
+import { ShoppingListSkeleton } from '../vnext/components/Skeletons';
+import { showTkvToast } from '../vnext/components/LivingMotion';
 
 const AISLE_LABELS: Record<string, string> = {
   produce: 'Rau củ & trái cây',
@@ -178,8 +180,19 @@ export const ShoppingPage: React.FC = () => {
             disabled={busy}
             aria-label={`Đã mua: ${item.name}`}
             onChange={(event) => {
+              const nextChecked = event.target.checked;
               clearErrors();
-              toggle.mutate({ id: item.id, checked: event.target.checked });
+              toggle.mutate(
+                { id: item.id, checked: nextChecked },
+                {
+                  onSuccess: () => {
+                    showTkvToast({
+                      message: nextChecked ? `Đã mua “${item.name}”` : `Chuyển “${item.name}” về cần mua`,
+                      tone: nextChecked ? 'success' : 'info',
+                    });
+                  },
+                },
+              );
             }}
           />
           <span>
@@ -448,9 +461,7 @@ export const ShoppingPage: React.FC = () => {
             {query.isError && !query.data ? (
               <InlineError error={query.error} onRetry={() => void query.refetch()} />
             ) : query.isPending ? (
-              <p role="status" className="planning-paper">
-                Đang tải danh sách đi chợ…
-              </p>
+              <ShoppingListSkeleton />
             ) : (
               <>
                 {query.isError && (
