@@ -114,14 +114,32 @@
   font-family: var(--tkv-font-body);
 }
 
-/* CSS-safe mobile refinements for protected PlusPaywallPage (zero JSX/billing logic change) */
+/* CSS-safe refinements for embedded PlusPaywallPage & protected BillingAccountPanel (zero protected-file JSX change) */
 .tkv-adapted-surface .plus-hero > div:first-child {
   min-width: 0;
   flex: 1;
 }
 
+.tkv-adapted-surface .takolio-plus-embedded section[aria-labelledby='billing-account-heading'],
+.tkv-adapted-surface .takolio-plus-embedded section[aria-labelledby='billing-history-heading'] {
+  border-radius: 24px;
+  border-color: var(--tkv-border);
+  background-color: var(--tkv-surface);
+  box-shadow: var(--tkv-shadow-card);
+}
+
+.tkv-adapted-surface .takolio-plus-embedded section[aria-labelledby='billing-history-heading'] ol > li {
+  border-radius: 16px;
+  border-color: var(--tkv-border);
+  background-color: var(--tkv-bg);
+}
+
 .tkv-adapted-surface .plus-page button + button {
   margin-top: 12px;
+}
+
+.tkv-adapted-surface .takolio-plus-embedded [role='group'] button + button {
+  margin-top: 0;
 }
 
 @media (max-width: 390px) {

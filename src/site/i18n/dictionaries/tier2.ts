@@ -116,7 +116,7 @@ export const jaDictionary: SiteDictionary = buildTier2('ja', {
     annualLabel: '年額プラン',
     saveNote: '約15%お得',
     proCta: 'Takolio Proを見る',
-    checkoutIntlNote: '国際市場向けの参考換算価格です。正式決済は現在VND（PayOS/VietQR）に対応しています。',
+    checkoutIntlNote: 'クレジットカード・Apple Pay・Google Pay・Amazon Payで即時決済に対応（税込・Dodo Payments処理）。',
   },
   faq: {
     seoTitle: 'よくある質問（FAQ） · Takolio',
@@ -247,7 +247,7 @@ export const koDictionary: SiteDictionary = buildTier2('ko', {
     annualLabel: '연간',
     saveNote: '약 15% 절약',
     proCta: 'Takolio Pro 보기',
-    checkoutIntlNote: '해외 시장 참고 환산 금액입니다. 현재 공식 결제는 VND(PayOS/VietQR)로 지원됩니다.',
+    checkoutIntlNote: 'Visa/Mastercard·Apple Pay·Google Pay 글로벌 즉시 결제 지원(세금 포함, Dodo Payments 처리).',
   },
   faq: {
     seoTitle: '자주 묻는 질문(FAQ) · Takolio',
@@ -373,7 +373,7 @@ export const thDictionary: SiteDictionary = buildTier2('th', {
     annualLabel: 'รายปี',
     saveNote: 'ประหยัด ~15%',
     proCta: 'ดูแพ็กเกจ Takolio Pro',
-    checkoutIntlNote: 'ราคาอ้างอิงสำหรับต่างประเทศ การชำระเงินจริงรองรับสกุลเงิน VND (PayOS/VietQR)',
+    checkoutIntlNote: 'รองรับการชำระเงินระหว่างประเทศทันทีผ่านบัตรเครดิต, Apple Pay และ Google Pay (รวมภาษีผ่าน Dodo Payments)',
   },
   faq: {
     seoTitle: 'คำถามที่พบบ่อย (FAQ) · Takolio',
@@ -499,7 +499,7 @@ export const zhDictionary: SiteDictionary = buildTier2('zh', {
     annualLabel: '按年订阅',
     saveNote: '省约 15%',
     proCta: '查看 Takolio Pro',
-    checkoutIntlNote: '所示外币为参考换算价，当前官方结算支持 VND（PayOS/VietQR）。',
+    checkoutIntlNote: '支持国际信用卡、Apple Pay 与 Google Pay 即时结算（含税，由 Dodo Payments 安全处理）。',
   },
   faq: {
     seoTitle: '常见问题（FAQ） · Takolio',
@@ -625,7 +625,7 @@ export const itDictionary: SiteDictionary = buildTier2('it', {
     annualLabel: 'Annuale',
     saveNote: 'Risparmi ~15%',
     proCta: 'Scopri Takolio Pro',
-    checkoutIntlNote: 'Prezzi indicativi di riferimento internazionale; il pagamento diretto è attualmente attivo in VND (PayOS/VietQR).',
+    checkoutIntlNote: 'Pagamento internazionale immediato con Carta, Apple Pay, Google Pay e SEPA (IVA inclusa tramite Dodo Payments).',
   },
   faq: {
     seoTitle: 'Domande Frequenti (FAQ) · Takolio',

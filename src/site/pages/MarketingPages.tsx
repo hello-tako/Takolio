@@ -6,6 +6,7 @@ import {
   defaultCurrencyForLocale,
   formatGlobalMinorCurrency,
   GLOBAL_DISPLAY_CURRENCIES,
+  marketCodeForCurrency,
   type GlobalDisplayCurrency,
   type RegionalPriceReference,
 } from '../../shared/global-pricing';
@@ -220,6 +221,8 @@ export const FeatureDetailPage: React.FC<{ locale: SupportedLocale; featureKey: 
   );
 };
 
+const PRIMARY_PRICING_CURRENCIES: readonly GlobalDisplayCurrency[] = ['VND', 'JPY', 'EUR', 'USD', 'GBP'];
+
 export const PricingPage: React.FC<{ locale: SupportedLocale; ssrData?: SiteSsrPayload | null }> = ({
   locale,
   ssrData,
@@ -232,6 +235,7 @@ export const PricingPage: React.FC<{ locale: SupportedLocale; ssrData?: SiteSsrP
   const [selectedCurrency, setSelectedCurrency] = useState<GlobalDisplayCurrency>(() =>
     defaultCurrencyForLocale(locale),
   );
+  const [billingCycle, setBillingCycle] = useState<'annual' | 'monthly'>('annual');
 
   // Live refresh against public read-only server-truth pricing endpoint
   useEffect(() => {
@@ -255,80 +259,156 @@ export const PricingPage: React.FC<{ locale: SupportedLocale; ssrData?: SiteSsrP
   const currentTier =
     regionalCatalog.find((c) => c.currency === selectedCurrency) ?? regionalCatalog[0];
   const intlLocale = LOCALE_CATALOG[locale].bcp47;
-  const monthlyFormatted = formatGlobalMinorCurrency(
-    currentTier.monthlyMinor,
+  const activeMinor = billingCycle === 'annual' ? currentTier.annualMinor : currentTier.monthlyMinor;
+  const activeFormatted = formatGlobalMinorCurrency(
+    activeMinor,
     currentTier.currency,
     currentTier.minorDigits,
     intlLocale,
   );
-  const annualFormatted = formatGlobalMinorCurrency(
-    currentTier.annualMinor,
+  const monthlyEquivalentFormatted = formatGlobalMinorCurrency(
+    Math.round(currentTier.annualMinor / 12),
     currentTier.currency,
     currentTier.minorDigits,
     intlLocale,
   );
+  const marketCode = marketCodeForCurrency(currentTier.currency);
+  const proReturnPath = `/plus?plan=${billingCycle}&market=${encodeURIComponent(marketCode)}`;
+  const proHandoffHref = buildAppHandoffUrl(`/auth?mode=login&returnTo=${encodeURIComponent(proReturnPath)}`, locale);
+  const extraCurrencies = GLOBAL_DISPLAY_CURRENCIES.filter((c) => !PRIMARY_PRICING_CURRENCIES.includes(c));
 
   return (
     <SatelliteShell locale={locale} barePath="/pricing">
-      <section className="max-w-[1060px] mx-auto px-4 sm:px-6 py-10 sm:py-14 flex flex-col gap-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="flex flex-col gap-3 max-w-2xl">
-            <div>
-              <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] px-3 py-1 text-xs font-extrabold text-[var(--tkv-coral-ink)]">
-                {pr.eyebrow}
+      <section className="max-w-[1000px] mx-auto px-4 sm:px-6 py-10 sm:py-16 flex flex-col gap-9">
+        {/* Centered Calm Kitchen Editorial Header */}
+        <header className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3.5 py-1 text-xs font-extrabold text-[var(--tkv-primary)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
+            <span>{pr.eyebrow}</span>
+          </span>
+          <h1 className="tkv-heading text-3xl sm:text-[2.75rem] font-black text-[var(--tkv-ink)] leading-tight">
+            {pr.h1}
+          </h1>
+          <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)] leading-relaxed">
+            {pr.subtitle}
+          </p>
+        </header>
+
+        {/* Single Tactile Control Bar: Billing Cycle Toggle + Currency Pills */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 rounded-3xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-3 sm:px-5 shadow-[var(--tkv-shadow-card)]">
+          <div
+            role="group"
+            aria-label={pr.proTitle}
+            className="inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-subtle)] p-1 border border-[var(--tkv-border)] w-full md:w-auto"
+          >
+            <button
+              type="button"
+              aria-pressed={billingCycle === 'annual'}
+              onClick={() => setBillingCycle('annual')}
+              className={[
+                'tkv-focusable min-h-[42px] flex-1 md:flex-initial inline-flex items-center justify-center gap-2 rounded-full px-4 text-xs sm:text-sm font-extrabold transition-colors',
+                billingCycle === 'annual'
+                  ? 'bg-[var(--tkv-primary)] text-white shadow-xs'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              ].join(' ')}
+            >
+              <span>{pr.annualLabel}</span>
+              <span
+                className={[
+                  'rounded-full px-2 py-0.5 text-[10px] font-black',
+                  billingCycle === 'annual'
+                    ? 'bg-[var(--tkv-saffron)] text-[var(--tkv-ink)]'
+                    : 'bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)]',
+                ].join(' ')}
+              >
+                {pr.saveNote}
               </span>
-            </div>
-            <h1 className="tkv-heading text-3xl sm:text-[2.6rem] font-black text-[var(--tkv-ink)]">{pr.h1}</h1>
-            <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)]">{pr.subtitle}</p>
+            </button>
+            <button
+              type="button"
+              aria-pressed={billingCycle === 'monthly'}
+              onClick={() => setBillingCycle('monthly')}
+              className={[
+                'tkv-focusable min-h-[42px] flex-1 md:flex-initial inline-flex items-center justify-center rounded-full px-4 text-xs sm:text-sm font-extrabold transition-colors',
+                billingCycle === 'monthly'
+                  ? 'bg-[var(--tkv-primary)] text-white shadow-xs'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              ].join(' ')}
+            >
+              {pr.monthlyLabel}
+            </button>
           </div>
 
-          <label className="flex flex-col gap-1 text-xs font-bold text-[var(--tkv-ink-muted)] shrink-0">
-            <span>{pr.currencyLabel}</span>
+          <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label={pr.currencyLabel}>
+            {PRIMARY_PRICING_CURRENCIES.map((code) => {
+              const active = selectedCurrency === code;
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setSelectedCurrency(code)}
+                  className={[
+                    'tkv-focusable min-h-[38px] rounded-full px-3 text-xs font-extrabold transition-colors',
+                    active
+                      ? 'bg-[var(--tkv-ink)] text-white'
+                      : 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-ink-secondary)] hover:border-[var(--tkv-border-strong)] hover:text-[var(--tkv-ink)]',
+                  ].join(' ')}
+                >
+                  {code}
+                </button>
+              );
+            })}
             <select
-              value={selectedCurrency}
-              onChange={(e) => setSelectedCurrency(e.target.value as GlobalDisplayCurrency)}
-              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl bg-white border border-[var(--tkv-border-strong)] text-sm font-extrabold text-[var(--tkv-ink)]"
+              aria-label={pr.currencyLabel}
+              value={extraCurrencies.includes(selectedCurrency) ? selectedCurrency : ''}
+              onChange={(e) => {
+                if (e.target.value) setSelectedCurrency(e.target.value as GlobalDisplayCurrency);
+              }}
+              className="tkv-focusable min-h-[38px] rounded-full border border-[var(--tkv-border)] bg-[var(--tkv-bg)] px-3 text-xs font-bold text-[var(--tkv-ink-secondary)]"
             >
-              {GLOBAL_DISPLAY_CURRENCIES.map((code) => (
+              <option value="">+ More</option>
+              {extraCurrencies.map((code) => (
                 <option key={code} value={code}>
                   {code}
                 </option>
               ))}
             </select>
-          </label>
+          </div>
         </div>
 
-        <div className="rounded-2xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] p-4 sm:p-5">
-          <p className="text-xs uppercase tracking-wider font-extrabold text-[var(--tkv-primary)] mb-1">
-            {pr.tldrLabel}
-          </p>
-          <p className="text-sm text-[var(--tkv-ink)] leading-relaxed font-medium">{pr.tldr}</p>
-        </div>
-
+        {/* 2-Column Balanced Ceramic Comparison */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {/* Free Tier */}
-          <div className="rounded-3xl bg-white border border-[var(--tkv-border)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-[var(--tkv-shadow-card)]">
+          <div className="rounded-[28px] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-6 sm:p-8 flex flex-col justify-between gap-7 shadow-[var(--tkv-shadow-card)]">
             <div className="flex flex-col gap-4">
               <div>
-                <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] border border-[var(--tkv-border-mint)]">
+                <span className="inline-flex px-3 py-1 rounded-full text-xs font-extrabold bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)] border border-[var(--tkv-border)]">
                   {pr.freeBadge}
                 </span>
               </div>
               <div>
-                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-black text-[var(--tkv-ink)]">
                   {pr.freeTitle}
                 </h2>
-                <p className="tabular-nums text-xl font-black text-[var(--tkv-ink)] mt-1">
-                  {pr.freePriceLabel}{' '}
+                <div className="mt-2 flex items-baseline gap-1.5">
+                  <span className="tkv-heading tabular-nums text-3xl sm:text-4xl font-black text-[var(--tkv-ink)]">
+                    {pr.freePriceLabel}
+                  </span>
                   <span className="text-xs font-semibold text-[var(--tkv-ink-muted)]">{pr.freePer}</span>
-                </p>
+                </div>
               </div>
               <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">{pr.freeDesc}</p>
-              <ul className="flex flex-col gap-2.5 text-sm text-[var(--tkv-ink)]">
+              <ul className="flex flex-col gap-3 pt-1 text-sm text-[var(--tkv-ink)]">
                 {pr.freePerks.map((perk) => (
                   <li key={perk} className="flex items-start gap-2.5">
-                    <span className="text-[var(--tkv-primary)] font-black shrink-0" aria-hidden="true">✓</span>
-                    <span>{perk}</span>
+                    <span
+                      className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--tkv-border)] bg-[var(--tkv-surface-subtle)] text-[11px] font-black text-[var(--tkv-ink-secondary)]"
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    <span className="leading-relaxed">{perk}</span>
                   </li>
                 ))}
               </ul>
@@ -337,73 +417,93 @@ export const PricingPage: React.FC<{ locale: SupportedLocale; ssrData?: SiteSsrP
             <a
               href={buildAppHandoffUrl('/auth?mode=guest', locale)}
               rel="nofollow"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-full bg-white border border-[var(--tkv-border-strong)] hover:bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink)] font-extrabold text-base inline-flex items-center justify-center transition-colors"
+              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] hover:bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink)] font-extrabold text-base inline-flex items-center justify-center transition-colors"
             >
               {pr.freeCta}
             </a>
           </div>
 
-          {/* Takolio Pro Tier */}
-          <div className="rounded-3xl bg-gradient-to-br from-white via-[var(--tkv-bg)] to-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-[var(--tkv-shadow-elevated)]">
+          {/* Takolio Pro Tier — Highlighted Leaf Green Ceramic Card */}
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[var(--tkv-surface)] via-[var(--tkv-bg)] to-[var(--tkv-surface-mint)] border-2 border-[var(--tkv-primary)] p-6 sm:p-8 flex flex-col justify-between gap-7 shadow-[var(--tkv-shadow-elevated)]">
             <div className="flex flex-col gap-4">
-              <div>
-                <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-white text-[var(--tkv-coral-ink)] border border-[var(--tkv-border-coral)]">
-                  {pr.proBadge}
-                </span>
-              </div>
-              <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
-                {pr.proTitle}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="rounded-2xl bg-white border border-[var(--tkv-border-coral)] px-4 py-3">
-                  <p className="text-[11px] uppercase tracking-wider font-extrabold text-[var(--tkv-ink-muted)]">
-                    {pr.monthlyLabel}
-                  </p>
-                  <p className="tabular-nums text-lg font-black text-[var(--tkv-ink)] mt-0.5">
-                    {monthlyFormatted}
-                  </p>
-                </div>
-                <div className="rounded-2xl bg-white border-2 border-[var(--tkv-primary)] px-4 py-3">
-                  <div className="flex items-center justify-between gap-1">
-                    <p className="text-[11px] uppercase tracking-wider font-extrabold text-[var(--tkv-primary)]">
-                      {pr.annualLabel}
-                    </p>
-                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)]">
-                      {pr.saveNote}
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex flex-col gap-2">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] border border-[var(--tkv-border-saffron)]">
+                      {pr.proBadge}
                     </span>
                   </div>
-                  <p className="tabular-nums text-lg font-black text-[var(--tkv-ink)] mt-0.5">
-                    {annualFormatted}
-                  </p>
+                  <h2 className="tkv-heading text-2xl sm:text-3xl font-black text-[var(--tkv-ink)]">
+                    {pr.proTitle}
+                  </h2>
+                </div>
+                <div className="h-16 w-16 shrink-0 rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-1.5 shadow-xs">
+                  <img
+                    src="/takolio/vnext/mascot/pose-06-achievement-256w.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-full w-full object-contain"
+                  />
                 </div>
               </div>
-              <p className="text-xs font-semibold text-[var(--tkv-ink-muted)]">
-                {currentTier.checkoutMode === 'live_vietqr' ? pr.checkoutVndNote : pr.checkoutIntlNote}
-              </p>
+
+              <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="tkv-heading tabular-nums text-3xl sm:text-4xl font-black text-[var(--tkv-ink)]">
+                      {activeFormatted}
+                    </span>
+                    <span className="text-xs font-bold text-[var(--tkv-ink-muted)]">
+                      / {billingCycle === 'annual' ? pr.annualLabel : pr.monthlyLabel}
+                    </span>
+                  </div>
+                  {billingCycle === 'annual' && (
+                    <span className="rounded-full bg-[var(--tkv-surface-mint)] px-2.5 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)] tabular-nums">
+                      ~{monthlyEquivalentFormatted} / {pr.monthlyLabel}
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-xs font-medium text-[var(--tkv-ink-secondary)] leading-relaxed">
+                  {currentTier.checkoutMode === 'live_vietqr' ? pr.checkoutVndNote : pr.checkoutIntlNote}
+                </p>
+              </div>
+
               <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">{pr.proDesc}</p>
-              <ul className="flex flex-col gap-2.5 text-sm text-[var(--tkv-ink)]">
+              <ul className="flex flex-col gap-3 text-sm text-[var(--tkv-ink)]">
                 {pr.proPerks.map((perk) => (
                   <li key={perk} className="flex items-start gap-2.5">
-                    <span className="text-[var(--tkv-primary)] font-black shrink-0" aria-hidden="true">✓</span>
-                    <span>{perk}</span>
+                    <span
+                      className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface-mint)] text-[11px] font-black text-[var(--tkv-primary)]"
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    <span className="leading-relaxed">{perk}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <a
-              href={buildAppHandoffUrl('/auth?mode=login&returnTo=%2Fplus', locale)}
+              href={proHandoffHref}
               rel="nofollow"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-extrabold text-base inline-flex items-center justify-center transition-colors"
+              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white font-extrabold text-base shadow-[var(--tkv-shadow-cta)] inline-flex items-center justify-center transition-colors"
             >
               {pr.proCta}
             </a>
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white border border-[var(--tkv-border)] p-5 text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
-          <strong className="text-[var(--tkv-ink)]">{pr.transparencyTitle}: </strong>
-          {pr.transparencyBody}
+        {/* Calm Transparency & GEO Summary Footer */}
+        <div className="rounded-[24px] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-5 sm:p-6 space-y-2 text-xs sm:text-sm text-[var(--tkv-ink-secondary)]">
+          <p className="font-semibold text-[var(--tkv-ink)] leading-relaxed">
+            <span className="text-[var(--tkv-primary)] font-extrabold mr-1.5">{pr.tldrLabel}:</span>
+            {pr.tldr}
+          </p>
+          <p className="leading-relaxed">
+            <strong className="text-[var(--tkv-ink)]">{pr.transparencyTitle}: </strong>
+            {pr.transparencyBody}
+          </p>
         </div>
       </section>
     </SatelliteShell>

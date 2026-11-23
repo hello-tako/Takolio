@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import '../styles/tokens.css';
 import '../styles/vnext-adapted.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
-import { getActiveUiLocale } from '../../i18n';
+import { useUiTranslation } from '../../i18n';
 
 const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
@@ -533,59 +533,111 @@ export const U06HouseholdHonestPage: React.FC = () => {
 
 /**
  * U07 / U08 — Takolio Plus & Trạng thái thanh toán (`/plus`).
- * Protected Red Zone: renders the untouched `PlusPaywallPage` (Vietnam PayOS / VietQR)
- * alongside the Dodo Payments Merchant-of-Record Global Billing Panel for JP/EU/International users,
- * without altering a single byte of PayOS/VietQR billing logic!
+ * Unified Calm Kitchen Commerce experience:
+ * - Reads `?plan=monthly|annual` & `?market=VN|JP|DE|FR|GB|US` deep-linked from `/pricing`.
+ * - Single Brand Board v2 ceramic Pro hero + quiet payment-rail pill switcher.
+ * - Protected Red Zone (`BillingAccountPanel`, `VietQRModal`, `billing.ts`) stays 100% untouched.
  */
 export const U07U08PlusReadOnlyWrapper: React.FC = () => {
-  const [billingChannel, setBillingChannel] = useState<'payos_vn' | 'dodo_mor'>(() =>
-    getActiveUiLocale() === 'vi' ? 'payos_vn' : 'dodo_mor',
-  );
+  const [searchParams] = useSearchParams();
+  const { isPlus, isGuest } = useAuthStore();
+  const { locale, catalog } = useUiTranslation();
+
+  const rawPlan = searchParams.get('plan');
+  const initialPlan: 'monthly' | 'annual' = rawPlan === 'monthly' ? 'monthly' : 'annual';
+  const rawMarket = searchParams.get('market')?.trim().toUpperCase() || '';
+
+  const [billingChannel, setBillingChannel] = useState<'payos_vn' | 'dodo_mor'>(() => {
+    if (rawMarket === 'VN') return 'payos_vn';
+    if (rawMarket && rawMarket !== 'VN') return 'dodo_mor';
+    return locale === 'vi' ? 'payos_vn' : 'dodo_mor';
+  });
 
   return (
     <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
-      <div className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-surface-alt,#FBF8F3)] p-1.5" role="tablist" aria-label="Payment channel">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={billingChannel === 'payos_vn'}
-          onClick={() => setBillingChannel('payos_vn')}
-          className={clsx(
-            'min-h-[40px] flex-1 rounded-xl px-3 text-xs sm:text-sm font-semibold transition-colors',
-            billingChannel === 'payos_vn'
-              ? 'bg-[var(--tkv-primary,#196149)] text-white shadow-sm'
-              : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
-          )}
+      <div className="mx-auto max-w-[680px] space-y-5 pb-6">
+        {/* Unified Warm Leaf-Green Brand Board v2 Hero Banner */}
+        <section
+          aria-label="Takolio Pro"
+          className="relative overflow-hidden rounded-[28px] border border-[var(--tkv-border-hero)] bg-gradient-to-br from-[var(--tkv-primary)] to-[var(--tkv-primary-deep)] p-5 sm:p-6 text-white shadow-[var(--tkv-shadow-elevated)]"
         >
-          Việt Nam (VietQR · PayOS)
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={billingChannel === 'dodo_mor'}
-          onClick={() => setBillingChannel('dodo_mor')}
-          className={clsx(
-            'min-h-[40px] flex-1 rounded-xl px-3 text-xs sm:text-sm font-semibold transition-colors',
-            billingChannel === 'dodo_mor'
-              ? 'bg-[var(--tkv-primary,#196149)] text-white shadow-sm'
-              : 'text-[var(--tkv-ink-soft,#3C5954)] hover:text-[var(--tkv-ink,#152E2C)]',
-          )}
-        >
-          Global (Card · Apple/Google Pay · Dodo)
-        </button>
-      </div>
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0 flex-1 space-y-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[var(--tkv-saffron)]">
+                <VNextIcon name="crown" size={13} />
+                <span>Takolio Pro</span>
+              </span>
+              <h1 className="tkv-heading text-2xl sm:text-[1.75rem] font-black leading-tight text-white">
+                {isPlus ? catalog.billing.heroActiveTitle : catalog.billing.heroUpgradeTitle}
+              </h1>
+              <p className="text-xs sm:text-sm leading-relaxed text-white/90">
+                {isPlus ? catalog.billing.heroActiveSubtitle : catalog.billing.heroUpgradeSubtitle}
+              </p>
+            </div>
+            <div className="hidden xs:flex sm:flex h-24 w-24 shrink-0 items-center justify-center rounded-3xl bg-white/12 p-2 ring-1 ring-white/15">
+              <img
+                src="/takolio/vnext/mascot/pose-06-achievement-256w.webp"
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-contain"
+              />
+            </div>
+          </div>
+        </section>
 
-      {billingChannel === 'dodo_mor' ? (
-        <Suspense fallback={<SettingsFormSkeleton label="Loading Dodo Payments..." />}>
-          <LazyGlobalDodoBillingPanel />
-        </Suspense>
-      ) : (
-        <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-          <Suspense fallback={<SettingsFormSkeleton label="Đang tải gói Takolio Pro…" />}>
-            <LazyPlusPaywallPage />
+        {/* Quiet, Human-Friendly Payment Method Switcher */}
+        {!isGuest && (
+          <div
+            className="flex flex-wrap items-center gap-1.5 rounded-full border border-[var(--tkv-border)] bg-[var(--tkv-surface-subtle)] p-1"
+            role="tablist"
+            aria-label="Payment method"
+          >
+            <button
+              type="button"
+              role="tab"
+              aria-selected={billingChannel === 'payos_vn'}
+              onClick={() => setBillingChannel('payos_vn')}
+              className={clsx(
+                'tkv-focusable min-h-[42px] flex-1 rounded-full px-4 text-xs sm:text-sm font-bold transition-colors',
+                billingChannel === 'payos_vn'
+                  ? 'bg-[var(--tkv-surface)] text-[var(--tkv-primary)] shadow-[var(--tkv-shadow-card)]'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              )}
+            >
+              {catalog.billing.channelVietnam}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={billingChannel === 'dodo_mor'}
+              onClick={() => setBillingChannel('dodo_mor')}
+              className={clsx(
+                'tkv-focusable min-h-[42px] flex-1 rounded-full px-4 text-xs sm:text-sm font-bold transition-colors',
+                billingChannel === 'dodo_mor'
+                  ? 'bg-[var(--tkv-surface)] text-[var(--tkv-primary)] shadow-[var(--tkv-shadow-card)]'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              )}
+            >
+              {catalog.billing.channelGlobal}
+            </button>
+          </div>
+        )}
+
+        {!isGuest && billingChannel === 'dodo_mor' ? (
+          <Suspense fallback={<SettingsFormSkeleton label={catalog.common.loading} />}>
+            <LazyGlobalDodoBillingPanel
+              initialPlan={initialPlan}
+              initialCountryCode={rawMarket && rawMarket !== 'VN' ? rawMarket : undefined}
+            />
           </Suspense>
-        </div>
-      )}
+        ) : (
+          <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+            <Suspense fallback={<SettingsFormSkeleton label={catalog.common.loading} />}>
+              <LazyPlusPaywallPage embedded initialPlan={initialPlan} />
+            </Suspense>
+          </div>
+        )}
+      </div>
     </ConsumerStudioShell>
   );
 };

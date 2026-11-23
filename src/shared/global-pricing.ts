@@ -30,15 +30,16 @@ export interface RegionalPriceReference {
   minorDigits: 0 | 2;
   monthlyMinor: number;
   annualMinor: number;
-  checkoutMode: 'live_vietqr' | 'display_reference';
-  paymentProvider: 'payos_vietqr' | 'international_pending';
+  checkoutMode: 'live_vietqr' | 'live_dodo_mor';
+  paymentProvider: 'payos_vietqr' | 'dodo_mor';
   localeDefault: string;
 }
 
 /**
- * Transparent global currency display references for Takolio Pro.
- * - `VND` is authoritative live checkout pricing via PayOS / VietQR (read from `effectivePlusPrices`).
- * - International currencies are indicative reference tiers until Stripe/Paddle merchant keys are activated.
+ * Authoritative regional display prices for Takolio Pro:
+ * - `VND`: live VietQR / PayOS checkout pricing (`effectivePlusPrices`).
+ * - International currencies (`USD`, `JPY`, `EUR`, `GBP`, etc.): live Dodo Payments
+ *   Merchant-of-Record checkout with Adaptive Currency & tax-inclusive pricing.
  */
 export function buildRegionalPriceReferences(
   vndPrices: Readonly<Record<PlusPlan, number>>,
@@ -56,76 +57,91 @@ export function buildRegionalPriceReferences(
     {
       currency: 'USD',
       minorDigits: 2,
-      monthlyMinor: 299,
-      annualMinor: 2499,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 499,
+      annualMinor: 4990,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'en-US',
     },
     {
       currency: 'JPY',
       minorDigits: 0,
-      monthlyMinor: 450,
-      annualMinor: 3800,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 480,
+      annualMinor: 4800,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'ja-JP',
     },
     {
       currency: 'EUR',
       minorDigits: 2,
-      monthlyMinor: 279,
-      annualMinor: 2299,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
-      localeDefault: 'it-IT',
+      monthlyMinor: 499,
+      annualMinor: 4990,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
+      localeDefault: 'de-DE',
     },
     {
       currency: 'KRW',
       minorDigits: 0,
-      monthlyMinor: 3900,
-      annualMinor: 33000,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 6900,
+      annualMinor: 69000,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'ko-KR',
     },
     {
       currency: 'THB',
       minorDigits: 0,
-      monthlyMinor: 99,
-      annualMinor: 890,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 179,
+      annualMinor: 1790,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'th-TH',
     },
     {
       currency: 'GBP',
       minorDigits: 2,
-      monthlyMinor: 249,
-      annualMinor: 1999,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 449,
+      annualMinor: 4490,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'en-GB',
     },
     {
       currency: 'SGD',
       minorDigits: 2,
-      monthlyMinor: 390,
-      annualMinor: 3290,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 690,
+      annualMinor: 6900,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'en-SG',
     },
     {
       currency: 'AUD',
       minorDigits: 2,
-      monthlyMinor: 449,
-      annualMinor: 3799,
-      checkoutMode: 'display_reference',
-      paymentProvider: 'international_pending',
+      monthlyMinor: 790,
+      annualMinor: 7900,
+      checkoutMode: 'live_dodo_mor',
+      paymentProvider: 'dodo_mor',
       localeDefault: 'en-AU',
     },
   ];
+}
+
+export function marketCodeForCurrency(currency: GlobalDisplayCurrency): string {
+  switch (currency) {
+    case 'VND':
+      return 'VN';
+    case 'JPY':
+      return 'JP';
+    case 'EUR':
+      return 'DE';
+    case 'GBP':
+      return 'GB';
+    default:
+      return 'US';
+  }
 }
 
 export function formatGlobalMinorCurrency(
