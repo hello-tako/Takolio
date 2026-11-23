@@ -17,7 +17,15 @@ export const GLOBAL_FOUNDATION_TIP = '0048_global_locale_timezone_and_search_fou
 export const GLOBAL_CULINARY_TIP = '0049_global_culinary_allergens_units_barcode_and_ocr.sql';
 export const GLOBAL_BILLING_OAUTH_TIP = '0050_global_billing_subscriptions_and_oauth_identities.sql';
 export const GLOBAL_PRIVACY_SOVEREIGN_TIP = '0051_privacy_erasure_portability_and_consent_ledger.sql';
-export const CULINARY_STANDARD_V4_TIP = '0052_culinary_standard_v4_catalog_500.sql';
+export const CULINARY_STANDARD_V4_CHAIN = Object.freeze([
+  '0052_culinary_standard_v4_catalog_500.sql',
+  '0053_culinary_standard_v4_catalog_part2.sql',
+  '0054_culinary_standard_v4_catalog_part3.sql',
+  '0055_culinary_standard_v4_catalog_part4.sql',
+  '0056_culinary_standard_v4_catalog_part5.sql',
+  '0057_culinary_standard_v4_catalog_part6.sql',
+]);
+export const CULINARY_STANDARD_V4_TIP = CULINARY_STANDARD_V4_CHAIN.at(-1);
 function migration(tip = TIP) {
   if (tip === TIP) return { preTip: PRE_TIP, chain: CHAIN,
     tables: ['inventory_lots', 'inventory_commands', 'inventory_events', 'inventory_adoption_receipts', 'week_swap_receipts'],
@@ -40,10 +48,10 @@ function migration(tip = TIP) {
   if (tip === GLOBAL_PRIVACY_SOVEREIGN_TIP) return { preTip: GLOBAL_BILLING_OAUTH_TIP, chain: [GLOBAL_PRIVACY_SOVEREIGN_TIP],
     tables: ['privacy_requests', 'consent_records', 'financial_tax_archive', 'users'],
     status: 'STAGING_0051_GLOBAL_PRIVACY_CERTIFIED' };
-  if (tip === CULINARY_STANDARD_V4_TIP) return { preTip: GLOBAL_PRIVACY_SOVEREIGN_TIP, chain: [CULINARY_STANDARD_V4_TIP],
+  if (tip === CULINARY_STANDARD_V4_TIP) return { preTip: GLOBAL_PRIVACY_SOVEREIGN_TIP, chain: [...CULINARY_STANDARD_V4_CHAIN],
     tables: ['culinary_standard_v4_ingredients', 'recipe_standard_v4_catalog', 'recipe_standard_v4_ingredients', 'recipe_standard_v4_steps'],
-    status: 'STAGING_0052_CULINARY_STANDARD_V4_CERTIFIED' };
-  throw new Error('Only reviewed staging migration 0045, 0046, 0047, 0048, 0049, 0050, 0051 or 0052 is authorized');
+    status: 'STAGING_0057_CULINARY_STANDARD_V4_CERTIFIED' };
+  throw new Error('Only reviewed staging migration 0045, 0046, 0047, 0048, 0049, 0050, 0051 or 0057 is authorized');
 }
 export const schemaQuery = (tip = TIP) => `SELECT type, name, sql FROM sqlite_master WHERE tbl_name IN (${migration(tip).tables.map(name => `'${name}'`).join(', ')}) ORDER BY name`;
 

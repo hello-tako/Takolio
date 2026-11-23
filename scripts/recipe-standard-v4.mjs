@@ -10,7 +10,8 @@ const SHARD_ROOT = path.join(V4_ROOT, 'shards');
 const RECIPES_DIR = path.join(V4_ROOT, 'recipes');
 const COMPILED_PATH = path.join(V4_ROOT, 'compiled-runtime-500.json');
 const MANIFEST_PATH = path.join(V4_ROOT, 'manifest.json');
-const MIGRATION_SQL_PATH = path.join(ROOT, 'migrations', '0052_culinary_standard_v4_catalog_500.sql');
+const MIGRATIONS_DIR = path.join(ROOT, 'migrations');
+const MAX_MIGRATION_FILE_BYTES = 900_000;
 const CURRENT_RELEASE = path.join(ROOT, 'packages', 'recipes', 'src', 'import', 'catalog-release.current.json');
 
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
@@ -363,7 +364,23 @@ try {
       null,
       2,
     )}\n`;
-    const sqlText = v4.renderStandardV4PromotionSql(recipes, orderedIds);
+    const renderedFiles = v4.renderStandardV4MigrationFiles(recipes, orderedIds);
+    const migrationFiles = renderedFiles.map(({ fileName, sql }) => {
+      const bytes = Buffer.byteLength(sql, 'utf8');
+      if (bytes >= MAX_MIGRATION_FILE_BYTES) {
+        throw new Error(`${fileName} exceeds ${MAX_MIGRATION_FILE_BYTES} bytes (${bytes} bytes)`);
+      }
+      return {
+        path: `migrations/${fileName}`,
+        fileName,
+        bytes,
+        sha256: sha256(sql),
+        sql,
+      };
+    });
+    const combinedMigrationDigest = sha256(
+      migrationFiles.map((entry) => `${entry.fileName}:${entry.sha256}`).join('\n'),
+    );
 
     const avgIngredients = Math.round((recipes.reduce((s, r) => s + r.ingredients.length, 0) / recipes.length) * 10) / 10;
     const avgSteps = Math.round((recipes.reduce((s, r) => s + r.steps.length, 0) / recipes.length) * 10) / 10;
@@ -378,8 +395,13 @@ try {
         orderedRecipeIds: orderedIds,
         runtimeFingerprint,
         compiledRuntimeSha256: sha256(compiledPayload),
-        migrationPath: 'migrations/0052_culinary_standard_v4_catalog_500.sql',
-        migrationSha256: sha256(sqlText),
+        migrationPath: migrationFiles.at(-1).path,
+        migrationSha256: combinedMigrationDigest,
+        migrationFiles: migrationFiles.map(({ path: p, bytes, sha256: s }) => ({
+          path: p,
+          bytes,
+          sha256: s,
+        })),
         summary: {
           avgIngredientsPerRecipe: avgIngredients,
           avgStepsPerRecipe: avgSteps,
@@ -396,13 +418,15 @@ try {
 
     if (command === 'build-all') {
       writeFile(COMPILED_PATH, compiledPayload);
-      writeFile(MIGRATION_SQL_PATH, sqlText);
+      for (const entry of migrationFiles) {
+        writeFile(path.join(MIGRATIONS_DIR, entry.fileName), entry.sql);
+      }
       writeFile(MANIFEST_PATH, manifestPayload);
       console.log(
-        `recipe-standard-v4 build-all=ok recipes=500 fingerprint=${runtimeFingerprint} avgIngs=${avgIngredients} avgSteps=${avgSteps}`,
+        `recipe-standard-v4 build-all=ok recipes=500 fingerprint=${runtimeFingerprint} avgIngs=${avgIngredients} avgSteps=${avgSteps} migrations=${migrationFiles.length}`,
       );
     } else {
-      if (!existsSync(COMPILED_PATH) || !existsSync(MANIFEST_PATH) || !existsSync(MIGRATION_SQL_PATH)) {
+      if (!existsSync(COMPILED_PATH) || !existsSync(MANIFEST_PATH)) {
         throw new Error('V4 build artifacts missing. Run build-all first.');
       }
       if (readFileSync(COMPILED_PATH, 'utf8') !== compiledPayload) {
@@ -411,11 +435,17 @@ try {
       if (readFileSync(MANIFEST_PATH, 'utf8') !== manifestPayload) {
         throw new Error('manifest.json drift detected vs recipe sources');
       }
-      if (readFileSync(MIGRATION_SQL_PATH, 'utf8') !== sqlText) {
-        throw new Error('0052_culinary_standard_v4_catalog_500.sql drift detected vs recipe sources');
+      for (const entry of migrationFiles) {
+        const targetPath = path.join(MIGRATIONS_DIR, entry.fileName);
+        if (!existsSync(targetPath)) {
+          throw new Error(`Missing migration split file: ${entry.path}`);
+        }
+        if (readFileSync(targetPath, 'utf8') !== entry.sql) {
+          throw new Error(`${entry.fileName} drift detected vs recipe sources`);
+        }
       }
       console.log(
-        `recipe-standard-v4=check=ok recipes=500 fingerprint=${runtimeFingerprint} avgIngs=${avgIngredients} avgSteps=${avgSteps} calRange=${minCal}..${maxCal}`,
+        `recipe-standard-v4=check=ok recipes=500 fingerprint=${runtimeFingerprint} avgIngs=${avgIngredients} avgSteps=${avgSteps} calRange=${minCal}..${maxCal} migrations=${migrationFiles.length}`,
       );
     }
   }

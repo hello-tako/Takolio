@@ -506,8 +506,40 @@
   ],
   "runtimeFingerprint": "b1882886ac295d726e7774966b182d29a768f24c7c27c8f724ac6d1dadd64b21",
   "compiledRuntimeSha256": "6aa1d42c8c8406c360cf2b1f71871fb7b4bc6bd405255fd29e5c76abb400d0b7",
-  "migrationPath": "migrations/0052_culinary_standard_v4_catalog_500.sql",
-  "migrationSha256": "938b5c0f5f8562904177204de57407070d78098a84e96bd660f25a2891d94f3f",
+  "migrationPath": "migrations/0057_culinary_standard_v4_catalog_part6.sql",
+  "migrationSha256": "4c39159e1afe89b4a14ef7f33dcbf54eedd819688b1643c67bb17d597dbd9cf5",
+  "migrationFiles": [
+    {
+      "path": "migrations/0052_culinary_standard_v4_catalog_500.sql",
+      "bytes": 678205,
+      "sha256": "8b4e5166ebb1c39b192458ec0d4037a15fe7c8076ef09fc944d7334f2f0bfa83"
+    },
+    {
+      "path": "migrations/0053_culinary_standard_v4_catalog_part2.sql",
+      "bytes": 701994,
+      "sha256": "fafbfcc37784f4f8ff2d32d28bc0c30bd5813ee81fb09c9bd2f0d2b5fd3c1efd"
+    },
+    {
+      "path": "migrations/0054_culinary_standard_v4_catalog_part3.sql",
+      "bytes": 666182,
+      "sha256": "1b1f6aef640a9c75f869056058eb8924cdc9fbfd758b01575bf62ea3ccad41c6"
+    },
+    {
+      "path": "migrations/0055_culinary_standard_v4_catalog_part4.sql",
+      "bytes": 665131,
+      "sha256": "c681be51b9d64d099d8cca562012a8b67377c3abf7d28bd50bfb68a2e6117749"
+    },
+    {
+      "path": "migrations/0056_culinary_standard_v4_catalog_part5.sql",
+      "bytes": 656474,
+      "sha256": "542d4766ae459e8acadfea6dac79776e52770b3633ba78043e0980570c27b26d"
+    },
+    {
+      "path": "migrations/0057_culinary_standard_v4_catalog_part6.sql",
+      "bytes": 644312,
+      "sha256": "90bc2009b0b46215278de965ea85cce27f6b8f251b18a442dc3ce8b1b63bfdd3"
+    }
+  ],
   "summary": {
     "avgIngredientsPerRecipe": 13.4,
     "avgStepsPerRecipe": 6,

@@ -7,7 +7,7 @@ const require = createRequire(import.meta.url);
 const { load } = createRequire(require.resolve('eslint/package.json'))('js-yaml');
 const policy = load(workflow);
 const familyTips = ['0042_family_meals_preferences_saved_shopping.sql', '0043_shopping_demand_review.sql',
-  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql', '0048_global_locale_timezone_and_search_foundation.sql', '0049_global_culinary_allergens_units_barcode_and_ocr.sql', '0050_global_billing_subscriptions_and_oauth_identities.sql', '0051_privacy_erasure_portability_and_consent_ledger.sql', '0052_culinary_standard_v4_catalog_500.sql'];
+  '0044_inventory_display_category.sql', '0045_week_swap_receipts.sql', '0046_recipe_content_versions.sql', '0047_saved_recipe_content.sql', '0048_global_locale_timezone_and_search_foundation.sql', '0049_global_culinary_allergens_units_barcode_and_ocr.sql', '0050_global_billing_subscriptions_and_oauth_identities.sql', '0051_privacy_erasure_portability_and_consent_ledger.sql', '0052_culinary_standard_v4_catalog_500.sql', '0053_culinary_standard_v4_catalog_part2.sql', '0054_culinary_standard_v4_catalog_part3.sql', '0055_culinary_standard_v4_catalog_part4.sql', '0056_culinary_standard_v4_catalog_part5.sql', '0057_culinary_standard_v4_catalog_part6.sql'];
 
 describe('production D1 migration runtime proof', () => {
   it('keeps production approval and actual 0041 constraint certification', () => {

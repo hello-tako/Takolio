@@ -21,6 +21,11 @@ export function needsRecovery(manifest) {
     '0050_global_billing_subscriptions_and_oauth_identities.sql',
     '0051_privacy_erasure_portability_and_consent_ledger.sql',
     '0052_culinary_standard_v4_catalog_500.sql',
+    '0053_culinary_standard_v4_catalog_part2.sql',
+    '0054_culinary_standard_v4_catalog_part3.sql',
+    '0055_culinary_standard_v4_catalog_part4.sql',
+    '0056_culinary_standard_v4_catalog_part5.sql',
+    '0057_culinary_standard_v4_catalog_part6.sql',
   ].includes(manifest?.schema?.version);
 }
 

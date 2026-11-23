@@ -151,6 +151,14 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     'trg_recipe_search_docs_ins',
     'trg_recipe_search_docs_upd',
   ];
+  const standardV4MissingMigrations = [
+    '0052_culinary_standard_v4_catalog_500.sql',
+    '0053_culinary_standard_v4_catalog_part2.sql',
+    '0054_culinary_standard_v4_catalog_part3.sql',
+    '0055_culinary_standard_v4_catalog_part4.sql',
+    '0056_culinary_standard_v4_catalog_part5.sql',
+    '0057_culinary_standard_v4_catalog_part6.sql',
+  ].map(detail => ({ issue: 'missing_migration', detail }));
   const standardV4Tables = [
     'culinary_standard_v4_ingredients',
     'recipe_standard_v4_catalog',
@@ -309,7 +317,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       { issue: 'missing_table', detail: 'recipe_content_access' },
       { issue: 'missing_table', detail: 'recipe_content_versions' },
       ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
@@ -335,7 +343,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...[...globalIndexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...[...savedContentTriggers, ...globalTriggers].map(detail => ({ issue: 'missing_trigger', detail })),
@@ -352,7 +360,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...[...globalTables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...[...globalIndexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
       ...globalTriggers.map(detail => ({ issue: 'missing_trigger', detail })),
@@ -370,7 +378,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       { issue: 'missing_migration', detail: '0049_global_culinary_allergens_units_barcode_and_ocr.sql' },
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...[...globalPhase2Tables, ...globalPhase3Tables, ...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...[...globalPhase2Indexes, ...globalPhase3Indexes, ...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
@@ -385,7 +393,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0050_global_billing_subscriptions_and_oauth_identities.sql' },
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...[...globalPhase3Tables, ...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...[...globalPhase3Indexes, ...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
@@ -398,7 +406,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
       ...missingGlobalPhase4Columns,
       ...missingStandardV4Columns,
       { issue: 'missing_migration', detail: '0051_privacy_erasure_portability_and_consent_ledger.sql' },
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...[...globalPhase4Tables, ...standardV4Tables].map(detail => ({ issue: 'missing_table', detail })),
       ...[...globalPhase4Indexes, ...standardV4Indexes].map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));
@@ -409,7 +417,7 @@ describe('D1 schema gate — migration ledger equality derived from migrations/'
     const db = withLedger(names.slice(0, names.indexOf(tip) + 1), tip);
     expect(db.query(gate)).toEqual([
       ...missingStandardV4Columns,
-      { issue: 'missing_migration', detail: '0052_culinary_standard_v4_catalog_500.sql' },
+      ...standardV4MissingMigrations,
       ...standardV4Tables.map(detail => ({ issue: 'missing_table', detail })),
       ...standardV4Indexes.map(detail => ({ issue: 'missing_index', detail })),
     ].sort((a, b) => a.issue.localeCompare(b.issue) || a.detail.localeCompare(b.detail)));

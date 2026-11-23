@@ -48,8 +48,9 @@ describe('Takolio Culinary Standard V4 — live 0052 D1 replay & authority routi
     db.close();
   });
 
-  it('applies 0001..0052 automatically, preserves 45 legacy ingredients, and routes D1 authority cleanly under opt-in flag', async () => {
-    expect(db.migrations.at(-1)).toBe('0052_culinary_standard_v4_catalog_500.sql');
+  it('applies 0001..0057 automatically, preserves 45 legacy ingredients, and routes D1 authority cleanly under opt-in flag', async () => {
+    expect(db.migrations).toHaveLength(57);
+    expect(db.migrations.at(-1)).toBe('0057_culinary_standard_v4_catalog_part6.sql');
 
     const legacyIngredientCount = db.query<{ cnt: number }>('SELECT COUNT(*) AS cnt FROM ingredients');
     expect(legacyIngredientCount[0]?.cnt).toBe(45);
