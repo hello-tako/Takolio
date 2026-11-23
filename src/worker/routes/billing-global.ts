@@ -52,6 +52,29 @@ export const PUBLIC_GLOBAL_BILLING_SUFFIXES = [
   '/billing/dodo/webhook',
 ];
 
+const TRUSTED_RETURN_HOST_PATTERN =
+  /^(?:takolio\.app|app\.takolio\.com|eu\.takolio\.com|jp\.takolio\.com|frigo\.tungjpstore\.net|frigo-staging\.tungbipdz\.workers\.dev|[a-z0-9-]+-frigo-staging\.tungbipdz\.workers\.dev|localhost|127\.0\.0\.1)$/i;
+
+function resolveTrustedAppOrigin(
+  reqUrl: string,
+  originHeader: string | undefined,
+  env: Pick<Env, 'APP_URL'>,
+): string {
+  const candidates = [originHeader, reqUrl, env.APP_URL];
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    try {
+      const parsed = new URL(candidate);
+      if ((parsed.protocol === 'https:' || parsed.protocol === 'http:') && TRUSTED_RETURN_HOST_PATTERN.test(parsed.hostname)) {
+        return parsed.origin.replace(/\/+$/, '');
+      }
+    } catch {
+      // Ignore invalid candidate URL.
+    }
+  }
+  return (env.APP_URL || 'https://takolio.app').replace(/\/+$/, '');
+}
+
 billingGlobalPublicRoutes.use('/billing/tokushoho', async (c, next) => {
   c.header('Vary', 'Accept-Language, CF-IPCountry, X-Takolio-Locale');
   return next();
@@ -89,8 +112,17 @@ billingGlobalRoutes.get('/billing/global/plans', async (c) => {
   const effectiveCountry = parsedCountry?.success ? parsedCountry.data : localeCtx.countryCode;
 
   try {
-    const catalog = resolveGlobalRegionalCatalog(effectiveCountry, c.env);
-    return c.json({ catalog });
+    const trustedOrigin = resolveTrustedAppOrigin(c.req.url, c.req.header('Origin'), c.env);
+    const catalog = resolveGlobalRegionalCatalog(effectiveCountry, {
+      ...c.env,
+      APP_URL: trustedOrigin,
+    });
+    const adapter = getPaymentProviderAdapter();
+    return c.json({
+      catalog,
+      dodoConfigured: adapter.isConfigured(c.env),
+      dodoEnvironment: c.env.DODO_PAYMENTS_ENVIRONMENT === 'live' ? 'live' : 'test',
+    });
   } catch {
     return c.json({ error: 'Invalid regional price configuration', code: 'PAYMENT_PRICE_CONFIGURATION_INVALID' }, 503);
   }
@@ -129,8 +161,11 @@ billingGlobalRoutes.get('/billing/global/account', async (c) => {
 
   const entitlement = getScanQuotaEntitlement(rawSub, now);
   const rows = (intentsRes.results ?? []) as GlobalPaymentIntentRow[];
+  const adapter = getPaymentProviderAdapter();
 
   return c.json({
+    dodoConfigured: adapter.isConfigured(c.env),
+    dodoEnvironment: c.env.DODO_PAYMENTS_ENVIRONMENT === 'live' ? 'live' : 'test',
     subscription: {
       plan: entitlement.plan,
       status: rawSub?.status ?? (entitlement.isPlus ? 'active' : 'inactive'),
@@ -282,7 +317,7 @@ billingGlobalRoutes.post(
       .run();
 
     try {
-      const appUrl = (c.env.APP_URL || 'https://app.takolio.com').replace(/\/+$/, '');
+      const appUrl = resolveTrustedAppOrigin(c.req.url, c.req.header('Origin'), c.env);
       const session = await adapter.createCheckoutSession(c.env, {
         intentId,
         userId: auth.userId,
@@ -362,6 +397,35 @@ billingGlobalRoutes.post(
 
 billingGlobalRoutes.post('/billing/global/cancel', async (c) => {
   const userId = c.get('auth').userId;
+  const sub = await c.env.DB.prepare(
+    `SELECT plan, provider, provider_subscription_id
+       FROM subscriptions
+      WHERE user_id = ? AND plan = 'plus'
+      LIMIT 1`,
+  )
+    .bind(userId)
+    .first<{
+      plan: string;
+      provider: string | null;
+      provider_subscription_id: string | null;
+    }>();
+
+  if (!sub) {
+    return c.json({ error: 'No active Plus subscription found', code: 'SUBSCRIPTION_NOT_FOUND' }, 404);
+  }
+
+  if (sub.provider === 'dodo_mor' && sub.provider_subscription_id && c.env.DODO_PAYMENTS_API_KEY) {
+    try {
+      const adapter = getPaymentProviderAdapter();
+      await adapter.cancelSubscriptionAtPeriodEnd(c.env, sub.provider_subscription_id);
+    } catch {
+      return c.json(
+        { error: 'Unable to schedule cancellation with Dodo Payments', code: 'PAYMENT_PROVIDER_UNAVAILABLE' },
+        502,
+      );
+    }
+  }
+
   const res = await c.env.DB.prepare(
     `UPDATE subscriptions
         SET cancel_at_period_end = 1, updated_at = datetime('now')
@@ -386,13 +450,47 @@ async function grantDodoPlusEntitlement(
   dodoCustomerId: string | null,
   settledAmountMinor: number | null = null,
   settledTaxMinor: number | null = null,
-): Promise<'granted' | 'duplicate'> {
+): Promise<'granted' | 'duplicate' | 'already_paid'> {
   const days = intent.plan === 'annual' ? 366 : 31;
   const existingEvent = await db
     .prepare("SELECT 1 AS seen FROM billing_webhook_events WHERE provider = 'dodo_mor' AND event_id = ? LIMIT 1")
     .bind(webhookId)
     .first<{ seen: number }>();
   if (existingEvent) return 'duplicate';
+
+  // Dodo commonly emits both `payment.succeeded` and `subscription.active` with distinct webhook IDs
+  // for the same checkout intent. Never extend `expires_at` twice for an already-paid intent;
+  // only backfill subscription/customer metadata and settled FX amounts.
+  if (intent.status === 'paid') {
+    await db.batch([
+      db
+        .prepare(
+          `INSERT INTO billing_webhook_events (provider, event_id, event_type, intent_id)
+           VALUES ('dodo_mor', ?, ?, ?)`,
+        )
+        .bind(webhookId, eventType, intent.id),
+      db
+        .prepare(
+          `UPDATE subscriptions
+              SET provider_subscription_id = COALESCE(?, provider_subscription_id),
+                  dodo_customer_id = COALESCE(?, dodo_customer_id),
+                  updated_at = datetime('now')
+            WHERE user_id = ? AND provider = 'dodo_mor'`,
+        )
+        .bind(providerSubscriptionId, dodoCustomerId, intent.user_id),
+      db
+        .prepare(
+          `UPDATE global_payment_intents
+              SET provider_reference = COALESCE(provider_reference, ?),
+                  amount_minor = COALESCE(?, amount_minor),
+                  tax_amount_minor = COALESCE(?, tax_amount_minor),
+                  updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+            WHERE id = ?`,
+        )
+        .bind(providerReference, settledAmountMinor, settledTaxMinor, intent.id),
+    ]);
+    return 'already_paid';
+  }
 
   await db.batch([
     db
@@ -525,6 +623,32 @@ billingGlobalPublicRoutes.post(
     const paymentId =
       typeof data.payment_id === 'string' ? data.payment_id : null;
 
+    const cartItems = Array.isArray(data.product_cart)
+      ? (data.product_cart as Array<Record<string, unknown>>)
+      : [];
+    const payloadProductId =
+      typeof data.product_id === 'string'
+        ? data.product_id
+        : typeof cartItems[0]?.product_id === 'string'
+          ? (cartItems[0].product_id as string)
+          : null;
+    const knownTakolioProducts = [c.env.DODO_PRODUCT_ID_MONTHLY, c.env.DODO_PRODUCT_ID_ANNUAL].filter(
+      (id): id is string => Boolean(id),
+    );
+    const isForeignProduct = Boolean(
+      payloadProductId && knownTakolioProducts.length > 0 && !knownTakolioProducts.includes(payloadProductId),
+    );
+
+    // Multi-brand / shared-workspace isolation:
+    // If another brand in the same verified Dodo workspace (e.g. Selinow) emits a webhook event,
+    // acknowledge 200 OK without touching Takolio's DB or triggering 4xx retry storms.
+    if (typeof metadata.app === 'string' && metadata.app !== 'takolio') {
+      return c.json({ received: true, ignored: true, reason: 'foreign_app' });
+    }
+    if (!intentId && isForeignProduct) {
+      return c.json({ received: true, ignored: true, reason: 'foreign_product' });
+    }
+
     // 1. Konbini / async bank payment voucher issued (`payment.processing`):
     // MUST transition to `awaiting_async_payment` and MUST NOT grant Plus until cash is received!
     if (event.type === 'payment.processing') {
@@ -554,6 +678,9 @@ billingGlobalPublicRoutes.post(
           .bind(intentId)
           .first<GlobalPaymentIntentRow>();
         if (!intent || intent.provider !== 'dodo_mor') {
+          if (isForeignProduct) {
+            return c.json({ received: true, ignored: true, reason: 'foreign_product' });
+          }
           return c.json({ error: 'Unknown Dodo payment intent' }, 409);
         }
 
@@ -562,15 +689,6 @@ billingGlobalPublicRoutes.post(
         //   carries the live FX-converted settlement amount in `intent.currency` (e.g. `¥823 JPY`).
         const expectedProductId =
           intent.plan === 'annual' ? c.env.DODO_PRODUCT_ID_ANNUAL : c.env.DODO_PRODUCT_ID_MONTHLY;
-        const cartItems = Array.isArray(data.product_cart)
-          ? (data.product_cart as Array<Record<string, unknown>>)
-          : [];
-        const payloadProductId =
-          typeof data.product_id === 'string'
-            ? data.product_id
-            : typeof cartItems[0]?.product_id === 'string'
-              ? (cartItems[0].product_id as string)
-              : null;
         if (payloadProductId && expectedProductId && payloadProductId !== expectedProductId) {
           return c.json(
             { error: 'Dodo product_id does not match payment intent plan', code: 'PRODUCT_MISMATCH' },
@@ -641,6 +759,24 @@ billingGlobalPublicRoutes.post(
           ).bind(dodoCustomerId, `+${days} days`, subscriptionId),
         ]);
         return c.json({ received: true, status: 'renewed' });
+      }
+
+      // Recurring subscription payment confirmation without initial `intent_id`
+      if (event.type === 'payment.succeeded' && subscriptionId) {
+        const knownSub = await c.env.DB.prepare(
+          "SELECT id FROM subscriptions WHERE provider = 'dodo_mor' AND provider_subscription_id = ? LIMIT 1",
+        )
+          .bind(subscriptionId)
+          .first<{ id: string }>();
+        if (!knownSub) {
+          return c.json({ received: true, ignored: true, reason: 'foreign_subscription' });
+        }
+        await c.env.DB.prepare(
+          "INSERT OR IGNORE INTO billing_webhook_events (provider, event_id, event_type) VALUES ('dodo_mor', ?, ?)",
+        )
+          .bind(webhookId, event.type)
+          .run();
+        return c.json({ received: true, status: 'subscription_payment_recorded' });
       }
 
       return c.json({ error: 'Missing intent or subscription identifier' }, 400);

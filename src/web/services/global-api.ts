@@ -16,6 +16,8 @@ export interface GlobalPlanDto {
 }
 
 export interface GlobalCatalogResponse {
+  dodoConfigured?: boolean;
+  dodoEnvironment?: 'live' | 'test';
   catalog: {
     countryCode: string;
     provider: 'dodo_mor' | 'payos_vn';
@@ -27,6 +29,42 @@ export interface GlobalCatalogResponse {
     tokushohoUrl: string | null;
     plans: GlobalPlanDto[];
   };
+}
+
+export interface GlobalBillingPaymentDto {
+  id: string;
+  provider: 'dodo_mor' | 'payos_vn';
+  plan: 'monthly' | 'annual';
+  currency: GlobalCurrency;
+  amountMinor: number;
+  minorDigits: 0 | 2;
+  taxAmountMinor: number;
+  taxInclusive: boolean;
+  countryCode: string;
+  status: 'pending' | 'awaiting_async_payment' | 'paid' | 'failed' | 'expired' | 'refunded';
+  checkoutUrl: string | null;
+  euWithdrawalWaiverAt: string | null;
+  expiresAt: string;
+  createdAt: string;
+}
+
+export interface GlobalBillingAccountResponse {
+  dodoConfigured?: boolean;
+  dodoEnvironment?: 'live' | 'test';
+  subscription: {
+    plan: string;
+    status: string;
+    isPlus: boolean;
+    expiresAt: string | null;
+    provider: string | null;
+    providerSubscriptionId: string | null;
+    dodoCustomerId: string | null;
+    canOpenCustomerPortal: boolean;
+    billingCurrency: string | null;
+    cancelAtPeriodEnd: boolean;
+    gracePeriodEndsAt: string | null;
+  };
+  payments: GlobalBillingPaymentDto[];
 }
 
 export interface BarcodeLookupResponse {
@@ -56,6 +94,13 @@ function localeHeaders(locale: SupportedLocale | string = getActiveUiLocale()): 
 export async function fetchGlobalPlans(countryCode?: string, locale?: SupportedLocale): Promise<GlobalCatalogResponse> {
   const qs = countryCode ? `?country=${encodeURIComponent(countryCode)}` : '';
   return fetchJson<GlobalCatalogResponse>(`/billing/global/plans${qs}`, {
+    method: 'GET',
+    headers: localeHeaders(locale),
+  });
+}
+
+export async function fetchGlobalBillingAccount(locale?: SupportedLocale): Promise<GlobalBillingAccountResponse> {
+  return fetchJson<GlobalBillingAccountResponse>('/billing/global/account', {
     method: 'GET',
     headers: localeHeaders(locale),
   });

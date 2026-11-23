@@ -72,6 +72,7 @@ export interface PaymentProviderAdapter {
   isConfigured(env: Env): boolean;
   createCheckoutSession(env: Env, input: GlobalCheckoutSessionInput): Promise<GlobalCheckoutSessionOutput>;
   createCustomerPortalSession(env: Env, dodoCustomerId: string, sendEmail?: boolean): Promise<{ portalUrl: string }>;
+  cancelSubscriptionAtPeriodEnd(env: Env, providerSubscriptionId: string): Promise<{ cancelAtPeriodEnd: boolean }>;
 }
 
 /**
@@ -129,7 +130,7 @@ export function resolveGlobalRegionalCatalog(
   env: Pick<Env, 'PAYOS_TEST_MONTHLY_PRICE_VND' | 'APP_URL'> = {},
 ): GlobalRegionalCatalog {
   const cc = (countryCodeInput || 'US').trim().toUpperCase();
-  const baseAppUrl = (env.APP_URL || 'https://app.takolio.com').replace(/\/+$/, '');
+  const baseAppUrl = (env.APP_URL || 'https://takolio.app').replace(/\/+$/, '');
 
   if (cc === 'VN') {
     const vndPrices = effectivePlusPrices(env);
@@ -495,6 +496,7 @@ class DodoPaymentsMoRAdapter implements PaymentProviderAdapter {
         ...(input.displayName ? { name: input.displayName } : {}),
       },
       metadata: {
+        app: 'takolio',
         intent_id: input.intentId,
         user_id: input.userId,
         plan: input.plan,
@@ -565,6 +567,32 @@ class DodoPaymentsMoRAdapter implements PaymentProviderAdapter {
       throw new Error('DODO_PORTAL_INVALID_RESPONSE');
     }
     return { portalUrl: body.link };
+  }
+
+  async cancelSubscriptionAtPeriodEnd(
+    env: Env,
+    providerSubscriptionId: string,
+  ): Promise<{ cancelAtPeriodEnd: boolean }> {
+    if (!env.DODO_PAYMENTS_API_KEY) {
+      throw new Error('DODO_PAYMENTS_NOT_CONFIGURED');
+    }
+    const baseUrl = resolveDodoApiBaseUrl(env);
+    const res = await fetch(
+      `${baseUrl}/subscriptions/${encodeURIComponent(providerSubscriptionId)}`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${env.DODO_PAYMENTS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cancel_at_next_billing_date: true }),
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error(`DODO_CANCEL_FAILED_${res.status}`);
+    }
+    return { cancelAtPeriodEnd: true };
   }
 }
 

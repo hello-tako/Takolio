@@ -427,6 +427,13 @@ describe('Global Phase 3 — Dodo Payments MoR (JP Konbini Async + EU Waiver + C
       createExecutionContext().ctx,
     );
 
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ subscription_id: 'sub_dodo_de_001', cancel_at_next_billing_date: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    );
+
     const cancelRes = await worker.fetch(
       new Request(`${APP_URL}/api/v1/billing/global/cancel`, {
         method: 'POST',
@@ -575,5 +582,221 @@ describe('Global Phase 3 — Dodo Payments MoR (JP Konbini Async + EU Waiver + C
       createExecutionContext().ctx,
     );
     expect(meRes.status).toBe(200);
+  });
+
+  it('prevents double-extension on payment.succeeded + subscription.active, ignores foreign-workspace product webhooks, calls Dodo PATCH on cancel, and preserves takolio.app return_url', async () => {
+    const db = new SqliteD1();
+    databases.push(db);
+    const rawToken = 'sess_tok_dodo_live_hardening';
+    const tokenHash = await sha256Hex(rawToken);
+    db.seed(`
+      INSERT INTO users (id, email, is_guest) VALUES ('u_dodo_hard', 'dodo@jp.example', 0);
+      INSERT INTO households (id, name, created_by, locale, country_code, currency, timezone)
+      VALUES ('h_dodo_hard', 'Kitchen', 'u_dodo_hard', 'ja', 'JP', 'JPY', 'Asia/Tokyo');
+      INSERT INTO household_members (id, household_id, user_id, role) VALUES ('hm_dodo_h', 'h_dodo_hard', 'u_dodo_hard', 'owner');
+      INSERT INTO user_preferences (id, user_id, locale, country_code, currency, timezone)
+      VALUES ('pref_dodo_h', 'u_dodo_hard', 'ja', 'JP', 'JPY', 'Asia/Tokyo');
+      INSERT INTO sessions_v2 (id, user_id, household_id, token_hash, expires_at)
+      VALUES ('s_dodo_h', 'u_dodo_hard', 'h_dodo_hard', '${tokenHash}', datetime('now', '+7 days'));
+    `);
+
+    const env = createWorkerEnv(db, { APP_URL: 'https://takolio.app' });
+    const cookieHeader = `${SESSION_COOKIE}=${rawToken}`;
+    const takolioOrigin = 'https://takolio.app';
+
+    let capturedCheckoutPayload = null;
+    let capturedCancelRequest = null;
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input, init) => {
+      const url = String(input);
+      if (url.endsWith('/checkouts')) {
+        capturedCheckoutPayload = JSON.parse(String(init?.body ?? '{}'));
+        return new Response(
+          JSON.stringify({
+            session_id: 'cks_dodo_origin_01',
+            checkout_url: 'https://checkout.dodopayments.com/session/cks_dodo_origin_01',
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } },
+        );
+      }
+      if (url.includes('/subscriptions/sub_dodo_single_ext') && init?.method === 'PATCH') {
+        capturedCancelRequest = { url, body: JSON.parse(String(init?.body ?? '{}')) };
+        return new Response(JSON.stringify({ subscription_id: 'sub_dodo_single_ext', cancel_at_next_billing_date: true }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      return new Response('{}', { status: 404 });
+    });
+
+    // 1. Checkout initiated from `https://takolio.app` MUST preserve `https://takolio.app/billing/return` & `metadata.app = 'takolio'`
+    const checkoutRes = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/global/checkout`, {
+        method: 'POST',
+        headers: {
+          Cookie: cookieHeader,
+          Origin: takolioOrigin,
+          'Content-Type': 'application/json',
+          'Idempotency-Key': 'idem-takolio-origin-001',
+        },
+        body: JSON.stringify({ plan: 'monthly', countryCode: 'JP' }),
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(checkoutRes.status).toBe(201);
+    const intentId = (await checkoutRes.json()).intent.id;
+    expect(capturedCheckoutPayload.return_url).toBe(`https://takolio.app/billing/return?intent_id=${encodeURIComponent(intentId)}`);
+    expect(capturedCheckoutPayload.metadata.app).toBe('takolio');
+
+    // 2. Foreign-workspace product event (e.g. another brand in shared Dodo account) MUST return 200 OK ignored
+    const nowSec = Math.floor(Date.now() / 1000);
+    const foreignPayload = JSON.stringify({
+      type: 'payment.succeeded',
+      data: {
+        payment_id: 'pay_other_brand_01',
+        product_cart: [{ product_id: 'pdt_other_brand_foreign', quantity: 1 }],
+        currency: 'USD',
+        total_amount: 500,
+      },
+    });
+    const foreignSig = await signDodoWebhook('msg_foreign_brand_1', nowSec, foreignPayload);
+    const foreignRes = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/dodo/webhook`, {
+        method: 'POST',
+        headers: {
+          'webhook-id': 'msg_foreign_brand_1',
+          'webhook-timestamp': String(nowSec),
+          'webhook-signature': foreignSig,
+          'Content-Type': 'application/json',
+        },
+        body: foreignPayload,
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(foreignRes.status).toBe(200);
+    expect(await foreignRes.json()).toMatchObject({ received: true, ignored: true, reason: 'foreign_product' });
+
+    // 3. `payment.succeeded` followed by `subscription.active` for SAME intent MUST NOT double-extend `expires_at`
+    const paySucceededPayload = JSON.stringify({
+      type: 'payment.succeeded',
+      data: {
+        payment_id: 'pay_single_01',
+        subscription_id: 'sub_dodo_single_ext',
+        customer: { customer_id: 'cus_dodo_single_01' },
+        product_cart: [{ product_id: 'pdt_takolio_pro_monthly', quantity: 1 }],
+        currency: 'JPY',
+        total_amount: 780,
+        tax: 71,
+        metadata: { app: 'takolio', intent_id: intentId },
+      },
+    });
+    const sigPay = await signDodoWebhook('msg_single_pay_1', nowSec, paySucceededPayload);
+    const whPay = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/dodo/webhook`, {
+        method: 'POST',
+        headers: {
+          'webhook-id': 'msg_single_pay_1',
+          'webhook-timestamp': String(nowSec),
+          'webhook-signature': sigPay,
+          'Content-Type': 'application/json',
+        },
+        body: paySucceededPayload,
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(whPay.status).toBe(200);
+
+    const accAfterPay = await (
+      await worker.fetch(
+        new Request(`${takolioOrigin}/api/v1/billing/global/account`, { headers: { Cookie: cookieHeader } }),
+        env,
+        createExecutionContext().ctx,
+      )
+    ).json();
+    const firstExpiresAt = accAfterPay.subscription.expiresAt;
+    expect(accAfterPay.subscription.isPlus).toBe(true);
+    expect(accAfterPay.dodoConfigured).toBe(true);
+
+    const subActivePayload = JSON.stringify({
+      type: 'subscription.active',
+      data: {
+        subscription_id: 'sub_dodo_single_ext',
+        customer: { customer_id: 'cus_dodo_single_01' },
+        product_id: 'pdt_takolio_pro_monthly',
+        currency: 'USD',
+        metadata: { app: 'takolio', intent_id: intentId },
+      },
+    });
+    const sigSub = await signDodoWebhook('msg_single_sub_2', nowSec, subActivePayload);
+    const whSub = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/dodo/webhook`, {
+        method: 'POST',
+        headers: {
+          'webhook-id': 'msg_single_sub_2',
+          'webhook-timestamp': String(nowSec),
+          'webhook-signature': sigSub,
+          'Content-Type': 'application/json',
+        },
+        body: subActivePayload,
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(whSub.status).toBe(200);
+
+    const accAfterSub = await (
+      await worker.fetch(
+        new Request(`${takolioOrigin}/api/v1/billing/global/account`, { headers: { Cookie: cookieHeader } }),
+        env,
+        createExecutionContext().ctx,
+      )
+    ).json();
+    expect(accAfterSub.subscription.expiresAt).toBe(firstExpiresAt);
+
+    // 4. Recurring `payment.succeeded` without `intent_id` for known Takolio subscription returns 200 OK
+    const recurringPayPayload = JSON.stringify({
+      type: 'payment.succeeded',
+      data: {
+        payment_id: 'pay_recurring_month_2',
+        subscription_id: 'sub_dodo_single_ext',
+        product_cart: [{ product_id: 'pdt_takolio_pro_monthly', quantity: 1 }],
+        currency: 'JPY',
+        total_amount: 780,
+      },
+    });
+    const sigRec = await signDodoWebhook('msg_recurring_pay_3', nowSec, recurringPayPayload);
+    const whRec = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/dodo/webhook`, {
+        method: 'POST',
+        headers: {
+          'webhook-id': 'msg_recurring_pay_3',
+          'webhook-timestamp': String(nowSec),
+          'webhook-signature': sigRec,
+          'Content-Type': 'application/json',
+        },
+        body: recurringPayPayload,
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(whRec.status).toBe(200);
+    expect(await whRec.json()).toMatchObject({ received: true, status: 'subscription_payment_recorded' });
+
+    // 5. `POST /api/v1/billing/global/cancel` calls Dodo PATCH `/subscriptions/:id` with `cancel_at_next_billing_date: true`
+    const cancelRes = await worker.fetch(
+      new Request(`${takolioOrigin}/api/v1/billing/global/cancel`, {
+        method: 'POST',
+        headers: { Cookie: cookieHeader, Origin: takolioOrigin },
+      }),
+      env,
+      createExecutionContext().ctx,
+    );
+    expect(cancelRes.status).toBe(200);
+    expect(capturedCancelRequest).toEqual({
+      url: 'https://test.dodopayments.com/subscriptions/sub_dodo_single_ext',
+      body: { cancel_at_next_billing_date: true },
+    });
   });
 });
