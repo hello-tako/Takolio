@@ -3,7 +3,14 @@ import { queryKeys } from './queryKeys';
 
 export function invalidateInventoryDependents() {
   return Promise.all([
-    queryKeys.inventory(), queryKeys.recommendationLists(), queryKeys.recipes(), queryKeys.notifications(), queryKeys.me(),
+    queryKeys.inventory(),
+    queryKeys.recommendationLists(),
+    queryKeys.recipes(),
+    queryKeys.notifications(),
+    queryKeys.me(),
+    ['mealPlanningPlan'],
+    ['mealPlanningCompositions'],
+    ['mealPlanningShopping'],
   ].map((queryKey) => queryClient.invalidateQueries({ queryKey })));
 }
 

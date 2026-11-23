@@ -1335,7 +1335,7 @@ export const VNextAuthFlow: React.FC = () => {
 
           {/* Desktop Sunlit Kitchen Companion Panel */}
           <div className="hidden lg:block lg:col-span-6">
-            <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-linen-from,#FFFFFF)] to-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-8 space-y-5 shadow-soft">
+            <div className="rounded-[24px] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-8 space-y-5 shadow-[var(--tkv-shadow-card)]">
               <div className="flex items-center gap-4">
                 <MascotIllustration pose="welcome" size={96} className="w-24 h-24 shrink-0" />
                 <div className="space-y-1">

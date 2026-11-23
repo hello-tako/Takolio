@@ -5,6 +5,7 @@ import { api } from '../../services/api';
 import { capturePrivateSession, isOfflineGuestSession } from '../../lib/private-session';
 import { queryClient } from '../../lib/query-client';
 import { queryKeys } from '../../lib/queryKeys';
+import { prefetchRouteChunk } from '../../vnext/lib/prefetch';
 import { SystemStatusPage } from './SystemStatusPage';
 
 export const SessionBoundary: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -16,6 +17,9 @@ export const SessionBoundary: React.FC<{ children: React.ReactNode }> = ({ child
   const navigate = useNavigate();
   useEffect(() => {
     if (logoutStatus !== 'idle' || !userId) return;
+    if (typeof window !== 'undefined') {
+      prefetchRouteChunk(window.location.pathname);
+    }
     let cancelled = false;
     const isCurrent = capturePrivateSession();
     setVerificationFailed(false);

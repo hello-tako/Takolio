@@ -34,12 +34,16 @@ export function ingredientAmount(quantity: number | null, unit: string, locale: 
     locale === 'vi'
       ? { piece: 'cái / quả / bìa', bunch: 'bó', pack: 'gói', slice: 'lát' }
       : { piece: 'pieces', bunch: 'bunches', pack: 'packs', slice: 'slices' };
-  const options: Intl.NumberFormatOptions = { maximumSignificantDigits: 12, useGrouping: false };
+  const maxFractionDigits = unit === 'g' || unit === 'ml' ? (quantity >= 10 ? 0 : 1) : 2;
+  const options: Intl.NumberFormatOptions = {
+    maximumFractionDigits: maxFractionDigits,
+    useGrouping: false,
+  };
   const displayed = new Intl.NumberFormat(locale === 'vi' ? 'vi-VN' : 'en-US', options).format(
     quantity,
   );
   const rounded = Number(new Intl.NumberFormat('en-US', options).format(quantity));
-  return `${rounded === quantity ? '' : locale === 'vi' ? 'Khoảng ' : 'About '}${displayed} ${unitLabels[unit] ?? unit}`;
+  return `${Math.abs(rounded - quantity) < 1e-6 ? '' : locale === 'vi' ? 'Khoảng ' : 'About '}${displayed} ${unitLabels[unit] ?? unit}`;
 }
 
 export function IngredientCoverage({

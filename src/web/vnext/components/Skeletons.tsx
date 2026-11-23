@@ -286,7 +286,7 @@ export const PlannerGeneratingStage: React.FC<{ subtitle?: string }> = ({
     <div
       role="status"
       aria-live="polite"
-      className="rounded-[24px] border border-[var(--tkv-border-mint)] bg-gradient-to-br from-[var(--tkv-surface-mint)] via-[var(--tkv-surface)] to-[var(--tkv-surface-coral)]/50 p-6 text-center flex flex-col items-center gap-4 tkv-enter-fade-up"
+      className="rounded-[24px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-6 text-center flex flex-col items-center gap-4 tkv-enter-fade-up"
     >
       <MascotIllustration pose="cooking" size={104} motion="idle" decorative />
       <div className="flex flex-col gap-1.5 max-w-md">

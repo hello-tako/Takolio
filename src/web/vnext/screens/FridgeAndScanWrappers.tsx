@@ -96,6 +96,14 @@ export const C02QuickSearchPage: React.FC = () => {
       to: vnextHref('/recipes?view=saved'),
     },
     {
+      id: 'weekly-planner',
+      scope: 'all' as const,
+      icon: 'calendar' as const,
+      title: 'Thực đơn tuần của gia đình',
+      subtitle: 'Gợi ý mâm cơm tự động theo tủ lạnh và đồng bộ thẳng sang giỏ đi chợ',
+      to: vnextHref('/planner'),
+    },
+    {
       id: 'shopping-list',
       scope: 'recent' as const,
       icon: 'shopping' as const,
@@ -237,7 +245,7 @@ export const C02QuickSearchPage: React.FC = () => {
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3.5">
-                    <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                    <span className="w-11 h-11 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                       <VNextIcon name={sc.icon} size={20} />
                     </span>
                     <div>
@@ -279,16 +287,11 @@ export const C06LotDetailVNext: React.FC = () => (
 export const C08ReconciliationVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C08" title="Đối soát tồn kho" backTo={vnextHref('/fridge')}>
     <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
-        <div className="flex flex-col gap-1">
-          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--tkv-ink,#152E2C)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
-            <span>Đối soát dữ liệu máy chủ & quan sát thực tế</span>
-          </p>
-          <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-            Kiểm tra các chênh lệch số lượng, vị trí bảo quản hoặc hạn dùng trước khi gửi quyết định lên máy chủ.
-          </p>
-        </div>
+      <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-4 py-3 text-xs sm:text-sm text-[var(--tkv-ink-secondary)] flex items-center gap-2.5">
+        <VNextIcon name="history" size={16} className="text-[var(--tkv-primary)] shrink-0" />
+        <span>
+          Kiểm tra các chênh lệch số lượng, vị trí bảo quản hoặc hạn dùng trước khi gửi quyết định lên máy chủ.
+        </span>
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
         <Suspense fallback={<FridgeInventorySkeleton label="Đang tải danh sách đối soát…" />}>
@@ -314,10 +317,10 @@ export const C09ScanStudioVNext: React.FC = () => (
 export const C12ScanReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C12" title="Duyệt kết quả AI" backTo={vnextHref('/scan')} showContextualScan={false}>
     <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] p-4 text-xs sm:text-sm text-[var(--tkv-sage-ink,#134C39)] flex items-center gap-2.5">
-        <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0" />
+      <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-4 py-3 text-xs sm:text-sm text-[var(--tkv-ink-secondary)] flex items-center gap-2.5">
+        <VNextIcon name="shield" size={16} className="text-[var(--tkv-primary)] shrink-0" />
         <span>
-          <strong>Nguyên tắc duyệt trước khi lưu:</strong> Vui lòng kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.
+          <strong className="text-[var(--tkv-ink)]">Duyệt trước khi lưu:</strong> Kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.
         </span>
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
@@ -335,11 +338,10 @@ export const C12ScanReviewVNext: React.FC = () => (
 export const C14ReceiptReviewVNext: React.FC = () => (
   <ConsumerStudioShell screenId="C14" title="Duyệt hóa đơn" backTo={vnextHref('/scan')} showContextualScan={false}>
     <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] p-4 text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] flex items-center gap-2.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#F6C453)] shrink-0" aria-hidden="true" />
-        <VNextIcon name="info" size={18} className="text-[var(--tkv-honey,#F6C453)] shrink-0" />
+      <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-4 py-3 text-xs sm:text-sm text-[var(--tkv-ink-secondary)] flex items-center gap-2.5">
+        <VNextIcon name="info" size={16} className="text-[var(--tkv-primary)] shrink-0" />
         <span>
-          <strong>Bảo vệ thông tin hóa đơn:</strong> Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.
+          <strong className="text-[var(--tkv-ink)]">Bảo vệ thông tin hóa đơn:</strong> Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.
         </span>
       </div>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">

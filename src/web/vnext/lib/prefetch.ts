@@ -7,15 +7,16 @@ const ROUTE_CHUNK_LOADERS: Record<string, ChunkLoader> = {
   '/': () => import('../screens/C01HomePilot'),
   '/fridge': () => import('../screens/C03InventoryPilot'),
   '/inventory': () => import('../screens/C03InventoryPilot'),
+  '/planner/new': () => import('../screens/PlannerAndShoppingPages'),
   '/planner': () => import('../screens/C23PlannerPilot'),
   '/week': () => import('../screens/C23PlannerPilot'),
-  '/shopping': () => import('../../pages/ShoppingPage'),
+  '/shopping': () => import('../screens/PlannerAndShoppingPages'),
   '/me': () => import('../screens/AccountAndSystemPages'),
   '/recipes': () => import('../screens/RecipesAndCookPages'),
   '/scan': () => import('../../pages/ScanPage'),
   '/search': () => import('../screens/FridgeAndScanWrappers'),
-  '/settings/app': () => import('../../pages/SettingsPage'),
-  '/plus': () => import('../../pages/PlusPaywallPage'),
+  '/settings/app': () => import('../screens/AccountAndSystemPages'),
+  '/plus': () => import('../screens/AccountAndSystemPages'),
 };
 
 const prefetchedChunks = new Set<string>();
@@ -26,6 +27,9 @@ function normalizeRouteKey(pathname: string): string {
   const clean = pathname.split('?')[0]?.split('#')[0] || '/';
   if (clean === '/' || clean === '/home') return '/';
   if (clean.startsWith('/recipes/')) return '/recipes-detail';
+  if (clean === '/planner/new' || /^\/planner\/[^/]+\/(?:meal|shopping)/.test(clean)) {
+    return '/planner/new';
+  }
   for (const key of Object.keys(ROUTE_CHUNK_LOADERS)) {
     if (key !== '/' && (clean === key || clean.startsWith(`${key}/`))) {
       return key;
@@ -74,11 +78,15 @@ export function prefetchDestination(
   void (async () => {
     let userId = options?.userId ?? null;
     let householdId = options?.householdId ?? null;
-    if (!userId || !householdId) {
-      const { useAuthStore } = await import('../../stores/useAuthStore');
-      const state = useAuthStore.getState();
-      userId = userId ?? state.userId;
-      householdId = householdId ?? state.householdId;
+    let isGuest = options?.isGuest;
+    let householdSize = 2;
+    const { useAuthStore } = await import('../../stores/useAuthStore');
+    const state = useAuthStore.getState();
+    userId = userId ?? state.userId;
+    householdId = householdId ?? state.householdId;
+    isGuest = isGuest ?? state.isGuest;
+    if (Number.isInteger(state.householdSize) && state.householdSize >= 1) {
+      householdSize = state.householdSize;
     }
     if (!userId || !householdId) return;
 
@@ -103,10 +111,54 @@ export function prefetchDestination(
         queryFn: () => api.getShoppingList(),
         staleTime: 20_000,
       });
-    } else if (key === '/' || key === '/recipes') {
+    } else if (key === '/planner' && !isGuest) {
+      const [{ isMealCompositionEnabled }, { familyMealPlanningApi }, { mealPlanningApi }] =
+        await Promise.all([
+          import('../../features/planner/composition'),
+          import('../../services/family-meal-planning'),
+          import('../../services/meal-planning'),
+        ]);
+      void queryClient.prefetchQuery({
+        queryKey: queryKeys.currentMealPlanningPlan(),
+        queryFn: async () => {
+          if (isMealCompositionEnabled()) {
+            try {
+              const family = (await familyMealPlanningApi.current()).plan;
+              if (family) {
+                queryClient.setQueryData(
+                  [...queryKeys.mealPlanningPlan(family.plan.id), 'family', family.plan.revision],
+                  family,
+                );
+                queryClient.setQueryData(
+                  queryKeys.mealPlanningCompositions(family.plan.id, family.plan.revision),
+                  family.compositions,
+                  { updatedAt: 0 },
+                );
+                return family.plan;
+              }
+            } catch {
+              // Fall back to V1 current plan lookup below.
+            }
+          }
+          return (await mealPlanningApi.current()).plan;
+        },
+        staleTime: 15_000,
+      });
+    } else if (key === '/') {
       void queryClient.prefetchQuery({
         queryKey: queryKeys.recipeDiscovery({ pageSize: 12 }),
         queryFn: () => api.getRecipeDiscovery({ pageSize: 12 }),
+        staleTime: 30_000,
+      });
+    } else if (key === '/recipes') {
+      const { discoveryRequest, readDiscoveryFilters } = await import('../../lib/recipe-discovery');
+      const req = discoveryRequest({
+        ...readDiscoveryFilters(new URLSearchParams()),
+        servings: householdSize,
+      });
+      void queryClient.prefetchQuery({
+        queryKey: queryKeys.recipeDiscovery(req),
+        queryFn: () => api.getRecipeDiscovery(req),
         staleTime: 30_000,
       });
     } else if (key === '/me') {

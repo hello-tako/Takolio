@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Flame, Heart, Utensils, Users } from 'lucide-react';
 import { authApi } from '../../services/auth';
+import { familyPreferencesApi } from '../../services/family-preferences';
+import { familyPreferencesKey } from '../../features/family/useFamilyPreferences';
+import { mergeUserFoodPrefsIntoFamilyPreferences } from '../../features/family/preference-sync';
 import { queryKeys } from '../../lib/queryKeys';
 import { isOfflineGuestSession } from '../../lib/private-session';
 import { useAuthStore } from '../../stores/useAuthStore';
@@ -116,6 +119,19 @@ export const FoodPreferencesPage: React.FC = () => {
         await authApi.updateFoodPreferences(draft);
         // Server is the authority for the saved profile; drop the stale read.
         await queryClient.invalidateQueries({ queryKey: queryKeys.foodPreferences() });
+        if (!auth.isGuest) {
+          try {
+            const currentFamily = await familyPreferencesApi.get();
+            const merged = mergeUserFoodPrefsIntoFamilyPreferences(
+              currentFamily.preferences,
+              draft,
+            );
+            const savedFamily = await familyPreferencesApi.save(currentFamily.revision, merged);
+            queryClient.setQueryData(familyPreferencesKey(), savedFamily);
+          } catch {
+            // Keep food-preferences save independent if family-preferences endpoint is unavailable.
+          }
+        }
       }
       // Preference-only store update: never flips onboarding completion,
       // which is server truth (screen 20 acceptance).

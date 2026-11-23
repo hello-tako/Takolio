@@ -13,6 +13,7 @@ import {
   type FamilyPreferences,
 } from '../../services/family-preferences';
 import { familyPreferencesKey, useFamilyPreferences } from '../../features/family/useFamilyPreferences';
+import { mergeUserFoodPrefsIntoFamilyPreferences } from '../../features/family/preference-sync';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
@@ -418,10 +419,10 @@ export const VNextOnboardingFlow: React.FC = () => {
           try {
             const baseFamily = family ?? familyQuery.data?.preferences ?? DEFAULT_FAMILY_PREFERENCES;
             const baseRev = draftRevision ?? familyQuery.data?.revision ?? 0;
-            const saved = await familyPreferencesApi.save(baseRev, {
-              ...baseFamily,
-              householdSize,
-            });
+            const mergedFamily = skipDirectlyToApp
+              ? { ...baseFamily, householdSize }
+              : mergeUserFoodPrefsIntoFamilyPreferences(baseFamily, prefs);
+            const saved = await familyPreferencesApi.save(baseRev, mergedFamily);
             assertCurrent();
             queryClient.setQueryData(key, saved);
             setDraftRevision(saved.revision);
@@ -628,8 +629,8 @@ export const VNextOnboardingFlow: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="rounded-2xl border border-[var(--tkv-accent-border,#FAD0C4)] bg-[var(--tkv-accent-soft,#FFF0E9)] p-4 flex items-center gap-3.5">
-                    <span className="w-11 h-11 rounded-xl bg-[var(--tkv-surface)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                  <div className="rounded-2xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] p-4 flex items-center gap-3.5">
+                    <span className="w-11 h-11 rounded-xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                       <VNextIcon name="sparkles" size={20} />
                     </span>
                     <div className="min-w-0">
@@ -1034,7 +1035,7 @@ export const VNextOnboardingFlow: React.FC = () => {
                               <div className="flex items-center gap-2 flex-wrap">
                                 <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">{sp.title}</p>
                                 {sp.badge && (
-                                  <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[10.5px] font-extrabold text-[var(--tkv-coral-ink)]">
+                                  <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[10.5px] font-extrabold text-[var(--tkv-primary)]">
                                     {sp.badge}
                                   </span>
                                 )}

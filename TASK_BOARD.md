@@ -1,3 +1,13 @@
+## Planner Auto-Suggestion Root Fix, Brand Board v2 Shopping Studio & 85-Screen Calm Kitchen Unification - 2026-11-24 JST
+
+Status: COMPLETE_AND_VERIFIED_LOCALLY ON `fix/menu-flow-3phase-overhaul` (base `origin/main` `9f11388c`); NOT pushed, NO remote D1 migration, ZERO payment/billing changes.
+- Fixed `d1-v4` 0-meal blackout in `packages/db/src/planner-catalog-authority.ts` (accepting 249 V4 operational canonical ingredients strictly fenced to `authorityIngredientIds`; updated `PROTECTED_FILE_HASHES.json`), upgraded V4 role/label resolution in `roles.ts` and `presentation.ts`, and added loading/manual-draft guards + 1-tap recovery in `C23PlannerPilot.tsx` & `planner-workbench.ts`.
+- Built lazy-loaded `src/web/vnext/screens/C27ShoppingStudio.tsx` with bidirectional Meal-Plan Sync Strip, Smart Unresolved Demand 1-tap/batch review, V4 aisle grouping (`Theo quầy chợ`), `Đi chợ nhanh`, and Post-Shopping Restock Strip (`→ /scan`, `/fridge?action=add`).
+- Unified Brand Board v2 Calm Kitchen surfaces and cross-flow links across Home (`C01`), Fridge (`C03`), Recipes (`C15–C22`), Planner (`C23–C29`), Shopping (`C27–C28`), Profile/System (`U01–U10`, `S01–S08`), and Public/Onboarding/Auth (`M01–M12`, `O01–O06`, `A01–A08`).
+- Verified `pnpm typecheck`, `pnpm lint`, `pnpm check:migrations`, `pnpm recipe:standard-v4:check`, `12/12` Vitest suites (`90/90` tests incl. new `planner-d1-v4-generation.test.ts` & `vnext-planner-shopping-unification.test.tsx`), `pnpm build`, and live Playwright E2E + desktop/mobile screenshot QA on `scripts/security-preview.mjs`.
+
+---
+
 ## Takolio Culinary Standard V4 — Split Migrations `0052..0057` & Re-Pinned `V4_CATALOG_RELEASE_BASELINE` - 2026-11-23 JST
 
 Status: CULINARY_STANDARD_V4_SPLIT_PINNED ON `feat/recipe-catalog-500-standardization` (PR #70, candidate `a6c4671129cc9ae2f48cf00b370b77445c35aad9`).

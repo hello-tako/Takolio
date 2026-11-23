@@ -490,8 +490,8 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Column: Title + Subtitle + 3 Structured Highlight Cards */}
           <div className="lg:col-span-6 space-y-5">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-bold text-[var(--tkv-primary)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
               <span>{spec.eyebrow}</span>
             </span>
 
@@ -513,7 +513,7 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
                   key={b.title}
                   className="rounded-[20px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-start gap-3.5"
                 >
-                  <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                  <span className="w-11 h-11 rounded-xl bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                     <VNextIcon name={b.icon} size={20} />
                   </span>
                   <div className="space-y-1 min-w-0">
@@ -587,7 +587,7 @@ const FeatureStoryLayout: React.FC<{ spec: FeatureStorySpec }> = ({ spec }) => {
                 key={st.code}
                 className="rounded-[20px] bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)] p-5 space-y-2.5"
               >
-                <span className="tkv-heading tabular-nums inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] text-xs font-extrabold">
+                <span className="tkv-heading tabular-nums inline-flex items-center justify-center w-9 h-9 rounded-xl bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)] text-xs font-extrabold">
                   {st.code}
                 </span>
                 <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)]">
@@ -1094,8 +1094,8 @@ export const M10FaqPage: React.FC = () => {
     <PublicMarketingShell screenId="M10">
       <section aria-labelledby="tkv-m10-h1" className="max-w-[920px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-2.5">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-bold text-[var(--tkv-primary)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
             <span>Giải đáp minh bạch</span>
           </span>
           <h1 id="tkv-m10-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
@@ -1161,7 +1161,7 @@ export const M10FaqPage: React.FC = () => {
                       <span className="tkv-heading text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
                         {item.q}
                       </span>
-                      <span className="w-8 h-8 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0">
+                      <span className="w-8 h-8 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] flex items-center justify-center shrink-0">
                         <VNextIcon name={expanded ? 'minus' : 'plus'} size={16} />
                       </span>
                     </button>
@@ -1317,8 +1317,8 @@ export const M11StoriesPage: React.FC = () => {
     <PublicMarketingShell screenId="M11">
       <section aria-labelledby="tkv-m11-h1" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
         <div className="space-y-2.5">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-bold text-[var(--tkv-primary)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
             <span>Cẩm nang bếp gia đình</span>
           </span>
           <h1 id="tkv-m11-h1" className="tkv-heading text-3xl sm:text-[2.6rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
@@ -1344,17 +1344,15 @@ export const M11StoriesPage: React.FC = () => {
                 )}
               >
                 <div>
-                  <div className="p-3 bg-[var(--tkv-surface-mint)]">
-                    <div className="overflow-hidden rounded-2xl aspect-[4/3] bg-white">
-                      <img
-                        src={story.coverSrc640}
-                        srcSet={`${story.coverSrc640} 640w, ${story.coverSrc} 1200w`}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
-                        alt={story.coverAlt}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                  <div className="overflow-hidden aspect-[4/3] bg-[var(--tkv-bg)]">
+                    <img
+                      src={story.coverSrc640}
+                      srcSet={`${story.coverSrc640} 640w, ${story.coverSrc} 1200w`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                      alt={story.coverAlt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-5 space-y-2">
                     <p className="text-xs tabular-nums font-bold text-[var(--tkv-ink-muted,#52706A)]">

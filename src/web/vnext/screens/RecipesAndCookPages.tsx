@@ -86,6 +86,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
     queryKey: queryKeys.recipeDiscovery(req),
     queryFn: () => api.getRecipeDiscovery(req),
     enabled: !savedView,
+    staleTime: 30_000,
   });
 
   const pageData = discoveryQuery.data;
@@ -141,33 +142,42 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              aria-pressed={!savedView}
-              onClick={() => toggleSavedView(false)}
-              className={clsx(
-                'tkv-focusable min-h-[44px] px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
-                !savedView
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
-                  : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
-              )}
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="inline-flex items-center rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-1">
+              <button
+                type="button"
+                aria-pressed={!savedView}
+                onClick={() => toggleSavedView(false)}
+                className={clsx(
+                  'tkv-focusable min-h-[36px] px-3.5 rounded-full text-xs sm:text-sm font-bold transition-colors',
+                  !savedView
+                    ? 'bg-[var(--tkv-primary)] text-white shadow-2xs'
+                    : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+                )}
+              >
+                Khám phá
+              </button>
+              <button
+                type="button"
+                aria-pressed={savedView}
+                onClick={() => toggleSavedView(true)}
+                className={clsx(
+                  'tkv-focusable min-h-[36px] px-3.5 rounded-full text-xs sm:text-sm font-bold transition-colors',
+                  savedView
+                    ? 'bg-[var(--tkv-primary)] text-white shadow-2xs'
+                    : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+                )}
+              >
+                Đã lưu
+              </button>
+            </div>
+            <Link
+              to="/planner/new"
+              className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] hover:border-[var(--tkv-primary)] text-xs sm:text-sm font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors"
             >
-              Khám phá
-            </button>
-            <button
-              type="button"
-              aria-pressed={savedView}
-              onClick={() => toggleSavedView(true)}
-              className={clsx(
-                'tkv-focusable min-h-[44px] px-4 py-2 rounded-full text-sm font-semibold border transition-colors',
-                savedView
-                  ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
-                  : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
-              )}
-            >
-              Đã lưu
-            </button>
+              <VNextIcon name="calendar" size={14} />
+              <span>Lên thực đơn</span>
+            </Link>
           </div>
         </div>
 
@@ -303,15 +313,13 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                         className="tkv-focusable h-full flex flex-col justify-between rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] overflow-hidden hover:border-[var(--tkv-border-strong)] transition-colors"
                       >
                         <div>
-                          <div className="p-2 sm:p-2.5 bg-[var(--tkv-surface-mint)]">
-                            <VerifiedDishImage
-                              slug={recipe.slug}
-                              title={recipe.title}
-                              canonicalFallbackSrc={resolveRecipeImage(recipe)}
-                              aspectClass="aspect-[4/3]"
-                              className="rounded-xl"
-                            />
-                          </div>
+                          <VerifiedDishImage
+                            recipeId={recipe.id}
+                            slug={recipe.slug}
+                            title={recipe.title}
+                            canonicalFallbackSrc={resolveRecipeImage(recipe)}
+                            aspectClass="aspect-[4/3]"
+                          />
                           <div className="p-3 sm:p-4 space-y-1.5">
                             <h2 className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink)] line-clamp-2">
                               {recipe.title}
@@ -409,6 +417,16 @@ export const C20C21CookingStudioVNext: React.FC = () => {
   const requestedServings =
     /^[1-9][0-9]?$/.test(rawServings) && Number(rawServings) <= 20 ? Number(rawServings) : undefined;
   const contentFingerprint = params.get('contentFingerprint') ?? undefined;
+  const rawReturnTo = params.get('returnTo');
+  const safeCookReturnTo =
+    rawReturnTo &&
+    !rawReturnTo.startsWith('//') &&
+    (rawReturnTo === '/' ||
+      rawReturnTo.startsWith('/planner') ||
+      rawReturnTo.startsWith('/recipes') ||
+      rawReturnTo.startsWith('/fridge'))
+      ? rawReturnTo
+      : null;
 
   const state = useCookingStore();
   const {
@@ -624,7 +642,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
           </button>
 
           <div className="flex items-center gap-2 min-w-0">
-            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap shrink-0 tabular-nums bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral-ink)]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap shrink-0 tabular-nums bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-primary)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
               <span>{isPrepStage ? 'Chuẩn bị nấu' : `Bước ${currentStepIndex + 1} / ${totalSteps}`}</span>
             </span>
@@ -675,7 +693,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 onClick={() => {
                   voiceChef.stopSpeaking();
                   state.clearTimer();
-                  navigate(vnextHref(`/recipes/${activeRecipe.slug || activeRecipe.id}`));
+                  navigate(
+                    safeCookReturnTo ??
+                      vnextHref(`/recipes/${activeRecipe.slug || activeRecipe.id}`),
+                  );
                 }}
                 className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-bold bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white transition-colors"
               >
@@ -822,8 +843,8 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               </p>
 
               {step?.tip && (
-                <p className="text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border-l-3 border-[var(--tkv-honey,#F6C453)] rounded-r-xl px-3.5 py-2">
-                  Mẹo bếp: {step.tip}
+                <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] bg-[var(--tkv-bg)] border-l-3 border-[var(--tkv-primary)] rounded-r-xl px-3.5 py-2">
+                  <strong className="text-[var(--tkv-ink)]">Mẹo bếp:</strong> {step.tip}
                 </p>
               )}
 
@@ -960,7 +981,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                   onClick={() => {
                     voiceChef.stopSpeaking();
                     state.clearTimer();
-                    navigate(vnextHref('/cooking/complete'));
+                    const completeHref = safeCookReturnTo
+                      ? `/cooking/complete?returnTo=${encodeURIComponent(safeCookReturnTo)}`
+                      : '/cooking/complete';
+                    navigate(vnextHref(completeHref));
                   }}
                   data-testid="c21-finish-cook-cta"
                   className="tkv-focusable min-h-[52px] px-3 sm:px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs text-sm sm:text-base font-extrabold inline-flex items-center justify-center gap-1.5 sm:gap-2 transition-colors"
@@ -995,6 +1019,16 @@ export const C20C21CookingStudioVNext: React.FC = () => {
  */
 export const C22CookingCompleteVNext: React.FC = () => {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const rawReturnTo = params.get('returnTo');
+  const safeCompleteReturnTo =
+    rawReturnTo &&
+    !rawReturnTo.startsWith('//') &&
+    (rawReturnTo === '/' ||
+      rawReturnTo.startsWith('/planner') ||
+      rawReturnTo.startsWith('/recipes'))
+      ? rawReturnTo
+      : null;
   const state = useCookingStore();
   const { runId, activeRecipe: recipe, deductions, deductionInputs, deductionErrors, attempt } = state;
   const [refreshMessage, setRefreshMessage] = useState('');
@@ -1083,7 +1117,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
       showContextualScan={false}
     >
       <form onSubmit={handleSubmit} noValidate className="max-w-3xl mx-auto space-y-6">
-        <TkvSurface className="relative p-4 sm:p-6 bg-gradient-to-br from-[var(--tkv-surface)] to-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)] flex flex-col sm:flex-row items-start sm:items-center gap-4 overflow-visible tkv-enter-fade-up">
+        <TkvSurface className="relative p-4 sm:p-6 bg-[var(--tkv-surface)] border-[var(--tkv-border)] flex flex-col sm:flex-row items-start sm:items-center gap-4 overflow-visible tkv-enter-fade-up">
           <div className="relative shrink-0">
             {done && <TkvConfettiBurst />}
             <MascotIllustration
@@ -1094,7 +1128,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
             />
           </div>
           <div className="space-y-2 min-w-0">
-            <TkvBadge tone={done ? 'success' : 'coral'} icon={done ? 'check' : 'recipes'}>
+            <TkvBadge tone={done ? 'success' : 'neutral'} icon={done ? 'check' : 'recipes'}>
               {done ? 'Đã ghi nhận bữa nấu' : 'Kiểm tra lượng thực dùng'}
             </TkvBadge>
             <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
@@ -1231,10 +1265,12 @@ export const C22CookingCompleteVNext: React.FC = () => {
                 size="lg"
                 onClick={() => {
                   state.resetCooking();
-                  navigate(vnextHref('/recipes'));
+                  navigate(safeCompleteReturnTo ?? vnextHref('/recipes'));
                 }}
               >
-                Chọn món khác
+                {safeCompleteReturnTo?.startsWith('/planner')
+                  ? 'Quay lại thực đơn'
+                  : 'Chọn món khác'}
               </TkvButton>
               <TkvButton
                 type="button"

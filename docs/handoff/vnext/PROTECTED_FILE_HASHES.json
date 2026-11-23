@@ -126,7 +126,7 @@
     "packages/db/src/meal-planning-snapshot.ts": "013925b9fea8130af55824dcf0b2b7778db710e8c1ad770f956c789ef3536713",
     "packages/db/src/meal-planning.ts": "be0476dbef307e170dfa58964ca13b61a35e6dd410b78dd75ba509127acdc657",
     "packages/db/src/personalization.ts": "80311ead0938e02230f04a99574bfc4d903c2c42c372da8b77f6fd7b3c6e0802",
-    "packages/db/src/planner-catalog-authority.ts": "7bab66ec3f4b34d9cb66b353003cf6fa8dbb6390799e207ef84e61406472dff8",
+    "packages/db/src/planner-catalog-authority.ts": "813443f72a138b5569dfdf6612c033bd6e3c1d46c54347afc37b0ce6e8057c1a",
     "packages/db/src/queries.ts": "5913e70f7ba669d992088c483f04c30ace233e46417fcae1004d185357157030",
     "packages/db/src/ranking-nutrition.ts": "3976b94a59dca31ca41127b19fb76633a6c7b4266b37346f1b3a575f2f794660",
     "packages/db/src/recipe-catalog.ts": "fa76c9744583f2fce55b5c3dfeadf76c656331773b29a0a27c351f1cea8ea2b7",

@@ -46,11 +46,17 @@ export const familyMealPlanningApi = {
       await fetchPlannerJson(`${plans}/current`, { cache: 'no-store', headers: { Accept: 'application/json; recipe-content=1' } }, 'v2'),
     );
   },
-  async regenerate(id: string, revision: number) {
+  async regenerate(id: string, revision: number, intent?: MealPlanningIntent) {
     const result = FamilyMealPlanDtoSchema.parse(
       await fetchPlannerJson(
         `${planPath(id)}/regenerate`,
-        { method: 'POST', body: JSON.stringify(RegenerateMealPlanSchema.parse({ revision })), headers: { Accept: 'application/json; recipe-content=1' } },
+        {
+          method: 'POST',
+          body: JSON.stringify(
+            RegenerateMealPlanSchema.parse(intent ? { revision, intent } : { revision }),
+          ),
+          headers: { Accept: 'application/json; recipe-content=1' },
+        },
         'v2',
       ),
     );

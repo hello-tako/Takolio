@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
+import { shoppingApi } from '../../services/shopping';
 import { queryKeys } from '../../lib/queryKeys';
 import { daysUntil } from '../../lib/format';
 import { presentExpiry } from '../../lib/inventory-truth';
@@ -25,21 +26,12 @@ import { VNextIcon } from '../components/VNextIcons';
 import {
   BrandFeatureIcon,
   MascotIllustration,
+  resolveCanonicalDishSlug,
   VerifiedDishImage,
 } from '../components/VNextMedia';
 import { HomeDashboardSkeleton } from '../components/Skeletons';
 import { prefetchRouteChunk } from '../lib/prefetch';
 import { useVNextSeo } from '../lib/seo';
-
-function slugifyDishTitle(title: string): string {
-  return title
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/gi, 'd')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
 
 const LEGACY_NAME_RE = /\bFri\w*\b/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
@@ -105,8 +97,16 @@ export const C01HomePilot: React.FC = () => {
     queryKey: queryKeys.recipeDiscovery({ pageSize: 3 }),
     queryFn: () => api.getRecipeDiscovery({ pageSize: 3 }),
   });
+  const shoppingQuery = useQuery({
+    queryKey: [...queryKeys.shoppingList(), 'snapshot'],
+    queryFn: () => shoppingApi.getShoppingListSnapshot(),
+    enabled: !isGuest,
+    staleTime: 30_000,
+    retry: false,
+  });
 
   const activeItems = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
+  const remainingShoppingCount = (shoppingQuery.data?.items ?? []).filter((i) => !i.isChecked).length;
 
   useVNextSeo({
     title: 'Hôm nay ăn gì? — Takolio',
@@ -145,8 +145,16 @@ export const C01HomePilot: React.FC = () => {
       : sanitizedName.trim().split(/\s+/).at(-1) || 'Bạn';
   const plan = home.plan;
   const meal = plan?.meal ?? null;
-  const heroRecipe = meal?.recipe ?? topRecommendation?.recipe;
-  const heroSlug = heroRecipe?.slug ?? (meal?.dishes[0] ? slugifyDishTitle(meal.dishes[0]) : '');
+  const hasPlannedHero = Boolean(!home.requiresAccount && meal?.state === 'ready' && meal.dishes.length > 0);
+  const heroRecipe = hasPlannedHero ? meal?.recipe : topRecommendation?.recipe;
+  const heroTitle = hasPlannedHero
+    ? meal!.dishes[0]!
+    : heroRecipe?.title ?? 'Món gợi ý';
+  const heroSlug = hasPlannedHero
+    ? resolveCanonicalDishSlug(meal?.recipe?.id, meal?.recipe?.slug, meal!.dishes[0]!)
+    : heroRecipe
+      ? resolveCanonicalDishSlug(heroRecipe.id, heroRecipe.slug, heroRecipe.title)
+      : '';
 
   return (
     <ConsumerStudioShell screenId="C01">
@@ -186,7 +194,7 @@ export const C01HomePilot: React.FC = () => {
               Thêm đồ
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>
-              Mua sắm
+              {remainingShoppingCount > 0 ? `Mua sắm (${remainingShoppingCount})` : 'Mua sắm'}
             </TkvChip>
           </div>
         </div>
@@ -239,7 +247,8 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        recipeId={heroRecipe?.id}
+                        title={heroTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-[16/9]"
                         priority
@@ -299,7 +308,7 @@ export const C01HomePilot: React.FC = () => {
                       {home.requiresAccount && (
                         <Link
                           to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
-                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-ink)] hover:opacity-95 font-extrabold text-sm inline-flex items-center transition-colors"
+                          className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] hover:bg-[var(--tkv-bg)] text-[var(--tkv-ink)] font-extrabold text-sm inline-flex items-center transition-colors"
                         >
                           Đăng nhập lập tuần
                         </Link>
@@ -311,7 +320,8 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        recipeId={heroRecipe?.id}
+                        title={heroTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-square"
                         priority
@@ -372,6 +382,7 @@ export const C01HomePilot: React.FC = () => {
                       >
                         <div>
                           <VerifiedDishImage
+                            recipeId={recipe.id}
                             slug={recipe.slug}
                             title={recipe.title}
                             canonicalFallbackSrc={resolveRecipeImage(recipe)}
@@ -384,9 +395,9 @@ export const C01HomePilot: React.FC = () => {
                               </h3>
                               <span
                                 aria-hidden="true"
-                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral)] items-center justify-center shrink-0"
+                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] items-center justify-center shrink-0"
                               >
-                                <VNextIcon name="bookmark" size={14} />
+                                <VNextIcon name="chevron-right" size={14} />
                               </span>
                             </div>
 
@@ -401,8 +412,12 @@ export const C01HomePilot: React.FC = () => {
                                 {recipe.servings} người
                               </span>
                               <span>·</span>
-                              <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
-                                Dễ làm
+                              <span className="font-semibold text-[var(--tkv-ink-muted)]">
+                                {recipe.cookTimeMinutes <= 20
+                                  ? 'Nhanh gọn'
+                                  : recipe.cookTimeMinutes <= 45
+                                    ? 'Bữa nhà'
+                                    : 'Đậm vị'}
                               </span>
                             </div>
 
@@ -569,10 +584,14 @@ export const C01HomePilot: React.FC = () => {
                     <BrandFeatureIcon name="shopping" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                        Danh sách mua sắm thông minh
+                        {remainingShoppingCount > 0
+                          ? `Danh sách mua sắm (${remainingShoppingCount} mục)`
+                          : 'Danh sách mua sắm thông minh'}
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ
+                        {remainingShoppingCount > 0
+                          ? `Đang còn ${remainingShoppingCount} nguyên liệu cần mua theo thực đơn và ghi chú`
+                          : 'Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ'}
                       </p>
                     </div>
                   </div>

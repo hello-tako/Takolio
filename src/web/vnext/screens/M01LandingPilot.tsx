@@ -178,7 +178,7 @@ export const M01LandingPilot: React.FC = () => {
                 </TkvButton>
                 <Link
                   to="/how-it-works"
-                  className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface-coral)] hover:opacity-95 border border-[var(--tkv-border-coral)] text-[var(--tkv-ink)] font-extrabold text-base inline-flex items-center justify-center gap-2 transition-colors"
+                  className="tkv-focusable min-h-[52px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] hover:bg-[var(--tkv-bg)] border border-[var(--tkv-border-strong)] text-[var(--tkv-ink)] font-extrabold text-base inline-flex items-center justify-center gap-2 transition-colors"
                 >
                   <span>Xem cách hoạt động</span>
                 </Link>
@@ -328,7 +328,7 @@ export const M01LandingPilot: React.FC = () => {
         <section aria-labelledby="m01-dishes-heading" className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div className="space-y-1">
-              <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] px-3 py-1 text-xs font-extrabold text-[var(--tkv-coral-ink)]">
+              <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-1 text-xs font-extrabold text-[var(--tkv-primary)]">
                 Hôm nay ăn gì?
               </span>
               <h2 id="m01-dishes-heading" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
