@@ -510,6 +510,19 @@ export const ConsumerStudioShell: React.FC<{
             tabIndex={-1}
             className="flex-1 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 min-w-0 tkv-page-enter"
           >
+            {backTo && (
+              <div className="hidden lg:flex items-center mb-4">
+                <button
+                  type="button"
+                  data-testid="desktop-shell-back-btn"
+                  onClick={() => navigate(backTo)}
+                  className="tkv-focusable min-h-[38px] px-3.5 py-1.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-xs font-extrabold text-[var(--tkv-ink)] hover:text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors shadow-2xs"
+                >
+                  <VNextIcon name="arrow-left" size={14} />
+                  <span>Quay lại</span>
+                </button>
+              </div>
+            )}
             {children}
           </main>
         </div>

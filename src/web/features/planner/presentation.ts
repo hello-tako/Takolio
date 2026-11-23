@@ -322,6 +322,8 @@ const viCopy = {
     TARGET_NOT_FOUND: 'Món này không còn trong danh mục hiện tại. Hãy tải lại danh sách.',
     COMPONENT_LIMIT: 'Bữa ăn đã đạt giới hạn số món. Hãy bỏ bớt một món trước khi thêm.',
     MEAL_PLANNER_DISABLED: 'Tính năng kế hoạch bữa ăn chưa được bật.',
+    MEAL_COMPOSITION_DISABLED:
+      'Chế độ mâm cơm gia đình chưa được bật trên máy chủ hiện tại. Vui lòng bật cờ môi trường hoặc thử lại.',
     REGISTERED_ACCOUNT_REQUIRED: 'Đăng nhập bằng tài khoản đã đăng ký để dùng kế hoạch bữa ăn.',
     PLAN_REVISION_CONFLICT: 'Kế hoạch đã thay đổi. Tải bản mới nhất trước khi thử lại.',
     PLAN_REVALIDATION_REQUIRED: 'Dữ liệu nguồn đã thay đổi. Hãy lên kế hoạch lại.',
@@ -662,6 +664,8 @@ const enCopy: PlannerCopy = {
     TARGET_NOT_FOUND: 'This dish is no longer in the current catalog. Reload the choices.',
     COMPONENT_LIMIT: 'This meal has reached its dish limit. Remove a dish before adding another.',
     MEAL_PLANNER_DISABLED: 'Meal planning is not enabled.',
+    MEAL_COMPOSITION_DISABLED:
+      'Family meal composition is not enabled on this server yet. Check environment flags or try again.',
     REGISTERED_ACCOUNT_REQUIRED: 'Sign in with a registered account to use meal planning.',
     PLAN_REVISION_CONFLICT: 'The plan changed. Load the latest version before retrying.',
     PLAN_REVALIDATION_REQUIRED: 'Source data changed. Regenerate the plan first.',
@@ -791,6 +795,9 @@ export function plannerErrorMessage(error: unknown, locale?: string): string {
   if (error instanceof ZodError) return copy.invalid;
   if (!(error instanceof ApiError)) return copy.unavailable;
   if (error.kind === 'offline') return copy.offline;
+  if (error.code && Object.hasOwn(copy, error.code)) {
+    return label(copy, error.code, copy.unavailable);
+  }
   const envelope = /^HTTP \d{3}: ([\s\S]*)$/.exec(error.message);
   if (envelope) {
     try {

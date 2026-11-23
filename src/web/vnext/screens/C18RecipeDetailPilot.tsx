@@ -61,15 +61,18 @@ export const C18RecipeDetailPilot: React.FC = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const queryReturnTo = params.get('returnTo');
-  const returnTo =
-    queryReturnTo &&
-    (queryReturnTo === '/' || queryReturnTo.startsWith('/recipes')) &&
-    !queryReturnTo.startsWith('//')
-      ? queryReturnTo
-      : typeof state?.discoveryReturn === 'string' &&
-          (state.discoveryReturn === '/' || state.discoveryReturn.startsWith('/recipes'))
-        ? state.discoveryReturn
-        : '/recipes';
+  const isSafeAppReturn = (candidate: unknown): candidate is string =>
+    typeof candidate === 'string' &&
+    !candidate.startsWith('//') &&
+    (candidate === '/' ||
+      candidate.startsWith('/recipes') ||
+      candidate.startsWith('/planner') ||
+      candidate.startsWith('/fridge'));
+  const returnTo = isSafeAppReturn(queryReturnTo)
+    ? queryReturnTo
+    : isSafeAppReturn(state?.discoveryReturn)
+      ? state.discoveryReturn
+      : '/recipes';
 
   const queryClient = useQueryClient();
   const startCooking = useCookingStore((s) => s.startCooking);
@@ -84,6 +87,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
   const inventoryQuery = useQuery({
     queryKey: queryKeys.inventory(),
     queryFn: () => api.getInventory(),
+    staleTime: 30_000,
   });
 
   const addShortfallMutation = useMutation({
@@ -216,6 +220,9 @@ export const C18RecipeDetailPilot: React.FC = () => {
     if (recipeQuery.data?.contentFingerprint) {
       cookParams.set('contentFingerprint', recipeQuery.data.contentFingerprint);
     }
+    if (returnTo && returnTo !== '/recipes') {
+      cookParams.set('returnTo', returnTo);
+    }
     navigate(`/cook/${recipe.slug}?${cookParams.toString()}`);
   };
 
@@ -226,6 +233,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
         <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-20">
           <div className="rounded-[24px] bg-[var(--tkv-surface-muted,#E7F4EC)] p-2.5 border border-[var(--tkv-border,#DCE6DE)] shadow-xs">
             <VerifiedDishImage
+              recipeId={recipe.id}
               slug={recipe.slug}
               title={recipe.title}
               canonicalFallbackSrc={canonicalImg}

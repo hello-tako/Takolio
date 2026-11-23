@@ -14,7 +14,8 @@ import { queryKeys } from '../../lib/queryKeys';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { capturePrivateSession } from '../../lib/private-session';
 import { ApiError } from '../../services/http';
-import { resolveRecipeImage, recipeImageErrorHandler } from '../../lib/recipe-media';
+import { resolveRecipeImage } from '../../lib/recipe-media';
+import { VerifiedDishImage } from '../../vnext/components/VNextMedia';
 import { roleLabel } from '../planner/composition';
 import { IngredientCoverage } from '../planner/IngredientCoverage';
 import { plannerErrorMessage } from '../planner/presentation';
@@ -105,15 +106,15 @@ export function FavoritesCollection({ servings }: { servings: number }) {
         <div className="family-favorites-grid">
           {entries.map((entry) => (
             <article key={entry.recipeId} className="family-favorite-card">
-              {entry.imageUrl && resolveRecipeImage(entry).source !== 'placeholder' && (
-                <img
-                  className="family-favorite-image"
-                  src={resolveRecipeImage(entry).src}
-                  onError={recipeImageErrorHandler(resolveRecipeImage(entry).fallbackSrc)}
-                  alt=""
-                  loading="lazy"
-                />
-              )}
+              <VerifiedDishImage
+                recipeId={entry.recipeId}
+                title={entry.title}
+                canonicalFallbackSrc={
+                  entry.imageUrl ? resolveRecipeImage(entry) : undefined
+                }
+                aspectClass="aspect-[16/10]"
+                className="w-full rounded-xl mb-2.5 border border-[var(--tkv-border)]"
+              />
               <div className="family-favorite-title">
                 <h3>{entry.title}</h3>
                 <SaveRecipeButton recipeId={entry.recipeId} title={entry.title} compact />

@@ -25,21 +25,12 @@ import { VNextIcon } from '../components/VNextIcons';
 import {
   BrandFeatureIcon,
   MascotIllustration,
+  resolveCanonicalDishSlug,
   VerifiedDishImage,
 } from '../components/VNextMedia';
 import { HomeDashboardSkeleton } from '../components/Skeletons';
 import { prefetchRouteChunk } from '../lib/prefetch';
 import { useVNextSeo } from '../lib/seo';
-
-function slugifyDishTitle(title: string): string {
-  return title
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/gi, 'd')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
 
 const LEGACY_NAME_RE = /\bFri\w*\b/i;
 function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
@@ -145,8 +136,16 @@ export const C01HomePilot: React.FC = () => {
       : sanitizedName.trim().split(/\s+/).at(-1) || 'Bạn';
   const plan = home.plan;
   const meal = plan?.meal ?? null;
-  const heroRecipe = meal?.recipe ?? topRecommendation?.recipe;
-  const heroSlug = heroRecipe?.slug ?? (meal?.dishes[0] ? slugifyDishTitle(meal.dishes[0]) : '');
+  const hasPlannedHero = Boolean(!home.requiresAccount && meal?.state === 'ready' && meal.dishes.length > 0);
+  const heroRecipe = hasPlannedHero ? meal?.recipe : topRecommendation?.recipe;
+  const heroTitle = hasPlannedHero
+    ? meal!.dishes[0]!
+    : heroRecipe?.title ?? 'Món gợi ý';
+  const heroSlug = hasPlannedHero
+    ? resolveCanonicalDishSlug(meal?.recipe?.id, meal?.recipe?.slug, meal!.dishes[0]!)
+    : heroRecipe
+      ? resolveCanonicalDishSlug(heroRecipe.id, heroRecipe.slug, heroRecipe.title)
+      : '';
 
   return (
     <ConsumerStudioShell screenId="C01">
@@ -239,7 +238,8 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        recipeId={heroRecipe?.id}
+                        title={heroTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-[16/9]"
                         priority
@@ -311,7 +311,8 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        recipeId={heroRecipe?.id}
+                        title={heroTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-square"
                         priority
@@ -372,6 +373,7 @@ export const C01HomePilot: React.FC = () => {
                       >
                         <div>
                           <VerifiedDishImage
+                            recipeId={recipe.id}
                             slug={recipe.slug}
                             title={recipe.title}
                             canonicalFallbackSrc={resolveRecipeImage(recipe)}
@@ -384,9 +386,9 @@ export const C01HomePilot: React.FC = () => {
                               </h3>
                               <span
                                 aria-hidden="true"
-                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral)] items-center justify-center shrink-0"
+                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-primary)] items-center justify-center shrink-0"
                               >
-                                <VNextIcon name="bookmark" size={14} />
+                                <VNextIcon name="chevron-right" size={14} />
                               </span>
                             </div>
 
@@ -402,7 +404,11 @@ export const C01HomePilot: React.FC = () => {
                               </span>
                               <span>·</span>
                               <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
-                                Dễ làm
+                                {recipe.cookTimeMinutes <= 20
+                                  ? 'Nhanh gọn'
+                                  : recipe.cookTimeMinutes <= 45
+                                    ? 'Bữa nhà'
+                                    : 'Đậm vị'}
                               </span>
                             </div>
 

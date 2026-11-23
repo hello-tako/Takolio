@@ -21,7 +21,8 @@ import { convertedInventoryQuantity } from '../lib/inventory-quantity';
 import { getIngredientImage } from '../lib/ingredient-images';
 import { Clock, ChefHat, Calendar, Layers, ArrowRight, PackageOpen, Receipt } from 'lucide-react';
 import { clsx } from 'clsx';
-import { resolveRecipeImage, recipeImageErrorHandler } from '../lib/recipe-media';
+import { resolveRecipeImage } from '../lib/recipe-media';
+import { VerifiedDishImage } from '../vnext/components/VNextMedia';
 
 const EXPIRY_TONE_CLASS: Record<string, string> = {
   unknown: 'bg-semantic-border/60 text-semantic-text-secondary border-semantic-border',
@@ -611,14 +612,14 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
               aria-label={recipe.title}
               className="stock-recipe-link bg-white rounded-xl p-3 flex items-center gap-3.5 border border-semantic-border shadow-xs cursor-pointer hover:border-semantic-border-strong active:scale-[0.99] transition-tap"
             >
-              <img
-                src={resolveRecipeImage(recipe).src}
-                alt=""
-                width={56}
-                height={56}
-                className="w-14 h-14 rounded-lg object-cover shrink-0 border border-semantic-border/70"
-                loading="lazy"
-                onError={recipeImageErrorHandler(resolveRecipeImage(recipe).fallbackSrc)}
+              <VerifiedDishImage
+                slug={recipe.slug}
+                recipeId={recipe.id}
+                title={recipe.title}
+                canonicalFallbackSrc={resolveRecipeImage(recipe)}
+                aspectClass="aspect-square"
+                compact
+                className="w-14 h-14 rounded-lg shrink-0 border border-semantic-border/70"
               />
               <div className="flex-1 min-w-0">
                 <span className="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">

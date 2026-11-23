@@ -65,7 +65,7 @@ const IngredientThumb: React.FC<{
   category: string;
 }> = ({ ingredientId, name, category }) => {
   const [failed, setFailed] = useState(false);
-  const src = getIngredientImage(ingredientId, name);
+  const src = getIngredientImage(ingredientId, name, category);
   const catIcon = CATEGORY_ICONS[category] ?? 'cat-vegetable';
   const showImage = Boolean(src) && !failed && !src.includes('placeholder');
 

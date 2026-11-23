@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:web": "vite",
-    "dev:worker": "wrangler dev --var ENVIRONMENT:development",
+    "dev": "VITE_MEAL_PLANNER_ENABLED=${VITE_MEAL_PLANNER_ENABLED:-true} VITE_MEAL_COMPOSITION_V2_ENABLED=${VITE_MEAL_COMPOSITION_V2_ENABLED:-true} vite",
+    "dev:web": "VITE_MEAL_PLANNER_ENABLED=${VITE_MEAL_PLANNER_ENABLED:-true} VITE_MEAL_COMPOSITION_V2_ENABLED=${VITE_MEAL_COMPOSITION_V2_ENABLED:-true} vite",
+    "dev:worker": "wrangler dev --var ENVIRONMENT:development --var APP_URL:http://localhost:5173 --var MEAL_PLANNER_ENABLED:true --var MEAL_COMPOSITION_V2_ENABLED:true",
     "build": "vite build && vite build -c vite.admin.config.ts && tsc -p tsconfig.worker.json",
     "build:web": "vite build",
     "build:site": "vite build -c vite.site.config.ts && vite build -c vite.site.config.ts --ssr site/entry-server.tsx --outDir dist/site-ssr && node scripts/site-prerender.mjs",

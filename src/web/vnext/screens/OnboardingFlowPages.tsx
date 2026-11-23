@@ -13,6 +13,7 @@ import {
   type FamilyPreferences,
 } from '../../services/family-preferences';
 import { familyPreferencesKey, useFamilyPreferences } from '../../features/family/useFamilyPreferences';
+import { mergeUserFoodPrefsIntoFamilyPreferences } from '../../features/family/preference-sync';
 import { isMealPlannerEnabled } from '../../features/planner/feature';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
@@ -418,10 +419,10 @@ export const VNextOnboardingFlow: React.FC = () => {
           try {
             const baseFamily = family ?? familyQuery.data?.preferences ?? DEFAULT_FAMILY_PREFERENCES;
             const baseRev = draftRevision ?? familyQuery.data?.revision ?? 0;
-            const saved = await familyPreferencesApi.save(baseRev, {
-              ...baseFamily,
-              householdSize,
-            });
+            const mergedFamily = skipDirectlyToApp
+              ? { ...baseFamily, householdSize }
+              : mergeUserFoodPrefsIntoFamilyPreferences(baseFamily, prefs);
+            const saved = await familyPreferencesApi.save(baseRev, mergedFamily);
             assertCurrent();
             queryClient.setQueryData(key, saved);
             setDraftRevision(saved.revision);
