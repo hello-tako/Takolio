@@ -13,6 +13,7 @@ import { capturePrivateSession } from '../lib/private-session';
 import { readPrivateImage } from '../lib/private-image';
 import { ApiError } from '../services/http';
 import { scanApiErrorMessage, type ScanQuota } from '../lib/scan-errors';
+import { AiScanPendingStage } from '../vnext/components/Skeletons';
 
 export const ScanPage: React.FC = () => {
   const navigate = useNavigate();
@@ -269,12 +270,19 @@ export const ScanPage: React.FC = () => {
             />
           )}
           {isProcessing && (
-            <div className="mt-4">
-              <ScanProcessingState
-                stage={processingStage}
-                kind={activeTab === 'receipt' ? 'receipt' : 'fridge'}
+            <div className="mt-4 flex flex-col gap-3">
+              <AiScanPendingStage
+                previewUrl={imagePreviewUrl}
+                statusText={statusText}
+                modeLabel={activeTab === 'receipt' ? 'OCR Hóa đơn Takolio' : 'AI Vision Takolio'}
               />
-              <p className="sr-only">{statusText}</p>
+              <div className="sr-only">
+                <ScanProcessingState
+                  stage={processingStage}
+                  kind={activeTab === 'receipt' ? 'receipt' : 'fridge'}
+                />
+                <p>{statusText}</p>
+              </div>
             </div>
           )}
           {errorMsg && (

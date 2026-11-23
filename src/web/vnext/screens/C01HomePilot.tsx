@@ -27,6 +27,8 @@ import {
   MascotIllustration,
   VerifiedDishImage,
 } from '../components/VNextMedia';
+import { HomeDashboardSkeleton } from '../components/Skeletons';
+import { prefetchRouteChunk } from '../lib/prefetch';
 import { useVNextSeo } from '../lib/seo';
 
 function slugifyDishTitle(title: string): string {
@@ -204,9 +206,9 @@ export const C01HomePilot: React.FC = () => {
                 aria-pressed={active}
                 onClick={() => setActiveMood(chip.id)}
                 className={clsx(
-                  'tkv-focusable min-h-[44px] px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-colors border',
+                  'tkv-focusable tkv-tactile min-h-[44px] px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap active:scale-95 border',
                   active
-                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-xs'
+                    ? 'bg-[var(--tkv-primary)] text-white border-[var(--tkv-primary)] shadow-[var(--tkv-shadow-cta)]'
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
                 )}
               >
@@ -230,7 +232,7 @@ export const C01HomePilot: React.FC = () => {
                 onRetry={() => void home.retry()}
               />
             ) : (
-              <div className="tkv-leaf-wave-band rounded-3xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4 sm:p-6 text-[var(--tkv-ink)] shadow-[var(--tkv-shadow-card)]">
+              <div className="tkv-hero-living rounded-3xl p-4 sm:p-6 text-[var(--tkv-ink)] tkv-enter-fade-up">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-5">
                   {/* Mobile Hero Dish Photo (`board-2.jpg` center phone top dish card!) */}
                   <div className="sm:hidden">
@@ -245,7 +247,7 @@ export const C01HomePilot: React.FC = () => {
                       />
                     ) : (
                       <div className="flex justify-center py-2">
-                        <MascotIllustration pose="welcome" size={96} priority className="w-24 h-24" />
+                        <MascotIllustration pose="welcome" size={96} priority motion="idle" className="w-24 h-24" />
                       </div>
                     )}
                   </div>
@@ -338,16 +340,16 @@ export const C01HomePilot: React.FC = () => {
               </div>
 
               {recommendationsQuery.isPending ? (
-                <TkvSkeleton className="h-52" label="Đang tải món gợi ý…" />
+                <HomeDashboardSkeleton label="Đang tải món gợi ý…" />
               ) : recommendationsQuery.isError ? (
                 <TkvErrorState
                   message="Chưa tải được danh sách gợi ý món ăn."
                   onRetry={() => void recommendationsQuery.refetch()}
                 />
               ) : displayedRecommendations.length === 0 ? (
-                <TkvSurface className="p-5 flex items-center gap-4 bg-[var(--tkv-surface)]">
-                  <MascotIllustration pose="cooking" size={76} className="w-20 h-20 shrink-0" />
-                  <div className="space-y-1.5">
+                <TkvSurface className="p-5 flex items-center gap-4 bg-[var(--tkv-surface)] tkv-enter-fade-up">
+                  <MascotIllustration pose="cooking" size={76} motion="idle" className="w-20 h-20 shrink-0" />
+                  <div className="flex flex-col gap-1.5">
                     <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
                       Sẵn sàng chọn món ngon hôm nay
                     </p>
@@ -359,11 +361,14 @@ export const C01HomePilot: React.FC = () => {
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {displayedRecommendations.map(
-                    ({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => (
+                    ({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }, idx) => (
                       <Link
                         key={recipe.id}
                         to={`/recipes/${recipe.slug || recipe.id}`}
-                        className="tkv-focusable tkv-bento-card overflow-hidden flex flex-col justify-between"
+                        onPointerEnter={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
+                        onFocus={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
+                        style={{ '--tkv-i': idx } as React.CSSProperties}
+                        className="group tkv-focusable tkv-bento-card tkv-bento-interactive tkv-stagger overflow-hidden flex flex-col justify-between"
                       >
                         <div>
                           <VerifiedDishImage
@@ -448,7 +453,7 @@ export const C01HomePilot: React.FC = () => {
               ) : useSoonItems.length === 0 ? (
                 <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-secondary)] bg-[var(--tkv-surface)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0 flex-1">
-                    <MascotIllustration pose="fridge" size={56} decorative className="w-14 h-14 shrink-0" />
+                    <MascotIllustration pose="fridge" size={56} motion="idle" decorative className="w-14 h-14 shrink-0" />
                     <span className="min-w-0">
                       {activeItems.length === 0
                         ? 'Chưa có nguyên liệu nào trong tủ lạnh.'

@@ -1488,3 +1488,71 @@
 .tkv-adapted-surface .plus-hero img {
   border-radius: 16px;
 }
+
+/* ── Living Kitchen Surface Sync across all 12 Legacy-Wrapped Screens ── */
+.tkv-adapted-surface .planning-paper,
+.tkv-adapted-surface .scan-guide,
+.tkv-adapted-surface .scan-camera-region,
+.tkv-adapted-surface .kitchen-card {
+  border-radius: 22px;
+  box-shadow: var(--tkv-shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition:
+    transform 200ms var(--tkv-ease-spring),
+    border-color 180ms ease,
+    box-shadow 200ms var(--tkv-ease-spring);
+}
+
+.tkv-adapted-surface .shopping-saved-row {
+  transition:
+    opacity 200ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms var(--tkv-ease-spring);
+}
+
+.tkv-adapted-surface .shopping-saved-row.is-checked {
+  opacity: 0.72;
+}
+
+.tkv-adapted-surface .shopping-saved-row.is-checked strong {
+  text-decoration: line-through;
+  text-decoration-color: var(--tkv-primary);
+  text-decoration-thickness: 2px;
+}
+
+.tkv-adapted-surface .shopping-check-label input[type='checkbox'] {
+  accent-color: var(--tkv-primary);
+  transition: transform 180ms var(--tkv-ease-pop);
+}
+
+.tkv-adapted-surface .shopping-check-label input[type='checkbox']:checked {
+  transform: scale(1.08);
+}
+
+.tkv-adapted-surface .planning-icon-button,
+.tkv-adapted-surface .scan-modes button {
+  transition:
+    transform 150ms var(--tkv-ease-tactile),
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.tkv-adapted-surface .planning-icon-button:active,
+.tkv-adapted-surface .scan-modes button:active {
+  transform: scale(0.96);
+}
+
+.tkv-root .family-dialog {
+  animation: tkv-sheet-up 230ms var(--tkv-ease-spring) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tkv-root .family-dialog,
+  .tkv-adapted-surface .shopping-saved-row,
+  .tkv-adapted-surface .shopping-check-label input[type='checkbox'] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

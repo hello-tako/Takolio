@@ -20,6 +20,7 @@ import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
 import { isMealCompositionEnabled } from './composition';
 import { LegacyPlannerSetup } from './LegacyPlannerSetup';
+import { PlannerGeneratingStage } from '../../vnext/components/Skeletons';
 
 export const plannerInputClass =
   'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-base text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
@@ -442,13 +443,17 @@ function FamilyPlannerSetup({
                 </Link>
               )}
               {model.busy && (
-                <p role="status">
-                  {selectionMode === 'manual'
-                    ? locale === 'vi'
-                      ? 'Đang tạo lịch nấu…'
-                      : 'Creating your meal calendar…'
-                    : t.generating}
-                </p>
+                <div className="pt-2">
+                  <PlannerGeneratingStage
+                    subtitle={
+                      selectionMode === 'manual'
+                        ? locale === 'vi'
+                          ? 'Đang tạo lịch nấu trống theo các ngày bạn chọn…'
+                          : 'Creating your meal calendar…'
+                        : t.generating
+                    }
+                  />
+                </div>
               )}
               <p className="planning-note">Thói quen được lưu cho lần tạo thực đơn tiếp theo.</p>
             </form>

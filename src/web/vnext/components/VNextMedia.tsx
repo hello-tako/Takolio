@@ -336,13 +336,22 @@ export const MascotIllustration: React.FC<{
   size?: number;
   decorative?: boolean;
   priority?: boolean;
+  motion?: 'none' | 'idle' | 'cheer' | 'scan';
   className?: string;
-}> = ({ pose, size = 128, decorative = false, priority = false, className = '' }) => {
+}> = ({ pose, size = 128, decorative = false, priority = false, motion = 'none', className = '' }) => {
   const [useFallbackPath, setUseFallbackPath] = useState(false);
   const meta = MASCOT_POSE_MAP[pose] ?? MASCOT_POSE_MAP.welcome;
   const activeBase = useFallbackPath ? meta.base : meta.vnextBase;
+  const motionClass =
+    motion === 'idle'
+      ? 'tkv-mascot-float'
+      : motion === 'cheer'
+        ? 'tkv-mascot-cheer'
+        : motion === 'scan'
+          ? 'tkv-mascot-float'
+          : '';
 
-  return (
+  const imgEl = (
     <img
       src={`${activeBase}-256w.webp`}
       srcSet={`${activeBase}-256w.webp 256w, ${activeBase}.webp 512w`}
@@ -353,12 +362,27 @@ export const MascotIllustration: React.FC<{
       width={size}
       height={size}
       loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
       onError={() => {
         if (!useFallbackPath) setUseFallbackPath(true);
       }}
-      className={`aspect-square rounded-2xl object-contain select-none ${className}`}
+      className={`aspect-square rounded-2xl object-contain select-none ${motionClass} ${className}`}
     />
   );
+
+  if (motion === 'scan') {
+    return (
+      <span className="relative inline-flex items-center justify-center">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-1.5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] tkv-scan-aura"
+        />
+        <span className="relative z-10 inline-flex">{imgEl}</span>
+      </span>
+    );
+  }
+
+  return imgEl;
 };
 
 /**
@@ -445,6 +469,7 @@ export const VerifiedDishImage: React.FC<{
   className = '',
 }) => {
   const [errored, setErrored] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const vnextEntry = slug ? VERIFIED_VNEXT_RECIPE_MEDIA[slug] : undefined;
   const resolvedFallbackUrl =
     typeof canonicalFallbackSrc === 'string'
@@ -453,17 +478,24 @@ export const VerifiedDishImage: React.FC<{
         ? canonicalFallbackSrc.src
         : null;
 
+  const imgRevealClass = `w-full h-full object-cover transition-[opacity,transform] duration-300 ease-out group-hover:scale-[1.03] ${
+    loaded ? 'opacity-100 scale-100' : 'opacity-90 scale-[1.015]'
+  }`;
+
   if (!errored && vnextEntry) {
     return (
-      <div className={`relative overflow-hidden bg-[var(--tkv-bg)] ${aspectClass} ${className}`}>
+      <div className={`relative overflow-hidden bg-[var(--tkv-surface-subtle)] ${aspectClass} ${className}`}>
+        {!loaded && <span aria-hidden="true" className="absolute inset-0 tkv-shimmer pointer-events-none" />}
         <img
           src={vnextEntry.src640}
           srcSet={`${vnextEntry.src640} 640w, ${vnextEntry.src} 1200w`}
           sizes="(max-width: 768px) 100vw, 560px"
           alt={vnextEntry.altVi}
           loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          onLoad={() => setLoaded(true)}
           onError={() => setErrored(true)}
-          className="w-full h-full object-cover"
+          className={imgRevealClass}
         />
       </div>
     );
@@ -471,13 +503,16 @@ export const VerifiedDishImage: React.FC<{
 
   if (!errored && resolvedFallbackUrl && resolvedFallbackUrl.startsWith('/takolio/')) {
     return (
-      <div className={`relative overflow-hidden bg-[var(--tkv-bg)] ${aspectClass} ${className}`}>
+      <div className={`relative overflow-hidden bg-[var(--tkv-surface-subtle)] ${aspectClass} ${className}`}>
+        {!loaded && <span aria-hidden="true" className="absolute inset-0 tkv-shimmer pointer-events-none" />}
         <img
           src={resolvedFallbackUrl}
           alt={`Món ${title}`}
           loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          onLoad={() => setLoaded(true)}
           onError={() => setErrored(true)}
-          className="w-full h-full object-cover"
+          className={imgRevealClass}
         />
       </div>
     );
@@ -485,12 +520,15 @@ export const VerifiedDishImage: React.FC<{
 
   const localCulinarySrc = pickLocalDishFallbackPhoto(slug, title, fallbackSeed);
   return (
-    <div className={`relative overflow-hidden bg-[var(--tkv-bg)] ${aspectClass} ${className}`}>
+    <div className={`relative overflow-hidden bg-[var(--tkv-surface-subtle)] ${aspectClass} ${className}`}>
+      {!loaded && <span aria-hidden="true" className="absolute inset-0 tkv-shimmer pointer-events-none" />}
       <img
         src={localCulinarySrc}
         alt={`Món ${title}`}
         loading={priority ? 'eager' : 'lazy'}
-        className="w-full h-full object-cover"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className={imgRevealClass}
       />
     </div>
   );

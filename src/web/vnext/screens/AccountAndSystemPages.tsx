@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
@@ -16,11 +16,6 @@ function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false
 }
 import { queryKeys } from '../../lib/queryKeys';
 import { getPendingOps } from '../../lib/sync';
-import { FoodPreferencesPage } from '../../pages/settings/FoodPreferencesPage';
-import { PlanningSettingsPage } from '../../pages/settings/PlanningSettingsPage';
-import { SettingsPage } from '../../pages/SettingsPage';
-import { NotificationPreferencesPage } from '../../pages/settings/NotificationPreferencesPage';
-import { PlusPaywallPage } from '../../pages/PlusPaywallPage';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
 import { detectRuntimeDomainRole } from '../lib/domain-surface';
@@ -35,6 +30,23 @@ import {
 } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
 import { MascotIllustration } from '../components/VNextMedia';
+import { SettingsFormSkeleton } from '../components/Skeletons';
+
+const LazyFoodPreferencesPage = lazy(() =>
+  import('../../pages/settings/FoodPreferencesPage').then((m) => ({ default: m.FoodPreferencesPage })),
+);
+const LazyPlanningSettingsPage = lazy(() =>
+  import('../../pages/settings/PlanningSettingsPage').then((m) => ({ default: m.PlanningSettingsPage })),
+);
+const LazySettingsPage = lazy(() =>
+  import('../../pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
+);
+const LazyNotificationPreferencesPage = lazy(() =>
+  import('../../pages/settings/NotificationPreferencesPage').then((m) => ({ default: m.NotificationPreferencesPage })),
+);
+const LazyPlusPaywallPage = lazy(() =>
+  import('../../pages/PlusPaywallPage').then((m) => ({ default: m.PlusPaywallPage })),
+);
 
 function relativeTimeVi(iso: string): string {
   const t = new Date(iso).getTime();
@@ -378,7 +390,9 @@ export const U01ProfileHubVNext: React.FC = () => {
 export const U02FoodPrefsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U02" title="Sở thích món ăn" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <FoodPreferencesPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang tải sở thích món ăn…" />}>
+        <LazyFoodPreferencesPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -387,7 +401,9 @@ export const U02FoodPrefsVNext: React.FC = () => (
 export const U03PlanningSettingsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U03" title="Cài đặt thực đơn" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <PlanningSettingsPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt thực đơn…" />}>
+        <LazyPlanningSettingsPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -396,7 +412,9 @@ export const U03PlanningSettingsVNext: React.FC = () => (
 export const U04AppSettingsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U04" title="Cài đặt ứng dụng" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <SettingsPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt ứng dụng…" />}>
+        <LazySettingsPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -405,7 +423,9 @@ export const U04AppSettingsVNext: React.FC = () => (
 export const U05NotificationPrefsVNext: React.FC = () => (
   <ConsumerStudioShell screenId="U05" title="Cài đặt thông báo" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <NotificationPreferencesPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt thông báo…" />}>
+        <LazyNotificationPreferencesPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );
@@ -513,7 +533,9 @@ export const U06HouseholdHonestPage: React.FC = () => {
 export const U07U08PlusReadOnlyWrapper: React.FC = () => (
   <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
     <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <PlusPaywallPage />
+      <Suspense fallback={<SettingsFormSkeleton label="Đang tải gói Takolio Pro…" />}>
+        <LazyPlusPaywallPage />
+      </Suspense>
     </div>
   </ConsumerStudioShell>
 );

@@ -2,18 +2,27 @@ import React from 'react';
 import { WifiOff, AlertTriangle, RefreshCw } from 'lucide-react';
 import { ApiError } from '../../services/api';
 
-/** Compact inline loading spinner for widget-level fetches. */
+/** Warm Brand Board v2 structural shimmer loading state for widget-level fetches. */
 export const InlineLoading: React.FC<{ label?: string }> = ({ label = 'Đang tải…' }) => (
-  <div className="text-center py-8" role="status" aria-live="polite">
-    <div className="animate-spin w-7 h-7 border-2 border-semantic-action-primary border-t-transparent rounded-full mx-auto mb-2 motion-reduce:animate-none" />
-    <p className="text-xs text-semantic-text-muted font-medium">{label}</p>
+  <div className="py-4 flex flex-col gap-3 tkv-enter-fade-up" role="status" aria-live="polite">
+    <div className="rounded-[22px] border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-surface,#FFFFFF)] p-4 flex flex-col gap-3">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl tkv-shimmer shrink-0" aria-hidden="true" />
+        <div className="flex flex-col gap-2 flex-1 min-w-0">
+          <div className="h-4 w-44 max-w-[70%] rounded-md tkv-shimmer" aria-hidden="true" />
+          <div className="h-3 w-28 max-w-[45%] rounded-md tkv-shimmer" aria-hidden="true" />
+        </div>
+      </div>
+      <div className="h-14 w-full rounded-xl tkv-shimmer" aria-hidden="true" />
+    </div>
+    <p className="text-center text-xs text-[var(--tkv-ink-muted,#52706A)] font-semibold">{label}</p>
   </div>
 );
 
 /** Skeleton block used while a card-sized widget loads. */
 export const SkeletonCard: React.FC<{ className?: string }> = ({ className = 'h-24' }) => (
   <div
-    className={`rounded-2xl bg-semantic-border/60 animate-pulse motion-reduce:animate-none ${className}`}
+    className={`rounded-[20px] tkv-shimmer border border-[var(--tkv-border,#DCE6DE)]/70 ${className}`}
     aria-hidden="true"
   />
 );
@@ -35,13 +44,18 @@ export const InlineError: React.FC<{
       : 'Không tải được dữ liệu. Vui lòng thử lại.');
   const Icon = offline ? WifiOff : AlertTriangle;
   return (
-    <div className="bg-white rounded-2xl border border-semantic-border p-4 text-center space-y-2">
-      <Icon className="w-5 h-5 text-semantic-text-muted mx-auto" aria-hidden="true" />
-      <p role="alert" className="text-xs text-semantic-text-secondary font-medium">{text}</p>
+    <div className="bg-[var(--tkv-surface,#FFFFFF)] rounded-[22px] border border-[var(--tkv-border,#DCE6DE)] p-5 text-center flex flex-col items-center gap-2.5 shadow-[var(--tkv-shadow-card)] tkv-enter-fade-up">
+      <span className="w-10 h-10 rounded-xl bg-[var(--tkv-surface-coral,#FFF0E9)] border border-[var(--tkv-border-coral,#FAD0C4)] text-[var(--tkv-coral-ink,#B33A22)] inline-flex items-center justify-center">
+        <Icon className="w-5 h-5" aria-hidden="true" />
+      </span>
+      <p role="alert" className="text-sm text-[var(--tkv-ink-secondary,#3C5954)] font-semibold max-w-sm">
+        {text}
+      </p>
       {onRetry && (
         <button
+          type="button"
           onClick={onRetry}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border text-xs font-heading font-bold hover:bg-semantic-background-subtle active:scale-95 transition-tap tap-target"
+          className="tkv-focusable tkv-tactile inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] rounded-xl bg-[var(--tkv-surface-mint,#E7F4EC)] text-[var(--tkv-primary,#196149)] border border-[var(--tkv-border-mint,#BDE0CC)] text-xs font-extrabold hover:opacity-95 active:scale-95"
         >
           <RefreshCw className="w-3.5 h-3.5" aria-hidden="true" />
           Thử lại

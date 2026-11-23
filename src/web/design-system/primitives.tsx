@@ -1,7 +1,6 @@
 import React, { useEffect, useId, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { clsx } from 'clsx';
-import { motion } from 'motion/react';
 import { ChevronRight, X } from 'lucide-react';
 import { useModalFocus } from './use-modal-focus';
 
@@ -161,11 +160,10 @@ export const Switch: React.FC<{
           disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
         )}
       >
-        <motion.span
+        <span
           aria-hidden="true"
-          animate={{ x: checked ? 20 : 0 }}
-          transition={{ type: 'spring', stiffness: 500, damping: 32 }}
-          className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-xs"
+          style={{ transform: checked ? 'translateX(20px)' : 'translateX(0px)' }}
+          className="absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-xs transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
         />
       </button>
     </div>
@@ -301,28 +299,22 @@ export const BottomSheet: React.FC<{
 
   if (!open) return null;
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+    <div
       className={clsx(
-        'fixed inset-0 z-50 flex items-end justify-center bg-semantic-overlay/60 p-0 backdrop-blur-xs sm:items-center sm:p-4 animate-fade-in',
+        'fixed inset-0 z-50 flex items-end justify-center bg-semantic-overlay/60 p-0 backdrop-blur-xs sm:items-center sm:p-4 tkv-backdrop-enter',
         scrimClassName,
       )}
       onClick={onClose}
       role="presentation"
     >
-      <motion.div
+      <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        initial={{ opacity: 0, y: 20, scale: 0.99 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.85 }}
         onClick={(e) => e.stopPropagation()}
         className={clsx(
-          'w-full max-w-md max-h-[90dvh] overflow-y-auto overscroll-contain rounded-t-2xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pb-5 shadow-[var(--tkv-shadow-elevated)] sm:rounded-2xl animate-slide-up',
+          'w-full max-w-md max-h-[90dvh] overflow-y-auto overscroll-contain rounded-t-3xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:pb-5 shadow-[var(--tkv-shadow-elevated)] sm:rounded-3xl tkv-sheet-enter',
           className,
         )}
       >
@@ -340,7 +332,7 @@ export const BottomSheet: React.FC<{
           </button>
         </div>
         {children}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
