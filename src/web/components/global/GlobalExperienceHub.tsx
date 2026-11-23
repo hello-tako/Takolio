@@ -149,6 +149,8 @@ export function GlobalDodoCheckoutCard(props: {
   countryCode: string;
   currency: GlobalCurrency;
   plans: GlobalPlanDto[];
+  initialPlan?: 'monthly' | 'annual';
+  isSubmitting?: boolean;
   requiresEuWithdrawalWaiver: boolean;
   requiresTokushohoDisclosure: boolean;
   tokushohoUrl?: string | null;
@@ -158,79 +160,146 @@ export function GlobalDodoCheckoutCard(props: {
   onOpenPortal?: () => void;
 }) {
   const { locale, catalog } = useUiTranslation(props.locale);
-  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'annual'>('annual');
+  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'annual'>(props.initialPlan ?? 'annual');
   const [waiverAccepted, setWaiverAccepted] = useState(false);
 
-  const canProceed = !props.requiresEuWithdrawalWaiver || waiverAccepted;
+  const canProceed = (!props.requiresEuWithdrawalWaiver || waiverAccepted) && !props.isSubmitting;
+  const activeOffer = props.plans.find((p) => p.plan === selectedPlan) ?? props.plans[0] ?? null;
 
   return (
-    <section aria-label={catalog.billing.upgradeTitle} style={{ display: 'grid', gap: '12px', maxWidth: '100%' }}>
-      <h3>{catalog.billing.upgradeTitle}</h3>
-      <p style={{ margin: 0, fontSize: '0.9rem' }}>{catalog.billing.merchantOfRecordNotice}</p>
-
-      <div style={{ display: 'grid', gap: '8px' }}>
+    <section aria-label={catalog.billing.upgradeTitle} className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="radiogroup" aria-label={catalog.billing.upgradeTitle}>
         {props.plans.map((offer) => {
-          const label = offer.plan === 'annual' ? catalog.billing.annualPlan : catalog.billing.monthlyPlan;
+          const isSelected = selectedPlan === offer.plan;
+          const isAnnual = offer.plan === 'annual';
+          const label = isAnnual ? catalog.billing.annualPlan : catalog.billing.monthlyPlan;
           const formattedPrice = formatMoneyMinor(offer.amountMinor, props.currency, locale);
+          const monthlyEquivMinor = isAnnual ? Math.round(offer.amountMinor / 12) : offer.amountMinor;
+          const monthlyEquivFormatted = formatMoneyMinor(monthlyEquivMinor, props.currency, locale);
+
           return (
             <label
               key={offer.plan}
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}
+              className={[
+                'tkv-focusable tkv-tactile relative flex cursor-pointer flex-col justify-between gap-2 rounded-2xl p-4 transition-colors',
+                isSelected
+                  ? 'border-2 border-[var(--tkv-primary)] bg-[var(--tkv-surface-mint)] shadow-[var(--tkv-shadow-card)]'
+                  : 'border border-[var(--tkv-border)] bg-[var(--tkv-surface)] hover:border-[var(--tkv-border-strong)]',
+              ].join(' ')}
             >
-              <span>
-                <input
-                  type="radio"
-                  name="takolio-global-plan"
-                  checked={selectedPlan === offer.plan}
-                  onChange={() => setSelectedPlan(offer.plan)}
-                />{' '}
-                {label}
-              </span>
-              <strong>{formattedPrice}</strong>
+              <input
+                type="radio"
+                name="takolio-global-plan"
+                checked={isSelected}
+                onChange={() => setSelectedPlan(offer.plan)}
+                className="sr-only"
+              />
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-ink-secondary)]">
+                  <span
+                    aria-hidden="true"
+                    className={[
+                      'inline-flex h-4 w-4 items-center justify-center rounded-full border-2',
+                      isSelected ? 'border-[var(--tkv-primary)] bg-[var(--tkv-primary)]' : 'border-[var(--tkv-border-strong)] bg-[var(--tkv-surface)]',
+                    ].join(' ')}
+                  >
+                    {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+                  </span>
+                  {label}
+                </span>
+                {isAnnual && (
+                  <span className="rounded-full border border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] px-2.5 py-0.5 text-[11px] font-extrabold text-[var(--tkv-warning-ink)]">
+                    {catalog.billing.savePercentBadge}
+                  </span>
+                )}
+              </div>
+
+              <div className="pt-1">
+                <div className="flex items-baseline gap-1">
+                  <strong className="tkv-heading tabular-nums text-2xl font-black text-[var(--tkv-ink)]">
+                    {formattedPrice}
+                  </strong>
+                  <span className="text-xs font-semibold text-[var(--tkv-ink-muted)]">
+                    {isAnnual ? catalog.billing.perYearSuffix : catalog.billing.perMonthSuffix}
+                  </span>
+                </div>
+                <p className="mt-1 text-xs font-medium text-[var(--tkv-ink-secondary)]">
+                  {isAnnual
+                    ? `${monthlyEquivFormatted}${catalog.billing.perMonthSuffix} · ${catalog.billing.billedAnnuallyNote}`
+                    : catalog.billing.billedMonthlyNote}
+                </p>
+              </div>
             </label>
           );
         })}
       </div>
 
+      {activeOffer && (
+        <p className="text-xs font-medium text-[var(--tkv-ink-muted)]">
+          {activeOffer.taxLabel}
+        </p>
+      )}
+
       {props.requiresEuWithdrawalWaiver && (
-        <label style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', fontSize: '0.88rem' }}>
+        <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] p-3.5 text-xs leading-relaxed text-[var(--tkv-ink)]">
           <input
             type="checkbox"
             checked={waiverAccepted}
             onChange={(e) => setWaiverAccepted(e.target.checked)}
+            className="mt-0.5 h-4 w-4 shrink-0 rounded accent-[var(--tkv-primary)]"
           />
           <span>{catalog.billing.euWithdrawalWaiverCheckbox}</span>
         </label>
       )}
 
       {props.awaitingKonbini && (
-        <p role="status">{catalog.billing.awaitingKonbiniNotice}</p>
+        <p
+          role="status"
+          className="rounded-2xl border border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] px-4 py-3 text-xs font-semibold text-[var(--tkv-warning-ink)]"
+        >
+          {catalog.billing.awaitingKonbiniNotice}
+        </p>
       )}
 
       <button
         type="button"
         disabled={!canProceed}
         onClick={() => props.onCheckout({ plan: selectedPlan, euWithdrawalWaiverAccepted: waiverAccepted })}
-        style={{ width: '100%', minHeight: '44px', wordBreak: 'break-word' }}
+        className="tkv-focusable tkv-tactile flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-[var(--tkv-primary)] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-[var(--tkv-shadow-cta)] transition-colors hover:bg-[var(--tkv-primary-cta-hover)] active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {catalog.billing.checkoutAction}
+        {props.isSubmitting ? catalog.billing.checkoutProcessing : catalog.billing.checkoutAction}
       </button>
 
       {props.canOpenCustomerPortal && (
         <button
           type="button"
           onClick={props.onOpenPortal}
-          style={{ width: '100%', minHeight: '44px', wordBreak: 'break-word' }}
+          className="tkv-focusable tkv-tactile flex min-h-[46px] w-full items-center justify-center rounded-full border border-[var(--tkv-border-strong)] bg-[var(--tkv-surface)] px-5 py-2.5 text-sm font-bold text-[var(--tkv-ink)] transition-colors hover:bg-[var(--tkv-surface-subtle)]"
         >
           {catalog.billing.openCustomerPortal}
         </button>
       )}
 
-      {props.requiresTokushohoDisclosure && props.tokushohoUrl && (
-        <a href={props.tokushohoUrl} target="_blank" rel="noreferrer">
-          {catalog.billing.tokushohoLinkLabel}
-        </a>
-      )}
+      <div className="space-y-2 pt-1 text-center">
+        <p className="text-[11px] font-medium text-[var(--tkv-ink-muted)]">
+          {catalog.billing.paymentMethodsCaption}
+        </p>
+        <p className="text-[11px] leading-relaxed text-[var(--tkv-ink-muted)]">
+          {catalog.billing.merchantOfRecordNotice}
+        </p>
+        {props.requiresTokushohoDisclosure && props.tokushohoUrl && (
+          <p className="pt-0.5">
+            <a
+              href={props.tokushohoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-bold text-[var(--tkv-primary)] underline underline-offset-2 hover:text-[var(--tkv-primary-hover)]"
+            >
+              {catalog.billing.tokushohoLinkLabel}
+            </a>
+          </p>
+        )}
+      </div>
     </section>
   );
 }

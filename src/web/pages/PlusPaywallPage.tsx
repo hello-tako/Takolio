@@ -21,7 +21,15 @@ function formatPrice(price: PlusPrice): string {
   return `${price.amountVnd.toLocaleString('vi-VN')} ${price.currency}`;
 }
 
-export const PlusPaywallPage: React.FC = () => {
+export interface PlusPaywallPageProps {
+  embedded?: boolean;
+  initialPlan?: PlusPlan;
+}
+
+export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
+  embedded = false,
+  initialPlan = 'annual',
+}) => {
   const navigate = useNavigate();
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
@@ -55,7 +63,7 @@ export const PlusPaywallPage: React.FC = () => {
     }
   }, []);
   const [recoverableCheckoutId, setRecoverableCheckoutId] = useState<string | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<PlusPlan>('annual');
+  const [selectedPlan, setSelectedPlan] = useState<PlusPlan>(initialPlan);
   const [paymentIntent, setPaymentIntent] = useState<CreatedPaymentIntent | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [attemptedPlan, setAttemptedPlan] = useState<PlusPlan | null>(null);
@@ -226,11 +234,11 @@ export const PlusPaywallPage: React.FC = () => {
 
   if (isGuest) {
     return (
-      <div className="plus-page">
-        <KitchenHeader backTo="/me" />
-        <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]">
-          <KitchenPageHeading title="Takolio Pro" />
-          <section className="overflow-hidden rounded-feature border border-semantic-border bg-semantic-surface shadow-card">
+      <div className={clsx('plus-page', embedded && 'takolio-plus-embedded')}>
+        {!embedded && <KitchenHeader backTo="/me" />}
+        <div className={clsx(!embedded && 'kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]')}>
+          {!embedded && <KitchenPageHeading title="Takolio Pro" />}
+          <section className="overflow-hidden rounded-[24px] border border-semantic-border bg-semantic-surface shadow-card">
             <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover px-6 py-7 text-white">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
                 <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
@@ -244,14 +252,14 @@ export const PlusPaywallPage: React.FC = () => {
             <div className="space-y-3 p-5">
               <Link
                 to="/auth?mode=login&returnTo=%2Fplus"
-                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-takosan-green px-4 py-3 font-heading text-sm font-bold text-white shadow-xs transition hover:bg-takosan-green-deep active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-takosan-green focus-visible:ring-offset-2"
+                className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-takosan-green px-4 py-3 font-heading text-sm font-bold text-white shadow-xs transition hover:bg-takosan-green-deep active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-takosan-green focus-visible:ring-offset-2"
               >
                 <LogIn aria-hidden="true" className="h-4 w-4" />
                 Đăng nhập để tiếp tục
               </Link>
               <Link
                 to="/"
-                className="flex min-h-11 w-full items-center justify-center rounded-xl border border-semantic-border bg-white px-4 py-3 text-sm font-semibold text-semantic-text-secondary transition hover:bg-semantic-background-subtle active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-semantic-border-strong focus-visible:ring-offset-2"
+                className="flex min-h-11 w-full items-center justify-center rounded-full border border-semantic-border bg-white px-4 py-3 text-sm font-semibold text-semantic-text-secondary transition hover:bg-semantic-background-subtle active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-semantic-border-strong focus-visible:ring-offset-2"
               >
                 Quay lại bảng điều khiển
               </Link>
@@ -266,85 +274,142 @@ export const PlusPaywallPage: React.FC = () => {
   }
 
   return (
-    <div className="plus-page">
-      <KitchenHeader backTo="/me" />
-      <div className="kitchen-page-body mx-auto w-full max-w-[var(--content-compact)] space-y-5">
-        <KitchenPageHeading title={isPlus ? "Quản lý Takolio Pro" : "Nâng cấp Takolio Pro"} />
-        <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
-          <div className="space-y-1 max-w-[200px]">
-            <div className="flex items-center gap-1.5 mb-1">
-              <Sparkles className="w-4 h-4 text-takosan-yellow" />
-              <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takolio Pro</span>
+    <div className={clsx('plus-page', embedded && 'takolio-plus-embedded')}>
+      {!embedded && <KitchenHeader backTo="/me" />}
+      <div className={clsx('space-y-5', !embedded && 'kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]')}>
+        {!embedded && <KitchenPageHeading title={isPlus ? 'Quản lý Takolio Pro' : 'Nâng cấp Takolio Pro'} />}
+        {!embedded && (
+          <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
+            <div className="space-y-1 max-w-[200px]">
+              <div className="flex items-center gap-1.5 mb-1">
+                <Sparkles className="w-4 h-4 text-takosan-yellow" />
+                <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takolio Pro</span>
+              </div>
+              <h2 className="font-heading font-bold text-xl leading-tight text-white">
+                {isPlus ? 'Bạn là hội viên Pro' : 'Nấu ăn thông minh hơn'}
+              </h2>
+              <p className="text-xs text-white">
+                {isPlus ? 'Gói hội viên đang hoạt động với đầy đủ đặc quyền' : 'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef'}
+              </p>
             </div>
-            <h2 className="font-heading font-bold text-xl leading-tight text-white">
-              {isPlus ? 'Bạn là hội viên Pro' : 'Nấu ăn thông minh hơn'}
-            </h2>
-            <p className="text-xs text-white">
-              {isPlus ? 'Gói hội viên đang hoạt động với đầy đủ đặc quyền' : 'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef'}
+            <div className="w-24 h-24 shrink-0 overflow-hidden flex items-center justify-center">
+              <img src="/takolio/vnext/mascot/pose-06-achievement.webp" alt="" aria-hidden="true" className="w-full h-full object-contain" />
+            </div>
+          </div>
+        )}
+
+        <section className="space-y-4 rounded-[24px] border border-semantic-border bg-white p-5 sm:p-6 shadow-xs">
+          {accountReady && historyBlockingCheckout && (
+            <p role="status" className="rounded-2xl border border-semantic-border bg-semantic-surface p-4 text-sm">
+              Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.
+            </p>
+          )}
+
+          {priceNotice && (
+            <p role="status" className="rounded-2xl border border-semantic-border bg-semantic-surface p-4 text-sm">
+              {priceNotice}
+            </p>
+          )}
+          {errorMsg && (
+            <div className="space-y-2">
+              <p role="alert" className="rounded-2xl border border-semantic-danger/20 bg-semantic-danger-soft px-3.5 py-2.5 text-sm text-semantic-danger-strong">
+                {errorMsg}
+              </p>
+              {checkoutRecoveryPending && (
+                <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>
+                  Tải lại bảng giá
+                </Button>
+              )}
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="group" aria-label="Gói Takolio Pro">
+            {plans.map((price) => {
+              const isSelected = selectedPlan === price.plan;
+              const isAnnual = price.plan === 'annual';
+              return (
+                <button
+                  key={price.plan}
+                  type="button"
+                  aria-pressed={isSelected}
+                  disabled={attemptedPlan !== null || hasOpenCheckout || historyBlockingCheckout}
+                  onClick={() => { setSelectedPlan(price.plan); setPaymentIntent(null); setIsQRModalOpen(false); }}
+                  className={clsx(
+                    'text-left rounded-2xl p-4 relative cursor-pointer transition-tap active:scale-[0.98] focus-visible:outline-none focus-visible:shadow-t17-focus',
+                    isSelected
+                      ? 'bg-[var(--tkv-surface-mint)] border-2 border-[var(--tkv-primary)] shadow-xs'
+                      : 'bg-white border border-semantic-border hover:border-semantic-border-strong',
+                  )}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="font-heading font-bold text-xs uppercase tracking-wider text-semantic-text-secondary">
+                      {planName(price.plan)}
+                    </p>
+                    {isAnnual && (
+                      <span className="rounded-full border border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] px-2.5 py-0.5 text-[11px] font-extrabold text-[var(--tkv-warning-ink)]">
+                        Tiết kiệm 15%
+                      </span>
+                    )}
+                  </div>
+                  <p className="font-heading font-extrabold tabular-nums text-2xl text-semantic-text-primary mt-1.5">
+                    {formatPrice(price)}
+                  </p>
+                  <p className="text-xs text-semantic-text-secondary mt-1">
+                    {isAnnual ? 'Trả 1 lần · không tự động trừ tiền' : 'Linh hoạt 30 ngày · chuyển khoản VietQR'}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="space-y-2.5 pt-1">
+            {recoverableCheckoutId && (
+              <Button fullWidth size="lg" disabled={isCreating || !accountReady} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
+                Mở lệnh thanh toán cũ
+              </Button>
+            )}
+            <Button
+              fullWidth
+              size="lg"
+              disabled={checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating}
+              onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }}
+              className="flex items-center justify-center gap-2 !rounded-full"
+            >
+              <span>
+                {isCreating
+                  ? 'Đang tạo lệnh thanh toán…'
+                  : isPlus
+                    ? 'Gia hạn hội viên'
+                    : selectedPrice
+                      ? `Nâng cấp ngay với ${formatPrice(selectedPrice)}`
+                      : 'Đang tải bảng giá…'}
+              </span>
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
+            <p className="text-center text-[11px] text-semantic-text-muted">
+              Quét mã VietQR trên mọi ứng dụng ngân hàng Việt Nam · Kích hoạt tức thì · Không tự gia hạn ẩn.
             </p>
           </div>
-          <div className="w-24 h-24 shrink-0 overflow-hidden flex items-center justify-center">
-            <img src="/takolio/vnext/mascot/pose-06-achievement.webp" alt="" aria-hidden="true" className="w-full h-full object-contain" />
-          </div>
-        </div>
+        </section>
 
-        <BillingAccountPanel refreshVersion={accountRefreshVersion} isBusy={isCreating} onResume={handleHistoryResume} onLoaded={onAccountLoaded} onLoading={onAccountLoading} />
-        {accountReady && historyBlockingCheckout && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.</p>}
-
-        {priceNotice && <p role="status" className="rounded-xl border border-semantic-border bg-semantic-surface p-4 text-sm">{priceNotice}</p>}
-        {errorMsg && <div className="space-y-2"><p role="alert" className="rounded-xl border border-semantic-danger/20 bg-semantic-danger-soft px-3 py-2 text-sm text-semantic-danger-strong">{errorMsg}</p>{checkoutRecoveryPending && <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>Tải lại bảng giá</Button>}</div>}
-
-        <div className="grid grid-cols-2 gap-3" role="group" aria-label="Gói Takolio Pro">
-          {plans.map((price) => {
-            const isSelected = selectedPlan === price.plan;
-            return (
-              <button
-                key={price.plan}
-                type="button"
-                aria-pressed={isSelected}
-                disabled={attemptedPlan !== null || hasOpenCheckout || historyBlockingCheckout}
-                onClick={() => { setSelectedPlan(price.plan); setPaymentIntent(null); setIsQRModalOpen(false); }}
-                className={clsx(
-                  'text-left rounded-xl p-4 relative shadow-xs cursor-pointer transition-tap active:scale-[0.98] focus-visible:outline-none focus-visible:shadow-t17-focus',
-                  isSelected ? 'bg-semantic-surface border-semantic-action-primary ring-1 ring-semantic-action-primary' : 'bg-white border border-semantic-border hover:border-semantic-border-strong',
-                )}
-              >
-                <p className="font-heading font-semibold text-xs text-semantic-text-secondary">{planName(price.plan)}</p>
-                <p className="font-heading font-bold text-xl text-semantic-text-primary mt-1">{formatPrice(price)}</p>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="space-y-2 bg-white rounded-xl p-4 border border-semantic-border shadow-xs">
-          <h3 className="font-heading font-bold text-sm text-semantic-text-primary mb-2">Quyền lợi thành viên:</h3>
+        <section className="space-y-2.5 bg-white rounded-[24px] p-5 border border-semantic-border shadow-xs">
+          <h3 className="font-heading font-bold text-sm text-semantic-text-primary mb-1">Quyền lợi Takolio Pro</h3>
           {[
-            'Không giới hạn số lượng nguyên liệu trong tủ lạnh',
-            'Không giới hạn lượt quét AI tủ lạnh & hóa đơn siêu thị OCR',
-            'Trọn bộ Takolio Planner lập thực đơn tuần tự động',
-            'AI Voice Sous Chef trợ lý nấu ăn rảnh tay thông minh',
-            'Đầy đủ 6 nền ẩm thực (Việt, Hàn, Nhật, Trung, Thái, Ý)',
-            'Gợi ý công thức nâng cao bởi DeepSeek AI Chef',
-            'Chia sẻ tủ lạnh gia đình không giới hạn thiết bị',
+            'Quét ảnh tủ lạnh & hoá đơn siêu thị bằng AI không giới hạn',
+            'Lập thực đơn tuần tự động & tối ưu danh sách đi chợ thông minh',
+            '500+ công thức chuẩn hoá kèm dinh dưỡng & khẩu phần linh hoạt',
+            'Trợ lý nấu ăn giọng nói rảnh tay & đồng bộ đa thiết bị cho gia đình',
           ].map((feature) => (
-            <div key={feature} className="flex items-center gap-2.5 text-xs text-semantic-text-secondary font-medium py-1">
-              <div className="w-5 h-5 rounded-full bg-semantic-success-soft border border-semantic-action-primary/30 flex items-center justify-center shrink-0"><Check className="w-3.5 h-3.5 text-semantic-action-primary stroke-[2.5]" /></div>
+            <div key={feature} className="flex items-start gap-2.5 text-xs sm:text-sm text-semantic-text-secondary font-medium py-0.5">
+              <div className="mt-0.5 w-5 h-5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] flex items-center justify-center shrink-0">
+                <Check className="w-3.5 h-3.5 text-[var(--tkv-primary)] stroke-[2.5]" />
+              </div>
               <span>{feature}</span>
             </div>
           ))}
-        </div>
+        </section>
 
-        <div className="pt-2">
-          {recoverableCheckoutId && (
-            <Button fullWidth size="lg" disabled={isCreating || !accountReady} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
-              Mở lệnh thanh toán cũ
-            </Button>
-          )}
-          <Button fullWidth size="lg" disabled={checkoutRecoveryPending || hasOpenCheckout || historyBlockingCheckout || !accountReady || !selectedPrice || isCreating} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleCreateIntent(); }} className="flex items-center justify-center gap-2">
-            <span>{isCreating ? 'Đang tạo lệnh thanh toán…' : isPlus ? 'Gia hạn hội viên' : selectedPrice ? `Nâng cấp ngay với ${formatPrice(selectedPrice)}` : 'Đang tải bảng giá…'}</span>
-            <ArrowRight className="w-4 h-4 ml-1" />
-          </Button>
-        </div>
+        <BillingAccountPanel refreshVersion={accountRefreshVersion} isBusy={isCreating} onResume={handleHistoryResume} onLoaded={onAccountLoaded} onLoading={onAccountLoading} />
       </div>
 
       {paymentIntent && paymentOwnerRef.current === `${userId}:${householdId}` && (

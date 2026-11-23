@@ -393,7 +393,7 @@ export const enDictionary: SiteDictionary = {
     ],
     proCta: 'View Takolio Pro',
     checkoutVndNote: 'Live authoritative VND billing powered by PayOS / VietQR directly from our pricing server.',
-    checkoutIntlNote: 'Indicative reference pricing for international markets; international card checkout is coming soon.',
+    checkoutIntlNote: 'Instant global checkout via Card, Apple Pay & Google Pay (local tax handled by Dodo Payments, cancel anytime).',
     transparencyTitle: 'Commercial Transparency Policy',
     transparencyBody:
       'Authoritative VND plans are served live from /api/v1/public/pricing with zero hidden renewals and no credit card needed for Takolio Free.',

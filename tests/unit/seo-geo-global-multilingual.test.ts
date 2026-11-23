@@ -68,7 +68,7 @@ describe('Phase P0–P3: Public Pricing, Edge Workers & Multi-Domain Hygiene', (
     ]);
     expect(body.regionalCatalog.length).toBe(9);
     expect(body.regionalCatalog.find((c) => c.currency === 'VND')?.checkoutMode).toBe('live_vietqr');
-    expect(body.regionalCatalog.find((c) => c.currency === 'USD')?.checkoutMode).toBe('display_reference');
+    expect(body.regionalCatalog.find((c) => c.currency === 'USD')?.checkoutMode).toBe('live_dodo_mor');
 
     // Legacy /api/v1/billing/plans on takolio.com also returns 200 public read-only catalog
     const aliasRes = await siteWorker.fetch(

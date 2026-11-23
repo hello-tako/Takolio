@@ -393,7 +393,7 @@ export const viDictionary: SiteDictionary = {
     ],
     proCta: 'Nâng cấp Takolio Pro',
     checkoutVndNote: 'Giá VND đồng bộ trực tiếp từ máy chủ thanh toán chính thức (PayOS / VietQR).',
-    checkoutIntlNote: 'Mức giá quy đổi tham khảo cho thị trường quốc tế; thanh toán thẻ quốc tế đang được hoàn thiện.',
+    checkoutIntlNote: 'Thanh toán quốc tế tức thì bằng Thẻ Visa/Mastercard/JCB, Apple Pay, Google Pay (đã bao gồm thuế qua Dodo Payments).',
     transparencyTitle: 'Cam kết minh bạch thương mại',
     transparencyBody:
       'Biểu phí VND hiển thị trên trang này được đồng bộ trực tiếp từ hệ thống máy chủ chính thức (/api/v1/public/pricing), không tự động gia hạn ẩn và không yêu cầu thẻ tín dụng khi dùng bản Miễn phí.',

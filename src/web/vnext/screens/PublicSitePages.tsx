@@ -21,6 +21,14 @@ import { PublicMarketingShell } from '../components/Shells';
 import { TkvSurface } from '../components/Primitives';
 import { VNextIcon, type VNextIconName } from '../components/VNextIcons';
 import {
+  buildRegionalPriceReferences,
+  DEFAULT_VND_PRICES,
+  formatGlobalMinorCurrency,
+  marketCodeForCurrency,
+  type GlobalDisplayCurrency,
+  type RegionalPriceReference,
+} from '../../../shared/global-pricing';
+import {
   CulinaryHillsBanner,
   MascotIllustration,
   VerifiedDishImage,
@@ -630,7 +638,14 @@ interface PublicBillingPlanDto {
   currency: string;
 }
 
-async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
+interface PublicPricingBundle {
+  plans: PublicBillingPlanDto[];
+  regionalCatalog: RegionalPriceReference[];
+}
+
+const M09_CURRENCIES: readonly GlobalDisplayCurrency[] = ['VND', 'JPY', 'EUR', 'USD', 'GBP'];
+
+async function fetchLivePricingBundle(): Promise<PublicPricingBundle | null> {
   const endpoints = isSatelliteComRuntime()
     ? ['/api/v1/public/pricing']
     : ['https://takolio.com/api/v1/public/pricing'];
@@ -638,7 +653,7 @@ async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
     try {
       const res = await fetch(endpoint, { credentials: 'omit' });
       if (!res.ok) continue;
-      const body = (await res.json()) as { plans?: unknown };
+      const body = (await res.json()) as { plans?: unknown; regionalCatalog?: RegionalPriceReference[] };
       if (!Array.isArray(body?.plans)) continue;
       const valid = body.plans.filter(
         (item): item is PublicBillingPlanDto =>
@@ -650,7 +665,15 @@ async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
           Number.isFinite((item as PublicBillingPlanDto).amountVnd) &&
           (item as PublicBillingPlanDto).amountVnd > 0,
       );
-      if (valid.length > 0) return valid;
+      if (valid.length > 0) {
+        const monthlyVnd = valid.find((p) => p.plan === 'monthly')?.amountVnd ?? DEFAULT_VND_PRICES.monthly;
+        const annualVnd = valid.find((p) => p.plan === 'annual')?.amountVnd ?? DEFAULT_VND_PRICES.annual;
+        const catalog =
+          Array.isArray(body.regionalCatalog) && body.regionalCatalog.length > 0
+            ? body.regionalCatalog
+            : buildRegionalPriceReferences({ monthly: monthlyVnd, annual: annualVnd });
+        return { plans: valid, regionalCatalog: catalog };
+      }
     } catch {
       // Try next endpoint gracefully
     }
@@ -658,27 +681,48 @@ async function fetchLiveBillingPlans(): Promise<PublicBillingPlanDto[] | null> {
   return null;
 }
 
+const M09_MINI_FAQ = [
+  {
+    q: 'Tôi có thể thanh toán bằng hình thức nào?',
+    a: 'Tại Việt Nam bạn quét VietQR tức thì (không tự động trừ tiền). Ở Nhật Bản, Châu Âu và quốc tế bạn thanh toán bằng thẻ Visa/Mastercard/JCB, Apple Pay, Google Pay, SEPA hoặc Amazon Pay qua Dodo Payments.',
+  },
+  {
+    q: 'Có tự động gia hạn ẩn khi dùng gói Miễn phí không?',
+    a: 'Không. Gói Miễn phí không yêu cầu thẻ hay tài khoản ngân hàng. Với gói Pro quốc tế, bạn có thể dừng gia hạn bất cứ lúc nào ngay trong trang /plus hoặc Dodo Customer Portal.',
+  },
+  {
+    q: 'Đổi điện thoại có bị mất gói Pro không?',
+    a: 'Không. Quyền lợi Takolio Pro gắn liền với tài khoản đã xác thực của bạn và tự động đồng bộ trên mọi thiết bị.',
+  },
+] as const;
+
 /**
  * M09 — Các gói Takolio (`/pricing`).
- * Fetches live server plan prices from `/api/v1/billing/plans` with graceful fallback when offline or unauthenticated,
- * keeping `"Miễn phí"` and `"Takolio Pro"` headings intact and zero invented client prices.
+ * Calm Kitchen Commerce unified pricing page matching `takolio.com/pricing` & `/plus` 1:1,
+ * with billing cycle switcher, live regional currencies, and deep-linked handoff into `/plus`.
  */
 export const M09PricingPage: React.FC = () => {
   const navigate = useNavigate();
   const { userId, householdId, isGuest } = useAuthStore();
   const setGuestSession = useAuthStore((s) => s.setGuestSession);
   const [isStarting, setIsStarting] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<'annual' | 'monthly'>('annual');
+  const [selectedCurrency, setSelectedCurrency] = useState<GlobalDisplayCurrency>('VND');
 
-  const livePlansQuery = useQuery({
+  const livePricingQuery = useQuery({
     queryKey: ['public-billing-plans'],
-    queryFn: fetchLiveBillingPlans,
+    queryFn: fetchLivePricingBundle,
     staleTime: 60_000,
     retry: false,
   });
 
-  const livePlans = livePlansQuery.data ?? null;
-  const monthlyPlan = livePlans?.find((p) => p.plan === 'monthly') ?? null;
-  const annualPlan = livePlans?.find((p) => p.plan === 'annual') ?? null;
+  const livePlans = livePricingQuery.data?.plans ?? null;
+  const regionalCatalog = useMemo(
+    () => livePricingQuery.data?.regionalCatalog ?? buildRegionalPriceReferences(DEFAULT_VND_PRICES),
+    [livePricingQuery.data],
+  );
+  const currentTier =
+    regionalCatalog.find((c) => c.currency === selectedCurrency) ?? regionalCatalog[0];
   const pricingJsonLd = useMemo(
     () => [
       buildBreadcrumbJsonLd([
@@ -719,61 +763,144 @@ export const M09PricingPage: React.FC = () => {
     }
   };
 
+  const marketCode = marketCodeForCurrency(currentTier.currency);
+  const plusPathWithSelection = `/plus?plan=${billingCycle}&market=${encodeURIComponent(marketCode)}`;
   const plusDestination =
     userId && householdId && !isGuest
-      ? '/plus'
-      : vnextHref('/auth?mode=login&returnTo=%2Fplus');
+      ? plusPathWithSelection
+      : vnextHref(`/auth?mode=login&returnTo=${encodeURIComponent(plusPathWithSelection)}`);
 
-  const formatServerVnd = (p: PublicBillingPlanDto) =>
-    `${new Intl.NumberFormat('vi-VN').format(p.amountVnd)} ${p.currency || 'VND'}`;
+  const activeMinor = billingCycle === 'annual' ? currentTier.annualMinor : currentTier.monthlyMinor;
+  const activeFormatted = formatGlobalMinorCurrency(
+    activeMinor,
+    currentTier.currency,
+    currentTier.minorDigits,
+    currentTier.localeDefault,
+  );
+  const monthlyEquivFormatted = formatGlobalMinorCurrency(
+    Math.round(currentTier.annualMinor / 12),
+    currentTier.currency,
+    currentTier.minorDigits,
+    currentTier.localeDefault,
+  );
 
   return (
     <PublicMarketingShell screenId="M09">
-      <section aria-labelledby="tkv-m09-h1" className="max-w-[1060px] mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-7">
-        <div className="space-y-3 max-w-2xl">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-xs font-bold text-[var(--tkv-accent-ink,#B33A22)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
-            <span>Minh bạch biểu phí theo dữ liệu máy chủ</span>
+      <section aria-labelledby="tkv-m09-h1" className="max-w-[1000px] mx-auto px-4 sm:px-6 py-10 sm:py-16 flex flex-col gap-9">
+        {/* Centered Calm Kitchen Editorial Header */}
+        <header className="flex flex-col items-center text-center gap-3 max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-extrabold text-[var(--tkv-primary)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)]" aria-hidden="true" />
+            <span>Biểu phí minh bạch · Việt Nam & Quốc tế</span>
           </span>
-          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.65rem] font-extrabold text-[var(--tkv-ink,#152E2C)]">
+          <h1 id="tkv-m09-h1" className="tkv-heading text-3xl sm:text-[2.75rem] font-black text-[var(--tkv-ink)] leading-tight">
             Các gói Takolio
           </h1>
-          <p className="text-base sm:text-lg text-[var(--tkv-ink-soft,#3C5954)]">
-            Lựa chọn gói phù hợp với nhu cầu sử dụng của hộ gia đình bạn.
+          <p className="text-base sm:text-lg text-[var(--tkv-ink-secondary)] leading-relaxed">
+            Bắt đầu miễn phí trọn đời, nâng cấp Takolio Pro bất cứ khi nào căn bếp cần thêm trợ lực AI.
           </p>
+        </header>
+
+        {/* Tactile Billing Cycle Toggle + Currency Pill Selector */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 rounded-3xl border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-3 sm:px-5 shadow-[var(--tkv-shadow-card)]">
+          <div
+            role="group"
+            aria-label="Chu kỳ thanh toán"
+            className="inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-subtle)] p-1 border border-[var(--tkv-border)] w-full md:w-auto"
+          >
+            <button
+              type="button"
+              aria-pressed={billingCycle === 'annual'}
+              onClick={() => setBillingCycle('annual')}
+              className={clsx(
+                'tkv-focusable min-h-[42px] flex-1 md:flex-initial inline-flex items-center justify-center gap-2 rounded-full px-4 text-xs sm:text-sm font-extrabold transition-colors',
+                billingCycle === 'annual'
+                  ? 'bg-[var(--tkv-primary)] text-white shadow-xs'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              )}
+            >
+              <span>Gói 1 năm</span>
+              <span
+                className={clsx(
+                  'rounded-full px-2 py-0.5 text-[10px] font-black',
+                  billingCycle === 'annual'
+                    ? 'bg-[var(--tkv-saffron)] text-[var(--tkv-ink)]'
+                    : 'bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)]',
+                )}
+              >
+                Tiết kiệm 17%
+              </span>
+            </button>
+            <button
+              type="button"
+              aria-pressed={billingCycle === 'monthly'}
+              onClick={() => setBillingCycle('monthly')}
+              className={clsx(
+                'tkv-focusable min-h-[42px] flex-1 md:flex-initial inline-flex items-center justify-center rounded-full px-4 text-xs sm:text-sm font-extrabold transition-colors',
+                billingCycle === 'monthly'
+                  ? 'bg-[var(--tkv-primary)] text-white shadow-xs'
+                  : 'text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)]',
+              )}
+            >
+              Gói 1 tháng
+            </button>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label="Tiền tệ hiển thị">
+            {M09_CURRENCIES.map((code) => {
+              const active = selectedCurrency === code;
+              return (
+                <button
+                  key={code}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setSelectedCurrency(code)}
+                  className={clsx(
+                    'tkv-focusable min-h-[38px] rounded-full px-3 text-xs font-extrabold transition-colors',
+                    active
+                      ? 'bg-[var(--tkv-ink)] text-white'
+                      : 'bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-[var(--tkv-ink-secondary)] hover:border-[var(--tkv-border-strong)] hover:text-[var(--tkv-ink)]',
+                  )}
+                >
+                  {code}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* 2-Column Sunlit Ceramic & Terracotta-Linen Plan Cards */}
+        {/* 2-Column Balanced Living Kitchen Plan Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-          <div className="rounded-[24px] bg-white border border-[var(--tkv-border,#DCE6DE)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-xs">
+          {/* Free Tier */}
+          <div className="rounded-[28px] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] p-6 sm:p-8 flex flex-col justify-between gap-7 shadow-[var(--tkv-shadow-card)]">
             <div className="space-y-4">
-              <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-[var(--tkv-sage-soft,#E7F4EC)] text-[var(--tkv-sage-ink,#134C39)] border border-[var(--tkv-sage-border,#BDE0CC)]">
+              <span className="inline-flex px-3 py-1 rounded-full text-xs font-extrabold bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)] border border-[var(--tkv-border)]">
                 Cơ bản cho mọi gia đình
               </span>
               <div className="space-y-1">
-                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
+                <h2 className="tkv-heading text-2xl sm:text-3xl font-black text-[var(--tkv-ink)]">
                   Miễn phí
                 </h2>
-                <p className="tabular-nums text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
-                  0 VND <span className="text-xs font-semibold text-[var(--tkv-ink-muted,#52706A)]">/ trọn đời cơ bản</span>
+                <p className="tkv-heading tabular-nums text-3xl sm:text-4xl font-black text-[var(--tkv-ink)] pt-1">
+                  0 <span className="text-xs font-semibold text-[var(--tkv-ink-muted)]">/ trọn đời cơ bản</span>
                 </p>
               </div>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
                 Bắt đầu ngay không cần thẻ thanh toán — đầy đủ vòng lặp quản lý tủ lạnh, công thức và đi chợ cốt lõi.
               </p>
-              <ul className="space-y-2.5 pt-2 text-sm text-[var(--tkv-ink,#152E2C)]">
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
-                  <span>Quản lý tồn kho tủ lạnh theo lô và cảnh báo hạn dùng</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
-                  <span>Tra cứu kho công thức món Việt & chế độ nấu từng bước có timer</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="check" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
-                  <span>Danh sách đi chợ đồng bộ ngoại tuyến và đối chiếu định lượng</span>
-                </li>
+              <ul className="space-y-3 pt-1 text-sm text-[var(--tkv-ink)]">
+                {[
+                  'Quản lý tồn kho tủ lạnh theo lô và cảnh báo hạn dùng',
+                  'Tra cứu kho công thức & chế độ nấu từng bước có timer',
+                  'Danh sách đi chợ đồng bộ ngoại tuyến và đối chiếu định lượng',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--tkv-border)] bg-[var(--tkv-surface-subtle)] text-[var(--tkv-ink-secondary)]">
+                      <VNextIcon name="check" size={12} />
+                    </span>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -782,65 +909,75 @@ export const M09PricingPage: React.FC = () => {
               disabled={isStarting}
               onClick={() => void handleStartFree()}
               data-testid="m09-free-cta"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-white border border-[var(--tkv-border-strong)] text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] font-bold text-base transition-colors disabled:opacity-60"
+              className="tkv-focusable w-full min-h-[52px] px-6 py-3 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-subtle)] font-extrabold text-base transition-colors disabled:opacity-60"
             >
-              {isStarting ? 'Đang mở…' : 'Bắt đầu'}
+              {isStarting ? 'Đang mở…' : 'Bắt đầu miễn phí'}
             </button>
           </div>
 
-          <div className="rounded-[24px] bg-gradient-to-br from-[var(--tkv-surface)] via-[var(--tkv-bg)] to-[var(--tkv-surface-coral)] text-[var(--tkv-ink,#152E2C)] border border-[var(--tkv-border-coral,#FAD0C4)] p-6 sm:p-8 flex flex-col justify-between gap-6 shadow-soft">
+          {/* Takolio Pro Tier */}
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-b from-[var(--tkv-surface)] via-[var(--tkv-bg)] to-[var(--tkv-surface-mint)] text-[var(--tkv-ink)] border-2 border-[var(--tkv-primary)] p-6 sm:p-8 flex flex-col justify-between gap-7 shadow-[var(--tkv-shadow-elevated)]">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-white/85 text-[var(--tkv-accent-ink,#B33A22)] border border-[var(--tkv-accent-border,#FAD0C4)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
-                <span>Nâng cao cho căn bếp bận rộn</span>
-              </span>
-              <div className="space-y-2">
-                <h2 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-                  Takolio Pro
-                </h2>
-                {livePlans ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" data-testid="m09-live-prices">
-                    {monthlyPlan && (
-                      <div className="rounded-xl bg-white/85 border border-[var(--tkv-accent-border,#FAD0C4)] px-3.5 py-2.5">
-                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-ink-muted,#52706A)] font-bold">Gói 1 tháng</p>
-                        <p className="tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5">
-                          {formatServerVnd(monthlyPlan)}
-                        </p>
-                      </div>
-                    )}
-                    {annualPlan && (
-                      <div className="rounded-xl bg-white/95 border border-[var(--tkv-border-coral,#FAD0C4)] px-3.5 py-2.5">
-                        <p className="text-[11px] uppercase tracking-wider text-[var(--tkv-accent-ink,#B33A22)] font-bold">Gói 1 năm</p>
-                        <p className="tabular-nums text-base sm:text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5">
-                          {formatServerVnd(annualPlan)}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-xs font-medium text-[var(--tkv-ink-soft,#3C5954)] bg-white/80 border border-[var(--tkv-accent-border,#FAD0C4)] rounded-xl px-3 py-2">
-                    {livePlansQuery.isPending
-                      ? 'Đang đồng bộ biểu phí trực tiếp từ máy chủ…'
-                      : 'Biểu phí VND chính thức tải trực tiếp tại trang /plus sau khi đăng nhập'}
-                  </p>
-                )}
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] border border-[var(--tkv-border-saffron)]">
+                    <VNextIcon name="crown" size={13} />
+                    <span>Phổ biến cho căn bếp bận rộn</span>
+                  </span>
+                  <h2 className="tkv-heading text-2xl sm:text-3xl font-black text-[var(--tkv-ink)]">
+                    Takolio Pro
+                  </h2>
+                </div>
+                <div className="h-16 w-16 shrink-0 rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-1.5 shadow-xs">
+                  <img
+                    src="/takolio/vnext/mascot/pose-06-achievement-256w.webp"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
               </div>
-              <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
-                Mở rộng hạn mức quét AI chính xác cao, lập thực đơn tuần tự động và thanh toán VietQR bảo mật theo phiên đã xác thực.
+
+              <div className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border-mint)] p-4" data-testid="m09-live-prices">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="tkv-heading tabular-nums text-3xl sm:text-4xl font-black text-[var(--tkv-ink)]">
+                      {activeFormatted}
+                    </span>
+                    <span className="text-xs font-bold text-[var(--tkv-ink-muted)]">
+                      / {billingCycle === 'annual' ? 'năm' : 'tháng'}
+                    </span>
+                  </div>
+                  {billingCycle === 'annual' && (
+                    <span className="rounded-full bg-[var(--tkv-surface-mint)] px-2.5 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)] tabular-nums">
+                      ~{monthlyEquivFormatted}/tháng
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-xs font-medium text-[var(--tkv-ink-secondary)] leading-relaxed">
+                  {currentTier.currency === 'VND'
+                    ? 'Thanh toán VietQR tức thì · Không tự động trừ tiền.'
+                    : 'Thanh toán quốc tế qua Thẻ, Apple Pay, Google Pay, SEPA · Đã gồm thuế (Dodo Payments).'}
+                </p>
+              </div>
+
+              <p className="text-sm sm:text-base text-[var(--tkv-ink-secondary)] leading-relaxed">
+                Mở rộng toàn bộ sức mạnh AI quét tủ lạnh, lập thực đơn tuần tự động và 500+ công thức chuẩn hoá.
               </p>
-              <ul className="space-y-2.5 pt-1 text-sm text-[var(--tkv-ink,#152E2C)]">
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="sparkles" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
-                  <span>Ưu tiên nhận diện hoá đơn & nguyên liệu AI chính xác cao (có duyệt trước khi lưu)</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="calendar" size={18} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
-                  <span>Lập thực đơn tuần chuyên sâu & tối ưu danh sách đi chợ theo lịch</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
-                  <span>Thanh toán VietQR / PayOS đối soát trực tiếp từ máy chủ</span>
-                </li>
+              <ul className="space-y-3 text-sm text-[var(--tkv-ink)]">
+                {[
+                  'AI nhận diện hoá đơn & nguyên liệu tủ lạnh không giới hạn (có duyệt trước khi lưu)',
+                  'Lập thực đơn tuần chuyên sâu & tối ưu danh sách đi chợ theo lịch',
+                  '500+ công thức chuẩn hoá kèm dinh dưỡng & trợ lý giọng nói rảnh tay',
+                  'Thanh toán linh hoạt: VietQR (Việt Nam) hoặc Thẻ / Apple Pay (Quốc tế)',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[var(--tkv-border-mint)] bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)]">
+                      <VNextIcon name="check" size={12} />
+                    </span>
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -851,10 +988,30 @@ export const M09PricingPage: React.FC = () => {
                 navigateToAppSurface(plusDestination, navigate);
               }}
               data-testid="m09-plus-cta"
-              className="tkv-focusable w-full min-h-[50px] px-6 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white font-extrabold text-base shadow-xs transition-colors"
+              className="tkv-focusable tkv-tactile w-full min-h-[52px] px-6 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-cta-hover)] text-white font-extrabold text-base shadow-[var(--tkv-shadow-cta)] transition-colors"
             >
-              Xem các gói
+              Chọn Takolio Pro
             </button>
+          </div>
+        </div>
+
+        {/* Calm Billing Reassurance Mini-FAQ */}
+        <div className="rounded-[24px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 sm:p-6 space-y-3 shadow-[var(--tkv-shadow-card)]">
+          <h2 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
+            Câu hỏi thường gặp về thanh toán
+          </h2>
+          <div className="divide-y divide-[var(--tkv-border)]">
+            {M09_MINI_FAQ.map((item) => (
+              <details key={item.q} className="group py-3 first:pt-1 last:pb-1">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-3 text-sm font-bold text-[var(--tkv-ink)]">
+                  <span>{item.q}</span>
+                  <VNextIcon name="chevron-right" size={16} className="shrink-0 text-[var(--tkv-ink-muted)] transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[var(--tkv-ink-secondary)]">
+                  {item.a}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
 
