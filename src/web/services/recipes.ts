@@ -12,6 +12,7 @@ import type { CookingDeduction } from '../lib/cooking-review';
 import type { StandardUnit } from '@frigo/domain';
 import { projectCookingInventory } from '../lib/cooking-projection';
 import { privateCacheKey, currentPrivateScope } from '../lib/private-session';
+import { lSync } from '../i18n/app-i18n';
 import {
   ApiError,
   fetchJson,
@@ -68,7 +69,7 @@ export const recipesApi = {
 
   getRecipeById: async (id: string, contentFingerprint?: string) => {
     if (contentFingerprint !== undefined && !/^[a-f0-9]{64}$/.test(contentFingerprint))
-      throw new Error('Phiên bản công thức không hợp lệ.');
+      throw new Error(lSync('Phiên bản công thức không hợp lệ.', 'Invalid recipe version.'));
     const assertCurrent = guardPrivateSession();
     try {
       const result = await fetchJson<{ recipe: Recipe; match: RecipeMatchResult; contentFingerprint?: string }>(
@@ -76,7 +77,12 @@ export const recipesApi = {
       );
       assertCurrent();
       if (contentFingerprint !== undefined && result.contentFingerprint !== contentFingerprint)
-        throw new Error('Không thể xác nhận phiên bản công thức đã chọn.');
+        throw new Error(
+          lSync(
+            'Không thể xác nhận phiên bản công thức đã chọn.',
+            'Could not verify the selected recipe version.',
+          ),
+        );
       return result;
     } catch (err) {
       assertCurrent();
@@ -86,7 +92,12 @@ export const recipesApi = {
       const fingerprint = await fingerprintRecipes([recipe]);
       assertCurrent();
       if (contentFingerprint !== undefined && fingerprint !== contentFingerprint)
-        throw new Error('Cần kết nối để tải đúng phiên bản công thức đã chọn.');
+        throw new Error(
+          lSync(
+            'Cần kết nối để tải đúng phiên bản công thức đã chọn.',
+            'An internet connection is required to load the exact selected recipe version.',
+          ),
+        );
       const inventory = await inventoryApi.getInventory();
       assertCurrent();
       const match = evaluateRecipeMatch(recipe, { inventory });
@@ -182,7 +193,14 @@ export const recipesApi = {
         baseline.filter((lot): lot is typeof lot & { id: string } => typeof lot.id === 'string'),
         deductions,
       );
-      const receipt = queueWrite(path, 'POST', init.body, 'Hoàn tất bữa nấu', `cooking:${commandId}`, init.headers);
+      const receipt = queueWrite(
+        path,
+        'POST',
+        init.body,
+        lSync('Hoàn tất bữa nấu', 'Complete cooking session'),
+        `cooking:${commandId}`,
+        init.headers,
+      );
       if (receipt.path !== path || receipt.method !== 'POST' || receipt.body !== init.body ||
           receipt.userId !== scope.userId || receipt.householdId !== scope.householdId) {
         throw new ApiError('http', 'HTTP 409: {"code":"IDEMPOTENCY_CONFLICT"}', 409);

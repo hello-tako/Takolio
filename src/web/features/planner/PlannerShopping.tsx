@@ -44,6 +44,8 @@ import {
   isPlannerSlotElapsed,
   plannerLocalDate,
 } from './schedule';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { localizeIngredientName, localizeUnit, useLocaleText } from '../../i18n/app-i18n';
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
 function tripDateLabel(value: string, locale: PlannerLocale) {
@@ -65,6 +67,8 @@ export function PlannerShopping({
 }) {
   const t = plannerCopy[locale];
   const c = compositionCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
   const composing = isMealCompositionEnabled();
   const compositions = usePlanCompositions(plan, composing);
   const matchingCompositions =
@@ -203,7 +207,14 @@ export function PlannerShopping({
   const canShare = canSharePlannerShopping(plan, model.familyPlan);
   const hasFutureMeals = hasFuturePlannerSlot(plan);
   const cachedShoppingSnapshot = client.getQueryData<{
-    items?: Array<{ id: string; name: string; quantity: number; unit: string; isChecked?: boolean }>;
+    items?: Array<{
+      id: string;
+      ingredientId?: string | null;
+      name: string;
+      quantity: number;
+      unit: string;
+      isChecked?: boolean;
+    }>;
   }>([...queryKeys.shoppingList(), 'snapshot']);
   const cachedItems = cachedShoppingSnapshot?.items ?? [];
   const checkedItems = cachedItems.filter((it) => it.isChecked);
@@ -251,7 +262,7 @@ export function PlannerShopping({
                   className="inline-flex min-h-11 items-center underline"
                   to={`/planner/${plan.id}/meal/${encodeURIComponent(meal.slotId)}`}
                 >
-                  {componentTitle(item, locale)} · {meal.date} · {t[meal.mealType]}
+                  {componentTitle(item, locale, activeDataLocale)} · {meal.date} · {t[meal.mealType]}
                 </Link>
               </li>
             ))}
@@ -381,7 +392,8 @@ export function PlannerShopping({
                 key={it.id}
                 className="px-2.5 py-1 rounded-lg bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-xs font-semibold text-[var(--tkv-ink)] tabular-nums"
               >
-                {it.name} ({it.quantity} {it.unit})
+                {localizeIngredientName(it.ingredientId, it.name, locale)} ({it.quantity}{' '}
+                {localizeUnit(it.unit, locale)})
               </li>
             ))}
           </ul>

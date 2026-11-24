@@ -2,6 +2,7 @@
 import { ApiError, fetchJson, isNonRetryable, getCurrentScope, weekPlanCacheKey } from './http';
 import { flush, getPendingOps, type PendingOp } from '../lib/sync';
 import { capturePrivateSession, onPrivateSessionReset, privateSessionBlocked } from '../lib/private-session';
+import { lSync } from '../i18n/app-i18n';
 import { authApi } from './auth';
 import { inventoryApi } from './inventory';
 import { inventoryTruthApi } from './inventory-truth';
@@ -82,7 +83,8 @@ export const api = {
     }
     const isCurrent = capturePrivateSession();
     const assertCurrent = () => {
-      if (!isCurrent()) throw new ApiError('auth', 'Đồng bộ riêng tư đã tạm dừng.');
+      if (!isCurrent())
+        throw new ApiError('auth', lSync('Đồng bộ riêng tư đã tạm dừng.', 'Private sync has been paused.'));
     };
     const approved = options?.discardWeekSwapConflict;
     let acknowledged: unknown;
@@ -96,7 +98,13 @@ export const api = {
           const me = await api.getMe({ requireServer: true });
           assertCurrent();
           if (me.user?.id !== op.userId || me.user?.household?.id !== op.householdId) {
-            throw new ApiError('auth', 'Chủ sở hữu thao tác không khớp với phiên máy chủ.');
+            throw new ApiError(
+              'auth',
+              lSync(
+                'Chủ sở hữu thao tác không khớp với phiên máy chủ.',
+                'Action owner does not match the active server session.',
+              ),
+            );
           }
           try {
             await fetchJson(op.path, { method: op.method, body: op.body, headers: op.headers });

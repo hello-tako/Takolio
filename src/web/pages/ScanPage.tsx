@@ -14,8 +14,10 @@ import { readPrivateImage } from '../lib/private-image';
 import { ApiError } from '../services/http';
 import { scanApiErrorMessage, type ScanQuota } from '../lib/scan-errors';
 import { AiScanPendingStage } from '../vnext/components/Skeletons';
+import { useLocaleText } from '../i18n/app-i18n';
 
 export const ScanPage: React.FC = () => {
+  const { l } = useLocaleText();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const commandRef = useRef<{ id: string; image: string; type: string; owner: string } | null>(
@@ -64,9 +66,9 @@ export const ScanPage: React.FC = () => {
   }, []);
 
   const tabs = [
-    { id: 'fridge' as const, label: 'Tủ lạnh' },
-    { id: 'food' as const, label: 'Nguyên liệu' },
-    { id: 'receipt' as const, label: 'Hóa đơn' },
+    { id: 'fridge' as const, label: l('Tủ lạnh', 'Fridge') },
+    { id: 'food' as const, label: l('Nguyên liệu', 'Ingredients') },
+    { id: 'receipt' as const, label: l('Hóa đơn', 'Receipt') },
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,7 +107,7 @@ export const ScanPage: React.FC = () => {
     setRetryIsRecovery(false);
     if (activeTab === 'receipt') {
       setProcessingStage('uploading');
-      setProcessing(true, 'Đang quét hóa đơn mua sắm...');
+      setProcessing(true, l('Đang quét hóa đơn mua sắm...', 'Scanning shopping receipt...'));
       try {
         const receiptRes = await api.scanReceipt(base64, commandId);
 
@@ -132,7 +134,7 @@ export const ScanPage: React.FC = () => {
       return;
     }
 
-    setProcessing(true, 'Đang tải ảnh lên...');
+    setProcessing(true, l('Đang tải ảnh lên...', 'Uploading photo...'));
     setProcessingStage('uploading');
     try {
       const scanRes = await api.scanFridge(base64, activeTab, commandId);
@@ -181,7 +183,7 @@ export const ScanPage: React.FC = () => {
       <header className="scan-workspace-header">
         <button
           className="kitchen-icon-link"
-          aria-label="Quay lại tủ lạnh"
+          aria-label={l('Quay lại tủ lạnh', 'Back to fridge')}
           onClick={() => {
             reset();
             navigate('/fridge');
@@ -190,13 +192,13 @@ export const ScanPage: React.FC = () => {
           <ArrowLeft size={20} aria-hidden="true" />
         </button>
         <div>
-          <p className="kitchen-eyebrow">Thêm vào tủ · Bước 1 / 3</p>
-          <h1>Chụp ảnh, rồi kiểm tra</h1>
+          <p className="kitchen-eyebrow">{l('Thêm vào tủ · Bước 1 / 3', 'Add to fridge · Step 1 of 3')}</p>
+          <h1>{l('Chụp ảnh, rồi kiểm tra', 'Snap a photo, then review')}</h1>
         </div>
       </header>
       <div className="scan-workspace-grid">
         <section className="scan-guide">
-          <div className="scan-modes" role="group" aria-label="Chế độ quét">
+          <div className="scan-modes" role="group" aria-label={l('Chế độ quét', 'Scan mode')}>
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -221,38 +223,53 @@ export const ScanPage: React.FC = () => {
           </div>
           <h2>
             {activeTab === 'receipt'
-              ? 'Đọc hóa đơn mua sắm'
+              ? l('Đọc hóa đơn mua sắm', 'Read a grocery receipt')
               : activeTab === 'food'
-                ? 'Thêm nguyên liệu mới'
-                : 'Xem những gì đang có'}
+                ? l('Thêm nguyên liệu mới', 'Add new ingredients')
+                : l('Xem những gì đang có', 'See what is in your fridge')}
           </h2>
           <p>
             {activeTab === 'receipt'
-              ? 'Chụp toàn bộ hóa đơn, kể cả tên cửa hàng và ngày mua.'
-              : 'Chụp thực phẩm rõ nét; bạn sẽ sửa tên, lượng và nơi bảo quản ở bước tiếp theo.'}
+              ? l(
+                  'Chụp toàn bộ hóa đơn, kể cả tên cửa hàng và ngày mua.',
+                  'Capture the full receipt, including store name and purchase date.',
+                )
+              : l(
+                  'Chụp thực phẩm rõ nét; bạn sẽ sửa tên, lượng và nơi bảo quản ở bước tiếp theo.',
+                  'Take a clear photo of your food; you will review names, quantities, and storage in the next step.',
+                )}
           </p>
           <details className="scan-help">
-            <summary>Mẹo chụp ảnh rõ hơn</summary>
+            <summary>{l('Mẹo chụp ảnh rõ hơn', 'Tips for clearer scans')}</summary>
             <ol>
-              <li>Đủ sáng, giữ máy ổn định và tránh bóng phản chiếu.</li>
+              <li>{l('Đủ sáng, giữ máy ổn định và tránh bóng phản chiếu.', 'Use good lighting, hold steady, and avoid glare.')}</li>
               <li>
                 {activeTab === 'receipt'
-                  ? 'Giữ chữ và các dòng hàng trong khung, không cắt mất mép.'
-                  : 'Để nguyên liệu dễ nhìn; chụp nhãn nếu cần đọc tên hoặc hạn dùng.'}
+                  ? l(
+                      'Giữ chữ và các dòng hàng trong khung, không cắt mất mép.',
+                      'Keep all text and line items inside the frame without cropping edges.',
+                    )
+                  : l(
+                      'Để nguyên liệu dễ nhìn; chụp nhãn nếu cần đọc tên hoặc hạn dùng.',
+                      'Keep ingredients clearly visible; include labels if you want names or expiry dates read.',
+                    )}
               </li>
-              <li>AI chỉ tạo bản nháp. Tủ được cập nhật sau khi bạn xác nhận.</li>
+              <li>{l('AI chỉ tạo bản nháp. Tủ được cập nhật sau khi bạn xác nhận.', 'AI only prepares a draft. Your fridge updates only after you confirm.')}</li>
             </ol>
           </details>
           {quota?.plan === 'free' && (
             <p className="scan-quota" data-testid="scan-quota">
-              Còn {quota.remaining}/{quota.limit} lượt quét miễn phí trong tháng
+              {l(
+                `Còn ${quota.remaining}/${quota.limit} lượt quét miễn phí trong tháng`,
+                `${quota.remaining}/${quota.limit} free scans remaining this month`,
+              )}
             </p>
           )}
         </section>
-        <section className="scan-camera-region" aria-label="Chụp hoặc chọn ảnh">
+        <section className="scan-camera-region" aria-label={l('Chụp hoặc chọn ảnh', 'Capture or choose a photo')}>
           {imagePreviewUrl ? (
             <div className="scan-preview">
-              <img src={imagePreviewUrl} alt="Ảnh vừa chọn để quét" />
+              <img src={imagePreviewUrl} alt={l('Ảnh vừa chọn để quét', 'Selected photo for scanning')} />
             </div>
           ) : (
             <CameraViewfinder
@@ -274,7 +291,7 @@ export const ScanPage: React.FC = () => {
               <AiScanPendingStage
                 previewUrl={imagePreviewUrl}
                 statusText={statusText}
-                modeLabel={activeTab === 'receipt' ? 'OCR Hóa đơn Takolio' : 'AI Vision Takolio'}
+                modeLabel={activeTab === 'receipt' ? l('OCR Hóa đơn Takolio', 'Takolio Receipt OCR') : 'AI Vision Takolio'}
               />
               <div className="sr-only">
                 <ScanProcessingState
@@ -304,7 +321,7 @@ export const ScanPage: React.FC = () => {
                     void startAIScan(image);
                   }}
                 >
-                  {retryIsRecovery ? 'Kiểm tra lại' : 'Thử xử lý lại'}
+                  {retryIsRecovery ? l('Kiểm tra lại', 'Check again') : l('Thử xử lý lại', 'Try again')}
                 </button>
               )}
             </div>
@@ -312,7 +329,7 @@ export const ScanPage: React.FC = () => {
           {imagePreviewUrl && (
             <div className="scan-camera-actions">
               <Button variant="outline" disabled={isProcessing} onClick={chooseNewImage}>
-                <ImagePlus size={18} aria-hidden="true" /> Chọn ảnh khác
+                <ImagePlus size={18} aria-hidden="true" /> {l('Chọn ảnh khác', 'Choose another photo')}
               </Button>
             </div>
           )}

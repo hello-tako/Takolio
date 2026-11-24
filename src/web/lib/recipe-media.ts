@@ -10,6 +10,7 @@
  */
 import type { Recipe, RecipeMediaPresentationSet } from '@frigo/recipes';
 import { legacyRecipeImageIssue } from '../../../packages/recipes/src/legacy-media-policy';
+import { lSync } from '../i18n/app-i18n';
 
 export const RECIPE_IMAGE_PLACEHOLDER = '/takolio/vnext/brand/dish-fallback.svg';
 
@@ -90,6 +91,8 @@ export function recipeImageErrorHandler(fallbackSrc: string) {
     const next = current === fallbackSrc ? RECIPE_IMAGE_PLACEHOLDER : fallbackSrc;
     image.dataset.recipeMediaFallbackApplied = '1';
     image.src = next;
-    if (next === RECIPE_IMAGE_PLACEHOLDER) image.alt = 'Chưa có ảnh món ăn';
+    if (next === RECIPE_IMAGE_PLACEHOLDER) {
+      image.alt = lSync('Chưa có ảnh món ăn', 'No dish photo yet');
+    }
   };
 }

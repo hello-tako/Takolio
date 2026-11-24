@@ -1,5 +1,6 @@
 import React, { useId, useRef } from 'react';
 import { useModalFocus } from '../../design-system/use-modal-focus';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -16,12 +17,15 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   open,
   title,
   description,
-  confirmText = 'Đồng ý',
-  cancelText = 'Hủy',
+  confirmText,
+  cancelText,
   destructive = false,
   onConfirm,
   onCancel,
 }) => {
+  const { l } = useLocaleText();
+  const resolvedConfirmText = confirmText ?? l('Đồng ý', 'Confirm');
+  const resolvedCancelText = cancelText ?? l('Hủy', 'Cancel');
   const dialogRef = useRef<HTMLDivElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
@@ -61,7 +65,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             onClick={onCancel}
             className="flex-1 py-2.5 rounded-xl bg-semantic-border/60 text-semantic-text-secondary font-heading font-bold text-sm hover:bg-semantic-border active:scale-95 transition-tap tap-target"
           >
-            {cancelText}
+            {resolvedCancelText}
           </button>
           <button
             type="button"
@@ -70,7 +74,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
               destructive ? 'bg-semantic-danger hover:bg-semantic-danger-strong' : 'bg-semantic-action-primary hover:bg-semantic-action-primary-hover'
             }`}
           >
-            {confirmText}
+            {resolvedConfirmText}
           </button>
         </div>
       </div>

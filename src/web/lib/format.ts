@@ -1,5 +1,6 @@
 import type { GlobalCurrency } from '../../../packages/domain/src/i18n';
 import { formatMoneyMinor, getActiveUiLocale } from '../i18n';
+import { isViLocale } from '../i18n/app-i18n';
 
 // Centralized formatting helpers (preserves legacy VND helpers while adding multi-currency support).
 
@@ -15,20 +16,24 @@ export function formatGlobalCurrencyMinor(
 /** 560000 -> "560k", 1200000 -> "1,2tr" — compact VND for tight widgets. */
 export function formatVndCompact(amount: number): string {
   if (!Number.isFinite(amount)) return '—';
+  const vi = isViLocale();
   if (Math.abs(amount) >= 1_000_000) {
     const millions = amount / 1_000_000;
     const rounded = Math.round(millions * 10) / 10;
-    return `${String(rounded).replace('.', ',')}tr`;
+    return vi ? `${String(rounded).replace('.', ',')}tr` : `${rounded}M VND`;
   }
   if (Math.abs(amount) >= 1_000) {
-    return `${Math.round(amount / 1_000)}k`;
+    return vi ? `${Math.round(amount / 1_000)}k` : `${Math.round(amount / 1_000)}k VND`;
   }
-  return `${Math.round(amount)}đ`;
+  return vi ? `${Math.round(amount)}đ` : `${Math.round(amount)} VND`;
 }
 
 /** Full VND with grouping: 560000 -> "560.000đ". */
 export function formatVnd(amount: number): string {
   if (!Number.isFinite(amount)) return '—';
+  if (!isViLocale()) {
+    return `${new Intl.NumberFormat('en-US').format(Math.round(amount))} VND`;
+  }
   return `${new Intl.NumberFormat('vi-VN').format(Math.round(amount))}đ`;
 }
 

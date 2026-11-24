@@ -1,6 +1,7 @@
 import type { ComponentAssessment } from '../../../../packages/domain/src/meal-composition-api';
 import type { PlannerLocale } from './copy';
 import { reasonLabel } from './presentation';
+import { localizeIngredientName, localizeUnit } from '../../i18n/app-i18n';
 
 export function coverageStatus(assessment: ComponentAssessment, locale: PlannerLocale) {
   const labels =
@@ -39,7 +40,8 @@ export function ingredientAmount(quantity: number | null, unit: string, locale: 
     quantity,
   );
   const rounded = Number(new Intl.NumberFormat('en-US', options).format(quantity));
-  return `${rounded === quantity ? '' : locale === 'vi' ? 'Khoảng ' : 'About '}${displayed} ${unitLabels[unit] ?? unit}`;
+  const unitText = unitLabels[unit] ?? (locale === 'vi' ? unit : localizeUnit(unit, locale));
+  return `${rounded === quantity ? '' : locale === 'vi' ? 'Khoảng ' : 'About '}${displayed} ${unitText}`;
 }
 
 export function IngredientCoverage({
@@ -78,7 +80,7 @@ export function IngredientCoverage({
             {assessment.requirements.map((line, index) => (
               <li key={`${line.ingredientId}:${line.unit}:${index}`}>
                 <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                  <strong>{line.name}</strong>
+                  <strong>{localizeIngredientName(line.ingredientId, line.name, locale)}</strong>
                   {line.isOptional && (
                     <span className="text-xs text-semantic-text-muted">
                       {locale === 'vi' ? 'Không bắt buộc' : 'Optional'}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { clsx } from 'clsx';
@@ -39,15 +39,27 @@ import {
 import { BrandFeatureIcon, BrandLockup, MascotIllustration, VerifiedDishImage } from '../components/VNextMedia';
 import { VNextIcon } from '../components/VNextIcons';
 import { TkvConfettiBurst } from '../components/LivingMotion';
+import {
+  containsVietnameseDiacritics,
+  formatLocalizedMeasure,
+  localizeCuisine,
+  localizeErrorText,
+  localizeIngredientName,
+  localizeRecipeCategory,
+  localizeRecipeSteps,
+  localizeRecipeTitle,
+  localizeUnit,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
-const QUICK_CATEGORIES: Array<{ id: string; label: string }> = [
-  { id: 'mon_kho', label: 'Món kho' },
-  { id: 'mon_canh', label: 'Món canh' },
-  { id: 'mon_xao', label: 'Món xào' },
-  { id: 'mon_bun_pho', label: 'Bún · Phở' },
-  { id: 'mon_cuon_nom', label: 'Gỏi · Nộm' },
-  { id: 'mon_chay', label: 'Món chay' },
-];
+const QUICK_CATEGORY_IDS = [
+  'mon_kho',
+  'mon_canh',
+  'mon_xao',
+  'mon_bun_pho',
+  'mon_cuon_nom',
+  'mon_chay',
+] as const;
 
 /**
  * C15 / C16 / C17 — Khám phá món ăn · Kết quả tìm kiếm · Món đã lưu (`/recipes`).
@@ -55,6 +67,7 @@ const QUICK_CATEGORIES: Array<{ id: string; label: string }> = [
  * preserving URL-driven filters, cursor pagination, and registered vs guest FavoritesCollection.
  */
 export const C15RecipesDiscoveryVNext: React.FC = () => {
+  const { l, locale } = useLocaleText();
   const location = useLocation();
   const [params, setParams] = useSearchParams();
   const savedView = params.get('view') === 'saved';
@@ -69,13 +82,23 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
 
   const screenId = savedView ? 'C17' : filters.q.trim() ? 'C16' : 'C15';
 
+  const quickCategoryLabel = (id: (typeof QUICK_CATEGORY_IDS)[number]) => {
+    if (locale !== 'vi') return localizeRecipeCategory(id, locale);
+    if (id === 'mon_bun_pho') return l('Bún · Phở', 'Noodles');
+    if (id === 'mon_cuon_nom') return l('Gỏi · Nộm', 'Salads & Rolls');
+    return localizeRecipeCategory(id, locale);
+  };
+
   useVNextSeo({
     title: savedView
-      ? 'Món ăn đã lưu'
+      ? l('Món ăn đã lưu', 'Saved recipes')
       : filters.q.trim()
-        ? `Tìm món: ${filters.q.trim()}`
-        : 'Khám phá món ăn',
-    description: 'Tìm món ăn theo nguyên liệu sẵn có trong tủ lạnh, thời gian nấu và khẩu vị gia đình.',
+        ? l(`Tìm món: ${filters.q.trim()}`, `Search recipes: ${filters.q.trim()}`)
+        : l('Khám phá món ăn', 'Explore recipes'),
+    description: l(
+      'Tìm món ăn theo nguyên liệu sẵn có trong tủ lạnh, thời gian nấu và khẩu vị gia đình.',
+      'Find recipes matched to your fridge ingredients, cook time, and family preferences.',
+    ),
     canonicalPath: '/recipes',
     domainSurface: 'app',
     noindex: savedView,
@@ -129,14 +152,20 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
             <BrandFeatureIcon name="recipes" size={48} />
             <div>
               <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#52706A)] tabular-nums">
-                Kho công thức gia đình · Khẩu phần {effectiveServings} người
+                {l(
+                  `Kho công thức gia đình · Khẩu phần ${effectiveServings} người`,
+                  `Family recipe catalog · ${effectiveServings} ${effectiveServings === 1 ? 'serving' : 'servings'}`,
+                )}
               </p>
               <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5 tabular-nums">
                 {savedView
-                  ? 'Món đã lưu'
+                  ? l('Món đã lưu', 'Saved recipes')
                   : filters.q.trim()
-                    ? `Kết quả tìm kiếm (${pageData?.total ?? items.length})`
-                    : 'Khám phá món ăn'}
+                    ? l(
+                        `Kết quả tìm kiếm (${pageData?.total ?? items.length})`,
+                        `Search results (${pageData?.total ?? items.length})`,
+                      )
+                    : l('Khám phá món ăn', 'Explore recipes')}
               </h1>
             </div>
           </div>
@@ -153,7 +182,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                   : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
               )}
             >
-              Khám phá
+              {l('Khám phá', 'Explore')}
             </button>
             <button
               type="button"
@@ -166,7 +195,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                   : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
               )}
             >
-              Đã lưu
+              {l('Đã lưu', 'Saved')}
             </button>
           </div>
         </div>
@@ -180,12 +209,15 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
             <TkvSearchField
               value={filters.q}
               onChange={(val) => applyFilterPatch({ q: val })}
-              placeholder="Tìm món, nguyên liệu, cách nấu…"
-              label="Tìm công thức món ăn"
+              placeholder={l(
+                'Tìm món, nguyên liệu, cách nấu…',
+                'Search dishes, ingredients, or techniques…',
+              )}
+              label={l('Tìm công thức món ăn', 'Search recipes')}
             />
 
             {/* Brand Board Filter Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" aria-label="Bộ lọc món ăn">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" aria-label={l('Bộ lọc món ăn', 'Recipe filters')}>
               <button
                 type="button"
                 aria-pressed={filters.cuisine === 'vietnamese'}
@@ -201,7 +233,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                 )}
               >
-                Món Việt
+                {localizeCuisine('vietnamese', locale)}
               </button>
 
               <button
@@ -215,7 +247,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                 )}
               >
-                Nấu nhanh (≤ 20p)
+                {l('Nấu nhanh (≤ 20p)', 'Quick (≤ 20m)')}
               </button>
 
               <button
@@ -229,19 +261,19 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                 )}
               >
-                Đủ nguyên liệu
+                {l('Đủ nguyên liệu', 'Ready to cook')}
               </button>
 
-              {QUICK_CATEGORIES.map((cat) => {
-                const active = filters.category === cat.id;
+              {QUICK_CATEGORY_IDS.map((catId) => {
+                const active = filters.category === catId;
                 return (
                   <button
-                    key={cat.id}
+                    key={catId}
                     type="button"
                     aria-pressed={active}
                     onClick={() =>
                       applyFilterPatch({
-                        category: (active ? null : cat.id) as typeof filters.category,
+                        category: (active ? null : catId) as typeof filters.category,
                       })
                     }
                     className={clsx(
@@ -251,7 +283,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                         : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)]',
                     )}
                   >
-                    {cat.label}
+                    {quickCategoryLabel(catId)}
                   </button>
                 );
               })}
@@ -262,7 +294,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                   onClick={clearDiscoveryFilters}
                   className="tkv-focusable min-h-[44px] shrink-0 px-3.5 py-2 rounded-full text-xs font-bold text-[var(--tkv-coral-ink)] hover:text-[var(--tkv-primary)] underline underline-offset-4 whitespace-nowrap"
                 >
-                  Xóa bộ lọc
+                  {l('Xóa bộ lọc', 'Clear filters')}
                 </button>
               )}
             </div>
@@ -270,78 +302,97 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
             {discoveryQuery.isPending ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 {Array.from({ length: 6 }, (_, i) => (
-                  <TkvSkeleton key={i} className="h-56" label="Đang tải danh sách công thức…" />
+                  <TkvSkeleton
+                    key={i}
+                    className="h-56"
+                    label={l('Đang tải danh sách công thức…', 'Loading recipes…')}
+                  />
                 ))}
               </div>
             ) : discoveryQuery.isError ? (
               <TkvErrorState
-                title="Chưa tải được kho công thức"
-                message="Không thể đọc dữ liệu gợi ý món ăn lúc này. Vui lòng thử lại."
+                title={l('Chưa tải được kho công thức', 'Could not load recipes')}
+                message={l(
+                  'Không thể đọc dữ liệu gợi ý món ăn lúc này. Vui lòng thử lại.',
+                  'Unable to load recipe recommendations right now. Please try again.',
+                )}
                 onRetry={() => void discoveryQuery.refetch()}
               />
             ) : items.length === 0 ? (
               <TkvSurface className="p-6 text-center space-y-3 bg-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)]">
                 <p className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)]">
-                  Không có món ăn khớp điều kiện lọc hiện tại
+                  {l('Không có món ăn khớp điều kiện lọc hiện tại', 'No recipes match your current filters')}
                 </p>
                 <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-                  Thử mở rộng thời gian nấu, tắt chế độ “Đủ nguyên liệu” hoặc xóa từ khóa tìm kiếm.
+                  {l(
+                    'Thử mở rộng thời gian nấu, tắt chế độ “Đủ nguyên liệu” hoặc xóa từ khóa tìm kiếm.',
+                    'Try expanding cook time, turning off “Ready to cook”, or clearing your search.',
+                  )}
                 </p>
                 <TkvButton variant="secondary" onClick={clearDiscoveryFilters}>
-                  Xóa toàn bộ bộ lọc
+                  {l('Xóa toàn bộ bộ lọc', 'Clear all filters')}
                 </TkvButton>
               </TkvSurface>
             ) : (
               <>
-                <ul className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5" aria-label="Danh sách món ăn">
-                  {items.map(({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => (
-                    <li key={recipe.id} className="min-w-0">
-                      <Link
-                        to={vnextHref(
-                          `/recipes/${recipe.slug || recipe.id}?returnTo=${encodeURIComponent(returnCurrentUrl)}`,
-                        )}
-                        className="tkv-focusable h-full flex flex-col justify-between rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] overflow-hidden hover:border-[var(--tkv-border-strong)] transition-colors"
-                      >
-                        <div>
-                          <div className="p-2 sm:p-2.5 bg-[var(--tkv-surface-mint)]">
-                            <VerifiedDishImage
-                              slug={recipe.slug}
-                              title={recipe.title}
-                              canonicalFallbackSrc={resolveRecipeImage(recipe)}
-                              aspectClass="aspect-[4/3]"
-                              className="rounded-xl"
-                            />
+                <ul className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5" aria-label={l('Danh sách món ăn', 'Recipe list')}>
+                  {items.map(({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }) => {
+                    const displayTitle = localizeRecipeTitle(recipe, locale);
+                    return (
+                      <li key={recipe.id} className="min-w-0">
+                        <Link
+                          to={vnextHref(
+                            `/recipes/${recipe.slug || recipe.id}?returnTo=${encodeURIComponent(returnCurrentUrl)}`,
+                          )}
+                          className="tkv-focusable h-full flex flex-col justify-between rounded-[var(--tkv-radius-card)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] overflow-hidden hover:border-[var(--tkv-border-strong)] transition-colors"
+                        >
+                          <div>
+                            <div className="p-2 sm:p-2.5 bg-[var(--tkv-surface-mint)]">
+                              <VerifiedDishImage
+                                slug={recipe.slug}
+                                title={displayTitle}
+                                canonicalFallbackSrc={resolveRecipeImage(recipe)}
+                                aspectClass="aspect-[4/3]"
+                                className="rounded-xl"
+                              />
+                            </div>
+                            <div className="p-3 sm:p-4 space-y-1.5">
+                              <h2 className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink)] line-clamp-2">
+                                {displayTitle}
+                              </h2>
+                              <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
+                                {l(
+                                  `${recipe.cookTimeMinutes} phút · ${recipe.servings} người`,
+                                  `${recipe.cookTimeMinutes} min · ${recipe.servings} ${recipe.servings === 1 ? 'serving' : 'servings'}`,
+                                )}
+                              </p>
+                            </div>
                           </div>
-                          <div className="p-3 sm:p-4 space-y-1.5">
-                            <h2 className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink)] line-clamp-2">
-                              {recipe.title}
-                            </h2>
-                            <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
-                              {recipe.cookTimeMinutes} phút · {recipe.servings} người
-                            </p>
-                          </div>
-                        </div>
 
-                        <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                          <TkvBadge
-                            tone={canCookWithoutBuying ? 'success' : 'coral'}
-                            icon={canCookWithoutBuying ? 'check' : 'shopping'}
-                          >
-                            <span className="tabular-nums">
-                              {canCookWithoutBuying
-                                ? 'Đủ nguyên liệu'
-                                : `Thiếu ${missingRequiredIngredientCount} mục`}
-                            </span>
-                          </TkvBadge>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
+                          <div className="px-3 sm:px-4 pb-3 sm:pb-4">
+                            <TkvBadge
+                              tone={canCookWithoutBuying ? 'success' : 'coral'}
+                              icon={canCookWithoutBuying ? 'check' : 'shopping'}
+                            >
+                              <span className="tabular-nums">
+                                {canCookWithoutBuying
+                                  ? l('Đủ nguyên liệu', 'Ready to cook')
+                                  : l(
+                                      `Thiếu ${missingRequiredIngredientCount} mục`,
+                                      `Missing ${missingRequiredIngredientCount}`,
+                                    )}
+                              </span>
+                            </TkvBadge>
+                          </div>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
 
                 {pageData && pageData.pages > 1 && (
                   <nav
-                    aria-label="Phân trang danh sách món ăn"
+                    aria-label={l('Phân trang danh sách món ăn', 'Recipe pagination')}
                     className="pt-2 flex items-center justify-between gap-2 tabular-nums"
                   >
                     <TkvButton
@@ -356,10 +407,10 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                         })
                       }
                     >
-                      Trang trước
+                      {l('Trang trước', 'Previous')}
                     </TkvButton>
                     <span className="text-xs font-bold text-[var(--tkv-ink-secondary)] whitespace-nowrap shrink-0">
-                      Trang {pageData.page} / {pageData.pages}
+                      {l(`Trang ${pageData.page} / ${pageData.pages}`, `Page ${pageData.page} / ${pageData.pages}`)}
                     </span>
                     <TkvButton
                       variant="secondary"
@@ -373,7 +424,7 @@ export const C15RecipesDiscoveryVNext: React.FC = () => {
                         })
                       }
                     >
-                      Trang tiếp
+                      {l('Trang tiếp', 'Next')}
                     </TkvButton>
                   </nav>
                 )}
@@ -400,6 +451,7 @@ function formatTimerClock(totalSec: number): string {
  * during prep or cooking (stock is only deducted after explicit C22 confirmation).
  */
 export const C20C21CookingStudioVNext: React.FC = () => {
+  const { l, locale, unitSystem } = useLocaleText();
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
   const recipeKey = slug || id || '';
   const navigate = useNavigate();
@@ -437,9 +489,20 @@ export const C20C21CookingStudioVNext: React.FC = () => {
   );
   const blockedOtherRun = Boolean(attempt && !['saved', 'queued'].includes(attempt.status) && !matchesActive);
 
+  const activeRecipeTitle = activeRecipe ? localizeRecipeTitle(activeRecipe, locale) : '';
+  const localizedSteps = useMemo(
+    () => (activeRecipe ? localizeRecipeSteps(activeRecipe, locale, unitSystem) : []),
+    [activeRecipe, locale, unitSystem],
+  );
+
   useVNextSeo({
-    title: isPrepStage ? 'Chuẩn bị nấu' : 'Chế độ nấu từng bước',
-    description: 'Không gian đứng bếp tập trung với hẹn giờ từng công đoạn và hướng dẫn rõ ràng.',
+    title: isPrepStage
+      ? l('Chuẩn bị nấu', 'Cooking prep')
+      : l('Chế độ nấu từng bước', 'Step-by-step cooking'),
+    description: l(
+      'Không gian đứng bếp tập trung với hẹn giờ từng công đoạn và hướng dẫn rõ ràng.',
+      'Focused countertop cooking studio with per-step timers and clear instructions.',
+    ),
     canonicalPath: recipeKey ? `/cook/${recipeKey}` : '/recipes',
     domainSurface: 'app',
     noindex: true,
@@ -526,19 +589,31 @@ export const C20C21CookingStudioVNext: React.FC = () => {
 
   if (blockedOtherRun) {
     return (
-      <ConsumerStudioShell screenId="C20" title="Kiểm tra lần nấu trước" backTo={vnextHref('/recipes')}>
+      <ConsumerStudioShell
+        screenId="C20"
+        title={l('Kiểm tra lần nấu trước', 'Review previous cook')}
+        backTo={vnextHref('/recipes')}
+      >
         <TkvSurface tone="saffron" className="max-w-xl mx-auto p-6 space-y-4">
           <TkvBadge tone="warning" icon="info">
-            Chống trừ kho trùng lặp
+            {l('Chống trừ kho trùng lặp', 'Duplicate deduction protection')}
           </TkvBadge>
           <h1 className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink)]">
-            Cần kiểm tra lần nấu trước
+            {l('Cần kiểm tra lần nấu trước', 'Review your previous cooking session')}
           </h1>
           <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-            Bạn còn một yêu cầu hoàn tất đang chờ kiểm tra cho món <strong>{activeRecipe?.title}</strong>. Hãy hoàn tất hoặc đóng yêu cầu đó trước khi bắt đầu món mới.
+            {locale === 'vi' ? (
+              <>
+                Bạn còn một yêu cầu hoàn tất đang chờ kiểm tra cho món <strong>{activeRecipeTitle}</strong>. Hãy hoàn tất hoặc đóng yêu cầu đó trước khi bắt đầu món mới.
+              </>
+            ) : (
+              <>
+                You still have a pending completion review for <strong>{activeRecipeTitle}</strong>. Finish or dismiss it before starting a new dish.
+              </>
+            )}
           </p>
           <TkvButton variant="coral" onClick={() => navigate(vnextHref('/cooking/complete'))}>
-            Mở màn hình kiểm tra lượng dùng (C22)
+            {l('Mở màn hình kiểm tra lượng dùng (C22)', 'Open ingredient review (C22)')}
           </TkvButton>
         </TkvSurface>
       </ConsumerStudioShell>
@@ -553,7 +628,11 @@ export const C20C21CookingStudioVNext: React.FC = () => {
           <BrandLockup />
           {err ? (
             <TkvErrorState
-              message="Chưa tải được dữ liệu công thức để bắt đầu chế độ nấu."
+              title={l('Chưa tải được dữ liệu máy chủ', 'Could not load server data')}
+              message={l(
+                'Chưa tải được dữ liệu công thức để bắt đầu chế độ nấu.',
+                'Could not load recipe data to start cooking mode.',
+              )}
               onRetry={() => {
                 void recipeQuery.refetch();
                 void inventoryQuery.refetch();
@@ -562,10 +641,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
           ) : (
             <TkvSurface className="p-6 space-y-4">
               <h1 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
-                Đang chuẩn bị không gian bếp…
+                {l('Đang chuẩn bị không gian bếp…', 'Preparing your kitchen studio…')}
               </h1>
-              <TkvSkeleton className="h-36" />
-              <TkvSkeleton className="h-24" />
+              <TkvSkeleton className="h-36" label={l('Đang tải dữ liệu…', 'Loading…')} />
+              <TkvSkeleton className="h-24" label={l('Đang tải dữ liệu…', 'Loading…')} />
             </TkvSurface>
           )}
         </div>
@@ -573,8 +652,13 @@ export const C20C21CookingStudioVNext: React.FC = () => {
     );
   }
 
-  const totalSteps = activeRecipe.steps.length;
-  const step = activeRecipe.steps[currentStepIndex] ?? activeRecipe.steps[0];
+  const totalSteps = localizedSteps.length;
+  const step = localizedSteps[currentStepIndex] ?? localizedSteps[0];
+  const rawStep = activeRecipe.steps[currentStepIndex] ?? activeRecipe.steps[0];
+  const visibleStepTip =
+    rawStep?.tip && (locale === 'vi' || !containsVietnameseDiacritics(rawStep.tip))
+      ? rawStep.tip
+      : null;
   const isLastStep = currentStepIndex >= totalSteps - 1;
   const progressPct = totalSteps > 0 ? Math.round(((currentStepIndex + 1) / totalSteps) * 100) : 100;
   const defaultStepSeconds = Math.max(60, (step?.timerMinutes ?? 3) * 60);
@@ -592,10 +676,16 @@ export const C20C21CookingStudioVNext: React.FC = () => {
       setSpeaking(false);
       return;
     }
-    const ok = voiceChef.speakInstruction(step.instruction, () => setSpeaking(false));
+    const speechLocale = locale === 'vi' ? 'vi' : 'en';
+    const ok = voiceChef.speakInstruction(step.instruction, () => setSpeaking(false), speechLocale);
     setSpeaking(ok);
     if (!ok) {
-      setVoiceMessage('Trình duyệt hiện tại không hỗ trợ đọc giọng nói tiếng Việt; bạn vẫn dùng đầy đủ nút bấm và hẹn giờ bên dưới.');
+      setVoiceMessage(
+        l(
+          'Trình duyệt hiện tại không hỗ trợ đọc giọng nói tiếng Việt; bạn vẫn dùng đầy đủ nút bấm và hẹn giờ bên dưới.',
+          'Your browser does not support voice readout; you can still use all step controls and timers below.',
+        ),
+      );
     }
   };
 
@@ -615,27 +705,31 @@ export const C20C21CookingStudioVNext: React.FC = () => {
           <button
             type="button"
             onClick={() => setConfirmExit(true)}
-            aria-label="Thoát bếp"
+            aria-label={l('Thoát bếp', 'Exit kitchen')}
             className="tkv-focusable min-h-[44px] inline-flex items-center gap-1.5 px-2.5 sm:px-3 rounded-xl text-sm font-semibold whitespace-nowrap shrink-0 text-[var(--tkv-ink-secondary)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-ink)] transition-colors"
           >
             <VNextIcon name="arrow-left" size={18} className="shrink-0" />
-            <span className="hidden min-[400px]:inline">Thoát bếp</span>
-            <span className="min-[400px]:hidden">Thoát</span>
+            <span className="hidden min-[400px]:inline">{l('Thoát bếp', 'Exit kitchen')}</span>
+            <span className="min-[400px]:hidden">{l('Thoát', 'Exit')}</span>
           </button>
 
           <div className="flex items-center gap-2 min-w-0">
             <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap shrink-0 tabular-nums bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-coral-ink)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
-              <span>{isPrepStage ? 'Chuẩn bị nấu' : `Bước ${currentStepIndex + 1} / ${totalSteps}`}</span>
+              <span>
+                {isPrepStage
+                  ? l('Chuẩn bị nấu', 'Prep')
+                  : l(`Bước ${currentStepIndex + 1} / ${totalSteps}`, `Step ${currentStepIndex + 1} / ${totalSteps}`)}
+              </span>
             </span>
             {!isPrepStage && (
               <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-[var(--tkv-success-ink)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
-                <span>Giữ sáng màn hình</span>
+                <span>{l('Giữ sáng màn hình', 'Keep screen awake')}</span>
               </span>
             )}
             <span className="hidden sm:inline text-sm font-bold truncate max-w-[260px] text-[var(--tkv-ink)]">
-              {activeRecipe.title}
+              {activeRecipeTitle}
             </span>
           </div>
 
@@ -650,7 +744,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               }}
               className="tkv-focusable min-h-[44px] px-2.5 sm:px-3 rounded-xl text-xs font-bold whitespace-nowrap border border-[var(--tkv-border-strong)] bg-[var(--tkv-surface)] text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
             >
-              {isPrepStage ? 'Vào bước nấu' : 'Xem sơ chế'}
+              {isPrepStage ? l('Vào bước nấu', 'Start steps') : l('Xem sơ chế', 'View prep')}
             </button>
           </div>
         </div>
@@ -660,7 +754,15 @@ export const C20C21CookingStudioVNext: React.FC = () => {
         <div className="border-b border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] px-4 py-3">
           <div className="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <p className="text-xs sm:text-sm font-medium">
-              Thoát chế độ nấu ngay bây giờ sẽ <strong>không trừ bất kỳ nguyên liệu nào</strong> trong tủ lạnh của bạn.
+              {locale === 'vi' ? (
+                <>
+                  Thoát chế độ nấu ngay bây giờ sẽ <strong>không trừ bất kỳ nguyên liệu nào</strong> trong tủ lạnh của bạn.
+                </>
+              ) : (
+                <>
+                  Exiting cooking mode now will <strong>not deduct any ingredients</strong> from your fridge.
+                </>
+              )}
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <button
@@ -668,7 +770,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 onClick={() => setConfirmExit(false)}
                 className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-bold bg-[var(--tkv-surface)] border border-[var(--tkv-border-strong)] text-[var(--tkv-ink)] hover:bg-[var(--tkv-surface-mint)] transition-colors"
               >
-                Tiếp tục nấu
+                {l('Tiếp tục nấu', 'Keep cooking')}
               </button>
               <button
                 type="button"
@@ -679,7 +781,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 }}
                 className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-bold bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white transition-colors"
               >
-                Rời khỏi bếp
+                {l('Rời khỏi bếp', 'Leave kitchen')}
               </button>
             </div>
           </div>
@@ -695,13 +797,19 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 <MascotIllustration pose="cooking" size={72} className="w-14 h-14 sm:w-[72px] sm:h-[72px] border border-[var(--tkv-border)] bg-[var(--tkv-bg)] shrink-0" />
                 <div className="space-y-1 min-w-0 flex-1">
                   <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#52706A)] tabular-nums">
-                    Sẵn sàng nguyên liệu · {activeRecipe.servings} khẩu phần
+                    {l(
+                      `Sẵn sàng nguyên liệu · ${activeRecipe.servings} khẩu phần`,
+                      `Prep ingredients · ${activeRecipe.servings} ${activeRecipe.servings === 1 ? 'serving' : 'servings'}`,
+                    )}
                   </p>
                   <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-                    {activeRecipe.title}
+                    {activeRecipeTitle}
                   </h1>
                   <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
-                    Tổng thời gian khoảng {activeRecipe.cookTimeMinutes} phút · {totalSteps} bước thực hiện.
+                    {l(
+                      `Tổng thời gian khoảng ${activeRecipe.cookTimeMinutes} phút · ${totalSteps} bước thực hiện.`,
+                      `About ${activeRecipe.cookTimeMinutes} min total · ${totalSteps} ${totalSteps === 1 ? 'step' : 'steps'}.`,
+                    )}
                   </p>
                 </div>
               </div>
@@ -710,10 +818,13 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             <TkvSurface className="p-5 sm:p-6 space-y-4 bg-white border-[var(--tkv-border,#DCE6DE)]">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                  Kiểm điểm nguyên liệu trên bàn sơ chế ({activeRecipe.ingredients.length})
+                  {l(
+                    `Kiểm điểm nguyên liệu trên bàn sơ chế (${activeRecipe.ingredients.length})`,
+                    `Check off prep ingredients (${activeRecipe.ingredients.length})`,
+                  )}
                 </h2>
                 <TkvBadge tone="success" icon="shield">
-                  Chưa trừ kho ở bước chuẩn bị
+                  {l('Chưa trừ kho ở bước chuẩn bị', 'No stock deducted during prep')}
                 </TkvBadge>
               </div>
               <ul className="divide-y divide-[var(--tkv-border,#DCE6DE)]">
@@ -735,11 +846,13 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                             checked ? 'line-through text-[var(--tkv-ink-muted,#52706A)]' : 'text-[var(--tkv-ink,#152E2C)]',
                           )}
                         >
-                          {ing.name}
+                          {localizeIngredientName(ing.ingredientId, ing.name, locale)}
                         </span>
                       </label>
                       <span className="text-sm font-bold tabular-nums text-[var(--tkv-ink,#152E2C)] shrink-0">
-                        {cookingQuantityText(ing.requiredQuantity, ing.unit)}
+                        {locale === 'vi'
+                          ? cookingQuantityText(ing.requiredQuantity, ing.unit, locale)
+                          : formatLocalizedMeasure(ing.requiredQuantity, ing.unit, locale, unitSystem)}
                       </span>
                     </li>
                   );
@@ -759,7 +872,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
               }}
               data-testid="c20-start-steps-cta"
             >
-              Bắt đầu nấu từng bước ({totalSteps} bước)
+              {l(
+                `Bắt đầu nấu từng bước (${totalSteps} bước)`,
+                `Start step-by-step cooking (${totalSteps} ${totalSteps === 1 ? 'step' : 'steps'})`,
+              )}
             </TkvButton>
           </div>
         ) : (
@@ -768,13 +884,16 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             {/* Step Progress Bar with smooth width transition */}
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs font-semibold text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
-                <span className="truncate pr-2">{activeRecipe.title}</span>
-                <span className="shrink-0">Hoàn thành {progressPct}%</span>
+                <span className="truncate pr-2">{activeRecipeTitle}</span>
+                <span className="shrink-0">{l(`Hoàn thành ${progressPct}%`, `${progressPct}% complete`)}</span>
               </div>
               <div
                 className="h-2 w-full rounded-full bg-[var(--tkv-ring-track,#F7E6DD)] overflow-hidden"
                 role="progressbar"
-                aria-label={`Tiến độ nấu: bước ${currentStepIndex + 1} trên ${totalSteps}`}
+                aria-label={l(
+                  `Tiến độ nấu: bước ${currentStepIndex + 1} trên ${totalSteps}`,
+                  `Cooking progress: step ${currentStepIndex + 1} of ${totalSteps}`,
+                )}
                 aria-valuenow={currentStepIndex + 1}
                 aria-valuemin={1}
                 aria-valuemax={totalSteps}
@@ -793,10 +912,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                   <MascotIllustration pose="cooking" size={52} className="border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)] shrink-0" />
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#52706A)] tabular-nums">
-                      Công đoạn {currentStepIndex + 1} / {totalSteps}
+                      {l(`Công đoạn ${currentStepIndex + 1} / ${totalSteps}`, `Stage ${currentStepIndex + 1} / ${totalSteps}`)}
                     </p>
                     <h1 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                      Bước {currentStepIndex + 1}
+                      {l(`Bước ${currentStepIndex + 1}`, `Step ${currentStepIndex + 1}`)}
                     </h1>
                   </div>
                 </div>
@@ -804,7 +923,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="inline-flex md:hidden items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage-ink,#134C39)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-sage,#196149)]" aria-hidden="true" />
-                    <span>Giữ sáng</span>
+                    <span>{l('Giữ sáng', 'Awake')}</span>
                   </span>
                   <button
                     type="button"
@@ -812,7 +931,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                     className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border-strong)] bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] text-xs font-bold text-[var(--tkv-ink)] inline-flex items-center gap-2 transition-colors"
                   >
                     <VNextIcon name="volume" size={16} className="text-[var(--tkv-primary)] shrink-0" />
-                    <span>{speaking ? 'Dừng đọc' : 'Đọc bước này'}</span>
+                    <span>{speaking ? l('Dừng đọc', 'Stop reading') : l('Đọc bước này', 'Read step')}</span>
                   </button>
                 </div>
               </div>
@@ -821,9 +940,9 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 {step?.instruction}
               </p>
 
-              {step?.tip && (
+              {visibleStepTip && (
                 <p className="text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border-l-3 border-[var(--tkv-honey,#F6C453)] rounded-r-xl px-3.5 py-2">
-                  Mẹo bếp: {step.tip}
+                  {l(`Mẹo bếp: ${visibleStepTip}`, `Chef's tip: ${visibleStepTip}`)}
                 </p>
               )}
 
@@ -869,10 +988,10 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                       )}
                       <span>
                         {timerSecondsRemaining === 0
-                          ? 'Đã hết giờ công đoạn'
+                          ? l('Đã hết giờ công đoạn', 'Step timer finished')
                           : isTimerRunning
-                            ? 'Đang đếm ngược'
-                            : 'Bộ hẹn giờ công đoạn'}
+                            ? l('Đang đếm ngược', 'Counting down')
+                            : l('Bộ hẹn giờ công đoạn', 'Step timer')}
                       </span>
                     </p>
                     <p
@@ -893,7 +1012,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                       onClick={() => state.setTimer((step?.timerMinutes ?? 3) * 60)}
                       className="tkv-focusable min-h-[46px] px-4 py-2 rounded-xl bg-[var(--tkv-primary)] text-white hover:bg-[var(--tkv-primary-hover)] text-sm font-bold shadow-xs transition-colors"
                     >
-                      Bắt đầu hẹn giờ
+                      {l('Bắt đầu hẹn giờ', 'Start timer')}
                     </button>
                   ) : (
                     <>
@@ -902,21 +1021,21 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                         onClick={() => state.toggleTimer()}
                         className="tkv-focusable min-h-[46px] px-4 py-2 rounded-xl bg-[var(--tkv-primary)] text-white hover:bg-[var(--tkv-primary-hover)] text-sm font-bold shadow-xs transition-colors"
                       >
-                        {isTimerRunning ? 'Tạm dừng' : 'Tiếp tục'}
+                        {isTimerRunning ? l('Tạm dừng', 'Pause') : l('Tiếp tục', 'Resume')}
                       </button>
                       <button
                         type="button"
                         onClick={() => state.setTimer((timerSecondsRemaining ?? 0) + 60)}
                         className="tkv-focusable min-h-[46px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border-strong)] bg-[var(--tkv-surface)] hover:bg-[var(--tkv-surface-mint)] text-sm font-semibold text-[var(--tkv-ink)] tabular-nums transition-colors"
                       >
-                        +1 phút
+                        {l('+1 phút', '+1 min')}
                       </button>
                       <button
                         type="button"
                         onClick={() => state.clearTimer()}
                         className="tkv-focusable min-h-[46px] px-3 py-2 rounded-xl text-xs font-semibold text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-ink)] transition-colors"
                       >
-                        Đặt lại
+                        {l('Đặt lại', 'Reset')}
                       </button>
                     </>
                   )}
@@ -927,15 +1046,24 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             {/* Quick Ingredient Reference Drawer */}
             <details className="rounded-2xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] px-4 sm:px-5 py-3 text-[var(--tkv-ink)]">
               <summary className="cursor-pointer min-h-[44px] flex items-center justify-between gap-2 font-bold text-sm tabular-nums">
-                <span className="min-w-0">Nguyên liệu của món ({activeRecipe.ingredients.length} mục · {activeRecipe.servings} người)</span>
+                <span className="min-w-0">
+                  {l(
+                    `Nguyên liệu của món (${activeRecipe.ingredients.length} mục · ${activeRecipe.servings} người)`,
+                    `Recipe ingredients (${activeRecipe.ingredients.length} items · ${activeRecipe.servings} ${activeRecipe.servings === 1 ? 'serving' : 'servings'})`,
+                  )}
+                </span>
                 <VNextIcon name="chevron-right" size={18} className="text-[var(--tkv-ink-muted)] shrink-0" />
               </summary>
               <ul className="pt-3 mt-2 border-t border-[var(--tkv-border)] space-y-2 text-sm">
                 {activeRecipe.ingredients.map((ing) => (
                   <li key={`${ing.ingredientId}-${ing.name}`} className="flex items-center justify-between gap-2">
-                    <span className="text-[var(--tkv-ink-secondary)] font-medium min-w-0">{ing.name}</span>
+                    <span className="text-[var(--tkv-ink-secondary)] font-medium min-w-0">
+                      {localizeIngredientName(ing.ingredientId, ing.name, locale)}
+                    </span>
                     <span className="font-bold tabular-nums text-[var(--tkv-ink)] shrink-0">
-                      {cookingQuantityText(ing.requiredQuantity, ing.unit)}
+                      {locale === 'vi'
+                        ? cookingQuantityText(ing.requiredQuantity, ing.unit, locale)
+                        : formatLocalizedMeasure(ing.requiredQuantity, ing.unit, locale, unitSystem)}
                     </span>
                   </li>
                 ))}
@@ -951,7 +1079,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                 className="tkv-focusable min-h-[52px] px-3 sm:px-5 py-3 rounded-[var(--tkv-radius-btn)] border border-[var(--tkv-border-strong)] bg-[var(--tkv-surface)] hover:bg-[var(--tkv-surface-mint)] disabled:opacity-40 text-sm sm:text-base font-bold text-[var(--tkv-ink)] inline-flex items-center justify-center gap-1.5 sm:gap-2 transition-colors"
               >
                 <VNextIcon name="arrow-left" size={18} className="shrink-0" />
-                <span>Bước trước</span>
+                <span>{l('Bước trước', 'Previous step')}</span>
               </button>
 
               {isLastStep ? (
@@ -965,7 +1093,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                   data-testid="c21-finish-cook-cta"
                   className="tkv-focusable min-h-[52px] px-3 sm:px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs text-sm sm:text-base font-extrabold inline-flex items-center justify-center gap-1.5 sm:gap-2 transition-colors"
                 >
-                  <span>Hoàn thành món</span>
+                  <span>{l('Hoàn thành món', 'Finish dish')}</span>
                   <VNextIcon name="check" size={18} className="shrink-0" />
                 </button>
               ) : (
@@ -975,7 +1103,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
                   data-testid="c21-next-step-cta"
                   className="tkv-focusable min-h-[52px] px-3 sm:px-5 py-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs text-sm sm:text-base font-extrabold inline-flex items-center justify-center gap-1.5 sm:gap-2 transition-colors"
                 >
-                  <span>Bước tiếp theo</span>
+                  <span>{l('Bước tiếp theo', 'Next step')}</span>
                   <VNextIcon name="arrow-right" size={18} className="shrink-0" />
                 </button>
               )}
@@ -994,6 +1122,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
  * and zero phantom stock deduction).
  */
 export const C22CookingCompleteVNext: React.FC = () => {
+  const { l, locale } = useLocaleText();
   const navigate = useNavigate();
   const state = useCookingStore();
   const { runId, activeRecipe: recipe, deductions, deductionInputs, deductionErrors, attempt } = state;
@@ -1001,8 +1130,11 @@ export const C22CookingCompleteVNext: React.FC = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useVNextSeo({
-    title: 'Hoàn thành bữa ăn',
-    description: 'Kiểm tra lượng nguyên liệu thực tế đã dùng trước khi cập nhật tủ lạnh.',
+    title: l('Hoàn thành bữa ăn', 'Complete meal'),
+    description: l(
+      'Kiểm tra lượng nguyên liệu thực tế đã dùng trước khi cập nhật tủ lạnh.',
+      'Review actual ingredient quantities used before updating your fridge.',
+    ),
     canonicalPath: '/cooking/complete',
     domainSurface: 'app',
     noindex: true,
@@ -1010,19 +1142,27 @@ export const C22CookingCompleteVNext: React.FC = () => {
 
   if (!runId || !recipe) {
     return (
-      <ConsumerStudioShell screenId="C22" title="Hoàn thành bữa ăn" backTo={vnextHref('/recipes')} showContextualScan={false}>
+      <ConsumerStudioShell
+        screenId="C22"
+        title={l('Hoàn thành bữa ăn', 'Complete meal')}
+        backTo={vnextHref('/recipes')}
+        showContextualScan={false}
+      >
         <div className="max-w-2xl mx-auto space-y-4">
           <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
-            Hoàn thành bữa ăn
+            {l('Hoàn thành bữa ăn', 'Complete meal')}
           </h1>
           <TkvEmptyState
             pose="cooking"
-            eyebrow="Takolio · Bếp nhà"
-            title="Chưa có món ăn đang chờ hoàn tất"
-            description="Chọn một công thức và bắt đầu chế độ nấu từng bước để kiểm tra lượng nguyên liệu thực tế đã sử dụng ở cuối bữa."
+            eyebrow={l('Takolio · Bếp nhà', 'Takolio · Home Kitchen')}
+            title={l('Chưa có món ăn đang chờ hoàn tất', 'No dish waiting to be completed')}
+            description={l(
+              'Chọn một công thức và bắt đầu chế độ nấu từng bước để kiểm tra lượng nguyên liệu thực tế đã sử dụng ở cuối bữa.',
+              'Choose a recipe and start step-by-step cooking to review actual ingredient usage when you finish.',
+            )}
             primaryAction={
               <TkvButton variant="coral" onClick={() => navigate(vnextHref('/recipes'))}>
-                Khám phá kho công thức
+                {l('Khám phá kho công thức', 'Explore recipes')}
               </TkvButton>
             }
           />
@@ -1031,6 +1171,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
     );
   }
 
+  const displayRecipeTitle = localizeRecipeTitle(recipe, locale);
   const locked = Boolean(attempt);
   const done = attempt?.status === 'saved' || attempt?.status === 'queued';
 
@@ -1047,18 +1188,33 @@ export const C22CookingCompleteVNext: React.FC = () => {
   const handleRefreshStock = async () => {
     if (isRefreshing) return;
     setIsRefreshing(true);
-    setRefreshMessage('Đang tải lại tồn kho chính thức từ máy chủ…');
+    setRefreshMessage(
+      l(
+        'Đang tải lại tồn kho chính thức từ máy chủ…',
+        'Reloading authoritative fridge stock from server…',
+      ),
+    );
     const isCurrent = capturePrivateSession();
     const activeRun = state.runId;
     try {
       const res = await fetchJson<{ items: RecipeScoringContext['inventory'] }>('/inventory');
       if (isCurrent() && useCookingStore.getState().runId === activeRun && Array.isArray(res.items)) {
         state.refreshStock(res.items);
-        setRefreshMessage('Đã tải lại tồn kho mới nhất. Vui lòng kiểm tra lại lượng dùng trước khi xác nhận.');
+        setRefreshMessage(
+          l(
+            'Đã tải lại tồn kho mới nhất. Vui lòng kiểm tra lại lượng dùng trước khi xác nhận.',
+            'Latest fridge stock reloaded. Please review amounts used before confirming.',
+          ),
+        );
       }
     } catch {
       if (isCurrent()) {
-        setRefreshMessage('Chưa tải lại được tồn kho. Hãy kiểm tra kết nối mạng rồi thử lại.');
+        setRefreshMessage(
+          l(
+            'Chưa tải lại được tồn kho. Hãy kiểm tra kết nối mạng rồi thử lại.',
+            'Could not reload fridge stock. Check your internet connection and try again.',
+          ),
+        );
       }
     } finally {
       setIsRefreshing(false);
@@ -1078,7 +1234,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
   return (
     <ConsumerStudioShell
       screenId="C22"
-      title="Hoàn thành bữa ăn"
+      title={l('Hoàn thành bữa ăn', 'Complete meal')}
       backTo={locked ? undefined : vnextHref(`/cook/${recipe.slug || recipe.id}?servings=${recipe.servings}`)}
       showContextualScan={false}
     >
@@ -1095,22 +1251,33 @@ export const C22CookingCompleteVNext: React.FC = () => {
           </div>
           <div className="space-y-2 min-w-0">
             <TkvBadge tone={done ? 'success' : 'coral'} icon={done ? 'check' : 'recipes'}>
-              {done ? 'Đã ghi nhận bữa nấu' : 'Kiểm tra lượng thực dùng'}
+              {done
+                ? l('Đã ghi nhận bữa nấu', 'Meal recorded')
+                : l('Kiểm tra lượng thực dùng', 'Review actual usage')}
             </TkvBadge>
             <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
               {done
                 ? attempt?.status === 'queued'
-                  ? 'Đã lưu yêu cầu chờ đồng bộ'
-                  : 'Đã cập nhật tủ lạnh thành công!'
-                : 'Hoàn thành bữa ăn'}
+                  ? l('Đã lưu yêu cầu chờ đồng bộ', 'Saved offline — queued to sync')
+                  : l('Đã cập nhật tủ lạnh thành công!', 'Fridge inventory updated!')
+                : l('Hoàn thành bữa ăn', 'Complete meal')}
             </h1>
-            <p className="text-sm font-bold text-[var(--tkv-ink,#152E2C)]">{recipe.title}</p>
+            <p className="text-sm font-bold text-[var(--tkv-ink,#152E2C)]">{displayRecipeTitle}</p>
             <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
               {done
                 ? attempt?.status === 'queued'
-                  ? 'Thiết bị đang ngoại tuyến; yêu cầu sẽ gửi lên máy chủ ngay khi có mạng với khóa chống trừ trùng.'
-                  : 'Máy chủ đã xác nhận trừ đúng lượng nguyên liệu bạn đã dùng cho bữa ăn này.'
-                : 'Điều chỉnh lượng nguyên liệu thực tế bạn đã dùng bên dưới. Tủ lạnh chỉ trừ kho một lần duy nhất sau khi bạn bấm xác nhận.'}
+                  ? l(
+                      'Thiết bị đang ngoại tuyến; yêu cầu sẽ gửi lên máy chủ ngay khi có mạng với khóa chống trừ trùng.',
+                      'You are offline; this update will sync automatically once reconnected with duplicate-deduction protection.',
+                    )
+                  : l(
+                      'Máy chủ đã xác nhận trừ đúng lượng nguyên liệu bạn đã dùng cho bữa ăn này.',
+                      'The server has confirmed deducting the exact ingredient amounts you used for this meal.',
+                    )
+                : l(
+                    'Điều chỉnh lượng nguyên liệu thực tế bạn đã dùng bên dưới. Tủ lạnh chỉ trừ kho một lần duy nhất sau khi bạn bấm xác nhận.',
+                    'Adjust the actual ingredient quantities you used below. Your fridge stock is deducted once only after you confirm.',
+                  )}
             </p>
           </div>
         </TkvSurface>
@@ -1122,7 +1289,14 @@ export const C22CookingCompleteVNext: React.FC = () => {
           >
             <p className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[var(--tkv-danger)] shrink-0" aria-hidden="true" />
-              <span>{attempt.error}</span>
+              <span>
+                {localizeErrorText(
+                  attempt.error,
+                  'Could not confirm the cooking update. Please check your fridge stock and try again.',
+                  attempt.error,
+                  locale,
+                )}
+              </span>
             </p>
             {attempt.status === 'rejected' && (
               <TkvButton
@@ -1132,7 +1306,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
                 isLoading={isRefreshing}
                 onClick={() => void handleRefreshStock()}
               >
-                Tải lại lượng trong tủ để kiểm tra
+                {l('Tải lại lượng trong tủ để kiểm tra', 'Reload fridge quantities to review')}
               </TkvButton>
             )}
           </div>
@@ -1147,78 +1321,102 @@ export const C22CookingCompleteVNext: React.FC = () => {
         <TkvSurface className="p-5 sm:p-6 space-y-4 bg-white border-[var(--tkv-border,#DCE6DE)]">
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-              Lượng thực tế đã dùng ({deductions.length} mục)
+              {l(
+                `Lượng thực tế đã dùng (${deductions.length} mục)`,
+                `Actual amounts used (${deductions.length} items)`,
+              )}
             </h2>
             <span className="text-xs font-semibold text-[var(--tkv-ink-muted,#52706A)]">
-              Nhập 0 nếu không dùng nguyên liệu đó
+              {l('Nhập 0 nếu không dùng nguyên liệu đó', 'Enter 0 if you did not use an ingredient')}
             </span>
           </div>
 
           <div className="divide-y divide-[var(--tkv-border,#DCE6DE)]">
-            {deductions.map((line, index) => (
-              <div
-                key={`${line.ingredientId}-${index}`}
-                className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-              >
-                <div className="min-w-0 space-y-0.5">
-                  <label
-                    htmlFor={`cooking-use-${index}`}
-                    className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink,#152E2C)] block"
-                  >
-                    {line.name}
-                  </label>
-                  <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
-                    Trong tủ: <strong>{cookingQuantityText(line.currentQuantity, line.unit)}</strong> · Còn dự kiến:{' '}
-                    <strong>
-                      {deductionErrors[index]
-                        ? 'Chưa hợp lệ'
-                        : cookingQuantityText(line.remainingQuantity, line.unit)}
-                    </strong>
-                  </p>
-                  {deductionErrors[index] && (
-                    <p className="text-xs font-bold text-[var(--tkv-danger-ink)] flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-danger)] shrink-0" aria-hidden="true" />
-                      <span>{deductionErrors[index]}</span>
+            {deductions.map((line, index) => {
+              const displayLineName = localizeIngredientName(line.ingredientId, line.name, locale);
+              const displayUnit = locale === 'vi' ? line.unit : localizeUnit(line.unit, locale);
+              const rawErr = deductionErrors[index];
+              const displayErr = rawErr
+                ? localizeErrorText(
+                    rawErr,
+                    'Please enter a valid quantity within available stock.',
+                    rawErr,
+                    locale,
+                  )
+                : null;
+              return (
+                <div
+                  key={`${line.ingredientId}-${index}`}
+                  className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                >
+                  <div className="min-w-0 space-y-0.5">
+                    <label
+                      htmlFor={`cooking-use-${index}`}
+                      className="tkv-heading text-sm sm:text-base font-bold text-[var(--tkv-ink,#152E2C)] block"
+                    >
+                      {displayLineName}
+                    </label>
+                    <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
+                      {l('Trong tủ:', 'In fridge:')}{' '}
+                      <strong>{cookingQuantityText(line.currentQuantity, line.unit, locale)}</strong> ·{' '}
+                      {l('Còn dự kiến:', 'Projected left:')}{' '}
+                      <strong>
+                        {displayErr
+                          ? l('Chưa hợp lệ', 'Invalid')
+                          : cookingQuantityText(line.remainingQuantity, line.unit, locale)}
+                      </strong>
                     </p>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    type="button"
-                    aria-label={`Giảm lượng ${line.name}`}
-                    disabled={locked}
-                    onClick={() => adjustLine(index, -1)}
-                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink)] font-extrabold disabled:opacity-45 transition-colors"
-                  >
-                    −
-                  </button>
-                  <div className="flex items-center gap-1.5">
-                    <input
-                      id={`cooking-use-${index}`}
-                      type="text"
-                      inputMode="decimal"
-                      disabled={locked}
-                      value={deductionInputs[index] ?? '0'}
-                      onChange={(e) => state.editDeduction(index, e.target.value)}
-                      className="tkv-focusable w-20 min-h-[44px] px-2.5 text-center rounded-xl border border-[var(--tkv-border-strong)] focus:border-[var(--tkv-primary)] bg-[var(--tkv-surface)] font-bold tabular-nums text-base text-[var(--tkv-ink)]"
-                    />
-                    <span className="text-xs font-bold text-[var(--tkv-ink-soft,#3C5954)] min-w-[28px]">
-                      {line.unit}
-                    </span>
+                    {displayErr && (
+                      <p className="text-xs font-bold text-[var(--tkv-danger-ink)] flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-danger)] shrink-0" aria-hidden="true" />
+                        <span>{displayErr}</span>
+                      </p>
+                    )}
                   </div>
-                  <button
-                    type="button"
-                    aria-label={`Tăng lượng ${line.name}`}
-                    disabled={locked}
-                    onClick={() => adjustLine(index, 1)}
-                    className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] text-[var(--tkv-ink,#152E2C)] font-extrabold disabled:opacity-45 transition-colors"
-                  >
-                    +
-                  </button>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      aria-label={l(
+                        `Giảm lượng ${displayLineName}`,
+                        `Decrease ${displayLineName} quantity`,
+                      )}
+                      disabled={locked}
+                      onClick={() => adjustLine(index, -1)}
+                      className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border)] bg-[var(--tkv-bg)] hover:bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink)] font-extrabold disabled:opacity-45 transition-colors"
+                    >
+                      −
+                    </button>
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        id={`cooking-use-${index}`}
+                        type="text"
+                        inputMode="decimal"
+                        disabled={locked}
+                        value={deductionInputs[index] ?? '0'}
+                        onChange={(e) => state.editDeduction(index, e.target.value)}
+                        className="tkv-focusable w-20 min-h-[44px] px-2.5 text-center rounded-xl border border-[var(--tkv-border-strong)] focus:border-[var(--tkv-primary)] bg-[var(--tkv-surface)] font-bold tabular-nums text-base text-[var(--tkv-ink)]"
+                      />
+                      <span className="text-xs font-bold text-[var(--tkv-ink-soft,#3C5954)] min-w-[28px]">
+                        {displayUnit}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      aria-label={l(
+                        `Tăng lượng ${displayLineName}`,
+                        `Increase ${displayLineName} quantity`,
+                      )}
+                      disabled={locked}
+                      onClick={() => adjustLine(index, 1)}
+                      className="tkv-focusable w-11 h-11 rounded-xl border border-[var(--tkv-border,#DCE6DE)] bg-[var(--tkv-bg,#FFF9F1)] hover:bg-[var(--tkv-surface-muted,#E7F4EC)] text-[var(--tkv-ink,#152E2C)] font-extrabold disabled:opacity-45 transition-colors"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </TkvSurface>
 
@@ -1234,7 +1432,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
                   navigate(vnextHref('/recipes'));
                 }}
               >
-                Chọn món khác
+                {l('Chọn món khác', 'Browse other recipes')}
               </TkvButton>
               <TkvButton
                 type="button"
@@ -1246,12 +1444,12 @@ export const C22CookingCompleteVNext: React.FC = () => {
                   navigate(vnextHref('/fridge'));
                 }}
               >
-                Xem Tủ lạnh đã cập nhật
+                {l('Xem Tủ lạnh đã cập nhật', 'View updated Fridge')}
               </TkvButton>
             </>
           ) : attempt?.status === 'uncertain' ? (
             <TkvButton type="submit" variant="primary" size="lg">
-              Thử lại cùng yêu cầu (chống trừ kép)
+              {l('Thử lại cùng yêu cầu (chống trừ kép)', 'Retry same request (no double deduction)')}
             </TkvButton>
           ) : (
             <TkvButton
@@ -1263,7 +1461,7 @@ export const C22CookingCompleteVNext: React.FC = () => {
               iconLeft="check"
               data-testid="c22-confirm-deduction-cta"
             >
-              Xác nhận hoàn thành & cập nhật tủ lạnh
+              {l('Xác nhận hoàn thành & cập nhật tủ lạnh', 'Confirm completion & update fridge')}
             </TkvButton>
           )}
         </div>

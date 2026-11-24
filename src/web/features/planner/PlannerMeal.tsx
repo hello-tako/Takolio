@@ -24,6 +24,12 @@ import {
 } from './composition';
 
 import { CompositionLoadState } from './CompositionLoadState';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import {
+  localizeRecipeSteps,
+  localizeRecipeTitle,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 export function PlannerMeal({
   plan,
@@ -37,6 +43,9 @@ export function PlannerMeal({
   locale: PlannerLocale;
 }) {
   const t = plannerCopy[locale];
+  const { locale: appLocale, unitSystem } = useLocaleText();
+  const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  const shouldLocalizeRecipeData = locale !== 'vi' && activeDataLocale !== 'vi';
   const navigate = useNavigate();
   const location = useLocation();
   const meal = plan.result.meals.find((item) => item.slotId === slotId);
@@ -146,6 +155,39 @@ export function PlannerMeal({
     }
   }
   const codes = explanation?.reasonCodes ?? meal.reasons;
+  const mealDisplayTitle = shouldLocalizeRecipeData
+    ? localizeRecipeTitle(
+        {
+          title: meal.title,
+          slug: meal.source.id,
+          cuisine: meal.cuisine ?? undefined,
+          cookTimeMinutes: meal.cookTimeMinutes ?? undefined,
+          servings: meal.servings,
+          ingredients: meal.requirements.map((req) => ({
+            ingredientId: req.ingredientId,
+            name: ingredientLabel(req.ingredientId, 'vi'),
+          })),
+        },
+        activeDataLocale,
+      )
+    : meal.title;
+  const mealInstructions = shouldLocalizeRecipeData
+    ? localizeRecipeSteps(
+        {
+          steps: meal.instructions.map((instruction, idx) => ({
+            stepNumber: idx + 1,
+            instruction,
+          })),
+          ingredients: meal.requirements.map((req) => ({
+            ingredientId: req.ingredientId,
+            name: ingredientLabel(req.ingredientId, 'vi'),
+          })),
+          cookTimeMinutes: meal.cookTimeMinutes ?? undefined,
+        },
+        activeDataLocale,
+        unitSystem,
+      ).map((st) => st.instruction)
+    : meal.instructions;
   return (
     <>
       <Link
@@ -160,7 +202,7 @@ export function PlannerMeal({
           {t[meal.mealType]} · {meal.date}
         </p>
         <h2 className="text-2xl font-heading font-bold text-semantic-text-primary mt-2 leading-tight">
-          {composed ? t[meal.mealType] : meal.title}
+          {composed ? t[meal.mealType] : mealDisplayTitle}
         </h2>
         <div className="flex flex-wrap gap-5 text-sm text-semantic-text-secondary mt-4">
           <span className="inline-flex items-center gap-1">
@@ -239,9 +281,9 @@ export function PlannerMeal({
           </Card>
           <Card>
             <h3 className="font-heading font-bold text-lg">{t.instructions}</h3>
-            {meal.instructions.length ? (
+            {mealInstructions.length ? (
               <ol className="mt-4 space-y-4 list-decimal pl-5 text-sm leading-relaxed text-semantic-text-secondary">
-                {meal.instructions.map((step, index) => (
+                {mealInstructions.map((step, index) => (
                   <li key={index} className="pl-1">
                     {step}
                   </li>
@@ -381,40 +423,45 @@ export function PlannerMeal({
               <ul className="space-y-2">
                 {alternatives.data?.alternatives
                   .filter((item) => item.id !== meal.source.id)
-                  .map((item) => (
-                    <li
-                      key={item.id}
-                      className="border border-semantic-border rounded-xl p-3 flex flex-wrap items-center gap-2 sm:gap-3 justify-between"
-                    >
-                      <span className="text-sm font-semibold min-w-0 flex-1">{item.title}</span>
-                      <Button
-                        disabled={!!model.busy}
-                        variant="secondary"
-                        aria-label={`${t.choose}: ${item.title}`}
-                        onClick={async () => {
-                          const next = await model.perform(
-                            'swap',
-                            () =>
-                              mealPlanningApi.swap(plan.id, {
-                                revision: plan.revision,
-                                slotId,
-                                replacement: { kind: 'recipe', id: item.id },
-                              }),
-                            model.replacePlan,
-                          );
-                          if (next) {
-                            setSwapOpen(false);
-                            navigate(`/planner/${plan.id}/meal/${encodeURIComponent(slotId)}`, {
-                              replace: true,
-                              state: { swappedRevision: next.revision, swappedSlot: slotId },
-                            });
-                          }
-                        }}
+                  .map((item) => {
+                    const altTitle = shouldLocalizeRecipeData
+                      ? localizeRecipeTitle({ title: item.title, slug: item.id }, activeDataLocale)
+                      : item.title;
+                    return (
+                      <li
+                        key={item.id}
+                        className="border border-semantic-border rounded-xl p-3 flex flex-wrap items-center gap-2 sm:gap-3 justify-between"
                       >
-                        {t.choose}
-                      </Button>
-                    </li>
-                  ))}
+                        <span className="text-sm font-semibold min-w-0 flex-1">{altTitle}</span>
+                        <Button
+                          disabled={!!model.busy}
+                          variant="secondary"
+                          aria-label={`${t.choose}: ${altTitle}`}
+                          onClick={async () => {
+                            const next = await model.perform(
+                              'swap',
+                              () =>
+                                mealPlanningApi.swap(plan.id, {
+                                  revision: plan.revision,
+                                  slotId,
+                                  replacement: { kind: 'recipe', id: item.id },
+                                }),
+                              model.replacePlan,
+                            );
+                            if (next) {
+                              setSwapOpen(false);
+                              navigate(`/planner/${plan.id}/meal/${encodeURIComponent(slotId)}`, {
+                                replace: true,
+                                state: { swappedRevision: next.revision, swappedSlot: slotId },
+                              });
+                            }
+                          }}
+                        >
+                          {t.choose}
+                        </Button>
+                      </li>
+                    );
+                  })}
                 {!alternatives.data?.alternatives.some((item) => item.id !== meal.source.id) && (
                   <li className="text-sm">{t.noAlternatives}</li>
                 )}

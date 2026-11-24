@@ -4,6 +4,7 @@ import type { MealPlanDto } from '../../../packages/domain/src/meal-planning-api
 import type { PlanCompositionsDto } from '../../../packages/domain/src/meal-composition-api';
 import { findTodayMeal } from './home-meal';
 import { formatVndCompact, todayLocalIso } from './format';
+import { containsVietnameseDiacritics, isViLocale, lSync } from '../i18n/app-i18n';
 
 export type CompositionEvidence =
   | { kind: 'legacy' }
@@ -36,12 +37,25 @@ export interface HomePlan {
 const END_HOURS = { breakfast: 11, lunch: 16, dinner: 24 };
 const DEFAULT_TIMES = { breakfast: '08:00', lunch: '12:00', dinner: '18:00' };
 
+function formatBudgetAmount(amount: number): string {
+  if (isViLocale()) return formatVndCompact(amount);
+  if (!Number.isFinite(amount)) return '—';
+  if (Math.abs(amount) >= 1_000_000) {
+    const millions = Math.round((amount / 1_000_000) * 10) / 10;
+    return `${millions}M VND`;
+  }
+  if (Math.abs(amount) >= 1_000) {
+    return `${Math.round(amount / 1_000)}k VND`;
+  }
+  return `${Math.round(amount)} VND`;
+}
+
 export function calendarLabel(date: string, today: string) {
-  if (date === today) return 'Hôm nay';
+  if (date === today) return lSync('Hôm nay', 'Today');
   const tomorrow = new Date(`${today}T12:00:00Z`);
   tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-  if (date === tomorrow.toISOString().slice(0, 10)) return 'Ngày mai';
-  return new Intl.DateTimeFormat('vi-VN', {
+  if (date === tomorrow.toISOString().slice(0, 10)) return lSync('Ngày mai', 'Tomorrow');
+  return new Intl.DateTimeFormat(isViLocale() ? 'vi-VN' : 'en-US', {
     weekday: 'short',
     day: 'numeric',
     month: 'numeric',
@@ -168,10 +182,18 @@ export function presentLegacyHome(plan: MealPlan, now: Date): HomePlan {
     requiresReview: false,
     ...(budget?.targetVnd
       ? {
-          budgetText: `Ước tính ${formatVndCompact(budget.estimatedMaxVnd)} / ${formatVndCompact(budget.targetVnd)} ngân sách`,
+          budgetText: lSync(
+            `Ước tính ${formatVndCompact(budget.estimatedMaxVnd)} / ${formatVndCompact(budget.targetVnd)} ngân sách`,
+            `Est. ${formatBudgetAmount(budget.estimatedMaxVnd)} / ${formatBudgetAmount(budget.targetVnd)} budget`,
+          ),
         }
       : budget?.displayText
-        ? { budgetText: budget.displayText }
+        ? {
+            budgetText:
+              !isViLocale() && containsVietnameseDiacritics(budget.displayText)
+                ? 'Weekly budget estimate'
+                : budget.displayText,
+          }
         : {}),
     meal: selected?.recipe
       ? {

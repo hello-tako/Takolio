@@ -14,6 +14,8 @@ import { compositionCopy, componentTitle, cuisineLabel, roleLabel } from './comp
 import type { PlannerLocale } from './copy';
 import { PlannerError } from './PlannerShell';
 import { IngredientCoverage } from './IngredientCoverage';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 export type PickerMealContext = {
   date: string;
@@ -61,6 +63,8 @@ export function ComponentPicker({
   onReloadPlan?: () => void;
 }) {
   const c = compositionCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
   const titleId = useId();
   const panel = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -380,7 +384,7 @@ export function ComponentPicker({
             ))}
           <ul className="space-y-2">
             {(current && !currentError ? results.items : []).map((item) => {
-              const title = componentTitle(item, locale);
+              const title = componentTitle(item, locale, activeDataLocale);
               const itemKey = `${item.kind}:${item.id}`;
               const chosenRole =
                 role && item.roles.includes(role)

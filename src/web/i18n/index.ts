@@ -13,12 +13,34 @@ import { viCatalog } from './locales/vi';
 
 export {
   getActiveAppLocale,
+  getActiveUnitSystem,
   LocaleProvider,
   TAKOLIO_LOCALE_STORAGE_KEY,
   TAKOLIO_UNIT_SYSTEM_STORAGE_KEY,
   useAppLocale,
   type AppChromeCopy,
 } from './LocaleContext';
+export {
+  containsVietnameseDiacritics,
+  formatLocalizedMeasure,
+  isViLocale,
+  localizeCuisine,
+  localizeDifficulty,
+  localizeDisplayCategory,
+  localizeErrorText,
+  localizeFreshnessStatus,
+  localizeIngredientName,
+  localizeMealSlot,
+  localizeRecipeCategory,
+  localizeRecipeDescription,
+  localizeRecipeSteps,
+  localizeRecipeTitle,
+  localizeStorageZone,
+  localizeUnit,
+  lSync,
+  useLocaleText,
+  type LocalizableRecipeLike,
+} from './app-i18n';
 
 export const TIER1_UI_LOCALES = ['en', 'ja', 'de', 'fr', 'vi'] as const;
 export type Tier1UiLocale = (typeof TIER1_UI_LOCALES)[number];
@@ -45,6 +67,21 @@ const NOTO_SANS_JP_LINK_ID = 'takolio-font-noto-sans-jp';
 let currentLocale: Tier1UiLocale = 'en';
 let hasExplicitSelection = false;
 const listeners = new Set<() => void>();
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('takolio:app-locale', (event) => {
+    const detail = (event as CustomEvent<string>).detail;
+    if (!detail) return;
+    const next = resolveTier1UiLocale(detail);
+    const changed = !hasExplicitSelection || currentLocale !== next;
+    currentLocale = next;
+    hasExplicitSelection = true;
+    applyDocumentLocaleTypography(next);
+    if (changed) {
+      for (const listener of listeners) listener();
+    }
+  });
+}
 
 export function resolveTier1UiLocale(raw: SupportedLocale | string | null | undefined): Tier1UiLocale {
   const normalized = (raw || '').trim().toLowerCase().split(/[-_]/)[0];
@@ -78,7 +115,15 @@ export function getActiveUiLocale(): Tier1UiLocale {
   if (hasExplicitSelection) return currentLocale;
   if (typeof window !== 'undefined') {
     try {
-      const stored = window.localStorage?.getItem(STORAGE_KEY);
+      const fromQuery = new URLSearchParams(window.location.search).get('lang');
+      if (fromQuery) {
+        currentLocale = resolveTier1UiLocale(fromQuery);
+        hasExplicitSelection = true;
+        return currentLocale;
+      }
+      const stored =
+        window.localStorage?.getItem(STORAGE_KEY) ||
+        window.localStorage?.getItem('takolio_locale');
       if (stored) {
         currentLocale = resolveTier1UiLocale(stored);
         hasExplicitSelection = true;
@@ -105,6 +150,7 @@ export function hasExplicitGlobalUiLocale(): boolean {
 
 export function setActiveUiLocale(locale: SupportedLocale | string): Tier1UiLocale {
   const next = resolveTier1UiLocale(locale);
+  const changed = !hasExplicitSelection || currentLocale !== next;
   currentLocale = next;
   hasExplicitSelection = true;
   if (typeof window !== 'undefined') {
@@ -115,7 +161,16 @@ export function setActiveUiLocale(locale: SupportedLocale | string): Tier1UiLoca
     }
   }
   applyDocumentLocaleTypography(next);
-  for (const listener of listeners) listener();
+  if (changed) {
+    if (typeof window !== 'undefined') {
+      try {
+        window.dispatchEvent(new CustomEvent('takolio:ui-locale', { detail: next }));
+      } catch {
+        // Ignore event errors in restricted runtimes
+      }
+    }
+    for (const listener of listeners) listener();
+  }
   return next;
 }
 
@@ -125,6 +180,8 @@ export function resetActiveUiLocaleForTests(): void {
   if (typeof window !== 'undefined') {
     try {
       window.localStorage?.removeItem(STORAGE_KEY);
+      window.localStorage?.removeItem('takolio_locale');
+      window.localStorage?.removeItem('frigo_planner_locale');
     } catch {
       // Ignore
     }
@@ -136,10 +193,12 @@ export function getCatalog(locale: SupportedLocale | string = getActiveUiLocale(
   return UI_CATALOGS[resolveTier1UiLocale(locale)];
 }
 
-function subscribeLocale(listener: () => void): () => void {
+export function subscribeUiLocale(listener: () => void): () => void {
   listeners.add(listener);
   return () => listeners.delete(listener);
 }
+
+const subscribeLocale = subscribeUiLocale;
 
 export function useUiTranslation(overrideLocale?: SupportedLocale | string): {
   locale: Tier1UiLocale;

@@ -15,6 +15,7 @@ import {
 } from '../../../packages/recipes/src/discovery';
 import { ApiError, fetchJson, getCurrentScope, guardPrivateSession, isOffline } from './http';
 import { inventoryApi } from './inventory';
+import { lSync } from '../i18n/app-i18n';
 
 export const discoveryApi = {
   getRecipeDiscovery: async (params: DiscoveryParams = {}): Promise<DiscoveryPage> => {
@@ -41,7 +42,7 @@ export const discoveryApi = {
         page.page !== Math.min(query.page, page.pages) ||
         (query.cursor && query.cursor.split('.')[2] !== page.snapshot)
       )
-        throw new Error('Danh sách công thức trả về không hợp lệ');
+        throw new Error(lSync('Danh sách công thức trả về không hợp lệ', 'Invalid recipe list response'));
       return page;
     } catch (error) {
       assertCurrent();

@@ -1,3 +1,7 @@
+import type { SupportedLocale } from '../../shared/locales';
+import { getActiveAppLocale } from '../i18n/LocaleContext';
+import { localizeUnit } from '../i18n/app-i18n';
+
 export const SHOPPING_UNITS = [
   { value: 'piece', label: 'Cái / quả / bìa' },
   { value: 'g', label: 'Gam (g)' },
@@ -8,6 +12,22 @@ export const SHOPPING_UNITS = [
   { value: 'pack', label: 'Gói' },
   { value: 'slice', label: 'Lát' },
 ] as const;
+
+export const SHOPPING_UNITS_EN = [
+  { value: 'piece', label: 'Pieces' },
+  { value: 'g', label: 'Grams (g)' },
+  { value: 'kg', label: 'Kilograms (kg)' },
+  { value: 'ml', label: 'Milliliters (ml)' },
+  { value: 'l', label: 'Liters (L)' },
+  { value: 'bunch', label: 'Bunches' },
+  { value: 'pack', label: 'Packs' },
+  { value: 'slice', label: 'Slices' },
+] as const;
+
+export function getShoppingUnits(locale: SupportedLocale = getActiveAppLocale()) {
+  return locale === 'vi' ? SHOPPING_UNITS : SHOPPING_UNITS_EN;
+}
+
 export function parseShoppingForm(name: string, quantity: string, unit: string) {
   const amount = quantity.trim() === '' ? NaN : Number(quantity);
   if (
@@ -36,14 +56,26 @@ const familiarFractions = [
   [5, 6],
 ] as const;
 
-export function shoppingQuantity(quantity: number, unit: string) {
-  const labels: Record<string, string> = {
-    piece: 'cái / quả / bìa',
-    bunch: 'bó',
-    pack: 'gói',
-    slice: 'lát',
-  };
-  const unitLabel = labels[unit] ?? unit;
+export function shoppingQuantity(
+  quantity: number,
+  unit: string,
+  locale: SupportedLocale = getActiveAppLocale(),
+) {
+  const isVi = locale === 'vi';
+  const labels: Record<string, string> = isVi
+    ? {
+        piece: 'cái / quả / bìa',
+        bunch: 'bó',
+        pack: 'gói',
+        slice: 'lát',
+      }
+    : {
+        piece: 'pcs',
+        bunch: 'bunch',
+        pack: 'pack',
+        slice: 'slice',
+      };
+  const unitLabel = labels[unit] ?? (isVi ? unit : localizeUnit(unit, locale));
   if (countedUnits.has(unit)) {
     const whole = Math.floor(quantity);
     const remainder = quantity - whole;
@@ -63,7 +95,8 @@ export function shoppingQuantity(quantity: number, unit: string) {
           useGrouping: false,
           notation: quantity < 1e-6 ? 'scientific' : 'standard',
         };
-  const displayed = new Intl.NumberFormat('vi-VN', options).format(quantity);
+  const displayed = new Intl.NumberFormat(isVi ? 'vi-VN' : 'en-US', options).format(quantity);
   const rounded = Number(new Intl.NumberFormat('en-US', options).format(quantity));
-  return `${rounded === quantity ? '' : 'Khoảng '}${displayed} ${unitLabel}`;
+  const approxPrefix = isVi ? 'Khoảng ' : 'About ';
+  return `${rounded === quantity ? '' : approxPrefix}${displayed} ${unitLabel}`;
 }

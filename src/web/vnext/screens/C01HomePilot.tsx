@@ -30,6 +30,13 @@ import {
 import { HomeDashboardSkeleton } from '../components/Skeletons';
 import { prefetchRouteChunk } from '../lib/prefetch';
 import { useVNextSeo } from '../lib/seo';
+import {
+  formatLocalizedMeasure,
+  localizeIngredientName,
+  localizeMealSlot,
+  localizeRecipeTitle,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 function slugifyDishTitle(title: string): string {
   return title
@@ -42,18 +49,17 @@ function slugifyDishTitle(title: string): string {
 }
 
 const LEGACY_NAME_RE = /\bFri\w*\b/i;
-function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+function sanitizeUserDisplayName(
+  raw: string | undefined | null,
+  isGuest: boolean,
+  l: (vi: string, en: string) => string,
+): string {
   const trimmed = (raw ?? '').trim();
-  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
-  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  if (!trimmed) return isGuest ? l('Khách ghé thăm', 'Guest') : l('Bếp trưởng', 'Chef');
+  if (LEGACY_NAME_RE.test(trimmed) || trimmed === 'Bếp trưởng') return l('Bếp trưởng', 'Chef');
+  if (trimmed === 'Khách ghé thăm') return l('Khách ghé thăm', 'Guest');
   return raw as string;
 }
-
-const MEAL_LABELS = {
-  breakfast: 'Bữa sáng',
-  lunch: 'Bữa trưa',
-  dinner: 'Bữa tối',
-} as const;
 
 const UNIT_LABELS_VI: Record<string, string> = {
   piece: 'quả',
@@ -68,11 +74,11 @@ const UNIT_LABELS_VI: Record<string, string> = {
 
 type HomeFilterTab = 'for-you' | 'quick' | 'family' | 'saving';
 
-const HOME_FILTER_CHIPS: ReadonlyArray<{ id: HomeFilterTab; label: string }> = [
-  { id: 'for-you', label: 'Gợi ý cho bạn' },
-  { id: 'quick', label: 'Nhanh gọn' },
-  { id: 'family', label: 'Gia đình' },
-  { id: 'saving', label: 'Tiết kiệm' },
+const HOME_FILTER_CHIPS: ReadonlyArray<{ id: HomeFilterTab; vi: string; en: string }> = [
+  { id: 'for-you', vi: 'Gợi ý cho bạn', en: 'For you' },
+  { id: 'quick', vi: 'Nhanh gọn', en: 'Quick' },
+  { id: 'family', vi: 'Gia đình', en: 'Family' },
+  { id: 'saving', vi: 'Tiết kiệm', en: 'Budget-friendly' },
 ];
 
 /**
@@ -81,6 +87,7 @@ const HOME_FILTER_CHIPS: ReadonlyArray<{ id: HomeFilterTab; label: string }> = [
  * (`useHomePlan`, `api.getInventory`, `api.getRecipeDiscovery`).
  */
 export const C01HomePilot: React.FC = () => {
+  const { l, locale, unitSystem } = useLocaleText();
   const navigate = useNavigate();
   const { displayName, isGuest } = useAuthStore();
   const [now, setNow] = useState(() => new Date());
@@ -109,8 +116,11 @@ export const C01HomePilot: React.FC = () => {
   const activeItems = (inventoryQuery.data ?? []).filter((item) => item.quantity > 0);
 
   useVNextSeo({
-    title: 'Hôm nay ăn gì? — Takolio',
-    description: 'Gợi ý thực đơn phù hợp với nguyên liệu trong tủ lạnh của bạn cùng Bé Mầm Bếp.',
+    title: l('Hôm nay ăn gì? — Takolio', 'What to cook today? — Takolio'),
+    description: l(
+      'Gợi ý thực đơn phù hợp với nguyên liệu trong tủ lạnh của bạn cùng Bé Mầm Bếp.',
+      'Smart meal ideas matched to what is in your fridge with Takolio.',
+    ),
     canonicalPath: '/',
     domainSurface: 'app',
     noindex: true,
@@ -137,16 +147,22 @@ export const C01HomePilot: React.FC = () => {
 
   const topRecommendation = rawRecommendations[0];
   const plannerBase = isMealPlannerEnabled() ? '/planner' : '/week';
-  const sanitizedName = sanitizeUserDisplayName(displayName, isGuest);
+  const sanitizedName = sanitizeUserDisplayName(displayName, isGuest, l);
+  const defaultChefName = l('Bếp trưởng', 'Chef');
   const greetingName = isGuest
     ? null
-    : sanitizedName === 'Bếp trưởng'
-      ? 'Bếp trưởng'
-      : sanitizedName.trim().split(/\s+/).at(-1) || 'Bạn';
+    : sanitizedName === defaultChefName
+      ? defaultChefName
+      : sanitizedName.trim().split(/\s+/).at(-1) || l('Bạn', 'there');
   const plan = home.plan;
   const meal = plan?.meal ?? null;
   const heroRecipe = meal?.recipe ?? topRecommendation?.recipe;
   const heroSlug = heroRecipe?.slug ?? (meal?.dishes[0] ? slugifyDishTitle(meal.dishes[0]) : '');
+  const heroDishTitle = meal?.dishes[0]
+    ? localizeRecipeTitle(meal.recipe ?? { title: meal.dishes[0] }, locale)
+    : heroRecipe
+      ? localizeRecipeTitle(heroRecipe, locale)
+      : l('Món gợi ý', 'Suggested dish');
 
   return (
     <ConsumerStudioShell screenId="C01">
@@ -158,11 +174,11 @@ export const C01HomePilot: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
-                  Hôm nay ăn gì?
+                  {l('Hôm nay ăn gì?', 'What to cook today?')}
                 </h1>
                 <Link
                   to="/plus"
-                  aria-label="Khám phá Takolio Pro"
+                  aria-label={l('Khám phá Takolio Pro', 'Explore Takolio Pro')}
                   className="tkv-focusable relative before:absolute before:-inset-y-2 before:-inset-x-1 inline-flex items-center gap-1 rounded-full bg-[var(--tkv-surface-saffron)] border border-[var(--tkv-border-saffron)] px-2.5 py-1 text-xs font-extrabold text-[var(--tkv-ink)]"
                 >
                   <VNextIcon name="crown" size={14} className="text-[var(--tkv-warning)]" />
@@ -171,22 +187,28 @@ export const C01HomePilot: React.FC = () => {
               </div>
               <p className="text-sm font-medium text-[var(--tkv-ink-secondary)] mt-0.5">
                 {greetingName
-                  ? `Chào ${greetingName} · Gợi ý thực đơn phù hợp với nguyên liệu của bạn`
-                  : 'Gợi ý thực đơn phù hợp với nguyên liệu của bạn'}
+                  ? l(
+                      `Chào ${greetingName} · Gợi ý thực đơn phù hợp với nguyên liệu của bạn`,
+                      `Hi ${greetingName} · Meal ideas matched to your ingredients`,
+                    )
+                  : l(
+                      'Gợi ý thực đơn phù hợp với nguyên liệu của bạn',
+                      'Meal ideas matched to your ingredients',
+                    )}
               </p>
             </div>
           </div>
 
           {/* Quick Shortcuts */}
-          <div aria-label="Lối tắt nhanh" className="flex flex-wrap items-center gap-2">
+          <div aria-label={l('Lối tắt nhanh', 'Quick shortcuts')} className="flex flex-wrap items-center gap-2">
             <TkvChip active icon="scan" onClick={() => navigate('/scan')}>
-              Quét AI
+              {l('Quét AI', 'AI Scan')}
             </TkvChip>
             <TkvChip icon="plus" onClick={() => navigate('/fridge?action=add')}>
-              Thêm đồ
+              {l('Thêm đồ', 'Add item')}
             </TkvChip>
             <TkvChip icon="shopping" onClick={() => navigate('/shopping')}>
-              Mua sắm
+              {l('Mua sắm', 'Shopping')}
             </TkvChip>
           </div>
         </div>
@@ -194,7 +216,7 @@ export const C01HomePilot: React.FC = () => {
         {/* Mood / Context Filter Pills (`Gợi ý cho bạn · Nhanh gọn · Gia đình · Tiết kiệm` from `board-2.jpg`) */}
         <div
           role="group"
-          aria-label="Chế độ gợi ý món ăn"
+          aria-label={l('Chế độ gợi ý món ăn', 'Meal recommendation mode')}
           className="flex flex-wrap items-center gap-1.5 sm:gap-2"
         >
           {HOME_FILTER_CHIPS.map((chip) => {
@@ -212,7 +234,7 @@ export const C01HomePilot: React.FC = () => {
                     : 'bg-[var(--tkv-surface)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] hover:text-[var(--tkv-primary)]',
                 )}
               >
-                {chip.label}
+                {l(chip.vi, chip.en)}
               </button>
             );
           })}
@@ -224,11 +246,14 @@ export const C01HomePilot: React.FC = () => {
           <div data-testid="tkv-c01-primary" className="lg:col-span-7 space-y-6 min-w-0">
             {/* Hero Meal / Bé Mầm Bếp Card */}
             {!home.requiresAccount && home.query.isPending ? (
-              <TkvSkeleton className="h-48" label="Đang tải bữa ăn tiếp theo…" />
+              <TkvSkeleton className="h-48" label={l('Đang tải bữa ăn tiếp theo…', 'Loading next meal…')} />
             ) : !home.requiresAccount && home.query.isError ? (
               <TkvErrorState
-                title="Chưa kiểm tra được lịch bữa ăn"
-                message="Không thể tải thực đơn hiện tại. Bạn có thể thử tải lại hoặc xem gợi ý món bên dưới."
+                title={l('Chưa kiểm tra được lịch bữa ăn', 'Could not check your meal schedule')}
+                message={l(
+                  'Không thể tải thực đơn hiện tại. Bạn có thể thử tải lại hoặc xem gợi ý món bên dưới.',
+                  'Unable to load your current meal plan. Try reloading or browse suggestions below.',
+                )}
                 onRetry={() => void home.retry()}
               />
             ) : (
@@ -239,7 +264,7 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        title={heroDishTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-[16/9]"
                         priority
@@ -257,29 +282,47 @@ export const C01HomePilot: React.FC = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
                       <span>
                         {meal && plan
-                          ? `${MEAL_LABELS[meal.mealType]} · ${calendarLabel(meal.date, plan.today)}`
-                          : 'Bữa ngon, nhẹ đầu · Ăn đủ. Mua đủ. Dùng hết.'}
+                          ? `${localizeMealSlot(meal.mealType, locale)} · ${calendarLabel(meal.date, plan.today)}`
+                          : l(
+                              'Bữa ngon, nhẹ đầu · Ăn đủ. Mua đủ. Dùng hết.',
+                              'Calm cooking · Eat well. Buy right. Waste less.',
+                            )}
                       </span>
                     </span>
 
                     <h2 className="tkv-heading text-xl sm:text-2xl font-extrabold text-[var(--tkv-ink)]">
                       {home.requiresAccount
-                        ? 'Gợi ý món từ tủ lạnh của bạn'
+                        ? l('Gợi ý món từ tủ lạnh của bạn', 'Meal ideas from your fridge')
                         : meal?.state === 'ready' && meal.dishes.length > 0
-                          ? meal.dishes[0]
+                          ? localizeRecipeTitle(meal.recipe ?? { title: meal.dishes[0] }, locale)
                           : topRecommendation
-                            ? topRecommendation.recipe.title
-                            : 'Bắt đầu bữa ngon từ nguyên liệu sẵn có'}
+                            ? localizeRecipeTitle(topRecommendation.recipe, locale)
+                            : l(
+                                'Bắt đầu bữa ngon từ nguyên liệu sẵn có',
+                                'Start cooking with what you have',
+                              )}
                     </h2>
 
                     <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed tabular-nums">
                       {home.requiresAccount
-                        ? 'Bé Mầm Bếp đối chiếu nguyên liệu thực tế trong tủ lạnh để gợi ý món ngon sát khẩu phần gia đình.'
+                        ? l(
+                            'Bé Mầm Bếp đối chiếu nguyên liệu thực tế trong tủ lạnh để gợi ý món ngon sát khẩu phần gia đình.',
+                            'Takolio matches what is actually in your fridge to suggest recipes tailored to your household portions.',
+                          )
                         : meal?.state === 'ready'
-                          ? `Khẩu phần ${meal.servings} người${meal.cookTimeMinutes ? ` · ${meal.cookTimeMinutes} phút chuẩn bị` : ''}.`
+                          ? l(
+                              `Khẩu phần ${meal.servings} người${meal.cookTimeMinutes ? ` · ${meal.cookTimeMinutes} phút chuẩn bị` : ''}.`,
+                              `Serves ${meal.servings}${meal.cookTimeMinutes ? ` · ${meal.cookTimeMinutes} min prep` : ''}.`,
+                            )
                           : topRecommendation
-                            ? `${topRecommendation.recipe.cookTimeMinutes} phút · Khớp tình trạng tủ lạnh hiện tại của hộ.`
-                            : 'Thêm nguyên liệu vào tủ hoặc mở kho công thức để chọn bữa tối nay.'}
+                            ? l(
+                                `${topRecommendation.recipe.cookTimeMinutes} phút · Khớp tình trạng tủ lạnh hiện tại của hộ.`,
+                                `${topRecommendation.recipe.cookTimeMinutes} min · Matched to your current fridge stock.`,
+                              )
+                            : l(
+                                'Thêm nguyên liệu vào tủ hoặc mở kho công thức để chọn bữa tối nay.',
+                                'Add ingredients to your fridge or browse recipes to pick dinner tonight.',
+                              )}
                     </p>
 
                     <div className="pt-1 flex flex-wrap gap-2.5">
@@ -293,7 +336,7 @@ export const C01HomePilot: React.FC = () => {
                         }
                         className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs font-extrabold text-sm inline-flex items-center gap-2 transition-colors"
                       >
-                        <span>{meal ? 'Xem bữa ăn' : 'Xem món gợi ý'}</span>
+                        <span>{meal ? l('Xem bữa ăn', 'View meal') : l('Xem món gợi ý', 'View suggestion')}</span>
                         <VNextIcon name="arrow-right" size={16} />
                       </Link>
                       {home.requiresAccount && (
@@ -301,7 +344,7 @@ export const C01HomePilot: React.FC = () => {
                           to={`/auth?mode=login&returnTo=${encodeURIComponent(plannerBase)}`}
                           className="tkv-focusable min-h-[46px] px-4 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface-coral)] border border-[var(--tkv-border-coral)] text-[var(--tkv-ink)] hover:opacity-95 font-extrabold text-sm inline-flex items-center transition-colors"
                         >
-                          Đăng nhập lập tuần
+                          {l('Đăng nhập lập tuần', 'Sign in to plan week')}
                         </Link>
                       )}
                     </div>
@@ -311,7 +354,7 @@ export const C01HomePilot: React.FC = () => {
                     {heroSlug ? (
                       <VerifiedDishImage
                         slug={heroSlug}
-                        title={meal?.dishes[0] ?? heroRecipe?.title ?? 'Món gợi ý'}
+                        title={heroDishTitle}
                         canonicalFallbackSrc={heroRecipe ? resolveRecipeImage(heroRecipe) : undefined}
                         aspectClass="aspect-square"
                         priority
@@ -329,21 +372,21 @@ export const C01HomePilot: React.FC = () => {
             <section aria-labelledby="c01-recs-heading" className="space-y-3.5">
               <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                 <h2 id="c01-recs-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                  Món gợi ý cho bữa tới
+                  {l('Món gợi ý cho bữa tới', 'Suggested for your next meal')}
                 </h2>
                 <Link
                   to="/recipes"
                   className="tkv-focusable min-h-[44px] inline-flex items-center shrink-0 whitespace-nowrap text-sm font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
-                  Xem tất cả món
+                  {l('Xem tất cả món', 'View all recipes')}
                 </Link>
               </div>
 
               {recommendationsQuery.isPending ? (
-                <HomeDashboardSkeleton label="Đang tải món gợi ý…" />
+                <HomeDashboardSkeleton label={l('Đang tải món gợi ý…', 'Loading meal suggestions…')} />
               ) : recommendationsQuery.isError ? (
                 <TkvErrorState
-                  message="Chưa tải được danh sách gợi ý món ăn."
+                  message={l('Chưa tải được danh sách gợi ý món ăn.', 'Could not load recipe suggestions.')}
                   onRetry={() => void recommendationsQuery.refetch()}
                 />
               ) : displayedRecommendations.length === 0 ? (
@@ -351,77 +394,86 @@ export const C01HomePilot: React.FC = () => {
                   <MascotIllustration pose="cooking" size={76} motion="idle" className="w-20 h-20 shrink-0" />
                   <div className="flex flex-col gap-1.5">
                     <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)]">
-                      Sẵn sàng chọn món ngon hôm nay
+                      {l('Sẵn sàng chọn món ngon hôm nay', 'Ready to pick something delicious today')}
                     </p>
                     <p className="text-sm text-[var(--tkv-ink-secondary)]">
-                      Thêm nguyên liệu vào tủ lạnh để nhận điểm khớp định lượng hoặc duyệt toàn bộ kho món Việt.
+                      {l(
+                        'Thêm nguyên liệu vào tủ lạnh để nhận điểm khớp định lượng hoặc duyệt toàn bộ kho món Việt.',
+                        'Add ingredients to your fridge for exact match scores, or browse the full recipe catalog.',
+                      )}
                     </p>
                   </div>
                 </TkvSurface>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {displayedRecommendations.map(
-                    ({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }, idx) => (
-                      <Link
-                        key={recipe.id}
-                        to={`/recipes/${recipe.slug || recipe.id}`}
-                        onPointerEnter={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
-                        onFocus={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
-                        style={{ '--tkv-i': idx } as React.CSSProperties}
-                        className="group tkv-focusable tkv-bento-card tkv-bento-interactive tkv-stagger overflow-hidden flex flex-col justify-between"
-                      >
-                        <div>
-                          <VerifiedDishImage
-                            slug={recipe.slug}
-                            title={recipe.title}
-                            canonicalFallbackSrc={resolveRecipeImage(recipe)}
-                            aspectClass="aspect-[16/10]"
-                          />
-                          <div className="p-4 space-y-2">
-                            <div className="flex items-start justify-between gap-2">
-                              <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
-                                {recipe.title}
-                              </h3>
-                              <span
-                                aria-hidden="true"
-                                className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral)] items-center justify-center shrink-0"
-                              >
-                                <VNextIcon name="bookmark" size={14} />
-                              </span>
-                            </div>
-
-                            <div className="flex items-center gap-2 flex-wrap text-xs font-semibold text-[var(--tkv-ink-secondary)] tabular-nums">
-                              <span className="inline-flex items-center gap-1">
-                                <VNextIcon name="timer" size={13} className="text-[var(--tkv-primary)]" />
-                                {recipe.cookTimeMinutes} phút
-                              </span>
-                              <span>·</span>
-                              <span className="inline-flex items-center gap-1">
-                                <VNextIcon name="users" size={13} className="text-[var(--tkv-primary)]" />
-                                {recipe.servings} người
-                              </span>
-                              <span>·</span>
-                              <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
-                                Dễ làm
-                              </span>
-                            </div>
-
-                            <div className="pt-1">
-                              <TkvBadge
-                                tone={canCookWithoutBuying ? 'success' : 'coral'}
-                                icon={canCookWithoutBuying ? 'check' : 'shopping'}
-                              >
-                                <span className="tabular-nums">
-                                  {canCookWithoutBuying
-                                    ? 'Đủ nguyên liệu sẵn có'
-                                    : `Cần thêm ${missingRequiredIngredientCount} nguyên liệu`}
+                    ({ recipe, canCookWithoutBuying, missingRequiredIngredientCount }, idx) => {
+                      const localizedTitle = localizeRecipeTitle(recipe, locale);
+                      return (
+                        <Link
+                          key={recipe.id}
+                          to={`/recipes/${recipe.slug || recipe.id}`}
+                          onPointerEnter={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
+                          onFocus={() => prefetchRouteChunk(`/recipes/${recipe.slug || recipe.id}`)}
+                          style={{ '--tkv-i': idx } as React.CSSProperties}
+                          className="group tkv-focusable tkv-bento-card tkv-bento-interactive tkv-stagger overflow-hidden flex flex-col justify-between"
+                        >
+                          <div>
+                            <VerifiedDishImage
+                              slug={recipe.slug}
+                              title={localizedTitle}
+                              canonicalFallbackSrc={resolveRecipeImage(recipe)}
+                              aspectClass="aspect-[16/10]"
+                            />
+                            <div className="p-4 space-y-2">
+                              <div className="flex items-start justify-between gap-2">
+                                <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
+                                  {localizedTitle}
+                                </h3>
+                                <span
+                                  aria-hidden="true"
+                                  className="inline-flex w-7 h-7 rounded-full bg-[var(--tkv-surface-coral)] text-[var(--tkv-coral)] items-center justify-center shrink-0"
+                                >
+                                  <VNextIcon name="bookmark" size={14} />
                                 </span>
-                              </TkvBadge>
+                              </div>
+
+                              <div className="flex items-center gap-2 flex-wrap text-xs font-semibold text-[var(--tkv-ink-secondary)] tabular-nums">
+                                <span className="inline-flex items-center gap-1">
+                                  <VNextIcon name="timer" size={13} className="text-[var(--tkv-primary)]" />
+                                  {l(`${recipe.cookTimeMinutes} phút`, `${recipe.cookTimeMinutes} min`)}
+                                </span>
+                                <span>·</span>
+                                <span className="inline-flex items-center gap-1">
+                                  <VNextIcon name="users" size={13} className="text-[var(--tkv-primary)]" />
+                                  {l(`${recipe.servings} người`, `${recipe.servings} servings`)}
+                                </span>
+                                <span>·</span>
+                                <span className="px-2 py-0.5 rounded-full bg-[var(--tkv-surface-mint)] text-[var(--tkv-primary)] font-bold">
+                                  {l('Dễ làm', 'Easy')}
+                                </span>
+                              </div>
+
+                              <div className="pt-1">
+                                <TkvBadge
+                                  tone={canCookWithoutBuying ? 'success' : 'coral'}
+                                  icon={canCookWithoutBuying ? 'check' : 'shopping'}
+                                >
+                                  <span className="tabular-nums">
+                                    {canCookWithoutBuying
+                                      ? l('Đủ nguyên liệu sẵn có', 'All ingredients on hand')
+                                      : l(
+                                          `Cần thêm ${missingRequiredIngredientCount} nguyên liệu`,
+                                          `Missing ${missingRequiredIngredientCount} ${missingRequiredIngredientCount === 1 ? 'ingredient' : 'ingredients'}`,
+                                        )}
+                                  </span>
+                                </TkvBadge>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Link>
-                    ),
+                        </Link>
+                      );
+                    },
                   )}
                 </div>
               )}
@@ -433,21 +485,24 @@ export const C01HomePilot: React.FC = () => {
             <section aria-labelledby="c01-use-soon-heading" className="space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                 <h2 id="c01-use-soon-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                  Nguyên liệu ưu tiên dùng sớm
+                  {l('Nguyên liệu ưu tiên dùng sớm', 'Use soon')}
                 </h2>
                 <Link
                   to="/fridge"
                   className="tkv-focusable min-h-[44px] inline-flex items-center shrink-0 whitespace-nowrap text-xs font-extrabold text-[var(--tkv-primary)] hover:underline"
                 >
-                  Mở tủ lạnh
+                  {l('Mở tủ lạnh', 'Open fridge')}
                 </Link>
               </div>
 
               {inventoryQuery.isPending ? (
-                <TkvSkeleton className="h-32" label="Đang tải danh sách tồn kho…" />
+                <TkvSkeleton className="h-32" label={l('Đang tải danh sách tồn kho…', 'Loading inventory…')} />
               ) : inventoryQuery.isError ? (
                 <TkvErrorState
-                  message="Chưa đọc được dữ liệu tủ lạnh từ máy chủ."
+                  message={l(
+                    'Chưa đọc được dữ liệu tủ lạnh từ máy chủ.',
+                    'Could not load fridge inventory from the server.',
+                  )}
                   onRetry={() => void inventoryQuery.refetch()}
                 />
               ) : useSoonItems.length === 0 ? (
@@ -456,12 +511,15 @@ export const C01HomePilot: React.FC = () => {
                     <MascotIllustration pose="fridge" size={56} motion="idle" decorative className="w-14 h-14 shrink-0" />
                     <span className="min-w-0">
                       {activeItems.length === 0
-                        ? 'Chưa có nguyên liệu nào trong tủ lạnh.'
-                        : `Tủ đang có ${activeItems.length} nguyên liệu tươi ngon ổn định.`}
+                        ? l('Chưa có nguyên liệu nào trong tủ lạnh.', 'No ingredients in your fridge yet.')
+                        : l(
+                            `Tủ đang có ${activeItems.length} nguyên liệu tươi ngon ổn định.`,
+                            `Your fridge has ${activeItems.length} fresh ${activeItems.length === 1 ? 'item' : 'items'} in good shape.`,
+                          )}
                     </span>
                   </div>
                   <TkvButton size="sm" variant="secondary" className="w-full sm:w-auto shrink-0" onClick={() => navigate('/fridge')}>
-                    {activeItems.length === 0 ? 'Thêm ngay' : 'Xem tủ'}
+                    {activeItems.length === 0 ? l('Thêm ngay', 'Add now') : l('Xem tủ', 'View fridge')}
                   </TkvButton>
                 </TkvSurface>
               ) : (
@@ -470,6 +528,7 @@ export const C01HomePilot: React.FC = () => {
                     const exp = presentExpiry(item);
                     const remDays = daysUntil(exp.date ?? undefined);
                     const thumbSrc = getIngredientImage(item.ingredientId, item.name);
+                    const localizedName = localizeIngredientName(item.ingredientId, item.name, locale);
                     return (
                       <Link
                         key={item.id}
@@ -491,10 +550,12 @@ export const C01HomePilot: React.FC = () => {
                           )}
                           <div className="min-w-0 flex-1">
                             <p className="text-sm font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
-                              {item.name}
+                              {localizedName}
                             </p>
                             <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums mt-0.5">
-                              {item.quantity} {UNIT_LABELS_VI[item.unit] ?? item.unit}
+                              {locale === 'vi'
+                                ? `${item.quantity} ${UNIT_LABELS_VI[item.unit] ?? item.unit}`
+                                : formatLocalizedMeasure(item.quantity, item.unit, locale, unitSystem)}
                             </p>
                           </div>
                         </div>
@@ -502,11 +563,11 @@ export const C01HomePilot: React.FC = () => {
                           <span>
                             {exp.estimated
                               ? remDays !== null
-                                ? `Ước tính còn ${remDays} ngày`
-                                : 'Hạn dùng ước tính'
+                                ? l(`Ước tính còn ${remDays} ngày`, `Est. ${remDays}d left`)
+                                : l('Hạn dùng ước tính', 'Estimated expiry')
                               : remDays !== null
-                                ? `Còn ${remDays} ngày`
-                                : 'Nên dùng sớm'}
+                                ? l(`Còn ${remDays} ngày`, `${remDays}d left`)
+                                : l('Nên dùng sớm', 'Use soon')}
                           </span>
                         </span>
                       </Link>
@@ -519,7 +580,7 @@ export const C01HomePilot: React.FC = () => {
             {/* Core Kitchen Action Stack with AI-Rendered BrandFeatureIcons */}
             <section aria-labelledby="c01-for-you-heading" className="space-y-3">
               <h2 id="c01-for-you-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                Trợ lý bếp cùng bạn hôm nay
+                {l('Trợ lý bếp cùng bạn hôm nay', 'Your kitchen shortcuts today')}
               </h2>
 
               <div className="space-y-3">
@@ -531,10 +592,13 @@ export const C01HomePilot: React.FC = () => {
                     <BrandFeatureIcon name="scan" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                        Quét & thêm nguyên liệu bằng AI
+                        {l('Quét & thêm nguyên liệu bằng AI', 'Scan & add ingredients with AI')}
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Chụp ngăn mát hoặc hóa đơn đi chợ, luôn kiểm duyệt trước khi lưu
+                        {l(
+                          'Chụp ngăn mát hoặc hóa đơn đi chợ, luôn kiểm duyệt trước khi lưu',
+                          'Snap your fridge or grocery receipt — always review before saving',
+                        )}
                       </p>
                     </div>
                   </div>
@@ -549,12 +613,20 @@ export const C01HomePilot: React.FC = () => {
                     <BrandFeatureIcon name="planner" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                        {plan ? 'Thực đơn 7 ngày đang mở' : 'Lên thực đơn 7 ngày'}
+                        {plan
+                          ? l('Thực đơn 7 ngày đang mở', 'Active 7-day meal plan')
+                          : l('Lên thực đơn 7 ngày', 'Build a 7-day meal plan')}
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
                         {home.requiresAccount
-                          ? 'Đăng nhập để đồng bộ lịch bữa ăn tuần của hộ gia đình'
-                          : 'Cân bằng dinh dưỡng cho cả gia đình, linh hoạt đổi món 1 chạm'}
+                          ? l(
+                              'Đăng nhập để đồng bộ lịch bữa ăn tuần của hộ gia đình',
+                              'Sign in to sync your household weekly meal schedule',
+                            )
+                          : l(
+                              'Cân bằng dinh dưỡng cho cả gia đình, linh hoạt đổi món 1 chạm',
+                              'Balanced meals for the household with one-tap dish swaps',
+                            )}
                       </p>
                     </div>
                   </div>
@@ -569,10 +641,13 @@ export const C01HomePilot: React.FC = () => {
                     <BrandFeatureIcon name="shopping" size={44} className="mt-0.5" />
                     <div className="min-w-0 space-y-1">
                       <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                        Danh sách mua sắm thông minh
+                        {l('Danh sách mua sắm thông minh', 'Smart shopping list')}
                       </p>
                       <p className="text-xs text-[var(--tkv-ink-secondary)] leading-relaxed text-pretty">
-                        Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ
+                        {l(
+                          'Tự động trừ nguyên liệu sẵn có trong tủ lạnh để mua vừa đủ',
+                          'Automatically deducts fridge stock so you buy only what you need',
+                        )}
                       </p>
                     </div>
                   </div>

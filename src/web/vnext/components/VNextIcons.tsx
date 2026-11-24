@@ -1,4 +1,5 @@
 import React from 'react';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
 
 export type VNextIconName =
   | 'home'
@@ -110,6 +111,66 @@ export const VNEXT_ICON_LABELS_VI: Record<VNextIconName, string> = {
   'cat-soup': 'Món canh',
   'cat-braise': 'Món kho',
 };
+
+export const VNEXT_ICON_LABELS_EN: Record<VNextIconName, string> = {
+  home: 'Today',
+  fridge: 'Fridge',
+  recipes: 'Recipes',
+  calendar: 'Meal Plan',
+  profile: 'Account',
+  scan: 'Scan ingredients',
+  shopping: 'Shopping',
+  timer: 'Timer',
+  history: 'History',
+  notification: 'Notifications',
+  search: 'Search',
+  filter: 'Filter',
+  plus: 'Add',
+  minus: 'Decrease',
+  check: 'Confirm',
+  close: 'Close',
+  'chevron-right': 'Open details',
+  'arrow-left': 'Back',
+  'arrow-right': 'Next',
+  edit: 'Edit',
+  trash: 'Delete',
+  swap: 'Swap dish',
+  sparkles: 'Smart suggestions',
+  mic: 'Voice',
+  volume: 'Read aloud',
+  bookmark: 'Save recipe',
+  mail: 'Email',
+  lock: 'Password',
+  eye: 'Show password',
+  'eye-off': 'Hide password',
+  shield: 'Household security',
+  users: 'Household members',
+  crown: 'Takolio Pro',
+  settings: 'Settings',
+  privacy: 'Privacy',
+  help: 'Help',
+  offline: 'Offline',
+  refresh: 'Reload',
+  warning: 'Warning',
+  error: 'Error',
+  success: 'Done',
+  info: 'Information',
+  download: 'Install app',
+  'cat-vegetable': 'Vegetables',
+  'cat-meat': 'Meat',
+  'cat-seafood': 'Seafood',
+  'cat-egg': 'Eggs',
+  'cat-dairy': 'Dairy & Cheese',
+  'cat-grain': 'Grains',
+  'cat-spice': 'Spices',
+  'cat-fruit': 'Fruit',
+  'cat-soup': 'Soup',
+  'cat-braise': 'Braised',
+};
+
+export function getVNextIconLabel(name: VNextIconName): string {
+  return getActiveAppLocale() === 'vi' ? VNEXT_ICON_LABELS_VI[name] : VNEXT_ICON_LABELS_EN[name];
+}
 
 const renderIconGeometry = (name: VNextIconName): React.ReactNode => {
   switch (name) {
@@ -513,6 +574,7 @@ export interface VNextIconProps {
   strokeWidth?: number;
   className?: string;
   label?: string;
+  decorative?: boolean;
 }
 
 export const VNextIcon: React.FC<VNextIconProps> = ({
@@ -521,24 +583,37 @@ export const VNextIcon: React.FC<VNextIconProps> = ({
   strokeWidth = 1.6,
   className,
   label,
-}) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={size}
-    height={size}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-    role={label ? 'img' : undefined}
-    aria-label={label}
-    aria-hidden={label ? undefined : true}
-  >
-    {renderIconGeometry(name)}
-  </svg>
-);
+  decorative,
+}) => {
+  const isNonVi = getActiveAppLocale() !== 'vi';
+  const resolvedLabel =
+    label !== undefined
+      ? isNonVi && label === VNEXT_ICON_LABELS_VI[name]
+        ? VNEXT_ICON_LABELS_EN[name]
+        : label
+      : decorative === false
+        ? getVNextIconLabel(name)
+        : undefined;
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      role={resolvedLabel ? 'img' : undefined}
+      aria-label={resolvedLabel}
+      aria-hidden={resolvedLabel ? undefined : true}
+    >
+      {renderIconGeometry(name)}
+    </svg>
+  );
+};
 
 export const ALL_VNEXT_ICON_NAMES = Object.keys(VNEXT_ICON_LABELS_VI) as VNextIconName[];

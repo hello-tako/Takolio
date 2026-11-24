@@ -1,3 +1,5 @@
+import { lSync } from '../i18n/app-i18n';
+
 /** Takolio V1 identity. Legacy names remain adapters to this single contract. */
 const BASE = '/takolio/v1';
 const illustration = (pose: string) => ({
@@ -8,9 +10,13 @@ const illustration = (pose: string) => ({
 export const TAKOLIO_BRAND = {
   name: 'Takolio',
   mascotName: 'Tako',
-  tagline: 'Lên kế hoạch bữa ăn thông minh.',
+  get tagline(): string {
+    return lSync('Lên kế hoạch bữa ăn thông minh.', 'Smart meal planning for your kitchen.');
+  },
   supportingLine: 'Plan Better. Eat Happier.',
-  motto: 'Lên kế hoạch bữa ăn thông minh.',
+  get motto(): string {
+    return lSync('Lên kế hoạch bữa ăn thông minh.', 'Smart meal planning for your kitchen.');
+  },
   base: BASE,
   logos: {
     horizontal: `${BASE}/logo/horizontal-primary.svg`,

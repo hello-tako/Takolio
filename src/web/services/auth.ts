@@ -1,5 +1,6 @@
 import { rebindPendingOps } from '../lib/sync';
 import { LOGOUT_PENDING_KEY, isOfflineGuestSession, onPrivateSessionReset } from '../lib/private-session';
+import { lSync } from '../i18n/app-i18n';
 import { OtpRequestRetryClient, type OtpResponseMetadata } from './auth-otp-retry';
 import {
   BASE_URL,
@@ -105,7 +106,10 @@ export const authApi = {
         handleUnauthorized();
         throw new ApiError(
           'auth',
-          'Danh tính phiên máy chủ đã thay đổi. Vui lòng đăng xuất và đăng nhập lại.',
+          lSync(
+            'Danh tính phiên máy chủ đã thay đổi. Vui lòng đăng xuất và đăng nhập lại.',
+            'Your server session identity has changed. Please sign out and sign in again.',
+          ),
         );
       }
       return result;
@@ -115,10 +119,10 @@ export const authApi = {
       return {
         user: {
           id: getUserId(),
-          displayName: 'Bạn mới của Takolio',
+          displayName: lSync('Bạn mới của Takolio', 'Takolio Guest'),
           isGuest: true,
           onboardingCompleted: localStorage.getItem('frigo_onboarded') === 'true',
-          household: { id: getHouseholdId(), name: 'Tủ lạnh nhà tôi' },
+          household: { id: getHouseholdId(), name: lSync('Tủ lạnh nhà tôi', 'My Kitchen') },
           subscription: null,
         },
       };

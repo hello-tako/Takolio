@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useLocaleText } from '../../i18n/app-i18n';
 import { KitchenHeader, KitchenPageHeading } from './KitchenHeader';
 
 export function AccountPage({
@@ -12,11 +13,12 @@ export function AccountPage({
   children: ReactNode;
   backTo?: string | null;
 }) {
+  const { l } = useLocaleText();
   return (
     <div className="account-page">
       <KitchenHeader backTo={backTo ?? undefined} />
       <div className="account-workspace">
-        <KitchenPageHeading title={title} eyebrow="Bếp của bạn" description={description} />
+        <KitchenPageHeading title={title} eyebrow={l('Bếp của bạn', 'Your kitchen')} description={description} />
         <div className="account-body">{children}</div>
       </div>
     </div>

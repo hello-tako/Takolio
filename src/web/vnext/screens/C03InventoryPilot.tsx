@@ -30,6 +30,13 @@ import { BrandFeatureIcon } from '../components/VNextMedia';
 import { FridgeInventorySkeleton } from '../components/Skeletons';
 import { showTkvToast } from '../components/LivingMotion';
 import { useVNextSeo } from '../lib/seo';
+import {
+  formatLocalizedMeasure,
+  localizeDisplayCategory,
+  localizeIngredientName,
+  localizeStorageZone,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 const CATEGORY_ICONS: Record<string, VNextIconName> = {
   vegetable: 'cat-vegetable',
@@ -94,6 +101,7 @@ const IngredientThumb: React.FC<{
  * version-guarded inventory mutations, FEFO labels, and URL filter persistence.
  */
 export const C03InventoryPilot: React.FC = () => {
+  const { l, locale, unitSystem } = useLocaleText();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') ?? '';
   const activeFilter = searchParams.get('filter') ?? 'all';
@@ -101,8 +109,11 @@ export const C03InventoryPilot: React.FC = () => {
   const [addOpen, setAddOpen] = useState(() => searchParams.get('action') === 'add');
 
   useVNextSeo({
-    title: 'Tủ lạnh của bạn — Takolio',
-    description: 'Quản lý nguyên liệu trong tủ lạnh theo lô và cảnh báo hạn dùng cùng Bé Mầm Bếp.',
+    title: l('Tủ lạnh của bạn — Takolio', 'Your Fridge — Takolio'),
+    description: l(
+      'Quản lý nguyên liệu trong tủ lạnh theo lô và cảnh báo hạn dùng cùng Bé Mầm Bếp.',
+      'Track fridge ingredients by lot with expiry alerts in Takolio.',
+    ),
     canonicalPath: '/fridge',
     domainSurface: 'app',
     noindex: true,
@@ -169,7 +180,11 @@ export const C03InventoryPilot: React.FC = () => {
       setMutationBanner(null);
       return invalidateInventoryDependents();
     },
-    onError: (err) => handleMutationError(err, 'Chưa cập nhật được số lượng. Vui lòng thử lại.'),
+    onError: (err) =>
+      handleMutationError(
+        err,
+        l('Chưa cập nhật được số lượng. Vui lòng thử lại.', 'Could not update quantity. Please try again.'),
+      ),
   });
 
   const addItemMutation = useMutation({
@@ -189,9 +204,16 @@ export const C03InventoryPilot: React.FC = () => {
       setName('');
       setQuantity(1);
       setMutationBanner(null);
-      showTkvToast({ message: `Đã thêm “${vars.name}” vào tủ lạnh`, tone: 'success' });
+      showTkvToast({
+        message: l(`Đã thêm “${vars.name}” vào tủ lạnh`, `Added “${vars.name}” to your fridge`),
+        tone: 'success',
+      });
     },
-    onError: (err) => handleMutationError(err, 'Chưa thêm được nguyên liệu vào tủ lạnh.'),
+    onError: (err) =>
+      handleMutationError(
+        err,
+        l('Chưa thêm được nguyên liệu vào tủ lạnh.', 'Could not add ingredient to your fridge.'),
+      ),
   });
 
   const handleAdjustQty = (id: string, currentQty: number, delta: number, version: number) => {
@@ -207,7 +229,10 @@ export const C03InventoryPilot: React.FC = () => {
     if (!name.trim() || addItemMutation.isPending) return;
     if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 10000) {
       setMutationBanner({
-        message: 'Số lượng phải lớn hơn 0 và không vượt quá 10.000 theo đơn vị đã chọn.',
+        message: l(
+          'Số lượng phải lớn hơn 0 và không vượt quá 10.000 theo đơn vị đã chọn.',
+          'Quantity must be greater than 0 and no more than 10,000 in the selected unit.',
+        ),
         refetchFailed: false,
       });
       return;
@@ -235,8 +260,12 @@ export const C03InventoryPilot: React.FC = () => {
   const healthyCount = Math.max(0, items.length - expiringCount);
 
   const filteredItems = items.filter((item) => {
-    if (query.trim() && !item.name.toLowerCase().includes(query.trim().toLowerCase())) {
-      return false;
+    if (query.trim()) {
+      const needle = query.trim().toLowerCase();
+      const localized = localizeIngredientName(item.ingredientId, item.name, locale).toLowerCase();
+      if (!item.name.toLowerCase().includes(needle) && !localized.includes(needle)) {
+        return false;
+      }
     }
     if (activeFilter === 'all') return true;
     if (activeFilter === 'expiring') {
@@ -257,14 +286,14 @@ export const C03InventoryPilot: React.FC = () => {
   });
 
   const filterChips = [
-    { id: 'all', label: 'Tất cả' },
-    { id: 'meat', label: 'Thịt cá' },
-    { id: 'vegetable', label: 'Rau củ' },
-    { id: 'spice', label: 'Gia vị' },
+    { id: 'all', label: l('Tất cả', 'All') },
+    { id: 'meat', label: l('Thịt cá', 'Meat & Seafood') },
+    { id: 'vegetable', label: l('Rau củ', 'Vegetables') },
+    { id: 'spice', label: l('Gia vị', 'Spices & Pantry') },
   ];
 
   return (
-    <ConsumerStudioShell screenId="C03" title="Tủ lạnh của bạn">
+    <ConsumerStudioShell screenId="C03" title={l('Tủ lạnh của bạn', 'Your Fridge')}>
       <div className="space-y-4 pb-6 lg:pb-0">
         {/* Top Heading & Workbench Actions (`board-2.jpg` left screen) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -272,12 +301,18 @@ export const C03InventoryPilot: React.FC = () => {
             <BrandFeatureIcon name="fridge" size={48} />
             <div>
               <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink)]">
-                Tủ lạnh của bạn
+                {l('Tủ lạnh của bạn', 'Your Fridge')}
               </h1>
               <p className="text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5 tabular-nums">
                 {inventoryQuery.isSuccess
-                  ? `${items.length} nguyên liệu · ${expiringCount} sắp hết hạn`
-                  : 'Theo dõi định lượng và hạn dùng thực tế của gia đình'}
+                  ? l(
+                      `${items.length} nguyên liệu · ${expiringCount} sắp hết hạn`,
+                      `${items.length} ${items.length === 1 ? 'item' : 'items'} · ${expiringCount} expiring soon`,
+                    )
+                  : l(
+                      'Theo dõi định lượng và hạn dùng thực tế của gia đình',
+                      'Track actual household quantities and expiry dates',
+                    )}
               </p>
             </div>
           </div>
@@ -288,14 +323,14 @@ export const C03InventoryPilot: React.FC = () => {
               className="tkv-focusable min-h-[44px] px-4 py-2 rounded-full bg-[var(--tkv-surface-mint)] hover:opacity-95 border border-[var(--tkv-border-mint)] text-sm font-extrabold text-[var(--tkv-primary)] inline-flex items-center gap-1.5 transition-colors"
             >
               <VNextIcon name="scan" size={16} />
-              <span>Quét AI</span>
+              <span>{l('Quét AI', 'AI Scan')}</span>
             </Link>
             <Link
               to="/inventory-reconciliation"
               className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] hover:bg-[var(--tkv-surface-mint)] text-sm font-bold text-[var(--tkv-ink-secondary)] inline-flex items-center gap-1.5 transition-colors"
             >
               <VNextIcon name="history" size={16} />
-              <span>Đối soát</span>
+              <span>{l('Đối soát', 'Reconcile')}</span>
             </Link>
           </div>
         </div>
@@ -317,7 +352,7 @@ export const C03InventoryPilot: React.FC = () => {
                 iconLeft="refresh"
                 onClick={() => void inventoryQuery.refetch()}
               >
-                Tải lại tồn kho
+                {l('Tải lại tồn kho', 'Reload inventory')}
               </TkvButton>
             )}
           </TkvSurface>
@@ -328,11 +363,11 @@ export const C03InventoryPilot: React.FC = () => {
           <TkvSurface className="p-5 space-y-4 bg-[var(--tkv-surface)] border-[var(--tkv-border-mint)]">
             <div className="flex items-center justify-between">
               <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                Thêm nguyên liệu vào tủ lạnh
+                {l('Thêm nguyên liệu vào tủ lạnh', 'Add ingredient to fridge')}
               </h2>
               <TkvIconButton
                 icon="close"
-                label="Đóng biểu mẫu thêm nguyên liệu"
+                label={l('Đóng biểu mẫu thêm nguyên liệu', 'Close add ingredient form')}
                 onClick={() => setAddOpen(false)}
               />
             </div>
@@ -341,14 +376,14 @@ export const C03InventoryPilot: React.FC = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end"
             >
               <TkvTextField
-                label="Tên nguyên liệu"
+                label={l('Tên nguyên liệu', 'Ingredient name')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ví dụ: Thịt ba chỉ, Cà chua…"
+                placeholder={l('Ví dụ: Thịt ba chỉ, Cà chua…', 'e.g. Pork belly, Tomatoes…')}
                 required
               />
               <TkvTextField
-                label="Số lượng"
+                label={l('Số lượng', 'Quantity')}
                 type="number"
                 min={0.1}
                 step="any"
@@ -361,7 +396,7 @@ export const C03InventoryPilot: React.FC = () => {
                   htmlFor="tkv-c05-unit"
                   className="text-sm font-bold text-[var(--tkv-ink)] block"
                 >
-                  Đơn vị & Vị trí
+                  {l('Đơn vị & Vị trí', 'Unit & Storage')}
                 </label>
                 <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                   <select
@@ -370,22 +405,22 @@ export const C03InventoryPilot: React.FC = () => {
                     onChange={(e) => setUnit(e.target.value as StandardUnit)}
                     className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
-                    <option value="piece">quả / cái</option>
+                    <option value="piece">{l('quả / cái', 'pcs')}</option>
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                     <option value="ml">ml</option>
-                    <option value="bunch">bó</option>
-                    <option value="pack">gói</option>
+                    <option value="bunch">{l('bó', 'bunch')}</option>
+                    <option value="pack">{l('gói', 'pack')}</option>
                   </select>
                   <select
-                    aria-label="Vị trí bảo quản"
+                    aria-label={l('Vị trí bảo quản', 'Storage location')}
                     value={storage}
                     onChange={(e) => setStorage(e.target.value)}
                     className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
-                    <option value="fridge">Ngăn mát</option>
-                    <option value="freezer">Ngăn đông</option>
-                    <option value="pantry">Tủ khô</option>
+                    <option value="fridge">{localizeStorageZone('fridge', locale)}</option>
+                    <option value="freezer">{localizeStorageZone('freezer', locale)}</option>
+                    <option value="pantry">{localizeStorageZone('pantry', locale)}</option>
                   </select>
                 </div>
               </div>
@@ -394,7 +429,7 @@ export const C03InventoryPilot: React.FC = () => {
                   htmlFor="tkv-c05-expiry"
                   className="text-sm font-bold text-[var(--tkv-ink)] block"
                 >
-                  Hạn dùng ước tính
+                  {l('Hạn dùng ước tính', 'Estimated expiry')}
                 </label>
                 <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                   <select
@@ -403,33 +438,33 @@ export const C03InventoryPilot: React.FC = () => {
                     onChange={(e) => setExpiryDays(Number(e.target.value))}
                     className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
-                    <option value={2}>Còn 2 ngày</option>
-                    <option value={3}>Còn 3 ngày</option>
-                    <option value={4}>Còn 4 ngày</option>
-                    <option value={5}>Còn 5 ngày</option>
-                    <option value={7}>Còn 7 ngày</option>
-                    <option value={0}>Chưa rõ ngày</option>
+                    <option value={2}>{l('Còn 2 ngày', '2 days left')}</option>
+                    <option value={3}>{l('Còn 3 ngày', '3 days left')}</option>
+                    <option value={4}>{l('Còn 4 ngày', '4 days left')}</option>
+                    <option value={5}>{l('Còn 5 ngày', '5 days left')}</option>
+                    <option value={7}>{l('Còn 7 ngày', '7 days left')}</option>
+                    <option value={0}>{l('Chưa rõ ngày', 'Date unknown')}</option>
                   </select>
                   <select
-                    aria-label="Nhóm nguyên liệu"
+                    aria-label={l('Nhóm nguyên liệu', 'Ingredient category')}
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     className="tkv-focusable w-full min-w-0 min-h-[48px] px-3 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-base font-semibold text-[var(--tkv-ink)]"
                   >
-                    <option value="vegetable">Rau củ</option>
-                    <option value="meat">Thịt cá</option>
-                    <option value="egg">Trứng</option>
-                    <option value="dairy">Sữa</option>
-                    <option value="spice">Gia vị</option>
+                    <option value="vegetable">{localizeDisplayCategory('vegetable', locale)}</option>
+                    <option value="meat">{l('Thịt cá', localizeDisplayCategory('meat_seafood', locale))}</option>
+                    <option value="egg">{localizeDisplayCategory('egg', locale)}</option>
+                    <option value="dairy">{l('Sữa', 'Dairy')}</option>
+                    <option value="spice">{localizeDisplayCategory('spice', locale)}</option>
                   </select>
                 </div>
               </div>
               <div className="sm:col-span-2 lg:col-span-4 flex justify-end gap-2 pt-1">
                 <TkvButton variant="quiet" size="sm" onClick={() => setAddOpen(false)}>
-                  Hủy
+                  {l('Hủy', 'Cancel')}
                 </TkvButton>
                 <TkvButton type="submit" variant="primary" size="sm" isLoading={addItemMutation.isPending}>
-                  Lưu vào tủ lạnh
+                  {l('Lưu vào tủ lạnh', 'Save to fridge')}
                 </TkvButton>
               </div>
             </form>
@@ -444,8 +479,8 @@ export const C03InventoryPilot: React.FC = () => {
                 id="tkv-fridge-search"
                 value={query}
                 onChange={(val) => updateUrlParam('q', val)}
-                placeholder="Tìm nguyên liệu…"
-                label="Tìm nguyên liệu trong tủ lạnh"
+                placeholder={l('Tìm nguyên liệu…', 'Search ingredients…')}
+                label={l('Tìm nguyên liệu trong tủ lạnh', 'Search fridge ingredients')}
               />
             </div>
             <button
@@ -455,13 +490,13 @@ export const C03InventoryPilot: React.FC = () => {
               className="tkv-focusable min-h-[48px] px-4 sm:px-5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-extrabold text-sm inline-flex items-center gap-1.5 shrink-0 shadow-[var(--tkv-shadow-cta)] transition-colors"
             >
               <VNextIcon name="plus" size={16} />
-              <span>Thêm</span>
+              <span>{l('Thêm', 'Add')}</span>
             </button>
           </div>
 
           <div
             role="group"
-            aria-label="Bộ lọc trạng thái tủ lạnh"
+            aria-label={l('Bộ lọc trạng thái tủ lạnh', 'Fridge status filters')}
             className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:flex-wrap tabular-nums"
           >
             {filterChips.map((chip) => (
@@ -479,46 +514,52 @@ export const C03InventoryPilot: React.FC = () => {
               onClick={() => updateUrlParam('filter', 'expiring')}
               className="px-3.5 sm:px-4 text-sm"
             >
-              Sắp hết ({expiringCount})
+              {l(`Sắp hết (${expiringCount})`, `Use soon (${expiringCount})`)}
             </TkvChip>
             <TkvChip
               active={activeFilter === 'fresh'}
               onClick={() => updateUrlParam('filter', 'fresh')}
               className="px-3.5 sm:px-4 text-sm"
             >
-              Còn đủ ({healthyCount})
+              {l(`Còn đủ (${healthyCount})`, `Fresh (${healthyCount})`)}
             </TkvChip>
           </div>
         </div>
 
         {/* Inventory Content */}
         {inventoryQuery.isPending ? (
-          <FridgeInventorySkeleton />
+          <FridgeInventorySkeleton label={l('Đang tải danh sách tủ lạnh…', 'Loading fridge inventory…')} />
         ) : inventoryQuery.isError ? (
           <TkvErrorState
-            title="Không đọc được tồn kho hiện tại"
-            message="Dữ liệu tủ lạnh chưa thể đồng bộ từ máy chủ. Vui lòng thử tải lại."
+            title={l('Không đọc được tồn kho hiện tại', 'Could not load current inventory')}
+            message={l(
+              'Dữ liệu tủ lạnh chưa thể đồng bộ từ máy chủ. Vui lòng thử tải lại.',
+              'Unable to sync fridge data from the server. Please try reloading.',
+            )}
             onRetry={() => void inventoryQuery.refetch()}
           />
         ) : items.length === 0 ? (
           /* Truly Empty Fridge (C03 / S06) — Bé Mầm Bếp Empty Fridge Pose! */
           <TkvEmptyState
             pose="empty-fridge"
-            eyebrow="Tủ lạnh đang trống"
-            title="Chưa có nguyên liệu nào trong tủ lạnh"
-            description="Chụp ảnh ngăn mát hoặc hóa đơn siêu thị để Bé Mầm Bếp gợi ý danh sách duyệt, hoặc nhấn + Thêm để nhập nhanh nguyên liệu đầu tiên."
+            eyebrow={l('Tủ lạnh đang trống', 'Your fridge is empty')}
+            title={l('Chưa có nguyên liệu nào trong tủ lạnh', 'No ingredients in your fridge yet')}
+            description={l(
+              'Chụp ảnh ngăn mát hoặc hóa đơn siêu thị để Bé Mầm Bếp gợi ý danh sách duyệt, hoặc nhấn + Thêm để nhập nhanh nguyên liệu đầu tiên.',
+              'Snap your fridge or grocery receipt for an AI draft you can review, or tap + Add to enter your first item manually.',
+            )}
             primaryAction={
               <Link
                 to="/scan"
                 className="tkv-focusable min-h-[48px] px-5 py-2.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-xs font-extrabold text-sm inline-flex items-center gap-2 transition-colors"
               >
                 <VNextIcon name="scan" size={18} />
-                <span>Quét nguyên liệu bằng AI</span>
+                <span>{l('Quét nguyên liệu bằng AI', 'Scan ingredients with AI')}</span>
               </Link>
             }
             secondaryAction={
               <TkvButton variant="secondary" onClick={() => setAddOpen(true)}>
-                + Thêm thủ công
+                {l('+ Thêm thủ công', '+ Add manually')}
               </TkvButton>
             }
           />
@@ -528,10 +569,19 @@ export const C03InventoryPilot: React.FC = () => {
             data-testid="c03-filtered-empty"
           >
             <h2 className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-              Không có nguyên liệu khớp bộ lọc hiện tại
+              {l('Không có nguyên liệu khớp bộ lọc hiện tại', 'No ingredients match this filter')}
             </h2>
             <p className="text-sm text-[var(--tkv-ink-secondary)] tabular-nums">
-              Tủ lạnh của bạn vẫn đang có <strong>{items.length}</strong> nguyên liệu ở các nhóm khác.
+              {locale === 'vi' ? (
+                <>
+                  Tủ lạnh của bạn vẫn đang có <strong>{items.length}</strong> nguyên liệu ở các nhóm khác.
+                </>
+              ) : (
+                <>
+                  Your fridge still has <strong>{items.length}</strong>{' '}
+                  {items.length === 1 ? 'item' : 'items'} in other categories.
+                </>
+              )}
             </p>
             <TkvButton
               variant="quiet"
@@ -546,12 +596,12 @@ export const C03InventoryPilot: React.FC = () => {
                 setSearchParams(next, { replace: true });
               }}
             >
-              Xóa từ khóa & bộ lọc
+              {l('Xóa từ khóa & bộ lọc', 'Clear search & filters')}
             </TkvButton>
           </TkvSurface>
         ) : (
           <ul
-            aria-label="Danh sách nguyên liệu trong tủ"
+            aria-label={l('Danh sách nguyên liệu trong tủ', 'Fridge ingredients list')}
             className="grid grid-cols-1 md:grid-cols-2 gap-3.5"
           >
             {filteredItems.map((item) => {
@@ -565,6 +615,11 @@ export const C03InventoryPilot: React.FC = () => {
                 item.freshness === 'use_soon' ||
                 (remDays !== null && remDays <= 3);
               const unitVi = UNIT_LABELS_VI[item.unit] ?? item.unit;
+              const displayName = localizeIngredientName(item.ingredientId, item.name, locale);
+              const storageText =
+                locale === 'vi'
+                  ? (STORAGE_LABELS[item.storage] ?? item.storage)
+                  : localizeStorageZone(item.storage, locale);
 
               return (
                 <li key={item.id} data-testid="inventory-row" data-item-id={item.id}>
@@ -583,14 +638,16 @@ export const C03InventoryPilot: React.FC = () => {
                       />
                       <div className="min-w-0 flex-1 space-y-1">
                         <p className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] line-clamp-2 leading-snug">
-                          {item.name}
+                          {displayName}
                         </p>
                         <div className="flex items-center gap-1.5 flex-wrap text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
                           <span className="font-bold text-[var(--tkv-ink)]">
-                            {item.quantity} {unitVi}
+                            {locale === 'vi'
+                              ? `${item.quantity} ${unitVi}`
+                              : formatLocalizedMeasure(item.quantity, item.unit, locale, unitSystem)}
                           </span>
                           <span>·</span>
-                          <span>{STORAGE_LABELS[item.storage] ?? item.storage}</span>
+                          <span>{storageText}</span>
                         </div>
                         <span
                           className={
@@ -605,15 +662,15 @@ export const C03InventoryPilot: React.FC = () => {
                               ? exp.estimated
                                 ? remDays !== null
                                   ? remDays <= 0
-                                    ? 'Ước tính hết hạn hôm nay'
-                                    : `Ước tính còn ${remDays} ngày`
-                                  : 'Hạn ước tính'
+                                    ? l('Ước tính hết hạn hôm nay', 'Est. expires today')
+                                    : l(`Ước tính còn ${remDays} ngày`, `Est. ${remDays}d left`)
+                                  : l('Hạn ước tính', 'Estimated expiry')
                                 : remDays !== null
                                   ? remDays <= 0
-                                    ? 'Hết hạn hôm nay'
-                                    : `Còn ${remDays} ngày`
+                                    ? l('Hết hạn hôm nay', 'Expires today')
+                                    : l(`Còn ${remDays} ngày`, `${remDays}d left`)
                                   : effectiveDate
-                              : 'Chưa rõ hạn dùng'}
+                              : l('Chưa rõ hạn dùng', 'Expiry unknown')}
                           </span>
                         </span>
                       </div>
@@ -622,19 +679,19 @@ export const C03InventoryPilot: React.FC = () => {
                     <div className="flex items-center justify-end gap-1.5 pt-2 sm:pt-0 border-t border-[var(--tkv-border)] sm:border-0 shrink-0">
                       <TkvIconButton
                         icon="minus"
-                        label={`Giảm lượng ${item.name}`}
+                        label={l(`Giảm lượng ${displayName}`, `Decrease ${displayName} quantity`)}
                         onClick={() => handleAdjustQty(item.id, item.quantity, -1, item.version)}
                         disabled={updateQtyMutation.isPending || item.quantity <= 1}
                       />
                       <TkvIconButton
                         icon="plus"
-                        label={`Tăng lượng ${item.name}`}
+                        label={l(`Tăng lượng ${displayName}`, `Increase ${displayName} quantity`)}
                         onClick={() => handleAdjustQty(item.id, item.quantity, 1, item.version)}
                         disabled={updateQtyMutation.isPending}
                       />
                       <Link
                         to={`/fridge/${item.id}`}
-                        aria-label={`Chi tiết ${item.name}`}
+                        aria-label={l(`Chi tiết ${displayName}`, `Details for ${displayName}`)}
                         className="tkv-focusable hidden sm:inline-flex w-11 h-11 rounded-full items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-primary)]"
                       >
                         <VNextIcon name="chevron-right" size={16} />

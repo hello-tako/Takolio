@@ -1,5 +1,6 @@
 import { findCanonicalIngredient, computeFreshness } from '@frigo/domain';
 import { privateCacheKey } from '../lib/private-session';
+import { lSync } from '../i18n/app-i18n';
 import {
   ApiError,
   fetchJson,
@@ -34,7 +35,7 @@ function queueOfflineScanConfirmation(scanId: string, items: any[]) {
   }
   // ponytail: per-item enqueue can partially succeed; atomic scan acceptance needs a server command.
   acceptedItems.forEach((item: any, index: number) => {
-    const name = String(item.rawName || item.name || 'Nguyên liệu mới').trim();
+    const name = String(item.rawName || item.name || lSync('Nguyên liệu mới', 'New ingredient')).trim();
     const canonical = findCanonicalIngredient(name);
     const rawQuantity = Number(item.estimatedQuantity ?? item.quantity);
     const quantity = rawQuantity;
@@ -58,7 +59,10 @@ function queueOfflineScanConfirmation(scanId: string, items: any[]) {
       '/inventory',
       'POST',
       JSON.stringify(body),
-      `Lưu ${name} từ ${source === 'receipt' ? 'hóa đơn' : 'bản quét'}`,
+      lSync(
+        `Lưu ${name} từ ${source === 'receipt' ? 'hóa đơn' : 'bản quét'}`,
+        `Save ${name} from ${source === 'receipt' ? 'receipt' : 'scan'}`,
+      ),
       `inventory:${id}`,
     );
     imported.push({
@@ -172,7 +176,7 @@ export const scansApi = {
         path,
         init.method,
         init.body,
-        'Xác nhận bản quét khi có kết nối',
+        lSync('Xác nhận bản quét khi có kết nối', 'Confirm scan when back online'),
         `scan-confirm:${scanId}`,
       );
       return {

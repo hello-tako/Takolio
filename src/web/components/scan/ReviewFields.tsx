@@ -1,4 +1,5 @@
 import type { StandardUnit } from '@frigo/domain';
+import { localizeStorageZone, useLocaleText } from '../../i18n/app-i18n';
 
 export const REVIEW_UNITS: ReadonlyArray<{ value: StandardUnit; label: string }> = [
   { value: 'g', label: 'g' },
@@ -10,6 +11,17 @@ export const REVIEW_UNITS: ReadonlyArray<{ value: StandardUnit; label: string }>
   { value: 'bunch', label: 'Bó' },
   { value: 'slice', label: 'Lát' },
 ];
+
+export const REVIEW_UNIT_LABELS_EN: Readonly<Record<StandardUnit, string>> = {
+  g: 'g',
+  kg: 'kg',
+  ml: 'ml',
+  l: 'L',
+  piece: 'pcs',
+  pack: 'pack',
+  bunch: 'bunch',
+  slice: 'slice',
+};
 
 export interface ReviewValues {
   rawName: string;
@@ -53,16 +65,29 @@ export function ReviewFields({
   onChange: (changes: Partial<ReviewValues>) => void;
   receipt?: boolean;
 }) {
+  const { l, locale } = useLocaleText();
   const fieldId = (field: string) =>
     receipt ? `receipt-${field}-${prefix.slice(8)}` : `${prefix}-${field}`;
+  const nameLabel = receipt
+    ? l('Tên sản phẩm', 'Product name')
+    : l('Tên nguyên liệu', 'Ingredient name');
+  const quantityLabel = l('Số lượng', 'Quantity');
+  const unitLabel = l('Đơn vị', 'Unit');
+  const storageLabel = receipt
+    ? l('Nơi bảo quản', 'Storage location')
+    : l('Bảo quản', 'Storage');
+  const expiryLabel = receipt
+    ? l('Hạn dùng trên nhãn', 'Label expiry date')
+    : l('Hạn dùng', 'Expiry date');
+
   return (
     <fieldset disabled={disabled} className="review-fields">
-      <legend className="sr-only">Thông tin bạn xác nhận</legend>
+      <legend className="sr-only">{l('Thông tin bạn xác nhận', 'Your confirmed details')}</legend>
       <label className="review-field-wide" htmlFor={`${fieldId('name')}`}>
-        {receipt ? 'Tên sản phẩm' : 'Tên nguyên liệu'}
+        {nameLabel}
         <input
           id={`${fieldId('name')}`}
-          aria-label={receipt ? 'Tên sản phẩm' : 'Tên nguyên liệu'}
+          aria-label={nameLabel}
           className="review-input"
           value={item.rawName}
           required
@@ -73,10 +98,10 @@ export function ReviewFields({
         />
       </label>
       <label htmlFor={`${fieldId('quantity')}`}>
-        Số lượng
+        {quantityLabel}
         <input
           id={`${fieldId('quantity')}`}
-          aria-label={'Số lượng'}
+          aria-label={quantityLabel}
           className="review-input"
           type="number"
           inputMode="decimal"
@@ -95,10 +120,10 @@ export function ReviewFields({
         />
       </label>
       <label htmlFor={`${fieldId('unit')}`}>
-        Đơn vị
+        {unitLabel}
         <select
           id={`${fieldId('unit')}`}
-          aria-label={'Đơn vị'}
+          aria-label={unitLabel}
           className="review-input"
           value={item.unit}
           disabled={disabled}
@@ -106,31 +131,31 @@ export function ReviewFields({
         >
           {REVIEW_UNITS.map(({ value, label }) => (
             <option key={value} value={value}>
-              {label}
+              {locale === 'vi' ? label : REVIEW_UNIT_LABELS_EN[value]}
             </option>
           ))}
         </select>
       </label>
       <label htmlFor={`${fieldId('storage')}`}>
-        {receipt ? 'Nơi bảo quản' : 'Bảo quản'}
+        {storageLabel}
         <select
           id={`${fieldId('storage')}`}
-          aria-label={receipt ? 'Nơi bảo quản' : 'Bảo quản'}
+          aria-label={storageLabel}
           className="review-input"
           value={item.storage}
           disabled={disabled}
           onChange={(event) => onChange({ storage: event.target.value as ReviewValues['storage'] })}
         >
-          <option value="fridge">Ngăn mát</option>
-          <option value="freezer">Ngăn đông</option>
-          <option value="pantry">Kệ bếp</option>
+          <option value="fridge">{l('Ngăn mát', localizeStorageZone('fridge', locale))}</option>
+          <option value="freezer">{l('Ngăn đông', localizeStorageZone('freezer', locale))}</option>
+          <option value="pantry">{l('Kệ bếp', localizeStorageZone('pantry', locale))}</option>
         </select>
       </label>
       <label htmlFor={`${fieldId('expiry')}`}>
-        {receipt ? 'Hạn dùng trên nhãn' : 'Hạn dùng'}
+        {expiryLabel}
         <input
           id={`${fieldId('expiry')}`}
-          aria-label={receipt ? 'Hạn dùng trên nhãn' : 'Hạn dùng'}
+          aria-label={expiryLabel}
           className="review-input"
           type="date"
           value={item.expiryDate ?? ''}
@@ -143,7 +168,10 @@ export function ReviewFields({
       </label>
       {!disabled && !validReviewValues(item) && (
         <p className="review-field-wide review-field-error" role="alert">
-          Cần có tên, số lượng lớn hơn 0 (tối đa 10.000) và ngày hợp lệ.
+          {l(
+            'Cần có tên, số lượng lớn hơn 0 (tối đa 10.000) và ngày hợp lệ.',
+            'Name, a quantity greater than 0 (up to 10,000), and a valid date are required.',
+          )}
         </p>
       )}
     </fieldset>

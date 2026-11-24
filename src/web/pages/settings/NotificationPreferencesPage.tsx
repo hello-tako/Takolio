@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Bell, Calendar, Clock, ShoppingBag, Sparkles } from 'lucide-react';
 import { getCurrentScope } from '../../services/http';
 import { Switch, UnavailableState } from '../../design-system/primitives';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 type ToggleState = {
   remindWeekPlan: boolean;
@@ -47,11 +48,11 @@ function readToggles(): ToggleState {
   return DEFAULT_TOGGLES;
 }
 
-const PERMISSION_LABELS: Record<string, string> = {
-  granted: 'đã cho phép',
-  denied: 'đã chặn',
-  default: 'chưa được yêu cầu',
-  unsupported: 'trình duyệt không hỗ trợ',
+const PERMISSION_LABELS: Record<string, { vi: string; en: string }> = {
+  granted: { vi: 'đã cho phép', en: 'allowed' },
+  denied: { vi: 'đã chặn', en: 'blocked' },
+  default: { vi: 'chưa được yêu cầu', en: 'not requested yet' },
+  unsupported: { vi: 'trình duyệt không hỗ trợ', en: 'not supported by this browser' },
 };
 
 /**
@@ -60,6 +61,7 @@ const PERMISSION_LABELS: Record<string, string> = {
  * intent switches; no scheduled/filter delivery is implemented.
  */
 export const NotificationPreferencesPage: React.FC = () => {
+  const { l } = useLocaleText();
   const [toggles, setToggles] = useState<ToggleState>(readToggles);
 
   const [storageMessage, setStorageMessage] = useState<string | null>(null);
@@ -71,28 +73,69 @@ export const NotificationPreferencesPage: React.FC = () => {
       const storageKey = prefsKey();
       if (!storageKey) throw new Error('No preference owner');
       localStorage.setItem(storageKey, JSON.stringify(next));
-      setStorageMessage('Đã ghi nhớ lựa chọn trên thiết bị này.');
+      setStorageMessage(
+        l('Đã ghi nhớ lựa chọn trên thiết bị này.', 'Preference saved on this device.'),
+      );
     } catch {
-      setStorageMessage('Chưa lưu được trên thiết bị. Lựa chọn chỉ giữ khi trang này đang mở.');
+      setStorageMessage(
+        l(
+          'Chưa lưu được trên thiết bị. Lựa chọn chỉ giữ khi trang này đang mở.',
+          'Could not save on this device. This choice will only last while this page stays open.',
+        ),
+      );
     }
   };
 
   const browserPermission =
     typeof Notification !== 'undefined' ? Notification.permission : 'unsupported';
+  const permissionLabelEntry = PERMISSION_LABELS[browserPermission];
+  const permissionLabel = permissionLabelEntry
+    ? l(permissionLabelEntry.vi, permissionLabelEntry.en)
+    : l('không xác định', 'unknown');
 
   return (
-    <AccountPage title="Tùy chỉnh thông báo" description="Nhắc nhở từ tủ lạnh của bạn">
+    <AccountPage
+      title={l('Tùy chỉnh thông báo', 'Notification preferences')}
+      description={l('Nhắc nhở từ tủ lạnh của bạn', 'Reminders from your kitchen')}
+    >
 
-      <section aria-label="Lựa chọn nhắc nhở" className="mb-6">
-        <h2 className="text-type-label text-semantic-text-primary mb-2">Lựa chọn nhắc nhở</h2>
+      <section aria-label={l('Lựa chọn nhắc nhở', 'Reminder choices')} className="mb-6">
+        <h2 className="text-type-label text-semantic-text-primary mb-2">
+          {l('Lựa chọn nhắc nhở', 'Reminder choices')}
+        </h2>
         <div className="bg-semantic-surface rounded-card border border-semantic-border divide-y divide-semantic-border">
           {(
             [
-              { key: 'remindWeekPlan', label: 'Nhắc lập thực đơn tuần', desc: 'Chuẩn bị bữa ăn cho tuần kế tiếp', icon: Calendar },
-              { key: 'remindExpiring', label: 'Nhắc nguyên liệu sắp hết', desc: 'Ưu tiên đồ ăn cần dùng sớm', icon: Clock },
-              { key: 'remindShopping', label: 'Nhắc đi chợ', desc: 'Theo dõi nguyên liệu cần mua', icon: ShoppingBag },
-              { key: 'remindTodayMeal', label: 'Nhắc bữa ăn hôm nay', desc: 'Theo dõi bữa ăn trong ngày', icon: Bell },
-              { key: 'promoUpdates', label: 'Khuyến mãi & cập nhật', desc: 'Tính năng mới và ưu đãi Takolio Pro', icon: Sparkles },
+              {
+                key: 'remindWeekPlan',
+                label: l('Nhắc lập thực đơn tuần', 'Weekly meal plan reminder'),
+                desc: l('Chuẩn bị bữa ăn cho tuần kế tiếp', 'Prepare meals for the upcoming week'),
+                icon: Calendar,
+              },
+              {
+                key: 'remindExpiring',
+                label: l('Nhắc nguyên liệu sắp hết', 'Expiring ingredients reminder'),
+                desc: l('Ưu tiên đồ ăn cần dùng sớm', 'Prioritize food that should be used soon'),
+                icon: Clock,
+              },
+              {
+                key: 'remindShopping',
+                label: l('Nhắc đi chợ', 'Shopping reminder'),
+                desc: l('Theo dõi nguyên liệu cần mua', 'Keep track of groceries to buy'),
+                icon: ShoppingBag,
+              },
+              {
+                key: 'remindTodayMeal',
+                label: l('Nhắc bữa ăn hôm nay', 'Today’s meal reminder'),
+                desc: l('Theo dõi bữa ăn trong ngày', 'Stay on top of today’s meals'),
+                icon: Bell,
+              },
+              {
+                key: 'promoUpdates',
+                label: l('Khuyến mãi & cập nhật', 'Updates & offers'),
+                desc: l('Tính năng mới và ưu đãi Takolio Pro', 'New features and Takolio Pro offers'),
+                icon: Sparkles,
+              },
             ] as const
           ).map((item) => {
             const Icon = item.icon;
@@ -112,22 +155,35 @@ export const NotificationPreferencesPage: React.FC = () => {
           })}
         </div>
         <p className="text-xs text-semantic-text-muted mt-2 px-1">
-          Các lựa chọn này chỉ ghi nhớ mong muốn trên thiết bị. Hiện chúng chưa lọc hộp
-          thông báo hoặc tự gửi nhắc nhở theo lịch.
+          {l(
+            'Các lựa chọn này chỉ ghi nhớ mong muốn trên thiết bị. Hiện chúng chưa lọc hộp thông báo hoặc tự gửi nhắc nhở theo lịch.',
+            'These switches only save your preferences on this device. They do not filter the inbox or schedule push deliveries yet.',
+          )}
         </p>
       </section>
 
       {storageMessage && <p role="status">{storageMessage}</p>}
 
-      <section aria-label="Kênh gửi thông báo" className="space-y-3">
-        <h2 className="text-type-label text-semantic-text-primary">Kênh gửi</h2>
-        <UnavailableState title="Email — chưa cấu hình">
-          Chưa có email nhắc nhở bữa ăn hay đi chợ. Email xác thực tài khoản là luồng riêng.
+      <section aria-label={l('Kênh gửi thông báo', 'Delivery channels')} className="space-y-3">
+        <h2 className="text-type-label text-semantic-text-primary">
+          {l('Kênh gửi', 'Delivery channels')}
+        </h2>
+        <UnavailableState title={l('Email — chưa cấu hình', 'Email — not configured yet')}>
+          {l(
+            'Chưa có email nhắc nhở bữa ăn hay đi chợ. Email xác thực tài khoản là luồng riêng.',
+            'Meal and grocery reminder emails are not available yet. Account verification emails are handled separately.',
+          )}
         </UnavailableState>
-        <UnavailableState title="Thông báo đẩy — chưa cấu hình">
-          Takolio hiện chưa gửi thông báo đẩy. Quyền thông báo trên trình duyệt:{' '}
-          <strong>{PERMISSION_LABELS[browserPermission] ?? 'không xác định'}</strong>. Quyền này
-          không có nghĩa là nhắc nhở đang được gửi.
+        <UnavailableState title={l('Thông báo đẩy — chưa cấu hình', 'Push notifications — not configured yet')}>
+          {l(
+            'Takolio hiện chưa gửi thông báo đẩy. Quyền thông báo trên trình duyệt:',
+            'Takolio does not send push notifications yet. Browser notification permission:',
+          )}{' '}
+          <strong>{permissionLabel}</strong>.{' '}
+          {l(
+            'Quyền này không có nghĩa là nhắc nhở đang được gửi.',
+            'This permission does not mean reminders are being sent.',
+          )}
         </UnavailableState>
       </section>
     </AccountPage>

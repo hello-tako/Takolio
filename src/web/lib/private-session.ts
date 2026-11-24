@@ -1,8 +1,12 @@
 import type { PendingScope } from './sync';
+import { lSync } from '../i18n/app-i18n';
 
 export const LOGOUT_PENDING_KEY = 'frigo_logout_pending';
 export const OFFLINE_GUEST_KEY = 'frigo_guest_offline';
-export const LOGOUT_WARNING = 'Đã xóa dữ liệu riêng tư trên thiết bị, nhưng chưa xác nhận thu hồi phiên trên máy chủ. Vui lòng kết nối mạng và thử đăng xuất lại.';
+export const LOGOUT_WARNING = lSync(
+  'Đã xóa dữ liệu riêng tư trên thiết bị, nhưng chưa xác nhận thu hồi phiên trên máy chủ. Vui lòng kết nối mạng và thử đăng xuất lại.',
+  'Private data on this device has been cleared, but server session revocation could not be confirmed. Please reconnect and try signing out again.',
+);
 
 let generation = 0;
 const resetListeners = new Set<() => void>();

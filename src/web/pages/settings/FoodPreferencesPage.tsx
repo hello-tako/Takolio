@@ -9,37 +9,38 @@ import { useAuthStore } from '../../stores/useAuthStore';
 import { InlineError, InlineLoading } from '../../components/common/AsyncState';
 import { Button } from '../../components/common/Button';
 import { StickyActions } from '../../design-system/primitives';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 const CUISINE_TAGS = [
-  { id: 'vietnamese', label: 'Việt Nam' },
-  { id: 'korean', label: 'Hàn Quốc' },
-  { id: 'japanese', label: 'Nhật Bản' },
-  { id: 'western', label: 'Âu - Mỹ' },
-  { id: 'chinese', label: 'Trung Hoa' },
-  { id: 'thai', label: 'Thái Lan' },
-  { id: 'other', label: 'Khác' },
-];
+  { id: 'vietnamese', labelVi: 'Việt Nam', labelEn: 'Vietnamese' },
+  { id: 'korean', labelVi: 'Hàn Quốc', labelEn: 'Korean' },
+  { id: 'japanese', labelVi: 'Nhật Bản', labelEn: 'Japanese' },
+  { id: 'western', labelVi: 'Âu - Mỹ', labelEn: 'Western' },
+  { id: 'chinese', labelVi: 'Trung Hoa', labelEn: 'Chinese' },
+  { id: 'thai', labelVi: 'Thái Lan', labelEn: 'Thai' },
+  { id: 'other', labelVi: 'Khác', labelEn: 'Other' },
+] as const;
 
 const RESTRICTION_TAGS = [
-  { id: 'vegetarian', label: 'Ăn chay linh hoạt' },
-  { id: 'more_greens', label: 'Nhiều rau' },
-  { id: 'quick_meals', label: 'Nấu nhanh' },
-  { id: 'beef', label: 'Thịt bò' },
-  { id: 'seafood', label: 'Hải sản' },
-  { id: 'peanuts', label: 'Đậu phộng' },
-  { id: 'spicy', label: 'Đồ cay' },
-  { id: 'mushroom', label: 'Nấm' },
-  { id: 'onion_garlic', label: 'Hành tỏi' },
-  { id: 'milk', label: 'Sữa' },
-  { id: 'gluten', label: 'Gluten' },
-  { id: 'other', label: 'Khác' },
-];
+  { id: 'vegetarian', labelVi: 'Ăn chay linh hoạt', labelEn: 'Flexitarian / Vegetarian' },
+  { id: 'more_greens', labelVi: 'Nhiều rau', labelEn: 'More greens' },
+  { id: 'quick_meals', labelVi: 'Nấu nhanh', labelEn: 'Quick meals' },
+  { id: 'beef', labelVi: 'Thịt bò', labelEn: 'Beef' },
+  { id: 'seafood', labelVi: 'Hải sản', labelEn: 'Seafood' },
+  { id: 'peanuts', labelVi: 'Đậu phộng', labelEn: 'Peanuts' },
+  { id: 'spicy', labelVi: 'Đồ cay', labelEn: 'Spicy food' },
+  { id: 'mushroom', labelVi: 'Nấm', labelEn: 'Mushrooms' },
+  { id: 'onion_garlic', labelVi: 'Hành tỏi', labelEn: 'Onion & garlic' },
+  { id: 'milk', labelVi: 'Sữa', labelEn: 'Milk / Dairy' },
+  { id: 'gluten', labelVi: 'Gluten', labelEn: 'Gluten' },
+  { id: 'other', labelVi: 'Khác', labelEn: 'Other' },
+] as const;
 
 const SPICY_LEVELS = [
-  { id: 'none', label: 'Không cay' },
-  { id: 'mild', label: 'Ít cay' },
-  { id: 'medium', label: 'Trung bình' },
-  { id: 'hot', label: 'Rất cay' },
+  { id: 'none', labelVi: 'Không cay', labelEn: 'No spice' },
+  { id: 'mild', labelVi: 'Ít cay', labelEn: 'Mild' },
+  { id: 'medium', labelVi: 'Trung bình', labelEn: 'Medium' },
+  { id: 'hot', labelVi: 'Rất cay', labelEn: 'Spicy' },
 ] as const;
 
 interface Draft {
@@ -62,6 +63,7 @@ const asSpicyLevel = (v: unknown, fallback: SpicyLevel = 'medium'): SpicyLevel =
  * representation without lossy conversion; no client-side fake truth.
  */
 export const FoodPreferencesPage: React.FC = () => {
+  const { l } = useLocaleText();
   const queryClient = useQueryClient();
   const auth = useAuthStore();
   const isGuestOffline = isOfflineGuestSession();
@@ -122,7 +124,12 @@ export const FoodPreferencesPage: React.FC = () => {
       auth.setOnboardingFromServer(auth.isOnboarded, draft);
       setSavedAt(Date.now());
     } catch {
-      setError('Chưa thể lưu sở thích. Vui lòng kiểm tra kết nối và thử lại.');
+      setError(
+        l(
+          'Chưa thể lưu sở thích. Vui lòng kiểm tra kết nối và thử lại.',
+          'Could not save preferences. Please check your connection and try again.',
+        ),
+      );
     } finally {
       setSaving(false);
     }
@@ -136,25 +143,37 @@ export const FoodPreferencesPage: React.FC = () => {
     }`;
 
   return (
-    <AccountPage title="Sở thích & hạn chế" description="Gu món ăn giúp Takolio gợi ý món sát hơn">
+    <AccountPage
+      title={l('Sở thích & hạn chế', 'Food preferences & restrictions')}
+      description={l(
+        'Gu món ăn giúp Takolio gợi ý món sát hơn',
+        'Your taste profile helps Takolio suggest better dishes',
+      )}
+    >
 
       {isGuestOffline && (
         <p className="text-xs text-[var(--tkv-ink-muted)] mb-3">
-          Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng trong phiên này và sẽ mất khi tải lại ứng dụng.
+          {l(
+            'Phiên dùng thử ngoại tuyến: thay đổi chỉ áp dụng trong phiên này và sẽ mất khi tải lại ứng dụng.',
+            'Offline guest session: changes only apply to this session and will be lost on reload.',
+          )}
         </p>
       )}
 
-      {prefsQuery.isPending && !draft && <InlineLoading label="Đang tải sở thích…" />}
+      {prefsQuery.isPending && !draft && (
+        <InlineLoading label={l('Đang tải sở thích…', 'Loading preferences…')} />
+      )}
       {prefsQuery.isError && (
         <InlineError error={prefsQuery.error} onRetry={() => prefsQuery.refetch()} />
       )}
 
       {draft && (
         <fieldset disabled={saving} className="account-editor space-y-5 pb-8">
-          <legend className="sr-only">Chọn cài đặt</legend>
+          <legend className="sr-only">{l('Chọn cài đặt', 'Choose settings')}</legend>
           <fieldset>
             <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Số người thường ăn
+              <Users className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" />{' '}
+              {l('Số người thường ăn', 'Household size')}
             </legend>
             <div className="flex flex-wrap items-center gap-2">
               {[1, 2, 3, 4, 5].map((n) => (
@@ -180,12 +199,15 @@ export const FoodPreferencesPage: React.FC = () => {
               {draft.householdSize >= 5 && (
                 <div
                   role="group"
-                  aria-label="Điều chỉnh khẩu phần gia đình đông người"
+                  aria-label={l(
+                    'Điều chỉnh khẩu phần gia đình đông người',
+                    'Adjust portions for a larger household',
+                  )}
                   className="inline-flex items-center gap-1.5 rounded-pill bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-2 py-1"
                 >
                   <button
                     type="button"
-                    aria-label="Giảm số người"
+                    aria-label={l('Giảm số người', 'Decrease household size')}
                     disabled={draft.householdSize <= 5}
                     onClick={() =>
                       setDraft({ ...draft, householdSize: Math.max(5, draft.householdSize - 1) })
@@ -198,11 +220,11 @@ export const FoodPreferencesPage: React.FC = () => {
                     data-testid="u02-household-stepper-value"
                     className="min-w-[68px] text-center text-sm font-semibold tabular-nums text-[var(--tkv-ink)]"
                   >
-                    {draft.householdSize} người
+                    {l(`${draft.householdSize} người`, `${draft.householdSize} people`)}
                   </span>
                   <button
                     type="button"
-                    aria-label="Tăng số người"
+                    aria-label={l('Tăng số người', 'Increase household size')}
                     disabled={draft.householdSize >= 20}
                     onClick={() =>
                       setDraft({ ...draft, householdSize: Math.min(20, draft.householdSize + 1) })
@@ -218,7 +240,8 @@ export const FoodPreferencesPage: React.FC = () => {
 
           <fieldset>
             <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
-              <Utensils className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Món ưa thích
+              <Utensils className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" />{' '}
+              {l('Món ưa thích', 'Favorite cuisines')}
             </legend>
             <div className="flex flex-wrap gap-2">
               {CUISINE_TAGS.map((tag) => (
@@ -229,7 +252,7 @@ export const FoodPreferencesPage: React.FC = () => {
                   onClick={() => toggleTag(tag.id, 'favoriteCuisines')}
                   className={chip(draft.favoriteCuisines.includes(tag.id))}
                 >
-                  {tag.label}
+                  {l(tag.labelVi, tag.labelEn)}
                 </button>
               ))}
             </div>
@@ -237,7 +260,8 @@ export const FoodPreferencesPage: React.FC = () => {
 
           <fieldset>
             <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
-              <Heart className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Nguyên liệu hạn chế
+              <Heart className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" />{' '}
+              {l('Nguyên liệu hạn chế', 'Ingredients to avoid')}
             </legend>
             <div className="flex flex-wrap gap-2">
               {RESTRICTION_TAGS.map((tag) => (
@@ -248,18 +272,22 @@ export const FoodPreferencesPage: React.FC = () => {
                   onClick={() => toggleTag(tag.id, 'dietaryRestrictions')}
                   className={chip(draft.dietaryRestrictions.includes(tag.id), 'warning')}
                 >
-                  {tag.label}
+                  {l(tag.labelVi, tag.labelEn)}
                 </button>
               ))}
             </div>
             <p className="text-xs text-[var(--tkv-ink-muted)] mt-2">
-              Giới hạn này giúp lọc gợi ý, không thay thế tư vấn y tế.
+              {l(
+                'Giới hạn này giúp lọc gợi ý, không thay thế tư vấn y tế.',
+                'These restrictions help filter suggestions and do not replace medical advice.',
+              )}
             </p>
           </fieldset>
 
           <fieldset>
             <legend className="text-type-label text-[var(--tkv-ink)] flex items-center gap-2 mb-2">
-              <Flame className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" /> Mức độ cay
+              <Flame className="w-4 h-4 text-[var(--tkv-primary)] shrink-0" aria-hidden="true" />{' '}
+              {l('Mức độ cay', 'Spice tolerance')}
             </legend>
             <div className="flex flex-wrap gap-2">
               {SPICY_LEVELS.map((level) => (
@@ -270,7 +298,7 @@ export const FoodPreferencesPage: React.FC = () => {
                   onClick={() => setDraft({ ...draft, spicyLevel: level.id })}
                   className={chip(draft.spicyLevel === level.id)}
                 >
-                  {level.label}
+                  {l(level.labelVi, level.labelEn)}
                 </button>
               ))}
             </div>
@@ -283,13 +311,18 @@ export const FoodPreferencesPage: React.FC = () => {
           )}
           {savedAt && !error && (
             <p role="status" className="text-sm text-semantic-success">
-              {isGuestOffline ? 'Đã áp dụng sở thích cho phiên dùng thử này.' : 'Đã lưu sở thích.'}
+              {isGuestOffline
+                ? l(
+                    'Đã áp dụng sở thích cho phiên dùng thử này.',
+                    'Preferences applied for this guest session.',
+                  )
+                : l('Đã lưu sở thích.', 'Preferences saved.')}
             </p>
           )}
 
           <StickyActions>
             <Button variant="primary" fullWidth onClick={save} disabled={saving} isLoading={saving}>
-              Lưu sở thích
+              {l('Lưu sở thích', 'Save preferences')}
             </Button>
           </StickyActions>
         </fieldset>
