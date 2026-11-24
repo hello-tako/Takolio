@@ -1,5 +1,6 @@
 import { findCanonicalIngredient, computeFreshness } from '@frigo/domain';
 import { privateCacheKey } from '../lib/private-session';
+import { lSync } from '../i18n/app-i18n';
 import { fetchJson, isOffline, queueWrite, getHouseholdId, createClientItemId, guardPrivateSession } from './http';
 
 function inventoryVersion(value: unknown): number {
@@ -55,7 +56,7 @@ export const inventoryApi = {
         path,
         'POST',
         init.body,
-        `Thêm ${requestItem?.name || 'nguyên liệu'}`,
+        lSync(`Thêm ${requestItem?.name || 'nguyên liệu'}`, `Add ${requestItem?.name || 'ingredient'}`),
         `inventory:${requestItem.id}`
       );
       const canonical = findCanonicalIngredient(requestItem.name);
@@ -111,7 +112,7 @@ export const inventoryApi = {
         path,
         'PATCH',
         init.body,
-        'Cập nhật nguyên liệu',
+        lSync('Cập nhật nguyên liệu', 'Update ingredient'),
         `inventory-update:${id}:${commandId}`,
         init.headers
       );
@@ -149,7 +150,7 @@ export const inventoryApi = {
         path,
         'DELETE',
         undefined,
-        'Xóa nguyên liệu',
+        lSync('Xóa nguyên liệu', 'Delete ingredient'),
         `inventory-delete:${id}:${commandId}`,
         headers
       );

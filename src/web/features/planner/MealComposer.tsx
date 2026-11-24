@@ -37,6 +37,9 @@ import { IngredientCoverage } from './IngredientCoverage';
 import { compositionCopy, componentTitle, roleLabel, usePlanCompositions } from './composition';
 import type { PlannerLocale } from './copy';
 import type { usePlanner } from './usePlanner';
+import type { SupportedLocale } from '../../../shared/locales';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 // The meal page remounts on every plan revision; this carries focus and the announcement across it.
 let pendingFocus: { id: string; message: string } | null = null;
@@ -57,6 +60,8 @@ export function MealComposer({
   query?: ReturnType<typeof usePlanCompositions>;
 }) {
   const c = compositionCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
   const [params, setParams] = useSearchParams();
   const requestedRecipe = CatalogIdSchema.safeParse(params.get('recipe'));
   const pendingRecipeId = requestedRecipe.success ? requestedRecipe.data : undefined;
@@ -243,6 +248,7 @@ export function MealComposer({
             count={components.length}
             servings={composition.servings}
             locale={locale}
+            appLocale={activeDataLocale}
             disabled={disabled}
             onLock={() =>
               void mutate('composition-lock', `lock-${component.id}`, () =>
@@ -370,6 +376,7 @@ export function MealComposer({
         <Suggestions
           title={c.suggestionTitle}
           locale={locale}
+          appLocale={activeDataLocale}
           options={proposal.proposal ? [proposal.proposal] : []}
           disabled={disabled}
           onDismiss={() => setProposal(null)}
@@ -389,6 +396,7 @@ export function MealComposer({
         <Suggestions
           title={c.options}
           locale={locale}
+          appLocale={activeDataLocale}
           options={options.options}
           disabled={disabled}
           onDismiss={() => setOptions(null)}
@@ -434,6 +442,7 @@ function ComponentRow({
   index,
   count,
   locale,
+  appLocale,
   disabled,
   onLock,
   onRole,
@@ -448,6 +457,7 @@ function ComponentRow({
   index: number;
   count: number;
   locale: PlannerLocale;
+  appLocale?: SupportedLocale;
   disabled: boolean;
   onLock: () => void;
   onRole: (role: MealRole) => void;
@@ -456,7 +466,7 @@ function ComponentRow({
   onRemove: () => void;
 }) {
   const c = compositionCopy[locale];
-  const title = componentTitle(component, locale);
+  const title = componentTitle(component, locale, appLocale);
   const status = component.projection?.status;
   const statusText =
     status === 'covered'
@@ -600,6 +610,7 @@ function ComponentRow({
 function Suggestions({
   title,
   locale,
+  appLocale,
   options,
   disabled,
   onAccept,
@@ -607,6 +618,7 @@ function Suggestions({
 }: {
   title: string;
   locale: PlannerLocale;
+  appLocale?: SupportedLocale;
   options: CompositionOptionDto[];
   disabled: boolean;
   onAccept: (option: CompositionOptionDto) => void;
@@ -646,8 +658,14 @@ function Suggestions({
               >
                 <span>
                   {componentTitle(
-                    { kind: item.kind, simpleFoodId: item.simpleFoodId, title: item.title },
+                    {
+                      kind: item.kind,
+                      recipeId: item.recipeId,
+                      simpleFoodId: item.simpleFoodId,
+                      title: item.title,
+                    },
                     locale,
+                    appLocale,
                   )}
                 </span>
                 <span className="text-xs text-semantic-text-muted shrink-0">

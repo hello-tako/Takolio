@@ -30,10 +30,14 @@ import { MealStyleNotice } from './MealStyleNotice';
 import { compositionState } from './composition-state';
 import { FamilyPlanNotice } from './FamilyPlanNotice';
 import { isPlannerSlotElapsed, plannerSlotTime } from './schedule';
+import type { SupportedLocale } from '../../../shared/locales';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { localizeRecipeTitle, useLocaleText } from '../../i18n/app-i18n';
 
 function DishCard({
   composition,
   locale,
+  appLocale,
   planId,
   slotId,
   disabled,
@@ -43,6 +47,7 @@ function DishCard({
 }: {
   composition: MealCompositionDto;
   locale: PlannerLocale;
+  appLocale?: SupportedLocale;
   planId: string;
   slotId: string;
   disabled: boolean;
@@ -56,7 +61,7 @@ function DishCard({
     <div className="planning-composition-card">
       <ul className="planning-dish-list" aria-label={c.heading}>
         {composition.components.map((component) => {
-          const title = componentTitle(component, locale);
+          const title = componentTitle(component, locale, appLocale);
           const status = component.projection?.status;
           return (
             <li key={component.id} className="planning-dish-row">
@@ -149,6 +154,9 @@ export function PlannerWeek({
   locale: PlannerLocale;
 }) {
   const t = plannerCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  const shouldLocalizeRecipeTitles = locale !== 'vi' && activeDataLocale !== 'vi';
   const [confirm, setConfirm] = useState(false);
   const [picker, setPicker] = useState<{ slotId: string; component: MealComponentDto } | null>(
     null,
@@ -301,7 +309,9 @@ export function PlannerWeek({
     <>
       <div className="planning-board-summary">
         <div>
-          <p className="planning-eyebrow">THỰC ĐƠN GIA ĐÌNH</p>
+          <p className="planning-eyebrow">
+            {locale === 'vi' ? 'THỰC ĐƠN GIA ĐÌNH' : 'HOUSEHOLD MEAL PLAN'}
+          </p>
           <p className="planning-board-status" role="status">
             {summaryStatus}
           </p>
@@ -438,6 +448,18 @@ export function PlannerWeek({
                     </div>
                   );
                 }
+                const mealDisplayTitle = shouldLocalizeRecipeTitles
+                  ? localizeRecipeTitle(
+                      {
+                        title: meal.title,
+                        slug: 'source' in meal ? meal.source.id : undefined,
+                        cuisine: 'cuisine' in meal ? (meal.cuisine ?? undefined) : undefined,
+                        cookTimeMinutes: meal.cookTimeMinutes ?? undefined,
+                        servings: meal.servings,
+                      },
+                      activeDataLocale,
+                    )
+                  : meal.title;
                 return (
                   <Card key={meal.slotId} className="planning-meal-card" data-testid="planned-meal">
                     <div className="planning-meal-card-head">
@@ -454,14 +476,14 @@ export function PlannerWeek({
                         </p>
                         <h3 className="planning-meal-name">
                           {legacy
-                            ? meal.title
+                            ? mealDisplayTitle
                             : !composition
                               ? t[meal.mealType]
                               : `${composition.components.length} ${locale === 'vi' ? 'món' : 'dishes'} · ${meal.servings} ${t.people}`}
                         </h3>
                       </div>
                       <Link
-                        aria-label={`${compositionCopy[locale].detail}: ${meal.title}`}
+                        aria-label={`${compositionCopy[locale].detail}: ${mealDisplayTitle}`}
                         className="planning-icon-link"
                         to={`/planner/${plan.id}/meal/${encodeURIComponent(meal.slotId)}`}
                       >
@@ -472,6 +494,7 @@ export function PlannerWeek({
                       <DishCard
                         composition={composition}
                         locale={locale}
+                        appLocale={activeDataLocale}
                         planId={plan.id}
                         slotId={meal.slotId}
                         disabled={!!model.busy || slotElapsed}

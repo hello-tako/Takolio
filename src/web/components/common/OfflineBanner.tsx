@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { WifiOff, RefreshCw } from 'lucide-react';
 import { subscribe, type PendingOp } from '../../lib/sync';
 import { api } from '../../services/api';
+import { useLocaleText } from '../../i18n/app-i18n';
 import { ConfirmDialog } from './ConfirmDialog';
 
 export const OfflineBanner: React.FC = () => {
+  const { l } = useLocaleText();
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [pending, setPending] = useState<number | null>(0);
   const [syncError, setSyncError] = useState(false);
@@ -68,15 +70,35 @@ export const OfflineBanner: React.FC = () => {
           <WifiOff className="w-3.5 h-3.5 text-semantic-warning-strong shrink-0" />
           <span>
             {blocked
-              ? 'Yêu cầu đổi món xung đột với dữ liệu đã lưu. Yêu cầu vẫn được giữ trên thiết bị.'
+              ? l(
+                  'Yêu cầu đổi món xung đột với dữ liệu đã lưu. Yêu cầu vẫn được giữ trên thiết bị.',
+                  'Your meal swap request conflicts with saved data. It is still kept on this device.',
+                )
               : syncError
-                ? 'Không thể đồng bộ. Hãy kiểm tra kết nối và bộ nhớ trình duyệt, rồi thử lại.'
+                ? l(
+                    'Không thể đồng bộ. Hãy kiểm tra kết nối và bộ nhớ trình duyệt, rồi thử lại.',
+                    'Unable to sync. Please check your connection and browser storage, then try again.',
+                  )
                 : pending === null
-                  ? 'Không thể xác định trạng thái đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt trước khi tiếp tục.'
+                  ? l(
+                      'Không thể xác định trạng thái đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt trước khi tiếp tục.',
+                      'Unable to check sync status. Please verify browser storage before continuing.',
+                    )
                   : isOffline
-                    ? 'Đang ở chế độ Ngoại tuyến. Thay đổi đã lưu sẽ được đồng bộ khi có mạng.'
-                    : `Đang chờ đồng bộ (${pending} thay đổi).`}
-            {blocked && syncError && ' Chưa thể tải lại và bỏ yêu cầu. Hãy kiểm tra kết nối và bộ nhớ trình duyệt, rồi thử lại.'}
+                    ? l(
+                        'Đang ở chế độ Ngoại tuyến. Thay đổi đã lưu sẽ được đồng bộ khi có mạng.',
+                        'You are offline. Saved changes will sync once you reconnect.',
+                      )
+                    : l(
+                        `Đang chờ đồng bộ (${pending} thay đổi).`,
+                        `Pending sync (${pending} ${pending === 1 ? 'change' : 'changes'}).`,
+                      )}
+            {blocked &&
+              syncError &&
+              l(
+                ' Chưa thể tải lại và bỏ yêu cầu. Hãy kiểm tra kết nối và bộ nhớ trình duyệt, rồi thử lại.',
+                ' Unable to reload and discard the request. Please check your connection and browser storage, then try again.',
+              )}
           </span>
         </span>
         {!isOffline && (pending === null || pending > 0 || syncError || blocked) && (
@@ -84,11 +106,11 @@ export const OfflineBanner: React.FC = () => {
             type="button"
             onClick={() => void handleSyncNow()}
             disabled={syncing}
-            aria-label="Đồng bộ ngay"
+            aria-label={l('Đồng bộ ngay', 'Sync now')}
             className="tap-target shrink-0 inline-flex items-center justify-center gap-1 rounded-full bg-semantic-action-primary hover:bg-semantic-action-primary-hover text-semantic-on-action-primary px-3 py-1 font-semibold disabled:opacity-60 transition-colors"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
-            {syncing ? 'Đang…' : 'Đồng bộ ngay'}
+            {syncing ? l('Đang…', 'Syncing…') : l('Đồng bộ ngay', 'Sync now')}
           </button>
         )}
         {!isOffline && blocked && (
@@ -98,16 +120,19 @@ export const OfflineBanner: React.FC = () => {
             disabled={syncing}
             className="tap-target rounded-full border border-semantic-border-strong bg-semantic-surface px-3 py-1 font-semibold text-semantic-text-primary disabled:opacity-60 transition-colors"
           >
-            Tải lại và bỏ yêu cầu đổi món
+            {l('Tải lại và bỏ yêu cầu đổi món', 'Reload and discard meal swap')}
           </button>
         )}
       </div>
       <ConfirmDialog
         open={!!confirmation && !!blocked && !isOffline}
-        title="Bỏ yêu cầu đổi món bị xung đột?"
-        description="Takolio sẽ tải thực đơn hiện tại và chỉ bỏ yêu cầu đổi món này khỏi hàng chờ. Các thay đổi khác vẫn được giữ. Bạn có thể chọn món lại sau đó."
-        confirmText="Tải lại và bỏ yêu cầu"
-        cancelText="Giữ yêu cầu"
+        title={l('Bỏ yêu cầu đổi món bị xung đột?', 'Discard conflicting meal swap?')}
+        description={l(
+          'Takolio sẽ tải thực đơn hiện tại và chỉ bỏ yêu cầu đổi món này khỏi hàng chờ. Các thay đổi khác vẫn được giữ. Bạn có thể chọn món lại sau đó.',
+          'Takolio will reload the current meal plan and remove only this meal swap from the queue. Other changes will be kept, and you can pick a dish again afterward.',
+        )}
+        confirmText={l('Tải lại và bỏ yêu cầu', 'Reload and discard')}
+        cancelText={l('Giữ yêu cầu', 'Keep request')}
         destructive
         onConfirm={() => { if (confirmation) void handleSyncNow(confirmation); }}
         onCancel={() => setConfirmation(null)}

@@ -1,17 +1,20 @@
 import React from 'react';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 /**
  * Branded Structural Skeleton Fallback shown while a lazy route chunk loads.
  * Keeps a calm Brand Board v2 frame (2.5px Leaf Green progress bar + warm ivory shimmer)
  * so transitions never flash a stark blank white screen.
  */
-export const RouteFallback: React.FC = () => (
-  <div
-    className="tkv-root takolio-rebuild min-h-dvh bg-[var(--tkv-bg,#FFF9F1)] flex flex-col"
-    role="status"
-    aria-live="polite"
-    aria-label="Đang tải trang"
-  >
+export const RouteFallback: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <div
+      className="tkv-root takolio-rebuild min-h-dvh bg-[var(--tkv-bg,#FFF9F1)] flex flex-col"
+      role="status"
+      aria-live="polite"
+      aria-label={l('Đang tải trang', 'Loading page')}
+    >
     {/* Top 2.5px Leaf Green sweep bar */}
     <div
       aria-hidden="true"
@@ -55,7 +58,7 @@ export const RouteFallback: React.FC = () => (
             <div className="flex flex-col gap-1.5">
               <div className="h-5 w-40 rounded-lg tkv-shimmer" />
               <p className="text-xs font-semibold text-[var(--tkv-ink-muted,#52706A)]">
-                Bé Mầm Bếp đang mở trang…
+                {l('Bé Mầm Bếp đang mở trang…', 'Sprout Chef is opening the page…')}
               </p>
             </div>
           </div>
@@ -81,4 +84,5 @@ export const RouteFallback: React.FC = () => (
       </div>
     </div>
   </div>
-);
+  );
+};

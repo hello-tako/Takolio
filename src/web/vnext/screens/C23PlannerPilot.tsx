@@ -20,29 +20,45 @@ import {
 } from '../components/VNextMedia';
 import { WeeklyPlannerSkeleton } from '../components/Skeletons';
 import { useVNextSeo } from '../lib/seo';
-import { useAppLocale } from '../../i18n/LocaleContext';
+import type { SupportedLocale } from '../../../shared/locales';
+import {
+  lSync,
+  localizeMealSlot,
+  localizeRecipeTitle,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 const LEGACY_NAME_RE = /\bFri\w*\b/i;
-function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+function sanitizeUserDisplayName(
+  raw: string | undefined | null,
+  isGuest = false,
+  locale?: SupportedLocale,
+): string {
   const trimmed = (raw ?? '').trim();
-  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
-  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  if (!trimmed) {
+    return isGuest
+      ? lSync('Khách ghé thăm', 'Guest', locale)
+      : lSync('Bếp trưởng', 'Home Chef', locale);
+  }
+  if (LEGACY_NAME_RE.test(trimmed)) return lSync('Bếp trưởng', 'Home Chef', locale);
   return raw as string;
 }
 
-const MEAL_LABELS: Record<'breakfast' | 'lunch' | 'dinner', string> = {
-  breakfast: 'Bữa sáng',
-  lunch: 'Bữa trưa',
-  dinner: 'Bữa tối',
-};
-
-function formatDayHeadingVi(isoDate: string): string {
+function formatDayHeading(isoDate: string, locale: SupportedLocale): string {
   const parsed = new Date(`${isoDate}T00:00:00Z`);
   if (Number.isNaN(parsed.getTime())) return isoDate;
-  return new Intl.DateTimeFormat('vi-VN', {
+  if (locale === 'vi') {
+    return new Intl.DateTimeFormat('vi-VN', {
+      weekday: 'long',
+      day: '2-digit',
+      month: '2-digit',
+      timeZone: 'UTC',
+    }).format(parsed);
+  }
+  return new Intl.DateTimeFormat('en-US', {
     weekday: 'long',
-    day: '2-digit',
-    month: '2-digit',
+    month: 'short',
+    day: 'numeric',
     timeZone: 'UTC',
   }).format(parsed);
 }
@@ -74,15 +90,19 @@ export const C23PlannerPilot: React.FC = () => {
   const { planId } = useParams<{ planId?: string }>();
   const location = useLocation();
   const navigate = useNavigate();
+  const { l, locale: appLocale, copy: appCopy } = useLocaleText();
   const isGuest = useAuthStore((s) => s.isGuest);
   const displayName = useAuthStore((s) => s.displayName);
-  const cleanName = sanitizeUserDisplayName(displayName, isGuest);
+  const cleanName = sanitizeUserDisplayName(displayName, isGuest, appLocale);
   const returnTo = `${location.pathname}${location.search}`;
   const [selectedDayIdx, setSelectedDayIdx] = useState(0);
 
   useVNextSeo({
-    title: 'Thực đơn 7 ngày — Takolio',
-    description: 'Cân bằng dinh dưỡng cho cả gia đình và tự động tạo danh sách mua sắm thông minh.',
+    title: l('Thực đơn 7 ngày — Takolio', '7-Day Meal Plan — Takolio'),
+    description: l(
+      'Cân bằng dinh dưỡng cho cả gia đình và tự động tạo danh sách mua sắm thông minh.',
+      'Balanced family nutrition all week with an automatic smart shopping list.',
+    ),
     canonicalPath: '/planner',
     domainSurface: 'app',
     noindex: true,
@@ -111,7 +131,6 @@ export const C23PlannerPilot: React.FC = () => {
         ),
       ).size
     : 0;
-  const { locale: appLocale, copy: appCopy } = useAppLocale();
   const plannerLocale: 'vi' | 'en' = appLocale === 'vi' ? 'vi' : 'en';
   const activeDayLabel =
     selectedDayIdx === 6
@@ -167,7 +186,7 @@ export const C23PlannerPilot: React.FC = () => {
         {/* 7-Day Pill Selector */}
         <div
           role="group"
-          aria-label="Chọn thứ trong tuần"
+          aria-label={l('Chọn thứ trong tuần', 'Select day of the week')}
           className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:grid sm:grid-cols-7 sm:gap-2.5 max-w-xl"
         >
           {appCopy.planner.weekdays.map((dayLabel, idx) => {
@@ -199,13 +218,19 @@ export const C23PlannerPilot: React.FC = () => {
                 <MascotIllustration pose="shopping" size={96} className="w-20 h-20 sm:w-24 sm:h-24 shrink-0" />
                 <div className="space-y-1.5 min-w-0 flex-1">
                   <span className="inline-flex items-center rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] px-3 py-0.5 text-xs font-extrabold text-[var(--tkv-primary)]">
-                    {appCopy.planner.weekdays[selectedDayIdx]} · Đồng bộ hộ gia đình
+                    {appCopy.planner.weekdays[selectedDayIdx]} · {l('Đồng bộ hộ gia đình', 'Household sync')}
                   </span>
                   <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
-                    Đăng nhập để tạo và lưu thực đơn 7 ngày
+                    {l(
+                      'Đăng nhập để tạo và lưu thực đơn 7 ngày',
+                      'Sign in to create and save a 7-day meal plan',
+                    )}
                   </h2>
                   <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-                    Thực đơn tuần được đồng bộ theo tài khoản để tự động đối chiếu tủ lạnh và tổng hợp danh sách mua sắm thông minh cho cả nhà.
+                    {l(
+                      'Thực đơn tuần được đồng bộ theo tài khoản để tự động đối chiếu tủ lạnh và tổng hợp danh sách mua sắm thông minh cho cả nhà.',
+                      'Weekly meal plans sync with your account to automatically check your fridge and build a smart household shopping list.',
+                    )}
                   </p>
                 </div>
               </div>
@@ -215,7 +240,9 @@ export const C23PlannerPilot: React.FC = () => {
                 to={`/auth?mode=login&returnTo=${encodeURIComponent(returnTo)}`}
                 className="tkv-focusable w-full min-h-[50px] px-5 py-3 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white shadow-[var(--tkv-shadow-cta)] font-extrabold text-sm inline-flex items-center justify-center gap-2 transition-colors"
               >
-                <span>Đăng nhập để lập thực đơn 7 ngày</span>
+                <span>
+                  {l('Đăng nhập để lập thực đơn 7 ngày', 'Sign in to start your 7-day meal plan')}
+                </span>
                 <VNextIcon name="chevron-right" size={16} className="shrink-0" />
               </Link>
             </TkvSurface>
@@ -232,10 +259,10 @@ export const C23PlannerPilot: React.FC = () => {
                   </span>
                   <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                      Tạo thực đơn mới
+                      {l('Tạo thực đơn mới', 'Create new meal plan')}
                     </p>
                     <p className="text-xs text-[var(--tkv-ink-secondary)]">
-                      Tuỳ chỉnh số bữa & khẩu phần gia đình
+                      {l('Tuỳ chỉnh số bữa & khẩu phần gia đình', 'Customize meals & family servings')}
                     </p>
                   </div>
                 </div>
@@ -252,10 +279,10 @@ export const C23PlannerPilot: React.FC = () => {
                   </span>
                   <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                      Danh sách mua sắm
+                      {l('Danh sách mua sắm', 'Shopping list')}
                     </p>
                     <p className="text-xs text-[var(--tkv-ink-secondary)]">
-                      Mở giỏ đi chợ hiện tại của bạn
+                      {l('Mở giỏ đi chợ hiện tại của bạn', 'Open your current grocery list')}
                     </p>
                   </div>
                 </div>
@@ -267,25 +294,31 @@ export const C23PlannerPilot: React.FC = () => {
           <WeeklyPlannerSkeleton />
         ) : model.query.isError ? (
           <TkvErrorState
-            title="Chưa tải được thực đơn tuần"
-            message="Không thể đọc dữ liệu kế hoạch bữa ăn từ máy chủ. Vui lòng thử lại."
+            title={l('Chưa tải được thực đơn tuần', 'Could not load weekly meal plan')}
+            message={l(
+              'Không thể đọc dữ liệu kế hoạch bữa ăn từ máy chủ. Vui lòng thử lại.',
+              'Unable to load meal plan data from the server. Please try again.',
+            )}
             onRetry={() => void model.query.refetch()}
           />
         ) : !plan ? (
           <div className="space-y-4">
             <TkvEmptyState
               pose="shopping"
-              eyebrow="Sẵn sàng lập lịch"
-              title="Bắt đầu thực đơn 7 ngày đầu tiên"
-              description="Chọn số ngày, số bữa và khẩu phần tại màn hình thiết lập kế hoạch — Bé Mầm Bếp sẽ đối chiếu tủ lạnh và tính sẵn phần cần mua thêm."
+              eyebrow={l('Sẵn sàng lập lịch', 'Ready to plan')}
+              title={l('Bắt đầu thực đơn 7 ngày đầu tiên', 'Start your first 7-day meal plan')}
+              description={l(
+                'Chọn số ngày, số bữa và khẩu phần tại màn hình thiết lập kế hoạch — Bé Mầm Bếp sẽ đối chiếu tủ lạnh và tính sẵn phần cần mua thêm.',
+                'Choose your days, meals, and servings in plan setup — Takolio will match your fridge stock and calculate what you still need to buy.',
+              )}
               primaryAction={
                 <TkvButton onClick={() => navigate('/planner/new')} iconRight="arrow-right">
-                  + Tạo thực đơn mới
+                  {l('+ Tạo thực đơn mới', '+ Create new meal plan')}
                 </TkvButton>
               }
               secondaryAction={
                 <TkvButton variant="secondary" iconLeft="shopping" onClick={() => navigate('/shopping')}>
-                  Danh sách mua sắm
+                  {l('Danh sách mua sắm', 'Shopping list')}
                 </TkvButton>
               }
             />
@@ -306,7 +339,9 @@ export const C23PlannerPilot: React.FC = () => {
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm font-semibold text-[var(--tkv-ink-secondary)] mt-0.5 tabular-nums">
-                      {activeDayMeals.length} món · Khoảng 30–35 phút
+                      {activeDayMeals.length}{' '}
+                      {l('món', activeDayMeals.length === 1 ? 'dish' : 'dishes')} ·{' '}
+                      {l('Khoảng 30–35 phút', 'About 30–35 min')}
                     </p>
                   </div>
                   <Link
@@ -316,7 +351,7 @@ export const C23PlannerPilot: React.FC = () => {
                         : `/planner/new`
                     }
                     className="tkv-focusable w-11 h-11 shrink-0 rounded-full bg-[var(--tkv-bg)] flex items-center justify-center text-[var(--tkv-ink-secondary)] hover:text-[var(--tkv-primary)]"
-                    aria-label={`Chi tiết ${activeDayLabel}`}
+                    aria-label={l(`Chi tiết ${activeDayLabel}`, `Details for ${activeDayLabel}`)}
                   >
                     <VNextIcon name="chevron-right" size={18} />
                   </Link>
@@ -339,16 +374,26 @@ export const C23PlannerPilot: React.FC = () => {
                       const rawSlug = resolvePlannedMealSlug(slot);
                       const uniqueSlug = seenSlugs.has(rawSlug) ? undefined : rawSlug;
                       seenSlugs.add(rawSlug);
+                      const localizedTitle = localizeRecipeTitle(
+                        {
+                          title: slot.title,
+                          slug: rawSlug,
+                          cuisine: slot.cuisine ?? undefined,
+                          cookTimeMinutes: slot.cookTimeMinutes ?? undefined,
+                          servings: slot.servings,
+                        },
+                        appLocale,
+                      );
                       return (
                         <Link
                           key={slot.slotId}
                           to={`/planner/${plan.id}/meal/${encodeURIComponent(slot.slotId)}`}
-                          aria-label={slot.title}
+                          aria-label={localizedTitle}
                           className="tkv-focusable group rounded-2xl overflow-hidden border border-[var(--tkv-border)] bg-[var(--tkv-bg)]"
                         >
                           <VerifiedDishImage
                             slug={uniqueSlug}
-                            title={uniqueSlug ? slot.title : `${slot.mealType}-${slotIdx}`}
+                            title={uniqueSlug ? localizedTitle : `${slot.mealType}-${slotIdx}`}
                             fallbackSeed={slotIdx}
                             aspectClass="aspect-square sm:aspect-[16/10] lg:aspect-[21/10]"
                             compact
@@ -367,7 +412,9 @@ export const C23PlannerPilot: React.FC = () => {
                   }
                   className="tkv-focusable w-full min-h-[48px] px-5 py-2.5 rounded-full bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white font-extrabold text-sm inline-flex items-center justify-between shadow-[var(--tkv-shadow-cta)] transition-colors"
                 >
-                  <span className="mx-auto pl-4">Xem chi tiết thực đơn</span>
+                  <span className="mx-auto pl-4">
+                    {l('Xem chi tiết thực đơn', 'View meal plan details')}
+                  </span>
                   <VNextIcon name="chevron-right" size={16} className="shrink-0" />
                 </Link>
               </TkvSurface>
@@ -384,7 +431,7 @@ export const C23PlannerPilot: React.FC = () => {
                     <VNextIcon name="plus" size={18} />
                   </span>
                   <span className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)] min-w-0">
-                    Tạo thực đơn mới
+                    {l('Tạo thực đơn mới', 'Create new meal plan')}
                   </span>
                 </div>
                 <VNextIcon name="chevron-right" size={16} className="text-[var(--tkv-ink-muted)] shrink-0" />
@@ -400,12 +447,18 @@ export const C23PlannerPilot: React.FC = () => {
                   </span>
                   <div className="min-w-0">
                     <p className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink)]">
-                      Danh sách mua sắm
+                      {l('Danh sách mua sắm', 'Shopping list')}
                     </p>
                     <p className="text-xs font-medium text-[var(--tkv-ink-secondary)] tabular-nums">
                       {missingShoppingCount > 0
-                        ? `${missingShoppingCount} nguyên liệu cần mua`
-                        : 'Tổng hợp nguyên liệu cần mua theo tuần'}
+                        ? l(
+                            `${missingShoppingCount} nguyên liệu cần mua`,
+                            `${missingShoppingCount} ${missingShoppingCount === 1 ? 'ingredient' : 'ingredients'} to buy`,
+                          )
+                        : l(
+                            'Tổng hợp nguyên liệu cần mua theo tuần',
+                            'Weekly ingredients needed for shopping',
+                          )}
                     </p>
                   </div>
                 </div>
@@ -416,7 +469,10 @@ export const C23PlannerPilot: React.FC = () => {
             {/* Full Multi-Day Schedule Grid */}
             <section aria-labelledby="c23-schedule-heading" className="space-y-3.5">
               <h2 id="c23-schedule-heading" className="tkv-heading text-lg font-extrabold text-[var(--tkv-ink)]">
-                Lịch chi tiết cả tuần ({plan.result.meals.length} bữa)
+                {l(
+                  `Lịch chi tiết cả tuần (${plan.result.meals.length} bữa)`,
+                  `Full weekly schedule (${plan.result.meals.length} ${plan.result.meals.length === 1 ? 'meal' : 'meals'})`,
+                )}
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -427,10 +483,10 @@ export const C23PlannerPilot: React.FC = () => {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between gap-2 border-b border-[var(--tkv-border)] pb-2">
                           <h3 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink)] capitalize min-w-0">
-                            {formatDayHeadingVi(dateKey)}
+                            {formatDayHeading(dateKey, appLocale)}
                           </h3>
                           <span className="text-xs font-bold text-[var(--tkv-primary)] tabular-nums shrink-0 whitespace-nowrap">
-                            {dayMeals.length} bữa
+                            {dayMeals.length} {l('bữa', dayMeals.length === 1 ? 'meal' : 'meals')}
                           </span>
                         </div>
 
@@ -440,6 +496,16 @@ export const C23PlannerPilot: React.FC = () => {
                               (r) => !r.optional && r.status !== 'satisfied',
                             ).length;
                             const slotSlug = resolvePlannedMealSlug(slot);
+                            const localizedTitle = localizeRecipeTitle(
+                              {
+                                title: slot.title,
+                                slug: slotSlug,
+                                cuisine: slot.cuisine ?? undefined,
+                                cookTimeMinutes: slot.cookTimeMinutes ?? undefined,
+                                servings: slot.servings,
+                              },
+                              appLocale,
+                            );
                             return (
                               <li key={slot.slotId}>
                                 <Link
@@ -449,17 +515,18 @@ export const C23PlannerPilot: React.FC = () => {
                                   <div className="flex items-start gap-3 min-w-0">
                                     <VerifiedDishImage
                                       slug={slotSlug}
-                                      title={slot.title}
+                                      title={localizedTitle}
                                       aspectClass="aspect-square"
                                       compact
                                       className="w-12 h-12 rounded-xl shrink-0 mt-0.5"
                                     />
                                     <div className="min-w-0 pr-1">
                                       <p className="text-xs font-semibold text-[var(--tkv-ink-muted)] tabular-nums">
-                                        {MEAL_LABELS[slot.mealType]} · {slot.servings} người
+                                        {localizeMealSlot(slot.mealType, appLocale)} · {slot.servings}{' '}
+                                        {l('người', slot.servings === 1 ? 'serving' : 'servings')}
                                       </p>
                                       <p className="text-sm font-extrabold text-[var(--tkv-ink)] leading-snug break-words mt-0.5">
-                                        {slot.title}
+                                        {localizedTitle}
                                       </p>
                                       <p className="text-xs text-[var(--tkv-ink-secondary)] mt-0.5 inline-flex items-center gap-1.5 tabular-nums">
                                         <span
@@ -472,8 +539,14 @@ export const C23PlannerPilot: React.FC = () => {
                                         />
                                         <span>
                                           {missingReqs === 0
-                                            ? 'Đủ nguyên liệu dự kiến'
-                                            : `Cần mua ${missingReqs} mục`}
+                                            ? l(
+                                                'Đủ nguyên liệu dự kiến',
+                                                'Projected ingredients available',
+                                              )
+                                            : l(
+                                                `Cần mua ${missingReqs} mục`,
+                                                `Need to buy ${missingReqs} ${missingReqs === 1 ? 'item' : 'items'}`,
+                                              )}
                                         </span>
                                       </p>
                                     </div>

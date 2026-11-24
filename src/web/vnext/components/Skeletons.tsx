@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { clsx } from 'clsx';
+import { useLocaleText } from '../../i18n/app-i18n';
 import { MascotIllustration } from './VNextMedia';
 import { VNextIcon } from './VNextIcons';
 
@@ -9,9 +10,11 @@ export const TkvShimmerBlock: React.FC<{ className?: string }> = ({ className = 
 );
 
 /** Structural skeleton matching C01HomePilot bento grid (Hero + 4 pills + recipe grid + sidebar). */
-export const HomeDashboardSkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải gợi ý hôm nay…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-5 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
+export const HomeDashboardSkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-5 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải gợi ý hôm nay…', "Loading today's suggestions…")}</span>
     <div className="flex items-center gap-2 overflow-hidden">
       {[96, 86, 84, 88].map((w, i) => (
         <div key={i} style={{ width: w }} className="h-10 rounded-full tkv-shimmer shrink-0" />
@@ -54,13 +57,16 @@ export const HomeDashboardSkeleton: React.FC<{ label?: string }> = ({ label = '�
         <TkvShimmerBlock className="h-24 w-full rounded-[22px]" />
       </div>
     </div>
-  </div>
-);
+    </div>
+  );
+};
 
 /** Structural skeleton matching C03InventoryPilot (KPI strip + filter pills + grouped lot cards). */
-export const FridgeInventorySkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải danh sách tủ lạnh…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
+export const FridgeInventorySkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải danh sách tủ lạnh…', 'Loading fridge inventory…')}</span>
     <div className="grid grid-cols-3 gap-2.5">
       {[0, 1, 2].map((i) => (
         <div key={i} className="rounded-[20px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-3.5 flex flex-col gap-2">
@@ -83,13 +89,16 @@ export const FridgeInventorySkeleton: React.FC<{ label?: string }> = ({ label = 
         </div>
       ))}
     </div>
-  </div>
-);
+    </div>
+  );
+};
 
 /** Structural skeleton matching C18RecipeDetailPilot. */
-export const RecipeDetailSkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải công thức món ăn…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-5 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
+export const RecipeDetailSkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-5 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải công thức món ăn…', 'Loading recipe…')}</span>
     <TkvShimmerBlock className="aspect-[16/9] sm:aspect-[21/9] w-full rounded-[24px]" />
     <div className="flex flex-col gap-2.5">
       <TkvShimmerBlock className="h-8 w-2/3 rounded-xl" />
@@ -109,13 +118,16 @@ export const RecipeDetailSkeleton: React.FC<{ label?: string }> = ({ label = 'Đ
         ))}
       </div>
     </div>
-  </div>
-);
+    </div>
+  );
+};
 
 /** Structural skeleton matching C23PlannerPilot 7-day planner. */
-export const WeeklyPlannerSkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải thực đơn 7 ngày…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
+export const WeeklyPlannerSkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải thực đơn 7 ngày…', 'Loading 7-day meal plan…')}</span>
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {[0, 1, 2].map((i) => (
         <div key={i} className="rounded-[22px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-4 flex flex-col gap-3">
@@ -127,13 +139,16 @@ export const WeeklyPlannerSkeleton: React.FC<{ label?: string }> = ({ label = '�
       ))}
     </div>
     <TkvShimmerBlock className="h-28 w-full rounded-[22px]" />
-  </div>
-);
+    </div>
+  );
+};
 
 /** Structural skeleton matching ShoppingPage category groups. */
-export const ShoppingListSkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải danh sách đi chợ…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
+export const ShoppingListSkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải danh sách đi chợ…', 'Loading shopping list…')}</span>
     {[0, 1].map((group) => (
       <div key={group} className="rounded-[22px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -152,32 +167,30 @@ export const ShoppingListSkeleton: React.FC<{ label?: string }> = ({ label = 'Đ
         ))}
       </div>
     ))}
-  </div>
-);
+    </div>
+  );
+};
 
 /** Structural skeleton matching Settings / Preferences / Form screens. */
-export const SettingsFormSkeleton: React.FC<{ label?: string }> = ({ label = 'Đang tải cài đặt…' }) => (
-  <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
-    <span className="sr-only">{label}</span>
-    {[0, 1].map((section) => (
-      <div key={section} className="rounded-[22px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 flex flex-col gap-3.5">
-        <TkvShimmerBlock className="h-5 w-44 rounded-lg" />
-        <TkvShimmerBlock className="h-4 w-2/3 rounded-md" />
-        <div className="flex flex-wrap gap-2 pt-1">
-          {[88, 102, 76, 94, 82].map((w, idx) => (
-            <div key={idx} style={{ width: w }} className="h-10 rounded-full tkv-shimmer" />
-          ))}
+export const SettingsFormSkeleton: React.FC<{ label?: string }> = ({ label }) => {
+  const { l } = useLocaleText();
+  return (
+    <div role="status" aria-live="polite" className="flex flex-col gap-4 tkv-enter-fade-up">
+      <span className="sr-only">{label ?? l('Đang tải cài đặt…', 'Loading settings…')}</span>
+      {[0, 1].map((section) => (
+        <div key={section} className="rounded-[22px] border border-[var(--tkv-border)] bg-[var(--tkv-surface)] p-5 flex flex-col gap-3.5">
+          <TkvShimmerBlock className="h-5 w-44 rounded-lg" />
+          <TkvShimmerBlock className="h-4 w-2/3 rounded-md" />
+          <div className="flex flex-wrap gap-2 pt-1">
+            {[88, 102, 76, 94, 82].map((w, idx) => (
+              <div key={idx} style={{ width: w }} className="h-10 rounded-full tkv-shimmer" />
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-);
-
-const AI_SCAN_STAGES = [
-  'Đang đọc ảnh và nhận diện từng nguyên liệu…',
-  'Đang chuẩn hóa định lượng & nhóm bảo quản…',
-  'Đang chuẩn bị bảng kiểm duyệt an toàn trước khi lưu…',
-] as const;
+      ))}
+    </div>
+  );
+};
 
 /**
  * Multi-stage animated AI Scan pending choreography:
@@ -188,14 +201,20 @@ export const AiScanPendingStage: React.FC<{
   statusText?: string;
   modeLabel?: string;
 }> = ({ previewUrl, statusText, modeLabel = 'AI Vision Takolio' }) => {
+  const { l } = useLocaleText();
+  const scanStages = [
+    l('Đang đọc ảnh và nhận diện từng nguyên liệu…', 'Reading photo and identifying each ingredient…'),
+    l('Đang chuẩn hóa định lượng & nhóm bảo quản…', 'Normalizing quantities & storage zones…'),
+    l('Đang chuẩn bị bảng kiểm duyệt an toàn trước khi lưu…', 'Preparing safety review list before saving…'),
+  ] as const;
   const [stageIdx, setStageIdx] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setStageIdx((prev) => (prev + 1) % AI_SCAN_STAGES.length);
+      setStageIdx((prev) => (prev + 1) % scanStages.length);
     }, 2200);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [scanStages.length]);
 
   return (
     <div
@@ -206,7 +225,7 @@ export const AiScanPendingStage: React.FC<{
       <div className="flex flex-col sm:flex-row items-center gap-5">
         <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-2xl overflow-hidden border-2 border-[var(--tkv-primary)]/40 bg-[var(--tkv-surface)] shrink-0 shadow-[var(--tkv-shadow-card)] flex items-center justify-center">
           {previewUrl ? (
-            <img src={previewUrl} alt="Ảnh đang được AI quét" className="w-full h-full object-cover" />
+            <img src={previewUrl} alt={l('Ảnh đang được AI quét', 'Photo being scanned by AI')} className="w-full h-full object-cover" />
           ) : (
             <MascotIllustration pose="scanning" size={120} motion="scan" decorative />
           )}
@@ -223,19 +242,19 @@ export const AiScanPendingStage: React.FC<{
             <span>{modeLabel}</span>
           </span>
           <h3 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--tkv-ink)]">
-            Bé Mầm Bếp đang phân tích ảnh của bạn
+            {l('Bé Mầm Bếp đang phân tích ảnh của bạn', 'Sprout Chef is analyzing your photo')}
           </h3>
           <p className="text-sm font-semibold text-[var(--tkv-ink-secondary)]">
-            {statusText || AI_SCAN_STAGES[stageIdx]}
+            {statusText || scanStages[stageIdx]}
           </p>
 
           <ol className="flex flex-col gap-2 pt-1 text-left">
-            {AI_SCAN_STAGES.map((label, idx) => {
+            {scanStages.map((label, idx) => {
               const done = idx < stageIdx;
               const current = idx === stageIdx;
               return (
                 <li
-                  key={label}
+                  key={idx}
                   className={clsx(
                     'flex items-center gap-2.5 text-xs font-semibold transition-opacity duration-300',
                     done && 'text-[var(--tkv-primary)]',
@@ -265,22 +284,26 @@ export const AiScanPendingStage: React.FC<{
   );
 };
 
-const PLANNER_DAYS = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'] as const;
-
 /**
  * Multi-stage animated weekly meal planner generation indicator (7-day wave + Bé Mầm Bếp).
  */
-export const PlannerGeneratingStage: React.FC<{ subtitle?: string }> = ({
-  subtitle = 'Đang đối chiếu tủ lạnh, cân bằng dinh dưỡng 7 ngày và gom danh sách đi chợ…',
-}) => {
+export const PlannerGeneratingStage: React.FC<{ subtitle?: string }> = ({ subtitle }) => {
+  const { l, copy } = useLocaleText();
+  const plannerDays = copy.planner.weekdays;
+  const resolvedSubtitle =
+    subtitle ??
+    l(
+      'Đang đối chiếu tủ lạnh, cân bằng dinh dưỡng 7 ngày và gom danh sách đi chợ…',
+      'Checking your fridge, balancing 7 days of meals, and grouping your shopping list…',
+    );
   const [litDay, setLitDay] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setLitDay((prev) => (prev + 1) % PLANNER_DAYS.length);
+      setLitDay((prev) => (prev + 1) % plannerDays.length);
     }, 420);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [plannerDays.length]);
 
   return (
     <div
@@ -291,12 +314,12 @@ export const PlannerGeneratingStage: React.FC<{ subtitle?: string }> = ({
       <MascotIllustration pose="cooking" size={104} motion="idle" decorative />
       <div className="flex flex-col gap-1.5 max-w-md">
         <h3 className="tkv-heading text-lg sm:text-xl font-extrabold text-[var(--tkv-ink)]">
-          Bé Mầm Bếp đang sắp xếp thực đơn tuần
+          {l('Bé Mầm Bếp đang sắp xếp thực đơn tuần', 'Sprout Chef is building your weekly meal plan')}
         </h3>
-        <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">{subtitle}</p>
+        <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">{resolvedSubtitle}</p>
       </div>
       <div className="flex items-center justify-center gap-2 flex-wrap pt-1" aria-hidden="true">
-        {PLANNER_DAYS.map((d, idx) => {
+        {plannerDays.map((d, idx) => {
           const active = idx <= litDay;
           return (
             <span

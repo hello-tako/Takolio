@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { ShoppingContributionSchema, SharePlanShoppingSchema, SharePlanShoppingDtoSchema, ShoppingUnknownDemandSchema, ReviewShoppingDemandSchema, ReviewShoppingDemandDtoSchema } from '../../../packages/domain/src/shopping-plan-api';
 import { privateCacheKey, currentPrivateScope } from '../lib/private-session';
 import { getPendingOps, type PendingOp } from '../lib/sync';
+import { lSync } from '../i18n/app-i18n';
 import {
   ApiError,
   fetchJson,
@@ -129,7 +130,10 @@ function enqueue(
   if (op.path !== path || op.method !== method || op.body !== body ||
       op.userId !== scope.userId || op.householdId !== scope.householdId) {
     throw new Error(
-      'Không thể lưu thay đổi để đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt và thử lại.',
+      lSync(
+        'Không thể lưu thay đổi để đồng bộ. Hãy kiểm tra bộ nhớ trình duyệt và thử lại.',
+        'Could not save changes for sync. Please check your browser storage and try again.',
+      ),
     );
   }
   return op;
@@ -184,7 +188,10 @@ export const shoppingApi = {
     let result: ShoppingItem;
     try {
       if (hasPendingItem(requestItem.id))
-        throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
+        throw new ApiError(
+          'offline',
+          lSync('Thay đổi trước đang chờ đồng bộ.', 'A previous change is waiting to sync.'),
+        );
       const res = await fetchJson<unknown>(path, { method: 'POST', body });
       assertCurrent();
       result = z.object({ item: itemSchema }).parse(res).item;
@@ -192,7 +199,13 @@ export const shoppingApi = {
     } catch (error) {
       assertCurrent();
       if (!isOffline(error)) throw error;
-      receipt = enqueue(path, 'POST', body, `Thêm ${requestItem.name}`, `shopping:${requestItem.id}`);
+      receipt = enqueue(
+        path,
+        'POST',
+        body,
+        lSync(`Thêm ${requestItem.name}`, `Add ${requestItem.name}`),
+        `shopping:${requestItem.id}`,
+      );
       result = itemSchema.parse({ ...requestItem, isChecked: false, pendingSync: true });
     }
     assertCurrent();
@@ -219,7 +232,14 @@ export const shoppingApi = {
     const assertCurrent = guardPrivateSession();
     const body = ReviewShoppingDemandSchema.parse(input);
     if (!/^[A-Za-z0-9_-]{8,100}$/.test(requestKey)) throw new Error('Invalid shopping review key');
-    if (navigator.onLine === false) throw new ApiError('offline', 'Cần kết nối mạng để xác nhận lượng mua.');
+    if (navigator.onLine === false)
+      throw new ApiError(
+        'offline',
+        lSync(
+          'Cần kết nối mạng để xác nhận lượng mua.',
+          'An internet connection is required to confirm shopping quantities.',
+        ),
+      );
     const pending = ownedOps();
     // Earlier queued purchase edits must finish before a snapshot review can supersede them.
     if (pending.some(op => op.path.startsWith('/shopping-list/'))) {
@@ -245,12 +265,21 @@ export const shoppingApi = {
     const body = JSON.stringify(change);
     let receipt: PendingOp | undefined;
     try {
-      if (hasPendingItem(id)) throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
+      if (hasPendingItem(id))
+        throw new ApiError(
+          'offline',
+          lSync('Thay đổi trước đang chờ đồng bộ.', 'A previous change is waiting to sync.'),
+        );
       await fetchJson(path, { method: 'PATCH', body });
     } catch (error) {
       assertCurrent();
       if (!isOffline(error)) throw error;
-      receipt = enqueue(path, 'PATCH', body, 'Cập nhật danh sách đi chợ');
+      receipt = enqueue(
+        path,
+        'PATCH',
+        body,
+        lSync('Cập nhật danh sách đi chợ', 'Update shopping list'),
+      );
     }
     assertCurrent();
     try {
@@ -275,12 +304,21 @@ export const shoppingApi = {
     const cacheKey = privateCacheKey('shopping_list', householdId);
     let receipt: PendingOp | undefined;
     try {
-      if (hasPendingItem(id)) throw new ApiError('offline', 'Thay đổi trước đang chờ đồng bộ.');
+      if (hasPendingItem(id))
+        throw new ApiError(
+          'offline',
+          lSync('Thay đổi trước đang chờ đồng bộ.', 'A previous change is waiting to sync.'),
+        );
       await fetchJson(path, { method: 'DELETE' });
     } catch (error) {
       assertCurrent();
       if (!isOffline(error)) throw error;
-      receipt = enqueue(path, 'DELETE', undefined, 'Xóa khỏi danh sách đi chợ');
+      receipt = enqueue(
+        path,
+        'DELETE',
+        undefined,
+        lSync('Xóa khỏi danh sách đi chợ', 'Remove from shopping list'),
+      );
     }
     assertCurrent();
     try {

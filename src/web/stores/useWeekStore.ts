@@ -6,6 +6,7 @@ import { capturePrivateSession, onPrivateSessionReset } from '../lib/private-ses
 import { queryClient } from '../lib/query-client';
 import { queryKeys } from '../lib/queryKeys';
 import { invalidateWeekDependents } from '../lib/query-invalidation';
+import { lSync } from '../i18n/app-i18n';
 
 const shoppingEdits = new Map<string, symbol>();
 
@@ -84,7 +85,13 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
         set({ isLoading: false });
         return null;
       }
-      set({ error: 'Không thể tải thực đơn tuần. Vui lòng thử lại.', isLoading: false });
+      set({
+        error: lSync(
+          'Không thể tải thực đơn tuần. Vui lòng thử lại.',
+          'Could not load the weekly meal plan. Please try again.',
+        ),
+        isLoading: false,
+      });
       return null;
     }
   },
@@ -112,7 +119,13 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
         set({ isLoading: false });
         return null;
       }
-      set({ error: 'Không thể tải thực đơn này. Vui lòng thử lại.', isLoading: false });
+      set({
+        error: lSync(
+          'Không thể tải thực đơn này. Vui lòng thử lại.',
+          'Could not load this meal plan. Please try again.',
+        ),
+        isLoading: false,
+      });
       return null;
     }
   },
@@ -148,7 +161,10 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       return plan;
     } catch {
       if (!isCurrent()) throw new Error('Session changed');
-      const error = 'Không thể tạo thực đơn tuần. Vui lòng thử lại.';
+      const error = lSync(
+        'Không thể tạo thực đơn tuần. Vui lòng thử lại.',
+        'Could not create the weekly meal plan. Please try again.',
+      );
       set({ error, isGenerating: false });
       throw new Error(error);
     }
@@ -169,7 +185,13 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       });
     } catch {
       if (!isCurrent() || get().currentPlan?.id !== currentPlan.id || get().swapSlotId !== slotId) return;
-      set({ error: 'Không thể tải món thay thế. Vui lòng thử lại.', isLoadingAlternatives: false });
+      set({
+        error: lSync(
+          'Không thể tải món thay thế. Vui lòng thử lại.',
+          'Could not load replacement dishes. Please try again.',
+        ),
+        isLoadingAlternatives: false,
+      });
     }
   },
 
@@ -197,7 +219,13 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       void invalidateWeekDependents();
     } catch {
       if (!isCurrent() || get().currentPlan?.id !== currentPlan.id) return;
-      set({ error: 'Không thể đổi món. Vui lòng thử lại.', isLoading: false });
+      set({
+        error: lSync(
+          'Không thể đổi món. Vui lòng thử lại.',
+          'Could not swap this meal. Please try again.',
+        ),
+        isLoading: false,
+      });
     }
   },
 
@@ -219,7 +247,12 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       void invalidateWeekDependents();
     } catch {
       if (!isCurrent() || get().currentPlan?.id !== currentPlan.id) return;
-      set({ error: 'Không thể cập nhật bữa ăn. Vui lòng thử lại.' });
+      set({
+        error: lSync(
+          'Không thể cập nhật bữa ăn. Vui lòng thử lại.',
+          'Could not update this meal. Please try again.',
+        ),
+      });
     }
   },
 
@@ -259,7 +292,10 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       if (get().currentPlan?.id === currentPlan.id) {
         set((state) => ({
           currentPlan: state.currentPlan ? rollback(state.currentPlan) : null,
-          error: 'Không thể cập nhật danh sách đi chợ. Vui lòng thử lại.',
+          error: lSync(
+            'Không thể cập nhật danh sách đi chợ. Vui lòng thử lại.',
+            'Could not update the shopping list. Please try again.',
+          ),
         }));
       }
     }
@@ -281,7 +317,10 @@ export const useWeekStore = create<WeekStoreState>((set, get) => ({
       return { success: true, count: res.importedItemsCount ?? checkedItems.length, ...(res.pendingSync !== undefined ? { pendingSync: res.pendingSync } : {}) };
     } catch {
       if (!isCurrent()) return { success: false, count: 0 };
-      const error = 'Không thể nhập nguyên liệu vào tủ lạnh. Vui lòng thử lại.';
+      const error = lSync(
+        'Không thể nhập nguyên liệu vào tủ lạnh. Vui lòng thử lại.',
+        'Could not import ingredients into your fridge. Please try again.',
+      );
       if (get().currentPlan?.id === currentPlan.id) set({ error });
       throw new Error(error);
     }

@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+import { LOCALE_CATALOG, type SupportedLocale } from '../../../shared/locales';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { lSync } from '../../i18n/app-i18n';
 
 export const TAKOLIO_MARKETING_ORIGIN = 'https://takolio.com';
 export const TAKOLIO_APP_ORIGIN = 'https://takolio.app';
@@ -97,7 +100,11 @@ export function buildBreadcrumbJsonLd(
   };
 }
 
-export function buildPlatformWebAppJsonLd(): JsonLdNode[] {
+export function buildPlatformWebAppJsonLd(
+  locale: SupportedLocale = getActiveAppLocale(),
+): JsonLdNode[] {
+  const isVi = locale === 'vi';
+  const inLanguage = isVi ? 'vi-VN' : (LOCALE_CATALOG[locale]?.bcp47 ?? 'en');
   return [
     {
       '@type': 'Organization',
@@ -116,8 +123,12 @@ export function buildPlatformWebAppJsonLd(): JsonLdNode[] {
       '@type': 'WebSite',
       '@id': `${TAKOLIO_MARKETING_ORIGIN}/#website`,
       url: TAKOLIO_MARKETING_ORIGIN,
-      name: 'Takolio — Bữa ngon, nhẹ đầu. | Trợ lý bếp gia đình thông minh với AI',
-      inLanguage: 'vi-VN',
+      name: lSync(
+        'Takolio — Bữa ngon, nhẹ đầu. | Trợ lý bếp gia đình thông minh với AI',
+        'Takolio — Great meals, zero stress. | Smart AI Family Kitchen Assistant',
+        locale,
+      ),
+      inLanguage,
       publisher: { '@id': `${TAKOLIO_MARKETING_ORIGIN}/#organization` },
       potentialAction: {
         '@type': 'SearchAction',
@@ -136,23 +147,30 @@ export function buildPlatformWebAppJsonLd(): JsonLdNode[] {
       installUrl: TAKOLIO_APP_ORIGIN,
       applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web, iOS, Android',
-      inLanguage: 'vi-VN',
-      description:
+      inLanguage,
+      description: lSync(
         'Quản lý thực phẩm tủ lạnh theo lô, nhận diện nguyên liệu AI có kiểm duyệt, gợi ý món Việt khớp định lượng, lên thực đơn tuần và đi chợ thông minh.',
+        'Track fridge inventory by lot, scan ingredients with reviewable AI, discover fridge-matched recipes, build 7-day meal plans, and shop smarter.',
+        locale,
+      ),
       offers: {
         '@type': 'Offer',
         price: '0',
-        priceCurrency: 'VND',
+        priceCurrency: isVi ? 'VND' : 'USD',
         availability: 'https://schema.org/InStock',
       },
     },
   ];
 }
 
-export function buildFaqJsonLd(items: ReadonlyArray<{ q: string; a: string }>): JsonLdNode {
+export function buildFaqJsonLd(
+  items: ReadonlyArray<{ q: string; a: string }>,
+  locale: SupportedLocale = getActiveAppLocale(),
+): JsonLdNode {
+  const inLanguage = locale === 'vi' ? 'vi-VN' : (LOCALE_CATALOG[locale]?.bcp47 ?? 'en');
   return {
     '@type': 'FAQPage',
-    inLanguage: 'vi-VN',
+    inLanguage,
     mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: item.q,
@@ -166,11 +184,12 @@ export function buildFaqJsonLd(items: ReadonlyArray<{ q: string; a: string }>): 
 
 export function buildPricingJsonLd(
   plans: ReadonlyArray<{ plan: 'monthly' | 'annual'; amountVnd: number }> | null,
+  locale: SupportedLocale = getActiveAppLocale(),
 ): JsonLdNode {
   const offers: JsonLdNode[] = [
     {
       '@type': 'Offer',
-      name: 'Takolio Miễn phí',
+      name: lSync('Takolio Miễn phí', 'Takolio Free', locale),
       price: 0,
       priceCurrency: 'VND',
       url: `${TAKOLIO_APP_ORIGIN}/auth?mode=register`,
@@ -181,7 +200,10 @@ export function buildPricingJsonLd(
     for (const p of plans) {
       offers.push({
         '@type': 'Offer',
-        name: p.plan === 'annual' ? 'Takolio Pro theo năm' : 'Takolio Pro theo tháng',
+        name:
+          p.plan === 'annual'
+            ? lSync('Takolio Pro theo năm', 'Takolio Pro Annual', locale)
+            : lSync('Takolio Pro theo tháng', 'Takolio Pro Monthly', locale),
         price: p.amountVnd,
         priceCurrency: 'VND',
         url: `${TAKOLIO_APP_ORIGIN}/plus`,
@@ -207,12 +229,18 @@ export function buildStoriesBlogJsonLd(
     coverSrc?: string;
     publishedAt?: string;
   }>,
+  locale: SupportedLocale = getActiveAppLocale(),
 ): JsonLdNode {
+  const inLanguage = locale === 'vi' ? 'vi-VN' : (LOCALE_CATALOG[locale]?.bcp47 ?? 'en');
   return {
     '@type': 'Blog',
-    name: 'Takolio Stories — Cẩm nang căn bếp gia đình',
+    name: lSync(
+      'Takolio Stories — Cẩm nang căn bếp gia đình',
+      'Takolio Stories — Family Kitchen Guide',
+      locale,
+    ),
     url: `${TAKOLIO_MARKETING_ORIGIN}/stories`,
-    inLanguage: 'vi-VN',
+    inLanguage,
     publisher: {
       '@type': 'Organization',
       name: 'Takolio',
@@ -224,7 +252,7 @@ export function buildStoriesBlogJsonLd(
       description: st.excerpt,
       url: `${TAKOLIO_MARKETING_ORIGIN}/stories#${st.id}`,
       datePublished: st.publishedAt ?? '2026-11-01',
-      inLanguage: 'vi-VN',
+      inLanguage,
       ...(st.coverSrc ? { image: `${TAKOLIO_MARKETING_ORIGIN}${st.coverSrc}` } : {}),
       author: {
         '@type': 'Organization',
@@ -281,11 +309,12 @@ export function buildRecipeJsonLd(recipe: {
         : `${TAKOLIO_MARKETING_ORIGIN}${recipe.imageUrl}`
     : `${TAKOLIO_MARKETING_ORIGIN}/takolio/brand-v2/social/og-1200x630.png`;
 
-  const lang = recipe.inLanguage ?? (recipe.locale === 'en' ? 'en' : 'vi-VN');
+  const activeLocale = recipe.locale ?? getActiveAppLocale();
+  const lang = recipe.inLanguage ?? (activeLocale === 'vi' ? 'vi-VN' : activeLocale);
   const cuisineKey = (recipe.cuisine ?? 'vietnamese').toLowerCase();
   const recipeCuisine = CUISINE_SCHEMA_LABELS[cuisineKey] ?? 'International';
-  const yieldSuffix = lang.startsWith('vi') ? 'khẩu phần' : 'servings';
-  const defaultCategory = lang.startsWith('vi') ? 'Món gia đình' : 'Home Cooking';
+  const yieldSuffix = lSync('khẩu phần', 'servings', lang.startsWith('vi') ? 'vi' : 'en');
+  const defaultCategory = lSync('Món gia đình', 'Home Cooking', lang.startsWith('vi') ? 'vi' : 'en');
 
   return {
     '@type': 'Recipe',
@@ -356,12 +385,14 @@ export function useVNextSeo({
 }: VNextSeoOptions) {
   useEffect(() => {
     if (typeof document === 'undefined') return;
+    const activeLocale = getActiveAppLocale();
+    const localeMeta = LOCALE_CATALOG[activeLocale] ?? LOCALE_CATALOG.vi;
     const fullTitle = title.includes('Takolio') ? title : `${title} · Takolio`;
     document.title = fullTitle;
     if (lang) {
       document.documentElement.lang = lang;
     } else if (!document.documentElement.lang) {
-      document.documentElement.lang = 'vi';
+      document.documentElement.lang = localeMeta.bcp47;
     }
 
     const inferredSurface: 'marketing' | 'app' =
@@ -398,7 +429,7 @@ export function useVNextSeo({
 
     // OpenGraph
     upsertMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: 'Takolio' });
-    upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: ogLocale ?? 'vi_VN' });
+    upsertMeta('meta[property="og:locale"]', { property: 'og:locale', content: ogLocale ?? localeMeta.ogLocale });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: fullTitle });
     upsertMeta('meta[property="og:description"]', {
       property: 'og:description',
@@ -431,7 +462,7 @@ export function useVNextSeo({
     } else {
       upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalHref });
       const alternates = hreflangs ?? [
-        { hreflang: 'vi-VN', href: canonicalHref },
+        { hreflang: localeMeta.hreflang, href: canonicalHref },
         { hreflang: 'x-default', href: canonicalHref },
       ];
       for (const alt of alternates) {

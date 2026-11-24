@@ -8,6 +8,7 @@ import { SystemStatusPage } from './components/common/SystemStatusPage';
 import { useAuthStore } from './stores/useAuthStore';
 import { AppLayout } from './components/layout/AppLayout';
 import { VerifyRouteLifecycle } from './features/auth/VerifyRouteLifecycle';
+import { lSync } from './i18n/app-i18n';
 import {
   detectRuntimeDomainRole,
   resolveSatelliteSurfaceHref,
@@ -160,13 +161,13 @@ class AppErrorBoundary extends React.Component<{ children: React.ReactNode }, { 
   render() {
     if (this.state.failed)
       return (
-        <SystemStatusPage title="Không thể mở trang này">
-          <p role="alert">Vui lòng tải lại ứng dụng để thử lại.</p>
+        <SystemStatusPage title={lSync('Không thể mở trang này', 'Unable to open this page')}>
+          <p role="alert">{lSync('Vui lòng tải lại ứng dụng để thử lại.', 'Please reload the app and try again.')}</p>
           <button
             className="rounded-xl bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] px-4 py-3 font-semibold text-white transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[var(--tkv-primary,#196149)]"
             onClick={() => window.location.reload()}
           >
-            Tải lại
+            {lSync('Tải lại', 'Reload')}
           </button>
         </SystemStatusPage>
       );

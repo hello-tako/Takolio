@@ -12,13 +12,14 @@ import { ApiError } from '../services/http';
 import type { CreatedPaymentIntent, PlusPlan, PlusPrice } from '../../shared/payment';
 import { Check, Sparkles, ArrowRight, LogIn, ShieldCheck } from 'lucide-react';
 import { clsx } from 'clsx';
+import { lSync, useLocaleText } from '../i18n/app-i18n';
 
-function planName(plan: PlusPlan): string {
-  return plan === 'annual' ? 'Gói 1 Năm' : 'Gói 1 Tháng';
+function planName(plan: PlusPlan, l: (vi: string, en: string) => string): string {
+  return plan === 'annual' ? l('Gói 1 Năm', 'Annual Plan') : l('Gói 1 Tháng', 'Monthly Plan');
 }
 
-function formatPrice(price: PlusPrice): string {
-  return `${price.amountVnd.toLocaleString('vi-VN')} ${price.currency}`;
+function formatPrice(price: PlusPrice, isVi: boolean): string {
+  return `${price.amountVnd.toLocaleString(isVi ? 'vi-VN' : 'en-US')} ${price.currency}`;
 }
 
 export interface PlusPaywallPageProps {
@@ -30,6 +31,7 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
   embedded = false,
   initialPlan = 'annual',
 }) => {
+  const { l, isVi } = useLocaleText();
   const navigate = useNavigate();
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
@@ -133,7 +135,13 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
         setSelectedPlan(nextPlans[0]?.plan ?? 'annual');
       }
     }).catch(() => {
-      if (active && isCurrent()) setErrorMsg('Không thể tải bảng giá từ máy chủ. Vui lòng thử lại.');
+      if (active && isCurrent())
+        setErrorMsg(
+          lSync(
+            'Không thể tải bảng giá từ máy chủ. Vui lòng thử lại.',
+            'Could not load pricing from the server. Please try again.',
+          ),
+        );
     });
     return () => {
       active = false;
@@ -167,7 +175,12 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
       if (requestGeneration !== requestGenerationRef.current || !active || !mountedRef.current || !isCurrent() || useAuthStore.getState().userId !== userId || useAuthStore.getState().householdId !== requestedHouseholdId || selectedPlanRef.current !== requestedPlan) return;
       if (result.payment.plan !== requestedPlan) throw new Error('PAYMENT_PLAN_MISMATCH');
       if (result.payment.amountVnd !== selectedPrice.amountVnd || result.payment.currency !== selectedPrice.currency) {
-        setPriceNotice('Bảng giá đã cập nhật. Kiểm tra số tiền trên lệnh và mã QR trước khi chuyển khoản.');
+        setPriceNotice(
+          l(
+            'Bảng giá đã cập nhật. Kiểm tra số tiền trên lệnh và mã QR trước khi chuyển khoản.',
+            'Pricing has been updated. Please verify the amount on the payment order and QR code before transferring.',
+          ),
+        );
         setPricesReload((value) => value + 1);
       }
       paymentOwnerRef.current = `${userId}:${requestedHouseholdId}`;
@@ -185,8 +198,14 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
           error instanceof ApiError && error.code === 'PAYMENT_RECONCILIATION_REQUIRED') setHasOpenCheckout(true);
       if (requestGeneration === requestGenerationRef.current && active && isCurrent()) setErrorMsg(
         error instanceof ApiError && error.code === 'PAYMENT_RECONCILIATION_REQUIRED'
-          ? 'Lệnh thanh toán đang chờ đối soát. Không chuyển tiền thêm hoặc tạo lệnh thay thế.'
-          : 'Không thể tạo lệnh thanh toán. Vui lòng thử lại.',
+          ? l(
+              'Lệnh thanh toán đang chờ đối soát. Không chuyển tiền thêm hoặc tạo lệnh thay thế.',
+              'A payment order is awaiting reconciliation. Do not send additional funds or create a duplicate order.',
+            )
+          : l(
+              'Không thể tạo lệnh thanh toán. Vui lòng thử lại.',
+              'Could not create payment order. Please try again.',
+            ),
       );
     } finally {
       unsubscribe();
@@ -209,7 +228,13 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
       paymentIdRef.current = result.payment.id;
       setPaymentIntent(result.payment); setIsQRModalOpen(true);
     } catch {
-      if (mountedRef.current && generation === requestGenerationRef.current && isCurrent()) setErrorMsg('Chưa mở được lệnh cũ. Không chuyển tiền thêm; kiểm tra trạng thái trước khi thử lại.');
+      if (mountedRef.current && generation === requestGenerationRef.current && isCurrent())
+        setErrorMsg(
+          l(
+            'Chưa mở được lệnh cũ. Không chuyển tiền thêm; kiểm tra trạng thái trước khi thử lại.',
+            'Could not reopen the previous order. Do not send additional funds; check its status before trying again.',
+          ),
+        );
     } finally {
       if (generation === requestGenerationRef.current) {
         creatingRef.current = false;
@@ -243,10 +268,17 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/12 ring-1 ring-white/15">
                 <ShieldCheck aria-hidden="true" className="h-6 w-6 text-takosan-yellow" />
               </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">Tài khoản bắt buộc</p>
-              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">Đăng nhập trước khi chọn gói Pro</h2>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-takosan-yellow">
+                {l('Tài khoản bắt buộc', 'Account required')}
+              </p>
+              <h2 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-white">
+                {l('Đăng nhập trước khi chọn gói Pro', 'Sign in before choosing a Pro plan')}
+              </h2>
               <p className="mt-3 text-sm leading-relaxed text-white">
-                Gói Pro được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.
+                {l(
+                  'Gói Pro được gắn với tài khoản để quyền lợi không mất khi bạn đổi thiết bị. Dữ liệu phiên khách vẫn được giữ riêng khi bạn đăng nhập.',
+                  'Your Pro plan is tied to your account so your benefits stay with you across devices. Your guest session data remains separate when you sign in.',
+                )}
               </p>
             </div>
             <div className="space-y-3 p-5">
@@ -255,16 +287,19 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
                 className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-takosan-green px-4 py-3 font-heading text-sm font-bold text-white shadow-xs transition hover:bg-takosan-green-deep active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-takosan-green focus-visible:ring-offset-2"
               >
                 <LogIn aria-hidden="true" className="h-4 w-4" />
-                Đăng nhập để tiếp tục
+                {l('Đăng nhập để tiếp tục', 'Sign in to continue')}
               </Link>
               <Link
                 to="/"
                 className="flex min-h-11 w-full items-center justify-center rounded-full border border-semantic-border bg-white px-4 py-3 text-sm font-semibold text-semantic-text-secondary transition hover:bg-semantic-background-subtle active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-semantic-border-strong focus-visible:ring-offset-2"
               >
-                Quay lại bảng điều khiển
+                {l('Quay lại bảng điều khiển', 'Back to dashboard')}
               </Link>
               <p className="text-center text-xs leading-relaxed text-semantic-text-muted">
-                Chưa có tài khoản? Bạn có thể đăng ký từ màn hình đăng nhập.
+                {l(
+                  'Chưa có tài khoản? Bạn có thể đăng ký từ màn hình đăng nhập.',
+                  'No account yet? You can register from the sign-in screen.',
+                )}
               </p>
             </div>
           </section>
@@ -277,7 +312,15 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
     <div className={clsx('plus-page', embedded && 'takolio-plus-embedded')}>
       {!embedded && <KitchenHeader backTo="/me" />}
       <div className={clsx('space-y-5', !embedded && 'kitchen-page-body mx-auto w-full max-w-[var(--content-compact)]')}>
-        {!embedded && <KitchenPageHeading title={isPlus ? 'Quản lý Takolio Pro' : 'Nâng cấp Takolio Pro'} />}
+        {!embedded && (
+          <KitchenPageHeading
+            title={
+              isPlus
+                ? l('Quản lý Takolio Pro', 'Manage Takolio Pro')
+                : l('Nâng cấp Takolio Pro', 'Upgrade to Takolio Pro')
+            }
+          />
+        )}
         {!embedded && (
           <div className="plus-hero bg-gradient-to-br from-semantic-action-primary-pressed to-semantic-action-primary-hover text-white rounded-card p-5 shadow-card flex items-center justify-between gap-3 overflow-hidden border border-semantic-action-primary/40">
             <div className="space-y-1 max-w-[200px]">
@@ -286,10 +329,20 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
                 <span className="text-[10px] font-semibold text-takosan-yellow uppercase tracking-wider">Takolio Pro</span>
               </div>
               <h2 className="font-heading font-bold text-xl leading-tight text-white">
-                {isPlus ? 'Bạn là hội viên Pro' : 'Nấu ăn thông minh hơn'}
+                {isPlus
+                  ? l('Bạn là hội viên Pro', 'You are a Pro member')
+                  : l('Nấu ăn thông minh hơn', 'Cook smarter every day')}
               </h2>
               <p className="text-xs text-white">
-                {isPlus ? 'Gói hội viên đang hoạt động với đầy đủ đặc quyền' : 'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef'}
+                {isPlus
+                  ? l(
+                      'Gói hội viên đang hoạt động với đầy đủ đặc quyền',
+                      'Your membership is active with all Pro features unlocked',
+                    )
+                  : l(
+                      'Mở khóa toàn bộ tính năng cao cấp cùng AI Chef',
+                      'Unlock all premium features with AI Chef',
+                    )}
               </p>
             </div>
             <div className="w-24 h-24 shrink-0 overflow-hidden flex items-center justify-center">
@@ -301,7 +354,10 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
         <section className="space-y-4 rounded-[24px] border border-semantic-border bg-white p-5 sm:p-6 shadow-xs">
           {accountReady && historyBlockingCheckout && (
             <p role="status" className="rounded-2xl border border-semantic-border bg-semantic-surface p-4 text-sm">
-              Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.
+              {l(
+                'Bạn còn lệnh thanh toán đang mở hoặc chờ đối soát. Kiểm tra lệnh cũ trong lịch sử trước khi tạo lệnh mới.',
+                'You have an open payment order or one awaiting reconciliation. Check your order history before creating a new one.',
+              )}
             </p>
           )}
 
@@ -317,13 +373,13 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
               </p>
               {checkoutRecoveryPending && (
                 <Button variant="outline" onClick={() => setPricesReload((value) => value + 1)}>
-                  Tải lại bảng giá
+                  {l('Tải lại bảng giá', 'Reload prices')}
                 </Button>
               )}
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="group" aria-label="Gói Takolio Pro">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="group" aria-label={l('Gói Takolio Pro', 'Takolio Pro plans')}>
             {plans.map((price) => {
               const isSelected = selectedPlan === price.plan;
               const isAnnual = price.plan === 'annual';
@@ -343,19 +399,24 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
                 >
                   <div className="flex items-center justify-between gap-2">
                     <p className="font-heading font-bold text-xs uppercase tracking-wider text-semantic-text-secondary">
-                      {planName(price.plan)}
+                      {planName(price.plan, l)}
                     </p>
                     {isAnnual && (
                       <span className="rounded-full border border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] px-2.5 py-0.5 text-[11px] font-extrabold text-[var(--tkv-warning-ink)]">
-                        Tiết kiệm 15%
+                        {l('Tiết kiệm 15%', 'Save 15%')}
                       </span>
                     )}
                   </div>
                   <p className="font-heading font-extrabold tabular-nums text-2xl text-semantic-text-primary mt-1.5">
-                    {formatPrice(price)}
+                    {formatPrice(price, isVi)}
                   </p>
                   <p className="text-xs text-semantic-text-secondary mt-1">
-                    {isAnnual ? 'Trả 1 lần · không tự động trừ tiền' : 'Linh hoạt 30 ngày · chuyển khoản VietQR'}
+                    {isAnnual
+                      ? l('Trả 1 lần · không tự động trừ tiền', 'One-time payment · no auto-renewal')
+                      : l(
+                          'Linh hoạt 30 ngày · chuyển khoản VietQR',
+                          'Flexible 30 days · VietQR bank transfer',
+                        )}
                   </p>
                 </button>
               );
@@ -365,7 +426,7 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
           <div className="space-y-2.5 pt-1">
             {recoverableCheckoutId && (
               <Button fullWidth size="lg" disabled={isCreating || !accountReady} onClick={(event) => { checkoutTriggerRef.current = event.currentTarget; void handleResumeCheckout(); }}>
-                Mở lệnh thanh toán cũ
+                {l('Mở lệnh thanh toán cũ', 'Resume previous payment order')}
               </Button>
             )}
             <Button
@@ -377,28 +438,48 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
             >
               <span>
                 {isCreating
-                  ? 'Đang tạo lệnh thanh toán…'
+                  ? l('Đang tạo lệnh thanh toán…', 'Creating payment order…')
                   : isPlus
-                    ? 'Gia hạn hội viên'
+                    ? l('Gia hạn hội viên', 'Renew membership')
                     : selectedPrice
-                      ? `Nâng cấp ngay với ${formatPrice(selectedPrice)}`
-                      : 'Đang tải bảng giá…'}
+                      ? l(
+                          `Nâng cấp ngay với ${formatPrice(selectedPrice, isVi)}`,
+                          `Upgrade now for ${formatPrice(selectedPrice, isVi)}`,
+                        )
+                      : l('Đang tải bảng giá…', 'Loading prices…')}
               </span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
             <p className="text-center text-[11px] text-semantic-text-muted">
-              Quét mã VietQR trên mọi ứng dụng ngân hàng Việt Nam · Kích hoạt tức thì · Không tự gia hạn ẩn.
+              {l(
+                'Quét mã VietQR trên mọi ứng dụng ngân hàng Việt Nam · Kích hoạt tức thì · Không tự gia hạn ẩn.',
+                'Scan VietQR with any Vietnamese banking app · Instant activation · No hidden auto-renewal.',
+              )}
             </p>
           </div>
         </section>
 
         <section className="space-y-2.5 bg-white rounded-[24px] p-5 border border-semantic-border shadow-xs">
-          <h3 className="font-heading font-bold text-sm text-semantic-text-primary mb-1">Quyền lợi Takolio Pro</h3>
+          <h3 className="font-heading font-bold text-sm text-semantic-text-primary mb-1">
+            {l('Quyền lợi Takolio Pro', 'Takolio Pro benefits')}
+          </h3>
           {[
-            'Quét ảnh tủ lạnh & hoá đơn siêu thị bằng AI không giới hạn',
-            'Lập thực đơn tuần tự động & tối ưu danh sách đi chợ thông minh',
-            '500+ công thức chuẩn hoá kèm dinh dưỡng & khẩu phần linh hoạt',
-            'Trợ lý nấu ăn giọng nói rảnh tay & đồng bộ đa thiết bị cho gia đình',
+            l(
+              'Quét ảnh tủ lạnh & hoá đơn siêu thị bằng AI không giới hạn',
+              'Unlimited AI fridge & grocery receipt scans',
+            ),
+            l(
+              'Lập thực đơn tuần tự động & tối ưu danh sách đi chợ thông minh',
+              'Automatic weekly meal planning & smart grocery lists',
+            ),
+            l(
+              '500+ công thức chuẩn hoá kèm dinh dưỡng & khẩu phần linh hoạt',
+              '500+ structured recipes with nutrition & flexible portion scaling',
+            ),
+            l(
+              'Trợ lý nấu ăn giọng nói rảnh tay & đồng bộ đa thiết bị cho gia đình',
+              'Hands-free voice cooking assistant & multi-device family sync',
+            ),
           ].map((feature) => (
             <div key={feature} className="flex items-start gap-2.5 text-xs sm:text-sm text-semantic-text-secondary font-medium py-0.5">
               <div className="mt-0.5 w-5 h-5 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] flex items-center justify-center shrink-0">

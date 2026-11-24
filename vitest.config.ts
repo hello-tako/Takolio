@@ -3,7 +3,7 @@ import viteConfig from './vite.config';
 
 export default mergeConfig(viteConfig, defineConfig({
   test: {
-    // Crypto and local Wrangler tests share the hosted runner's CPU budget.
-    maxWorkers: process.env.CI ? 1 : undefined,
+    // Use 2 workers on hosted 2-vCPU CI runners so full suites stay well below the 50m Admin CI timeout without saturating CPU.
+    maxWorkers: process.env.CI ? 2 : undefined,
   },
 }));

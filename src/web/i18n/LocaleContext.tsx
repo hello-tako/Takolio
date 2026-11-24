@@ -10,6 +10,30 @@ import {
 export const TAKOLIO_LOCALE_STORAGE_KEY = 'takolio_locale';
 export const TAKOLIO_UNIT_SYSTEM_STORAGE_KEY = 'takolio_unit_system';
 const LEGACY_PLANNER_LOCALE_KEY = 'frigo_planner_locale';
+const UI_LOCALE_STORAGE_KEY = 'takolio.ui_locale';
+
+function toTier1UiCode(locale: SupportedLocale): 'en' | 'ja' | 'vi' {
+  if (locale === 'vi' || locale === 'ja') return locale;
+  return 'en';
+}
+
+function persistLocaleEverywhere(next: SupportedLocale, notify = true): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(TAKOLIO_LOCALE_STORAGE_KEY, next);
+    window.localStorage.setItem(UI_LOCALE_STORAGE_KEY, toTier1UiCode(next));
+    window.localStorage.setItem(LEGACY_PLANNER_LOCALE_KEY, next === 'vi' ? 'vi' : 'en');
+  } catch {
+    // Ignore storage access restrictions
+  }
+  if (notify) {
+    try {
+      window.dispatchEvent(new CustomEvent('takolio:app-locale', { detail: next }));
+    } catch {
+      // Ignore event errors
+    }
+  }
+}
 
 export interface AppChromeCopy {
   nav: {
@@ -211,6 +235,7 @@ export interface AppLocaleContextValue {
   copy: AppChromeCopy;
   setLocale: (next: SupportedLocale) => void;
   setUnitSystem: (next: UnitSystem) => void;
+  isProvided?: boolean;
 }
 
 function readInitialLocale(): SupportedLocale {
@@ -221,15 +246,19 @@ function readInitialLocale(): SupportedLocale {
     const fromQuery = params.get('lang');
     if (fromQuery) {
       const normalized = normalizeLocale(fromQuery, DEFAULT_LOCALE);
-      window.localStorage.setItem(TAKOLIO_LOCALE_STORAGE_KEY, normalized);
-      window.localStorage.setItem(LEGACY_PLANNER_LOCALE_KEY, normalized === 'vi' ? 'vi' : 'en');
+      persistLocaleEverywhere(normalized, true);
       return normalized;
     }
-    // 2. Stored user preference
+    // 2. Stored user preference (unified across all three historical keys)
     const stored =
       window.localStorage.getItem(TAKOLIO_LOCALE_STORAGE_KEY) ||
+      window.localStorage.getItem(UI_LOCALE_STORAGE_KEY) ||
       window.localStorage.getItem(LEGACY_PLANNER_LOCALE_KEY);
-    if (stored) return normalizeLocale(stored, DEFAULT_LOCALE);
+    if (stored) {
+      const normalized = normalizeLocale(stored, DEFAULT_LOCALE);
+      persistLocaleEverywhere(normalized, true);
+      return normalized;
+    }
   } catch {
     // Ignore storage access restrictions
   }
@@ -250,12 +279,21 @@ function readInitialUnitSystem(locale: SupportedLocale): UnitSystem {
 export function getActiveAppLocale(): SupportedLocale {
   if (typeof window === 'undefined') return DEFAULT_LOCALE;
   try {
-    const stored = window.localStorage.getItem(TAKOLIO_LOCALE_STORAGE_KEY);
+    const fromQuery = new URLSearchParams(window.location.search).get('lang');
+    if (fromQuery) return normalizeLocale(fromQuery, DEFAULT_LOCALE);
+    const stored =
+      window.localStorage.getItem(TAKOLIO_LOCALE_STORAGE_KEY) ||
+      window.localStorage.getItem(UI_LOCALE_STORAGE_KEY) ||
+      window.localStorage.getItem(LEGACY_PLANNER_LOCALE_KEY);
     if (stored) return normalizeLocale(stored, DEFAULT_LOCALE);
   } catch {
     // Ignore
   }
   return DEFAULT_LOCALE;
+}
+
+export function getActiveUnitSystem(locale: SupportedLocale = getActiveAppLocale()): UnitSystem {
+  return readInitialUnitSystem(locale);
 }
 
 const defaultValue: AppLocaleContextValue = {
@@ -264,6 +302,7 @@ const defaultValue: AppLocaleContextValue = {
   copy: APP_COPY.vi,
   setLocale: () => {},
   setUnitSystem: () => {},
+  isProvided: false,
 };
 
 const AppLocaleContext = createContext<AppLocaleContextValue>(defaultValue);
@@ -277,13 +316,53 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     const meta = LOCALE_CATALOG[locale];
     document.documentElement.lang = meta.bcp47;
     document.documentElement.dir = meta.dir;
+    if (typeof window !== 'undefined') {
+      try {
+        window.dispatchEvent(new CustomEvent('takolio:app-locale', { detail: locale }));
+      } catch {
+        // Ignore
+      }
+    }
   }, [locale]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const onUiLocale = (event: Event) => {
+      const detail = (event as CustomEvent<string>).detail;
+      if (!detail) return;
+      const normalized = normalizeLocale(detail, DEFAULT_LOCALE);
+      setLocaleState((prev) => (prev === normalized ? prev : normalized));
+      try {
+        window.localStorage.setItem(TAKOLIO_LOCALE_STORAGE_KEY, normalized);
+        window.localStorage.setItem(LEGACY_PLANNER_LOCALE_KEY, normalized === 'vi' ? 'vi' : 'en');
+      } catch {
+        // Ignore
+      }
+    };
+    const onPopState = () => {
+      const fromQuery = new URLSearchParams(window.location.search).get('lang');
+      if (fromQuery) {
+        const normalized = normalizeLocale(fromQuery, DEFAULT_LOCALE);
+        persistLocaleEverywhere(normalized, true);
+        setLocaleState(normalized);
+      }
+    };
+    window.addEventListener('takolio:ui-locale', onUiLocale);
+    window.addEventListener('popstate', onPopState);
+    return () => {
+      window.removeEventListener('takolio:ui-locale', onUiLocale);
+      window.removeEventListener('popstate', onPopState);
+    };
+  }, []);
 
   const setLocale = useCallback((next: SupportedLocale) => {
     setLocaleState(next);
+    persistLocaleEverywhere(next, true);
+    // Also default unit system when user hasn't explicitly overridden it
     try {
-      window.localStorage.setItem(TAKOLIO_LOCALE_STORAGE_KEY, next);
-      window.localStorage.setItem(LEGACY_PLANNER_LOCALE_KEY, next === 'vi' ? 'vi' : 'en');
+      if (!window.localStorage.getItem(TAKOLIO_UNIT_SYSTEM_STORAGE_KEY)) {
+        setUnitSystemState(LOCALE_CATALOG[next].defaultUnitSystem);
+      }
     } catch {
       // Ignore
     }
@@ -292,8 +371,8 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     void fetch('/api/v1/preferences', {
       method: 'PATCH',
       credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ language: serverLang }),
+      headers: { 'Content-Type': 'application/json', 'X-Takolio-Locale': next },
+      body: JSON.stringify({ language: serverLang, locale: next }),
     }).catch(() => {});
   }, []);
 
@@ -313,6 +392,7 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       copy: APP_COPY[locale] ?? APP_COPY.vi,
       setLocale,
       setUnitSystem,
+      isProvided: true,
     }),
     [locale, unitSystem, setLocale, setUnitSystem],
   );

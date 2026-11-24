@@ -15,8 +15,15 @@ import {
   type ShoppingUnresolvedItem,
 } from '../services/shopping';
 import { ApiError, createClientItemId } from '../services/http';
-import { SHOPPING_UNITS, shoppingQuantity } from '../lib/shopping-form';
+import { getShoppingUnits, SHOPPING_UNITS, shoppingQuantity } from '../lib/shopping-form';
 import { capturePrivateSession, onPrivateSessionReset } from '../lib/private-session';
+import type { SupportedLocale } from '../../shared/locales';
+import {
+  lSync,
+  localizeIngredientName,
+  localizeRecipeTitle,
+  useLocaleText,
+} from '../i18n/app-i18n';
 
 type ReviewAction = ReviewShoppingDemandInput['action'];
 type PurchaseUnit = Extract<ReviewShoppingDemandInput, { action: 'purchase' }>['unit'];
@@ -38,28 +45,56 @@ function reviewable(item: ShoppingUnresolvedItem): item is ShoppingUnknownDemand
     typeof item.purchaseItemId !== 'undefined'
   );
 }
-function actionLabel(action: ReviewAction) {
+function actionLabel(action: ReviewAction, locale: SupportedLocale) {
   return action === 'purchase'
-    ? 'lượng vừa gửi'
+    ? lSync('lượng vừa gửi', 'the submitted quantity', locale)
     : action === 'skip'
-      ? 'bỏ qua vừa gửi'
-      : 'mở lại vừa gửi';
+      ? lSync('bỏ qua vừa gửi', 'the skip request', locale)
+      : lSync('mở lại vừa gửi', 'the reopen request', locale);
 }
-function mealLabel(mealType: string) {
-  return mealType === 'breakfast' ? 'Sáng' : mealType === 'lunch' ? 'Trưa' : 'Tối';
+function mealLabel(mealType: string, locale: SupportedLocale) {
+  return mealType === 'breakfast'
+    ? lSync('Sáng', 'Breakfast', locale)
+    : mealType === 'lunch'
+      ? lSync('Trưa', 'Lunch', locale)
+      : lSync('Tối', 'Dinner', locale);
 }
-function reviewErrorMessage(failure: unknown) {
+function reviewErrorMessage(failure: unknown, locale: SupportedLocale) {
   if (failure instanceof ApiError && failure.code === 'SHOPPING_PENDING_SYNC')
-    return 'Danh sách đang chờ đồng bộ. Chờ đồng bộ xong rồi tải lại để chọn lượng.';
+    return lSync(
+      'Danh sách đang chờ đồng bộ. Chờ đồng bộ xong rồi tải lại để chọn lượng.',
+      'Your list has changes waiting to sync. Wait for sync to finish, then reload to choose a quantity.',
+      locale,
+    );
   if (failure instanceof ApiError && failure.status === 409)
-    return 'Danh sách vừa thay đổi. Tải lại để xem lượng và nguồn món mới nhất, rồi chọn lại.';
+    return lSync(
+      'Danh sách vừa thay đổi. Tải lại để xem lượng và nguồn món mới nhất, rồi chọn lại.',
+      'The list changed recently. Reload to view the latest quantities and linked meals, then try again.',
+      locale,
+    );
   if (failure instanceof ApiError && failure.kind === 'auth')
-    return 'Phiên làm việc hoặc quyền truy cập đã thay đổi. Tải lại danh sách trước khi tiếp tục.';
+    return lSync(
+      'Phiên làm việc hoặc quyền truy cập đã thay đổi. Tải lại danh sách trước khi tiếp tục.',
+      'Your session or permissions changed. Reload the list before continuing.',
+      locale,
+    );
   if (failure instanceof ApiError && failure.kind === 'offline')
-    return 'Chưa xác nhận được thao tác do mất kết nối. Giữ nguyên thao tác và thử lại khi có mạng.';
+    return lSync(
+      'Chưa xác nhận được thao tác do mất kết nối. Giữ nguyên thao tác và thử lại khi có mạng.',
+      'Could not confirm this action while offline. Keep your selection and retry when back online.',
+      locale,
+    );
   if (failure instanceof ApiError && (failure.status === 422 || failure.status === 404))
-    return 'Nguyên liệu hoặc dữ liệu đi chợ không còn phù hợp. Tải lại danh sách trước khi chọn tiếp.';
-  return 'Chưa xác nhận được thao tác. Thử lại đúng thao tác vừa gửi để tránh thay đổi trùng.';
+    return lSync(
+      'Nguyên liệu hoặc dữ liệu đi chợ không còn phù hợp. Tải lại danh sách trước khi chọn tiếp.',
+      'This ingredient or shopping data is no longer current. Reload the list before choosing again.',
+      locale,
+    );
+  return lSync(
+    'Chưa xác nhận được thao tác. Thử lại đúng thao tác vừa gửi để tránh thay đổi trùng.',
+    'Could not confirm this action. Retry the exact request you submitted to avoid duplicates.',
+    locale,
+  );
 }
 
 export function ShoppingDemandReview({
@@ -79,6 +114,8 @@ export function ShoppingDemandReview({
   onChanged: () => Promise<unknown>;
   onBusyChange: (busy: boolean) => void;
 }) {
+  const { l, locale } = useLocaleText();
+  const units = getShoppingUnits(locale);
   const [purchaseDemand, setPurchaseDemand] = useState<ShoppingUnknownDemand | null>(null);
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState<PurchaseUnit>('g');
@@ -152,31 +189,39 @@ export function ShoppingDemandReview({
     if (!demand.contributions.length) return null;
     return (
       <details className="shopping-source-details shopping-demand-sources">
-        <summary>Xem {count} bữa liên quan</summary>
+        <summary>
+          {l(
+            `Xem ${count} bữa liên quan`,
+            `View ${count} related ${count === 1 ? 'meal' : 'meals'}`,
+          )}
+        </summary>
         <ul>
-          {demand.contributions.map((source, index) => (
-            <li key={`${source.slotId}:${source.componentId}:${index}`}>
-              <span>
-                {source.date} · {mealLabel(source.mealType)} ·{' '}
-                {source.recipeId && sourceLinksEnabled ? (
-                  <Link
-                    to={`/recipes/id/${encodeURIComponent(source.recipeId)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {source.title}
-                  </Link>
-                ) : (
-                  source.title
-                )}
-              </span>
-              <span>
-                {source.quantity === null
-                  ? 'Lượng món này chưa rõ'
-                  : shoppingQuantity(source.quantity, source.unit)}
-              </span>
-            </li>
-          ))}
+          {demand.contributions.map((source, index) => {
+            const localizedTitle = localizeRecipeTitle({ title: source.title }, locale);
+            return (
+              <li key={`${source.slotId}:${source.componentId}:${index}`}>
+                <span>
+                  {source.date} · {mealLabel(source.mealType, locale)} ·{' '}
+                  {source.recipeId && sourceLinksEnabled ? (
+                    <Link
+                      to={`/recipes/id/${encodeURIComponent(source.recipeId)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {localizedTitle}
+                    </Link>
+                  ) : (
+                    localizedTitle
+                  )}
+                </span>
+                <span>
+                  {source.quantity === null
+                    ? l('Lượng món này chưa rõ', 'Quantity unknown for this dish')
+                    : shoppingQuantity(source.quantity, source.unit, locale)}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       </details>
     );
@@ -244,10 +289,19 @@ export function ShoppingDemandReview({
     setPurchaseDemand(null);
     setReceipt(
       input.action === 'purchase'
-        ? 'Đã ghi lượng bạn chọn. Tổng lượng theo thực đơn vẫn chưa xác định.'
+        ? l(
+            'Đã ghi lượng bạn chọn. Tổng lượng theo thực đơn vẫn chưa xác định.',
+            'Saved your chosen quantity. The total meal-plan requirement is still unresolved.',
+          )
         : input.action === 'skip'
-          ? 'Đã bỏ qua việc chọn lượng trong lượt đi chợ này.'
-          : 'Đã mở lại nguyên liệu để bạn chọn lượng.',
+          ? l(
+              'Đã bỏ qua việc chọn lượng trong lượt đi chợ này.',
+              'Skipped choosing a quantity for this shopping trip.',
+            )
+          : l(
+              'Đã mở lại nguyên liệu để bạn chọn lượng.',
+              'Reopened this ingredient so you can choose a quantity.',
+            ),
     );
     try {
       await onChanged();
@@ -316,16 +370,28 @@ export function ShoppingDemandReview({
 
   const disabledReason =
     source === 'device'
-      ? 'Bản lưu trên thiết bị vẫn giúp bạn xem món. Kết nối mạng và tải lại để chọn lượng hoặc bỏ qua.'
+      ? l(
+          'Bản lưu trên thiết bị vẫn giúp bạn xem món. Kết nối mạng và tải lại để chọn lượng hoặc bỏ qua.',
+          'You can still view the cached list on this device. Reconnect and reload to choose quantities or skip items.',
+        )
       : hasPendingChanges
-        ? 'Có thay đổi đang chờ đồng bộ. Chờ đồng bộ xong rồi tải lại để rà lượng.'
+        ? l(
+            'Có thay đổi đang chờ đồng bộ. Chờ đồng bộ xong rồi tải lại để rà lượng.',
+            'Some changes are waiting to sync. Wait for sync to finish, then reload to review quantities.',
+          )
         : '';
   const errorMessage =
     error instanceof Error && error.message === 'reload'
       ? receipt
-        ? 'Thao tác đã được lưu, nhưng chưa tải lại được danh sách. Tải lại trước khi chọn tiếp.'
-        : 'Chưa tải lại được danh sách. Kết nối lại rồi thử tải lại.'
-      : reviewErrorMessage(error);
+        ? l(
+            'Thao tác đã được lưu, nhưng chưa tải lại được danh sách. Tải lại trước khi chọn tiếp.',
+            'Your change was saved, but the list could not reload. Reload before choosing again.',
+          )
+        : l(
+            'Chưa tải lại được danh sách. Kết nối lại rồi thử tải lại.',
+            'Could not reload the list. Reconnect and try reloading.',
+          )
+      : reviewErrorMessage(error, locale);
   function recovery() {
     if (!error) return null;
     return (
@@ -338,7 +404,7 @@ export function ShoppingDemandReview({
             disabled={busy}
             onClick={() => void reloadAfterReview()}
           >
-            Tải lại danh sách
+            {l('Tải lại danh sách', 'Reload list')}
           </Button>
         ) : (
           attempt &&
@@ -349,13 +415,20 @@ export function ShoppingDemandReview({
               disabled={busy || !serverReady}
               onClick={() => void send(attempt.input, attempt.demand, attempt.requestKey)}
             >
-              Thử lại {actionLabel(attempt.input.action)}
+              {l(
+                `Thử lại ${actionLabel(attempt.input.action, locale)}`,
+                `Retry ${actionLabel(attempt.input.action, locale)}`,
+              )}
             </Button>
           )
         )}
       </div>
     );
   }
+
+  const purchaseDisplayName = purchaseDemand
+    ? localizeIngredientName(purchaseDemand.ingredientId, purchaseDemand.name, locale)
+    : '';
 
   if (!demands.length && !attempt && !receipt && !error) return null;
   return (
@@ -369,40 +442,51 @@ export function ShoppingDemandReview({
             disabled={busy}
             onClick={() => void reloadAfterReview()}
           >
-            Tải lại danh sách
+            {l('Tải lại danh sách', 'Reload list')}
           </Button>
         </div>
       )}
       {pending.length > 0 && (
         <section className="shopping-unresolved" aria-labelledby="shopping-demand-pending-title">
-          <p className="planning-eyebrow">CẦN QUYẾT ĐỊNH</p>
-          <h3 id="shopping-demand-pending-title">Chưa rõ lượng mua · {pending.length}</h3>
+          <p className="planning-eyebrow">{l('CẦN QUYẾT ĐỊNH', 'NEEDS REVIEW')}</p>
+          <h3 id="shopping-demand-pending-title">
+            {l(`Chưa rõ lượng mua · ${pending.length}`, `Unknown quantities · ${pending.length}`)}
+          </h3>
           <p>
-            Chọn lượng bạn định mua hoặc tạm bỏ qua lần này. Gói, bó hay cái là đơn vị mua bạn chọn;
-            tổng lượng theo thực đơn vẫn chưa xác định.
+            {l(
+              'Chọn lượng bạn định mua hoặc tạm bỏ qua lần này. Gói, bó hay cái là đơn vị mua bạn chọn; tổng lượng theo thực đơn vẫn chưa xác định.',
+              'Choose the amount you plan to buy or skip it for now. Packs, bunches, or pieces reflect how you shop; the total meal-plan requirement remains unresolved.',
+            )}
           </p>
           <ul className="shopping-demand-list">
             {pending.map((demand, index) => {
               const bound = reviewable(demand);
               const prior = demand.purchaseItemId ? itemById.get(demand.purchaseItemId) : undefined;
+              const demandName = localizeIngredientName(demand.ingredientId, demand.name, locale);
               return (
                 <li
                   key={`${demand.sourceId ?? index}:${demand.demandKey ?? demand.ingredientId}`}
                   className="shopping-demand-card"
                 >
                   <div className="shopping-demand-card-copy">
-                    <strong>{demand.name}</strong>
-                    <span className="shopping-row-quantity">Tổng lượng chưa xác định</span>
+                    <strong>{demandName}</strong>
+                    <span className="shopping-row-quantity">
+                      {l('Tổng lượng chưa xác định', 'Total quantity unresolved')}
+                    </span>
                     {prior && (
                       <p className="shopping-demand-prior">
-                        Đang giữ dòng {shoppingQuantity(prior.quantity, prior.unit)}
-                        {prior.isChecked ? ' đã mua' : ' bạn đã chọn'}. Tạm bỏ qua chỉ xóa dòng chưa
-                        mua; lịch sử đã mua được giữ.
+                        {l(
+                          `Đang giữ dòng ${shoppingQuantity(prior.quantity, prior.unit, locale)}${prior.isChecked ? ' đã mua' : ' bạn đã chọn'}. Tạm bỏ qua chỉ xóa dòng chưa mua; lịch sử đã mua được giữ.`,
+                          `Keeping ${shoppingQuantity(prior.quantity, prior.unit, locale)} (${prior.isChecked ? 'bought' : 'chosen by you'}). Skipping only removes unchecked items; bought history is kept.`,
+                        )}
                       </p>
                     )}
                     {!bound && (
                       <p className="shopping-demand-prior">
-                        Tải lại để có bản dữ liệu mới trước khi chọn lượng.
+                        {l(
+                          'Tải lại để có bản dữ liệu mới trước khi chọn lượng.',
+                          'Reload for the latest data before choosing a quantity.',
+                        )}
                       </p>
                     )}
                     {sourceList(demand)}
@@ -416,7 +500,7 @@ export function ShoppingDemandReview({
                         if (bound) openPurchase(demand);
                       }}
                     >
-                      Chọn lượng mua
+                      {l('Chọn lượng mua', 'Choose quantity')}
                     </Button>
                     <button
                       type="button"
@@ -426,7 +510,7 @@ export function ShoppingDemandReview({
                         if (bound) reviewAction(demand, 'skip');
                       }}
                     >
-                      Tạm bỏ qua
+                      {l('Tạm bỏ qua', 'Skip for now')}
                     </button>
                   </div>
                 </li>
@@ -437,25 +521,36 @@ export function ShoppingDemandReview({
       )}
       {purchased.length > 0 && (
         <details className="shopping-demand-chosen">
-          <summary>Đã chọn lượng mua · {purchased.length} nguyên liệu</summary>
+          <summary>
+            {l(
+              `Đã chọn lượng mua · ${purchased.length} nguyên liệu`,
+              `Quantities chosen · ${purchased.length} ${purchased.length === 1 ? 'ingredient' : 'ingredients'}`,
+            )}
+          </summary>
           <p>
-            Lượng bạn chọn nằm trong danh sách mua. Tổng lượng theo thực đơn vẫn chưa xác định; bạn
-            có thể mở lại để rà khi cần.
+            {l(
+              'Lượng bạn chọn nằm trong danh sách mua. Tổng lượng theo thực đơn vẫn chưa xác định; bạn có thể mở lại để rà khi cần.',
+              'Your chosen quantities are in the shopping list. Total meal-plan requirements remain unresolved; you can reopen them anytime.',
+            )}
           </p>
           <ul className="shopping-demand-list">
             {purchased.map((demand) => {
               const item = demand.purchaseItemId ? itemById.get(demand.purchaseItemId) : undefined;
+              const demandName = localizeIngredientName(demand.ingredientId, demand.name, locale);
               return (
                 <li
                   key={`${demand.sourceId}:${demand.demandKey}`}
                   className="shopping-demand-card is-reviewed"
                 >
                   <div className="shopping-demand-card-copy">
-                    <strong>{demand.name}</strong>
+                    <strong>{demandName}</strong>
                     <span className="shopping-row-quantity">
                       {item
-                        ? `Lượng bạn chọn: ${shoppingQuantity(item.quantity, item.unit)}`
-                        : 'Đã ghi lượng bạn chọn'}
+                        ? l(
+                            `Lượng bạn chọn: ${shoppingQuantity(item.quantity, item.unit, locale)}`,
+                            `Your chosen amount: ${shoppingQuantity(item.quantity, item.unit, locale)}`,
+                          )
+                        : l('Đã ghi lượng bạn chọn', 'Your chosen quantity is saved')}
                     </span>
                     {sourceList(demand)}
                   </div>
@@ -465,7 +560,7 @@ export function ShoppingDemandReview({
                     disabled={controlsDisabled}
                     onClick={() => reviewAction(demand, 'reopen')}
                   >
-                    <RotateCcw size={15} aria-hidden="true" /> Xem lại
+                    <RotateCcw size={15} aria-hidden="true" /> {l('Xem lại', 'Review again')}
                   </button>
                 </li>
               );
@@ -475,10 +570,17 @@ export function ShoppingDemandReview({
       )}
       {skipped.length > 0 && (
         <details className="shopping-skipped">
-          <summary>Đã bỏ qua · {skipped.length} nguyên liệu</summary>
+          <summary>
+            {l(
+              `Đã bỏ qua · ${skipped.length} nguyên liệu`,
+              `Skipped · ${skipped.length} ${skipped.length === 1 ? 'ingredient' : 'ingredients'}`,
+            )}
+          </summary>
           <p>
-            Chỉ bỏ qua việc chọn lượng cho lượt đi chợ này. Thực đơn và thực phẩm trong tủ không
-            thay đổi.
+            {l(
+              'Chỉ bỏ qua việc chọn lượng cho lượt đi chợ này. Thực đơn và thực phẩm trong tủ không thay đổi.',
+              'Only skipped choosing a quantity for this shopping trip. Your meal plan and fridge stock stay unchanged.',
+            )}
           </p>
           <ul className="shopping-demand-list">
             {skipped.map((demand) => (
@@ -487,7 +589,7 @@ export function ShoppingDemandReview({
                 className="shopping-demand-card is-skipped"
               >
                 <div className="shopping-demand-card-copy">
-                  <strong>{demand.name}</strong>
+                  <strong>{localizeIngredientName(demand.ingredientId, demand.name, locale)}</strong>
                   {sourceList(demand)}
                 </div>
                 <button
@@ -496,7 +598,7 @@ export function ShoppingDemandReview({
                   disabled={controlsDisabled}
                   onClick={() => reviewAction(demand, 'reopen')}
                 >
-                  <RotateCcw size={15} aria-hidden="true" /> Xem lại
+                  <RotateCcw size={15} aria-hidden="true" /> {l('Xem lại', 'Review again')}
                 </button>
               </li>
             ))}
@@ -525,15 +627,20 @@ export function ShoppingDemandReview({
           >
             <div className="family-dialog-heading">
               <div>
-                <p className="planning-eyebrow">LƯỢNG CHO LẦN ĐI CHỢ NÀY</p>
+                <p className="planning-eyebrow">
+                  {l('LƯỢNG CHO LẦN ĐI CHỢ NÀY', 'QUANTITY FOR THIS TRIP')}
+                </p>
                 <h2 ref={dialogHeading} tabIndex={-1} id="shopping-demand-purchase-title">
-                  Chọn lượng mua: {purchaseDemand.name}
+                  {l(
+                    `Chọn lượng mua: ${purchaseDisplayName}`,
+                    `Choose quantity: ${purchaseDisplayName}`,
+                  )}
                 </h2>
               </div>
               <Button
                 variant="ghost"
                 className="!px-2.5 !min-w-[44px]"
-                aria-label="Đóng"
+                aria-label={l('Đóng', 'Close')}
                 disabled={busy}
                 onClick={() => setPurchaseDemand(null)}
               >
@@ -541,13 +648,18 @@ export function ShoppingDemandReview({
               </Button>
             </div>
             <p className="shopping-demand-dialog-help">
-              Ghi lượng bạn muốn mua ở chợ. Đây là lựa chọn của bạn; tổng lượng theo thực đơn vẫn
-              chưa xác định.
+              {l(
+                'Ghi lượng bạn muốn mua ở chợ. Đây là lựa chọn của bạn; tổng lượng theo thực đơn vẫn chưa xác định.',
+                'Enter how much you plan to buy at the store. This is your choice; the total meal-plan requirement remains unresolved.',
+              )}
             </p>
             {purchaseDemand.purchaseItemId &&
               itemById.get(purchaseDemand.purchaseItemId)?.isChecked && (
                 <p className="shopping-demand-prior">
-                  Dòng này đang được đánh dấu đã mua. Ghi lượng mới giữ nguyên dấu đã mua.
+                  {l(
+                    'Dòng này đang được đánh dấu đã mua. Ghi lượng mới giữ nguyên dấu đã mua.',
+                    'This item is already marked bought. Saving a new quantity keeps its bought status.',
+                  )}
                 </p>
               )}
             {sourceList(purchaseDemand)}
@@ -555,7 +667,7 @@ export function ShoppingDemandReview({
               <fieldset disabled={busy || !serverReady || !!attempt || requiresReload}>
                 <div className="family-field-pair">
                   <label htmlFor="shopping-review-quantity">
-                    Lượng muốn mua
+                    {l('Lượng muốn mua', 'Quantity to buy')}
                     <input
                       ref={amountInput}
                       type="number"
@@ -577,7 +689,7 @@ export function ShoppingDemandReview({
                     />
                   </label>
                   <label htmlFor="shopping-review-unit">
-                    Đơn vị mua
+                    {l('Đơn vị mua', 'Purchase unit')}
                     <select
                       id="shopping-review-unit"
                       name="shopping-review-unit"
@@ -585,7 +697,7 @@ export function ShoppingDemandReview({
                       value={unit}
                       onChange={(event) => setUnit(event.target.value as PurchaseUnit)}
                     >
-                      {SHOPPING_UNITS.map((entry) => (
+                      {units.map((entry) => (
                         <option key={entry.value} value={entry.value}>
                           {entry.label}
                         </option>
@@ -595,22 +707,42 @@ export function ShoppingDemandReview({
                 </div>
               </fieldset>
               <p id="shopping-demand-unit-note" className="planning-note">
-                Chọn bó hoặc gói chỉ ghi cách bạn mua, không đổi sang khối lượng của công thức.
+                {l(
+                  'Chọn bó hoặc gói chỉ ghi cách bạn mua, không đổi sang khối lượng của công thức.',
+                  'Choosing bunches or packs only records how you buy; it does not convert to recipe weights.',
+                )}
               </p>
               {invalid && (
                 <p id="shopping-demand-quantity-error" role="alert">
-                  Nhập lượng lớn hơn 0, không quá 100.000 và chọn đơn vị mua.
+                  {l(
+                    'Nhập lượng lớn hơn 0, không quá 100.000 và chọn đơn vị mua.',
+                    'Enter a quantity greater than 0, up to 100,000, and choose a purchase unit.',
+                  )}
                 </p>
               )}
               {!!attempt && !busy && (
-                <p role="status">Giữ nguyên lượng vừa gửi để thử lại an toàn.</p>
+                <p role="status">
+                  {l(
+                    'Giữ nguyên lượng vừa gửi để thử lại an toàn.',
+                    'Keeping the submitted quantity for a safe retry.',
+                  )}
+                </p>
               )}
-              {!serverReady && <p role="status">Kết nối và đồng bộ lại để xác nhận lượng mua.</p>}
+              {!serverReady && (
+                <p role="status">
+                  {l(
+                    'Kết nối và đồng bộ lại để xác nhận lượng mua.',
+                    'Reconnect and sync to confirm this purchase quantity.',
+                  )}
+                </p>
+              )}
               {recovery()}
               {!requiresReload && (
                 <Button type="submit" fullWidth isLoading={busy} disabled={!serverReady || busy}>
                   <Check size={18} aria-hidden="true" className="mr-2" />
-                  {attempt ? 'Thử lại lượng vừa gửi' : 'Thêm lượng này vào danh sách'}
+                  {attempt
+                    ? l('Thử lại lượng vừa gửi', 'Retry submitted quantity')
+                    : l('Thêm lượng này vào danh sách', 'Add this quantity to list')}
                 </Button>
               )}
             </form>

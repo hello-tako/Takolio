@@ -25,17 +25,41 @@ import { VNextIcon } from '../components/VNextIcons';
 import { VerifiedDishImage } from '../components/VNextMedia';
 import { RecipeDetailSkeleton } from '../components/Skeletons';
 import { buildRecipeJsonLd, useVNextSeo } from '../lib/seo';
+import type { SupportedLocale, UnitSystem } from '../../../shared/locales';
+import {
+  containsVietnameseDiacritics,
+  formatLocalizedMeasure,
+  localizeDifficulty,
+  localizeIngredientName,
+  localizeRecipeCategory,
+  localizeRecipeDescription,
+  localizeRecipeSteps,
+  localizeRecipeTitle,
+  lSync,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
-const UNIT_LABELS_VI: Record<string, string> = {
-  piece: 'quả/cái',
-  pack: 'gói',
-  bunch: 'bó',
-  slice: 'lát',
-};
-
-function formatQty(quantity: number, unit: string): string {
+function formatQty(
+  quantity: number,
+  unit: string,
+  locale: SupportedLocale,
+  unitSystem: UnitSystem,
+): string {
+  if (locale !== 'vi') {
+    return formatLocalizedMeasure(quantity, unit, locale, unitSystem);
+  }
   const formatted = new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 6 }).format(quantity);
-  return `${formatted} ${UNIT_LABELS_VI[unit] ?? unit}`;
+  const unitLabel =
+    unit === 'piece'
+      ? lSync('quả/cái', 'pcs', locale)
+      : unit === 'pack'
+        ? lSync('gói', 'pack', locale)
+        : unit === 'bunch'
+          ? lSync('bó', 'bunch', locale)
+          : unit === 'slice'
+            ? lSync('lát', 'slice', locale)
+            : unit;
+  return `${formatted} ${unitLabel}`;
 }
 
 /**
@@ -48,6 +72,7 @@ function formatQty(quantity: number, unit: string): string {
  * - Sourced nutrition facts only (`Chưa có thông tin` if absent)
  */
 export const C18RecipeDetailPilot: React.FC = () => {
+  const { l, locale, unitSystem } = useLocaleText();
   const { slug, id } = useParams<{ slug?: string; id?: string }>();
   const recipeKey = slug || id || 'thit-kho-trung';
   const [params, setParams] = useSearchParams();
@@ -97,10 +122,15 @@ export const C18RecipeDetailPilot: React.FC = () => {
       sourceKey: string;
     }) => {
       if (ing.missingQuantity === null || ing.missingQuantity <= 0) {
-        throw new Error('Cần kiểm tra đơn vị trước khi thêm tự động vào giỏ đi chợ.');
+        throw new Error(
+          l(
+            'Cần kiểm tra đơn vị trước khi thêm tự động vào giỏ đi chợ.',
+            'Please check the unit before adding automatically to your shopping list.',
+          ),
+        );
       }
       return api.addShoppingItem({
-        name: ing.name,
+        name: localizeIngredientName(ing.ingredientId, ing.name, locale),
         quantity: ing.missingQuantity,
         unit: ing.unit,
         sourceRecipeTitle: recipeTitle,
@@ -127,28 +157,45 @@ export const C18RecipeDetailPilot: React.FC = () => {
     recipeQuery.error.kind === 'http' &&
     recipeQuery.error.status === 404;
 
+  const displayTitle = recipe ? localizeRecipeTitle(recipe, locale) : '';
+  const displayDescription = recipe ? localizeRecipeDescription(recipe, locale) : '';
+  const localizedSteps = useMemo(
+    () => (recipe ? localizeRecipeSteps(recipe, locale, unitSystem) : []),
+    [recipe, locale, unitSystem],
+  );
+
   const recipeJsonLd = useMemo(() => {
     if (!recipe) return null;
     return buildRecipeJsonLd({
       slug: recipe.slug,
-      title: recipe.title,
-      description: recipe.description,
+      title: displayTitle,
+      description: displayDescription,
+      cuisine: recipe.cuisine,
+      category: recipe.category ? localizeRecipeCategory(recipe.category, locale) : null,
+      locale,
+      inLanguage: locale === 'vi' ? 'vi-VN' : 'en',
       imageUrl: resolveRecipeImage(recipe).src,
       cookMinutes: recipe.cookTimeMinutes,
       servings: recipe.servings,
       calories: recipe.nutrition?.calories ?? null,
       ingredients: recipe.ingredients.map(
-        (ing) => `${ing.name} (${formatQty(ing.requiredQuantity, ing.unit)})`,
+        (ing) =>
+          `${localizeIngredientName(ing.ingredientId, ing.name, locale)} (${formatQty(ing.requiredQuantity, ing.unit, locale, unitSystem)})`,
       ),
-      steps: recipe.steps.map((st) => st.instruction),
+      steps: localizedSteps.map((st) => st.instruction),
     });
-  }, [recipe]);
+  }, [recipe, displayTitle, displayDescription, locale, unitSystem, localizedSteps]);
 
   useVNextSeo({
-    title: recipe ? `${recipe.title} — Công thức chuẩn định lượng` : 'Chi tiết món ăn',
+    title: recipe
+      ? l(`${displayTitle} — Công thức chuẩn định lượng`, `${displayTitle} — Scaled Recipe`)
+      : l('Chi tiết món ăn', 'Recipe details'),
     description: recipe
-      ? recipe.description
-      : 'Công thức bữa cơm gia đình Việt đối chiếu định lượng tồn kho tủ lạnh trên Takolio.',
+      ? displayDescription
+      : l(
+          'Công thức bữa cơm gia đình Việt đối chiếu định lượng tồn kho tủ lạnh trên Takolio.',
+          'Home-cooked recipes matched against your fridge inventory with exact scaling on Takolio.',
+        ),
     canonicalPath: `/recipes/${recipe?.slug || recipeKey}`,
     domainSurface: 'app',
     noindex: notFound,
@@ -164,7 +211,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
   if (recipeQuery.isPending) {
     return (
-      <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
+      <ConsumerStudioShell screenId="C18" title={l('Chi tiết món ăn', 'Recipe details')} backTo={returnTo}>
         <RecipeDetailSkeleton />
       </ConsumerStudioShell>
     );
@@ -172,14 +219,22 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
   if (notFound || (!recipeQuery.isError && !recipe)) {
     return (
-      <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
+      <ConsumerStudioShell screenId="C18" title={l('Chi tiết món ăn', 'Recipe details')} backTo={returnTo}>
         <TkvEmptyState
           pose="error"
-          eyebrow="Không tìm thấy món ăn"
-          title="Công thức này không tồn tại hoặc đã thay đổi đường dẫn"
-          description="Bạn có thể quay lại kho công thức để tìm món ăn khác phù hợp với tủ lạnh."
+          eyebrow={l('Không tìm thấy món ăn', 'Recipe not found')}
+          title={l(
+            'Công thức này không tồn tại hoặc đã thay đổi đường dẫn',
+            'This recipe does not exist or has moved',
+          )}
+          description={l(
+            'Bạn có thể quay lại kho công thức để tìm món ăn khác phù hợp với tủ lạnh.',
+            'Return to the recipe catalog to find another dish that fits your fridge.',
+          )}
           primaryAction={
-            <TkvButton onClick={() => navigate('/recipes')}>Xem kho công thức</TkvButton>
+            <TkvButton onClick={() => navigate('/recipes')}>
+              {l('Xem kho công thức', 'Browse recipes')}
+            </TkvButton>
           }
         />
       </ConsumerStudioShell>
@@ -188,10 +243,13 @@ export const C18RecipeDetailPilot: React.FC = () => {
 
   if (recipeQuery.isError || !recipe) {
     return (
-      <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
+      <ConsumerStudioShell screenId="C18" title={l('Chi tiết món ăn', 'Recipe details')} backTo={returnTo}>
         <TkvErrorState
-          title="Chưa tải được chi tiết món ăn"
-          message="Kết nối tới máy chủ công thức gặp gián đoạn. Vui lòng thử lại."
+          title={l('Chưa tải được chi tiết món ăn', 'Could not load recipe details')}
+          message={l(
+            'Kết nối tới máy chủ công thức gặp gián đoạn. Vui lòng thử lại.',
+            'Connection to the recipe server was interrupted. Please try again.',
+          )}
           onRetry={() => void recipeQuery.refetch()}
         />
       </ConsumerStudioShell>
@@ -199,7 +257,10 @@ export const C18RecipeDetailPilot: React.FC = () => {
   }
 
   const availability = evaluateRecipeAvailability(recipe, inventory);
-  const difficultyLabel = formatDifficultyLabel(recipe.difficulty).label;
+  const difficultyLabel =
+    locale === 'vi'
+      ? formatDifficultyLabel(recipe.difficulty, locale).label
+      : localizeDifficulty(recipe.difficulty, locale);
   const canonicalImg = resolveRecipeImage(recipe);
 
   const handleStartCooking = () => {
@@ -220,14 +281,14 @@ export const C18RecipeDetailPilot: React.FC = () => {
   };
 
   return (
-    <ConsumerStudioShell screenId="C18" title="Chi tiết món ăn" backTo={returnTo}>
+    <ConsumerStudioShell screenId="C18" title={l('Chi tiết món ăn', 'Recipe details')} backTo={returnTo}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
         {/* Left Media & Facts Column (5 cols on Desktop; Top Hero on Mobile) */}
         <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-20">
           <div className="rounded-[24px] bg-[var(--tkv-surface-muted,#E7F4EC)] p-2.5 border border-[var(--tkv-border,#DCE6DE)] shadow-xs">
             <VerifiedDishImage
               slug={recipe.slug}
-              title={recipe.title}
+              title={displayTitle}
               canonicalFallbackSrc={canonicalImg}
               aspectClass="aspect-[4/3]"
               priority
@@ -238,20 +299,23 @@ export const C18RecipeDetailPilot: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-start justify-between gap-3">
               <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)] leading-tight">
-                {recipe.title}
+                {displayTitle}
               </h1>
-              <SaveRecipeButton recipeId={recipe.id} title={recipe.title} compact />
+              <SaveRecipeButton recipeId={recipe.id} title={displayTitle} compact />
             </div>
 
             {/* 3 Sunlit Ceramic Metadata Pills */}
             <div className="flex items-center gap-2 flex-wrap tabular-nums">
               <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] text-sm font-bold inline-flex items-center gap-1.5">
                 <VNextIcon name="timer" size={15} className="text-[var(--tkv-primary,#196149)]" />
-                {recipe.cookTimeMinutes} phút
+                {l(`${recipe.cookTimeMinutes} phút`, `${recipe.cookTimeMinutes} min`)}
               </span>
               <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-white border border-[var(--tkv-border,#DCE6DE)] text-[var(--tkv-ink,#152E2C)] text-sm font-semibold inline-flex items-center gap-1.5">
                 <VNextIcon name="users" size={15} className="text-[var(--tkv-sage,#196149)]" />
-                {recipe.servings} người
+                {l(
+                  `${recipe.servings} người`,
+                  `${recipe.servings} ${recipe.servings === 1 ? 'serving' : 'servings'}`,
+                )}
               </span>
               <span className="min-h-[38px] px-4 py-1.5 rounded-full bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] text-[var(--tkv-sage-ink,#134C39)] text-sm font-semibold inline-flex items-center">
                 {difficultyLabel}
@@ -259,7 +323,7 @@ export const C18RecipeDetailPilot: React.FC = () => {
             </div>
 
             <p className="text-sm sm:text-base text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
-              {recipe.description}
+              {displayDescription}
             </p>
 
             <div className="pt-1 flex flex-col sm:flex-row gap-2.5">
@@ -271,7 +335,10 @@ export const C18RecipeDetailPilot: React.FC = () => {
                 onClick={handleStartCooking}
                 data-testid="c18-start-cooking-btn"
               >
-                Bắt đầu nấu ({recipe.steps.length} bước)
+                {l(
+                  `Bắt đầu nấu (${localizedSteps.length} bước)`,
+                  `Start cooking (${localizedSteps.length} ${localizedSteps.length === 1 ? 'step' : 'steps'})`,
+                )}
               </TkvButton>
             </div>
           </div>
@@ -280,9 +347,11 @@ export const C18RecipeDetailPilot: React.FC = () => {
           <TkvSurface className="p-4 space-y-2.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
             <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
               <h2 className="tkv-heading text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">
-                Thông tin dinh dưỡng / khẩu phần
+                {l('Thông tin dinh dưỡng / khẩu phần', 'Nutrition per serving')}
               </h2>
-              <span className="text-xs text-[var(--tkv-ink-muted,#52706A)] shrink-0">Nguồn công thức</span>
+              <span className="text-xs text-[var(--tkv-ink-muted,#52706A)] shrink-0">
+                {l('Nguồn công thức', 'Recipe source')}
+              </span>
             </div>
             {recipe.nutrition ? (
               <div className="grid grid-cols-2 min-[400px]:grid-cols-4 gap-2 text-center tabular-nums">
@@ -292,20 +361,23 @@ export const C18RecipeDetailPilot: React.FC = () => {
                 </div>
                 <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
                   <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.proteinG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Đạm</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">{l('Đạm', 'Protein')}</p>
                 </div>
                 <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
                   <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.carbG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Tinh bột</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">{l('Tinh bột', 'Carbs')}</p>
                 </div>
                 <div className="p-2 rounded-xl bg-[var(--tkv-bg,#FFF9F1)] border border-[var(--tkv-border,#DCE6DE)]">
                   <p className="text-sm font-extrabold text-[var(--tkv-ink,#152E2C)]">{recipe.nutrition.fatG}g</p>
-                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">Chất béo</p>
+                  <p className="text-[11px] text-[var(--tkv-ink-muted,#52706A)]">{l('Chất béo', 'Fat')}</p>
                 </div>
               </div>
             ) : (
               <p className="text-xs text-[var(--tkv-ink-muted,#52706A)]">
-                Chưa có thông tin dinh dưỡng đã xác minh cho món ăn này.
+                {l(
+                  'Chưa có thông tin dinh dưỡng đã xác minh cho món ăn này.',
+                  'No verified nutrition facts available for this recipe yet.',
+                )}
               </p>
             )}
           </TkvSurface>
@@ -317,16 +389,16 @@ export const C18RecipeDetailPilot: React.FC = () => {
           <section aria-labelledby="c18-ingredients-heading" className="space-y-3.5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <h2 id="c18-ingredients-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                Nguyên liệu chính ({availability.length})
+                {l(`Nguyên liệu chính (${availability.length})`, `Ingredients (${availability.length})`)}
               </h2>
 
               <div className="inline-flex items-center gap-2 bg-white border border-[var(--tkv-border,#DCE6DE)] rounded-2xl p-1">
                 <span className="pl-2.5 text-xs font-semibold text-[var(--tkv-ink-soft,#3C5954)]">
-                  Thay khẩu phần:
+                  {l('Thay khẩu phần:', 'Servings:')}
                 </span>
                 <TkvIconButton
                   icon="minus"
-                  label="Giảm khẩu phần"
+                  label={l('Giảm khẩu phần', 'Decrease servings')}
                   onClick={() => updateServings(recipe.servings - 1)}
                   disabled={recipe.servings <= 1}
                 />
@@ -334,23 +406,38 @@ export const C18RecipeDetailPilot: React.FC = () => {
                   data-testid="c18-servings-value"
                   className="min-w-[60px] text-center text-sm font-bold tabular-nums text-[var(--tkv-ink,#152E2C)]"
                 >
-                  {recipe.servings} người
+                  {l(
+                    `${recipe.servings} người`,
+                    `${recipe.servings} ${recipe.servings === 1 ? 'serving' : 'servings'}`,
+                  )}
                 </span>
                 <TkvIconButton
                   icon="plus"
-                  label="Tăng khẩu phần"
+                  label={l('Tăng khẩu phần', 'Increase servings')}
                   onClick={() => updateServings(recipe.servings + 1)}
                   disabled={recipe.servings >= 20}
                 />
               </div>
             </div>
 
-            <ul className="space-y-2.5" aria-label="Đối chiếu nguyên liệu theo định lượng">
+            <ul className="space-y-2.5" aria-label={l('Đối chiếu nguyên liệu theo định lượng', 'Ingredient availability by quantity')}>
               {availability.map((ing) => {
                 const key = `${ing.ingredientId}:${ing.unit}`;
                 const added = addedKeys.includes(key);
                 const canAddShortfall =
                   !added && ing.missingQuantity !== null && ing.missingQuantity > 0;
+                const displayIngName = localizeIngredientName(ing.ingredientId, ing.name, locale);
+                const requiredText = formatQty(ing.requiredQuantity, ing.unit, locale, unitSystem);
+                const availableText = formatQty(
+                  ing.availableQuantity ?? ing.requiredQuantity,
+                  ing.unit,
+                  locale,
+                  unitSystem,
+                );
+                const missingText =
+                  ing.missingQuantity !== null
+                    ? formatQty(ing.missingQuantity, ing.unit, locale, unitSystem)
+                    : '';
 
                 return (
                   <li key={`${ing.ingredientId}-${ing.name}`}>
@@ -382,25 +469,31 @@ export const C18RecipeDetailPilot: React.FC = () => {
                         </span>
                         <div className="min-w-0">
                           <p className="text-base font-bold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                            {ing.name} · {formatQty(ing.requiredQuantity, ing.unit)}
+                            {displayIngName} · {requiredText}
                           </p>
                           <p className="text-xs text-[var(--tkv-ink-soft,#3C5954)] tabular-nums">
                             {!inventoryQuery.isSuccess
-                              ? 'Đang kiểm tra tồn kho trong tủ lạnh…'
+                              ? l('Đang kiểm tra tồn kho trong tủ lạnh…', 'Checking your fridge inventory…')
                               : ing.status === 'satisfied'
-                                ? `Đủ định lượng trong tủ (${formatQty(ing.availableQuantity ?? ing.requiredQuantity, ing.unit)})`
+                                ? l(
+                                    `Đủ định lượng trong tủ (${availableText})`,
+                                    `In fridge (${availableText})`,
+                                  )
                                 : ing.status === 'unresolved'
-                                  ? 'Có trong tủ nhưng khác đơn vị đo — cần kiểm tra trực tiếp'
+                                  ? l(
+                                      'Có trong tủ nhưng khác đơn vị đo — cần kiểm tra trực tiếp',
+                                      'In fridge with a different unit — check manually',
+                                    )
                                   : ing.missingQuantity !== null
-                                    ? `Cần mua thêm ${formatQty(ing.missingQuantity, ing.unit)}`
-                                    : 'Chưa có trong tủ lạnh'}
+                                    ? l(`Cần mua thêm ${missingText}`, `Need ${missingText} more`)
+                                    : l('Chưa có trong tủ lạnh', 'Not in fridge yet')}
                           </p>
                         </div>
                       </div>
 
                       {added ? (
                         <TkvBadge tone="success" icon="check">
-                          Đã thêm giỏ mua
+                          {l('Đã thêm giỏ mua', 'Added to list')}
                         </TkvBadge>
                       ) : canAddShortfall ? (
                         <TkvButton
@@ -412,19 +505,21 @@ export const C18RecipeDetailPilot: React.FC = () => {
                           onClick={() =>
                             addShortfallMutation.mutate({
                               ing,
-                              recipeTitle: recipe.title,
+                              recipeTitle: displayTitle,
                               sourceKey: recipeKey,
                             })
                           }
                         >
-                          Mua phần thiếu
+                          {l('Mua phần thiếu', 'Add missing')}
                         </TkvButton>
                       ) : (
                         <TkvBadge
                           tone={ing.status === 'satisfied' ? 'success' : 'warning'}
                           icon={ing.status === 'satisfied' ? 'check' : 'info'}
                         >
-                          {ing.status === 'satisfied' ? 'Đủ lượng' : 'Kiểm tra tủ'}
+                          {ing.status === 'satisfied'
+                            ? l('Đủ lượng', 'In stock')
+                            : l('Kiểm tra tủ', 'Check fridge')}
                         </TkvBadge>
                       )}
                     </TkvSurface>
@@ -437,35 +532,47 @@ export const C18RecipeDetailPilot: React.FC = () => {
           {/* Step-by-Step Instructions */}
           <section aria-labelledby="c18-steps-heading" className="space-y-3.5">
             <h2 id="c18-steps-heading" className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-              Các bước thực hiện ({recipe.steps.length})
+              {l(`Các bước thực hiện (${localizedSteps.length})`, `Cooking steps (${localizedSteps.length})`)}
             </h2>
             <ol className="space-y-3">
-              {recipe.steps.map((step) => (
-                <li key={step.stepNumber}>
-                  <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
-                    <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] font-bold text-xs tabular-nums flex items-center justify-center shrink-0">
-                      {String(step.stepNumber).padStart(2, '0')}
-                    </span>
-                    <div className="space-y-2 min-w-0 flex-1">
-                      <p className="text-sm sm:text-base text-[var(--tkv-ink,#152E2C)] leading-relaxed">
-                        {step.instruction}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {typeof step.timerMinutes === 'number' && step.timerMinutes > 0 && (
-                          <TkvBadge tone="coral" icon="timer">
-                            <span className="tabular-nums">Hẹn giờ gợi ý: {step.timerMinutes} phút</span>
-                          </TkvBadge>
-                        )}
-                        {step.tip && (
-                          <span className="text-xs font-medium text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] px-2.5 py-1 rounded-xl">
-                            Mẹo bếp: {step.tip}
-                          </span>
-                        )}
+              {localizedSteps.map((step, idx) => {
+                const rawTip = recipe.steps[idx]?.tip;
+                const visibleTip =
+                  rawTip && (locale === 'vi' || !containsVietnameseDiacritics(rawTip))
+                    ? rawTip
+                    : null;
+                return (
+                  <li key={step.stepNumber}>
+                    <TkvSurface className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
+                      <span className="tkv-heading w-9 h-9 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-[var(--tkv-accent-ink,#B33A22)] font-bold text-xs tabular-nums flex items-center justify-center shrink-0">
+                        {String(step.stepNumber).padStart(2, '0')}
+                      </span>
+                      <div className="space-y-2 min-w-0 flex-1">
+                        <p className="text-sm sm:text-base text-[var(--tkv-ink,#152E2C)] leading-relaxed">
+                          {step.instruction}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {typeof step.timerMinutes === 'number' && step.timerMinutes > 0 && (
+                            <TkvBadge tone="coral" icon="timer">
+                              <span className="tabular-nums">
+                                {l(
+                                  `Hẹn giờ gợi ý: ${step.timerMinutes} phút`,
+                                  `Suggested timer: ${step.timerMinutes} min`,
+                                )}
+                              </span>
+                            </TkvBadge>
+                          )}
+                          {visibleTip && (
+                            <span className="text-xs font-medium text-[var(--tkv-honey-ink,#8A5205)] bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] px-2.5 py-1 rounded-xl">
+                              {l(`Mẹo bếp: ${visibleTip}`, `Chef's tip: ${visibleTip}`)}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </TkvSurface>
-                </li>
-              ))}
+                    </TkvSurface>
+                  </li>
+                );
+              })}
             </ol>
           </section>
         </div>

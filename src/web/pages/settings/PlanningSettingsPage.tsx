@@ -14,6 +14,7 @@ import {
 import { familyPreferencesApi, type FamilyPreferences } from '../../services/family-preferences';
 import { ApiError } from '../../services/http';
 import { capturePrivateSession, isOfflineGuestSession } from '../../lib/private-session';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 export function PlanningSettingsPage() {
   return isMealCompositionEnabled() ? (
@@ -23,6 +24,7 @@ export function PlanningSettingsPage() {
   );
 }
 function FamilyPlanningSettingsPage() {
+  const { l } = useLocaleText();
   const query = useFamilyPreferences();
   const client = useQueryClient();
   const guest = isOfflineGuestSession();
@@ -47,21 +49,24 @@ function FamilyPlanningSettingsPage() {
   });
   return (
     <AccountPage
-      title="Thói quen bữa nhà"
-      description="Lưu để thực đơn tới hợp khẩu vị và nhịp sinh hoạt của gia đình."
+      title={l('Thói quen bữa nhà', 'Household meal habits')}
+      description={l(
+        'Lưu để thực đơn tới hợp khẩu vị và nhịp sinh hoạt của gia đình.',
+        'Save your defaults so future meal plans match your family’s tastes and routine.',
+      )}
     >
       {guest ? (
         <p>
-          Đăng nhập để lưu thói quen cho gia đình.{' '}
+          {l('Đăng nhập để lưu thói quen cho gia đình.', 'Sign in to save habits for your household.')}{' '}
           <Link
             to="/auth?mode=login&returnTo=%2Fsettings%2Fplanning"
             className="planning-text-link"
           >
-            Đăng nhập
+            {l('Đăng nhập', 'Sign in')}
           </Link>
         </p>
       ) : query.isPending ? (
-        <InlineLoading label="Đang tải thói quen gia đình…" />
+        <InlineLoading label={l('Đang tải thói quen gia đình…', 'Loading household habits…')} />
       ) : query.isError ? (
         <InlineError error={query.error} onRetry={() => void query.refetch()} />
       ) : (
@@ -75,7 +80,7 @@ function FamilyPlanningSettingsPage() {
           >
             <fieldset disabled={save.isPending} className="family-settings-form">
               <label>
-                Số người thường ăn
+                {l('Số người thường ăn', 'Household size')}
                 <input
                   type="number"
                   min={1}
@@ -96,16 +101,20 @@ function FamilyPlanningSettingsPage() {
                 }}
               />
               <p className="planning-note">
-                Chỉnh dị ứng và nguyên liệu bắt buộc tránh ở mục phía trên. Sở thích trong hồ sơ
-                không thay thế các ràng buộc này.
+                {l(
+                  'Chỉnh dị ứng và nguyên liệu bắt buộc tránh ở mục phía trên. Sở thích trong hồ sơ không thay thế các ràng buộc này.',
+                  'Edit allergies and strictly excluded ingredients above. Profile preferences do not override these safety constraints.',
+                )}
               </p>
               <Link className="planning-text-link" to="/me/preferences">
-                Gu món & độ cay trong hồ sơ
+                {l('Gu món & độ cay trong hồ sơ', 'Cuisine tastes & spice level in profile')}
               </Link>
               {save.isError && (
                 <p role="alert" className="planning-error">
-                  Chưa lưu được thói quen. Nếu một thiết bị khác vừa đổi, tải lại và kiểm tra trước
-                  khi lưu.
+                  {l(
+                    'Chưa lưu được thói quen. Nếu một thiết bị khác vừa đổi, tải lại và kiểm tra trước khi lưu.',
+                    'Could not save habits. If another device made changes, reload and review before saving.',
+                  )}
                 </p>
               )}
               {save.isError && (
@@ -121,12 +130,12 @@ function FamilyPlanningSettingsPage() {
                     }
                   }}
                 >
-                  Tải lại thói quen mới nhất
+                  {l('Tải lại thói quen mới nhất', 'Reload latest habits')}
                 </button>
               )}
               {saved && (
                 <p role="status" className="planning-notice">
-                  Đã lưu thói quen cho các thực đơn tới.
+                  {l('Đã lưu thói quen cho các thực đơn tới.', 'Habits saved for future meal plans.')}
                 </p>
               )}
               <Button
@@ -135,11 +144,14 @@ function FamilyPlanningSettingsPage() {
                 isLoading={save.isPending}
                 disabled={save.error instanceof ApiError && save.error.status === 409}
               >
-                Lưu thói quen
+                {l('Lưu thói quen', 'Save habits')}
               </Button>
             </fieldset>
             <p className="planning-note mt-3">
-              Thay đổi này không sửa các bữa đã xếp. Tạo tuần mới hoặc xem gợi ý lại để áp dụng.
+              {l(
+                'Thay đổi này không sửa các bữa đã xếp. Tạo tuần mới hoặc xem gợi ý lại để áp dụng.',
+                'These changes do not edit already scheduled meals. Create a new week or refresh suggestions to apply them.',
+              )}
             </p>
           </form>
         )

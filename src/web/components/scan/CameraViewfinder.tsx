@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Camera, RefreshCw, Zap, ZapOff, Image as ImageIcon, PlusCircle } from 'lucide-react';
 import { clsx } from 'clsx';
 import { PRIVATE_IMAGE_JPEG_QUALITY, PRIVATE_IMAGE_MAX_DIMENSION } from '../../lib/private-image';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 interface CameraViewfinderProps {
   onCapture: (base64: string) => void;
@@ -16,6 +17,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
   onManualEntry,
   scanType,
 }) => {
+  const { l } = useLocaleText();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment');
@@ -149,12 +151,20 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
           </div>
           <div>
             <p className="font-heading font-bold text-sm text-[var(--tkv-bg)]">
-              {hasCameraError ? 'Camera không sẵn sàng' : 'Đang bật camera...'}
+              {hasCameraError
+                ? l('Camera không sẵn sàng', 'Camera unavailable')
+                : l('Đang bật camera...', 'Starting camera...')}
             </p>
             <p className="text-sm text-white/80 mt-1 max-w-xs leading-relaxed">
               {hasCameraError
-                ? 'Bạn có thể tải ảnh từ thư viện hoặc chuyển sang nhập nguyên liệu thủ công'
-                : 'Vui lòng cấp quyền truy cập camera nếu được hỏi'}
+                ? l(
+                    'Bạn có thể tải ảnh từ thư viện hoặc chuyển sang nhập nguyên liệu thủ công',
+                    'You can upload a photo from your gallery or enter ingredients manually',
+                  )
+                : l(
+                    'Vui lòng cấp quyền truy cập camera nếu được hỏi',
+                    'Please allow camera access if prompted',
+                  )}
             </p>
           </div>
           {hasCameraError && (
@@ -165,7 +175,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
                 className="px-4 py-2.5 rounded-xl bg-white text-[var(--tkv-ink)] hover:bg-[var(--tkv-bg)] font-semibold text-sm flex items-center gap-1.5 shadow-sm tap-target transition-tap active:scale-[0.98]"
               >
                 <ImageIcon className="w-4 h-4 shrink-0" />
-                <span>Tải ảnh từ thư viện</span>
+                <span>{l('Tải ảnh từ thư viện', 'Upload from gallery')}</span>
               </button>
               {onManualEntry && (
                 <button
@@ -175,7 +185,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
                   className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/25 text-white font-semibold text-sm flex items-center gap-1.5 tap-target transition-tap active:scale-[0.98]"
                 >
                   <PlusCircle className="w-4 h-4 shrink-0" />
-                  <span>Nhập nguyên liệu thủ công</span>
+                  <span>{l('Nhập nguyên liệu thủ công', 'Enter ingredients manually')}</span>
                 </button>
               )}
             </div>
@@ -197,7 +207,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
                   ? 'bg-white text-[var(--tkv-ink)]'
                   : 'bg-[var(--tkv-ink)]/75 text-white',
               )}
-              aria-label="Đèn pin"
+              aria-label={l('Đèn pin', 'Flashlight')}
             >
               {isTorchOn ? (
                 <Zap className="w-4 h-4 fill-current" />
@@ -213,10 +223,10 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
             <span className="line-clamp-2">
               {scanType === 'receipt'
-                ? 'Căn chỉnh toàn bộ hóa đơn vào khung'
+                ? l('Căn chỉnh toàn bộ hóa đơn vào khung', 'Align the full receipt within the frame')
                 : scanType === 'fridge'
-                  ? 'Hướng vào tủ lạnh để nhận diện thực phẩm'
-                  : 'Đặt nguyên liệu vào giữa khung hình'}
+                  ? l('Hướng vào tủ lạnh để nhận diện thực phẩm', 'Point at your fridge to detect ingredients')
+                  : l('Đặt nguyên liệu vào giữa khung hình', 'Center the ingredients in the frame')}
             </span>
           </div>
 
@@ -224,7 +234,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
             type="button"
             onClick={switchCamera}
             className="w-11 h-11 shrink-0 rounded-xl bg-[var(--tkv-ink)]/75 backdrop-blur-md text-white border border-white/15 flex items-center justify-center tap-target hover:bg-[var(--tkv-ink)]/90 transition-tap"
-            aria-label="Đổi camera"
+            aria-label={l('Đổi camera', 'Switch camera')}
           >
             <RefreshCw className="w-4 h-4" />
           </button>
@@ -256,11 +266,11 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
               type="button"
               onClick={onSelectFromGallery}
               className="px-3.5 py-2.5 rounded-xl bg-[var(--tkv-ink)]/75 border border-white/15 backdrop-blur-md text-white inline-flex items-center gap-1.5 tap-target hover:bg-[var(--tkv-ink)]/95 active:scale-95 transition-tap"
-              title="Thư viện"
-              aria-label="Thư viện"
+              title={l('Thư viện', 'Gallery')}
+              aria-label={l('Thư viện', 'Gallery')}
             >
               <ImageIcon className="w-5 h-5 shrink-0" />
-              <span className="text-sm font-heading font-bold whitespace-nowrap">Thư viện</span>
+              <span className="text-sm font-heading font-bold whitespace-nowrap">{l('Thư viện', 'Gallery')}</span>
             </button>
           </div>
 
@@ -269,7 +279,7 @@ export const CameraViewfinder: React.FC<CameraViewfinderProps> = ({
             type="button"
             onClick={handleCapture}
             className="justify-self-center w-20 h-20 rounded-full border-[3px] border-white/90 flex items-center justify-center bg-transparent active:scale-95 transition-transform p-1.5 tap-target shadow-lg"
-            aria-label="Chụp ảnh"
+            aria-label={l('Chụp ảnh', 'Take photo')}
           >
             <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-md">
               <Camera className="w-8 h-8 text-[var(--tkv-ink)] stroke-[2.2]" />

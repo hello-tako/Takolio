@@ -1,8 +1,11 @@
 import { pushOp, type PendingOp, type PendingScope } from '../lib/sync';
+import { getActiveAppLocale } from '../i18n/LocaleContext';
 import {
   capturePrivateSession, clearPrivateIdentity, currentPrivateScope, isOfflineGuestSession,
   privateCacheKey, privateSessionBlocked, removePrivateCaches,
 } from '../lib/private-session';
+
+const errMsg = (vi: string, en: string) => (getActiveAppLocale() === 'vi' ? vi : en);
 
 export const BASE_URL = '/api/v1';
 
@@ -58,7 +61,12 @@ export function isNonRetryable(err: unknown): boolean {
 export function guardPrivateSession(): () => void {
   const isCurrent = capturePrivateSession();
   const assertCurrent = () => {
-    if (!isCurrent()) throw new ApiError('auth', 'Phiên làm việc đã thay đổi. Vui lòng đăng nhập lại.');
+    if (!isCurrent()) {
+      throw new ApiError(
+        'auth',
+        errMsg('Phiên làm việc đã thay đổi. Vui lòng đăng nhập lại.', 'Your session changed. Please sign in again.'),
+      );
+    }
   };
   assertCurrent();
   return assertCurrent;
@@ -78,13 +86,23 @@ export async function fetchJson<T>(path: string, options?: RequestInit, apiVersi
     (pathname === '/recipes' || pathname.startsWith('/recipes/'));
   if ((!scope.userId || !scope.householdId) && !path.startsWith('/auth/') &&
     pathname !== '/config' && pathname !== '/health' && !publicRead) {
-    throw new ApiError('auth', 'Vui lòng đăng nhập hoặc bắt đầu phiên khách.');
+    throw new ApiError(
+      'auth',
+      errMsg('Vui lòng đăng nhập hoặc bắt đầu phiên khách.', 'Please sign in or start a guest session.'),
+    );
   }
   if (isOfflineGuestSession() && !path.startsWith('/auth/') && pathname !== '/config') {
-    throw new ApiError('offline', 'Phiên khách này chỉ lưu dữ liệu trên thiết bị.', undefined, { retryable: false });
+    throw new ApiError(
+      'offline',
+      errMsg('Phiên khách này chỉ lưu dữ liệu trên thiết bị.', 'This guest session only stores data on this device.'),
+      undefined,
+      { retryable: false },
+    );
   }
+  const activeLocale = getActiveAppLocale();
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
+    ...(activeLocale !== 'vi' ? { 'X-Takolio-Locale': activeLocale } : {}),
   };
   const headerEntries = options?.headers instanceof Headers
     ? options.headers.entries()
@@ -112,7 +130,12 @@ export async function fetchJson<T>(path: string, options?: RequestInit, apiVersi
   } catch {
     assertCurrent();
     // Network-level failure (no connectivity, DNS, aborted) => offline.
-    throw new ApiError('offline', `Không có kết nối mạng khi gọi ${path}`, undefined, { retryable: true });
+    throw new ApiError(
+      'offline',
+      errMsg(`Không có kết nối mạng khi gọi ${path}`, `Network unavailable while requesting ${path}`),
+      undefined,
+      { retryable: true },
+    );
   }
 
   assertCurrent();

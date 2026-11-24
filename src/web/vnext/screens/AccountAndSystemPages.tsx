@@ -7,12 +7,30 @@ import '../styles/vnext-adapted.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
 import { useUiTranslation } from '../../i18n';
+import {
+  containsVietnameseDiacritics,
+  localizeErrorText,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
-function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
+function sanitizeUserDisplayName(
+  raw: string | undefined | null,
+  isGuest = false,
+  isVi = true,
+): string {
   const trimmed = (raw ?? '').trim();
-  if (!trimmed) return isGuest ? 'Người dùng Takolio' : 'Bếp trưởng';
-  if (LEGACY_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  if (!trimmed) {
+    if (isVi) return isGuest ? 'Người dùng Takolio' : 'Bếp trưởng';
+    return isGuest ? 'Takolio Guest' : 'Home Chef';
+  }
+  if (LEGACY_NAME_RE.test(trimmed)) return isVi ? 'Bếp trưởng' : 'Home Chef';
+  if (!isVi) {
+    if (trimmed === 'Khách ghé thăm') return 'Guest';
+    if (trimmed === 'Người dùng Takolio') return 'Takolio User';
+    if (trimmed === 'Bếp trưởng') return 'Home Chef';
+    if (trimmed === 'Bạn mới của Takolio') return 'Takolio Guest';
+  }
   return raw as string;
 }
 import { queryKeys } from '../../lib/queryKeys';
@@ -54,15 +72,16 @@ const LazyGlobalDodoBillingPanel = lazy(() =>
   })),
 );
 
-function relativeTimeVi(iso: string): string {
+function relativeTime(iso: string, isVi: boolean): string {
   const t = new Date(iso).getTime();
   if (!Number.isFinite(t)) return '';
   const mins = Math.max(0, Math.round((Date.now() - t) / 60000));
-  if (mins < 1) return 'Vừa xong';
-  if (mins < 60) return `${mins} phút trước`;
+  if (mins < 1) return isVi ? 'Vừa xong' : 'Just now';
+  if (mins < 60) return isVi ? `${mins} phút trước` : `${mins}m ago`;
   const hours = Math.round(mins / 60);
-  if (hours < 24) return `${hours} giờ trước`;
-  return `${Math.round(hours / 24)} ngày trước`;
+  if (hours < 24) return isVi ? `${hours} giờ trước` : `${hours}h ago`;
+  const days = Math.round(hours / 24);
+  return isVi ? `${days} ngày trước` : `${days}d ago`;
 }
 
 /**
@@ -70,9 +89,14 @@ function relativeTimeVi(iso: string): string {
  * Displays real household notifications from `api.getNotifications()` without inventing unread counters.
  */
 export const C30NotificationsVNext: React.FC = () => {
+  const { l, isVi } = useLocaleText();
+
   useVNextSeo({
-    title: 'Thông báo căn bếp',
-    description: 'Nhắc nhở nguyên liệu nên dùng sớm và gợi ý thao tác từ dữ liệu thật của hộ gia đình.',
+    title: l('Thông báo căn bếp', 'Kitchen notifications'),
+    description: l(
+      'Nhắc nhở nguyên liệu nên dùng sớm và gợi ý thao tác từ dữ liệu thật của hộ gia đình.',
+      'Reminders for ingredients to use soon and actionable tips from your real household inventory.',
+    ),
     canonicalPath: '/notifications',
     domainSurface: 'app',
     noindex: true,
@@ -86,15 +110,19 @@ export const C30NotificationsVNext: React.FC = () => {
   const list = notificationsQuery.data ?? [];
 
   return (
-    <ConsumerStudioShell screenId="C30" title="Thông báo căn bếp" backTo={vnextHref('/me')}>
+    <ConsumerStudioShell
+      screenId="C30"
+      title={l('Thông báo căn bếp', 'Kitchen notifications')}
+      backTo={vnextHref('/me')}
+    >
       <div className="max-w-3xl space-y-6">
         <div className="flex items-end justify-between gap-3 flex-wrap">
           <div>
             <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#52706A)]">
-              Nhắc nhở từ trạng thái thực tế
+              {l('Nhắc nhở từ trạng thái thực tế', 'Live kitchen reminders')}
             </p>
             <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)] mt-0.5">
-              Thông báo căn bếp
+              {l('Thông báo căn bếp', 'Kitchen notifications')}
             </h1>
           </div>
           <Link
@@ -102,37 +130,49 @@ export const C30NotificationsVNext: React.FC = () => {
             className="tkv-focusable min-h-[44px] px-3.5 py-2 rounded-xl border border-[var(--tkv-border)] hover:border-[var(--tkv-border-strong)] bg-white text-xs sm:text-sm font-bold text-[var(--tkv-ink)] inline-flex items-center gap-1.5 transition-colors"
           >
             <VNextIcon name="settings" size={15} />
-            <span>Cài đặt thông báo</span>
+            <span>{l('Cài đặt thông báo', 'Notification settings')}</span>
           </Link>
         </div>
 
         {notificationsQuery.isPending ? (
           <div className="space-y-3">
-            <TkvSkeleton className="h-24" label="Đang tải thông báo căn bếp…" />
-            <TkvSkeleton className="h-24" label="Đang tải thông báo căn bếp…" />
+            <TkvSkeleton
+              className="h-24"
+              label={l('Đang tải thông báo căn bếp…', 'Loading kitchen notifications…')}
+            />
+            <TkvSkeleton
+              className="h-24"
+              label={l('Đang tải thông báo căn bếp…', 'Loading kitchen notifications…')}
+            />
           </div>
         ) : notificationsQuery.isError ? (
           <TkvErrorState
-            title="Chưa tải được thông báo"
-            message="Không thể đọc danh sách nhắc nhở từ máy chủ lúc này."
+            title={l('Chưa tải được thông báo', 'Could not load notifications')}
+            message={l(
+              'Không thể đọc danh sách nhắc nhở từ máy chủ lúc này.',
+              'Unable to fetch reminders from the server right now.',
+            )}
             onRetry={() => void notificationsQuery.refetch()}
           />
         ) : list.length === 0 ? (
           <TkvEmptyState
             pose="welcome"
-            title="Căn bếp đang êm ả"
-            description="Hiện chưa có cảnh báo hạn dùng hay nhắc nhở mới cho hộ gia đình của bạn."
+            title={l('Căn bếp đang êm ả', 'All quiet in the kitchen')}
+            description={l(
+              'Hiện chưa có cảnh báo hạn dùng hay nhắc nhở mới cho hộ gia đình của bạn.',
+              'There are no expiry alerts or new reminders for your household right now.',
+            )}
             primaryAction={
               <Link
                 to={vnextHref('/fridge')}
                 className="tkv-focusable min-h-[46px] px-5 py-2.5 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary,#196149)] hover:bg-[var(--tkv-primary-hover,#134C39)] text-white shadow-xs font-semibold text-sm inline-flex items-center transition-colors"
               >
-                Kiểm tra tủ lạnh
+                {l('Kiểm tra tủ lạnh', 'Check your fridge')}
               </Link>
             }
           />
         ) : (
-          <ul className="space-y-3" aria-label="Danh sách thông báo">
+          <ul className="space-y-3" aria-label={l('Danh sách thông báo', 'Notifications list')}>
             {list.map((item) => {
               const icon: VNextIconName =
                 item.type === 'expiring_soon'
@@ -140,6 +180,22 @@ export const C30NotificationsVNext: React.FC = () => {
                   : item.type === 'shopping_reminder'
                     ? 'shopping'
                     : 'recipes';
+              const displayTitle =
+                !isVi && containsVietnameseDiacritics(item.title)
+                  ? item.type === 'expiring_soon'
+                    ? 'Ingredients expiring soon'
+                    : item.type === 'shopping_reminder'
+                      ? 'Shopping list reminder'
+                      : 'Kitchen reminder'
+                  : item.title;
+              const displayMessage =
+                !isVi && containsVietnameseDiacritics(item.message)
+                  ? item.type === 'expiring_soon'
+                    ? 'Check your fridge for ingredients that should be cooked soon.'
+                    : item.type === 'shopping_reminder'
+                      ? 'Review items remaining on your household shopping list.'
+                      : 'Open your kitchen dashboard for the latest household updates.'
+                  : item.message;
               return (
                 <li key={item.id}>
                   <TkvSurface className="p-4 sm:p-5 flex items-start justify-between gap-4 bg-white border-[var(--tkv-border,#DCE6DE)]">
@@ -152,14 +208,14 @@ export const C30NotificationsVNext: React.FC = () => {
                       </span>
                       <div className="space-y-1 min-w-0">
                         <p className="tkv-heading text-base font-bold text-[var(--tkv-ink,#152E2C)]">
-                          {item.title}
+                          {displayTitle}
                         </p>
                         <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)] leading-relaxed">
-                          {item.message}
+                          {displayMessage}
                         </p>
                         {item.createdAt && (
                           <p className="text-xs text-[var(--tkv-ink-muted,#52706A)] tabular-nums">
-                            {relativeTimeVi(item.createdAt)}
+                            {relativeTime(item.createdAt, isVi)}
                           </p>
                         )}
                       </div>
@@ -180,6 +236,7 @@ export const C30NotificationsVNext: React.FC = () => {
  * Matches U01.png 1:1 while preserving session-fenced logout and guest upgrade CTAs.
  */
 export const U01ProfileHubVNext: React.FC = () => {
+  const { l, locale, isVi } = useLocaleText();
   const navigate = useNavigate();
   const {
     displayName,
@@ -194,8 +251,11 @@ export const U01ProfileHubVNext: React.FC = () => {
   } = useAuthStore();
 
   useVNextSeo({
-    title: 'Hồ sơ cá nhân',
-    description: 'Quản lý tài khoản, hộ gia đình, thông báo, gói Pro và cài đặt quyền riêng tư trên Takolio.',
+    title: l('Hồ sơ cá nhân', 'Profile'),
+    description: l(
+      'Quản lý tài khoản, hộ gia đình, thông báo, gói Pro và cài đặt quyền riêng tư trên Takolio.',
+      'Manage your account, household, notifications, Pro plan, and privacy settings on Takolio.',
+    ),
     canonicalPath: '/me',
     domainSurface: 'app',
     noindex: true,
@@ -222,62 +282,83 @@ export const U01ProfileHubVNext: React.FC = () => {
     {
       id: 'u02',
       icon: 'recipes',
-      title: 'Sở thích món ăn',
-      subtitle: `Khẩu phần ${householdSize} người · Ẩm thực & mức cay`,
+      title: l('Sở thích món ăn', 'Food preferences'),
+      subtitle: l(
+        `Khẩu phần ${householdSize} người · Ẩm thực & mức cay`,
+        `Servings for ${householdSize} · Cuisines & spice level`,
+      ),
       to: vnextHref('/me/preferences'),
     },
     {
       id: 'u06',
       icon: 'users',
-      title: 'Hộ gia đình',
-      subtitle: 'Mã hộ hiện tại & trạng thái chia sẻ thành viên',
+      title: l('Hộ gia đình', 'Household'),
+      subtitle: l(
+        'Mã hộ hiện tại & trạng thái chia sẻ thành viên',
+        'Active household ID & member sharing status',
+      ),
       to: vnextHref('/me/household'),
     },
     {
       id: 'c30',
       icon: 'notification',
-      title: 'Thông báo',
-      subtitle: 'Xem nhắc nhở hạn dùng thực phẩm & cấu hình thông báo',
+      title: l('Thông báo', 'Notifications'),
+      subtitle: l(
+        'Xem nhắc nhở hạn dùng thực phẩm & cấu hình thông báo',
+        'View food expiry reminders & notification settings',
+      ),
       to: vnextHref('/notifications'),
     },
     {
       id: 'u07',
       icon: 'crown',
       title: 'Takolio Pro',
-      subtitle: 'Xem quyền lợi và trạng thái gói dịch vụ chính thức từ máy chủ',
+      subtitle: l(
+        'Xem quyền lợi và trạng thái gói dịch vụ chính thức từ máy chủ',
+        'View benefits and verified subscription status from the server',
+      ),
       to: vnextHref('/plus'),
-      badge: isPlus ? 'Đang hoạt động' : undefined,
+      badge: isPlus ? l('Đang hoạt động', 'Active') : undefined,
     },
     {
       id: 'u03',
       icon: 'calendar',
-      title: 'Cài đặt thực đơn',
-      subtitle: 'Ngày nấu mặc định và thời gian chuẩn bị bữa ăn',
+      title: l('Cài đặt thực đơn', 'Meal plan settings'),
+      subtitle: l(
+        'Ngày nấu mặc định và thời gian chuẩn bị bữa ăn',
+        'Default cooking days and meal prep time',
+      ),
       to: vnextHref('/settings/planning'),
     },
     {
       id: 'u04',
       icon: 'settings',
-      title: 'Cài đặt ứng dụng',
-      subtitle: 'Tùy chọn hiển thị trên thiết bị và cập nhật PWA',
+      title: l('Cài đặt ứng dụng', 'App settings'),
+      subtitle: l(
+        'Tùy chọn hiển thị trên thiết bị và cập nhật PWA',
+        'Language, units, device cache, and PWA installation',
+      ),
       to: vnextHref('/settings/app'),
     },
     {
       id: 'u09',
       icon: 'privacy',
-      title: 'Quyền riêng tư & Xuất/xóa dữ liệu',
-      subtitle: 'Phân tách dữ liệu hộ gia đình, sự đồng ý và quyền dữ liệu',
+      title: l('Quyền riêng tư & Xuất/xóa dữ liệu', 'Privacy & Data rights'),
+      subtitle: l(
+        'Phân tách dữ liệu hộ gia đình, sự đồng ý và quyền dữ liệu',
+        'Household data isolation, consent, and export/deletion status',
+      ),
       to: vnextHref('/settings/privacy'),
     },
   ];
 
-  const cleanDisplayName = sanitizeUserDisplayName(displayName, isGuest);
+  const cleanDisplayName = sanitizeUserDisplayName(displayName, isGuest, isVi);
 
   return (
-    <ConsumerStudioShell screenId="U01" title="Hồ sơ cá nhân">
+    <ConsumerStudioShell screenId="U01" title={l('Hồ sơ cá nhân', 'Profile')}>
       <div className="max-w-3xl space-y-6">
         <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-          Hồ sơ cá nhân
+          {l('Hồ sơ cá nhân', 'Profile')}
         </h1>
 
         {/* Identity Summary Card */}
@@ -311,16 +392,25 @@ export const U01ProfileHubVNext: React.FC = () => {
                     aria-hidden="true"
                   />
                   <span>
-                    {isGuest ? 'Phiên dùng thử khách' : isPlus ? 'Takolio Pro' : 'Tài khoản đã xác thực'}
+                    {isGuest
+                      ? l('Phiên dùng thử khách', 'Guest trial session')
+                      : isPlus
+                        ? 'Takolio Pro'
+                        : l('Tài khoản đã xác thực', 'Verified account')}
                   </span>
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-[var(--tkv-ink-secondary)] leading-snug break-words">
-                {isGuest ? 'Chưa liên kết email · Đăng ký để lưu dữ liệu lâu dài' : email}
+                {isGuest
+                  ? l(
+                      'Chưa liên kết email · Đăng ký để lưu dữ liệu lâu dài',
+                      'No email linked · Sign up to keep your kitchen synced',
+                    )
+                  : email}
               </p>
               {householdId && (
                 <p className="text-[11px] tabular-nums text-[var(--tkv-ink-muted)] truncate">
-                  Mã hộ: {householdId}
+                  {l('Mã hộ:', 'Household ID:')} {householdId}
                 </p>
               )}
             </div>
@@ -332,13 +422,16 @@ export const U01ProfileHubVNext: React.FC = () => {
               size="sm"
               onClick={() => navigate(vnextHref('/auth?mode=register'))}
             >
-              Tạo tài khoản
+              {l('Tạo tài khoản', 'Create account')}
             </TkvButton>
           )}
         </TkvSurface>
 
         {/* Navigation List */}
-        <ul className="space-y-2.5" aria-label="Danh mục tài khoản và cài đặt">
+        <ul
+          className="space-y-2.5"
+          aria-label={l('Danh mục tài khoản và cài đặt', 'Account and settings navigation')}
+        >
           {navRows.map((row) => (
             <li key={row.id}>
               <Link
@@ -373,7 +466,14 @@ export const U01ProfileHubVNext: React.FC = () => {
             className="p-4 rounded-2xl bg-[var(--tkv-accent-soft,#FFF0E9)] border border-[var(--tkv-accent-border,#FAD0C4)] text-sm text-[var(--tkv-accent-ink,#B33A22)] font-semibold flex items-center gap-2"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--tkv-primary,#196149)] shrink-0" aria-hidden="true" />
-            <span>{logoutError}</span>
+            <span>
+              {localizeErrorText(
+                logoutError,
+                'Private data on this device has been cleared, but server session revocation could not be confirmed. Please reconnect and try signing out again.',
+                logoutError,
+                locale,
+              )}
+            </span>
           </div>
         )}
 
@@ -384,7 +484,7 @@ export const U01ProfileHubVNext: React.FC = () => {
             isLoading={logoutStatus === 'pending'}
             onClick={() => void handleLogout()}
           >
-            Đăng xuất khỏi thiết bị này
+            {l('Đăng xuất khỏi thiết bị này', 'Sign out of this device')}
           </TkvButton>
         </div>
       </div>
@@ -393,48 +493,100 @@ export const U01ProfileHubVNext: React.FC = () => {
 };
 
 /** U02 — Sở thích món ăn (`/me/preferences`, `/settings/food`). */
-export const U02FoodPrefsVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="U02" title="Sở thích món ăn" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang tải sở thích món ăn…" />}>
-        <LazyFoodPreferencesPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const U02FoodPrefsVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell
+      screenId="U02"
+      title={l('Sở thích món ăn', 'Food preferences')}
+      backTo={vnextHref('/me')}
+    >
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+        <Suspense
+          fallback={
+            <SettingsFormSkeleton
+              label={l('Đang tải sở thích món ăn…', 'Loading food preferences…')}
+            />
+          }
+        >
+          <LazyFoodPreferencesPage />
+        </Suspense>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /** U03 — Cài đặt thực đơn (`/settings/planning`). */
-export const U03PlanningSettingsVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="U03" title="Cài đặt thực đơn" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt thực đơn…" />}>
-        <LazyPlanningSettingsPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const U03PlanningSettingsVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell
+      screenId="U03"
+      title={l('Cài đặt thực đơn', 'Meal plan settings')}
+      backTo={vnextHref('/me')}
+    >
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+        <Suspense
+          fallback={
+            <SettingsFormSkeleton
+              label={l('Đang tải cài đặt thực đơn…', 'Loading meal plan settings…')}
+            />
+          }
+        >
+          <LazyPlanningSettingsPage />
+        </Suspense>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /** U04 — Cài đặt ứng dụng (`/settings/app`, `/settings`). */
-export const U04AppSettingsVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="U04" title="Cài đặt ứng dụng" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt ứng dụng…" />}>
-        <LazySettingsPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const U04AppSettingsVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell
+      screenId="U04"
+      title={l('Cài đặt ứng dụng', 'App settings')}
+      backTo={vnextHref('/me')}
+    >
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+        <Suspense
+          fallback={
+            <SettingsFormSkeleton
+              label={l('Đang tải cài đặt ứng dụng…', 'Loading app settings…')}
+            />
+          }
+        >
+          <LazySettingsPage />
+        </Suspense>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /** U05 — Cài đặt thông báo (`/settings/notifications`). */
-export const U05NotificationPrefsVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="U05" title="Cài đặt thông báo" backTo={vnextHref('/me')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang tải cài đặt thông báo…" />}>
-        <LazyNotificationPreferencesPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const U05NotificationPrefsVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell
+      screenId="U05"
+      title={l('Cài đặt thông báo', 'Notification settings')}
+      backTo={vnextHref('/me')}
+    >
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+        <Suspense
+          fallback={
+            <SettingsFormSkeleton
+              label={l('Đang tải cài đặt thông báo…', 'Loading notification settings…')}
+            />
+          }
+        >
+          <LazyNotificationPreferencesPage />
+        </Suspense>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /**
  * U06 — Hộ gia đình (`/me/household`, `/family`).
@@ -443,11 +595,15 @@ export const U05NotificationPrefsVNext: React.FC = () => (
  * invite/join/member-list actions as `Chưa hỗ trợ API` (zero fake invite codes!).
  */
 export const U06HouseholdHonestPage: React.FC = () => {
+  const { l } = useLocaleText();
   const { householdId, householdSize, isGuest } = useAuthStore();
 
   useVNextSeo({
-    title: 'Hộ gia đình',
-    description: 'Thông tin mã hộ gia đình hiện tại và trạng thái tính năng chia sẻ thành viên.',
+    title: l('Hộ gia đình', 'Household'),
+    description: l(
+      'Thông tin mã hộ gia đình hiện tại và trạng thái tính năng chia sẻ thành viên.',
+      'Active household ID details and member sharing feature status.',
+    ),
     canonicalPath: '/me/household',
     domainSurface: 'app',
     noindex: true,
@@ -455,63 +611,99 @@ export const U06HouseholdHonestPage: React.FC = () => {
 
   const unavailableItems = [
     {
-      title: 'Mời thành viên · Chưa hỗ trợ API',
-      detail: 'Cần API mã mời có thời hạn và phân quyền chủ hộ / thành viên (đã lập đặc tả RFC-001).',
+      title: l('Mời thành viên · Chưa hỗ trợ API', 'Invite members · API not yet available'),
+      detail: l(
+        'Cần API mã mời có thời hạn và phân quyền chủ hộ / thành viên (đã lập đặc tả RFC-001).',
+        'Requires expiring invite-code APIs and owner/member permissions (specified in RFC-001).',
+      ),
       icon: 'mail' as const,
     },
     {
-      title: 'Tham gia hộ khác · Chưa hỗ trợ API',
-      detail: 'Cần quy trình chuyển hộ an toàn không làm rò rỉ hoặc mất tồn kho hiện tại (RFC-001).',
+      title: l('Tham gia hộ khác · Chưa hỗ trợ API', 'Join another household · API not yet available'),
+      detail: l(
+        'Cần quy trình chuyển hộ an toàn không làm rò rỉ hoặc mất tồn kho hiện tại (RFC-001).',
+        'Requires a safe household transfer flow that prevents inventory loss or cross-household leaks (RFC-001).',
+      ),
       icon: 'swap' as const,
     },
     {
-      title: 'Danh sách thành viên · Chưa hỗ trợ API',
-      detail: 'Máy chủ hiện lưu mã hộ cho phiên của bạn, chưa cung cấp điểm cuối liệt kê/thu hồi thành viên.',
+      title: l('Danh sách thành viên · Chưa hỗ trợ API', 'Member list · API not yet available'),
+      detail: l(
+        'Máy chủ hiện lưu mã hộ cho phiên của bạn, chưa cung cấp điểm cuối liệt kê/thu hồi thành viên.',
+        'The server tracks your active household ID, but listing or revoking members is not available yet.',
+      ),
       icon: 'users' as const,
     },
   ];
 
   return (
-    <ConsumerStudioShell screenId="U06" title="Hộ gia đình" backTo={vnextHref('/me')}>
+    <ConsumerStudioShell screenId="U06" title={l('Hộ gia đình', 'Household')} backTo={vnextHref('/me')}>
       <div className="max-w-3xl space-y-6">
         <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-          Hộ gia đình
+          {l('Hộ gia đình', 'Household')}
         </h1>
 
         {/* Active Household Card */}
         <TkvSurface className="p-4 sm:p-6 space-y-3 bg-[var(--tkv-surface-mint)] border-[var(--tkv-border-mint)]">
           <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-honey-soft)] border border-[var(--tkv-honey-border)] text-xs font-semibold text-[var(--tkv-honey-ink)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-saffron)] shrink-0" aria-hidden="true" />
-            <span>BLOCKED_BACKEND · RFC-001 đang chờ triển khai tầng máy chủ</span>
+            <span>
+              {l(
+                'BLOCKED_BACKEND · RFC-001 đang chờ triển khai tầng máy chủ',
+                'BLOCKED_BACKEND · RFC-001 awaiting backend implementation',
+              )}
+            </span>
           </span>
           <h2 className="tkv-heading text-xl font-extrabold text-[var(--tkv-ink)]">
-            Hộ gia đình hiện tại
+            {l('Hộ gia đình hiện tại', 'Current household')}
           </h2>
           <p className="text-sm text-[var(--tkv-ink-secondary)]">
-            Mời, tham gia hộ khác và quản lý danh sách thành viên cần API máy chủ mới để bảo đảm cô lập dữ liệu.
+            {l(
+              'Mời, tham gia hộ khác và quản lý danh sách thành viên cần API máy chủ mới để bảo đảm cô lập dữ liệu.',
+              'Inviting members, joining another household, and managing members require dedicated server APIs to guarantee strict data isolation.',
+            )}
           </p>
           <div className="rounded-2xl bg-white border border-[var(--tkv-border)] p-4 space-y-2.5 text-sm">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Mã hộ hiện tại</span>
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">
+                {l('Mã hộ hiện tại', 'Current household ID')}
+              </span>
               <code className="font-mono text-xs font-bold tabular-nums break-all max-w-full text-[var(--tkv-ink)] bg-[var(--tkv-bg)] border border-[var(--tkv-border)] px-2.5 py-1 rounded-lg">
-                {householdId || 'Chưa khởi tạo'}
+                {householdId || l('Chưa khởi tạo', 'Not initialized')}
               </code>
             </div>
             <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-2.5">
-              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Khẩu phần nấu mặc định</span>
-              <strong className="text-[var(--tkv-ink)] tabular-nums">{householdSize} người</strong>
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">
+                {l('Khẩu phần nấu mặc định', 'Default cooking portions')}
+              </span>
+              <strong className="text-[var(--tkv-ink)] tabular-nums">
+                {l(
+                  `${householdSize} người`,
+                  `${householdSize} ${householdSize === 1 ? 'person' : 'people'}`,
+                )}
+              </strong>
             </div>
             <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-2.5">
-              <span className="font-semibold text-[var(--tkv-ink-secondary)]">Loại phiên</span>
+              <span className="font-semibold text-[var(--tkv-ink-secondary)]">
+                {l('Loại phiên', 'Session type')}
+              </span>
               <strong className="text-[var(--tkv-ink)]">
-                {isGuest ? 'Phiên khách cục bộ' : 'Tài khoản đã đăng ký'}
+                {isGuest
+                  ? l('Phiên khách cục bộ', 'Local guest session')
+                  : l('Tài khoản đã đăng ký', 'Registered account')}
               </strong>
             </div>
           </div>
         </TkvSurface>
 
         {/* Honest Unavailable Feature Rows */}
-        <div className="space-y-3" aria-label="Các tính năng chia sẻ hộ gia đình chưa mở">
+        <div
+          className="space-y-3"
+          aria-label={l(
+            'Các tính năng chia sẻ hộ gia đình chưa mở',
+            'Unavailable household sharing features',
+          )}
+        >
           {unavailableItems.map((it) => (
             <TkvSurface key={it.title} className="p-4 sm:p-5 flex items-start gap-3.5 bg-white border-[var(--tkv-border,#DCE6DE)]">
               <span className="w-11 h-11 rounded-xl bg-[var(--tkv-accent-soft,#FFF0E9)] text-[var(--tkv-primary,#196149)] flex items-center justify-center shrink-0 border border-[var(--tkv-accent-border,#FAD0C4)]">
@@ -541,7 +733,8 @@ export const U06HouseholdHonestPage: React.FC = () => {
 export const U07U08PlusReadOnlyWrapper: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { isPlus, isGuest } = useAuthStore();
-  const { locale, catalog } = useUiTranslation();
+  const { locale: appLocale, l } = useLocaleText();
+  const { locale: uiLocale, catalog } = useUiTranslation(appLocale);
 
   const rawPlan = searchParams.get('plan');
   const initialPlan: 'monthly' | 'annual' = rawPlan === 'monthly' ? 'monthly' : 'annual';
@@ -550,8 +743,18 @@ export const U07U08PlusReadOnlyWrapper: React.FC = () => {
   const [billingChannel, setBillingChannel] = useState<'payos_vn' | 'dodo_mor'>(() => {
     if (rawMarket === 'VN') return 'payos_vn';
     if (rawMarket && rawMarket !== 'VN') return 'dodo_mor';
-    return locale === 'vi' ? 'payos_vn' : 'dodo_mor';
+    return appLocale === 'vi' ? 'payos_vn' : 'dodo_mor';
   });
+
+  useEffect(() => {
+    if (rawMarket === 'VN') {
+      setBillingChannel('payos_vn');
+    } else if (rawMarket) {
+      setBillingChannel('dodo_mor');
+    } else {
+      setBillingChannel(appLocale === 'vi' ? 'payos_vn' : 'dodo_mor');
+    }
+  }, [appLocale, rawMarket]);
 
   return (
     <ConsumerStudioShell screenId="U07" title="Takolio Pro" backTo={vnextHref('/me')}>
@@ -590,7 +793,7 @@ export const U07U08PlusReadOnlyWrapper: React.FC = () => {
           <div
             className="flex flex-wrap items-center gap-1.5 rounded-full border border-[var(--tkv-border)] bg-[var(--tkv-surface-subtle)] p-1"
             role="tablist"
-            aria-label="Payment method"
+            aria-label={l('Phương thức thanh toán', 'Payment method')}
           >
             <button
               type="button"
@@ -626,6 +829,7 @@ export const U07U08PlusReadOnlyWrapper: React.FC = () => {
         {!isGuest && billingChannel === 'dodo_mor' ? (
           <Suspense fallback={<SettingsFormSkeleton label={catalog.common.loading} />}>
             <LazyGlobalDodoBillingPanel
+              locale={uiLocale}
               initialPlan={initialPlan}
               initialCountryCode={rawMarket && rawMarket !== 'VN' ? rawMarket : undefined}
             />
@@ -648,6 +852,7 @@ export const U07U08PlusReadOnlyWrapper: React.FC = () => {
  * Real browser permission & consent controls for U09 + explicit honest UnavailableState for U10 export/delete.
  */
 export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
+  const { l, isVi } = useLocaleText();
   const { location } = { location: useLocation() };
   const [analyticsConsent, setAnalyticsConsent] = useState<boolean>(() => {
     try {
@@ -660,8 +865,13 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
 
   useVNextSeo({
     title:
-      location.hash === '#data-rights' ? 'Xuất và xóa dữ liệu' : 'Quyền riêng tư & Dữ liệu',
-    description: 'Kiểm soát quyền riêng tư hộ gia đình, sự đồng ý đo lường và trạng thái xuất/xóa dữ liệu.',
+      location.hash === '#data-rights'
+        ? l('Xuất và xóa dữ liệu', 'Export and delete data')
+        : l('Quyền riêng tư & Dữ liệu', 'Privacy & Data'),
+    description: l(
+      'Kiểm soát quyền riêng tư hộ gia đình, sự đồng ý đo lường và trạng thái xuất/xóa dữ liệu.',
+      'Control household privacy, analytics consent, and data export/deletion status.',
+    ),
     canonicalPath: '/settings/privacy',
     domainSurface: 'app',
     noindex: true,
@@ -681,35 +891,55 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
   return (
     <ConsumerStudioShell
       screenId={location.hash === '#data-rights' ? 'U10' : 'U09'}
-      title="Quyền riêng tư & Dữ liệu"
+      title={l('Quyền riêng tư & Dữ liệu', 'Privacy & Data')}
       backTo={vnextHref('/me')}
     >
       <div className="max-w-3xl space-y-7">
         {/* U09 — Quyền riêng tư */}
         <section aria-labelledby="tkv-u09-h1" className="space-y-4">
           <h1 id="tkv-u09-h1" className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-            Quyền riêng tư
+            {l('Quyền riêng tư', 'Privacy')}
           </h1>
           <TkvSurface className="p-5 sm:p-6 space-y-4 text-sm text-[var(--tkv-ink-soft,#3C5954)] bg-white border-[var(--tkv-border,#DCE6DE)]">
             <div className="flex items-start gap-3">
               <VNextIcon name="shield" size={20} className="text-[var(--tkv-sage,#196149)] shrink-0 mt-0.5" />
               <p>
-                <strong className="text-[var(--tkv-ink,#152E2C)]">Cô lập dữ liệu theo hộ gia đình:</strong> Mọi truy vấn tồn kho, thực đơn tuần, giỏ đi chợ và bản quét AI đều được xác thực theo phiên máy chủ và <code>household_id</code> riêng biệt.
+                <strong className="text-[var(--tkv-ink,#152E2C)]">
+                  {l('Cô lập dữ liệu theo hộ gia đình:', 'Household data isolation:')}
+                </strong>{' '}
+                {l(
+                  'Mọi truy vấn tồn kho, thực đơn tuần, giỏ đi chợ và bản quét AI đều được xác thực theo phiên máy chủ và',
+                  'All inventory, weekly meal plan, shopping list, and AI scan queries are verified against your server session and isolated by',
+                )}{' '}
+                <code>household_id</code>
+                {isVi ? ' riêng biệt.' : '.'}
               </p>
             </div>
             <div className="flex items-start gap-3 border-t border-[var(--tkv-border,#DCE6DE)] pt-3">
               <VNextIcon name="scan" size={20} className="text-[var(--tkv-primary,#196149)] shrink-0 mt-0.5" />
               <p>
-                <strong className="text-[var(--tkv-ink,#152E2C)]">Xử lý ảnh quét AI:</strong> Ảnh tủ lạnh hoặc hóa đơn chỉ được gửi khi bạn bấm chụp/chọn ảnh và luôn yêu cầu bước duyệt thủ công trước khi ghi vào tồn kho.
+                <strong className="text-[var(--tkv-ink,#152E2C)]">
+                  {l('Xử lý ảnh quét AI:', 'AI scan image processing:')}
+                </strong>{' '}
+                {l(
+                  'Ảnh tủ lạnh hoặc hóa đơn chỉ được gửi khi bạn bấm chụp/chọn ảnh và luôn yêu cầu bước duyệt thủ công trước khi ghi vào tồn kho.',
+                  'Fridge or receipt photos are only uploaded when you explicitly capture or pick an image, and always require manual review before updating inventory.',
+                )}
               </p>
             </div>
             <div className="flex items-center justify-between gap-4 border-t border-[var(--tkv-border)] pt-3 flex-wrap">
               <div className="min-w-0 flex-1">
                 <p className="font-bold text-[var(--tkv-ink)]">
-                  Đồng ý ghi nhận tương tác trang giới thiệu (cục bộ)
+                  {l(
+                    'Đồng ý ghi nhận tương tác trang giới thiệu (cục bộ)',
+                    'Local marketing interaction analytics consent',
+                  )}
                 </p>
                 <p className="text-xs text-[var(--tkv-ink-muted)]">
-                  Mặc định tắt · Không gửi dữ liệu cho bên thứ ba khi chưa đồng ý
+                  {l(
+                    'Mặc định tắt · Không gửi dữ liệu cho bên thứ ba khi chưa đồng ý',
+                    'Off by default · No third-party tracking without your consent',
+                  )}
                 </p>
               </div>
               <button
@@ -724,12 +954,19 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                     : 'bg-[var(--tkv-surface-mint)] text-[var(--tkv-ink-secondary)] border-[var(--tkv-border)]',
                 )}
               >
-                {analyticsConsent ? 'Đang bật' : 'Đang tắt'}
+                {analyticsConsent ? l('Đang bật', 'Enabled') : l('Đang tắt', 'Disabled')}
               </button>
             </div>
             <div className="flex items-center justify-between gap-2 flex-wrap border-t border-[var(--tkv-border)] pt-3 text-xs tabular-nums">
-              <span className="min-w-0">Thao tác ngoại tuyến đang chờ đồng bộ trên trình duyệt này:</span>
-              <strong className="text-[var(--tkv-ink)] shrink-0">{pendingCount} mục</strong>
+              <span className="min-w-0">
+                {l(
+                  'Thao tác ngoại tuyến đang chờ đồng bộ trên trình duyệt này:',
+                  'Offline actions waiting to sync on this browser:',
+                )}
+              </span>
+              <strong className="text-[var(--tkv-ink)] shrink-0">
+                {l(`${pendingCount} mục`, `${pendingCount} ${pendingCount === 1 ? 'item' : 'items'}`)}
+              </strong>
             </div>
           </TkvSurface>
         </section>
@@ -737,7 +974,7 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
         {/* U10 — Xuất và xóa dữ liệu (Honest BLOCKED_BACKEND) */}
         <section id="data-rights" aria-labelledby="tkv-u10-h2" className="space-y-4">
           <h2 id="tkv-u10-h2" className="tkv-heading text-2xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-            Xuất và xóa dữ liệu
+            {l('Xuất và xóa dữ liệu', 'Export and delete data')}
           </h2>
 
           <TkvSurface className="p-5 space-y-2 bg-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)]">
@@ -746,7 +983,10 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
               <span>U10 · BLOCKED_BACKEND (RFC-002)</span>
             </span>
             <p className="text-sm sm:text-base font-bold text-[var(--tkv-ink,#152E2C)]">
-              Dữ liệu thuộc quyền kiểm soát của bạn. Tính năng xuất bản sao và xóa tài khoản tự động cần API máy chủ được phê duyệt.
+              {l(
+                'Dữ liệu thuộc quyền kiểm soát của bạn. Tính năng xuất bản sao và xóa tài khoản tự động cần API máy chủ được phê duyệt.',
+                'Your data belongs to you. Automated data export and account deletion require approved backend APIs.',
+              )}
             </p>
           </TkvSurface>
 
@@ -757,10 +997,16 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
               </span>
               <div className="space-y-1">
                 <p className="tkv-heading text-base font-bold text-[var(--tkv-ink,#152E2C)]">
-                  Xuất dữ liệu · Cần API máy chủ (RFC-002)
+                  {l(
+                    'Xuất dữ liệu · Cần API máy chủ (RFC-002)',
+                    'Export data · Backend API required (RFC-002)',
+                  )}
                 </p>
                 <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-                  Đang chờ triển khai điểm cuối đóng gói JSON/CSV toàn bộ tồn kho, lịch tuần và giỏ đi chợ theo hộ gia đình.
+                  {l(
+                    'Đang chờ triển khai điểm cuối đóng gói JSON/CSV toàn bộ tồn kho, lịch tuần và giỏ đi chợ theo hộ gia đình.',
+                    'Awaiting server endpoints to package household inventory, meal plans, and shopping lists as JSON/CSV.',
+                  )}
                 </p>
               </div>
             </TkvSurface>
@@ -771,10 +1017,16 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
               </span>
               <div className="space-y-1">
                 <p className="tkv-heading text-base font-bold text-[var(--tkv-ink,#152E2C)]">
-                  Xóa tài khoản · Cần API máy chủ (RFC-002)
+                  {l(
+                    'Xóa tài khoản · Cần API máy chủ (RFC-002)',
+                    'Delete account · Backend API required (RFC-002)',
+                  )}
                 </p>
                 <p className="text-xs sm:text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-                  Ứng dụng không hiển thị nút xóa giả. Quy trình xóa vĩnh viễn yêu cầu xác thực lại và xử lý đối soát gói Pro trên tầng máy chủ.
+                  {l(
+                    'Ứng dụng không hiển thị nút xóa giả. Quy trình xóa vĩnh viễn yêu cầu xác thực lại và xử lý đối soát gói Pro trên tầng máy chủ.',
+                    'We never show fake delete buttons. Permanent deletion requires re-authentication and server-side Pro subscription reconciliation.',
+                  )}
                 </p>
               </div>
             </TkvSurface>
@@ -787,126 +1039,285 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
 
 export type SystemStateCode = 's01' | 's02' | 's03' | 's04' | 's05' | 's06' | 's07' | 's08';
 
-const SYSTEM_STATES_SPEC: Record<
-  SystemStateCode,
-  {
-    id: string;
-    title: string;
-    lead: string;
-    pose: 'error' | 'offline' | 'guide' | 'empty-fridge' | 'welcome';
-    cards: Array<{ icon: VNextIconName; heading: string; sub: string; to?: string }>;
-    ctaLabel: string;
-    ctaHref: string;
-  }
-> = {
-  s01: {
-    id: 'S01',
-    title: 'Không có quyền truy cập',
-    lead: 'Phiên đăng nhập đã hết hạn hoặc tài khoản hiện tại không có quyền mở nội dung này.',
-    pose: 'error',
-    cards: [
-      { icon: 'lock', heading: 'Đăng nhập lại an toàn', sub: 'Xác thực lại phiên mà không làm lộ dữ liệu hộ khác', to: '/auth?mode=login' },
-      { icon: 'home', heading: 'Về trang giới thiệu', sub: 'Quay lại khu vực công khai của Takolio', to: '/landing' },
-    ],
-    ctaLabel: 'Đăng nhập tài khoản',
-    ctaHref: '/auth?mode=login',
-  },
-  s02: {
-    id: 'S02',
-    title: 'Không tìm thấy trang',
-    lead: 'Đường dẫn này có thể đã thay đổi hoặc không còn tồn tại trong ứng dụng.',
-    pose: 'guide',
-    cards: [
-      { icon: 'home', heading: 'Trở lại trang chủ', sub: 'Thao tác an toàn về màn hình chính', to: '/' },
-      { icon: 'search', heading: 'Tìm kiếm trong app', sub: 'Tra cứu món ăn hoặc nguyên liệu trong bếp', to: '/search' },
-    ],
-    ctaLabel: 'Về màn hình chính',
-    ctaHref: '/',
-  },
-  s03: {
-    id: 'S03',
-    title: 'Hệ thống chưa sẵn sàng',
-    lead: 'Máy chủ đang bận hoặc gặp sự cố tạm thời. Dữ liệu cũ không bị ghi đè sai lệch.',
-    pose: 'error',
-    cards: [
-      { icon: 'refresh', heading: 'Thử tải lại trang', sub: 'Kiểm tra lại kết nối tới máy chủ Takolio' },
-      { icon: 'fridge', heading: 'Mở tủ lạnh của tôi', sub: 'Xem trạng thái tồn kho đã xác thực gần nhất', to: '/fridge' },
-    ],
-    ctaLabel: 'Thử tải lại',
-    ctaHref: '/',
-  },
-  s04: {
-    id: 'S04',
-    title: 'Đang ngoại tuyến',
-    lead: 'Một số dữ liệu có thể xem nhưng chưa thể đồng bộ lên máy chủ cho tới khi có mạng trở lại.',
-    pose: 'offline',
-    cards: [
-      { icon: 'fridge', heading: 'Xem nội dung đã lưu', sub: 'Tồn kho và danh sách đi chợ trong phạm vi hộ hiện tại', to: '/fridge' },
-      { icon: 'history', heading: 'Thao tác chờ đồng bộ', sub: 'Các thay đổi ngoại tuyến được giữ trong hàng đợi an toàn', to: '/shopping' },
-      { icon: 'refresh', heading: 'Kết nối lại', sub: 'Tự động gửi hàng đợi sau khi xác minh phiên máy chủ' },
-    ],
-    ctaLabel: 'Kiểm tra lại kết nối',
-    ctaHref: '/',
-  },
-  s05: {
-    id: 'S05',
-    title: 'Xung đột phiên bản dữ liệu',
-    lead: 'Nguyên liệu hoặc thực đơn vừa được cập nhật trên một thiết bị khác (HTTP 409 Conflict).',
-    pose: 'guide',
-    cards: [
-      { icon: 'refresh', heading: 'Tải lại phiên bản mới nhất từ máy chủ', sub: 'Không bao giờ âm thầm ghi đè dữ liệu của thiết bị kia', to: '/fridge' },
-      { icon: 'history', heading: 'Mở đối soát tồn kho (C08)', sub: 'So sánh chi tiết trước khi áp dụng thay đổi', to: '/inventory-reconciliation' },
-    ],
-    ctaLabel: 'Mở tủ lạnh mới nhất',
-    ctaHref: '/fridge',
-  },
-  s06: {
-    id: 'S06',
-    title: 'Trạng thái tải và rỗng',
-    lead: 'Phân biệt rõ đang tải (skeleton khớp bố cục), kho rỗng thực sự và bộ lọc không có kết quả.',
-    pose: 'empty-fridge',
-    cards: [
-      { icon: 'plus', heading: 'Kho rỗng thực sự', sub: 'Hướng dẫn thêm nguyên liệu đầu tiên vào tủ lạnh', to: '/fridge?action=add' },
-      { icon: 'filter', heading: 'Bộ lọc không khớp', sub: 'Giữ nguyên dữ liệu gốc và cho phép xóa nhanh bộ lọc', to: '/recipes' },
-    ],
-    ctaLabel: 'Mở tủ lạnh',
-    ctaHref: '/fridge',
-  },
-  s07: {
-    id: 'S07',
-    title: 'Quyền truy cập & Sự đồng ý',
-    lead: 'Giải thích rõ lý do trước khi xin quyền Camera hoặc Thông báo — luôn có lối đi thay thế khi bạn từ chối.',
-    pose: 'guide',
-    cards: [
-      { icon: 'scan', heading: 'Quyền Camera khi quét thực phẩm', sub: 'Nếu từ chối camera, bạn vẫn tải ảnh từ thư viện hoặc nhập tay bình thường', to: '/scan' },
-      { icon: 'notification', heading: 'Quyền Thông báo trình duyệt', sub: 'Không bao giờ báo đã bật thông báo khi trình duyệt đang chặn', to: '/settings/notifications' },
-    ],
-    ctaLabel: 'Xem cài đặt quyền riêng tư',
-    ctaHref: '/settings/privacy',
-  },
-  s08: {
-    id: 'S08',
-    title: 'Cài đặt & Cập nhật ứng dụng PWA',
-    lead: 'Thêm Takolio ra màn hình chính và cập nhật phiên bản mới an toàn mà không làm mất dữ liệu đang nhập.',
-    pose: 'welcome',
-    cards: [
-      { icon: 'download', heading: 'Cài đặt lên màn hình chính', sub: 'Mở nhanh như ứng dụng gốc trên iOS, Android và máy tính' },
-      { icon: 'shield', heading: 'Cập nhật Service Worker an toàn', sub: 'Không tự ý tải lại đè lên biểu mẫu đang sửa hoặc hàng đợi ngoại tuyến', to: '/settings/app' },
-    ],
-    ctaLabel: 'Mở cài đặt ứng dụng',
-    ctaHref: '/settings/app',
-  },
-};
+interface SystemStateSpec {
+  id: string;
+  title: string;
+  lead: string;
+  pose: 'error' | 'offline' | 'guide' | 'empty-fridge' | 'welcome';
+  cards: Array<{ icon: VNextIconName; heading: string; sub: string; to?: string }>;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+function getSystemStatesSpec(
+  l: (vi: string, en: string) => string,
+): Record<SystemStateCode, SystemStateSpec> {
+  return {
+    s01: {
+      id: 'S01',
+      title: l('Không có quyền truy cập', 'Access restricted'),
+      lead: l(
+        'Phiên đăng nhập đã hết hạn hoặc tài khoản hiện tại không có quyền mở nội dung này.',
+        'Your sign-in session has expired or your current account does not have permission to view this page.',
+      ),
+      pose: 'error',
+      cards: [
+        {
+          icon: 'lock',
+          heading: l('Đăng nhập lại an toàn', 'Sign in safely again'),
+          sub: l(
+            'Xác thực lại phiên mà không làm lộ dữ liệu hộ khác',
+            'Re-authenticate your session without exposing any other household data',
+          ),
+          to: '/auth?mode=login',
+        },
+        {
+          icon: 'home',
+          heading: l('Về trang giới thiệu', 'Return to home page'),
+          sub: l('Quay lại khu vực công khai của Takolio', 'Go back to the public Takolio site'),
+          to: '/landing',
+        },
+      ],
+      ctaLabel: l('Đăng nhập tài khoản', 'Sign in to your account'),
+      ctaHref: '/auth?mode=login',
+    },
+    s02: {
+      id: 'S02',
+      title: l('Không tìm thấy trang', 'Page not found'),
+      lead: l(
+        'Đường dẫn này có thể đã thay đổi hoặc không còn tồn tại trong ứng dụng.',
+        'This link may have moved or no longer exists in the app.',
+      ),
+      pose: 'guide',
+      cards: [
+        {
+          icon: 'home',
+          heading: l('Trở lại trang chủ', 'Back to home'),
+          sub: l('Thao tác an toàn về màn hình chính', 'Safely return to your kitchen dashboard'),
+          to: '/',
+        },
+        {
+          icon: 'search',
+          heading: l('Tìm kiếm trong app', 'Search in the app'),
+          sub: l(
+            'Tra cứu món ăn hoặc nguyên liệu trong bếp',
+            'Find recipes or ingredients in your kitchen',
+          ),
+          to: '/search',
+        },
+      ],
+      ctaLabel: l('Về màn hình chính', 'Go to dashboard'),
+      ctaHref: '/',
+    },
+    s03: {
+      id: 'S03',
+      title: l('Hệ thống chưa sẵn sàng', 'Service temporarily unavailable'),
+      lead: l(
+        'Máy chủ đang bận hoặc gặp sự cố tạm thời. Dữ liệu cũ không bị ghi đè sai lệch.',
+        'The server is busy or experiencing a temporary issue. Your existing data has not been overwritten.',
+      ),
+      pose: 'error',
+      cards: [
+        {
+          icon: 'refresh',
+          heading: l('Thử tải lại trang', 'Try reloading the page'),
+          sub: l(
+            'Kiểm tra lại kết nối tới máy chủ Takolio',
+            'Check your connection to the Takolio server',
+          ),
+        },
+        {
+          icon: 'fridge',
+          heading: l('Mở tủ lạnh của tôi', 'Open my fridge'),
+          sub: l(
+            'Xem trạng thái tồn kho đã xác thực gần nhất',
+            'View your most recently verified inventory state',
+          ),
+          to: '/fridge',
+        },
+      ],
+      ctaLabel: l('Thử tải lại', 'Try again'),
+      ctaHref: '/',
+    },
+    s04: {
+      id: 'S04',
+      title: l('Đang ngoại tuyến', 'You are offline'),
+      lead: l(
+        'Một số dữ liệu có thể xem nhưng chưa thể đồng bộ lên máy chủ cho tới khi có mạng trở lại.',
+        'Some saved data stays readable, but changes will wait to sync until you are back online.',
+      ),
+      pose: 'offline',
+      cards: [
+        {
+          icon: 'fridge',
+          heading: l('Xem nội dung đã lưu', 'View saved kitchen data'),
+          sub: l(
+            'Tồn kho và danh sách đi chợ trong phạm vi hộ hiện tại',
+            'Inventory and shopping list scoped to your current household',
+          ),
+          to: '/fridge',
+        },
+        {
+          icon: 'history',
+          heading: l('Thao tác chờ đồng bộ', 'Changes waiting to sync'),
+          sub: l(
+            'Các thay đổi ngoại tuyến được giữ trong hàng đợi an toàn',
+            'Offline edits are held safely in your sync outbox',
+          ),
+          to: '/shopping',
+        },
+        {
+          icon: 'refresh',
+          heading: l('Kết nối lại', 'Reconnect'),
+          sub: l(
+            'Tự động gửi hàng đợi sau khi xác minh phiên máy chủ',
+            'Queued actions replay automatically after server session verification',
+          ),
+        },
+      ],
+      ctaLabel: l('Kiểm tra lại kết nối', 'Check connection'),
+      ctaHref: '/',
+    },
+    s05: {
+      id: 'S05',
+      title: l('Xung đột phiên bản dữ liệu', 'Data version conflict'),
+      lead: l(
+        'Nguyên liệu hoặc thực đơn vừa được cập nhật trên một thiết bị khác (HTTP 409 Conflict).',
+        'An ingredient or meal plan was updated on another device (HTTP 409 Conflict).',
+      ),
+      pose: 'guide',
+      cards: [
+        {
+          icon: 'refresh',
+          heading: l(
+            'Tải lại phiên bản mới nhất từ máy chủ',
+            'Reload the latest version from the server',
+          ),
+          sub: l(
+            'Không bao giờ âm thầm ghi đè dữ liệu của thiết bị kia',
+            'We never silently overwrite edits made on another device',
+          ),
+          to: '/fridge',
+        },
+        {
+          icon: 'history',
+          heading: l('Mở đối soát tồn kho (C08)', 'Open inventory reconciliation (C08)'),
+          sub: l(
+            'So sánh chi tiết trước khi áp dụng thay đổi',
+            'Review differences carefully before applying changes',
+          ),
+          to: '/inventory-reconciliation',
+        },
+      ],
+      ctaLabel: l('Mở tủ lạnh mới nhất', 'Open latest fridge state'),
+      ctaHref: '/fridge',
+    },
+    s06: {
+      id: 'S06',
+      title: l('Trạng thái tải và rỗng', 'Loading & empty states'),
+      lead: l(
+        'Phân biệt rõ đang tải (skeleton khớp bố cục), kho rỗng thực sự và bộ lọc không có kết quả.',
+        'Clearly distinguishes loading skeletons, truly empty inventories, and zero-match filters.',
+      ),
+      pose: 'empty-fridge',
+      cards: [
+        {
+          icon: 'plus',
+          heading: l('Kho rỗng thực sự', 'Truly empty fridge'),
+          sub: l(
+            'Hướng dẫn thêm nguyên liệu đầu tiên vào tủ lạnh',
+            'Guided prompt to add your first kitchen ingredients',
+          ),
+          to: '/fridge?action=add',
+        },
+        {
+          icon: 'filter',
+          heading: l('Bộ lọc không khớp', 'No matching filter results'),
+          sub: l(
+            'Giữ nguyên dữ liệu gốc và cho phép xóa nhanh bộ lọc',
+            'Keeps your underlying data intact and lets you clear filters quickly',
+          ),
+          to: '/recipes',
+        },
+      ],
+      ctaLabel: l('Mở tủ lạnh', 'Open fridge'),
+      ctaHref: '/fridge',
+    },
+    s07: {
+      id: 'S07',
+      title: l('Quyền truy cập & Sự đồng ý', 'Permissions & consent'),
+      lead: l(
+        'Giải thích rõ lý do trước khi xin quyền Camera hoặc Thông báo — luôn có lối đi thay thế khi bạn từ chối.',
+        'Explains why before requesting Camera or Notification access — with clear fallbacks if you decline.',
+      ),
+      pose: 'guide',
+      cards: [
+        {
+          icon: 'scan',
+          heading: l('Quyền Camera khi quét thực phẩm', 'Camera access for food scanning'),
+          sub: l(
+            'Nếu từ chối camera, bạn vẫn tải ảnh từ thư viện hoặc nhập tay bình thường',
+            'If camera access is declined, you can still upload from your library or enter items manually',
+          ),
+          to: '/scan',
+        },
+        {
+          icon: 'notification',
+          heading: l('Quyền Thông báo trình duyệt', 'Browser notification permission'),
+          sub: l(
+            'Không bao giờ báo đã bật thông báo khi trình duyệt đang chặn',
+            'Never claims notifications are enabled when the browser has blocked them',
+          ),
+          to: '/settings/notifications',
+        },
+      ],
+      ctaLabel: l('Xem cài đặt quyền riêng tư', 'View privacy settings'),
+      ctaHref: '/settings/privacy',
+    },
+    s08: {
+      id: 'S08',
+      title: l('Cài đặt & Cập nhật ứng dụng PWA', 'PWA installation & updates'),
+      lead: l(
+        'Thêm Takolio ra màn hình chính và cập nhật phiên bản mới an toàn mà không làm mất dữ liệu đang nhập.',
+        'Add Takolio to your home screen and apply app updates safely without losing in-progress edits.',
+      ),
+      pose: 'welcome',
+      cards: [
+        {
+          icon: 'download',
+          heading: l('Cài đặt lên màn hình chính', 'Install to home screen'),
+          sub: l(
+            'Mở nhanh như ứng dụng gốc trên iOS, Android và máy tính',
+            'Launch quickly like a native app on iOS, Android, and desktop',
+          ),
+        },
+        {
+          icon: 'shield',
+          heading: l('Cập nhật Service Worker an toàn', 'Safe Service Worker updates'),
+          sub: l(
+            'Không tự ý tải lại đè lên biểu mẫu đang sửa hoặc hàng đợi ngoại tuyến',
+            'Never force-reloads over an active form or pending offline queue',
+          ),
+          to: '/settings/app',
+        },
+      ],
+      ctaLabel: l('Mở cài đặt ứng dụng', 'Open app settings'),
+      ctaHref: '/settings/app',
+    },
+  };
+}
 
 /**
  * S01–S08 — System States Surface (`/vnext/states/:stateId` + Live `S02` 404 NotFound Route).
  * Matches S01..S08 wireframes cleanly with Bé Mầm Bếp medallion, safe recovery cards, and real outbox status.
  */
 export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> = ({ forcedState }) => {
+  const { l } = useLocaleText();
   const { stateId } = useParams<{ stateId: string }>();
   const navigate = useNavigate();
   const normalized = (forcedState ?? stateId?.toLowerCase() ?? 's02') as SystemStateCode;
-  const spec = SYSTEM_STATES_SPEC[normalized] ?? SYSTEM_STATES_SPEC.s02;
+  const specs = getSystemStatesSpec(l);
+  const spec = specs[normalized] ?? specs.s02;
   const [online, setOnline] = useState(() => (typeof navigator === 'undefined' ? true : navigator.onLine));
   const pendingOpsCount = getPendingOps().length;
 
@@ -938,12 +1349,17 @@ export const VNextSystemStatePage: React.FC<{ forcedState?: SystemStateCode }> =
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--tkv-accent-soft)] border border-[var(--tkv-accent-border)] text-xs font-semibold text-[var(--tkv-accent-ink)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary)] shrink-0" aria-hidden="true" />
-              <span>{spec.id} · Trạng thái hệ thống</span>
+              <span>
+                {spec.id} · {l('Trạng thái hệ thống', 'System state')}
+              </span>
             </span>
             {normalized === 's04' && (
               <TkvBadge tone={online ? 'success' : 'warning'}>
                 <span className="tabular-nums">
-                  {online ? 'Mạng đã kết nối' : 'Đang ngoại tuyến'} · Chờ đồng bộ: {pendingOpsCount}
+                  {online
+                    ? l('Mạng đã kết nối', 'Back online')
+                    : l('Đang ngoại tuyến', 'Offline')}{' '}
+                  · {l('Chờ đồng bộ:', 'Pending sync:')} {pendingOpsCount}
                 </span>
               </TkvBadge>
             )}

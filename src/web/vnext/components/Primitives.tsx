@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useLocaleText } from '../../i18n/app-i18n';
 import { VNextIcon, type VNextIconName } from './VNextIcons';
 import { MascotIllustration, type MascotPose } from './VNextMedia';
 
@@ -279,18 +280,21 @@ export const TkvSearchField: React.FC<{
   id,
   value,
   onChange,
-  placeholder = 'Tìm kiếm hoặc lọc…',
-  label = 'Tìm kiếm',
+  placeholder,
+  label,
   onClear,
   inputRef,
   autoFocus,
 }) => {
+  const { l } = useLocaleText();
   const autoId = useId();
   const inputId = id ?? autoId;
+  const resolvedPlaceholder = placeholder ?? l('Tìm kiếm hoặc lọc…', 'Search or filter…');
+  const resolvedLabel = label ?? l('Tìm kiếm', 'Search');
   return (
     <div className="relative flex items-center">
       <label htmlFor={inputId} className="sr-only">
-        {label}
+        {resolvedLabel}
       </label>
       <span className="absolute left-4 text-[var(--tkv-ink-muted)] pointer-events-none">
         <VNextIcon name="search" size={18} />
@@ -302,7 +306,7 @@ export const TkvSearchField: React.FC<{
         autoFocus={autoFocus}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
+        placeholder={resolvedPlaceholder}
         className={clsx(
           'tkv-focusable w-full min-h-[48px] pl-11 py-2.5 rounded-full bg-[var(--tkv-surface)] border border-[var(--tkv-border)] focus:border-[var(--tkv-primary)] text-base text-[var(--tkv-ink)] placeholder:text-[var(--tkv-ink-muted)] shadow-xs transition-colors',
           value ? 'pr-13' : 'pr-4',
@@ -315,7 +319,7 @@ export const TkvSearchField: React.FC<{
             onChange('');
             onClear?.();
           }}
-          aria-label="Xóa từ khóa tìm kiếm"
+          aria-label={l('Xóa từ khóa tìm kiếm', 'Clear search query')}
           className="tkv-focusable tkv-tap absolute right-1 inline-flex items-center justify-center text-[var(--tkv-ink-muted)] hover:text-[var(--tkv-ink)]"
         >
           <VNextIcon name="close" size={16} />
@@ -327,19 +331,22 @@ export const TkvSearchField: React.FC<{
 
 export const TkvSkeleton: React.FC<{ className?: string; label?: string }> = ({
   className = 'h-24',
-  label = 'Đang tải dữ liệu…',
-}) => (
-  <div
-    role="status"
-    aria-live="polite"
-    className={clsx(
-      'rounded-2xl tkv-shimmer border border-[var(--tkv-border)]/70',
-      className,
-    )}
-  >
-    <span className="sr-only">{label}</span>
-  </div>
-);
+  label,
+}) => {
+  const { l } = useLocaleText();
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className={clsx(
+        'rounded-2xl tkv-shimmer border border-[var(--tkv-border)]/70',
+        className,
+      )}
+    >
+      <span className="sr-only">{label ?? l('Đang tải dữ liệu…', 'Loading data…')}</span>
+    </div>
+  );
+};
 
 export const TkvEmptyState: React.FC<{
   pose?: MascotPose;
@@ -371,37 +378,44 @@ export const TkvErrorState: React.FC<{
   title?: string;
   message: string;
   onRetry?: () => void;
-}> = ({ title = 'Chưa tải được dữ liệu máy chủ', message, onRetry }) => (
-  <TkvSurface tone="muted" role="alert" className="p-5 space-y-3">
-    <div className="flex items-start gap-3">
-      <span className="w-10 h-10 rounded-xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-danger)] flex items-center justify-center shrink-0">
-        <VNextIcon name="error" size={20} />
-      </span>
-      <div className="min-w-0 flex-1">
-        <h3 className="tkv-heading text-base font-bold text-[var(--tkv-ink)]">{title}</h3>
-        <p className="mt-1 text-sm text-[var(--tkv-ink-secondary)]">{message}</p>
+}> = ({ title, message, onRetry }) => {
+  const { l } = useLocaleText();
+  const resolvedTitle = title ?? l('Chưa tải được dữ liệu máy chủ', 'Could not load server data');
+  return (
+    <TkvSurface tone="muted" role="alert" className="p-5 space-y-3">
+      <div className="flex items-start gap-3">
+        <span className="w-10 h-10 rounded-xl bg-[var(--tkv-surface)] border border-[var(--tkv-border)] text-[var(--tkv-danger)] flex items-center justify-center shrink-0">
+          <VNextIcon name="error" size={20} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h3 className="tkv-heading text-base font-bold text-[var(--tkv-ink)]">{resolvedTitle}</h3>
+          <p className="mt-1 text-sm text-[var(--tkv-ink-secondary)]">{message}</p>
+        </div>
       </div>
-    </div>
-    {onRetry && (
-      <TkvButton variant="secondary" size="sm" iconLeft="refresh" onClick={onRetry}>
-        Thử lại
-      </TkvButton>
-    )}
-  </TkvSurface>
-);
+      {onRetry && (
+        <TkvButton variant="secondary" size="sm" iconLeft="refresh" onClick={onRetry}>
+          {l('Thử lại', 'Try again')}
+        </TkvButton>
+      )}
+    </TkvSurface>
+  );
+};
 
 export const TkvUnavailableState: React.FC<{
   title: string;
   rfcId?: string;
   children: React.ReactNode;
-}> = ({ title, rfcId, children }) => (
-  <TkvSurface tone="muted" className="p-4 space-y-2">
-    <div className="flex items-center justify-between gap-2 flex-wrap">
-      <h3 className="text-sm font-bold text-[var(--tkv-ink)]">{title}</h3>
-      <TkvBadge tone="warning">
-        Chưa mở API {rfcId ? `(${rfcId})` : ''}
-      </TkvBadge>
-    </div>
-    <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">{children}</p>
-  </TkvSurface>
-);
+}> = ({ title, rfcId, children }) => {
+  const { l } = useLocaleText();
+  return (
+    <TkvSurface tone="muted" className="p-4 space-y-2">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <h3 className="text-sm font-bold text-[var(--tkv-ink)]">{title}</h3>
+        <TkvBadge tone="warning">
+          {l('Chưa mở API', 'API not yet available')} {rfcId ? `(${rfcId})` : ''}
+        </TkvBadge>
+      </div>
+      <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">{children}</p>
+    </TkvSurface>
+  );
+};

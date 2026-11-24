@@ -22,6 +22,15 @@ import { getIngredientImage } from '../lib/ingredient-images';
 import { Clock, ChefHat, Calendar, Layers, ArrowRight, PackageOpen, Receipt } from 'lucide-react';
 import { clsx } from 'clsx';
 import { resolveRecipeImage, recipeImageErrorHandler } from '../lib/recipe-media';
+import {
+  formatLocalizedMeasure,
+  localizeCuisine,
+  localizeDisplayCategory,
+  localizeIngredientName,
+  localizeRecipeTitle,
+  localizeStorageZone,
+  useLocaleText,
+} from '../i18n/app-i18n';
 
 const EXPIRY_TONE_CLASS: Record<string, string> = {
   unknown: 'bg-semantic-border/60 text-semantic-text-secondary border-semantic-border',
@@ -31,13 +40,13 @@ const EXPIRY_TONE_CLASS: Record<string, string> = {
   fresh: 'bg-semantic-accent-soft text-semantic-text-primary border-semantic-border',
 };
 
-const STORAGE_LABEL: Record<string, string> = {
+const STORAGE_LABEL_VI: Record<string, string> = {
   fridge: 'Ngăn mát tủ lạnh',
   freezer: 'Ngăn đông đá',
   pantry: 'Tủ đồ khô',
 };
 
-const CATEGORY_LABEL: Record<string, string> = {
+const CATEGORY_LABEL_VI: Record<string, string> = {
   vegetable: 'Rau củ',
   meat: 'Thịt',
   egg: 'Trứng',
@@ -70,6 +79,7 @@ export const IngredientDetailPage: React.FC = () => {
 };
 
 const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
+  const { l, locale, unitSystem } = useLocaleText();
   const id = routeId || undefined;
   const navigate = useNavigate();
   const errorRef = useRef<HTMLDivElement>(null);
@@ -138,7 +148,10 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       const code = error instanceof ApiError ? error.code : null;
       const presentation = presentDomainError(
         code,
-        'Chưa cập nhật được nguyên liệu. Vui lòng thử lại.',
+        l(
+          'Chưa cập nhật được nguyên liệu. Vui lòng thử lại.',
+          'Could not update this ingredient. Please try again.',
+        ),
       );
       if (!presentation.refetch) {
         setActionError(presentation.message);
@@ -175,25 +188,25 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
 
   if ((lotQuery.isPending || (lotQuery.isError && legacyQuery.isPending)) && !legacyItem) {
     return (
-      <KitchenDetailPage title="Chi tiết nguyên liệu">
-        <InlineLoading label="Đang tải nguyên liệu…" />
+      <KitchenDetailPage title={l('Chi tiết nguyên liệu', 'Ingredient Details')}>
+        <InlineLoading label={l('Đang tải nguyên liệu…', 'Loading ingredient…')} />
       </KitchenDetailPage>
     );
   }
 
   if (!item) {
     return (
-      <KitchenDetailPage title="Chi tiết nguyên liệu">
+      <KitchenDetailPage title={l('Chi tiết nguyên liệu', 'Ingredient Details')}>
         <div className="p-6 text-center">
           {legacyQuery.isError ? (
             <InlineError error={legacyQuery.error} onRetry={() => void legacyQuery.refetch()} />
           ) : (
             <p className="text-xs text-semantic-text-muted">
-              Không tìm thấy nguyên liệu này trong tủ.
+              {l('Không tìm thấy nguyên liệu này trong tủ.', 'This ingredient was not found in your fridge.')}
             </p>
           )}
           <Button className="mt-4" onClick={() => navigate('/fridge')}>
-            Về tủ lạnh
+            {l('Về tủ lạnh', 'Back to fridge')}
           </Button>
         </div>
       </KitchenDetailPage>
@@ -216,6 +229,12 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
         ingredient.name.toLowerCase() === String(item.name).toLowerCase(),
     ),
   );
+  const displayName = localizeIngredientName(item.ingredientId, item.name, locale);
+  const storageDisplay = item.storage
+    ? locale === 'vi'
+      ? (STORAGE_LABEL_VI[item.storage] ?? item.storage)
+      : localizeStorageZone(item.storage, locale)
+    : l('Chưa rõ vị trí', 'Storage unknown');
 
   const startEdit = () => {
     setActionError(null);
@@ -249,13 +268,21 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       setDraft(EMPTY_DRAFT);
       setEditBaseline(EMPTY_DRAFT);
       setActionError(
-        'Bản chỉnh sửa thuộc nguyên liệu khác nên chưa được lưu. Vui lòng mở lại và sửa trên nguyên liệu này.',
+        l(
+          'Bản chỉnh sửa thuộc nguyên liệu khác nên chưa được lưu. Vui lòng mở lại và sửa trên nguyên liệu này.',
+          'This edit draft belonged to a different item and was not saved. Please reopen and edit this item again.',
+        ),
       );
       return;
     }
     const quantity = Number(draft.quantity);
     if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 10000) {
-      setActionError('Nhập lượng còn thực tế lớn hơn 0 và không quá 10.000 theo đơn vị đã chọn.');
+      setActionError(
+        l(
+          'Nhập lượng còn thực tế lớn hơn 0 và không quá 10.000 theo đơn vị đã chọn.',
+          'Enter an actual remaining quantity greater than 0 and up to 10,000 in the selected unit.',
+        ),
+      );
       return;
     }
     const baselineQuantity = convertedInventoryQuantity(Number(editBaseline.quantity), editBaseline.unit, draft.unit)
@@ -263,7 +290,12 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
     const correctingQuantity = quantity !== baselineQuantity;
     const changingMeasurement = correctingQuantity || draft.unit !== editBaseline.unit;
     if (changingMeasurement && Number(item.version) !== draftOwner.version) {
-      setActionError('Nguyên liệu đã đổi trong lúc bạn sửa lượng hoặc đơn vị. Chọn “Hủy”, kiểm tra lượng mới rồi mở lại chỉnh sửa.');
+      setActionError(
+        l(
+          'Nguyên liệu đã đổi trong lúc bạn sửa lượng hoặc đơn vị. Chọn “Hủy”, kiểm tra lượng mới rồi mở lại chỉnh sửa.',
+          'This item changed while you were editing its quantity or unit. Select “Cancel”, check the updated amount, and reopen edit.',
+        ),
+      );
       return;
     }
     const updates: Record<string, unknown> = {};
@@ -288,8 +320,11 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
 
   return (
     <KitchenDetailPage
-      title="Chi tiết nguyên liệu"
-      description="Kiểm tra lượng đang có, hạn dùng và thông tin của lô trước khi chỉnh sửa."
+      title={l('Chi tiết nguyên liệu', 'Ingredient Details')}
+      description={l(
+        'Kiểm tra lượng đang có, hạn dùng và thông tin của lô trước khi chỉnh sửa.',
+        'Review current quantity, expiry date, and lot provenance before editing.',
+      )}
     >
       <div className="stock-summary bg-white rounded-xl p-4 flex items-center gap-4 border border-semantic-border shadow-xs">
         <div className="w-16 h-16 rounded-xl bg-semantic-background-subtle border border-semantic-border/70 flex items-center justify-center p-2 overflow-hidden shrink-0">
@@ -304,12 +339,14 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
             <h2 className="font-heading font-bold text-xl text-semantic-text-primary leading-tight">
-              {item.name}
+              {displayName}
             </h2>
             <StatusChip status={status} />
           </div>
           <p className="stock-quantity">
-            {item.quantity} {item.unit}
+            {locale === 'vi'
+              ? `${item.quantity} ${item.unit}`
+              : formatLocalizedMeasure(Number(item.quantity), String(item.unit), locale, unitSystem)}
           </p>
         </div>
       </div>
@@ -337,7 +374,9 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 }
               }}
             >
-              {lotQuery.isFetching ? 'Đang tải lại…' : 'Tải lại trạng thái mới nhất'}
+              {lotQuery.isFetching
+                ? l('Đang tải lại…', 'Reloading…')
+                : l('Tải lại trạng thái mới nhất', 'Reload latest state')}
             </button>
           )}
         </div>
@@ -347,17 +386,17 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
         <div className="bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs">
           <div className="flex items-center gap-1.5 text-semantic-text-muted mb-1">
             <Layers aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
-            <span className="text-[11px] font-semibold">Vị trí</span>
+            <span className="text-[11px] font-semibold">{l('Vị trí', 'Storage')}</span>
           </div>
           <p className="font-heading font-semibold text-sm text-semantic-text-primary">
-            {STORAGE_LABEL[item.storage] ?? item.storage ?? 'Chưa rõ vị trí'}
+            {storageDisplay}
           </p>
         </div>
 
         <div className="bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs">
           <div className="flex items-center gap-1.5 text-semantic-text-muted mb-1">
             <Calendar aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
-            <span className="text-[11px] font-semibold">Hạn sử dụng</span>
+            <span className="text-[11px] font-semibold">{l('Hạn sử dụng', 'Expiry date')}</span>
           </div>
           <p
             className={clsx(
@@ -375,32 +414,32 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
         <div className="stock-provenance bg-white rounded-xl p-3.5 border border-semantic-border shadow-xs space-y-2">
           <div className="flex items-center gap-1.5 text-semantic-text-muted">
             <Receipt aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
-            <span className="text-[11px] font-semibold">Nguồn gốc &amp; lô</span>
+            <span className="text-[11px] font-semibold">{l('Nguồn gốc & lô', 'Source & lot')}</span>
           </div>
           <dl className="grid grid-cols-2 gap-y-1.5 text-xs">
-            <dt className="text-semantic-text-muted">Nguồn</dt>
+            <dt className="text-semantic-text-muted">{l('Nguồn', 'Source')}</dt>
             <dd
               className="text-semantic-text-primary font-semibold text-right"
               data-testid="lot-provenance"
             >
               {provenanceLabel(lot.dataSource)}
             </dd>
-            <dt className="text-semantic-text-muted">Ngày mua</dt>
+            <dt className="text-semantic-text-muted">{l('Ngày mua', 'Purchased')}</dt>
             <dd className="text-semantic-text-primary font-semibold text-right">
               {presentPurchaseDate(lot.purchasedAt)}
             </dd>
-            <dt className="text-semantic-text-muted">Trạng thái mở</dt>
+            <dt className="text-semantic-text-muted">{l('Trạng thái mở', 'Opened state')}</dt>
             <dd
               className="text-semantic-text-primary font-semibold text-right"
               data-testid="lot-opened"
             >
               {presentOpenedState(lot.openedAt)}
             </dd>
-            <dt className="text-semantic-text-muted">Mã lô</dt>
+            <dt className="text-semantic-text-muted">{l('Mã lô', 'Lot ID')}</dt>
             <dd className="text-semantic-text-primary font-mono text-[10px] text-right break-all">
               {lot.lotId}
             </dd>
-            <dt className="text-semantic-text-muted">Phiên bản lô</dt>
+            <dt className="text-semantic-text-muted">{l('Phiên bản lô', 'Lot version')}</dt>
             <dd className="text-semantic-text-primary font-semibold text-right">
               v{lot.lotVersion}
             </dd>
@@ -416,7 +455,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
           className="stock-edit-trigger flex items-center justify-center gap-2"
         >
           <PackageOpen aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
-          <span>Sửa thông tin nguyên liệu</span>
+          <span>{l('Sửa thông tin nguyên liệu', 'Edit ingredient details')}</span>
         </button>
       ) : (
         <form
@@ -428,17 +467,19 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
           }}
         >
           <fieldset disabled={mutate.isPending} className="stock-editor">
-            <legend>Chỉnh sửa thông tin</legend>
+            <legend>{l('Chỉnh sửa thông tin', 'Edit details')}</legend>
             <p className="text-semantic-text-secondary">
-              Thay đổi chỉ được lưu khi bạn chọn “Lưu thay đổi”. Rời trang hoặc chọn “Hủy” sẽ bỏ bản
-              chỉnh sửa.
+              {l(
+                'Thay đổi chỉ được lưu khi bạn chọn “Lưu thay đổi”. Rời trang hoặc chọn “Hủy” sẽ bỏ bản chỉnh sửa.',
+                'Changes are only saved when you select “Save changes”. Leaving this page or selecting “Cancel” discards your edits.',
+              )}
             </p>
             <div>
               <label
                 htmlFor="lot-name-input"
                 className="block text-xs font-semibold text-semantic-text-secondary mb-1"
               >
-                Tên nguyên liệu
+                {l('Tên nguyên liệu', 'Ingredient name')}
               </label>
               <input
                 ref={nameInputRef}
@@ -454,7 +495,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
             </div>
             <div>
               <label htmlFor="lot-quantity-input" className="block text-xs font-semibold text-semantic-text-secondary mb-1">
-                Lượng còn thực tế
+                {l('Lượng còn thực tế', 'Actual remaining quantity')}
               </label>
               <input
                 id="lot-quantity-input"
@@ -474,8 +515,15 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               />
               <p id="lot-quantity-note" className="mt-1 text-xs text-semantic-text-secondary">
-                Nhập lượng bạn vừa kiểm tra, ví dụ 0,5 kg hoặc 250 g.
-                {draft.unit !== editBaseline.unit && ' Kiểm tra lại lượng theo đơn vị mới trước khi lưu.'}
+                {l(
+                  'Nhập lượng bạn vừa kiểm tra, ví dụ 0,5 kg hoặc 250 g.',
+                  'Enter the amount you just checked, e.g. 0.5 kg or 250 g.',
+                )}
+                {draft.unit !== editBaseline.unit &&
+                  l(
+                    ' Kiểm tra lại lượng theo đơn vị mới trước khi lưu.',
+                    ' Double-check the quantity in the new unit before saving.',
+                  )}
               </p>
             </div>
             <div className="stock-editor-grid">
@@ -484,7 +532,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   htmlFor="lot-unit-input"
                   className="block text-xs font-semibold text-semantic-text-secondary mb-1"
                 >
-                  Đơn vị
+                  {l('Đơn vị', 'Unit')}
                 </label>
                 <select
                   id="lot-unit-input"
@@ -499,14 +547,14 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   }}
                   className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
                 >
-                  <option value="g">gam (g)</option>
+                  <option value="g">{l('gam (g)', 'grams (g)')}</option>
                   <option value="kg">kg</option>
-                  <option value="piece">quả / củ / bìa / miếng</option>
-                  <option value="bunch">bó</option>
-                  <option value="pack">gói / hộp</option>
-                  <option value="slice">lát</option>
+                  <option value="piece">{l('quả / củ / bìa / miếng', 'piece / whole')}</option>
+                  <option value="bunch">{l('bó', 'bunch')}</option>
+                  <option value="pack">{l('gói / hộp', 'pack / box')}</option>
+                  <option value="slice">{l('lát', 'slice')}</option>
                   <option value="ml">ml</option>
-                  <option value="l">lít</option>
+                  <option value="l">{l('lít', 'liter (L)')}</option>
                 </select>
               </div>
               <div>
@@ -514,7 +562,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   htmlFor="lot-category-input"
                   className="block text-xs font-semibold text-semantic-text-secondary mb-1"
                 >
-                  Danh mục
+                  {l('Danh mục', 'Category')}
                 </label>
                 <select
                   id="lot-category-input"
@@ -523,12 +571,16 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                   onChange={(event) => setDraft({ ...draft, category: event.target.value })}
                   className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
                 >
-                  {!Object.hasOwn(CATEGORY_LABEL, editBaseline.category) && (
-                    <option value={editBaseline.category}>{editBaseline.category}</option>
+                  {!Object.hasOwn(CATEGORY_LABEL_VI, editBaseline.category) && (
+                    <option value={editBaseline.category}>
+                      {locale === 'vi'
+                        ? editBaseline.category
+                        : localizeDisplayCategory(editBaseline.category, locale)}
+                    </option>
                   )}
-                  {Object.entries(CATEGORY_LABEL).map(([value, label]) => (
+                  {Object.entries(CATEGORY_LABEL_VI).map(([value, viLabel]) => (
                     <option key={value} value={value}>
-                      {label}
+                      {locale === 'vi' ? viLabel : localizeDisplayCategory(value, locale)}
                     </option>
                   ))}
                 </select>
@@ -539,7 +591,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 htmlFor="lot-expiry-input"
                 className="block text-xs font-semibold text-semantic-text-secondary mb-1"
               >
-                Hạn sử dụng chính xác
+                {l('Hạn sử dụng chính xác', 'Exact expiry date')}
               </label>
               <input
                 id="lot-expiry-input"
@@ -551,7 +603,10 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               />
               <p className="text-[11px] text-semantic-text-muted mt-1">
-                Ngày bạn chọn được lưu là hạn dùng đã biết chắc chắn.
+                {l(
+                  'Ngày bạn chọn được lưu là hạn dùng đã biết chắc chắn.',
+                  'The date you pick is saved as a confirmed expiry date.',
+                )}
               </p>
             </div>
             <div>
@@ -559,7 +614,7 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 htmlFor="lot-storage-input"
                 className="block text-xs font-semibold text-semantic-text-secondary mb-1"
               >
-                Chuyển vị trí bảo quản
+                {l('Chuyển vị trí bảo quản', 'Move storage location')}
               </label>
               <select
                 id="lot-storage-input"
@@ -568,17 +623,17 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
                 onChange={(event) => setDraft({ ...draft, storage: event.target.value })}
                 className="w-full h-11 px-3 rounded-xl border border-semantic-border text-sm font-medium text-semantic-text-primary bg-white focus:outline-none focus:ring-2 focus:ring-semantic-focus focus:border-semantic-action-primary"
               >
-                <option value="fridge">Ngăn mát</option>
-                <option value="freezer">Ngăn đông</option>
-                <option value="pantry">Tủ đồ khô</option>
+                <option value="fridge">{l('Ngăn mát', localizeStorageZone('fridge', locale))}</option>
+                <option value="freezer">{l('Ngăn đông', localizeStorageZone('freezer', locale))}</option>
+                <option value="pantry">{l('Tủ đồ khô', localizeStorageZone('pantry', locale))}</option>
               </select>
             </div>
             <div className="flex gap-2">
               <Button type="submit" fullWidth disabled={mutate.isPending || !draft.name.trim()}>
-                {mutate.isPending ? 'Đang lưu…' : 'Lưu thay đổi'}
+                {mutate.isPending ? l('Đang lưu…', 'Saving…') : l('Lưu thay đổi', 'Save changes')}
               </Button>
               <Button type="button" variant="outline" onClick={cancelEdit}>
-                Hủy
+                {l('Hủy', 'Cancel')}
               </Button>
             </div>
           </fieldset>
@@ -588,53 +643,67 @@ const LotDetail: React.FC<{ routeId: string }> = ({ routeId }) => {
       <div className="pt-2">
         <h3 className="font-heading font-bold text-base text-semantic-text-primary flex items-center gap-1.5 mb-3">
           <ChefHat aria-hidden="true" className="w-4 h-4 text-semantic-action-primary" />
-          <span>Món có nguyên liệu này ({matchingRecipes.length})</span>
+          <span>
+            {l(
+              `Món có nguyên liệu này (${matchingRecipes.length})`,
+              `Recipes using this ingredient (${matchingRecipes.length})`,
+            )}
+          </span>
         </h3>
 
         <p className="stock-recipe-note">
-          Đây là các món có dùng nguyên liệu này. Mở từng món để kiểm tra lượng cần, nguyên liệu còn
-          thiếu và cách nấu.
+          {l(
+            'Đây là các món có dùng nguyên liệu này. Mở từng món để kiểm tra lượng cần, nguyên liệu còn thiếu và cách nấu.',
+            'These recipes use this ingredient. Open any recipe to check required amounts, missing items, and steps.',
+          )}
         </p>
         {matchingRecipes.length === 0 && (
           <div className="stock-recipe-note space-y-2">
-            <p>Chưa có món liên quan trong danh sách này.</p>
+            <p>{l('Chưa có món liên quan trong danh sách này.', 'No related recipes found in the catalog yet.')}</p>
             <Link to="/recipes" className="min-h-[44px] inline-flex items-center font-semibold text-semantic-action-primary underline underline-offset-4">
-              Khám phá món ăn
+              {l('Khám phá món ăn', 'Explore recipes')}
             </Link>
           </div>
         )}
         <div className="space-y-2.5">
-          {matchingRecipes.map((recipe) => (
-            <Link
-              key={recipe.id}
-              to={`/recipes/${recipe.slug}`}
-              aria-label={recipe.title}
-              className="stock-recipe-link bg-white rounded-xl p-3 flex items-center gap-3.5 border border-semantic-border shadow-xs cursor-pointer hover:border-semantic-border-strong active:scale-[0.99] transition-tap"
-            >
-              <img
-                src={resolveRecipeImage(recipe).src}
-                alt=""
-                width={56}
-                height={56}
-                className="w-14 h-14 rounded-lg object-cover shrink-0 border border-semantic-border/70"
-                loading="lazy"
-                onError={recipeImageErrorHandler(resolveRecipeImage(recipe).fallbackSrc)}
-              />
-              <div className="flex-1 min-w-0">
-                <span className="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">
-                  {recipe.cuisine === 'vietnamese' ? 'Món Việt' : recipe.cuisine}
-                </span>
-                <h4 className="font-heading font-semibold text-sm text-semantic-text-primary line-clamp-2 mt-1">
-                  {recipe.title}
-                </h4>
-                <span className="inline-flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
-                  <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted shrink-0" />
-                  <span>{recipe.cookTimeMinutes} phút</span>
-                </span>
-              </div>
-              <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted shrink-0" />
-            </Link>
-          ))}
+          {matchingRecipes.map((recipe) => {
+            const recipeTitle = localizeRecipeTitle(recipe, locale);
+            return (
+              <Link
+                key={recipe.id}
+                to={`/recipes/${recipe.slug}`}
+                aria-label={recipeTitle}
+                className="stock-recipe-link bg-white rounded-xl p-3 flex items-center gap-3.5 border border-semantic-border shadow-xs cursor-pointer hover:border-semantic-border-strong active:scale-[0.99] transition-tap"
+              >
+                <img
+                  src={resolveRecipeImage(recipe).src}
+                  alt=""
+                  width={56}
+                  height={56}
+                  className="w-14 h-14 rounded-lg object-cover shrink-0 border border-semantic-border/70"
+                  loading="lazy"
+                  onError={recipeImageErrorHandler(resolveRecipeImage(recipe).fallbackSrc)}
+                />
+                <div className="flex-1 min-w-0">
+                  <span className="inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full bg-semantic-accent-soft text-semantic-text-primary border border-semantic-border uppercase">
+                    {locale === 'vi'
+                      ? recipe.cuisine === 'vietnamese'
+                        ? 'Món Việt'
+                        : recipe.cuisine
+                      : localizeCuisine(recipe.cuisine, locale)}
+                  </span>
+                  <h4 className="font-heading font-semibold text-sm text-semantic-text-primary line-clamp-2 mt-1">
+                    {recipeTitle}
+                  </h4>
+                  <span className="inline-flex items-center gap-1 text-xs text-semantic-text-muted mt-0.5">
+                    <Clock aria-hidden="true" className="w-3 h-3 text-semantic-text-muted shrink-0" />
+                    <span>{l(`${recipe.cookTimeMinutes} phút`, `${recipe.cookTimeMinutes} min`)}</span>
+                  </span>
+                </div>
+                <ArrowRight aria-hidden="true" className="w-4 h-4 text-semantic-text-muted shrink-0" />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </KitchenDetailPage>

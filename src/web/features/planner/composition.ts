@@ -4,6 +4,9 @@ import type { MealPlanDto } from '../../../../packages/domain/src/meal-planning-
 import { queryKeys } from '../../lib/queryKeys';
 import { ApiError } from '../../services/http';
 import { mealCompositionApi } from '../../services/meal-composition';
+import type { SupportedLocale } from '../../../shared/locales';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { localizeRecipeTitle } from '../../i18n/app-i18n';
 import type { PlannerLocale } from './copy';
 
 /** Build-time UI gate; the server `MEAL_COMPOSITION_V2_ENABLED` flag stays authoritative. */
@@ -78,11 +81,34 @@ const SIMPLE_FOOD_EN: Record<string, string> = {
   'sf-yogurt': 'Yogurt',
 };
 export function componentTitle(
-  item: { kind: string; simpleFoodId?: string | null; id?: string; title: string },
+  item: {
+    kind: string;
+    simpleFoodId?: string | null;
+    recipeId?: string | null;
+    id?: string;
+    title: string;
+    cuisine?: string | null;
+    cookTimeMinutes?: number | null;
+  },
   locale: PlannerLocale,
+  appLocale?: SupportedLocale,
 ) {
   const id = item.simpleFoodId ?? (item.kind === 'simple_food' ? item.id : undefined);
-  return locale === 'en' && id && SIMPLE_FOOD_EN[id] ? SIMPLE_FOOD_EN[id] : item.title;
+  if (locale !== 'vi' && id && SIMPLE_FOOD_EN[id]) {
+    return SIMPLE_FOOD_EN[id];
+  }
+  if (locale === 'vi') return item.title;
+  const activeLocale = appLocale && appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  if (activeLocale === 'vi') return item.title;
+  return localizeRecipeTitle(
+    {
+      title: item.title,
+      slug: item.recipeId ?? item.id ?? undefined,
+      cuisine: item.cuisine ?? undefined,
+      cookTimeMinutes: item.cookTimeMinutes ?? undefined,
+    },
+    activeLocale,
+  );
 }
 
 export const compositionCopy = {

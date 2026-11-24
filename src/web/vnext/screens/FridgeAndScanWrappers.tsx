@@ -12,6 +12,12 @@ import { ConsumerStudioShell } from '../components/Shells';
 import { TkvBadge, TkvButton, TkvSearchField, TkvSurface } from '../components/Primitives';
 import { VNextIcon } from '../components/VNextIcons';
 import { FridgeInventorySkeleton, SettingsFormSkeleton } from '../components/Skeletons';
+import {
+  formatLocalizedMeasure,
+  localizeIngredientName,
+  localizeRecipeTitle,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 
 const LazyIngredientDetailPage = lazy(() =>
   import('../../pages/IngredientDetailPage').then((m) => ({ default: m.IngredientDetailPage })),
@@ -36,14 +42,18 @@ const LazyReceiptReviewPage = lazy(() =>
  * and 4 real Kitchen Studio action shortcuts (zero fabricated hits).
  */
 export const C02QuickSearchPage: React.FC = () => {
+  const { l, locale, unitSystem } = useLocaleText();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get('q') ?? '';
   const [scope, setScope] = useState<'all' | 'recent' | 'saved'>('all');
 
   useVNextSeo({
-    title: 'Tìm nhanh trong căn bếp',
-    description: 'Tra cứu nhanh nguyên liệu trong tủ lạnh, công thức món ăn và lối tắt thao tác.',
+    title: l('Tìm nhanh trong căn bếp', 'Quick Kitchen Search'),
+    description: l(
+      'Tra cứu nhanh nguyên liệu trong tủ lạnh, công thức món ăn và lối tắt thao tác.',
+      'Quickly search fridge ingredients, recipes, and kitchen shortcuts.',
+    ),
     canonicalPath: '/search',
     domainSurface: 'app',
     noindex: true,
@@ -63,10 +73,12 @@ export const C02QuickSearchPage: React.FC = () => {
 
   const matchingStock = trimmed
     ? (inventoryQuery.data ?? [])
-        .filter(
-          (it) =>
-            it.quantity > 0 && it.name.toLowerCase().includes(trimmed.toLowerCase()),
-        )
+        .filter((it) => {
+          if (it.quantity <= 0) return false;
+          const needle = trimmed.toLowerCase();
+          const localizedName = localizeIngredientName(it.ingredientId, it.name, locale).toLowerCase();
+          return it.name.toLowerCase().includes(needle) || localizedName.includes(needle);
+        })
         .slice(0, 5)
     : [];
   const matchingRecipes = trimmed ? (discoveryQuery.data?.items ?? []) : [];
@@ -83,64 +95,83 @@ export const C02QuickSearchPage: React.FC = () => {
       id: 'fridge-dishes',
       scope: 'all' as const,
       icon: 'recipes' as const,
-      title: 'Tìm món trong tủ',
-      subtitle: 'Đối chiếu định lượng nguyên liệu đang có để gợi ý món khả thi',
+      title: l('Tìm món trong tủ', 'Cook with fridge items'),
+      subtitle: l(
+        'Đối chiếu định lượng nguyên liệu đang có để gợi ý món khả thi',
+        'Match your on-hand ingredients to find recipes you can cook now',
+      ),
       to: vnextHref('/recipes?noBuy=true'),
     },
     {
       id: 'saved-recipes',
       scope: 'saved' as const,
       icon: 'bookmark' as const,
-      title: 'Mở công thức đã lưu',
-      subtitle: 'Truy cập bộ sưu tập món ăn yêu thích của tài khoản',
+      title: l('Mở công thức đã lưu', 'Open saved recipes'),
+      subtitle: l(
+        'Truy cập bộ sưu tập món ăn yêu thích của tài khoản',
+        'Access your collection of bookmarked favorite dishes',
+      ),
       to: vnextHref('/recipes?view=saved'),
     },
     {
       id: 'shopping-list',
       scope: 'recent' as const,
       icon: 'shopping' as const,
-      title: 'Đến danh sách đi chợ',
-      subtitle: 'Xem các mục cần mua và trạng thái chờ đồng bộ ngoại tuyến',
+      title: l('Đến danh sách đi chợ', 'Go to shopping list'),
+      subtitle: l(
+        'Xem các mục cần mua và trạng thái chờ đồng bộ ngoại tuyến',
+        'Review items to buy and offline sync status',
+      ),
       to: vnextHref('/shopping'),
     },
     {
       id: 'ai-scan',
       scope: 'recent' as const,
       icon: 'scan' as const,
-      title: 'Quét nguyên liệu',
-      subtitle: 'Chụp ảnh tủ lạnh hoặc hóa đơn và duyệt thủ công trước khi lưu',
+      title: l('Quét nguyên liệu', 'Scan ingredients'),
+      subtitle: l(
+        'Chụp ảnh tủ lạnh hoặc hóa đơn và duyệt thủ công trước khi lưu',
+        'Snap your fridge or receipt and review before saving',
+      ),
       to: vnextHref('/scan'),
     },
   ].filter((s) => scope === 'all' || s.scope === scope);
 
   return (
-    <ConsumerStudioShell screenId="C02" title="Tìm nhanh" backTo={vnextHref('/')}>
+    <ConsumerStudioShell screenId="C02" title={l('Tìm nhanh', 'Quick Search')} backTo={vnextHref('/')}>
       <div className="max-w-3xl space-y-6">
         <div className="space-y-1">
           <p className="tkv-eyebrow text-xs font-semibold uppercase tracking-widest text-[var(--tkv-ink-muted,#52706A)]">
-            Tra cứu tức thì
+            {l('Tra cứu tức thì', 'Instant lookup')}
           </p>
           <h1 className="tkv-heading text-2xl sm:text-3xl font-extrabold text-[var(--tkv-ink,#152E2C)]">
-            Tìm nhanh
+            {l('Tìm nhanh', 'Quick Search')}
           </h1>
           <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-            Tìm nguyên liệu trong tủ, công thức món ăn hoặc chuyển nhanh đến khu vực cần thao tác.
+            {l(
+              'Tìm nguyên liệu trong tủ, công thức món ăn hoặc chuyển nhanh đến khu vực cần thao tác.',
+              'Search fridge ingredients, recipes, or jump straight to key kitchen actions.',
+            )}
           </p>
         </div>
 
         <TkvSearchField
           value={q}
           onChange={updateQuery}
-          placeholder="Tìm kiếm món ăn hoặc nguyên liệu…"
-          label="Tìm kiếm trong căn bếp"
+          placeholder={l('Tìm kiếm món ăn hoặc nguyên liệu…', 'Search dishes or ingredients…')}
+          label={l('Tìm kiếm trong căn bếp', 'Search in kitchen')}
         />
 
         {/* Scope Chips */}
-        <div className="flex items-center gap-2 flex-wrap" role="tablist" aria-label="Bộ lọc tìm nhanh">
+        <div
+          className="flex items-center gap-2 flex-wrap"
+          role="tablist"
+          aria-label={l('Bộ lọc tìm nhanh', 'Quick search filters')}
+        >
           {[
-            { id: 'all' as const, label: 'Tất cả' },
-            { id: 'recent' as const, label: 'Thao tác nhanh' },
-            { id: 'saved' as const, label: 'Đã lưu' },
+            { id: 'all' as const, label: l('Tất cả', 'All') },
+            { id: 'recent' as const, label: l('Thao tác nhanh', 'Quick actions') },
+            { id: 'saved' as const, label: l('Đã lưu', 'Saved') },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -162,13 +193,19 @@ export const C02QuickSearchPage: React.FC = () => {
 
         {trimmed ? (
           <div className="space-y-5">
-            <section className="space-y-2.5" aria-label="Kết quả trong tủ lạnh">
+            <section className="space-y-2.5" aria-label={l('Kết quả trong tủ lạnh', 'Fridge results')}>
               <h2 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                Nguyên liệu trong tủ lạnh ({matchingStock.length})
+                {l(
+                  `Nguyên liệu trong tủ lạnh (${matchingStock.length})`,
+                  `Fridge ingredients (${matchingStock.length})`,
+                )}
               </h2>
               {matchingStock.length === 0 ? (
                 <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#3C5954)] bg-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)]">
-                  Không có lô nguyên liệu nào khớp từ khóa “{trimmed}”.
+                  {l(
+                    `Không có lô nguyên liệu nào khớp từ khóa “${trimmed}”.`,
+                    `No fridge lots match “${trimmed}”.`,
+                  )}
                 </TkvSurface>
               ) : (
                 <div className="space-y-2">
@@ -179,10 +216,14 @@ export const C02QuickSearchPage: React.FC = () => {
                       className="tkv-focusable block rounded-2xl bg-white border border-[var(--tkv-border,#DCE6DE)] p-4 hover:border-[var(--tkv-border-strong,#B8CABE)] transition-colors"
                     >
                       <div className="flex items-center justify-between gap-3">
-                        <span className="font-bold text-sm text-[var(--tkv-ink)] min-w-0 flex-1 break-words">{lot.name}</span>
+                        <span className="font-bold text-sm text-[var(--tkv-ink)] min-w-0 flex-1 break-words">
+                          {localizeIngredientName(lot.ingredientId, lot.name, locale)}
+                        </span>
                         <TkvBadge tone="neutral" className="shrink-0">
                           <span className="tabular-nums">
-                            {lot.quantity} {lot.unit}
+                            {locale === 'vi'
+                              ? `${lot.quantity} ${lot.unit}`
+                              : formatLocalizedMeasure(lot.quantity, lot.unit, locale, unitSystem)}
                           </span>
                         </TkvBadge>
                       </div>
@@ -192,15 +233,23 @@ export const C02QuickSearchPage: React.FC = () => {
               )}
             </section>
 
-            <section className="space-y-2.5" aria-label="Kết quả công thức món ăn">
+            <section className="space-y-2.5" aria-label={l('Kết quả công thức món ăn', 'Recipe results')}>
               <h2 className="tkv-heading text-base font-extrabold text-[var(--tkv-ink,#152E2C)] tabular-nums">
-                Công thức món ăn ({matchingRecipes.length})
+                {l(
+                  `Công thức món ăn (${matchingRecipes.length})`,
+                  `Recipes (${matchingRecipes.length})`,
+                )}
               </h2>
               {discoveryQuery.isPending ? (
-                <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">Đang tìm trong kho công thức…</p>
+                <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
+                  {l('Đang tìm trong kho công thức…', 'Searching recipe catalog…')}
+                </p>
               ) : matchingRecipes.length === 0 ? (
                 <TkvSurface className="p-4 text-sm text-[var(--tkv-ink-soft,#3C5954)] bg-[var(--tkv-surface-muted,#E7F4EC)] border-[var(--tkv-border,#DCE6DE)]">
-                  Không tìm thấy món ăn nào khớp từ khóa “{trimmed}”.
+                  {l(
+                    `Không tìm thấy món ăn nào khớp từ khóa “${trimmed}”.`,
+                    `No recipes match “${trimmed}”.`,
+                  )}
                 </TkvSurface>
               ) : (
                 <div className="space-y-2">
@@ -212,13 +261,20 @@ export const C02QuickSearchPage: React.FC = () => {
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-sm text-[var(--tkv-ink)] break-words">{recipe.title}</p>
+                          <p className="font-bold text-sm text-[var(--tkv-ink)] break-words">
+                            {localizeRecipeTitle(recipe, locale)}
+                          </p>
                           <p className="text-xs text-[var(--tkv-ink-secondary)] tabular-nums">
-                            {recipe.cookTimeMinutes} phút · {recipe.servings} người
+                            {l(
+                              `${recipe.cookTimeMinutes} phút · ${recipe.servings} người`,
+                              `${recipe.cookTimeMinutes} min · ${recipe.servings} servings`,
+                            )}
                           </p>
                         </div>
                         <TkvBadge tone={canCookWithoutBuying ? 'success' : 'neutral'} className="shrink-0 whitespace-nowrap">
-                          {canCookWithoutBuying ? 'Đủ nguyên liệu' : 'Xem chi tiết'}
+                          {canCookWithoutBuying
+                            ? l('Đủ nguyên liệu', 'Ready to cook')
+                            : l('Xem chi tiết', 'View recipe')}
                         </TkvBadge>
                       </div>
                     </Link>
@@ -256,7 +312,7 @@ export const C02QuickSearchPage: React.FC = () => {
 
         <div className="pt-2">
           <TkvButton variant="secondary" onClick={() => navigate(vnextHref('/'))}>
-            Quay về trang Hôm nay
+            {l('Quay về trang Hôm nay', 'Back to Today')}
           </TkvButton>
         </div>
       </div>
@@ -265,90 +321,116 @@ export const C02QuickSearchPage: React.FC = () => {
 };
 
 /** C06 / C07 — Chi tiết nguyên liệu & Chỉnh sửa số lượng (wraps authoritative IngredientDetailPage). */
-export const C06LotDetailVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C06" title="Chi tiết nguyên liệu" backTo={vnextHref('/fridge')}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<FridgeInventorySkeleton label="Đang tải chi tiết nguyên liệu…" />}>
-        <LazyIngredientDetailPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
-
-/** C08 — Đối soát tồn kho (wraps authoritative T13 ReconciliationPage; single `<h1>` inside KitchenDetailPage). */
-export const C08ReconciliationVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C08" title="Đối soát tồn kho" backTo={vnextHref('/fridge')}>
-    <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
-        <div className="flex flex-col gap-1">
-          <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--tkv-ink,#152E2C)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
-            <span>Đối soát dữ liệu máy chủ & quan sát thực tế</span>
-          </p>
-          <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
-            Kiểm tra các chênh lệch số lượng, vị trí bảo quản hoặc hạn dùng trước khi gửi quyết định lên máy chủ.
-          </p>
-        </div>
-      </div>
+export const C06LotDetailVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell screenId="C06" title={l('Chi tiết nguyên liệu', 'Ingredient Details')} backTo={vnextHref('/fridge')}>
       <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <Suspense fallback={<FridgeInventorySkeleton label="Đang tải danh sách đối soát…" />}>
-          <LazyReconciliationPage />
+        <Suspense fallback={<FridgeInventorySkeleton label={l('Đang tải chi tiết nguyên liệu…', 'Loading ingredient details…')} />}>
+          <LazyIngredientDetailPage />
         </Suspense>
       </div>
-    </div>
-  </ConsumerStudioShell>
-);
+    </ConsumerStudioShell>
+  );
+};
+
+/** C08 — Đối soát tồn kho (wraps authoritative T13 ReconciliationPage; single `<h1>` inside KitchenDetailPage). */
+export const C08ReconciliationVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell screenId="C08" title={l('Đối soát tồn kho', 'Inventory Reconciliation')} backTo={vnextHref('/fridge')}>
+      <div className="flex flex-col gap-4">
+        <div className="rounded-2xl bg-[var(--tkv-surface-muted,#E7F4EC)] border border-[var(--tkv-border,#DCE6DE)] p-4 sm:p-5 flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex flex-col gap-1">
+            <p className="tkv-eyebrow inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--tkv-ink,#152E2C)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-primary,#196149)]" aria-hidden="true" />
+              <span>{l('Đối soát dữ liệu máy chủ & quan sát thực tế', 'Reconcile server stock & scan observations')}</span>
+            </p>
+            <p className="text-sm text-[var(--tkv-ink-soft,#3C5954)]">
+              {l(
+                'Kiểm tra các chênh lệch số lượng, vị trí bảo quản hoặc hạn dùng trước khi gửi quyết định lên máy chủ.',
+                'Review differences in quantity, storage location, or expiry before submitting your decision.',
+              )}
+            </p>
+          </div>
+        </div>
+        <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+          <Suspense fallback={<FridgeInventorySkeleton label={l('Đang tải danh sách đối soát…', 'Loading reconciliation queue…')} />}>
+            <LazyReconciliationPage />
+          </Suspense>
+        </div>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /** C09 / C10 — Quét nguyên liệu & Quyền camera / Tải ảnh dự phòng (Kitchen Studio Scan Frame). */
-export const C09ScanStudioVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C09" title="Quét nguyên liệu" backTo={vnextHref('/fridge')} showContextualScan={false}>
-    <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-      <Suspense fallback={<SettingsFormSkeleton label="Đang mở máy quét AI…" />}>
-        <LazyScanPage />
-      </Suspense>
-    </div>
-  </ConsumerStudioShell>
-);
+export const C09ScanStudioVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell screenId="C09" title={l('Quét nguyên liệu', 'Scan Ingredients')} backTo={vnextHref('/fridge')} showContextualScan={false}>
+      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+        <Suspense fallback={<SettingsFormSkeleton label={l('Đang mở máy quét AI…', 'Opening AI scanner…')} />}>
+          <LazyScanPage />
+        </Suspense>
+      </div>
+    </ConsumerStudioShell>
+  );
+};
 
 /** C11 / C12 / C13 — AI đang xử lý · Duyệt kết quả AI · Kết quả đã xác nhận. */
-export const C12ScanReviewVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C12" title="Duyệt kết quả AI" backTo={vnextHref('/scan')} showContextualScan={false}>
-    <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] p-4 text-xs sm:text-sm text-[var(--tkv-sage-ink,#134C39)] flex items-center gap-2.5">
-        <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0" />
-        <span>
-          <strong>Nguyên tắc duyệt trước khi lưu:</strong> Vui lòng kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.
-        </span>
-      </div>
-      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <div className="tkv-review-host">
-          <Suspense fallback={<FridgeInventorySkeleton label="Đang tải bảng duyệt kết quả AI…" />}>
-            <LazyScanResultPage />
-          </Suspense>
+export const C12ScanReviewVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell screenId="C12" title={l('Duyệt kết quả AI', 'Review AI Scan')} backTo={vnextHref('/scan')} showContextualScan={false}>
+      <div className="flex flex-col gap-4">
+        <div className="rounded-2xl bg-[var(--tkv-sage-soft,#E7F4EC)] border border-[var(--tkv-sage-border,#BDE0CC)] p-4 text-xs sm:text-sm text-[var(--tkv-sage-ink,#134C39)] flex items-center gap-2.5">
+          <VNextIcon name="shield" size={18} className="text-[var(--tkv-sage,#196149)] shrink-0" />
+          <span>
+            <strong>{l('Nguyên tắc duyệt trước khi lưu:', 'Review before saving:')}</strong>{' '}
+            {l(
+              'Vui lòng kiểm tra tên, số lượng, đơn vị và hạn dùng trước khi xác nhận nhập vào tủ lạnh.',
+              'Please check the name, quantity, unit, and expiry date before confirming into your fridge.',
+            )}
+          </span>
+        </div>
+        <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+          <div className="tkv-review-host">
+            <Suspense fallback={<FridgeInventorySkeleton label={l('Đang tải bảng duyệt kết quả AI…', 'Loading AI scan review…')} />}>
+              <LazyScanResultPage />
+            </Suspense>
+          </div>
         </div>
       </div>
-    </div>
-  </ConsumerStudioShell>
-);
+    </ConsumerStudioShell>
+  );
+};
 
 /** C14 — Duyệt hóa đơn OCR (preserves raw OCR evidence, confidence, and PII notice). */
-export const C14ReceiptReviewVNext: React.FC = () => (
-  <ConsumerStudioShell screenId="C14" title="Duyệt hóa đơn" backTo={vnextHref('/scan')} showContextualScan={false}>
-    <div className="flex flex-col gap-4">
-      <div className="rounded-2xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] p-4 text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] flex items-center gap-2.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#F6C453)] shrink-0" aria-hidden="true" />
-        <VNextIcon name="info" size={18} className="text-[var(--tkv-honey,#F6C453)] shrink-0" />
-        <span>
-          <strong>Bảo vệ thông tin hóa đơn:</strong> Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.
-        </span>
-      </div>
-      <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
-        <div className="tkv-review-host">
-          <Suspense fallback={<FridgeInventorySkeleton label="Đang tải bảng duyệt hóa đơn…" />}>
-            <LazyReceiptReviewPage plannerRoutePrefix="/planner" />
-          </Suspense>
+export const C14ReceiptReviewVNext: React.FC = () => {
+  const { l } = useLocaleText();
+  return (
+    <ConsumerStudioShell screenId="C14" title={l('Duyệt hóa đơn', 'Review Receipt')} backTo={vnextHref('/scan')} showContextualScan={false}>
+      <div className="flex flex-col gap-4">
+        <div className="rounded-2xl bg-[var(--tkv-honey-soft,#FFF5D6)] border border-[var(--tkv-honey-border,#F5DE93)] p-4 text-xs sm:text-sm text-[var(--tkv-honey-ink,#8A5205)] flex items-center gap-2.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-honey,#F6C453)] shrink-0" aria-hidden="true" />
+          <VNextIcon name="info" size={18} className="text-[var(--tkv-honey,#F6C453)] shrink-0" />
+          <span>
+            <strong>{l('Bảo vệ thông tin hóa đơn:', 'Receipt data transparency:')}</strong>{' '}
+            {l(
+              'Hệ thống giữ nguyên bằng chứng OCR gốc, không tự điền giá tiền thiếu và chỉ nhập các dòng bạn xác nhận.',
+              'Original OCR evidence is preserved, missing prices are never fabricated, and only lines you confirm enter your fridge.',
+            )}
+          </span>
+        </div>
+        <div className="tkv-adapted-surface takolio-rebuild" data-tkv-surface-adapt="1">
+          <div className="tkv-review-host">
+            <Suspense fallback={<FridgeInventorySkeleton label={l('Đang tải bảng duyệt hóa đơn…', 'Loading receipt review…')} />}>
+              <LazyReceiptReviewPage plannerRoutePrefix="/planner" />
+            </Suspense>
+          </div>
         </div>
       </div>
-    </div>
-  </ConsumerStudioShell>
-);
+    </ConsumerStudioShell>
+  );
+};

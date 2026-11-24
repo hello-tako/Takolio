@@ -1,23 +1,26 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocaleText } from '../../i18n/app-i18n';
 
 /** Minimal accessible back-link anchor for standalone domain detail views (hidden inside ConsumerStudioShell). */
 export function KitchenHeader({
   backTo,
-  backLabel = 'Quay lại',
+  backLabel,
 }: {
   backTo?: string;
   backLabel?: string;
 }) {
+  const { l } = useLocaleText();
+  const resolvedBackLabel = backLabel ?? l('Quay lại', 'Back');
   return (
     <header className="kitchen-header">
       {backTo && (
-        <Link to={backTo} aria-label={backLabel} className="kitchen-icon-link">
-          {backLabel}
+        <Link to={backTo} aria-label={resolvedBackLabel} className="kitchen-icon-link">
+          {resolvedBackLabel}
         </Link>
       )}
       <Link to="/scan" className="kitchen-header-scan">
-        Quét nguyên liệu
+        {l('Quét nguyên liệu', 'Scan ingredients')}
       </Link>
     </header>
   );

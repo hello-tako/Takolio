@@ -13,15 +13,29 @@ import {
   resetPrivateSession,
 } from '../lib/private-session';
 import { clearVerifyContext } from '../features/auth/verify-context';
+import { isViLocale, lSync } from '../i18n/app-i18n';
 
 export const ONBOARDING_GOALS_STORAGE_KEY = 'takolio_onboarding_goals';
 
 const LEGACY_DEFAULT_NAME_RE = /^Người dùng\s+Fri\w*$/i;
 
+function logoutWarningText(): string {
+  return lSync(
+    LOGOUT_WARNING,
+    'Private data on this device has been cleared, but server session revocation could not be confirmed. Please reconnect and try signing out again.',
+  );
+}
+
 export function sanitizeUserDisplayName(raw: string | undefined | null, isGuest = false): string {
   const trimmed = (raw ?? '').trim();
-  if (!trimmed) return isGuest ? 'Khách ghé thăm' : 'Bếp trưởng';
-  if (LEGACY_DEFAULT_NAME_RE.test(trimmed)) return 'Bếp trưởng';
+  if (!trimmed) return isGuest ? lSync('Khách ghé thăm', 'Guest') : lSync('Bếp trưởng', 'Home Chef');
+  if (LEGACY_DEFAULT_NAME_RE.test(trimmed)) return lSync('Bếp trưởng', 'Home Chef');
+  if (!isViLocale()) {
+    if (trimmed === 'Khách ghé thăm') return 'Guest';
+    if (trimmed === 'Người dùng Takolio') return 'Takolio User';
+    if (trimmed === 'Bếp trưởng') return 'Home Chef';
+    if (trimmed === 'Bạn mới của Takolio') return 'Takolio Guest';
+  }
   return raw as string;
 }
 
@@ -99,11 +113,11 @@ interface AuthState {
   logout: () => Promise<boolean>;
 }
 
-const anonymousState = {
+const createAnonymousState = () => ({
   userId: '',
   householdId: '',
   email: '',
-  displayName: 'Khách ghé thăm',
+  displayName: lSync('Khách ghé thăm', 'Guest'),
   avatarUrl: undefined,
   isGuest: true,
   isOnboarded: false,
@@ -111,9 +125,9 @@ const anonymousState = {
   householdSize: 2,
   spicyLevel: 'medium',
   favoriteCuisines: [] as string[],
-  dietaryRestrictions: [],
+  dietaryRestrictions: [] as string[],
   primaryGoal: undefined as string | undefined,
-};
+});
 let logoutRequest: Promise<boolean> | null = null;
 let guestSessionRequest: Promise<void> | null = null;
 
@@ -136,8 +150,8 @@ export const useAuthStore = create<AuthState>((set, get) => {
   const savedDisplayName = rawDisplayName
     ? sanitizeUserDisplayName(rawDisplayName, savedIsGuest)
     : savedIsGuest
-      ? 'Khách ghé thăm'
-      : 'Người dùng Takolio';
+      ? lSync('Khách ghé thăm', 'Guest')
+      : lSync('Người dùng Takolio', 'Takolio User');
   const savedAvatarUrl = localStorage.getItem('frigo_avatar_url') || '';
   const savedOnboarded = localStorage.getItem('frigo_onboarded') === 'true';
   const savedPrimaryGoal = readPersistedPrimaryGoal();
@@ -158,7 +172,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
     dietaryRestrictions: [],
     primaryGoal: savedPrimaryGoal,
     logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
-    logoutError: privateSessionBlocked() ? LOGOUT_WARNING : null,
+    logoutError: privateSessionBlocked() ? logoutWarningText() : null,
 
     // Only authenticated /me responses supply entitlement; local cache is not proof.
     setPlusFromServer: (isPlus: boolean) => {
@@ -191,9 +205,14 @@ export const useAuthStore = create<AuthState>((set, get) => {
     },
 
     setAuthSession: (user: AuthUser) => {
-      if (privateSessionBlocked()) throw new Error(LOGOUT_WARNING);
+      if (privateSessionBlocked()) throw new Error(logoutWarningText());
       if (!user.id || !user.householdId)
-        throw new Error('Máy chủ chưa xác nhận danh tính và hộ gia đình.');
+        throw new Error(
+          lSync(
+            'Máy chủ chưa xác nhận danh tính và hộ gia đình.',
+            'The server has not confirmed your identity and household.',
+          ),
+        );
       clearVerifyContext();
       const hid = user.householdId;
       const current = currentPrivateScope();
@@ -243,7 +262,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
 
     // Onboarding must not replace an existing guest or signed-in cookie.
     setGuestSession: () => {
-      if (privateSessionBlocked()) return Promise.reject(new Error(LOGOUT_WARNING));
+      if (privateSessionBlocked()) return Promise.reject(new Error(logoutWarningText()));
       if (get().userId) return Promise.resolve();
       if (guestSessionRequest) return guestSessionRequest;
       const isCurrent = capturePrivateSession();
@@ -253,7 +272,13 @@ export const useAuthStore = create<AuthState>((set, get) => {
           try {
             res = await fetch('/api/v1/auth/guest', { method: 'POST', credentials: 'include' });
           } catch {
-            if (!isCurrent()) throw new Error('Phiên làm việc đã thay đổi. Vui lòng thử lại.');
+            if (!isCurrent())
+              throw new Error(
+                lSync(
+                  'Phiên làm việc đã thay đổi. Vui lòng thử lại.',
+                  'Your session has changed. Please try again.',
+                ),
+              );
             const id = `guest_${crypto.randomUUID()}`;
             clearPrivateIdentity();
             localStorage.setItem('frigo_user_id', id);
@@ -265,16 +290,39 @@ export const useAuthStore = create<AuthState>((set, get) => {
               householdId: `hh_${id}`,
               email: '',
               isGuest: true,
-              displayName: 'Khách ghé thăm',
+              displayName: lSync('Khách ghé thăm', 'Guest'),
             });
             return;
           }
-          if (!isCurrent()) throw new Error('Phiên làm việc đã thay đổi. Vui lòng thử lại.');
-          if (!res.ok) throw new Error('Không thể khởi tạo phiên khách. Vui lòng thử lại.');
+          if (!isCurrent())
+            throw new Error(
+              lSync(
+                'Phiên làm việc đã thay đổi. Vui lòng thử lại.',
+                'Your session has changed. Please try again.',
+              ),
+            );
+          if (!res.ok)
+            throw new Error(
+              lSync(
+                'Không thể khởi tạo phiên khách. Vui lòng thử lại.',
+                'Could not start a guest session. Please try again.',
+              ),
+            );
           const data = (await res.json()) as { success?: boolean; user?: AuthUser };
-          if (!isCurrent()) throw new Error('Phiên làm việc đã thay đổi. Vui lòng thử lại.');
+          if (!isCurrent())
+            throw new Error(
+              lSync(
+                'Phiên làm việc đã thay đổi. Vui lòng thử lại.',
+                'Your session has changed. Please try again.',
+              ),
+            );
           if (!data.success || !data.user?.id || !data.user?.householdId) {
-            throw new Error('Máy chủ chưa xác nhận phiên khách.');
+            throw new Error(
+              lSync(
+                'Máy chủ chưa xác nhận phiên khách.',
+                'The server could not confirm your guest session.',
+              ),
+            );
           }
           const id: string = data.user.id;
           const hid: string = data.user.householdId;
@@ -312,7 +360,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
       localStorage.setItem(LOGOUT_PENDING_KEY, 'true');
       clearPrivateIdentity();
       clearPersistedPrimaryGoal();
-      set({ ...anonymousState, logoutStatus: 'pending', logoutError: null });
+      set({ ...createAnonymousState(), logoutStatus: 'pending', logoutError: null });
       logoutRequest = (async () => {
         try {
           await api.logout();
@@ -320,7 +368,7 @@ export const useAuthStore = create<AuthState>((set, get) => {
           set({ logoutStatus: 'idle', logoutError: null });
           return true;
         } catch {
-          set({ logoutStatus: 'error', logoutError: LOGOUT_WARNING });
+          set({ logoutStatus: 'error', logoutError: logoutWarningText() });
           return false;
         } finally {
           logoutRequest = null;
@@ -335,9 +383,9 @@ onPrivateSessionReset(() => {
   clearVerifyContext();
   clearPersistedPrimaryGoal();
   useAuthStore.setState({
-    ...anonymousState,
+    ...createAnonymousState(),
     logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
-    logoutError: privateSessionBlocked() ? LOGOUT_WARNING : null,
+    logoutError: privateSessionBlocked() ? logoutWarningText() : null,
   });
 });
 
@@ -356,14 +404,16 @@ if (typeof window !== 'undefined') {
       useAuthStore.setState({
         ...currentPrivateScope(),
         email: localStorage.getItem('frigo_email') || '',
-        displayName: rawName ? sanitizeUserDisplayName(rawName, isGuestNext) : anonymousState.displayName,
+        displayName: rawName
+          ? sanitizeUserDisplayName(rawName, isGuestNext)
+          : createAnonymousState().displayName,
         avatarUrl: localStorage.getItem('frigo_avatar_url') || undefined,
         isGuest: isGuestNext,
         isOnboarded: localStorage.getItem('frigo_onboarded') === 'true',
         isPlus: localStorage.getItem('frigo_is_plus') === 'true',
         primaryGoal: readPersistedPrimaryGoal(),
         logoutStatus: privateSessionBlocked() ? 'error' : 'idle',
-        logoutError: privateSessionBlocked() ? LOGOUT_WARNING : null,
+        logoutError: privateSessionBlocked() ? logoutWarningText() : null,
       });
     }
   });

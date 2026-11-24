@@ -8,6 +8,7 @@ import {
   createDeterministicKey, guardPrivateSession, weekPlanCacheKey, getCurrentScope,
 } from './http';
 import { inventoryApi } from './inventory';
+import { lSync } from '../i18n/app-i18n';
 
 export function isOwnedWeekPlan(value: unknown, planId: string, householdId: string): value is MealPlan {
   if (!value || typeof value !== 'object') return false;
@@ -89,7 +90,7 @@ export const weekApi = {
         '/week/plans',
         'POST',
         body,
-        'Tạo thực đơn tuần',
+        lSync('Tạo thực đơn tuần', 'Create weekly meal plan'),
         `week-plan:${commandId}`,
         headers
       );
@@ -149,7 +150,7 @@ export const weekApi = {
       if (recipeId) {
         queueWrite(
           `/week/plans/${planId}/meals/${mealId}/swap`,
-          'POST', body, 'Đổi món trong thực đơn tuần',
+          'POST', body, lSync('Đổi món trong thực đơn tuần', 'Swap meal in weekly plan'),
           `week-swap:${planId}:${mealId}:${commandId}`, headers
         );
       }
@@ -211,7 +212,7 @@ export const weekApi = {
         `/week/plans/${planId}/meals/${mealId}`,
         'PATCH',
         body,
-        'Cập nhật bữa ăn trong thực đơn tuần',
+        lSync('Cập nhật bữa ăn trong thực đơn tuần', 'Update meal in weekly plan'),
         `week-slot:${planId}:${mealId}:${commandId}`,
         headers
       );
@@ -282,7 +283,7 @@ export const weekApi = {
         `/week/plans/${planId}/shopping/items/${itemId}`,
         'PATCH',
         body,
-        'Cập nhật danh sách mua của thực đơn tuần',
+        lSync('Cập nhật danh sách mua của thực đơn tuần', 'Update weekly plan shopping list'),
         `week-shopping-toggle:${planId}:${itemId}:${commandId}`,
         headers
       );
@@ -344,7 +345,7 @@ export const weekApi = {
         `/week/plans/${planId}/shopping/complete`,
         'POST',
         body,
-        'Nhập hàng theo thực đơn tuần',
+        lSync('Nhập hàng theo thực đơn tuần', 'Import groceries from weekly plan'),
         `week-shopping-complete:${planId}:${stableCommandId}`,
         headers
       );
@@ -355,7 +356,10 @@ export const weekApi = {
         // Pending-only compatibility count: queued lines, not imported stock.
         importedItemsCount: selectedItems.length,
         pendingSync: true,
-        message: `Đã lưu yêu cầu nhập ${selectedItems.length} nguyên liệu, đang chờ đồng bộ. Tồn kho chưa thay đổi.`,
+        message: lSync(
+          `Đã lưu yêu cầu nhập ${selectedItems.length} nguyên liệu, đang chờ đồng bộ. Tồn kho chưa thay đổi.`,
+          `Saved request to import ${selectedItems.length} ingredients, waiting to sync. Inventory has not changed yet.`,
+        ),
       };
     }
   },
@@ -391,7 +395,7 @@ export const weekApi = {
         '/week/preferences',
         'PATCH',
         body,
-        'Cập nhật tùy chọn thực đơn tuần',
+        lSync('Cập nhật tùy chọn thực đơn tuần', 'Update weekly meal plan preferences'),
         `week-preferences:${commandId}`,
         headers
       );

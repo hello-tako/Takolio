@@ -7,6 +7,7 @@ import {
   type MoneyDto,
 } from '../../../../packages/domain/src/meal-shopping-api';
 import { ApiError } from '../../services/http';
+import { getActiveAppLocale } from '../../i18n/LocaleContext';
 
 export type PlannerLocale = 'vi' | 'en';
 
@@ -684,7 +685,10 @@ const enCopy: PlannerCopy = {
 export const plannerCopy = { vi: viCopy, en: enCopy };
 
 export function plannerLocale(locale?: string): PlannerLocale {
-  return /^en(?:-|$)/i.test(locale ?? '') ? 'en' : 'vi';
+  if (locale === undefined) {
+    return getActiveAppLocale() === 'vi' ? 'vi' : 'en';
+  }
+  return /^en(?:-|$)/i.test(locale) ? 'en' : 'vi';
 }
 
 function label(map: Record<string, string>, key: string, fallback: string): string {

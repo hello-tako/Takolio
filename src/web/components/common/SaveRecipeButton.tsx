@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Heart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useRecipeFavorites } from '../../features/favorites/useRecipeFavorites';
+import { localizeErrorText, useLocaleText } from '../../i18n/app-i18n';
 import { showTkvToast } from '../../vnext/components/LivingMotion';
 
 export function SaveRecipeButton({
@@ -13,6 +14,7 @@ export function SaveRecipeButton({
   title: string;
   compact?: boolean;
 }) {
+  const { l, locale } = useLocaleText();
   const { query, mutation, saved, guest, error } = useRecipeFavorites();
   const location = useLocation();
   const [popping, setPopping] = useState(false);
@@ -21,11 +23,11 @@ export function SaveRecipeButton({
     return (
       <Link
         className="recipe-save-button tkv-tactile active:scale-95"
-        aria-label={`Đăng nhập để lưu ${title}`}
+        aria-label={l(`Đăng nhập để lưu ${title}`, `Sign in to save ${title}`)}
         to={`/auth?mode=login&returnTo=${encodeURIComponent(location.pathname + location.search)}`}
       >
         <Heart size={18} aria-hidden="true" />
-        {!compact && 'Lưu món'}
+        {!compact && l('Lưu món', 'Save')}
       </Link>
     );
 
@@ -39,7 +41,9 @@ export function SaveRecipeButton({
       {
         onSuccess: () => {
           showTkvToast({
-            message: nextSaved ? `Đã lưu “${title}” vào yêu thích` : `Đã bỏ lưu “${title}”`,
+            message: nextSaved
+              ? l(`Đã lưu “${title}” vào yêu thích`, `Saved “${title}” to favorites`)
+              : l(`Đã bỏ lưu “${title}”`, `Removed “${title}” from favorites`),
             tone: nextSaved ? 'success' : 'info',
           });
         },
@@ -52,7 +56,7 @@ export function SaveRecipeButton({
       <button
         type="button"
         className="recipe-save-button tkv-tactile active:scale-95"
-        aria-label={`${selected ? 'Bỏ lưu' : 'Lưu'} ${title}`}
+        aria-label={selected ? l(`Bỏ lưu ${title}`, `Unsave ${title}`) : l(`Lưu ${title}`, `Save ${title}`)}
         aria-pressed={selected}
         disabled={query.isPending || query.isError || mutation.isPending}
         onClick={handleToggle}
@@ -63,16 +67,16 @@ export function SaveRecipeButton({
           aria-hidden="true"
           className={popping ? 'tkv-pop' : undefined}
         />
-        {!compact && (selected ? 'Đã lưu' : 'Lưu món')}
+        {!compact && (selected ? l('Đã lưu', 'Saved') : l('Lưu món', 'Save'))}
       </button>
       {mutation.isError && (
         <span className="recipe-save-error" role="alert">
-          {error}
+          {localizeErrorText(error, 'Could not update saved recipe. Please try again.', error ?? '', locale)}
         </span>
       )}
       {query.isError && !compact && (
         <button type="button" className="planning-text-link" onClick={() => void query.refetch()}>
-          Tải lại món đã lưu
+          {l('Tải lại món đã lưu', 'Reload saved recipes')}
         </button>
       )}
     </span>

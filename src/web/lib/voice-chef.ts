@@ -5,6 +5,7 @@
  */
 import { LOCALE_CATALOG } from '../../shared/locales';
 import { getActiveAppLocale } from '../i18n/LocaleContext';
+import { lSync } from '../i18n/app-i18n';
 
 export type VoiceChefLocale = 'vi' | 'en' | 'ja' | 'de' | 'fr';
 
@@ -35,7 +36,11 @@ export const VOICE_LOCALE_PROFILES: Readonly<Record<VoiceChefLocale, VoiceLocale
   vi: {
     bcp47: 'vi-VN',
     voicePrefix: 'vi',
-    unsupportedError: 'Trình duyệt chưa hỗ trợ nhận diện giọng nói Web Speech.',
+    unsupportedError: lSync(
+      'Trình duyệt chưa hỗ trợ nhận diện giọng nói Web Speech.',
+      'Your browser does not support Web Speech recognition.',
+      'vi',
+    ),
     keywords: {
       next: ['tiếp', 'kế tiếp', 'xong', 'next'],
       prev: ['lùi', 'quay lại', 'trước', 'back'],
@@ -96,10 +101,11 @@ export const VOICE_LOCALE_PROFILES: Readonly<Record<VoiceChefLocale, VoiceLocale
 
 function resolveVoiceLocale(locale?: string): VoiceChefLocale {
   const short = (locale || '').trim().toLowerCase().split(/[-_]/)[0];
+  if (!short) return 'vi';
   if (short === 'ja' || short === 'en' || short === 'de' || short === 'fr' || short === 'vi') {
     return short;
   }
-  return 'vi';
+  return 'en';
 }
 
 export class VoiceSousChef {
@@ -134,8 +140,12 @@ export class VoiceSousChef {
       return { profile, speechLang: profile.bcp47, langPrefix: profile.voicePrefix };
     }
     const appLoc = getActiveAppLocale();
-    const profile = VOICE_LOCALE_PROFILES[resolveVoiceLocale(appLoc)];
-    const speechLang = LOCALE_CATALOG[appLoc]?.speechLang ?? profile.bcp47;
+    const resolved = resolveVoiceLocale(appLoc);
+    const profile = VOICE_LOCALE_PROFILES[resolved];
+    const speechLang =
+      resolved === appLoc
+        ? (LOCALE_CATALOG[appLoc]?.speechLang ?? profile.bcp47)
+        : LOCALE_CATALOG.en.speechLang;
     return { profile, speechLang, langPrefix: speechLang.split('-')[0].toLowerCase() };
   }
 

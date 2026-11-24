@@ -3,6 +3,7 @@ import { QueryClientContext, useIsFetching } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
 import { clsx } from 'clsx';
 import { queryClient as defaultQueryClient } from '../../lib/query-client';
+import { useLocaleText } from '../../i18n/app-i18n';
 import { VNextIcon } from './VNextIcons';
 
 export type TkvToastTone = 'success' | 'info' | 'warning' | 'danger';
@@ -89,6 +90,7 @@ export const TkvTopProgressBar: React.FC<{ active?: boolean }> = ({ active = fal
  * Clears automatically, supports Undo/Action button, and stays safely above Mobile BottomNav.
  */
 export const TkvToastViewport: React.FC = () => {
+  const { l } = useLocaleText();
   const [toasts, setToasts] = useState<ActiveToast[]>([]);
 
   useEffect(() => {
@@ -160,7 +162,7 @@ export const TkvToastViewport: React.FC = () => {
             )}
             <button
               type="button"
-              aria-label="Đóng thông báo"
+              aria-label={l('Đóng thông báo', 'Dismiss notification')}
               onClick={() => setToasts((prev) => prev.filter((item) => item.id !== toast.id))}
               className="tkv-focusable w-7 h-7 rounded-lg inline-flex items-center justify-center opacity-75 hover:opacity-100 transition-opacity"
             >

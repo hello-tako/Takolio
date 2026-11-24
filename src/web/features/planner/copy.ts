@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getActiveAppLocale, useAppLocale } from '../../i18n/LocaleContext';
 
 export type PlannerLocale = 'vi' | 'en';
 export const plannerCopy = {
@@ -95,12 +96,25 @@ export const plannerCopy = {
 } as const;
 
 export function usePlannerLocale() {
+  const { locale: appLocale, setLocale: setAppLocale, isProvided } = useAppLocale();
   const [locale, setLocale] = useState<PlannerLocale>(() => {
+    const active = isProvided ? appLocale : getActiveAppLocale();
+    if (active !== 'vi') return 'en';
     try { return localStorage.getItem('frigo_planner_locale') === 'en' ? 'en' : 'vi'; }
     catch { return 'vi'; }
   });
-  return { locale, copy: plannerCopy[locale], setLocale: (value: PlannerLocale) => {
-    setLocale(value);
-    try { localStorage.setItem('frigo_planner_locale', value); } catch { /* Optional presentation preference. */ }
-  } };
+  useEffect(() => {
+    if (!isProvided) return;
+    const derived: PlannerLocale = appLocale === 'vi' ? 'vi' : 'en';
+    setLocale(derived);
+  }, [appLocale, isProvided]);
+  return {
+    locale,
+    copy: plannerCopy[locale],
+    setLocale: (value: PlannerLocale) => {
+      setLocale(value);
+      if (isProvided) setAppLocale(value);
+      try { localStorage.setItem('frigo_planner_locale', value); } catch { /* Optional presentation preference. */ }
+    },
+  };
 }

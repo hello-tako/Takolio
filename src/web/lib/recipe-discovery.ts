@@ -1,4 +1,10 @@
 import type { RecipeMatchResult, VietnameseCategory } from '@frigo/recipes';
+import { getActiveAppLocale } from '../i18n/LocaleContext';
+import {
+  localizeIngredientName,
+  localizeRecipeDescription,
+  localizeRecipeTitle,
+} from '../i18n/app-i18n';
 
 import {
   DISCOVERY_PAGE_SIZE,
@@ -69,6 +75,7 @@ const normalized = (value: string) =>
   value.toLocaleLowerCase('vi-VN').normalize('NFD').replace(/\p{M}/gu, '').replace(/đ/g, 'd');
 export function filterDiscoveryResults(recipes: RecipeMatchResult[], filters: DiscoveryFilters) {
   const search = normalized(filters.q.trim());
+  const locale = getActiveAppLocale();
   return recipes.filter(({ recipe, canCookWithoutBuying }) => {
     if (filters.noBuy && !canCookWithoutBuying) return false;
     if (filters.fast && recipe.cookTimeMinutes > 20) return false;
@@ -77,12 +84,22 @@ export function filterDiscoveryResults(recipes: RecipeMatchResult[], filters: Di
     if (filters.region && recipe.region !== filters.region && recipe.region !== 'toan_quoc')
       return false;
     if (!search) return true;
-    return [
+    const searchable = [
       recipe.title,
       recipe.description,
       ...recipe.tags,
       ...recipe.ingredients.map((item) => item.name),
-    ].some((value) => normalized(value).includes(search));
+    ];
+    if (locale !== 'vi') {
+      searchable.push(
+        localizeRecipeTitle(recipe, locale),
+        localizeRecipeDescription(recipe, locale),
+        ...recipe.ingredients.map((item) =>
+          localizeIngredientName(item.ingredientId, item.name, locale),
+        ),
+      );
+    }
+    return searchable.some((value) => normalized(value).includes(search));
   });
 }
 export function pageDiscoveryResults(results: RecipeMatchResult[], requestedPage: number) {
