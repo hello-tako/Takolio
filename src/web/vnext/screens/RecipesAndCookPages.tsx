@@ -602,14 +602,9 @@ export const C20C21CookingStudioVNext: React.FC = () => {
             {l('Cần kiểm tra lần nấu trước', 'Review your previous cooking session')}
           </h1>
           <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-            {locale === 'vi' ? (
-              <>
-                Bạn còn một yêu cầu hoàn tất đang chờ kiểm tra cho món <strong>{activeRecipeTitle}</strong>. Hãy hoàn tất hoặc đóng yêu cầu đó trước khi bắt đầu món mới.
-              </>
-            ) : (
-              <>
-                You still have a pending completion review for <strong>{activeRecipeTitle}</strong>. Finish or dismiss it before starting a new dish.
-              </>
+            {l(
+              `Bạn còn một yêu cầu hoàn tất đang chờ kiểm tra cho món ${activeRecipeTitle}. Hãy hoàn tất hoặc đóng yêu cầu đó trước khi bắt đầu món mới.`,
+              `You still have a pending completion review for ${activeRecipeTitle}. Finish or dismiss it before starting a new dish.`,
             )}
           </p>
           <TkvButton variant="coral" onClick={() => navigate(vnextHref('/cooking/complete'))}>
@@ -676,8 +671,7 @@ export const C20C21CookingStudioVNext: React.FC = () => {
       setSpeaking(false);
       return;
     }
-    const speechLocale = locale === 'vi' ? 'vi' : 'en';
-    const ok = voiceChef.speakInstruction(step.instruction, () => setSpeaking(false), speechLocale);
+    const ok = voiceChef.speakInstruction(step.instruction, () => setSpeaking(false), locale);
     setSpeaking(ok);
     if (!ok) {
       setVoiceMessage(
@@ -754,14 +748,9 @@ export const C20C21CookingStudioVNext: React.FC = () => {
         <div className="border-b border-[var(--tkv-border-saffron)] bg-[var(--tkv-surface-saffron)] text-[var(--tkv-warning-ink)] px-4 py-3">
           <div className="max-w-3xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <p className="text-xs sm:text-sm font-medium">
-              {locale === 'vi' ? (
-                <>
-                  Thoát chế độ nấu ngay bây giờ sẽ <strong>không trừ bất kỳ nguyên liệu nào</strong> trong tủ lạnh của bạn.
-                </>
-              ) : (
-                <>
-                  Exiting cooking mode now will <strong>not deduct any ingredients</strong> from your fridge.
-                </>
+              {l(
+                'Thoát chế độ nấu ngay bây giờ sẽ không trừ bất kỳ nguyên liệu nào trong tủ lạnh của bạn.',
+                'Exiting cooking mode now will not deduct any ingredients from your fridge.',
               )}
             </p>
             <div className="flex items-center gap-2 shrink-0">

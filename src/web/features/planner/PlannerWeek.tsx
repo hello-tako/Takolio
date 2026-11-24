@@ -32,7 +32,8 @@ import { FamilyPlanNotice } from './FamilyPlanNotice';
 import { isPlannerSlotElapsed, plannerSlotTime } from './schedule';
 import type { SupportedLocale } from '../../../shared/locales';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
-import { localizeRecipeTitle, useLocaleText } from '../../i18n/app-i18n';
+import { getActiveBcp47, lPlanner, localizeRecipeTitle, useLocaleText } from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
 
 function DishCard({
   composition,
@@ -127,7 +128,7 @@ function DishCard({
       {composition.source === 'v2' && missing.size > 0 && (
         <div className="planning-missing-roles">
           <p>
-            {locale === 'vi' ? 'Bữa còn thiếu nhóm món:' : 'Meal groups still missing:'}{' '}
+            {lPlanner(locale, 'Bữa còn thiếu nhóm món:', 'Meal groups still missing:')}{' '}
             {Array.from(missing)
               .map((role) => roleLabel(role, locale))
               .join(' · ')}
@@ -153,9 +154,16 @@ export function PlannerWeek({
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
   const { locale: appLocale } = useLocaleText();
   const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  const pack =
+    locale === 'vi' ? null : getLoadedLocalePack(activeDataLocale === 'vi' ? 'en' : activeDataLocale);
+  const t =
+    locale === 'vi'
+      ? plannerCopy.vi
+      : pack?.planner
+        ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+        : plannerCopy.en;
   const shouldLocalizeRecipeTitles = locale !== 'vi' && activeDataLocale !== 'vi';
   const [confirm, setConfirm] = useState(false);
   const [picker, setPicker] = useState<{ slotId: string; component: MealComponentDto } | null>(
@@ -225,41 +233,39 @@ export function PlannerWeek({
   const reviewOnly =
     states.length > 0 && states.every((state) => state === 'complete' || state === 'review');
   const summaryStatus = legacySummary
-    ? `${locale === 'vi' ? 'Kế hoạch món chính' : 'Main-dish plan'} · ${plannerStatusLabel(plan.result.status, locale)}`
+    ? `${lPlanner(locale, 'Kế hoạch món chính', 'Main-dish plan')} · ${plannerStatusLabel(plan.result.status, locale)}`
     : uncertain
-      ? locale === 'vi'
-        ? 'Chưa xác nhận đủ món'
-        : 'Dish completeness not confirmed'
+      ? lPlanner(locale, 'Chưa xác nhận đủ món', 'Dish completeness not confirmed')
       : completeCount === plan.intent.slots.length
-        ? locale === 'vi'
-          ? hasOneDishMeal
-            ? 'Đã xếp món cho các bữa'
-            : 'Đã xếp đủ nhóm món'
-          : hasOneDishMeal
-            ? 'Dishes are planned for each meal'
-            : 'All required dish groups are present'
-        : reviewOnly
-          ? locale === 'vi'
-            ? 'Cần kiểm tra lại bữa ăn'
-            : 'Meals need review'
-          : locale === 'vi'
-            ? 'Còn bữa cần hoàn thiện'
-            : 'Some meals still need completing';
-  const summaryNote = legacySummary
-    ? locale === 'vi'
-      ? `${plan.result.meals.length} bữa đã chọn món chính`
-      : `Main dishes chosen for ${plan.result.meals.length} meals`
-    : uncertain
-      ? locale === 'vi'
-        ? 'Đang chờ xác nhận các món trong phiên bản hiện tại.'
-        : 'Waiting to confirm dishes in the current revision.'
-      : locale === 'vi'
         ? hasOneDishMeal
-          ? `${completeCount}/${plan.intent.slots.length} bữa đã xếp đủ món theo kiểu ăn đã chọn; nguyên liệu được kiểm tra riêng.`
-          : `${completeCount}/${plan.intent.slots.length} bữa đủ nhóm món; nguyên liệu được kiểm tra riêng.`
-        : hasOneDishMeal
-          ? `${completeCount}/${plan.intent.slots.length} meals have dishes for the chosen meal style; ingredients are checked separately.`
-          : `${completeCount}/${plan.intent.slots.length} meals have all required groups; ingredients are checked separately.`;
+          ? lPlanner(locale, 'Đã xếp món cho các bữa', 'Dishes are planned for each meal')
+          : lPlanner(locale, 'Đã xếp đủ nhóm món', 'All required dish groups are present')
+        : reviewOnly
+          ? lPlanner(locale, 'Cần kiểm tra lại bữa ăn', 'Meals need review')
+          : lPlanner(locale, 'Còn bữa cần hoàn thiện', 'Some meals still need completing');
+  const summaryNote = legacySummary
+    ? lPlanner(
+        locale,
+        `${plan.result.meals.length} bữa đã chọn món chính`,
+        `Main dishes chosen for ${plan.result.meals.length} meals`,
+      )
+    : uncertain
+      ? lPlanner(
+          locale,
+          'Đang chờ xác nhận các món trong phiên bản hiện tại.',
+          'Waiting to confirm dishes in the current revision.',
+        )
+      : hasOneDishMeal
+        ? lPlanner(
+            locale,
+            `${completeCount}/${plan.intent.slots.length} bữa đã xếp đủ món theo kiểu ăn đã chọn; nguyên liệu được kiểm tra riêng.`,
+            `${completeCount}/${plan.intent.slots.length} meals have dishes for the chosen meal style; ingredients are checked separately.`,
+          )
+        : lPlanner(
+            locale,
+            `${completeCount}/${plan.intent.slots.length} bữa đủ nhóm món; nguyên liệu được kiểm tra riêng.`,
+            `${completeCount}/${plan.intent.slots.length} meals have all required groups; ingredients are checked separately.`,
+          );
   const boardMeals = [
     ...plan.result.meals.filter((meal) => {
       const composition = legacy ? undefined : compositionFor(meal.slotId);
@@ -310,7 +316,7 @@ export function PlannerWeek({
       <div className="planning-board-summary">
         <div>
           <p className="planning-eyebrow">
-            {locale === 'vi' ? 'THỰC ĐƠN GIA ĐÌNH' : 'HOUSEHOLD MEAL PLAN'}
+            {lPlanner(locale, 'THỰC ĐƠN GIA ĐÌNH', 'HOUSEHOLD MEAL PLAN')}
           </p>
           <p className="planning-board-status" role="status">
             {summaryStatus}
@@ -342,9 +348,11 @@ export function PlannerWeek({
         (revisionChanged ? (
           <div role="status" className="planning-notice">
             <p>
-              {locale === 'vi'
-                ? 'Thực đơn đã có phiên bản mới. Tải lại để xem đúng các bữa.'
-                : 'A newer plan is available. Load it to see the current meals.'}
+              {lPlanner(
+                locale,
+                'Thực đơn đã có phiên bản mới. Tải lại để xem đúng các bữa.',
+                'A newer plan is available. Load it to see the current meals.',
+              )}
             </p>
             <Button
               className="mt-3"
@@ -354,7 +362,7 @@ export function PlannerWeek({
                 void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan)
               }
             >
-              {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+              {lPlanner(locale, 'Tải thực đơn mới nhất', 'Load latest plan')}
             </Button>
           </div>
         ) : (
@@ -365,12 +373,17 @@ export function PlannerWeek({
           <section key={date} className="planning-day">
             <h2 className="planning-day-heading">
               <CalendarDays size={16} aria-hidden="true" />
-              {new Intl.DateTimeFormat(locale, {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'short',
-                timeZone: 'UTC',
-              }).format(new Date(`${date}T12:00:00Z`))}
+              {new Intl.DateTimeFormat(
+                locale === 'vi'
+                  ? 'vi-VN'
+                  : getActiveBcp47(getActiveAppLocale() === 'vi' ? 'en' : getActiveAppLocale()),
+                {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'short',
+                  timeZone: 'UTC',
+                },
+              ).format(new Date(`${date}T12:00:00Z`))}
             </h2>
             {boardSlots
               .filter((slot) => slot.date === date)
@@ -387,34 +400,38 @@ export function PlannerWeek({
                         {t[composition.mealType]} · {slot.time} · {composition.servings} {t.people}
                       </p>
                       <h3 className="planning-meal-name">
-                        {locale === 'vi'
-                          ? slotElapsed
-                            ? 'Bữa đã qua chưa được xếp món'
-                            : 'Bữa này chờ bạn chọn món'
-                          : slotElapsed
-                            ? 'No dishes planned for this past meal'
-                            : 'Choose dishes for this meal'}
+                        {slotElapsed
+                          ? lPlanner(
+                              locale,
+                              'Bữa đã qua chưa được xếp món',
+                              'No dishes planned for this past meal',
+                            )
+                          : lPlanner(
+                              locale,
+                              'Bữa này chờ bạn chọn món',
+                              'Choose dishes for this meal',
+                            )}
                       </h3>
                       <p className="text-sm text-semantic-text-secondary mt-2">
-                        {locale === 'vi'
-                          ? slotElapsed
-                            ? 'Giữ nguyên bữa đã qua. Bạn có thể tiếp tục xếp món cho những bữa sắp tới.'
-                            : 'Chọn từ món đã lưu hoặc nguyên liệu đang có. Bạn có thể nhờ Takolio hoàn thiện sau.'
-                          : slotElapsed
-                            ? 'Past meals stay unchanged. Continue choosing dishes for future meals.'
-                            : 'Use saved dishes or your fridge. Takolio can help complete the meal later.'}
+                        {slotElapsed
+                          ? lPlanner(
+                              locale,
+                              'Giữ nguyên bữa đã qua. Bạn có thể tiếp tục xếp món cho những bữa sắp tới.',
+                              'Past meals stay unchanged. Continue choosing dishes for future meals.',
+                            )
+                          : lPlanner(
+                              locale,
+                              'Chọn từ món đã lưu hoặc nguyên liệu đang có. Bạn có thể nhờ Takolio hoàn thiện sau.',
+                              'Use saved dishes or your fridge. Takolio can help complete the meal later.',
+                            )}
                       </p>
                       <Link
                         className="planning-primary-link mt-3"
                         to={`/planner/${plan.id}/meal/${encodeURIComponent(composition.slotId)}`}
                       >
                         {slotElapsed
-                          ? locale === 'vi'
-                            ? 'Xem bữa này'
-                            : 'View meal'
-                          : locale === 'vi'
-                            ? 'Chọn món cho bữa này'
-                            : 'Choose dishes'}
+                          ? lPlanner(locale, 'Xem bữa này', 'View meal')
+                          : lPlanner(locale, 'Chọn món cho bữa này', 'Choose dishes')}
                       </Link>
                     </Card>
                   );
@@ -470,7 +487,7 @@ export function PlannerWeek({
                           {slotElapsed && (
                             <>
                               {' '}
-                              · {locale === 'vi' ? 'Đã qua giờ dự kiến' : 'Scheduled time passed'}
+                              · {lPlanner(locale, 'Đã qua giờ dự kiến', 'Scheduled time passed')}
                             </>
                           )}
                         </p>
@@ -479,7 +496,7 @@ export function PlannerWeek({
                             ? mealDisplayTitle
                             : !composition
                               ? t[meal.mealType]
-                              : `${composition.components.length} ${locale === 'vi' ? 'món' : 'dishes'} · ${meal.servings} ${t.people}`}
+                              : `${composition.components.length} ${lPlanner(locale, 'món', 'dishes')} · ${meal.servings} ${t.people}`}
                         </h3>
                       </div>
                       <Link
@@ -624,11 +641,11 @@ export function PlannerWeek({
       <ConfirmDialog
         open={confirm}
         title={t.regenerateTitle}
-        description={
-          locale === 'vi'
-            ? 'Takolio sẽ gợi ý lại các bữa chưa khoá. Các món đã khoá được giữ nguyên; nguyên liệu sẽ được kiểm tra lại sau đó.'
-            : t.regenerateText
-        }
+        description={lPlanner(
+          locale,
+          'Takolio sẽ gợi ý lại các bữa chưa khoá. Các món đã khoá được giữ nguyên; nguyên liệu sẽ được kiểm tra lại sau đó.',
+          t.regenerateText,
+        )}
         confirmText={t.confirm}
         cancelText={t.cancel}
         onCancel={() => setConfirm(false)}

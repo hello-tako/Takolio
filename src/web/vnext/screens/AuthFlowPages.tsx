@@ -17,7 +17,12 @@ import {
 } from '../../features/auth/verify-context';
 import { TurnstileWidget } from '../../components/common/TurnstileWidget';
 import { normalizeLocale, type SupportedLocale } from '../../../shared/locales';
-import { containsVietnameseDiacritics, lSync, useLocaleText } from '../../i18n/app-i18n';
+import {
+  containsVietnameseDiacritics,
+  lSync,
+  translateEnForLocale,
+  useLocaleText,
+} from '../../i18n/app-i18n';
 import { vnextHref } from '../feature';
 import { useVNextSeo } from '../lib/seo';
 import { detectRuntimeDomainRole, resolveSatelliteSurfaceHref } from '../lib/domain-surface';
@@ -160,11 +165,15 @@ export const VNextAuthFlow: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
-  const { locale: ctxLocale, setLocale } = useLocaleText();
+  const { locale: ctxLocale, setLocale, l: ctxL } = useLocaleText();
   const queryLang = searchParams.get('lang');
   const effectiveLocale: SupportedLocale = queryLang ? normalizeLocale(queryLang, ctxLocale) : ctxLocale;
   const isVi = effectiveLocale === 'vi';
-  const l = useCallback((vi: string, en: string) => (isVi ? vi : en), [isVi]);
+  const l = useCallback(
+    (vi: string, en: string) =>
+      effectiveLocale === ctxLocale ? ctxL(vi, en) : lSync(vi, en, effectiveLocale),
+    [ctxL, ctxLocale, effectiveLocale],
+  );
 
   useEffect(() => {
     if (!queryLang) return;
@@ -176,23 +185,26 @@ export const VNextAuthFlow: React.FC = () => {
 
   const localizeAuthError = useCallback(
     (err: unknown, viFallback: string, enFallback: string) => {
-      const raw = apiErrorMessage(err, isVi ? viFallback : enFallback);
+      const translatedFallback = isVi ? viFallback : translateEnForLocale(enFallback, effectiveLocale);
+      const raw = apiErrorMessage(err, translatedFallback);
       if (isVi) return raw;
       if (!raw || containsVietnameseDiacritics(raw) || raw.startsWith('HTTP ')) {
-        return enFallback;
+        return translatedFallback;
       }
-      return raw;
+      return translateEnForLocale(raw, effectiveLocale);
     },
-    [isVi],
+    [isVi, effectiveLocale, ctxL],
   );
 
   const localizeServerInfo = useCallback(
     (msg: string | undefined, viFallback: string, enFallback: string) => {
       if (isVi) return msg || viFallback;
-      if (msg && !containsVietnameseDiacritics(msg)) return msg;
-      return enFallback;
+      if (msg && !containsVietnameseDiacritics(msg)) {
+        return translateEnForLocale(msg, effectiveLocale);
+      }
+      return translateEnForLocale(enFallback, effectiveLocale);
     },
-    [isVi],
+    [isVi, effectiveLocale, ctxL],
   );
 
   const urlMode = resolveAuthMode(pathname, searchParams);

@@ -1,5 +1,5 @@
 import type { StandardUnit } from '@frigo/domain';
-import { localizeStorageZone, useLocaleText } from '../../i18n/app-i18n';
+import { localizeStorageZone, localizeUnit, useLocaleText } from '../../i18n/app-i18n';
 
 export const REVIEW_UNITS: ReadonlyArray<{ value: StandardUnit; label: string }> = [
   { value: 'g', label: 'g' },
@@ -131,7 +131,7 @@ export function ReviewFields({
         >
           {REVIEW_UNITS.map(({ value, label }) => (
             <option key={value} value={value}>
-              {locale === 'vi' ? label : REVIEW_UNIT_LABELS_EN[value]}
+              {locale === 'vi' ? label : localizeUnit(value, locale)}
             </option>
           ))}
         </select>

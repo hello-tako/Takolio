@@ -10,7 +10,13 @@ import {
 } from '@frigo/domain';
 import type { SupportedLocale } from '../../shared/locales';
 import { getActiveAppLocale } from '../i18n/LocaleContext';
-import { containsVietnameseDiacritics, localizeUnit, lSync } from '../i18n/app-i18n';
+import {
+  containsVietnameseDiacritics,
+  getActiveBcp47,
+  localizeUnit,
+  lSync,
+  translateEnForLocale,
+} from '../i18n/app-i18n';
 import { ApiError } from '../services/http';
 import { presentDomainError } from './inventory-truth';
 
@@ -43,7 +49,7 @@ export const cookingQuantityText = (
   unit: string,
   locale: SupportedLocale = getActiveAppLocale(),
 ) =>
-  `${new Intl.NumberFormat(locale === 'vi' ? 'vi-VN' : 'en-US', { maximumSignificantDigits: 15 }).format(quantity)} ${cookingUnitLabel(unit, locale)}`;
+  `${new Intl.NumberFormat(getActiveBcp47(locale), { maximumSignificantDigits: 15 }).format(quantity)} ${cookingUnitLabel(unit, locale)}`;
 
 export function reviewCookingDeductions(
   recipe: Recipe,
@@ -191,7 +197,11 @@ export function cookingFailure(error: unknown): { message: string; recoverable: 
       const mapped = error.code ? DOMAIN_ERRORS_EN[error.code] : undefined;
       const fromDomain = presentDomainError(error.code, fallback).message;
       return {
-        message: mapped ?? (containsVietnameseDiacritics(fromDomain) ? fallback : fromDomain),
+        message: mapped
+          ? translateEnForLocale(mapped, locale)
+          : containsVietnameseDiacritics(fromDomain)
+            ? fallback
+            : translateEnForLocale(fromDomain, locale),
         recoverable: true,
       };
     }

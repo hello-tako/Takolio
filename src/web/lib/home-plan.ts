@@ -4,7 +4,7 @@ import type { MealPlanDto } from '../../../packages/domain/src/meal-planning-api
 import type { PlanCompositionsDto } from '../../../packages/domain/src/meal-composition-api';
 import { findTodayMeal } from './home-meal';
 import { formatVndCompact, todayLocalIso } from './format';
-import { containsVietnameseDiacritics, isViLocale, lSync } from '../i18n/app-i18n';
+import { containsVietnameseDiacritics, getActiveBcp47, isViLocale, lSync } from '../i18n/app-i18n';
 
 export type CompositionEvidence =
   | { kind: 'legacy' }
@@ -55,7 +55,7 @@ export function calendarLabel(date: string, today: string) {
   const tomorrow = new Date(`${today}T12:00:00Z`);
   tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
   if (date === tomorrow.toISOString().slice(0, 10)) return lSync('Ngày mai', 'Tomorrow');
-  return new Intl.DateTimeFormat(isViLocale() ? 'vi-VN' : 'en-US', {
+  return new Intl.DateTimeFormat(getActiveBcp47(), {
     weekday: 'short',
     day: 'numeric',
     month: 'numeric',
@@ -191,7 +191,7 @@ export function presentLegacyHome(plan: MealPlan, now: Date): HomePlan {
         ? {
             budgetText:
               !isViLocale() && containsVietnameseDiacritics(budget.displayText)
-                ? 'Weekly budget estimate'
+                ? lSync('Ước tính ngân sách tuần', 'Weekly budget estimate')
                 : budget.displayText,
           }
         : {}),

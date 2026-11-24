@@ -6,22 +6,18 @@ import {
   type SupportedLocale,
   type UnitSystem,
 } from '../../shared/locales';
+import { getLoadedLocalePack, isPackLocale, loadLocalePack } from './packs/registry';
 
 export const TAKOLIO_LOCALE_STORAGE_KEY = 'takolio_locale';
 export const TAKOLIO_UNIT_SYSTEM_STORAGE_KEY = 'takolio_unit_system';
 const LEGACY_PLANNER_LOCALE_KEY = 'frigo_planner_locale';
 const UI_LOCALE_STORAGE_KEY = 'takolio.ui_locale';
 
-function toTier1UiCode(locale: SupportedLocale): 'en' | 'ja' | 'vi' {
-  if (locale === 'vi' || locale === 'ja') return locale;
-  return 'en';
-}
-
 function persistLocaleEverywhere(next: SupportedLocale, notify = true): void {
   if (typeof window === 'undefined') return;
   try {
     window.localStorage.setItem(TAKOLIO_LOCALE_STORAGE_KEY, next);
-    window.localStorage.setItem(UI_LOCALE_STORAGE_KEY, toTier1UiCode(next));
+    window.localStorage.setItem(UI_LOCALE_STORAGE_KEY, next);
     window.localStorage.setItem(LEGACY_PLANNER_LOCALE_KEY, next === 'vi' ? 'vi' : 'en');
   } catch {
     // Ignore storage access restrictions
@@ -310,6 +306,28 @@ const AppLocaleContext = createContext<AppLocaleContextValue>(defaultValue);
 export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [locale, setLocaleState] = useState<SupportedLocale>(readInitialLocale);
   const [unitSystem, setUnitSystemState] = useState<UnitSystem>(() => readInitialUnitSystem(locale));
+  const [packReady, setPackReady] = useState<boolean>(
+    () => !isPackLocale(locale) || Boolean(getLoadedLocalePack(locale)),
+  );
+
+  useEffect(() => {
+    if (!isPackLocale(locale)) {
+      setPackReady(true);
+      return;
+    }
+    if (getLoadedLocalePack(locale)) {
+      setPackReady(true);
+      return;
+    }
+    let active = true;
+    setPackReady(false);
+    void loadLocalePack(locale).finally(() => {
+      if (active) setPackReady(true);
+    });
+    return () => {
+      active = false;
+    };
+  }, [locale]);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -397,7 +415,21 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     [locale, unitSystem, setLocale, setUnitSystem],
   );
 
-  return <AppLocaleContext.Provider value={value}>{children}</AppLocaleContext.Provider>;
+  return (
+    <AppLocaleContext.Provider value={value}>
+      {packReady ? (
+        children
+      ) : (
+        <div
+          className="min-h-dvh flex items-center justify-center bg-[var(--tkv-bg)] text-[var(--tkv-ink-muted)] text-sm font-semibold"
+          role="status"
+          aria-live="polite"
+        >
+          …
+        </div>
+      )}
+    </AppLocaleContext.Provider>
+  );
 };
 
 export function useAppLocale(): AppLocaleContextValue {

@@ -1,5 +1,5 @@
 import { ApiError } from '../services/http';
-import { isViLocale, lSync } from '../i18n/app-i18n';
+import { getActiveBcp47, lSync } from '../i18n/app-i18n';
 
 export type ScanErrorContext = 'fridge' | 'food' | 'receipt';
 export type ScanQuota = { plan: string; limit: number; used: number; remaining: number; resetAt: string };
@@ -24,7 +24,7 @@ function resetDate(value: string | undefined): string | null {
   const date = new Date(value);
   return Number.isNaN(date.getTime())
     ? null
-    : date.toLocaleDateString(isViLocale() ? 'vi-VN' : 'en-US', { timeZone: 'UTC' });
+    : date.toLocaleDateString(getActiveBcp47(), { timeZone: 'UTC' });
 }
 
 export function scanErrorMessage(

@@ -1,4 +1,8 @@
 import { CANONICAL_INGREDIENTS } from '@frigo/domain';
+import {
+  getCanonicalEnglishRecipeTitle,
+  RECIPE_TITLE_EN_BY_SLUG,
+} from '../../../src/shared/recipe-titles-en';
 
 export interface SiteRecipeIngredient {
   ingredientId: string;
@@ -343,9 +347,12 @@ export function synthesizeEnglishRecipeMeta(params: {
   servings: number;
   ingredients: ReadonlyArray<{ ingredientId: string; nameVi: string; quantity: number; unit: string }>;
 }): { titleEn: string; descriptionEn: string } {
+  const canonicalTitleEn =
+    RECIPE_TITLE_EN_BY_SLUG[params.slug] ??
+    getCanonicalEnglishRecipeTitle({ slug: params.slug, title: params.titleVi });
   const curated = CURATED_DISH_EN[params.slug];
   if (curated) {
-    return { titleEn: curated.title, descriptionEn: curated.description };
+    return { titleEn: canonicalTitleEn ?? curated.title, descriptionEn: curated.description };
   }
 
   const cuisineEn = CUISINE_LABEL_EN[params.cuisine] ?? 'Homestyle';
@@ -359,11 +366,17 @@ export function synthesizeEnglishRecipeMeta(params: {
   const parenMatch = params.titleVi.match(/\(([A-Za-z0-9\s'-]{3,40})\)/);
   const dishCue = parenMatch?.[1]?.trim();
 
-  const titleEn = dishCue
-    ? `${cuisineEn} ${dishCue} (${params.titleVi})`
-    : primaryIngredients.length >= 2
-      ? `${cuisineEn} ${primaryIngredients[0]} & ${primaryIngredients[1]} ${styleEn}`
-      : `${cuisineEn} ${styleEn} — ${params.titleVi}`;
+  const titleEn = canonicalTitleEn
+    ? canonicalTitleEn
+    : dishCue
+      ? dishCue.toLowerCase().startsWith(cuisineEn.toLowerCase())
+        ? dishCue
+        : `${cuisineEn} ${dishCue}`
+      : primaryIngredients.length >= 2
+        ? `${cuisineEn} ${primaryIngredients[0]} & ${primaryIngredients[1]} ${styleEn}`
+        : primaryIngredients.length === 1
+          ? `${cuisineEn} ${primaryIngredients[0]} ${styleEn}`
+          : `${cuisineEn} ${styleEn}`;
 
   const ingredientSummary =
     primaryIngredients.length > 0 ? primaryIngredients.join(', ') : 'fresh seasonal ingredients';

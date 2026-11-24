@@ -7,8 +7,10 @@ import '../styles/vnext-adapted.css';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { api } from '../../services/api';
 import { useUiTranslation } from '../../i18n';
+import type { SupportedLocale } from '../../../shared/locales';
 import {
   containsVietnameseDiacritics,
+  lSync,
   localizeErrorText,
   useLocaleText,
 } from '../../i18n/app-i18n';
@@ -17,19 +19,22 @@ const LEGACY_NAME_RE = /^Người dùng\s+Fri\w*$/i;
 function sanitizeUserDisplayName(
   raw: string | undefined | null,
   isGuest = false,
-  isVi = true,
+  locale: SupportedLocale = 'vi',
 ): string {
   const trimmed = (raw ?? '').trim();
   if (!trimmed) {
-    if (isVi) return isGuest ? 'Người dùng Takolio' : 'Bếp trưởng';
-    return isGuest ? 'Takolio Guest' : 'Home Chef';
+    return isGuest
+      ? lSync('Người dùng Takolio', 'Takolio Guest', locale)
+      : lSync('Bếp trưởng', 'Home Chef', locale);
   }
-  if (LEGACY_NAME_RE.test(trimmed)) return isVi ? 'Bếp trưởng' : 'Home Chef';
-  if (!isVi) {
-    if (trimmed === 'Khách ghé thăm') return 'Guest';
-    if (trimmed === 'Người dùng Takolio') return 'Takolio User';
-    if (trimmed === 'Bếp trưởng') return 'Home Chef';
-    if (trimmed === 'Bạn mới của Takolio') return 'Takolio Guest';
+  if (LEGACY_NAME_RE.test(trimmed)) return lSync('Bếp trưởng', 'Home Chef', locale);
+  if (locale !== 'vi') {
+    if (trimmed === 'Khách ghé thăm') return lSync('Khách ghé thăm', 'Guest', locale);
+    if (trimmed === 'Người dùng Takolio') return lSync('Người dùng Takolio', 'Takolio User', locale);
+    if (trimmed === 'Bếp trưởng') return lSync('Bếp trưởng', 'Home Chef', locale);
+    if (trimmed === 'Bạn mới của Takolio') {
+      return lSync('Bạn mới của Takolio', 'Takolio Guest', locale);
+    }
   }
   return raw as string;
 }
@@ -72,16 +77,16 @@ const LazyGlobalDodoBillingPanel = lazy(() =>
   })),
 );
 
-function relativeTime(iso: string, isVi: boolean): string {
+function relativeTime(iso: string, locale: SupportedLocale): string {
   const t = new Date(iso).getTime();
   if (!Number.isFinite(t)) return '';
   const mins = Math.max(0, Math.round((Date.now() - t) / 60000));
-  if (mins < 1) return isVi ? 'Vừa xong' : 'Just now';
-  if (mins < 60) return isVi ? `${mins} phút trước` : `${mins}m ago`;
+  if (mins < 1) return lSync('Vừa xong', 'Just now', locale);
+  if (mins < 60) return lSync(`${mins} phút trước`, `${mins}m ago`, locale);
   const hours = Math.round(mins / 60);
-  if (hours < 24) return isVi ? `${hours} giờ trước` : `${hours}h ago`;
+  if (hours < 24) return lSync(`${hours} giờ trước`, `${hours}h ago`, locale);
   const days = Math.round(hours / 24);
-  return isVi ? `${days} ngày trước` : `${days}d ago`;
+  return lSync(`${days} ngày trước`, `${days}d ago`, locale);
 }
 
 /**
@@ -89,7 +94,7 @@ function relativeTime(iso: string, isVi: boolean): string {
  * Displays real household notifications from `api.getNotifications()` without inventing unread counters.
  */
 export const C30NotificationsVNext: React.FC = () => {
-  const { l, isVi } = useLocaleText();
+  const { l, locale, isVi } = useLocaleText();
 
   useVNextSeo({
     title: l('Thông báo căn bếp', 'Kitchen notifications'),
@@ -183,18 +188,27 @@ export const C30NotificationsVNext: React.FC = () => {
               const displayTitle =
                 !isVi && containsVietnameseDiacritics(item.title)
                   ? item.type === 'expiring_soon'
-                    ? 'Ingredients expiring soon'
+                    ? l('Nguyên liệu sắp hết hạn', 'Ingredients expiring soon')
                     : item.type === 'shopping_reminder'
-                      ? 'Shopping list reminder'
-                      : 'Kitchen reminder'
+                      ? l('Nhắc nhở danh sách mua sắm', 'Shopping list reminder')
+                      : l('Nhắc nhở căn bếp', 'Kitchen reminder')
                   : item.title;
               const displayMessage =
                 !isVi && containsVietnameseDiacritics(item.message)
                   ? item.type === 'expiring_soon'
-                    ? 'Check your fridge for ingredients that should be cooked soon.'
+                    ? l(
+                        'Kiểm tra tủ lạnh để dùng sớm các nguyên liệu gần hạn.',
+                        'Check your fridge for ingredients that should be cooked soon.',
+                      )
                     : item.type === 'shopping_reminder'
-                      ? 'Review items remaining on your household shopping list.'
-                      : 'Open your kitchen dashboard for the latest household updates.'
+                      ? l(
+                          'Kiểm tra các mục còn lại trong danh sách mua sắm của hộ gia đình.',
+                          'Review items remaining on your household shopping list.',
+                        )
+                      : l(
+                          'Mở trang chủ căn bếp để xem các cập nhật mới nhất của hộ gia đình.',
+                          'Open your kitchen dashboard for the latest household updates.',
+                        )
                   : item.message;
               return (
                 <li key={item.id}>
@@ -215,7 +229,7 @@ export const C30NotificationsVNext: React.FC = () => {
                         </p>
                         {item.createdAt && (
                           <p className="text-xs text-[var(--tkv-ink-muted,#52706A)] tabular-nums">
-                            {relativeTime(item.createdAt, isVi)}
+                            {relativeTime(item.createdAt, locale)}
                           </p>
                         )}
                       </div>
@@ -236,7 +250,7 @@ export const C30NotificationsVNext: React.FC = () => {
  * Matches U01.png 1:1 while preserving session-fenced logout and guest upgrade CTAs.
  */
 export const U01ProfileHubVNext: React.FC = () => {
-  const { l, locale, isVi } = useLocaleText();
+  const { l, locale } = useLocaleText();
   const navigate = useNavigate();
   const {
     displayName,
@@ -352,7 +366,7 @@ export const U01ProfileHubVNext: React.FC = () => {
     },
   ];
 
-  const cleanDisplayName = sanitizeUserDisplayName(displayName, isGuest, isVi);
+  const cleanDisplayName = sanitizeUserDisplayName(displayName, isGuest, locale);
 
   return (
     <ConsumerStudioShell screenId="U01" title={l('Hồ sơ cá nhân', 'Profile')}>
@@ -852,7 +866,7 @@ export const U07U08PlusReadOnlyWrapper: React.FC = () => {
  * Real browser permission & consent controls for U09 + explicit honest UnavailableState for U10 export/delete.
  */
 export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
-  const { l, isVi } = useLocaleText();
+  const { l } = useLocaleText();
   const { location } = { location: useLocation() };
   const [analyticsConsent, setAnalyticsConsent] = useState<boolean>(() => {
     try {
@@ -912,7 +926,7 @@ export const U09U10PrivacyAndDataRightsPage: React.FC = () => {
                   'All inventory, weekly meal plan, shopping list, and AI scan queries are verified against your server session and isolated by',
                 )}{' '}
                 <code>household_id</code>
-                {isVi ? ' riêng biệt.' : '.'}
+                {l(' riêng biệt.', '.')}
               </p>
             </div>
             <div className="flex items-start gap-3 border-t border-[var(--tkv-border,#DCE6DE)] pt-3">

@@ -45,13 +45,31 @@ import {
   plannerLocalDate,
 } from './schedule';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
-import { localizeIngredientName, localizeUnit, useLocaleText } from '../../i18n/app-i18n';
+import {
+  getActiveBcp47,
+  lPlanner,
+  localizeIngredientName,
+  localizeUnit,
+  useLocaleText,
+} from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
 
 type Shopping = z.infer<typeof PlanShoppingDtoSchema>;
+function resolvePlannerCopy(locale: PlannerLocale, appLocale: string) {
+  if (locale === 'vi') return plannerCopy.vi;
+  const pack = getLoadedLocalePack(appLocale === 'vi' ? 'en' : appLocale);
+  return pack?.planner
+    ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+    : plannerCopy.en;
+}
 function tripDateLabel(value: string, locale: PlannerLocale) {
   const date = new Date(`${value}T12:00:00Z`);
+  const bcp47 =
+    locale === 'vi'
+      ? 'vi-VN'
+      : getActiveBcp47(getActiveAppLocale() === 'vi' ? 'en' : getActiveAppLocale());
   return Number.isFinite(date.getTime())
-    ? new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'numeric', timeZone: 'UTC' }).format(
+    ? new Intl.DateTimeFormat(bcp47, { day: 'numeric', month: 'numeric', timeZone: 'UTC' }).format(
         date,
       )
     : '—';
@@ -65,10 +83,11 @@ export function PlannerShopping({
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
-  const c = compositionCopy[locale];
   const { locale: appLocale } = useLocaleText();
   const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  const dataLocale = locale === 'vi' ? 'vi' : activeDataLocale === 'vi' ? 'en' : activeDataLocale;
+  const t = resolvePlannerCopy(locale, activeDataLocale);
+  const c = compositionCopy[locale];
   const composing = isMealCompositionEnabled();
   const compositions = usePlanCompositions(plan, composing);
   const matchingCompositions =
@@ -171,9 +190,11 @@ export function PlannerShopping({
       await client.invalidateQueries({ queryKey: queryKeys.shoppingList() });
       if (!isCurrent()) return;
       setShareMessage(
-        locale === 'vi'
-          ? `Đã cập nhật nhu cầu cho ${result.itemCount} nguyên liệu${result.unresolvedCount ? ` · ${result.unresolvedCount} dòng cần kiểm tra lượng` : ''}.`
-          : `Shared demand updated for ${result.itemCount} ingredients${result.unresolvedCount ? ` · ${result.unresolvedCount} need quantity review` : ''}.`,
+        lPlanner(
+          locale,
+          `Đã cập nhật nhu cầu cho ${result.itemCount} nguyên liệu${result.unresolvedCount ? ` · ${result.unresolvedCount} dòng cần kiểm tra lượng` : ''}.`,
+          `Shared demand updated for ${result.itemCount} ingredients${result.unresolvedCount ? ` · ${result.unresolvedCount} need quantity review` : ''}.`,
+        ),
       );
     } catch (failure) {
       if (!isCurrent()) return;
@@ -188,16 +209,22 @@ export function PlannerShopping({
       setShareRecovery(changed);
       setShareMessage(
         changed
-          ? locale === 'vi'
-            ? 'Thực đơn, tủ lạnh hoặc thói quen vừa thay đổi. Tải lại dữ liệu trước khi cập nhật danh sách.'
-            : 'The plan, fridge or preferences changed. Load the latest data before updating the list.'
+          ? lPlanner(
+              locale,
+              'Thực đơn, tủ lạnh hoặc thói quen vừa thay đổi. Tải lại dữ liệu trước khi cập nhật danh sách.',
+              'The plan, fridge or preferences changed. Load the latest data before updating the list.',
+            )
           : failure instanceof ApiError && failure.code === 'SHOPPING_PLAN_CONFLICT'
-            ? locale === 'vi'
-              ? 'Danh sách đang dùng thực đơn của thành viên khác. Hãy thống nhất thực đơn trước khi cập nhật.'
-              : 'The list uses another household member’s plan. Agree on a plan before updating it.'
-            : locale === 'vi'
-              ? 'Chưa tạo được danh sách chung. Kiểm tra kết nối và thử lại.'
-              : 'Could not create the shared list. Check your connection and try again.',
+            ? lPlanner(
+                locale,
+                'Danh sách đang dùng thực đơn của thành viên khác. Hãy thống nhất thực đơn trước khi cập nhật.',
+                'The list uses another household member’s plan. Agree on a plan before updating it.',
+              )
+            : lPlanner(
+                locale,
+                'Chưa tạo được danh sách chung. Kiểm tra kết nối và thử lại.',
+                'Could not create the shared list. Check your connection and try again.',
+              ),
       );
     } finally {
       if (isCurrent()) setShareBusy(false);
@@ -274,17 +301,19 @@ export function PlannerShopping({
           <div className="planning-share-heading">
             <CalendarDays size={20} aria-hidden="true" />
             <div>
-              <h2>{locale === 'vi' ? 'Chuẩn bị lượt đi chợ' : 'Prepare your shopping trip'}</h2>
+              <h2>{lPlanner(locale, 'Chuẩn bị lượt đi chợ', 'Prepare your shopping trip')}</h2>
               <p>
-                {locale === 'vi'
-                  ? 'Chọn khoảng ngày cần mua. Takolio gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.'
-                  : 'Choose the days to shop for. Takolio combines what upcoming meals still need from your current fridge.'}
+                {lPlanner(
+                  locale,
+                  'Chọn khoảng ngày cần mua. Takolio gom phần còn thiếu của các bữa sắp tới theo tủ lạnh hiện tại.',
+                  'Choose the days to shop for. Takolio combines what upcoming meals still need from your current fridge.',
+                )}
               </p>
             </div>
           </div>
           <div className="family-field-pair">
             <label>
-              {locale === 'vi' ? 'Mua cho các bữa từ ngày' : 'Meals from'}
+              {lPlanner(locale, 'Mua cho các bữa từ ngày', 'Meals from')}
               <input
                 type="date"
                 min={calendarToday}
@@ -293,19 +322,19 @@ export function PlannerShopping({
               />
             </label>
             <label>
-              {locale === 'vi' ? 'Khoảng đi chợ' : 'Shopping period'}
+              {lPlanner(locale, 'Khoảng đi chợ', 'Shopping period')}
               <select
                 value={tripDays}
                 onChange={(event) => setTripDays(Number(event.target.value))}
               >
-                <option value={1}>{locale === 'vi' ? '1 ngày' : '1 day'}</option>
-                <option value={3}>{locale === 'vi' ? '3 ngày' : '3 days'}</option>
-                <option value={7}>{locale === 'vi' ? 'Cả tuần' : 'Full week'}</option>
+                <option value={1}>{lPlanner(locale, '1 ngày', '1 day')}</option>
+                <option value={3}>{lPlanner(locale, '3 ngày', '3 days')}</option>
+                <option value={7}>{lPlanner(locale, 'Cả tuần', 'Full week')}</option>
               </select>
             </label>
           </div>
           <p className="planning-note">
-            {locale === 'vi' ? 'Cho các bữa từ' : 'For meals from'}{' '}
+            {lPlanner(locale, 'Cho các bữa từ', 'For meals from')}{' '}
             {tripDateLabel(tripStart, locale)} → {tripDateLabel(endDate, locale)}
           </p>
           <Button
@@ -317,17 +346,21 @@ export function PlannerShopping({
             onClick={() => void shareShopping()}
           >
             <CheckCircle2 size={16} className="mr-2" />
-            {locale === 'vi' ? 'Tạo danh sách dùng chung' : 'Create shared list'}
+            {lPlanner(locale, 'Tạo danh sách dùng chung', 'Create shared list')}
           </Button>
           {!canShare && !needsRefresh && (
             <p className="text-sm text-semantic-text-secondary mt-3" role="status">
               {!hasFutureMeals
-                ? locale === 'vi'
-                  ? 'Các bữa trong thực đơn này đã qua giờ dự kiến. Lên thực đơn mới để chuẩn bị lượt đi chợ tiếp theo.'
-                  : 'The scheduled meals in this plan have passed. Create a new plan for your next shopping trip.'
-                : locale === 'vi'
-                  ? 'Thực đơn hoặc thói quen ăn uống cần được kiểm tra lại. Tải bản mới nhất và cập nhật kế hoạch trước khi tạo danh sách chung.'
-                  : 'The plan or food preferences need revalidation. Load the latest revision and update the plan before creating a shared list.'}
+                ? lPlanner(
+                    locale,
+                    'Các bữa trong thực đơn này đã qua giờ dự kiến. Lên thực đơn mới để chuẩn bị lượt đi chợ tiếp theo.',
+                    'The scheduled meals in this plan have passed. Create a new plan for your next shopping trip.',
+                  )
+                : lPlanner(
+                    locale,
+                    'Thực đơn hoặc thói quen ăn uống cần được kiểm tra lại. Tải bản mới nhất và cập nhật kế hoạch trước khi tạo danh sách chung.',
+                    'The plan or food preferences need revalidation. Load the latest revision and update the plan before creating a shared list.',
+                  )}
             </p>
           )}
           {shareMessage && (
@@ -339,9 +372,11 @@ export function PlannerShopping({
             <div role="status" className="planning-notice">
               {!shareMessage && (
                 <p>
-                  {locale === 'vi'
-                    ? 'Thực đơn đã có phiên bản mới. Tải lại trước khi cập nhật danh sách đi chợ.'
-                    : 'A newer plan is available. Load it before updating shopping.'}
+                  {lPlanner(
+                    locale,
+                    'Thực đơn đã có phiên bản mới. Tải lại trước khi cập nhật danh sách đi chợ.',
+                    'A newer plan is available. Load it before updating shopping.',
+                  )}
                 </p>
               )}
               <Button
@@ -349,12 +384,12 @@ export function PlannerShopping({
                 disabled={!!model.busy || shareBusy}
                 onClick={() => void reloadPlan()}
               >
-                {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+                {lPlanner(locale, 'Tải thực đơn mới nhất', 'Load latest plan')}
               </Button>
             </div>
           )}
           <Link className="planning-text-link" to="/shopping">
-            {locale === 'vi' ? 'Mở danh sách và chỉnh lượng' : 'Open and edit the list'}
+            {lPlanner(locale, 'Mở danh sách và chỉnh lượng', 'Open and edit the list')}
           </Link>
         </Card>
       )}
@@ -366,34 +401,41 @@ export function PlannerShopping({
           <div className="space-y-1 min-w-0 flex-1">
             <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[var(--tkv-primary)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--tkv-coral)] shrink-0" aria-hidden="true" />
-              <span>{locale === 'vi' ? 'Sau khi đi chợ về' : 'Post-shopping stock'}</span>
+              <span>{lPlanner(locale, 'Sau khi đi chợ về', 'Post-shopping stock')}</span>
             </p>
             <h2 className="font-heading font-bold text-lg text-[var(--tkv-ink)]">
-              {locale === 'vi' ? 'Nhập món đã mua vào Tủ lạnh' : 'Import purchased items to Fridge'}
+              {lPlanner(locale, 'Nhập món đã mua vào Tủ lạnh', 'Import purchased items to Fridge')}
             </h2>
             <p className="text-sm text-[var(--tkv-ink-secondary)] leading-relaxed">
-              {locale === 'vi'
-                ? 'Takolio không tự động cộng kho ngầm từ danh sách mua. Hãy duyệt hóa đơn/ảnh thực phẩm hoặc đối soát các mục bạn thực sự đã mua để giữ định lượng tủ lạnh chính xác.'
-                : 'Takolio never mutates fridge stock silently from a checklist. Scan your receipt/groceries or reconcile purchased items before updating stock.'}
+              {lPlanner(
+                locale,
+                'Takolio không tự động cộng kho ngầm từ danh sách mua. Hãy duyệt hóa đơn/ảnh thực phẩm hoặc đối soát các mục bạn thực sự đã mua để giữ định lượng tủ lạnh chính xác.',
+                'Takolio never mutates fridge stock silently from a checklist. Scan your receipt/groceries or reconcile purchased items before updating stock.',
+              )}
             </p>
           </div>
           {cachedItems.length > 0 && (
             <span className="px-3 py-1 rounded-full bg-[var(--tkv-surface-mint)] border border-[var(--tkv-border-mint)] text-xs font-bold text-[var(--tkv-primary)] tabular-nums shrink-0">
-              {locale === 'vi'
-                ? `Đã đánh dấu mua: ${checkedItems.length}/${cachedItems.length}`
-                : `Marked bought: ${checkedItems.length}/${cachedItems.length}`}
+              {lPlanner(
+                locale,
+                `Đã đánh dấu mua: ${checkedItems.length}/${cachedItems.length}`,
+                `Marked bought: ${checkedItems.length}/${cachedItems.length}`,
+              )}
             </span>
           )}
         </div>
         {checkedItems.length > 0 && (
-          <ul className="flex flex-wrap gap-1.5 pt-1" aria-label={locale === 'vi' ? 'Các món đã đánh dấu mua' : 'Marked items'}>
+          <ul
+            className="flex flex-wrap gap-1.5 pt-1"
+            aria-label={lPlanner(locale, 'Các món đã đánh dấu mua', 'Marked items')}
+          >
             {checkedItems.slice(0, 6).map((it) => (
               <li
                 key={it.id}
                 className="px-2.5 py-1 rounded-lg bg-[var(--tkv-bg)] border border-[var(--tkv-border)] text-xs font-semibold text-[var(--tkv-ink)] tabular-nums"
               >
-                {localizeIngredientName(it.ingredientId, it.name, locale)} ({it.quantity}{' '}
-                {localizeUnit(it.unit, locale)})
+                {localizeIngredientName(it.ingredientId, it.name, dataLocale)} ({it.quantity}{' '}
+                {localizeUnit(it.unit, dataLocale)})
               </li>
             ))}
           </ul>
@@ -403,27 +445,29 @@ export function PlannerShopping({
             to="/scan"
             className="w-full sm:w-auto justify-center min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-primary)] hover:bg-[var(--tkv-primary-hover)] text-white text-sm font-bold inline-flex items-center gap-2 transition-colors"
           >
-            {locale === 'vi' ? 'Quét hóa đơn / thực phẩm vừa mua' : 'Scan receipt or groceries'}
+            {lPlanner(locale, 'Quét hóa đơn / thực phẩm vừa mua', 'Scan receipt or groceries')}
           </Link>
           <Link
             to="/fridge?action=add"
             className="w-full sm:w-auto justify-center min-h-[44px] px-4 py-2 rounded-[var(--tkv-radius-btn)] bg-[var(--tkv-surface)] border border-[var(--tkv-border)] hover:border-[var(--tkv-primary)] text-[var(--tkv-ink)] text-sm font-bold inline-flex items-center transition-colors"
           >
-            {locale === 'vi' ? 'Nhập thủ công vào Tủ lạnh' : 'Add manually to Fridge'}
+            {lPlanner(locale, 'Nhập thủ công vào Tủ lạnh', 'Add manually to Fridge')}
           </Link>
           <Link
             to="/inventory-reconciliation"
             className="min-h-[44px] px-3 py-2 text-xs font-bold text-[var(--tkv-primary)] underline underline-offset-4 inline-flex items-center"
           >
-            {locale === 'vi' ? 'Đối soát tồn kho' : 'Reconcile stock'}
+            {lPlanner(locale, 'Đối soát tồn kho', 'Reconcile stock')}
           </Link>
         </div>
       </Card>
       <details className="planning-diagnostics planning-price-options">
         <summary>
-          {locale === 'vi'
-            ? 'Ước tính giá & ngân sách (tuỳ chọn)'
-            : 'Price estimates and budget (optional)'}
+          {lPlanner(
+            locale,
+            'Ước tính giá & ngân sách (tuỳ chọn)',
+            'Price estimates and budget (optional)',
+          )}
         </summary>
         <Card className="planning-shopping-form">
           <h2 className="font-heading font-bold text-xl flex items-center gap-2">
@@ -518,7 +562,8 @@ export function ShoppingResult({
   response: Shopping;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const t = resolvePlannerCopy(locale, appLocale);
   const result = response.result;
   const complete =
     result.cost.status === 'known' &&
@@ -569,9 +614,11 @@ export function ShoppingResult({
       <section className="planning-requirements">
         <h2 className="font-heading text-lg font-bold">{t.list}</h2>
         <p className="text-xs text-semantic-text-muted">
-          {locale === 'vi'
-            ? 'Xem lượng và giá tham khảo tại đây; đánh dấu đã mua trong danh sách dùng chung.'
-            : 'Review quantities and prices here; mark purchases in the shared list.'}
+          {lPlanner(
+            locale,
+            'Xem lượng và giá tham khảo tại đây; đánh dấu đã mua trong danh sách dùng chung.',
+            'Review quantities and prices here; mark purchases in the shared list.',
+          )}
         </p>
         {[...result.requirements, ...result.optionalRequirements].map((requirement) => {
           const line = result.purchaseLines.find((item) => item.requirementId === requirement.id);
@@ -685,9 +732,12 @@ export function ShoppingResult({
       )}
       <p className="text-xs text-semantic-text-muted">
         {t.priceAsOf}{' '}
-        {new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(
-          new Date(response.priceAsOf),
-        )}
+        {new Intl.DateTimeFormat(
+          locale === 'vi'
+            ? 'vi-VN'
+            : getActiveBcp47(getActiveAppLocale() === 'vi' ? 'en' : getActiveAppLocale()),
+          { dateStyle: 'medium', timeStyle: 'short' },
+        ).format(new Date(response.priceAsOf))}
         . {t.checklistNote}
       </p>
     </div>

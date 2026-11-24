@@ -8,8 +8,12 @@ import { ApiError } from '../services/http';
 import { deCatalog } from './locales/de';
 import { enCatalog, type UiTranslationCatalog } from './locales/en';
 import { frCatalog } from './locales/fr';
+import { itCatalog } from './locales/it';
 import { jaCatalog } from './locales/ja';
+import { koCatalog } from './locales/ko';
+import { thCatalog } from './locales/th';
 import { viCatalog } from './locales/vi';
+import { zhCatalog } from './locales/zh';
 
 export {
   getActiveAppLocale,
@@ -23,6 +27,8 @@ export {
 export {
   containsVietnameseDiacritics,
   formatLocalizedMeasure,
+  getActiveBcp47,
+  getLocalizedWeekdays,
   isViLocale,
   localizeCuisine,
   localizeDifficulty,
@@ -37,10 +43,20 @@ export {
   localizeRecipeTitle,
   localizeStorageZone,
   localizeUnit,
+  lPlanner,
   lSync,
+  translateEnForLocale,
   useLocaleText,
   type LocalizableRecipeLike,
 } from './app-i18n';
+export {
+  getLoadedLocalePack,
+  isPackLocale,
+  loadLocalePack,
+  registerLocalePack,
+  subscribeLocalePack,
+} from './packs/registry';
+export type { LocalePack, PackLocale } from './packs/types';
 
 export const TIER1_UI_LOCALES = ['en', 'ja', 'de', 'fr', 'vi'] as const;
 export type Tier1UiLocale = (typeof TIER1_UI_LOCALES)[number];
@@ -60,6 +76,23 @@ export const UI_CATALOGS: Readonly<Record<Tier1UiLocale, UiTranslationCatalog>> 
   fr: frCatalog,
   vi: viCatalog,
 });
+
+export const EXTENDED_UI_CATALOGS: Readonly<Record<string, UiTranslationCatalog>> = Object.freeze({
+  en: enCatalog,
+  ja: jaCatalog,
+  de: deCatalog,
+  fr: frCatalog,
+  vi: viCatalog,
+  ko: koCatalog,
+  th: thCatalog,
+  zh: zhCatalog,
+  it: itCatalog,
+});
+
+function resolveExtendedCatalog(raw: SupportedLocale | string | null | undefined): UiTranslationCatalog {
+  const normalized = (raw || '').trim().toLowerCase().split(/[-_]/)[0];
+  return EXTENDED_UI_CATALOGS[normalized] ?? enCatalog;
+}
 
 const STORAGE_KEY = 'takolio.ui_locale';
 const NOTO_SANS_JP_LINK_ID = 'takolio-font-noto-sans-jp';
@@ -190,7 +223,7 @@ export function resetActiveUiLocaleForTests(): void {
 }
 
 export function getCatalog(locale: SupportedLocale | string = getActiveUiLocale()): UiTranslationCatalog {
-  return UI_CATALOGS[resolveTier1UiLocale(locale)];
+  return resolveExtendedCatalog(locale);
 }
 
 export function subscribeUiLocale(listener: () => void): () => void {
@@ -206,10 +239,11 @@ export function useUiTranslation(overrideLocale?: SupportedLocale | string): {
   setLocale: (next: SupportedLocale | string) => Tier1UiLocale;
 } {
   const active = useSyncExternalStore(subscribeLocale, getActiveUiLocale, () => 'en' as Tier1UiLocale);
+  const rawEffective = overrideLocale ?? (typeof window !== 'undefined' ? window.localStorage?.getItem('takolio_locale') || active : active);
   const effective = overrideLocale ? resolveTier1UiLocale(overrideLocale) : active;
   return {
     locale: effective,
-    catalog: UI_CATALOGS[effective],
+    catalog: resolveExtendedCatalog(rawEffective),
     setLocale: setActiveUiLocale,
   };
 }

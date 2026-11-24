@@ -6,7 +6,6 @@ import { api } from '../services/api';
 import { ReviewHeading, ReviewSummary } from '../components/scan/ReviewHeading';
 import {
   REVIEW_UNITS,
-  REVIEW_UNIT_LABELS_EN,
   ReviewFields,
   validReviewValues,
   validReviewQuantity,
@@ -534,11 +533,11 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
                           {l('AI đọc:', 'AI detected:')}{' '}
                           {raw
                             ? `${
-                                locale === 'vi'
-                                  ? (raw.rawName ?? 'Không rõ tên')
-                                  : raw.rawName
-                                    ? localizeIngredientName(item.canonicalId, raw.rawName, locale)
-                                    : 'Unknown name'
+                                raw.rawName
+                                  ? locale === 'vi'
+                                    ? raw.rawName
+                                    : localizeIngredientName(item.canonicalId, raw.rawName, locale)
+                                  : l('Không rõ tên', 'Unknown name')
                               } · ${raw.estimatedQuantity ?? l('Không rõ số lượng', 'Unknown qty')} ${
                                 raw.unit ? localizeUnit(raw.unit, locale) : l('Không rõ đơn vị', 'Unknown unit')
                               }`
@@ -752,7 +751,7 @@ const ScanReview: React.FC<{ effectiveScanId: string }> = ({ effectiveScanId }) 
               >
                 {REVIEW_UNITS.map(({ value, label }) => (
                   <option key={value} value={value}>
-                    {locale === 'vi' ? label : REVIEW_UNIT_LABELS_EN[value]}
+                    {locale === 'vi' ? label : localizeUnit(value, locale)}
                   </option>
                 ))}
               </select>

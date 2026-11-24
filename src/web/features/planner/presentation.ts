@@ -8,6 +8,13 @@ import {
 } from '../../../../packages/domain/src/meal-shopping-api';
 import { ApiError } from '../../services/http';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import {
+  getActiveBcp47,
+  lPlanner,
+  localizeIngredientName,
+  localizeUnit,
+  translateEnForLocale,
+} from '../../i18n/app-i18n';
 
 export type PlannerLocale = 'vi' | 'en';
 
@@ -695,39 +702,55 @@ function label(map: Record<string, string>, key: string, fallback: string): stri
   return Object.hasOwn(map, key) ? map[key] : fallback;
 }
 
+function localizePlannerText(language: PlannerLocale, text: string): string {
+  if (language === 'vi') return text;
+  const active = getActiveAppLocale();
+  return translateEnForLocale(text, active === 'vi' ? 'en' : active);
+}
+
 export function reasonLabel(code: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.reasons, code, label(copy.errors, code, copy.ui.unknownReason));
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(
+    language,
+    label(copy.reasons, code, label(copy.errors, code, copy.ui.unknownReason)),
+  );
 }
 
 export function plannerStatusLabel(status: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.status, status, copy.ui.unknownState);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.status, status, copy.ui.unknownState));
 }
 
 export function plannerConclusionLabel(conclusion: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.conclusion, conclusion, copy.ui.unknownState);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.conclusion, conclusion, copy.ui.unknownState));
 }
 
 export function budgetStatusLabel(status: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.budget, status, copy.budget.unknown);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.budget, status, copy.budget.unknown));
 }
 
 export function shoppingStatusLabel(status: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.shopping, status, copy.shopping.unknown);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.shopping, status, copy.shopping.unknown));
 }
 
 export function wasteRiskLabel(status: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.waste, status, copy.waste.unknown);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.waste, status, copy.waste.unknown));
 }
 
 export function freshnessReasonLabel(reason: string, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)];
-  return label(copy.freshness, reason, copy.ui.unknownReason);
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
+  return localizePlannerText(language, label(copy.freshness, reason, copy.ui.unknownReason));
 }
 
 export const freshnessLabel = freshnessReasonLabel;
@@ -735,11 +758,17 @@ export const freshnessLabel = freshnessReasonLabel;
 export function ingredientLabel(id: string, locale?: string): string {
   const language = plannerLocale(locale);
   const ingredient = CANONICAL_INGREDIENTS.find((item) => item.id === id);
-  return ingredient
-    ? language === 'en'
-      ? ingredient.nameEn
-      : ingredient.nameVi
-    : plannerCopy[language].ui.unknownIngredient;
+  if (!ingredient) {
+    return lPlanner(
+      language,
+      plannerCopy.vi.ui.unknownIngredient,
+      plannerCopy.en.ui.unknownIngredient,
+    );
+  }
+  if (language === 'vi') return ingredient.nameVi;
+  const active = getActiveAppLocale();
+  if (active === 'vi' || active === 'en') return ingredient.nameEn;
+  return localizeIngredientName(ingredient.id, ingredient.nameEn, active);
 }
 
 const minorDigits: Record<MoneyDto['currency'], 0 | 2> = { VND: 0, JPY: 0, USD: 2, EUR: 2 };
@@ -747,12 +776,18 @@ const minorDigits: Record<MoneyDto['currency'], 0 | 2> = { VND: 0, JPY: 0, USD: 
 export function formatMoney(money: MoneyDto | null | undefined, locale?: string): string {
   const language = plannerLocale(locale);
   const parsed = MoneyDtoSchema.safeParse(money);
-  if (!parsed.success) return plannerCopy[language].ui.unknownPrice;
+  if (!parsed.success) {
+    return lPlanner(language, plannerCopy.vi.ui.unknownPrice, plannerCopy.en.ui.unknownPrice);
+  }
   const digits = minorDigits[parsed.data.currency];
   const amount = BigInt(parsed.data.minorAmount);
   const divisor = 10n ** BigInt(digits);
   const fraction = (amount % divisor).toString().padStart(digits, '0');
-  const formatter = new Intl.NumberFormat(language === 'vi' ? 'vi-VN' : 'en-US', {
+  const bcp47 =
+    language === 'vi'
+      ? 'vi-VN'
+      : getActiveBcp47(getActiveAppLocale() === 'vi' ? 'en' : getActiveAppLocale());
+  const formatter = new Intl.NumberFormat(bcp47, {
     style: 'currency',
     currency: parsed.data.currency,
     minimumFractionDigits: digits,
@@ -769,10 +804,21 @@ export function formatQuantity(
   quantity: ExactQuantityDto | null | undefined,
   locale?: string,
 ): string {
-  const copy = plannerCopy[plannerLocale(locale)];
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language];
   const parsed = ExactQuantityDtoSchema.safeParse(quantity);
-  if (!parsed.success) return copy.ui.unknownQuantity;
-  return `${parsed.data.value} ${copy.units[parsed.data.unit]}`;
+  if (!parsed.success) {
+    return lPlanner(language, plannerCopy.vi.ui.unknownQuantity, plannerCopy.en.ui.unknownQuantity);
+  }
+  if (language === 'vi') {
+    return `${parsed.data.value} ${copy.units[parsed.data.unit]}`;
+  }
+  const active = getActiveAppLocale();
+  const unitText =
+    active === 'vi' || active === 'en'
+      ? copy.units[parsed.data.unit]
+      : localizeUnit(parsed.data.unit, active);
+  return `${parsed.data.value} ${unitText}`;
 }
 
 /** Decimal intent only; no grouping separators, rounding or out-of-range T05 budgets. */
@@ -791,10 +837,12 @@ export function parseBudgetMinorAmount(
 }
 
 export function plannerErrorMessage(error: unknown, locale?: string): string {
-  const copy = plannerCopy[plannerLocale(locale)].errors;
-  if (error instanceof ZodError) return copy.invalid;
-  if (!(error instanceof ApiError)) return copy.unavailable;
-  if (error.kind === 'offline') return copy.offline;
+  const language = plannerLocale(locale);
+  const copy = plannerCopy[language].errors;
+  const resolve = (text: string) => localizePlannerText(language, text);
+  if (error instanceof ZodError) return resolve(copy.invalid);
+  if (!(error instanceof ApiError)) return resolve(copy.unavailable);
+  if (error.kind === 'offline') return resolve(copy.offline);
   const envelope = /^HTTP \d{3}: ([\s\S]*)$/.exec(error.message);
   if (envelope) {
     try {
@@ -806,16 +854,17 @@ export function plannerErrorMessage(error: unknown, locale?: string): string {
         typeof body.code === 'string' &&
         Object.hasOwn(copy, body.code)
       )
-        return label(copy, body.code, copy.unavailable);
+        return resolve(label(copy, body.code, copy.unavailable));
     } catch {
       /* Never display arbitrary server text. */
     }
   }
-  if (error.status === 403) return copy.forbidden;
-  if (error.kind === 'auth') return copy.auth;
-  if (error.status === 404) return copy.notFound;
-  if (error.status === 409) return copy.conflict;
-  if (error.status === 429) return copy.rateLimited;
-  if (error.status === 400 || error.status === 413 || error.status === 422) return copy.invalid;
-  return copy.unavailable;
+  if (error.status === 403) return resolve(copy.forbidden);
+  if (error.kind === 'auth') return resolve(copy.auth);
+  if (error.status === 404) return resolve(copy.notFound);
+  if (error.status === 409) return resolve(copy.conflict);
+  if (error.status === 429) return resolve(copy.rateLimited);
+  if (error.status === 400 || error.status === 413 || error.status === 422)
+    return resolve(copy.invalid);
+  return resolve(copy.unavailable);
 }

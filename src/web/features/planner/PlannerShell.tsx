@@ -9,6 +9,16 @@ import { freshnessReasonLabel, plannerErrorMessage } from './presentation';
 import { Button } from '../../components/common/Button';
 import { canSharePlannerShopping, hasFuturePlannerSlot } from './schedule';
 import { isMealCompositionEnabled } from './composition';
+import { lPlanner, useLocaleText } from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
+
+function resolvePlannerCopy(locale: PlannerLocale, appLocale: string) {
+  if (locale === 'vi') return plannerCopy.vi;
+  const pack = getLoadedLocalePack(appLocale === 'vi' ? 'en' : appLocale);
+  return pack?.planner
+    ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+    : plannerCopy.en;
+}
 
 export function PlannerShell({
   children,
@@ -21,27 +31,19 @@ export function PlannerShell({
   locale: PlannerLocale;
   setLocale: (locale: PlannerLocale) => void;
 }) {
-  const t = plannerCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const t = resolvePlannerCopy(locale, appLocale);
   const pathname = useLocation().pathname;
   const shopping = pathname.endsWith('/shopping');
   const setup = pathname === '/planner/new';
   const meal = pathname.includes('/meal/');
-  const heading =
-    locale === 'vi'
-      ? setup
-        ? 'Tạo thực đơn'
-        : shopping
-          ? 'Đi chợ theo thực đơn'
-          : meal
-            ? 'Chuẩn bị bữa ăn'
-            : 'Thực đơn của nhà mình'
-      : setup
-        ? 'Create a meal plan'
-        : shopping
-          ? 'Shop for your meals'
-          : meal
-            ? 'Prepare your meal'
-            : 'Your household meal plan';
+  const heading = setup
+    ? lPlanner(locale, 'Tạo thực đơn', 'Create a meal plan')
+    : shopping
+      ? lPlanner(locale, 'Đi chợ theo thực đơn', 'Shop for your meals')
+      : meal
+        ? lPlanner(locale, 'Chuẩn bị bữa ăn', 'Prepare your meal')
+        : lPlanner(locale, 'Thực đơn của nhà mình', 'Your household meal plan');
   useEffect(() => {
     document.documentElement.scrollTop = 0;
   }, [pathname]);
@@ -57,14 +59,16 @@ export function PlannerShell({
             <h1>{heading}</h1>
             <p className="planning-intro">
               {setup
-                ? locale === 'vi'
-                  ? 'Chọn lịch nấu, Takolio lo xếp món và phần cần mua.'
-                  : 'Choose your cooking calendar. Takolio plans the dishes and shopping.'
+                ? lPlanner(
+                    locale,
+                    'Chọn lịch nấu, Takolio lo xếp món và phần cần mua.',
+                    'Choose your cooking calendar. Takolio plans the dishes and shopping.',
+                  )
                 : t.intro}
             </p>
           </div>
           <label className="planning-locale">
-            <span>{locale === 'vi' ? 'Ngôn ngữ' : 'Language'}</span>
+            <span>{lPlanner(locale, 'Ngôn ngữ', 'Language')}</span>
             <select
               aria-label="Language"
               value={locale}
@@ -91,7 +95,7 @@ export function PlannerShell({
         <footer className="planning-footer">
           <p>{t.planNote}</p>
           <Link className="planning-text-link" to="/shopping">
-            {locale === 'vi' ? 'Danh sách mua sắm đã lưu' : 'Saved shopping list'}{' '}
+            {lPlanner(locale, 'Danh sách mua sắm đã lưu', 'Saved shopping list')}{' '}
             <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </footer>
@@ -111,6 +115,8 @@ export function PlannerError({
   onRetry?: () => void;
   focus?: boolean;
 }) {
+  const { locale: appLocale } = useLocaleText();
+  const t = resolvePlannerCopy(locale, appLocale);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const dialog = document.querySelector('[role="dialog"][aria-modal="true"], dialog[open]');
@@ -129,7 +135,7 @@ export function PlannerError({
       <p>{plannerErrorMessage(error, locale)}</p>
       {onRetry && (
         <Button className="mt-3" variant="outline" onClick={onRetry}>
-          {plannerCopy[locale].retry}
+          {t.retry}
         </Button>
       )}
     </div>
@@ -145,8 +151,9 @@ export function FreshnessNotice({
   familyPlan?: FamilyMealPlanDto;
   locale: PlannerLocale;
 }) {
+  const { locale: appLocale } = useLocaleText();
   if (plan.freshness.status === 'fresh') return null;
-  const t = plannerCopy[locale];
+  const t = resolvePlannerCopy(locale, appLocale);
   const past = plan.freshness.reasons.includes('planning_time_elapsed');
   const composing = isMealCompositionEnabled();
   const continuing = composing && canSharePlannerShopping(plan, familyPlan);
@@ -155,20 +162,32 @@ export function FreshnessNotice({
     <section role="status" className="planning-notice planning-stale">
       <h2>
         {continuing
-          ? locale === 'vi'
-            ? 'Tiếp tục chuẩn bị những bữa sắp tới'
-            : 'Continue planning your next meals'
+          ? lPlanner(
+              locale,
+              'Tiếp tục chuẩn bị những bữa sắp tới',
+              'Continue planning your next meals',
+            )
           : t.staleTitle}
       </h2>
       <p>
         {continuing
-          ? locale === 'vi'
-            ? `${past ? 'Các bữa đã qua được giữ nguyên. ' : ''}Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takolio kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.`
-            : `${past ? 'Past meals stay unchanged. ' : ''}You can still edit future meals. Creating a shared shopping list checks your current fridge and only includes upcoming meals.`
+          ? past
+            ? lPlanner(
+                locale,
+                'Các bữa đã qua được giữ nguyên. Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takolio kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.',
+                'Past meals stay unchanged. You can still edit future meals. Creating a shared shopping list checks your current fridge and only includes upcoming meals.',
+              )
+            : lPlanner(
+                locale,
+                'Bạn vẫn có thể chỉnh món cho những bữa sắp tới. Khi tạo danh sách đi chợ, Takolio kiểm tra lại tủ lạnh hiện tại và chỉ tính các bữa còn phía trước.',
+                'You can still edit future meals. Creating a shared shopping list checks your current fridge and only includes upcoming meals.',
+              )
           : composing && past && future
-            ? locale === 'vi'
-              ? 'Các bữa đã qua được giữ nguyên. Dữ liệu dùng cho kế hoạch đã thay đổi và cần kiểm tra lại trước khi tiếp tục chuẩn bị các bữa sắp tới hoặc tạo danh sách đi chợ.'
-              : 'Past meals stay unchanged. Planning data changed and must be revalidated before continuing with future meals or creating a shared shopping list.'
+            ? lPlanner(
+                locale,
+                'Các bữa đã qua được giữ nguyên. Dữ liệu dùng cho kế hoạch đã thay đổi và cần kiểm tra lại trước khi tiếp tục chuẩn bị các bữa sắp tới hoặc tạo danh sách đi chợ.',
+                'Past meals stay unchanged. Planning data changed and must be revalidated before continuing with future meals or creating a shared shopping list.',
+              )
             : past
               ? t.historical
               : t.staleText}

@@ -1,0 +1,703 @@
+/**
+ * Korean (`ko`) static UI phrases — Part 1 of 4.
+ */
+export const koPhrasesPart1: Readonly<Record<string, string>> = {
+  ' (base 4 servings) automatically scales to ': ' (기본 4인분)이 자동으로 다음 분량으로 환산돼요: ',
+  ' Double-check the quantity in the new unit before saving.': ' 저장하기 전에 새 단위의 수량을 다시 한 번 확인해 주세요.',
+  ' Unable to reload and discard the request. Please check your connection and browser storage, then try again.':
+    ' 요청을 새로고침하고 취소할 수 없어요. 인터넷 연결과 브라우저 저장소를 확인한 뒤 다시 시도해 주세요.',
+  ' and ': ' 및 ',
+  ' cookies; signing out or switching accounts wipes cached session data from the browser.':
+    ' 쿠키를 사용하며, 로그아웃하거나 계정을 전환하면 브라우저의 캐시된 세션 데이터가 모두 삭제돼요.',
+  ' on the server.': ' 기준으로 서버에서 보호돼요.',
+  ' screen when signed in.': ' 화면에서 로그인 후 확인할 수 있어요.',
+  ' to inspect live server-verified VietQR or global payment statuses, or resume pending checkouts without paying twice.':
+    ' 화면에서 서버가 검증한 실시간 VietQR 또는 글로벌 결제 상태를 확인하고, 중복 결제 없이 대기 중인 결제를 이어서 진행할 수 있어요.',
+  ' to track fridge ingredients, scan groceries with AI, get portion-matched family meal ideas, and plan 7 effortless days of meals.':
+    '와 함께 냉장고 식재료를 관리하고, AI로 장보기 재료를 스캔하며, 가족 인원수에 맞춘 레시피 추천과 7일 식단을 가볍게 완성하세요.',
+  ' whenever your household needs expanded monthly AI scans and unlimited automated 7-day meal planning.':
+    '로 업그레이드해 더 넉넉한 월간 AI 스캔과 무제한 자동 7일 식단 계획을 이용할 수 있어요.',
+  ' · Your chosen amount': ' · 내가 선택한 수량',
+  ' · edited amount': ' · 수정된 수량',
+  ' · needs review for this trip': ' · 이번 장보기 확인 필요',
+  ') or the last 4 digits of an order ID — never share your password or 6-digit OTP codes.':
+    ') 또는 주문번호 마지막 4자리만 공유해 주세요. 비밀번호나 6자리 인증번호(OTP)는 절대 공유하지 마세요.',
+  '+ Add manually': '+ 직접 추가',
+  '+ Create new meal plan': '+ 새 식단 만들기',
+  '+1 min': '+1분',
+  ', you can inspect pending offline operations, check the build version, and safely refresh local cache.':
+    '에서 대기 중인 오프라인 작업을 확인하고, 앱 빌드 버전을 점검하며, 로컬 캐시를 안전하게 새로고침할 수 있어요.',
+  '.': '.',
+  '/ free core forever': '/ 핵심 기능 평생 무료',
+  '1 day': '1일',
+  '10 min': '10분',
+  '18 min · 4 servings': '18분 · 4인분',
+  '2 days left': '2일 남음',
+  '20 min · 3 servings': '20분 · 3인분',
+  '25 min': '25분',
+  '25 min · 4 servings': '25분 · 4인분',
+  '3 days': '3일',
+  '3 days left': '3일 남음',
+  '3 servings': '3인분',
+  '3+ times a week': '주 3회 이상',
+  '30 min': '30분',
+  '30-Minute Two-Burner Parallel Dinner': '화구 2개로 30분 완성 동시 조리 저녁',
+  '4 days left': '4일 남음',
+  '4 min read · Calm Cooking': '4분 읽기 · 여유로운 요리',
+  '4 min read · Meal Strategy': '4분 읽기 · 식단 전략',
+  '4 servings': '4인분',
+  '40 min · 4 servings': '40분 · 4인분',
+  '45 min · 4 servings': '45분 · 4인분',
+  '5 Quick Dinners for Busy Weeknights': '바쁜 평일 저녁 25분 완성 초간단 집밥 5가지',
+  '5 days left': '5일 남음',
+  '5 min read · Braising Craft': '5분 읽기 · 조림 노하우',
+  '5 min read · Smart Fridge': '5분 읽기 · 스마트 냉장고',
+  '5 min read · Weekly Mise-en-Place': '5분 읽기 · 주간 재료 손질',
+  '500+ standardized recipes with nutrition info & hands-free voice sous-chef':
+    '영양 정보가 포함된 500+ 표준 레시피와 핸즈프리 음성 요리 도우미',
+  '500+ structured recipes with nutrition & flexible portion scaling':
+    '영양 정보와 유연한 인분 환산이 포함된 500+ 구조화 레시피',
+  '6 min read · Food Management': '6분 읽기 · 식재료 관리',
+  '6-digit verification code': '6자리 인증번호',
+  '7 days left': '7일 남음',
+  '7-Day Meal Plan': '7일 식단',
+  '7-Day Meal Plan — Takolio': '7일 식단 — Takolio',
+  '7-Day Planning': '7일 식단 계획',
+  '7-day meal plan': '7일 식단표',
+  '7-day meal planner': '7일 식단 플래너',
+  '7-day meal schedule': '7일 식단 일정',
+  'A cheerful white ceramic pot in a chef hat with a fresh green sprout and coral scarf — gently watching expiry dates and cheering on every home-cooked meal.':
+    '초록 새싹이 돋은 요리사 모자와 코럴색 스카프를 두른 밝은 흰색 도자기 냄비 마스코트 — 소비기한을 다정히 챙기고 매일의 집밥을 응원해요.',
+  'A cuisine you prefer less': '선호도가 낮은 요리',
+  'A new OTP code has been sent to your inbox.': '새 인증번호(OTP)를 이메일로 발송했어요.',
+  'A newer plan is available. Load it before choosing dishes.': '더 최신 식단이 있어요. 요리를 선택하기 전에 불러와 주세요.',
+  'A newer plan is available. Load it before updating shopping.': '더 최신 식단이 있어요. 장보기 목록을 업데이트하기 전에 불러와 주세요.',
+  'A newer plan is available. Load it to see the current meals.': '더 최신 식단이 있어요. 현재 식단을 보려면 불러와 주세요.',
+  'A one-dish meal with your chosen main. Add accompaniments if you want.': '선택한 메인 요리로 구성된 한 그릇 식사예요. 원하시면 반찬을 추가해 보세요.',
+  'A payment order is awaiting reconciliation. Do not send additional funds or create a duplicate order.':
+    '결제 확인을 기다리는 주문이 있어요. 추가로 송금하거나 중복 주문을 생성하지 마세요.',
+  'A plan meets the constraints': '조건을 충족하는 식단을 찾았어요',
+  'A previous change is waiting to sync.': '이전 변경 사항이 동기화를 기다리고 있어요.',
+  'A recipe contains an unidentified ingredient': '레시피에 식별되지 않은 식재료가 포함되어 있어요',
+  'A recipe you disliked': '선호하지 않음으로 표시한 레시피',
+  'A recipe you liked': '좋아요를 누른 레시피',
+  'A rejected recipe was excluded from planning': '제외한 레시피는 식단 계획에서 빠졌어요',
+  'A substitution rule contains an unidentified ingredient': '대체 규칙에 식별되지 않은 식재료가 포함되어 있어요',
+  'A warm little companion for every moment in the kitchen': '주방의 모든 순간을 함께하는 다정한 작은 도우미',
+  'AI Ingredient Scan': 'AI 식재료 스캔',
+  'AI Recognition': 'AI 인식',
+  'AI Scan': 'AI 스캔',
+  'AI can make mistakes. Check names, quantities, and units; only enter label dates you are sure about.':
+    'AI는 실수할 수 있어요. 품목명, 수량, 단위를 확인하고 확실한 표기 소비기한만 입력해 주세요.',
+  'AI can misread labels or quantities; Takolio never writes directly to your fridge without your approval.':
+    'AI가 라벨이나 수량을 잘못 읽을 수 있으므로, Takolio는 사용자 승인 없이 냉장고에 직접 저장하지 않아요.',
+  'AI detected:': 'AI 감지 항목:',
+  'AI draft detection': 'AI 초안 인식',
+  'AI ingredient detection': 'AI 식재료 인식',
+  'AI ingredient scan': 'AI 식재료 스캔',
+  'AI is processing your receipt in the background. This page will update automatically...':
+    'AI가 백그라운드에서 영수증을 분석하고 있어요. 완료되면 이 화면이 자동으로 업데이트돼요...',
+  'AI is reading the image': 'AI가 사진을 읽고 있어요',
+  'AI only prepares a draft. Your fridge updates only after you confirm.':
+    'AI는 초안만 준비해요. 직접 확인하고 확정해야만 냉장고 재고가 업데이트돼요.',
+  'AI recognition': 'AI 인식',
+  'AI scan image processing:': 'AI 스캔 이미지 처리:',
+  'AI scan images:': 'AI 스캔 이미지:',
+  'AI service is temporarily unavailable. Failed scans do not count against your quota.':
+    'AI 서비스를 일시적으로 이용할 수 없어요. 실패한 스캔은 이용 횟수에서 차감되지 않아요.',
+  'API not yet available': 'API 준비 중',
+  About: '소개',
+  'About 30–35 min': '약 30~35분',
+  'About Takolio': 'Takolio 소개',
+  'About your plan': '이 식단 정보',
+  'About · Contact · Legal': '소개 · 지원 · 법적 고지',
+  'About, Contact, and Legal navigation': '소개, 지원 및 법적 고지 탐색',
+  'Access restricted': '접근 제한됨',
+  'Access your collection of bookmarked favorite dishes': '저장해 둔 즐겨찾기 요리 모음을 확인하세요',
+  Account: '계정',
+  'Account and settings navigation': '계정 및 설정 탐색',
+  'Account created, but email delivery is unconfirmed. Please check your inbox before requesting a new code.':
+    '계정은 생성되었지만 이메일 발송 확인이 지연되고 있어요. 새 코드를 요청하기 전에 받은편지함을 먼저 확인해 주세요.',
+  'Account password': '계정 비밀번호',
+  'Account required': '계정 필요',
+  'Account saved, but the OTP email could not be delivered. Please tap Resend verification code.':
+    '계정이 저장되었지만 인증번호 이메일을 보내지 못했어요. 인증번호 재발송을 눌러 주세요.',
+  'Accurate multi-device updates': '정확한 멀티 기기 업데이트',
+  'Action could not be completed. Please try again.': '요청을 완료하지 못했어요. 다시 시도해 주세요.',
+  'Action owner does not match the active server session.': '요청 소유자가 현재 서버 세션과 일치하지 않아요.',
+  Active: '이용 중',
+  'Active 7-day meal plan': '진행 중인 7일 식단',
+  'Active household ID & member sharing status': '현재 가정 ID 및 구성원 공유 상태',
+  'Active household ID details and member sharing feature status.': '현재 가정 ID 세부 정보 및 구성원 공유 기능 상태예요.',
+  'Active step state and running timers are preserved so you never lose your place mid-meal.':
+    '현재 조리 단계와 실행 중인 타이머가 안전하게 유지되어 요리 도중 흐름을 놓치지 않아요.',
+  'Active technical data protection summary': '적용 중인 기술적 데이터 보호 요약',
+  'Actual grocery costs are always shown as estimates.': '실제 장보기 비용은 항상 참고용 추정치로 표시돼요.',
+  'Actual remaining quantity': '실제 남은 수량',
+  Add: '추가',
+  'Add Takolio to your home screen and apply app updates safely without losing in-progress edits.':
+    'Takolio를 홈 화면에 추가하고 작성 중인 내용을 잃지 않으면서 안전하게 앱을 업데이트하세요.',
+  'Add Takolio to your home screen for faster access. Some saved data stays available offline; server-backed features still require a connection.':
+    '더 빠르게 열 수 있도록 Takolio를 홈 화면에 추가하세요. 일부 저장된 데이터는 오프라인에서도 볼 수 있으며, 서버 연동 기능은 인터넷 연결이 필요해요.',
+  'Add a dish to this meal': '이 식사에 요리 추가',
+  'Add an extra item': '추가 품목 입력',
+  'Add ingredient manually': '식재료 직접 추가',
+  'Add ingredient to fridge': '냉장고에 식재료 추가',
+  'Add ingredients manually': '식재료 직접 입력',
+  'Add ingredients to your fridge for exact match scores, or browse the full recipe catalog.':
+    '정확한 재료 일치율을 보려면 냉장고에 식재료를 추가하거나 전체 레시피 카탈로그를 둘러보세요.',
+  'Add ingredients to your fridge or browse recipes to pick dinner tonight.':
+    '냉장고에 식재료를 추가하거나 레시피를 둘러보며 오늘 저녁 메뉴를 골라 보세요.',
+  'Add item': '품목 추가',
+  'Add item missed by AI': 'AI가 놓친 품목 추가',
+  'Add just the exact missing ingredient shortfalls to your shopping list straight from the recipe screen.':
+    '레시피 화면에서 냉장고에 부족한 정확한 분량만 장보기 목록에 바로 추가할 수 있어요.',
+  'Add manually or snap your fridge or receipt — every recognized item goes through a review screen before saving.':
+    '직접 입력하거나 냉장고·영수증을 촬영하세요. 인식된 모든 항목은 저장 전 검수 화면을 거쳐요.',
+  'Add manually to Fridge': '냉장고에 직접 추가',
+  'Add missing': '부족한 재료 추가',
+  'Add new ingredients': '새 식재료 추가',
+  'Add now': '지금 추가',
+  'Add this dish': '이 요리 추가',
+  'Add this quantity to list': '이 수량을 목록에 추가',
+  'Add to fridge · Step 1 of 3': '냉장고에 추가 · 1/3단계',
+  'Add to fridge · Step 2 of 3': '냉장고에 추가 · 2/3단계',
+  'Add to list': '목록에 추가',
+  'Add to meal': '식단에 추가',
+  'Added to list': '목록에 추가됨',
+  'Added to your meal. Other dishes remain unchanged.': '식사에 추가했어요. 다른 요리는 그대로 유지돼요.',
+  'Additional information is not yet supported for display.': '추가 정보 표시는 아직 지원되지 않아요.',
+  'Additional ingredients are needed for this dish': '이 요리에는 추가 식재료가 필요해요',
+  'Adds variety to later meals': '다음 식사에 메뉴 다양성을 더해 줘요',
+  'Adjust heat per step': '단계별 불 조절',
+  'Adjust household servings on any recipe page (C18) to recalculate every ingredient quantity instantly.':
+    '어느 레시피 페이지(C18)에서든 가족 인원수를 조절하면 모든 재료 분량이 즉시 다시 계산돼요.',
+  'Adjust portions for a larger household': '대가족 인원수에 맞춰 분량 조절',
+  'Adjust quantities to buy, then check off each item as you shop.':
+    '구매할 수량을 조정한 뒤 장을 보면서 품목마다 체크해 보세요.',
+  'Adjust the actual ingredient quantities you used below. Your fridge stock is deducted once only after you confirm.':
+    '아래에서 실제로 사용한 식재료 수량을 조정하세요. 확인을 누른 뒤에만 냉장고 재고가 딱 한 번 차감돼요.',
+  Advanced: '고급',
+  'Advanced weekly meal planning & schedule-optimized net shopping lists':
+    '고급 주간 식단 계획 및 일정 최적화 자동 차감 장보기 목록',
+  'Aggregates weekly demand, supports offline check-off, and restocks purchases back into your fridge without duplicates.':
+    '주간 필요량을 합산하고 오프라인 체크를 지원하며, 구매한 품목을 중복 없이 냉장고로 다시 입고해요.',
+  'Align the full receipt within the frame': '영수증 전체가 프레임 안에 들어오게 맞춰 주세요',
+  All: '전체',
+  'All Vietnamese regions': '베트남 전 지역',
+  'All ingredients on hand': '모든 재료 보유 중',
+  'All inventory, weekly meal plan, shopping list, and AI scan queries are verified against your server session and isolated by':
+    '모든 재고, 주간 식단, 장보기 목록, AI 스캔 요청은 서버 세션으로 검증되며 다음 기준으로 엄격히 격리돼요:',
+  'All meals': '모든 식사',
+  'All meals planned': '모든 식사 계획 완료',
+  'All quantified items bought': '수량이 확인된 모든 품목 구매 완료',
+  'All quiet in the kitchen': '주방에 새 알림이 없어요',
+  'All required dish groups are present': '필수 요리 구성이 모두 갖추어졌어요',
+  'All unknown quantities reviewed': '미확인 수량 검수 완료',
+  'Allergens to avoid': '피해야 할 알레르기 성분',
+  'Allergies & strictly excluded ingredients': '알레르기 및 엄격 제외 식재료',
+  'Allow extra shopping': '추가 장보기 허용',
+  'Always by your side': '언제나 곁에서',
+  'Always distinguish printed package dates from estimated freshness and check food visually before cooking.':
+    '포장지에 표기된 기한과 추정 신선도를 항상 구분하고, 요리 전에 식재료 상태를 직접 확인해 주세요.',
+  'An earlier unplanned meal prevents planning this meal': '이전 미계획 식사로 인해 이 식사를 계획할 수 없어요',
+  'An estimated price is not treated as a confirmed price': '추정 가격은 확정 가격으로 간주되지 않아요',
+  'An ingredient or meal plan was updated on another device (HTTP 409 Conflict).':
+    '다른 기기에서 식재료나 식단이 변경되었어요 (HTTP 409 Conflict).',
+  'An internet connection is required to confirm shopping quantities.': '장보기 수량을 확정하려면 인터넷 연결이 필요해요.',
+  'An internet connection is required to load the exact selected recipe version.':
+    '선택한 정확한 레시피 버전을 불러오려면 인터넷 연결이 필요해요.',
+  'An internet connection is required to load your current planning settings from the server. Try again when online.':
+    '서버에서 현재 식단 설정을 불러오려면 인터넷 연결이 필요해요. 온라인 상태에서 다시 시도해 주세요.',
+  'An invalid ingredient-substitution rule was not used': '유효하지 않은 식재료 대체 규칙은 적용되지 않았어요',
+  Annual: '연간',
+  'Annual Plan': '연간 요금제',
+  'App Settings': '앱 설정',
+  'App cache': '앱 캐시',
+  'App cache cleared.': '앱 캐시를 비웠어요.',
+  'App settings': '앱 설정',
+  Apply: '적용',
+  'Apply now in your Takolio kitchen': '지금 Takolio 주방에서 적용하기',
+  'Apply the First-Expired, First-Out (FEFO) rule to your crisper drawer and perishable ingredients.':
+    '야채실과 상하기 쉬운 식재료에 선만료 선출고(FEFO) 원칙을 적용해 보세요.',
+  'Are there any hidden renewals on the Free plan?': '무료 요금제에 숨겨진 자동 갱신이 있나요?',
+  Assessment: '평가 요약',
+  'At least 6 characters': '6자 이상',
+  'Authentication uses ': '인증에는 다음 보안 방식이 사용돼요: ',
+  "Automatic ideas for today's\u00a0meals": '오늘 식사를 위한 자동 메뉴 추천',
+  'Automatic shortfall calculation': '부족분 자동 계산',
+  'Automatic weekly meal planning & smart grocery lists': '자동 주간 식단 계획 및 스마트 장보기 목록',
+  'Automatically calculates shortfalls against on-hand stock to prevent duplicates and forgotten items.':
+    '보유 재고 대비 부족분만 자동으로 계산해 중복 구매와 누락을 막아 줘요.',
+  'Automatically deducts fridge stock so you buy only what you need':
+    '냉장고 재고를 자동 차감해 꼭 필요한 것만 살 수 있어요',
+  'Automatically subtracts ingredients already in your fridge so your list only shows what you still need to buy.':
+    '냉장고에 이미 있는 식재료를 자동으로 빼서 지금 사야 할 품목만 깔끔하게 보여 줘요.',
+  'Availability of the purchase package has not been confirmed': '해당 구매 상품의 재고 여부가 확인되지 않았어요',
+  'Avoid storing dripping-wet leafy greens; line containers with dry paper towel and log a 3-day freshness estimate.':
+    '물기가 흐르는 잎채소는 그대로 넣지 말고, 마른 키친타월을 깐 용기에 담아 3일 추정 기한을 기록하세요.',
+  'Awaiting server endpoints to package household inventory, meal plans, and shopping lists as JSON/CSV.':
+    '가정 재고, 식단, 장보기 목록을 JSON/CSV로 내보내기 위한 서버 API 연동을 준비 중이에요.',
+  Awake: '화면 켜짐 유지',
+  'BLOCKED_BACKEND · RFC-001 awaiting backend implementation': 'BLOCKED_BACKEND · RFC-001 백엔드 구현 대기 중',
+  Back: '뒤로',
+  'Back online': '다시 온라인 연결됨',
+  'Back to Today': '오늘 화면으로',
+  'Back to dashboard': '대시보드로 돌아가기',
+  'Back to fridge': '냉장고로 돌아가기',
+  'Back to home': '홈으로 돌아가기',
+  'Back to kitchen': '주방으로 돌아가기',
+  'Back to scanner': '스캐너로 돌아가기',
+  'Back to sign in': '로그인으로 돌아가기',
+  'Back to sign up': '회원가입으로 돌아가기',
+  'Balanced family nutrition all week with an automatic smart shopping list.':
+    '일주일 내내 온 가족의 균형 잡힌 영양과 자동 스마트 장보기 목록을 챙겨요.',
+  'Balanced meals for the household with one-tap dish swaps': '탭 한 번으로 메뉴 교체가 가능한 균형 잡힌 가족 식단',
+  'Batch details (C06) clearly display whether an item was added manually, scanned from the fridge, or imported from a receipt.':
+    '배치 상세 화면(C06)에서 직접 입력, 냉장고 스캔, 영수증 불러오기 중 어떤 경로로 등록됐는지 명확히 확인할 수 있어요.',
+  'Batch-level fridge inventory with expiry alerts': '소비기한 알림이 포함된 배치별 냉장고 재고 관리',
+  'Batch-level inventory tracking': '배치 단위 재고 추적',
+  Beef: '소고기',
+  'Beef tenderloin 400g · Fresh rice noodles 500g · Charred ginger & aromatics':
+    '소고기 안심 400g · 생쌀국수 면 500g · 구운 생강 & 향신채',
+  'Best known cost, not proven optimal': '확인된 최저 추정 비용 (전체 최적 보장 아님)',
+  'Billing cycle': '결제 주기',
+  Boil: '끓이기',
+  'Boil & Soup': '끓이기·국물',
+  'Bookmark dishes your family loves so you can pull them back into any weekly plan in seconds (C17).':
+    '가족이 좋아하는 요리를 저장해 두면 언제든 몇 초 만에 주간 식단에 다시 넣을 수 있어요 (C17).',
+  'Braise & Simmer': '조리기·뭉근 끓이기',
+  Braised: '조림',
+  'Braised Chicken with Ginger & Lemongrass': '생강 레몬그라스 닭조림',
+  'Braised chicken thighs with julienned ginger and minced lemongrass in a ceramic pot':
+    '채 썬 생강과 다진 레몬그라스를 넣고 도자기 냄비에 조려 낸 닭다리살 조림',
+  Breakfast: '아침',
+  'Bright kitchen counter with ceramic bowls of prepped ingredients ready for closed-loop cooking':
+    '손질된 식재료가 도자기 그릇에 가지런히 담긴 밝은 주방 조리대',
+  'Bright, large-type layout easy to read at arm’s length, with circular per-step countdown timers and optional hands-free voice guidance.':
+    '멀리서도 읽기 편한 큰 글씨 화면, 단계별 원형 타이머, 선택형 핸즈프리 음성 안내를 제공해요.',
+  'Browse FAQ': 'FAQ 살펴보기',
+  'Browse other dishes': '다른 요리 둘러보기',
+  'Browse other recipes': '다른 레시피 둘러보기',
+  'Browse our verified home-cooking recipe library': '검증된 집밥 레시피 라이브러리를 둘러보세요',
+  'Browse recipes': '레시피 둘러보기',
+  'Browser notification permission': '브라우저 알림 권한',
+  Budget: '예산',
+  'Budget preference': '예산 설정',
+  'Budget status unconfirmed': '예산 충족 여부 미확인',
+  'Build a 7-day meal plan': '7일 식단 만들기',
+  'Build weekly meal plan': '주간 식단 만들기',
+  'Built for real household routines (C23–C26)': '실제 가정 생활 패턴에 맞춘 설계 (C23–C26)',
+  Bunches: '단',
+  'Busy schedule': '바쁜 일정',
+  'Buy only the exact shortfall after subtracting what is already in your fridge.':
+    '냉장고에 이미 있는 양을 빼고 정말 부족한 분량만 구매하세요.',
+  Bó: '단',
+  'Calm cooking · Eat well. Buy right. Waste less.': '여유로운 요리 · 알맞게 먹고, 사고, 남김없이.',
+  'Calm, zero-duplicate grocery runs': '중복 구매 없는 여유로운 장보기',
+  'Camera access for food scanning': '식재료 스캔용 카메라 접근 권한',
+  'Camera unavailable': '카메라를 사용할 수 없어요',
+  Cancel: '취소',
+  'Capture food or receipts': '식재료 또는 영수증 촬영',
+  'Capture or choose a photo': '사진 촬영 또는 선택',
+  'Capture the full receipt, including store name and purchase date.':
+    '매장 이름과 구매 날짜가 보이도록 영수증 전체를 촬영해 주세요.',
+  'Caramelized Pork & Eggs': '코코넛 삼겹살 달걀 조림',
+  'Caramelized Pork Belly & Eggs': '코코넛 삼겹살 달걀 조림',
+  'Caramelized Pork Belly & Eggs in Coconut Water': '코코넛 워터 삼겹살 달걀 조림',
+  Carbs: '탄수화물',
+  'Cast-iron pot simmering on a clean kitchen stove beside fresh lemongrass, ginger, and scallions':
+    '신선한 레몬그라스, 생강, 대파 옆 깨끗한 화구 위에서 보글보글 끓는 주물 냄비',
+  Category: '카테고리',
+  'Center the ingredients in the frame': '식재료가 화면 중앙에 오도록 맞춰 주세요',
+  'Changes are only saved when you select “Save changes”. Leaving this page or selecting “Cancel” discards your edits.':
+    '“변경 사항 저장”을 눌러야 저장돼요. 이 페이지를 떠나거나 “취소”를 누르면 수정 내용이 사라져요.',
+  'Changes waiting to sync': '동기화 대기 중인 변경 사항',
+  'Check again': '다시 확인',
+  'Check connection': '연결 확인',
+  'Check fridge': '냉장고 확인',
+  'Check off every scaled ingredient and essential tool during prep (C20) before turning on the heat.':
+    '불을 켜기 전 재료 준비 단계(C20)에서 환산된 모든 식재료와 필수 조리 도구를 체크하세요.',
+  'Check off items offline': '오프라인에서도 품목 체크',
+  'Check prep and cooking time for the whole meal against your household limit.':
+    '전체 식사의 손질 및 조리 시간을 가정의 제한 시간과 비교해 확인해 주세요.',
+  'Check sync status & app version': '동기화 상태 및 앱 버전 확인',
+  'Check the "Use soon" shelf on the Today screen before making an afternoon grocery stop.':
+    '오후에 장을 보기 전에 오늘 화면의 "빨리 소비하기" 선반을 먼저 확인해 보세요.',
+  'Check the locked dishes against your household time limit.':
+    '고정해 둔 요리가 가정의 제한 시간에 맞는지 확인해 주세요.',
+  'Check the unit or actual package contents.': '단위 또는 실제 포장 용량을 확인해 주세요.',
+  'Check your choices before submitting.': '제출하기 전에 선택한 내용을 확인해 주세요.',
+  'Check your connection to the Takolio server': 'Takolio 서버 연결 상태를 확인하세요',
+  'Check your current plan': '현재 식단 확인',
+  'Check your fridge': '냉장고 확인하기',
+  'Check your fridge for ingredients that should be cooked soon.': '곧 소비해야 할 식재료가 있는지 냉장고를 확인해 보세요.',
+  'Checking items off does not add them to your fridge automatically. When you get home, scan or add your groceries.':
+    '품목을 체크해도 냉장고에 자동으로 추가되지 않아요. 집에 돌아온 뒤 영수증을 스캔하거나 구매 재료를 입고해 주세요.',
+  'Checking quantities for the selected meal…': '선택한 식사의 수량을 확인하는 중…',
+  'Checking your fridge inventory…': '냉장고 재고를 확인하는 중…',
+  'Checking your fridge, balancing 7 days of meals, and grouping your shopping list…':
+    '냉장고를 확인하고 7일 식단 균형을 맞춘 뒤 장보기 목록을 정리하고 있어요…',
+  'Checking your session…': '로그인 세션을 확인하는 중…',
+  Chef: '셰프',
+  'Chef Sprout': '새싹 셰프',
+  'Chef Sprout holding a wooden spoon giving a thumbs up beside braised pork and eggs, tamarind fish soup, and warm steamed rice':
+    '삼겹살 달걀 조림, 새콤 생선국, 따뜻한 밥 옆에서 나무 숟가락을 들고 엄지를 치켜세운 새싹 셰프',
+  'Chef Sprout · Takolio Mascot': '새싹 셰프 · Takolio 마스코트',
+  'Chef Sprout — Actions & Expressions': '새싹 셰프 — 포즈 및 표정',
+  'Chicken eggs': '달걀',
+  'Chicken thighs 500g · Julienned ginger 40g · Fresh lemongrass · Fish sauce':
+    '닭다리살 500g · 채 썬 생강 40g · 신선 레몬그라스 · 피시소스',
+  'Chicken, sweet corn, and shiitake mushroom egg-drop soup garnished with herbs':
+    '허브를 올린 닭고기 스위트콘 표고버섯 달걀 수프',
+  Chinese: '중식',
+  'Choose Takolio Free or Takolio Pro to fit your household kitchen.':
+    '우리 집 주방에 맞는 Takolio 무료 또는 Takolio Pro 요금제를 선택하세요.',
+  'Choose Takolio Pro': 'Takolio Pro 선택',
+  'Choose a first dish, then Takolio will show dish groups and quantities still needed.':
+    '첫 번째 요리를 선택하면 Takolio가 남은 요리 구성과 필요한 수량을 보여 줘요.',
+  'Choose a quantity or skip items above before heading to the store.':
+    '마트에 가기 전에 위 항목의 수량을 선택하거나 건너뛰기를 눌러 주세요.',
+  'Choose a recipe and start step-by-step cooking to review actual ingredient usage when you finish.':
+    '레시피를 골라 단계별 요리를 시작하면 마칠 때 실제 식재료 사용량을 확인할 수 있어요.',
+  'Choose a replacement': '대체 요리 선택',
+  'Choose a role to check ingredient coverage for this meal.':
+    '이 식사의 재료 충족 여부를 확인하려면 요리 역할을 선택해 주세요.',
+  'Choose a start date and servings to create your first plan.':
+    '첫 식단을 만들 시작 날짜와 인분 수를 선택해 주세요.',
+  'Choose another photo': '다른 사진 선택',
+  'Choose dishes': '요리 선택',
+  'Choose dishes for this meal': '이 식사의 요리 선택',
+  'Choose dishes or build a 7-day schedule grounded in real quantities and household servings.':
+    '실제 재고 수량과 가족 인원수에 맞춰 요리를 고르거나 7일 식단을 구성하세요.',
+  'Choose each dish yourself': '각 요리를 직접 선택',
+  'Choose future meals inside the planning date range.': '계획 기간 내의 다가오는 식사를 선택해 주세요.',
+  'Choose how many people you usually cook for so Takolio scales ingredient quantities accurately.':
+    '평소 요리하는 인원수를 설정하면 Takolio가 모든 레시피 재료 분량을 정확히 맞춰 줘요.',
+  'Choose meals first. Shop next.': '먼저 식단을 정하고, 그다음 장을 보세요.',
+  'Choose quantity': '수량 선택',
+  'Choose role': '역할 선택',
+  'Choose settings': '설정 선택',
+  'Choose the amount you plan to buy or skip it for now. Packs, bunches, or pieces reflect how you shop; the total meal-plan requirement remains unresolved.':
+    '구매할 수량을 선택하거나 지금은 건너뛰세요. 봉지·단·개 단위는 장보기 기록용이며, 식단 전체 필요량은 미확정 상태로 남아요.',
+  'Choose the days to shop for. Takolio combines what upcoming meals still need from your current fridge.':
+    '장을 볼 기간을 선택하세요. Takolio가 현재 냉장고를 기준으로 다가오는 식사에 부족한 재료를 모아 줘요.',
+  'Choose the easiest way to get started right now.': '지금 가장 편한 방법으로 바로 시작해 보세요.',
+  'Choose the number of days, home-cooked meals, and family servings so Takolio builds a balanced plan from verified recipes.':
+    '일수, 집밥 끼니, 가족 인원수를 고르면 Takolio가 검증된 레시피로 균형 잡힌 식단을 짜 줘요.',
+  'Choose your cooking calendar, then fill each meal with your own dishes.':
+    '요리 일정을 먼저 정한 뒤 원하는 요리로 각 끼니를 채워 보세요.',
+  'Choose your cooking calendar. Takolio plans the dishes and shopping.':
+    '요리 일정을 선택하면 Takolio가 메뉴와 장보기 목록을 함께 계획해 줘요.',
+  'Choose your cooking schedule and servings. Takolio plans dishes in your household style and gathers missing ingredients into your shopping list.':
+    '요리 일정과 인원수를 선택하세요. Takolio가 우리 집 스타일에 맞게 메뉴를 구성하고 부족한 재료를 장보기 목록에 모아 줘요.',
+  'Choose your days, meals, and servings in plan setup — Takolio will match your fridge stock and calculate what you still need to buy.':
+    '식단 설정에서 요일, 끼니, 인원수를 선택하면 Takolio가 냉장고 재고를 대조해 사야 할 양을 계산해 줘요.',
+  'Choose your schedule and servings to place this dish in an upcoming meal.':
+    '다가오는 식사에 이 요리를 넣을 일정과 인원수를 선택하세요.',
+  'Choosing bunches or packs only records how you buy; it does not convert to recipe weights.':
+    '단이나 봉지 선택은 구매 기록용이며 레시피 무게(g)로 자동 환산되지 않아요.',
+  'Claypot caramelized snakehead fish with black pepper, crispy pork cracklings, and scallions':
+    '흑후추, 바삭한 돼지비계 칩, 쪽파를 올린 뚝배기 가물치 조림',
+  'Clear Answers': '명쾌한 답변',
+  'Clear all filters': '모든 필터 초기화',
+  'Clear answers about how Takolio works, AI Scan, household privacy, and Takolio Pro.':
+    'Takolio 작동 방식, AI 스캔, 가정 개인정보 보호, Takolio Pro에 대한 명쾌한 답변을 확인하세요.',
+  'Clear app cache': '앱 캐시 지우기',
+  'Clear cached app assets stored in your browser. This does not delete your offline kitchen data or unsynced changes.':
+    '브라우저에 저장된 앱 정적 캐시를 비워요. 오프라인 주방 데이터나 동기화 대기 중인 변경 사항은 삭제되지 않아요.',
+  'Clear filters': '필터 초기화',
+  'Clear multi-step instructions': '명확한 단계별 조리 안내',
+  'Clear offline sync status (pendingSync)': '투명한 오프라인 동기화 상태 (pendingSync)',
+  'Clear search & filters': '검색 및 필터 초기화',
+  'Clear search query': '검색어 지우기',
+  'Clear step-by-step guidance': '알기 쉬운 단계별 가이드',
+  'Clear unavailable mark': '구매 불가 표시 해제',
+  'Clearly distinguishes loading skeletons, truly empty inventories, and zero-match filters.':
+    '로딩 상태, 실제로 빈 냉장고, 필터 결과 없음을 명확히 구분해 보여 줘요.',
+  Close: '닫기',
+  'Close add ingredient form': '식재료 추가 창 닫기',
+  'Close navigation menu': '탐색 메뉴 닫기',
+  'Close quick find dialog': '빠른 검색 창 닫기',
+  'Close the loop from market to fridge (C27–C29)': '마트에서 냉장고까지 빈틈없는 순환 (C27–C29)',
+  'Close the loop on every home kitchen': '모든 가정 주방의 순환을 완성해요',
+  'Closed-loop kitchen workflow': '순환형 주방 워크플로',
+  'Cold prep': '차가운 손질',
+  'Commercial transparency policy:': '투명한 요금 및 거래 정책:',
+  'Company & Legal': '회사 및 법적 고지',
+  'Compares grams, milliliters, and piece counts rather than just names, flagging any unit mismatch clearly.':
+    '이름만 대조하지 않고 g, ml, 개수까지 정밀하게 비교하며 단위가 다르면 명확히 알려 줘요.',
+  Complete: '완료',
+  'Complete cooking session': '요리 세션 완료',
+  'Complete dish groups do not certify nutrition or allergy safety. Takolio flags any missing data.':
+    '요리 구성이 채워졌더라도 영양이나 알레르기 안전을 보증하지는 않아요. 누락된 데이터는 별도로 표시돼요.',
+  'Complete meal': '식사 완료',
+  'Complete setup': '설정 완료',
+  'Confidence: unknown': '신뢰도: 알 수 없음',
+  Confirm: '확인',
+  'Confirm actual quantities used when dinner finishes so your fridge always reflects what remains.':
+    '저녁 요리가 끝난 뒤 실제 사용량을 확인하면 냉장고에 남은 재고가 늘 정확하게 유지돼요.',
+  'Confirm and save your setup before entering your kitchen.': '주방에 들어가기 전에 설정을 확인하고 저장해 주세요.',
+  'Confirm completion & update fridge': '요리 완료 확인 및 냉장고 반영',
+  'Confirm completion accurately': '정확하게 완료 확인',
+  'Confirm scan when back online': '온라인 복구 시 스캔 확정',
+  Confirmed: '확정됨',
+  'Confirmed estimated expiry': '추정 소비기한 확정',
+  'Confirmed estimated expiry.': '추정 소비기한이 확정되었어요.',
+  'Confirmed expiry date': '확정된 소비기한',
+  'Confirmed fridge restocking': '검수 후 냉장고 입고',
+  'Confirmed scan': '확정된 스캔',
+  'Confirmed scan · Read-only': '확정된 스캔 · 읽기 전용',
+  'Confirmed with unknown expiry': '소비기한 미상으로 확정',
+  'Confirmed with unknown expiry.': '소비기한 미상으로 확정되었어요.',
+  'Confirms an estimated expiry date': '추정 소비기한을 확정해요',
+  'Conflict needs your decision': '충돌 해결이 필요해요',
+  'Connection to the recipe server was interrupted. Please try again.':
+    '레시피 서버와의 연결이 끊어졌어요. 다시 시도해 주세요.',
+  'Consider regenerating the plan for other choices': '다른 메뉴 조합을 보려면 식단을 다시 생성해 보세요',
+  'Constraints cannot be met within the evaluated data scope': '검토된 데이터 범위 안에서는 조건을 충족할 수 없어요',
+  'Constraints cannot be met within the supplied data scope': '제공된 데이터 범위 안에서는 조건을 충족할 수 없어요',
+  Contact: '문의·지원',
+  'Contact Takolio': 'Takolio 지원',
+  'Contact support': '고객 지원',
+  'Contains an excluded ingredient': '제외된 식재료가 포함되어 있어요',
+  'Contains an ingredient you dislike': '기피 식재료가 포함되어 있어요',
+  'Contains an ingredient you like': '선호하는 식재료가 포함되어 있어요',
+  Continue: '계속하기',
+  'Continue planning your next meals': '다음 식단 계속 계획하기',
+  'Continue to account (without merging guest data)': '계정으로 계속하기 (게스트 데이터 병합 안 함)',
+  'Continue with Google, your email account, or start a guest trial right away.':
+    'Google이나 이메일로 계속하거나 가입 없이 바로 게스트로 체험해 보세요.',
+  'Control household privacy, analytics consent, and data export/deletion status.':
+    '가정 개인정보 보호, 분석 동의, 데이터 내보내기 및 삭제 상태를 관리하세요.',
+  Cook: '요리하기',
+  'Cook alongside ': '함께 요리해요 · ',
+  'Cook one clear step at a time': '한 번에 한 단계씩 차분하게 요리하세요',
+  'Cook smarter every day': '매일 더 스마트하게 요리해요',
+  'Cook with fridge items': '냉장고 재료로 요리하기',
+  Cooked: '요리 완료',
+  Cooking: '요리 중',
+  'Cooking mode hides secondary navigation so the screen focuses on the current step and large next/previous controls.':
+    '요리 모드에서는 부가 메뉴를 숨겨 현재 단계와 큼직한 이전/다음 버튼에만 집중할 수 있어요.',
+  'Cooking prep': '재료 준비',
+  'Cooking steps': '조리 단계',
+  'Cooking time data is only partly available': '조리 시간 정보가 일부만 제공돼요',
+  'Cooking time exceeds your preference': '선호하는 조리 시간을 초과해요',
+  'Cooking time unknown': '조리 시간 미상',
+  'Core Features': '핵심 기능',
+  'Core features': '핵심 기능',
+  'Could not add ingredient to your fridge.': '냉장고에 식재료를 추가하지 못했어요.',
+  'Could not check your meal schedule': '식단 일정을 확인하지 못했어요',
+  'Could not clear the app cache. Please check browser storage permissions and try again.':
+    '앱 캐시를 비우지 못했어요. 브라우저 저장소 권한을 확인한 뒤 다시 시도해 주세요.',
+  'Could not confirm the change. Please retry your last action.':
+    '변경 사항을 확정하지 못했어요. 방금 작업을 다시 시도해 주세요.',
+  'Could not confirm the cooked recipe version. Keep this request as-is and review before continuing.':
+    '조리한 레시피 버전을 확인하지 못했어요. 이 요청을 유지한 채 확인 후 계속해 주세요.',
+  'Could not confirm the cooking update. Please check your fridge stock and try again.':
+    '요리 완료 업데이트를 확인하지 못했어요. 냉장고 재고를 확인한 뒤 다시 시도해 주세요.',
+  'Could not confirm the server response. Your submitted amounts are preserved; retry the same request to avoid deducting twice.':
+    '서버 응답을 확인하지 못했어요. 입력한 수량은 보존되어 있으니 중복 차감을 막기 위해 같은 요청으로 다시 시도해 주세요.',
+  'Could not confirm this action while offline. Keep your selection and retry when back online.':
+    '오프라인 상태에서는 이 작업을 확정할 수 없어요. 선택을 유지한 채 온라인 연결 후 다시 시도해 주세요.',
+  'Could not confirm this action. Retry the exact request you submitted to avoid duplicates.':
+    '이 작업을 확정하지 못했어요. 중복 반영을 막기 위해 방금 보낸 요청을 그대로 다시 시도해 주세요.',
+  'Could not confirm this dish for the selected meal. Check your meal plan and dietary restrictions.':
+    '선택한 식사에 이 요리를 확정하지 못했어요. 식단과 식이 제한 설정을 확인해 주세요.',
+  'Could not convert this unit to the unit stored in your fridge.':
+    '이 단위를 냉장고에 저장된 단위로 환산할 수 없어요.',
+  'Could not convert your fridge unit. Enter 0 or update the unit in your Fridge.':
+    '냉장고 단위를 환산할 수 없어요. 0을 입력하거나 냉장고에서 단위를 수정해 주세요.',
+  'Could not create payment order. Please try again.': '결제 주문을 생성하지 못했어요. 다시 시도해 주세요.',
+  'Could not create the shared list. Check your connection and try again.':
+    '공유 장보기 목록을 만들지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not create the weekly meal plan. Please try again.': '주간 식단을 생성하지 못했어요. 다시 시도해 주세요.',
+  'Could not import ingredients into your fridge. Please try again.':
+    '냉장고로 식재료를 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load current inventory': '현재 재고를 불러오지 못했어요',
+  'Could not load data. Please try again.': '데이터를 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load fridge inventory from the server.': '서버에서 냉장고 재고를 불러오지 못했어요.',
+  'Could not load household habits. Please try again.': '가정 식사 습관을 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load notifications': '알림을 불러오지 못했어요',
+  'Could not load pricing from the server. Please try again.': '서버에서 요금 정보를 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load recipe data to start cooking mode.': '요리 모드를 시작할 레시피 데이터를 불러오지 못했어요.',
+  'Could not load recipe details': '레시피 상세 정보를 불러오지 못했어요',
+  'Could not load recipe suggestions.': '추천 레시피를 불러오지 못했어요.',
+  'Could not load recipes': '레시피를 불러오지 못했어요',
+  'Could not load replacement dishes. Please try again.': '대체 요리를 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load saved recipes. Please try again.': '저장한 레시피를 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load server data': '서버 데이터를 불러오지 못했어요',
+  'Could not load the weekly meal plan. Please try again.': '주간 식단을 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load this meal plan. Please try again.': '이 식단을 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not load weekly meal plan': '주간 식단을 불러오지 못했어요',
+  'Could not load your shopping list. Please try again.': '장보기 목록을 불러오지 못했어요. 다시 시도해 주세요.',
+  'Could not open the install prompt. Try the manual install instructions.':
+    '설치 안내 창을 열지 못했어요. 수동 설치 방법을 따라 진행해 주세요.',
+  'Could not process the receipt. Please try again later.': '영수증을 처리하지 못했어요. 잠시 후 다시 시도해 주세요.',
+  'Could not process the scan. Please try again later.': '스캔을 처리하지 못했어요. 잠시 후 다시 시도해 주세요.',
+  'Could not queue the scan for processing. Check the scan status before retrying.':
+    '스캔 처리 대기열에 등록하지 못했어요. 다시 시도하기 전에 스캔 상태를 확인해 주세요.',
+  'Could not refresh receipt status. Check your connection and try again.':
+    '영수증 상태를 새로고침하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not refresh scan status. Check your connection and try again.':
+    '스캔 상태를 새로고침하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not refresh the list. Keeping your last view; reload before reviewing quantities.':
+    '목록을 새로고침하지 못했어요. 마지막 화면을 유지하고 있으니 수량을 검토하기 전에 다시 불러와 주세요.',
+  'Could not reload fridge stock. Check your internet connection and try again.':
+    '냉장고 재고를 다시 불러오지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not reload the latest state — displayed data may be outdated. Please reload before trying again.':
+    '최신 상태를 불러오지 못해 표시된 데이터가 오래되었을 수 있어요. 다시 시도하기 전에 새로고침해 주세요.',
+  'Could not reload the list. Reconnect and try reloading.':
+    '목록을 다시 불러오지 못했어요. 인터넷을 연결한 뒤 새로고침해 주세요.',
+  'Could not reopen the previous order. Do not send additional funds; check its status before trying again.':
+    '이전 주문을 다시 열지 못했어요. 추가로 송금하지 말고 주문 상태를 먼저 확인해 주세요.',
+  'Could not resolve this reconciliation item. Please try again.':
+    '이 재고 대조 항목을 처리하지 못했어요. 다시 시도해 주세요.',
+  'Could not save changes for sync. Please check your browser storage and try again.':
+    '동기화할 변경 사항을 저장하지 못했어요. 브라우저 저장소를 확인한 뒤 다시 시도해 주세요.',
+  'Could not save habits. If another device made changes, reload and review before saving.':
+    '식사 습관을 저장하지 못했어요. 다른 기기에서 수정했을 수 있으니 새로고침해 확인한 뒤 다시 저장해 주세요.',
+  'Could not save ingredients. Please try again.': '식재료를 저장하지 못했어요. 다시 시도해 주세요.',
+  'Could not save on this device. This choice will only last while this page stays open.':
+    '이 기기에 저장하지 못했어요. 이 설정은 현재 페이지가 열려 있는 동안에만 유지돼요.',
+  'Could not save planning settings. Please try again when online.':
+    '식단 설정을 저장하지 못했어요. 온라인 상태에서 다시 시도해 주세요.',
+  'Could not save preferences. Please check your connection and try again.':
+    '취향 설정을 저장하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not save the receipt. Please try again.': '영수증을 저장하지 못했어요. 다시 시도해 주세요.',
+  'Could not save the scan. Please try again later.': '스캔을 저장하지 못했어요. 잠시 후 다시 시도해 주세요.',
+  'Could not save this item. Please try again.': '이 항목을 저장하지 못했어요. 다시 시도해 주세요.',
+  'Could not save this recipe. Check your connection and try again.':
+    '이 레시피를 저장하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not save your kitchen setup. Please check your connection and try again.':
+    '주방 설정을 저장하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Could not start a guest session. Please try again.': '게스트 체험을 시작하지 못했어요. 다시 시도해 주세요.',
+  'Could not swap this meal. Please try again.': '이 메뉴를 교체하지 못했어요. 다시 시도해 주세요.',
+  'Could not update quantity. Please try again.': '수량을 업데이트하지 못했어요. 다시 시도해 주세요.',
+  'Could not update saved recipe. Please try again.': '저장한 레시피를 업데이트하지 못했어요. 다시 시도해 주세요.',
+  'Could not update the receipt in time. You can check again or choose a new photo.':
+    '시간 내에 영수증 상태를 업데이트하지 못했어요. 다시 확인하거나 새 사진을 선택해 주세요.',
+  'Could not update the shopping list. Please try again.': '장보기 목록을 업데이트하지 못했어요. 다시 시도해 주세요.',
+  'Could not update this ingredient. Please try again.': '이 식재료를 수정하지 못했어요. 다시 시도해 주세요.',
+  'Could not update this meal. Please try again.': '이 식사를 업데이트하지 못했어요. 다시 시도해 주세요.',
+  'Could not verify the selected recipe version.': '선택한 레시피 버전을 확인하지 못했어요.',
+  'Could not verify your session. Please check your internet connection and try again.':
+    '로그인 세션을 확인하지 못했어요. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.',
+  'Counting down': '카운트다운 중',
+  Covered: '보유 중',
+  'Covered by your fridge': '냉장고 재료로 충족',
+  'Covered in this plan': '이번 식단에 포함됨',
+  'Create a meal plan': '식단 만들기',
+  'Create a meal plan so Takolio can gather missing ingredients into your list.':
+    '식단을 만들면 Takolio가 부족한 식재료를 장보기 목록에 자동으로 모아 줘요.',
+  'Create a schedule to add dishes': '요리를 추가할 일정 만들기',
+  'Create account': '회원가입',
+  'Create an account': '계정 만들기',
+  'Create an empty meal calendar': '빈 식단 달력 만들기',
+  'Create free account': '무료 계정 만들기',
+  'Create new account': '새 계정 만들기',
+  'Create new meal plan': '새 식단 만들기',
+  'Create plan': '식단 만들기',
+  'Create shared list': '공유 장보기 목록 만들기',
+  'Create weekly meal plan': '주간 식단 만들기',
+  'Creating payment order…': '결제 주문을 생성하는 중…',
+  'Creating your meal calendar…': '식단 달력을 만드는 중…',
+  'Creating your plan…': '식단을 만드는 중…',
+  'Crisp leafy greens stored in paper-lined glass containers inside a bright refrigerator':
+    '밝은 냉장고 안 키친타월을 깐 유리 용기에 보관된 아삭한 잎채소',
+  'Crispy Tofu in Savory Tomato Sauce': '바삭 두부 토마토소스 조림',
+  'Cuisine tastes & spice level in profile': '프로필의 선호 요리 및 매운맛 단계',
+  'Cuisines & habits': '선호 요리 및 습관',
+  'Curated everyday braises, soups, stir-fries, and noodle bowls across global home cuisines with clear portions.':
+    '정확한 인분 계량이 제공되는 전 세계 가정식 조림·국·볶음·면 요리를 엄선해 담았어요.',
+  Currency: '통화',
+  'Current Takolio Pro benefits and live billing rates sync directly from the server on the /plus page once you sign in with a verified account.':
+    '인증된 계정으로 로그인하면 /plus 페이지에서 최신 Takolio Pro 혜택과 실시간 결제 금액이 서버와 직접 동기화돼요.',
+  'Current household': '현재 가정',
+  'Current household ID': '현재 가정 ID',
+  'Current source data checked': '최신 기준 데이터 확인 완료',
+  'Customize cooking days & max prep time': '요리 요일 및 최대 준비 시간 설정',
+  'Customize meals & family servings': '끼니 및 가족 인원수 설정',
+  'Cut lemongrass stalks for broths and freeze minced lower stems in meal-sized portions for quick braises.':
+    '레몬그라스 줄기는 육수용으로 자르고, 다진 아랫부분은 조림용 1회분씩 소분해 냉동 보관하세요.',
+  'Daily · fresh groceries for upcoming meals': '매일 · 다가오는 식사용 신선 장보기',
+  Dairy: '유제품',
+  'Dairy & Cheese': '우유·치즈',
+  'Data export & deletion rights:': '데이터 내보내기 및 삭제 권리:',
+  'Data version conflict': '데이터 버전 충돌',
+  'Date confirmed by you': '직접 확인한 날짜',
+  'Date unknown': '날짜 미상',
+  'Day-old rice · Fresh eggs · Golden fried garlic · Scallions':
+    '찬밥 · 신선 달걀 · 바삭 튀긴 마늘 · 쪽파',
+  Days: '요일',
+  'Days you cook at home': '집에서 요리하는 요일',
+  Decrease: '줄이기',
+  'Decrease household size': '가족 인원수 줄이기',
+  'Decrease servings': '인분 줄이기',
+  'Deducts inventory only upon completion': '완료 확인 시에만 재고 차감',
+  'Default +3/+5/+7 day dates are always labeled "Estimated" so you can check food freshness with your own senses.':
+    '기본 +3/+5/+7일 날짜에는 항상 "추정" 표시가 붙어 직접 신선도를 확인할 수 있어요.',
+  'Default cooking days and meal prep time': '기본 요리 요일 및 준비 시간',
+  'Default cooking portions': '기본 요리 인분',
+  'Default meal slots': '기본 식사 시간대',
+  'Default preferences for upcoming meal plans': '다음 식단 계획의 기본 설정',
+  'Default servings': '기본 인분',
+  Delete: '삭제',
+  'Delete account · Backend API required (RFC-002)': '계정 삭제 · 백엔드 API 필요 (RFC-002)',
+  'Delete ingredient': '식재료 삭제',
+  'Delivery channels': '알림 수신 채널',
+  'Designed for real hands-on cooking at the stove (C20–C22)': '화구 앞 실제 조리 환경을 위한 설계 (C20–C22)',
+  'Details changed and could not be reloaded. Please reload the page before trying again.':
+    '세부 정보가 변경되었으나 다시 불러오지 못했어요. 페이지를 새로고침한 뒤 다시 시도해 주세요.',
+  'Details changed but could not be reloaded. Please reload before confirming again.':
+    '세부 정보가 변경되었으나 다시 불러오지 못했어요. 다시 확인하기 전에 새로고침해 주세요.',
+  'Deterministic server-side quantity math': '결정론적 서버 정량 계산',
+  'Dev test OTP code:': '개발 테스트 OTP 코드:',
+  'Dev test recovery code:': '개발 테스트 복구 코드:',
+  'Dial in caramel glaze, savory fish sauce, and gentle simmering heat for tender braised pork and eggs in a clear amber broth.':
+    '윤기 나는 캐러멜 색감, 감칠맛 피시소스, 은근한 약불 조림으로 부드러운 삼겹살과 달걀을 완성해요.',
+  Differences: '차이점',
+  Dinner: '저녁',
+  'Dinner only': '저녁만',
+  Disabled: '비활성화됨',
+  'Discard conflicting meal swap?': '충돌한 메뉴 교체를 취소할까요?',
+  'Dish completeness not confirmed': '요리 구성 완성 여부 미확인',
+  'Dish source': '요리 출처',
+  'Dish to replace': '교체할 요리',
+  'Dishes are planned for each meal': '각 끼니별 요리가 계획되었어요',
+  Dislike: '별로예요',
+  'Disliked ingredients': '기피 식재료',
+  Dismiss: '닫기',
+  'Dismiss notification': '알림 닫기',
+  'Display currency': '표시 통화',
+  'Display language': '표시 언어',
+  'Display name': '표시 이름',
+  'Distinguishes empty fridge from zero filter matches': '빈 냉장고와 필터 결과 없음을 명확히 구분',
+  'Distraction-free cooking canvas': '요리에만 집중하는 깔끔한 화면',
+  'Do I need an account to try Takolio?': 'Takolio를 체험하려면 계정이 필요한가요?',
+  'Does not meet a dietary constraint': '식이 제한 조건에 맞지 않아요',
+  'Does not meet a nutrition constraint': '영양 조건에 맞지 않아요',
+  'Does not meet an allergy constraint': '알레르기 제외 조건에 맞지 않아요',
+  'Does not meet the plan’s nutrition constraint': '식단의 영양 조건에 맞지 않아요',
+  'Does not meet the recipe repetition limit': '레시피 반복 제한 조건에 맞지 않아요',
+  'Does not meet the requested meal type': '요청한 식사 유형에 맞지 않아요',
+  'Does not reach the requested nutrition minimum': '요청한 최소 영양 기준에 미달해요',
+  Done: '완료',
+  'Duplicate deduction protection': '중복 차감 방지',
+  'Duplicate ingredient-substitution rules were not used': '중복된 식재료 대체 규칙은 사용되지 않았어요',
+  'Duplicate protection on flaky networks': '불안정한 네트워크에서도 중복 방지',
+  'Duplicate stock records contain conflicting data': '중복된 재고 기록에 서로 다른 데이터가 있어요',
+  'Duplicate stock records were ignored to avoid counting them twice':
+    '이중 계산을 막기 위해 중복된 재고 기록은 제외되었어요',
+  'Earthenware claypot simmering pork belly and eggs in golden amber coconut broth':
+    '황금빛 코코넛 육수에 삼겹살과 달걀이 보글보글 끓는 뚝배기',
+  Easy: '쉬움',
+  'Eat enough. Buy enough. Use it all — cut food waste and take the stress out of daily meal decisions.':
+    '알맞게 먹고, 사고, 남김없이 — 음식물 쓰레기를 줄이고 매일의 메뉴 고민을 덜어 보세요.',
+  'Eat enough. Buy enough. Use it all.': '알맞게 먹고, 사고, 남김없이.',
+  'Eat enough. Buy enough. Use it all. Manage your fridge, scan ingredients with AI, discover portion-matched family recipes, plan 7-day menus, and build smart net shopping lists with Chef Sprout.':
+    '알맞게 먹고, 사고, 남김없이. 새싹 셰프와 함께 냉장고를 관리하고, AI로 식재료를 스캔하며, 가족 인원수에 맞춘 레시피와 7일 식단, 자동 차감 장보기 목록을 완성하세요.',
+  'Eat well, waste less': '잘 먹고, 덜 버리기',
+  'Eat well, zero waste': '맛있게 먹고, 제로 웨이스트',
+  'Eat well. Buy right. Waste nothing.': '알맞게 먹고, 딱 맞게 사고, 남김없이.',
+};

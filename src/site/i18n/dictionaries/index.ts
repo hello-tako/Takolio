@@ -2,13 +2,11 @@ import type { SupportedLocale } from '../../../shared/locales';
 import type { SiteDictionary } from '../types';
 import { viDictionary } from './vi';
 import { enDictionary } from './en';
-import {
-  itDictionary,
-  jaDictionary,
-  koDictionary,
-  thDictionary,
-  zhDictionary,
-} from './tier2';
+import { jaDictionary } from './ja';
+import { koDictionary } from './ko';
+import { thDictionary } from './th';
+import { zhDictionary } from './zh';
+import { itDictionary } from './it';
 
 const DICTIONARIES: Readonly<Record<SupportedLocale, SiteDictionary>> = {
   vi: viDictionary,
