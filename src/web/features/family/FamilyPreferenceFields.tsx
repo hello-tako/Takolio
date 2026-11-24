@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CANONICAL_INGREDIENTS } from '@frigo/domain';
 import type { FamilyPreferences } from '../../services/family-preferences';
-import { localizeIngredientName, useLocaleText } from '../../i18n/app-i18n';
+import { getLocalizedWeekdays, localizeIngredientName, useLocaleText } from '../../i18n/app-i18n';
 
 const ALLERGENS = [
   ['peanut', 'Đậu phộng', 'Peanuts'],
@@ -12,18 +12,6 @@ const ALLERGENS = [
   ['shellfish', 'Giáp xác / nhuyễn thể', 'Shellfish'],
   ['fish', 'Cá', 'Fish'],
 ] as const;
-
-const EN_WEEKDAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
-const EN_WEEKDAYS_FULL = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-] as const;
-const VI_WEEKDAYS_SHORT = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'] as const;
 
 function IngredientChoices({
   label,
@@ -110,7 +98,11 @@ export function FamilyPreferenceFields({
   onChange: (value: FamilyPreferences) => void;
   compact?: boolean;
 }) {
-  const { l, isVi } = useLocaleText();
+  const { l, locale } = useLocaleText();
+  const weekdaysShortMonFirst = getLocalizedWeekdays(locale, 'short');
+  const weekdaysFullMonFirst = getLocalizedWeekdays(locale, 'full');
+  const weekdaysShort = [weekdaysShortMonFirst[6], ...weekdaysShortMonFirst.slice(0, 6)] as const;
+  const weekdaysFull = [weekdaysFullMonFirst[6], ...weekdaysFullMonFirst.slice(0, 6)] as const;
   const change = <K extends keyof FamilyPreferences>(key: K, next: FamilyPreferences[K]) =>
     onChange({ ...value, [key]: next });
   const toggle = <T extends string | number>(items: T[], id: T, checked: boolean) =>
@@ -219,13 +211,13 @@ export function FamilyPreferenceFields({
         <fieldset>
           <legend>{l('Những ngày tự nấu', 'Days you cook at home')}</legend>
           <div className="family-choice-row family-days">
-            {(isVi ? VI_WEEKDAYS_SHORT : EN_WEEKDAYS_SHORT).map((day, index) => (
+            {weekdaysShort.map((day, index) => (
               <label key={index}>
                 <input
                   type="checkbox"
                   aria-label={l(
-                    `Tự nấu ${index === 0 ? 'Chủ nhật' : `Thứ ${index + 1}`}`,
-                    `Cook on ${EN_WEEKDAYS_FULL[index]}`,
+                    `Tự nấu ${weekdaysFull[index]}`,
+                    `Cook on ${weekdaysFull[index]}`,
                   )}
                   checked={value.cookingDays.includes(index)}
                   onChange={(event) =>

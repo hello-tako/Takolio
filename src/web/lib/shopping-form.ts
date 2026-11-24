@@ -1,6 +1,6 @@
 import type { SupportedLocale } from '../../shared/locales';
 import { getActiveAppLocale } from '../i18n/LocaleContext';
-import { localizeUnit } from '../i18n/app-i18n';
+import { getActiveBcp47, localizeUnit, lSync, translateEnForLocale } from '../i18n/app-i18n';
 
 export const SHOPPING_UNITS = [
   { value: 'piece', label: 'Cái / quả / bìa' },
@@ -25,7 +25,15 @@ export const SHOPPING_UNITS_EN = [
 ] as const;
 
 export function getShoppingUnits(locale: SupportedLocale = getActiveAppLocale()) {
-  return locale === 'vi' ? SHOPPING_UNITS : SHOPPING_UNITS_EN;
+  if (locale === 'vi') return SHOPPING_UNITS;
+  if (locale === 'en') return SHOPPING_UNITS_EN;
+  return SHOPPING_UNITS_EN.map((entry) => {
+    const translated = translateEnForLocale(entry.label, locale);
+    return {
+      value: entry.value,
+      label: translated !== entry.label ? translated : localizeUnit(entry.value, locale),
+    };
+  });
 }
 
 export function parseShoppingForm(name: string, quantity: string, unit: string) {
@@ -62,20 +70,13 @@ export function shoppingQuantity(
   locale: SupportedLocale = getActiveAppLocale(),
 ) {
   const isVi = locale === 'vi';
-  const labels: Record<string, string> = isVi
-    ? {
-        piece: 'cái / quả / bìa',
-        bunch: 'bó',
-        pack: 'gói',
-        slice: 'lát',
-      }
-    : {
-        piece: 'pcs',
-        bunch: 'bunch',
-        pack: 'pack',
-        slice: 'slice',
-      };
-  const unitLabel = labels[unit] ?? (isVi ? unit : localizeUnit(unit, locale));
+  const viLabels: Record<string, string> = {
+    piece: 'cái / quả / bìa',
+    bunch: 'bó',
+    pack: 'gói',
+    slice: 'lát',
+  };
+  const unitLabel = isVi ? (viLabels[unit] ?? unit) : localizeUnit(unit, locale);
   if (countedUnits.has(unit)) {
     const whole = Math.floor(quantity);
     const remainder = quantity - whole;
@@ -95,8 +96,8 @@ export function shoppingQuantity(
           useGrouping: false,
           notation: quantity < 1e-6 ? 'scientific' : 'standard',
         };
-  const displayed = new Intl.NumberFormat(isVi ? 'vi-VN' : 'en-US', options).format(quantity);
+  const displayed = new Intl.NumberFormat(getActiveBcp47(locale), options).format(quantity);
   const rounded = Number(new Intl.NumberFormat('en-US', options).format(quantity));
-  const approxPrefix = isVi ? 'Khoảng ' : 'About ';
+  const approxPrefix = `${lSync('Khoảng', 'About', locale)} `;
   return `${rounded === quantity ? '' : approxPrefix}${displayed} ${unitLabel}`;
 }

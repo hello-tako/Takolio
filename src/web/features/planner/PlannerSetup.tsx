@@ -21,7 +21,32 @@ import type { usePlanner } from './usePlanner';
 import { isMealCompositionEnabled } from './composition';
 import { LegacyPlannerSetup } from './LegacyPlannerSetup';
 import { PlannerGeneratingStage } from '../../vnext/components/Skeletons';
-import { localizeErrorText } from '../../i18n/app-i18n';
+import { lPlanner, localizeErrorText, useLocaleText } from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
+
+const REGION_LABEL_PAIRS: Readonly<Record<string, readonly [string, string]>> = {
+  bac: ['Miền Bắc', 'North VN'],
+  trung: ['Miền Trung', 'Central VN'],
+  nam: ['Miền Nam', 'South VN'],
+  jp_kanto: ['Kanto (Nhật)', 'Kanto (JP)'],
+  jp_kansai: ['Kansai (Nhật)', 'Kansai (JP)'],
+  jp_kyushu: ['Kyushu (Nhật)', 'Kyushu (JP)'],
+  jp_hokkaido: ['Hokkaido (Nhật)', 'Hokkaido (JP)'],
+  eu_north: ['Bắc Âu', 'Northern Europe'],
+  eu_central: ['Trung Âu', 'Central Europe'],
+  eu_south: ['Nam Âu', 'Southern Europe'],
+  eu_west: ['Tây Âu', 'Western Europe'],
+};
+
+const ALLERGEN_LABEL_PAIRS: Readonly<Record<string, readonly [string, string]>> = {
+  peanut: ['đậu phộng', 'peanuts'],
+  milk: ['sữa', 'milk'],
+  egg: ['trứng', 'eggs'],
+  soy: ['đậu nành', 'soy'],
+  wheat: ['lúa mì', 'wheat'],
+  shellfish: ['giáp xác / nhuyễn thể', 'shellfish'],
+  fish: ['cá', 'fish'],
+};
 
 export const plannerInputClass =
   'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-base text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
@@ -44,7 +69,14 @@ function FamilyPlannerSetup({
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const pack = locale === 'vi' ? null : getLoadedLocalePack(appLocale === 'vi' ? 'en' : appLocale);
+  const t =
+    locale === 'vi'
+      ? plannerCopy.vi
+      : pack?.planner
+        ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+        : plannerCopy.en;
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const recipe = CatalogIdSchema.safeParse(params.get('recipe'));
@@ -166,54 +198,18 @@ function FamilyPlannerSetup({
       navigate(destination, { replace: true });
     }
   }
-  const regionLabels: Record<string, string> =
-    locale === 'vi'
-      ? {
-          bac: 'Miền Bắc',
-          trung: 'Miền Trung',
-          nam: 'Miền Nam',
-          jp_kanto: 'Kanto (Nhật)',
-          jp_kansai: 'Kansai (Nhật)',
-          jp_kyushu: 'Kyushu (Nhật)',
-          jp_hokkaido: 'Hokkaido (Nhật)',
-          eu_north: 'Bắc Âu',
-          eu_central: 'Trung Âu',
-          eu_south: 'Nam Âu',
-          eu_west: 'Tây Âu',
-        }
-      : {
-          bac: 'North VN',
-          trung: 'Central VN',
-          nam: 'South VN',
-          jp_kanto: 'Kanto (JP)',
-          jp_kansai: 'Kansai (JP)',
-          jp_kyushu: 'Kyushu (JP)',
-          jp_hokkaido: 'Hokkaido (JP)',
-          eu_north: 'Northern Europe',
-          eu_central: 'Central Europe',
-          eu_south: 'Southern Europe',
-          eu_west: 'Western Europe',
-        };
-  const allergenLabels: Record<string, string> =
-    locale === 'vi'
-      ? {
-          peanut: 'đậu phộng',
-          milk: 'sữa',
-          egg: 'trứng',
-          soy: 'đậu nành',
-          wheat: 'lúa mì',
-          shellfish: 'giáp xác / nhuyễn thể',
-          fish: 'cá',
-        }
-      : {
-          peanut: 'peanuts',
-          milk: 'milk',
-          egg: 'eggs',
-          soy: 'soy',
-          wheat: 'wheat',
-          shellfish: 'shellfish',
-          fish: 'fish',
-        };
+  const regionLabels: Record<string, string> = Object.fromEntries(
+    Object.entries(REGION_LABEL_PAIRS).map(([key, [viLabel, enLabel]]) => [
+      key,
+      lPlanner(locale, viLabel, enLabel),
+    ]),
+  );
+  const allergenLabels: Record<string, string> = Object.fromEntries(
+    Object.entries(ALLERGEN_LABEL_PAIRS).map(([key, [viLabel, enLabel]]) => [
+      key,
+      lPlanner(locale, viLabel, enLabel),
+    ]),
+  );
   const appliedAllergens = (draft?.allergens ?? []).map((id) => allergenLabels[id] ?? id);
   const appliedAvoid = (draft?.forbiddenIngredientIds ?? []).map((id) =>
     ingredientLabel(id, locale),
@@ -224,23 +220,25 @@ function FamilyPlannerSetup({
         <div className="family-setup-heading">
           <CalendarDays size={24} aria-hidden="true" />
           <div>
-            <h2>{locale === 'vi' ? 'Lên thực đơn cho nhà mình' : 'Plan the meals you cook'}</h2>
+            <h2>{lPlanner(locale, 'Lên thực đơn cho nhà mình', 'Plan the meals you cook')}</h2>
             <p>
-              {locale === 'vi'
-                ? selectionMode === 'manual'
-                  ? 'Tạo lịch trống, rồi chọn món cho từng bữa.'
-                  : 'Takolio gợi ý cả bữa theo thói quen đã chọn.'
-                : selectionMode === 'manual'
-                  ? 'Choose your cooking calendar, then fill each meal with your own dishes.'
-                  : 'Get a complete meal based on your habits.'}
+              {selectionMode === 'manual'
+                ? lPlanner(
+                    locale,
+                    'Tạo lịch trống, rồi chọn món cho từng bữa.',
+                    'Choose your cooking calendar, then fill each meal with your own dishes.',
+                  )
+                : lPlanner(
+                    locale,
+                    'Takolio gợi ý cả bữa theo thói quen đã chọn.',
+                    'Get a complete meal based on your habits.',
+                  )}
             </p>
           </div>
         </div>
         {preferences.isPending ? (
           <InlineLoading
-            label={
-              locale === 'vi' ? 'Đang tải thói quen gia đình…' : 'Loading household habits…'
-            }
+            label={lPlanner(locale, 'Đang tải thói quen gia đình…', 'Loading household habits…')}
           />
         ) : preferences.isError ? (
           <InlineError
@@ -251,6 +249,8 @@ function FamilyPlannerSetup({
                 : localizeErrorText(
                     preferences.error,
                     'Could not load household habits. Please try again.',
+                    undefined,
+                    appLocale === 'vi' ? 'en' : appLocale,
                   )
             }
             onRetry={() => void preferences.refetch()}
@@ -259,7 +259,7 @@ function FamilyPlannerSetup({
           draft && (
             <form onSubmit={submit} className="family-settings-form">
               <fieldset disabled={!!model.busy}>
-                <legend>{locale === 'vi' ? 'Cách lên thực đơn' : 'How to plan'}</legend>
+                <legend>{lPlanner(locale, 'Cách lên thực đơn', 'How to plan')}</legend>
                 <div className="family-plan-mode">
                   <label data-selected={selectionMode === 'auto'}>
                     <input
@@ -271,12 +271,14 @@ function FamilyPlannerSetup({
                     />
                     <span>
                       <strong>
-                        {locale === 'vi' ? 'Takolio gợi ý cả bữa' : 'Let Takolio suggest meals'}
+                        {lPlanner(locale, 'Takolio gợi ý cả bữa', 'Let Takolio suggest meals')}
                       </strong>
                       <small>
-                        {locale === 'vi'
-                          ? 'Xếp món chính, rau/phụ, canh và cơm theo kiểu bữa đã chọn.'
-                          : 'Get complete dish groups based on your household habits.'}
+                        {lPlanner(
+                          locale,
+                          'Xếp món chính, rau/phụ, canh và cơm theo kiểu bữa đã chọn.',
+                          'Get complete dish groups based on your household habits.',
+                        )}
                       </small>
                     </span>
                   </label>
@@ -290,21 +292,25 @@ function FamilyPlannerSetup({
                     />
                     <span>
                       <strong>
-                        {locale === 'vi' ? 'Tự chọn món cho từng bữa' : 'Choose each dish yourself'}
+                        {lPlanner(locale, 'Tự chọn món cho từng bữa', 'Choose each dish yourself')}
                       </strong>
                       <small>
-                        {locale === 'vi'
-                          ? 'Chọn món từ tủ lạnh, tìm kiếm hoặc món đã lưu.'
-                          : 'Start with an empty calendar and use your fridge or saved dishes.'}
+                        {lPlanner(
+                          locale,
+                          'Chọn món từ tủ lạnh, tìm kiếm hoặc món đã lưu.',
+                          'Start with an empty calendar and use your fridge or saved dishes.',
+                        )}
                       </small>
                     </span>
                   </label>
                 </div>
                 {recipeId && (
                   <p className="planning-note">
-                    {locale === 'vi'
-                      ? 'Món bạn vừa chọn sẽ được mở để xem lượng và đặt vào bữa sau khi tạo lịch.'
-                      : 'Your selected dish will open for quantity review after creating the calendar.'}
+                    {lPlanner(
+                      locale,
+                      'Món bạn vừa chọn sẽ được mở để xem lượng và đặt vào bữa sau khi tạo lịch.',
+                      'Your selected dish will open for quantity review after creating the calendar.',
+                    )}
                   </p>
                 )}
                 <div className="family-field-pair">
@@ -350,29 +356,25 @@ function FamilyPlannerSetup({
                 >
                   <summary>
                     <span>
-                      {locale === 'vi'
-                        ? 'Thói quen bữa nhà · Chỉnh lại'
-                        : 'Household habits · Edit'}
+                      {lPlanner(
+                        locale,
+                        'Thói quen bữa nhà · Chỉnh lại',
+                        'Household habits · Edit',
+                      )}
                     </span>
                     <span className="family-plan-habit-summary">
                       {draft.cookingMealTypes.map((meal) => t[meal]).join(', ')}
                       {' · '}
-                      {draft.cookingDays.length} {locale === 'vi' ? 'ngày/tuần' : 'days/week'}
+                      {draft.cookingDays.length} {lPlanner(locale, 'ngày/tuần', 'days/week')}
                       {' · '}
                       {draft.preferredRegions.map((region) => regionLabels[region]).join(', ') ||
-                        (locale === 'vi' ? 'Món Việt mọi vùng' : 'All Vietnamese regions')}
+                        lPlanner(locale, 'Món Việt mọi vùng', 'All Vietnamese regions')}
                       {' · '}
                       {draft.mealStyle === 'family'
-                        ? locale === 'vi'
-                          ? 'bữa cơm gia đình'
-                          : 'family meals'
+                        ? lPlanner(locale, 'bữa cơm gia đình', 'family meals')
                         : draft.mealStyle === 'quick'
-                          ? locale === 'vi'
-                            ? 'nhanh gọn'
-                            : 'quick meals'
-                          : locale === 'vi'
-                            ? 'một món trọn bữa'
-                            : 'one-dish meals'}
+                          ? lPlanner(locale, 'nhanh gọn', 'quick meals')
+                          : lPlanner(locale, 'một món trọn bữa', 'one-dish meals')}
                       {' · '}
                       {mode === 'shopping_allowed' ? t.allowShopping : t.cookNow}
                     </span>
@@ -380,15 +382,19 @@ function FamilyPlannerSetup({
                   <FamilyPreferenceFields value={draft} onChange={setDraft} />
                 </details>
                 <p className="planning-note">
-                  {locale === 'vi'
-                    ? `Dị ứng đã chọn (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'chưa chọn'}. Nguyên liệu bắt buộc tránh (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'chưa chọn'}.`
-                    : `Selected allergies (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'none selected'}. Forbidden ingredients (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'none selected'}.`}
+                  {lPlanner(
+                    locale,
+                    `Dị ứng đã chọn (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'chưa chọn'}. Nguyên liệu bắt buộc tránh (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'chưa chọn'}.`,
+                    `Selected allergies (${appliedAllergens.length}): ${appliedAllergens.join(', ') || 'none selected'}. Forbidden ingredients (${appliedAvoid.length}): ${appliedAvoid.join(', ') || 'none selected'}.`,
+                  )}
                 </p>
                 <details className="family-extra">
                   <summary>
-                    {locale === 'vi'
-                      ? 'Nguyên liệu và giới hạn bắt buộc'
-                      : 'Ingredients and hard limits'}
+                    {lPlanner(
+                      locale,
+                      'Nguyên liệu và giới hạn bắt buộc',
+                      'Ingredients and hard limits',
+                    )}
                   </summary>
                   <label>
                     {t.mode}
@@ -401,9 +407,11 @@ function FamilyPlannerSetup({
                     </select>
                   </label>
                   <label>
-                    {locale === 'vi'
-                      ? 'Giới hạn thời gian bắt buộc (không cần nhập nếu linh hoạt)'
-                      : 'Hard cooking time limit (leave blank if flexible)'}
+                    {lPlanner(
+                      locale,
+                      'Giới hạn thời gian bắt buộc (không cần nhập nếu linh hoạt)',
+                      'Hard cooking time limit (leave blank if flexible)',
+                    )}
                     <input
                       type="number"
                       min={1}
@@ -413,30 +421,38 @@ function FamilyPlannerSetup({
                     />
                   </label>
                   <Link className="planning-text-link" to="/me/preferences">
-                    {locale === 'vi'
-                      ? 'Kiểm tra hạn chế thực phẩm của gia đình'
-                      : 'Review household dietary restrictions'}
+                    {lPlanner(
+                      locale,
+                      'Kiểm tra hạn chế thực phẩm của gia đình',
+                      'Review household dietary restrictions',
+                    )}
                   </Link>
                   <p>
-                    {locale === 'vi'
-                      ? 'Thời gian mong muốn giúp chọn món. Giới hạn bắt buộc loại bữa không có đủ dữ liệu hoặc cần lâu hơn.'
-                      : 'Preferred time guides dish selection. A hard limit excludes meals without enough data or taking longer.'}
+                    {lPlanner(
+                      locale,
+                      'Thời gian mong muốn giúp chọn món. Giới hạn bắt buộc loại bữa không có đủ dữ liệu hoặc cần lâu hơn.',
+                      'Preferred time guides dish selection. A hard limit excludes meals without enough data or taking longer.',
+                    )}
                   </p>
                 </details>
               </fieldset>
               {invalid && (
                 <p ref={errorRef} tabIndex={-1} role="alert" className="planning-error">
-                  {locale === 'vi'
-                    ? 'Chọn ít nhất một bữa và một ngày tự nấu trong khoảng kế hoạch; kiểm tra số người và thời gian.'
-                    : 'Select at least one meal and one cooking day in the planning range; check servings and time.'}
+                  {lPlanner(
+                    locale,
+                    'Chọn ít nhất một bữa và một ngày tự nấu trong khoảng kế hoạch; kiểm tra số người và thời gian.',
+                    'Select at least one meal and one cooking day in the planning range; check servings and time.',
+                  )}
                 </p>
               )}
               {profileConflict && (
                 <div className="planning-error">
                   <p role="alert">
-                    {locale === 'vi'
-                      ? 'Thói quen đã đổi ở thiết bị khác. Tải bản mới và kiểm tra trước khi tạo thực đơn.'
-                      : 'Household habits changed on another device. Load the latest version and review before creating a plan.'}
+                    {lPlanner(
+                      locale,
+                      'Thói quen đã đổi ở thiết bị khác. Tải bản mới và kiểm tra trước khi tạo thực đơn.',
+                      'Household habits changed on another device. Load the latest version and review before creating a plan.',
+                    )}
                   </p>
                   <button
                     type="button"
@@ -451,7 +467,7 @@ function FamilyPlannerSetup({
                       }
                     }}
                   >
-                    {locale === 'vi' ? 'Tải thói quen mới nhất' : 'Load latest habits'}
+                    {lPlanner(locale, 'Tải thói quen mới nhất', 'Load latest habits')}
                   </button>
                 </div>
               )}
@@ -459,14 +475,16 @@ function FamilyPlannerSetup({
                 {timedOut
                   ? t.retry
                   : selectionMode === 'manual'
-                    ? locale === 'vi'
-                      ? 'Tạo lịch trống để tự chọn món'
-                      : 'Create an empty meal calendar'
+                    ? lPlanner(
+                        locale,
+                        'Tạo lịch trống để tự chọn món',
+                        'Create an empty meal calendar',
+                      )
                     : t.generate}
               </Button>
               {timedOut && (
                 <Link className="planning-text-link" to="/planner">
-                  {locale === 'vi' ? 'Kiểm tra thực đơn hiện tại' : 'Check your current plan'}
+                  {lPlanner(locale, 'Kiểm tra thực đơn hiện tại', 'Check your current plan')}
                 </Link>
               )}
               {model.busy && (
@@ -474,18 +492,22 @@ function FamilyPlannerSetup({
                   <PlannerGeneratingStage
                     subtitle={
                       selectionMode === 'manual'
-                        ? locale === 'vi'
-                          ? 'Đang tạo lịch nấu trống theo các ngày bạn chọn…'
-                          : 'Creating your meal calendar…'
+                        ? lPlanner(
+                            locale,
+                            'Đang tạo lịch nấu trống theo các ngày bạn chọn…',
+                            'Creating your meal calendar…',
+                          )
                         : t.generating
                     }
                   />
                 </div>
               )}
               <p className="planning-note">
-                {locale === 'vi'
-                  ? 'Thói quen được lưu cho lần tạo thực đơn tiếp theo.'
-                  : 'Your habits are saved for future meal plans.'}
+                {lPlanner(
+                  locale,
+                  'Thói quen được lưu cho lần tạo thực đơn tiếp theo.',
+                  'Your habits are saved for future meal plans.',
+                )}
               </p>
             </form>
           )
@@ -493,25 +515,31 @@ function FamilyPlannerSetup({
       </Card>
       <aside className="planning-setup-context">
         <p className="planning-eyebrow">
-          {locale === 'vi' ? 'BỮA NHÀ, THEO NHỊP NHÀ MÌNH' : 'HOME MEALS, AT YOUR PACE'}
+          {lPlanner(locale, 'BỮA NHÀ, THEO NHỊP NHÀ MÌNH', 'HOME MEALS, AT YOUR PACE')}
         </p>
         <h2>
-          {locale === 'vi' ? 'Một lần xếp. Nhẹ cả tuần.' : 'Plan once. Breeze through the week.'}
+          {lPlanner(locale, 'Một lần xếp. Nhẹ cả tuần.', 'Plan once. Breeze through the week.')}
         </h2>
         <p>
-          {locale === 'vi'
-            ? 'Chọn lịch nấu và số người ăn. Takolio xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu còn thiếu vào danh sách đi chợ.'
-            : 'Choose your cooking schedule and servings. Takolio plans dishes in your household style and gathers missing ingredients into your shopping list.'}
+          {lPlanner(
+            locale,
+            'Chọn lịch nấu và số người ăn. Takolio xếp theo kiểu bữa nhà mình, rồi gom phần nguyên liệu còn thiếu vào danh sách đi chợ.',
+            'Choose your cooking schedule and servings. Takolio plans dishes in your household style and gathers missing ingredients into your shopping list.',
+          )}
         </p>
         <p>
-          {locale === 'vi'
-            ? 'Ưu tiên món Việt và khẩu vị vùng đã chọn. Bạn tự quyết định số bữa đổi vị quốc tế.'
-            : 'Prioritizes your selected regions and cuisine preferences. You decide how many international meals to include.'}
+          {lPlanner(
+            locale,
+            'Ưu tiên món Việt và khẩu vị vùng đã chọn. Bạn tự quyết định số bữa đổi vị quốc tế.',
+            'Prioritizes your selected regions and cuisine preferences. You decide how many international meals to include.',
+          )}
         </p>
         <p className="planning-note">
-          {locale === 'vi'
-            ? 'Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takolio sẽ báo phần còn thiếu dữ liệu.'
-            : 'Complete dish groups do not certify nutrition or allergy safety. Takolio flags any missing data.'}
+          {lPlanner(
+            locale,
+            'Đủ nhóm món không đồng nghĩa đã xác minh dinh dưỡng hoặc an toàn dị ứng. Takolio sẽ báo phần còn thiếu dữ liệu.',
+            'Complete dish groups do not certify nutrition or allergy safety. Takolio flags any missing data.',
+          )}
         </p>
       </aside>
     </div>

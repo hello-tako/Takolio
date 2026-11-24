@@ -572,15 +572,9 @@ export const C03InventoryPilot: React.FC = () => {
               {l('Không có nguyên liệu khớp bộ lọc hiện tại', 'No ingredients match this filter')}
             </h2>
             <p className="text-sm text-[var(--tkv-ink-secondary)] tabular-nums">
-              {locale === 'vi' ? (
-                <>
-                  Tủ lạnh của bạn vẫn đang có <strong>{items.length}</strong> nguyên liệu ở các nhóm khác.
-                </>
-              ) : (
-                <>
-                  Your fridge still has <strong>{items.length}</strong>{' '}
-                  {items.length === 1 ? 'item' : 'items'} in other categories.
-                </>
+              {l(
+                `Tủ lạnh của bạn vẫn đang có ${items.length} nguyên liệu ở các nhóm khác.`,
+                `Your fridge still has ${items.length} ${items.length === 1 ? 'item' : 'items'} in other categories.`,
               )}
             </p>
             <TkvButton

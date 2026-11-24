@@ -10,6 +10,12 @@ import {
   LOCALE_CATALOG,
   type SupportedLocale,
 } from '../../shared/locales';
+import { RECIPE_TITLE_EN_BY_SLUG } from '../../shared/recipe-titles-en';
+import { itIngredients, itRecipeTitles } from '../../web/i18n/packs/it-recipes';
+import { JA_INGREDIENTS, JA_RECIPE_TITLES } from '../../web/i18n/packs/ja-recipes';
+import { koIngredients, koRecipeTitles } from '../../web/i18n/packs/ko-recipes';
+import { thIngredients, thRecipeTitles } from '../../web/i18n/packs/th-recipes';
+import { ZH_INGREDIENTS, ZH_RECIPE_TITLES } from '../../web/i18n/packs/zh-recipes';
 import { getSiteDictionary } from '../i18n/dictionaries';
 import type { CuisineKey } from '../i18n/types';
 import type { SiteRecipeIndexEntry, SiteSsrPayload } from '../types/ssr-data';
@@ -26,11 +32,41 @@ const CUISINE_ORDER: readonly CuisineKey[] = [
   'italian',
 ];
 
+const SITE_TITLES_BY_LOCALE: Readonly<Partial<Record<SupportedLocale, Readonly<Record<string, string>>>>> = {
+  en: RECIPE_TITLE_EN_BY_SLUG,
+  ja: JA_RECIPE_TITLES,
+  ko: koRecipeTitles,
+  th: thRecipeTitles,
+  zh: ZH_RECIPE_TITLES,
+  it: itRecipeTitles,
+};
+
+const SITE_INGREDIENTS_BY_LOCALE: Readonly<Partial<Record<SupportedLocale, Readonly<Record<string, string>>>>> = {
+  ja: JA_INGREDIENTS,
+  ko: koIngredients,
+  th: thIngredients,
+  zh: ZH_INGREDIENTS,
+  it: itIngredients,
+};
+
 function recipeTitleForLocale(
-  item: Pick<SiteRecipeIndexEntry, 'titleVi' | 'titleEn'>,
+  item: Pick<SiteRecipeIndexEntry, 'titleVi' | 'titleEn'> & { slug?: string },
   locale: SupportedLocale,
 ): string {
-  return locale === 'vi' ? item.titleVi : item.titleEn;
+  if (locale === 'vi') return item.titleVi;
+  const localized = item.slug ? SITE_TITLES_BY_LOCALE[locale]?.[item.slug] : undefined;
+  return localized ?? item.titleEn;
+}
+
+function recipeIngredientForLocale(
+  ing: { ingredientId: string; nameVi: string; nameEn: string },
+  locale: SupportedLocale,
+): string {
+  if (locale === 'vi') return ing.nameVi;
+  if (locale === 'en') return ing.nameEn;
+  const map = SITE_INGREDIENTS_BY_LOCALE[locale];
+  if (!map) return ing.nameEn;
+  return map[ing.ingredientId.toUpperCase()] ?? map[ing.nameEn.toLowerCase()] ?? ing.nameEn;
 }
 
 function recipeDescForLocale(
@@ -345,8 +381,8 @@ export const RecipeDetailPage: React.FC<{
     );
   }
 
-  const title = locale === 'vi' ? recipe.titleVi : recipe.titleEn;
-  const description = locale === 'vi' ? recipe.descriptionVi : recipe.descriptionEn;
+  const title = recipeTitleForLocale(recipe, locale);
+  const description = recipeDescForLocale(recipe, locale);
   const scaleFactor = servings / Math.max(1, recipe.servings);
 
   return (
@@ -480,7 +516,7 @@ export const RecipeDetailPage: React.FC<{
                   unitSystem,
                   locale,
                 );
-                const ingName = locale === 'vi' ? ing.nameVi : ing.nameEn;
+                const ingName = recipeIngredientForLocale(ing, locale);
                 return (
                   <li
                     key={`${ing.ingredientId}-${idx}`}

@@ -7,6 +7,8 @@ import { mealPlanningApi } from '../../services/meal-planning';
 import { plannerCopy, type PlannerLocale } from './copy';
 import { buildPlanningIntent, localDate } from './intent';
 import type { usePlanner } from './usePlanner';
+import { lPlanner, useLocaleText } from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
 
 export const plannerInputClass =
   'planning-input block w-full min-h-11 mt-1 rounded-xl border border-semantic-border-strong bg-white p-3 text-base sm:text-sm text-semantic-text-primary focus:ring-2 focus:ring-semantic-focus focus:outline-none';
@@ -18,7 +20,14 @@ export function LegacyPlannerSetup({
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
+  const { locale: appLocale } = useLocaleText();
+  const pack = locale === 'vi' ? null : getLoadedLocalePack(appLocale === 'vi' ? 'en' : appLocale);
+  const t =
+    locale === 'vi'
+      ? plannerCopy.vi
+      : pack?.planner
+        ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+        : plannerCopy.en;
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(() => {
     const next = new Date();
@@ -167,7 +176,7 @@ export function LegacyPlannerSetup({
             </label>
           </fieldset>
           <details className="planning-setup-details">
-            <summary>{locale === 'vi' ? 'Điều cần biết về kế hoạch' : 'About your plan'}</summary>
+            <summary>{lPlanner(locale, 'Điều cần biết về kế hoạch', 'About your plan')}</summary>
             <p>{t.future}</p>
             <p>{t.policy}</p>
             <p>{t.timezone}</p>
@@ -188,14 +197,16 @@ export function LegacyPlannerSetup({
         </form>
       </Card>
       <aside className="planning-setup-context">
-        <p className="planning-eyebrow">{locale === 'vi' ? 'TUẦN CỦA BẠN' : 'YOUR WEEK'}</p>
+        <p className="planning-eyebrow">{lPlanner(locale, 'TUẦN CỦA BẠN', 'YOUR WEEK')}</p>
         <h2>
-          {locale === 'vi' ? 'Chọn bữa trước. Đi chợ sau.' : 'Choose meals first. Shop next.'}
+          {lPlanner(locale, 'Chọn bữa trước. Đi chợ sau.', 'Choose meals first. Shop next.')}
         </h2>
         <p>
-          {locale === 'vi'
-            ? 'Chế độ hiện tại gợi ý một món chính cho mỗi bữa. Bạn có thể điều chỉnh món trước khi đi chợ.'
-            : 'The current mode suggests one main dish for each meal. Adjust your dishes before shopping.'}
+          {lPlanner(
+            locale,
+            'Chế độ hiện tại gợi ý một món chính cho mỗi bữa. Bạn có thể điều chỉnh món trước khi đi chợ.',
+            'The current mode suggests one main dish for each meal. Adjust your dishes before shopping.',
+          )}
         </p>
         <dl>
           <div>
@@ -203,7 +214,7 @@ export function LegacyPlannerSetup({
             <dd>{days}</dd>
           </div>
           <div>
-            <dt>{locale === 'vi' ? 'Tổng số bữa' : 'Total meals'}</dt>
+            <dt>{lPlanner(locale, 'Tổng số bữa', 'Total meals')}</dt>
             <dd>{meals.length * days}</dd>
           </div>
           <div>

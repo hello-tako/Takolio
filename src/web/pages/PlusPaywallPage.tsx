@@ -12,14 +12,15 @@ import { ApiError } from '../services/http';
 import type { CreatedPaymentIntent, PlusPlan, PlusPrice } from '../../shared/payment';
 import { Check, Sparkles, ArrowRight, LogIn, ShieldCheck } from 'lucide-react';
 import { clsx } from 'clsx';
-import { lSync, useLocaleText } from '../i18n/app-i18n';
+import type { SupportedLocale } from '../../shared/locales';
+import { getActiveBcp47, lSync, useLocaleText } from '../i18n/app-i18n';
 
 function planName(plan: PlusPlan, l: (vi: string, en: string) => string): string {
   return plan === 'annual' ? l('Gói 1 Năm', 'Annual Plan') : l('Gói 1 Tháng', 'Monthly Plan');
 }
 
-function formatPrice(price: PlusPrice, isVi: boolean): string {
-  return `${price.amountVnd.toLocaleString(isVi ? 'vi-VN' : 'en-US')} ${price.currency}`;
+function formatPrice(price: PlusPrice, locale: SupportedLocale): string {
+  return `${price.amountVnd.toLocaleString(getActiveBcp47(locale))} ${price.currency}`;
 }
 
 export interface PlusPaywallPageProps {
@@ -31,7 +32,7 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
   embedded = false,
   initialPlan = 'annual',
 }) => {
-  const { l, isVi } = useLocaleText();
+  const { l, locale } = useLocaleText();
   const navigate = useNavigate();
   const userId = useAuthStore((s) => s.userId);
   const householdId = useAuthStore((s) => s.householdId);
@@ -408,7 +409,7 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
                     )}
                   </div>
                   <p className="font-heading font-extrabold tabular-nums text-2xl text-semantic-text-primary mt-1.5">
-                    {formatPrice(price, isVi)}
+                    {formatPrice(price, locale)}
                   </p>
                   <p className="text-xs text-semantic-text-secondary mt-1">
                     {isAnnual
@@ -443,8 +444,8 @@ export const PlusPaywallPage: React.FC<PlusPaywallPageProps> = ({
                     ? l('Gia hạn hội viên', 'Renew membership')
                     : selectedPrice
                       ? l(
-                          `Nâng cấp ngay với ${formatPrice(selectedPrice, isVi)}`,
-                          `Upgrade now for ${formatPrice(selectedPrice, isVi)}`,
+                          `Nâng cấp ngay với ${formatPrice(selectedPrice, locale)}`,
+                          `Upgrade now for ${formatPrice(selectedPrice, locale)}`,
                         )
                       : l('Đang tải bảng giá…', 'Loading prices…')}
               </span>

@@ -39,7 +39,7 @@ import type { PlannerLocale } from './copy';
 import type { usePlanner } from './usePlanner';
 import type { SupportedLocale } from '../../../shared/locales';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
-import { useLocaleText } from '../../i18n/app-i18n';
+import { lPlanner, useLocaleText } from '../../i18n/app-i18n';
 
 // The meal page remounts on every plan revision; this carries focus and the announcement across it.
 let pendingFocus: { id: string; message: string } | null = null;
@@ -101,9 +101,11 @@ export function MealComposer({
     if (isPlannerSlotElapsed(plan, slotId)) {
       setPicker(null);
       setMessage(
-        locale === 'vi'
-          ? 'Bữa này đã qua giờ dự kiến. Chọn một bữa sắp tới để chỉnh món.'
-          : 'This meal has passed. Choose a future meal to edit dishes.',
+        lPlanner(
+          locale,
+          'Bữa này đã qua giờ dự kiến. Chọn một bữa sắp tới để chỉnh món.',
+          'This meal has passed. Choose a future meal to edit dishes.',
+        ),
       );
       return;
     }
@@ -151,9 +153,11 @@ export function MealComposer({
         {revisionChanged ? (
           <div role="status" className="planning-notice">
             <p>
-              {locale === 'vi'
-                ? 'Thực đơn đã có phiên bản mới. Tải lại trước khi chọn món.'
-                : 'A newer plan is available. Load it before choosing dishes.'}
+              {lPlanner(
+                locale,
+                'Thực đơn đã có phiên bản mới. Tải lại trước khi chọn món.',
+                'A newer plan is available. Load it before choosing dishes.',
+              )}
             </p>
             <Button
               className="mt-3"
@@ -163,7 +167,7 @@ export function MealComposer({
                 void model.perform('refresh', () => model.loadPlan(plan.id), model.replacePlan)
               }
             >
-              {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+              {lPlanner(locale, 'Tải thực đơn mới nhất', 'Load latest plan')}
             </Button>
           </div>
         ) : (
@@ -200,20 +204,22 @@ export function MealComposer({
       <p className="text-xs text-semantic-text-muted mt-1">
         {past
           ? plannerSlotInstant(plan, slotId) === undefined
-            ? locale === 'vi'
-              ? 'Chưa xác nhận được giờ của bữa này. Tải lại thực đơn trước khi chỉnh món.'
-              : 'This meal time could not be confirmed. Reload the plan before editing.'
-            : locale === 'vi'
-              ? 'Bữa này đã qua giờ dự kiến nên được giữ nguyên. Bạn vẫn có thể chỉnh các bữa sắp tới.'
-              : 'This scheduled meal has passed and stays unchanged. You can still edit future meals.'
+            ? lPlanner(
+                locale,
+                'Chưa xác nhận được giờ của bữa này. Tải lại thực đơn trước khi chỉnh món.',
+                'This meal time could not be confirmed. Reload the plan before editing.',
+              )
+            : lPlanner(
+                locale,
+                'Bữa này đã qua giờ dự kiến nên được giữ nguyên. Bạn vẫn có thể chỉnh các bữa sắp tới.',
+                'This scheduled meal has passed and stays unchanged. You can still edit future meals.',
+              )
           : c.editHint}
       </p>
       <p className="planning-composer-state" role="status">
         {compositionState(composition) === 'complete' &&
         composition.warnings.includes('MANUAL_ONE_DISH_MEAL')
-          ? locale === 'vi'
-            ? 'Đã xếp món cho bữa gọn'
-            : 'Your one-dish meal is ready'
+          ? lPlanner(locale, 'Đã xếp món cho bữa gọn', 'Your one-dish meal is ready')
           : compositionStateCopy[locale][compositionState(composition)]}
       </p>
       <FamilyPlanNotice
@@ -229,13 +235,17 @@ export function MealComposer({
         <div className="planning-empty-composition">
           <p className="font-semibold">{c.emptyMeal}</p>
           <p className="text-sm text-semantic-text-secondary">
-            {locale === 'vi'
-              ? past
-                ? 'Bữa đã qua vẫn được giữ trống. Chọn một bữa sắp tới để xếp món.'
-                : 'Chọn một món đầu tiên, sau đó Takolio sẽ cho biết nhóm món và lượng còn thiếu.'
-              : past
-                ? 'This past meal remains empty. Choose a future meal to plan dishes.'
-                : 'Choose a first dish, then Takolio will show dish groups and quantities still needed.'}
+            {past
+              ? lPlanner(
+                  locale,
+                  'Bữa đã qua vẫn được giữ trống. Chọn một bữa sắp tới để xếp món.',
+                  'This past meal remains empty. Choose a future meal to plan dishes.',
+                )
+              : lPlanner(
+                  locale,
+                  'Chọn một món đầu tiên, sau đó Takolio sẽ cho biết nhóm món và lượng còn thiếu.',
+                  'Choose a first dish, then Takolio will show dish groups and quantities still needed.',
+                )}
           </p>
         </div>
       )}
@@ -514,7 +524,7 @@ function ComponentRow({
         <IngredientCoverage
           assessment={assessment}
           locale={locale}
-          title={locale === 'vi' ? 'Xem lượng cho món này' : 'Review this dish quantities'}
+          title={lPlanner(locale, 'Xem lượng cho món này', 'Review this dish quantities')}
         />
       )}
       <div className="planning-component-primary-actions">
@@ -532,7 +542,7 @@ function ComponentRow({
       </div>
       <details className="mt-2 group">
         <summary className="text-xs text-semantic-text-primary underline cursor-pointer min-h-11 inline-flex items-center">
-          {c.remove} · {c.role} · {locale === 'vi' ? 'Sắp xếp' : 'Reorder'}
+          {c.remove} · {c.role} · {lPlanner(locale, 'Sắp xếp', 'Reorder')}
         </summary>
         <div className="flex flex-wrap items-center gap-2 mt-2">
           {component.permittedRoles.length > 1 && (

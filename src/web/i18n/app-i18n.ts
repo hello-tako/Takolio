@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 import { CANONICAL_INGREDIENTS } from '@frigo/domain';
 import {
   convertStepTemperatures,
@@ -9,8 +9,17 @@ import {
   synthesizeEnglishSteps,
   translateIngredientNameToEn,
 } from '../../../packages/recipes/src/global-i18n';
-import type { SupportedLocale, UnitSystem } from '../../shared/locales';
+import { LOCALE_CATALOG, type SupportedLocale, type UnitSystem } from '../../shared/locales';
+import {
+  getCanonicalEnglishRecipeTitle,
+  resolveRecipeSlug,
+} from '../../shared/recipe-titles-en';
 import { getActiveAppLocale, getActiveUnitSystem, useAppLocale } from './LocaleContext';
+import {
+  getLoadedLocalePack,
+  getLocalePackVersion,
+  subscribeLocalePack,
+} from './packs/registry';
 
 const VIETNAMESE_DIACRITIC_RE =
   /[ăđơưĂĐƠƯảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/u;
@@ -20,28 +29,102 @@ export function containsVietnameseDiacritics(text: string): boolean {
 }
 
 /**
- * Synchronous locale picker for non-React utilities, services, and stores.
+ * Translates an English UI string into any supported non-Vietnamese locale using
+ * the active loaded LocalePack (exact phrase lookup + dynamic pattern translation).
  */
-export function lSync(vi: string, en: string, locale: SupportedLocale = getActiveAppLocale()): string {
-  return locale === 'vi' ? vi : en;
+export function translateEnForLocale(
+  en: string,
+  locale: SupportedLocale = getActiveAppLocale(),
+): string {
+  if (locale === 'en' || locale === 'vi') return en;
+  const pack = getLoadedLocalePack(locale);
+  if (!pack) return en;
+  const exact = pack.phrases[en];
+  if (exact !== undefined) return exact;
+  const dynamic = pack.translateDynamic(en);
+  if (dynamic !== null) return dynamic;
+  return en;
+}
+
+/**
+ * Synchronous locale picker for non-React utilities, services, and stores.
+ * Supports all 7 Takolio locales (`vi`, `en`, `ja`, `ko`, `th`, `zh`, `it`).
+ */
+export function lSync(
+  vi: string,
+  en: string,
+  locale: SupportedLocale = getActiveAppLocale(),
+): string {
+  if (locale === 'vi') return vi;
+  if (locale === 'en') return en;
+  return translateEnForLocale(en, locale);
+}
+
+/**
+ * Planner-compatible bridge for components that accept an explicit `'vi' | 'en'` prop
+ * in unit tests while rendering in all 7 locales inside the real app.
+ */
+export function lPlanner(plannerLocale: 'vi' | 'en', vi: string, en: string): string {
+  if (plannerLocale === 'vi') return vi;
+  const active = getActiveAppLocale();
+  return lSync(vi, en, active === 'vi' ? 'en' : active);
 }
 
 export function isViLocale(locale: SupportedLocale = getActiveAppLocale()): boolean {
   return locale === 'vi';
 }
 
+export function getActiveBcp47(locale: SupportedLocale = getActiveAppLocale()): string {
+  const bcp = LOCALE_CATALOG[locale]?.bcp47;
+  if (bcp === 'vi') return 'vi-VN';
+  if (bcp === 'en') return 'en-US';
+  if (bcp === 'ja') return 'ja-JP';
+  if (bcp === 'ko') return 'ko-KR';
+  if (bcp === 'th') return 'th-TH';
+  if (bcp === 'zh-Hans') return 'zh-CN';
+  if (bcp === 'it') return 'it-IT';
+  return 'en-US';
+}
+
+const DEFAULT_WEEKDAYS_SHORT_VI = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'] as const;
+const DEFAULT_WEEKDAYS_SHORT_EN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] as const;
+const DEFAULT_WEEKDAYS_FULL_VI = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'] as const;
+const DEFAULT_WEEKDAYS_FULL_EN = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;
+
+export function getLocalizedWeekdays(
+  locale: SupportedLocale = getActiveAppLocale(),
+  format: 'short' | 'full' = 'short',
+): readonly [string, string, string, string, string, string, string] {
+  if (locale === 'vi') return format === 'full' ? DEFAULT_WEEKDAYS_FULL_VI : DEFAULT_WEEKDAYS_SHORT_VI;
+  const pack = getLoadedLocalePack(locale);
+  if (pack) {
+    return format === 'full' ? pack.enums.weekdaysFull : pack.enums.weekdaysShort;
+  }
+  return format === 'full' ? DEFAULT_WEEKDAYS_FULL_EN : DEFAULT_WEEKDAYS_SHORT_EN;
+}
+
 /**
- * Primary React hook for full consumer app localization.
+ * Primary React hook for full 7-language consumer app localization.
  * - Preserves exact Vietnamese copy when `locale === 'vi'`.
- * - Delivers clean International English across all non-Vietnamese locales (`en`, `ja`, `ko`, `th`, `zh`, `it`)
- *   so international users NEVER experience Vietnamese/English mixed screens.
+ * - Delivers native translations for `en`, `ja`, `ko`, `th`, `zh`, and `it` via loaded LocalePacks.
  */
 export function useLocaleText() {
   const ctx = useAppLocale();
+  const packVersion = useSyncExternalStore(
+    subscribeLocalePack,
+    getLocalePackVersion,
+    getLocalePackVersion,
+  );
   const effectiveLocale = ctx.isProvided ? ctx.locale : getActiveAppLocale();
   const effectiveUnitSystem = ctx.isProvided ? ctx.unitSystem : getActiveUnitSystem(effectiveLocale);
   const isVi = effectiveLocale === 'vi';
-  const l = useCallback((vi: string, en: string) => (isVi ? vi : en), [isVi]);
+  const l = useCallback(
+    (vi: string, en: string) => {
+      void packVersion;
+      return lSync(vi, en, effectiveLocale);
+    },
+    [effectiveLocale, packVersion],
+  );
   return {
     locale: effectiveLocale,
     unitSystem: effectiveUnitSystem,
@@ -141,6 +224,8 @@ const EXTRA_VI_INGREDIENT_TO_EN: Readonly<Record<string, string>> = Object.freez
   'bún': 'Rice vermicelli',
   'phở': 'Flat rice noodles',
   'mì': 'Noodles',
+  'mì gói': 'Instant noodles',
+  'mì trứng': 'Egg noodles',
   'mì ý': 'Spaghetti',
   'sữa tươi': 'Fresh milk',
   'sữa': 'Milk',
@@ -165,14 +250,11 @@ const EXTRA_VI_INGREDIENT_TO_EN: Readonly<Record<string, string>> = Object.freez
   'kim chi': 'Kimchi',
 });
 
-export function localizeIngredientName(
+function resolveEnglishIngredientName(
   ingredientId: string | null | undefined,
   rawName: string | null | undefined,
-  locale: SupportedLocale = getActiveAppLocale(),
 ): string {
   const safeRaw = (rawName ?? '').trim();
-  if (locale === 'vi') return safeRaw || (ingredientId ?? '');
-
   if (ingredientId) {
     const byId = translateIngredientNameToEn(ingredientId, '');
     if (byId && !containsVietnameseDiacritics(byId)) return byId;
@@ -182,7 +264,6 @@ export function localizeIngredientName(
   if (CANONICAL_VI_TO_EN[lower]) return CANONICAL_VI_TO_EN[lower];
   if (EXTRA_VI_INGREDIENT_TO_EN[lower]) return EXTRA_VI_INGREDIENT_TO_EN[lower];
 
-  // Partial Vietnamese token translation if custom ingredient has Vietnamese words
   for (const [viKey, enVal] of Object.entries(EXTRA_VI_INGREDIENT_TO_EN)) {
     if (lower.includes(viKey)) return enVal;
   }
@@ -195,6 +276,29 @@ export function localizeIngredientName(
       .replace(/\b\w/g, (c) => c.toUpperCase());
   }
   return 'Kitchen ingredient';
+}
+
+export function localizeIngredientName(
+  ingredientId: string | null | undefined,
+  rawName: string | null | undefined,
+  locale: SupportedLocale = getActiveAppLocale(),
+): string {
+  const safeRaw = (rawName ?? '').trim();
+  if (locale === 'vi') return safeRaw || (ingredientId ?? '');
+
+  const enName = resolveEnglishIngredientName(ingredientId, safeRaw);
+  if (locale === 'en') return enName;
+
+  const pack = getLoadedLocalePack(locale);
+  if (pack) {
+    const idKey = (ingredientId ?? '').trim().toUpperCase();
+    if (idKey && pack.ingredients[idKey]) return pack.ingredients[idKey];
+    const enLower = enName.toLowerCase();
+    if (pack.ingredients[enLower]) return pack.ingredients[enLower];
+    if (pack.ingredients[enName]) return pack.ingredients[enName];
+    if (enName === 'Kitchen ingredient') return pack.recipeCopy.fallbackIngredient;
+  }
+  return enName;
 }
 
 const VI_UNIT_TO_EN: Readonly<Record<string, string>> = Object.freeze({
@@ -259,8 +363,15 @@ export function localizeUnit(
   const raw = (unit ?? '').trim();
   if (!raw || locale === 'vi') return raw;
   const lower = raw.toLowerCase();
-  if (VI_UNIT_TO_EN[lower]) return VI_UNIT_TO_EN[lower];
-  return containsVietnameseDiacritics(raw) ? 'pcs' : raw;
+  const enUnit = VI_UNIT_TO_EN[lower] ?? (containsVietnameseDiacritics(raw) ? 'pcs' : raw);
+  if (locale === 'en') return enUnit;
+
+  const pack = getLoadedLocalePack(locale);
+  if (pack) {
+    const mapped = pack.enums.unit[enUnit.toLowerCase()] ?? pack.enums.unit[lower];
+    if (mapped) return mapped;
+  }
+  return enUnit;
 }
 
 export function formatLocalizedMeasure(
@@ -302,22 +413,85 @@ export interface LocalizableRecipeLike {
   }>;
 }
 
+/**
+ * Strips any parenthetical (including nested parentheses) containing Vietnamese diacritics
+ * and repairs any unmatched stray parentheses left behind.
+ */
 function stripVietnameseParen(text: string): string {
-  return text
-    .replace(/\s*\([^)]*[ăđơưĂĐƠƯảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ][^)]*\)/gu, '')
-    .replace(/\s*[—–-]\s*[^—–-]*[ăđơưĂĐƠƯảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ].*$/gu, '')
-    .trim();
+  let out = text;
+  // Iteratively strip innermost parentheticals containing Vietnamese diacritics first
+  let prev = '';
+  while (out !== prev) {
+    prev = out;
+    out = out.replace(
+      /\s*\([^()]*[ăđơưĂĐƠƯảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ][^()]*\)/gu,
+      '',
+    );
+  }
+  out = out.replace(
+    /\s*[—–-]\s*[^—–-]*[ăđơưĂĐƠƯảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ].*$/gu,
+    '',
+  );
+  // Balance/clean any unmatched trailing/leading stray parens
+  let depth = 0;
+  let balanced = '';
+  for (const ch of out) {
+    if (ch === '(') {
+      depth += 1;
+      balanced += ch;
+    } else if (ch === ')') {
+      if (depth > 0) {
+        depth -= 1;
+        balanced += ch;
+      }
+    } else {
+      balanced += ch;
+    }
+  }
+  while (depth > 0) {
+    const idx = balanced.lastIndexOf('(');
+    if (idx === -1) break;
+    balanced = balanced.slice(0, idx) + balanced.slice(idx + 1);
+    depth -= 1;
+  }
+  return balanced.replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').trim();
 }
 
 export function localizeRecipeTitle(
-  recipe: Pick<LocalizableRecipeLike, 'slug' | 'title' | 'description' | 'cuisine' | 'category' | 'cookTimeMinutes' | 'servings' | 'ingredients'>,
+  recipe: Pick<
+    LocalizableRecipeLike,
+    'slug' | 'title' | 'description' | 'cuisine' | 'category' | 'cookTimeMinutes' | 'servings' | 'ingredients'
+  >,
   locale: SupportedLocale = getActiveAppLocale(),
 ): string {
   if (locale === 'vi') return recipe.title;
-  if (!containsVietnameseDiacritics(recipe.title)) return recipe.title;
 
+  const resolvedSlug = resolveRecipeSlug({ slug: recipe.slug, title: recipe.title });
+
+  // 1. Check loaded non-EN native locale pack first (`ja`, `ko`, `th`, `zh`, `it`)
+  if (locale !== 'en' && resolvedSlug) {
+    const pack = getLoadedLocalePack(locale);
+    const nativeTitle = pack?.recipeTitles[resolvedSlug];
+    if (nativeTitle) return nativeTitle;
+  }
+
+  // 2. Check authoritative 500-recipe English title catalog
+  const canonicalEn = getCanonicalEnglishRecipeTitle({ slug: resolvedSlug, title: recipe.title });
+  if (canonicalEn) {
+    if (locale === 'en') return canonicalEn;
+    const pack = getLoadedLocalePack(locale);
+    if (pack?.phrases[canonicalEn]) return pack.phrases[canonicalEn];
+    return canonicalEn;
+  }
+
+  // 3. Preserve already-clean non-Vietnamese custom/user titles
+  if (recipe.title && !containsVietnameseDiacritics(recipe.title)) {
+    return stripVietnameseParen(recipe.title);
+  }
+
+  // 4. Deterministic fallback synthesis (never leaks Vietnamese or unmatched parens)
   const meta = synthesizeEnglishRecipeMeta({
-    slug: recipe.slug ?? '',
+    slug: resolvedSlug ?? '',
     titleVi: recipe.title,
     descriptionVi: recipe.description ?? '',
     cuisine: recipe.cuisine ?? 'vietnamese',
@@ -332,19 +506,41 @@ export function localizeRecipeTitle(
     })),
   });
   const cleaned = stripVietnameseParen(meta.titleEn);
-  return cleaned && !containsVietnameseDiacritics(cleaned) ? cleaned : 'Home-Cooked Dish';
+  if (cleaned && !containsVietnameseDiacritics(cleaned)) return cleaned;
+  const pack = getLoadedLocalePack(locale);
+  return pack?.recipeCopy.fallbackTitle ?? 'Home-Cooked Dish';
 }
 
 export function localizeRecipeDescription(
-  recipe: Pick<LocalizableRecipeLike, 'slug' | 'title' | 'description' | 'cuisine' | 'category' | 'cookTimeMinutes' | 'servings' | 'ingredients'>,
+  recipe: Pick<
+    LocalizableRecipeLike,
+    'slug' | 'title' | 'description' | 'cuisine' | 'category' | 'cookTimeMinutes' | 'servings' | 'ingredients'
+  >,
   locale: SupportedLocale = getActiveAppLocale(),
 ): string {
   const raw = recipe.description ?? '';
   if (locale === 'vi') return raw;
+
+  const pack = getLoadedLocalePack(locale);
+  if (pack && locale !== 'en') {
+    const cuisineLabel = localizeCuisine(recipe.cuisine ?? 'vietnamese', locale);
+    const primary = (recipe.ingredients ?? [])
+      .slice(0, 3)
+      .map((ing) => localizeIngredientName(ing.ingredientId, ing.name, locale))
+      .filter(Boolean);
+    const summary = primary.length > 0 ? primary.join(', ') : pack.recipeCopy.fallbackIngredient;
+    return pack.recipeCopy.description(
+      cuisineLabel,
+      summary,
+      recipe.cookTimeMinutes ?? 20,
+      recipe.servings ?? 2,
+    );
+  }
+
   if (raw && !containsVietnameseDiacritics(raw)) return raw;
 
   const meta = synthesizeEnglishRecipeMeta({
-    slug: recipe.slug ?? '',
+    slug: resolveRecipeSlug({ slug: recipe.slug, title: recipe.title }) ?? '',
     titleVi: recipe.title,
     descriptionVi: raw,
     cuisine: recipe.cuisine ?? 'vietnamese',
@@ -378,16 +574,43 @@ export function localizeRecipeSteps(
     }));
   }
 
-  const ingredientsEn = (recipe.ingredients ?? []).map((ing) =>
+  const pack = getLoadedLocalePack(locale);
+  const localizedIngredients = (recipe.ingredients ?? []).map((ing) =>
     localizeIngredientName(ing.ingredientId, ing.name, locale),
   );
+
+  if (pack && locale !== 'en') {
+    const lead = localizedIngredients.slice(0, 4).join(', ') || pack.recipeCopy.fallbackIngredient;
+    const totalMins = recipe.cookTimeMinutes ?? 20;
+    return steps.map((st, idx) => {
+      const timerHint = st.timerMinutes ? pack.recipeCopy.timerHint(st.timerMinutes) : '';
+      let instruction: string;
+      if (idx === 0) {
+        instruction = pack.recipeCopy.prep(lead, timerHint);
+      } else if (idx === steps.length - 1) {
+        instruction = pack.recipeCopy.finish(timerHint);
+      } else if (st.timerMinutes && st.timerMinutes >= 8) {
+        instruction = pack.recipeCopy.simmer(st.timerMinutes);
+      } else if (st.timerMinutes) {
+        instruction = pack.recipeCopy.stirFry(st.timerMinutes);
+      } else {
+        instruction = pack.recipeCopy.combine(totalMins);
+      }
+      return {
+        stepNumber: st.stepNumber ?? idx + 1,
+        instruction: convertStepTemperatures(instruction, unitSystem),
+        ...(st.timerMinutes ? { timerMinutes: st.timerMinutes } : {}),
+      };
+    });
+  }
+
   const synthesized = synthesizeEnglishSteps({
     steps: steps.map((st, idx) => ({
       stepNumber: st.stepNumber ?? idx + 1,
       instruction: st.instruction,
       timerMinutes: st.timerMinutes,
     })),
-    ingredientsEn,
+    ingredientsEn: localizedIngredients,
     cookTimeMinutes: recipe.cookTimeMinutes ?? 20,
   });
 
@@ -416,6 +639,8 @@ export function localizeStorageZone(
     if (key === 'chilled') return 'Ngăn đông mềm';
     return 'Ngăn mát';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.storageZone[key]) return pack.enums.storageZone[key];
   if (key === 'freezer') return 'Freezer';
   if (key === 'pantry') return 'Pantry';
   if (key === 'veg_crisper') return 'Crisper';
@@ -433,6 +658,8 @@ export function localizeFreshnessStatus(
     if (key === 'expiring_soon') return 'Sắp hết hạn';
     return 'Còn tươi';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.freshness[key]) return pack.enums.freshness[key];
   if (key === 'expired') return 'Expired';
   if (key === 'expiring_soon') return 'Expiring soon';
   return 'Fresh';
@@ -455,6 +682,8 @@ export function localizeCuisine(
     };
     return map[key] ?? cuisine ?? 'Món Việt';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.cuisine[key]) return pack.enums.cuisine[key];
   const map: Record<string, string> = {
     vietnamese: 'Vietnamese',
     japanese: 'Japanese',
@@ -488,6 +717,8 @@ export function localizeRecipeCategory(
     };
     return map[key] ?? category ?? '';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.category[key]) return pack.enums.category[key];
   const map: Record<string, string> = {
     mon_canh: 'Soup',
     mon_kho: 'Braised',
@@ -514,6 +745,8 @@ export function localizeDifficulty(
     if (key === 'medium') return 'Trung bình';
     return 'Dễ';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.difficulty[key]) return pack.enums.difficulty[key];
   if (key === 'hard') return 'Advanced';
   if (key === 'medium') return 'Medium';
   return 'Easy';
@@ -531,6 +764,8 @@ export function localizeMealSlot(
     if (key === 'snack') return 'Bữa phụ';
     return slot ?? '';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.mealSlot[key]) return pack.enums.mealSlot[key];
   if (key === 'breakfast') return 'Breakfast';
   if (key === 'lunch') return 'Lunch';
   if (key === 'dinner') return 'Dinner';
@@ -565,6 +800,8 @@ export function localizeDisplayCategory(
     };
     return map[key] ?? 'Khác';
   }
+  const pack = getLoadedLocalePack(locale);
+  if (pack?.enums.displayCategory[key]) return pack.enums.displayCategory[key];
   const map: Record<string, string> = {
     produce: 'Produce',
     vegetable: 'Vegetables',
@@ -588,7 +825,8 @@ export function localizeDisplayCategory(
 }
 
 /**
- * Ensures user-visible error strings never leak Vietnamese messages into non-Vietnamese locales.
+ * Ensures user-visible error strings never leak Vietnamese messages into non-Vietnamese locales,
+ * and translates fallback errors into the active pack locale (`ja`, `ko`, `th`, `zh`, `it`).
  */
 export function localizeErrorText(
   err: unknown,
@@ -600,8 +838,10 @@ export function localizeErrorText(
   if (locale === 'vi') {
     return raw || fallbackVi;
   }
+  const localizedFallback = translateEnForLocale(fallbackEn, locale);
   if (!raw || containsVietnameseDiacritics(raw) || raw.startsWith('HTTP ')) {
-    return fallbackEn;
+    const pack = getLoadedLocalePack(locale);
+    return localizedFallback !== fallbackEn ? localizedFallback : (pack?.recipeCopy.fallbackError ?? fallbackEn);
   }
-  return raw;
+  return translateEnForLocale(raw, locale);
 }

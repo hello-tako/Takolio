@@ -15,7 +15,7 @@ import type { PlannerLocale } from './copy';
 import { PlannerError } from './PlannerShell';
 import { IngredientCoverage } from './IngredientCoverage';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
-import { useLocaleText } from '../../i18n/app-i18n';
+import { lPlanner, useLocaleText } from '../../i18n/app-i18n';
 
 export type PickerMealContext = {
   date: string;
@@ -30,11 +30,13 @@ export type PickerMealScope = {
   noBuy?: boolean;
 };
 export function mealContextLabel(context: PickerMealContext, locale: PlannerLocale) {
-  const meals =
-    locale === 'vi'
-      ? { breakfast: 'Bữa sáng', lunch: 'Bữa trưa', dinner: 'Bữa tối' }
-      : { breakfast: 'Breakfast', lunch: 'Lunch', dinner: 'Dinner' };
-  return `${context.date} · ${meals[context.mealType]} · ${context.servings} ${locale === 'vi' ? 'người' : 'servings'}`;
+  const mealLabel =
+    context.mealType === 'breakfast'
+      ? lPlanner(locale, 'Bữa sáng', 'Breakfast')
+      : context.mealType === 'lunch'
+        ? lPlanner(locale, 'Bữa trưa', 'Lunch')
+        : lPlanner(locale, 'Bữa tối', 'Dinner');
+  return `${context.date} · ${mealLabel} · ${context.servings} ${lPlanner(locale, 'người', 'servings')}`;
 }
 
 export function ComponentPicker({
@@ -217,12 +219,8 @@ export function ComponentPicker({
               </h2>
               <p className="text-xs text-semantic-text-secondary mt-1">
                 {intent === 'swap'
-                  ? locale === 'vi'
-                    ? 'Đổi món trong bữa này'
-                    : 'Replace a dish in this meal'
-                  : locale === 'vi'
-                    ? 'Thêm món vào bữa này'
-                    : 'Add a dish to this meal'}
+                  ? lPlanner(locale, 'Đổi món trong bữa này', 'Replace a dish in this meal')
+                  : lPlanner(locale, 'Thêm món vào bữa này', 'Add a dish to this meal')}
               </p>
               {context && (
                 <p className="planning-picker-context">{mealContextLabel(context, locale)}</p>
@@ -235,7 +233,7 @@ export function ComponentPicker({
           {!!mutationError && <PlannerError error={mutationError} locale={locale} focus />}
           <div
             className="planning-picker-tabs"
-            aria-label={locale === 'vi' ? 'Nguồn chọn món' : 'Dish source'}
+            aria-label={lPlanner(locale, 'Nguồn chọn món', 'Dish source')}
           >
             <button
               type="button"
@@ -243,7 +241,7 @@ export function ComponentPicker({
               disabled={busy}
               onClick={() => setSource('catalog')}
             >
-              {locale === 'vi' ? 'Khám phá món' : 'Explore dishes'}
+              {lPlanner(locale, 'Khám phá món', 'Explore dishes')}
             </button>
             <button
               type="button"
@@ -252,7 +250,7 @@ export function ComponentPicker({
               onClick={() => setSource('saved')}
             >
               <Heart size={15} aria-hidden="true" />
-              {locale === 'vi' ? 'Món đã lưu' : 'Saved dishes'}
+              {lPlanner(locale, 'Món đã lưu', 'Saved dishes')}
             </button>
           </div>
           <div className="space-y-2">
@@ -321,9 +319,11 @@ export function ComponentPicker({
                   disabled={busy}
                   onChange={(event) => setStockOnly(event.target.checked)}
                 />
-                {locale === 'vi'
-                  ? 'Chỉ hiện món đủ lượng từ tủ lạnh'
-                  : 'Only dishes covered by your fridge'}
+                {lPlanner(
+                  locale,
+                  'Chỉ hiện món đủ lượng từ tủ lạnh',
+                  'Only dishes covered by your fridge',
+                )}
               </label>
             )}
           </div>
@@ -332,9 +332,11 @@ export function ComponentPicker({
           {!!currentError && (
             <>
               <p className="text-sm text-semantic-warning-strong mb-2">
-                {locale === 'vi'
-                  ? 'Chưa xác nhận được lượng cho bữa này. Tải lại trước khi chọn món.'
-                  : 'Meal quantities are unconfirmed. Reload before choosing a dish.'}
+                {lPlanner(
+                  locale,
+                  'Chưa xác nhận được lượng cho bữa này. Tải lại trước khi chọn món.',
+                  'Meal quantities are unconfirmed. Reload before choosing a dish.',
+                )}
               </p>
               <PlannerError
                 error={currentError}
@@ -343,7 +345,7 @@ export function ComponentPicker({
               />
               {planChanged && onReloadPlan && (
                 <Button variant="outline" disabled={busy} onClick={onReloadPlan}>
-                  {locale === 'vi' ? 'Tải thực đơn mới nhất' : 'Load latest plan'}
+                  {lPlanner(locale, 'Tải thực đơn mới nhất', 'Load latest plan')}
                 </Button>
               )}
             </>
@@ -351,10 +353,10 @@ export function ComponentPicker({
           {handoffId && (
             <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
               <p className="text-sm text-semantic-text-secondary">
-                {locale === 'vi' ? 'Món bạn vừa chọn' : 'Your selected dish'}
+                {lPlanner(locale, 'Món bạn vừa chọn', 'Your selected dish')}
               </p>
               <Button size="sm" variant="ghost" disabled={busy} onClick={clearFilters}>
-                {locale === 'vi' ? 'Xem các món khác' : 'Browse other dishes'}
+                {lPlanner(locale, 'Xem các món khác', 'Browse other dishes')}
               </Button>
             </div>
           )}
@@ -362,12 +364,12 @@ export function ComponentPicker({
             {currentError
               ? c.loadFailed
               : pending
-                ? locale === 'vi'
-                  ? 'Đang tìm món…'
-                  : 'Finding dishes…'
-                : locale === 'vi'
-                  ? `${current ? results.total : 0} món phù hợp`
-                  : `${current ? results.total : 0} dishes found`}
+                ? lPlanner(locale, 'Đang tìm món…', 'Finding dishes…')
+                : lPlanner(
+                    locale,
+                    `${current ? results.total : 0} món phù hợp`,
+                    `${current ? results.total : 0} dishes found`,
+                  )}
           </p>
           {!pending &&
             !currentError &&
@@ -413,7 +415,7 @@ export function ComponentPicker({
                           }}
                         >
                           <option value="" disabled>
-                            {locale === 'vi' ? 'Chọn vai trò' : 'Choose role'}
+                            {lPlanner(locale, 'Chọn vai trò', 'Choose role')}
                           </option>
                           {item.roles.map((value) => (
                             <option key={value} value={value}>
@@ -432,9 +434,11 @@ export function ComponentPicker({
                     )}
                     {scope && !item.assessment && (
                       <p className="text-xs text-semantic-warning-strong mt-2">
-                        {locale === 'vi'
-                          ? 'Chưa xác nhận nguyên liệu của món.'
-                          : 'Ingredients are unconfirmed.'}
+                        {lPlanner(
+                          locale,
+                          'Chưa xác nhận nguyên liệu của món.',
+                          'Ingredients are unconfirmed.',
+                        )}
                       </p>
                     )}
                     {item.constraintState === 'unknown' && (

@@ -1,5 +1,7 @@
 import React from 'react';
+import type { SupportedLocale } from '../../../shared/locales';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
+import { translateEnForLocale, useLocaleText } from '../../i18n/app-i18n';
 
 export type VNextIconName =
   | 'home'
@@ -168,8 +170,12 @@ export const VNEXT_ICON_LABELS_EN: Record<VNextIconName, string> = {
   'cat-braise': 'Braised',
 };
 
-export function getVNextIconLabel(name: VNextIconName): string {
-  return getActiveAppLocale() === 'vi' ? VNEXT_ICON_LABELS_VI[name] : VNEXT_ICON_LABELS_EN[name];
+export function getVNextIconLabel(
+  name: VNextIconName,
+  locale: SupportedLocale = getActiveAppLocale(),
+): string {
+  if (locale === 'vi') return VNEXT_ICON_LABELS_VI[name];
+  return translateEnForLocale(VNEXT_ICON_LABELS_EN[name], locale);
 }
 
 const renderIconGeometry = (name: VNextIconName): React.ReactNode => {
@@ -585,14 +591,15 @@ export const VNextIcon: React.FC<VNextIconProps> = ({
   label,
   decorative,
 }) => {
-  const isNonVi = getActiveAppLocale() !== 'vi';
+  const { locale } = useLocaleText();
+  const isNonVi = locale !== 'vi';
   const resolvedLabel =
     label !== undefined
       ? isNonVi && label === VNEXT_ICON_LABELS_VI[name]
-        ? VNEXT_ICON_LABELS_EN[name]
+        ? translateEnForLocale(VNEXT_ICON_LABELS_EN[name], locale)
         : label
       : decorative === false
-        ? getVNextIconLabel(name)
+        ? getVNextIconLabel(name, locale)
         : undefined;
 
   return (

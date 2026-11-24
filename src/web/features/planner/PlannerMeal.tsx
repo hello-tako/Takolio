@@ -26,10 +26,12 @@ import {
 import { CompositionLoadState } from './CompositionLoadState';
 import { getActiveAppLocale } from '../../i18n/LocaleContext';
 import {
+  lPlanner,
   localizeRecipeSteps,
   localizeRecipeTitle,
   useLocaleText,
 } from '../../i18n/app-i18n';
+import { getLoadedLocalePack } from '../../i18n/packs/registry';
 
 export function PlannerMeal({
   plan,
@@ -42,9 +44,16 @@ export function PlannerMeal({
   model: ReturnType<typeof usePlanner>;
   locale: PlannerLocale;
 }) {
-  const t = plannerCopy[locale];
   const { locale: appLocale, unitSystem } = useLocaleText();
   const activeDataLocale = appLocale !== 'vi' ? appLocale : getActiveAppLocale();
+  const pack =
+    locale === 'vi' ? null : getLoadedLocalePack(activeDataLocale === 'vi' ? 'en' : activeDataLocale);
+  const t =
+    locale === 'vi'
+      ? plannerCopy.vi
+      : pack?.planner
+        ? ({ ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en)
+        : plannerCopy.en;
   const shouldLocalizeRecipeData = locale !== 'vi' && activeDataLocale !== 'vi';
   const navigate = useNavigate();
   const location = useLocation();
@@ -119,7 +128,7 @@ export function PlannerMeal({
             {slotComposition?.date} · {slotComposition ? t[slotComposition.mealType] : ''}
           </p>
           <h2 className="text-2xl font-heading font-bold mt-2">
-            {locale === 'vi' ? 'Chọn món cho bữa này' : 'Choose dishes for this meal'}
+            {lPlanner(locale, 'Chọn món cho bữa này', 'Choose dishes for this meal')}
           </h2>
           <p className="inline-flex items-center gap-1 text-sm text-semantic-text-secondary mt-3">
             <Users size={16} aria-hidden="true" />

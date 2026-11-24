@@ -1,5 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { getActiveAppLocale, useAppLocale } from '../../i18n/LocaleContext';
+import {
+  getLoadedLocalePack,
+  getLocalePackVersion,
+  subscribeLocalePack,
+} from '../../i18n/packs/registry';
 
 export type PlannerLocale = 'vi' | 'en';
 export const plannerCopy = {
@@ -97,6 +102,11 @@ export const plannerCopy = {
 
 export function usePlannerLocale() {
   const { locale: appLocale, setLocale: setAppLocale, isProvided } = useAppLocale();
+  const packVersion = useSyncExternalStore(
+    subscribeLocalePack,
+    getLocalePackVersion,
+    getLocalePackVersion,
+  );
   const [locale, setLocale] = useState<PlannerLocale>(() => {
     const active = isProvided ? appLocale : getActiveAppLocale();
     if (active !== 'vi') return 'en';
@@ -108,9 +118,21 @@ export function usePlannerLocale() {
     const derived: PlannerLocale = appLocale === 'vi' ? 'vi' : 'en';
     setLocale(derived);
   }, [appLocale, isProvided]);
+
+  const effectiveAppLocale = isProvided ? appLocale : getActiveAppLocale();
+  const copy = useMemo(() => {
+    void packVersion;
+    if (locale === 'vi') return plannerCopy.vi;
+    const pack = getLoadedLocalePack(effectiveAppLocale);
+    if (pack?.planner) {
+      return { ...plannerCopy.en, ...pack.planner } as unknown as typeof plannerCopy.en;
+    }
+    return plannerCopy.en;
+  }, [locale, effectiveAppLocale, packVersion]);
+
   return {
     locale,
-    copy: plannerCopy[locale],
+    copy,
     setLocale: (value: PlannerLocale) => {
       setLocale(value);
       if (isProvided) setAppLocale(value);

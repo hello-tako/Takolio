@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { SupportedLocale } from '../../../shared/locales';
-import { lSync, useLocaleText } from '../../i18n/app-i18n';
+import { lSync, translateEnForLocale, useLocaleText } from '../../i18n/app-i18n';
 import type { BrandDirection } from '../feature';
 import type { ResolvedRecipeImage } from '../../lib/recipe-media';
 
@@ -378,7 +378,13 @@ export const BrandFeatureIcon: React.FC<{
         src={meta.src128}
         srcSet={`${meta.src128} 128w, ${meta.src} 256w`}
         sizes={`${size}px`}
-        alt={decorative ? '' : activeLocale === 'vi' ? meta.label : meta.labelEn}
+        alt={
+          decorative
+            ? ''
+            : activeLocale === 'vi'
+              ? meta.label
+              : translateEnForLocale(meta.labelEn, activeLocale)
+        }
         aria-hidden={decorative || undefined}
         width={size}
         height={size}
@@ -420,7 +426,13 @@ export const MascotIllustration: React.FC<{
       src={`${activeBase}-256w.webp`}
       srcSet={`${activeBase}-256w.webp 256w, ${activeBase}.webp 512w`}
       sizes={`${size}px`}
-      alt={decorative ? '' : activeLocale === 'vi' ? meta.alt : meta.altEn}
+      alt={
+        decorative
+          ? ''
+          : activeLocale === 'vi'
+            ? meta.alt
+            : translateEnForLocale(meta.altEn, activeLocale)
+      }
       title={
         decorative
           ? undefined
@@ -573,7 +585,11 @@ export const VerifiedDishImage: React.FC<{
           src={vnextEntry.src640}
           srcSet={`${vnextEntry.src640} 640w, ${vnextEntry.src} 1200w`}
           sizes="(max-width: 768px) 100vw, 560px"
-          alt={activeLocale === 'vi' ? vnextEntry.altVi : vnextEntry.altEn}
+          alt={
+            activeLocale === 'vi'
+              ? vnextEntry.altVi
+              : translateEnForLocale(vnextEntry.altEn, activeLocale)
+          }
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
           onLoad={() => setLoaded(true)}
